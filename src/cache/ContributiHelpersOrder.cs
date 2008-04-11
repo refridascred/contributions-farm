@@ -32,12 +32,12 @@ namespace Common.Utilities
             return scale2 - scale2;
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            public long Ratio { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Ratio { get; set; } = "";
             public long Total { get; set; }
-            public double Level { get; set; }
         }
     }
 }
