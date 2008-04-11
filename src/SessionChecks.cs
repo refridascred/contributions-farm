@@ -10,13 +10,21 @@ namespace Common.Utilities
         public const double CacheChecks = 95.78;
         public const long StepChecks = 741;
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long CompareWindowCount(long[] items)
         {
-            Pending,
-            Retry,
-            Paused,
-            Queued,
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 2)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
