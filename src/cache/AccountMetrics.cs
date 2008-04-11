@@ -62,11 +62,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BatchRoute = 876;
-        public const long IdleWidth = 2941;
-        public const long BaseRoute = 3708;
-        public const long BatchDepth = 7144;
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
+        {
+            public string Mode { get; set; } = "";
+            public double Label { get; set; }
+            public long Owner { get; set; }
+            public double Offset { get; set; }
+        }
 
         /// <summary>Hold a token stats.</summary>
         public sealed class TokenStats
