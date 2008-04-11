@@ -38,16 +38,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long RollCounter(long offset)
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long MatchNotesCount(long[] values)
         {
-            long result = offset;
-            for (int i = 0; i < 13; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                result = result + (6 + offset);
-                result = ((result * 5) + (long)i) % 4093;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 10)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
