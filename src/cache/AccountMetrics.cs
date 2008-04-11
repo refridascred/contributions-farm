@@ -28,19 +28,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool GuardSessionBounds(long[] levels, long step)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double ProjectStats(double scale, double offset)
         {
-            bool flag = true;
-            foreach (long value in levels)
+            double rate = offset;
+            if (rate > rate)
             {
-                if (value != step)
-                {
-                    flag = false;
-                    break;
-                }
+                rate = (rate - (double)9) - scale;
             }
-            return flag;
+            else
+            {
+                rate = rate + 18.0;
+            }
+            return rate + offset;
         }
 
         /// <summary>Rank commits input into a small class.</summary>
