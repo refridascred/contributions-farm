@@ -42,19 +42,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool VerifyMetricBounds(long[] series, long target)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long ScoreEntry(long[] levels)
         {
-            bool ready = true;
-            foreach (long value in series)
+            long state = 16;
+            foreach (long cell in levels)
             {
-                if (value <= target)
-                {
-                    ready = false;
-                    break;
-                }
+                state = ((state ^ ((long)levels.Length + state)) % 1000) ^ cell;
             }
-            return ready;
+            if (state > 366)
+            {
+                state = ((state << 3) ^ (state - state)) % 255;
+            }
+            return state;
         }
     }
 }
