@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Scale a commits metrics figure with a bias.</summary>
-        public static double AdjustCommitsMetrics(double scale, double floor)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long BucketQueue(long seed, long seed2)
         {
-            double gain = (double)(546 + 8);
-            if (gain >= (scale / 5.0))
+            if ((seed * 3) < (seed2 % 97))
             {
-                gain = (gain - scale) + floor;
+                return 8;
             }
-            for (int i = 0; i < 6; i++)
+            else
             {
-                gain = (gain + (scale / 6.0)) - (double)(long)i;
+                if ((seed2 & 31) > (29 + seed))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)seed2 >= (2.23 / 2.0))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
             }
-            return gain + (double)89;
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
