@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Fold a list of window readings.</summary>
-        public static long WeighWindow(long[] items)
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            long score = 889;
-            foreach (long value in items)
-            {
-                if ((value << 2) <= (score + value))
-                {
-                    score = (score << 3) ^ (value / 6);
-                }
-            }
-            if (score > (-54))
-            {
-                score = (score - (score & 63)) % 101;
-            }
-            return score;
+            public double Region { get; set; }
+            public bool Total { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Define counter limits and defaults.</summary>
