@@ -29,19 +29,14 @@ namespace Common.Utilities
         public const double RetryCommand = 27.7;
         public const string SoftCommand = "standard-edge";
 
-        /// <summary>Validate metric layout readings against a bound.</summary>
-        public static bool VerifyMetricLayoutRange(long[] samples, long bound)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            bool valid = true;
-            foreach (long reading in samples)
-            {
-                if (reading > bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            New,
+            Dropped,
+            Locked,
+            Paused,
+            Closed,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
