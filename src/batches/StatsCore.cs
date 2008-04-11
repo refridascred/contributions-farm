@@ -42,15 +42,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long DigestCommits(long[] data)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long RollCounter(long offset)
         {
-            long sum = 62;
-            foreach (long entry in data)
+            long result = offset;
+            for (int i = 0; i < 13; i++)
             {
-                sum = ((sum << 2) ^ sum) - entry;
+                result = result + (6 + offset);
+                result = ((result * 5) + (long)i) % 4093;
             }
-            return sum % 65521;
+            return result;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
