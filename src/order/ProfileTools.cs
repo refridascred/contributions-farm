@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Roll a session token counter forward.</summary>
-        public static long RollSessionToken(long origin)
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long LocateQueueIndex(long[] items, long origin)
         {
-            long total = origin;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                total = ((total * 3) + (-353)) % 101;
-                total = ((total * 5) + (long)i) % 1000;
+                if ((items[i] <= origin) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
