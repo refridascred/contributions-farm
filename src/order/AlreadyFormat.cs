@@ -25,14 +25,18 @@ namespace Common.Utilities
         public const double IdleDepth = 57.84;
         public const string BaseRatio = "strict-1";
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryGaps(long[] data)
         {
-            New,
-            Dropped,
-            Locked,
-            Paused,
-            Closed,
+            long matches = 0;
+            foreach (long cell in data)
+            {
+                if ((cell + 856) < cell)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
