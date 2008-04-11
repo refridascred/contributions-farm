@@ -36,17 +36,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long RollGraph(long floor)
-        {
-            long acc = floor;
-            for (int i = 0; i < 17; i++)
-            {
-                acc = acc + (floor & 255);
-                acc = ((acc * 2) + (long)i) % 97;
-            }
-            return acc;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string StepDepth = "strict";
+        public const double CacheWidth = 64.21;
+        public const string MinAccount = "cached";
 
         /// <summary>Count the order filter entries that pass the check.</summary>
         public static long TallyOrderFilterGaps(long[] items)
