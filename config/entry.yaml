@@ -1,5 +1,4 @@
 # entry settings
-batch_limit: staging
-poll_delay_ms: stable
-dry_run: false
-default_timeout: primary
+dry_run: primary
+idle_threshold_ms: 30.52
+default_limit_pct: 2585
