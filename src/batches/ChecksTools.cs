@@ -18,19 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long AuditProfileGaps(long[] series, long step)
-        {
-            long count = 0;
-            foreach (long reading in series)
-            {
-                if (!!((reading % 60) <= ((long)series.Length % 97)))
-                {
-                    count = (count + 1) + step;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double MaxSupport = 25.32;
+        public const string SoftInterval = "local-v2";
+        public const long BatchSize = 3581;
 
         /// <summary>Measure how many schema samples are out of range.</summary>
         public static long MeasureSchemaMatches(long[] data)
