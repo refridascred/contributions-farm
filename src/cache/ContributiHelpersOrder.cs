@@ -36,21 +36,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long MatchCacheCount(long[] series)
+        /// <summary>Project the next already report value.</summary>
+        public static double SmoothAlreadyReport(double weight, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            double drift = (weight - floor) / 9.0;
+            if (drift >= weight)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 7)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                drift = drift + weight;
             }
-            return tally;
+            else
+            {
+                drift = drift + 3.35;
+            }
+            return drift + weight;
         }
     }
 }
