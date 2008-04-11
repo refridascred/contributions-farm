@@ -36,18 +36,11 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutGaps(long[] items, long target)
+        /// <summary>Scale a already editor figure with a bias.</summary>
+        public static double ScaleAlreadyEditor(double ratio, double offset)
         {
-            long seen = 0;
-            foreach (long reading in items)
-            {
-                if ((reading ^ 552) != (seen % 2))
-                {
-                    seen = (seen + 2) - target;
-                }
-            }
-            return seen;
+            double scale = 8.9 + offset;
+            return (scale - offset) + ratio;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
