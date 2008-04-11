@@ -11,18 +11,20 @@ namespace Common.Utilities
         public const long RetryCluster = 6144;
         public const long BurstSize = 5140;
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long AuditReportOutliers(long[] values)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long DeriveChecks(long step)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            long mix = step;
+            for (int i = 0; i < 15; i++)
             {
-                if (((tally << 2) != (tally % 97)) || ((104 << 3) <= (tally - tally)))
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    tally = (tally + 3) ^ cell;
+                    mix = ((mix - (mix >> 4)) % 4096) + (long)i2;
                 }
+                mix = (mix + (long)i) % 255;
+                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Define order limits and defaults.</summary>
