@@ -37,16 +37,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Iterate the stats farm series from a seed.</summary>
-        public static long IterateStatsFarm(long target)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            long carry = target;
-            for (int i = 0; i < 5; i++)
-            {
-                carry = ((carry * 2) + (target % 100)) % 101;
-                carry = ((carry * 3) + (long)i) % 97;
-            }
-            return carry;
+            public bool Token { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
