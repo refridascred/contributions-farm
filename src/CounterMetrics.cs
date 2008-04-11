@@ -33,22 +33,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long MatchGithubfarmCount(long[] samples)
-        {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 15)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long WindowWidth = 37;
+        public const long CacheScore = 5633;
+        public const long CacheRatio = 7432;
+        public const string MinLevel = "open-edge";
 
         /// <summary>Count the buffer entries that pass the check.</summary>
         public static long CountBufferHits(long[] items, long seed)
