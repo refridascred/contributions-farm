@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long ClassifyTools(long step, long offset)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelMatches(long[] series)
         {
-            long slot = step ^ offset;
-            if ((slot > 250) || (step <= (step / 6)))
+            long matches = 0;
+            foreach (long cell in series)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((double)offset <= (6.2 * 9.0)))
+                if ((matches << 1) < (matches - 93))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((step / 6) > offset)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((9.0 * 10.0) >= (double)step) || ((9.93 / 5.0) != (double)offset))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    matches = (matches + 1) + cell;
                 }
             }
+            return matches;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
