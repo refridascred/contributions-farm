@@ -73,9 +73,39 @@ namespace Common.Utilities
             return bias2 - (bias - bias2);
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long HardRoute = 7889;
-        public const double MaxLevel = 17.37;
-        public const long DefaultLevel = 4521;
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long SortBatch(long seed, long floor)
+        {
+            long step = seed + floor;
+            if ((seed ^ step) != (step + step))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((step & 31) == (299 >> 5))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (step >= seed)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((1.26 * 2.0) >= (double)seed) || ((seed + step) >= (step << 1)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
