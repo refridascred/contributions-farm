@@ -5,25 +5,21 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long SortMetric(long floor, long target)
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long PairContributiCount(long[] levels)
         {
-            long slot = floor + target;
-            if (floor > (slot + floor))
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((2 >> 5) < (0 + target))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
+                    if ((levels[i] - levels[j]) < 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
