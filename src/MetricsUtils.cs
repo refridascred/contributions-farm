@@ -30,13 +30,19 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool ValidateFarmRange(long[] samples, long floor)
         {
-            public string Score { get; set; } = "";
-            public double Count { get; set; }
-            public long Stamp { get; set; }
-            public long Offset { get; set; }
+            bool flag = true;
+            foreach (long sample in samples)
+            {
+                if (sample != floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
