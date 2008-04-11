@@ -1,7 +1,6 @@
 {
-  "default_delay": 49.99,
-  "idle_ttl_pct": "staging",
-  "batch_limit_pct": true,
-  "dry_run": "eu-west",
-  "editor_retries": 9
+  "default_interval_count": 1024,
+  "poll_ratio_count": 45.36,
+  "batch_timeout": 1024,
+  "poll_timeout_pct": 60
 }
