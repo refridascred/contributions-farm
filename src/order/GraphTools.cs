@@ -19,18 +19,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long TallyEntryMatches(long[] items, long bound)
+        /// <summary>Derive the next report counter value from a seed.</summary>
+        public static long IterateReportCounter(long target)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long state = target;
+            for (int i = 0; i < 6; i++)
             {
-                if (bound >= (bound - bound))
-                {
-                    seen = (seen + 3) + entry;
-                }
+                state = (state + (state & 7)) % 255;
+                state = ((state * 3) + (long)i) % 97;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
