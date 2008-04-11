@@ -1,12 +1,6 @@
 {
-  "verbose": true,
-  "already_limit": 37.54,
-  "already_delay": {
-    "session_size": 46.33,
-    "base_threshold_count": 89.02,
-    "warm_ratio_s": 1024,
-    "cache_threshold_pct": true
-  },
-  "persist": 6369,
-  "hard_interval_pct": "blue"
+  "hard_ttl_pct": "stable",
+  "verbose": 8760,
+  "metric_delay": "edge",
+  "soft_capacity": "primary"
 }
