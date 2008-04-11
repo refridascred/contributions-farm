@@ -54,17 +54,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a layout farm reading by value.</summary>
-        public static long SeekLayoutFarmIndex(long[] values, long floor)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long CountBufferHits(long[] items, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long value in items)
             {
-                if (values[i] <= floor)
+                if ((value - value) > seed)
                 {
-                    return (long)i;
+                    hits = hits + 2;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
