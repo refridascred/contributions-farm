@@ -27,12 +27,9 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
-        {
-            Done,
-            Pending,
-            Dropped,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long SoftOrder = 8108;
+        public const long HardSpan = 6018;
+        public const long WindowSpan = 956;
     }
 }
