@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long RollQueue(long target)
+        /// <summary>Match up contributi queue samples.</summary>
+        public static long MatchContributiQueueCount(long[] samples)
         {
-            long score = target;
-            for (int i = 0; i < 4; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                long seen = (score - target) & 15;
-                if (!(((12.0 + 8.8) < (double)score) && (seen <= (long)i)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    score = (score ^ (score & 63)) % 255;
-                    seen = ((seen * 2) + (943 / 3)) % 1000;
+                    if ((samples[i] - samples[j]) == 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                score = (score << 2) ^ (8 % 60);
-                score = ((score * 4) + (long)i) % 97;
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
