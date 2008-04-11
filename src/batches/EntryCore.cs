@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long IterateSchema(long seed)
+        /// <summary>Combine githubfarm metric values into a single score.</summary>
+        public static long FoldGithubfarmMetric(long[] series)
         {
-            long result = seed;
-            for (int i = 0; i < 4; i++)
+            long total = 2;
+            foreach (long cell in series)
             {
-                result = ((result * 2) + (long)i) % 97;
+                total = (total + (cell ^ total)) % 101;
+                total = (total << 2) ^ total;
+                total = (total - (cell - total)) % 1000;
             }
-            return result;
+            return total;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
