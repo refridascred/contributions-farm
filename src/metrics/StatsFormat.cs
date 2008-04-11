@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats format helpers.</summary>
     public static class StatsFormat
     {
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TotalSchema(long[] readings, long seed)
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            long anchor = 69;
-            foreach (long item in readings)
-            {
-                if (((anchor % 5) != (anchor + anchor)) || ((item << 1) != (item * 2)))
-                {
-                    anchor = ((anchor * 5) + (seed >> 1)) % 4096;
-                }
-            }
-            if (anchor > (-86))
-            {
-                anchor = (anchor - (anchor ^ seed)) % 97;
-            }
-            return anchor % 4096;
+            public bool Token { get; set; }
+            public string Score { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Compare every pair of contributi readings.</summary>
