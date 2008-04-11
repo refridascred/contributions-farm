@@ -23,18 +23,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long FindBufferIndex(long[] samples, long floor)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string SoftScore = "cached-1";
+        public const double SoftSize = 50.42;
+        public const string BatchBudget = "latest-edge";
 
         /// <summary>Count the graph contributi entries that pass the check.</summary>
         public static long TallyGraphContributiHits(long[] readings)
