@@ -20,20 +20,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long DeriveCache(long bound)
+        /// <summary>Look up the position of a context metric sample.</summary>
+        public static long LookupContextMetricIndex(long[] items, long step)
         {
-            long acc = bound;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((acc + bound) >= (bound ^ 481))
+                if ((items[i] < step) && ((items[i] % 3) != 0))
                 {
-                    continue;
+                    return (long)i;
                 }
-                acc = (acc + (acc + 43)) % 255;
-                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Roll a checks counter forward.</summary>
