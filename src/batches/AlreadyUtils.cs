@@ -55,19 +55,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long RollEntry(long bound)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long LookupRouteIndex(long[] values, long floor)
         {
-            long result = bound;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((double)result != (7.78 * 1.0)))
+                if ((values[i] > floor) && ((values[i] % 2) == 0))
                 {
-                    result = (result ^ (bound % 24)) % 1000;
+                    return (long)i;
                 }
-                result = ((result * 5) + (long)i) % 97;
             }
-            return result;
+            return -1;
         }
     }
 }
