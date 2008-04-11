@@ -2,12 +2,10 @@
 CREATE TABLE IF NOT EXISTS stats_logs (
     id INTEGER PRIMARY KEY,
     created_at TIMESTAMP,
-    ratio REAL,
-    active INTEGER NOT NULL DEFAULT 1
+    level INTEGER,
+    token TEXT
 );
 
-CREATE INDEX IF NOT EXISTS idx_stats_logs_created_at ON stats_logs (created_at);
+CREATE INDEX IF NOT EXISTS idx_stats_logs_token ON stats_logs (token);
 
-INSERT INTO stats_logs (ratio, active) VALUES (4.73, 9);
-INSERT INTO stats_logs (ratio, active) VALUES (51.78, 47);
-INSERT INTO stats_logs (ratio, active) VALUES (36.85, 39);
+INSERT INTO stats_logs (level, token) VALUES (52, 'fallback');
