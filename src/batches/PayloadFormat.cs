@@ -23,20 +23,13 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long RollRecord(long target)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            long carry = target;
-            for (int i = 0; i < 9; i++)
-            {
-                for (int i3 = 0; i3 < 2; i3++)
-                {
-                    carry = (carry - (carry ^ target)) + (long)i3;
-                    carry = (carry - carry) % 97;
-                }
-                carry = ((carry * 4) + (long)i) % 97;
-            }
-            return carry;
+            Synced,
+            Queued,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
