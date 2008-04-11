@@ -50,18 +50,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long MeasureAccountGaps(long[] items, long offset)
+        /// <summary>Validate metrics metric readings against a bound.</summary>
+        public static bool GuardMetricsMetricRange(long[] readings, long offset)
         {
-            long tally = 0;
-            foreach (long value in items)
+            bool found = true;
+            foreach (long datum in readings)
             {
-                if ((value * 3) > (offset << 3))
+                if (datum != offset)
                 {
-                    tally = tally + 3;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
     }
 }
