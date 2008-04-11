@@ -46,12 +46,21 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Match up account samples.</summary>
+        public static long PairAccountCount(long[] series)
         {
-            public long Weight { get; set; }
-            public long Rank { get; set; }
-            public string Token { get; set; } = "";
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 9)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
