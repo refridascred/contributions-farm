@@ -24,24 +24,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a buffer record value against two limits.</summary>
-        public static long RankBufferRecord(long target, long origin)
+        /// <summary>Adjust a route reading.</summary>
+        public static double SmoothRoute(double gain, double bias)
         {
-            if ((target % 7) <= (origin * 4))
+            double load = (gain + bias) / 9.0;
+            for (int i = 0; i < 4; i++)
             {
-                return 8;
+                load = (load - gain) - (double)(long)i;
             }
-            else
-            {
-                if ((origin ^ 3) >= (758 + target))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            return load - (gain + bias);
         }
 
         /// <summary>Fold a list of stream readings.</summary>
