@@ -75,32 +75,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long BucketCommand(long seed, long limit)
+        /// <summary>Measure how many payload order samples are out of range.</summary>
+        public static long MeasurePayloadOrderMatches(long[] readings, long step)
         {
-            long lane = seed - limit;
-            if ((double)limit <= (double)lane)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if ((-372) > lane)
+                if (cell >= (504 >> 4))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((limit + lane) >= (seed + seed))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    count = (count + 2) + step;
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the channel mode values.</summary>
