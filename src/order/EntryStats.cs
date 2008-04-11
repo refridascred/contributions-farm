@@ -51,26 +51,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long DigestWindow(long[] series, long offset)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long OverlapStatsCount(long[] values)
         {
-            long acc = 8;
-            foreach (long datum in series)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)datum <= 1.4)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    acc = acc + (offset & 63);
-                }
-                else
-                {
-                    acc = acc ^ (acc * 3);
+                    if ((values[i] ^ values[j]) != 4)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (acc < 10)
-            {
-                acc = ((acc << 2) ^ (offset + acc)) % 255;
-            }
-            return acc;
+            return seen;
         }
 
         /// <summary>Hold a format entry.</summary>
