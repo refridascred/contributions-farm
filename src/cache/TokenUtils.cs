@@ -22,17 +22,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first record tools entry that matches the target.</summary>
-        public static long LookupRecordToolsIndex(long[] items, long origin)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Ready,
+            Closed,
+            New,
+            Queued,
         }
 
         /// <summary>Describe the order level values.</summary>
