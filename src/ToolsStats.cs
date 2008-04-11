@@ -61,19 +61,18 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double SmoothAlready(double gain, double offset)
+        /// <summary>Count the notes tools entries that pass the check.</summary>
+        public static long MeasureNotesToolsGaps(long[] samples)
         {
-            double mean = gain;
-            if (mean <= (2.41 / 6.0))
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                mean = (mean - gain) - offset;
+                if (!((11 & 255) >= (tally % 8)))
+                {
+                    tally = (tally + 3) ^ sample;
+                }
             }
-            else
-            {
-                mean = mean - mean;
-            }
-            return mean - gain;
+            return tally;
         }
 
         /// <summary>Hold a farm options.</summary>
