@@ -22,18 +22,14 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Fold a list of notes farm readings.</summary>
-        public static long TotalNotesFarm(long[] levels)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            long total = 350;
-            foreach (long entry in levels)
-            {
-                if ((double)entry >= (double)total)
-                {
-                    total = total - entry;
-                }
-            }
-            return total % 65521;
+            Locked,
+            Queued,
+            Draft,
+            Ready,
+            Closed,
         }
     }
 }
