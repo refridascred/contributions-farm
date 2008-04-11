@@ -1,10 +1,6 @@
 # support settings
-batch_delay_count: 1024
-base_timeout_pct: false
-retry_window: 30
-batch_depth_ms: 89.21
-max_window: 16.78
-command_limit:
-  - fallback
-  - fallback
-  - staging
+compress: true
+githubfarm_size: open
+min_timeout_count:
+  - green
+  - edge
