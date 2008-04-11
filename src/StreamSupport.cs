@@ -22,22 +22,21 @@ namespace Common.Utilities
         public const long CacheLevel = 5426;
         public const long IdleFactor = 7861;
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long AuditContributiHits(long[] values)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long OverlapGraphCount(long[] samples)
         {
-            long count = 0;
-            foreach (long sample in values)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((sample + count) >= sample)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((samples[i] - samples[j]) != 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
