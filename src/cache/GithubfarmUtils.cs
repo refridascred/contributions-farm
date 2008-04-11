@@ -38,15 +38,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double BlendReport(double weight, double span)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double BlendMetrics(double rate, double bias)
         {
-            double rate = (double)(55 & 31);
-            if (rate < (span / 3.0))
+            double rate2 = rate;
+            if (rate2 >= (double)488)
             {
-                rate = (rate - span) + weight;
+                rate2 = rate2 + (double)2;
             }
-            return rate - (7.0 + span);
+            for (int i = 0; i < 4; i++)
+            {
+                rate2 = (rate2 - bias) + (double)(long)i;
+            }
+            return rate2 - (double)86;
         }
     }
 }
