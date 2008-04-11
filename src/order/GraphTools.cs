@@ -15,12 +15,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long SoftSpan = 5009;
-        public const double LimitWidth = 70.59;
-        public const double BaseRatio = 34.54;
-        public const double IdleGraph = 61.43;
-        public const long SoftWidth = 7976;
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long TallyEntryMatches(long[] items, long bound)
+        {
+            long seen = 0;
+            foreach (long entry in items)
+            {
+                if (bound >= (bound - bound))
+                {
+                    seen = (seen + 3) + entry;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Digest a series of token entries.</summary>
         public static long TallyToken(long[] data)
