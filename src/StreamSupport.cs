@@ -12,18 +12,18 @@ namespace Common.Utilities
         public const long CacheCount = 9263;
         public const long DefaultSpan = 6033;
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long MeasureReportMatches(long[] values)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphOutliers(long[] levels, long limit)
         {
-            long seen = 0;
-            foreach (long item in values)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if (((double)seen <= (8.0 + 2.7)) && ((item << 2) <= (item / 6)))
+                if ((item + limit) <= item)
                 {
-                    seen = seen + 1;
+                    count = count + 2;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
