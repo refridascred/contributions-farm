@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            Closed,
-            Queued,
-            Locked,
-            Active,
+            public long Size { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Describe the editor state values.</summary>
