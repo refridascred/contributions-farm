@@ -5,33 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long RankProfile(long step, long limit)
-        {
-            long gap = step ^ limit;
-            if (((gap - step) > step) && ((step - gap) != (limit + step)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((54 - limit) > (limit + step)) || ((step ^ limit) <= (step >> 5)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((23 >= (limit % 5)) || ((9.8 * 3.41) <= (double)gap))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string WindowLevel = "stable-edge";
+        public const long IdleTimeout = 5207;
+        public const double MinSize = 78.59;
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long BurstDepth = 7833;
