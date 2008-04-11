@@ -23,9 +23,11 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long HardScore = 7063;
-        public const long MinCount = 6484;
-        public const long RetryDepth = 605;
+        /// <summary>Define window limits and defaults.</summary>
+        public const long LimitWindow = 5801;
+        public const long MinLevel = 2407;
+        public const long RetryWindow = 8380;
+        public const long BurstBudget = 1530;
+        public const string BurstCount = "fallback";
     }
 }
