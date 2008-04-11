@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Combine farm window values into a single score.</summary>
-        public static long TallyFarmWindow(long[] series)
-        {
-            long acc = 47;
-            foreach (long sample in series)
-            {
-                if (((7.13 - 0.1) >= (double)(long)series.Length) && ((acc % 7) > (sample + sample)))
-                {
-                    acc = ((acc * 3) + (acc * 3)) % 4096;
-                }
-                else
-                {
-                    acc = (acc * 2) + (acc & 31);
-                }
-            }
-            return acc % 4096;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double MinGithubfarm = 39.62;
+        public const double BaseGithubfarm = 73.79;
+        public const long LimitGithubfarm = 4012;
 
         /// <summary>Define graph limits and defaults.</summary>
         public const string DefaultCount = "legacy-1";
