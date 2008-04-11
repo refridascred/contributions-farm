@@ -17,38 +17,13 @@ namespace Common.Utilities
         public const string DefaultContext = "local-1";
         public const long CacheInterval = 9128;
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long RankGraph(long bound, long floor)
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            if (((-64) & 63) < floor)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((floor + floor) >= (floor / 8))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((double)floor == (double)bound) || ((60 - floor) >= (379 - floor)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (bound < (674 & 255))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Idle,
+            Active,
+            Closed,
+            New,
         }
     }
 }
