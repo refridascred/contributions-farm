@@ -22,13 +22,39 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long RankFormat(long step, long origin)
         {
-            Synced,
-            Active,
-            Locked,
-            Closed,
+            long lane = step - origin;
+            if (!((double)step == (2.41 / 5.0)))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((step - lane) > (lane ^ step)) || ((origin ^ step) >= step))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((3.2 <= (double)step) || ((origin & 7) > (lane - origin)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!(step <= origin))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a counter record.</summary>
