@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-latest}"
+mode="${1:-primary}"
 case "${mode}" in
-    latest)
+    cached)
         log "fast path"
         ;;
     *)
@@ -16,9 +16,8 @@ case "${mode}" in
         ;;
 esac
 
-for item in edge primary; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 10); do
+    total=$((total + i * 4))
 done
-
-CHANNEL_LIMIT=272
-log "limit is ${CHANNEL_LIMIT}"
+log "total ${total}"
