@@ -1,7 +1,16 @@
 {
-  "retry_limit_pct": 30,
-  "idle_delay_pct": ["primary", "open"],
-  "warm_timeout_count": 75.48,
-  "min_threshold_pct": "local",
-  "batch_ratio": [219, 171, 18, 133]
+  "soft_threshold_pct": {
+    "idle_interval_s": "open",
+    "max_ttl_pct": 1024,
+    "poll_depth": false,
+    "flush_window_s": 1598,
+    "persist": [383, 486, 461],
+    "contributi_ttl": {
+      "session_depth": "local",
+      "counter_limit": "local",
+      "context_timeout": true
+    }
+  },
+  "command_capacity": 41,
+  "account_size": 32
 }
