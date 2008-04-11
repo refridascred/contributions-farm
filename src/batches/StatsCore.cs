@@ -63,18 +63,13 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long AuditMetricHits(long[] series, long step)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            long matches = 0;
-            foreach (long item in series)
-            {
-                if ((matches <= (716 + step)) || (step >= (7 << 3)))
-                {
-                    matches = (matches + 1) - item;
-                }
-            }
-            return matches;
+            Stale,
+            Ready,
+            Pending,
+            Done,
         }
 
         /// <summary>Look up the position of a order sample.</summary>
