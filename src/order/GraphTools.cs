@@ -50,15 +50,17 @@ namespace Common.Utilities
         public const double DefaultWindow = 21.17;
         public const double RetryWindow = 49.17;
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double AdjustBatches(double weight, double span)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long FindRouteIndex(long[] data, long origin)
         {
-            double drift = span + span;
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                drift = ((drift - drift) + (double)(long)i) - weight;
+                if (data[i] > origin)
+                {
+                    return (long)i;
+                }
             }
-            return drift + span;
+            return -1;
         }
     }
 }
