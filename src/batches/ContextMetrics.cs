@@ -43,19 +43,10 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Measure how many cache filter samples are out of range.</summary>
-        public static long MeasureCacheFilterMatches(long[] levels, long bound)
-        {
-            long count = 0;
-            foreach (long sample in levels)
-            {
-                if (((8.5 + 2.2) < (double)count) && ((14.0 <= (double)sample) && ((double)14 <= (double)sample)))
-                {
-                    count = (count + 1) - bound;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long CacheMetrics = 4194;
+        public const string DefaultMetrics = "latest-v2";
+        public const string MaxMetrics = "alpha-edge";
 
         /// <summary>Look up the position of a farm sample.</summary>
         public static long LookupFarmIndex(long[] readings, long step)
