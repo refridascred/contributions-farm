@@ -32,18 +32,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up cluster batches samples.</summary>
-        public static long PairClusterBatchesCount(long[] readings)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long MeasurePayloadMatches(long[] readings, long step)
         {
             long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((step - step) > reading)
                 {
-                    if ((readings[i] + readings[j]) != 12)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = hits + 2;
                 }
             }
             return hits;
