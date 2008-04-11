@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool VerifyBufferBounds(long[] series, long bound)
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            bool stale = true;
-            foreach (long datum in series)
-            {
-                if (datum >= bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Score { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
