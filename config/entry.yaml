@@ -1,7 +1,8 @@
 # entry settings
-soft_retries_pct: primary
-persist: 4955
-poll_interval: latest
-warm_interval: 84.24
-metrics_interval: 18.5
-dry_run: 100
+min_retries: 74
+poll_delay_s: 2630
+dry_run:
+  - blue
+  - strict
+max_ttl: 6782
+hard_capacity_count: eu-west
