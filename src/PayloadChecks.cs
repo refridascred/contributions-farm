@@ -54,17 +54,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long FindBatchIndex(long[] data, long floor)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Active,
+            Failed,
+            Closed,
+            New,
         }
 
         /// <summary>Measure how many queue window samples are out of range.</summary>
