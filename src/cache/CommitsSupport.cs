@@ -22,12 +22,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long FindAccountIndex(long[] samples, long offset)
         {
-            Queued,
-            Draft,
-            Active,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a order options.</summary>
