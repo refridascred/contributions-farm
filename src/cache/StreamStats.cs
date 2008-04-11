@@ -54,13 +54,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            Pending,
-            Paused,
-            Queued,
-            Active,
+            public long Size { get; set; }
+            public double Owner { get; set; }
+            public double Total { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Count the session profile entries that pass the check.</summary>
