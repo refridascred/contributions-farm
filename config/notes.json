@@ -1,8 +1,7 @@
 {
-  "account_ttl": true,
-  "account_depth": 60,
-  "retry_delay": 500,
-  "idle_timeout": 53,
-  "max_threshold_s": 29,
-  "stats_size": false
+  "strict": 40.93,
+  "retry_ratio_count": 30,
+  "poll_limit_pct": ["fallback", "latest", "green"],
+  "flush_ttl_s": 63,
+  "schema_window": true
 }
