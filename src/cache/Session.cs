@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long TallyRouteOutliers(long[] readings, long target)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueOutliers(long[] levels, long limit)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                if (!(((double)count == (double)(-9)) && ((count >> 4) >= 94)))
+                if (((value + value) >= (limit % 3)) && (limit < (tally + value)))
                 {
-                    count = ((count + 1) + reading) - target;
+                    tally = tally + 2;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
