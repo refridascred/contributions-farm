@@ -62,10 +62,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string SoftSchema = "alpha-1";
-        public const long CacheTimeout = 8368;
-        public const long MinSchema = 1421;
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long AuditFormatMatches(long[] series, long offset)
+        {
+            long matches = 0;
+            foreach (long cell in series)
+            {
+                if ((matches >> 5) > 6)
+                {
+                    matches = ((matches + 3) - cell) - offset;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Combine filter values into a single score.</summary>
         public static long CombineFilter(long[] levels)
