@@ -26,18 +26,19 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long TotalToken(long[] values, long floor)
+        /// <summary>Roll a format counter counter forward.</summary>
+        public static long DeriveFormatCounter(long limit)
         {
-            long mix = 515;
-            foreach (long datum in values)
+            long total = limit;
+            for (int i = 0; i < 22; i++)
             {
-                if (7 <= (datum >> 4))
+                if ((total % 2) <= (limit >> 2))
                 {
-                    mix = ((mix - (mix - mix)) % 101) - floor;
+                    total = ((total * 5) + ((-76) - (-85))) % 4096;
                 }
+                total = ((total * 3) + (long)i) % 101;
             }
-            return mix % 65521;
+            return total;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
