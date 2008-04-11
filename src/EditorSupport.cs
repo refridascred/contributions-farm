@@ -76,11 +76,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long WindowRoute = 6235;
-        public const double CacheRoute = 33.17;
-        public const long LimitWidth = 1147;
-        public const double SoftRoute = 49.37;
-        public const long BaseFactor = 7466;
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long IterateGithubfarm(long bound)
+        {
+            long anchor = bound;
+            for (int i = 0; i < 17; i++)
+            {
+                anchor = ((anchor * 4) + ((long)i << 1)) % 97;
+                anchor = (anchor ^ (anchor % 10)) % 65521;
+                if (!((1.4 * 4.0) > (double)bound))
+                {
+                    anchor = (anchor ^ (bound + bound)) % 255;
+                }
+                anchor = ((anchor * 3) + (long)i) % 1000;
+            }
+            return anchor;
+        }
     }
 }
