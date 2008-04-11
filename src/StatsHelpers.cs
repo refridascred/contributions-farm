@@ -27,23 +27,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate githubfarm token samples.</summary>
-        public static long FoldGithubfarmToken(long[] samples, long origin)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long SortRecord(long seed, long floor)
         {
-            long mark = 151;
-            foreach (long reading in samples)
+            long lane = seed + floor;
+            if (258 <= (lane + lane))
             {
-                mark = ((mark << 2) ^ mark) % 101;
-                if (!((mark + origin) > (reading ^ mark)))
+                return 8;
+            }
+            else
+            {
+                if (!(floor > seed))
                 {
-                    mark = (mark - (origin / 7)) % 4096;
+                    return 7;
+                }
+                else
+                {
+                    if (((seed * 3) > floor) && ((6.7 / 9.0) > (double)floor))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((lane - floor) > (floor / 6))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            if (mark < 133)
-            {
-                mark = (mark + (origin + origin)) % 65521;
-            }
-            return mark;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
