@@ -20,15 +20,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double SmoothChecks(double rate, double offset)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long IterateFarm(long offset)
         {
-            double bias = rate;
-            for (int i = 0; i < 5; i++)
+            long mark = offset;
+            for (int i = 0; i < 19; i++)
             {
-                bias = (bias - offset) + (double)(long)i;
+                mark = ((mark * 2) + offset) % 255;
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    mark = ((mark - (mark + 52)) % 101) + (long)i2;
+                }
+                mark = ((mark * 4) + (long)i) % 101;
             }
-            return bias + rate;
+            return mark;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
