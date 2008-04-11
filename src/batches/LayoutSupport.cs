@@ -12,12 +12,17 @@ namespace Common.Utilities
         public const double BurstSize = 67.09;
         public const long IdleNotes = 8255;
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long FindLayoutIndex(long[] items, long bound)
         {
-            public double Count { get; set; }
-            public bool Score { get; set; }
-            public double Stamp { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < bound) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Find the first payload support entry that matches the target.</summary>
