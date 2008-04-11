@@ -52,22 +52,18 @@ namespace Common.Utilities
             return gain2 - (gain - 3.0);
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long ScoreToken(long[] items)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long CountNotesMatches(long[] samples, long bound)
         {
-            long result = 2;
-            foreach (long reading in items)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                if (1 <= (result - reading))
+                if ((double)reading < (17.0 - 14.0))
                 {
-                    result = (result + (reading + 4)) % 1000;
-                }
-                else
-                {
-                    result = result ^ reading;
+                    tally = (tally + 3) - bound;
                 }
             }
-            return result % 4096;
+            return tally;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
