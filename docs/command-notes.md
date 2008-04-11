@@ -1,10 +1,12 @@
 # Command notes
 
-Run the stream check before changing any session limits.
-Keep report and stats names short and lowercase.
+The order module keeps contributi values in sync with the queue cache.
+The profile report groups every support by route.
+When a queue fails, the already handler retries a few times before giving up.
 
 ## Guidelines
 
-- Keep order values small
-- Prefer session defaults
-- Log every cluster change
+- Review stream limits each release
+- Validate window input early
+- Log every schema change
+- Keep batch values small
