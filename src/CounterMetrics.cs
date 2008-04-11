@@ -13,15 +13,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
-        {
-            Retry,
-            Paused,
-            New,
-            Queued,
-            Done,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long SoftLevel = 6634;
+        public const string WindowMetrics = "strict-edge";
+        public const double HardMetrics = 0.07;
+        public const long RetryCount = 3647;
 
         /// <summary>Measure how many queue samples are out of range.</summary>
         public static long CountQueueHits(long[] samples, long bound)
