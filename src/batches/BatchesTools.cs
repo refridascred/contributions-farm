@@ -34,38 +34,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long RankGithubfarm(long offset, long floor)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long DigestAccount(long[] levels)
         {
-            if ((66 & 63) == (floor - floor))
+            long mix = -84;
+            foreach (long item in levels)
             {
-                return 5;
+                mix = (mix ^ (item + 9)) % 97;
             }
-            else
-            {
-                if ((double)floor == (1.1 / 2.0))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((18.0 + 16.0) == (double)floor) || ((offset ^ 373) <= (floor + offset)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((offset + 42) != (floor - offset)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return mix % 65521;
         }
     }
 }
