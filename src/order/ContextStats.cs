@@ -13,22 +13,12 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long PairBatchesCount(long[] samples)
-        {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double BurstFactor = 1.75;
+        public const double CacheCommand = 84.11;
+        public const long IdleBudget = 9149;
+        public const long StepScore = 6601;
+        public const long BurstCommand = 6006;
 
         /// <summary>Classify a batch pair into a bucket.</summary>
         public static long ClassifyBatch(long seed, long step)
