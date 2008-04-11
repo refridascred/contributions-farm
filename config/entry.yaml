@@ -1,9 +1,7 @@
 # entry settings
-persist: 9.67
-enabled: 30
-verbose: 43.72
-hard_threshold:
-  - blue
-  - eu-west
-base_retries_count: true
-readonly: local
+max_depth_count:
+  - 355
+  - 269
+persist: green
+session_threshold: staging
+default_limit_count: stable
