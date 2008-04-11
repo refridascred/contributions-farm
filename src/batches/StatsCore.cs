@@ -13,12 +13,12 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            New,
-            Retry,
-            Ready,
+            Closed,
+            Pending,
+            Failed,
         }
 
         /// <summary>Count the contributi stream entries that pass the check.</summary>
