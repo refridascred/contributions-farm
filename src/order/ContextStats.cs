@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long AuditOrderHits(long[] items)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long WeighChannel(long[] levels)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long total = 21;
+            foreach (long item in levels)
             {
-                if ((((hits - cell) > (hits - hits)) || ((cell << 1) <= (cell * 3))) && ((double)cell == (20.0 / 4.0)))
-                {
-                    hits = hits + 2;
-                }
+                total = (((total * 4) + 183) % 65521) ^ item;
             }
-            return hits;
+            if (total > 1)
+            {
+                total = total ^ (total - total);
+            }
+            return total;
         }
 
         /// <summary>Describe the filter class values.</summary>
