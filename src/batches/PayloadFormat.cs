@@ -32,21 +32,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long PairCommitsCount(long[] items)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long TotalEditor(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long carry = 0;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 10)
-                    {
-                        count = count + 1;
-                    }
-                }
+                carry = (carry ^ (long)series.Length) + entry;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
