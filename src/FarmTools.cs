@@ -36,15 +36,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long SeriesSession(long bound)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long ClassifyCluster(long bound, long origin)
         {
-            long sum = bound;
-            for (int i = 0; i < 15; i++)
+            if ((674 << 1) > (bound + origin))
             {
-                sum = ((sum * 2) + (long)i) % 1000;
+                return 7;
             }
-            return sum;
+            else
+            {
+                if (((origin * 4) >= (9 + origin)) || (bound < (bound - origin)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!((double)origin > 2.2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
