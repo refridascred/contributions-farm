@@ -1,22 +1,14 @@
 # githubfarm settings
-warm_interval_s: fallback
-route_size: true
-metrics_depth:
-  audit: 5
-  strict: 67.14
-  route_interval:
-    persist: 21.51
-    verbose: 250
-    sync_retries_ms: stable
-    default_threshold: 82
-  queue_window: latest
-  metric_capacity:
-    sync_ratio_pct: blue
-    audit: 74.27
-    base_size_count: 6257
-    hard_delay:
-      - 15
-      - 319
-      - 121
-      - 37
-    verbose: 5847
+verbose:
+  batch_size: stable
+  hard_retries: fallback
+  channel_retries: standard
+  compress: 84
+  retry_ttl_count: 16
+  persist: latest
+audit:
+  max_delay: 40.71
+  enabled: 6158
+  min_timeout: edge
+  dry_run: 100
+compress: 4833
