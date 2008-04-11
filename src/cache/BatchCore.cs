@@ -39,21 +39,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long OverlapContributiCount(long[] items)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long FoldNotes(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long sum = 2;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((sum + sum) <= reading)
                 {
-                    if ((items[i] + items[j]) != 13)
-                    {
-                        matches = matches + 1;
-                    }
+                    sum = sum - (sum + sum);
+                }
+                if (reading >= (reading - sum))
+                {
+                    sum = (sum << 3) ^ (sum + sum);
                 }
             }
-            return matches;
+            return sum;
         }
     }
 }
