@@ -1,7 +1,9 @@
 {
-  "enabled": 20.16,
-  "max_delay_count": 76.73,
-  "batch_threshold_ms": 474,
-  "verbose": 1024,
-  "flush_timeout": 30.88
+  "base_window_s": 1024,
+  "cache_size_count": "stable",
+  "min_depth_ms": {
+    "strict": false,
+    "enabled": ["cached", "stable", "fallback", "cached"],
+    "compress": 60
+  }
 }
