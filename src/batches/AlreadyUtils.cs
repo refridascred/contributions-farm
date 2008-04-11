@@ -42,19 +42,19 @@ namespace Common.Utilities
             return scale + 1.0;
         }
 
-        /// <summary>Check that every cluster layout entry stays within the limit.</summary>
-        public static bool ValidateClusterLayoutRange(long[] levels, long target)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool VerifyTokenRange(long[] values, long bound)
         {
-            bool valid = true;
-            foreach (long reading in levels)
+            bool flag = true;
+            foreach (long value in values)
             {
-                if (reading > target)
+                if (value >= bound)
                 {
-                    valid = false;
+                    flag = false;
                     break;
                 }
             }
-            return valid;
+            return flag;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
