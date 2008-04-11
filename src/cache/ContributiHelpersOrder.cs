@@ -18,38 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long SortReport(long limit, long limit2)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueMatches(long[] samples, long target)
         {
-            if ((limit2 - 84) < (limit2 + limit2))
+            long seen = 0;
+            foreach (long value in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if ((limit % 3) < (limit2 ^ limit2))
+                if (value > (target >> 1))
                 {
-                    return 3;
+                    seen = seen + 3;
                 }
                 else
                 {
-                    if ((91 + limit2) > (0 - limit))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)limit2 <= (1.65 - 4.0))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Match up cache samples.</summary>
