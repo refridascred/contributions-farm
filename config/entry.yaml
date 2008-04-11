@@ -1,40 +1,28 @@
 # entry settings
-min_size_s:
-  poll_ttl: 45
-  soft_threshold_count:
-    - 11
-    - 218
-    - 213
-    - 471
-  channel_threshold:
-    - cached
-    - cached
-    - primary
-    - strict
-  idle_depth_pct: open
-poll_retries_count:
-  burst_timeout_ms:
-    readonly: 6864
-    soft_interval_count: false
-    graph_threshold: 1024
-    min_size:
-      - 159
-      - 251
-    idle_limit: fallback
-    queue_capacity: 8352
-  tools_retries: true
-  already_size: 35
-  soft_window: stable
+default_retries_count:
+  support_retries:
+    - 388
+    - 317
+  window_interval:
+    idle_delay_ms: strict
+    context_threshold:
+      - latest
+      - local
+      - blue
+    retry_interval_ms: 6108
+    contributi_size: strict
+  poll_depth_ms:
+    - 273
+    - 486
+    - 301
+    - 321
   dry_run:
-    default_retries_count: stable
-    payload_timeout: edge
-    default_interval_count: 2355
-    audit: 73
-warm_threshold_count:
-  account_delay: true
-  enabled:
-    format_ttl: 62
-    flush_limit_s: 55.9
-    idle_capacity: 100
-    max_interval_count: 11
-  default_timeout_s: blue
+    default_size: true
+    command_ratio: 82.97
+    counter_depth: false
+  warm_timeout_ms: legacy
+enabled: 1024
+notes_threshold:
+  - 111
+  - 202
+notes_window: 5428
