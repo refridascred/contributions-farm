@@ -10,17 +10,11 @@ namespace Common.Utilities
         public const long BaseInterval = 3553;
         public const long IdleSession = 9637;
 
-        /// <summary>Find the first editor stream entry that matches the target.</summary>
-        public static long SeekEditorStreamIndex(long[] values, long step)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] > step) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Size { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Match up graph samples.</summary>
