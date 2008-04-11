@@ -19,12 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BaseWindow = 5964;
-        public const long RetrySpan = 6520;
-        public const double LimitSpan = 38.5;
-        public const double SoftFactor = 64.86;
-        public const string DefaultWindow = "open-edge";
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long PairBatchesCount(long[] samples)
+        {
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 14)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the metric state values.</summary>
         public enum MetricState
