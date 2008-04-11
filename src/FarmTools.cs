@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long AuditRouteMatches(long[] readings)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long RankFarm(long bound, long floor)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            if (14.0 <= (double)floor)
             {
-                if (matches > (187 * 4))
+                return 6;
+            }
+            else
+            {
+                if (!((782 + bound) < (floor - 81)))
                 {
-                    matches = (matches + 3) + entry;
+                    return 7;
+                }
+                else
+                {
+                    if (((floor + bound) >= floor) || ((floor * 3) < (bound + floor)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((921 / 8) >= (floor >> 5))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
