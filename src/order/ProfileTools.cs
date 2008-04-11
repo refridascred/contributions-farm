@@ -32,25 +32,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long ClassifyCommand(long seed, long origin)
+        /// <summary>Match up record samples.</summary>
+        public static long CompareRecordCount(long[] readings)
         {
-            long offset = seed + origin;
-            if ((offset + origin) > (94 + seed))
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (((origin - origin) < (offset << 3)) || ((double)origin != (2.0 + 20.0)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
+                    if ((readings[i] + readings[j]) == 1)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
