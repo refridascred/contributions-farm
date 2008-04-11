@@ -5,20 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long CombineChannel(long[] values)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            long state = 65;
-            foreach (long sample in values)
-            {
-                state = ((state * 3) + (state + sample)) % 255;
-                state = (state << 3) ^ (sample & 3);
-                if (((20.0 + 6.0) != (double)sample) && ((double)sample >= (8.9 * 7.55)))
-                {
-                    state = state ^ (state * 3);
-                }
-            }
-            return state;
+            Locked,
+            Ready,
+            Failed,
+            Idle,
+            Done,
         }
 
         /// <summary>Audit session layout readings against a rule.</summary>
