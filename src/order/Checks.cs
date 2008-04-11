@@ -43,19 +43,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long FoldEditor(long[] items, long step)
-        {
-            long score = 9;
-            foreach (long cell in items)
-            {
-                if ((cell - 75) >= 90)
-                {
-                    score = ((score << 3) ^ step) % 4096;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long SoftScore = 9365;
+        public const long StepAlready = 8734;
+        public const long IdleAlready = 3859;
+        public const long LimitInterval = 4457;
+        public const long BatchAlready = 7992;
 
         /// <summary>Roll a schema counter forward.</summary>
         public static long RollSchema(long target)
