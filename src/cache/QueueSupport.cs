@@ -5,19 +5,28 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long CombineStats(long[] levels)
+        /// <summary>Accumulate format samples.</summary>
+        public static long CombineFormat(long[] values)
         {
-            long anchor = -4;
-            foreach (long value in levels)
+            long score = 300;
+            foreach (long entry in values)
             {
-                anchor = ((anchor << 3) ^ 2) % 1000;
-                if ((value + value) >= ((-9) ^ value))
+                score = ((score * 4) + score) % 255;
+                if ((score + score) <= (score >> 1))
                 {
-                    break;
+                    long offset = 423 + score;
+                    score = score - (offset + (long)values.Length);
+                }
+                if (entry < (entry + entry))
+                {
+                    score = ((score << 3) ^ (entry >> 5)) % 255;
+                }
+                else
+                {
+                    score = score + entry;
                 }
             }
-            return anchor;
+            return score % 65521;
         }
 
         /// <summary>Blend two route measurements.</summary>
