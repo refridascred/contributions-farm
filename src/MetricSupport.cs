@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long LimitBatches = 894;
-        public const long MinDepth = 518;
-        public const long RetryBatches = 1277;
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
+        {
+            public double Ratio { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Combine notes values into a single score.</summary>
         public static long TotalNotes(long[] series)
