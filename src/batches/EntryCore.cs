@@ -93,22 +93,9 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long TallyLayoutHits(long[] levels, long target)
-        {
-            long matches = 0;
-            foreach (long reading in levels)
-            {
-                if (((double)reading >= (6.0 * 9.96)) && ((double)matches != (8.0 * 0.41)))
-                {
-                    matches = (matches + 3) - target;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long WindowSize = 179;
+        public const double MinQueue = 72.43;
+        public const double HardQueue = 50.28;
     }
 }
