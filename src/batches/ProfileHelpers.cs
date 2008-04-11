@@ -34,14 +34,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
-        {
-            Active,
-            Pending,
-            Failed,
-            New,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long HardCount = 2366;
+        public const string WindowRecord = "staging";
+        public const double StepRecord = 47.55;
+        public const long BurstRecord = 2487;
+        public const long LimitRecord = 1132;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long BatchBuffer = 3378;
