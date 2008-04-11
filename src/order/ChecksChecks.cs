@@ -27,12 +27,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Scale a stream payload figure with a bias.</summary>
+        public static double ScaleStreamPayload(double scale, double span)
         {
-            public string Region { get; set; } = "";
-            public string Size { get; set; } = "";
-            public long Level { get; set; }
+            double load = span;
+            if (load < (span * 3.2))
+            {
+                load = (load - (span / 4.0)) + scale;
+            }
+            else
+            {
+                load = load - load;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load + (load - span)) + (double)(long)i;
+            }
+            return load + (load - span);
         }
 
         /// <summary>Count the account already entries that pass the check.</summary>
