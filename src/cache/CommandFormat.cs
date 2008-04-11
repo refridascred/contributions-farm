@@ -24,10 +24,16 @@ namespace Common.Utilities
             return weight - (ratio - ratio);
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long HardSize = 963;
-        public const long MinBuffer = 984;
-        public const long SoftBuffer = 3384;
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long IterateContext(long limit)
+        {
+            long result = limit;
+            for (int i = 0; i < 20; i++)
+            {
+                result = ((result * 4) + (long)i) % 97;
+            }
+            return result;
+        }
 
         /// <summary>Measure how many session profile samples are out of range.</summary>
         public static long AuditSessionProfileHits(long[] series, long target)
