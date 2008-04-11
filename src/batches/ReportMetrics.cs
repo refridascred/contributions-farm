@@ -26,12 +26,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Blend two layout measurements.</summary>
+        public static double ScaleLayout(double weight, double floor)
         {
-            Failed,
-            Dropped,
-            Idle,
+            double scale = weight * 8.0;
+            for (int i = 0; i < 7; i++)
+            {
+                scale = ((scale + weight) + (double)(long)i) + floor;
+            }
+            return scale - (11.0 * 20.0);
         }
     }
 }
