@@ -30,16 +30,13 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long CombineAlready(long[] series)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            long carry = 653;
-            foreach (long item in series)
-            {
-                carry = ((carry - carry) % 1000) ^ item;
-                carry = (carry + (carry & 127)) % 4096;
-            }
-            return carry % 97;
+            public string Score { get; set; } = "";
+            public double Count { get; set; }
+            public long Stamp { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
