@@ -61,19 +61,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every entry batch entry stays within the limit.</summary>
-        public static bool ValidateEntryBatchBounds(long[] values, long limit)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferHits(long[] data, long origin)
         {
-            bool ok = true;
-            foreach (long sample in values)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                if (sample != limit)
+                if ((origin < (reading - 50)) || ((double)origin == (1.4 * 3.4)))
                 {
-                    ok = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Adjust a already reading.</summary>
