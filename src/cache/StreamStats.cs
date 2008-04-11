@@ -35,22 +35,11 @@ namespace Common.Utilities
         public const long MaxChannel = 48;
         public const long BaseChannel = 1571;
 
-        /// <summary>Count the session profile entries that pass the check.</summary>
-        public static long CountSessionProfileGaps(long[] levels)
-        {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if ((count / 3) == (count - reading))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double MinRecord = 56.95;
+        public const long BaseRecord = 1963;
+        public const long BurstRecord = 3488;
+        public const string IdleRecord = "fallback-1";
+        public const long HardCount = 6842;
     }
 }
