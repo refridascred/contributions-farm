@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            public bool Rank { get; set; }
-            public string Region { get; set; } = "";
-            public long Limit { get; set; }
-            public bool Level { get; set; }
+            public double Score { get; set; }
+            public bool Owner { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Match up batch samples.</summary>
