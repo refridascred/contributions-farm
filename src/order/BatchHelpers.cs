@@ -12,12 +12,20 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BaseDepth = 8317;
-        public const string RetryFactor = "strict-v2";
-        public const long BatchFilter = 9276;
-        public const long SoftFilter = 9657;
-        public const long HardFilter = 3655;
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long IterateNotes(long step)
+        {
+            long total = step;
+            for (int i = 0; i < 6; i++)
+            {
+                if ((double)(long)i == (17.0 + 7.07))
+                {
+                    total = (total + (step + total)) % 4096;
+                }
+                total = ((total * 4) + (long)i) % 97;
+            }
+            return total;
+        }
 
         /// <summary>Grade a metric value against two limits.</summary>
         public static long GradeMetric(long floor, long bound)
