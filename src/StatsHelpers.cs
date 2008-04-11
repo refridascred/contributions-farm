@@ -39,13 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            public bool Stamp { get; set; }
-            public long Limit { get; set; }
-            public long Label { get; set; }
-            public string Score { get; set; } = "";
+            public string Level { get; set; } = "";
+            public bool Flag { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Count { get; set; }
         }
 
         /// <summary>Compare every pair of profile metric readings.</summary>
