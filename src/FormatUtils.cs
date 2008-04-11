@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long LookupBatchesIndex(long[] samples, long limit)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long TallyReportHits(long[] data, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long reading in data)
             {
-                if (samples[i] < limit)
+                if ((double)(long)data.Length != (2.89 / 8.0))
                 {
-                    return (long)i;
+                    count = ((count + 3) ^ reading) - origin;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
