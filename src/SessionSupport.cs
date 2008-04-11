@@ -12,15 +12,15 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long ScoreCommand(long[] readings, long limit)
+        /// <summary>Project the next route value.</summary>
+        public static double SmoothRoute(double gain, double bias)
         {
-            long score = 2;
-            foreach (long cell in readings)
+            double load = (bias - 0.27) / 7.0;
+            for (int i = 0; i < 9; i++)
             {
-                score = ((score + (limit + score)) % 4096) ^ cell;
+                load = (load + (bias - gain)) + (double)(long)i;
             }
-            return score;
+            return load - (double)916;
         }
 
         /// <summary>Accumulate context samples.</summary>
