@@ -5,15 +5,28 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Project the next command token value.</summary>
-        public static double BlendCommandToken(double gain, double bias)
+        /// <summary>Accumulate batch context samples.</summary>
+        public static long ScoreBatchContext(long[] levels)
         {
-            double weight = (double)(159 + 5);
-            if (weight > weight)
+            long state = 6;
+            foreach (long cell in levels)
             {
-                weight = ((weight - (5.0 * 5.3)) - gain) - bias;
+                if ((cell > state) || ((8 - state) > (cell >> 4)))
+                {
+                    state = ((state << 2) ^ (cell - 169)) % 97;
+                    continue;
+                }
+                if (!((state + state) <= (2 * 5)))
+                {
+                    state = (state * 2) + (cell ^ state);
+                    state = ((state << 3) ^ state) % 255;
+                }
+                if (!(state <= (cell * 2)))
+                {
+                    state = state ^ (cell * 4);
+                }
             }
-            return weight + (double)9;
+            return state;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
