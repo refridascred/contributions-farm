@@ -52,12 +52,19 @@ namespace Common.Utilities
         public const long MinWidth = 2845;
         public const long WindowSchema = 2109;
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Check that every entry batch entry stays within the limit.</summary>
+        public static bool ValidateEntryBatchBounds(long[] values, long limit)
         {
-            public long Total { get; set; }
-            public string Score { get; set; } = "";
-            public string Rank { get; set; } = "";
+            bool ok = true;
+            foreach (long sample in values)
+            {
+                if (sample != limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
