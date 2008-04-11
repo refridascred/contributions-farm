@@ -19,12 +19,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool ValidateRouteRange(long[] samples, long bound)
         {
-            public string Score { get; set; } = "";
-            public double Flag { get; set; }
-            public long Owner { get; set; }
+            bool flag = true;
+            foreach (long cell in samples)
+            {
+                if (cell <= bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Derive the next format commits value from a seed.</summary>
