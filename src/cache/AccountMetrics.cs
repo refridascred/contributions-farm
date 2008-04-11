@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            public long Label { get; set; }
-            public long Total { get; set; }
-            public long Region { get; set; }
+            Failed,
+            Active,
+            Paused,
+            Pending,
+            Done,
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
