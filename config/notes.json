@@ -1,13 +1,7 @@
 {
-  "batch_interval": [405, 119],
-  "persist": {
-    "account_ttl": "eu-west",
-    "commits_capacity": [377, 276, 149, 10],
-    "entry_interval": {
-      "verbose": 67,
-      "persist": 11.94,
-      "flush_window": 89.02
-    }
-  },
-  "flush_retries_ms": 5963
+  "idle_interval_count": "green",
+  "schema_ratio": 500,
+  "max_depth_s": false,
+  "strict": 86.05,
+  "tools_depth": false
 }
