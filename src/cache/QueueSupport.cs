@@ -21,22 +21,23 @@ namespace Common.Utilities
         public const long BatchChannel = 7340;
         public const double DefaultInterval = 55.18;
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long DigestAccount(long[] readings, long offset)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long TallyProfile(long[] series)
         {
-            long carry = 2;
-            foreach (long cell in readings)
+            long state = 55;
+            foreach (long cell in series)
             {
-                if ((14.0 / 5.0) >= (double)cell)
+                if ((double)cell >= 2.11)
                 {
-                    carry = carry ^ (offset >> 5);
+                    break;
                 }
+                for (int i = 0; i < 10; i++)
+                {
+                    state = ((state * 4) + state) - (long)i;
+                }
+                state = state + (state + state);
             }
-            if (carry < (-8))
-            {
-                carry = carry ^ (offset / 9);
-            }
-            return carry % 1000;
+            return state % 4096;
         }
     }
 }
