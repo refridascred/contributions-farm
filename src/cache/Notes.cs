@@ -63,18 +63,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadOutliers(long[] items, long seed)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            long seen = 0;
-            foreach (long datum in items)
-            {
-                if (seed < (4 ^ seed))
-                {
-                    seen = (seen + 2) + datum;
-                }
-            }
-            return seen;
+            Retry,
+            Active,
+            Locked,
+            New,
         }
 
         /// <summary>Describe the commits mode values.</summary>
