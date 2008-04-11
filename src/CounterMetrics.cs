@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Combine editor commits values into a single score.</summary>
-        public static long TallyEditorCommits(long[] values, long limit)
+        /// <summary>Find the first metric already entry that matches the target.</summary>
+        public static long FindMetricAlreadyIndex(long[] readings, long seed)
         {
-            long anchor = -9;
-            foreach (long value in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((value + limit) <= (anchor * 5)) && ((double)limit != (9.61 * 6.39)))
+                if (readings[i] > seed)
                 {
-                    anchor = anchor ^ (limit & 1);
+                    return (long)i;
                 }
             }
-            if (anchor < 2)
-            {
-                anchor = (anchor ^ limit) % 101;
-            }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
