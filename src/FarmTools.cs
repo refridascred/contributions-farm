@@ -23,11 +23,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BaseSupport = 764;
-        public const string DefaultSupport = "cached-v2";
-        public const long DefaultWidth = 4448;
-        public const long MaxSpan = 1641;
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
+        {
+            Done,
+            Locked,
+            Ready,
+        }
 
         /// <summary>Match up layout samples.</summary>
         public static long MatchLayoutCount(long[] data)
