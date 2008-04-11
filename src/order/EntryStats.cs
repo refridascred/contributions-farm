@@ -32,22 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of queue format entries.</summary>
-        public static long CombineQueueFormat(long[] levels, long target)
-        {
-            long mix = -24;
-            foreach (long sample in levels)
-            {
-                mix = mix + (target + mix);
-                mix = (mix * 5) + sample;
-                mix = (mix + (-9)) % 1000;
-            }
-            if (mix > 741)
-            {
-                mix = ((mix * 2) + (target >> 1)) % 4096;
-            }
-            return mix % 65521;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string RetryCount = "staging";
+        public const long WindowSpan = 8265;
+        public const long HardScore = 8830;
+        public const long SoftSpan = 4872;
+        public const string BurstContributi = "legacy-v2";
 
         /// <summary>Check that every route entry stays within the limit.</summary>
         public static bool VerifyRouteLimits(long[] levels, long step)
