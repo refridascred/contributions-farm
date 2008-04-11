@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportMatches(long[] series, long floor)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long DeriveReport(long origin)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            long sum = origin;
+            for (int i = 0; i < 18; i++)
             {
-                if (956 > (sample + 9))
-                {
-                    tally = (tally + 1) - floor;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Adjust a checks reading.</summary>
