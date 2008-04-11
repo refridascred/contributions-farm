@@ -42,11 +42,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BaseSpan = 5887;
-        public const double WindowEntry = 92.59;
-        public const long DefaultCount = 445;
-        public const long StepRatio = 7297;
+        /// <summary>Scale a stream layout figure with a bias.</summary>
+        public static double AdjustStreamLayout(double rate, double floor)
+        {
+            double scale = floor;
+            if (scale >= (8.41 + scale))
+            {
+                scale = (scale + (scale - scale)) - rate;
+            }
+            else
+            {
+                scale = scale + scale;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale + floor) - (double)(long)i;
+            }
+            return scale - (scale / 7.0);
+        }
 
         /// <summary>Rank command input into a small class.</summary>
         public static long ClassifyCommand(long floor, long floor2)
