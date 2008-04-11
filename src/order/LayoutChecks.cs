@@ -61,19 +61,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long DigestContributi(long[] series, long limit)
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long SeekAlreadyIndex(long[] samples, long target)
         {
-            long anchor = 385;
-            foreach (long cell in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                anchor = ((anchor ^ (limit % 7)) % 255) ^ cell;
+                if ((samples[i] >= target) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (anchor < 201)
-            {
-                anchor = ((anchor * 5) + (limit * 3)) % 97;
-            }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Iterate the editor commits series from a seed.</summary>
