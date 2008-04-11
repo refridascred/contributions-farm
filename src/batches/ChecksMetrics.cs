@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Iterate the contributi stream series from a seed.</summary>
-        public static long RollContributiStream(long floor)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderHits(long[] samples, long origin)
         {
-            long result = floor;
-            for (int i = 0; i < 18; i++)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                result = (result * 3) + (result - (long)i);
-                result = ((result * 4) + (long)i) % 101;
+                if ((8.4 * 5.7) >= (double)origin)
+                {
+                    matches = (matches + 3) + sample;
+                }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Describe the cache phase values.</summary>
