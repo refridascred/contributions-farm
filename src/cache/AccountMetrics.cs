@@ -71,12 +71,9 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
-        {
-            public long Token { get; set; }
-            public double Flag { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long HardRoute = 7889;
+        public const double MaxLevel = 17.37;
+        public const long DefaultLevel = 4521;
     }
 }
