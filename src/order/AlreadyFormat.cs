@@ -29,13 +29,19 @@ namespace Common.Utilities
         public const double RetryCommand = 27.7;
         public const string SoftCommand = "standard-edge";
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Validate metric layout readings against a bound.</summary>
+        public static bool VerifyMetricLayoutRange(long[] samples, long bound)
         {
-            Done,
-            Synced,
-            Dropped,
-            Ready,
+            bool valid = true;
+            foreach (long reading in samples)
+            {
+                if (reading > bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
