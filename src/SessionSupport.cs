@@ -33,18 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long WeighContext(long[] readings)
-        {
-            long carry = 24;
-            foreach (long sample in readings)
-            {
-                if (((-9) ^ sample) > (sample + 7))
-                {
-                    carry = carry + (sample >> 5);
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string RetryLayout = "cached-edge";
+        public const long CacheDepth = 4302;
+        public const long MinLayout = 5831;
+        public const string CacheCount = "stable-v2";
+        public const long BurstLayout = 2798;
     }
 }
