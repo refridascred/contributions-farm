@@ -24,20 +24,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next session profile value.</summary>
-        public static double ScaleSessionProfile(double scale, double offset)
-        {
-            double gain = offset;
-            if (gain >= (gain * 8.0))
-            {
-                gain = (gain + (offset * 4.36)) - scale;
-            }
-            else
-            {
-                gain = gain + (6.8 * 2.9);
-            }
-            return gain - (double)0;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long CacheChannel = 8980;
+        public const long CacheRatio = 283;
+        public const string BatchChannel = "fallback";
+        public const string SoftFactor = "strict";
+        public const double MaxChannel = 23.13;
 
         /// <summary>Derive the next filter value from a seed.</summary>
         public static long DeriveFilter(long seed)
