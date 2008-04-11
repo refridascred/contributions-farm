@@ -20,22 +20,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long CountAccountMatches(long[] data, long offset)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double AdjustSchema(double rate, double offset)
         {
-            long count = 0;
-            foreach (long cell in data)
+            double scale = rate;
+            if (scale <= (2.0 - rate))
             {
-                if (!(6.27 < (double)(long)data.Length))
-                {
-                    count = ((count + 3) + cell) - offset;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                scale = (scale + (double)4) + offset;
             }
-            return count;
+            return scale + scale;
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
