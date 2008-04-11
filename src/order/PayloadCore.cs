@@ -71,17 +71,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Look up the position of a context support sample.</summary>
-        public static long FindContextSupportIndex(long[] samples, long offset)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] < offset) && ((samples[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BaseSpan = 1871;
+        public const long IdleProfile = 1521;
+        public const long RetryTimeout = 2818;
+        public const double BaseRatio = 10.4;
+        public const long WindowWidth = 2943;
     }
 }
