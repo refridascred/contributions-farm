@@ -35,24 +35,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a order contributi pair into a bucket.</summary>
-        public static long BucketOrderContributi(long offset, long limit)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            if ((double)limit != (2.01 + 8.81))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((offset % 64) <= offset)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Closed,
+            Synced,
+            Done,
+            Draft,
+            Stale,
         }
     }
 }
