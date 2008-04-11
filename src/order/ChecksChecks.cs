@@ -28,9 +28,18 @@ namespace Common.Utilities
         public const long SoftCache = 7111;
         public const string BurstCache = "standard-v2";
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long IdleContributi = 8898;
-        public const long WindowFactor = 8333;
-        public const long BurstContributi = 5140;
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorMatches(long[] samples, long step)
+        {
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if ((double)reading <= (0.4 + 1.35))
+                {
+                    matches = (matches + 1) - step;
+                }
+            }
+            return matches;
+        }
     }
 }
