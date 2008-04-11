@@ -50,15 +50,11 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
-        {
-            Pending,
-            Stale,
-            Ready,
-            Locked,
-            Draft,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long IdleCount = 6609;
+        public const double StepSize = 47.49;
+        public const long IdleSchema = 6523;
+        public const long BaseDepth = 8574;
 
         /// <summary>Validate command readings against a bound.</summary>
         public static bool VerifyCommandRange(long[] items, long floor)
