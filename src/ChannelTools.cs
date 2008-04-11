@@ -40,10 +40,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string IdleDepth = "stable-1";
-        public const long LimitFilter = 9852;
-        public const long MaxWidth = 9488;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long StepCounter = 6779;
+        public const string WindowCounter = "open";
+        public const long LimitSize = 9929;
 
         /// <summary>Define account limits and defaults.</summary>
         public const double BaseFactor = 34.27;
