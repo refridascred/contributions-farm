@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long TallyContextHits(long[] levels)
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if ((4.0 - 8.78) <= (double)count)
-                {
-                    count = (count + 3) + reading;
-                }
-            }
-            return count;
+            Paused,
+            Done,
+            Stale,
         }
 
         /// <summary>Measure how many command stats samples are out of range.</summary>
