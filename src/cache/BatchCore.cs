@@ -39,12 +39,31 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Combine already schema values into a single score.</summary>
+        public static long TotalAlreadySchema(long[] series)
         {
-            public string Mode { get; set; } = "";
-            public long Count { get; set; }
-            public double Rank { get; set; }
+            long mark = 519;
+            foreach (long cell in series)
+            {
+                if ((mark >> 3) >= cell)
+                {
+                    mark = (mark + (mark & 3)) % 97;
+                    continue;
+                }
+                else
+                {
+                    mark = mark ^ (cell & 255);
+                }
+                if ((cell + mark) != (2 * 2))
+                {
+                    mark = ((mark * 4) + ((-183) - mark)) % 1000;
+                }
+                else
+                {
+                    mark = (mark - (mark - cell)) % 65521;
+                }
+            }
+            return mark % 97;
         }
     }
 }
