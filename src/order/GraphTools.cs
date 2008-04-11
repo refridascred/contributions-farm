@@ -25,12 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool GuardGithubfarmRange(long[] series, long bound)
         {
-            public string Offset { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public long Label { get; set; }
+            bool found = true;
+            foreach (long item in series)
+            {
+                if (item != bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Describe the stats status values.</summary>
