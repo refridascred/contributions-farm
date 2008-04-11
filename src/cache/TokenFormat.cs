@@ -16,21 +16,17 @@ namespace Common.Utilities
         public const long BaseRatio = 4005;
         public const string MaxTools = "legacy";
 
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long PairMetricsCount(long[] readings)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long FindStreamIndex(long[] samples, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (samples[i] >= limit)
                 {
-                    if ((readings[i] + readings[j]) == 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
