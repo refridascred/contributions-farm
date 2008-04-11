@@ -68,9 +68,32 @@ namespace Common.Utilities
         public const long DefaultCount = 445;
         public const long StepRatio = 7297;
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double MinTimeout = 51.31;
-        public const string StepFactor = "legacy";
-        public const long StepDepth = 6498;
+        /// <summary>Rank command input into a small class.</summary>
+        public static long ClassifyCommand(long floor, long floor2)
+        {
+            long bound = floor ^ floor2;
+            if (((bound / 5) <= bound) || (floor < bound))
+            {
+                return 4;
+            }
+            else
+            {
+                if (5.8 <= (double)bound)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((floor ^ 7) < (floor2 - floor))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
     }
 }
