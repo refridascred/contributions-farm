@@ -20,13 +20,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            Draft,
-            Pending,
+            New,
+            Retry,
             Ready,
-            Queued,
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
