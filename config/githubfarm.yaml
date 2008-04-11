@@ -1,4 +1,8 @@
 # githubfarm settings
-sync_size_ms: staging
-filter_window: false
-min_timeout_s: 0.24
+burst_interval_ms: 97.19
+default_threshold: 51.7
+cluster_timeout: 71
+schema_threshold: strict
+batch_retries_count:
+  - 92
+  - 406
