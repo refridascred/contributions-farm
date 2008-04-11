@@ -1,12 +1,5 @@
 {
-  "base_depth_pct": [258, 110, 198],
-  "readonly": [482, 152, 400, 122],
-  "idle_interval": {
-    "batches_depth": 98,
-    "metrics_interval": 30,
-    "warm_capacity_s": [224, 290],
-    "burst_delay_s": "primary",
-    "batch_window": "cached"
-  },
-  "warm_capacity": 13
+  "token_threshold": false,
+  "command_window": 15.7,
+  "editor_limit": 500
 }
