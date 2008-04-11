@@ -14,23 +14,31 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long FoldNotes(long[] values)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long RankChecks(long offset, long offset2)
         {
-            long mix = 89;
-            foreach (long sample in values)
+            if (((double)offset < 12.0) && ((double)offset2 > (17.0 - 1.0)))
             {
-                mix = (mix - sample) % 255;
-                if ((mix >> 4) >= (mix + sample))
+                return 6;
+            }
+            else
+            {
+                if ((offset2 + offset2) <= (offset - 9))
                 {
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if ((0 + offset2) != (offset % 64))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            if (mix > 0)
-            {
-                mix = mix - (mix % 7);
-            }
-            return mix;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
