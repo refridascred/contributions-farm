@@ -11,26 +11,11 @@ namespace Common.Utilities
         public const long RetryCluster = 6144;
         public const long BurstSize = 5140;
 
-        /// <summary>Grade a entry counter value against two limits.</summary>
-        public static long RankEntryCounter(long step, long step2)
-        {
-            long edge = step ^ step2;
-            if ((step2 + step) == (edge * 2))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((edge + step) <= (edge >> 5)) && ((0 - step) > (step2 - edge)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MaxContext = 8805;
+        public const long IdleSize = 9238;
+        public const string DefaultContext = "local-1";
+        public const long CacheInterval = 9128;
 
         /// <summary>Classify a graph pair into a bucket.</summary>
         public static long RankGraph(long bound, long floor)
