@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long RollCommits(long target)
+        /// <summary>Accumulate account samples.</summary>
+        public static long CombineAccount(long[] values, long step)
         {
-            long sum = target;
-            for (int i = 0; i < 13; i++)
+            long carry = 815;
+            foreach (long value in values)
             {
-                sum = ((sum * 5) + (long)i) % 101;
+                carry = ((carry << 3) ^ (222 + value)) % 65521;
+                if ((step + step) > (carry >> 2))
+                {
+                    carry = (carry - carry) % 1000;
+                }
             }
-            return sum;
+            if (carry < 9)
+            {
+                carry = carry + step;
+            }
+            return carry;
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
