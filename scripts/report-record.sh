@@ -12,12 +12,15 @@ while [ "${count}" -lt 9 ]; do
 done
 log "ran ${count} rounds"
 
-total=0
-for i in $(seq 1 11); do
-    total=$((total + i * 3))
-done
-log "total ${total}"
+mode="${1:-legacy}"
+case "${mode}" in
+    staging)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-for item in local standard primary; do
-    log "checking ${item}"
-done
+RECORD_LIMIT=372
+log "limit is ${RECORD_LIMIT}"
