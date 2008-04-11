@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            Queued,
-            Idle,
-            Failed,
-            Done,
-            Active,
+            public string Stamp { get; set; } = "";
+            public double Level { get; set; }
+            public long Ratio { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Fold a list of entry readings.</summary>
