@@ -71,12 +71,17 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long LookupEntryIndex(long[] values, long step)
         {
-            public long Level { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Token { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
