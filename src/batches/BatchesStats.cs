@@ -52,13 +52,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            public long Limit { get; set; }
-            public string Region { get; set; } = "";
-            public long Mode { get; set; }
-            public long Size { get; set; }
+            public bool Weight { get; set; }
+            public double Ratio { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
