@@ -1,7 +1,7 @@
 {
-  "retry_interval_count": 90.16,
-  "strict": 5152,
-  "graph_retries": 60,
-  "default_threshold_ms": 88,
-  "compress": "edge"
+  "notes_delay": 100,
+  "dry_run": false,
+  "batch_delay": "strict",
+  "retry_threshold_pct": "primary",
+  "soft_ttl_pct": 95
 }
