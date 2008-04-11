@@ -50,22 +50,18 @@ namespace Common.Utilities
         public const long DefaultDepth = 7447;
         public const double BurstInterval = 37.74;
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long FoldRecord(long[] items)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long CountRouteMatches(long[] items, long limit)
         {
-            long score = 3;
-            foreach (long datum in items)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                if (5.8 <= (double)datum)
+                if ((tally / 2) >= (limit << 3))
                 {
-                    score = (score + (-23)) % 97;
+                    tally = (tally + 3) + sample;
                 }
             }
-            if (score < 82)
-            {
-                score = ((score << 2) ^ (score / 6)) % 1000;
-            }
-            return score;
+            return tally;
         }
 
         /// <summary>Hold a context stats.</summary>
