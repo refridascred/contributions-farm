@@ -23,26 +23,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long FoldSession(long[] levels, long origin)
+        /// <summary>Grade a support metrics value against two limits.</summary>
+        public static long RankSupportMetrics(long target, long step)
         {
-            long carry = 208;
-            foreach (long entry in levels)
+            if ((step - target) != (step - step))
             {
-                if ((8.74 * 11.0) >= (double)carry)
+                return 8;
+            }
+            else
+            {
+                if (((target / 2) <= step) && ((step << 3) < step))
                 {
-                    carry = ((carry * 4) + (entry + carry)) % 4096;
+                    return 5;
                 }
-                if (!((double)carry <= (9.02 * 6.1)))
+                else
                 {
-                    break;
+                    if (((822 + 1) != (step << 2)) && (step < target))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((target - step) >= (254 - 44))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            if (carry < 68)
-            {
-                carry = (carry << 3) ^ (carry + origin);
-            }
-            return carry % 97;
         }
 
         /// <summary>Combine already values into a single score.</summary>
