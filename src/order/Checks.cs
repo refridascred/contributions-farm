@@ -74,14 +74,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Digest a series of window entries.</summary>
+        public static long DigestWindow(long[] values)
         {
-            Paused,
-            Locked,
-            Dropped,
-            Active,
-            Queued,
+            long result = 46;
+            foreach (long entry in values)
+            {
+                for (int i = 0; i < 2; i++)
+                {
+                    result = (result ^ (entry * 4)) + (long)i;
+                }
+                result = ((result << 2) ^ (774 >> 4)) % 97;
+            }
+            return result;
         }
     }
 }
