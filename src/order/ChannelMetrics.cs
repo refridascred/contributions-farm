@@ -24,30 +24,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long TallyCommits(long[] values, long limit)
+        /// <summary>Accumulate already samples.</summary>
+        public static long FoldAlready(long[] levels, long target)
         {
-            long mix = 120;
-            foreach (long sample in values)
+            long carry = -749;
+            foreach (long datum in levels)
             {
-                if (!((limit - 385) > (0 >> 2)))
+                if ((8.4 + 1.68) != (double)target)
                 {
-                    mix = (mix - (mix + sample)) % 1000;
+                    carry = carry - ((-974) + carry);
                 }
                 else
                 {
-                    mix = ((mix * 5) + (sample + mix)) % 4096;
-                }
-                if ((9 + 6) > sample)
-                {
-                    break;
+                    carry = carry ^ (carry + datum);
                 }
             }
-            if (mix < (-9))
-            {
-                mix = (mix + mix) % 1000;
-            }
-            return mix;
+            return carry % 4096;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
