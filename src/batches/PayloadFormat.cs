@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const string CacheInterval = "standard";
-        public const string HardSpan = "standard-v2";
-        public const double BatchContext = 31.41;
-        public const double WindowContext = 80.15;
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long BucketStats(long floor, long offset)
+        {
+            long bound = floor ^ offset;
+            if ((offset - bound) > (offset / 3))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((8.42 * 3.97) > (double)offset)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Adjust a schema reading.</summary>
         public static double AdjustSchema(double scale, double floor)
