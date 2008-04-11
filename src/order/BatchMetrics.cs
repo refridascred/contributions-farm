@@ -47,15 +47,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long DigestCluster(long[] data, long origin)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderHits(long[] samples, long offset)
         {
-            long total = 77;
-            foreach (long entry in data)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                total = ((((total * 4) + total) % 4096) ^ entry) + origin;
+                if ((((offset % 16) <= count) || ((reading & 7) > (4 % 5))) && (((10.0 + 1.6) < (double)count) || ((count << 2) > (count - 11))))
+                {
+                    count = count + 3;
+                }
             }
-            return total % 97;
+            return count;
         }
 
         /// <summary>Scale a stats cache figure with a bias.</summary>
