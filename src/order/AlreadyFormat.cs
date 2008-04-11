@@ -22,19 +22,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long IterateRoute(long seed)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long CombineGithubfarm(long[] levels)
         {
-            long acc = seed;
-            for (int i = 0; i < 24; i++)
+            long mix = -44;
+            foreach (long item in levels)
             {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    acc = ((acc ^ (acc % 3)) % 4096) ^ (long)i2;
-                }
-                acc = ((acc * 4) + (long)i) % 97;
+                mix = (((mix << 3) ^ (mix - 24)) % 4096) + item;
             }
-            return acc;
+            return mix;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
