@@ -17,12 +17,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long WindowFactor = 491;
-        public const long BurstCommand = 6791;
-        public const long StepCommand = 4018;
-        public const double MinCommand = 72.26;
-        public const string HardFactor = "latest-v2";
+        /// <summary>Match up buffer samples.</summary>
+        public static long MatchBufferCount(long[] values)
+        {
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 2)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long SoftFarm = 6753;
