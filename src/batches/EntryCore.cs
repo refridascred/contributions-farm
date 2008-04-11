@@ -40,14 +40,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            Pending,
-            Dropped,
-            Retry,
-            Synced,
-            New,
+            public string Token { get; set; } = "";
+            public long Stamp { get; set; }
+            public string Offset { get; set; } = "";
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Count the layout queue entries that pass the check.</summary>
