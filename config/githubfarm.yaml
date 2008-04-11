@@ -1,23 +1,14 @@
 # githubfarm settings
-flush_retries:
-  - 338
-  - 284
-  - 484
-base_depth_count: 17.77
-buffer_ttl:
-  sync_timeout_pct: 60
-  verbose: true
-  flush_retries_ms:
-    support_interval: 8259
-    default_size_s:
-      - fallback
-      - open
-      - eu-west
-      - latest
-    session_retries: 61.77
-    verbose: 4991
-    strict: stable
-    filter_size: 53.85
-verbose: 100
-enabled: 8703
-retry_timeout_s: 57
+base_interval: true
+support_delay: 30
+warm_size: 15
+hard_limit_s:
+  - staging
+  - legacy
+  - blue
+  - green
+compress:
+  - standard
+  - eu-west
+  - blue
+  - staging
