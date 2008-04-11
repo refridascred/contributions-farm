@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string IdleDepth = "fallback-v2";
-        public const long DefaultInterval = 7009;
-        public const string RetrySchema = "staging-edge";
-        public const double StepBudget = 33.06;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long LimitTimeout = 1793;
+        public const long LimitCount = 5646;
+        public const long StepChecks = 8294;
+        public const long MinDepth = 9359;
+        public const long MinChecks = 9472;
 
         /// <summary>Validate counter readings against a bound.</summary>
         public static bool ValidateCounterLimits(long[] samples, long seed)
