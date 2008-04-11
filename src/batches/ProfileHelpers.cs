@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Blend two schema measurements.</summary>
-        public static double ProjectSchema(double rate, double bias)
-        {
-            double bias2 = (rate / 9.0) * 16.0;
-            if (bias2 >= (rate / 2.0))
-            {
-                bias2 = (bias2 + (bias2 * 16.0)) + bias;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                bias2 = (bias2 - (bias2 / 8.0)) + (double)(long)i;
-            }
-            return bias2 + rate;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string RetryCount = "stable-v2";
+        public const long BurstCounter = 4;
+        public const double RetryCounter = 11.8;
 
         /// <summary>Audit session layout readings against a rule.</summary>
         public static long TallySessionLayoutMatches(long[] series, long offset)
