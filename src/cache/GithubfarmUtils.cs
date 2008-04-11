@@ -40,9 +40,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MinGithubfarm = 62;
-        public const long BaseSpan = 2589;
-        public const long RetryGithubfarm = 8870;
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool ValidateSchemaRange(long[] data, long floor)
+        {
+            bool ready = true;
+            foreach (long reading in data)
+            {
+                if (reading < floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
