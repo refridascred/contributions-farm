@@ -1,8 +1,15 @@
 # support settings
-support_delay: 82.31
-hard_timeout_count: open
-hard_depth_pct:
-  - 67
-  - 414
-persist: 32.23
-min_retries: 500
+compress:
+  - 353
+  - 482
+cache_size_pct: staging
+poll_window_ms:
+  - legacy
+  - latest
+  - staging
+  - local
+soft_interval:
+  - strict
+  - edge
+  - blue
+  - primary
