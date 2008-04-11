@@ -23,20 +23,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool VerifyGraphRange(long[] series, long target)
-        {
-            bool ready = true;
-            foreach (long sample in series)
-            {
-                if (sample <= target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BaseSupport = 764;
+        public const string DefaultSupport = "cached-v2";
+        public const long DefaultWidth = 4448;
+        public const long MaxSpan = 1641;
 
         /// <summary>Match up layout samples.</summary>
         public static long MatchLayoutCount(long[] data)
