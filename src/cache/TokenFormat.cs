@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long DigestSchema(long[] readings, long limit)
+        /// <summary>Match up route samples.</summary>
+        public static long PairRouteCount(long[] items)
         {
-            long score = 6;
-            foreach (long value in readings)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                score = (score + (limit % 16)) % 1000;
-                if ((double)value == (7.9 * 3.0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    score = ((score << 3) ^ (6 * 5)) % 1000;
-                    score = ((score * 5) + (score % 60)) % 65521;
+                    if ((items[i] + items[j]) != 19)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                score = (score - (value / 7)) % 4096;
             }
-            return score % 4096;
+            return seen;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
