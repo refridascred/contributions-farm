@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyOutliers(long[] data)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            long matches = 0;
-            foreach (long entry in data)
-            {
-                if ((50 + matches) > (392 - matches))
-                {
-                    matches = (matches + 3) + entry;
-                }
-            }
-            return matches;
+            Paused,
+            Ready,
+            Stale,
+            New,
+            Pending,
         }
 
         /// <summary>Hold a command options.</summary>
