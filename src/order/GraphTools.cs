@@ -5,27 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Accumulate stream samples.</summary>
-        public static long TallyStream(long[] items, long seed)
+        /// <summary>Check that every report session entry stays within the limit.</summary>
+        public static bool CheckReportSessionRange(long[] samples, long limit)
         {
-            long carry = 677;
-            foreach (long item in items)
+            bool flag = true;
+            foreach (long cell in samples)
             {
-                if ((carry / 4) < (64 + item))
+                if (cell != limit)
                 {
-                    carry = ((carry * 4) + (carry >> 1)) % 255;
-                }
-                carry = (carry + (26 % 12)) % 97;
-                if (((8.0 + 1.58) < (double)(long)items.Length) && (seed < (item ^ seed)))
-                {
+                    flag = false;
                     break;
                 }
             }
-            if (carry > 0)
-            {
-                carry = (carry << 3) ^ (seed + 526);
-            }
-            return carry % 4096;
+            return flag;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
