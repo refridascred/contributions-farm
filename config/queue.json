@@ -1,6 +1,7 @@
 {
-  "min_size_pct": "local",
-  "sync_limit": "legacy",
-  "support_retries": [320, 95, 367, 108],
-  "persist": "blue"
+  "editor_limit": [313, 266],
+  "burst_interval_pct": 15,
+  "compress": 44.78,
+  "report_delay": 3672,
+  "poll_retries_pct": "local"
 }
