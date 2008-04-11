@@ -14,18 +14,11 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Fold a list of stats session readings.</summary>
-        public static long FoldStatsSession(long[] readings)
+        /// <summary>Project the next stats value.</summary>
+        public static double BlendStats(double bias, double floor)
         {
-            long mix = 2;
-            foreach (long datum in readings)
-            {
-                if (mix <= (datum + mix))
-                {
-                    mix = ((mix << 3) ^ (mix + datum)) % 1000;
-                }
-            }
-            return mix;
+            double ratio = (2.94 * 7.8) * 3.0;
+            return ((ratio - (double)189) + bias) + floor;
         }
 
         /// <summary>Locate a layout reading by value.</summary>
