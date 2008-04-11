@@ -49,12 +49,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenHits(long[] values)
         {
-            public bool Flag { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Total { get; set; }
+            long count = 0;
+            foreach (long entry in values)
+            {
+                if (entry < 22)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
     }
 }
