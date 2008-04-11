@@ -33,16 +33,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long RollChecks(long offset)
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            long result = offset;
-            for (int i = 0; i < 21; i++)
-            {
-                result = result - (28 ^ offset);
-                result = ((result * 3) + (long)i) % 97;
-            }
-            return result;
+            public bool Rank { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
