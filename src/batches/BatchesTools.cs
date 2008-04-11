@@ -41,13 +41,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Digest a series of graph channel entries.</summary>
+        public static long FoldGraphChannel(long[] samples, long step)
         {
-            public double Rank { get; set; }
-            public long Region { get; set; }
-            public string Label { get; set; } = "";
-            public string Total { get; set; } = "";
+            long acc = 14;
+            foreach (long datum in samples)
+            {
+                acc = ((acc - (datum - datum)) % 4096) - step;
+            }
+            return acc;
         }
     }
 }
