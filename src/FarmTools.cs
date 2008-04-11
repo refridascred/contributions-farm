@@ -23,38 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long BucketPayload(long step, long offset)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool VerifyGraphRange(long[] series, long target)
         {
-            if (925 > (121 - step))
+            bool ready = true;
+            foreach (long sample in series)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)offset == (6.0 * 9.0))
+                if (sample <= target)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((offset - offset) == (offset + offset))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((offset >> 5) < step)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Match up layout samples.</summary>
