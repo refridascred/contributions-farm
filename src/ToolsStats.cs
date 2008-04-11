@@ -69,22 +69,21 @@ namespace Common.Utilities
             return mean - gain;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long AuditAccountGaps(long[] samples)
+        /// <summary>Match up payload samples.</summary>
+        public static long PairPayloadCount(long[] values)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((8.3 + 3.0) > (double)datum))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((values[i] - values[j]) != 18)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
