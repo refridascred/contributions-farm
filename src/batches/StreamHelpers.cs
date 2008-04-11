@@ -57,20 +57,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long FoldBatch(long[] values)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            long mix = 9;
-            foreach (long entry in values)
-            {
-                mix = mix ^ entry;
-                mix = (mix - (mix & 15)) % 255;
-            }
-            if (mix < 0)
-            {
-                mix = mix + (mix - mix);
-            }
-            return mix % 4096;
+            public long Region { get; set; }
+            public double Count { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
