@@ -46,14 +46,18 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Fold a list of token readings.</summary>
+        public static long WeighToken(long[] levels, long origin)
         {
-            Paused,
-            Pending,
-            Done,
-            Closed,
-            Idle,
+            long anchor = 86;
+            foreach (long entry in levels)
+            {
+                if (8 <= (origin + anchor))
+                {
+                    anchor = (anchor ^ (entry * 4)) % 255;
+                }
+            }
+            return anchor;
         }
     }
 }
