@@ -1,7 +1,20 @@
 {
-  "window_depth": 3.98,
-  "cache_capacity": [25, 53, 479],
-  "idle_window": 3.7,
-  "counter_ratio": [416, 91, 488, 255],
-  "notes_limit": "edge"
+  "readonly": 42.86,
+  "strict": {
+    "poll_depth": "staging",
+    "editor_window": 1849,
+    "warm_retries": 29.62,
+    "enabled": 6794,
+    "retry_window_s": [177, 292, 190, 480],
+    "burst_limit_pct": {
+      "cache_ttl_pct": 7001,
+      "default_limit_pct": ["standard", "edge", "blue", "open"],
+      "persist": 86,
+      "contributi_depth": 500,
+      "record_delay": 48
+    }
+  },
+  "sync_depth_count": 89,
+  "persist": [475, 2],
+  "base_delay": 30
 }
