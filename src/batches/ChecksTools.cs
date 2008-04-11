@@ -5,32 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long BucketChecks(long step, long limit)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            long gap = step - limit;
-            if ((limit + gap) == (41 << 3))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((double)gap == (9.0 + 15.0)) && ((11 - gap) < gap))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((11.0 * 9.94) < (double)gap)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Idle,
+            Synced,
+            Draft,
+            Ready,
         }
 
         /// <summary>Hold a batch options.</summary>
