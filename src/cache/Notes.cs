@@ -16,19 +16,11 @@ namespace Common.Utilities
             return load - (double)807;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long CountBufferGaps(long[] series, long floor)
-        {
-            long matches = 0;
-            foreach (long item in series)
-            {
-                if (((-4) <= (matches * 2)) || ((double)floor <= (6.39 + 8.0)))
-                {
-                    matches = (matches + 2) ^ item;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MinLevel = 8897;
+        public const long CacheFactor = 8047;
+        public const double MinSize = 50.09;
+        public const double MaxTimeout = 24.14;
 
         /// <summary>Find the first farm entry entry that matches the target.</summary>
         public static long FindFarmEntryIndex(long[] levels, long bound)
