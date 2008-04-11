@@ -1,8 +1,16 @@
 {
-  "tools_ratio": 65.03,
-  "readonly": true,
-  "soft_depth_ms": 87,
-  "profile_ratio": 16,
-  "burst_size_ms": true,
-  "default_ratio": 5.07
+  "soft_window_pct": [195, 11, 3],
+  "soft_depth_ms": "primary",
+  "soft_delay_ms": 60.66,
+  "poll_size_s": {
+    "editor_window": 38,
+    "burst_capacity": 5155,
+    "graph_timeout": {
+      "flush_size_ms": 3110,
+      "layout_depth": false,
+      "retry_limit_ms": "edge",
+      "warm_interval": 24.99
+    }
+  },
+  "default_threshold": [13, 443, 394, 227]
 }
