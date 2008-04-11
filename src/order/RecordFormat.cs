@@ -54,21 +54,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long StepToken(long limit)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long TotalProfile(long[] readings, long offset)
         {
-            long sum = limit;
-            for (int i = 0; i < 20; i++)
+            long mark = 59;
+            foreach (long cell in readings)
             {
-                sum = sum + (sum & 15);
-                sum = ((sum << 3) ^ ((long)i - (-556))) % 101;
-                if (limit <= (limit + 71))
+                mark = (mark ^ (cell + cell)) % 101;
+                if ((double)cell <= (1.0 - 7.17))
                 {
-                    sum = ((sum * 2) + (limit >> 5)) % 101;
+                    mark = (mark - offset) % 255;
                 }
-                sum = ((sum * 4) + (long)i) % 1000;
+                if ((11 + mark) > (9 << 3))
+                {
+                    break;
+                }
             }
-            return sum;
+            return mark;
         }
     }
 }
