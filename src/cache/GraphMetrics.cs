@@ -5,23 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Scale a metric command figure with a bias.</summary>
-        public static double BlendMetricCommand(double gain, double bias)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            double load = bias;
-            if (load < gain)
-            {
-                load = load - (8.1 * 15.0);
-            }
-            else
-            {
-                load = load - (bias - gain);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load - bias) + (double)(long)i;
-            }
-            return load + gain;
+            Closed,
+            Queued,
+            Ready,
+            New,
+            Dropped,
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
