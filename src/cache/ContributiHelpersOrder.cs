@@ -14,18 +14,13 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long AuditClusterGaps(long[] data)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            long count = 0;
-            foreach (long datum in data)
-            {
-                if ((datum - datum) >= datum)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public long Offset { get; set; }
+            public double Owner { get; set; }
+            public double Region { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Hold a order summary.</summary>
