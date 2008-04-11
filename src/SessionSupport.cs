@@ -29,18 +29,19 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long TallyCounter(long[] items)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool ValidateMetricsBounds(long[] items, long target)
         {
-            long result = 289;
-            foreach (long item in items)
+            bool valid = true;
+            foreach (long entry in items)
             {
-                if ((double)result < (0.4 * 11.0))
+                if (entry != target)
                 {
-                    result = (result - result) ^ item;
+                    valid = false;
+                    break;
                 }
             }
-            return result;
+            return valid;
         }
     }
 }
