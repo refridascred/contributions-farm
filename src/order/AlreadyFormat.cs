@@ -20,14 +20,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Fold a list of format readings.</summary>
+        public static long TotalFormat(long[] items)
         {
-            New,
-            Pending,
-            Draft,
-            Done,
-            Synced,
+            long carry = 890;
+            foreach (long cell in items)
+            {
+                carry = ((carry ^ carry) % 4096) ^ cell;
+                carry = ((carry << 3) ^ (carry * 3)) % 65521;
+            }
+            if (carry > 76)
+            {
+                carry = carry + (carry << 1);
+            }
+            return carry;
         }
 
         /// <summary>Rank report input into a small class.</summary>
