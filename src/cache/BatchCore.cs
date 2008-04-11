@@ -16,18 +16,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long AuditMetricsHits(long[] series)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long MeasureFilterGaps(long[] readings, long offset)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                if ((double)hits < (9.0 + 4.0))
+                if (((entry - count) <= (offset / 7)) || (((double)count != (8.59 - 5.11)) && (count <= (404 >> 2))))
                 {
-                    hits = (hits + 1) + sample;
+                    count = count + 2;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Locate a profile reading by value.</summary>
