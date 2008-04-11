@@ -34,17 +34,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first stats buffer entry that matches the target.</summary>
-        public static long FindStatsBufferIndex(long[] data, long step)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long RankGithubfarm(long offset, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((66 & 63) == (floor - floor))
             {
-                if (data[i] <= step)
+                return 5;
+            }
+            else
+            {
+                if ((double)floor == (1.1 / 2.0))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if (((18.0 + 16.0) == (double)floor) || ((offset ^ 373) <= (floor + offset)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((offset + 42) != (floor - offset)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
