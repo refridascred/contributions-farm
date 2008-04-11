@@ -21,19 +21,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool CheckGraphRange(long[] samples, long floor)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            bool flag = true;
-            foreach (long sample in samples)
-            {
-                if (sample > floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public bool Region { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
