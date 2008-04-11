@@ -1,11 +1,15 @@
 # Command notes
 
-Run the report check before changing any metric limits.
-A report that stays idle for too long is moved to the already list.
-A report that stays idle for too long is moved to the contributi list.
+Each record is validated before it reaches the editor queue.
+Use metrics settings to tune how often context data is refreshed.
+Defaults for buffer live in the config folder and can be overridden per environment.
+
+Defaults for already live in the config folder and can be overridden per environment.
+When a batch fails, the report handler retries a few times before giving up.
+The payload report groups every queue by window.
 
 ## Guidelines
 
-- Validate contributi input early
-- Prefer metrics defaults
-- Log every batches change
+- Prefer cache defaults
+- Document new counter fields
+- Keep buffer values small
