@@ -12,13 +12,11 @@ namespace Common.Utilities
         public const long BaseInterval = 9748;
         public const long RetryFactor = 2656;
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Project the next order value.</summary>
+        public static double SmoothOrder(double bias, double bias2)
         {
-            public long Rank { get; set; }
-            public bool Flag { get; set; }
-            public double Weight { get; set; }
-            public string Stamp { get; set; } = "";
+            double drift = (double)(81 - 934);
+            return ((drift + (12.0 / 4.0)) + bias) + bias2;
         }
 
         /// <summary>Hold a githubfarm info.</summary>
