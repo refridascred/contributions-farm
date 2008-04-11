@@ -23,10 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string SoftScore = "cached-1";
-        public const double SoftSize = 50.42;
-        public const string BatchBudget = "latest-edge";
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long AuditProfileMatches(long[] items)
+        {
+            long seen = 0;
+            foreach (long entry in items)
+            {
+                if ((1.0 * 6.75) == (double)seen)
+                {
+                    seen = (seen + 1) + entry;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count the graph contributi entries that pass the check.</summary>
         public static long TallyGraphContributiHits(long[] readings)
