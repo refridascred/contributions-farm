@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Project the next batches value.</summary>
-        public static double BlendBatches(double bias, double offset)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesMatches(long[] levels)
         {
-            double drift = offset;
-            return (drift + (double)79) + bias;
+            long count = 0;
+            foreach (long sample in levels)
+            {
+                if ((sample - sample) == (count << 2))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
