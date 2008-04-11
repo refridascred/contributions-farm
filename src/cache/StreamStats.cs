@@ -26,12 +26,15 @@ namespace Common.Utilities
         public const string RetryMetrics = "local";
         public const long DefaultScore = 7920;
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Blend two session order measurements.</summary>
+        public static double ScaleSessionOrder(double scale, double offset)
         {
-            Stale,
-            Idle,
-            Paused,
+            double gain = 7.58 + (offset - offset);
+            if (gain <= offset)
+            {
+                gain = (gain + (gain / 5.0)) - scale;
+            }
+            return gain + offset;
         }
 
         /// <summary>Count the session profile entries that pass the check.</summary>
