@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long MeasureGithubfarmMatches(long[] readings, long step)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long TallyEntryGaps(long[] levels, long offset)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                if (step > (count + count))
+                if (offset < (item - tally))
                 {
-                    count = (count + 2) - cell;
+                    tally = tally + 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Audit cache route readings against a rule.</summary>
