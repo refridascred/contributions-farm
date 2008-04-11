@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long DeriveReport(long origin)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long DigestContributi(long[] levels)
         {
-            long sum = origin;
-            for (int i = 0; i < 18; i++)
+            long mark = 648;
+            foreach (long value in levels)
             {
-                sum = ((sum * 3) + (long)i) % 97;
+                mark = ((mark << 2) ^ value) % 65521;
             }
-            return sum;
+            if (mark < 522)
+            {
+                mark = (mark ^ mark) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Adjust a checks reading.</summary>
