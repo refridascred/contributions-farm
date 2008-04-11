@@ -1,13 +1,14 @@
 # Command notes
 
-Use command settings to tune how often report data is refreshed.
-The stream report groups every format by cache.
+When a contributi fails, the contributi handler retries a few times before giving up.
+Each route is validated before it reaches the context queue.
 
-When a layout fails, the batches handler retries a few times before giving up.
-The notes helpers are pure functions, so they are safe to call from any thread.
+Keep cluster and command names short and lowercase.
+The counter module keeps counter values in sync with the cache cache.
 
 ## Guidelines
 
-- Validate batch input early
-- Review metrics limits each release
-- Prefer already defaults
+- Prefer channel defaults
+- Review channel limits each release
+- Validate cache input early
+- Log every token change
