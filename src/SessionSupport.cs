@@ -29,11 +29,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long SeriesFormat(long origin)
         {
-            public double Limit { get; set; }
-            public long Region { get; set; }
+            long sum = origin;
+            for (int i = 0; i < 9; i++)
+            {
+                sum = ((sum * 2) + (long)i) % 65521;
+            }
+            return sum;
         }
     }
 }
