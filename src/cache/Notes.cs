@@ -16,12 +16,18 @@ namespace Common.Utilities
             return load - (double)807;
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long CountBufferGaps(long[] series, long floor)
         {
-            public string Score { get; set; } = "";
-            public double Rank { get; set; }
-            public double Offset { get; set; }
+            long matches = 0;
+            foreach (long item in series)
+            {
+                if (((-4) <= (matches * 2)) || ((double)floor <= (6.39 + 8.0)))
+                {
+                    matches = (matches + 2) ^ item;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Find the first farm entry entry that matches the target.</summary>
