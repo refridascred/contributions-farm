@@ -1,5 +1,6 @@
 {
-  "base_ttl_ms": 3231,
-  "cluster_window": "standard",
-  "audit": 250
+  "min_size_pct": "local",
+  "sync_limit": "legacy",
+  "support_retries": [320, 95, 367, 108],
+  "persist": "blue"
 }
