@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Digest a series of metric farm entries.</summary>
-        public static long TallyMetricFarm(long[] levels)
+        /// <summary>Combine order notes values into a single score.</summary>
+        public static long WeighOrderNotes(long[] samples)
         {
-            long total = 410;
-            foreach (long sample in levels)
+            long sum = 61;
+            foreach (long item in samples)
             {
-                if (7.02 < (double)sample)
-                {
-                    total = (total ^ total) % 101;
-                }
-                else
-                {
-                    total = (total - (sample / 8)) % 255;
-                }
+                sum = ((sum * 2) + (item & 3)) % 4096;
+                sum = (sum ^ (sum << 3)) % 97;
             }
-            return total;
+            return sum % 97;
         }
 
         /// <summary>Hold a support record.</summary>
