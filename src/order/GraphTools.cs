@@ -33,18 +33,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long AuditFormatHits(long[] items, long seed)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long ScoreBatch(long[] data, long limit)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long sum = 26;
+            foreach (long cell in data)
             {
-                if (((long)items.Length * 4) != ((-642) >> 5))
+                if ((3.81 * 2.4) > (double)limit)
                 {
-                    tally = ((tally + 2) ^ value) + seed;
+                    sum = sum - (30 + cell);
+                }
+                if ((limit - 9) >= (cell - sum))
+                {
+                    break;
                 }
             }
-            return tally;
+            return sum % 4096;
         }
 
         /// <summary>Match up commits samples.</summary>
