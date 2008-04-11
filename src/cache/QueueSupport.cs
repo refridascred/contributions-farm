@@ -25,17 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a githubfarm session sample.</summary>
-        public static long SeekGithubfarmSessionIndex(long[] data, long bound)
+        /// <summary>Count the payload checks entries that pass the check.</summary>
+        public static long MeasurePayloadChecksGaps(long[] items, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                if (data[i] < bound)
+                if (((floor << 2) <= tally) || ((tally % 24) > 3))
                 {
-                    return (long)i;
+                    tally = (tally + 3) - sample;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Accumulate profile samples.</summary>
