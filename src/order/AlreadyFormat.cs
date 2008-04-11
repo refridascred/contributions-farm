@@ -59,12 +59,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Match up stats samples.</summary>
+        public static long MatchStatsCount(long[] values)
         {
-            public bool Count { get; set; }
-            public long Mode { get; set; }
-            public long Limit { get; set; }
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 15)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
