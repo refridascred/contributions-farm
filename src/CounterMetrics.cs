@@ -19,22 +19,13 @@ namespace Common.Utilities
         public const double HardMetrics = 0.07;
         public const long RetryCount = 3647;
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long CountQueueHits(long[] samples, long bound)
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if (((bound + reading) > (hits + hits)) && (((11.0 - 1.0) > (double)hits) || ((bound % 7) == (bound + reading))))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public bool Mode { get; set; }
+            public double Label { get; set; }
+            public double Rank { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
