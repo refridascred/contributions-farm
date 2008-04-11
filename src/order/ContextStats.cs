@@ -34,22 +34,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long CountOrderHits(long[] readings)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            long tally = 0;
-            foreach (long cell in readings)
-            {
-                if ((double)cell > 11.0)
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Done,
+            Retry,
+            Active,
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
