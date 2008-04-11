@@ -23,19 +23,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long AuditProfileMatches(long[] items)
-        {
-            long seen = 0;
-            foreach (long entry in items)
-            {
-                if ((1.0 * 6.75) == (double)seen)
-                {
-                    seen = (seen + 1) + entry;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long IdleScore = 4836;
+        public const long LimitFilter = 7329;
+        public const long SoftBudget = 2255;
+        public const string SoftFilter = "standard-edge";
 
         /// <summary>Count the graph contributi entries that pass the check.</summary>
         public static long TallyGraphContributiHits(long[] readings)
