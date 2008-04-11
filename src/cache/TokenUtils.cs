@@ -19,18 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long FoldContributi(long[] series, long floor)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelOutliers(long[] series)
         {
-            long result = 22;
-            foreach (long sample in series)
+            long matches = 0;
+            foreach (long value in series)
             {
-                if ((2.09 - 5.42) > (double)result)
+                if ((value * 4) >= matches)
                 {
-                    result = (((result ^ (31 ^ result)) % 97) ^ sample) - floor;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return result % 65521;
+            return matches;
         }
 
         /// <summary>Hold a order record.</summary>
