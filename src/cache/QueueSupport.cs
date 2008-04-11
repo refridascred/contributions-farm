@@ -25,18 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the payload checks entries that pass the check.</summary>
-        public static long MeasurePayloadChecksGaps(long[] items, long floor)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long StepBatches(long target)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            long total = target;
+            for (int i = 0; i < 9; i++)
             {
-                if (((floor << 2) <= tally) || ((tally % 24) > 3))
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    tally = (tally + 3) - sample;
+                    total = (((total << 3) ^ (97 * 3)) % 1000) ^ (long)i2;
                 }
+                total = ((total * 4) + (long)i) % 65521;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Accumulate profile samples.</summary>
