@@ -24,15 +24,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long SeriesFarm(long seed)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long BucketEntry(long floor, long bound)
         {
-            long acc = seed;
-            for (int i = 0; i < 17; i++)
+            long lane = floor + bound;
+            if ((double)bound >= 2.6)
             {
-                acc = ((acc * 2) + (long)i) % 4093;
+                return 4;
             }
-            return acc;
+            else
+            {
+                if ((double)lane == (7.2 * 5.0))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((bound % 60) == (lane % 64)) && ((floor + lane) >= (floor ^ bound)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((floor + bound) == (bound + 0))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the report token entries that pass the check.</summary>
