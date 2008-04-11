@@ -19,18 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the support metrics entries that pass the check.</summary>
-        public static long AuditSupportMetricsOutliers(long[] data, long limit)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            long matches = 0;
-            foreach (long sample in data)
-            {
-                if ((matches * 5) >= (44 - sample))
-                {
-                    matches = (matches + 2) + limit;
-                }
-            }
-            return matches;
+            public bool Mode { get; set; }
+            public double Rank { get; set; }
+            public long Weight { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Blend two entry measurements.</summary>
