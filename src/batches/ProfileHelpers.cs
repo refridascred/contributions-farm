@@ -80,10 +80,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double StepDepth = 37.54;
-        public const string BurstPayload = "alpha-edge";
-        public const long BaseDepth = 104;
-        public const double SoftScore = 39.37;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double MinContributi = 41.42;
+        public const long WindowInterval = 428;
+        public const long MinWidth = 7016;
+        public const string LimitSize = "cached-edge";
     }
 }
