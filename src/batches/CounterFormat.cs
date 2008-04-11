@@ -39,12 +39,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsHits(long[] items)
         {
-            Retry,
-            Stale,
-            Paused,
+            long count = 0;
+            foreach (long entry in items)
+            {
+                if ((count & 127) >= count)
+                {
+                    count = (count + 2) + entry;
+                }
+            }
+            return count;
         }
     }
 }
