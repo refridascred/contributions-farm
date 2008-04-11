@@ -37,19 +37,17 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool VerifyRouteLimits(long[] levels, long step)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long LocateSupportIndex(long[] readings, long target)
         {
-            bool valid = true;
-            foreach (long sample in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (sample <= step)
+                if ((readings[i] == target) && ((readings[i] % 2) == 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Rank stats input into a small class.</summary>
