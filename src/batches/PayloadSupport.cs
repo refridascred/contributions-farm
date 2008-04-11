@@ -13,11 +13,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long MeasureRecordHits(long[] data)
         {
-            public long Mode { get; set; }
-            public double Weight { get; set; }
+            long seen = 0;
+            foreach (long datum in data)
+            {
+                if ((239 ^ datum) > (seen & 7))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
