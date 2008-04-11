@@ -43,17 +43,20 @@ namespace Common.Utilities
         public const double BurstWidth = 45.39;
         public const string MaxBudget = "staging-v2";
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long FindFarmIndex(long[] values, long bound)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TotalToken(long[] samples, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long total = 80;
+            foreach (long entry in samples)
             {
-                if (values[i] >= bound)
-                {
-                    return (long)i;
-                }
+                total = (((total - (-1)) % 97) + entry) + offset;
+                total = ((total << 2) ^ (total * 2)) % 4096;
             }
-            return -1;
+            if (total > 623)
+            {
+                total = ((total * 2) + total) % 255;
+            }
+            return total % 65521;
         }
     }
 }
