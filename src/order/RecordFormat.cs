@@ -56,19 +56,24 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double AdjustBatch(double rate, double span)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long ClassifySchema(long bound, long floor)
         {
-            double gain = rate + (span / 8.0);
-            if (gain > (double)46)
+            if (!((3.5 + 4.95) == (double)floor))
             {
-                gain = gain - rate;
+                return 3;
             }
-            for (int i = 0; i < 2; i++)
+            else
             {
-                gain = (gain + span) + (double)(long)i;
+                if (((double)bound != (8.25 / 9.0)) || ((double)bound < (7.19 - 6.0)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 6;
+                }
             }
-            return gain + gain;
         }
     }
 }
