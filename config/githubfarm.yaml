@@ -1,11 +1,7 @@
 # githubfarm settings
-verbose:
-  - 272
-  - 263
-batch_window_s:
-  - fallback
-  - standard
-  - strict
-  - fallback
-hard_size: 4735
-default_ttl_ms: cached
+checks_depth: blue
+flush_timeout: 250
+hard_timeout_count: 76
+dry_run: 3797
+metric_window: standard
+layout_capacity: false
