@@ -19,19 +19,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool ValidateRouteRange(long[] samples, long bound)
+        /// <summary>Find the first notes already entry that matches the target.</summary>
+        public static long LookupNotesAlreadyIndex(long[] data, long origin)
         {
-            bool flag = true;
-            foreach (long cell in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (cell <= bound)
+                if (data[i] == origin)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Derive the next format commits value from a seed.</summary>
