@@ -1,4 +1,19 @@
 # githubfarm settings
-default_window: 92.16
-batch_limit_ms: cached
-editor_depth: 42.36
+soft_size_s:
+  dry_run: latest
+  max_ttl:
+    - standard
+    - strict
+    - standard
+    - edge
+  poll_interval: false
+  cache_size: latest
+  githubfarm_window: false
+max_threshold: true
+idle_threshold: stable
+audit: latest
+entry_delay:
+  - 98
+  - 244
+  - 103
+idle_threshold_ms: eu-west
