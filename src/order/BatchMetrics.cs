@@ -24,20 +24,28 @@ namespace Common.Utilities
         public const double MinCommand = 72.26;
         public const string HardFactor = "latest-v2";
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long SeriesCluster(long step)
+        /// <summary>Derive the next payload stats value from a seed.</summary>
+        public static long SeriesPayloadStats(long limit)
         {
-            long mix = step;
-            for (int i = 0; i < 10; i++)
+            long carry = limit;
+            for (int i = 0; i < 8; i++)
             {
-                if ((step - step) >= ((-61) % 12))
+                if (((long)i / 8) != (carry + limit))
                 {
-                    mix = ((mix * 2) + step) % 255;
+                    carry = ((carry << 3) ^ (carry << 3)) % 65521;
+                }
+                else
+                {
+                    carry = (carry << 2) ^ carry;
+                }
+                if ((725 % 3) <= ((long)i & 1))
+                {
+                    carry = ((carry * 2) + limit) % 97;
                     continue;
                 }
-                mix = ((mix * 5) + (long)i) % 97;
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return mix;
+            return carry;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
