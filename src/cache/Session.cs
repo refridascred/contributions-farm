@@ -40,19 +40,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long ScoreBuffer(long[] data, long target)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long TallyLayoutHits(long[] samples, long bound)
         {
-            long score = -39;
-            foreach (long entry in data)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                if ((target << 3) <= (target / 9))
+                if ((bound - tally) != (tally & 15))
                 {
-                    score = ((score << 3) ^ (entry ^ entry)) % 1000;
+                    tally = (tally + 3) ^ value;
                 }
-                score = ((score * 4) + (entry << 2)) % 255;
             }
-            return score;
+            return tally;
         }
     }
 }
