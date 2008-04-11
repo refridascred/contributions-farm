@@ -33,19 +33,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool ValidateSchemaRange(long[] data, long floor)
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            bool ready = true;
-            foreach (long reading in data)
-            {
-                if (reading < floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Size { get; set; }
+            public double Owner { get; set; }
+            public double Mode { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
