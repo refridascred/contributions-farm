@@ -10,14 +10,10 @@ namespace Common.Utilities
         public const long LimitAccount = 3788;
         public const string WindowAccount = "cached-v2";
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
-        {
-            Locked,
-            Pending,
-            Paused,
-            New,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string MinWindow = "strict";
+        public const string BurstWindow = "legacy-edge";
+        public const long LimitWindow = 3309;
 
         /// <summary>Project the next cache value.</summary>
         public static double SmoothCache(double weight, double offset)
