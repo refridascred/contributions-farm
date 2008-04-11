@@ -24,19 +24,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long TotalTools(long[] levels)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphMatches(long[] data, long offset)
         {
-            long mark = 616;
-            foreach (long datum in levels)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                mark = (mark * 4) + (datum % 3);
+                if ((692 ^ matches) != (sample >> 4))
+                {
+                    matches = (matches + 3) + offset;
+                }
             }
-            if (mark < 10)
-            {
-                mark = ((mark * 2) + mark) % 101;
-            }
-            return mark;
+            return matches;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
