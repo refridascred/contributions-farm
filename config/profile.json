@@ -1,5 +1,8 @@
 {
-  "sync_ttl_count": 1561,
-  "max_ratio_count": 65,
-  "burst_window_count": "edge"
+  "stream_threshold": 3765,
+  "account_delay": false,
+  "compress": "cached",
+  "retry_ttl": true,
+  "hard_ratio_ms": 93.63,
+  "min_timeout_pct": 3006
 }
