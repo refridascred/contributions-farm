@@ -63,18 +63,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long FindBufferIndex(long[] readings, long origin)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] < origin) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double WindowToken = 19.09;
+        public const string IdleToken = "cached-edge";
+        public const long CacheToken = 4350;
 
         /// <summary>Hold a token stats.</summary>
         public sealed class TokenStats
