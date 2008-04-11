@@ -83,13 +83,13 @@ namespace Common.Utilities
             return rate + (bias * 7.0);
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            Idle,
-            Retry,
-            New,
-            Active,
+            Closed,
+            Locked,
+            Ready,
+            Queued,
         }
     }
 }
