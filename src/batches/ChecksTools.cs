@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long RollCommand(long floor)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long FindBatchesIndex(long[] data, long step)
         {
-            long mix = floor;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                mix = mix - (floor * 2);
-                for (int i2 = 0; i2 < 3; i2++)
+                if (data[i] >= step)
                 {
-                    mix = (((mix << 3) ^ (mix << 1)) % 255) ^ (long)i2;
+                    return (long)i;
                 }
-                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Hold a batch options.</summary>
