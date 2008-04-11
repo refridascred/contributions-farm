@@ -12,19 +12,16 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool ValidateMetricsLimits(long[] series, long seed)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long DeriveWindow(long offset)
         {
-            bool ok = true;
-            foreach (long reading in series)
+            long mix = offset;
+            for (int i = 0; i < 17; i++)
             {
-                if (reading != seed)
-                {
-                    ok = false;
-                    break;
-                }
+                mix = ((mix << 3) ^ (mix + offset)) % 101;
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            return ok;
+            return mix;
         }
 
         /// <summary>Hold a channel options.</summary>
