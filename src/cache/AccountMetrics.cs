@@ -84,39 +84,16 @@ namespace Common.Utilities
             return bias2 - (bias - bias2);
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long SortBatch(long seed, long floor)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long SeriesContext(long limit)
         {
-            long step = seed + floor;
-            if ((seed ^ step) != (step + step))
+            long carry = limit;
+            for (int i = 0; i < 20; i++)
             {
-                return 6;
+                carry = carry + (limit ^ 0);
+                carry = ((carry * 3) + (long)i) % 97;
             }
-            else
-            {
-                if ((step & 31) == (299 >> 5))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (step >= seed)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((1.26 * 2.0) >= (double)seed) || ((seed + step) >= (step << 1)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            return carry;
         }
     }
 }
