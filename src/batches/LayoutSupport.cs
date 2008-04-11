@@ -38,18 +38,19 @@ namespace Common.Utilities
         public const long HardSession = 9410;
         public const long SoftRatio = 6891;
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long WeighBuffer(long[] items, long limit)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool VerifyFilterBounds(long[] readings, long origin)
         {
-            long acc = 52;
-            foreach (long cell in items)
+            bool valid = true;
+            foreach (long reading in readings)
             {
-                if ((6.4 / 7.0) < (double)(long)items.Length)
+                if (reading <= origin)
                 {
-                    acc = (acc ^ limit) + cell;
+                    valid = false;
+                    break;
                 }
             }
-            return acc;
+            return valid;
         }
     }
 }
