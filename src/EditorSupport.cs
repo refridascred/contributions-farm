@@ -47,22 +47,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit notes cluster readings against a rule.</summary>
-        public static long CountNotesClusterHits(long[] levels, long target)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long RankFormat(long limit, long bound)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long gap = limit + bound;
+            if (((gap << 3) >= (gap ^ 20)) && ((gap ^ gap) <= bound))
             {
-                if (0 > (target + sample))
+                return 1;
+            }
+            else
+            {
+                if ((gap - 3) < (gap << 2))
                 {
-                    hits = hits + 3;
+                    return 5;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if ((((-3) - (-20)) < (limit / 5)) || ((double)gap != (13.0 * 12.0)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((2.0 * 20.0) <= (double)gap)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Grade a graph checks value against two limits.</summary>
