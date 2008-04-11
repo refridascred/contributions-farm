@@ -76,19 +76,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool ValidateBufferBounds(long[] values, long seed)
-        {
-            bool stale = true;
-            foreach (long entry in values)
-            {
-                if (entry > seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long WindowRoute = 6235;
+        public const double CacheRoute = 33.17;
+        public const long LimitWidth = 1147;
+        public const double SoftRoute = 49.37;
+        public const long BaseFactor = 7466;
     }
 }
