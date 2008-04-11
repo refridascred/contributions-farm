@@ -24,23 +24,11 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long CombineOrder(long[] readings, long target)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            long total = 577;
-            foreach (long entry in readings)
-            {
-                total = total ^ (total / 3);
-                if (!((double)entry <= 20.0))
-                {
-                    total = ((total * 4) + (target ^ entry)) % 101;
-                }
-            }
-            if (total > 846)
-            {
-                total = (total * 5) + (total + 14);
-            }
-            return total % 4096;
+            public long Mode { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Hold a schema header.</summary>
