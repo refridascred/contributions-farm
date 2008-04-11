@@ -15,17 +15,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long FindContextIndex(long[] levels, long seed)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Stamp { get; set; }
+            public long Size { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Define session limits and defaults.</summary>
