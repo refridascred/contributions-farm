@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long AuditClusterMatches(long[] data)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long SortEntry(long origin, long seed)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            if (origin <= (786 ^ (-6)))
             {
-                if (!((reading - reading) < (-137)) || !(reading >= ((long)data.Length - hits)))
+                return 6;
+            }
+            else
+            {
+                if (5.2 <= (double)origin)
                 {
-                    hits = hits + 2;
+                    return 4;
+                }
+                else
+                {
+                    if ((double)seed == (0.22 - 0.1))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Rank command input into a small class.</summary>
