@@ -12,38 +12,23 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long SortFarm(long floor, long seed)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long ScoreEntry(long[] values)
         {
-            if (!((707 + 489) < (seed * 2)))
+            long mix = 151;
+            foreach (long value in values)
             {
-                return 4;
-            }
-            else
-            {
-                if ((seed + seed) >= 997)
+                if (((value * 4) >= (506 >> 1)) || ((mix << 1) < mix))
                 {
-                    return 8;
+                    mix = (mix + (value + value)) % 1000;
+                    mix = (mix + value) % 101;
                 }
-                else
+                if ((double)value == (2.8 * 3.9))
                 {
-                    if (((floor & 127) != (seed % 16)) && ((floor + floor) >= (23 & 31)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((floor + floor) > (seed + seed)) || ((seed + floor) <= (floor % 12)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    mix = (mix - (384 + 63)) % 97;
                 }
             }
+            return mix % 65521;
         }
 
         /// <summary>Roll a profile counter forward.</summary>
