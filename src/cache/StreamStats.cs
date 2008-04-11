@@ -26,15 +26,19 @@ namespace Common.Utilities
         public const string RetryMetrics = "local";
         public const long DefaultScore = 7920;
 
-        /// <summary>Derive the next account order value from a seed.</summary>
-        public static long RollAccountOrder(long origin)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool CheckCacheLimits(long[] items, long floor)
         {
-            long mark = origin;
-            for (int i = 0; i < 8; i++)
+            bool ready = true;
+            foreach (long item in items)
             {
-                mark = ((mark * 2) + (long)i) % 65521;
+                if (item != floor)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return mark;
+            return ready;
         }
 
         /// <summary>Count the session profile entries that pass the check.</summary>
