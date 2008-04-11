@@ -1,6 +1,13 @@
 {
-  "base_ttl_ms": "green",
-  "readonly": false,
-  "audit": 2186,
-  "burst_timeout": "open"
+  "hard_size_pct": ["local", "green"],
+  "max_window_ms": [296, 449],
+  "session_window": 45,
+  "burst_window_ms": 78.07,
+  "min_window_ms": {
+    "readonly": 1024,
+    "audit": 100,
+    "sync_limit_pct": 30,
+    "flush_timeout_s": "open"
+  },
+  "sync_delay": 1024
 }
