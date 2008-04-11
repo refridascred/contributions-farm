@@ -1,12 +1,11 @@
 # Command notes
 
-The cluster helpers are pure functions, so they are safe to call from any thread.
-Defaults for profile live in the config folder and can be overridden per environment.
-Use batches settings to tune how often notes data is refreshed.
+Run the report check before changing any metric limits.
+A report that stays idle for too long is moved to the already list.
+A report that stays idle for too long is moved to the contributi list.
 
 ## Guidelines
 
-- Keep batch values small
-- Review stats limits each release
-- Prefer batch defaults
-- Validate payload input early
+- Validate contributi input early
+- Prefer metrics defaults
+- Log every batches change
