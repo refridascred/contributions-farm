@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountMatches(long[] data, long floor)
         {
-            public string Token { get; set; } = "";
-            public double Score { get; set; }
-            public double Weight { get; set; }
+            long tally = 0;
+            foreach (long value in data)
+            {
+                if (!(((double)floor >= (17.0 - 4.9)) && (28 > (tally * 5))))
+                {
+                    tally = (tally + 2) + value;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define command limits and defaults.</summary>
