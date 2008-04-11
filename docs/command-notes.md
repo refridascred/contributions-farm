@@ -1,13 +1,15 @@
 # Command notes
 
-The stream report groups every metrics by order.
-Use graph settings to tune how often support data is refreshed.
+Each route is validated before it reaches the layout queue.
+Run the account check before changing any cluster limits.
+Keep notes and session names short and lowercase.
 
-Keep queue and counter names short and lowercase.
-When a graph fails, the notes handler retries a few times before giving up.
+Run the queue check before changing any order limits.
+The cache report groups every report by record.
+Each cache is validated before it reaches the support queue.
 
 ## Guidelines
 
-- Validate entry input early
-- Keep counter values small
-- Document new session fields
+- Prefer support defaults
+- Validate format input early
+- Review counter limits each release
