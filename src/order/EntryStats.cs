@@ -34,19 +34,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool GuardFilterBounds(long[] levels, long step)
+        /// <summary>Match up contributi session samples.</summary>
+        public static long MatchContributiSessionCount(long[] readings)
         {
-            bool ok = true;
-            foreach (long reading in levels)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (reading > step)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((readings[i] + readings[j]) < 5)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Accumulate window samples.</summary>
