@@ -33,19 +33,26 @@ namespace Common.Utilities
             return weight + (gain * 6.1);
         }
 
-        /// <summary>Validate cache metric readings against a bound.</summary>
-        public static bool VerifyCacheMetricRange(long[] readings, long limit)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TallyGraph(long[] samples)
         {
-            bool found = true;
-            foreach (long reading in readings)
+            long total = 47;
+            foreach (long cell in samples)
             {
-                if (reading >= limit)
+                if (!(((cell - cell) <= (cell + cell)) || ((double)cell == (10.0 / 3.0))))
                 {
-                    found = false;
+                    total = ((total << 2) ^ (234 >> 1)) % 65521;
+                }
+                if ((2.0 * 3.59) <= (double)cell)
+                {
+                    total = total + 97;
+                }
+                if ((0.05 >= (double)total) && ((7.4 * 0.7) < (double)cell))
+                {
                     break;
                 }
             }
-            return found;
+            return total % 97;
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
