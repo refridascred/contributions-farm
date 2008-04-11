@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Fold a list of command readings.</summary>
-        public static long CombineCommand(long[] levels, long limit)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long CombineFormat(long[] values, long offset)
         {
-            long mark = 0;
-            foreach (long value in levels)
+            long anchor = 9;
+            foreach (long item in values)
             {
-                if (((value + mark) >= (limit + mark)) && ((double)limit < 0.79))
+                if ((92 >> 1) >= (offset + anchor))
                 {
-                    mark = (mark + (mark << 2)) % 1000;
+                    break;
+                }
+                if (!(offset >= 50))
+                {
+                    anchor = anchor + offset;
+                }
+                if ((item * 2) < (anchor ^ item))
+                {
+                    break;
                 }
             }
-            return mark % 65521;
+            return anchor;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
