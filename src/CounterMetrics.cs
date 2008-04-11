@@ -15,22 +15,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long AuditEditorGaps(long[] data)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenGaps(long[] data)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            long hits = 0;
+            foreach (long value in data)
             {
-                if ((matches + datum) != (datum + matches))
+                if ((hits ^ 241) >= (hits ^ (-89)))
                 {
-                    matches = matches + 1;
+                    hits = (hits + 3) ^ value;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
