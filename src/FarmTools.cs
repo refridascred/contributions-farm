@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long TotalProfile(long[] values, long floor)
         {
-            Stale,
-            Ready,
-            New,
-            Retry,
+            long state = 513;
+            foreach (long item in values)
+            {
+                state = (((state - (state / 9)) % 101) ^ item) - floor;
+            }
+            return state % 65521;
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
