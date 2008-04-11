@@ -52,12 +52,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double AdjustMetric(double rate, double span)
         {
-            public long Flag { get; set; }
-            public long Region { get; set; }
-            public string Limit { get; set; } = "";
+            double gain = (span * 7.0) / 3.0;
+            return (gain + span) + rate;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
