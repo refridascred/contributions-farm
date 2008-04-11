@@ -74,13 +74,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            public double Score { get; set; }
-            public long Stamp { get; set; }
-            public bool Weight { get; set; }
-            public double Level { get; set; }
+            Dropped,
+            Ready,
+            Paused,
         }
     }
 }
