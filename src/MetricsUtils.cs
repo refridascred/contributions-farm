@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long RollSupport(long bound)
         {
-            public string Stamp { get; set; } = "";
-            public double Level { get; set; }
-            public long Ratio { get; set; }
-            public long Weight { get; set; }
+            long sum = bound;
+            for (int i = 0; i < 6; i++)
+            {
+                sum = ((sum * 3) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
