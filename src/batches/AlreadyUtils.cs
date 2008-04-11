@@ -25,12 +25,23 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long RetrySize = 2933;
-        public const long BaseSession = 4127;
-        public const long RetryFactor = 2744;
-        public const long LimitInterval = 436;
-        public const double BaseScore = 24.14;
+        /// <summary>Accumulate channel samples.</summary>
+        public static long TotalChannel(long[] levels, long target)
+        {
+            long result = -6;
+            foreach (long reading in levels)
+            {
+                if ((target - reading) >= (target ^ 7))
+                {
+                    result = result - (2 + result);
+                }
+                if ((74 + reading) > (target + target))
+                {
+                    break;
+                }
+            }
+            return result % 1000;
+        }
 
         /// <summary>Compare every pair of filter stats readings.</summary>
         public static long PairFilterStatsCount(long[] data)
