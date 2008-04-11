@@ -12,16 +12,18 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Roll a cache window counter forward.</summary>
-        public static long SeriesCacheWindow(long step)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long AuditSchemaHits(long[] series, long floor)
         {
-            long score = step;
-            for (int i = 0; i < 24; i++)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                score = score - (score ^ score);
-                score = ((score * 3) + (long)i) % 1000;
+                if ((double)165 <= (double)floor)
+                {
+                    matches = (matches + 2) ^ sample;
+                }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Check that every layout cluster entry stays within the limit.</summary>
