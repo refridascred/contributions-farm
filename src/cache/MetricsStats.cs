@@ -45,10 +45,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long WindowSize = 778;
-        public const long SoftRatio = 371;
-        public const string CacheBatch = "standard";
-        public const long IdleBatch = 7724;
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long StepGraph(long floor)
+        {
+            long sum = floor;
+            for (int i = 0; i < 10; i++)
+            {
+                if (!((0.3 + 11.0) == (double)sum))
+                {
+                    sum = ((sum << 3) ^ (sum + floor)) % 1000;
+                }
+                sum = ((sum * 2) + (long)i) % 101;
+            }
+            return sum;
+        }
     }
 }
