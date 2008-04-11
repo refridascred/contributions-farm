@@ -17,21 +17,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count payload format pairs that satisfy a relation.</summary>
-        public static long PairPayloadFormatCount(long[] readings)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long TallyFarmOutliers(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((sample & 15) >= sample)
                 {
-                    if ((readings[i] - readings[j]) < 1)
-                    {
-                        count = count + 1;
-                    }
+                    seen = seen + 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
