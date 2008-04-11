@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Count the farm channel entries that pass the check.</summary>
+        public static long AuditFarmChannelGaps(long[] samples)
         {
-            Locked,
-            Paused,
-            Idle,
-            Done,
+            long matches = 0;
+            foreach (long datum in samples)
+            {
+                if (!!((matches - matches) == (datum + 0)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Blend two editor measurements.</summary>
