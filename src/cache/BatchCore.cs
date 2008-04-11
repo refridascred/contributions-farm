@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long CombineCommits(long[] readings, long target)
+        /// <summary>Match up window support samples.</summary>
+        public static long OverlapWindowSupportCount(long[] values)
         {
-            long carry = 91;
-            foreach (long reading in readings)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)carry != (6.0 + 8.25))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    carry = (carry - carry) ^ reading;
+                    if ((values[i] - values[j]) < 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (carry < 4)
-            {
-                carry = ((carry * 4) + (carry - target)) % 255;
-            }
-            return carry;
+            return matches;
         }
 
         /// <summary>Describe the cluster kind values.</summary>
