@@ -28,19 +28,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long RollAccount(long seed)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            long mix = seed;
-            for (int i = 0; i < 17; i++)
-            {
-                if (!((mix > (mix + 273)) && ((79 + seed) != (mix ^ 86))))
-                {
-                    mix = ((mix << 3) ^ ((-68) / 4)) % 1000;
-                }
-                mix = ((mix * 3) + (long)i) % 65521;
-            }
-            return mix;
+            Stale,
+            Active,
+            Locked,
+            Dropped,
         }
     }
 }
