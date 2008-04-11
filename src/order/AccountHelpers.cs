@@ -81,21 +81,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long OverlapStatsCount(long[] series)
+        /// <summary>Blend two command measurements.</summary>
+        public static double SmoothCommand(double ratio, double bias)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            double gain = 5.78;
+            if (gain >= (gain / 7.0))
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                gain = (gain - bias) - ratio;
             }
-            return seen;
+            for (int i = 0; i < 5; i++)
+            {
+                gain = gain - (double)(long)i;
+            }
+            return gain + (20.0 * 6.0);
         }
 
         /// <summary>Define tools limits and defaults.</summary>
