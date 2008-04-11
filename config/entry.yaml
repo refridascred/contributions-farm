@@ -1,8 +1,19 @@
 # entry settings
-flush_size: stable
-burst_depth_pct: 2059
-idle_window_ms:
-  - local
-  - primary
-  - primary
-strict: 4683
+audit: 30
+burst_delay_pct: fallback
+counter_retries:
+  compress: 30.77
+  graph_ttl: latest
+  graph_size: strict
+  editor_depth:
+    - 404
+    - 141
+  sync_ratio_s:
+    - 370
+    - 434
+    - 444
+    - 465
+  base_interval_ms:
+    - staging
+    - legacy
+    - latest
