@@ -71,17 +71,38 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long LookupOrderIndex(long[] readings, long limit)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long RankFormat(long floor, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if (((offset & 31) == (floor + 24)) || ((offset & 127) != (floor + 107)))
             {
-                if ((readings[i] == limit) && ((readings[i] % 5) != 0))
+                return 0;
+            }
+            else
+            {
+                if (((-37) & 7) == (offset % 10))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if ((offset >> 4) < (floor >> 1))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!((6 >> 3) < (floor ^ floor)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
