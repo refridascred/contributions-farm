@@ -52,18 +52,21 @@ namespace Common.Utilities
             return gain2 - (gain - 3.0);
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long CountNotesMatches(long[] samples, long bound)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long OverlapSupportCount(long[] levels)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)reading < (17.0 - 14.0))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    tally = (tally + 3) - bound;
+                    if ((levels[i] ^ levels[j]) > 17)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
