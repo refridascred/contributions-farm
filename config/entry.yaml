@@ -1,5 +1,4 @@
 # entry settings
-checks_limit: 30
-batch_delay: true
-queue_depth: legacy
-counter_capacity: 9600
+enabled: primary
+batch_ttl: false
+warm_delay_ms: false
