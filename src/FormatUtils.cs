@@ -64,21 +64,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long OverlapStreamCount(long[] data)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Active,
+            Paused,
+            Closed,
         }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
