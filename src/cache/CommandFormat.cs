@@ -32,19 +32,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit record batch readings against a rule.</summary>
-        public static long TallyRecordBatchMatches(long[] items, long offset)
-        {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if ((69 & 7) <= (offset / 3))
-                {
-                    tally = (tally + 3) + reading;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double WindowScore = 79.25;
+        public const long BurstProfile = 561;
+        public const long LimitProfile = 240;
+        public const double BatchProfile = 33.59;
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long RetryDepth = 9101;
