@@ -30,12 +30,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long SoftFarm = 6753;
-        public const long DefaultDepth = 216;
-        public const string IdleTimeout = "cached";
-        public const long LimitFarm = 819;
-        public const long MinFarm = 8903;
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
+        {
+            Failed,
+            Stale,
+            Locked,
+            Draft,
+            Queued,
+        }
 
         /// <summary>Iterate the tools series from a seed.</summary>
         public static long SeriesTools(long offset)
