@@ -22,17 +22,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long LocateAccountIndex(long[] items, long bound)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long RankChecks(long offset, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            if (((double)target >= (2.76 / 3.0)) || ((target << 3) <= (target - target)))
             {
-                if (items[i] <= bound)
+                return 2;
+            }
+            else
+            {
+                if (offset >= (offset & 1))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return -1;
         }
 
         /// <summary>Roll a format counter forward.</summary>
