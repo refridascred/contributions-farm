@@ -29,19 +29,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool CheckStreamLimits(long[] data, long limit)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricMatches(long[] samples, long limit)
         {
-            bool found = true;
-            foreach (long value in data)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                if (value > limit)
+                if (value >= (limit - limit))
                 {
-                    found = false;
-                    break;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return found;
+            return matches;
         }
     }
 }
