@@ -1,5 +1,19 @@
 # support settings
-enabled: false
-retry_ttl_count: false
-report_ttl: 39
-command_limit: 39
+dry_run:
+  - latest
+  - strict
+  - open
+strict:
+  - 284
+  - 379
+  - 213
+hard_threshold_s: 86
+flush_depth:
+  poll_ttl:
+    - fallback
+    - blue
+    - green
+  flush_interval: 60
+  idle_ratio_ms: green
+  default_interval_s: fallback
+  readonly: true
