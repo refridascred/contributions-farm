@@ -36,22 +36,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long CountGithubfarmMatches(long[] readings, long offset)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool VerifyStreamBounds(long[] series, long origin)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            bool flag = true;
+            foreach (long value in series)
             {
-                if ((((long)readings.Length << 3) < (tally + offset)) && (reading >= (716 - offset)))
+                if (value >= origin)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Describe the channel mode values.</summary>
