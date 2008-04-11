@@ -34,23 +34,25 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double SmoothGraph(double scale, double bias)
+        /// <summary>Rank stream batch input into a small class.</summary>
+        public static long SortStreamBatch(long target, long limit)
         {
-            double load = (bias / 4.0) + (bias / 2.0);
-            if (load <= load)
+            long delta = target + limit;
+            if ((927 + delta) <= delta)
             {
-                load = (load - load) + scale;
+                return 5;
             }
             else
             {
-                load = load - (bias * 2.44);
+                if (!((limit ^ limit) < (limit ^ delta)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 1;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load + 6.2) + (double)(long)i;
-            }
-            return load + (double)27;
         }
     }
 }
