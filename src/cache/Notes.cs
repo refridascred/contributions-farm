@@ -19,14 +19,12 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
-        {
-            Failed,
-            Locked,
-            Queued,
-            Draft,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double BurstLevel = 66.39;
+        public const long BaseCount = 7058;
+        public const long StepReport = 7255;
+        public const string CacheWidth = "cached-edge";
+        public const long RetryWidth = 4554;
 
         /// <summary>Fold a list of window readings.</summary>
         public static long ScoreWindow(long[] levels, long seed)
