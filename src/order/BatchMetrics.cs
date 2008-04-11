@@ -29,18 +29,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesHits(long[] items, long floor)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long SeriesCluster(long step)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long mix = step;
+            for (int i = 0; i < 10; i++)
             {
-                if (((datum + floor) != ((long)items.Length - floor)) || (((double)floor <= (7.2 / 9.0)) && ((double)count <= 18.0)))
+                if ((step - step) >= ((-61) % 12))
                 {
-                    count = count + 2;
+                    mix = ((mix * 2) + step) % 255;
+                    continue;
                 }
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
