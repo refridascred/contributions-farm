@@ -25,11 +25,13 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long DefaultFarm = 7707;
-        public const long HardLevel = 6885;
-        public const long BaseTimeout = 1378;
-        public const long RetryFarm = 4601;
-        public const double RetrySize = 86.55;
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
+        {
+            public long Limit { get; set; }
+            public string Region { get; set; } = "";
+            public long Mode { get; set; }
+            public long Size { get; set; }
+        }
     }
 }
