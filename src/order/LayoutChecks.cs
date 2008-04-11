@@ -5,28 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Accumulate batch context samples.</summary>
-        public static long ScoreBatchContext(long[] levels)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long MatchToolsCount(long[] readings)
         {
-            long state = 6;
-            foreach (long cell in levels)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((cell > state) || ((8 - state) > (cell >> 4)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    state = ((state << 2) ^ (cell - 169)) % 97;
-                    continue;
-                }
-                if (!((state + state) <= (2 * 5)))
-                {
-                    state = (state * 2) + (cell ^ state);
-                    state = ((state << 3) ^ state) % 255;
-                }
-                if (!(state <= (cell * 2)))
-                {
-                    state = state ^ (cell * 4);
+                    if ((readings[i] - readings[j]) > 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
