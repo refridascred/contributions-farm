@@ -38,11 +38,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long StepAccount = 5890;
-        public const double CacheLevel = 64.21;
-        public const string HardLevel = "standard-edge";
-        public const long LimitAccount = 7076;
-        public const string WindowAccount = "open-1";
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long TallyReportMatches(long[] values, long floor)
+        {
+            long tally = 0;
+            foreach (long entry in values)
+            {
+                if ((floor ^ floor) < (entry << 1))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
     }
 }
