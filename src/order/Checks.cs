@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BurstCount = 5688;
-        public const long BaseInterval = 9413;
-        public const double StepFactor = 96.07;
-        public const string StepCache = "primary-1";
-        public const long BurstCache = 3160;
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
+        {
+            public double Score { get; set; }
+            public bool Level { get; set; }
+        }
 
         /// <summary>Rank farm input into a small class.</summary>
         public static long SortFarm(long floor, long seed)
