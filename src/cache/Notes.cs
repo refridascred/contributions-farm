@@ -55,14 +55,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
-        {
-            Retry,
-            Active,
-            Locked,
-            New,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BaseStats = 2242;
+        public const string DefaultSize = "open-edge";
+        public const long CacheSpan = 240;
+        public const long BurstStats = 6935;
 
         /// <summary>Describe the batch phase values.</summary>
         public enum BatchPhase
