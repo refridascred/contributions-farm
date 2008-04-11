@@ -71,15 +71,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Roll a batches metric counter forward.</summary>
-        public static long IterateBatchesMetric(long bound)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long LookupCacheIndex(long[] series, long target)
         {
-            long state = bound;
-            for (int i = 0; i < 14; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                state = ((state * 4) + (long)i) % 101;
+                if ((series[i] > target) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
     }
 }
