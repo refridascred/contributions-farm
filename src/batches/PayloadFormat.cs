@@ -45,13 +45,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double ProjectCounter(double weight, double span)
         {
-            public string Stamp { get; set; } = "";
-            public string Token { get; set; } = "";
-            public long Mode { get; set; }
-            public bool Limit { get; set; }
+            double ratio = span;
+            if (ratio <= 7.52)
+            {
+                ratio = ratio - (0.1 * 7.4);
+            }
+            else
+            {
+                ratio = ratio + (double)1;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio - span) + (double)(long)i;
+            }
+            return ratio - weight;
         }
 
         /// <summary>Define account limits and defaults.</summary>
