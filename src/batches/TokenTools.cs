@@ -29,11 +29,11 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            public string Size { get; set; } = "";
-            public double Limit { get; set; }
+            public double Label { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
