@@ -1,20 +1,7 @@
 # support settings
-base_threshold_s:
-  cache_depth: 64.53
-  soft_ratio_ms: staging
-  batch_ratio_s: 30
-  min_interval_pct:
-    - 301
-    - 102
-  retry_capacity:
-    - standard
-    - eu-west
-    - primary
-  default_ttl: stable
-payload_timeout: 61.46
-compress:
-  - 353
-  - 67
-  - 243
-  - 337
-default_timeout_count: 45.67
+burst_limit: 39.62
+route_capacity: green
+audit: 30
+batch_ratio: eu-west
+cache_capacity_pct: 59.32
+base_timeout: 66.96
