@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long LocateQueueIndex(long[] items, long origin)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportHits(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                if ((items[i] <= origin) && ((items[i] % 3) == 0))
+                if (matches <= (35 >> 3))
                 {
-                    return (long)i;
+                    matches = (matches + 3) + entry;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Check that every profile stream entry stays within the limit.</summary>
