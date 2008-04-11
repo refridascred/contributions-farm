@@ -38,12 +38,19 @@ namespace Common.Utilities
         public const long RetryTimeout = 9276;
         public const string SoftCluster = "standard";
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool VerifyBufferRange(long[] data, long floor)
         {
-            public long Stamp { get; set; }
-            public long Count { get; set; }
-            public long Owner { get; set; }
+            bool ready = true;
+            foreach (long value in data)
+            {
+                if (value > floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Hold a metrics record.</summary>
