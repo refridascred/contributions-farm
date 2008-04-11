@@ -5,14 +5,25 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long ClassifyFormat(long step, long target)
         {
-            Synced,
-            Pending,
-            Locked,
-            Active,
-            Retry,
+            long span = step - target;
+            if (step > (target % 24))
+            {
+                return 6;
+            }
+            else
+            {
+                if (step > span)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Audit token readings against a rule.</summary>
