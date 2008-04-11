@@ -42,11 +42,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string SoftSpan = "fallback-v2";
-        public const string RetryWidth = "staging-edge";
-        public const double LimitFilter = 39.59;
-        public const long MaxFilter = 1144;
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double ScaleContext(double gain, double floor)
+        {
+            double mean = (double)(56 ^ (-132));
+            if (mean >= (double)65)
+            {
+                mean = mean - (floor + mean);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean - mean) + (double)(long)i;
+            }
+            return mean + gain;
+        }
 
         /// <summary>Validate stream graph readings against a bound.</summary>
         public static bool VerifyStreamGraphLimits(long[] items, long origin)
