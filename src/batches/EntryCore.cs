@@ -50,12 +50,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Count the layout queue entries that pass the check.</summary>
+        public static long MeasureLayoutQueueMatches(long[] data, long step)
         {
-            Done,
-            Draft,
-            Failed,
+            long hits = 0;
+            foreach (long datum in data)
+            {
+                if ((double)step < 7.6)
+                {
+                    hits = (hits + 2) - datum;
+                }
+            }
+            return hits;
         }
     }
 }
