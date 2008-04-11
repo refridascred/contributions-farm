@@ -1,9 +1,6 @@
-id,active
-1,1.09
-2,cached
-3,cached
-4,standard
-5,111
-6,standard
-7,strict
-8,601
+id,token,level
+1,537,788
+2,51.12,53.42
+3,29.15,72.77
+4,289,153
+5,9.26,503
