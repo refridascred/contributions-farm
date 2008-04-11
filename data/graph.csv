@@ -1,10 +1,7 @@
-id,token,ratio
-1,29,primary
-2,95.85,standard
-3,33.1,867
-4,standard,44.45
-5,89.86,663
-6,906,stable
-7,6.29,staging
-8,194,stable
-9,legacy,40.51
+id,level,active
+1,717,971
+2,174,29.62
+3,874,67.63
+4,63.72,194
+5,56.04,651
+6,open,45.94
