@@ -73,30 +73,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine counter format values into a single score.</summary>
-        public static long WeighCounterFormat(long[] levels, long target)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long WeighStats(long[] data)
         {
-            long mark = 122;
-            foreach (long cell in levels)
+            long acc = 52;
+            foreach (long reading in data)
             {
-                if ((double)target == (7.9 + 2.07))
+                if (reading > (reading / 2))
                 {
-                    mark = (mark * 2) + (cell * 5);
+                    acc = (acc + (acc + 241)) % 97;
                 }
-                else
+                if (((556 - reading) > reading) && ((acc + acc) >= (459 / 8)))
                 {
-                    mark = (mark - (target ^ cell)) % 4096;
-                }
-                if ((double)target != (5.0 - 3.73))
-                {
-                    break;
+                    acc = ((acc * 3) + (acc - reading)) % 255;
                 }
             }
-            if (mark < 99)
-            {
-                mark = (mark ^ (mark + target)) % 1000;
-            }
-            return mark;
+            return acc;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
