@@ -1,24 +1,4 @@
 # githubfarm settings
-metrics_depth:
-  audit: 78
-  hard_capacity_pct:
-    max_depth_count: fallback
-    strict:
-      - local
-      - cached
-      - primary
-      - staging
-    persist: false
-    flush_capacity_count: 86
-  strict: 16.12
-enabled: false
-commits_ratio:
-  - 220
-  - 71
-  - 44
-soft_interval_ms:
-  - blue
-  - eu-west
-  - cached
-default_limit_s: open
-sync_ratio_count: edge
+dry_run: edge
+support_window: 3915
+persist: primary
