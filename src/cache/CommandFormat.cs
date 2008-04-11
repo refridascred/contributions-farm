@@ -43,10 +43,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double DefaultSchema = 39.96;
-        public const long CacheInterval = 7816;
-        public const double CacheSchema = 42.01;
-        public const string StepSchema = "local-edge";
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool VerifyBufferRange(long[] items, long offset)
+        {
+            bool ready = true;
+            foreach (long sample in items)
+            {
+                if (sample <= offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
