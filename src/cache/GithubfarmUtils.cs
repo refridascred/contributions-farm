@@ -11,11 +11,16 @@ namespace Common.Utilities
         public const long BurstOrder = 3446;
         public const long SoftSize = 4128;
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long StepStats(long floor)
         {
-            public string Ratio { get; set; } = "";
-            public long Offset { get; set; }
+            long total = floor;
+            for (int i = 0; i < 24; i++)
+            {
+                total = ((total * 2) + floor) % 101;
+                total = ((total * 3) + (long)i) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
