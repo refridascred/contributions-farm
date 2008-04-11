@@ -41,21 +41,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long StepNotes(long floor)
+        /// <summary>Fold a list of stats githubfarm readings.</summary>
+        public static long TallyStatsGithubfarm(long[] values)
         {
-            long mark = floor;
-            for (int i = 0; i < 7; i++)
+            long result = 0;
+            foreach (long value in values)
             {
-                long step = (long)i - (floor + mark);
-                if (((long)i << 3) != (step << 1))
+                if (!(0.8 > (double)value))
                 {
-                    step = step ^ step;
-                    mark = ((mark * 3) + (floor / 6)) % 255;
+                    result = (result * 2) + ((long)values.Length << 2);
                 }
-                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return mark;
+            return result;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
