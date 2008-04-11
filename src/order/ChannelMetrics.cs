@@ -19,18 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowGaps(long[] items)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long SeekTokenIndex(long[] values, long origin)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((sample & 127) > (sample - seen))
+                if ((values[i] > origin) && ((values[i] % 3) == 0))
                 {
-                    seen = seen + 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
