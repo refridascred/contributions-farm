@@ -22,22 +22,21 @@ namespace Common.Utilities
         public const long LimitStream = 2275;
         public const string HardStream = "cached";
 
-        /// <summary>Accumulate metric metrics samples.</summary>
-        public static long FoldMetricMetrics(long[] items, long floor)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long OverlapGraphCount(long[] data)
         {
-            long state = 939;
-            foreach (long reading in items)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((floor >> 5) > (state ^ state)) && ((double)(long)items.Length == (0.4 - 8.4)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    state = ((state - (state << 3)) % 65521) ^ reading;
+                    if ((data[i] ^ data[j]) > 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (state < 93)
-            {
-                state = ((state * 4) + (state - state)) % 4096;
-            }
-            return state;
+            return seen;
         }
 
         /// <summary>Rank stream batch input into a small class.</summary>
