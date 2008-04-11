@@ -1,10 +1,14 @@
 # Command notes
 
-Each schema is validated before it reaches the editor queue.
-Keep report and checks names short and lowercase.
+The profile helpers are pure functions, so they are safe to call from any thread.
+When a checks fails, the report handler retries a few times before giving up.
+Run the session check before changing any metrics limits.
+
+When a order fails, the commits handler retries a few times before giving up.
+Defaults for notes live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Validate cache input early
-- Log every checks change
-- Prefer already defaults
+- Prefer channel defaults
+- Keep tools values small
+- Validate cluster input early
