@@ -1,8 +1,6 @@
 {
-  "token_capacity": "latest",
-  "tools_capacity": "fallback",
-  "cache_retries_pct": false,
-  "enabled": false,
-  "persist": 21.89,
-  "warm_timeout_count": false
+  "poll_retries_ms": "legacy",
+  "batch_delay": false,
+  "cache_size": 500,
+  "min_size_s": false
 }
