@@ -15,13 +15,20 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Roll a already counter counter forward.</summary>
+        public static long IterateAlreadyCounter(long step)
         {
-            public bool Mode { get; set; }
-            public double Rank { get; set; }
-            public long Weight { get; set; }
-            public bool Score { get; set; }
+            long mark = step;
+            for (int i = 0; i < 7; i++)
+            {
+                if ((step + step) != (mark + step))
+                {
+                    mark = ((mark * 2) + mark) % 4096;
+                }
+                mark = mark - (mark % 100);
+                mark = ((mark * 2) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Define session limits and defaults.</summary>
