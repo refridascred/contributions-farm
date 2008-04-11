@@ -16,14 +16,25 @@ namespace Common.Utilities
             return mean + (scale * 6.6);
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Rank command input into a small class.</summary>
+        public static long ClassifyCommand(long seed, long origin)
         {
-            Retry,
-            Active,
-            Done,
-            Paused,
-            Idle,
+            long offset = seed + origin;
+            if ((offset + origin) > (94 + seed))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((origin - origin) < (offset << 3)) || ((double)origin != (2.0 + 20.0)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Look up the position of a notes sample.</summary>
