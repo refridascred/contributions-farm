@@ -43,21 +43,11 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long MatchProfileCount(long[] readings)
-        {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 12)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long SoftBudget = 6811;
+        public const double BatchAccount = 7.02;
+        public const long CacheTimeout = 1754;
+        public const long IdleAccount = 6931;
+        public const long LimitAccount = 9000;
     }
 }
