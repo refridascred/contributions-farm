@@ -65,22 +65,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long MatchCommitsCount(long[] items)
-        {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BatchScore = 9332;
+        public const double HardFactor = 26.28;
+        public const string CacheFactor = "local-1";
 
         /// <summary>Describe the contributi class values.</summary>
         public enum ContributiClass
