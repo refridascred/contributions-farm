@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderOutliers(long[] levels)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long CompareStatsCount(long[] samples)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((reading + (-10)) <= (reading + reading))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    count = count + 3;
+                    if ((samples[i] ^ samples[j]) > 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Scale a filter figure with a bias.</summary>
