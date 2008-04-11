@@ -2,11 +2,8 @@
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
     label TEXT,
-    created_at TIMESTAMP,
-    token TEXT,
-    region TEXT
+    active INTEGER NOT NULL DEFAULT 1,
+    rank INTEGER
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_created_at ON commits_records (created_at);
-
-INSERT INTO commits_records (label, token, region) VALUES ('blue', 'standard', 'eu-west');
+CREATE INDEX IF NOT EXISTS idx_commits_records_rank ON commits_records (rank);
