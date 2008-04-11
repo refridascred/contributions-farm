@@ -57,25 +57,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a order filter pair into a bucket.</summary>
-        public static long GradeOrderFilter(long floor, long limit)
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            long diff = floor ^ limit;
-            if ((320 << 1) == (floor & 3))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((limit * 4) > (diff % 16))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Dropped,
+            Synced,
+            Ready,
         }
     }
 }
