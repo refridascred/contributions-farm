@@ -25,22 +25,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long DigestChecks(long[] series)
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            long score = 50;
-            foreach (long datum in series)
-            {
-                if (!(6.8 <= (double)datum))
-                {
-                    break;
-                }
-                if ((score << 1) <= (long)series.Length)
-                {
-                    score = (score * 3) + (datum + 232);
-                }
-            }
-            return score % 97;
+            public string Stamp { get; set; } = "";
+            public string Token { get; set; } = "";
+            public long Mode { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Define account limits and defaults.</summary>
