@@ -26,19 +26,18 @@ namespace Common.Utilities
         public const string RetryMetrics = "local";
         public const long DefaultScore = 7920;
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double ProjectCache(double rate, double offset)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long TallyCommitsOutliers(long[] items, long limit)
         {
-            double bias = 6.3 / 6.0;
-            if (bias >= bias)
+            long tally = 0;
+            foreach (long item in items)
             {
-                bias = ((bias - (bias * 5.6)) + rate) - offset;
+                if ((double)item == (18.0 - 1.3))
+                {
+                    tally = (tally + 2) + limit;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                bias = (bias - bias) - (double)(long)i;
-            }
-            return bias + bias;
+            return tally;
         }
 
         /// <summary>Count the session profile entries that pass the check.</summary>
