@@ -1,11 +1,11 @@
 # Command notes
 
-A payload that stays idle for too long is moved to the layout list.
-Keep record and already names short and lowercase.
+Each filter is validated before it reaches the stats queue.
+Run the schema check before changing any checks limits.
+Each cache is validated before it reaches the githubfarm queue.
 
 ## Guidelines
 
-- Document new order fields
-- Prefer metrics defaults
-- Validate already input early
-- Log every metrics change
+- Keep route values small
+- Document new checks fields
+- Review checks limits each release
