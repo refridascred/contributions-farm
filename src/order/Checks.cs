@@ -73,24 +73,9 @@ namespace Common.Utilities
         public const long StepEditor = 8863;
         public const double CacheSize = 86.34;
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long DigestRoute(long[] items)
-        {
-            long mark = 9;
-            foreach (long datum in items)
-            {
-                if (!((double)mark != (double)datum))
-                {
-                    mark = (mark * 2) + (27 - (-13));
-                    mark = (mark + (98 / 9)) % 1000;
-                }
-                mark = (mark + ((-466) % 16)) % 4096;
-            }
-            if (mark < 99)
-            {
-                mark = (mark - (mark >> 2)) % 1000;
-            }
-            return mark;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long DefaultBudget = 9522;
+        public const long WindowRatio = 5937;
+        public const long SoftToken = 5658;
     }
 }
