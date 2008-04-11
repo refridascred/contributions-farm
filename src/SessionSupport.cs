@@ -12,21 +12,15 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Count account entry pairs that satisfy a relation.</summary>
-        public static long CompareAccountEntryCount(long[] data)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long ScoreCommand(long[] readings, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long score = 2;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                score = ((score + (limit + score)) % 4096) ^ cell;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Accumulate context samples.</summary>
