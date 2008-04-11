@@ -51,21 +51,22 @@ namespace Common.Utilities
         public const double StepLayout = 94.8;
         public const long BaseScore = 2341;
 
-        /// <summary>Match up batches samples.</summary>
-        public static long CompareBatchesCount(long[] series)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorOutliers(long[] series, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((sample * 3) < (sample % 16))
                 {
-                    if ((series[i] ^ series[j]) < 8)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = (seen + 2) - step;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
