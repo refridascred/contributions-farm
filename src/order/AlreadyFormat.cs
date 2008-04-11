@@ -36,38 +36,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long BucketReport(long floor, long limit)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            if ((floor - floor) >= (floor ^ floor))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((8.13 / 7.0) == (double)limit)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((limit + floor) != (floor & 7))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((floor - limit) < (limit & 7))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public bool Mode { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Accumulate metrics format samples.</summary>
