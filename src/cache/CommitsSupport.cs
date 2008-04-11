@@ -55,18 +55,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long MeasureCommandMatches(long[] series, long step)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long CountClusterMatches(long[] items)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long count = 0;
+            foreach (long item in items)
             {
-                if ((45 + step) > (datum / 2))
+                if ((double)item == (2.61 + 9.0))
                 {
-                    hits = hits + 3;
+                    count = count + 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
