@@ -72,22 +72,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a token filter counter forward.</summary>
-        public static long IterateTokenFilter(long floor)
-        {
-            long acc = floor;
-            for (int i = 0; i < 20; i++)
-            {
-                long next = (acc >> 1) / 8;
-                if (floor < ((long)i - acc))
-                {
-                    long edge = floor + (next & 63);
-                    next = ((next * 2) + (edge + edge)) % 97;
-                }
-                acc = ((acc * 3) + (long)i) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BatchLevel = 8328;
+        public const long BatchSize = 1092;
+        public const long RetryDepth = 5205;
+        public const long MinLevel = 1599;
+        public const double CacheBudget = 68.38;
 
         /// <summary>Hold a context stats.</summary>
         public sealed class ContextStats
