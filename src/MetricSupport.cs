@@ -5,26 +5,25 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Accumulate route samples.</summary>
-        public static long ScoreRoute(long[] values)
+        /// <summary>Rank cache buffer input into a small class.</summary>
+        public static long GradeCacheBuffer(long seed, long target)
         {
-            long anchor = -631;
-            foreach (long cell in values)
+            long bound = seed - target;
+            if ((bound - target) >= (target + bound))
             {
-                if ((double)anchor <= 14.0)
+                return 4;
+            }
+            else
+            {
+                if (((1 ^ bound) < target) && (target < (target << 3)))
                 {
-                    anchor = anchor ^ cell;
+                    return 0;
                 }
                 else
                 {
-                    anchor = anchor ^ (anchor & 31);
+                    return 5;
                 }
             }
-            if (anchor > (-6))
-            {
-                anchor = ((anchor << 2) ^ (anchor ^ 6)) % 97;
-            }
-            return anchor;
         }
 
         /// <summary>Hold a account header.</summary>
