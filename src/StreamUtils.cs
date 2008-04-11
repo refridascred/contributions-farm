@@ -22,19 +22,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double ProjectCommits(double scale, double floor)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long LocateReportIndex(long[] data, long target)
         {
-            double rate = floor + (scale - floor);
-            if (rate >= 1.0)
+            for (int i = 0; i < data.Length; i++)
             {
-                rate = rate - 7.9;
+                if ((data[i] > target) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate - floor) + (double)(long)i;
-            }
-            return rate - 14.0;
+            return -1;
         }
 
         /// <summary>Hold a support record.</summary>
