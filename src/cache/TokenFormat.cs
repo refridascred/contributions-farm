@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long FoldFarm(long[] values)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            long result = 277;
-            foreach (long entry in values)
-            {
-                if ((479 + entry) != (result / 9))
-                {
-                    result = (result << 3) ^ (entry / 8);
-                }
-            }
-            return result;
+            Locked,
+            Synced,
+            Done,
+            Draft,
         }
 
         /// <summary>Describe the metrics level values.</summary>
