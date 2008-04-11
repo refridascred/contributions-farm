@@ -20,18 +20,12 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long MeasureClusterMatches(long[] levels)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            long tally = 0;
-            foreach (long sample in levels)
-            {
-                if ((sample - tally) >= sample)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public double Total { get; set; }
+            public long Size { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Roll a format counter forward.</summary>
