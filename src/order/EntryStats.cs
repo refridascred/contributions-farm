@@ -40,13 +40,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long RollGraph(long offset)
         {
-            public long Offset { get; set; }
-            public long Mode { get; set; }
-            public string Region { get; set; } = "";
-            public double Owner { get; set; }
+            long acc = offset;
+            for (int i = 0; i < 8; i++)
+            {
+                acc = (acc + (acc * 2)) % 97;
+                acc = ((acc * 2) + (long)i) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Hold a token info.</summary>
