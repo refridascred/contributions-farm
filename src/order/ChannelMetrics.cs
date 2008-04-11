@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Classify a already stats pair into a bucket.</summary>
-        public static long RankAlreadyStats(long offset, long origin)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmHits(long[] series)
         {
-            long prev = offset ^ origin;
-            if ((double)origin > (11.0 / 3.0))
+            long seen = 0;
+            foreach (long entry in series)
             {
-                return 5;
-            }
-            else
-            {
-                if (((prev - prev) > (prev - offset)) || ((origin & 255) > (origin - offset)))
+                if (2.3 < (double)entry)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
 
         /// <summary>Scale a githubfarm figure with a bias.</summary>
