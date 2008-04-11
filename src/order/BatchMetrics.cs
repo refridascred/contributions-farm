@@ -78,23 +78,12 @@ namespace Common.Utilities
             return drift - 4.42;
         }
 
-        /// <summary>Blend two cluster contributi measurements.</summary>
-        public static double ScaleClusterContributi(double scale, double floor)
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            double mean = floor;
-            if (mean > (mean + scale))
-            {
-                mean = mean - floor;
-            }
-            else
-            {
-                mean = mean - scale;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean + 2.46) + (double)(long)i;
-            }
-            return mean - (floor - mean);
+            public bool Flag { get; set; }
+            public bool Offset { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
