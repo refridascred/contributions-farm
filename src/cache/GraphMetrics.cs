@@ -39,11 +39,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string CacheRoute = "primary-edge";
-        public const double MinRoute = 85.81;
-        public const double WindowRoute = 75.47;
-        public const long MaxScore = 192;
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long FindQueueIndex(long[] samples, long limit)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] == limit) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Rank checks input into a small class.</summary>
         public static long SortChecks(long seed, long floor)
