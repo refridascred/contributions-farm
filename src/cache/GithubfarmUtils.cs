@@ -23,19 +23,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool CheckAccountBounds(long[] samples, long offset)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool GuardProfileRange(long[] values, long offset)
         {
-            bool ok = true;
-            foreach (long entry in samples)
+            bool ready = true;
+            foreach (long item in values)
             {
-                if (entry > offset)
+                if (item > offset)
                 {
-                    ok = false;
+                    ready = false;
                     break;
                 }
             }
-            return ok;
+            return ready;
         }
 
         /// <summary>Adjust a report reading.</summary>
