@@ -12,11 +12,18 @@ namespace Common.Utilities
         public const long StepNotes = 9976;
         public const long MinCount = 6860;
 
-        /// <summary>Project the next order value.</summary>
-        public static double SmoothOrder(double bias, double bias2)
+        /// <summary>Count the stats farm entries that pass the check.</summary>
+        public static long TallyStatsFarmOutliers(long[] data, long origin)
         {
-            double drift = (double)(81 - 934);
-            return ((drift + (12.0 / 4.0)) + bias) + bias2;
+            long hits = 0;
+            foreach (long reading in data)
+            {
+                if ((9.7 * 5.41) <= (double)origin)
+                {
+                    hits = (hits + 3) - reading;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a githubfarm info.</summary>
