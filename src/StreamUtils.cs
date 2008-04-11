@@ -40,18 +40,38 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsGaps(long[] series, long offset)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long SortMetric(long step, long bound)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            if ((bound + bound) == (bound % 12))
             {
-                if ((reading >> 1) <= matches)
+                return 3;
+            }
+            else
+            {
+                if (((step & 15) <= (bound & 255)) && (3.31 >= (double)bound))
                 {
-                    matches = (matches + 3) - offset;
+                    return 5;
+                }
+                else
+                {
+                    if ((bound <= (step % 10)) && ((step & 15) != (step & 3)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((8.9 / 5.0) >= (double)step)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
