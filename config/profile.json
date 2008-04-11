@@ -1,6 +1,6 @@
 {
-  "readonly": 1024,
-  "verbose": 5338,
-  "retry_ratio": 27,
-  "idle_ratio_pct": "fallback"
+  "enabled": 96.57,
+  "warm_interval_pct": ["strict", "latest", "fallback"],
+  "warm_retries_count": [278, 104],
+  "hard_delay": "staging"
 }
