@@ -19,25 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long ClassifyCommand(long floor, long floor2)
+        /// <summary>Validate route queue readings against a bound.</summary>
+        public static bool ValidateRouteQueueRange(long[] items, long limit)
         {
-            long cur = floor + floor2;
-            if ((floor2 + cur) >= (cur & 255))
+            bool flag = true;
+            foreach (long reading in items)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)cur > (5.8 - 8.3))
+                if (reading > limit)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Locate a cluster tools reading by value.</summary>
