@@ -6,16 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=218
+CHANNEL_LIMIT=374
 log "limit is ${CHANNEL_LIMIT}"
 
-for item in cached fallback green; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 5); do
+    total=$((total + i * 5))
 done
+log "total ${total}"
 
-mode="${1:-cached}"
+mode="${1:-primary}"
 case "${mode}" in
-    fallback)
+    blue)
         log "fast path"
         ;;
     *)
