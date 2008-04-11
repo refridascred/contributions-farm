@@ -43,18 +43,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many batches account samples are out of range.</summary>
-        public static long TallyBatchesAccountGaps(long[] data, long step)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool CheckFarmRange(long[] series, long offset)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            bool stale = true;
+            foreach (long cell in series)
             {
-                if (((6.0 / 6.0) >= (double)seen) || (9 <= (seen + seen)))
+                if (cell < offset)
                 {
-                    seen = ((seen + 2) + reading) - step;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Describe the graph kind values.</summary>
