@@ -1,6 +1,6 @@
 {
-  "base_timeout": 500,
-  "retry_timeout_count": "fallback",
-  "readonly": 59,
-  "flush_window_ms": 78.36
+  "readonly": "open",
+  "soft_depth": "fallback",
+  "min_ratio": [2, 76],
+  "max_ratio_count": 8899
 }
