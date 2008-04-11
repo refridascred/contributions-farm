@@ -1,11 +1,16 @@
 # entry settings
-token_ttl:
-  - 33
-  - 232
-  - 331
-  - 49
-readonly: staging
-audit: true
-verbose: 22.22
-farm_capacity: edge
-poll_depth: 500
+base_retries_pct:
+  - fallback
+  - local
+  - blue
+  - blue
+soft_ttl_ms: 79.33
+soft_ratio_ms:
+  - 229
+  - 100
+verbose:
+  - eu-west
+  - cached
+  - green
+warm_capacity_pct: 7343
+enabled: 74.56
