@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowHits(long[] levels)
         {
-            public string Flag { get; set; } = "";
-            public string Count { get; set; } = "";
-            public double Ratio { get; set; }
-            public bool Total { get; set; }
+            long hits = 0;
+            foreach (long entry in levels)
+            {
+                if ((entry << 2) > hits)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
