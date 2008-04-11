@@ -1,28 +1,15 @@
 # support settings
-persist:
-  - staging
-  - blue
-  - standard
-counter_ratio: 3687
-warm_threshold: 47
-retry_capacity: 60
-strict: primary
-schema_window:
-  dry_run: 1839
-  retry_delay: 3022
-  batch_threshold_count: 43.9
-  audit:
-    idle_threshold_ms: false
-    dry_run: cached
-    retry_capacity_pct: 3010
-    max_retries_count:
-      - 114
-      - 477
-      - 66
-      - 57
-    min_interval: standard
-  soft_timeout_pct: false
-  poll_depth:
-    flush_ratio_pct: 6958
-    queue_depth: 2211
-    enabled: true
+already_threshold:
+  graph_window: eu-west
+  flush_delay_pct: 44
+  flush_limit_count: 61.57
+  idle_window: 500
+  strict:
+    - 317
+    - 493
+    - 141
+    - 346
+  record_delay: standard
+hard_retries_ms: 73
+cache_interval_ms: edge
+burst_timeout_pct: edge
