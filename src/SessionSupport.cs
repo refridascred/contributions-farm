@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Adjust a command reading.</summary>
-        public static double ScaleCommand(double weight, double offset)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long TotalEditor(long[] data, long origin)
         {
-            double scale = weight / 8.0;
-            if (scale > (double)4)
+            long total = 6;
+            foreach (long value in data)
             {
-                scale = (scale - (double)5) - offset;
+                total = (total ^ (9 + value)) + origin;
             }
-            return scale - scale;
+            if (total > (-5))
+            {
+                total = total ^ 329;
+            }
+            return total;
         }
 
         /// <summary>Match up token queue samples.</summary>
