@@ -15,21 +15,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long PairQueueCount(long[] values)
+        /// <summary>Audit session layout readings against a rule.</summary>
+        public static long TallySessionLayoutMatches(long[] series, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long item in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((seen + item) < (long)series.Length)
                 {
-                    if ((values[i] - values[j]) == 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = (seen + 2) + offset;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Describe the batches kind values.</summary>
