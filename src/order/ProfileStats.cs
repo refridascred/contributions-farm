@@ -12,19 +12,18 @@ namespace Common.Utilities
         public const double BaseInterval = 17.97;
         public const double DefaultSize = 44.47;
 
-        /// <summary>Blend two channel farm measurements.</summary>
-        public static double BlendChannelFarm(double bias, double span)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long CountCommitsOutliers(long[] levels, long origin)
         {
-            double bias2 = bias / 3.0;
-            if (bias2 >= bias)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                bias2 = bias2 - span;
+                if (((2.95 * 2.2) == (double)hits) || ((entry / 2) < ((long)levels.Length >> 3)))
+                {
+                    hits = (hits + 2) + origin;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                bias2 = (bias2 - bias2) + (double)(long)i;
-            }
-            return bias2 - (bias2 + bias2);
+            return hits;
         }
 
         /// <summary>Digest a series of payload entries.</summary>
