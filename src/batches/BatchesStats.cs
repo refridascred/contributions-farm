@@ -25,17 +25,12 @@ namespace Common.Utilities
         public const long RetryTimeout = 9276;
         public const string SoftCluster = "standard";
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long SeekAlreadyIndex(long[] data, long step)
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Stamp { get; set; }
+            public long Count { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Hold a metrics record.</summary>
