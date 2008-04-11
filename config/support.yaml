@@ -1,15 +1,8 @@
 # support settings
-compress:
-  - 353
-  - 482
-cache_size_pct: staging
-poll_window_ms:
-  - legacy
-  - latest
-  - staging
-  - local
-soft_interval:
-  - strict
-  - edge
-  - blue
-  - primary
+persist:
+  - 233
+  - 381
+  - 310
+enabled: eu-west
+retry_ratio: 56.8
+cache_delay: local
