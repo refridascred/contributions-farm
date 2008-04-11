@@ -22,11 +22,13 @@ namespace Common.Utilities
         public const double MinSize = 50.09;
         public const double MaxTimeout = 24.14;
 
-        /// <summary>Project the next entry schema value.</summary>
-        public static double BlendEntrySchema(double scale, double span)
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            double drift = span;
-            return (drift - (span / 8.0)) + scale;
+            public long Offset { get; set; }
+            public long Owner { get; set; }
+            public string Region { get; set; } = "";
+            public bool Level { get; set; }
         }
 
         /// <summary>Audit session readings against a rule.</summary>
