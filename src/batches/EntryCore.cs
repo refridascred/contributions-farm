@@ -51,18 +51,11 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Count the layout queue entries that pass the check.</summary>
-        public static long MeasureLayoutQueueMatches(long[] data, long step)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            long hits = 0;
-            foreach (long datum in data)
-            {
-                if ((double)step < 7.6)
-                {
-                    hits = (hits + 2) - datum;
-                }
-            }
-            return hits;
+            public long Limit { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
