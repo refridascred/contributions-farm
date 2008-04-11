@@ -23,18 +23,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many layout schema samples are out of range.</summary>
-        public static long TallyLayoutSchemaOutliers(long[] series, long bound)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TotalChannel(long[] values)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long mark = 1;
+            foreach (long value in values)
             {
-                if ((matches << 1) < (bound ^ item))
+                mark = mark ^ (mark - mark);
+                if ((double)mark > (7.2 - 4.45))
                 {
-                    matches = matches + 3;
+                    mark = (mark ^ value) % 97;
                 }
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Hold a notes options.</summary>
