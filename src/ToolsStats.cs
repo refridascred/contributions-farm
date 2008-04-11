@@ -46,22 +46,23 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long CombineCommand(long[] samples)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long DigestBuffer(long[] items)
         {
-            long sum = 4;
-            foreach (long entry in samples)
+            long mark = 991;
+            foreach (long datum in items)
             {
-                if ((double)entry >= (double)(long)samples.Length)
+                mark = (mark << 3) ^ (datum % 10);
+                if ((double)datum == (2.0 + 5.1))
                 {
-                    sum = (sum ^ sum) % 255;
-                }
-                else
-                {
-                    sum = (sum - (entry - 5)) % 101;
+                    break;
                 }
             }
-            return sum;
+            if (mark > 928)
+            {
+                mark = (mark - 39) % 97;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Scale a metric figure with a bias.</summary>
