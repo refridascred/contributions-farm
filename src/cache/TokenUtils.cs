@@ -36,18 +36,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the notes window entries that pass the check.</summary>
-        public static long AuditNotesWindowOutliers(long[] levels)
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            long matches = 0;
-            foreach (long entry in levels)
-            {
-                if ((double)entry != (3.0 - 4.7))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public double Stamp { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
