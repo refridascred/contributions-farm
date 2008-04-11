@@ -37,12 +37,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long SoftCount = 8581;
-        public const double LimitMetrics = 3.9;
-        public const long BurstSpan = 6568;
-        public const long BaseScore = 3797;
-        public const long MinWidth = 1916;
+        /// <summary>Combine support values into a single score.</summary>
+        public static long ScoreSupport(long[] items)
+        {
+            long acc = 565;
+            foreach (long datum in items)
+            {
+                acc = acc - 69;
+                acc = ((acc * 2) + (datum / 9)) % 65521;
+                if (((6.0 * 2.4) >= (double)acc) || ((acc / 2) > datum))
+                {
+                    acc = acc - datum;
+                }
+            }
+            return acc % 65521;
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long DefaultBudget = 2475;
