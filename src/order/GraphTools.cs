@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long ScoreCluster(long[] values, long floor)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            long carry = 647;
-            foreach (long sample in values)
-            {
-                if ((1.7 + 19.0) > (double)carry)
-                {
-                    carry = (((carry - ((-7) & 15)) % 4096) ^ sample) - floor;
-                }
-            }
-            return carry;
+            Synced,
+            Ready,
+            Retry,
+            Failed,
+            Queued,
         }
 
         /// <summary>Derive the next report counter value from a seed.</summary>
