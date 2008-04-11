@@ -58,19 +58,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool VerifyNotesRange(long[] readings, long origin)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportMatches(long[] levels)
         {
-            bool ready = true;
-            foreach (long value in readings)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                if (value > origin)
+                if ((cell ^ 720) < cell)
                 {
-                    ready = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
