@@ -45,18 +45,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordMatches(long[] levels)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long CountFarmHits(long[] items, long target)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long hits = 0;
+            foreach (long value in items)
             {
-                if (seen < (-8))
+                if (!((hits & 63) == (value + target)) || ((target - (long)items.Length) > (target << 1)))
                 {
-                    seen = (seen + 3) - value;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
