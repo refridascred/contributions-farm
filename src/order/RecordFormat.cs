@@ -27,20 +27,25 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long SeriesTools(long step)
+        /// <summary>Classify a buffer token pair into a bucket.</summary>
+        public static long ClassifyBufferToken(long target, long floor)
         {
-            long total = step;
-            for (int i = 0; i < 19; i++)
+            long next = target ^ floor;
+            if (((next & 1) == (99 + next)) && ((next - target) <= (floor + floor)))
             {
-                if ((step >= (98 + total)) || ((total + step) != (646 * 2)))
-                {
-                    total = (total ^ (total & 3)) % 65521;
-                    total = ((total << 2) ^ (step << 1)) % 1000;
-                }
-                total = ((total * 3) + (long)i) % 4093;
+                return 8;
             }
-            return total;
+            else
+            {
+                if ((double)next != (9.39 / 6.0))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Hold a cache header.</summary>
