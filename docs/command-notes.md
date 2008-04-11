@@ -1,11 +1,12 @@
 # Command notes
 
-Each token is validated before it reaches the githubfarm queue.
-Keep cache and githubfarm names short and lowercase.
+When a counter fails, the queue handler retries a few times before giving up.
+Run the record check before changing any order limits.
+The payload report groups every graph by format.
 
 ## Guidelines
 
-- Log every commits change
-- Keep tools values small
-- Review payload limits each release
-- Validate payload input early
+- Prefer profile defaults
+- Validate metric input early
+- Review token limits each release
+- Keep checks values small
