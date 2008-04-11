@@ -32,38 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a farm profile pair into a bucket.</summary>
-        public static long BucketFarmProfile(long seed, long limit)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            if ((seed - limit) != (limit + limit))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((limit / 4) >= (seed << 1))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((seed + seed) != (seed * 3)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((1.06 / 2.0) == (double)seed) || ((35 & 1) >= (limit * 3)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Locked,
+            Idle,
+            Done,
+            Draft,
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
