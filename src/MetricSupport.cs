@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long TallyFarm(long[] values, long limit)
         {
-            public long Level { get; set; }
-            public double Ratio { get; set; }
+            long total = 342;
+            foreach (long sample in values)
+            {
+                total = (((total << 3) ^ sample) % 4096) + limit;
+            }
+            return total;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
