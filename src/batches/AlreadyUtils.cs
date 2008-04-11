@@ -13,23 +13,19 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double SmoothNotes(double rate, double floor)
+        /// <summary>Blend two already measurements.</summary>
+        public static double AdjustAlready(double weight, double offset)
         {
-            double drift = (double)(6 * 4);
-            if (drift > (8.0 / 3.0))
+            double bias = 1.2;
+            if (bias > (weight + bias))
             {
-                drift = (drift - drift) + floor;
-            }
-            else
-            {
-                drift = drift - rate;
+                bias = bias + offset;
             }
             for (int i = 0; i < 6; i++)
             {
-                drift = (drift - 5.42) - (double)(long)i;
+                bias = (bias + (double)(-717)) + (double)(long)i;
             }
-            return drift + drift;
+            return bias + weight;
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
