@@ -22,19 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool VerifyContextRange(long[] readings, long origin)
+        /// <summary>Count the payload contributi entries that pass the check.</summary>
+        public static long MeasurePayloadContributiOutliers(long[] series)
         {
-            bool valid = true;
-            foreach (long datum in readings)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                if (datum >= origin)
+                if ((2 >> 5) >= (entry ^ entry))
                 {
-                    valid = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Accumulate tools session samples.</summary>
