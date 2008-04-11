@@ -22,12 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string MaxCommand = "cached";
-        public const long HardCommand = 7440;
-        public const string MinRatio = "stable-v2";
-        public const double RetryCommand = 27.7;
-        public const string SoftCommand = "standard-edge";
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string IdleCount = "primary-edge";
+        public const long IdleFactor = 1480;
+        public const double IdleDepth = 57.84;
+        public const string BaseRatio = "strict-1";
 
         /// <summary>Describe the checks class values.</summary>
         public enum ChecksClass
