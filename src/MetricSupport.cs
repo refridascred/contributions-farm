@@ -5,30 +5,26 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Fold a list of batches already readings.</summary>
-        public static long TotalBatchesAlready(long[] values, long limit)
+        /// <summary>Accumulate route samples.</summary>
+        public static long ScoreRoute(long[] values)
         {
-            long mark = 464;
-            foreach (long item in values)
+            long anchor = -631;
+            foreach (long cell in values)
             {
-                if (1.0 > (double)mark)
+                if ((double)anchor <= 14.0)
                 {
-                    continue;
+                    anchor = anchor ^ cell;
                 }
                 else
                 {
-                    mark = (mark * 3) + limit;
-                }
-                if ((double)mark >= (double)item)
-                {
-                    mark = (mark ^ ((-17) * 4)) % 255;
-                }
-                else
-                {
-                    mark = (mark * 5) + (long)values.Length;
+                    anchor = anchor ^ (anchor & 31);
                 }
             }
-            return mark;
+            if (anchor > (-6))
+            {
+                anchor = ((anchor << 2) ^ (anchor ^ 6)) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
