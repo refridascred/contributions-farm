@@ -32,19 +32,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool ValidateCommitsRange(long[] readings, long step)
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long SeekContributiIndex(long[] series, long bound)
         {
-            bool stale = true;
-            foreach (long reading in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (reading != step)
+                if ((series[i] > bound) && ((series[i] % 3) == 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Validate checks cache readings against a bound.</summary>
