@@ -1,6 +1,8 @@
-id,ratio,state
-1,789,786
-2,green,42.84
-3,local,stable
-4,green,30.84
-5,green,3.27
+id,ratio,score,region
+1,219,94.35,59.56
+2,156,50.23,32.75
+3,585,green,blue
+4,fallback,31.66,primary
+5,31.08,local,12.66
+6,stable,55.61,26.0
+7,537,677,staging
