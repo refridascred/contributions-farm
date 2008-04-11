@@ -23,32 +23,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long ClassifyCache(long target, long seed)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            long diff = target ^ seed;
-            if ((diff > (target + diff)) && ((seed ^ seed) >= (seed + seed)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((seed - diff) <= (seed - seed))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (seed <= (diff / 8))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Active,
+            Stale,
+            New,
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
