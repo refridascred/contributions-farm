@@ -1,7 +1,15 @@
 # githubfarm settings
-sync_ttl_count: 100
-strict: false
-min_retries:
-  - stable
-  - green
-batches_depth: false
+compress: 33.14
+metric_capacity: 35.48
+default_retries_s: false
+max_threshold_ms:
+  sync_timeout_pct: false
+  default_interval_pct: primary
+  retry_depth_pct: cached
+  hard_depth_ms: strict
+session_size:
+  - strict
+  - blue
+  - blue
+  - local
+base_size_s: 70.56
