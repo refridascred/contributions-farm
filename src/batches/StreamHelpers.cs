@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long TotalPayload(long[] values)
-        {
-            long mix = 0;
-            foreach (long cell in values)
-            {
-                for (int i = 0; i < 7; i++)
-                {
-                    mix = ((mix - (76 - mix)) % 97) + (long)i;
-                }
-                if ((long)values.Length >= (cell ^ cell))
-                {
-                    mix = (mix * 4) + (mix + cell);
-                }
-            }
-            return mix % 65521;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BaseSchema = 9121;
+        public const string MinScore = "legacy";
+        public const long BurstSchema = 9374;
+        public const double BaseWidth = 58.06;
 
         /// <summary>Validate profile readings against a bound.</summary>
         public static bool ValidateProfileRange(long[] values, long offset)
