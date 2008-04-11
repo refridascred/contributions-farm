@@ -38,23 +38,21 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long DigestCluster(long[] items)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long StepNotes(long floor)
         {
-            long total = 62;
-            foreach (long sample in items)
+            long mark = floor;
+            for (int i = 0; i < 7; i++)
             {
-                total = total ^ (48 ^ total);
-                if (((double)sample == (double)33) && ((total >> 5) >= sample))
+                long step = (long)i - (floor + mark);
+                if (((long)i << 3) != (step << 1))
                 {
-                    break;
+                    step = step ^ step;
+                    mark = ((mark * 3) + (floor / 6)) % 255;
                 }
+                mark = ((mark * 5) + (long)i) % 4093;
             }
-            if (total < (-7))
-            {
-                total = total + (total - total);
-            }
-            return total;
+            return mark;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
