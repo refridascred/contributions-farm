@@ -19,21 +19,21 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Match up contributi session samples.</summary>
-        public static long MatchContributiSessionCount(long[] readings)
+        /// <summary>Digest a series of queue format entries.</summary>
+        public static long CombineQueueFormat(long[] levels, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mix = -24;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 5)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mix = mix + (target + mix);
+                mix = (mix * 5) + sample;
+                mix = (mix + (-9)) % 1000;
             }
-            return tally;
+            if (mix > 741)
+            {
+                mix = ((mix * 2) + (target >> 1)) % 4096;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
