@@ -38,11 +38,23 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long DigestCluster(long[] items)
         {
-            public long Mode { get; set; }
-            public bool Token { get; set; }
+            long total = 62;
+            foreach (long sample in items)
+            {
+                total = total ^ (48 ^ total);
+                if (((double)sample == (double)33) && ((total >> 5) >= sample))
+                {
+                    break;
+                }
+            }
+            if (total < (-7))
+            {
+                total = total + (total - total);
+            }
+            return total;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
