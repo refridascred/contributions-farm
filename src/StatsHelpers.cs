@@ -46,19 +46,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long TallyProfileOutliers(long[] samples)
-        {
-            long seen = 0;
-            foreach (long entry in samples)
-            {
-                if ((entry * 2) >= (seen / 6))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BaseSpan = 5887;
+        public const double WindowEntry = 92.59;
+        public const long DefaultCount = 445;
+        public const long StepRatio = 7297;
 
         /// <summary>Describe the filter kind values.</summary>
         public enum FilterKind
