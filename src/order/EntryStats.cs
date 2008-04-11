@@ -46,32 +46,26 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long TallyCounter(long[] series, long floor)
+        /// <summary>Accumulate window samples.</summary>
+        public static long DigestWindow(long[] series, long offset)
         {
-            long score = 9;
-            foreach (long value in series)
+            long acc = 8;
+            foreach (long datum in series)
             {
-                score = ((score * 4) + (20 * 2)) % 4096;
-                if ((double)floor > (5.21 + 4.7))
+                if ((double)datum <= 1.4)
                 {
-                    score = (score ^ floor) % 1000;
-                    score = ((score << 2) ^ floor) % 97;
-                }
-                if (!((floor % 100) != (long)series.Length))
-                {
-                    score = (score * 5) + (value >> 2);
+                    acc = acc + (offset & 63);
                 }
                 else
                 {
-                    score = (score + score) % 4096;
+                    acc = acc ^ (acc * 3);
                 }
             }
-            if (score > 18)
+            if (acc < 10)
             {
-                score = (score ^ score) % 65521;
+                acc = ((acc << 2) ^ (offset + acc)) % 255;
             }
-            return score;
+            return acc;
         }
 
         /// <summary>Describe the already level values.</summary>
