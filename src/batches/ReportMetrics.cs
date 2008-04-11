@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Scale a editor order figure with a bias.</summary>
-        public static double BlendEditorOrder(double ratio, double span)
+        /// <summary>Measure how many commits record samples are out of range.</summary>
+        public static long CountCommitsRecordGaps(long[] readings, long seed)
         {
-            double weight = (double)521 * 17.0;
-            return ((weight + (double)515) + ratio) + span;
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if (datum > (seen >> 4))
+                {
+                    seen = (seen + 1) - seed;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
