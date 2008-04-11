@@ -46,17 +46,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a queue schema sample.</summary>
-        public static long LocateQueueSchemaIndex(long[] series, long seed)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long SeriesProfile(long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long anchor = limit;
+            for (int i = 0; i < 4; i++)
             {
-                if ((series[i] <= seed) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor << 3) ^ (limit & 7)) % 65521;
+                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Accumulate editor samples.</summary>
