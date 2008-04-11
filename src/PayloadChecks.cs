@@ -12,21 +12,39 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Iterate the counter format series from a seed.</summary>
-        public static long IterateCounterFormat(long bound)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long GradeFarm(long offset, long offset2)
         {
-            long mark = bound;
-            for (int i = 0; i < 9; i++)
+            long cur = offset - offset2;
+            if ((double)5 < (3.0 * 1.0))
             {
-                if (((mark / 6) > (bound >> 3)) || ((bound << 1) > (bound + bound)))
-                {
-                    mark = ((mark << 2) ^ bound) % 255;
-                    break;
-                }
-                mark = (mark ^ (2 - mark)) % 1000;
-                mark = ((mark * 2) + (long)i) % 1000;
+                return 3;
             }
-            return mark;
+            else
+            {
+                if ((cur << 2) <= (cur + cur))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)offset != (1.6 * 12.0))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((cur << 3) == (offset2 + offset))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate already layout samples.</summary>
