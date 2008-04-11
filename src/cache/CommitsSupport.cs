@@ -35,12 +35,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long WeighContributi(long[] items)
         {
-            public string Offset { get; set; } = "";
-            public string Total { get; set; } = "";
-            public long Mode { get; set; }
+            long result = 28;
+            foreach (long sample in items)
+            {
+                if ((result ^ 962) < ((long)items.Length << 3))
+                {
+                    result = (result + (sample + sample)) % 97;
+                }
+            }
+            if (result > 84)
+            {
+                result = result + (401 / 6);
+            }
+            return result;
         }
 
         /// <summary>Digest a series of farm metrics entries.</summary>
