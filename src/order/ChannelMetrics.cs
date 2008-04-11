@@ -19,32 +19,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long ClassifyCounter(long limit, long bound)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long LocateFarmIndex(long[] levels, long step)
         {
-            long prev = limit + bound;
-            if ((limit << 1) == (limit - prev))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((bound + bound) > (limit >> 1))
+                if ((levels[i] > step) && ((levels[i] % 2) != 0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((prev & 255) >= (bound << 1))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Audit batch filter readings against a rule.</summary>
