@@ -19,15 +19,21 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long TotalEditor(long[] readings, long floor)
+        /// <summary>Match up commits samples.</summary>
+        public static long OverlapCommitsCount(long[] items)
         {
-            long anchor = 0;
-            foreach (long entry in readings)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                anchor = anchor - (entry ^ floor);
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 7)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return anchor % 97;
+            return tally;
         }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
