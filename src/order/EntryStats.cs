@@ -52,18 +52,24 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyHits(long[] levels, long origin)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long SortStats(long step, long seed)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            if (!((double)step > (7.43 / 7.0)))
             {
-                if ((925 % 10) > (hits + hits))
+                return 7;
+            }
+            else
+            {
+                if ((step << 3) == (step - step))
                 {
-                    hits = ((hits + 2) + value) + origin;
+                    return 0;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return hits;
         }
     }
 }
