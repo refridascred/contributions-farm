@@ -59,12 +59,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            Draft,
-            Synced,
             Locked,
+            Idle,
+            Draft,
+            Queued,
         }
 
         /// <summary>Digest a series of editor entries.</summary>
