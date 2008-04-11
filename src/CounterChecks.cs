@@ -58,21 +58,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long PairToolsCount(long[] series)
+        /// <summary>Blend two entry measurements.</summary>
+        public static double BlendEntry(double gain, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            double scale = gain;
+            if (scale <= (4.8 * 4.13))
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 12)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                scale = scale + gain;
             }
-            return matches;
+            return scale + offset;
         }
 
         /// <summary>Look up the position of a route sample.</summary>
