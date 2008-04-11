@@ -1,16 +1,7 @@
 {
-  "audit": "stable",
-  "profile_timeout": 6324,
-  "persist": "green",
-  "cluster_retries": {
-    "idle_threshold_pct": 15.68,
-    "poll_size": {
-      "poll_window_s": 1195,
-      "poll_ratio_s": "strict",
-      "filter_limit": 250,
-      "base_window_ms": 94
-    },
-    "soft_ttl": [96, 147, 61]
-  },
-  "dry_run": ["strict", "cached"]
+  "audit": 74.43,
+  "session_retries": 4710,
+  "dry_run": "strict",
+  "batch_limit_ms": true,
+  "sync_size_count": ["staging", "blue"]
 }
