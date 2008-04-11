@@ -29,18 +29,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit route graph readings against a rule.</summary>
-        public static long CountRouteGraphOutliers(long[] samples, long target)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long TallySupportMatches(long[] levels, long floor)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                if ((5 / 6) >= (entry + target))
+                if ((reading * 5) < (seen % 2))
                 {
-                    tally = tally + 3;
+                    seen = (seen + 2) + floor;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
