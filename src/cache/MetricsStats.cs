@@ -33,13 +33,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
-        {
-            public long Weight { get; set; }
-            public bool Offset { get; set; }
-            public double Level { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BurstStats = 8201;
+        public const long BaseStats = 3024;
+        public const long LimitRatio = 5962;
+        public const long StepStats = 9195;
+        public const string BaseBudget = "primary-v2";
 
         /// <summary>Hold a counter record.</summary>
         public sealed class CounterRecord
