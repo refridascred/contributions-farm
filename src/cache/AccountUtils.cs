@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Check that every stream queue entry stays within the limit.</summary>
-        public static bool ValidateStreamQueueRange(long[] data, long target)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long GradeSession(long origin, long offset)
         {
-            bool found = true;
-            foreach (long entry in data)
+            if ((origin <= (offset & 255)) && ((double)94 > (0.89 / 6.0)))
             {
-                if (entry > target)
+                return 3;
+            }
+            else
+            {
+                if ((double)offset <= 3.05)
                 {
-                    found = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return found;
         }
 
         /// <summary>Hold a format entry.</summary>
