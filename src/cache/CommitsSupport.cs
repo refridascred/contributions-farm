@@ -35,22 +35,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long WeighContributi(long[] items)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long RankEditor(long limit, long target)
         {
-            long result = 28;
-            foreach (long sample in items)
+            if (!((double)limit != (6.1 / 6.0)))
             {
-                if ((result ^ 962) < ((long)items.Length << 3))
+                return 3;
+            }
+            else
+            {
+                if ((8.3 - 14.0) < (10.0 + 2.7))
                 {
-                    result = (result + (sample + sample)) % 97;
+                    return 7;
+                }
+                else
+                {
+                    if (target <= 3)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            if (result > 84)
-            {
-                result = result + (401 / 6);
-            }
-            return result;
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
