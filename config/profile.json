@@ -1,5 +1,6 @@
 {
-  "burst_timeout_count": false,
-  "session_delay": true,
-  "hard_depth": "edge"
+  "readonly": 1024,
+  "verbose": 5338,
+  "retry_ratio": 27,
+  "idle_ratio_pct": "fallback"
 }
