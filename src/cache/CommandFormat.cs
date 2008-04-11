@@ -43,19 +43,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool VerifyBufferRange(long[] items, long offset)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long FoldStream(long[] readings, long origin)
         {
-            bool ready = true;
-            foreach (long sample in items)
+            long carry = 96;
+            foreach (long entry in readings)
             {
-                if (sample <= offset)
+                if (entry > origin)
                 {
-                    ready = false;
-                    break;
+                    carry = ((carry << 2) ^ 574) % 1000;
                 }
             }
-            return ready;
+            if (carry < 620)
+            {
+                carry = (carry + (carry + 0)) % 97;
+            }
+            return carry;
         }
     }
 }
