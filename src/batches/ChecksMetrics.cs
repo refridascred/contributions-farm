@@ -58,32 +58,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long GradeRecord(long step, long seed)
+        /// <summary>Roll a channel stream counter forward.</summary>
+        public static long DeriveChannelStream(long offset)
         {
-            long offset = step ^ seed;
-            if ((seed > (step >> 3)) && ((seed / 2) > (offset ^ seed)))
+            long result = offset;
+            for (int i = 0; i < 5; i++)
             {
-                return 2;
+                result = ((result * 5) + (long)i) % 65521;
             }
-            else
-            {
-                if ((132 + step) != (step ^ step))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!(offset > (offset - offset)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return result;
         }
 
         /// <summary>Roll a token filter counter forward.</summary>
