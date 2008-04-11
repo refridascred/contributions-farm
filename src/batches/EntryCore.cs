@@ -58,11 +58,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double StepSpan = 88.04;
-        public const string BurstAlready = "open-v2";
-        public const string LimitRatio = "alpha-1";
-        public const long HardAlready = 7089;
-        public const long IdleBudget = 278;
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
+        {
+            Done,
+            Draft,
+            Failed,
+        }
     }
 }
