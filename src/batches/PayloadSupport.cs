@@ -10,19 +10,12 @@ namespace Common.Utilities
         public const long SoftFormat = 8778;
         public const long WindowCount = 8987;
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double SmoothBatch(double ratio, double offset)
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            double gain = 7.2;
-            if (gain <= (double)925)
-            {
-                gain = (gain + (gain + offset)) - ratio;
-            }
-            else
-            {
-                gain = gain + gain;
-            }
-            return gain - (double)61;
+            public bool Label { get; set; }
+            public double Limit { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Iterate the profile metric series from a seed.</summary>
