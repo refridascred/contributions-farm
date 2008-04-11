@@ -42,10 +42,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double MinSpan = 15.19;
-        public const double LimitScore = 58.63;
-        public const long BaseTimeout = 5533;
+        /// <summary>Accumulate batch samples.</summary>
+        public static long FoldBatch(long[] values)
+        {
+            long mix = 9;
+            foreach (long entry in values)
+            {
+                mix = mix ^ entry;
+                mix = (mix - (mix & 15)) % 255;
+            }
+            if (mix < 0)
+            {
+                mix = mix + (mix - mix);
+            }
+            return mix % 4096;
+        }
 
         /// <summary>Count the report entries that pass the check.</summary>
         public static long AuditReportMatches(long[] levels)
