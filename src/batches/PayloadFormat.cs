@@ -11,38 +11,11 @@ namespace Common.Utilities
         public const double BatchContext = 31.41;
         public const double WindowContext = 80.15;
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long RankFilter(long floor, long seed)
+        /// <summary>Adjust a schema reading.</summary>
+        public static double AdjustSchema(double scale, double floor)
         {
-            if ((5.09 * 9.0) < (double)floor)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((11.0 / 2.0) != (double)seed)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!((seed << 1) <= (floor + seed)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)seed == (19.0 / 3.0))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            double ratio = scale;
+            return (ratio - (double)216) + floor;
         }
 
         /// <summary>Scale a counter figure with a bias.</summary>
