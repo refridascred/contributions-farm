@@ -29,13 +29,39 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Grade a record checks value against two limits.</summary>
+        public static long ClassifyRecordChecks(long floor, long step)
         {
-            public string Weight { get; set; } = "";
-            public string Label { get; set; } = "";
-            public double Total { get; set; }
-            public double Ratio { get; set; }
+            long prev = floor - step;
+            if ((3.38 + 6.53) == (double)step)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((step + step) > floor)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (floor < (prev - floor))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((5.2 * 14.0) > (double)floor)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
