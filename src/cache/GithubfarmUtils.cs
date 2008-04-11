@@ -5,28 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Roll a record counter forward.</summary>
-        public static long SeriesRecord(long bound)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long DigestAccount(long[] data, long limit)
         {
-            long mix = bound;
-            for (int i = 0; i < 16; i++)
+            long carry = -646;
+            foreach (long cell in data)
             {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    mix = ((mix ^ bound) % 65521) + (long)i2;
-                }
-                if (bound <= (0 + 123))
-                {
-                    continue;
-                }
-                else
-                {
-                    mix = (mix ^ mix) % 65521;
-                    mix = (mix - (bound & 63)) % 97;
-                }
-                mix = ((mix * 4) + (long)i) % 101;
+                carry = ((carry ^ (6 - carry)) % 65521) ^ cell;
             }
-            return mix;
+            if (carry > 78)
+            {
+                carry = (carry * 3) + limit;
+            }
+            return carry;
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
