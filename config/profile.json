@@ -1,7 +1,20 @@
 {
-  "compress": ["staging", "green", "eu-west"],
-  "batch_delay_ms": 60,
-  "strict": 4276,
-  "batches_capacity": "edge",
-  "min_timeout_pct": 6745
+  "min_size": {
+    "min_depth_count": "fallback",
+    "flush_window_count": "local",
+    "warm_timeout_s": "eu-west",
+    "retry_size": {
+      "persist": 70.03,
+      "min_ttl_pct": true,
+      "soft_size_ms": 2859
+    },
+    "cache_limit": {
+      "hard_threshold_ms": ["fallback", "standard", "staging"],
+      "poll_capacity_s": "blue",
+      "warm_capacity_ms": 15.92
+    }
+  },
+  "max_threshold_count": 8953,
+  "cache_size_count": 30.54,
+  "soft_retries_pct": "local"
 }
