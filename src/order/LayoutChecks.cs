@@ -30,14 +30,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            Ready,
-            Synced,
-            Locked,
-            Pending,
-            Closed,
+            public long Offset { get; set; }
+            public long Limit { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
