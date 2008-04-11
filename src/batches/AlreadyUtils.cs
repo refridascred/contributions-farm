@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long FoldCommits(long[] items)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            long acc = 27;
-            foreach (long entry in items)
-            {
-                acc = ((acc << 2) ^ (entry * 2)) % 101;
-                acc = ((acc * 4) + (acc ^ acc)) % 4096;
-            }
-            return acc % 65521;
+            public long Owner { get; set; }
+            public double Offset { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Adjust a notes reading.</summary>
