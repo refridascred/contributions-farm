@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueOutliers(long[] readings, long offset)
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            long seen = 0;
-            foreach (long reading in readings)
-            {
-                if ((seen - seen) > (offset ^ seen))
-                {
-                    seen = (seen + 3) + reading;
-                }
-            }
-            return seen;
+            public bool Flag { get; set; }
+            public long Label { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Hold a buffer header.</summary>
