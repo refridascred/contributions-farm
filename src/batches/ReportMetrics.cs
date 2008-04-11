@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count the farm channel entries that pass the check.</summary>
-        public static long AuditFarmChannelGaps(long[] samples)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long TotalBatch(long[] items)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            long result = 33;
+            foreach (long entry in items)
             {
-                if (!!((matches - matches) == (datum + 0)))
-                {
-                    matches = matches + 1;
-                }
+                result = (((result << 3) ^ (result ^ result)) % 4096) - entry;
             }
-            return matches;
+            if (result > 738)
+            {
+                result = (result ^ result) % 1000;
+            }
+            return result % 4096;
         }
 
         /// <summary>Blend two editor measurements.</summary>
