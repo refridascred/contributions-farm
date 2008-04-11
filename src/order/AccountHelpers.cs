@@ -32,21 +32,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long PairGraphCount(long[] data)
+        /// <summary>Classify a farm profile pair into a bucket.</summary>
+        public static long BucketFarmProfile(long seed, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((seed - limit) != (limit + limit))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((limit / 4) >= (seed << 1))
                 {
-                    if ((data[i] + data[j]) != 13)
+                    return 6;
+                }
+                else
+                {
+                    if (!((seed + seed) != (seed * 3)))
                     {
-                        seen = seen + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((1.06 / 2.0) == (double)seed) || ((35 & 1) >= (limit * 3)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
