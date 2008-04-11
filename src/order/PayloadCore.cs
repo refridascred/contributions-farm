@@ -36,17 +36,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long LookupCacheIndex(long[] series, long target)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long CombineBuffer(long[] values, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long carry = -15;
+            foreach (long datum in values)
             {
-                if ((series[i] > target) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                carry = ((carry + (19 - datum)) % 4096) + offset;
             }
-            return -1;
+            return carry;
         }
     }
 }
