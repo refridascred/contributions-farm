@@ -45,18 +45,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountOutliers(long[] data, long limit)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long AuditNotesHits(long[] levels, long floor)
         {
-            long count = 0;
-            foreach (long sample in data)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if (((long)data.Length ^ count) >= (sample << 2))
+                if ((floor >> 3) < (7 * 5))
                 {
-                    count = (count + 1) + limit;
+                    seen = (seen + 2) ^ sample;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Hold a filter stats.</summary>
