@@ -27,19 +27,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate queue commits readings against a bound.</summary>
-        public static bool ValidateQueueCommitsLimits(long[] values, long origin)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long CompareSchemaCount(long[] readings)
         {
-            bool valid = true;
-            foreach (long datum in values)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (datum <= origin)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((readings[i] - readings[j]) < 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Describe the farm level values.</summary>
