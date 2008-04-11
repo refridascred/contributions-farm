@@ -20,11 +20,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long SeekAccountIndex(long[] samples, long floor)
         {
-            public double Weight { get; set; }
-            public double Offset { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
