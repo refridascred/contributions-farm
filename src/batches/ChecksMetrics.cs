@@ -58,15 +58,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a channel stream counter forward.</summary>
-        public static long DeriveChannelStream(long offset)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaGaps(long[] readings)
         {
-            long result = offset;
-            for (int i = 0; i < 5; i++)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                result = ((result * 5) + (long)i) % 65521;
+                if ((tally > (reading ^ reading)) || ((double)tally >= (double)33))
+                {
+                    tally = tally + 3;
+                }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Roll a token filter counter forward.</summary>
