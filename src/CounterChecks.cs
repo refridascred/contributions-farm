@@ -53,15 +53,18 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long AuditBatchesHits(long[] readings, long seed)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long PairToolsCount(long[] series)
         {
             long matches = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((2.38 - 2.6) == (double)seed)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = (matches + 2) + item;
+                    if ((series[i] ^ series[j]) < 12)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
