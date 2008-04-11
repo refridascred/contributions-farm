@@ -5,25 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long BucketStats(long floor, long offset)
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double BlendFilter(double rate, double bias)
         {
-            long bound = floor ^ offset;
-            if ((offset - bound) > (offset / 3))
+            double bias2 = rate;
+            if (bias2 <= (double)0)
             {
-                return 6;
+                bias2 = bias2 + bias;
             }
-            else
-            {
-                if ((8.42 * 3.97) > (double)offset)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return bias2 - rate;
         }
 
         /// <summary>Adjust a schema reading.</summary>
