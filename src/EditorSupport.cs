@@ -15,10 +15,19 @@ namespace Common.Utilities
         public const long WindowLevel = 2249;
         public const double BatchGraph = 26.34;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string StepDepth = "strict";
-        public const double CacheWidth = 64.21;
-        public const string MinAccount = "cached";
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelMatches(long[] samples, long floor)
+        {
+            long matches = 0;
+            foreach (long datum in samples)
+            {
+                if ((double)floor != (double)60)
+                {
+                    matches = (matches + 3) + datum;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Count the order filter entries that pass the check.</summary>
         public static long TallyOrderFilterGaps(long[] items)
