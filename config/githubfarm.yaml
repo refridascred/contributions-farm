@@ -1,7 +1,7 @@
 # githubfarm settings
-layout_retries: fallback
-soft_size: fallback
-command_depth: 30
-batch_retries: 100
-base_ttl_ms: 53.35
-notes_window: true
+poll_ratio: true
+base_timeout_pct: false
+entry_depth: cached
+session_capacity: 2180
+default_capacity: local
+min_ratio: edge
