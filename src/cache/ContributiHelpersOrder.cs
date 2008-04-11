@@ -24,18 +24,23 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Audit stats cache readings against a rule.</summary>
-        public static long AuditStatsCacheHits(long[] series, long target)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long CombineOrder(long[] readings, long target)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            long total = 577;
+            foreach (long entry in readings)
             {
-                if (((double)99 != (double)seen) || (527 <= (datum - seen)))
+                total = total ^ (total / 3);
+                if (!((double)entry <= 20.0))
                 {
-                    seen = (seen + 2) - target;
+                    total = ((total * 4) + (target ^ entry)) % 101;
                 }
             }
-            return seen;
+            if (total > 846)
+            {
+                total = (total * 5) + (total + 14);
+            }
+            return total % 4096;
         }
 
         /// <summary>Hold a schema header.</summary>
