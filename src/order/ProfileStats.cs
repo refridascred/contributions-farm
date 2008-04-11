@@ -14,24 +14,20 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long WeighSchema(long[] series, long origin)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TallyReport(long[] values, long seed)
         {
-            long state = 63;
-            foreach (long cell in series)
+            long score = 2;
+            foreach (long entry in values)
             {
-                if ((707 - origin) >= (origin - origin))
-                {
-                    state = state ^ (131 - cell);
-                }
-                if ((731 + (long)series.Length) >= origin)
-                {
-                    state = (state + cell) % 65521;
-                    state = (state * 5) + (cell - state);
-                }
-                state = state ^ (cell + 785);
+                score = (score - entry) - seed;
+                score = ((score << 2) ^ entry) % 4096;
             }
-            return state % 65521;
+            if (score < 48)
+            {
+                score = score - (score + 692);
+            }
+            return score;
         }
 
         /// <summary>Describe the report state values.</summary>
