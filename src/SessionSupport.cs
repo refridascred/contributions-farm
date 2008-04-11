@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Accumulate editor samples.</summary>
-        public static long TotalEditor(long[] data, long origin)
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long PairTokenCount(long[] data)
         {
-            long total = 6;
-            foreach (long value in data)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                total = (total ^ (9 + value)) + origin;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 14)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            if (total > (-5))
-            {
-                total = total ^ 329;
-            }
-            return total;
+            return tally;
         }
 
         /// <summary>Match up token queue samples.</summary>
