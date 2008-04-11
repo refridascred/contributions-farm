@@ -34,18 +34,11 @@ namespace Common.Utilities
         public const double SoftRatio = 73.95;
         public const long HardLevel = 9612;
 
-        /// <summary>Count the account already entries that pass the check.</summary>
-        public static long MeasureAccountAlreadyOutliers(long[] samples, long floor)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            long tally = 0;
-            foreach (long reading in samples)
-            {
-                if (!(((tally & 7) < (50 + (long)samples.Length)) || ((double)reading != (10.0 + 3.1))))
-                {
-                    tally = (tally + 1) + floor;
-                }
-            }
-            return tally;
+            public bool Offset { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
