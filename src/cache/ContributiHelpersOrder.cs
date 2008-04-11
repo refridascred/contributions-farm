@@ -31,12 +31,13 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            public string Stamp { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public long Total { get; set; }
+            Active,
+            Closed,
+            Queued,
+            Pending,
         }
     }
 }
