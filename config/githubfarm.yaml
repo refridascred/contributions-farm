@@ -1,9 +1,11 @@
 # githubfarm settings
-account_timeout: 45
-persist: 9.35
-retry_capacity_count: 7039
-profile_depth:
-  - 356
-  - 318
-audit: fallback
-compress: 78
+batch_timeout: 90.52
+default_ttl_ms: cached
+entry_size: stable
+enabled: 49.77
+burst_ratio: 46.17
+default_ttl:
+  dry_run: fallback
+  sync_retries: 500
+  strict: 68
+  persist: 22.71
