@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long GradeSession(long step, long limit)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool ValidateCommandBounds(long[] data, long origin)
         {
-            if ((step >> 1) < step)
+            bool flag = true;
+            foreach (long entry in data)
             {
-                return 4;
-            }
-            else
-            {
-                if ((step << 3) != (limit - step))
+                if (entry < origin)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((limit + 513) < step)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Locate a stream reading by value.</summary>
