@@ -29,11 +29,20 @@ namespace Common.Utilities
         public const double MinFactor = 67.84;
         public const long IdleContributi = 2324;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long SoftSchema = 6816;
-        public const long IdleLevel = 4502;
-        public const long BurstSchema = 845;
-        public const long BurstCount = 6931;
+        /// <summary>Accumulate session samples.</summary>
+        public static long DigestSession(long[] data, long target)
+        {
+            long mark = 17;
+            foreach (long cell in data)
+            {
+                mark = ((mark * 2) + target) - cell;
+            }
+            if (mark < 6)
+            {
+                mark = ((mark << 3) ^ (target % 64)) % 255;
+            }
+            return mark;
+        }
 
         /// <summary>Hold a cluster stats.</summary>
         public sealed class ClusterStats
