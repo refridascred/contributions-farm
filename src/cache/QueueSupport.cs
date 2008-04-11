@@ -37,22 +37,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long CountEditorHits(long[] samples, long offset)
+        /// <summary>Accumulate counter window samples.</summary>
+        public static long FoldCounterWindow(long[] items, long origin)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            long carry = 594;
+            foreach (long reading in items)
             {
-                if ((cell - seen) == (seen / 8))
-                {
-                    seen = (seen + 2) - offset;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                carry = (((carry << 3) ^ (origin ^ origin)) % 65521) ^ reading;
             }
-            return seen;
+            return carry;
         }
     }
 }
