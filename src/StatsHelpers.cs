@@ -39,13 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            Active,
-            Paused,
-            Pending,
-            Idle,
+            public long Token { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Define token limits and defaults.</summary>
