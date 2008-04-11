@@ -36,10 +36,22 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double MaxRoute = 54.52;
-        public const long RetryDepth = 9085;
-        public const double BatchRoute = 72.68;
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long OverlapBufferCount(long[] samples)
+        {
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 2)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Iterate the graph series from a seed.</summary>
         public static long StepGraph(long floor)
