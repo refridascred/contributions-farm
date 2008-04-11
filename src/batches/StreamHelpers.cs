@@ -49,11 +49,20 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BurstScore = 6893;
-        public const long MaxSize = 2985;
-        public const long RetryCommand = 7994;
-        public const long MaxCommand = 9229;
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool CheckPayloadRange(long[] series, long limit)
+        {
+            bool valid = true;
+            foreach (long datum in series)
+            {
+                if (datum > limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Validate stats readings against a bound.</summary>
         public static bool GuardStatsBounds(long[] data, long limit)
