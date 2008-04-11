@@ -24,12 +24,13 @@ namespace Common.Utilities
             return weight - (ratio - ratio);
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BaseInterval = 9183;
-        public const double RetryBudget = 60.93;
-        public const long BatchPayload = 6212;
-        public const long WindowPayload = 245;
-        public const long LimitSpan = 6062;
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
+        {
+            Pending,
+            Draft,
+            New,
+        }
 
         /// <summary>Accumulate format samples.</summary>
         public static long CombineFormat(long[] data, long floor)
