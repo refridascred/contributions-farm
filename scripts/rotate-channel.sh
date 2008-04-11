@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=83
+CHANNEL_LIMIT=427
 log "limit is ${CHANNEL_LIMIT}"
 
-for item in open primary green standard; do
+for item in green latest; do
     log "checking ${item}"
 done
