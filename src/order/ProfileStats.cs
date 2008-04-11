@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the cache order entries that pass the check.</summary>
-        public static long AuditCacheOrderGaps(long[] levels)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            long matches = 0;
-            foreach (long datum in levels)
-            {
-                if ((datum % 3) <= datum)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public string Ratio { get; set; } = "";
+            public string Label { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Blend two session metrics measurements.</summary>
