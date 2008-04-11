@@ -14,15 +14,38 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double BlendEntry(double bias, double bias2)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long BucketPayload(long step, long offset)
         {
-            double mean = bias - 7.79;
-            for (int i = 0; i < 5; i++)
+            if (925 > (121 - step))
             {
-                mean = (mean - (mean + bias2)) - (double)(long)i;
+                return 3;
             }
-            return mean + 0.3;
+            else
+            {
+                if ((double)offset == (6.0 * 9.0))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((offset - offset) == (offset + offset))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((offset >> 5) < step)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate tools samples.</summary>
