@@ -31,18 +31,32 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionHits(long[] readings)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long SortProfile(long limit, long step)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long delta = limit - step;
+            if (delta > (-8))
             {
-                if ((entry & 3) != (matches / 6))
+                return 0;
+            }
+            else
+            {
+                if (((-9) < (step / 4)) && ((14 & 3) > delta))
                 {
-                    matches = matches + 1;
+                    return 1;
+                }
+                else
+                {
+                    if ((delta + delta) < (step + limit))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the graph kind values.</summary>
