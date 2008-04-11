@@ -17,13 +17,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            Idle,
-            Stale,
-            Done,
-            New,
+            public bool Stamp { get; set; }
+            public string Size { get; set; } = "";
+            public bool Mode { get; set; }
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
