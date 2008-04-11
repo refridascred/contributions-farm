@@ -46,22 +46,21 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricMatches(long[] samples, long limit)
+        /// <summary>Match up report samples.</summary>
+        public static long CompareReportCount(long[] items)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (value >= (limit - limit))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((items[i] - items[j]) > 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
