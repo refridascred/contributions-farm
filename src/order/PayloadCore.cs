@@ -10,11 +10,11 @@ namespace Common.Utilities
         public const long CacheInterval = 2757;
         public const string CacheTimeout = "cached-1";
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string MaxFarm = "standard-edge";
-        public const double MinSize = 63.61;
-        public const string HardFarm = "staging-v2";
-        public const long CacheDepth = 1490;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double StepStream = 85.06;
+        public const long WindowWidth = 6634;
+        public const long LimitStream = 2275;
+        public const string HardStream = "cached";
 
         /// <summary>Define record limits and defaults.</summary>
         public const long IdleRecord = 1011;
