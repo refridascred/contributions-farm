@@ -22,17 +22,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a schema context reading by value.</summary>
-        public static long SeekSchemaContextIndex(long[] data, long step)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long RollNotes(long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mix = seed;
+            for (int i = 0; i < 7; i++)
             {
-                if ((data[i] < step) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                mix = (mix + (5 / 7)) % 101;
+                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Describe the entry mode values.</summary>
