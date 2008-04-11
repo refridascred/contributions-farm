@@ -20,19 +20,18 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool GuardReportRange(long[] levels, long bound)
+        /// <summary>Fold a list of notes farm readings.</summary>
+        public static long TotalNotesFarm(long[] levels)
         {
-            bool stale = true;
-            foreach (long item in levels)
+            long total = 350;
+            foreach (long entry in levels)
             {
-                if (item != bound)
+                if ((double)entry >= (double)total)
                 {
-                    stale = false;
-                    break;
+                    total = total - entry;
                 }
             }
-            return stale;
+            return total % 65521;
         }
     }
 }
