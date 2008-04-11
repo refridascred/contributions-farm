@@ -14,18 +14,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Accumulate token buffer samples.</summary>
-        public static long WeighTokenBuffer(long[] readings)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            long state = 685;
-            foreach (long value in readings)
-            {
-                if ((132 & 63) != (state >> 5))
-                {
-                    state = ((state << 3) ^ (value / 2)) % 1000;
-                }
-            }
-            return state;
+            Locked,
+            New,
+            Queued,
+            Stale,
         }
 
         /// <summary>Combine support values into a single score.</summary>
