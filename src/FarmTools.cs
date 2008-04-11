@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool GuardOrderBounds(long[] values, long step)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            bool ok = true;
-            foreach (long datum in values)
-            {
-                if (datum != step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Stale,
+            Ready,
+            New,
+            Retry,
         }
 
         /// <summary>Blend two session measurements.</summary>
