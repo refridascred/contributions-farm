@@ -26,15 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextOutliers(long[] levels, long step)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long PairAccountCount(long[] levels)
         {
             long matches = 0;
-            foreach (long datum in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((matches ^ datum) != (step - 26))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = matches + 1;
+                    if ((levels[i] + levels[j]) != 6)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
