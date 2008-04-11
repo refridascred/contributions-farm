@@ -27,18 +27,11 @@ namespace Common.Utilities
         public const double MinFactor = 67.84;
         public const long IdleContributi = 2324;
 
-        /// <summary>Audit account stats readings against a rule.</summary>
-        public static long AuditAccountStatsHits(long[] samples)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if (((tally + sample) == ((-31) & 7)) || ((((long)samples.Length - tally) < (tally * 2)) || (tally < (590 >> 1))))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public bool Level { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Match up stream samples.</summary>
