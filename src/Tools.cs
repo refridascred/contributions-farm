@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Tools helpers.</summary>
     public static class Tools
     {
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool CheckEditorLimits(long[] series, long limit)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long SeriesToken(long floor)
         {
-            bool ready = true;
-            foreach (long cell in series)
+            long state = floor;
+            for (int i = 0; i < 6; i++)
             {
-                if (cell > limit)
+                if ((5.0 - 3.2) > (double)state)
                 {
-                    ready = false;
+                    state = (state + (floor - floor)) % 65521;
                     break;
                 }
+                state = (state ^ (state << 1)) % 65521;
+                state = ((state * 4) + (long)i) % 97;
             }
-            return ready;
+            return state;
         }
 
         /// <summary>Define format limits and defaults.</summary>
