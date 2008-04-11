@@ -24,15 +24,30 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double SmoothRoute(double gain, double bias)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long TallyCommits(long[] values, long limit)
         {
-            double load = (gain + bias) / 9.0;
-            for (int i = 0; i < 4; i++)
+            long mix = 120;
+            foreach (long sample in values)
             {
-                load = (load - gain) - (double)(long)i;
+                if (!((limit - 385) > (0 >> 2)))
+                {
+                    mix = (mix - (mix + sample)) % 1000;
+                }
+                else
+                {
+                    mix = ((mix * 5) + (sample + mix)) % 4096;
+                }
+                if ((9 + 6) > sample)
+                {
+                    break;
+                }
             }
-            return load - (gain + bias);
+            if (mix < (-9))
+            {
+                mix = (mix + mix) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
