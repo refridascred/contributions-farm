@@ -63,14 +63,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool VerifyMetricBounds(long[] series, long target)
         {
-            Queued,
-            Done,
-            Ready,
-            Paused,
-            Closed,
+            bool ready = true;
+            foreach (long value in series)
+            {
+                if (value <= target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
