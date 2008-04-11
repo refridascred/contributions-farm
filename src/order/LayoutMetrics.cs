@@ -26,11 +26,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long LimitSession = 721;
-        public const string SoftSession = "stable";
-        public const long DefaultCount = 9821;
-        public const long BatchWidth = 7105;
-        public const long SoftRatio = 8861;
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
+        {
+            public double Score { get; set; }
+            public long Region { get; set; }
+        }
     }
 }
