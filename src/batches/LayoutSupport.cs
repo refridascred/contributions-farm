@@ -43,17 +43,11 @@ namespace Common.Utilities
         public const double BurstWidth = 45.39;
         public const string MaxBudget = "staging-v2";
 
-        /// <summary>Locate a filter graph reading by value.</summary>
-        public static long LookupFilterGraphIndex(long[] samples, long offset)
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Weight { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
