@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            public double Flag { get; set; }
-            public long Stamp { get; set; }
+            Retry,
+            Locked,
+            Ready,
+            Active,
         }
 
         /// <summary>Define schema limits and defaults.</summary>
