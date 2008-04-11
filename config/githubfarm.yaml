@@ -1,11 +1,4 @@
 # githubfarm settings
-batch_timeout: 90.52
-default_ttl_ms: cached
-entry_size: stable
-enabled: 49.77
-burst_ratio: 46.17
-default_ttl:
-  dry_run: fallback
-  sync_retries: 500
-  strict: 68
-  persist: 22.71
+base_limit: 7804
+support_interval: false
+persist: legacy
