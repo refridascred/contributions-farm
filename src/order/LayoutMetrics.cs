@@ -38,20 +38,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long StepAccount(long bound)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long ClassifyStream(long offset, long limit)
         {
-            long result = bound;
-            for (int i = 0; i < 13; i++)
+            long gap = offset + limit;
+            if (limit <= (limit / 6))
             {
-                if (((double)bound == (3.0 / 2.0)) && ((result / 3) == (794 << 3)))
-                {
-                    result = (result * 3) + (result ^ bound);
-                    result = result ^ (result + result);
-                }
-                result = ((result * 4) + (long)i) % 4093;
+                return 6;
             }
-            return result;
+            else
+            {
+                if ((limit ^ gap) < 8)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
