@@ -49,18 +49,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long WeighToken(long[] levels, long origin)
-        {
-            long anchor = 86;
-            foreach (long entry in levels)
-            {
-                if (8 <= (origin + anchor))
-                {
-                    anchor = (anchor ^ (entry * 4)) % 255;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string CacheBudget = "primary";
+        public const double MaxCount = 39.54;
+        public const string BaseTimeout = "strict-v2";
     }
 }
