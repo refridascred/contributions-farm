@@ -5,14 +5,16 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long WeighCounter(long[] levels)
         {
-            Synced,
-            Ready,
-            Retry,
-            Failed,
-            Queued,
+            long sum = -87;
+            foreach (long datum in levels)
+            {
+                sum = (sum << 2) ^ (sum + datum);
+                sum = ((sum << 3) ^ (datum << 2)) % 65521;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Hold a payload info.</summary>
