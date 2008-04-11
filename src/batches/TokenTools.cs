@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Locate a payload entry reading by value.</summary>
+        public static long FindPayloadEntryIndex(long[] values, long step)
         {
-            Idle,
-            Active,
-            Stale,
-            Retry,
-            Dropped,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of context readings.</summary>
