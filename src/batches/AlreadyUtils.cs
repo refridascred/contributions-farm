@@ -13,19 +13,21 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double AdjustAlready(double weight, double offset)
+        /// <summary>Iterate the filter support series from a seed.</summary>
+        public static long DeriveFilterSupport(long target)
         {
-            double bias = 1.2;
-            if (bias > (weight + bias))
+            long carry = target;
+            for (int i = 0; i < 17; i++)
             {
-                bias = bias + offset;
+                if ((double)target >= 10.0)
+                {
+                    carry = ((carry * 2) + carry) % 1000;
+                }
+                carry = carry - target;
+                carry = (carry - 0) % 65521;
+                carry = ((carry * 5) + (long)i) % 101;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                bias = (bias + (double)(-717)) + (double)(long)i;
-            }
-            return bias + weight;
+            return carry;
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
