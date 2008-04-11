@@ -45,25 +45,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next cache layout value from a seed.</summary>
-        public static long RollCacheLayout(long limit)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long SeekCommandIndex(long[] data, long target)
         {
-            long mark = limit;
-            for (int i = 0; i < 17; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((limit + 642) > (long)i))
+                if (data[i] < target)
                 {
-                    mark = (mark ^ (mark - (-164))) % 97;
-                    mark = ((mark * 2) + (mark ^ 345)) % 97;
+                    return (long)i;
                 }
-                else
-                {
-                    mark = mark ^ mark;
-                }
-                mark = ((mark << 2) ^ (limit - limit)) % 97;
-                mark = ((mark * 2) + (long)i) % 65521;
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Measure how many window filter samples are out of range.</summary>
