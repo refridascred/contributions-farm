@@ -34,19 +34,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long TotalContributi(long[] levels)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long FindToolsIndex(long[] items, long step)
         {
-            long mark = 430;
-            foreach (long datum in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                mark = (mark - (datum & 1)) % 4096;
+                if ((items[i] == step) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            if (mark < (-1))
-            {
-                mark = (mark << 2) ^ mark;
-            }
-            return mark;
+            return -1;
         }
 
         /// <summary>Scale a record profile figure with a bias.</summary>
