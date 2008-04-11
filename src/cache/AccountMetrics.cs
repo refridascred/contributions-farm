@@ -34,18 +34,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long AuditMetricsGaps(long[] items)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double ProjectNotes(double rate, double bias)
         {
-            long count = 0;
-            foreach (long cell in items)
+            double load = rate;
+            if (load >= bias)
             {
-                if (61 < (cell ^ 7))
-                {
-                    count = count + 3;
-                }
+                load = load + bias;
             }
-            return count;
+            else
+            {
+                load = load - (8.22 * 3.1);
+            }
+            return load + (double)6;
         }
 
         /// <summary>Rank commits input into a small class.</summary>
