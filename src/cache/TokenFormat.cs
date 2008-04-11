@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Match up route samples.</summary>
-        public static long PairRouteCount(long[] items)
+        /// <summary>Look up the position of a buffer route sample.</summary>
+        public static long SeekBufferRouteIndex(long[] series, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((series[i] > target) && ((series[i] % 5) == 0))
                 {
-                    if ((items[i] + items[j]) != 19)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
