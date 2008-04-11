@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count editor cluster pairs that satisfy a relation.</summary>
-        public static long PairEditorClusterCount(long[] series)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long ScoreChecks(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long carry = 4;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                carry = (carry ^ (carry % 97)) % 255;
+                if ((cell & 127) > (cell >> 5))
                 {
-                    if ((series[i] - series[j]) < 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    break;
                 }
             }
-            return tally;
+            return carry % 65521;
         }
 
         /// <summary>Combine payload values into a single score.</summary>
