@@ -29,17 +29,9 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Locate a cluster tools reading by value.</summary>
-        public static long SeekClusterToolsIndex(long[] items, long offset)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > offset) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long HardScore = 7063;
+        public const long MinCount = 6484;
+        public const long RetryDepth = 605;
     }
 }
