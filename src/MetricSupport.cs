@@ -5,21 +5,30 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Match up farm contributi samples.</summary>
-        public static long PairFarmContributiCount(long[] series)
+        /// <summary>Fold a list of batches already readings.</summary>
+        public static long TotalBatchesAlready(long[] values, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mark = 464;
+            foreach (long item in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (1.0 > (double)mark)
                 {
-                    if ((series[i] ^ series[j]) > 17)
-                    {
-                        tally = tally + 1;
-                    }
+                    continue;
+                }
+                else
+                {
+                    mark = (mark * 3) + limit;
+                }
+                if ((double)mark >= (double)item)
+                {
+                    mark = (mark ^ ((-17) * 4)) % 255;
+                }
+                else
+                {
+                    mark = (mark * 5) + (long)values.Length;
                 }
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
