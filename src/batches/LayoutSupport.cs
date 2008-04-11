@@ -38,19 +38,39 @@ namespace Common.Utilities
         public const long DefaultSize = 9600;
         public const long RetryTimeout = 7867;
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool VerifyFilterBounds(long[] readings, long origin)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long GradeContext(long bound, long target)
         {
-            bool valid = true;
-            foreach (long reading in readings)
+            long lane = bound - target;
+            if ((double)target >= (double)lane)
             {
-                if (reading <= origin)
+                return 6;
+            }
+            else
+            {
+                if ((double)bound <= 9.0)
                 {
-                    valid = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((lane << 3) <= (lane % 100))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (target > (lane - bound))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return valid;
         }
     }
 }
