@@ -1,5 +1,11 @@
 {
-  "hard_interval": true,
-  "batch_interval": [447, 275, 346],
-  "layout_interval": [226, 308, 393]
+  "cache_retries_ms": 28,
+  "readonly": {
+    "warm_threshold": 250,
+    "context_delay": "primary",
+    "verbose": "fallback",
+    "default_limit_ms": 93.56,
+    "poll_size_count": "local"
+  },
+  "persist": true
 }
