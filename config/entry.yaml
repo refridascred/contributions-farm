@@ -1,20 +1,24 @@
 # entry settings
-verbose:
-  - primary
-  - eu-west
-  - primary
-poll_threshold:
-  soft_interval_count: 9115
-  idle_depth_ms: 37.46
-  poll_threshold:
-    - 471
-    - 86
-    - 482
-  format_delay: legacy
-  already_window: strict
-hard_interval_count: 1024
-strict:
-  - 89
-  - 326
-  - 216
-poll_ratio_pct: cached
+verbose: cached
+max_retries:
+  soft_capacity_ms: 1906
+  cache_delay: blue
+  batch_window: 2534
+  cache_depth_count: staging
+  cache_threshold_ms: true
+  dry_run: false
+audit:
+  metric_ratio:
+    metric_limit: edge
+    persist: false
+    audit: stable
+    default_window: blue
+    farm_ttl: 3129
+    account_size:
+      - 286
+      - 278
+      - 28
+  strict: strict
+  sync_depth: stable
+  graph_window: stable
+  dry_run: 87.34
