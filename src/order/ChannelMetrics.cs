@@ -47,18 +47,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorHits(long[] readings)
+        /// <summary>Audit batch filter readings against a rule.</summary>
+        public static long CountBatchFilterOutliers(long[] data, long offset)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                if ((long)readings.Length >= (seen - value))
+                if ((offset ^ 286) > hits)
                 {
-                    seen = seen + 1;
+                    hits = (hits + 3) + reading;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
