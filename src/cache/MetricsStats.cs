@@ -53,19 +53,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long StepGraph(long floor)
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            long sum = floor;
-            for (int i = 0; i < 10; i++)
-            {
-                if (!((0.3 + 11.0) == (double)sum))
-                {
-                    sum = ((sum << 3) ^ (sum + floor)) % 1000;
-                }
-                sum = ((sum * 2) + (long)i) % 101;
-            }
-            return sum;
+            public bool Weight { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
