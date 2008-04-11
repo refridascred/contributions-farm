@@ -51,19 +51,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool GuardProfileLimits(long[] levels, long seed)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long CountStatsOutliers(long[] data)
         {
-            bool ok = true;
-            foreach (long datum in levels)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                if (datum <= seed)
+                if ((0.76 + 14.0) != (double)tally)
                 {
-                    ok = false;
-                    break;
+                    tally = (tally + 2) + sample;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
