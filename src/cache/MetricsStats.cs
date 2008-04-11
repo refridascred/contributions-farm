@@ -36,14 +36,10 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
-        {
-            public string Stamp { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public long Label { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double MaxRoute = 54.52;
+        public const long RetryDepth = 9085;
+        public const double BatchRoute = 72.68;
 
         /// <summary>Iterate the graph series from a seed.</summary>
         public static long StepGraph(long floor)
