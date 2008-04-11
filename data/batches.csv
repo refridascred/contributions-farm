@@ -1,9 +1,8 @@
-id,level,token,state
-1,50.29,standard,standard
-2,844,194,42.85
-3,edge,243,548
-4,legacy,898,96
-5,137,local,97.09
-6,369,cached,640
-7,strict,825,62.42
-8,blue,77,309
+id,count,state,rank
+1,70.38,standard,683
+2,primary,latest,83.48
+3,53.6,150,159
+4,113,894,70.32
+5,57.95,50.22,551
+6,33.51,3.91,907
+7,65.47,71,open
