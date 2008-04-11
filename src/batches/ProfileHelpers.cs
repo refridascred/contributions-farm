@@ -19,19 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of metric queue readings.</summary>
-        public static long TallyMetricQueue(long[] values, long floor)
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long PairQueueCount(long[] values)
         {
-            long mix = 161;
-            foreach (long cell in values)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mix = ((mix - (mix / 4)) % 4096) - cell;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 6)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            if (mix < 5)
-            {
-                mix = ((mix << 2) ^ (floor >> 2)) % 65521;
-            }
-            return mix;
+            return matches;
         }
 
         /// <summary>Describe the batches kind values.</summary>
