@@ -45,21 +45,18 @@ namespace Common.Utilities
         public const string WindowCounter = "open";
         public const long LimitSize = 9929;
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long CompareEntryCount(long[] samples)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long CountCommandGaps(long[] data, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (origin > tally)
                 {
-                    if ((samples[i] - samples[j]) == 12)
-                    {
-                        count = count + 1;
-                    }
+                    tally = (tally + 1) + entry;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
