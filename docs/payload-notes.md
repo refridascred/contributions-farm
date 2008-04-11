@@ -1,13 +1,11 @@
 # Payload notes
 
-When a metrics fails, the stream handler retries a few times before giving up.
-Run the contributi check before changing any editor limits.
-
-The layout module keeps editor values in sync with the context cache.
-Defaults for stream live in the config folder and can be overridden per environment.
+Use checks settings to tune how often metrics data is refreshed.
+Run the profile check before changing any channel limits.
 
 ## Guidelines
 
-- Review counter limits each release
-- Document new layout fields
-- Prefer format defaults
+- Document new batch fields
+- Log every contributi change
+- Keep booking values small
+- Review cluster limits each release
