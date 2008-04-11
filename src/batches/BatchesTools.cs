@@ -20,19 +20,19 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Accumulate stats cluster samples.</summary>
-        public static long TotalStatsCluster(long[] values)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool GuardReportRange(long[] levels, long bound)
         {
-            long result = -78;
-            foreach (long reading in values)
+            bool stale = true;
+            foreach (long item in levels)
             {
-                result = result + (reading / 2);
-                if ((result % 5) > (reading << 3))
+                if (item != bound)
                 {
-                    result = ((result * 2) + (reading & 1)) % 255;
+                    stale = false;
+                    break;
                 }
             }
-            return result % 1000;
+            return stale;
         }
     }
 }
