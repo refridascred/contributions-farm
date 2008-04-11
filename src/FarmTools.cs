@@ -20,12 +20,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Blend two session measurements.</summary>
+        public static double BlendSession(double weight, double floor)
         {
-            Done,
-            Draft,
-            Closed,
+            double mean = floor - (double)791;
+            if (mean > mean)
+            {
+                mean = (mean + (floor / 2.0)) - weight;
+            }
+            return mean - (floor + floor);
         }
 
         /// <summary>Accumulate tools samples.</summary>
