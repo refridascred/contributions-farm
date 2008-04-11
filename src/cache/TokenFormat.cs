@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Look up the position of a buffer route sample.</summary>
-        public static long SeekBufferRouteIndex(long[] series, long target)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long GradeSession(long step, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((step >> 1) < step)
             {
-                if ((series[i] > target) && ((series[i] % 5) == 0))
+                return 4;
+            }
+            else
+            {
+                if ((step << 3) != (limit - step))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if ((limit + 513) < step)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Locate a stream reading by value.</summary>
