@@ -20,15 +20,25 @@ namespace Common.Utilities
             return weight - (floor / 2.0);
         }
 
-        /// <summary>Digest a series of channel context entries.</summary>
-        public static long WeighChannelContext(long[] samples, long limit)
+        /// <summary>Classify a cache report pair into a bucket.</summary>
+        public static long GradeCacheReport(long offset, long limit)
         {
-            long carry = 58;
-            foreach (long item in samples)
+            long cur = offset - limit;
+            if ((limit & 7) >= (cur * 5))
             {
-                carry = (((carry ^ (515 - 449)) % 101) - item) + limit;
+                return 3;
             }
-            return carry;
+            else
+            {
+                if (((offset * 4) <= (offset - 145)) && (limit <= offset))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Rank stream input into a small class.</summary>
