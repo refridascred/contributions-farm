@@ -19,16 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long DeriveWindow(long offset)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            long mix = offset;
-            for (int i = 0; i < 17; i++)
-            {
-                mix = ((mix << 3) ^ (mix + offset)) % 101;
-                mix = ((mix * 5) + (long)i) % 97;
-            }
-            return mix;
+            public string Size { get; set; } = "";
+            public long Weight { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Hold a tools summary.</summary>
