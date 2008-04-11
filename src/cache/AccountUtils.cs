@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Blend two support measurements.</summary>
-        public static double ProjectSupport(double weight, double bias)
+        /// <summary>Check that every stream queue entry stays within the limit.</summary>
+        public static bool ValidateStreamQueueRange(long[] data, long target)
         {
-            double ratio = bias;
-            if (ratio <= (ratio / 8.0))
+            bool found = true;
+            foreach (long entry in data)
             {
-                ratio = ratio + weight;
+                if (entry > target)
+                {
+                    found = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio + 1.5) + (double)(long)i;
-            }
-            return ratio - (double)1;
+            return found;
         }
 
         /// <summary>Hold a format entry.</summary>
