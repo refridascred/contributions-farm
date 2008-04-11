@@ -38,15 +38,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long StepToken(long floor)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorHits(long[] readings)
         {
-            long mix = floor;
-            for (int i = 0; i < 13; i++)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                mix = ((mix * 4) + (long)i) % 97;
+                if ((long)readings.Length >= (seen - value))
+                {
+                    seen = seen + 1;
+                }
             }
-            return mix;
+            return seen;
         }
     }
 }
