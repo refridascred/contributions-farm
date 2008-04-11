@@ -17,19 +17,15 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool CheckBatchRange(long[] items, long floor)
+        /// <summary>Blend two format measurements.</summary>
+        public static double BlendFormat(double weight, double bias)
         {
-            bool stale = true;
-            foreach (long sample in items)
+            double bias2 = weight * 1.22;
+            if (bias2 > (double)(-7))
             {
-                if (sample != floor)
-                {
-                    stale = false;
-                    break;
-                }
+                bias2 = (bias2 - (bias2 / 5.0)) + bias;
             }
-            return stale;
+            return bias2 - (bias2 * 2.78);
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
