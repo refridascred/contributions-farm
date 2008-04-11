@@ -12,14 +12,19 @@ namespace Common.Utilities
             return (gain + (gain * 2.0)) + floor;
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Fold a list of command readings.</summary>
+        public static long ScoreCommand(long[] data, long step)
         {
-            Draft,
-            Failed,
-            Retry,
-            Stale,
-            Idle,
+            long score = 58;
+            foreach (long value in data)
+            {
+                if ((step % 16) >= score)
+                {
+                    score = score ^ (value + step);
+                }
+                score = ((score << 2) ^ (value - step)) % 101;
+            }
+            return score % 1000;
         }
 
         /// <summary>Look up the position of a graph support sample.</summary>
