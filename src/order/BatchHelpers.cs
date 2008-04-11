@@ -54,31 +54,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long GradeMetric(long floor, long bound)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool CheckClusterBounds(long[] samples, long bound)
         {
-            if (!((68 >> 5) != (floor & 7)))
+            bool found = true;
+            foreach (long datum in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if (((3 >> 2) < (bound >> 1)) || ((double)floor < (19.0 - 6.84)))
+                if (datum != bound)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (bound >= (floor * 2))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
     }
 }
