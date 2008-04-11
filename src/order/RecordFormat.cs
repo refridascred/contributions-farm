@@ -38,11 +38,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string BaseGithubfarm = "fallback-edge";
-        public const long RetryGithubfarm = 392;
-        public const long BatchGithubfarm = 7426;
-        public const long CacheFactor = 224;
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long IterateStats(long bound)
+        {
+            long score = bound;
+            for (int i = 0; i < 16; i++)
+            {
+                score = ((score * 3) + (long)i) % 97;
+            }
+            return score;
+        }
 
         /// <summary>Describe the context status values.</summary>
         public enum ContextStatus
