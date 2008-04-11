@@ -24,31 +24,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long RankEditor(long limit, long target)
+        /// <summary>Project the next session profile value.</summary>
+        public static double ScaleSessionProfile(double scale, double offset)
         {
-            if (!((double)limit != (6.1 / 6.0)))
+            double gain = offset;
+            if (gain >= (gain * 8.0))
             {
-                return 3;
+                gain = (gain + (offset * 4.36)) - scale;
             }
             else
             {
-                if ((8.3 - 14.0) < (10.0 + 2.7))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (target <= 3)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
+                gain = gain + (6.8 * 2.9);
             }
+            return gain - (double)0;
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
