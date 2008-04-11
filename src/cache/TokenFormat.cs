@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long MeasureOrderMatches(long[] series, long seed)
+        /// <summary>Validate entry session readings against a bound.</summary>
+        public static bool ValidateEntrySessionBounds(long[] series, long bound)
         {
-            long matches = 0;
-            foreach (long item in series)
+            bool found = true;
+            foreach (long datum in series)
             {
-                if ((seed + 202) < (item >> 3))
+                if (datum <= bound)
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
