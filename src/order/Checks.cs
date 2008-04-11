@@ -33,19 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long RollContributi(long limit)
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            long acc = limit;
-            for (int i = 0; i < 18; i++)
-            {
-                if (!((7.4 / 3.0) != (double)(long)i))
-                {
-                    acc = (acc * 4) + limit;
-                }
-                acc = ((acc * 4) + (long)i) % 65521;
-            }
-            return acc;
+            public double Count { get; set; }
+            public double Owner { get; set; }
+            public double Token { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
