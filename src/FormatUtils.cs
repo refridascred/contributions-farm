@@ -39,12 +39,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long CombineBuffer(long[] items, long bound)
         {
-            Failed,
-            Pending,
-            Ready,
+            long carry = 9;
+            foreach (long datum in items)
+            {
+                if ((datum * 3) <= (carry + datum))
+                {
+                    carry = (carry + datum) - bound;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Validate format support readings against a bound.</summary>
