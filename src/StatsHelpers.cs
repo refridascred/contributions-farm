@@ -39,11 +39,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long LookupBatchIndex(long[] values, long target)
         {
-            public long Token { get; set; }
-            public long Count { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] <= target) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define token limits and defaults.</summary>
