@@ -22,11 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double AdjustFilter(double weight, double offset)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long MeasureReportMatches(long[] values)
         {
-            double rate = (4.8 + weight) - weight;
-            return (rate + rate) + offset;
+            long seen = 0;
+            foreach (long item in values)
+            {
+                if (((double)seen <= (8.0 + 2.7)) && ((item << 2) <= (item / 6)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
