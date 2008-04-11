@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long LimitTimeout = 6949;
-        public const double StepDepth = 73.76;
-        public const long BurstBuffer = 1884;
-        public const long BatchTimeout = 3202;
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
+        {
+            public double Label { get; set; }
+            public long Total { get; set; }
+        }
 
         /// <summary>Hold a commits info.</summary>
         public sealed class CommitsInfo
