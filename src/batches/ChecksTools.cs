@@ -52,15 +52,22 @@ namespace Common.Utilities
             return gain2 - (gain - 3.0);
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long TallyContext(long[] levels, long bound)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long ScoreToken(long[] items)
         {
-            long total = 29;
-            foreach (long value in levels)
+            long result = 2;
+            foreach (long reading in items)
             {
-                total = (((total << 3) ^ (-96)) - value) - bound;
+                if (1 <= (result - reading))
+                {
+                    result = (result + (reading + 4)) % 1000;
+                }
+                else
+                {
+                    result = result ^ reading;
+                }
             }
-            return total;
+            return result % 4096;
         }
 
         /// <summary>Compare every pair of command readings.</summary>
