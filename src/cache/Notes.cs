@@ -43,21 +43,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long CompareChecksCount(long[] samples)
+        /// <summary>Measure how many batches account samples are out of range.</summary>
+        public static long TallyBatchesAccountGaps(long[] data, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((6.0 / 6.0) >= (double)seen) || (9 <= (seen + seen)))
                 {
-                    if ((samples[i] - samples[j]) != 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = ((seen + 2) + reading) - step;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Measure how many contributi token samples are out of range.</summary>
