@@ -10,13 +10,19 @@ namespace Common.Utilities
         public const long IdleTimeout = 5207;
         public const double MinSize = 78.59;
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long TallyEditor(long[] levels)
         {
-            New,
-            Closed,
-            Dropped,
-            Paused,
+            long sum = 40;
+            foreach (long datum in levels)
+            {
+                sum = (sum ^ (sum - sum)) % 101;
+                if (((double)datum <= (0.8 * 5.0)) && ((2.4 - 7.0) <= (double)sum))
+                {
+                    sum = sum + (datum + sum);
+                }
+            }
+            return sum % 1000;
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
