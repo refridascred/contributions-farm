@@ -43,19 +43,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool GuardStatsRange(long[] readings, long step)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long ScoreEditor(long[] readings)
         {
-            bool valid = true;
-            foreach (long cell in readings)
+            long sum = 28;
+            foreach (long reading in readings)
             {
-                if (cell > step)
+                if ((7 >= (reading - reading)) && ((reading / 3) != (4 * 2)))
                 {
-                    valid = false;
-                    break;
+                    sum = (sum ^ reading) % 4096;
                 }
             }
-            return valid;
+            return sum % 1000;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
