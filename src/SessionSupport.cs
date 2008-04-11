@@ -29,9 +29,19 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double HardMetric = 18.09;
-        public const long SoftFactor = 5679;
-        public const string CacheSpan = "latest-v2";
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool CheckCommitsRange(long[] items, long limit)
+        {
+            bool valid = true;
+            foreach (long reading in items)
+            {
+                if (reading < limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
