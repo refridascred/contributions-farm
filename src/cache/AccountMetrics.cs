@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Project the next tools queue value.</summary>
-        public static double BlendToolsQueue(double gain, double bias)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long TotalContext(long[] items, long seed)
         {
-            double weight = gain;
-            for (int i = 0; i < 5; i++)
+            long carry = 31;
+            foreach (long sample in items)
             {
-                weight = ((weight + weight) - (double)(long)i) - bias;
+                if (!((-9) <= (carry % 3)))
+                {
+                    carry = ((carry ^ (seed >> 2)) % 4096) ^ sample;
+                }
             }
-            return weight + (gain * 4.1);
+            return carry;
         }
 
         /// <summary>Check that every payload profile entry stays within the limit.</summary>
