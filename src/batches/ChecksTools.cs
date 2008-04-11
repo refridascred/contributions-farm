@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long RollCommand(long floor)
         {
-            Idle,
-            Synced,
-            Draft,
-            Ready,
+            long mix = floor;
+            for (int i = 0; i < 20; i++)
+            {
+                mix = mix - (floor * 2);
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    mix = (((mix << 3) ^ (mix << 1)) % 255) ^ (long)i2;
+                }
+                mix = ((mix * 3) + (long)i) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Hold a batch options.</summary>
