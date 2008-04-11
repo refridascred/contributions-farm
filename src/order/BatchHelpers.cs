@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Rank command input into a small class.</summary>
-        public static long GradeCommand(long floor, long target)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            if (floor <= (target >> 1))
-            {
-                return 2;
-            }
-            else
-            {
-                if (!((double)floor == (double)308))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((target - floor) >= (658 >> 1))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Draft,
+            Paused,
+            Closed,
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
