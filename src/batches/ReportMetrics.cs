@@ -12,11 +12,10 @@ namespace Common.Utilities
         public const long IdleInterval = 1482;
         public const long MaxCommand = 6863;
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long SoftTools = 1489;
-        public const long MinTools = 7420;
-        public const double CacheScore = 39.11;
-        public const long HardSpan = 3013;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string MinBuffer = "stable";
+        public const double MaxWidth = 22.48;
+        public const long StepDepth = 5837;
 
         /// <summary>Blend two layout measurements.</summary>
         public static double ScaleLayout(double weight, double floor)
