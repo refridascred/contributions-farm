@@ -39,18 +39,28 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long WeighStream(long[] values, long bound)
+        /// <summary>Accumulate channel notes samples.</summary>
+        public static long ScoreChannelNotes(long[] items)
         {
-            long state = 645;
-            foreach (long value in values)
+            long total = 550;
+            foreach (long item in items)
             {
-                if ((bound < (31 + 177)) || (value < (state - value)))
+                long lane = (803 + total) ^ (total >> 5);
+                if ((double)total <= 5.49)
                 {
-                    state = (state ^ (value + 20)) % 65521;
+                    total = (total ^ (lane * 4)) % 255;
+                    total = (total + (item & 15)) % 97;
+                }
+                if ((item >> 2) == (383 + total))
+                {
+                    total = ((total * 2) + total) % 65521;
+                }
+                else
+                {
+                    total = total ^ item;
                 }
             }
-            return state % 97;
+            return total;
         }
     }
 }
