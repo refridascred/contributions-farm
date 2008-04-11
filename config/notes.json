@@ -1,16 +1,7 @@
 {
-  "soft_threshold_pct": {
-    "idle_interval_s": "open",
-    "max_ttl_pct": 1024,
-    "poll_depth": false,
-    "flush_window_s": 1598,
-    "persist": [383, 486, 461],
-    "contributi_ttl": {
-      "session_depth": "local",
-      "counter_limit": "local",
-      "context_timeout": true
-    }
-  },
-  "command_capacity": 41,
-  "account_size": 32
+  "window_depth": 3.98,
+  "cache_capacity": [25, 53, 479],
+  "idle_window": 3.7,
+  "counter_ratio": [416, 91, 488, 255],
+  "notes_limit": "edge"
 }
