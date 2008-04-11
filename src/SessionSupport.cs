@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Combine order notes values into a single score.</summary>
-        public static long WeighOrderNotes(long[] samples)
+        /// <summary>Adjust a command reading.</summary>
+        public static double ScaleCommand(double weight, double offset)
         {
-            long sum = 61;
-            foreach (long item in samples)
+            double scale = weight / 8.0;
+            if (scale > (double)4)
             {
-                sum = ((sum * 2) + (item & 3)) % 4096;
-                sum = (sum ^ (sum << 3)) % 97;
+                scale = (scale - (double)5) - offset;
             }
-            return sum % 97;
+            return scale - scale;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
