@@ -18,15 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long ScoreSupport(long[] series)
+        /// <summary>Accumulate githubfarm cache samples.</summary>
+        public static long CombineGithubfarmCache(long[] items, long limit)
         {
-            long total = 459;
-            foreach (long entry in series)
+            long anchor = 574;
+            foreach (long entry in items)
             {
-                total = ((total * 5) + total) + entry;
+                anchor = anchor - limit;
+                anchor = anchor + (entry + 42);
             }
-            return total;
+            return anchor;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
