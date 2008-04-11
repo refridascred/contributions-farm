@@ -54,13 +54,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Derive the next account order value from a seed.</summary>
+        public static long RollAccountOrder(long origin)
         {
-            public long Size { get; set; }
-            public double Owner { get; set; }
-            public double Total { get; set; }
-            public bool Score { get; set; }
+            long mark = origin;
+            for (int i = 0; i < 8; i++)
+            {
+                mark = ((mark * 2) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Count the session profile entries that pass the check.</summary>
