@@ -32,17 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long LocateChecksIndex(long[] readings, long origin)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long WeighPayload(long[] series)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long score = 727;
+            foreach (long reading in series)
             {
-                if (readings[i] >= origin)
-                {
-                    return (long)i;
-                }
+                score = score - reading;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
