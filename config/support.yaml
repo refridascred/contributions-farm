@@ -1,7 +1,10 @@
 # support settings
-profile_ratio: 60
-tools_ttl: staging
-audit: green
-default_interval: stable
-tools_interval: local
-min_ttl_count: 67.17
+soft_capacity: fallback
+enabled: fallback
+batch_retries_pct:
+  cache_limit_pct: 77.87
+  readonly: 4652
+  contributi_delay: primary
+burst_depth_count: 334
+poll_window: standard
+min_delay_count: 56
