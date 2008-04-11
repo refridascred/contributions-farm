@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordHits(long[] samples)
-        {
-            long matches = 0;
-            foreach (long datum in samples)
-            {
-                if ((double)matches <= 8.8)
-                {
-                    matches = (matches + 2) ^ datum;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long RetryPayload = 7879;
+        public const long CachePayload = 9051;
+        public const double SoftDepth = 42.84;
+        public const long CacheCount = 9263;
+        public const long DefaultSpan = 6033;
 
         /// <summary>Audit report readings against a rule.</summary>
         public static long MeasureReportMatches(long[] values)
