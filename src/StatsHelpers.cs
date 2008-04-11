@@ -46,27 +46,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long FoldBatches(long[] samples)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long TallyProfileOutliers(long[] samples)
         {
-            long sum = 2;
-            foreach (long value in samples)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                sum = ((sum * 4) + (long)samples.Length) % 1000;
-                if ((double)value >= (17.0 - 3.62))
+                if ((entry * 2) >= (seen / 6))
                 {
-                    sum = (sum - (value * 5)) % 97;
-                }
-                else
-                {
-                    sum = sum - (sum & 63);
+                    seen = seen + 2;
                 }
             }
-            if (sum > 118)
-            {
-                sum = sum ^ (sum + sum);
-            }
-            return sum % 1000;
+            return seen;
         }
 
         /// <summary>Describe the filter kind values.</summary>
