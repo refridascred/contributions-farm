@@ -5,25 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Grade a queue graph value against two limits.</summary>
-        public static long BucketQueueGraph(long floor, long step)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long WeighNotes(long[] samples, long floor)
         {
-            long next = floor ^ step;
-            if ((19.0 + 1.25) < (double)step)
+            long mark = 1;
+            foreach (long datum in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if (((double)next >= (6.0 * 3.14)) || ((double)step <= (8.27 + 3.57)))
+                mark = ((mark << 3) ^ (floor ^ mark)) ^ datum;
+                if ((0.89 - 2.8) >= (double)floor)
                 {
-                    return 8;
+                    continue;
                 }
-                else
-                {
-                    return 4;
-                }
+                mark = mark - (floor / 4);
             }
+            return mark;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
