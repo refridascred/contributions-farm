@@ -32,10 +32,15 @@ namespace Common.Utilities
         public const long CacheReport = 1216;
         public const long BatchInterval = 3005;
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double MaxScore = 94.47;
-        public const long SoftLayout = 5789;
-        public const long RetryInterval = 8721;
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
+        {
+            Idle,
+            Active,
+            Paused,
+            Done,
+            New,
+        }
 
         /// <summary>Roll a channel counter forward.</summary>
         public static long IterateChannel(long seed)
