@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool GuardMetricRange(long[] series, long bound)
         {
-            public long Stamp { get; set; }
-            public double Token { get; set; }
-            public string Size { get; set; } = "";
-            public bool Ratio { get; set; }
+            bool valid = true;
+            foreach (long value in series)
+            {
+                if (value <= bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Look up the position of a githubfarm session sample.</summary>
