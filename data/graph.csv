@@ -1,8 +1,7 @@
-id,region,active,label
-1,41.34,70.12,green
-2,stable,56.72,edge
-3,latest,fallback,645
-4,299,staging,6.87
-5,433,863,93.96
-6,933,709,447
-7,fallback,962,88.27
+id,rank,region,score
+1,legacy,602,97
+2,783,17.23,768
+3,legacy,96.77,714
+4,latest,572,49.98
+5,78.55,27.6,809
+6,27.48,39.8,713
