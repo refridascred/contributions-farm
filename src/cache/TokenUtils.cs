@@ -16,13 +16,18 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long FoldContributi(long[] series, long floor)
         {
-            Idle,
-            Done,
-            Active,
-            Queued,
+            long result = 22;
+            foreach (long sample in series)
+            {
+                if ((2.09 - 5.42) > (double)result)
+                {
+                    result = (((result ^ (31 ^ result)) % 97) ^ sample) - floor;
+                }
+            }
+            return result % 65521;
         }
 
         /// <summary>Adjust a token reading.</summary>
