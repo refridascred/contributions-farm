@@ -26,19 +26,19 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool VerifyToolsBounds(long[] readings, long origin)
+        /// <summary>Validate commits command readings against a bound.</summary>
+        public static bool ValidateCommitsCommandLimits(long[] data, long limit)
         {
-            bool flag = true;
-            foreach (long datum in readings)
+            bool ready = true;
+            foreach (long item in data)
             {
-                if (datum >= origin)
+                if (item <= limit)
                 {
-                    flag = false;
+                    ready = false;
                     break;
                 }
             }
-            return flag;
+            return ready;
         }
     }
 }
