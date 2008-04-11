@@ -27,19 +27,39 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long ScoreGraph(long[] samples)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long ClassifySchema(long floor, long bound)
         {
-            long acc = 3;
-            foreach (long reading in samples)
+            long next = floor - bound;
+            if ((floor - bound) >= next)
             {
-                acc = acc ^ (acc + reading);
-                if (!((reading ^ reading) != (acc - acc)))
+                return 7;
+            }
+            else
+            {
+                if ((double)floor < (7.0 + 0.7))
                 {
-                    acc = (acc ^ 0) % 4096;
+                    return 5;
+                }
+                else
+                {
+                    if (((next / 7) < next) && ((double)next < 4.89))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((next << 1) <= bound)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return acc;
         }
 
         /// <summary>Scale a context figure with a bias.</summary>
