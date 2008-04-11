@@ -1,8 +1,6 @@
-id,region,state,owner
-1,fallback,green,71.87
-2,staging,52,48
-3,392,open,6.36
-4,594,51.6,green
-5,98,primary,593
-6,open,eu-west,313
-7,standard,green,95.66
+id,ratio,state
+1,789,786
+2,green,42.84
+3,local,stable
+4,green,30.84
+5,green,3.27
