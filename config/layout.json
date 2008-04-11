@@ -1,7 +1,7 @@
 {
-  "metrics_delay": 68.92,
-  "cache_ttl": false,
-  "checks_timeout": 32.19,
-  "strict": "staging",
-  "base_timeout": 22.45
+  "queue_delay": 500,
+  "warm_capacity": false,
+  "already_timeout": 4334,
+  "dry_run": "blue",
+  "profile_depth": true
 }
