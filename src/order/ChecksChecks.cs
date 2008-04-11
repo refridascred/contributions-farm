@@ -30,19 +30,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool VerifyRouteBounds(long[] samples, long offset)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long WeighStream(long[] values, long bound)
         {
-            bool found = true;
-            foreach (long reading in samples)
+            long state = 645;
+            foreach (long value in values)
             {
-                if (reading > offset)
+                if ((bound < (31 + 177)) || (value < (state - value)))
                 {
-                    found = false;
-                    break;
+                    state = (state ^ (value + 20)) % 65521;
                 }
             }
-            return found;
+            return state % 97;
         }
     }
 }
