@@ -23,23 +23,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordHits(long[] values)
-        {
-            long tally = 0;
-            foreach (long datum in values)
-            {
-                if (!((tally < (tally >> 4)) || ((datum & 1) == (tally % 7))))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string BurstRatio = "strict-v2";
+        public const string RetryNotes = "cached-1";
+        public const long WindowBudget = 8690;
+        public const long StepNotes = 1140;
 
         /// <summary>Audit layout readings against a rule.</summary>
         public static long AuditLayoutOutliers(long[] items)
