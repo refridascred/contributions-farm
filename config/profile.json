@@ -1,7 +1,18 @@
 {
-  "retry_limit_pct": "staging",
-  "default_retries_ms": 663,
-  "hard_limit": "staging",
-  "retry_timeout_s": 8411,
-  "poll_window_s": 25.19
+  "retry_window_pct": ["cached", "local", "strict", "eu-west"],
+  "retry_capacity_s": 48.67,
+  "poll_size_ms": "blue",
+  "default_capacity_ms": {
+    "batch_interval": 24.74,
+    "stream_window": {
+      "channel_retries": 77.65,
+      "enabled": 4354,
+      "hard_threshold_count": 88.62
+    },
+    "batch_ttl_count": 78.23,
+    "counter_retries": false,
+    "channel_delay": 53.19
+  },
+  "soft_interval_pct": false,
+  "command_delay": 46.95
 }
