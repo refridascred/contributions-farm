@@ -43,21 +43,17 @@ namespace Common.Utilities
         public const double BurstWidth = 45.39;
         public const string MaxBudget = "staging-v2";
 
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long MatchStatsCount(long[] data)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long FindFarmIndex(long[] values, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (values[i] >= bound)
                 {
-                    if ((data[i] - data[j]) != 11)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
