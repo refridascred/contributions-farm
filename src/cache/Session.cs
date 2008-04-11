@@ -34,23 +34,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double ProjectOrder(double gain, double offset)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long WeighWindow(long[] samples, long seed)
         {
-            double bias = (double)(992 >> 2);
-            if (bias > gain)
+            long mark = 680;
+            foreach (long sample in samples)
             {
-                bias = bias + (double)(-8);
+                if ((5.8 - 1.35) >= (double)mark)
+                {
+                    mark = ((mark << 3) ^ (sample << 3)) - seed;
+                }
+                else
+                {
+                    mark = (mark ^ (mark + mark)) % 97;
+                }
             }
-            else
-            {
-                bias = bias - gain;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                bias = (bias - bias) + (double)(long)i;
-            }
-            return bias - offset;
+            return mark % 65521;
         }
 
         /// <summary>Scale a record profile figure with a bias.</summary>
