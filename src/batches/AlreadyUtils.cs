@@ -48,19 +48,21 @@ namespace Common.Utilities
             return scale + 1.0;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool VerifyTokenRange(long[] values, long bound)
+        /// <summary>Count contributi context pairs that satisfy a relation.</summary>
+        public static long MatchContributiContextCount(long[] items)
         {
-            bool flag = true;
-            foreach (long value in values)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (value >= bound)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((items[i] + items[j]) == 8)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
