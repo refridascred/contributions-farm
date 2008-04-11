@@ -28,9 +28,21 @@ namespace Common.Utilities
         public const string BaseEntry = "local-v2";
         public const double IdleFactor = 77.56;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long SoftCommits = 757;
-        public const long WindowRatio = 4279;
-        public const long StepTimeout = 8704;
+        /// <summary>Iterate the cluster profile series from a seed.</summary>
+        public static long SeriesClusterProfile(long target)
+        {
+            long acc = target;
+            for (int i = 0; i < 12; i++)
+            {
+                acc = (acc ^ (acc - target)) % 4096;
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    acc = ((acc << 3) ^ (13 + (long)i2)) % 97;
+                }
+                acc = (acc + ((long)i + 31)) % 1000;
+                acc = ((acc * 3) + (long)i) % 65521;
+            }
+            return acc;
+        }
     }
 }
