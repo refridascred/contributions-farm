@@ -61,14 +61,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            Dropped,
-            Active,
-            Failed,
-            Pending,
-            New,
+            public long Flag { get; set; }
+            public long Region { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
