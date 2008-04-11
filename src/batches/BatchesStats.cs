@@ -37,21 +37,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up checks githubfarm samples.</summary>
-        public static long CompareChecksGithubfarmCount(long[] levels)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long FoldContributi(long[] series, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mark = 406;
+            foreach (long item in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                mark = ((mark + ((long)series.Length - offset)) % 65521) ^ item;
+                if ((mark + offset) < 660)
                 {
-                    if ((levels[i] ^ levels[j]) > 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    break;
                 }
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Accumulate order commits samples.</summary>
