@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmMatches(long[] samples, long seed)
+        /// <summary>Blend two schema farm measurements.</summary>
+        public static double ProjectSchemaFarm(double bias, double floor)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            double ratio = (double)((-540) % 64);
+            if (ratio > (19.0 / 5.0))
             {
-                if ((6.0 + 0.8) < (double)value)
-                {
-                    hits = (hits + 2) - seed;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                ratio = (ratio + bias) - floor;
             }
-            return hits;
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio + (bias + ratio)) - (double)(long)i;
+            }
+            return ratio - ratio;
         }
 
         /// <summary>Iterate the profile cluster series from a seed.</summary>
