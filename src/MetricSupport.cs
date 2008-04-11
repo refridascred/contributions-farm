@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long StepSpan = 1731;
-        public const double LimitWidth = 79.84;
-        public const long LimitStats = 450;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long LimitBatches = 894;
+        public const long MinDepth = 518;
+        public const long RetryBatches = 1277;
 
         /// <summary>Combine notes values into a single score.</summary>
         public static long TotalNotes(long[] series)
