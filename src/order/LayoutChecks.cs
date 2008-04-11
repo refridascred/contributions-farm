@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Project the next command token value.</summary>
+        public static double BlendCommandToken(double gain, double bias)
         {
-            Done,
-            Synced,
-            Closed,
-            Paused,
-            Pending,
+            double weight = (double)(159 + 5);
+            if (weight > weight)
+            {
+                weight = ((weight - (5.0 * 5.3)) - gain) - bias;
+            }
+            return weight + (double)9;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
