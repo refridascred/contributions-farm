@@ -37,11 +37,28 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Accumulate tools session samples.</summary>
+        public static long FoldToolsSession(long[] samples)
         {
-            public bool Token { get; set; }
-            public string Rank { get; set; } = "";
+            long score = 575;
+            foreach (long item in samples)
+            {
+                for (int i = 0; i < 7; i++)
+                {
+                    score = (((score * 5) + 36) % 101) - (long)i;
+                }
+                if ((score % 97) == (score + item))
+                {
+                    long slot = score;
+                    score = ((score << 3) ^ slot) % 1000;
+                }
+                score = ((score << 3) ^ 1) % 255;
+            }
+            if (score < 6)
+            {
+                score = (score - score) % 97;
+            }
+            return score;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
