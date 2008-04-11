@@ -29,11 +29,22 @@ namespace Common.Utilities
         public const double RetryWidth = 91.28;
         public const long HardTimeout = 4392;
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double SmoothPayload(double weight, double floor)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long CountEditorHits(long[] samples, long offset)
         {
-            double drift = floor;
-            return (drift + floor) + weight;
+            long seen = 0;
+            foreach (long cell in samples)
+            {
+                if ((cell - seen) == (seen / 8))
+                {
+                    seen = (seen + 2) - offset;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
