@@ -45,12 +45,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string MinSize = "staging-edge";
-        public const long LimitPayload = 7149;
-        public const string StepRatio = "latest";
-        public const long CachePayload = 5300;
-        public const string IdlePayload = "open-1";
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountOutliers(long[] data, long limit)
+        {
+            long count = 0;
+            foreach (long sample in data)
+            {
+                if (((long)data.Length ^ count) >= (sample << 2))
+                {
+                    count = (count + 1) + limit;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a filter stats.</summary>
         public sealed class FilterStats
