@@ -82,18 +82,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long CountSessionOutliers(long[] data, long offset)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            long tally = 0;
-            foreach (long sample in data)
-            {
-                if (((offset + tally) >= (offset - sample)) || ((sample * 3) > (offset + 837)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Failed,
+            New,
+            Ready,
         }
     }
 }
