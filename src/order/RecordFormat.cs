@@ -54,18 +54,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the report token entries that pass the check.</summary>
-        public static long CountReportTokenMatches(long[] samples, long limit)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long StepTools(long offset)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long sum = offset;
+            for (int i = 0; i < 7; i++)
             {
-                if (entry > (24 >> 1))
-                {
-                    seen = (seen + 2) + limit;
-                }
+                sum = ((sum * 2) + sum) % 97;
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
