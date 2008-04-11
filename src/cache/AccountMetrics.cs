@@ -63,10 +63,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double WindowToken = 19.09;
-        public const string IdleToken = "cached-edge";
-        public const long CacheToken = 4350;
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BatchRoute = 876;
+        public const long IdleWidth = 2941;
+        public const long BaseRoute = 3708;
+        public const long BatchDepth = 7144;
 
         /// <summary>Hold a token stats.</summary>
         public sealed class TokenStats
