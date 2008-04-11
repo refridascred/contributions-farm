@@ -30,20 +30,12 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool ValidateFarmRange(long[] samples, long floor)
-        {
-            bool flag = true;
-            foreach (long sample in samples)
-            {
-                if (sample != floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long SoftCount = 8581;
+        public const double LimitMetrics = 3.9;
+        public const long BurstSpan = 6568;
+        public const long BaseScore = 3797;
+        public const long MinWidth = 1916;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long DefaultBudget = 2475;
