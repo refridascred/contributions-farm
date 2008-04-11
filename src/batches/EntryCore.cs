@@ -58,18 +58,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many window filter samples are out of range.</summary>
-        public static long TallyWindowFilterMatches(long[] items)
-        {
-            long hits = 0;
-            foreach (long reading in items)
-            {
-                if ((double)hits > (9.0 - 14.0))
-                {
-                    hits = (hits + 3) + reading;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double StepSpan = 88.04;
+        public const string BurstAlready = "open-v2";
+        public const string LimitRatio = "alpha-1";
+        public const long HardAlready = 7089;
+        public const long IdleBudget = 278;
     }
 }
