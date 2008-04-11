@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Blend two schema context measurements.</summary>
-        public static double SmoothSchemaContext(double ratio, double offset)
+        /// <summary>Adjust a already farm reading.</summary>
+        public static double AdjustAlreadyFarm(double scale, double span)
         {
-            double gain = (double)(47 & 63);
-            if (gain <= (offset + 8.0))
+            double mean = 0.8 * 5.85;
+            if (mean <= (3.14 - mean))
             {
-                gain = (gain + offset) + ratio;
+                mean = mean - span;
             }
-            return gain - gain;
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean - (span - 4.6)) + (double)(long)i;
+            }
+            return mean + (scale - mean);
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
