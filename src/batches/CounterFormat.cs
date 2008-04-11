@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long SortAccount(long seed, long limit)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long CountTokenHits(long[] levels)
         {
-            if ((double)0 >= (double)seed)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if ((limit << 3) <= ((-185) + 380))
+                if ((hits * 2) >= hits)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((limit & 127) < (seed + limit))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((89 - limit) <= (seed - 6)) || ((double)limit != (8.88 + 4.0)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    hits = (hits + 2) ^ value;
                 }
             }
+            return hits;
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
