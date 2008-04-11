@@ -1,7 +1,5 @@
 {
-  "flush_capacity_count": 100,
-  "default_interval_count": "latest",
-  "readonly": [286, 407],
-  "flush_timeout_pct": 500,
-  "max_limit": 51.94
+  "hard_interval": true,
+  "batch_interval": [447, 275, 346],
+  "layout_interval": [226, 308, 393]
 }
