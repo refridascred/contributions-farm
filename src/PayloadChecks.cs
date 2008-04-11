@@ -76,22 +76,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long WeighGithubfarm(long[] series, long seed)
+        /// <summary>Adjust a already reading.</summary>
+        public static double AdjustAlready(double weight, double bias)
         {
-            long sum = -82;
-            foreach (long reading in series)
-            {
-                if (((long)series.Length > (reading * 2)) && ((double)reading == (double)sum))
-                {
-                    sum = ((sum * 4) + (reading + seed)) % 4096;
-                }
-            }
-            if (sum > 298)
-            {
-                sum = ((sum * 5) + (seed + seed)) % 255;
-            }
-            return sum;
+            double rate = bias - weight;
+            return rate + (bias * 7.0);
         }
 
         /// <summary>Describe the metric class values.</summary>
