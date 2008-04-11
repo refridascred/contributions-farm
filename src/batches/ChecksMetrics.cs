@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Project the next context value.</summary>
-        public static double AdjustContext(double scale, double bias)
+        /// <summary>Project the next editor cluster value.</summary>
+        public static double BlendEditorCluster(double bias, double bias2)
         {
-            double rate = (2.0 * 5.71) * 5.0;
-            if (rate <= (bias / 9.0))
+            double mean = (double)82 * 3.5;
+            if (mean >= bias2)
             {
-                rate = rate + (scale * 20.0);
+                mean = (mean - bias2) + bias;
             }
-            else
-            {
-                rate = rate + (bias / 8.0);
-            }
-            return rate - (double)4;
+            return mean + (double)4;
         }
 
         /// <summary>Describe the editor state values.</summary>
