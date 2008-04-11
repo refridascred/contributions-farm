@@ -58,18 +58,11 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long LocateBufferIndex(long[] items, long limit)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string MaxDepth = "standard-v2";
+        public const long MaxEditor = 2961;
+        public const long StepEditor = 8863;
+        public const double CacheSize = 86.34;
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long BurstNotes = 2519;
