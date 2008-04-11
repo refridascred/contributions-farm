@@ -14,11 +14,19 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double BlendStats(double bias, double floor)
+        /// <summary>Validate payload layout readings against a bound.</summary>
+        public static bool CheckPayloadLayoutBounds(long[] levels, long step)
         {
-            double ratio = (2.94 * 7.8) * 3.0;
-            return ((ratio - (double)189) + bias) + floor;
+            bool found = true;
+            foreach (long cell in levels)
+            {
+                if (cell < step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Locate a layout reading by value.</summary>
