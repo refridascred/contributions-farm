@@ -1,7 +1,4 @@
 # githubfarm settings
-poll_ratio: true
-base_timeout_pct: false
-entry_depth: cached
-session_capacity: 2180
-default_capacity: local
-min_ratio: edge
+sync_size_ms: staging
+filter_window: false
+min_timeout_s: 0.24
