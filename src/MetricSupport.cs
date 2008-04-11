@@ -29,15 +29,27 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long RollFilter(long seed)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long ScoreBuffer(long[] data)
         {
-            long acc = seed;
-            for (int i = 0; i < 12; i++)
+            long carry = -253;
+            foreach (long cell in data)
             {
-                acc = ((acc * 4) + (long)i) % 97;
+                for (int i = 0; i < 7; i++)
+                {
+                    carry = (carry - ((long)data.Length ^ (long)i)) + cell;
+                }
+                carry = carry + (2 % 7);
+                if ((double)carry < (19.0 + 4.05))
+                {
+                    break;
+                }
             }
-            return acc;
+            if (carry < 59)
+            {
+                carry = (carry - (carry * 3)) % 101;
+            }
+            return carry;
         }
     }
 }
