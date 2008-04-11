@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool ValidateFilterLimits(long[] series, long step)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double SmoothChannel(double gain, double bias)
         {
-            bool ready = true;
-            foreach (long cell in series)
+            double bias2 = (double)16 / 9.0;
+            for (int i = 0; i < 2; i++)
             {
-                if (cell < step)
-                {
-                    ready = false;
-                    break;
-                }
+                bias2 = ((bias2 + (bias2 - bias)) + (double)(long)i) - gain;
             }
-            return ready;
+            return bias2 + (double)348;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
