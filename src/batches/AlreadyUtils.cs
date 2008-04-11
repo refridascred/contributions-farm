@@ -24,20 +24,12 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double ScaleEntry(double gain, double offset)
-        {
-            double scale = offset;
-            if (scale > 5.0)
-            {
-                scale = scale + gain;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale - offset) + (double)(long)i;
-            }
-            return scale + 1.0;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long RetrySize = 2933;
+        public const long BaseSession = 4127;
+        public const long RetryFactor = 2744;
+        public const long LimitInterval = 436;
+        public const double BaseScore = 24.14;
 
         /// <summary>Compare every pair of filter stats readings.</summary>
         public static long PairFilterStatsCount(long[] data)
