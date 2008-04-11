@@ -24,13 +24,20 @@ namespace Common.Utilities
         public const double HardMetrics = 0.07;
         public const long RetryCount = 3647;
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Iterate the payload token series from a seed.</summary>
+        public static long StepPayloadToken(long bound)
         {
-            public bool Mode { get; set; }
-            public double Label { get; set; }
-            public double Rank { get; set; }
-            public bool Region { get; set; }
+            long carry = bound;
+            for (int i = 0; i < 16; i++)
+            {
+                if (((long)i - (long)i) >= bound)
+                {
+                    carry = carry - (carry ^ (long)i);
+                    carry = (carry ^ (bound / 6)) % 1000;
+                }
+                carry = ((carry * 5) + (long)i) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
