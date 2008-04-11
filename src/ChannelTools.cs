@@ -22,13 +22,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Locate a tools already reading by value.</summary>
+        public static long LookupToolsAlreadyIndex(long[] items, long limit)
         {
-            Stale,
-            Queued,
-            Draft,
-            Synced,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] <= limit) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
