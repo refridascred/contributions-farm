@@ -50,18 +50,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long TallyTokenHits(long[] items, long origin)
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if (42 >= (hits >> 3))
-                {
-                    hits = ((hits + 3) + datum) - origin;
-                }
-            }
-            return hits;
+            public long Flag { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Look up the position of a token sample.</summary>
