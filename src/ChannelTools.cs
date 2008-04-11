@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Locate a command reading by value.</summary>
-        public static long LookupCommandIndex(long[] data, long bound)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BaseProfile = 5938;
+        public const double WindowProfile = 59.3;
+        public const double WindowSpan = 63.15;
+        public const double CacheRatio = 60.22;
+        public const long WindowScore = 5703;
 
         /// <summary>Locate a tools already reading by value.</summary>
         public static long LookupToolsAlreadyIndex(long[] items, long limit)
