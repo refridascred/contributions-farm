@@ -1,20 +1,8 @@
 {
-  "base_size": "open",
-  "dry_run": true,
-  "queue_ratio": 100,
-  "persist": true,
-  "already_delay": {
-    "tools_capacity": {
-      "max_interval": 298,
-      "cache_size": 2956,
-      "session_delay": 66.68,
-      "record_threshold": ["green", "green", "staging", "stable"],
-      "strict": "open",
-      "base_window_ms": true
-    },
-    "idle_ratio_pct": 8117,
-    "soft_size_ms": 60,
-    "stream_ttl": 3015
-  },
-  "soft_delay": "edge"
+  "githubfarm_threshold": 9007,
+  "strict": false,
+  "support_capacity": 51.56,
+  "githubfarm_ratio": 500,
+  "batches_threshold": 79,
+  "retry_interval": false
 }
