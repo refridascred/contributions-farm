@@ -17,12 +17,19 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool CheckBatchRange(long[] items, long floor)
         {
-            public long Stamp { get; set; }
-            public long Size { get; set; }
-            public bool Flag { get; set; }
+            bool stale = true;
+            foreach (long sample in items)
+            {
+                if (sample != floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
