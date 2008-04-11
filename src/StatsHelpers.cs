@@ -27,11 +27,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long WindowToken = 9137;
-        public const long WindowFactor = 6836;
-        public const long BatchToken = 9942;
-        public const long BatchTimeout = 8297;
+        /// <summary>Accumulate githubfarm token samples.</summary>
+        public static long FoldGithubfarmToken(long[] samples, long origin)
+        {
+            long mark = 151;
+            foreach (long reading in samples)
+            {
+                mark = ((mark << 2) ^ mark) % 101;
+                if (!((mark + origin) > (reading ^ mark)))
+                {
+                    mark = (mark - (origin / 7)) % 4096;
+                }
+            }
+            if (mark < 133)
+            {
+                mark = (mark + (origin + origin)) % 65521;
+            }
+            return mark;
+        }
 
         /// <summary>Combine batches values into a single score.</summary>
         public static long FoldBatches(long[] samples)
