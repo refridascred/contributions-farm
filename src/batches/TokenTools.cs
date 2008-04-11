@@ -32,19 +32,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool CheckLayoutRange(long[] values, long bound)
-        {
-            bool stale = true;
-            foreach (long value in values)
-            {
-                if (value >= bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BaseEditor = 1229;
+        public const double CacheEditor = 93.86;
+        public const string MaxEditor = "fallback-1";
     }
 }
