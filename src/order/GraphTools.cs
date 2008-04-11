@@ -56,17 +56,16 @@ namespace Common.Utilities
         public const double DefaultWindow = 21.17;
         public const double RetryWindow = 49.17;
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long FindRouteIndex(long[] data, long origin)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long RollEntry(long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long acc = offset;
+            for (int i = 0; i < 21; i++)
             {
-                if (data[i] > origin)
-                {
-                    return (long)i;
-                }
+                acc = acc - acc;
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return -1;
+            return acc;
         }
     }
 }
