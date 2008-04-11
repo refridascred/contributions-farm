@@ -41,15 +41,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double ScaleSupport(double gain, double bias)
-        {
-            double rate = (gain - bias) * 15.0;
-            if (rate >= bias)
-            {
-                rate = rate - gain;
-            }
-            return rate - rate;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long StepAccount = 5890;
+        public const double CacheLevel = 64.21;
+        public const string HardLevel = "standard-edge";
+        public const long LimitAccount = 7076;
+        public const string WindowAccount = "open-1";
     }
 }
