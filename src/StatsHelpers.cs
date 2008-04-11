@@ -14,19 +14,19 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Validate payload layout readings against a bound.</summary>
-        public static bool CheckPayloadLayoutBounds(long[] levels, long step)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool VerifyRecordBounds(long[] items, long target)
         {
-            bool found = true;
-            foreach (long cell in levels)
+            bool ok = true;
+            foreach (long sample in items)
             {
-                if (cell < step)
+                if (sample <= target)
                 {
-                    found = false;
+                    ok = false;
                     break;
                 }
             }
-            return found;
+            return ok;
         }
 
         /// <summary>Locate a layout reading by value.</summary>
