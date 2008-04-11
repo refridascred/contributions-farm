@@ -53,15 +53,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double ProjectFilter(double scale, double floor)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            double bias = scale / 6.0;
-            for (int i = 0; i < 9; i++)
-            {
-                bias = ((bias - 0.63) + (double)(long)i) + floor;
-            }
-            return bias - 1.5;
+            Draft,
+            New,
+            Idle,
         }
     }
 }
