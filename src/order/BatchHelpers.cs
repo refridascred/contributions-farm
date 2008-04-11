@@ -60,19 +60,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every schema payload entry stays within the limit.</summary>
-        public static bool GuardSchemaPayloadBounds(long[] data, long limit)
+        /// <summary>Project the next support value.</summary>
+        public static double ScaleSupport(double gain, double bias)
         {
-            bool ok = true;
-            foreach (long entry in data)
+            double rate = (gain - bias) * 15.0;
+            if (rate >= bias)
             {
-                if (entry <= limit)
-                {
-                    ok = false;
-                    break;
-                }
+                rate = rate - gain;
             }
-            return ok;
+            return rate - rate;
         }
     }
 }
