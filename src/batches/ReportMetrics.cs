@@ -33,21 +33,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long OverlapProfileCount(long[] data)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long GradePayload(long floor, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((bound + floor) < bound)
             {
-                for (int j = 0; j < data.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((double)bound >= (1.1 / 8.0))
                 {
-                    if ((data[i] ^ data[j]) < 12)
+                    return 7;
+                }
+                else
+                {
+                    if ((6.0 - 2.9) < (double)floor)
                     {
-                        tally = tally + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((bound < (bound * 2)) || ((floor & 3) != (floor >> 3)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Define account limits and defaults.</summary>
