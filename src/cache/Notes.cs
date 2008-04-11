@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Combine token values into a single score.</summary>
-        public static long ScoreToken(long[] values, long bound)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            long state = 826;
-            foreach (long sample in values)
-            {
-                if ((bound + state) != (sample ^ state))
-                {
-                    state = state - bound;
-                }
-            }
-            return state % 97;
+            Pending,
+            Stale,
+            Locked,
+            Idle,
+            Paused,
         }
 
         /// <summary>Hold a token entry.</summary>
