@@ -66,23 +66,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double ProjectRecord(double ratio, double offset)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            double bias = 4.0;
-            if (bias >= ratio)
-            {
-                bias = bias + ratio;
-            }
-            else
-            {
-                bias = bias - (offset / 7.0);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = bias + (double)(long)i;
-            }
-            return bias + bias;
+            public bool Weight { get; set; }
+            public bool Count { get; set; }
+            public long Limit { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
