@@ -60,11 +60,13 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            public long Ratio { get; set; }
-            public bool Total { get; set; }
+            public long Offset { get; set; }
+            public long Stamp { get; set; }
+            public bool Weight { get; set; }
+            public long Score { get; set; }
         }
     }
 }
