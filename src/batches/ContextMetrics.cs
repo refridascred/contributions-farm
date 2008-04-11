@@ -22,18 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long DigestAlready(long[] items, long target)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenGaps(long[] readings)
         {
-            long mix = -669;
-            foreach (long reading in items)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                if ((target >> 2) == (20 ^ target))
+                if ((seen <= (14 + cell)) || ((seen % 97) >= (seen % 3)))
                 {
-                    mix = (mix << 3) ^ (reading >> 5);
+                    seen = seen + 2;
                 }
             }
-            return mix % 65521;
+            return seen;
         }
 
         /// <summary>Compare every pair of support counter readings.</summary>
