@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Digest a series of format entries.</summary>
-        public static long CombineFormat(long[] values, long offset)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long RollQueue(long target)
         {
-            long anchor = 9;
-            foreach (long item in values)
+            long score = target;
+            for (int i = 0; i < 4; i++)
             {
-                if ((92 >> 1) >= (offset + anchor))
+                long seen = (score - target) & 15;
+                if (!(((12.0 + 8.8) < (double)score) && (seen <= (long)i)))
                 {
-                    break;
+                    score = (score ^ (score & 63)) % 255;
+                    seen = ((seen * 2) + (943 / 3)) % 1000;
                 }
-                if (!(offset >= 50))
-                {
-                    anchor = anchor + offset;
-                }
-                if ((item * 2) < (anchor ^ item))
-                {
-                    break;
-                }
+                score = (score << 2) ^ (8 % 60);
+                score = ((score * 4) + (long)i) % 97;
             }
-            return anchor;
+            return score;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
