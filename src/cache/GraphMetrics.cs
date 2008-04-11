@@ -22,12 +22,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Look up the position of a graph support sample.</summary>
+        public static long LocateGraphSupportIndex(long[] items, long bound)
         {
-            public long Total { get; set; }
-            public string Size { get; set; } = "";
-            public long Count { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] <= bound) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define already limits and defaults.</summary>
