@@ -48,9 +48,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long WindowSize = 179;
-        public const double MinQueue = 72.43;
-        public const double HardQueue = 50.28;
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
+        {
+            Active,
+            Done,
+            New,
+        }
     }
 }
