@@ -74,27 +74,12 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long DigestWindow(long[] series, long limit)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            long total = 4;
-            foreach (long sample in series)
-            {
-                if ((4.71 + 8.8) > (double)sample)
-                {
-                    total = (total ^ limit) % 4096;
-                    total = ((total * 2) + total) % 1000;
-                }
-                if (!((total << 1) <= (54 - 69)))
-                {
-                    total = (total ^ (total ^ sample)) % 4096;
-                }
-            }
-            if (total < 0)
-            {
-                total = (total - (limit + limit)) % 101;
-            }
-            return total;
+            Closed,
+            Idle,
+            Ready,
         }
     }
 }
