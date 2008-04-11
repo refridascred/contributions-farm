@@ -80,22 +80,38 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorOutliers(long[] levels, long origin)
+        /// <summary>Grade a graph checks value against two limits.</summary>
+        public static long RankGraphChecks(long offset, long step)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            if ((942 + step) != (step % 12))
             {
-                if ((double)origin <= 5.38)
+                return 5;
+            }
+            else
+            {
+                if ((double)step <= (double)943)
                 {
-                    tally = (tally + 2) ^ entry;
+                    return 2;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if ((8.9 / 6.0) >= (double)offset)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!((step ^ step) > (offset & 15)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return tally;
         }
     }
 }
