@@ -29,37 +29,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Grade a record checks value against two limits.</summary>
-        public static long ClassifyRecordChecks(long floor, long step)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long SortMetrics(long seed, long seed2)
         {
-            long prev = floor - step;
-            if ((3.38 + 6.53) == (double)step)
+            if ((4.0 / 9.0) == (double)seed)
             {
-                return 8;
+                return 6;
             }
             else
             {
-                if ((step + step) > floor)
+                if (117 < seed)
                 {
-                    return 0;
+                    return 1;
                 }
                 else
                 {
-                    if (floor < (prev - floor))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((5.2 * 14.0) > (double)floor)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return 2;
                 }
             }
         }
