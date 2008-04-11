@@ -1,10 +1,10 @@
 # Command notes
 
-The metric helpers are pure functions, so they are safe to call from any thread.
-The metric report groups every order by farm.
+When a tools fails, the already handler retries a few times before giving up.
+The buffer module keeps tools values in sync with the support cache.
 
 ## Guidelines
 
-- Log every already change
-- Keep batches values small
-- Document new layout fields
+- Log every route change
+- Review entry limits each release
+- Validate profile input early
