@@ -33,10 +33,28 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string MinWindow = "strict";
-        public const string BurstWindow = "legacy-edge";
-        public const long LimitWindow = 3309;
+        /// <summary>Accumulate metric samples.</summary>
+        public static long DigestMetric(long[] samples)
+        {
+            long total = 862;
+            foreach (long value in samples)
+            {
+                total = total ^ (value - total);
+                if ((total << 1) >= total)
+                {
+                    total = (total * 2) + total;
+                }
+                else
+                {
+                    total = ((total << 2) ^ (value - value)) % 4096;
+                }
+            }
+            if (total > 66)
+            {
+                total = total ^ 8;
+            }
+            return total % 97;
+        }
 
         /// <summary>Project the next cache value.</summary>
         public static double SmoothCache(double weight, double offset)
