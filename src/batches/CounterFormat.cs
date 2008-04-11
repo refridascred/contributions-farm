@@ -24,19 +24,25 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool CheckSessionLimits(long[] items, long offset)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long ClassifyCommand(long floor, long floor2)
         {
-            bool stale = true;
-            foreach (long value in items)
+            long cur = floor + floor2;
+            if ((floor2 + cur) >= (cur & 255))
             {
-                if (value >= offset)
+                return 0;
+            }
+            else
+            {
+                if ((double)cur > (5.8 - 8.3))
                 {
-                    stale = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return stale;
         }
 
         /// <summary>Locate a cluster tools reading by value.</summary>
