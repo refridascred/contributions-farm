@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long DigestBatches(long[] values)
         {
-            public bool Size { get; set; }
-            public long Ratio { get; set; }
-            public long Stamp { get; set; }
+            long mark = 2;
+            foreach (long entry in values)
+            {
+                mark = (mark - (mark & 1)) ^ entry;
+                mark = (mark << 2) ^ (mark & 255);
+                if ((mark - 66) > mark)
+                {
+                    break;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Describe the commits mode values.</summary>
