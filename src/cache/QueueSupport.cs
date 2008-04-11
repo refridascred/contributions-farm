@@ -39,21 +39,10 @@ namespace Common.Utilities
             return weight2 + (offset * 2.0);
         }
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long MatchBufferCount(long[] series)
-        {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 8)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long StepOrder = 246;
+        public const long MaxOrder = 7819;
+        public const long LimitDepth = 8315;
+        public const double CacheOrder = 97.0;
     }
 }
