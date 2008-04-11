@@ -42,23 +42,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a stream layout figure with a bias.</summary>
-        public static double AdjustStreamLayout(double rate, double floor)
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            double scale = floor;
-            if (scale >= (8.41 + scale))
-            {
-                scale = (scale + (scale - scale)) - rate;
-            }
-            else
-            {
-                scale = scale + scale;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale + floor) - (double)(long)i;
-            }
-            return scale - (scale / 7.0);
+            public bool Flag { get; set; }
+            public double Score { get; set; }
+            public long Ratio { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Rank command input into a small class.</summary>
