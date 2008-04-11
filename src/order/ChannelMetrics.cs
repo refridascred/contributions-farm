@@ -23,35 +23,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of batch filter entries.</summary>
-        public static long DigestBatchFilter(long[] samples)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool VerifyAccountLimits(long[] items, long bound)
         {
-            long score = 41;
-            foreach (long item in samples)
+            bool flag = true;
+            foreach (long sample in items)
             {
-                if (((3.9 + 1.47) <= (double)score) && (item > (item + (-2))))
+                if (sample < bound)
                 {
-                    score = ((score * 4) + (item * 5)) % 255;
-                }
-                else
-                {
-                    score = ((score << 3) ^ (item + item)) % 255;
-                    score = (score + score) % 4096;
-                }
-                if (item >= (score + 2))
-                {
-                    score = score ^ (-79);
-                }
-                else
-                {
-                    score = ((score * 4) + (score + score)) % 4096;
-                }
-                if (!((3 + item) <= item))
-                {
+                    flag = false;
                     break;
                 }
             }
-            return score;
+            return flag;
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
