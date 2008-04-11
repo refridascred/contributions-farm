@@ -1,11 +1,11 @@
 # githubfarm settings
-warm_window_ms: staging
-editor_retries: green
-idle_threshold: false
-warm_depth_ms:
-  - 41
-  - 10
-  - 343
-  - 440
-contributi_ttl: true
-max_interval: 94.04
+verbose:
+  - 272
+  - 263
+batch_window_s:
+  - fallback
+  - standard
+  - strict
+  - fallback
+hard_size: 4735
+default_ttl_ms: cached
