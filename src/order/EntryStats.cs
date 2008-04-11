@@ -73,11 +73,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
+            public long Ratio { get; set; }
             public bool Total { get; set; }
-            public double Owner { get; set; }
         }
     }
 }
