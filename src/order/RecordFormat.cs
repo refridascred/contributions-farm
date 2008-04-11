@@ -38,18 +38,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportGaps(long[] readings, long bound)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            long count = 0;
-            foreach (long entry in readings)
-            {
-                if ((4.0 * 9.56) > (double)entry)
-                {
-                    count = (count + 2) + bound;
-                }
-            }
-            return count;
+            public string Stamp { get; set; } = "";
+            public long Mode { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Iterate the batch report series from a seed.</summary>
