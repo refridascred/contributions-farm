@@ -53,12 +53,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long LocateFilterIndex(long[] data, long step)
         {
-            public double Weight { get; set; }
-            public bool Label { get; set; }
-            public double Rank { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] >= step) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
