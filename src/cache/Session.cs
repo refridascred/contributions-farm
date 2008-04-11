@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Count the layout account entries that pass the check.</summary>
+        public static long TallyLayoutAccountMatches(long[] levels)
         {
-            New,
-            Done,
-            Failed,
+            long tally = 0;
+            foreach (long cell in levels)
+            {
+                if ((tally ^ 67) <= tally)
+                {
+                    tally = (tally + 2) - cell;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a batch entry.</summary>
