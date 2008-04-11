@@ -48,19 +48,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool GuardStreamRange(long[] values, long seed)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long SeriesTools(long offset)
         {
-            bool ok = true;
-            foreach (long sample in values)
+            long sum = offset;
+            for (int i = 0; i < 16; i++)
             {
-                if (sample < seed)
-                {
-                    ok = false;
-                    break;
-                }
+                sum = ((sum * 2) + (long)i) % 101;
             }
-            return ok;
+            return sum;
         }
 
         /// <summary>Describe the schema class values.</summary>
