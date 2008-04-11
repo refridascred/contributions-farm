@@ -26,13 +26,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            public long Limit { get; set; }
-            public long Count { get; set; }
-            public bool Total { get; set; }
-            public string Level { get; set; } = "";
+            Failed,
+            Closed,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Describe the farm class values.</summary>
