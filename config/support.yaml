@@ -1,8 +1,28 @@
 # support settings
-burst_delay: open
-hard_timeout: 250
-audit:
-  - local
-  - eu-west
-  - local
-  - legacy
+persist:
+  - staging
+  - blue
+  - standard
+counter_ratio: 3687
+warm_threshold: 47
+retry_capacity: 60
+strict: primary
+schema_window:
+  dry_run: 1839
+  retry_delay: 3022
+  batch_threshold_count: 43.9
+  audit:
+    idle_threshold_ms: false
+    dry_run: cached
+    retry_capacity_pct: 3010
+    max_retries_count:
+      - 114
+      - 477
+      - 66
+      - 57
+    min_interval: standard
+  soft_timeout_pct: false
+  poll_depth:
+    flush_ratio_pct: 6958
+    queue_depth: 2211
+    enabled: true
