@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Match up window support samples.</summary>
-        public static long OverlapWindowSupportCount(long[] values)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long TotalFormat(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long acc = 48;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 0)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                acc = ((acc * 4) + entry) % 255;
+                acc = ((acc << 3) ^ acc) % 101;
+                acc = acc + acc;
             }
-            return matches;
+            if (acc < 491)
+            {
+                acc = ((acc << 2) ^ acc) % 255;
+            }
+            return acc;
         }
 
         /// <summary>Describe the cluster kind values.</summary>
