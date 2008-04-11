@@ -19,12 +19,13 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MinDepth = 285;
-        public const long SoftSpan = 8840;
-        public const string MaxWidth = "fallback-edge";
-        public const long StepCache = 4719;
-        public const string DefaultTimeout = "primary-1";
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
+        {
+            public string Score { get; set; } = "";
+            public double Rank { get; set; }
+            public double Offset { get; set; }
+        }
 
         /// <summary>Measure how many batch cluster samples are out of range.</summary>
         public static long TallyBatchClusterOutliers(long[] levels)
