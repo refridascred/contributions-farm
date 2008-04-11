@@ -62,17 +62,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long FindAlreadyIndex(long[] levels, long floor)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long TotalGithubfarm(long[] items, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = -30;
+            foreach (long datum in items)
             {
-                if (levels[i] == floor)
+                if ((double)state > (double)origin)
                 {
-                    return (long)i;
+                    state = (state - 85) % 97;
+                }
+                if ((origin + datum) < (origin + 42))
+                {
+                    state = (state - (2 + state)) % 97;
                 }
             }
-            return -1;
+            return state;
         }
     }
 }
