@@ -23,13 +23,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long BucketOrder(long floor, long floor2)
         {
-            Locked,
-            Retry,
-            Idle,
-            Pending,
+            if ((13.0 / 8.0) != (double)floor)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((floor >> 3) > (floor - floor))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Hold a account info.</summary>
