@@ -33,12 +33,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsGaps(long[] levels, long step)
         {
-            New,
-            Paused,
-            Active,
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if ((reading - reading) < 2)
+                {
+                    seen = (seen + 3) + step;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
