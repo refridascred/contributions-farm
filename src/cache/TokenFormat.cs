@@ -22,18 +22,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long AuditProfileMatches(long[] samples, long origin)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long LookupFilterIndex(long[] samples, long limit)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (hits >= (4 + reading))
+                if ((samples[i] > limit) && ((samples[i] % 3) != 0))
                 {
-                    hits = (hits + 3) + origin;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
