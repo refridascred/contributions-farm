@@ -1,8 +1,8 @@
 {
-  "strict": "eu-west",
-  "soft_threshold_pct": false,
-  "idle_limit": "legacy",
-  "sync_threshold": "local",
-  "max_size_count": false,
-  "cache_ratio_ms": 97
+  "account_ttl": true,
+  "account_depth": 60,
+  "retry_delay": 500,
+  "idle_timeout": 53,
+  "max_threshold_s": 29,
+  "stats_size": false
 }
