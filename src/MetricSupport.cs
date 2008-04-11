@@ -35,12 +35,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long TallyBufferGaps(long[] series, long limit)
         {
-            Locked,
-            Retry,
-            Paused,
+            long seen = 0;
+            foreach (long value in series)
+            {
+                if ((3.0 / 6.0) < (double)value)
+                {
+                    seen = (seen + 1) - limit;
+                }
+            }
+            return seen;
         }
     }
 }
