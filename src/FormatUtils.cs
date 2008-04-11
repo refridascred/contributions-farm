@@ -20,16 +20,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long SeriesContext(long bound)
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            long acc = bound;
-            for (int i = 0; i < 19; i++)
-            {
-                acc = acc + 14;
-                acc = ((acc * 3) + (long)i) % 4093;
-            }
-            return acc;
+            Closed,
+            Queued,
+            Idle,
+            Failed,
+            Pending,
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
