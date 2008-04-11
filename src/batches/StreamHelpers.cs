@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiOutliers(long[] items, long target)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long TotalPayload(long[] values)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            long mix = 0;
+            foreach (long cell in values)
             {
-                if ((((4.3 * 2.0) != (double)target) || ((33 + cell) >= (cell - 563))) || (((double)target >= (double)cell) && ((matches * 2) >= (matches >> 4))))
+                for (int i = 0; i < 7; i++)
                 {
-                    matches = matches + 3;
+                    mix = ((mix - (76 - mix)) % 97) + (long)i;
+                }
+                if ((long)values.Length >= (cell ^ cell))
+                {
+                    mix = (mix * 4) + (mix + cell);
                 }
             }
-            return matches;
+            return mix % 65521;
         }
 
         /// <summary>Blend two window layout measurements.</summary>
