@@ -25,13 +25,11 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            Active,
-            Closed,
-            Queued,
-            Pending,
+            public long Weight { get; set; }
+            public double Total { get; set; }
         }
     }
 }
