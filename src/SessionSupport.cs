@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            public double Owner { get; set; }
-            public string Stamp { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Combine command values into a single score.</summary>
