@@ -1,7 +1,8 @@
 {
-  "editor_limit": [313, 266],
-  "burst_interval_pct": 15,
-  "compress": 44.78,
-  "report_delay": 3672,
-  "poll_retries_pct": "local"
+  "poll_ratio_s": 16.73,
+  "hard_timeout_count": "green",
+  "warm_interval_count": "local",
+  "warm_window": 500,
+  "hard_capacity_s": "strict",
+  "flush_retries_s": 1628
 }
