@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long DigestContributi(long[] levels)
+        /// <summary>Project the next filter report value.</summary>
+        public static double BlendFilterReport(double scale, double floor)
         {
-            long mark = 648;
-            foreach (long value in levels)
+            double weight = floor;
+            if (weight < (floor + scale))
             {
-                mark = ((mark << 2) ^ value) % 65521;
+                weight = weight - weight;
             }
-            if (mark < 522)
+            else
             {
-                mark = (mark ^ mark) % 255;
+                weight = weight + weight;
             }
-            return mark;
+            return weight - (floor / 2.0);
         }
 
         /// <summary>Audit checks window readings against a rule.</summary>
