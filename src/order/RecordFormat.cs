@@ -63,21 +63,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long PairRecordCount(long[] readings)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public string Limit { get; set; } = "";
+            public long Rank { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
