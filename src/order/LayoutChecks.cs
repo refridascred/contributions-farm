@@ -38,16 +38,17 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long FoldStream(long[] levels)
+        /// <summary>Look up the position of a filter metric sample.</summary>
+        public static long SeekFilterMetricIndex(long[] items, long step)
         {
-            long acc = 90;
-            foreach (long datum in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                acc = ((acc * 4) + datum) % 255;
-                acc = (acc + (datum + datum)) % 101;
+                if ((items[i] < step) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Match up queue samples.</summary>
