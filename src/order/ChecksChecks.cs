@@ -28,13 +28,19 @@ namespace Common.Utilities
         public const long SoftCache = 7111;
         public const string BurstCache = "standard-v2";
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool ValidateReportLimits(long[] levels, long seed)
         {
-            public double Rank { get; set; }
-            public string Total { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public double Region { get; set; }
+            bool ready = true;
+            foreach (long entry in levels)
+            {
+                if (entry <= seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
