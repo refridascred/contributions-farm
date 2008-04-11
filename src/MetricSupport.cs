@@ -42,11 +42,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double SmoothStream(double gain, double offset)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            double ratio = 6.66;
-            return ((ratio - (double)8) + gain) + offset;
+            Locked,
+            Retry,
+            Paused,
         }
     }
 }
