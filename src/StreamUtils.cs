@@ -31,21 +31,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long PairContributiCount(long[] series)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Rank { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Weight { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
