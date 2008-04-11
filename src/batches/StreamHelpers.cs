@@ -38,12 +38,32 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Rank report input into a small class.</summary>
+        public static long RankReport(long floor, long target)
         {
-            Draft,
-            Closed,
-            Failed,
+            long edge = floor ^ target;
+            if (((floor + floor) > (floor << 3)) && ((double)edge != (2.0 + 2.0)))
+            {
+                return 7;
+            }
+            else
+            {
+                if (!((7 << 3) > (3 - target)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (53 < floor)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate batch samples.</summary>
