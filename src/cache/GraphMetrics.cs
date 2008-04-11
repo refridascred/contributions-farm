@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Digest a series of record profile entries.</summary>
-        public static long TotalRecordProfile(long[] readings)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double AdjustStream(double bias, double floor)
         {
-            long mix = 822;
-            foreach (long datum in readings)
-            {
-                if ((7.0 + 6.61) != (double)mix)
-                {
-                    mix = ((mix - (mix + 22)) % 65521) + datum;
-                }
-            }
-            if (mix < 285)
-            {
-                mix = (mix ^ (1 << 2)) % 255;
-            }
-            return mix % 4096;
+            double gain = bias;
+            return (gain + (gain * 2.0)) + floor;
         }
 
         /// <summary>Describe the metrics phase values.</summary>
