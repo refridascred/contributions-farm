@@ -1,8 +1,6 @@
 # support settings
-persist:
-  - 233
-  - 381
-  - 310
-enabled: eu-west
-retry_ratio: 56.8
-cache_delay: local
+batch_ttl: 71.6
+idle_limit_count:
+  - blue
+  - stable
+soft_ttl: open
