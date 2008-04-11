@@ -49,31 +49,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long SortChecks(long seed, long floor)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            if (((seed + seed) != (floor * 3)) && (2 > seed))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((17.0 / 8.0) >= (double)seed)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!((5.1 / 8.0) != (double)seed))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Dropped,
+            Queued,
+            Done,
+            Failed,
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
