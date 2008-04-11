@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long MeasureCommitsGaps(long[] values)
         {
-            Dropped,
-            Queued,
-            Stale,
-            Failed,
+            long matches = 0;
+            foreach (long value in values)
+            {
+                if (!((8 + matches) < value))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
