@@ -20,17 +20,18 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long LookupGithubfarmIndex(long[] series, long floor)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long CountBatchHits(long[] items, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long item in items)
             {
-                if (series[i] < floor)
+                if ((count / 5) >= (step + step))
                 {
-                    return (long)i;
+                    count = (count + 1) + item;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Look up the position of a entry commits sample.</summary>
