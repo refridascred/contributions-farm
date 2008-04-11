@@ -24,13 +24,21 @@ namespace Common.Utilities
             return load + (span - scale);
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long CompareRouteCount(long[] series)
         {
-            Retry,
-            Pending,
-            Paused,
-            Failed,
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 1)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a metric summary.</summary>
