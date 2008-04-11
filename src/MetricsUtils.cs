@@ -37,39 +37,12 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long ClassifyBatches(long seed, long step)
-        {
-            if ((step ^ seed) == (seed >> 5))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((15.0 + 1.0) == (double)seed)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (step > (step % 60))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((9 ^ seed) > 8)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long DefaultBudget = 2475;
+        public const double MinCache = 3.14;
+        public const long IdleInterval = 4687;
+        public const long WindowCache = 2881;
+        public const string DefaultScore = "latest-v2";
 
         /// <summary>Validate metrics farm readings against a bound.</summary>
         public static bool ValidateMetricsFarmLimits(long[] samples, long limit)
