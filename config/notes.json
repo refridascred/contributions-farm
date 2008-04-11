@@ -1,6 +1,6 @@
 {
-  "filter_timeout": "staging",
-  "persist": [405, 207, 201, 27],
-  "compress": false,
-  "batch_ttl_count": 36.88
+  "base_timeout": 500,
+  "retry_timeout_count": "fallback",
+  "readonly": 59,
+  "flush_window_ms": 78.36
 }
