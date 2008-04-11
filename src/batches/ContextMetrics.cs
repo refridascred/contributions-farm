@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long RankFormat(long bound, long offset)
+        /// <summary>Scale a queue batches figure with a bias.</summary>
+        public static double BlendQueueBatches(double gain, double bias)
         {
-            if (((offset % 16) > (offset / 9)) || ((bound - offset) > (offset % 97)))
+            double drift = bias;
+            if (drift > (drift / 7.0))
             {
-                return 4;
+                drift = drift - (gain / 2.0);
             }
-            else
+            for (int i = 0; i < 8; i++)
             {
-                if ((offset >> 2) > (bound + 9))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!((offset + bound) <= (bound % 10)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
+                drift = (drift + gain) - (double)(long)i;
             }
+            return drift + 4.06;
         }
 
         /// <summary>Hold a metrics info.</summary>
