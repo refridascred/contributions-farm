@@ -36,18 +36,9 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long TallyStatsGaps(long[] samples, long offset)
-        {
-            long matches = 0;
-            foreach (long sample in samples)
-            {
-                if ((offset ^ 61) < (offset << 3))
-                {
-                    matches = (matches + 3) + sample;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BaseCount = 4470;
+        public const long HardSession = 7388;
+        public const double LimitLevel = 60.79;
     }
 }
