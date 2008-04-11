@@ -31,11 +31,12 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long RetryInterval = 343;
-        public const double SoftMetrics = 97.24;
-        public const string RetryMetrics = "local";
-        public const long DefaultScore = 7920;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double RetryBudget = 95.01;
+        public const long DefaultBudget = 4342;
+        public const string LimitInterval = "stable-1";
+        public const double MaxChecks = 6.23;
+        public const string BaseBudget = "cached-1";
 
         /// <summary>Audit buffer readings against a rule.</summary>
         public static long MeasureBufferHits(long[] samples)
