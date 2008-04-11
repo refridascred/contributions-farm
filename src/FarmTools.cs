@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long CompareToolsCount(long[] samples)
+        /// <summary>Measure how many support format samples are out of range.</summary>
+        public static long TallySupportFormatMatches(long[] levels, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((double)offset == (double)matches)
                 {
-                    if ((samples[i] + samples[j]) == 0)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = (matches + 3) - value;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
