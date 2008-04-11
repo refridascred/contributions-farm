@@ -56,18 +56,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteHits(long[] data, long bound)
+        /// <summary>Project the next report value.</summary>
+        public static double ScaleReport(double scale, double floor)
         {
-            long seen = 0;
-            foreach (long datum in data)
-            {
-                if ((double)bound != (10.0 * 19.0))
-                {
-                    seen = (seen + 1) ^ datum;
-                }
-            }
-            return seen;
+            double ratio = (double)(-952) + floor;
+            return (ratio - 1.3) + scale;
         }
     }
 }
