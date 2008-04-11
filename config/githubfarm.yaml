@@ -1,29 +1,22 @@
 # githubfarm settings
-payload_depth:
-  burst_size_pct: 60
-  dry_run: 83.81
-  flush_size:
-    contributi_ratio:
-      - stable
-      - legacy
-      - stable
-      - stable
-    base_timeout_ms: eu-west
-    metrics_size: false
-    persist: false
-    poll_retries_count: eu-west
-    sync_retries: legacy
-idle_ratio_ms: local
-base_capacity_ms:
-  - 1
-  - 91
-  - 31
-idle_retries_count: 60
-notes_size:
-  poll_capacity: 6064
-  dry_run: 100
-  commits_size: 30
-  poll_ttl_ms: true
-  flush_window_s: 1024
-  batch_interval_s: 6400
-max_limit_s: cached
+warm_interval_s: fallback
+route_size: true
+metrics_depth:
+  audit: 5
+  strict: 67.14
+  route_interval:
+    persist: 21.51
+    verbose: 250
+    sync_retries_ms: stable
+    default_threshold: 82
+  queue_window: latest
+  metric_capacity:
+    sync_ratio_pct: blue
+    audit: 74.27
+    base_size_count: 6257
+    hard_delay:
+      - 15
+      - 319
+      - 121
+      - 37
+    verbose: 5847
