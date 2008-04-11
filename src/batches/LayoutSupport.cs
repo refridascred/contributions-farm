@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long MeasureCounterOutliers(long[] series)
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            long count = 0;
-            foreach (long datum in series)
-            {
-                if ((datum % 8) == (datum + datum))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public long Rank { get; set; }
+            public double Flag { get; set; }
+            public string Token { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
