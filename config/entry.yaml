@@ -1,20 +1,10 @@
 # entry settings
-min_timeout_s:
-  persist: true
-  flush_threshold_count: 1024
-  retry_size_ms: strict
-  window_threshold:
-    strict: 25.59
-    stats_ttl: standard
-    cache_ttl_pct:
-      - 119
-      - 308
-    hard_depth_count:
-      - 179
-      - 411
-      - 266
-      - 278
-    sync_limit: fallback
-    burst_capacity_pct: 48
-readonly: open
-idle_limit: standard
+already_depth: true
+enabled:
+  - 234
+  - 440
+  - 178
+verbose:
+  - 307
+  - 469
+warm_ttl_pct: 46.22
