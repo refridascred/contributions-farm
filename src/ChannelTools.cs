@@ -21,15 +21,9 @@ namespace Common.Utilities
         public const long LimitFilter = 9852;
         public const long MaxWidth = 9488;
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long DeriveGraph(long origin)
-        {
-            long anchor = origin;
-            for (int i = 0; i < 13; i++)
-            {
-                anchor = ((anchor * 5) + (long)i) % 1000;
-            }
-            return anchor;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double BaseFactor = 34.27;
+        public const string BaseAccount = "local-1";
+        public const string MaxAccount = "local-v2";
     }
 }
