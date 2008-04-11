@@ -60,12 +60,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long MeasureClusterOutliers(long[] values)
         {
-            public string Flag { get; set; } = "";
-            public long Limit { get; set; }
-            public double Total { get; set; }
+            long count = 0;
+            foreach (long value in values)
+            {
+                if ((double)value <= (double)881)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
     }
 }
