@@ -42,10 +42,19 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long IdleCache = 2920;
-        public const string BatchCount = "stable-1";
-        public const long DefaultSpan = 3567;
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long AuditBatchesHits(long[] readings, long seed)
+        {
+            long matches = 0;
+            foreach (long item in readings)
+            {
+                if ((2.38 - 2.6) == (double)seed)
+                {
+                    matches = (matches + 2) + item;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
         public static long AuditStreamOutliers(long[] levels, long limit)
