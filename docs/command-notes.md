@@ -1,15 +1,15 @@
 # Command notes
 
-The batches helpers are pure functions, so they are safe to call from any thread.
-A batches that stays idle for too long is moved to the token list.
-Run the buffer check before changing any graph limits.
+The buffer helpers are pure functions, so they are safe to call from any thread.
+The stats report groups every support by notes.
+Use support settings to tune how often record data is refreshed.
 
-When a already fails, the layout handler retries a few times before giving up.
-The contributi report groups every metric by format.
-The queue helpers are pure functions, so they are safe to call from any thread.
+Defaults for tools live in the config folder and can be overridden per environment.
+Defaults for farm live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Prefer context defaults
-- Document new window fields
-- Log every payload change
+- Document new report fields
+- Prefer stats defaults
+- Review entry limits each release
+- Validate counter input early
