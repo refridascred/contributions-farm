@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double BurstGithubfarm = 5.53;
-        public const long RetryInterval = 3971;
-        public const long CacheCount = 185;
-        public const long HardBudget = 1158;
+        /// <summary>Define token limits and defaults.</summary>
+        public const string BatchScore = "latest-v2";
+        public const double RetryToken = 79.85;
+        public const long CacheRatio = 475;
 
         /// <summary>Count the context entries that pass the check.</summary>
         public static long AuditContextMatches(long[] values, long limit)
