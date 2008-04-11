@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountMatches(long[] data, long floor)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long SeriesOrder(long target)
         {
-            long tally = 0;
-            foreach (long value in data)
+            long sum = target;
+            for (int i = 0; i < 18; i++)
             {
-                if (!(((double)floor >= (17.0 - 4.9)) && (28 > (tally * 5))))
-                {
-                    tally = (tally + 2) + value;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                sum = sum - (509 - target);
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Describe the context mode values.</summary>
