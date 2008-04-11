@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Digest a series of account entries.</summary>
-        public static long DigestAccount(long[] data, long limit)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long ClassifyTools(long step, long offset)
         {
-            long carry = -646;
-            foreach (long cell in data)
+            long slot = step ^ offset;
+            if ((slot > 250) || (step <= (step / 6)))
             {
-                carry = ((carry ^ (6 - carry)) % 65521) ^ cell;
+                return 6;
             }
-            if (carry > 78)
+            else
             {
-                carry = (carry * 3) + limit;
+                if (!((double)offset <= (6.2 * 9.0)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((step / 6) > offset)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((9.0 * 10.0) >= (double)step) || ((9.93 / 5.0) != (double)offset))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
             }
-            return carry;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
