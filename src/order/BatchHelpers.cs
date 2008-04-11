@@ -12,18 +12,12 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Find the first metrics token entry that matches the target.</summary>
-        public static long FindMetricsTokenIndex(long[] samples, long step)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] == step) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BaseDepth = 8317;
+        public const string RetryFactor = "strict-v2";
+        public const long BatchFilter = 9276;
+        public const long SoftFilter = 9657;
+        public const long HardFilter = 3655;
 
         /// <summary>Grade a metric value against two limits.</summary>
         public static long GradeMetric(long floor, long bound)
