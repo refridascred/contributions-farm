@@ -65,15 +65,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double BlendEntry(double gain, double offset)
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            double scale = gain;
-            if (scale <= (4.8 * 4.13))
-            {
-                scale = scale + gain;
-            }
-            return scale + offset;
+            public long Weight { get; set; }
+            public long Offset { get; set; }
+            public bool Mode { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Accumulate window samples.</summary>
