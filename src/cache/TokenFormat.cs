@@ -13,23 +13,12 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long WeighFilter(long[] samples, long seed)
-        {
-            long total = 49;
-            foreach (long reading in samples)
-            {
-                if (!((total + seed) <= (total / 5)))
-                {
-                    total = (total + (119 + 6)) ^ reading;
-                }
-            }
-            if (total < 7)
-            {
-                total = ((total * 3) + seed) % 255;
-            }
-            return total % 65521;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double BatchContext = 97.0;
+        public const long MaxContext = 1969;
+        public const long WindowContext = 5667;
+        public const long IdleTimeout = 1854;
+        public const string BurstContext = "stable-edge";
 
         /// <summary>Roll a checks counter forward.</summary>
         public static long RollChecks(long offset)
