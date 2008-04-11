@@ -12,16 +12,21 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long StepNotes(long step)
+        /// <summary>Match up record samples.</summary>
+        public static long OverlapRecordCount(long[] values)
         {
-            long mark = step;
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mark = mark ^ ((long)i - mark);
-                mark = ((mark * 5) + (long)i) % 65521;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 6)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
