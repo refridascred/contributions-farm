@@ -51,22 +51,12 @@ namespace Common.Utilities
         public const double StepLayout = 94.8;
         public const long BaseScore = 2341;
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorOutliers(long[] series, long step)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            long seen = 0;
-            foreach (long sample in series)
-            {
-                if ((sample * 3) < (sample % 16))
-                {
-                    seen = (seen + 2) - step;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public string Ratio { get; set; } = "";
+            public double Region { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Combine filter values into a single score.</summary>
