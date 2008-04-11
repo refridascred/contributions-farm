@@ -1,5 +1,6 @@
 {
-  "batches_window": true,
-  "profile_ttl": 100,
-  "token_ratio": "blue"
+  "filter_timeout": "staging",
+  "persist": [405, 207, 201, 27],
+  "compress": false,
+  "batch_ttl_count": 36.88
 }
