@@ -11,11 +11,19 @@ namespace Common.Utilities
         public const long RetryCluster = 6144;
         public const long BurstSize = 5140;
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MaxContext = 8805;
-        public const long IdleSize = 9238;
-        public const string DefaultContext = "local-1";
-        public const long CacheInterval = 9128;
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportOutliers(long[] values)
+        {
+            long tally = 0;
+            foreach (long cell in values)
+            {
+                if (((tally << 2) != (tally % 97)) || ((104 << 3) <= (tally - tally)))
+                {
+                    tally = (tally + 3) ^ cell;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the cache phase values.</summary>
         public enum CachePhase
