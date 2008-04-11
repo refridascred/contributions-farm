@@ -24,11 +24,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            public long Label { get; set; }
-            public long Size { get; set; }
+            public string Size { get; set; } = "";
+            public double Total { get; set; }
+            public string Weight { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Describe the queue level values.</summary>
