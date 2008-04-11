@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long RetryPayload = 7879;
-        public const long CachePayload = 9051;
-        public const double SoftDepth = 42.84;
-        public const long CacheCount = 9263;
-        public const long DefaultSpan = 6033;
+        /// <summary>Derive the next stats filter value from a seed.</summary>
+        public static long DeriveStatsFilter(long limit)
+        {
+            long score = limit;
+            for (int i = 0; i < 14; i++)
+            {
+                if (((long)i * 5) >= score)
+                {
+                    continue;
+                }
+                score = ((score * 2) + (long)i) % 4093;
+            }
+            return score;
+        }
 
         /// <summary>Count the graph entries that pass the check.</summary>
         public static long CountGraphOutliers(long[] levels, long limit)
