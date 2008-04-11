@@ -36,10 +36,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long RetryGithubfarm = 4779;
-        public const double CacheRatio = 73.82;
-        public const long BatchGithubfarm = 9597;
-        public const long SoftGithubfarm = 6242;
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long FoldNotes(long[] series)
+        {
+            long acc = 623;
+            foreach (long entry in series)
+            {
+                if (((acc << 1) < (acc << 3)) || (acc < (261 + entry)))
+                {
+                    acc = ((acc << 2) ^ entry) % 1000;
+                }
+                else
+                {
+                    acc = (acc * 2) + entry;
+                }
+            }
+            return acc;
+        }
     }
 }
