@@ -37,15 +37,15 @@ namespace Common.Utilities
         public const string RetryMetrics = "local";
         public const long DefaultScore = 7920;
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long TallyCommitsOutliers(long[] items, long limit)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferHits(long[] samples)
         {
             long tally = 0;
-            foreach (long item in items)
+            foreach (long value in samples)
             {
-                if ((double)item == (18.0 - 1.3))
+                if (!((494 ^ value) > (4 - tally)))
                 {
-                    tally = (tally + 2) + limit;
+                    tally = tally + 2;
                 }
             }
             return tally;
