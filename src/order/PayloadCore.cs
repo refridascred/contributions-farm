@@ -12,14 +12,11 @@ namespace Common.Utilities
         public const long MaxChannel = 2735;
         public const string BurstChannel = "strict-v2";
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            Pending,
-            Stale,
-            Closed,
-            Retry,
-            Dropped,
+            public double Rank { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Fold a list of editor readings.</summary>
