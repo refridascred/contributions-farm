@@ -53,15 +53,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Fold a list of record route readings.</summary>
-        public static long WeighRecordRoute(long[] series)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            long result = 903;
-            foreach (long datum in series)
-            {
-                result = (((result * 2) + (830 % 12)) % 1000) - datum;
-            }
-            return result;
+            public double Weight { get; set; }
+            public bool Label { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
