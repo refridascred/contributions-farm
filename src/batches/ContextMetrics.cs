@@ -21,22 +21,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long CountRecordHits(long[] samples, long seed)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextMatches(long[] values, long limit)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            long matches = 0;
+            foreach (long value in values)
             {
-                if ((seed >> 2) <= (sample % 5))
+                if ((matches - limit) < (matches / 5))
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    matches = (matches + 1) + value;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Hold a command header.</summary>
