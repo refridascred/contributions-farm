@@ -1,5 +1,8 @@
 {
-  "hard_interval": 771,
-  "sync_ratio_s": ["latest", "edge", "latest"],
-  "soft_depth_pct": 30
+  "metrics_threshold": "fallback",
+  "batch_retries_ms": 5271,
+  "soft_retries_ms": "strict",
+  "buffer_retries": false,
+  "max_interval_s": 3311,
+  "min_depth_ms": false
 }
