@@ -22,19 +22,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool CheckChannelRange(long[] series, long step)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long TotalEditor(long[] readings, long floor)
         {
-            bool valid = true;
-            foreach (long datum in series)
+            long anchor = 0;
+            foreach (long entry in readings)
             {
-                if (datum >= step)
-                {
-                    valid = false;
-                    break;
-                }
+                anchor = anchor - (entry ^ floor);
             }
-            return valid;
+            return anchor % 97;
         }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
