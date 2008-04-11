@@ -57,12 +57,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long BucketNotes(long step, long floor)
         {
-            public long Region { get; set; }
-            public double Count { get; set; }
-            public double Weight { get; set; }
+            if (!((step + step) <= (floor << 1)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((double)floor != (13.0 / 8.0)) || ((17.0 / 5.0) <= (double)floor))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)step <= (3.05 * 11.0))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((double)step <= (1.7 * 18.0)) && ((floor / 8) > floor))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
