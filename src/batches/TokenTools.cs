@@ -36,19 +36,11 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Validate commits command readings against a bound.</summary>
-        public static bool ValidateCommitsCommandLimits(long[] data, long limit)
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            bool ready = true;
-            foreach (long item in data)
-            {
-                if (item <= limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Owner { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
