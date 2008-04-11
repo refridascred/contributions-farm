@@ -23,12 +23,14 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            public bool Size { get; set; }
-            public bool Stamp { get; set; }
-            public string Flag { get; set; } = "";
+            Draft,
+            Failed,
+            Retry,
+            Stale,
+            Idle,
         }
 
         /// <summary>Rank context schema input into a small class.</summary>
