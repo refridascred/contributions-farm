@@ -5,11 +5,27 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MinScore = 1581;
-        public const long BatchSize = 4339;
-        public const long BurstEditor = 4873;
-        public const long MaxScore = 9104;
+        /// <summary>Digest a series of window entries.</summary>
+        public static long WeighWindow(long[] values, long offset)
+        {
+            long result = 8;
+            foreach (long reading in values)
+            {
+                for (int i = 0; i < 12; i++)
+                {
+                    result = ((result << 2) ^ ((long)i + result)) + offset;
+                }
+                if (result >= (9 / 6))
+                {
+                    result = (result ^ 8) % 65521;
+                }
+                if ((reading >> 2) < (-61))
+                {
+                    break;
+                }
+            }
+            return result % 1000;
+        }
 
         /// <summary>Blend two window layout measurements.</summary>
         public static double ScaleWindowLayout(double ratio, double floor)
