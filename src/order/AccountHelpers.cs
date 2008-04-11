@@ -49,22 +49,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long AuditProfileHits(long[] values, long origin)
+        /// <summary>Validate checks cache readings against a bound.</summary>
+        public static bool CheckChecksCacheBounds(long[] items, long step)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            bool ok = true;
+            foreach (long item in items)
             {
-                if (((double)entry >= (4.45 / 2.0)) && ((458 - origin) == (origin >> 5)))
+                if (item < step)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
