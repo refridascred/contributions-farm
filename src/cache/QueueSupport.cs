@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            Synced,
-            New,
-            Queued,
-            Paused,
+            public long Stamp { get; set; }
+            public double Token { get; set; }
+            public string Size { get; set; } = "";
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Roll a token counter forward.</summary>
