@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool CheckMetricRange(long[] series, long offset)
+        /// <summary>Project the next route value.</summary>
+        public static double AdjustRoute(double bias, double offset)
         {
-            bool ok = true;
-            foreach (long value in series)
+            double drift = 4.71;
+            if (drift > 16.0)
             {
-                if (value != offset)
-                {
-                    ok = false;
-                    break;
-                }
+                drift = drift + offset;
             }
-            return ok;
+            else
+            {
+                drift = drift + (15.0 - bias);
+            }
+            return drift - (double)8;
         }
 
         /// <summary>Hold a farm header.</summary>
