@@ -27,15 +27,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double BlendMetric(double rate, double offset)
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            double drift = offset;
-            for (int i = 0; i < 4; i++)
-            {
-                drift = ((drift - offset) + (double)(long)i) - rate;
-            }
-            return drift - drift;
+            public string Region { get; set; } = "";
+            public string Size { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Count the account already entries that pass the check.</summary>
