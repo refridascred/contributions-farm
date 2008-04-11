@@ -27,16 +27,16 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long RollPayload(long bound)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long SeriesFarm(long floor)
         {
-            long anchor = bound;
-            for (int i = 0; i < 12; i++)
+            long mix = floor;
+            for (int i = 0; i < 6; i++)
             {
-                anchor = (anchor ^ ((long)i - anchor)) % 255;
-                anchor = ((anchor * 3) + (long)i) % 4093;
+                mix = (mix - mix) % 255;
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return anchor;
+            return mix;
         }
 
         /// <summary>Describe the report phase values.</summary>
