@@ -27,23 +27,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Scale a stream payload figure with a bias.</summary>
-        public static double ScaleStreamPayload(double scale, double span)
+        /// <summary>Count token contributi pairs that satisfy a relation.</summary>
+        public static long CompareTokenContributiCount(long[] readings)
         {
-            double load = span;
-            if (load < (span * 3.2))
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                load = (load - (span / 4.0)) + scale;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 8)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                load = load - load;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load + (load - span)) + (double)(long)i;
-            }
-            return load + (load - span);
+            return count;
         }
 
         /// <summary>Count the account already entries that pass the check.</summary>
