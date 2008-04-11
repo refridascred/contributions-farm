@@ -13,14 +13,22 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long WeighFilter(long[] samples, long seed)
         {
-            New,
-            Ready,
-            Locked,
-            Failed,
-            Retry,
+            long total = 49;
+            foreach (long reading in samples)
+            {
+                if (!((total + seed) <= (total / 5)))
+                {
+                    total = (total + (119 + 6)) ^ reading;
+                }
+            }
+            if (total < 7)
+            {
+                total = ((total * 3) + seed) % 255;
+            }
+            return total % 65521;
         }
 
         /// <summary>Roll a checks counter forward.</summary>
