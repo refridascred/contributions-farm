@@ -16,18 +16,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a tools already reading by value.</summary>
-        public static long LookupToolsAlreadyIndex(long[] items, long limit)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] <= limit) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string IdleDepth = "stable-1";
+        public const long LimitFilter = 9852;
+        public const long MaxWidth = 9488;
 
         /// <summary>Roll a graph counter forward.</summary>
         public static long DeriveGraph(long origin)
