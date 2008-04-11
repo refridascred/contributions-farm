@@ -50,39 +50,13 @@ namespace Common.Utilities
         public const long LimitInterval = 4457;
         public const long BatchAlready = 7992;
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long ClassifyFilter(long limit, long origin)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            long delta = limit ^ origin;
-            if ((delta >> 3) <= (0 - delta))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((delta & 1) > (limit + 609))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((delta ^ delta) <= (delta + delta))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((limit < (delta ^ 4)) || ((limit % 100) >= (origin - origin)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Done,
+            Retry,
+            Failed,
+            Idle,
         }
     }
 }
