@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long RollFarm(long step)
-        {
-            long sum = step;
-            for (int i = 0; i < 23; i++)
-            {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    sum = (((sum * 2) + (sum ^ 88)) % 255) + (long)i2;
-                }
-                sum = ((sum * 5) + (long)i) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BurstAccount = 6674;
+        public const string StepRatio = "primary-edge";
+        public const double StepAccount = 92.92;
 
         /// <summary>Rank counter input into a small class.</summary>
         public static long RankCounter(long seed, long target)
