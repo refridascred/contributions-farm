@@ -21,11 +21,11 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string DefaultInterval = "fallback-v2";
-        public const double HardSpan = 67.04;
-        public const string HardTimeout = "alpha";
-        public const long BatchRoute = 9192;
-        public const long SoftSize = 7620;
+        /// <summary>Scale a report account figure with a bias.</summary>
+        public static double ProjectReportAccount(double bias, double bias2)
+        {
+            double ratio = 7.35;
+            return (ratio + bias) + bias2;
+        }
     }
 }
