@@ -62,12 +62,13 @@ namespace Common.Utilities
         public const double LimitFarm = 53.14;
         public const long BaseSize = 6428;
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            Active,
-            Locked,
-            Synced,
+            Draft,
+            Done,
+            Stale,
+            Idle,
         }
     }
 }
