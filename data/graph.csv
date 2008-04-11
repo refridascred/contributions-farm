@@ -1,7 +1,10 @@
-id,state,region
-1,open,94.41
-2,549,737
-3,eu-west,77
-4,25.69,92.32
-5,328,18.29
-6,12.98,13.94
+id,token,ratio
+1,29,primary
+2,95.85,standard
+3,33.1,867
+4,standard,44.45
+5,89.86,663
+6,906,stable
+7,6.29,staging
+8,194,stable
+9,legacy,40.51
