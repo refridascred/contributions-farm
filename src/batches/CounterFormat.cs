@@ -24,18 +24,13 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Measure how many cluster batches samples are out of range.</summary>
-        public static long AuditClusterBatchesGaps(long[] series)
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            long hits = 0;
-            foreach (long entry in series)
-            {
-                if ((entry * 3) == (entry & 3))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Ready,
+            Queued,
+            Paused,
+            New,
         }
 
         /// <summary>Describe the tools kind values.</summary>
