@@ -23,11 +23,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Match up graph samples.</summary>
+        public static long MatchGraphCount(long[] samples)
         {
-            public string Ratio { get; set; } = "";
-            public bool Level { get; set; }
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 2)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
