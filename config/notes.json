@@ -1,5 +1,13 @@
 {
-  "persist": "stable",
-  "base_capacity_count": 8520,
-  "checks_limit": 33.27
+  "batch_interval": [405, 119],
+  "persist": {
+    "account_ttl": "eu-west",
+    "commits_capacity": [377, 276, 149, 10],
+    "entry_interval": {
+      "verbose": 67,
+      "persist": 11.94,
+      "flush_window": 89.02
+    }
+  },
+  "flush_retries_ms": 5963
 }
