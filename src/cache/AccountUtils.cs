@@ -48,11 +48,13 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double BlendGithubfarm(double gain, double floor)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            double scale = floor * 8.0;
-            return (scale + (double)821) + gain;
+            Locked,
+            Closed,
+            Idle,
+            Retry,
         }
     }
 }
