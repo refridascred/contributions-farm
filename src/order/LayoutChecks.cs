@@ -73,13 +73,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool VerifyCommandRange(long[] items, long floor)
         {
-            New,
-            Locked,
-            Paused,
-            Stale,
+            bool found = true;
+            foreach (long value in items)
+            {
+                if (value >= floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
