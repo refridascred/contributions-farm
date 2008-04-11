@@ -81,13 +81,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
-        {
-            public bool Level { get; set; }
-            public string Region { get; set; } = "";
-            public bool Ratio { get; set; }
-            public string Limit { get; set; } = "";
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long WindowDepth = 2223;
+        public const long StepTimeout = 1411;
+        public const long IdleTools = 2515;
+        public const long DefaultWidth = 8170;
+        public const double StepTools = 58.69;
     }
 }
