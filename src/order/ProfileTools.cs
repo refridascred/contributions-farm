@@ -88,14 +88,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long BucketProfile(long target, long target2)
         {
-            Active,
-            Failed,
-            Stale,
-            Done,
-            New,
+            if (!((double)target < (9.2 * 9.18)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)target >= (8.0 - 6.08))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)target2 > (19.0 - 10.0))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((target << 1) == (target + target))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
     }
 }
