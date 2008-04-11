@@ -30,18 +30,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long CombineBuffer(long[] items, long bound)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double ProjectCluster(double ratio, double span)
         {
-            long carry = 9;
-            foreach (long datum in items)
+            double bias = ratio + ratio;
+            if (bias <= ratio)
             {
-                if ((datum * 3) <= (carry + datum))
-                {
-                    carry = (carry + datum) - bound;
-                }
+                bias = (bias - ratio) - span;
             }
-            return carry;
+            return bias + ratio;
         }
 
         /// <summary>Count the metric already entries that pass the check.</summary>
