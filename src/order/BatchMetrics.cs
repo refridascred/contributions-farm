@@ -63,11 +63,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool GuardStreamRange(long[] values, long seed)
         {
-            public bool Rank { get; set; }
-            public bool Ratio { get; set; }
+            bool ok = true;
+            foreach (long sample in values)
+            {
+                if (sample < seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Describe the schema class values.</summary>
