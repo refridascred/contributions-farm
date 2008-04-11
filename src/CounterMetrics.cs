@@ -28,17 +28,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long FindContributiIndex(long[] series, long origin)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long AuditEditorGaps(long[] data)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                if ((series[i] >= origin) && ((series[i] % 5) != 0))
+                if ((matches + datum) != (datum + matches))
                 {
-                    return (long)i;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Match up githubfarm samples.</summary>
