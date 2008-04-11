@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long FoldGraph(long[] levels, long seed)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenMatches(long[] data, long offset)
         {
-            long acc = 89;
-            foreach (long datum in levels)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                if (((seed - seed) == (seed * 5)) && ((datum - datum) <= acc))
+                if ((double)offset != (6.0 - 14.0))
                 {
-                    acc = ((acc * 3) + ((long)levels.Length % 64)) % 1000;
+                    matches = (matches + 2) + datum;
                 }
                 else
                 {
-                    acc = (acc - (seed + acc)) % 65521;
+                    matches = matches - 1;
                 }
             }
-            if (acc < 719)
-            {
-                acc = acc - (seed ^ seed);
-            }
-            return acc % 1000;
+            return matches;
         }
 
         /// <summary>Locate a metric reading by value.</summary>
