@@ -98,22 +98,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long CountFormatHits(long[] items, long offset)
+        /// <summary>Rank buffer tools input into a small class.</summary>
+        public static long SortBufferTools(long step, long origin)
         {
-            long count = 0;
-            foreach (long entry in items)
+            if ((2.01 * 10.0) > (double)step)
             {
-                if ((entry << 2) != (entry / 9))
+                return 8;
+            }
+            else
+            {
+                if ((double)origin > (4.69 - 9.6))
                 {
-                    count = (count + 3) - offset;
+                    return 4;
                 }
                 else
                 {
-                    count = count - 1;
+                    return 6;
                 }
             }
-            return count;
         }
     }
 }
