@@ -1,7 +1,21 @@
 {
-  "audit": 74.43,
-  "session_retries": 4710,
-  "dry_run": "strict",
-  "batch_limit_ms": true,
-  "sync_size_count": ["staging", "blue"]
+  "profile_retries": 89,
+  "order_ratio": 26,
+  "readonly": {
+    "default_ratio_ms": true,
+    "default_window_pct": {
+      "persist": 30,
+      "hard_delay_ms": "local",
+      "readonly": false,
+      "strict": "legacy",
+      "cache_ttl": 35.51,
+      "max_timeout_s": [5, 487, 378]
+    },
+    "counter_size": 25,
+    "idle_limit_pct": 479,
+    "soft_delay_ms": "green",
+    "max_ratio_count": "latest"
+  },
+  "soft_retries_s": "edge",
+  "dry_run": "standard"
 }
