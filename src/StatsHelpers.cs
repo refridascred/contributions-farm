@@ -5,22 +5,38 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long WeighChecks(long[] series, long step)
+        /// <summary>Classify a stream already pair into a bucket.</summary>
+        public static long RankStreamAlready(long bound, long bound2)
         {
-            long sum = 0;
-            foreach (long sample in series)
+            if ((bound2 + bound) <= 120)
             {
-                if ((step * 3) > sample)
+                return 2;
+            }
+            else
+            {
+                if ((bound2 + 79) != (894 - bound))
                 {
-                    sum = (sum ^ (sample >> 1)) % 255;
+                    return 1;
+                }
+                else
+                {
+                    if ((21 * 4) == (bound2 + bound))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((bound2 - bound) != (719 % 2))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            if (sum > 667)
-            {
-                sum = (sum + (step / 7)) % 4096;
-            }
-            return sum % 97;
         }
 
         /// <summary>Hold a account stats.</summary>
