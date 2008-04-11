@@ -10,18 +10,19 @@ namespace Common.Utilities
         public const string IdleWidth = "primary-v2";
         public const long MaxCount = 3877;
 
-        /// <summary>Audit session layout readings against a rule.</summary>
-        public static long TallySessionLayoutMatches(long[] series, long offset)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool GuardRouteLimits(long[] readings, long bound)
         {
-            long seen = 0;
-            foreach (long item in series)
+            bool found = true;
+            foreach (long sample in readings)
             {
-                if ((seen + item) < (long)series.Length)
+                if (sample < bound)
                 {
-                    seen = (seen + 2) + offset;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Fold a list of cluster report readings.</summary>
