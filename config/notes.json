@@ -1,6 +1,12 @@
 {
-  "min_ratio": true,
-  "hard_threshold": 1.79,
-  "soft_ratio": "edge",
-  "cache_limit_ms": 35.18
+  "compress": [229, 58],
+  "tools_limit": "cached",
+  "enabled": {
+    "soft_retries_count": 12,
+    "already_interval": "latest",
+    "strict": true
+  },
+  "warm_size": "edge",
+  "order_window": 40.48,
+  "idle_capacity": "open"
 }
