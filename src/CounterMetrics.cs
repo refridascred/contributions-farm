@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Combine editor commits values into a single score.</summary>
+        public static long TallyEditorCommits(long[] values, long limit)
         {
-            Pending,
-            Active,
-            Done,
+            long anchor = -9;
+            foreach (long value in values)
+            {
+                if (((value + limit) <= (anchor * 5)) && ((double)limit != (9.61 * 6.39)))
+                {
+                    anchor = anchor ^ (limit & 1);
+                }
+            }
+            if (anchor < 2)
+            {
+                anchor = (anchor ^ limit) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
