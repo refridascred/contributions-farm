@@ -24,13 +24,19 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool CheckSessionLimits(long[] items, long offset)
         {
-            Ready,
-            Queued,
-            Paused,
-            New,
+            bool stale = true;
+            foreach (long value in items)
+            {
+                if (value >= offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Describe the checks status values.</summary>
