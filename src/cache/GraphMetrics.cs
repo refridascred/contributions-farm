@@ -45,22 +45,29 @@ namespace Common.Utilities
         public const double WindowRoute = 75.47;
         public const long MaxScore = 192;
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long ClassifyRecord(long offset, long bound)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long SortChecks(long seed, long floor)
         {
-            if ((offset - bound) == (offset / 5))
+            if (((seed + seed) != (floor * 3)) && (2 > seed))
             {
-                return 2;
+                return 4;
             }
             else
             {
-                if (((double)380 >= (double)offset) || (bound <= (bound << 2)))
+                if ((17.0 / 8.0) >= (double)seed)
                 {
-                    return 3;
+                    return 8;
                 }
                 else
                 {
-                    return 6;
+                    if (!((5.1 / 8.0) != (double)seed))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
         }
