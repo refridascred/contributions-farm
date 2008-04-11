@@ -1,18 +1,20 @@
 # entry settings
-flush_ratio_ms:
-  - cached
-  - blue
-max_threshold_count:
-  warm_interval_count: open
-  compress:
-    - cached
-    - fallback
-    - open
-    - legacy
-  max_ttl_s: false
-  counter_interval:
-    - latest
-    - blue
-  audit: false
-  warm_size_s: 250
-retry_window_count: 9090
+verbose:
+  - primary
+  - eu-west
+  - primary
+poll_threshold:
+  soft_interval_count: 9115
+  idle_depth_ms: 37.46
+  poll_threshold:
+    - 471
+    - 86
+    - 482
+  format_delay: legacy
+  already_window: strict
+hard_interval_count: 1024
+strict:
+  - 89
+  - 326
+  - 216
+poll_ratio_pct: cached
