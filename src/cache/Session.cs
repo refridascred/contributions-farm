@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Rank token input into a small class.</summary>
-        public static long BucketToken(long floor, long seed)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long TallyRouteOutliers(long[] readings, long target)
         {
-            long slot = floor + seed;
-            if (((double)seed > (double)9) && (slot > (89 >> 1)))
+            long count = 0;
+            foreach (long reading in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)floor < (3.0 / 9.0))
+                if (!(((double)count == (double)(-9)) && ((count >> 4) >= 94)))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
+                    count = ((count + 1) + reading) - target;
                 }
             }
+            return count;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
