@@ -5,14 +5,16 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Roll a context contributi counter forward.</summary>
+        public static long StepContextContributi(long seed)
         {
-            Failed,
-            Pending,
-            Idle,
-            Draft,
-            Dropped,
+            long mix = seed;
+            for (int i = 0; i < 4; i++)
+            {
+                mix = mix + (seed ^ seed);
+                mix = ((mix * 2) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Count payload format pairs that satisfy a relation.</summary>
