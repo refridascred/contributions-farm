@@ -20,12 +20,12 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long SeekSessionIndex(long[] series, long offset)
+        /// <summary>Find the first payload support entry that matches the target.</summary>
+        public static long LookupPayloadSupportIndex(long[] data, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((series[i] >= offset) && ((series[i] % 5) == 0))
+                if (data[i] >= origin)
                 {
                     return (long)i;
                 }
