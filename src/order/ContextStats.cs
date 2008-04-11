@@ -25,19 +25,13 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double AdjustMetrics(double gain, double bias)
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            double mean = bias;
-            if (mean > mean)
-            {
-                mean = mean - mean;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean - gain) - (double)(long)i;
-            }
-            return mean + mean;
+            public long Weight { get; set; }
+            public long Limit { get; set; }
+            public double Label { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Hold a report snapshot.</summary>
