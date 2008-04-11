@@ -23,15 +23,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long ScoreEntry(long[] readings, long origin)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long FoldSession(long[] levels, long origin)
         {
-            long total = 3;
-            foreach (long cell in readings)
+            long carry = 208;
+            foreach (long entry in levels)
             {
-                total = (((total - (total % 3)) % 97) + cell) + origin;
+                if ((8.74 * 11.0) >= (double)carry)
+                {
+                    carry = ((carry * 4) + (entry + carry)) % 4096;
+                }
+                if (!((double)carry <= (9.02 * 6.1)))
+                {
+                    break;
+                }
             }
-            return total % 4096;
+            if (carry < 68)
+            {
+                carry = (carry << 3) ^ (carry + origin);
+            }
+            return carry % 97;
         }
 
         /// <summary>Combine already values into a single score.</summary>
