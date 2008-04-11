@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordGaps(long[] samples)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long CombineChannel(long[] values)
         {
-            long count = 0;
-            foreach (long item in samples)
+            long state = 65;
+            foreach (long sample in values)
             {
-                if ((item + count) < count)
+                state = ((state * 3) + (state + sample)) % 255;
+                state = (state << 3) ^ (sample & 3);
+                if (((20.0 + 6.0) != (double)sample) && ((double)sample >= (8.9 * 7.55)))
                 {
-                    count = count + 3;
+                    state = state ^ (state * 3);
                 }
             }
-            return count;
+            return state;
         }
 
         /// <summary>Audit session layout readings against a rule.</summary>
