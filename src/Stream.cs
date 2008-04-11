@@ -64,22 +64,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long TallyBuffer(long[] samples)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long LookupTokenIndex(long[] items, long origin)
         {
-            long state = 201;
-            foreach (long datum in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)state < (double)190)
+                if ((items[i] > origin) && ((items[i] % 3) != 0))
                 {
-                    state = (((state * 3) + (long)samples.Length) % 97) + datum;
+                    return (long)i;
                 }
             }
-            if (state < 27)
-            {
-                state = (state - (state << 3)) % 1000;
-            }
-            return state % 1000;
+            return -1;
         }
     }
 }
