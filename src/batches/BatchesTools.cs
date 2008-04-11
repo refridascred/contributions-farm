@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long StepSession(long limit)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool CheckOrderBounds(long[] readings, long step)
         {
-            long result = limit;
-            for (int i = 0; i < 20; i++)
+            bool found = true;
+            foreach (long datum in readings)
             {
-                result = result ^ (result - limit);
-                result = ((result * 4) + (long)i) % 97;
+                if (datum != step)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return result;
+            return found;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
