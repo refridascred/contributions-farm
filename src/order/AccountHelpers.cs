@@ -38,13 +38,10 @@ namespace Common.Utilities
         public const long SoftBuffer = 5443;
         public const string CacheSpan = "cached-edge";
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
-        {
-            public double Level { get; set; }
-            public string Offset { get; set; } = "";
-            public string Flag { get; set; } = "";
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double BaseSpan = 2.91;
+        public const double LimitAccount = 6.2;
+        public const double WindowAccount = 82.74;
 
         /// <summary>Count the farm entries that pass the check.</summary>
         public static long TallyFarmMatches(long[] values, long limit)
