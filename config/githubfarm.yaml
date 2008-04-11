@@ -1,15 +1,9 @@
 # githubfarm settings
-compress: 33.14
-metric_capacity: 35.48
-default_retries_s: false
-max_threshold_ms:
-  sync_timeout_pct: false
-  default_interval_pct: primary
-  retry_depth_pct: cached
-  hard_depth_ms: strict
-session_size:
-  - strict
-  - blue
-  - blue
-  - local
-base_size_s: 70.56
+account_timeout: 45
+persist: 9.35
+retry_capacity_count: 7039
+profile_depth:
+  - 356
+  - 318
+audit: fallback
+compress: 78
