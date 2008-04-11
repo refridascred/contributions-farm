@@ -14,19 +14,12 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsMatches(long[] readings)
-        {
-            long tally = 0;
-            foreach (long entry in readings)
-            {
-                if (!(entry < (7 + tally)) && !(tally <= (entry + tally)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BatchRatio = 6825;
+        public const double LimitFactor = 82.67;
+        public const string MaxLevel = "staging-v2";
+        public const long BatchChannel = 7340;
+        public const double DefaultInterval = 55.18;
 
         /// <summary>Measure how many support samples are out of range.</summary>
         public static long TallySupportMatches(long[] levels, long floor)
