@@ -41,12 +41,12 @@ namespace Common.Utilities
             return rate + bias2;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BatchScore = 1752;
-        public const long BurstInterval = 5591;
-        public const long BurstCount = 8555;
-        public const long LimitAlready = 6318;
-        public const long SoftAlready = 1832;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BaseInterval = 4463;
+        public const long CacheBatches = 9287;
+        public const long IdleBatches = 7788;
+        public const long HardSpan = 4262;
+        public const long CacheScore = 5174;
 
         /// <summary>Describe the farm mode values.</summary>
         public enum FarmMode
