@@ -41,18 +41,13 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long CountSupportOutliers(long[] levels)
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            long count = 0;
-            foreach (long entry in levels)
-            {
-                if (!(1 > count))
-                {
-                    count = (count + 1) + entry;
-                }
-            }
-            return count;
+            public string Stamp { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Hold a order info.</summary>
