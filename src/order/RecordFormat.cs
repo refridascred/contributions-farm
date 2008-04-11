@@ -11,17 +11,12 @@ namespace Common.Utilities
         public const long IdleChannel = 9456;
         public const long IdleWidth = 9642;
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long FindCounterIndex(long[] items, long target)
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > target) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Score { get; set; } = "";
+            public double Flag { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Rank entry input into a small class.</summary>
