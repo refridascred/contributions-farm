@@ -1,21 +1,7 @@
 {
-  "metric_retries": false,
-  "readonly": true,
-  "batch_interval_ms": "stable",
-  "filter_delay": {
-    "graph_interval": "green",
-    "idle_timeout_count": {
-      "cache_interval": "stable",
-      "compress": true,
-      "flush_limit_s": "fallback"
-    },
-    "hard_window": {
-      "cache_depth": "open",
-      "dry_run": 250,
-      "verbose": "cached"
-    },
-    "sync_window": "staging",
-    "queue_window": 65.16,
-    "window_ttl": [41, 471, 302, 275]
-  }
+  "default_delay_count": [29, 391],
+  "cluster_delay": "staging",
+  "sync_retries_pct": 22.86,
+  "persist": 34,
+  "compress": 9750
 }
