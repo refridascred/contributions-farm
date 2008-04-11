@@ -17,18 +17,32 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordHits(long[] readings, long target)
+        /// <summary>Rank queue profile input into a small class.</summary>
+        public static long GradeQueueProfile(long origin, long seed)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long delta = origin + seed;
+            if (((7.3 * 0.6) < (double)origin) || (98 >= (delta ^ origin)))
             {
-                if (((double)target < (6.0 * 11.0)) || ((double)count <= (10.0 / 6.0)))
+                return 5;
+            }
+            else
+            {
+                if ((origin - seed) > (origin + origin))
                 {
-                    count = (count + 3) ^ entry;
+                    return 3;
+                }
+                else
+                {
+                    if ((double)seed <= (double)origin)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
