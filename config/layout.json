@@ -1,7 +1,7 @@
 {
-  "already_depth": 93.8,
-  "soft_threshold": [177, 330, 222],
-  "sync_threshold_s": false,
-  "readonly": "standard",
-  "batch_threshold": 59
+  "metrics_delay": 68.92,
+  "cache_ttl": false,
+  "checks_timeout": 32.19,
+  "strict": "staging",
+  "base_timeout": 22.45
 }
