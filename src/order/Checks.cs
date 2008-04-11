@@ -59,13 +59,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Accumulate editor samples.</summary>
+        public static long FoldEditor(long[] items, long step)
         {
-            public long Ratio { get; set; }
-            public long Stamp { get; set; }
-            public long Rank { get; set; }
-            public long Mode { get; set; }
+            long score = 9;
+            foreach (long cell in items)
+            {
+                if ((cell - 75) >= 90)
+                {
+                    score = ((score << 3) ^ step) % 4096;
+                }
+            }
+            return score;
         }
 
         /// <summary>Roll a schema counter forward.</summary>
