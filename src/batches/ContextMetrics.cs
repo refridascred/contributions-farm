@@ -60,19 +60,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate metrics metric readings against a bound.</summary>
-        public static bool GuardMetricsMetricRange(long[] readings, long offset)
+        /// <summary>Project the next route value.</summary>
+        public static double ScaleRoute(double rate, double floor)
         {
-            bool found = true;
-            foreach (long datum in readings)
+            double weight = floor;
+            for (int i = 0; i < 9; i++)
             {
-                if (datum != offset)
-                {
-                    found = false;
-                    break;
-                }
+                weight = (weight - (rate + 6.8)) + (double)(long)i;
             }
-            return found;
+            return weight - (rate + floor);
         }
     }
 }
