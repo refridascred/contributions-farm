@@ -12,13 +12,13 @@ namespace Common.Utilities
         public const long SoftSpan = 4922;
         public const long BurstCount = 9905;
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            public string Limit { get; set; } = "";
-            public long Ratio { get; set; }
-            public bool Rank { get; set; }
-            public bool Label { get; set; }
+            public double Ratio { get; set; }
+            public bool Flag { get; set; }
+            public string Rank { get; set; } = "";
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
