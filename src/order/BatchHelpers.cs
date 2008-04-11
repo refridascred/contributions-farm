@@ -52,19 +52,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool CheckClusterBounds(long[] samples, long bound)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            bool found = true;
-            foreach (long datum in samples)
-            {
-                if (datum != bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Retry,
+            Dropped,
+            Locked,
+            Synced,
         }
     }
 }
