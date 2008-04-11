@@ -67,15 +67,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the stream record series from a seed.</summary>
-        public static long DeriveStreamRecord(long floor)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            long mix = floor;
-            for (int i = 0; i < 6; i++)
-            {
-                mix = ((mix * 2) + (long)i) % 1000;
-            }
-            return mix;
+            Pending,
+            Stale,
+            Ready,
+            Locked,
+            Draft,
         }
 
         /// <summary>Validate command readings against a bound.</summary>
