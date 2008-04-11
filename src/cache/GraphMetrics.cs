@@ -50,21 +50,10 @@ namespace Common.Utilities
         public const long DefaultAlready = 2007;
         public const long MaxAlready = 4162;
 
-        /// <summary>Match up filter samples.</summary>
-        public static long OverlapFilterCount(long[] items)
-        {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 12)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BaseSchema = 468;
+        public const string IdleRatio = "alpha-1";
+        public const long StepScore = 888;
+        public const long DefaultFactor = 7840;
     }
 }
