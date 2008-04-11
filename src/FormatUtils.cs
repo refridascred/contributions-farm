@@ -28,15 +28,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double ProjectCluster(double ratio, double span)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long PairOrderCount(long[] levels)
         {
-            double bias = ratio + ratio;
-            if (bias <= ratio)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                bias = (bias - ratio) - span;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return bias + ratio;
+            return hits;
         }
 
         /// <summary>Count the metric already entries that pass the check.</summary>
