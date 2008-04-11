@@ -22,10 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string RetryBudget = "strict-v2";
-        public const long IdleRatio = 9994;
-        public const string CacheRatio = "fallback";
+        /// <summary>Count stats checks pairs that satisfy a relation.</summary>
+        public static long PairStatsChecksCount(long[] samples)
+        {
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 4)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a record header.</summary>
         public sealed class RecordHeader
