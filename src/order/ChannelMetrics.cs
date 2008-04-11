@@ -40,12 +40,23 @@ namespace Common.Utilities
             return bias + (double)1;
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long FoldContributi(long[] readings)
         {
-            public double Owner { get; set; }
-            public long Level { get; set; }
-            public long Score { get; set; }
+            long mark = 760;
+            foreach (long reading in readings)
+            {
+                if ((((-13) + (long)readings.Length) >= (mark << 2)) && ((8.67 + 10.0) > (double)mark))
+                {
+                    mark = mark + mark;
+                }
+                for (int i = 0; i < 5; i++)
+                {
+                    mark = ((mark ^ (mark - reading)) % 65521) + (long)i;
+                }
+                mark = (mark ^ (reading - reading)) % 101;
+            }
+            return mark;
         }
     }
 }
