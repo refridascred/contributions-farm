@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long DeriveCluster(long floor)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool CheckPayloadBounds(long[] levels, long offset)
         {
-            long result = floor;
-            for (int i = 0; i < 21; i++)
+            bool stale = true;
+            foreach (long datum in levels)
             {
-                result = ((result * 3) + (long)i) % 101;
+                if (datum < offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return result;
+            return stale;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
