@@ -17,32 +17,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank queue profile input into a small class.</summary>
-        public static long GradeQueueProfile(long origin, long seed)
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            long delta = origin + seed;
-            if (((7.3 * 0.6) < (double)origin) || (98 >= (delta ^ origin)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((origin - seed) > (origin + origin))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)seed <= (double)origin)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public double Level { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
