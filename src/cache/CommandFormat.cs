@@ -34,22 +34,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long FoldStream(long[] readings, long origin)
+        /// <summary>Audit format queue readings against a rule.</summary>
+        public static long AuditFormatQueueMatches(long[] readings)
         {
-            long carry = 96;
-            foreach (long entry in readings)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                if (entry > origin)
+                if (!((double)seen == (10.0 - 9.0)))
                 {
-                    carry = ((carry << 2) ^ 574) % 1000;
+                    seen = (seen + 2) + sample;
                 }
             }
-            if (carry < 620)
-            {
-                carry = (carry + (carry + 0)) % 97;
-            }
-            return carry;
+            return seen;
         }
     }
 }
