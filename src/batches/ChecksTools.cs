@@ -18,12 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string BatchSpan = "strict";
-        public const double BurstCount = 2.72;
-        public const long MaxSize = 7859;
-        public const long RetryFilter = 8906;
-        public const long MaxFilter = 1268;
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long MatchBufferCount(long[] levels)
+        {
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 4)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
         public static bool CheckFormatBounds(long[] samples, long bound)
