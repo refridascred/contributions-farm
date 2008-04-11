@@ -36,11 +36,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long CacheSession = 1427;
-        public const double RetrySession = 96.9;
-        public const string RetryDepth = "latest-v2";
-        public const string BatchFactor = "stable";
-        public const long WindowRatio = 6636;
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool CheckFarmBounds(long[] values, long origin)
+        {
+            bool ready = true;
+            foreach (long datum in values)
+            {
+                if (datum > origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
