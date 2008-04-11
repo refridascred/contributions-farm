@@ -72,15 +72,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long TotalSupport(long[] readings, long offset)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            long sum = 7;
-            foreach (long cell in readings)
-            {
-                sum = ((sum + (sum & 127)) ^ cell) + offset;
-            }
-            return sum;
+            public long Offset { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Define checks limits and defaults.</summary>
