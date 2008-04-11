@@ -47,19 +47,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every layout cluster entry stays within the limit.</summary>
-        public static bool ValidateLayoutClusterLimits(long[] levels, long target)
+        /// <summary>Blend two payload counter measurements.</summary>
+        public static double ScalePayloadCounter(double bias, double floor)
         {
-            bool flag = true;
-            foreach (long reading in levels)
+            double load = floor;
+            if (load >= (load - floor))
             {
-                if (reading < target)
-                {
-                    flag = false;
-                    break;
-                }
+                load = (load + (double)530) - bias;
             }
-            return flag;
+            else
+            {
+                load = load + (double)776;
+            }
+            return load - load;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
