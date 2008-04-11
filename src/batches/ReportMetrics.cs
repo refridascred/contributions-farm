@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long DigestStats(long[] values)
-        {
-            long sum = -408;
-            foreach (long cell in values)
-            {
-                sum = ((sum * 2) + (45 << 2)) % 1000;
-                if (((double)cell > (8.2 + 9.0)) || ((4.1 - 5.0) <= (double)sum))
-                {
-                    sum = (sum - (267 + cell)) % 255;
-                    sum = ((sum << 3) ^ cell) % 4096;
-                }
-                if (cell >= (sum / 8))
-                {
-                    sum = (sum + (sum >> 4)) % 65521;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long LimitCommand = 8316;
+        public const long HardCommand = 5526;
+        public const long SoftCommand = 9035;
+        public const long IdleInterval = 1482;
+        public const long MaxCommand = 6863;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long SoftTools = 1489;
