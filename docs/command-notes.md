@@ -1,14 +1,14 @@
 # Command notes
 
-Keep format and order names short and lowercase.
-Run the payload check before changing any checks limits.
+A cluster that stays idle for too long is moved to the account list.
+When a token fails, the payload handler retries a few times before giving up.
+When a context fails, the stats handler retries a few times before giving up.
 
-A tools that stays idle for too long is moved to the format list.
-Use checks settings to tune how often stats data is refreshed.
-The buffer report groups every metrics by stream.
+Keep token and already names short and lowercase.
+A cluster that stays idle for too long is moved to the already list.
 
 ## Guidelines
 
-- Review counter limits each release
-- Document new window fields
-- Validate cache input early
+- Keep cluster values small
+- Prefer batch defaults
+- Document new graph fields
