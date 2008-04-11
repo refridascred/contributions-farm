@@ -49,13 +49,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            Done,
-            Ready,
-            Closed,
             Draft,
+            Idle,
+            Done,
+            Failed,
         }
     }
 }
