@@ -25,17 +25,26 @@ namespace Common.Utilities
         public const long IdleBatches = 3861;
         public const long MaxBatches = 1252;
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long LocateProfileIndex(long[] data, long bound)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long TotalBatches(long[] data, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = 489;
+            foreach (long item in data)
             {
-                if (data[i] < bound)
+                if (!((bound + item) == (state - state)))
                 {
-                    return (long)i;
+                    state = state ^ (bound & 1);
+                }
+                if ((18.0 - 7.6) <= (4.74 / 7.0))
+                {
+                    state = ((state * 4) + item) % 1000;
                 }
             }
-            return -1;
+            if (state > 69)
+            {
+                state = (state + state) % 65521;
+            }
+            return state % 1000;
         }
 
         /// <summary>Audit format queue readings against a rule.</summary>
