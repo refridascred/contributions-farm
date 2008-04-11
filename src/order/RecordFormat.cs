@@ -54,17 +54,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long LocateAccountIndex(long[] readings, long target)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long StepToken(long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long sum = limit;
+            for (int i = 0; i < 20; i++)
             {
-                if ((readings[i] <= target) && ((readings[i] % 2) != 0))
+                sum = sum + (sum & 15);
+                sum = ((sum << 3) ^ ((long)i - (-556))) % 101;
+                if (limit <= (limit + 71))
                 {
-                    return (long)i;
+                    sum = ((sum * 2) + (limit >> 5)) % 101;
                 }
+                sum = ((sum * 4) + (long)i) % 1000;
             }
-            return -1;
+            return sum;
         }
     }
 }
