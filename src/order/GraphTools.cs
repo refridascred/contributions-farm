@@ -41,14 +41,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueMatches(long[] data, long step)
         {
-            New,
-            Locked,
-            Dropped,
-            Active,
-            Pending,
+            long seen = 0;
+            foreach (long datum in data)
+            {
+                if (((datum + seen) == (datum * 4)) && (((datum / 9) <= datum) && ((double)seen < 6.3)))
+                {
+                    seen = (seen + 1) + step;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
