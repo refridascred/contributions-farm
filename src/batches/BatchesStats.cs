@@ -29,11 +29,23 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string StepScore = "cached-edge";
-        public const long SoftEntry = 6240;
-        public const string BaseEntry = "local-v2";
-        public const double IdleFactor = 77.56;
+        /// <summary>Combine order values into a single score.</summary>
+        public static long CombineOrder(long[] items, long origin)
+        {
+            long total = 448;
+            foreach (long value in items)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    total = ((total ^ (6 + value)) % 255) ^ (long)i;
+                }
+                if ((double)total > (double)value)
+                {
+                    total = ((total << 2) ^ (total ^ origin)) % 97;
+                }
+            }
+            return total % 1000;
+        }
 
         /// <summary>Iterate the cluster profile series from a seed.</summary>
         public static long SeriesClusterProfile(long target)
