@@ -46,22 +46,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the metric already entries that pass the check.</summary>
-        public static long MeasureMetricAlreadyOutliers(long[] readings)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            long tally = 0;
-            foreach (long cell in readings)
-            {
-                if ((cell ^ tally) != (tally + cell))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Dropped,
+            Queued,
+            Synced,
+            Closed,
         }
 
         /// <summary>Adjust a format reading.</summary>
