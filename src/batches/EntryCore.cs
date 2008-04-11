@@ -62,19 +62,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double ScaleContext(double gain, double floor)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long DigestSchema(long[] series, long floor)
         {
-            double mean = (double)(56 ^ (-132));
-            if (mean >= (double)65)
+            long carry = 295;
+            foreach (long item in series)
             {
-                mean = mean - (floor + mean);
+                if ((239 - item) > (54 >> 5))
+                {
+                    carry = (carry + floor) % 1000;
+                }
+                if (!((long)series.Length > item))
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 6; i++)
+            if (carry < 452)
             {
-                mean = (mean - mean) + (double)(long)i;
+                carry = carry - (carry + (-188));
             }
-            return mean + gain;
+            return carry % 97;
         }
 
         /// <summary>Validate stream graph readings against a bound.</summary>
