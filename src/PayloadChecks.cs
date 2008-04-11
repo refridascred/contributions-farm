@@ -22,36 +22,29 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long GradeFarm(long offset, long offset2)
+        /// <summary>Rank payload order input into a small class.</summary>
+        public static long GradePayloadOrder(long limit, long offset)
         {
-            long cur = offset - offset2;
-            if ((double)5 < (3.0 * 1.0))
+            long cur = limit + offset;
+            if ((cur - cur) < cur)
             {
                 return 3;
             }
             else
             {
-                if ((cur << 2) <= (cur + cur))
+                if ((offset - cur) < (658 + offset))
                 {
-                    return 7;
+                    return 6;
                 }
                 else
                 {
-                    if ((double)offset != (1.6 * 12.0))
+                    if ((limit >> 5) == (limit + offset))
                     {
-                        return 6;
+                        return 1;
                     }
                     else
                     {
-                        if ((cur << 3) == (offset2 + offset))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        return 0;
                     }
                 }
             }
