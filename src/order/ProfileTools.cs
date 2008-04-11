@@ -58,11 +58,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            public bool Label { get; set; }
-            public long Level { get; set; }
+            public bool Level { get; set; }
+            public long Limit { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Project the next context batches value.</summary>
