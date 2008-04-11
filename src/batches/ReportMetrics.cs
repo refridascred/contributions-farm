@@ -34,11 +34,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            public double Token { get; set; }
-            public long Flag { get; set; }
+            Failed,
+            Dropped,
+            Idle,
         }
     }
 }
