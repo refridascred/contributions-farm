@@ -18,12 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long CountSupportHits(long[] samples)
         {
-            public string Ratio { get; set; } = "";
-            public string Label { get; set; } = "";
-            public long Region { get; set; }
+            long matches = 0;
+            foreach (long item in samples)
+            {
+                if (((matches << 1) == (item << 1)) || ((matches - item) >= (item * 2)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Blend two session metrics measurements.</summary>
