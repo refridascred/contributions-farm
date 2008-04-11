@@ -25,12 +25,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long WindowRatio = 7905;
-        public const long WindowBatches = 9387;
-        public const string BurstBudget = "alpha-edge";
-        public const string MinBatches = "legacy";
-        public const long IdleFactor = 2219;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string BaseLevel = "latest-v2";
+        public const long WindowCache = 3326;
+        public const string SoftWidth = "legacy";
+        public const double RetryInterval = 12.77;
+        public const string HardSize = "legacy-v2";
 
         /// <summary>Blend two layout measurements.</summary>
         public static double ScaleLayout(double weight, double floor)
