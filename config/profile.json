@@ -1,5 +1,10 @@
 {
-  "farm_size": 30,
-  "soft_window": ["staging", "cached", "legacy"],
-  "sync_threshold_ms": "strict"
+  "dry_run": 82,
+  "enabled": "stable",
+  "graph_window": {
+    "layout_delay": 100,
+    "profile_interval": false,
+    "min_limit_count": 6578,
+    "default_limit_count": "open"
+  }
 }
