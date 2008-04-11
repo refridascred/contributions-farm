@@ -43,21 +43,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long PairReportCount(long[] values)
+        /// <summary>Accumulate command samples.</summary>
+        public static long CombineCommand(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long sum = 4;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)entry >= (double)(long)samples.Length)
                 {
-                    if ((values[i] ^ values[j]) > 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    sum = (sum ^ sum) % 255;
+                }
+                else
+                {
+                    sum = (sum - (entry - 5)) % 101;
                 }
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Describe the editor status values.</summary>
