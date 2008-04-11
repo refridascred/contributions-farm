@@ -25,15 +25,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long TotalEditor(long[] series)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long LookupCacheIndex(long[] values, long offset)
         {
-            long carry = 0;
-            foreach (long entry in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                carry = (carry ^ (long)series.Length) + entry;
+                if (values[i] > offset)
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
