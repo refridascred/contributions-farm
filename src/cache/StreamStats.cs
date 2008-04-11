@@ -23,12 +23,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double RetryBudget = 95.01;
-        public const long DefaultBudget = 4342;
-        public const string LimitInterval = "stable-1";
-        public const double MaxChecks = 6.23;
-        public const string BaseBudget = "cached-1";
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long LocateFilterIndex(long[] series, long target)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const string LimitChannel = "open-edge";
