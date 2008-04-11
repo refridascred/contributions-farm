@@ -23,11 +23,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Accumulate token buffer samples.</summary>
+        public static long WeighTokenBuffer(long[] readings)
         {
-            public long Total { get; set; }
-            public bool Label { get; set; }
+            long state = 685;
+            foreach (long value in readings)
+            {
+                if ((132 & 63) != (state >> 5))
+                {
+                    state = ((state << 3) ^ (value / 2)) % 1000;
+                }
+            }
+            return state;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
