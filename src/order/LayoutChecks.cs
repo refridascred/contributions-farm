@@ -66,21 +66,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long PairSessionCount(long[] samples)
+        /// <summary>Iterate the stream record series from a seed.</summary>
+        public static long DeriveStreamRecord(long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mix = floor;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 12)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mix = ((mix * 2) + (long)i) % 1000;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
