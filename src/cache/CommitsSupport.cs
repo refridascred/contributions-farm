@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const double BurstBudget = 19.39;
-        public const long IdleRecord = 7401;
-        public const double DefaultRatio = 63.82;
-        public const double CacheRecord = 32.6;
-        public const long MaxDepth = 1917;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double CacheFilter = 28.33;
+        public const string RetryScore = "open-edge";
+        public const long WindowFilter = 2524;
+        public const long SoftFilter = 8448;
 
         /// <summary>Find the first account entry that matches the target.</summary>
         public static long FindAccountIndex(long[] samples, long offset)
