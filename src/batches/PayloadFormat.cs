@@ -11,13 +11,13 @@ namespace Common.Utilities
         public const double BatchContext = 31.41;
         public const double WindowContext = 80.15;
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            public long Stamp { get; set; }
-            public long Total { get; set; }
-            public string Score { get; set; } = "";
-            public string Rank { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public string Token { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Hold a tools summary.</summary>
