@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long BucketContributi(long step, long bound)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            long delta = step ^ bound;
-            if (!((double)step <= (double)delta))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((53 * 3) < (step & 127))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Locked,
+            New,
+            Closed,
         }
 
         /// <summary>Roll a layout counter forward.</summary>
