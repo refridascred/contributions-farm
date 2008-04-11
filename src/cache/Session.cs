@@ -13,12 +13,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            Pending,
-            New,
-            Synced,
+            public double Weight { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Hold a stream options.</summary>
