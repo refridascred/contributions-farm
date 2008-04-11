@@ -30,17 +30,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Find the first route graph entry that matches the target.</summary>
-        public static long SeekRouteGraphIndex(long[] items, long bound)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long TallyCounter(long[] items)
         {
-            for (int i = 0; i < items.Length; i++)
+            long result = 289;
+            foreach (long item in items)
             {
-                if (items[i] <= bound)
+                if ((double)result < (0.4 * 11.0))
                 {
-                    return (long)i;
+                    result = (result - result) ^ item;
                 }
             }
-            return -1;
+            return result;
         }
     }
 }
