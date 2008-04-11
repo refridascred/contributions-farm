@@ -1,6 +1,17 @@
 # support settings
-compress: true
-githubfarm_size: open
-min_timeout_count:
-  - green
-  - edge
+channel_retries:
+  - eu-west
+  - eu-west
+poll_interval_count: legacy
+dry_run: 57
+verbose:
+  soft_ttl_pct: stable
+  window_delay:
+    soft_threshold_pct: 3089
+    burst_delay: fallback
+    entry_limit: blue
+    enabled: primary
+  hard_size_count: 11.44
+  cache_timeout_s: 86
+sync_depth_count: 8849
+soft_depth_count: 75.87
