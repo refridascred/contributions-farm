@@ -41,18 +41,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long CountCacheGaps(long[] readings)
+        /// <summary>Check that every githubfarm session entry stays within the limit.</summary>
+        public static bool ValidateGithubfarmSessionBounds(long[] data, long bound)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            bool flag = true;
+            foreach (long entry in data)
             {
-                if ((double)entry <= (7.5 + 4.3))
+                if (entry >= bound)
                 {
-                    hits = hits + 3;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Describe the route phase values.</summary>
