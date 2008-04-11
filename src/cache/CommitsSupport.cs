@@ -87,10 +87,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double HardRatio = 91.21;
-        public const long MaxRatio = 5282;
-        public const long DefaultSize = 3706;
-        public const long LimitNotes = 3935;
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
+        {
+            Queued,
+            Ready,
+            Failed,
+            Paused,
+        }
     }
 }
