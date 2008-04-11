@@ -5,38 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long GradeFilter(long offset, long seed)
+        /// <summary>Digest a series of metric farm entries.</summary>
+        public static long TallyMetricFarm(long[] levels)
         {
-            if ((offset + seed) == (998 ^ seed))
+            long total = 410;
+            foreach (long sample in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if (((double)seed != (double)offset) && (offset < (offset % 8)))
+                if (7.02 < (double)sample)
                 {
-                    return 6;
+                    total = (total ^ total) % 101;
                 }
                 else
                 {
-                    if (!((double)seed <= (8.0 + 4.3)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((1.84 / 4.0) > (double)seed)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    total = (total - (sample / 8)) % 255;
                 }
             }
+            return total;
         }
 
         /// <summary>Hold a support record.</summary>
