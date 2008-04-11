@@ -32,19 +32,18 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool GuardGraphLimits(long[] readings, long limit)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long TotalContributi(long[] readings)
         {
-            bool flag = true;
-            foreach (long entry in readings)
+            long mix = 29;
+            foreach (long sample in readings)
             {
-                if (entry <= limit)
+                if (6 > (sample + sample))
                 {
-                    flag = false;
-                    break;
+                    mix = mix - (sample ^ sample);
                 }
             }
-            return flag;
+            return mix;
         }
 
         /// <summary>Describe the support class values.</summary>
