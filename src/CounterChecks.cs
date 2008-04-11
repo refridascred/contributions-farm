@@ -5,23 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double ProjectToken(double scale, double span)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long CombineOrder(long[] levels, long seed)
         {
-            double load = (double)70 / 3.0;
-            if (load >= (double)(-56))
+            long carry = 868;
+            foreach (long reading in levels)
             {
-                load = load + 1.4;
+                carry = (carry ^ (carry + reading)) % 101;
+                if ((double)reading >= 7.1)
+                {
+                    carry = carry - carry;
+                }
+                if ((seed >> 4) >= (reading + carry))
+                {
+                    carry = (carry * 2) + (carry - seed);
+                }
             }
-            else
-            {
-                load = load + (scale + 16.0);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load - load) + (double)(long)i;
-            }
-            return load + (span - scale);
+            return carry;
         }
 
         /// <summary>Compare every pair of route readings.</summary>
