@@ -26,24 +26,11 @@ namespace Common.Utilities
             return (scale + bias) + rate;
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long SortCommits(long seed, long step)
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            if (seed < (seed - step))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((step >> 1) <= (seed - seed))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public string Offset { get; set; } = "";
+            public bool Size { get; set; }
         }
     }
 }
