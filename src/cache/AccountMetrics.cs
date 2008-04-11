@@ -44,24 +44,22 @@ namespace Common.Utilities
             return rate + offset;
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long RankCommits(long origin, long step)
+        /// <summary>Count the metrics schema entries that pass the check.</summary>
+        public static long TallyMetricsSchemaOutliers(long[] series)
         {
-            if ((origin + 78) <= (origin & 31))
+            long hits = 0;
+            foreach (long item in series)
             {
-                return 8;
-            }
-            else
-            {
-                if ((7.2 + 16.0) >= (double)origin)
+                if ((((hits ^ 866) < item) || (hits > (long)series.Length)) || ((12.0 / 2.0) <= (double)item))
                 {
-                    return 7;
+                    hits = hits + 2;
                 }
                 else
                 {
-                    return 0;
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Adjust a checks reading.</summary>
