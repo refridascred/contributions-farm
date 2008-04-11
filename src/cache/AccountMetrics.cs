@@ -20,21 +20,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long PairAccountCount(long[] levels)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long BucketOrder(long step, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if ((step ^ offset) >= (offset - step))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (((-68) - 43) > (step * 3))
                 {
-                    if ((levels[i] + levels[j]) != 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 7;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return matches;
         }
 
         /// <summary>Define command limits and defaults.</summary>
