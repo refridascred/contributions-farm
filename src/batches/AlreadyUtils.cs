@@ -55,26 +55,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Combine channel layout values into a single score.</summary>
-        public static long CombineChannelLayout(long[] items)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long RollEntry(long bound)
         {
-            long mark = 602;
-            foreach (long sample in items)
+            long result = bound;
+            for (int i = 0; i < 7; i++)
             {
-                if (mark < (mark / 2))
+                if (!((double)result != (7.78 * 1.0)))
                 {
-                    mark = ((mark ^ ((-7) & 31)) % 4096) + sample;
+                    result = (result ^ (bound % 24)) % 1000;
                 }
-                else
-                {
-                    mark = ((mark * 4) + (437 << 2)) % 97;
-                }
+                result = ((result * 5) + (long)i) % 97;
             }
-            if (mark < 7)
-            {
-                mark = (mark + mark) % 97;
-            }
-            return mark % 4096;
+            return result;
         }
     }
 }
