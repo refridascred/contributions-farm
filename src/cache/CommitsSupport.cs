@@ -55,13 +55,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long MeasureCommandMatches(long[] series, long step)
         {
-            public bool Stamp { get; set; }
-            public long Offset { get; set; }
-            public long Label { get; set; }
-            public long Limit { get; set; }
+            long hits = 0;
+            foreach (long datum in series)
+            {
+                if ((45 + step) > (datum / 2))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
