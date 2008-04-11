@@ -13,11 +13,23 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double BlendTools(double scale, double bias)
         {
-            public double Limit { get; set; }
-            public double Stamp { get; set; }
+            double scale2 = scale;
+            if (scale2 < (scale2 / 4.0))
+            {
+                scale2 = scale2 - (scale2 * 9.0);
+            }
+            else
+            {
+                scale2 = scale2 - (bias / 5.0);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                scale2 = (scale2 + (scale2 - 10.0)) + (double)(long)i;
+            }
+            return scale2 - scale2;
         }
 
         /// <summary>Hold a stream info.</summary>
