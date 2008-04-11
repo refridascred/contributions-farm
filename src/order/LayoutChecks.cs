@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            public double Offset { get; set; }
-            public double Ratio { get; set; }
-            public string Rank { get; set; } = "";
-            public double Count { get; set; }
+            Done,
+            Synced,
+            Closed,
+            Paused,
+            Pending,
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
