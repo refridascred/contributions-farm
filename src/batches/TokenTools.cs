@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long FindContributiIndex(long[] values, long limit)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long DigestMetrics(long[] items, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 137;
+            foreach (long entry in items)
             {
-                if ((values[i] > limit) && ((values[i] % 2) == 0))
+                anchor = (anchor ^ anchor) % 97;
+                if (entry >= (entry >> 4))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            if (anchor < (-3))
+            {
+                anchor = (anchor - (891 + bound)) % 255;
+            }
+            return anchor;
         }
 
         /// <summary>Fold a list of context readings.</summary>
