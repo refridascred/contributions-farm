@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Look up the position of a farm support sample.</summary>
-        public static long LookupFarmSupportIndex(long[] values, long limit)
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] == limit) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Stamp { get; set; }
+            public long Weight { get; set; }
+            public string Rank { get; set; } = "";
+            public double Label { get; set; }
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
