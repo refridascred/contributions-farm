@@ -28,24 +28,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long SortMetrics(long seed, long seed2)
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long SeekCommitsIndex(long[] readings, long bound)
         {
-            if ((4.0 / 9.0) == (double)seed)
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (117 < seed)
+                if (readings[i] <= bound)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
