@@ -45,16 +45,24 @@ namespace Common.Utilities
         public const double WindowRoute = 75.47;
         public const long MaxScore = 192;
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long IterateWindow(long floor)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long ClassifyRecord(long offset, long bound)
         {
-            long anchor = floor;
-            for (int i = 0; i < 15; i++)
+            if ((offset - bound) == (offset / 5))
             {
-                anchor = anchor + 38;
-                anchor = ((anchor * 5) + (long)i) % 4093;
+                return 2;
             }
-            return anchor;
+            else
+            {
+                if (((double)380 >= (double)offset) || (bound <= (bound << 2)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
