@@ -22,15 +22,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long IterateEntry(long seed)
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long LocateAccountIndex(long[] items, long bound)
         {
-            long mix = seed;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                mix = ((mix * 5) + (long)i) % 4093;
+                if (items[i] <= bound)
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Roll a format counter forward.</summary>
