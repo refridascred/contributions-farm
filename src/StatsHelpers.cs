@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            public long Size { get; set; }
-            public long Region { get; set; }
-            public bool Flag { get; set; }
-            public double Token { get; set; }
+            Active,
+            Retry,
+            Ready,
+            Queued,
+            Done,
         }
 
         /// <summary>Validate record readings against a bound.</summary>
