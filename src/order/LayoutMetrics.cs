@@ -25,11 +25,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            public bool Owner { get; set; }
-            public double Size { get; set; }
+            Done,
+            Pending,
+            Dropped,
         }
     }
 }
