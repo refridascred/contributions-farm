@@ -16,12 +16,12 @@ namespace Common.Utilities
             return bias2 - rate;
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double AdjustSchema(double scale, double floor)
-        {
-            double ratio = scale;
-            return (ratio - (double)216) + floor;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long StepLevel = 2061;
+        public const long BatchLevel = 5679;
+        public const string BaseSpan = "alpha-v2";
+        public const long IdleSession = 6542;
+        public const long BaseTimeout = 8052;
 
         /// <summary>Describe the layout state values.</summary>
         public enum LayoutState
