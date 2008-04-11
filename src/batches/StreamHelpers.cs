@@ -54,19 +54,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool CheckPayloadRange(long[] series, long limit)
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            bool valid = true;
-            foreach (long datum in series)
-            {
-                if (datum > limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Count { get; set; }
+            public long Owner { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
