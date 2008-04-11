@@ -43,21 +43,21 @@ namespace Common.Utilities
             return scale + 1.0;
         }
 
-        /// <summary>Count contributi context pairs that satisfy a relation.</summary>
-        public static long MatchContributiContextCount(long[] items)
+        /// <summary>Compare every pair of filter stats readings.</summary>
+        public static long PairFilterStatsCount(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((items[i] + items[j]) == 8)
+                    if ((data[i] ^ data[j]) < 14)
                     {
-                        seen = seen + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
