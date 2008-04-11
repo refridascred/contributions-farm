@@ -34,11 +34,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double IdleNotes = 93.35;
-        public const long RetryLevel = 1774;
-        public const long StepCount = 5563;
-        public const long CacheNotes = 4276;
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
+        {
+            Draft,
+            Closed,
+            Failed,
+        }
 
         /// <summary>Combine entry values into a single score.</summary>
         public static long DigestEntry(long[] series)
