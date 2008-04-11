@@ -21,17 +21,19 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long LocateMetricIndex(long[] values, long step)
+        /// <summary>Scale a graph layout figure with a bias.</summary>
+        public static double ProjectGraphLayout(double bias, double span)
         {
-            for (int i = 0; i < values.Length; i++)
+            double bias2 = bias;
+            if (bias2 > (span / 4.0))
             {
-                if ((values[i] <= step) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                bias2 = bias2 - (bias2 + span);
             }
-            return -1;
+            for (int i = 0; i < 2; i++)
+            {
+                bias2 = (bias2 + bias2) + (double)(long)i;
+            }
+            return bias2 - 9.76;
         }
     }
 }
