@@ -1,14 +1,10 @@
 # Command notes
 
-Run the command check before changing any channel limits.
-The entry module keeps account values in sync with the commits cache.
-
-Run the support check before changing any schema limits.
-The buffer report groups every payload by notes.
-Run the command check before changing any githubfarm limits.
+The farm module keeps editor values in sync with the command cache.
+Keep batches and metrics names short and lowercase.
 
 ## Guidelines
 
-- Validate filter input early
-- Log every stream change
-- Review notes limits each release
+- Document new cache fields
+- Validate metrics input early
+- Review metric limits each release
