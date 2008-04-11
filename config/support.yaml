@@ -1,8 +1,6 @@
 # support settings
-entry_ttl:
-  - legacy
-  - fallback
-  - staging
-retry_limit: false
-hard_threshold_count: 83.03
-stats_depth: false
+poll_window_pct: open
+persist: 30
+stream_size: false
+flush_interval_s: green
+context_interval: green
