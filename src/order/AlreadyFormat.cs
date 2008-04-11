@@ -35,21 +35,12 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Accumulate metrics format samples.</summary>
-        public static long CombineMetricsFormat(long[] samples, long target)
-        {
-            long mark = 769;
-            foreach (long entry in samples)
-            {
-                mark = ((mark - (37 << 2)) % 101) - target;
-                mark = mark ^ (entry * 2);
-                if (!(970 <= (entry - mark)))
-                {
-                    break;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string MinSize = "staging-edge";
+        public const long LimitPayload = 7149;
+        public const string StepRatio = "latest";
+        public const long CachePayload = 5300;
+        public const string IdlePayload = "open-1";
 
         /// <summary>Hold a filter stats.</summary>
         public sealed class FilterStats
