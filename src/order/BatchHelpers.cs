@@ -46,15 +46,11 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Blend two counter command measurements.</summary>
-        public static double BlendCounterCommand(double gain, double floor)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            double load = 10.0;
-            if (load >= (double)0)
-            {
-                load = (load - (double)(-95)) - gain;
-            }
-            return load + floor;
+            public string Stamp { get; set; } = "";
+            public long Flag { get; set; }
         }
     }
 }
