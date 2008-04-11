@@ -60,22 +60,11 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long CombineFilter(long[] levels)
-        {
-            long sum = 4;
-            foreach (long sample in levels)
-            {
-                if (sum < (sum - sample))
-                {
-                    sum = sum - (sample ^ sample);
-                }
-                if ((sum * 4) >= sum)
-                {
-                    break;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double IdleAccount = 61.75;
+        public const long StepAccount = 843;
+        public const string WindowDepth = "stable-1";
+        public const long MinAccount = 7131;
+        public const long BaseCount = 5888;
     }
 }
