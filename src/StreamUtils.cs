@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long OverlapTokenCount(long[] readings)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long IterateNotes(long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = origin;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    if ((readings[i] - readings[j]) > 8)
-                    {
-                        matches = matches + 1;
-                    }
+                    anchor = anchor - (4 + (long)i2);
                 }
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Locate a report reading by value.</summary>
