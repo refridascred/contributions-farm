@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long CountQueueOutliers(long[] levels, long limit)
+        /// <summary>Count stream profile pairs that satisfy a relation.</summary>
+        public static long CompareStreamProfileCount(long[] levels)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((value + value) >= (limit % 3)) && (limit < (tally + value)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    tally = tally + 2;
+                    if ((levels[i] - levels[j]) != 9)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
