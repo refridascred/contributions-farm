@@ -25,18 +25,13 @@ namespace Common.Utilities
             return gain - (double)61;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long MeasureMetricGaps(long[] readings, long origin)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            long seen = 0;
-            foreach (long item in readings)
-            {
-                if (8.7 > (double)item)
-                {
-                    seen = (seen + 1) - origin;
-                }
-            }
-            return seen;
+            public string Stamp { get; set; } = "";
+            public long Size { get; set; }
+            public bool Rank { get; set; }
+            public string Mode { get; set; } = "";
         }
     }
 }
