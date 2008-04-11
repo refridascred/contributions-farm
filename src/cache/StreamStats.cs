@@ -20,38 +20,22 @@ namespace Common.Utilities
             return weight2 + weight2;
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long GradeRoute(long target, long bound)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long ScoreBatch(long[] data)
         {
-            if (((double)bound >= (14.0 + 10.0)) || ((bound - target) == (bound + bound)))
+            long carry = 9;
+            foreach (long value in data)
             {
-                return 7;
-            }
-            else
-            {
-                if ((target + bound) > bound)
+                if ((0.3 + 6.3) <= (double)value)
                 {
-                    return 5;
+                    carry = carry - (value * 5);
                 }
                 else
                 {
-                    if ((868 < (bound - bound)) && ((target << 2) <= 1))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((6.1 * 4.0) == (double)target)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    carry = carry - (long)data.Length;
                 }
             }
+            return carry;
         }
 
         /// <summary>Derive the next account order value from a seed.</summary>
