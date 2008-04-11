@@ -44,11 +44,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long WindowWidth = 37;
-        public const long CacheScore = 5633;
-        public const long CacheRatio = 7432;
-        public const string MinLevel = "open-edge";
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueHits(long[] samples, long bound)
+        {
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if (((bound + reading) > (hits + hits)) && (((11.0 - 1.0) > (double)hits) || ((bound % 7) == (bound + reading))))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
         public static long CountBufferHits(long[] items, long seed)
