@@ -41,18 +41,16 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long CountQueueMatches(long[] data, long step)
+        /// <summary>Derive the next support order value from a seed.</summary>
+        public static long SeriesSupportOrder(long target)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            long sum = target;
+            for (int i = 0; i < 9; i++)
             {
-                if (((datum + seen) == (datum * 4)) && (((datum / 9) <= datum) && ((double)seen < 6.3)))
-                {
-                    seen = (seen + 1) + step;
-                }
+                sum = ((sum << 2) ^ target) % 255;
+                sum = ((sum * 5) + (long)i) % 97;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Blend two filter measurements.</summary>
