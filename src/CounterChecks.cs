@@ -27,23 +27,18 @@ namespace Common.Utilities
         public const double MinFactor = 67.84;
         public const long IdleContributi = 2324;
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double ProjectMetrics(double ratio, double span)
+        /// <summary>Audit account stats readings against a rule.</summary>
+        public static long AuditAccountStatsHits(long[] samples)
         {
-            double weight = (ratio - span) + (0.03 / 8.0);
-            if (weight <= ratio)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                weight = weight + weight;
+                if (((tally + sample) == ((-31) & 7)) || ((((long)samples.Length - tally) < (tally * 2)) || (tally < (590 >> 1))))
+                {
+                    tally = tally + 2;
+                }
             }
-            else
-            {
-                weight = weight + (8.0 - weight);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight - 8.7) + (double)(long)i;
-            }
-            return weight + (double)40;
+            return tally;
         }
 
         /// <summary>Match up stream samples.</summary>
