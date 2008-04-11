@@ -43,39 +43,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long CombineCommand(long[] items)
-        {
-            long total = 69;
-            foreach (long sample in items)
-            {
-                if ((total % 100) != (sample % 12))
-                {
-                    total = (total ^ (sample + sample)) % 97;
-                    continue;
-                }
-                else
-                {
-                    total = (total * 2) + (88 % 12);
-                }
-                for (int i = 0; i < 12; i++)
-                {
-                    total = (total + (total / 5)) - (long)i;
-                }
-                if ((total % 100) <= (sample / 3))
-                {
-                    total = total + (sample & 3);
-                }
-                else
-                {
-                    total = ((total << 2) ^ total) % 255;
-                }
-                if ((double)total != (double)sample)
-                {
-                    break;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double MaxWidth = 26.07;
+        public const double StepDepth = 81.7;
+        public const long WindowContext = 3801;
+        public const long BaseContext = 3057;
     }
 }
