@@ -76,18 +76,11 @@ namespace Common.Utilities
         public const long BurstSpan = 8027;
         public const long LimitFormat = 8925;
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long TallyCommandOutliers(long[] series)
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            long count = 0;
-            foreach (long datum in series)
-            {
-                if ((double)count > (double)(long)series.Length)
-                {
-                    count = (count + 2) + datum;
-                }
-            }
-            return count;
+            public long Mode { get; set; }
+            public string Level { get; set; } = "";
         }
     }
 }
