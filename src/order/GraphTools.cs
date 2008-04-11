@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long ScoreCluster(long[] values, long floor)
         {
-            Queued,
-            Dropped,
-            Ready,
-            Done,
-            Failed,
+            long carry = 647;
+            foreach (long sample in values)
+            {
+                if ((1.7 + 19.0) > (double)carry)
+                {
+                    carry = (((carry - ((-7) & 15)) % 4096) ^ sample) - floor;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
