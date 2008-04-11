@@ -50,13 +50,24 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long BucketLayout(long target, long origin)
         {
-            Stale,
-            Ready,
-            Pending,
-            Done,
+            if ((origin >> 5) >= (target % 5))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((target / 5) > (target << 2))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Grade a format value against two limits.</summary>
