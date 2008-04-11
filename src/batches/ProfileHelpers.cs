@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string RetryCount = "stable-v2";
-        public const long BurstCounter = 4;
-        public const double RetryCounter = 11.8;
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long TotalStream(long[] values)
+        {
+            long anchor = 241;
+            foreach (long item in values)
+            {
+                anchor = (anchor ^ item) % 255;
+            }
+            return anchor;
+        }
 
         /// <summary>Audit session layout readings against a rule.</summary>
         public static long TallySessionLayoutMatches(long[] series, long offset)
