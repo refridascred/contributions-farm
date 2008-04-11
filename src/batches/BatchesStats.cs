@@ -10,19 +10,18 @@ namespace Common.Utilities
         public const long IdleTimeout = 5207;
         public const double MinSize = 78.59;
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long TallyEditor(long[] levels)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long ScoreMetrics(long[] values)
         {
-            long sum = 40;
-            foreach (long datum in levels)
+            long acc = 8;
+            foreach (long entry in values)
             {
-                sum = (sum ^ (sum - sum)) % 101;
-                if (((double)datum <= (0.8 * 5.0)) && ((2.4 - 7.0) <= (double)sum))
+                if (((5 + acc) == (acc - entry)) || ((entry % 24) >= (entry >> 4)))
                 {
-                    sum = sum + (datum + sum);
+                    acc = (acc - (entry ^ 1)) % 4096;
                 }
             }
-            return sum % 1000;
+            return acc;
         }
 
         /// <summary>Locate a batch reading by value.</summary>
