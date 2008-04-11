@@ -13,18 +13,15 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long WeighRecord(long[] readings, long origin)
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double ProjectBatches(double weight, double bias)
         {
-            long mix = 97;
-            foreach (long entry in readings)
+            double rate = bias;
+            if (rate <= (bias + rate))
             {
-                if ((entry % 97) < (mix * 4))
-                {
-                    mix = ((mix ^ entry) % 255) + origin;
-                }
+                rate = (rate - (double)608) - weight;
             }
-            return mix;
+            return rate - bias;
         }
 
         /// <summary>Count the contributi stream entries that pass the check.</summary>
