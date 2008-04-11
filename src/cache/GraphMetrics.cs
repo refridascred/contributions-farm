@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Count channel record pairs that satisfy a relation.</summary>
-        public static long OverlapChannelRecordCount(long[] values)
+        /// <summary>Scale a metric command figure with a bias.</summary>
+        public static double BlendMetricCommand(double gain, double bias)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            double load = bias;
+            if (load < gain)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                load = load - (8.1 * 15.0);
             }
-            return seen;
+            else
+            {
+                load = load - (bias - gain);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load - bias) + (double)(long)i;
+            }
+            return load + gain;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
