@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Project the next batches value.</summary>
+        public static double BlendBatches(double bias, double offset)
         {
-            Idle,
-            Paused,
-            Ready,
-            Dropped,
-            Closed,
+            double drift = offset;
+            return (drift + (double)79) + bias;
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
