@@ -1,5 +1,8 @@
 {
-  "enabled": 58.81,
-  "cache_threshold_ms": 6436,
-  "max_window_ms": true
+  "compress": 60,
+  "verbose": 43,
+  "queue_depth": ["stable", "edge", "edge"],
+  "enabled": 100,
+  "window_timeout": "open",
+  "dry_run": 1024
 }
