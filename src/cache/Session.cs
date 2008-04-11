@@ -12,19 +12,12 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long CombineSchema(long[] readings, long origin)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            long anchor = 12;
-            foreach (long cell in readings)
-            {
-                if ((7 + cell) >= cell)
-                {
-                    anchor = anchor - origin;
-                }
-                anchor = (anchor * 2) + 46;
-            }
-            return anchor % 4096;
+            Pending,
+            New,
+            Synced,
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
