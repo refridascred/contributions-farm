@@ -1,7 +1,4 @@
 # support settings
-support_delay: 98.36
-enabled: 4625
-poll_capacity_count:
-  - 472
-  - 334
-  - 282
+cache_limit: 69
+compress: 50
+sync_window: false
