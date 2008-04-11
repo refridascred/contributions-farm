@@ -54,12 +54,17 @@ namespace Common.Utilities
         public const long CacheQueue = 8483;
         public const long BatchDepth = 4009;
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long LookupGraphIndex(long[] items, long floor)
         {
-            Draft,
-            New,
-            Idle,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] <= floor) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
