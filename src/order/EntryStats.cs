@@ -41,18 +41,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchOutliers(long[] values)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyHits(long[] levels, long origin)
         {
-            long seen = 0;
-            foreach (long item in values)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                if ((item <= 2) || ((item << 2) != (6 >> 3)))
+                if ((925 % 10) > (hits + hits))
                 {
-                    seen = seen + 2;
+                    hits = ((hits + 2) + value) + origin;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
