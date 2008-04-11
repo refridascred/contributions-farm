@@ -69,19 +69,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long DigestSchema(long[] readings, long bound)
+        /// <summary>Roll a contributi already counter forward.</summary>
+        public static long StepContributiAlready(long offset)
         {
-            long mark = 925;
-            foreach (long reading in readings)
+            long anchor = offset;
+            for (int i = 0; i < 14; i++)
             {
-                mark = ((mark ^ (mark * 5)) % 255) + reading;
+                anchor = (anchor + (anchor % 16)) % 101;
+                anchor = (anchor + (offset - anchor)) % 255;
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            if (mark < 264)
-            {
-                mark = (mark - bound) % 101;
-            }
-            return mark;
+            return anchor;
         }
     }
 }
