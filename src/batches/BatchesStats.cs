@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long FoldChannel(long[] levels, long floor)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long RankProfile(long step, long limit)
         {
-            long carry = 36;
-            foreach (long datum in levels)
+            long gap = step ^ limit;
+            if (((gap - step) > step) && ((step - gap) != (limit + step)))
             {
-                if (!(floor < (datum + floor)))
-                {
-                    carry = (carry << 2) ^ (carry * 3);
-                }
-                carry = (carry - (datum >> 3)) % 255;
+                return 4;
             }
-            return carry;
+            else
+            {
+                if (((54 - limit) > (limit + step)) || ((step ^ limit) <= (step >> 5)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((23 >= (limit % 5)) || ((9.8 * 3.41) <= (double)gap))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
