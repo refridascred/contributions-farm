@@ -54,22 +54,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long MatchFilterCount(long[] levels)
-        {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long DefaultBudget = 7544;
+        public const long HardAlready = 6608;
+        public const long WindowAlready = 5038;
+        public const long DefaultAlready = 2007;
+        public const long MaxAlready = 4162;
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
         public static long MeasureClusterOutliers(long[] series)
