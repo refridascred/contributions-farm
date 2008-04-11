@@ -11,13 +11,15 @@ namespace Common.Utilities
         public const double BatchContext = 31.41;
         public const double WindowContext = 80.15;
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Blend two contributi format measurements.</summary>
+        public static double BlendContributiFormat(double scale, double offset)
         {
-            public string Stamp { get; set; } = "";
-            public string Token { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public string Flag { get; set; } = "";
+            double bias = (offset * 7.2) / 7.0;
+            for (int i = 0; i < 8; i++)
+            {
+                bias = ((bias + (offset / 2.0)) - (double)(long)i) - scale;
+            }
+            return bias + (4.0 * 4.86);
         }
 
         /// <summary>Hold a tools summary.</summary>
