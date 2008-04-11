@@ -33,19 +33,14 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool GuardProfileLimits(long[] series, long target)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            bool flag = true;
-            foreach (long item in series)
-            {
-                if (item > target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            New,
+            Locked,
+            Dropped,
+            Active,
+            Pending,
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
