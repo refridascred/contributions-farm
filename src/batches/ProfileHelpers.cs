@@ -33,12 +33,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long HardCount = 2366;
-        public const string WindowRecord = "staging";
-        public const double StepRecord = 47.55;
-        public const long BurstRecord = 2487;
-        public const long LimitRecord = 1132;
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
+        {
+            Failed,
+            Stale,
+            Retry,
+            Dropped,
+            Closed,
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long BatchBuffer = 3378;
