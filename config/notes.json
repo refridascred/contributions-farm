@@ -1,12 +1,7 @@
 {
-  "readonly": {
-    "window_ttl": "cached",
-    "idle_retries": "eu-west",
-    "batches_window": 5043,
-    "compress": 60
-  },
-  "persist": 99,
-  "retry_delay_count": 91,
-  "cache_depth_pct": 2454,
-  "soft_size_s": false
+  "retry_limit_pct": 30,
+  "idle_delay_pct": ["primary", "open"],
+  "warm_timeout_count": 75.48,
+  "min_threshold_pct": "local",
+  "batch_ratio": [219, 171, 18, 133]
 }
