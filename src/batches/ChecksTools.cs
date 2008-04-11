@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Adjust a context reading.</summary>
-        public static double SmoothContext(double bias, double span)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            double bias2 = (bias + bias) / 8.0;
-            return (bias2 + bias) + span;
+            public double Limit { get; set; }
+            public long Ratio { get; set; }
+            public string Score { get; set; } = "";
+            public bool Rank { get; set; }
         }
 
         /// <summary>Scale a queue notes figure with a bias.</summary>
