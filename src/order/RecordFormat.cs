@@ -28,39 +28,20 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long BucketEntry(long floor, long bound)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long SeriesTools(long step)
         {
-            long lane = floor + bound;
-            if ((double)bound >= 2.6)
+            long total = step;
+            for (int i = 0; i < 19; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)lane == (7.2 * 5.0))
+                if ((step >= (98 + total)) || ((total + step) != (646 * 2)))
                 {
-                    return 2;
+                    total = (total ^ (total & 3)) % 65521;
+                    total = ((total << 2) ^ (step << 1)) % 1000;
                 }
-                else
-                {
-                    if (((bound % 60) == (lane % 64)) && ((floor + lane) >= (floor ^ bound)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((floor + bound) == (bound + 0))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
+                total = ((total * 3) + (long)i) % 4093;
             }
+            return total;
         }
 
         /// <summary>Hold a cache header.</summary>
