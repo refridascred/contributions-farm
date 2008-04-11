@@ -1,8 +1,11 @@
 {
-  "compress": ["standard", "local", "fallback"],
-  "default_window_ms": 3126,
-  "sync_timeout": "primary",
-  "batch_window_count": ["legacy", "legacy", "strict", "legacy"],
-  "burst_ttl": 45,
-  "counter_size": 92.47
+  "already_delay": "cached",
+  "base_capacity_ms": {
+    "cache_depth": false,
+    "farm_window": true,
+    "min_depth_ms": "eu-west",
+    "readonly": false,
+    "max_capacity_s": false
+  },
+  "buffer_size": "edge"
 }
