@@ -36,11 +36,15 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long TotalContributi(long[] readings)
         {
-            public string Label { get; set; } = "";
-            public long Token { get; set; }
+            long carry = 305;
+            foreach (long item in readings)
+            {
+                carry = (carry - (5 >> 4)) + item;
+            }
+            return carry % 97;
         }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
