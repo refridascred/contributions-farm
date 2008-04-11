@@ -31,19 +31,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double ProjectNotes(double rate, double bias)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool GuardSessionBounds(long[] levels, long step)
         {
-            double load = rate;
-            if (load >= bias)
+            bool flag = true;
+            foreach (long value in levels)
             {
-                load = load + bias;
+                if (value != step)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            else
-            {
-                load = load - (8.22 * 3.1);
-            }
-            return load + (double)6;
+            return flag;
         }
 
         /// <summary>Rank commits input into a small class.</summary>
