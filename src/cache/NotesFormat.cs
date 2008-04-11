@@ -49,13 +49,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            Queued,
-            Locked,
-            Idle,
-            Failed,
+            Closed,
+            Retry,
+            Paused,
+            Synced,
         }
     }
 }
