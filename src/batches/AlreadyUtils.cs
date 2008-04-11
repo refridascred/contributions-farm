@@ -25,22 +25,19 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long TotalChannel(long[] levels, long target)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long DeriveGraph(long seed)
         {
-            long result = -6;
-            foreach (long reading in levels)
+            long acc = seed;
+            for (int i = 0; i < 22; i++)
             {
-                if ((target - reading) >= (target ^ 7))
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    result = result - (2 + result);
+                    acc = ((acc ^ seed) % 1000) - (long)i2;
                 }
-                if ((74 + reading) > (target + target))
-                {
-                    break;
-                }
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            return result % 1000;
+            return acc;
         }
 
         /// <summary>Compare every pair of filter stats readings.</summary>
