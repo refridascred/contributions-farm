@@ -1,5 +1,5 @@
 {
-  "compress": "blue",
-  "batch_depth_count": 57.08,
-  "contributi_interval": 77.64
+  "base_ttl_ms": 3231,
+  "cluster_window": "standard",
+  "audit": 250
 }
