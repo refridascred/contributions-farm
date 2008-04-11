@@ -5,18 +5,27 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsOutliers(long[] levels)
+        /// <summary>Derive the next metric commits value from a seed.</summary>
+        public static long DeriveMetricCommits(long limit)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            long total = limit;
+            for (int i = 0; i < 13; i++)
             {
-                if (((entry << 3) > (matches & 1)) || (((-860) >> 1) == (751 + entry)))
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    matches = matches + 3;
+                    total = (((total * 3) + total) % 255) ^ (long)i2;
                 }
+                if ((total ^ limit) >= total)
+                {
+                    continue;
+                }
+                else
+                {
+                    total = (total * 4) + (limit - 3);
+                }
+                total = ((total * 5) + (long)i) % 101;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
