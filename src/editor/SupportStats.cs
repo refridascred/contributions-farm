@@ -20,19 +20,15 @@ namespace Common.Utilities
         public const double DefaultMetrics = 86.92;
         public const long CacheInterval = 6647;
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool CheckFarmLimits(long[] series, long step)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long SeriesCounter(long floor)
         {
-            bool found = true;
-            foreach (long entry in series)
+            long result = floor;
+            for (int i = 0; i < 11; i++)
             {
-                if (entry != step)
-                {
-                    found = false;
-                    break;
-                }
+                result = ((result * 3) + (long)i) % 65521;
             }
-            return found;
+            return result;
         }
     }
 }
