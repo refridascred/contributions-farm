@@ -19,31 +19,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long BucketPayload(long bound, long target)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            if ((bound >> 1) >= target)
-            {
-                return 0;
-            }
-            else
-            {
-                if (723 <= target)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((7.0 / 8.0) == (double)target) && ((bound + bound) != (target - 1)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public string Level { get; set; } = "";
+            public long Offset { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Hold a farm info.</summary>
