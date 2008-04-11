@@ -54,21 +54,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the cluster profile series from a seed.</summary>
-        public static long SeriesClusterProfile(long target)
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            long acc = target;
-            for (int i = 0; i < 12; i++)
-            {
-                acc = (acc ^ (acc - target)) % 4096;
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    acc = ((acc << 3) ^ (13 + (long)i2)) % 97;
-                }
-                acc = (acc + ((long)i + 31)) % 1000;
-                acc = ((acc * 3) + (long)i) % 65521;
-            }
-            return acc;
+            public bool Count { get; set; }
+            public long Offset { get; set; }
+            public string Size { get; set; } = "";
+            public double Limit { get; set; }
         }
     }
 }
