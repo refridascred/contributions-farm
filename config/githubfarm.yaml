@@ -1,4 +1,4 @@
 # githubfarm settings
-dry_run: edge
-support_window: 3915
-persist: primary
+sync_threshold_count: standard
+min_depth_s: 21.32
+default_ttl_ms: 28.92
