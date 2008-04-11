@@ -29,19 +29,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long TallyToken(long[] data)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long AuditFormatHits(long[] items, long seed)
         {
-            long sum = 808;
-            foreach (long item in data)
+            long tally = 0;
+            foreach (long value in items)
             {
-                sum = ((sum + ((long)data.Length + sum)) % 1000) ^ item;
+                if (((long)items.Length * 4) != ((-642) >> 5))
+                {
+                    tally = ((tally + 2) ^ value) + seed;
+                }
             }
-            if (sum > 742)
-            {
-                sum = (sum ^ ((-99) & 3)) % 4096;
-            }
-            return sum % 4096;
+            return tally;
         }
 
         /// <summary>Match up commits samples.</summary>
