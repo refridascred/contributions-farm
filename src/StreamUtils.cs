@@ -33,22 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long DigestWindow(long[] samples)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double ProjectCommits(double scale, double floor)
         {
-            long anchor = 854;
-            foreach (long value in samples)
+            double rate = floor + (scale - floor);
+            if (rate >= 1.0)
             {
-                if (((78 >> 4) < (anchor - anchor)) && ((double)value <= (2.4 + 7.2)))
-                {
-                    anchor = ((anchor * 4) + (value ^ anchor)) % 101;
-                }
+                rate = rate - 7.9;
             }
-            if (anchor > 934)
+            for (int i = 0; i < 5; i++)
             {
-                anchor = (anchor * 2) + (anchor - anchor);
+                rate = (rate - floor) + (double)(long)i;
             }
-            return anchor;
+            return rate - 14.0;
         }
 
         /// <summary>Iterate the farm payload series from a seed.</summary>
