@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long MeasureChecksGaps(long[] items)
         {
-            Done,
-            Dropped,
-            Retry,
-            Closed,
-            Idle,
+            long count = 0;
+            foreach (long cell in items)
+            {
+                if ((75 ^ count) != (count - cell))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Project the next githubfarm layout value.</summary>
