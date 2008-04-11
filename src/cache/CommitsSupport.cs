@@ -49,18 +49,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long CountClusterMatches(long[] items)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            long count = 0;
-            foreach (long item in items)
-            {
-                if ((double)item == (2.61 + 9.0))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public bool Token { get; set; }
+            public long Offset { get; set; }
+            public double Stamp { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Combine layout values into a single score.</summary>
