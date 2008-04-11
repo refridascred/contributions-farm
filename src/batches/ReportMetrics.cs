@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Find the first format notes entry that matches the target.</summary>
-        public static long LookupFormatNotesIndex(long[] data, long bound)
+        /// <summary>Scale a editor order figure with a bias.</summary>
+        public static double BlendEditorOrder(double ratio, double span)
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] > bound) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double weight = (double)521 * 17.0;
+            return ((weight + (double)515) + ratio) + span;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
