@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BatchDepth = 6460;
-        public const double WindowScore = 46.13;
-        public const long HardSize = 4961;
-        public const long LimitProfile = 3835;
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MaxOrder = 888;
+        public const long RetryOrder = 4380;
+        public const long BurstOrder = 3446;
+        public const long SoftSize = 4128;
 
         /// <summary>Describe the githubfarm mode values.</summary>
         public enum GithubfarmMode
