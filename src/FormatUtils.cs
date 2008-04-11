@@ -57,19 +57,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool ValidatePayloadRange(long[] levels, long limit)
+        /// <summary>Adjust a format reading.</summary>
+        public static double AdjustFormat(double bias, double bias2)
         {
-            bool flag = true;
-            foreach (long cell in levels)
+            double drift = bias;
+            if (drift > (bias / 6.0))
             {
-                if (cell < limit)
-                {
-                    flag = false;
-                    break;
-                }
+                drift = drift + (double)72;
             }
-            return flag;
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift - (drift - 6.99)) + (double)(long)i;
+            }
+            return drift + bias2;
         }
 
         /// <summary>Derive the next contributi order value from a seed.</summary>
