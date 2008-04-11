@@ -1,11 +1,6 @@
 {
-  "warm_delay": 72,
-  "flush_timeout_pct": "stable",
-  "strict": {
-    "layout_capacity": [263, 183, 197],
-    "batch_depth_ms": 5931,
-    "strict": 5150,
-    "cache_threshold": true,
-    "flush_size": 59.84
-  }
+  "hard_interval": [464, 199, 107],
+  "base_ratio_ms": 85.12,
+  "base_ttl_pct": 5749,
+  "account_limit": ["blue", "blue", "latest", "blue"]
 }
