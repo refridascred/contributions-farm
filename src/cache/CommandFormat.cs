@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long BucketGithubfarm(long offset, long limit)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long TotalStream(long[] levels)
         {
-            if (6 >= (limit >> 1))
+            long mark = -6;
+            foreach (long entry in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if ((limit + limit) >= (490 << 3))
+                if (((0.3 / 2.0) < (double)entry) && ((double)entry >= (3.83 / 8.0)))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
+                    mark = mark - (mark + entry);
                 }
             }
+            return mark % 1000;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
