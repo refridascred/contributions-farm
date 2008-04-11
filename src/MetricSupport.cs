@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long TallyFarm(long[] values, long limit)
+        /// <summary>Match up farm contributi samples.</summary>
+        public static long PairFarmContributiCount(long[] series)
         {
-            long total = 342;
-            foreach (long sample in values)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                total = (((total << 3) ^ sample) % 4096) + limit;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 17)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
