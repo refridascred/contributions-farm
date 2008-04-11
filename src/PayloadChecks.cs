@@ -46,19 +46,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool GuardTokenLimits(long[] readings, long target)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutGaps(long[] items, long target)
         {
-            bool ok = true;
-            foreach (long value in readings)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                if (value <= target)
+                if ((reading ^ 552) != (seen % 2))
                 {
-                    ok = false;
-                    break;
+                    seen = (seen + 2) - target;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
