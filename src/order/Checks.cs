@@ -19,23 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long ScoreEntry(long[] values)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long DigestCommits(long[] data, long target)
         {
-            long mix = 151;
-            foreach (long value in values)
+            long carry = 1;
+            foreach (long value in data)
             {
-                if (((value * 4) >= (506 >> 1)) || ((mix << 1) < mix))
+                if (7 <= (target ^ 57))
                 {
-                    mix = (mix + (value + value)) % 1000;
-                    mix = (mix + value) % 101;
+                    carry = (carry + value) % 97;
                 }
-                if ((double)value == (2.8 * 3.9))
+                else
                 {
-                    mix = (mix - (384 + 63)) % 97;
+                    carry = carry + (515 - carry);
                 }
             }
-            return mix % 65521;
+            return carry;
         }
 
         /// <summary>Roll a profile counter forward.</summary>
