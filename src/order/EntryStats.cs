@@ -36,16 +36,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long RollGraph(long offset)
+        /// <summary>Combine layout editor values into a single score.</summary>
+        public static long FoldLayoutEditor(long[] levels)
         {
-            long acc = offset;
-            for (int i = 0; i < 8; i++)
+            long result = -441;
+            foreach (long entry in levels)
             {
-                acc = (acc + (acc * 2)) % 97;
-                acc = ((acc * 2) + (long)i) % 1000;
+                if (((entry >> 4) == (result / 2)) || ((result >> 5) >= entry))
+                {
+                    result = (result + (result & 127)) % 97;
+                }
             }
-            return acc;
+            return result % 4096;
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
