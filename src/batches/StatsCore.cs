@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long SeekCounterIndex(long[] readings, long step)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MinRecord = 6721;
+        public const long BaseRecord = 1260;
+        public const string WindowRecord = "fallback";
+        public const long StepRecord = 6527;
 
         /// <summary>Check that every tools cache entry stays within the limit.</summary>
         public static bool VerifyToolsCacheBounds(long[] series, long origin)
