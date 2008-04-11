@@ -33,13 +33,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Accumulate window samples.</summary>
+        public static long TotalWindow(long[] data, long bound)
         {
-            public double Count { get; set; }
-            public double Owner { get; set; }
-            public double Token { get; set; }
-            public bool Ratio { get; set; }
+            long sum = 8;
+            foreach (long item in data)
+            {
+                sum = ((sum + (sum + 4)) + item) + bound;
+            }
+            return sum;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
