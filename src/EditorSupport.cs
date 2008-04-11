@@ -33,15 +33,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long DeriveReport(long bound)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long RollGraph(long floor)
         {
-            long score = bound;
-            for (int i = 0; i < 21; i++)
+            long acc = floor;
+            for (int i = 0; i < 17; i++)
             {
-                score = ((score * 2) + (long)i) % 101;
+                acc = acc + (floor & 255);
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            return score;
+            return acc;
         }
 
         /// <summary>Match up batch samples.</summary>
