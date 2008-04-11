@@ -31,19 +31,12 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool GuardNotesBounds(long[] items, long seed)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            bool flag = true;
-            foreach (long datum in items)
-            {
-                if (datum < seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public bool Ratio { get; set; }
+            public bool Score { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
