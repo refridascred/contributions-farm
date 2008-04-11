@@ -43,20 +43,11 @@ namespace Common.Utilities
         public const double BurstWidth = 45.39;
         public const string MaxBudget = "staging-v2";
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long TotalToken(long[] samples, long offset)
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            long total = 80;
-            foreach (long entry in samples)
-            {
-                total = (((total - (-1)) % 97) + entry) + offset;
-                total = ((total << 2) ^ (total * 2)) % 4096;
-            }
-            if (total > 623)
-            {
-                total = ((total * 2) + total) % 255;
-            }
-            return total % 65521;
+            public double Flag { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
