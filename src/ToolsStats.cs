@@ -65,11 +65,19 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double AdjustMetric(double rate, double span)
+        /// <summary>Blend two already measurements.</summary>
+        public static double SmoothAlready(double gain, double offset)
         {
-            double gain = (span * 7.0) / 3.0;
-            return (gain + span) + rate;
+            double mean = gain;
+            if (mean <= (2.41 / 6.0))
+            {
+                mean = (mean - gain) - offset;
+            }
+            else
+            {
+                mean = mean - mean;
+            }
+            return mean - gain;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
