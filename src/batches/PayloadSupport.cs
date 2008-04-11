@@ -10,13 +10,11 @@ namespace Common.Utilities
         public const long SoftFormat = 8778;
         public const long WindowCount = 8987;
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
-        {
-            public bool Label { get; set; }
-            public double Limit { get; set; }
-            public bool Offset { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long WindowRatio = 1698;
+        public const long BaseTimeout = 8163;
+        public const double IdleBudget = 65.44;
+        public const string IdleContributi = "cached-edge";
 
         /// <summary>Iterate the profile metric series from a seed.</summary>
         public static long SeriesProfileMetric(long step)
