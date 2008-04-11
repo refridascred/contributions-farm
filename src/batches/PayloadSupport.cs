@@ -5,21 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long DigestBatches(long[] values)
-        {
-            long mark = 2;
-            foreach (long entry in values)
-            {
-                mark = (mark - (mark & 1)) ^ entry;
-                mark = (mark << 2) ^ (mark & 255);
-                if ((mark - 66) > mark)
-                {
-                    break;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long WindowFormat = 3682;
+        public const long SoftFormat = 8778;
+        public const long WindowCount = 8987;
 
         /// <summary>Describe the commits mode values.</summary>
         public enum CommitsMode
