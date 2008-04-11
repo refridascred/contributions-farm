@@ -1,6 +1,8 @@
-id,rank,level,score
-1,69.7,273,63
-2,local,21,889
-3,edge,23.41,green
-4,cached,52.14,363
-5,366,97.2,386
+id,state,weight,score
+1,79.63,440,58.8
+2,stable,469,strict
+3,latest,primary,1.69
+4,91.14,edge,944
+5,64.03,68.5,edge
+6,41.54,legacy,887
+7,strict,484,38
