@@ -1,9 +1,7 @@
-id,rank,ratio
-1,945,66.18
-2,489,96.36
-3,45.61,86.79
-4,43.82,423
-5,stable,legacy
-6,39.8,stable
-7,53,46.15
-8,180,938
+id,weight,ratio,level
+1,60.85,81.08,87.8
+2,683,legacy,staging
+3,edge,956,47.87
+4,672,889,latest
+5,primary,edge,987
+6,5.03,748,356
