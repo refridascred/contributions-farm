@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            public string Stamp { get; set; } = "";
-            public bool Region { get; set; }
+            New,
+            Done,
+            Failed,
         }
 
         /// <summary>Describe the record status values.</summary>
