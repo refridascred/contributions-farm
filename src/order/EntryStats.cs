@@ -20,31 +20,15 @@ namespace Common.Utilities
             return mean + (bias - bias);
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long ClassifyFormat(long seed, long target)
+        /// <summary>Iterate the profile cluster series from a seed.</summary>
+        public static long RollProfileCluster(long offset)
         {
-            if ((target < (target / 2)) || ((double)seed < (5.6 / 9.0)))
+            long total = offset;
+            for (int i = 0; i < 12; i++)
             {
-                return 4;
+                total = ((total * 4) + (long)i) % 97;
             }
-            else
-            {
-                if ((seed & 15) > (target << 1))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (target < (seed + seed))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return total;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
