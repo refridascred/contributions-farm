@@ -1,14 +1,11 @@
 # githubfarm settings
-verbose:
-  batch_size: stable
-  hard_retries: fallback
-  channel_retries: standard
-  compress: 84
-  retry_ttl_count: 16
-  persist: latest
-audit:
-  max_delay: 40.71
-  enabled: 6158
-  min_timeout: edge
-  dry_run: 100
-compress: 4833
+warm_window_ms: staging
+editor_retries: green
+idle_threshold: false
+warm_depth_ms:
+  - 41
+  - 10
+  - 343
+  - 440
+contributi_ttl: true
+max_interval: 94.04
