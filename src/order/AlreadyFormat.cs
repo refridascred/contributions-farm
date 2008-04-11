@@ -44,38 +44,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long BucketCache(long seed, long limit)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool ValidateMetricsLimits(long[] series, long target)
         {
-            if ((double)limit > 1.5)
+            bool stale = true;
+            foreach (long datum in series)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)7 < (double)limit)
+                if (datum != target)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)limit < (3.9 / 6.0))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)limit > (double)seed)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Hold a filter stats.</summary>
