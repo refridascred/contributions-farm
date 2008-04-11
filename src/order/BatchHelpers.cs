@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Rank command input into a small class.</summary>
+        public static long GradeCommand(long floor, long target)
         {
-            Done,
-            Failed,
-            Idle,
-            New,
+            if (floor <= (target >> 1))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((double)floor == (double)308))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((target - floor) >= (658 >> 1))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
