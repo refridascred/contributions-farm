@@ -23,27 +23,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate batch session samples.</summary>
-        public static long WeighBatchSession(long[] readings, long seed)
+        /// <summary>Project the next githubfarm layout value.</summary>
+        public static double ScaleGithubfarmLayout(double weight, double bias)
         {
-            long anchor = 596;
-            foreach (long value in readings)
+            double mean = bias;
+            if (mean >= mean)
             {
-                anchor = (anchor - (long)readings.Length) % 4096;
-                if (!((13.0 + 1.0) == (double)anchor))
-                {
-                    anchor = (anchor ^ (anchor + 5)) % 97;
-                }
-                if (!(value > seed))
-                {
-                    anchor = ((anchor << 3) ^ value) % 65521;
-                }
-                else
-                {
-                    anchor = ((anchor << 2) ^ (seed - 61)) % 255;
-                }
+                mean = mean - weight;
             }
-            return anchor % 65521;
+            return mean + weight;
         }
 
         /// <summary>Match up report samples.</summary>
