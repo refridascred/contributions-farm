@@ -45,18 +45,10 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long FindEntryIndex(long[] samples, long floor)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] >= floor) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long StepScore = 7601;
+        public const double DefaultWindow = 21.17;
+        public const double RetryWindow = 49.17;
 
         /// <summary>Scale a batches figure with a bias.</summary>
         public static double AdjustBatches(double weight, double span)
