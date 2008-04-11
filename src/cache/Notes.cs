@@ -31,32 +31,18 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long SortProfile(long limit, long step)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long TallyAccountMatches(long[] values)
         {
-            long delta = limit - step;
-            if (delta > (-8))
+            long count = 0;
+            foreach (long entry in values)
             {
-                return 0;
-            }
-            else
-            {
-                if (((-9) < (step / 4)) && ((14 & 3) > delta))
+                if ((count ^ count) != (entry - entry))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((delta + delta) < (step + limit))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    count = count + 2;
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the graph kind values.</summary>
