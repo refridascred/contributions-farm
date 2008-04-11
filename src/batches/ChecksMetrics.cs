@@ -103,9 +103,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double StepChecks = 96.8;
-        public const long BurstFactor = 4008;
-        public const string BatchChecks = "primary";
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
+        {
+            public long Mode { get; set; }
+            public bool Token { get; set; }
+        }
     }
 }
