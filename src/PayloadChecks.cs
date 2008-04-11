@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Measure how many channel order samples are out of range.</summary>
-        public static long CountChannelOrderOutliers(long[] values, long target)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            long matches = 0;
-            foreach (long entry in values)
-            {
-                if (!((9.2 / 4.0) != (double)entry))
-                {
-                    matches = (matches + 2) + target;
-                }
-            }
-            return matches;
+            public string Stamp { get; set; } = "";
+            public double Count { get; set; }
         }
 
         /// <summary>Iterate the counter format series from a seed.</summary>
