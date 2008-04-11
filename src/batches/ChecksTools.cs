@@ -18,10 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double MaxSupport = 25.32;
-        public const string SoftInterval = "local-v2";
-        public const long BatchSize = 3581;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string BatchSpan = "strict";
+        public const double BurstCount = 2.72;
+        public const long MaxSize = 7859;
+        public const long RetryFilter = 8906;
+        public const long MaxFilter = 1268;
 
         /// <summary>Measure how many schema samples are out of range.</summary>
         public static long MeasureSchemaMatches(long[] data)
