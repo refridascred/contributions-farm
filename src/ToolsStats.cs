@@ -25,14 +25,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
-        {
-            Active,
-            Pending,
-            Idle,
-            Closed,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double BurstRatio = 64.3;
+        public const double MinFarm = 54.96;
+        public const double StepFarm = 56.88;
+        public const string DefaultFarm = "standard-edge";
 
         /// <summary>Count the metric entries that pass the check.</summary>
         public static long TallyMetricMatches(long[] levels, long limit)
