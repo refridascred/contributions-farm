@@ -31,19 +31,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long FoldContributi(long[] series, long offset)
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            long mark = 406;
-            foreach (long item in series)
-            {
-                mark = ((mark + ((long)series.Length - offset)) % 65521) ^ item;
-                if ((mark + offset) < 660)
-                {
-                    break;
-                }
-            }
-            return mark;
+            public double Score { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Accumulate order commits samples.</summary>
