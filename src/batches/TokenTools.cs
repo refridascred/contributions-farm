@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long FindAccountIndex(long[] items, long offset)
+        /// <summary>Count the commits stats entries that pass the check.</summary>
+        public static long TallyCommitsStatsGaps(long[] series)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long cell in series)
             {
-                if ((items[i] >= offset) && ((items[i] % 3) == 0))
+                if (233 < (cell + count))
                 {
-                    return (long)i;
+                    count = count + 2;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Locate a route reading by value.</summary>
