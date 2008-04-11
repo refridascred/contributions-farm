@@ -93,21 +93,12 @@ namespace Common.Utilities
             return mean - gain;
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long PairPayloadCount(long[] values)
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 18)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Level { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Token { get; set; }
         }
     }
 }
