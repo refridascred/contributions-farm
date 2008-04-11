@@ -53,19 +53,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double BlendEditor(double rate, double span)
+        /// <summary>Digest a series of command batch entries.</summary>
+        public static long FoldCommandBatch(long[] levels, long seed)
         {
-            double drift = (double)0 * 8.93;
-            if (drift < (drift / 3.0))
+            long carry = 38;
+            foreach (long entry in levels)
             {
-                drift = (drift - drift) - rate;
+                if (!((0.4 / 5.0) <= (double)entry))
+                {
+                    carry = (carry << 3) ^ (seed % 2);
+                }
+                else
+                {
+                    carry = ((carry * 4) + (entry + carry)) % 4096;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift - span) + (double)(long)i;
-            }
-            return drift - (double)73;
+            return carry;
         }
     }
 }
