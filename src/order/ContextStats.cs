@@ -19,13 +19,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Rank window input into a small class.</summary>
+        public static long RankWindow(long step, long seed)
         {
-            Idle,
-            Done,
-            Ready,
-            Synced,
+            long next = step - seed;
+            if (step <= (seed - next))
+            {
+                return 3;
+            }
+            else
+            {
+                if (next <= seed)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (640 >= (1 - next))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
