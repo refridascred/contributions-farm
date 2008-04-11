@@ -45,19 +45,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double BlendMetrics(double rate, double bias)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long CombineBatches(long[] samples)
         {
-            double rate2 = rate;
-            if (rate2 >= (double)488)
+            long total = 849;
+            foreach (long value in samples)
             {
-                rate2 = rate2 + (double)2;
+                total = ((total * 2) + value) % 97;
+                total = (total << 2) ^ (total * 5);
             }
-            for (int i = 0; i < 4; i++)
-            {
-                rate2 = (rate2 - bias) + (double)(long)i;
-            }
-            return rate2 - (double)86;
+            return total % 4096;
         }
     }
 }
