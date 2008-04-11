@@ -60,12 +60,22 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long WeighGithubfarm(long[] series, long seed)
         {
-            Synced,
-            Ready,
-            Idle,
+            long sum = -82;
+            foreach (long reading in series)
+            {
+                if (((long)series.Length > (reading * 2)) && ((double)reading == (double)sum))
+                {
+                    sum = ((sum * 4) + (reading + seed)) % 4096;
+                }
+            }
+            if (sum > 298)
+            {
+                sum = ((sum * 5) + (seed + seed)) % 255;
+            }
+            return sum;
         }
 
         /// <summary>Rank tools input into a small class.</summary>
