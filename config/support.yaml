@@ -1,37 +1,7 @@
 # support settings
-poll_depth:
-  warm_depth:
-    sync_timeout_count:
-      - local
-      - cached
-    batch_capacity_s: legacy
-    dry_run: 50.32
-    base_limit_count: cached
-    audit: edge
-    sync_ttl: 250
-  idle_interval_pct:
-    default_depth_s: standard
-    dry_run: false
-    readonly: 1024
-    burst_interval: false
-  cache_ratio_pct: legacy
-  dry_run: 75
-  idle_timeout_pct: 84.65
-  soft_retries_s:
-    order_window: strict
-    warm_timeout_s: 86.5
-    flush_ratio_count: 1024
-    command_window:
-      - eu-west
-      - fallback
-      - edge
-    verbose: false
-    support_depth: staging
-strict: 956
-min_delay_s: green
-persist: 2490
-dry_run:
-  route_timeout: 7.27
-  sync_timeout_count: 42
-  already_depth: stable
-batch_window_pct: standard
+support_delay: 98.36
+enabled: 4625
+poll_capacity_count:
+  - 472
+  - 334
+  - 282
