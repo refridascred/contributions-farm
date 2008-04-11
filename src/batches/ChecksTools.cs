@@ -63,11 +63,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double CacheScore = 70.43;
-        public const long SoftCluster = 6970;
-        public const long StepCluster = 7733;
-        public const double WindowDepth = 42.79;
-        public const long MaxCluster = 8008;
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long PairCommandCount(long[] items)
+        {
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 2)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
