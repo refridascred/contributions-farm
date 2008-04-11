@@ -12,12 +12,17 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Find the first metrics token entry that matches the target.</summary>
+        public static long FindMetricsTokenIndex(long[] samples, long step)
         {
-            public string Level { get; set; } = "";
-            public bool Score { get; set; }
-            public long Flag { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] == step) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
