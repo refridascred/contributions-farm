@@ -40,14 +40,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
-        {
-            Paused,
-            Ready,
-            Stale,
-            Locked,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long RetryWindow = 8067;
+        public const long MaxFactor = 5710;
+        public const double LimitSpan = 84.7;
+        public const long RetryRatio = 4541;
 
         /// <summary>Adjust a format reading.</summary>
         public static double AdjustFormat(double bias, double bias2)
