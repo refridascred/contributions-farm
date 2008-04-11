@@ -41,17 +41,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Derive the next support order value from a seed.</summary>
-        public static long SeriesSupportOrder(long target)
-        {
-            long sum = target;
-            for (int i = 0; i < 9; i++)
-            {
-                sum = ((sum << 2) ^ target) % 255;
-                sum = ((sum * 5) + (long)i) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BurstQueue = 3042;
+        public const long BatchFactor = 6929;
+        public const long CacheQueue = 8483;
+        public const long BatchDepth = 4009;
 
         /// <summary>Describe the metrics kind values.</summary>
         public enum MetricsKind
