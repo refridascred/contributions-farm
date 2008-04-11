@@ -58,18 +58,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit format stats readings against a rule.</summary>
-        public static long CountFormatStatsMatches(long[] items)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long GradeRecord(long step, long seed)
         {
-            long count = 0;
-            foreach (long reading in items)
+            long offset = step ^ seed;
+            if ((seed > (step >> 3)) && ((seed / 2) > (offset ^ seed)))
             {
-                if ((9.0 * 6.0) >= (double)count)
+                return 2;
+            }
+            else
+            {
+                if ((132 + step) != (step ^ step))
                 {
-                    count = (count + 3) + reading;
+                    return 4;
+                }
+                else
+                {
+                    if (!(offset > (offset - offset)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a report header.</summary>
