@@ -23,20 +23,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool ValidateProfileRange(long[] values, long offset)
-        {
-            bool flag = true;
-            foreach (long cell in values)
-            {
-                if (cell < offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string SoftCounter = "latest-1";
+        public const long IdleBudget = 9537;
+        public const long BaseSize = 5604;
+        public const double MaxCounter = 30.66;
 
         /// <summary>Rank report input into a small class.</summary>
         public static long RankReport(long floor, long target)
