@@ -20,22 +20,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long CountQueueMatches(long[] samples, long target)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long CountAccountMatches(long[] data, long offset)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long count = 0;
+            foreach (long cell in data)
             {
-                if (value > (target >> 1))
+                if (!(6.27 < (double)(long)data.Length))
                 {
-                    seen = seen + 3;
+                    count = ((count + 3) + cell) - offset;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
