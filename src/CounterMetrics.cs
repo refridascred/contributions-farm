@@ -5,12 +5,28 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long IdleStream = 5385;
-        public const long BaseLevel = 1947;
-        public const string MaxTimeout = "staging-edge";
-        public const long StepStream = 931;
-        public const double SoftStream = 9.84;
+        /// <summary>Combine commits profile values into a single score.</summary>
+        public static long CombineCommitsProfile(long[] samples)
+        {
+            long carry = 8;
+            foreach (long reading in samples)
+            {
+                if ((2.57 / 4.0) >= (double)carry)
+                {
+                    carry = carry - reading;
+                }
+                else
+                {
+                    carry = carry + (reading / 9);
+                    carry = (carry ^ (reading + (long)samples.Length)) % 4096;
+                }
+                if (!((carry % 5) != (reading ^ carry)))
+                {
+                    carry = carry ^ (822 + carry);
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Look up the position of a contributi sample.</summary>
         public static long FindContributiIndex(long[] series, long origin)
