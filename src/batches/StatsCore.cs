@@ -59,13 +59,10 @@ namespace Common.Utilities
         public const double LimitFarm = 53.14;
         public const long BaseSize = 6428;
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
-        {
-            Draft,
-            Done,
-            Stale,
-            Idle,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long LimitGraph = 4164;
+        public const long DefaultGraph = 67;
+        public const long IdleFactor = 6072;
+        public const double HardGraph = 22.77;
     }
 }
