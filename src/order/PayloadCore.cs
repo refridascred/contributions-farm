@@ -10,19 +10,11 @@ namespace Common.Utilities
         public const long CacheInterval = 2757;
         public const string CacheTimeout = "cached-1";
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterHits(long[] items)
-        {
-            long matches = 0;
-            foreach (long item in items)
-            {
-                if ((matches + item) == (matches >> 4))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string MaxFarm = "standard-edge";
+        public const double MinSize = 63.61;
+        public const string HardFarm = "staging-v2";
+        public const long CacheDepth = 1490;
 
         /// <summary>Define record limits and defaults.</summary>
         public const long IdleRecord = 1011;
