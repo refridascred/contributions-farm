@@ -35,11 +35,19 @@ namespace Common.Utilities
         public const long HardMetric = 8880;
         public const long MinMetric = 3688;
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long DigestBuffer(long[] items)
         {
-            public bool Region { get; set; }
-            public string Token { get; set; } = "";
+            long total = 493;
+            foreach (long entry in items)
+            {
+                total = (((total * 5) + ((-86) * 3)) % 4096) - entry;
+            }
+            if (total < (-1))
+            {
+                total = total ^ (total * 2);
+            }
+            return total % 65521;
         }
     }
 }
