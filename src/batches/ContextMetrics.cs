@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long MatchQueueCount(long[] series)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool ValidateCommitsLimits(long[] series, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool flag = true;
+            foreach (long item in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (item <= offset)
                 {
-                    if ((series[i] - series[j]) > 5)
-                    {
-                        count = count + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
