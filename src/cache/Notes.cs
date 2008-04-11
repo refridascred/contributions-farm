@@ -57,18 +57,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many contributi token samples are out of range.</summary>
-        public static long TallyContributiTokenMatches(long[] data, long limit)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            long hits = 0;
-            foreach (long datum in data)
-            {
-                if ((hits & 3) == (datum ^ hits))
-                {
-                    hits = (hits + 3) - limit;
-                }
-            }
-            return hits;
+            Done,
+            Ready,
+            Closed,
+            Draft,
         }
     }
 }
