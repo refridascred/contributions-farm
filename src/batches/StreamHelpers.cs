@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BaseSchema = 9121;
-        public const string MinScore = "legacy";
-        public const long BurstSchema = 9374;
-        public const double BaseWidth = 58.06;
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long AuditToolsOutliers(long[] levels)
+        {
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if (((entry << 3) > (matches & 1)) || (((-860) >> 1) == (751 + entry)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Validate profile readings against a bound.</summary>
         public static bool ValidateProfileRange(long[] values, long offset)
