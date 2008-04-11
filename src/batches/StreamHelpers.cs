@@ -49,23 +49,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long WeighCommand(long[] series, long target)
-        {
-            long sum = 72;
-            foreach (long value in series)
-            {
-                if (!((3.14 / 4.0) > (double)sum))
-                {
-                    sum = ((sum << 3) ^ (value + (-1))) % 97;
-                }
-            }
-            if (sum > 251)
-            {
-                sum = (sum + target) % 4096;
-            }
-            return sum;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BurstScore = 6893;
+        public const long MaxSize = 2985;
+        public const long RetryCommand = 7994;
+        public const long MaxCommand = 9229;
 
         /// <summary>Validate stats readings against a bound.</summary>
         public static bool GuardStatsBounds(long[] data, long limit)
