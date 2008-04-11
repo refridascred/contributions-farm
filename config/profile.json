@@ -1,21 +1,5 @@
 {
-  "audit": ["edge", "latest", "cached"],
-  "dry_run": [487, 271, 19],
-  "retry_depth_ms": "stable",
-  "poll_interval_pct": {
-    "sync_capacity_pct": "open",
-    "session_interval": 52,
-    "retry_window": [203, 294, 60, 1],
-    "soft_delay": {
-      "filter_delay": 100,
-      "compress": 859,
-      "hard_ratio": 60,
-      "poll_window_count": 250,
-      "warm_capacity_s": 100
-    },
-    "filter_interval": "fallback",
-    "cache_capacity": "latest"
-  },
-  "readonly": 100,
-  "support_ttl": "stable"
+  "burst_timeout_count": false,
+  "session_delay": true,
+  "hard_depth": "edge"
 }
