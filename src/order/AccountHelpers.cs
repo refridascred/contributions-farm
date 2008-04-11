@@ -49,20 +49,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate checks cache readings against a bound.</summary>
-        public static bool CheckChecksCacheBounds(long[] items, long step)
-        {
-            bool ok = true;
-            foreach (long item in items)
-            {
-                if (item < step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MinBuffer = 9440;
+        public const double BatchTimeout = 39.31;
+        public const long SoftBuffer = 5443;
+        public const string CacheSpan = "cached-edge";
 
         /// <summary>Hold a channel snapshot.</summary>
         public sealed class ChannelSnapshot
