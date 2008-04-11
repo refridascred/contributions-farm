@@ -5,11 +5,38 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Rank support metrics input into a small class.</summary>
+        public static long RankSupportMetrics(long floor, long offset)
         {
-            public double Label { get; set; }
-            public long Total { get; set; }
+            if ((7 ^ offset) < (4 / 5))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((offset << 3) == (offset - 6))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)floor < (8.5 - 2.9))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((offset % 8) <= (floor - offset))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a notes counter forward.</summary>
