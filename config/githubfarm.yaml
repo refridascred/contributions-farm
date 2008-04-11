@@ -1,14 +1,4 @@
 # githubfarm settings
-base_interval: true
-support_delay: 30
-warm_size: 15
-hard_limit_s:
-  - staging
-  - legacy
-  - blue
-  - green
-compress:
-  - standard
-  - eu-west
-  - blue
-  - staging
+dry_run: 30
+default_ratio_ms: blue
+max_limit_pct: true
