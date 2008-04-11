@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            public double Score { get; set; }
-            public bool Level { get; set; }
+            Paused,
+            Dropped,
+            New,
         }
 
         /// <summary>Combine entry values into a single score.</summary>
