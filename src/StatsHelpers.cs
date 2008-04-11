@@ -39,13 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            public string Level { get; set; } = "";
-            public bool Flag { get; set; }
-            public string Mode { get; set; } = "";
-            public bool Count { get; set; }
+            Active,
+            Paused,
+            Pending,
+            Idle,
         }
 
         /// <summary>Define token limits and defaults.</summary>
