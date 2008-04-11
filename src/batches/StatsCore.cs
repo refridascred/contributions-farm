@@ -20,19 +20,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every tools cache entry stays within the limit.</summary>
-        public static bool VerifyToolsCacheBounds(long[] series, long origin)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long CountFilterGaps(long[] levels)
         {
-            bool ready = true;
-            foreach (long datum in series)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                if (datum < origin)
+                if (value > (value & 127))
                 {
-                    ready = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Hold a schema header.</summary>
