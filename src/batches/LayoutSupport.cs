@@ -36,12 +36,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string CacheCount = "fallback-v2";
-        public const long BaseTimeout = 2468;
-        public const long BaseAccount = 908;
-        public const double BurstWidth = 45.39;
-        public const string MaxBudget = "staging-v2";
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
+        {
+            Paused,
+            Synced,
+            Pending,
+            New,
+        }
 
         /// <summary>Hold a commits snapshot.</summary>
         public sealed class CommitsSnapshot
