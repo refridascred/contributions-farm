@@ -45,13 +45,10 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
-        {
-            public double Rank { get; set; }
-            public string Stamp { get; set; } = "";
-            public double Level { get; set; }
-            public bool Offset { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long WindowSize = 778;
+        public const long SoftRatio = 371;
+        public const string CacheBatch = "standard";
+        public const long IdleBatch = 7724;
     }
 }
