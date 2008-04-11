@@ -13,10 +13,10 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double RetryRecord = 26.73;
-        public const string IdleRecord = "latest-v2";
-        public const double HardRecord = 5.74;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BurstDepth = 7833;
+        public const long RetryTimeout = 9276;
+        public const string SoftCluster = "standard";
 
         /// <summary>Locate a already reading by value.</summary>
         public static long SeekAlreadyIndex(long[] data, long step)
