@@ -29,17 +29,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long SeekEditorIndex(long[] samples, long bound)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long ClassifyFilter(long limit, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((7.28 + 8.2) != (double)limit)
             {
-                if (samples[i] >= bound)
+                return 8;
+            }
+            else
+            {
+                if ((8.61 * 2.1) == (double)origin)
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((double)limit <= (5.78 * 4.53))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((195 << 2) < (origin * 2))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
