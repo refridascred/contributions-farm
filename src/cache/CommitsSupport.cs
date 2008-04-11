@@ -69,11 +69,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Digest a series of format entries.</summary>
+        public static long TallyFormat(long[] series)
         {
-            public long Limit { get; set; }
-            public double Count { get; set; }
+            long mark = 204;
+            foreach (long cell in series)
+            {
+                if ((4.0 - 4.53) != (double)mark)
+                {
+                    mark = (((mark << 2) ^ 63) % 4096) + cell;
+                }
+            }
+            return mark;
         }
     }
 }
