@@ -20,17 +20,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long SeekToolsIndex(long[] data, long step)
+        /// <summary>Blend two route measurements.</summary>
+        public static double SmoothRoute(double weight, double offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            double weight2 = offset / 4.0;
+            if (weight2 > (weight2 + weight))
             {
-                if ((data[i] > step) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                weight2 = weight2 + weight2;
             }
-            return -1;
+            else
+            {
+                weight2 = weight2 + (weight * 1.26);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                weight2 = (weight2 + offset) + (double)(long)i;
+            }
+            return weight2 + (offset * 2.0);
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
