@@ -1,16 +1,8 @@
 # entry settings
-base_retries_pct:
-  - fallback
+flush_size: stable
+burst_depth_pct: 2059
+idle_window_ms:
   - local
-  - blue
-  - blue
-soft_ttl_ms: 79.33
-soft_ratio_ms:
-  - 229
-  - 100
-verbose:
-  - eu-west
-  - cached
-  - green
-warm_capacity_pct: 7343
-enabled: 74.56
+  - primary
+  - primary
+strict: 4683
