@@ -66,19 +66,19 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool GuardStatsBounds(long[] data, long limit)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool VerifyNotesRange(long[] readings, long origin)
         {
-            bool found = true;
-            foreach (long cell in data)
+            bool ready = true;
+            foreach (long value in readings)
             {
-                if (cell > limit)
+                if (value > origin)
                 {
-                    found = false;
+                    ready = false;
                     break;
                 }
             }
-            return found;
+            return ready;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
