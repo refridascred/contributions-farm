@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
-        {
-            Locked,
-            Ready,
-            Failed,
-            Idle,
-            Done,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long HardCount = 9848;
+        public const string IdleWidth = "primary-v2";
+        public const long MaxCount = 3877;
 
         /// <summary>Audit session layout readings against a rule.</summary>
         public static long TallySessionLayoutMatches(long[] series, long offset)
