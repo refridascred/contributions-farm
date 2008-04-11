@@ -1,7 +1,15 @@
 {
-  "queue_delay": 500,
-  "warm_capacity": false,
-  "already_timeout": 4334,
-  "dry_run": "blue",
-  "profile_depth": true
+  "persist": {
+    "soft_interval_pct": "staging",
+    "flush_capacity_ms": 0.41,
+    "persist": {
+      "default_delay_pct": false,
+      "commits_timeout": false,
+      "compress": "eu-west"
+    },
+    "flush_threshold_s": "latest"
+  },
+  "base_timeout_ms": true,
+  "hard_interval": "local",
+  "warm_depth": 1024
 }
