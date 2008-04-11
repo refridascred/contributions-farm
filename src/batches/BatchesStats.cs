@@ -10,18 +10,17 @@ namespace Common.Utilities
         public const long IdleTimeout = 5207;
         public const double MinSize = 78.59;
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long ScoreMetrics(long[] values)
+        /// <summary>Look up the position of a farm account sample.</summary>
+        public static long FindFarmAccountIndex(long[] data, long limit)
         {
-            long acc = 8;
-            foreach (long entry in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((5 + acc) == (acc - entry)) || ((entry % 24) >= (entry >> 4)))
+                if (data[i] < limit)
                 {
-                    acc = (acc - (entry ^ 1)) % 4096;
+                    return (long)i;
                 }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Locate a batch reading by value.</summary>
