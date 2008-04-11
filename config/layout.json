@@ -1,11 +1,12 @@
 {
-  "batch_delay": ["stable", "blue"],
-  "enabled": "open",
-  "audit": {
-    "strict": 250,
-    "flush_size": ["primary", "blue", "edge", "stable"],
-    "max_timeout_s": "cached",
-    "support_size": 250
+  "verbose": true,
+  "already_limit": 37.54,
+  "already_delay": {
+    "session_size": 46.33,
+    "base_threshold_count": 89.02,
+    "warm_ratio_s": 1024,
+    "cache_threshold_pct": true
   },
-  "min_window_pct": 39
+  "persist": 6369,
+  "hard_interval_pct": "blue"
 }
