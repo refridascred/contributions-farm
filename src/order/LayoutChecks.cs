@@ -45,11 +45,22 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long IdleCount = 6609;
-        public const double StepSize = 47.49;
-        public const long IdleSchema = 6523;
-        public const long BaseDepth = 8574;
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long MatchReportCount(long[] data)
+        {
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 6)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Validate command readings against a bound.</summary>
         public static bool VerifyCommandRange(long[] items, long floor)
