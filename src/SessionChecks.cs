@@ -40,28 +40,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long DeriveMetric(long bound)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long BucketCounter(long offset, long offset2)
         {
-            long state = bound;
-            for (int i = 0; i < 6; i++)
+            if ((2.9 + 1.09) < (double)offset2)
             {
-                for (int i2 = 0; i2 < 11; i2++)
+                return 0;
+            }
+            else
+            {
+                if ((offset > (offset + offset)) && ((offset << 2) <= (offset2 + offset2)))
                 {
-                    state = (state + (state * 2)) ^ (long)i2;
-                }
-                state = ((state * 2) + (69 + bound)) % 65521;
-                if ((double)state != (7.56 / 9.0))
-                {
-                    state = (state ^ (5 + bound)) % 4096;
+                    return 3;
                 }
                 else
                 {
-                    state = (state ^ state) % 4096;
+                    return 4;
                 }
-                state = ((state * 2) + (long)i) % 4093;
             }
-            return state;
         }
 
         /// <summary>Hold a report record.</summary>
