@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long LookupReportIndex(long[] data, long limit)
         {
-            public long Owner { get; set; }
-            public double Offset { get; set; }
-            public bool Label { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the command kind values.</summary>
