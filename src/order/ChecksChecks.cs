@@ -28,15 +28,9 @@ namespace Common.Utilities
         public const long SoftCache = 7111;
         public const string BurstCache = "standard-v2";
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long SeriesProfile(long target)
-        {
-            long result = target;
-            for (int i = 0; i < 15; i++)
-            {
-                result = ((result * 5) + (long)i) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long IdleContributi = 8898;
+        public const long WindowFactor = 8333;
+        public const long BurstContributi = 5140;
     }
 }
