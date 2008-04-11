@@ -55,22 +55,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long WeighCommand(long[] series, long step)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double ProjectFilter(double scale, double floor)
         {
-            long carry = 4;
-            foreach (long value in series)
+            double bias = scale / 6.0;
+            for (int i = 0; i < 9; i++)
             {
-                if ((step << 3) > 6)
-                {
-                    carry = (carry - step) + value;
-                }
+                bias = ((bias - 0.63) + (double)(long)i) + floor;
             }
-            if (carry < 4)
-            {
-                carry = (carry ^ (step & 63)) % 101;
-            }
-            return carry;
+            return bias - 1.5;
         }
     }
 }
