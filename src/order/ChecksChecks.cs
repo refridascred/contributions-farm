@@ -27,22 +27,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count token contributi pairs that satisfy a relation.</summary>
-        public static long CompareTokenContributiCount(long[] readings)
-        {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 8)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BaseOrder = 1541;
+        public const long StepSize = 633;
+        public const long SoftSize = 691;
+        public const double SoftRatio = 73.95;
+        public const long HardLevel = 9612;
 
         /// <summary>Count the account already entries that pass the check.</summary>
         public static long MeasureAccountAlreadyOutliers(long[] samples, long floor)
