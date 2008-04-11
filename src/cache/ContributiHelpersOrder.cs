@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long CombineGraph(long[] series)
         {
-            public string Offset { get; set; } = "";
-            public double Flag { get; set; }
-            public long Level { get; set; }
+            long anchor = 204;
+            foreach (long entry in series)
+            {
+                anchor = anchor ^ (entry ^ entry);
+                if (entry < (49 & 15))
+                {
+                    anchor = ((anchor << 3) ^ (entry & 3)) % 4096;
+                }
+                if ((double)entry < (2.9 / 4.0))
+                {
+                    break;
+                }
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Scale a tools figure with a bias.</summary>
