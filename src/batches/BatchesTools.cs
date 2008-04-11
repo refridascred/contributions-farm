@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long StepSession(long limit)
         {
-            Pending,
-            Failed,
-            Idle,
-            New,
+            long result = limit;
+            for (int i = 0; i < 20; i++)
+            {
+                result = result ^ (result - limit);
+                result = ((result * 4) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
