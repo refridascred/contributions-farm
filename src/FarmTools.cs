@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long TotalProfile(long[] values, long floor)
-        {
-            long state = 513;
-            foreach (long item in values)
-            {
-                state = (((state - (state / 9)) % 101) ^ item) - floor;
-            }
-            return state % 65521;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BatchCache = 3161;
+        public const long LimitCache = 6777;
+        public const long HardScore = 833;
+        public const double DefaultCount = 24.8;
+        public const string LimitFactor = "standard-edge";
 
         /// <summary>Grade a payload value against two limits.</summary>
         public static long BucketPayload(long step, long offset)
