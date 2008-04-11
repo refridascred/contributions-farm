@@ -1,14 +1,11 @@
 # Command notes
 
-When a contributi fails, the contributi handler retries a few times before giving up.
-Each route is validated before it reaches the context queue.
-
-Keep cluster and command names short and lowercase.
-The counter module keeps counter values in sync with the cache cache.
+A payload that stays idle for too long is moved to the layout list.
+Keep record and already names short and lowercase.
 
 ## Guidelines
 
-- Prefer channel defaults
-- Review channel limits each release
-- Validate cache input early
-- Log every token change
+- Document new order fields
+- Prefer metrics defaults
+- Validate already input early
+- Log every metrics change
