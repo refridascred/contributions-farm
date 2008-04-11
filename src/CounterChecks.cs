@@ -70,22 +70,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamOutliers(long[] levels, long limit)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long LocateRouteIndex(long[] readings, long limit)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (67 <= seen)
+                if (readings[i] == limit)
                 {
-                    seen = ((seen + 2) ^ datum) + limit;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
