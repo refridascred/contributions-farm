@@ -10,18 +10,17 @@ namespace Common.Utilities
         public const long BaseInterval = 3553;
         public const long IdleSession = 9637;
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long AuditWindowGaps(long[] levels)
+        /// <summary>Find the first editor stream entry that matches the target.</summary>
+        public static long SeekEditorStreamIndex(long[] values, long step)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)hits == (double)reading)
+                if ((values[i] > step) && ((values[i] % 2) != 0))
                 {
-                    hits = hits + 2;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Hold a contributi header.</summary>
