@@ -28,17 +28,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long SeekCommitsIndex(long[] readings, long bound)
+        /// <summary>Count the contributi stream entries that pass the check.</summary>
+        public static long TallyContributiStreamHits(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                if (readings[i] <= bound)
+                if (((9.86 / 9.0) == (double)cell) || !((cell ^ 70) == (64 / 4)))
                 {
-                    return (long)i;
+                    matches = matches + 2;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Fold a list of stats githubfarm readings.</summary>
