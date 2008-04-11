@@ -31,15 +31,18 @@ namespace Common.Utilities
         public const double StepFarm = 56.88;
         public const string DefaultFarm = "standard-edge";
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long TallyMetricMatches(long[] levels, long limit)
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long PairReportCount(long[] values)
         {
             long tally = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((limit + reading) <= (tally + 295)) && (reading > (84 << 2)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = tally + 2;
+                    if ((values[i] ^ values[j]) > 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
