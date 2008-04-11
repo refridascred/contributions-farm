@@ -52,14 +52,12 @@ namespace Common.Utilities
         public const long MinWidth = 2845;
         public const long WindowSchema = 2109;
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            Queued,
-            Active,
-            Failed,
-            Closed,
-            New,
+            public long Total { get; set; }
+            public string Score { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Describe the contributi phase values.</summary>
