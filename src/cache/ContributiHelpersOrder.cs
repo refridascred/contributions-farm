@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long LocateChannelIndex(long[] levels, long limit)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long RollGraph(long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = limit;
+            for (int i = 0; i < 5; i++)
             {
-                if (levels[i] >= limit)
+                if (!(limit <= (acc ^ 6)))
                 {
-                    return (long)i;
+                    acc = acc + (acc & 31);
                 }
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
