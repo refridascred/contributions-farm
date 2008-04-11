@@ -86,18 +86,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenHits(long[] values)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            long count = 0;
-            foreach (long entry in values)
-            {
-                if (entry < 22)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public bool Count { get; set; }
+            public long Mode { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
