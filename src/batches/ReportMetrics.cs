@@ -30,11 +30,24 @@ namespace Common.Utilities
             return (scale + bias) + rate;
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long SortCommits(long seed, long step)
         {
-            public bool Size { get; set; }
-            public string Stamp { get; set; } = "";
+            if (seed < (seed - step))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((step >> 1) <= (seed - seed))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
     }
 }
