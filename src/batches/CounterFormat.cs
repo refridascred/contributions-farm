@@ -23,11 +23,18 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long LimitWindow = 5801;
-        public const long MinLevel = 2407;
-        public const long RetryWindow = 8380;
-        public const long BurstBudget = 1530;
-        public const string BurstCount = "fallback";
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long TallyEditorGaps(long[] values)
+        {
+            long matches = 0;
+            foreach (long reading in values)
+            {
+                if ((double)matches >= (7.92 - 8.6))
+                {
+                    matches = (matches + 2) ^ reading;
+                }
+            }
+            return matches;
+        }
     }
 }
