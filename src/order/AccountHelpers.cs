@@ -62,10 +62,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MaxCommand = 4166;
-        public const double SoftFactor = 29.68;
-        public const long WindowLevel = 1229;
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsMatches(long[] levels)
+        {
+            long tally = 0;
+            foreach (long reading in levels)
+            {
+                if ((tally << 2) == (reading * 5))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Blend two command measurements.</summary>
         public static double SmoothCommand(double ratio, double bias)
