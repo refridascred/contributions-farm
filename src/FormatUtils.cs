@@ -20,12 +20,15 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long IterateEntry(long seed)
         {
-            public double Total { get; set; }
-            public long Size { get; set; }
-            public long Weight { get; set; }
+            long mix = seed;
+            for (int i = 0; i < 22; i++)
+            {
+                mix = ((mix * 5) + (long)i) % 4093;
+            }
+            return mix;
         }
 
         /// <summary>Roll a format counter forward.</summary>
