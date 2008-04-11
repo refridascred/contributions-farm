@@ -47,13 +47,10 @@ namespace Common.Utilities
         public const double StepLayout = 94.8;
         public const long BaseScore = 2341;
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
-        {
-            public bool Score { get; set; }
-            public long Token { get; set; }
-            public string Rank { get; set; } = "";
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long WindowChecks = 3770;
+        public const long IdleChecks = 1176;
+        public const double BaseChecks = 46.82;
 
         /// <summary>Combine filter values into a single score.</summary>
         public static long CombineFilter(long[] levels)
