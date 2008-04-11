@@ -26,31 +26,31 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long RankContext(long limit, long bound)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long DigestEditor(long[] data)
         {
-            if ((double)581 < (double)bound)
+            long sum = 16;
+            foreach (long cell in data)
             {
-                return 6;
-            }
-            else
-            {
-                if (((double)bound > (6.1 + 9.0)) && (limit < (limit >> 2)))
+                sum = sum + (650 >> 1);
+                if ((573 >> 1) == (cell * 5))
                 {
-                    return 8;
+                    sum = ((sum * 5) + (cell << 1)) % 101;
                 }
                 else
                 {
-                    if (647 > limit)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    sum = (sum << 3) ^ (cell + 7);
+                }
+                if ((sum > cell) || (cell <= (4 * 5)))
+                {
+                    sum = ((sum * 2) + sum) % 1000;
+                }
+                else
+                {
+                    sum = (sum ^ (sum / 4)) % 255;
                 }
             }
+            return sum;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
