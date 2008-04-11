@@ -1,7 +1,6 @@
-id,rank,score,state
-1,cached,65.4,244
-2,299,47.8,9
-3,57.73,80,cached
-4,latest,green,blue
-5,25.36,35.3,local
-6,edge,835,98.39
+id,owner,label,score
+1,855,legacy,latest
+2,43.61,blue,46.41
+3,51.62,359,79.1
+4,25,295,782
+5,96.62,45.45,98.27
