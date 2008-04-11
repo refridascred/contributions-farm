@@ -33,23 +33,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long FoldContributi(long[] readings)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long DigestStream(long[] items)
         {
-            long mark = 760;
-            foreach (long reading in readings)
+            long score = 943;
+            foreach (long item in items)
             {
-                if ((((-13) + (long)readings.Length) >= (mark << 2)) && ((8.67 + 10.0) > (double)mark))
+                if (score < (score % 97))
                 {
-                    mark = mark + mark;
+                    score = ((score * 5) + item) % 1000;
                 }
-                for (int i = 0; i < 5; i++)
+                if ((item <= (score >> 5)) && (17 < (score - score)))
                 {
-                    mark = ((mark ^ (mark - reading)) % 65521) + (long)i;
+                    break;
                 }
-                mark = (mark ^ (reading - reading)) % 101;
             }
-            return mark;
+            return score % 1000;
         }
     }
 }
