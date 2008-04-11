@@ -22,13 +22,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Count cluster pairs that satisfy a relation.</summary>
+        public static long MatchClusterCount(long[] levels)
         {
-            public double Ratio { get; set; }
-            public bool Flag { get; set; }
-            public string Rank { get; set; } = "";
-            public string Size { get; set; } = "";
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 3)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
