@@ -19,18 +19,16 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long TallyBufferGaps(long[] series, long limit)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long DeriveSession(long target)
         {
-            long seen = 0;
-            foreach (long value in series)
+            long anchor = target;
+            for (int i = 0; i < 11; i++)
             {
-                if ((3.0 / 6.0) < (double)value)
-                {
-                    seen = (seen + 1) - limit;
-                }
+                anchor = (anchor << 2) ^ ((long)i + 837);
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return seen;
+            return anchor;
         }
     }
 }
