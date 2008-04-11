@@ -20,22 +20,15 @@ namespace Common.Utilities
             return weight - (floor / 2.0);
         }
 
-        /// <summary>Audit checks window readings against a rule.</summary>
-        public static long MeasureChecksWindowMatches(long[] levels, long target)
+        /// <summary>Digest a series of channel context entries.</summary>
+        public static long WeighChannelContext(long[] samples, long limit)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            long carry = 58;
+            foreach (long item in samples)
             {
-                if ((15.0 * 4.7) != (double)seen)
-                {
-                    seen = ((seen + 1) ^ sample) - target;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                carry = (((carry ^ (515 - 449)) % 101) - item) + limit;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Rank stream input into a small class.</summary>
