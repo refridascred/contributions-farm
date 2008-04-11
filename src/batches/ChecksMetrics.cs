@@ -80,11 +80,18 @@ namespace Common.Utilities
             return weight - (scale * 3.73);
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenOutliers(long[] readings, long seed)
         {
-            public long Mode { get; set; }
-            public bool Token { get; set; }
+            long matches = 0;
+            foreach (long reading in readings)
+            {
+                if (matches > 11)
+                {
+                    matches = ((matches + 1) + reading) - seed;
+                }
+            }
+            return matches;
         }
     }
 }
