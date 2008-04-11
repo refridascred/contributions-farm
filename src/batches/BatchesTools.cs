@@ -12,21 +12,12 @@ namespace Common.Utilities
         public const double SoftBudget = 9.99;
         public const long LimitAlready = 1584;
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long MatchRouteCount(long[] values)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 2)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public string Score { get; set; } = "";
+            public string Level { get; set; } = "";
+            public bool Mode { get; set; }
         }
 
         /// <summary>Accumulate stats cluster samples.</summary>
