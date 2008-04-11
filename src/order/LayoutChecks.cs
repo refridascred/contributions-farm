@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool VerifyCacheRange(long[] samples, long limit)
         {
-            Ready,
-            New,
-            Retry,
-            Closed,
+            bool found = true;
+            foreach (long reading in samples)
+            {
+                if (reading != limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Fold a list of record payload readings.</summary>
