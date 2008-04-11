@@ -1,5 +1,7 @@
 {
-  "verbose": "blue",
-  "strict": [402, 371, 452, 288],
-  "profile_interval": "blue"
+  "strict": false,
+  "account_window": 9441,
+  "burst_interval_pct": 75.91,
+  "context_capacity": false,
+  "token_delay": "strict"
 }
