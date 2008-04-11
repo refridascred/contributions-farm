@@ -12,11 +12,17 @@ namespace Common.Utilities
         public const long MaxChannel = 2735;
         public const string BurstChannel = "strict-v2";
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long LookupGithubfarmIndex(long[] series, long offset)
         {
-            public double Rank { get; set; }
-            public double Score { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] > offset) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Match up commits samples.</summary>
