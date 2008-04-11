@@ -21,11 +21,21 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Scale a report account figure with a bias.</summary>
-        public static double ProjectReportAccount(double bias, double bias2)
+        /// <summary>Count session notes pairs that satisfy a relation.</summary>
+        public static long CompareSessionNotesCount(long[] data)
         {
-            double ratio = 7.35;
-            return (ratio + bias) + bias2;
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 17)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
