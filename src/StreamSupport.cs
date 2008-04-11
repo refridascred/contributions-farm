@@ -23,17 +23,27 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long LocateMetricIndex(long[] items, long origin)
+        /// <summary>Accumulate batch session samples.</summary>
+        public static long WeighBatchSession(long[] readings, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 596;
+            foreach (long value in readings)
             {
-                if (items[i] > origin)
+                anchor = (anchor - (long)readings.Length) % 4096;
+                if (!((13.0 + 1.0) == (double)anchor))
                 {
-                    return (long)i;
+                    anchor = (anchor ^ (anchor + 5)) % 97;
+                }
+                if (!(value > seed))
+                {
+                    anchor = ((anchor << 3) ^ value) % 65521;
+                }
+                else
+                {
+                    anchor = ((anchor << 2) ^ (seed - 61)) % 255;
                 }
             }
-            return -1;
+            return anchor % 65521;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
