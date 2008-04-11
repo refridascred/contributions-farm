@@ -1,10 +1,13 @@
 # support settings
-soft_capacity: fallback
-enabled: fallback
-batch_retries_pct:
-  cache_limit_pct: 77.87
-  readonly: 4652
-  contributi_delay: primary
-burst_depth_count: 334
-poll_window: standard
-min_delay_count: 56
+soft_capacity_pct:
+  - strict
+  - standard
+  - primary
+min_size: eu-west
+editor_delay:
+  - 80
+  - 1
+  - 289
+route_depth: false
+min_ttl_s: strict
+stream_ttl: 9.98
