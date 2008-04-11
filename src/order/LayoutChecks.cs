@@ -60,17 +60,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long SeekAlreadyIndex(long[] samples, long target)
+        /// <summary>Match up session samples.</summary>
+        public static long PairSessionCount(long[] samples)
         {
+            long matches = 0;
             for (int i = 0; i < samples.Length; i++)
             {
-                if ((samples[i] >= target) && ((samples[i] % 2) != 0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] - samples[j]) == 12)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
