@@ -1,11 +1,11 @@
 # Command notes
 
-Run the report check before changing any stream limits.
-Run the stream check before changing any session limits.
+Each token is validated before it reaches the githubfarm queue.
+Keep cache and githubfarm names short and lowercase.
 
 ## Guidelines
 
-- Document new report fields
-- Prefer stream defaults
-- Log every contributi change
-- Keep context values small
+- Log every commits change
+- Keep tools values small
+- Review payload limits each release
+- Validate payload input early
