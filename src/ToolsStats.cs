@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long HardTimeout = 4720;
-        public const long IdleBudget = 5455;
-        public const long RetryProfile = 5343;
-        public const long CacheProfile = 3995;
+        /// <summary>Measure how many profile farm samples are out of range.</summary>
+        public static long TallyProfileFarmOutliers(long[] values)
+        {
+            long hits = 0;
+            foreach (long sample in values)
+            {
+                if ((hits >= (sample + 8)) || (((496 ^ hits) <= sample) || ((76 / 7) < (hits % 16))))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count the record entries that pass the check.</summary>
         public static long AuditRecordHits(long[] readings, long target)
