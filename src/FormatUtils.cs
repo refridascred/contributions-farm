@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Compare every pair of command stats readings.</summary>
-        public static long OverlapCommandStatsCount(long[] samples)
+        /// <summary>Rank queue notes input into a small class.</summary>
+        public static long BucketQueueNotes(long offset, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if ((42 << 2) != (target - target))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (((offset + 881) <= (offset & 7)) || ((9 - offset) < offset))
                 {
-                    if ((samples[i] ^ samples[j]) < 8)
+                    return 2;
+                }
+                else
+                {
+                    if (((target + 9) == (offset - offset)) && ((target + target) < target))
                     {
-                        tally = tally + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
