@@ -1,11 +1,6 @@
-id,active,weight,count
-1,162,923,749
-2,642,72.24,open
-3,open,777,95.47
-4,61.7,549,primary
-5,345,fallback,757
-6,468,716,927
-7,68.74,88.3,66.83
-8,84.66,blue,latest
-9,15.38,stable,66.95
-10,161,latest,local
+id,score,active,region
+1,primary,5.06,82.82
+2,791,570,strict
+3,884,331,959
+4,389,green,77.81
+5,primary,98.83,993
