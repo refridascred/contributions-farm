@@ -5,17 +5,26 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Look up the position of a metric stats sample.</summary>
-        public static long LocateMetricStatsIndex(long[] levels, long step)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long TotalGithubfarm(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 2;
+            foreach (long item in data)
             {
-                if (levels[i] < step)
+                if (!((mix - mix) < item))
                 {
-                    return (long)i;
+                    mix = mix + (61 * 5);
+                }
+                if (!((item * 5) == (857 % 3)))
+                {
+                    mix = mix - (-2);
                 }
             }
-            return -1;
+            if (mix < 839)
+            {
+                mix = mix - mix;
+            }
+            return mix;
         }
 
         /// <summary>Accumulate githubfarm cache samples.</summary>
