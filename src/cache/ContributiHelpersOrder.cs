@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long RollGraph(long limit)
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long MatchEditorCount(long[] series)
         {
-            long acc = limit;
-            for (int i = 0; i < 5; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!(limit <= (acc ^ 6)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    acc = acc + (acc & 31);
+                    if ((series[i] + series[j]) == 7)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                acc = ((acc * 4) + (long)i) % 97;
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Blend two schema measurements.</summary>
