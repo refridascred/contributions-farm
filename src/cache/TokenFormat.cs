@@ -20,17 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Look up the position of a context metric sample.</summary>
-        public static long LookupContextMetricIndex(long[] items, long step)
+        /// <summary>Validate queue commits readings against a bound.</summary>
+        public static bool ValidateQueueCommitsLimits(long[] values, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool valid = true;
+            foreach (long datum in values)
             {
-                if ((items[i] < step) && ((items[i] % 3) != 0))
+                if (datum <= origin)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Hold a report entry.</summary>
