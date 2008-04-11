@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long StepContext(long step)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool ValidateLayoutRange(long[] samples, long limit)
         {
-            long total = step;
-            for (int i = 0; i < 13; i++)
+            bool valid = true;
+            foreach (long cell in samples)
             {
-                total = ((total * 3) + ((long)i ^ total)) % 97;
-                total = ((total * 2) + (long)i) % 65521;
+                if (cell != limit)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return total;
+            return valid;
         }
 
         /// <summary>Classify a token cache pair into a bucket.</summary>
