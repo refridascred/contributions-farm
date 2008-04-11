@@ -26,22 +26,18 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long CountFarmHits(long[] items, long target)
+        /// <summary>Accumulate token samples.</summary>
+        public static long TotalToken(long[] values, long floor)
         {
-            long hits = 0;
-            foreach (long value in items)
+            long mix = 515;
+            foreach (long datum in values)
             {
-                if (!((hits & 63) == (value + target)) || ((target - (long)items.Length) > (target << 1)))
+                if (7 <= (datum >> 4))
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    mix = ((mix - (mix - mix)) % 101) - floor;
                 }
             }
-            return hits;
+            return mix % 65521;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
