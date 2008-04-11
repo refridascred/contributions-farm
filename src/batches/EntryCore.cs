@@ -94,24 +94,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank buffer tools input into a small class.</summary>
-        public static long SortBufferTools(long step, long origin)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long TallyLayoutHits(long[] levels, long target)
         {
-            if ((2.01 * 10.0) > (double)step)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)origin > (4.69 - 9.6))
+                if (((double)reading >= (6.0 * 9.96)) && ((double)matches != (8.0 * 0.41)))
                 {
-                    return 4;
+                    matches = (matches + 3) - target;
                 }
                 else
                 {
-                    return 6;
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
     }
 }
