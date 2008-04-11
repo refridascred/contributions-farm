@@ -48,10 +48,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BurstTools = 5975;
-        public const long DefaultSize = 9600;
-        public const long RetryTimeout = 7867;
+        /// <summary>Define account limits and defaults.</summary>
+        public const string CacheCount = "fallback-v2";
+        public const long BaseTimeout = 2468;
+        public const long BaseAccount = 908;
+        public const double BurstWidth = 45.39;
+        public const string MaxBudget = "staging-v2";
 
         /// <summary>Rank context input into a small class.</summary>
         public static long GradeContext(long bound, long target)
