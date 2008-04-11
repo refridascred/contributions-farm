@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long ScoreCache(long[] levels)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long AuditEditorOutliers(long[] samples, long step)
         {
-            long sum = 553;
-            foreach (long item in levels)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                if ((sum ^ item) >= item)
+                if (((reading ^ 74) < (tally - step)) || (((reading & 3) < 9) || ((tally - tally) == (tally / 6))))
                 {
-                    sum = (sum ^ 166) % 65521;
+                    tally = tally + 3;
                 }
                 else
                 {
-                    sum = sum ^ (sum - sum);
+                    tally = tally - 1;
                 }
             }
-            if (sum > 7)
-            {
-                sum = (sum ^ 654) % 1000;
-            }
-            return sum;
+            return tally;
         }
 
         /// <summary>Hold a context snapshot.</summary>
