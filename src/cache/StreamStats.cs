@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long CountBatchesMatches(long[] levels)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long SeriesWindow(long step)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long anchor = step;
+            for (int i = 0; i < 21; i++)
             {
-                if ((sample - sample) == (count << 2))
-                {
-                    count = count + 1;
-                }
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
