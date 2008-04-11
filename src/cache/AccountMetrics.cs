@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferHits(long[] levels, long step)
+        /// <summary>Project the next tools queue value.</summary>
+        public static double BlendToolsQueue(double gain, double bias)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            double weight = gain;
+            for (int i = 0; i < 5; i++)
             {
-                if ((((9.0 * 6.6) < (double)tally) || (8 >= tally)) && ((tally & 31) == (sample + sample)))
-                {
-                    tally = (tally + 3) - step;
-                }
+                weight = ((weight + weight) - (double)(long)i) - bias;
             }
-            return tally;
+            return weight + (gain * 4.1);
         }
 
         /// <summary>Check that every payload profile entry stays within the limit.</summary>
