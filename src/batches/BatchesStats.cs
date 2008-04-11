@@ -25,31 +25,13 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long ClassifyNotes(long offset, long floor)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            if (floor <= (offset * 5))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)floor >= (double)offset)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((floor << 3) > (floor / 9))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public string Token { get; set; } = "";
+            public bool Count { get; set; }
+            public long Rank { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Measure how many already contributi samples are out of range.</summary>
