@@ -65,19 +65,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool VerifyMetricsBounds(long[] data, long limit)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long MeasureAccountOutliers(long[] readings, long seed)
         {
-            bool found = true;
-            foreach (long datum in data)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                if (datum > limit)
+                if ((7.1 * 9.5) == (double)seed)
                 {
-                    found = false;
-                    break;
+                    hits = (hits + 2) + reading;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Grade a graph checks value against two limits.</summary>
