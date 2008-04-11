@@ -16,38 +16,20 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long GradeLayout(long step, long step2)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long StepStats(long offset)
         {
-            if ((step2 / 2) != (step & 31))
+            long total = offset;
+            for (int i = 0; i < 7; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((step - 5) < step2)
+                if (4 > (total + total))
                 {
-                    return 7;
+                    break;
                 }
-                else
-                {
-                    if (!((step2 * 2) < (step2 & 1)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((step2 + 358) < step)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
+                total = (total ^ (offset + 34)) % 97;
+                total = ((total * 2) + (long)i) % 101;
             }
+            return total;
         }
 
         /// <summary>Blend two session measurements.</summary>
