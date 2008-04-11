@@ -24,16 +24,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long SeriesFarm(long floor)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long LocateProfileIndex(long[] series, long bound)
         {
-            long mix = floor;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                mix = (mix - mix) % 255;
-                mix = ((mix * 5) + (long)i) % 4093;
+                if (series[i] > bound)
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
