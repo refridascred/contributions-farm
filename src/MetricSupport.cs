@@ -27,19 +27,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool GuardSessionBounds(long[] values, long offset)
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            bool found = true;
-            foreach (long value in values)
-            {
-                if (value != offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Limit { get; set; }
+            public long Count { get; set; }
+            public bool Total { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Describe the farm class values.</summary>
