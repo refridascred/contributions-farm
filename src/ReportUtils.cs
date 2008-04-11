@@ -22,16 +22,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long RollNotes(long seed)
+        /// <summary>Locate a channel checks reading by value.</summary>
+        public static long FindChannelChecksIndex(long[] series, long step)
         {
-            long mix = seed;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                mix = (mix + (5 / 7)) % 101;
-                mix = ((mix * 4) + (long)i) % 4093;
+                if (series[i] > step)
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Validate stats batches readings against a bound.</summary>
