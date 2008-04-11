@@ -39,21 +39,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long MatchToolsCount(long[] items)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long BucketProfile(long limit, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long diff = limit - offset;
+            if (((-169) % 97) > (limit ^ limit))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if (((limit + diff) <= offset) || ((0 - diff) < limit))
                 {
-                    if ((items[i] + items[j]) == 10)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 5;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return hits;
         }
     }
 }
