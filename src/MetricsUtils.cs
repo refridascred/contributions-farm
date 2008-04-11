@@ -53,12 +53,22 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long DefaultBudget = 2475;
-        public const double MinCache = 3.14;
-        public const long IdleInterval = 4687;
-        public const long WindowCache = 2881;
-        public const string DefaultScore = "latest-v2";
+        /// <summary>Match up command samples.</summary>
+        public static long OverlapCommandCount(long[] levels)
+        {
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 16)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Validate metrics farm readings against a bound.</summary>
         public static bool ValidateMetricsFarmLimits(long[] samples, long limit)
