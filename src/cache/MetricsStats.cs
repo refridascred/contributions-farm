@@ -57,12 +57,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            Dropped,
-            Synced,
-            Ready,
+            public double Rank { get; set; }
+            public string Stamp { get; set; } = "";
+            public double Level { get; set; }
+            public bool Offset { get; set; }
         }
     }
 }
