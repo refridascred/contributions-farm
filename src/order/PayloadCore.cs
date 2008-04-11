@@ -12,18 +12,11 @@ namespace Common.Utilities
         public const long MaxChannel = 2735;
         public const string BurstChannel = "strict-v2";
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long LookupGithubfarmIndex(long[] series, long offset)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] > offset) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string WindowWidth = "local";
+        public const long DefaultDepth = 412;
+        public const string StepBuffer = "standard-edge";
+        public const long BurstLevel = 1067;
 
         /// <summary>Digest a series of batch buffer entries.</summary>
         public static long DigestBatchBuffer(long[] levels)
