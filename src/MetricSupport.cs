@@ -27,9 +27,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BaseLevel = 1189;
-        public const long HardPayload = 5935;
-        public const long CachePayload = 9581;
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long SeekContributiIndex(long[] readings, long bound)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
