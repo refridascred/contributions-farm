@@ -27,18 +27,21 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Count the report payload entries that pass the check.</summary>
-        public static long MeasureReportPayloadOutliers(long[] readings)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long PairNotesCount(long[] levels)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((1 % 5) != (sample + matches))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = matches + 1;
+                    if ((levels[i] + levels[j]) != 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
