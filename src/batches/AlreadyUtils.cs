@@ -15,20 +15,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Roll a already counter counter forward.</summary>
-        public static long IterateAlreadyCounter(long step)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long FindContextIndex(long[] levels, long seed)
         {
-            long mark = step;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((step + step) != (mark + step))
+                if (levels[i] == seed)
                 {
-                    mark = ((mark * 2) + mark) % 4096;
+                    return (long)i;
                 }
-                mark = mark - (mark % 100);
-                mark = ((mark * 2) + (long)i) % 101;
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Define session limits and defaults.</summary>
