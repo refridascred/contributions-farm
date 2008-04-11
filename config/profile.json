@@ -1,18 +1,7 @@
 {
-  "enabled": [207, 293],
-  "min_capacity": "stable",
-  "compress": "stable",
-  "window_ratio": 83,
-  "dry_run": {
-    "sync_timeout_count": [428, 53, 9, 124],
-    "soft_capacity_pct": {
-      "flush_size_count": "green",
-      "batch_threshold_ms": "strict",
-      "cache_ratio_ms": 1701,
-      "sync_limit_s": 100,
-      "dry_run": [126, 137, 466, 19],
-      "audit": 9810
-    },
-    "cluster_size": "primary"
-  }
+  "retry_limit_pct": "staging",
+  "default_retries_ms": 663,
+  "hard_limit": "staging",
+  "retry_timeout_s": 8411,
+  "poll_window_s": 25.19
 }
