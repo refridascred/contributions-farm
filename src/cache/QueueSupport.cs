@@ -29,22 +29,17 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long TotalLayout(long[] data, long limit)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long LocateChecksIndex(long[] series, long limit)
         {
-            long mark = 47;
-            foreach (long entry in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)entry >= (6.0 + 6.0))
+                if (series[i] < limit)
                 {
-                    mark = ((mark << 2) ^ (mark - entry)) + limit;
+                    return (long)i;
                 }
             }
-            if (mark > 421)
-            {
-                mark = (mark + (mark ^ mark)) % 97;
-            }
-            return mark;
+            return -1;
         }
     }
 }
