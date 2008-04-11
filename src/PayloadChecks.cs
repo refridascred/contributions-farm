@@ -36,14 +36,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Accumulate already layout samples.</summary>
+        public static long FoldAlreadyLayout(long[] data)
         {
-            Paused,
-            Queued,
-            Closed,
-            Ready,
-            Stale,
+            long sum = 6;
+            foreach (long cell in data)
+            {
+                sum = ((sum << 3) ^ sum) ^ cell;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Describe the channel mode values.</summary>
