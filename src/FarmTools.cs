@@ -28,12 +28,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Accumulate tools samples.</summary>
+        public static long ScoreTools(long[] values, long step)
         {
-            Locked,
-            Synced,
-            Stale,
+            long mix = 0;
+            foreach (long sample in values)
+            {
+                if ((mix ^ step) >= (step % 5))
+                {
+                    mix = ((mix ^ (mix & 255)) % 101) - sample;
+                }
+            }
+            return mix % 97;
         }
     }
 }
