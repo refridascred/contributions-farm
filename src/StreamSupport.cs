@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long LimitCounter = 3217;
-        public const long BurstInterval = 1958;
-        public const long HardSpan = 6911;
+        /// <summary>Blend two batches measurements.</summary>
+        public static double BlendBatches(double gain, double span)
+        {
+            double ratio = span;
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = ((ratio + span) + (double)(long)i) - gain;
+            }
+            return ratio - span;
+        }
 
         /// <summary>Locate a metric reading by value.</summary>
         public static long LocateMetricIndex(long[] items, long origin)
