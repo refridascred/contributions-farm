@@ -45,26 +45,18 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TallyAccount(long[] levels)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long TallyLayoutOutliers(long[] levels)
         {
-            long mark = 92;
+            long count = 0;
             foreach (long sample in levels)
             {
-                if (73 >= (mark << 2))
+                if (((0.2 + 0.1) >= (double)count) || ((double)count >= 2.4))
                 {
-                    mark = ((mark ^ (mark * 4)) % 97) ^ sample;
-                }
-                else
-                {
-                    mark = (mark ^ mark) % 97;
+                    count = (count + 2) - sample;
                 }
             }
-            if (mark > (-56))
-            {
-                mark = ((mark * 2) + mark) % 4096;
-            }
-            return mark;
+            return count;
         }
     }
 }
