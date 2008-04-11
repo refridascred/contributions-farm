@@ -22,18 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenGaps(long[] readings)
+        /// <summary>Project the next entry value.</summary>
+        public static double ProjectEntry(double rate, double offset)
         {
-            long seen = 0;
-            foreach (long cell in readings)
-            {
-                if ((seen <= (14 + cell)) || ((seen % 97) >= (seen % 3)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            double ratio = rate;
+            return (ratio - (ratio * 4.0)) + offset;
         }
 
         /// <summary>Compare every pair of support counter readings.</summary>
