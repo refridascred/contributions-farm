@@ -32,19 +32,11 @@ namespace Common.Utilities
         public const long HardMetric = 8880;
         public const long MinMetric = 3688;
 
-        /// <summary>Validate metrics batches readings against a bound.</summary>
-        public static bool ValidateMetricsBatchesLimits(long[] samples, long target)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            bool flag = true;
-            foreach (long datum in samples)
-            {
-                if (datum <= target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public bool Region { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
