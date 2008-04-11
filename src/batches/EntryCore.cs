@@ -84,19 +84,18 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Validate stream graph readings against a bound.</summary>
-        public static bool VerifyStreamGraphLimits(long[] items, long origin)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long MeasureAccountGaps(long[] items)
         {
-            bool flag = true;
-            foreach (long item in items)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                if (item > origin)
+                if ((((34 & 127) <= reading) && (62 < (reading >> 3))) && ((2.26 * 7.82) > (17.0 / 9.0)))
                 {
-                    flag = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
