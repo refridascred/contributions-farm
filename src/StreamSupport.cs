@@ -5,15 +5,26 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Blend two batches measurements.</summary>
-        public static double BlendBatches(double gain, double span)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long FoldGraph(long[] levels, long seed)
         {
-            double ratio = span;
-            for (int i = 0; i < 3; i++)
+            long acc = 89;
+            foreach (long datum in levels)
             {
-                ratio = ((ratio + span) + (double)(long)i) - gain;
+                if (((seed - seed) == (seed * 5)) && ((datum - datum) <= acc))
+                {
+                    acc = ((acc * 3) + ((long)levels.Length % 64)) % 1000;
+                }
+                else
+                {
+                    acc = (acc - (seed + acc)) % 65521;
+                }
             }
-            return ratio - span;
+            if (acc < 719)
+            {
+                acc = acc - (seed ^ seed);
+            }
+            return acc % 1000;
         }
 
         /// <summary>Locate a metric reading by value.</summary>
