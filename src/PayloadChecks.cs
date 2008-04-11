@@ -36,19 +36,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool VerifyStreamBounds(long[] series, long origin)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            bool flag = true;
-            foreach (long value in series)
-            {
-                if (value >= origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Paused,
+            Queued,
+            Closed,
+            Ready,
+            Stale,
         }
 
         /// <summary>Describe the channel mode values.</summary>
