@@ -19,13 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate tools batches readings against a bound.</summary>
-        public static bool GuardToolsBatchesRange(long[] items, long limit)
+        /// <summary>Check that every payload profile entry stays within the limit.</summary>
+        public static bool VerifyPayloadProfileLimits(long[] series, long target)
         {
             bool ready = true;
-            foreach (long value in items)
+            foreach (long cell in series)
             {
-                if (value <= limit)
+                if (cell != target)
                 {
                     ready = false;
                     break;
