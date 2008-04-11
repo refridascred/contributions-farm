@@ -1,7 +1,20 @@
 {
-  "soft_depth_s": "stable",
-  "queue_size": 52.22,
-  "soft_window_ms": "green",
-  "cache_size": 63.73,
-  "max_ttl": true
+  "command_size": "fallback",
+  "order_ratio": "local",
+  "default_delay_s": "legacy",
+  "queue_depth": [310, 99, 90],
+  "dry_run": {
+    "strict": "fallback",
+    "enabled": 500,
+    "warm_delay_s": {
+      "flush_threshold_pct": 70,
+      "flush_ratio_s": 86.1,
+      "idle_threshold_ms": true,
+      "payload_ratio": [208, 181, 77],
+      "idle_window_s": "green"
+    },
+    "entry_retries": "eu-west",
+    "flush_threshold": "local",
+    "account_capacity": false
+  }
 }
