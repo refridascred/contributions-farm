@@ -48,18 +48,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long TallyCommitsHits(long[] samples, long step)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            long seen = 0;
-            foreach (long entry in samples)
-            {
-                if ((entry + seen) <= step)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Retry,
+            Draft,
+            Stale,
         }
     }
 }
