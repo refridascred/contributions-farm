@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Blend two notes measurements.</summary>
-        public static double AdjustNotes(double rate, double span)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long MeasureRouteOutliers(long[] data, long target)
         {
-            double drift = rate;
-            if (drift >= drift)
+            long matches = 0;
+            foreach (long item in data)
             {
-                drift = drift + rate;
+                if ((3.01 + 0.5) > (double)item)
+                {
+                    matches = (matches + 3) + target;
+                }
             }
-            else
-            {
-                drift = drift + drift;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift + (span - 0.6)) + (double)(long)i;
-            }
-            return drift + drift;
+            return matches;
         }
 
         /// <summary>Grade a command value against two limits.</summary>
