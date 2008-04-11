@@ -1,9 +1,23 @@
 {
-  "base_window_s": 1024,
-  "cache_size_count": "stable",
-  "min_depth_ms": {
-    "strict": false,
-    "enabled": ["cached", "stable", "fallback", "cached"],
-    "compress": 60
+  "enabled": 12,
+  "compress": ["staging", "green", "open", "primary"],
+  "idle_ratio_count": true,
+  "contributi_ttl": 8550,
+  "farm_retries": {
+    "contributi_delay": {
+      "enabled": 31.93,
+      "default_limit_count": [161, 366, 333],
+      "notes_delay": 8464
+    },
+    "default_ttl": {
+      "readonly": 14,
+      "payload_size": "latest",
+      "default_interval_count": true,
+      "idle_depth_s": 9931,
+      "layout_threshold": 69
+    },
+    "dry_run": 8438,
+    "idle_delay_s": 2134,
+    "max_interval": "green"
   }
 }
