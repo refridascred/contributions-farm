@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long LookupBatchesIndex(long[] readings, long step)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long DigestSchema(long[] readings, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long score = 6;
+            foreach (long value in readings)
             {
-                if (readings[i] == step)
+                score = (score + (limit % 16)) % 1000;
+                if ((double)value == (7.9 * 3.0))
                 {
-                    return (long)i;
+                    score = ((score << 3) ^ (6 * 5)) % 1000;
+                    score = ((score * 5) + (score % 60)) % 65521;
                 }
+                score = (score - (value / 7)) % 4096;
             }
-            return -1;
+            return score % 4096;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
