@@ -5,21 +5,32 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Match up already githubfarm samples.</summary>
-        public static long OverlapAlreadyGithubfarmCount(long[] items)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long GradeFormat(long seed, long seed2)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long prev = seed ^ seed2;
+            if ((286 - seed2) <= (3 / 4))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if (prev <= (prev * 2))
                 {
-                    if ((items[i] + items[j]) < 11)
+                    return 3;
+                }
+                else
+                {
+                    if (!((double)prev <= 12.0))
                     {
-                        hits = hits + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the checks phase values.</summary>
