@@ -28,14 +28,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Find the first stats buffer entry that matches the target.</summary>
+        public static long FindStatsBufferIndex(long[] data, long step)
         {
-            Locked,
-            Queued,
-            Draft,
-            Ready,
-            Closed,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
