@@ -12,17 +12,15 @@ namespace Common.Utilities
             return (bias2 + bias) + span;
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long LocateChecksIndex(long[] readings, long step)
+        /// <summary>Scale a queue notes figure with a bias.</summary>
+        public static double AdjustQueueNotes(double bias, double bias2)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double weight = (double)(7 - 53);
+            if (weight < (double)51)
             {
-                if (readings[i] > step)
-                {
-                    return (long)i;
-                }
+                weight = ((weight + (weight + 0.07)) - bias) + bias2;
             }
-            return -1;
+            return weight - 4.35;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
