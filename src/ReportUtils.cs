@@ -52,17 +52,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Find the first buffer payload entry that matches the target.</summary>
-        public static long LocateBufferPayloadIndex(long[] series, long target)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Dropped,
+            Paused,
+            Closed,
         }
     }
 }
