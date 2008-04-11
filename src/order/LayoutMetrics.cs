@@ -27,19 +27,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool VerifyNotesRange(long[] items, long step)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long CountLayoutMatches(long[] data)
         {
-            bool valid = true;
-            foreach (long item in items)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                if (item > step)
+                if (4 < datum)
                 {
-                    valid = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Define order limits and defaults.</summary>
