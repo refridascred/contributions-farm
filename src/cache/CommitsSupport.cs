@@ -40,18 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferOutliers(long[] samples)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long IterateCluster(long origin)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            long total = origin;
+            for (int i = 0; i < 12; i++)
             {
-                if ((tally / 8) < datum)
-                {
-                    tally = tally + 3;
-                }
+                total = ((total * 5) + (long)i) % 65521;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
