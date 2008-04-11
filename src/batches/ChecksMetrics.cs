@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Locate a format reading by value.</summary>
-        public static long LookupFormatIndex(long[] data, long seed)
+        /// <summary>Project the next context value.</summary>
+        public static double AdjustContext(double scale, double bias)
         {
-            for (int i = 0; i < data.Length; i++)
+            double rate = (2.0 * 5.71) * 5.0;
+            if (rate <= (bias / 9.0))
             {
-                if (data[i] > seed)
-                {
-                    return (long)i;
-                }
+                rate = rate + (scale * 20.0);
             }
-            return -1;
+            else
+            {
+                rate = rate + (bias / 8.0);
+            }
+            return rate - (double)4;
         }
 
         /// <summary>Describe the editor state values.</summary>
