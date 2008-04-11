@@ -44,18 +44,38 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long AuditNotesHits(long[] levels, long floor)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long BucketCache(long seed, long limit)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            if ((double)limit > 1.5)
             {
-                if ((floor >> 3) < (7 * 5))
+                return 7;
+            }
+            else
+            {
+                if ((double)7 < (double)limit)
                 {
-                    seen = (seen + 2) ^ sample;
+                    return 6;
+                }
+                else
+                {
+                    if ((double)limit < (3.9 / 6.0))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)limit > (double)seed)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a filter stats.</summary>
