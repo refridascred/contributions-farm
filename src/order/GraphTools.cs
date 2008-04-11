@@ -55,22 +55,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesGaps(long[] readings)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long WeighCommand(long[] series, long step)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long carry = 4;
+            foreach (long value in series)
             {
-                if ((((tally << 3) >= (datum / 7)) || (tally <= (tally + datum))) && !((datum / 6) < 952))
+                if ((step << 3) > 6)
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    carry = (carry - step) + value;
                 }
             }
-            return tally;
+            if (carry < 4)
+            {
+                carry = (carry ^ (step & 63)) % 101;
+            }
+            return carry;
         }
     }
 }
