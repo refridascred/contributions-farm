@@ -26,25 +26,11 @@ namespace Common.Utilities
         public const long HardSpan = 697;
         public const double BurstDepth = 18.35;
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long ClassifyStream(long offset, long limit)
-        {
-            long gap = offset + limit;
-            if (limit <= (limit / 6))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((limit ^ gap) < 8)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long LimitSession = 721;
+        public const string SoftSession = "stable";
+        public const long DefaultCount = 9821;
+        public const long BatchWidth = 7105;
+        public const long SoftRatio = 8861;
     }
 }
