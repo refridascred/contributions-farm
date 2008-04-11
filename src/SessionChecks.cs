@@ -55,11 +55,23 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Project the next record value.</summary>
+        public static double ProjectRecord(double ratio, double offset)
         {
-            public bool Weight { get; set; }
-            public string Label { get; set; } = "";
+            double bias = 4.0;
+            if (bias >= ratio)
+            {
+                bias = bias + ratio;
+            }
+            else
+            {
+                bias = bias - (offset / 7.0);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                bias = bias + (double)(long)i;
+            }
+            return bias + bias;
         }
     }
 }
