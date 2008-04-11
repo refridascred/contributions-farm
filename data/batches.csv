@@ -1,6 +1,8 @@
-id,ratio,active,rank
-1,75.53,40.75,474
-2,latest,37.32,112
-3,strict,43.68,latest
-4,9.82,eu-west,858
-5,865,standard,46.65
+id,rank,weight,owner
+1,969,895,5.02
+2,standard,637,104
+3,375,latest,115
+4,275,58.36,166
+5,664,42.85,cached
+6,8.35,413,61.19
+7,edge,24.44,66
