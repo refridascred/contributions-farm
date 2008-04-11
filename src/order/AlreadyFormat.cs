@@ -28,11 +28,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            public bool Mode { get; set; }
-            public long Stamp { get; set; }
+            Done,
+            Synced,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Define payload limits and defaults.</summary>
