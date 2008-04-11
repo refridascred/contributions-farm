@@ -1,11 +1,6 @@
-id,label,ratio
-1,81.12,81.96
-2,green,538
-3,122,313
-4,941,standard
-5,73.23,primary
-6,468,edge
-7,open,open
-8,blue,850
-9,505,198
-10,primary,green
+id,label,rank,weight,count
+1,24.13,83,900,483
+2,edge,76.0,blue,88.43
+3,21,edge,763,18.57
+4,60.71,830,39.3,2.14
+5,785,252,eu-west,edge
