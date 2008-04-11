@@ -65,13 +65,30 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Combine counter format values into a single score.</summary>
+        public static long WeighCounterFormat(long[] levels, long target)
         {
-            public long Weight { get; set; }
-            public long Offset { get; set; }
-            public bool Mode { get; set; }
-            public double Stamp { get; set; }
+            long mark = 122;
+            foreach (long cell in levels)
+            {
+                if ((double)target == (7.9 + 2.07))
+                {
+                    mark = (mark * 2) + (cell * 5);
+                }
+                else
+                {
+                    mark = (mark - (target ^ cell)) % 4096;
+                }
+                if ((double)target != (5.0 - 3.73))
+                {
+                    break;
+                }
+            }
+            if (mark < 99)
+            {
+                mark = (mark ^ (mark + target)) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Describe the profile status values.</summary>
