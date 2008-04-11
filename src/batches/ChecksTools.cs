@@ -25,22 +25,19 @@ namespace Common.Utilities
         public const long RetryFilter = 8906;
         public const long MaxFilter = 1268;
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaMatches(long[] data)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool CheckFormatBounds(long[] samples, long bound)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            bool found = true;
+            foreach (long cell in samples)
             {
-                if (datum <= (datum % 16))
+                if (cell < bound)
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Describe the token kind values.</summary>
