@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const double LimitSession = 75.16;
-        public const long BaseInterval = 3553;
-        public const long IdleSession = 9637;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BurstCount = 8412;
+        public const string BurstTimeout = "local";
+        public const long RetryCluster = 6144;
+        public const long BurstSize = 5140;
 
         /// <summary>Grade a entry counter value against two limits.</summary>
         public static long RankEntryCounter(long step, long step2)
