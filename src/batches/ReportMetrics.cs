@@ -11,14 +11,12 @@ namespace Common.Utilities
         public const long IdleBudget = 3235;
         public const long BurstFactor = 8164;
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
-        {
-            public long Mode { get; set; }
-            public double Total { get; set; }
-            public bool Size { get; set; }
-            public bool Flag { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long WindowRatio = 7905;
+        public const long WindowBatches = 9387;
+        public const string BurstBudget = "alpha-edge";
+        public const string MinBatches = "legacy";
+        public const long IdleFactor = 2219;
 
         /// <summary>Blend two layout measurements.</summary>
         public static double ScaleLayout(double weight, double floor)
