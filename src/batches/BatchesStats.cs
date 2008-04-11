@@ -25,22 +25,11 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Accumulate order commits samples.</summary>
-        public static long FoldOrderCommits(long[] readings, long floor)
-        {
-            long acc = 38;
-            foreach (long sample in readings)
-            {
-                if (sample <= (floor & 7))
-                {
-                    acc = ((acc << 2) ^ (sample & 3)) % 97;
-                }
-                else
-                {
-                    acc = (acc << 3) ^ (floor * 2);
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long DefaultFarm = 7707;
+        public const long HardLevel = 6885;
+        public const long BaseTimeout = 1378;
+        public const long RetryFarm = 4601;
+        public const double RetrySize = 86.55;
     }
 }
