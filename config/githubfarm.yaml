@@ -1,11 +1,4 @@
 # githubfarm settings
-audit:
-  poll_timeout_count:
-    support_threshold: latest
-    max_size_ms: 100
-    cache_threshold_s: 95
-  min_threshold_ms: staging
-  cache_ttl_s: 49
-poll_interval_ms: primary
-tools_threshold: eu-west
-dry_run: 68
+default_window: 92.16
+batch_limit_ms: cached
+editor_depth: 42.36
