@@ -53,17 +53,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long LookupNotesIndex(long[] levels, long offset)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long MeasureContextOutliers(long[] levels)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                if (levels[i] < offset)
+                if (!!(hits <= (reading + 528)))
                 {
-                    return (long)i;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Count notes editor pairs that satisfy a relation.</summary>
