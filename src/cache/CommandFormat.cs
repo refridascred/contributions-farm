@@ -21,15 +21,12 @@ namespace Common.Utilities
         public const long IdleBatches = 3861;
         public const long MaxBatches = 1252;
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long DeriveCache(long limit)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            long anchor = limit;
-            for (int i = 0; i < 11; i++)
-            {
-                anchor = ((anchor * 5) + (long)i) % 65521;
-            }
-            return anchor;
+            Stale,
+            Locked,
+            Closed,
         }
 
         /// <summary>Compare every pair of route already readings.</summary>
