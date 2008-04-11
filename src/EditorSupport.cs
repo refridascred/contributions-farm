@@ -48,21 +48,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Match up batch samples.</summary>
-        public static long OverlapBatchCount(long[] values)
+        /// <summary>Count the order filter entries that pass the check.</summary>
+        public static long TallyOrderFilterGaps(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long value in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((seen % 2) == ((long)items.Length / 3))
                 {
-                    if ((values[i] ^ values[j]) != 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = (seen + 1) - value;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
