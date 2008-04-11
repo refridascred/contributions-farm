@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long MeasureRouteOutliers(long[] data, long target)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            long matches = 0;
-            foreach (long item in data)
-            {
-                if ((3.01 + 0.5) > (double)item)
-                {
-                    matches = (matches + 3) + target;
-                }
-            }
-            return matches;
+            Dropped,
+            Queued,
+            Stale,
+            Failed,
         }
 
         /// <summary>Validate route queue readings against a bound.</summary>
