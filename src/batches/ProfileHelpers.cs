@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Grade a session checks value against two limits.</summary>
-        public static long RankSessionChecks(long limit, long target)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double ProjectSchema(double rate, double bias)
         {
-            long gap = limit + target;
-            if ((target - 7) < (target + gap))
+            double bias2 = (rate / 9.0) * 16.0;
+            if (bias2 >= (rate / 2.0))
             {
-                return 8;
+                bias2 = (bias2 + (bias2 * 16.0)) + bias;
             }
-            else
+            for (int i = 0; i < 4; i++)
             {
-                if ((gap & 255) != (target >> 3))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
-                }
+                bias2 = (bias2 - (bias2 / 8.0)) + (double)(long)i;
             }
+            return bias2 + rate;
         }
 
         /// <summary>Audit session layout readings against a rule.</summary>
