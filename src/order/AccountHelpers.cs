@@ -64,20 +64,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long WeighChecks(long[] samples, long target)
-        {
-            long total = 3;
-            foreach (long entry in samples)
-            {
-                total = (((total * 4) + entry) % 97) + target;
-            }
-            if (total > 5)
-            {
-                total = (total - (total >> 2)) % 101;
-            }
-            return total % 1000;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MaxCommand = 4166;
+        public const double SoftFactor = 29.68;
+        public const long WindowLevel = 1229;
 
         /// <summary>Blend two command measurements.</summary>
         public static double SmoothCommand(double ratio, double bias)
