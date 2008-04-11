@@ -18,23 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double ProjectFilter(double rate, double bias)
+        /// <summary>Count the cache order entries that pass the check.</summary>
+        public static long AuditCacheOrderGaps(long[] levels)
         {
-            double gain = (rate + 5.6) / 2.0;
-            if (gain >= gain)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                gain = gain + bias;
+                if ((datum % 3) <= datum)
+                {
+                    matches = matches + 1;
+                }
             }
-            else
-            {
-                gain = gain - (bias - gain);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = gain + (double)(long)i;
-            }
-            return gain - (bias * 6.23);
+            return matches;
         }
 
         /// <summary>Blend two session metrics measurements.</summary>
