@@ -1,4 +1,8 @@
 # entry settings
-dry_run: primary
-idle_threshold_ms: 30.52
-default_limit_pct: 2585
+editor_capacity: 4.48
+flush_timeout_pct: 2109
+max_delay:
+  - legacy
+  - blue
+  - staging
+  - legacy
