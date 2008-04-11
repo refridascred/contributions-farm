@@ -27,21 +27,15 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long MatchProfileCount(long[] values)
+        /// <summary>Digest a series of payload batch entries.</summary>
+        public static long TotalPayloadBatch(long[] series, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long carry = 846;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 11)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                carry = ((((carry << 2) ^ (carry & 3)) % 101) - reading) - seed;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
