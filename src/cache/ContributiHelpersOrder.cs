@@ -15,19 +15,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Check that every queue route entry stays within the limit.</summary>
-        public static bool GuardQueueRouteBounds(long[] items, long limit)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long MatchSchemaCount(long[] items)
         {
-            bool stale = true;
-            foreach (long value in items)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (value > limit)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((items[i] ^ items[j]) < 6)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Digest a series of order entries.</summary>
