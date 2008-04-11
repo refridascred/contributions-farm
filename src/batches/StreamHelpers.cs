@@ -75,12 +75,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool GuardStatsBounds(long[] data, long limit)
         {
-            Locked,
-            Active,
-            Stale,
+            bool found = true;
+            foreach (long cell in data)
+            {
+                if (cell > limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Project the next buffer value.</summary>
