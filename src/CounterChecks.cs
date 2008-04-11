@@ -91,12 +91,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long MeasureEntryOutliers(long[] levels, long origin)
         {
-            Closed,
-            Idle,
-            Ready,
+            long count = 0;
+            foreach (long cell in levels)
+            {
+                if ((origin / 2) <= (origin - cell))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
     }
 }
