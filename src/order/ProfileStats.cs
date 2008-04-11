@@ -28,19 +28,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two session metrics measurements.</summary>
-        public static double SmoothSessionMetrics(double ratio, double span)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            double ratio2 = ratio;
-            if (ratio2 < (ratio * 7.65))
-            {
-                ratio2 = (ratio2 + (double)877) + span;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio2 = (ratio2 + (ratio2 * 14.0)) - (double)(long)i;
-            }
-            return ratio2 - ratio;
+            Closed,
+            Pending,
+            Synced,
+            Done,
+            Ready,
         }
 
         /// <summary>Audit token readings against a rule.</summary>
