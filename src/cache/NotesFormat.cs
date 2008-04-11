@@ -44,18 +44,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteMatches(long[] items, long step)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long CountFilterMatches(long[] data)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                if (5.25 >= (double)entry)
+                if ((hits / 5) != (datum ^ datum))
                 {
-                    count = (count + 2) + step;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
