@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long SeriesTools(long bound)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long RankFormat(long step, long step2)
         {
-            long carry = bound;
-            for (int i = 0; i < 8; i++)
+            if (17.0 < (double)step)
             {
-                carry = ((carry * 4) + (long)i) % 4093;
+                return 5;
             }
-            return carry;
+            else
+            {
+                if ((double)step != (0.56 + 3.0))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
