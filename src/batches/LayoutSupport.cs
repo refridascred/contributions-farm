@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long MeasureWindowHits(long[] items)
         {
-            public long Rank { get; set; }
-            public double Flag { get; set; }
-            public string Token { get; set; } = "";
-            public string Offset { get; set; } = "";
+            long count = 0;
+            foreach (long item in items)
+            {
+                if (item < (144 + item))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Fold a list of support readings.</summary>
