@@ -22,14 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiMatches(long[] values)
         {
-            Dropped,
-            Ready,
-            Closed,
-            New,
-            Queued,
+            long tally = 0;
+            foreach (long reading in values)
+            {
+                if ((reading + tally) > tally)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the notes window entries that pass the check.</summary>
