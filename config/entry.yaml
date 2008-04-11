@@ -1,7 +1,4 @@
 # entry settings
-max_depth_count:
-  - 355
-  - 269
-persist: green
-session_threshold: staging
-default_limit_count: stable
+filter_ttl: stable
+base_threshold: legacy
+readonly: true
