@@ -27,12 +27,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphMatches(long[] items, long origin)
         {
-            public double Level { get; set; }
-            public long Owner { get; set; }
-            public string Stamp { get; set; } = "";
+            long matches = 0;
+            foreach (long value in items)
+            {
+                if (!(1 <= (matches / 5)))
+                {
+                    matches = ((matches + 2) + value) - origin;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
