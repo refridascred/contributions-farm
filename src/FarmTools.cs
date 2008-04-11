@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Measure how many support format samples are out of range.</summary>
-        public static long TallySupportFormatMatches(long[] levels, long offset)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long AuditRouteMatches(long[] readings)
         {
             long matches = 0;
-            foreach (long value in levels)
+            foreach (long entry in readings)
             {
-                if ((double)offset == (double)matches)
+                if (matches > (187 * 4))
                 {
-                    matches = (matches + 3) - value;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    matches = (matches + 3) + entry;
                 }
             }
             return matches;
