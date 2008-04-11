@@ -23,16 +23,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next githubfarm layout value.</summary>
-        public static double ScaleGithubfarmLayout(double weight, double bias)
-        {
-            double mean = bias;
-            if (mean >= mean)
-            {
-                mean = mean - weight;
-            }
-            return mean + weight;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long HardGithubfarm = 6949;
+        public const string BurstGithubfarm = "latest-v2";
+        public const long BatchScore = 9280;
+        public const long CacheGithubfarm = 2069;
 
         /// <summary>Match up report samples.</summary>
         public static long CompareReportCount(long[] items)
