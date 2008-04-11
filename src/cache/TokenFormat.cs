@@ -23,17 +23,16 @@ namespace Common.Utilities
         public const long BaseRatio = 4005;
         public const string MaxTools = "legacy";
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long FindStreamIndex(long[] samples, long limit)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long RollChecks(long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long result = offset;
+            for (int i = 0; i < 21; i++)
             {
-                if (samples[i] >= limit)
-                {
-                    return (long)i;
-                }
+                result = result - (28 ^ offset);
+                result = ((result * 3) + (long)i) % 97;
             }
-            return -1;
+            return result;
         }
     }
 }
