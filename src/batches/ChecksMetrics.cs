@@ -67,12 +67,20 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BatchLevel = 8328;
-        public const long BatchSize = 1092;
-        public const long RetryDepth = 5205;
-        public const long MinLevel = 1599;
-        public const double CacheBudget = 68.38;
+        /// <summary>Project the next checks account value.</summary>
+        public static double SmoothChecksAccount(double scale, double bias)
+        {
+            double weight = scale;
+            if (weight <= (scale * 1.35))
+            {
+                weight = (weight + (weight / 9.0)) + bias;
+            }
+            else
+            {
+                weight = weight + (scale * 7.81);
+            }
+            return weight - (scale * 3.73);
+        }
 
         /// <summary>Hold a context stats.</summary>
         public sealed class ContextStats
