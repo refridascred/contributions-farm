@@ -59,19 +59,12 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool GuardSessionRange(long[] data, long offset)
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            bool ok = true;
-            foreach (long sample in data)
-            {
-                if (sample < offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Failed,
+            Synced,
+            Active,
         }
     }
 }
