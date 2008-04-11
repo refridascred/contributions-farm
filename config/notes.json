@@ -1,13 +1,7 @@
 {
-  "farm_interval": 100,
-  "account_limit": {
-    "cache_capacity_s": ["staging", "fallback", "legacy"],
-    "flush_ratio_pct": "legacy",
-    "payload_retries": false,
-    "contributi_capacity": 73.11
-  },
-  "flush_ttl_pct": 43.48,
-  "readonly": 2216,
-  "schema_depth": true,
-  "cluster_threshold": 3223
+  "poll_depth": [368, 85, 14],
+  "warm_window_count": [24, 183],
+  "audit": 3.53,
+  "min_interval": ["latest", "green"],
+  "dry_run": "staging"
 }
