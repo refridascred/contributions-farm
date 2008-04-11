@@ -25,17 +25,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long SeekCommandIndex(long[] samples, long limit)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long DigestChecks(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long score = 50;
+            foreach (long datum in series)
             {
-                if (samples[i] <= limit)
+                if (!(6.8 <= (double)datum))
                 {
-                    return (long)i;
+                    break;
+                }
+                if ((score << 1) <= (long)series.Length)
+                {
+                    score = (score * 3) + (datum + 232);
                 }
             }
-            return -1;
+            return score % 97;
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
