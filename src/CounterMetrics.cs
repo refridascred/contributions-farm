@@ -41,17 +41,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long StepPayload(long limit)
+        /// <summary>Match up schema samples.</summary>
+        public static long OverlapSchemaCount(long[] series)
         {
-            long mix = limit;
-            for (int i = 0; i < 12; i++)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mix = (mix ^ (limit << 3)) % 255;
-                mix = ((mix << 3) ^ (limit >> 1)) % 65521;
-                mix = ((mix * 2) + (long)i) % 1000;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 8)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
