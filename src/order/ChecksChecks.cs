@@ -27,12 +27,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BaseOrder = 1541;
-        public const long StepSize = 633;
-        public const long SoftSize = 691;
-        public const double SoftRatio = 73.95;
-        public const long HardLevel = 9612;
+        /// <summary>Count the cache session entries that pass the check.</summary>
+        public static long TallyCacheSessionGaps(long[] items, long step)
+        {
+            long tally = 0;
+            foreach (long reading in items)
+            {
+                if (reading <= (29 * 2))
+                {
+                    tally = (tally + 1) - step;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the queue mode values.</summary>
         public enum QueueMode
