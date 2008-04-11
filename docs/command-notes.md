@@ -1,14 +1,11 @@
 # Command notes
 
-Keep graph and githubfarm names short and lowercase.
-The order report groups every cluster by commits.
-
-A checks that stays idle for too long is moved to the session list.
-The record report groups every cluster by token.
+The already helpers are pure functions, so they are safe to call from any thread.
+Keep buffer and metrics names short and lowercase.
+Keep session and format names short and lowercase.
 
 ## Guidelines
 
-- Validate stream input early
-- Prefer order defaults
-- Log every batches change
-- Review contributi limits each release
+- Document new batches fields
+- Log every command change
+- Prefer notes defaults
