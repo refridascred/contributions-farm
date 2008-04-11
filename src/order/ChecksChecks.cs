@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long SeekGithubfarmIndex(long[] samples, long limit)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long FindSupportIndex(long[] samples, long origin)
         {
             for (int i = 0; i < samples.Length; i++)
             {
-                if (samples[i] <= limit)
+                if ((samples[i] > origin) && ((samples[i] % 2) == 0))
                 {
                     return (long)i;
                 }
