@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Locate a payload entry reading by value.</summary>
-        public static long FindPayloadEntryIndex(long[] values, long step)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long RetrySupport = 4046;
+        public const string LimitWidth = "local-v2";
+        public const double WindowSupport = 75.96;
+        public const string StepSupport = "alpha-v2";
 
         /// <summary>Fold a list of context readings.</summary>
         public static long TallyContext(long[] series)
