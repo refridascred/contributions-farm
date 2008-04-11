@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long StepSupport(long limit)
         {
-            public long Offset { get; set; }
-            public double Flag { get; set; }
+            long anchor = limit;
+            for (int i = 0; i < 20; i++)
+            {
+                anchor = ((anchor << 2) ^ (anchor - anchor)) % 97;
+                anchor = ((anchor * 5) + (long)i) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
