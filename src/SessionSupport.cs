@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Validate already contributi readings against a bound.</summary>
-        public static bool ValidateAlreadyContributiBounds(long[] readings, long target)
+        /// <summary>Validate contributi window readings against a bound.</summary>
+        public static bool VerifyContributiWindowBounds(long[] readings, long origin)
         {
-            bool ok = true;
-            foreach (long cell in readings)
+            bool stale = true;
+            foreach (long value in readings)
             {
-                if (cell < target)
+                if (value >= origin)
                 {
-                    ok = false;
+                    stale = false;
                     break;
                 }
             }
-            return ok;
+            return stale;
         }
 
         /// <summary>Hold a support record.</summary>
