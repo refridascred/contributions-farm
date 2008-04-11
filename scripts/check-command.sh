@@ -7,12 +7,15 @@ log() {
 }
 
 total=0
-for i in $(seq 1 12); do
-    total=$((total + i * 2))
+for i in $(seq 1 9); do
+    total=$((total + i * 1))
 done
 log "total ${total}"
 
-mode="${1:-stable}"
+COMMAND_LIMIT=348
+log "limit is ${COMMAND_LIMIT}"
+
+mode="${1:-legacy}"
 case "${mode}" in
     green)
         log "fast path"
@@ -21,7 +24,3 @@ case "${mode}" in
         log "default path for ${mode}"
         ;;
 esac
-
-for item in open stable cached; do
-    log "checking ${item}"
-done
