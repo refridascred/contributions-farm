@@ -27,12 +27,32 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long ClassifyCache(long target, long seed)
         {
-            public long Region { get; set; }
-            public double Size { get; set; }
-            public string Rank { get; set; } = "";
+            long diff = target ^ seed;
+            if ((diff > (target + diff)) && ((seed ^ seed) >= (seed + seed)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((seed - diff) <= (seed - seed))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (seed <= (diff / 8))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
