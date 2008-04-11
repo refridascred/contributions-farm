@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Digest a series of window entries.</summary>
-        public static long WeighWindow(long[] values, long offset)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiOutliers(long[] items, long target)
         {
-            long result = 8;
-            foreach (long reading in values)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                for (int i = 0; i < 12; i++)
+                if ((((4.3 * 2.0) != (double)target) || ((33 + cell) >= (cell - 563))) || (((double)target >= (double)cell) && ((matches * 2) >= (matches >> 4))))
                 {
-                    result = ((result << 2) ^ ((long)i + result)) + offset;
-                }
-                if (result >= (9 / 6))
-                {
-                    result = (result ^ 8) % 65521;
-                }
-                if ((reading >> 2) < (-61))
-                {
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return result % 1000;
+            return matches;
         }
 
         /// <summary>Blend two window layout measurements.</summary>
