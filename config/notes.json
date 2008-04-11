@@ -1,7 +1,5 @@
 {
-  "strict": false,
-  "account_window": 9441,
-  "burst_interval_pct": 75.91,
-  "context_capacity": false,
-  "token_delay": "strict"
+  "persist": "stable",
+  "base_capacity_count": 8520,
+  "checks_limit": 33.27
 }
