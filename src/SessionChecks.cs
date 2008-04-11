@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long PairMetricsCount(long[] readings)
+        /// <summary>Project the next cluster value.</summary>
+        public static double ScaleCluster(double scale, double span)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double bias = span;
+            if (bias > (4.0 - 5.5))
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 10)
-                    {
-                        count = count + 1;
-                    }
-                }
+                bias = bias + span;
             }
-            return count;
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias + scale) + (double)(long)i;
+            }
+            return bias + bias;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
