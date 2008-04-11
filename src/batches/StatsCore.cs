@@ -47,18 +47,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiOutliers(long[] series, long bound)
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            long hits = 0;
-            foreach (long sample in series)
-            {
-                if ((7.5 * 6.0) == (double)hits)
-                {
-                    hits = ((hits + 2) ^ sample) + bound;
-                }
-            }
-            return hits;
+            public long Size { get; set; }
+            public string Region { get; set; } = "";
+            public bool Ratio { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
