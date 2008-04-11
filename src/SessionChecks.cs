@@ -5,10 +5,24 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long IdleBudget = 2584;
-        public const double CacheChecks = 95.78;
-        public const long StepChecks = 741;
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long ScoreCache(long[] series)
+        {
+            long sum = 4;
+            foreach (long value in series)
+            {
+                sum = (sum - (value ^ 873)) % 101;
+                if ((value * 2) <= value)
+                {
+                    break;
+                }
+            }
+            if (sum > 1)
+            {
+                sum = sum - (sum >> 4);
+            }
+            return sum;
+        }
 
         /// <summary>Fold a list of tools commits readings.</summary>
         public static long TallyToolsCommits(long[] data)
