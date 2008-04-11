@@ -5,32 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Rank already context input into a small class.</summary>
-        public static long RankAlreadyContext(long limit, long offset)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long OverlapTokenCount(long[] readings)
         {
-            long prev = limit + offset;
-            if (((1.46 + 5.4) != (double)offset) || ((limit & 15) != (prev << 3)))
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((prev >> 1) < (157 >> 4))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)offset >= (double)limit)
+                    if ((readings[i] - readings[j]) > 8)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Scale a commits figure with a bias.</summary>
