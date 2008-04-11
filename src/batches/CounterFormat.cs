@@ -33,22 +33,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsGaps(long[] levels, long step)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if ((reading - reading) < 2)
-                {
-                    seen = (seen + 3) + step;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Retry,
+            Stale,
+            Paused,
         }
     }
 }
