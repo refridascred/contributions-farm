@@ -27,25 +27,15 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Classify a buffer token pair into a bucket.</summary>
-        public static long ClassifyBufferToken(long target, long floor)
+        /// <summary>Derive the next format commits value from a seed.</summary>
+        public static long RollFormatCommits(long target)
         {
-            long next = target ^ floor;
-            if (((next & 1) == (99 + next)) && ((next - target) <= (floor + floor)))
+            long mark = target;
+            for (int i = 0; i < 23; i++)
             {
-                return 8;
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            else
-            {
-                if ((double)next != (9.39 / 6.0))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return mark;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
