@@ -77,22 +77,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long CountPayloadGaps(long[] values, long seed)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            long tally = 0;
-            foreach (long reading in values)
-            {
-                if ((reading * 3) <= (reading - reading))
-                {
-                    tally = (tally + 3) + seed;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Draft,
+            Synced,
+            Locked,
         }
 
         /// <summary>Describe the queue level values.</summary>
