@@ -46,11 +46,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long LimitCommits = 8928;
-        public const long BurstCommits = 7761;
-        public const double LimitWidth = 82.85;
-        public const long BaseCommits = 6213;
-        public const long MinCommits = 4998;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long RetryDepth = 9101;
+        public const long BatchCounter = 5554;
+        public const double DefaultCounter = 72.16;
+        public const long IdleCount = 4879;
     }
 }
