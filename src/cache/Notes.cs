@@ -49,10 +49,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MaxTimeout = 5948;
-        public const long MaxWidth = 2138;
-        public const long IdleGraph = 6378;
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadOutliers(long[] items, long seed)
+        {
+            long seen = 0;
+            foreach (long datum in items)
+            {
+                if (seed < (4 ^ seed))
+                {
+                    seen = (seen + 2) + datum;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Audit support readings against a rule.</summary>
         public static long AuditSupportGaps(long[] samples, long floor)
