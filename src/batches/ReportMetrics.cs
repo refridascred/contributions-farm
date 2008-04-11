@@ -33,20 +33,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long DeriveRoute(long offset)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long OverlapProfileCount(long[] data)
         {
-            long mark = offset;
-            for (int i = 0; i < 17; i++)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((offset & 63) == ((long)i ^ mark))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mark = (mark - mark) % 1000;
-                    mark = (mark ^ mark) % 4096;
+                    if ((data[i] ^ data[j]) < 12)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Define account limits and defaults.</summary>
