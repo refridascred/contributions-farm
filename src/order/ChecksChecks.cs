@@ -18,13 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Check that every checks tools entry stays within the limit.</summary>
+        public static bool GuardChecksToolsBounds(long[] series, long limit)
         {
-            Done,
-            Active,
-            Queued,
-            Dropped,
+            bool stale = true;
+            foreach (long cell in series)
+            {
+                if (cell <= limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
