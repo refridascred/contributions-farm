@@ -13,21 +13,12 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Iterate the filter support series from a seed.</summary>
-        public static long DeriveFilterSupport(long target)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            long carry = target;
-            for (int i = 0; i < 17; i++)
-            {
-                if ((double)target >= 10.0)
-                {
-                    carry = ((carry * 2) + carry) % 1000;
-                }
-                carry = carry - target;
-                carry = (carry - 0) % 65521;
-                carry = ((carry * 5) + (long)i) % 101;
-            }
-            return carry;
+            Ready,
+            Stale,
+            Done,
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
