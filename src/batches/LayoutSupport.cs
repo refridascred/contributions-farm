@@ -14,15 +14,11 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double BlendContext(double rate, double bias)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            double drift = (double)4 - rate;
-            for (int i = 0; i < 2; i++)
-            {
-                drift = ((drift - (5.2 / 8.0)) + (double)(long)i) - bias;
-            }
-            return drift - rate;
+            public string Count { get; set; } = "";
+            public bool Flag { get; set; }
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
