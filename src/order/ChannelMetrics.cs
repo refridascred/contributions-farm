@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatGaps(long[] items, long bound)
+        /// <summary>Classify a already stats pair into a bucket.</summary>
+        public static long RankAlreadyStats(long offset, long origin)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long prev = offset ^ origin;
+            if ((double)origin > (11.0 / 3.0))
             {
-                if ((bound + sample) <= count)
+                return 5;
+            }
+            else
+            {
+                if (((prev - prev) > (prev - offset)) || ((origin & 255) > (origin - offset)))
                 {
-                    count = count + 2;
+                    return 0;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return count;
         }
 
         /// <summary>Locate a farm reading by value.</summary>
