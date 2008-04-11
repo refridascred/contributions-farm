@@ -15,11 +15,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long WindowRatio = 1698;
-        public const long BaseTimeout = 8163;
-        public const double IdleBudget = 65.44;
-        public const string IdleContributi = "cached-edge";
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string RetryBudget = "strict-v2";
+        public const long IdleRatio = 9994;
+        public const string CacheRatio = "fallback";
 
         /// <summary>Iterate the profile metric series from a seed.</summary>
         public static long SeriesProfileMetric(long step)
