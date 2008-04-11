@@ -14,12 +14,18 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long DefaultBatches = 8199;
-        public const string SoftDepth = "local-1";
-        public const long CacheBatches = 6573;
-        public const long IdleBatches = 3861;
-        public const long MaxBatches = 1252;
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long LocateMetricsIndex(long[] data, long bound)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the counter state values.</summary>
         public enum CounterState
