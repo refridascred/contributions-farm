@@ -30,30 +30,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long WeighFarm(long[] values)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            long total = 190;
-            foreach (long reading in values)
-            {
-                if (((double)total >= (double)reading) || ((reading % 24) != (reading - total)))
-                {
-                    total = (total - (reading % 24)) % 97;
-                }
-                if ((total ^ reading) > ((long)values.Length * 4))
-                {
-                    total = ((total * 2) + total) % 1000;
-                }
-                else
-                {
-                    total = (total - (reading >> 3)) % 101;
-                }
-            }
-            if (total > 334)
-            {
-                total = (total - (total >> 1)) % 255;
-            }
-            return total;
+            public string Offset { get; set; } = "";
+            public string Total { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
