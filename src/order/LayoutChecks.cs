@@ -51,17 +51,25 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long SeekCacheIndex(long[] data, long origin)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long BucketMetric(long offset, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long edge = offset - step;
+            if (((0.5 + 5.5) != (double)offset) || ((edge / 9) != (0 * 4)))
             {
-                if (data[i] > origin)
+                return 7;
+            }
+            else
+            {
+                if (((step ^ edge) >= (offset / 5)) || ((965 >> 1) >= (offset % 12)))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return -1;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
