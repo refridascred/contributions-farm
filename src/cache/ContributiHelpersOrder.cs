@@ -33,20 +33,12 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long StepCluster(long offset)
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            long state = offset;
-            for (int i = 0; i < 12; i++)
-            {
-                state = (state * 5) + (state + 482);
-                if (!((state + state) > offset))
-                {
-                    state = state ^ (state << 1);
-                }
-                state = ((state * 3) + (long)i) % 97;
-            }
-            return state;
+            public long Ratio { get; set; }
+            public long Total { get; set; }
+            public double Level { get; set; }
         }
     }
 }
