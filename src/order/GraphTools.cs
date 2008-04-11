@@ -5,16 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long WeighCounter(long[] levels)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            long sum = -87;
-            foreach (long datum in levels)
-            {
-                sum = (sum << 2) ^ (sum + datum);
-                sum = ((sum << 3) ^ (datum << 2)) % 65521;
-            }
-            return sum % 65521;
+            Active,
+            Stale,
+            Idle,
+            Queued,
+            Done,
         }
 
         /// <summary>Hold a payload info.</summary>
