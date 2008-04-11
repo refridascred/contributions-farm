@@ -64,21 +64,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long CompareAccountCount(long[] series)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long WeighChecks(long[] samples, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long total = 3;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 7)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                total = (((total * 4) + entry) % 97) + target;
             }
-            return tally;
+            if (total > 5)
+            {
+                total = (total - (total >> 2)) % 101;
+            }
+            return total % 1000;
         }
 
         /// <summary>Blend two command measurements.</summary>
