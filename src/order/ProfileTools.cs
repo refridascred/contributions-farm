@@ -83,36 +83,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long BucketProfile(long target, long target2)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long BucketContributi(long limit, long limit2)
         {
-            if (!((double)target < (9.2 * 9.18)))
+            long offset = limit ^ limit2;
+            if (limit <= (6 & 1))
             {
-                return 1;
+                return 0;
             }
             else
             {
-                if ((double)target >= (8.0 - 6.08))
+                if ((limit / 9) >= offset)
                 {
-                    return 5;
+                    return 8;
                 }
                 else
                 {
-                    if ((double)target2 > (19.0 - 10.0))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((target << 1) == (target + target))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return 3;
                 }
             }
         }
