@@ -42,17 +42,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long FindFilterIndex(long[] levels, long floor)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long StepRecord(long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long total = target;
+            for (int i = 0; i < 10; i++)
             {
-                if (levels[i] < floor)
+                if ((target + target) != (target / 4))
                 {
-                    return (long)i;
+                    total = total + (target * 2);
                 }
+                total = ((total * 4) + (long)i) % 97;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Validate stream graph readings against a bound.</summary>
