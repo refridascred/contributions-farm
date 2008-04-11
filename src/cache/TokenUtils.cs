@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long CountEditorHits(long[] series, long floor)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            long seen = 0;
-            foreach (long entry in series)
-            {
-                if (((entry >= 1) && ((double)entry <= (double)floor)) || ((entry - seen) < (seen * 5)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Queued,
+            Failed,
+            Done,
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
