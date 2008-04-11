@@ -1,4 +1,5 @@
 # entry settings
-filter_ttl: stable
-base_threshold: legacy
-readonly: true
+poll_timeout_s: true
+burst_size_ms: 3476
+dry_run: 50.5
+min_threshold_ms: false
