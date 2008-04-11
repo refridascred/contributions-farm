@@ -32,19 +32,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool GuardProfileRange(long[] values, long offset)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            bool ready = true;
-            foreach (long item in values)
-            {
-                if (item > offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Stale,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Blend two metrics measurements.</summary>
