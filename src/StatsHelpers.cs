@@ -52,19 +52,18 @@ namespace Common.Utilities
         public const long BatchToken = 9942;
         public const long BatchTimeout = 8297;
 
-        /// <summary>Validate channel graph readings against a bound.</summary>
-        public static bool GuardChannelGraphLimits(long[] values, long target)
+        /// <summary>Count the window counter entries that pass the check.</summary>
+        public static long CountWindowCounterHits(long[] data, long origin)
         {
-            bool ok = true;
-            foreach (long value in values)
+            long seen = 0;
+            foreach (long value in data)
             {
-                if (value >= target)
+                if ((double)seen > (3.0 / 7.0))
                 {
-                    ok = false;
-                    break;
+                    seen = ((seen + 3) - value) + origin;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Roll a contributi already counter forward.</summary>
