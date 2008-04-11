@@ -27,18 +27,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the cache session entries that pass the check.</summary>
-        public static long TallyCacheSessionGaps(long[] items, long step)
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if (reading <= (29 * 2))
-                {
-                    tally = (tally + 1) - step;
-                }
-            }
-            return tally;
+            public long Mode { get; set; }
+            public long Ratio { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Describe the queue mode values.</summary>
