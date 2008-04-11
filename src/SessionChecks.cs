@@ -40,24 +40,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long BucketCounter(long offset, long offset2)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool GuardStreamRange(long[] levels, long bound)
         {
-            if ((2.9 + 1.09) < (double)offset2)
+            bool flag = true;
+            foreach (long item in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if ((offset > (offset + offset)) && ((offset << 2) <= (offset2 + offset2)))
+                if (item != bound)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Hold a report record.</summary>
