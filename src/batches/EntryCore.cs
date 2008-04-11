@@ -55,27 +55,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long DigestSchema(long[] series, long floor)
-        {
-            long carry = 295;
-            foreach (long item in series)
-            {
-                if ((239 - item) > (54 >> 5))
-                {
-                    carry = (carry + floor) % 1000;
-                }
-                if (!((long)series.Length > item))
-                {
-                    break;
-                }
-            }
-            if (carry < 452)
-            {
-                carry = carry - (carry + (-188));
-            }
-            return carry % 97;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double DefaultLayout = 63.59;
+        public const long WindowLayout = 4111;
+        public const long SoftLayout = 3564;
 
         /// <summary>Derive the next record value from a seed.</summary>
         public static long RollRecord(long seed)
