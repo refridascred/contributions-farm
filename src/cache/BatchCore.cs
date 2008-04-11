@@ -22,15 +22,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double ProjectFilter(double gain, double floor)
+        /// <summary>Roll a profile command counter forward.</summary>
+        public static long SeriesProfileCommand(long target)
         {
-            double weight = (double)(4 - 573);
-            if (weight <= gain)
+            long score = target;
+            for (int i = 0; i < 5; i++)
             {
-                weight = weight + floor;
+                score = (score - (score + target)) % 65521;
+                score = ((score * 3) + (long)i) % 97;
             }
-            return weight + (gain * 6.1);
+            return score;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
