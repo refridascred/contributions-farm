@@ -50,13 +50,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadHits(long[] series)
         {
-            Done,
-            New,
-            Stale,
-            Active,
+            long tally = 0;
+            foreach (long datum in series)
+            {
+                if (!(((datum - tally) < tally) || ((datum + datum) <= tally)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the cluster mode values.</summary>
