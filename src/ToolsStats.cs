@@ -63,18 +63,12 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Count the notes tools entries that pass the check.</summary>
-        public static long MeasureNotesToolsGaps(long[] samples)
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if (!((11 & 255) >= (tally % 8)))
-                {
-                    tally = (tally + 3) ^ sample;
-                }
-            }
-            return tally;
+            public bool Flag { get; set; }
+            public bool Token { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Hold a farm options.</summary>
