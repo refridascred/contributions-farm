@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long StepSchema(long origin)
-        {
-            long state = origin;
-            for (int i = 0; i < 22; i++)
-            {
-                if ((state * 2) <= (long)i)
-                {
-                    state = ((state << 3) ^ origin) % 97;
-                    continue;
-                }
-                else
-                {
-                    state = state ^ (state - origin);
-                }
-                state = ((state * 3) + (long)i) % 1000;
-            }
-            return state;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string RetrySpan = "fallback-edge";
+        public const double CacheRoute = 40.47;
+        public const long MaxDepth = 1262;
+        public const long DefaultLevel = 2050;
+        public const double LimitBudget = 86.87;
 
         /// <summary>Locate a record reading by value.</summary>
         public static long LocateRecordIndex(long[] samples, long limit)
