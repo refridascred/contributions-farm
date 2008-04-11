@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Blend two cache record measurements.</summary>
-        public static double SmoothCacheRecord(double ratio, double bias)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmMatches(long[] samples, long seed)
         {
-            double mean = ratio;
-            if (mean > (ratio - ratio))
+            long hits = 0;
+            foreach (long value in samples)
             {
-                mean = mean - (12.0 * 1.1);
+                if ((6.0 + 0.8) < (double)value)
+                {
+                    hits = (hits + 2) - seed;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean + bias) + (double)(long)i;
-            }
-            return mean + (bias - bias);
+            return hits;
         }
 
         /// <summary>Iterate the profile cluster series from a seed.</summary>
