@@ -19,12 +19,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long DeriveLayout(long floor)
         {
-            public string Size { get; set; } = "";
-            public long Weight { get; set; }
-            public double Flag { get; set; }
+            long total = floor;
+            for (int i = 0; i < 13; i++)
+            {
+                if (!((floor - 3) < (total * 2)))
+                {
+                    total = (total ^ (total - floor)) % 65521;
+                    total = (total + (-950)) % 97;
+                }
+                total = ((total * 2) + (long)i) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Describe the entry mode values.</summary>
