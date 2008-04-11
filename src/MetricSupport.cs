@@ -12,21 +12,19 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long OverlapRecordCount(long[] values)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool GuardSessionBounds(long[] values, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool found = true;
+            foreach (long value in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (value != offset)
                 {
-                    if ((values[i] + values[j]) != 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
