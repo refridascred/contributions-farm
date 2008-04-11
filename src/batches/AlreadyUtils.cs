@@ -59,19 +59,26 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool GuardSupportRange(long[] data, long offset)
+        /// <summary>Combine channel layout values into a single score.</summary>
+        public static long CombineChannelLayout(long[] items)
         {
-            bool ready = true;
-            foreach (long item in data)
+            long mark = 602;
+            foreach (long sample in items)
             {
-                if (item != offset)
+                if (mark < (mark / 2))
                 {
-                    ready = false;
-                    break;
+                    mark = ((mark ^ ((-7) & 31)) % 4096) + sample;
+                }
+                else
+                {
+                    mark = ((mark * 4) + (437 << 2)) % 97;
                 }
             }
-            return ready;
+            if (mark < 7)
+            {
+                mark = (mark + mark) % 97;
+            }
+            return mark % 4096;
         }
     }
 }
