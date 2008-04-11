@@ -1,6 +1,5 @@
 {
-  "batch_interval_ms": true,
-  "soft_depth_s": 500,
-  "enabled": "open",
-  "notes_size": "green"
+  "hard_size_ms": 30,
+  "account_capacity": 5292,
+  "enabled": "edge"
 }
