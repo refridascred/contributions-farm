@@ -22,19 +22,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every profile stream entry stays within the limit.</summary>
-        public static bool GuardProfileStreamLimits(long[] items, long seed)
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long MatchFarmCount(long[] samples)
         {
-            bool ready = true;
-            foreach (long value in items)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (value > seed)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((samples[i] ^ samples[j]) > 15)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Iterate the report already series from a seed.</summary>
