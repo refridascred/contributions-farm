@@ -1,6 +1,18 @@
 {
-  "context_capacity": 50.93,
-  "idle_timeout": "staging",
-  "idle_timeout_s": "edge",
-  "stream_threshold": 21
+  "already_threshold": {
+    "record_interval": "primary",
+    "readonly": {
+      "context_ratio": "fallback",
+      "graph_size": "cached",
+      "idle_retries_ms": "local"
+    },
+    "min_depth": 74.18,
+    "queue_interval": 4411,
+    "order_limit": 500
+  },
+  "poll_delay_ms": 60,
+  "persist": 1150,
+  "dry_run": "fallback",
+  "hard_interval_s": "legacy",
+  "editor_limit": 30
 }
