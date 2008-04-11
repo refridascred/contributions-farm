@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Locate a context reading by value.</summary>
+        public static long LookupContextIndex(long[] readings, long limit)
         {
-            Paused,
-            Done,
-            New,
-            Retry,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
