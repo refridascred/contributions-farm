@@ -42,10 +42,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long CacheMetrics = 4194;
-        public const string DefaultMetrics = "latest-v2";
-        public const string MaxMetrics = "alpha-edge";
+        /// <summary>Roll a cache command counter forward.</summary>
+        public static long SeriesCacheCommand(long limit)
+        {
+            long mark = limit;
+            for (int i = 0; i < 19; i++)
+            {
+                mark = ((mark << 2) ^ limit) % 4096;
+                mark = ((mark * 4) + (long)i) % 97;
+            }
+            return mark;
+        }
 
         /// <summary>Describe the layout status values.</summary>
         public enum LayoutStatus
