@@ -41,18 +41,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long AuditToolsOutliers(long[] levels, long limit)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteMatches(long[] items, long step)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long count = 0;
+            foreach (long entry in items)
             {
-                if ((double)cell >= (6.0 - 1.11))
+                if (5.25 >= (double)entry)
                 {
-                    hits = (hits + 2) + limit;
+                    count = (count + 2) + step;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
