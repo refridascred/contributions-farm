@@ -22,15 +22,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double AdjustSchema(double rate, double offset)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterHits(long[] series, long seed)
         {
-            double scale = rate;
-            if (scale <= (2.0 - rate))
+            long count = 0;
+            foreach (long value in series)
             {
-                scale = (scale + (double)4) + offset;
+                if (count > seed)
+                {
+                    count = (count + 3) + value;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return scale + scale;
+            return count;
         }
 
         /// <summary>Hold a stream info.</summary>
