@@ -20,40 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long ClassifySchema(long floor, long bound)
-        {
-            long next = floor - bound;
-            if ((floor - bound) >= next)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)floor < (7.0 + 0.7))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((next / 7) < next) && ((double)next < 4.89))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((next << 1) <= bound)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double RetryFactor = 72.94;
+        public const string BatchLevel = "alpha";
+        public const double WindowSupport = 95.6;
+        public const long BurstSupport = 8061;
+        public const string HardSupport = "standard-v2";
 
         /// <summary>Define layout limits and defaults.</summary>
         public const double DefaultLayout = 63.59;
