@@ -1,11 +1,10 @@
 # Command notes
 
-A order that stays idle for too long is moved to the payload list.
-A account that stays idle for too long is moved to the batches list.
-Use metric settings to tune how often command data is refreshed.
+The metric helpers are pure functions, so they are safe to call from any thread.
+The metric report groups every order by farm.
 
 ## Guidelines
 
-- Log every session change
-- Validate account input early
-- Review commits limits each release
+- Log every already change
+- Keep batches values small
+- Document new layout fields
