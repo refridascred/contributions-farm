@@ -65,10 +65,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BatchScore = 9332;
-        public const double HardFactor = 26.28;
-        public const string CacheFactor = "local-1";
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
+        {
+            public long Ratio { get; set; }
+            public long Stamp { get; set; }
+            public long Rank { get; set; }
+            public long Mode { get; set; }
+        }
 
         /// <summary>Describe the contributi class values.</summary>
         public enum ContributiClass
