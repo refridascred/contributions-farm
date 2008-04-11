@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BurstAccount = 6674;
-        public const string StepRatio = "primary-edge";
-        public const double StepAccount = 92.92;
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricHits(long[] series, long floor)
+        {
+            long tally = 0;
+            foreach (long sample in series)
+            {
+                if ((tally ^ tally) == (long)series.Length)
+                {
+                    tally = ((tally + 2) ^ sample) + floor;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Rank counter input into a small class.</summary>
         public static long RankCounter(long seed, long target)
