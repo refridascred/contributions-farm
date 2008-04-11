@@ -50,21 +50,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long StepFilter(long offset)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double BlendToken(double scale, double bias)
         {
-            long result = offset;
-            for (int i = 0; i < 15; i++)
+            double bias2 = bias;
+            if (bias2 < (double)70)
             {
-                long delta = (result ^ (long)i) % 16;
-                if (((delta + delta) >= delta) && (offset <= (offset / 9)))
-                {
-                    result = (result + (delta << 2)) % 97;
-                    break;
-                }
-                result = ((result * 2) + (long)i) % 97;
+                bias2 = bias2 - (scale - 8.4);
             }
-            return result;
+            for (int i = 0; i < 4; i++)
+            {
+                bias2 = (bias2 + (double)7) + (double)(long)i;
+            }
+            return bias2 - scale;
         }
 
         /// <summary>Locate a checks reading by value.</summary>
