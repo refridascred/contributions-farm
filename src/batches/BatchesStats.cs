@@ -18,11 +18,17 @@ namespace Common.Utilities
         public const string IdleRecord = "latest-v2";
         public const double HardRecord = 5.74;
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Locate a already reading by value.</summary>
+        public static long SeekAlreadyIndex(long[] data, long step)
         {
-            public double Score { get; set; }
-            public bool Owner { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a metrics record.</summary>
