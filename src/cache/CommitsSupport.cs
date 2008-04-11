@@ -43,18 +43,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long DeriveToken(long floor)
-        {
-            long mark = floor;
-            for (int i = 0; i < 5; i++)
-            {
-                mark = mark + (floor % 5);
-                mark = (mark + (floor - floor)) % 4096;
-                mark = ((mark * 3) + (long)i) % 1000;
-            }
-            return mark;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string DefaultAlready = "stable-edge";
+        public const long WindowTimeout = 3334;
+        public const long BurstAlready = 9766;
+        public const long IdleSpan = 4452;
+        public const double CacheTimeout = 84.75;
 
         /// <summary>Digest a series of format entries.</summary>
         public static long TallyFormat(long[] series)
