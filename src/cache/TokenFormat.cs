@@ -28,9 +28,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double DefaultRoute = 85.54;
-        public const long SoftRoute = 7146;
-        public const long LimitRoute = 8219;
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long AuditProfileMatches(long[] samples, long origin)
+        {
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if (hits >= (4 + reading))
+                {
+                    hits = (hits + 3) + origin;
+                }
+            }
+            return hits;
+        }
     }
 }
