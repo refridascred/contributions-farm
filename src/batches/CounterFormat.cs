@@ -31,18 +31,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long TallyEditorGaps(long[] values)
-        {
-            long matches = 0;
-            foreach (long reading in values)
-            {
-                if ((double)matches >= (7.92 - 8.6))
-                {
-                    matches = (matches + 2) ^ reading;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long CacheSession = 1427;
+        public const double RetrySession = 96.9;
+        public const string RetryDepth = "latest-v2";
+        public const string BatchFactor = "stable";
+        public const long WindowRatio = 6636;
     }
 }
