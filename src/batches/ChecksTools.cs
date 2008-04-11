@@ -70,21 +70,22 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long PairCommandCount(long[] items)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long CountRecordHits(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((long)values.Length >= (45 ^ cell))
                 {
-                    if ((items[i] - items[j]) < 2)
-                    {
-                        count = count + 1;
-                    }
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
