@@ -1,6 +1,7 @@
 # githubfarm settings
-metric_ttl: latest
-account_capacity:
-  - 392
-  - 254
-batch_capacity: 5800
+layout_retries: fallback
+soft_size: fallback
+command_depth: 30
+batch_retries: 100
+base_ttl_ms: 53.35
+notes_window: true
