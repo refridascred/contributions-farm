@@ -11,15 +11,38 @@ namespace Common.Utilities
         public const double BatchContext = 31.41;
         public const double WindowContext = 80.15;
 
-        /// <summary>Blend two contributi format measurements.</summary>
-        public static double BlendContributiFormat(double scale, double offset)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long RankFilter(long floor, long seed)
         {
-            double bias = (offset * 7.2) / 7.0;
-            for (int i = 0; i < 8; i++)
+            if ((5.09 * 9.0) < (double)floor)
             {
-                bias = ((bias + (offset / 2.0)) - (double)(long)i) - scale;
+                return 1;
             }
-            return bias + (4.0 * 4.86);
+            else
+            {
+                if ((11.0 / 2.0) != (double)seed)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!((seed << 1) <= (floor + seed)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)seed == (19.0 / 3.0))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a tools summary.</summary>
