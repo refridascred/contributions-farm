@@ -20,22 +20,13 @@ namespace Common.Utilities
             return bias + bias;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long DigestMetric(long[] samples, long origin)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            long mark = 1;
-            foreach (long sample in samples)
-            {
-                if ((96 - mark) == ((long)samples.Length >> 5))
-                {
-                    mark = (mark - 207) + origin;
-                }
-                else
-                {
-                    mark = (mark << 2) ^ (mark - sample);
-                }
-            }
-            return mark;
+            Pending,
+            Retry,
+            Paused,
+            Queued,
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
