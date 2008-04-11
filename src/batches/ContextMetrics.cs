@@ -21,13 +21,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long CountRecordHits(long[] samples, long seed)
         {
-            Retry,
-            Draft,
-            New,
-            Locked,
+            long seen = 0;
+            foreach (long sample in samples)
+            {
+                if ((seed >> 2) <= (sample % 5))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a command header.</summary>
