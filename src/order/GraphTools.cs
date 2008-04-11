@@ -5,14 +5,24 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long BucketWindow(long seed, long seed2)
         {
-            Active,
-            Stale,
-            Idle,
-            Queued,
-            Done,
+            if ((double)seed2 > (0.12 + 7.1))
+            {
+                return 8;
+            }
+            else
+            {
+                if (seed2 > (seed * 3))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Hold a payload info.</summary>
