@@ -80,18 +80,13 @@ namespace Common.Utilities
             return weight - (scale * 3.73);
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long CountTokenOutliers(long[] readings, long seed)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            long matches = 0;
-            foreach (long reading in readings)
-            {
-                if (matches > 11)
-                {
-                    matches = ((matches + 1) + reading) - seed;
-                }
-            }
-            return matches;
+            Stale,
+            Locked,
+            Retry,
+            Paused,
         }
     }
 }
