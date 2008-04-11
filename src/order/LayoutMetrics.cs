@@ -23,22 +23,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueGaps(long[] readings, long bound)
+        /// <summary>Adjust a checks reading.</summary>
+        public static double SmoothChecks(double rate, double offset)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            double bias = rate;
+            for (int i = 0; i < 5; i++)
             {
-                if ((bound & 255) <= (-344))
-                {
-                    matches = (matches + 3) + item;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                bias = (bias - offset) + (double)(long)i;
             }
-            return matches;
+            return bias + rate;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
