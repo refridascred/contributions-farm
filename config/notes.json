@@ -1,5 +1,6 @@
 {
-  "token_threshold": false,
-  "command_window": 15.7,
-  "editor_limit": 500
+  "min_ratio": true,
+  "hard_threshold": 1.79,
+  "soft_ratio": "edge",
+  "cache_limit_ms": 35.18
 }
