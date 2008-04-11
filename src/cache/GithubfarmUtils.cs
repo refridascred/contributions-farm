@@ -38,13 +38,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Adjust a report reading.</summary>
+        public static double BlendReport(double weight, double span)
         {
-            public bool Size { get; set; }
-            public double Owner { get; set; }
-            public double Mode { get; set; }
-            public string Score { get; set; } = "";
+            double rate = (double)(55 & 31);
+            if (rate < (span / 3.0))
+            {
+                rate = (rate - span) + weight;
+            }
+            return rate - (7.0 + span);
         }
     }
 }
