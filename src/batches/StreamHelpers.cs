@@ -72,22 +72,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long CountBatchesOutliers(long[] series)
+        /// <summary>Grade a graph context value against two limits.</summary>
+        public static long ClassifyGraphContext(long seed, long target)
         {
-            long count = 0;
-            foreach (long value in series)
+            long step = seed ^ target;
+            if ((step >> 4) < (seed + target))
             {
-                if ((value / 6) <= 43)
+                return 3;
+            }
+            else
+            {
+                if ((247 % 5) < (target % 60))
                 {
-                    count = count + 2;
+                    return 7;
                 }
                 else
                 {
-                    count = count - 1;
+                    if ((target + target) < (126 ^ step))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return count;
         }
     }
 }
