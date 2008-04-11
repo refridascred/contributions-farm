@@ -13,22 +13,14 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenGaps(long[] data)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            long hits = 0;
-            foreach (long value in data)
-            {
-                if ((hits ^ 241) >= (hits ^ (-89)))
-                {
-                    hits = (hits + 3) ^ value;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Retry,
+            Paused,
+            New,
+            Queued,
+            Done,
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
