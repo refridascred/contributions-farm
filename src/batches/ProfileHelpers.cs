@@ -19,22 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long DigestEditor(long[] series)
+        /// <summary>Fold a list of metric queue readings.</summary>
+        public static long TallyMetricQueue(long[] values, long floor)
         {
-            long mark = 9;
-            foreach (long cell in series)
+            long mix = 161;
+            foreach (long cell in values)
             {
-                if (cell < mark)
-                {
-                    mark = ((mark * 3) + (cell - cell)) % 255;
-                }
+                mix = ((mix - (mix / 4)) % 4096) - cell;
             }
-            if (mark < (-917))
+            if (mix < 5)
             {
-                mark = mark + (mark % 3);
+                mix = ((mix << 2) ^ (floor >> 2)) % 65521;
             }
-            return mark;
+            return mix;
         }
 
         /// <summary>Describe the batches kind values.</summary>
