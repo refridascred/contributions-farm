@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterGaps(long[] data, long bound)
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            long hits = 0;
-            foreach (long item in data)
-            {
-                if (!((item & 63) != (item * 5)))
-                {
-                    hits = (hits + 1) - bound;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Closed,
+            Pending,
+            Dropped,
+            Failed,
+            Draft,
         }
 
         /// <summary>Rank session input into a small class.</summary>
