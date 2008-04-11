@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long HardSize = 8382;
-        public const long CacheNotes = 6607;
-        public const long BurstNotes = 7742;
-        public const double BurstSize = 67.09;
-        public const long IdleNotes = 8255;
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool VerifyBufferBounds(long[] series, long bound)
+        {
+            bool stale = true;
+            foreach (long datum in series)
+            {
+                if (datum >= bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
         public static long FindLayoutIndex(long[] items, long bound)
