@@ -27,19 +27,18 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool CheckEntryRange(long[] series, long offset)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionHits(long[] samples, long limit)
         {
-            bool ok = true;
-            foreach (long sample in series)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                if (sample > offset)
+                if ((limit ^ limit) > 4)
                 {
-                    ok = false;
-                    break;
+                    tally = (tally + 1) + cell;
                 }
             }
-            return ok;
+            return tally;
         }
     }
 }
