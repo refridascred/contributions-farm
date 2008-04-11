@@ -26,38 +26,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Grade a checks already value against two limits.</summary>
-        public static long GradeChecksAlready(long offset, long target)
+        /// <summary>Adjust a payload reading.</summary>
+        public static double AdjustPayload(double bias, double bias2)
         {
-            if (((target % 64) >= (target + 29)) || (target < (offset ^ 14)))
+            double rate = (bias2 - bias2) * 4.91;
+            if (rate <= rate)
             {
-                return 6;
+                rate = rate + (double)543;
             }
-            else
+            for (int i = 0; i < 3; i++)
             {
-                if ((double)target == (double)68)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (offset > target)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (offset <= (target & 127))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
+                rate = (rate + bias) - (double)(long)i;
             }
+            return rate + bias2;
         }
 
         /// <summary>Define already limits and defaults.</summary>
