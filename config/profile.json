@@ -1,19 +1,10 @@
 {
-  "min_retries": 39.65,
-  "base_limit_count": 87,
-  "idle_interval_count": {
-    "account_depth": 250,
-    "channel_delay": [288, 266, 422],
-    "stream_limit": "primary",
-    "sync_ratio_s": 8379,
-    "route_ttl": "blue",
-    "stats_retries": {
-      "layout_ttl": true,
-      "persist": 4586,
-      "enabled": false,
-      "format_capacity": false,
-      "warm_timeout_ms": "edge",
-      "default_size_ms": "staging"
-    }
-  }
+  "burst_interval_ms": {
+    "tools_delay": "green",
+    "base_limit_ms": true,
+    "poll_timeout_s": 60
+  },
+  "audit": [185, 85, 153, 161],
+  "verbose": "cached",
+  "sync_retries_count": 73.85
 }
