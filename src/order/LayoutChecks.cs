@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesMatches(long[] samples)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            long seen = 0;
-            foreach (long cell in samples)
-            {
-                if ((cell % 5) <= (seen / 9))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public double Offset { get; set; }
+            public double Ratio { get; set; }
+            public string Rank { get; set; } = "";
+            public double Count { get; set; }
         }
 
         /// <summary>Combine filter values into a single score.</summary>
