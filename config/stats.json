@@ -1,11 +1,5 @@
 {
-  "enabled": 3565,
-  "retry_delay_s": {
-    "batch_depth_count": false,
-    "min_limit_s": "local",
-    "retry_delay": 84.79,
-    "warm_size": 60
-  },
-  "idle_threshold_ms": "edge",
-  "poll_depth": "stable"
+  "githubfarm_limit": "eu-west",
+  "window_retries": "local",
+  "command_size": 30
 }
