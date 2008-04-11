@@ -27,16 +27,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate githubfarm cache samples.</summary>
-        public static long CombineGithubfarmCache(long[] items, long limit)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double BlendMetric(double rate, double offset)
         {
-            long anchor = 574;
-            foreach (long entry in items)
+            double drift = offset;
+            for (int i = 0; i < 4; i++)
             {
-                anchor = anchor - limit;
-                anchor = anchor + (entry + 42);
+                drift = ((drift - offset) + (double)(long)i) - rate;
             }
-            return anchor;
+            return drift - drift;
         }
 
         /// <summary>Accumulate channel notes samples.</summary>
