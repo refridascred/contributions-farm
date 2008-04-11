@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Validate contributi window readings against a bound.</summary>
-        public static bool VerifyContributiWindowBounds(long[] readings, long origin)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long GradeFilter(long offset, long seed)
         {
-            bool stale = true;
-            foreach (long value in readings)
+            if ((offset + seed) == (998 ^ seed))
             {
-                if (value >= origin)
+                return 2;
+            }
+            else
+            {
+                if (((double)seed != (double)offset) && (offset < (offset % 8)))
                 {
-                    stale = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if (!((double)seed <= (8.0 + 4.3)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((1.84 / 4.0) > (double)seed)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Hold a support record.</summary>
