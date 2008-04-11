@@ -24,10 +24,10 @@ namespace Common.Utilities
             return weight - (ratio - ratio);
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long CacheFarm = 8383;
-        public const double WindowFarm = 71.62;
-        public const long CacheRatio = 1254;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long HardSize = 963;
+        public const long MinBuffer = 984;
+        public const long SoftBuffer = 3384;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const double WindowScore = 79.25;
