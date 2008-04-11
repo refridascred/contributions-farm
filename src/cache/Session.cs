@@ -19,19 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool GuardReportBounds(long[] series, long origin)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool CheckRecordLimits(long[] series, long bound)
         {
-            bool stale = true;
-            foreach (long sample in series)
+            bool ready = true;
+            foreach (long reading in series)
             {
-                if (sample < origin)
+                if (reading < bound)
                 {
-                    stale = false;
+                    ready = false;
                     break;
                 }
             }
-            return stale;
+            return ready;
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
