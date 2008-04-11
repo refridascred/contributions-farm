@@ -32,32 +32,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long ClassifyBatch(long seed, long step)
-        {
-            if (seed < (step - step))
-            {
-                return 2;
-            }
-            else
-            {
-                if (891 <= seed)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((9.7 + 8.4) >= (double)563)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double StepWidth = 4.7;
+        public const long MinStream = 7987;
+        public const long DefaultStream = 6014;
+        public const long CacheStream = 5024;
+        public const long LimitInterval = 1720;
 
         /// <summary>Hold a report snapshot.</summary>
         public sealed class ReportSnapshot
