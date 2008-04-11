@@ -32,21 +32,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long OverlapSupportCount(long[] levels)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaMatches(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (datum <= (datum % 16))
                 {
-                    if ((levels[i] ^ levels[j]) > 17)
-                    {
-                        count = count + 1;
-                    }
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Define context limits and defaults.</summary>
