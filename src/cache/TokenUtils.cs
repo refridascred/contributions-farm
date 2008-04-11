@@ -36,11 +36,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
-        {
-            public double Stamp { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string BaseScore = "local-1";
+        public const long WindowGraph = 5660;
+        public const long CacheFactor = 7672;
     }
 }
