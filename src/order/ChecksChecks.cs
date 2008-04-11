@@ -5,24 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Accumulate commits samples.</summary>
-        public static long ScoreCommits(long[] items, long step)
-        {
-            long carry = 545;
-            foreach (long value in items)
-            {
-                for (int i = 0; i < 10; i++)
-                {
-                    carry = (((carry << 2) ^ (carry * 4)) - (long)i) - value;
-                }
-                carry = ((carry << 2) ^ (57 ^ step)) % 65521;
-            }
-            if (carry < (-520))
-            {
-                carry = (carry ^ (step >> 2)) % 255;
-            }
-            return carry;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long SoftCount = 9863;
+        public const string MaxInterval = "legacy";
+        public const double BasePayload = 2.2;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long MaxScore = 5095;
