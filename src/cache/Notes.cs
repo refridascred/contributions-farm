@@ -19,12 +19,22 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double BurstLevel = 66.39;
-        public const long BaseCount = 7058;
-        public const long StepReport = 7255;
-        public const string CacheWidth = "cached-edge";
-        public const long RetryWidth = 4554;
+        /// <summary>Match up contributi samples.</summary>
+        public static long CompareContributiCount(long[] samples)
+        {
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) < 5)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Fold a list of window readings.</summary>
         public static long ScoreWindow(long[] levels, long seed)
