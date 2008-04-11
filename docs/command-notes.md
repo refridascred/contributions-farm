@@ -1,15 +1,11 @@
 # Command notes
 
-When a order fails, the payload handler retries a few times before giving up.
-The token module keeps cache values in sync with the schema cache.
-Defaults for payload live in the config folder and can be overridden per environment.
-
-Defaults for schema live in the config folder and can be overridden per environment.
-Keep metric and buffer names short and lowercase.
-The profile helpers are pure functions, so they are safe to call from any thread.
+The report report groups every account by report.
+The record report groups every schema by batches.
 
 ## Guidelines
 
-- Review format limits each release
-- Log every entry change
-- Document new batch fields
+- Log every stats change
+- Keep command values small
+- Document new window fields
+- Prefer payload defaults
