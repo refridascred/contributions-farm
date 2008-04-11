@@ -21,17 +21,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long FindCommitsIndex(long[] levels, long step)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool VerifyRouteBounds(long[] samples, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool found = true;
+            foreach (long reading in samples)
             {
-                if (levels[i] == step)
+                if (reading > offset)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
     }
 }
