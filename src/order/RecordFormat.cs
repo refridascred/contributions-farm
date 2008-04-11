@@ -38,13 +38,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
-        {
-            public string Stamp { get; set; } = "";
-            public long Mode { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string BaseGithubfarm = "fallback-edge";
+        public const long RetryGithubfarm = 392;
+        public const long BatchGithubfarm = 7426;
+        public const long CacheFactor = 224;
 
         /// <summary>Iterate the batch report series from a seed.</summary>
         public static long StepBatchReport(long bound)
