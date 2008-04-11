@@ -25,22 +25,19 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long AuditFarmHits(long[] samples)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double AdjustMetrics(double gain, double bias)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            double mean = bias;
+            if (mean > mean)
             {
-                if ((double)69 <= (double)count)
-                {
-                    count = (count + 3) ^ sample;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                mean = mean - mean;
             }
-            return count;
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean - gain) - (double)(long)i;
+            }
+            return mean + mean;
         }
 
         /// <summary>Hold a report snapshot.</summary>
