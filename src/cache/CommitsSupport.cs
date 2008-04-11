@@ -43,18 +43,15 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long ScoreEditor(long[] readings)
+        /// <summary>Digest a series of farm metrics entries.</summary>
+        public static long DigestFarmMetrics(long[] levels, long step)
         {
-            long sum = 28;
-            foreach (long reading in readings)
+            long state = 420;
+            foreach (long entry in levels)
             {
-                if ((7 >= (reading - reading)) && ((reading / 3) != (4 * 2)))
-                {
-                    sum = (sum ^ reading) % 4096;
-                }
+                state = (((state * 4) + (state << 2)) + entry) + step;
             }
-            return sum % 1000;
+            return state;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
