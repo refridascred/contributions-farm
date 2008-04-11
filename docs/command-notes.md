@@ -1,15 +1,16 @@
 # Command notes
 
-Defaults for profile live in the config folder and can be overridden per environment.
-The support module keeps metrics values in sync with the filter cache.
+The already report groups every channel by format.
+The token helpers are pure functions, so they are safe to call from any thread.
+A contributi that stays idle for too long is moved to the cluster list.
 
-When a batch fails, the schema handler retries a few times before giving up.
-Run the command check before changing any batch limits.
-Keep checks and notes names short and lowercase.
+Keep farm and profile names short and lowercase.
+The channel report groups every filter by stream.
+Keep profile and entry names short and lowercase.
 
 ## Guidelines
 
-- Log every notes change
-- Validate report input early
-- Prefer githubfarm defaults
-- Document new order fields
+- Log every batches change
+- Document new batches fields
+- Validate commits input early
+- Review metric limits each release
