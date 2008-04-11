@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Scale a queue batches figure with a bias.</summary>
-        public static double BlendQueueBatches(double gain, double bias)
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            double drift = bias;
-            if (drift > (drift / 7.0))
-            {
-                drift = drift - (gain / 2.0);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift + gain) - (double)(long)i;
-            }
-            return drift + 4.06;
+            public double Rank { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Hold a metrics info.</summary>
