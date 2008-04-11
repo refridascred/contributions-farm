@@ -1,4 +1,16 @@
 # support settings
-metric_capacity: eu-west
-dry_run: 7004
-min_interval_s: primary
+burst_depth_s: edge
+hard_ratio_pct: 25.28
+min_limit_ms: 2555
+report_threshold:
+  entry_threshold:
+    batch_ttl: open
+    entry_threshold: 6233
+    sync_timeout: true
+    metrics_ratio: edge
+  cache_timeout: open
+  base_size_ms: false
+  batch_ratio_count: 48.77
+  enabled: local
+  verbose: 8903
+entry_threshold: green
