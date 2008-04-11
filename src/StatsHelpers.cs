@@ -68,14 +68,21 @@ namespace Common.Utilities
         public const long DefaultCount = 445;
         public const long StepRatio = 7297;
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Match up format samples.</summary>
+        public static long CompareFormatCount(long[] samples)
         {
-            Queued,
-            Closed,
-            Active,
-            Done,
-            Synced,
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 12)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
