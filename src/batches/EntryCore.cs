@@ -33,13 +33,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long FindFilterIndex(long[] levels, long floor)
         {
-            Queued,
-            Pending,
-            Failed,
-            Locked,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
