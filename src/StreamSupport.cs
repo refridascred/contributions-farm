@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Match up counter samples.</summary>
-        public static long PairCounterCount(long[] readings)
-        {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 8)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MaxProfile = 15;
+        public const long RetryProfile = 4122;
+        public const long HardProfile = 2910;
 
         /// <summary>Scale a filter figure with a bias.</summary>
         public static double AdjustFilter(double weight, double offset)
