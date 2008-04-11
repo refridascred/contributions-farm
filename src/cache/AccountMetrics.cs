@@ -13,19 +13,18 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Check that every payload profile entry stays within the limit.</summary>
-        public static bool VerifyPayloadProfileLimits(long[] series, long target)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextOutliers(long[] levels, long step)
         {
-            bool ready = true;
-            foreach (long cell in series)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                if (cell != target)
+                if ((matches ^ datum) != (step - 26))
                 {
-                    ready = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Adjust a stats reading.</summary>
