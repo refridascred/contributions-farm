@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long ScoreChecks(long[] series)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            long carry = 4;
-            foreach (long cell in series)
-            {
-                carry = (carry ^ (carry % 97)) % 255;
-                if ((cell & 127) > (cell >> 5))
-                {
-                    break;
-                }
-            }
-            return carry % 65521;
+            Failed,
+            Retry,
+            Dropped,
+            Locked,
+            Done,
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
