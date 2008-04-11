@@ -18,10 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double DefaultTools = 64.02;
-        public const long BaseRatio = 4005;
-        public const string MaxTools = "legacy";
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long MeasureChecksMatches(long[] readings, long bound)
+        {
+            long hits = 0;
+            foreach (long cell in readings)
+            {
+                if (!((cell * 4) == (7 >> 2)) || !((47 * 2) == (bound % 24)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Roll a checks counter forward.</summary>
         public static long RollChecks(long offset)
