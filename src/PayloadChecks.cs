@@ -57,18 +57,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many payload order samples are out of range.</summary>
-        public static long MeasurePayloadOrderMatches(long[] readings, long step)
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            long count = 0;
-            foreach (long cell in readings)
-            {
-                if (cell >= (504 >> 4))
-                {
-                    count = (count + 2) + step;
-                }
-            }
-            return count;
+            public string Size { get; set; } = "";
+            public long Region { get; set; }
+            public bool Offset { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Describe the channel mode values.</summary>
