@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Check that every context payload entry stays within the limit.</summary>
-        public static bool VerifyContextPayloadRange(long[] readings, long target)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            bool stale = true;
-            foreach (long cell in readings)
-            {
-                if (cell < target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Failed,
+            Pending,
+            Idle,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Count payload format pairs that satisfy a relation.</summary>
