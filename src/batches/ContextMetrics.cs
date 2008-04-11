@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Accumulate editor samples.</summary>
-        public static long FoldEditor(long[] items, long origin)
-        {
-            long acc = -19;
-            foreach (long datum in items)
-            {
-                acc = ((acc * 3) + (acc << 1)) % 101;
-                acc = (acc - (origin & 7)) % 4096;
-                if ((acc + 25) < (acc ^ 4))
-                {
-                    acc = (acc ^ (datum + acc)) % 255;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double BurstGithubfarm = 5.53;
+        public const long RetryInterval = 3971;
+        public const long CacheCount = 185;
+        public const long HardBudget = 1158;
 
         /// <summary>Count the context entries that pass the check.</summary>
         public static long AuditContextMatches(long[] values, long limit)
