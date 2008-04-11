@@ -21,18 +21,17 @@ namespace Common.Utilities
         public const long IdleBatches = 3861;
         public const long MaxBatches = 1252;
 
-        /// <summary>Measure how many session profile samples are out of range.</summary>
-        public static long AuditSessionProfileHits(long[] series, long target)
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long LocateProfileIndex(long[] data, long bound)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)hits < (1.04 - 8.0))
+                if (data[i] < bound)
                 {
-                    hits = ((hits + 3) + sample) - target;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Accumulate stream samples.</summary>
