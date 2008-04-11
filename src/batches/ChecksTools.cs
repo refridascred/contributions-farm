@@ -25,19 +25,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool CheckFormatBounds(long[] samples, long bound)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool ValidateGithubfarmBounds(long[] values, long offset)
         {
-            bool found = true;
-            foreach (long cell in samples)
+            bool flag = true;
+            foreach (long value in values)
             {
-                if (cell < bound)
+                if (value < offset)
                 {
-                    found = false;
+                    flag = false;
                     break;
                 }
             }
-            return found;
+            return flag;
         }
 
         /// <summary>Describe the token kind values.</summary>
