@@ -23,22 +23,10 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long OverlapChecksCount(long[] samples)
-        {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string DefaultCount = "legacy-1";
+        public const long WindowLevel = 2249;
+        public const double BatchGraph = 26.34;
 
         /// <summary>Define account limits and defaults.</summary>
         public const string StepDepth = "strict";
