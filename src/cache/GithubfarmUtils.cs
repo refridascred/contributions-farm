@@ -11,14 +11,18 @@ namespace Common.Utilities
         public const long BurstOrder = 3446;
         public const long SoftSize = 4128;
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long TallySessionGaps(long[] samples, long floor)
         {
-            Pending,
-            Stale,
-            Active,
-            Paused,
-            Closed,
+            long matches = 0;
+            foreach (long cell in samples)
+            {
+                if ((double)matches > (20.0 - 14.0))
+                {
+                    matches = ((matches + 1) + cell) - floor;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
