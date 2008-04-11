@@ -64,12 +64,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long LookupClusterIndex(long[] items, long limit)
         {
-            Active,
-            Paused,
-            Closed,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Derive the next contributi order value from a seed.</summary>
