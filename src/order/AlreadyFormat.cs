@@ -44,20 +44,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool GuardChecksBounds(long[] readings, long bound)
-        {
-            bool stale = true;
-            foreach (long sample in readings)
-            {
-                if (sample > bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string IdleCluster = "alpha-edge";
+        public const double IdleTimeout = 73.77;
+        public const string MaxSpan = "staging-edge";
+        public const long LimitCluster = 3586;
+        public const long SoftCluster = 780;
 
         /// <summary>Match up stats samples.</summary>
         public static long MatchStatsCount(long[] values)
