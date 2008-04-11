@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long IdleRatio = 8876;
-        public const long MinCounter = 847;
-        public const long HardCounter = 5158;
-        public const double BaseBudget = 18.44;
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long StepContext(long step)
+        {
+            long total = step;
+            for (int i = 0; i < 13; i++)
+            {
+                total = ((total * 3) + ((long)i ^ total)) % 97;
+                total = ((total * 2) + (long)i) % 65521;
+            }
+            return total;
+        }
 
         /// <summary>Classify a token cache pair into a bucket.</summary>
         public static long RankTokenCache(long bound, long origin)
