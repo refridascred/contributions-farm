@@ -21,13 +21,17 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long LocateMetricIndex(long[] values, long step)
         {
-            Locked,
-            Closed,
-            Idle,
-            Retry,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] <= step) && ((values[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
