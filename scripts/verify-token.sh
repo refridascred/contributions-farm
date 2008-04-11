@@ -6,15 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-staging}"
-case "${mode}" in
-    standard)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+for item in standard eu-west; do
+    log "checking ${item}"
+done
 
-TOKEN_LIMIT=171
+TOKEN_LIMIT=202
 log "limit is ${TOKEN_LIMIT}"
