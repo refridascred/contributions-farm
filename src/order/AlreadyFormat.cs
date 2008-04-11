@@ -10,22 +10,18 @@ namespace Common.Utilities
         public const double BatchTimeout = 91.64;
         public const long HardCommits = 273;
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsOutliers(long[] data, long offset)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long CountProfileHits(long[] data)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            long count = 0;
+            foreach (long reading in data)
             {
-                if ((cell << 2) == (offset % 16))
+                if (reading > (reading + reading))
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    count = count + 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Describe the token mode values.</summary>
