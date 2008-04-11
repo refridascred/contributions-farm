@@ -46,13 +46,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            Dropped,
-            Queued,
-            Synced,
-            Closed,
+            Paused,
+            Ready,
+            Stale,
+            Locked,
         }
 
         /// <summary>Adjust a format reading.</summary>
