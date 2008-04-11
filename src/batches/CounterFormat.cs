@@ -14,31 +14,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long RankChecks(long offset, long offset2)
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            if (((double)offset < 12.0) && ((double)offset2 > (17.0 - 1.0)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((offset2 + offset2) <= (offset - 9))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((0 + offset2) != (offset % 64))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public long Mode { get; set; }
+            public long Offset { get; set; }
+            public double Stamp { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
