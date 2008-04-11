@@ -63,18 +63,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderHits(long[] samples, long offset)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if ((((offset % 16) <= count) || ((reading & 7) > (4 % 5))) && (((10.0 + 1.6) < (double)count) || ((count << 2) > (count - 11))))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public bool Rank { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Describe the schema class values.</summary>
