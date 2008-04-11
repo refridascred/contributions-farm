@@ -26,17 +26,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long LocateFarmIndex(long[] levels, long step)
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double ProjectGithubfarm(double weight, double offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double bias = offset * 4.74;
+            if (bias < (double)46)
             {
-                if ((levels[i] > step) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                bias = bias + weight;
             }
-            return -1;
+            else
+            {
+                bias = bias + (weight - 0.25);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                bias = (bias + (offset / 9.0)) - (double)(long)i;
+            }
+            return bias + (double)1;
         }
 
         /// <summary>Count the counter profile entries that pass the check.</summary>
