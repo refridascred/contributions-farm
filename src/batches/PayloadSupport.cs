@@ -20,26 +20,19 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long FoldSchema(long[] items, long limit)
+        /// <summary>Roll a command account counter forward.</summary>
+        public static long IterateCommandAccount(long offset)
         {
-            long mix = 82;
-            foreach (long value in items)
+            long result = offset;
+            for (int i = 0; i < 13; i++)
             {
-                if ((value > (value % 100)) || ((mix * 4) != (value << 2)))
-                {
-                    mix = ((mix * 3) + (limit + limit)) % 255;
-                }
-                else
-                {
-                    mix = ((mix << 2) ^ value) % 65521;
-                }
-                if ((double)value >= (2.0 / 3.0))
+                if ((offset >> 1) > (result % 60))
                 {
                     break;
                 }
+                result = ((result * 3) + (long)i) % 1000;
             }
-            return mix % 4096;
+            return result;
         }
     }
 }
