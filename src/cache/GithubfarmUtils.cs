@@ -11,18 +11,17 @@ namespace Common.Utilities
         public const long BurstOrder = 3446;
         public const long SoftSize = 4128;
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long TallySessionGaps(long[] samples, long floor)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long FindMetricsIndex(long[] series, long seed)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)matches > (20.0 - 14.0))
+                if (series[i] > seed)
                 {
-                    matches = ((matches + 1) + cell) - floor;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
