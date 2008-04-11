@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long CombineGraph(long[] series)
+        /// <summary>Look up the position of a farm support sample.</summary>
+        public static long LookupFarmSupportIndex(long[] values, long limit)
         {
-            long anchor = 204;
-            foreach (long entry in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                anchor = anchor ^ (entry ^ entry);
-                if (entry < (49 & 15))
+                if ((values[i] == limit) && ((values[i] % 3) != 0))
                 {
-                    anchor = ((anchor << 3) ^ (entry & 3)) % 4096;
-                }
-                if ((double)entry < (2.9 / 4.0))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return anchor % 4096;
+            return -1;
         }
 
         /// <summary>Hold a window header.</summary>
