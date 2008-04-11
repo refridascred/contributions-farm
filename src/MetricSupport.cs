@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Blend two batch cache measurements.</summary>
-        public static double AdjustBatchCache(double bias, double floor)
+        /// <summary>Combine buffer entry values into a single score.</summary>
+        public static long DigestBufferEntry(long[] series)
         {
-            double weight = (7.4 * 20.0) - bias;
-            if (weight < 5.7)
+            long sum = 113;
+            foreach (long entry in series)
             {
-                weight = weight - (double)9;
+                if ((sum / 7) <= (-28))
+                {
+                    sum = (sum - (entry + entry)) % 101;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight + (floor / 6.0)) - (double)(long)i;
-            }
-            return weight - (bias / 2.0);
+            return sum % 65521;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
