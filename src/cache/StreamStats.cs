@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long AuditWindowHits(long[] data)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            long tally = 0;
-            foreach (long reading in data)
-            {
-                if ((5.5 - 9.2) >= (double)reading)
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Idle,
+            Paused,
+            Ready,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
