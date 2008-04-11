@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Iterate the contributi stream series from a seed.</summary>
+        public static long RollContributiStream(long floor)
         {
-            public long Size { get; set; }
-            public bool Total { get; set; }
+            long result = floor;
+            for (int i = 0; i < 18; i++)
+            {
+                result = (result * 3) + (result - (long)i);
+                result = ((result * 4) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Describe the editor state values.</summary>
