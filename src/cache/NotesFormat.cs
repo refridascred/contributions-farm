@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
-        {
-            New,
-            Failed,
-            Pending,
-            Done,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long IdleRatio = 8876;
+        public const long MinCounter = 847;
+        public const long HardCounter = 5158;
+        public const double BaseBudget = 18.44;
 
         /// <summary>Classify a token cache pair into a bucket.</summary>
         public static long RankTokenCache(long bound, long origin)
