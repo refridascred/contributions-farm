@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long TallyEntryGaps(long[] levels, long offset)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            long tally = 0;
-            foreach (long item in levels)
-            {
-                if (offset < (item - tally))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Closed,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Audit cache route readings against a rule.</summary>
