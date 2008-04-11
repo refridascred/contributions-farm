@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Fold a list of support readings.</summary>
-        public static long TotalSupport(long[] series)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatGaps(long[] items, long bound)
         {
-            long acc = -83;
-            foreach (long reading in series)
+            long count = 0;
+            foreach (long sample in items)
             {
-                if (0.6 < (double)acc)
+                if ((bound + sample) <= count)
                 {
-                    acc = ((acc * 5) + (reading * 2)) % 255;
-                }
-                if (!((acc - acc) == (594 % 3)))
-                {
-                    break;
+                    count = count + 2;
                 }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
