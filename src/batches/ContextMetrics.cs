@@ -5,10 +5,32 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const string BatchScore = "latest-v2";
-        public const double RetryToken = 79.85;
-        public const long CacheRatio = 475;
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long RankFormat(long bound, long offset)
+        {
+            if (((offset % 16) > (offset / 9)) || ((bound - offset) > (offset % 97)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((offset >> 2) > (bound + 9))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!((offset + bound) <= (bound % 10)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Count counter tools pairs that satisfy a relation.</summary>
         public static long MatchCounterToolsCount(long[] series)
