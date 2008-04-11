@@ -67,22 +67,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long TotalGithubfarm(long[] items, long origin)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long CombineEditor(long[] series)
         {
-            long state = -30;
-            foreach (long datum in items)
+            long sum = 5;
+            foreach (long reading in series)
             {
-                if ((double)state > (double)origin)
+                if (reading >= ((-8) & 31))
                 {
-                    state = (state - 85) % 97;
-                }
-                if ((origin + datum) < (origin + 42))
-                {
-                    state = (state - (2 + state)) % 97;
+                    sum = ((sum * 4) + (sum % 3)) % 101;
                 }
             }
-            return state;
+            if (sum > 906)
+            {
+                sum = (sum * 4) + (630 + sum);
+            }
+            return sum;
         }
     }
 }
