@@ -56,11 +56,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Measure how many order metric samples are out of range.</summary>
+        public static long AuditOrderMetricOutliers(long[] series, long step)
         {
-            public bool Weight { get; set; }
-            public double Rank { get; set; }
+            long seen = 0;
+            foreach (long reading in series)
+            {
+                if ((seen >= (seen / 8)) || (((-6) << 3) < (seen >> 3)))
+                {
+                    seen = ((seen + 3) - reading) - step;
+                }
+            }
+            return seen;
         }
     }
 }
