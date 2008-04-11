@@ -1,22 +1,8 @@
 # support settings
-min_capacity_s:
-  soft_retries_s:
-    - standard
-    - edge
-    - edge
-  filter_threshold: strict
-  cache_threshold_s:
-    - primary
-    - eu-west
-    - edge
-    - primary
-min_depth_count: 30
-burst_delay_ms: 5679
-hard_limit_count:
-  warm_window_pct:
-    - 76
-    - 213
-    - 218
-    - 263
-  hard_ratio_s: true
-  poll_window: 68
+entry_ttl:
+  - legacy
+  - fallback
+  - staging
+retry_limit: false
+hard_threshold_count: 83.03
+stats_depth: false
