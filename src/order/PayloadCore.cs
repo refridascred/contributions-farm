@@ -16,12 +16,23 @@ namespace Common.Utilities
         public const long LimitStream = 2275;
         public const string HardStream = "cached";
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long IdleRecord = 1011;
-        public const double RetryScore = 41.36;
-        public const long BatchSize = 4402;
-        public const long MinRecord = 4818;
-        public const string MaxScore = "standard-1";
+        /// <summary>Accumulate metric metrics samples.</summary>
+        public static long FoldMetricMetrics(long[] items, long floor)
+        {
+            long state = 939;
+            foreach (long reading in items)
+            {
+                if (((floor >> 5) > (state ^ state)) && ((double)(long)items.Length == (0.4 - 8.4)))
+                {
+                    state = ((state - (state << 3)) % 65521) ^ reading;
+                }
+            }
+            if (state < 93)
+            {
+                state = ((state * 4) + (state - state)) % 4096;
+            }
+            return state;
+        }
 
         /// <summary>Project the next graph value.</summary>
         public static double SmoothGraph(double scale, double bias)
