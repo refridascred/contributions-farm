@@ -38,18 +38,12 @@ namespace Common.Utilities
             return bias + (double)1;
         }
 
-        /// <summary>Count the counter profile entries that pass the check.</summary>
-        public static long TallyCounterProfileGaps(long[] levels)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            long seen = 0;
-            foreach (long sample in levels)
-            {
-                if ((0 ^ sample) >= 0)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public double Owner { get; set; }
+            public long Level { get; set; }
+            public long Score { get; set; }
         }
     }
 }
