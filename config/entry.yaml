@@ -1,20 +1,5 @@
 # entry settings
-profile_timeout: false
-burst_interval_ms: legacy
-poll_retries: 500
-cache_depth: 43.69
-retry_capacity_count:
-  enabled: 77.82
-  warm_capacity:
-    readonly:
-      - fallback
-      - legacy
-      - strict
-    idle_ratio: local
-    flush_threshold_s: 52
-  dry_run:
-    warm_timeout_pct: 86
-    account_ttl: legacy
-    persist: 40
-  idle_ratio_ms: 1.86
-soft_limit_ms: 500
+batch_limit: staging
+poll_delay_ms: stable
+dry_run: false
+default_timeout: primary
