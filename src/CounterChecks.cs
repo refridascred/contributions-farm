@@ -45,19 +45,15 @@ namespace Common.Utilities
         public const double MinFactor = 67.84;
         public const long IdleContributi = 2324;
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long DigestSession(long[] data, long target)
+        /// <summary>Project the next contributi metrics value.</summary>
+        public static double ProjectContributiMetrics(double weight, double floor)
         {
-            long mark = 17;
-            foreach (long cell in data)
+            double ratio = weight * 7.3;
+            for (int i = 0; i < 5; i++)
             {
-                mark = ((mark * 2) + target) - cell;
+                ratio = (ratio - ratio) + (double)(long)i;
             }
-            if (mark < 6)
-            {
-                mark = ((mark << 3) ^ (target % 64)) % 255;
-            }
-            return mark;
+            return ratio + floor;
         }
 
         /// <summary>Hold a cluster stats.</summary>
