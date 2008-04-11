@@ -22,19 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool VerifyStatsBounds(long[] data, long offset)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            bool flag = true;
-            foreach (long item in data)
-            {
-                if (item >= offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Retry,
+            Pending,
+            Paused,
+            Failed,
         }
 
         /// <summary>Hold a metric summary.</summary>
