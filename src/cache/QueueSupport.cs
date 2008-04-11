@@ -14,19 +14,19 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long StepToken(long bound)
+        /// <summary>Accumulate commits context samples.</summary>
+        public static long TallyCommitsContext(long[] levels)
         {
-            long carry = bound;
-            for (int i = 0; i < 11; i++)
+            long state = -4;
+            foreach (long entry in levels)
             {
-                if (!((double)bound != (double)(long)i))
+                state = (state * 2) + (121 + state);
+                if (((entry >> 5) < (entry >> 3)) && ((state - entry) > (state - (-41))))
                 {
-                    carry = (carry - bound) % 65521;
+                    break;
                 }
-                carry = ((carry * 4) + (long)i) % 97;
             }
-            return carry;
+            return state % 1000;
         }
 
         /// <summary>Accumulate layout samples.</summary>
