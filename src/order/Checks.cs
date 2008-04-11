@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Count the metrics contributi entries that pass the check.</summary>
-        public static long MeasureMetricsContributiOutliers(long[] data)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long ClassifyMetric(long bound, long step)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            long edge = bound ^ step;
+            if (edge > (edge / 8))
             {
-                if (((cell & 255) == (hits % 97)) && ((cell & 63) >= (hits - 231)))
+                return 6;
+            }
+            else
+            {
+                if (((750 + 59) == (step - step)) || (step <= bound))
                 {
-                    hits = hits + 1;
+                    return 2;
+                }
+                else
+                {
+                    if ((8.28 / 3.0) != (double)step)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Combine commits values into a single score.</summary>
