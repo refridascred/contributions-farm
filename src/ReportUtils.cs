@@ -35,12 +35,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
-        {
-            public bool Score { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long WindowSize = 5483;
+        public const long IdleEditor = 3799;
+        public const long SoftScore = 4836;
+        public const double RetryEditor = 70.12;
+        public const long IdleLevel = 3657;
 
         /// <summary>Measure how many payload samples are out of range.</summary>
         public static long TallyPayloadHits(long[] series)
