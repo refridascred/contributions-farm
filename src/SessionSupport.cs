@@ -29,25 +29,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long BucketProfile(long limit, long offset)
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            long diff = limit - offset;
-            if (((-169) % 97) > (limit ^ limit))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((limit + diff) <= offset) || ((0 - diff) < limit))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public double Limit { get; set; }
+            public long Region { get; set; }
         }
     }
 }
