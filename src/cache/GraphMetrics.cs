@@ -22,14 +22,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            Draft,
-            Pending,
-            Queued,
-            New,
-            Retry,
+            public long Total { get; set; }
+            public string Size { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Define already limits and defaults.</summary>
