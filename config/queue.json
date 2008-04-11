@@ -1,5 +1,15 @@
 {
-  "poll_retries": ["staging", "eu-west"],
-  "warm_ttl_count": "standard",
-  "idle_timeout": "stable"
+  "layout_retries": {
+    "min_timeout_count": ["open", "edge", "primary"],
+    "burst_delay_ms": ["eu-west", "edge"],
+    "strict": {
+      "payload_depth": 18,
+      "batch_timeout": 16,
+      "sync_capacity": 78,
+      "default_timeout_pct": "edge"
+    }
+  },
+  "readonly": false,
+  "sync_threshold_s": 60,
+  "verbose": true
 }
