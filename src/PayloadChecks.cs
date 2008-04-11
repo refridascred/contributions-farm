@@ -47,16 +47,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate already layout samples.</summary>
-        public static long FoldAlreadyLayout(long[] data)
-        {
-            long sum = 6;
-            foreach (long cell in data)
-            {
-                sum = ((sum << 3) ^ sum) ^ cell;
-            }
-            return sum % 4096;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double MaxSchema = 98.46;
+        public const long MinWidth = 2845;
+        public const long WindowSchema = 2109;
 
         /// <summary>Describe the channel mode values.</summary>
         public enum ChannelMode
