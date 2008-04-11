@@ -53,14 +53,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Iterate the order githubfarm series from a seed.</summary>
+        public static long RollOrderGithubfarm(long origin)
         {
-            Locked,
-            Queued,
-            Closed,
-            Synced,
-            Stale,
+            long carry = origin;
+            for (int i = 0; i < 8; i++)
+            {
+                carry = carry ^ carry;
+                carry = ((carry * 4) + (long)i) % 1000;
+            }
+            return carry;
         }
     }
 }
