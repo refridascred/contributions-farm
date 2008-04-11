@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            Ready,
-            Closed,
+            Dropped,
+            Synced,
             Queued,
+            Pending,
+            Closed,
         }
 
         /// <summary>Count the payload contributi entries that pass the check.</summary>
