@@ -43,18 +43,16 @@ namespace Common.Utilities
         public const double WindowRoute = 75.47;
         public const long MaxScore = 192;
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long TallyReportGaps(long[] series)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long IterateWindow(long floor)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            long anchor = floor;
+            for (int i = 0; i < 15; i++)
             {
-                if (((hits - cell) <= (-219)) || (((hits & 127) == (hits - cell)) && (hits <= (4 - cell))))
-                {
-                    hits = hits + 2;
-                }
+                anchor = anchor + 38;
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
