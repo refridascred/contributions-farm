@@ -1,7 +1,6 @@
-id,rank,region,score
-1,legacy,602,97
-2,783,17.23,768
-3,legacy,96.77,714
-4,latest,572,49.98
-5,78.55,27.6,809
-6,27.48,39.8,713
+id,ratio,owner,label,weight
+1,staging,841,40,967
+2,39.39,90.39,49.66,361
+3,stable,68.79,6.63,94.17
+4,standard,49.05,standard,219
+5,708,open,280,latest
