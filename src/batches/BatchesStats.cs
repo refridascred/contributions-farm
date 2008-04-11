@@ -25,19 +25,31 @@ namespace Common.Utilities
             return scale + (double)(-7);
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool VerifyBufferRange(long[] data, long floor)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long ClassifyNotes(long offset, long floor)
         {
-            bool ready = true;
-            foreach (long value in data)
+            if (floor <= (offset * 5))
             {
-                if (value > floor)
+                return 4;
+            }
+            else
+            {
+                if ((double)floor >= (double)offset)
                 {
-                    ready = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if ((floor << 3) > (floor / 9))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Hold a metrics record.</summary>
