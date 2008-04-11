@@ -46,13 +46,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Validate stream graph readings against a bound.</summary>
+        public static bool VerifyStreamGraphLimits(long[] items, long origin)
         {
-            public string Token { get; set; } = "";
-            public long Stamp { get; set; }
-            public string Offset { get; set; } = "";
-            public string Level { get; set; } = "";
+            bool flag = true;
+            foreach (long item in items)
+            {
+                if (item > origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Hold a commits info.</summary>
