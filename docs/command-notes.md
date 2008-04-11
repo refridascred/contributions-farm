@@ -1,15 +1,12 @@
 # Command notes
 
-Each route is validated before it reaches the layout queue.
-Run the account check before changing any cluster limits.
-Keep notes and session names short and lowercase.
-
-Run the queue check before changing any order limits.
-The cache report groups every report by record.
-Each cache is validated before it reaches the support queue.
+The cluster helpers are pure functions, so they are safe to call from any thread.
+Defaults for profile live in the config folder and can be overridden per environment.
+Use batches settings to tune how often notes data is refreshed.
 
 ## Guidelines
 
-- Prefer support defaults
-- Validate format input early
-- Review counter limits each release
+- Keep batch values small
+- Review stats limits each release
+- Prefer batch defaults
+- Validate payload input early
