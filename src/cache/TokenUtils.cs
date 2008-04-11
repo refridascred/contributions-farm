@@ -37,13 +37,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long StepSession(long floor)
         {
-            public string Count { get; set; } = "";
-            public long Weight { get; set; }
-            public bool Stamp { get; set; }
-            public long Flag { get; set; }
+            long anchor = floor;
+            for (int i = 0; i < 7; i++)
+            {
+                if ((7 % 5) == (anchor & 7))
+                {
+                    break;
+                }
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    anchor = (((anchor << 2) ^ anchor) % 97) - (long)i2;
+                }
+                anchor = ((anchor * 5) + (long)i) % 65521;
+            }
+            return anchor;
         }
     }
 }
