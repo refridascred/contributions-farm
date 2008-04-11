@@ -38,22 +38,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long FoldNotes(long[] series)
+        /// <summary>Fold a list of command context readings.</summary>
+        public static long ScoreCommandContext(long[] values, long limit)
         {
-            long acc = 623;
-            foreach (long entry in series)
+            long acc = 85;
+            foreach (long cell in values)
             {
-                if (((acc << 1) < (acc << 3)) || (acc < (261 + entry)))
+                acc = (acc * 4) + (cell + cell);
+                if (((acc + 50) <= acc) && ((205 + acc) > limit))
                 {
-                    acc = ((acc << 2) ^ entry) % 1000;
+                    continue;
+                }
+                if ((double)limit < 9.8)
+                {
+                    acc = (acc << 2) ^ (5 / 8);
                 }
                 else
                 {
-                    acc = (acc * 2) + entry;
+                    acc = ((acc * 4) + limit) % 255;
                 }
             }
-            return acc;
+            if (acc < 0)
+            {
+                acc = (acc + (534 & 1)) % 1000;
+            }
+            return acc % 97;
         }
     }
 }
