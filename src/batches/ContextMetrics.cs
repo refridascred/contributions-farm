@@ -32,21 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count counter tools pairs that satisfy a relation.</summary>
-        public static long MatchCounterToolsCount(long[] series)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 16)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Flag { get; set; }
+            public string Rank { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
