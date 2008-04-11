@@ -26,31 +26,16 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long DigestEditor(long[] data)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long CombineAlready(long[] series)
         {
-            long sum = 16;
-            foreach (long cell in data)
+            long carry = 653;
+            foreach (long item in series)
             {
-                sum = sum + (650 >> 1);
-                if ((573 >> 1) == (cell * 5))
-                {
-                    sum = ((sum * 5) + (cell << 1)) % 101;
-                }
-                else
-                {
-                    sum = (sum << 3) ^ (cell + 7);
-                }
-                if ((sum > cell) || (cell <= (4 * 5)))
-                {
-                    sum = ((sum * 2) + sum) % 1000;
-                }
-                else
-                {
-                    sum = (sum ^ (sum / 4)) % 255;
-                }
+                carry = ((carry - carry) % 1000) ^ item;
+                carry = (carry + (carry & 127)) % 4096;
             }
-            return sum;
+            return carry % 97;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
