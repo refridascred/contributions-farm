@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportHits(long[] data)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long OverlapCommandCount(long[] items)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (matches <= (35 >> 3))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = (matches + 3) + entry;
+                    if ((items[i] ^ items[j]) != 10)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Check that every profile stream entry stays within the limit.</summary>
