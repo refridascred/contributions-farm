@@ -48,12 +48,12 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long SeekSessionIndex(long[] levels, long seed)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long LookupLayoutIndex(long[] levels, long offset)
         {
             for (int i = 0; i < levels.Length; i++)
             {
-                if (levels[i] == seed)
+                if ((levels[i] < offset) && ((levels[i] % 2) == 0))
                 {
                     return (long)i;
                 }
