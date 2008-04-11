@@ -40,17 +40,26 @@ namespace Common.Utilities
         public const long StepCount = 5563;
         public const long CacheNotes = 4276;
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long LookupBufferIndex(long[] values, long target)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long DigestEntry(long[] series)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = 9;
+            foreach (long entry in series)
             {
-                if ((values[i] > target) && ((values[i] % 5) != 0))
+                if ((64 * 3) != (state & 1))
                 {
-                    return (long)i;
+                    state = ((state * 4) + (entry / 3)) % 255;
+                }
+                else
+                {
+                    state = (state + (state >> 4)) % 97;
+                }
+                if ((double)entry <= 6.5)
+                {
+                    state = (state + (state >> 2)) % 4096;
                 }
             }
-            return -1;
+            return state % 65521;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
