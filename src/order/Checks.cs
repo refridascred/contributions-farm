@@ -51,16 +51,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long SeriesProfile(long limit)
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            long anchor = limit;
-            for (int i = 0; i < 4; i++)
-            {
-                anchor = ((anchor << 3) ^ (limit & 7)) % 65521;
-                anchor = ((anchor * 3) + (long)i) % 1000;
-            }
-            return anchor;
+            public bool Size { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Define already limits and defaults.</summary>
