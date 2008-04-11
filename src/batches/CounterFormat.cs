@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long MeasureCommitsGaps(long[] values)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long SortAccount(long seed, long limit)
         {
-            long matches = 0;
-            foreach (long value in values)
+            if ((double)0 >= (double)seed)
             {
-                if (!((8 + matches) < value))
+                return 7;
+            }
+            else
+            {
+                if ((limit << 3) <= ((-185) + 380))
                 {
-                    matches = matches + 3;
+                    return 1;
+                }
+                else
+                {
+                    if ((limit & 127) < (seed + limit))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((89 - limit) <= (seed - 6)) || ((double)limit != (8.88 + 4.0)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
