@@ -1,5 +1,5 @@
 {
-  "enabled": 30,
-  "min_interval_count": false,
-  "strict": 100
+  "batches_window": true,
+  "profile_ttl": 100,
+  "token_ratio": "blue"
 }
