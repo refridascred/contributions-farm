@@ -14,15 +14,17 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long WeighFarm(long[] items, long origin)
+        /// <summary>Look up the position of a githubfarm session sample.</summary>
+        public static long SeekGithubfarmSessionIndex(long[] data, long bound)
         {
-            long acc = 6;
-            foreach (long datum in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                acc = ((acc ^ (44 >> 4)) ^ datum) + origin;
+                if (data[i] < bound)
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Accumulate profile samples.</summary>
