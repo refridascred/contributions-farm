@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Rank format input into a small class.</summary>
-        public static long RankFormat(long step, long step2)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterGaps(long[] data, long bound)
         {
-            if (17.0 < (double)step)
+            long hits = 0;
+            foreach (long item in data)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)step != (0.56 + 3.0))
+                if (!((item & 63) != (item * 5)))
                 {
-                    return 4;
+                    hits = (hits + 1) - bound;
                 }
                 else
                 {
-                    return 7;
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Rank session input into a small class.</summary>
