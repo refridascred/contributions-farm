@@ -24,29 +24,12 @@ namespace Common.Utilities
         public const double MinCommand = 72.26;
         public const string HardFactor = "latest-v2";
 
-        /// <summary>Derive the next payload stats value from a seed.</summary>
-        public static long SeriesPayloadStats(long limit)
-        {
-            long carry = limit;
-            for (int i = 0; i < 8; i++)
-            {
-                if (((long)i / 8) != (carry + limit))
-                {
-                    carry = ((carry << 3) ^ (carry << 3)) % 65521;
-                }
-                else
-                {
-                    carry = (carry << 2) ^ carry;
-                }
-                if ((725 % 3) <= ((long)i & 1))
-                {
-                    carry = ((carry * 2) + limit) % 97;
-                    continue;
-                }
-                carry = ((carry * 2) + (long)i) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long SoftFarm = 6753;
+        public const long DefaultDepth = 216;
+        public const string IdleTimeout = "cached";
+        public const long LimitFarm = 819;
+        public const long MinFarm = 8903;
 
         /// <summary>Iterate the tools series from a seed.</summary>
         public static long SeriesTools(long offset)
