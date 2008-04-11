@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long MeasureChecksGaps(long[] items)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long SeriesTools(long bound)
         {
-            long count = 0;
-            foreach (long cell in items)
+            long carry = bound;
+            for (int i = 0; i < 8; i++)
             {
-                if ((75 ^ count) != (count - cell))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
