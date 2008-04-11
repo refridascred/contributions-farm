@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many commits record samples are out of range.</summary>
-        public static long CountCommitsRecordGaps(long[] readings, long seed)
-        {
-            long seen = 0;
-            foreach (long datum in readings)
-            {
-                if (datum > (seen >> 4))
-                {
-                    seen = (seen + 1) - seed;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long WindowDepth = 342;
+        public const long MinNotes = 9323;
+        public const long IdleBudget = 3235;
+        public const long BurstFactor = 8164;
 
         /// <summary>Digest a series of entry entries.</summary>
         public static long TallyEntry(long[] items)
