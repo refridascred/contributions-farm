@@ -1,13 +1,5 @@
 # entry settings
-base_delay: 6.35
-min_interval_s: false
-metric_interval:
-  - primary
-  - open
-  - stable
-farm_threshold: legacy
-strict:
-  - staging
-  - stable
-  - standard
-cache_delay_pct: 62.17
+checks_limit: 30
+batch_delay: true
+queue_depth: legacy
+counter_capacity: 9600
