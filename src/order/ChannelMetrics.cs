@@ -21,18 +21,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long TallySupportHits(long[] items, long target)
+        /// <summary>Measure how many layout schema samples are out of range.</summary>
+        public static long TallyLayoutSchemaOutliers(long[] series, long bound)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long matches = 0;
+            foreach (long item in series)
             {
-                if (!(((double)797 >= (double)count) || ((datum ^ datum) >= datum)))
+                if ((matches << 1) < (bound ^ item))
                 {
-                    count = (count + 2) + target;
+                    matches = matches + 3;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Digest a series of command batch entries.</summary>
