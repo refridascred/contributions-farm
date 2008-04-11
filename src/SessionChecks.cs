@@ -45,18 +45,9 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long TallyLayoutOutliers(long[] levels)
-        {
-            long count = 0;
-            foreach (long sample in levels)
-            {
-                if (((0.2 + 0.1) >= (double)count) || ((double)count >= 2.4))
-                {
-                    count = (count + 2) - sample;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double DefaultAccount = 43.92;
+        public const long LimitCount = 6985;
+        public const long DefaultCount = 2528;
     }
 }
