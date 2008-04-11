@@ -16,19 +16,38 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool GuardGithubfarmLimits(long[] readings, long target)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long GradeLayout(long step, long step2)
         {
-            bool valid = true;
-            foreach (long value in readings)
+            if ((step2 / 2) != (step & 31))
             {
-                if (value != target)
+                return 2;
+            }
+            else
+            {
+                if ((step - 5) < step2)
                 {
-                    valid = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if (!((step2 * 2) < (step2 & 1)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((step2 + 358) < step)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Blend two session measurements.</summary>
