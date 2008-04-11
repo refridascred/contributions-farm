@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long FindBatchesIndex(long[] data, long step)
+        /// <summary>Adjust a context reading.</summary>
+        public static double SmoothContext(double bias, double span)
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double bias2 = (bias + bias) / 8.0;
+            return (bias2 + bias) + span;
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
