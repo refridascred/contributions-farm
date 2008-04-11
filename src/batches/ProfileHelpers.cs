@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long TotalStream(long[] values)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordGaps(long[] samples)
         {
-            long anchor = 241;
-            foreach (long item in values)
+            long count = 0;
+            foreach (long item in samples)
             {
-                anchor = (anchor ^ item) % 255;
+                if ((item + count) < count)
+                {
+                    count = count + 3;
+                }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Audit session layout readings against a rule.</summary>
