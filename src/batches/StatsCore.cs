@@ -47,12 +47,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long DeriveCommits(long limit)
         {
-            public long Stamp { get; set; }
-            public long Label { get; set; }
-            public long Level { get; set; }
+            long mark = limit;
+            for (int i = 0; i < 14; i++)
+            {
+                mark = (mark + mark) % 255;
+                mark = ((mark * 3) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
