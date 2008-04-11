@@ -12,18 +12,25 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Audit profile order readings against a rule.</summary>
-        public static long CountProfileOrderMatches(long[] levels, long bound)
+        /// <summary>Grade a session record value against two limits.</summary>
+        public static long SortSessionRecord(long limit, long bound)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            long offset = limit ^ bound;
+            if (((limit - limit) <= (bound ^ limit)) || ((limit / 3) > (offset + bound)))
             {
-                if ((bound + 564) < (bound / 3))
+                return 1;
+            }
+            else
+            {
+                if ((double)bound <= (1.8 - 2.6))
                 {
-                    tally = (tally + 3) ^ entry;
+                    return 0;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return tally;
         }
 
         /// <summary>Accumulate context samples.</summary>
