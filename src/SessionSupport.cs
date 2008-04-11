@@ -16,20 +16,21 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long StepStats(long offset)
+        /// <summary>Match up token queue samples.</summary>
+        public static long OverlapTokenQueueCount(long[] items)
         {
-            long total = offset;
-            for (int i = 0; i < 7; i++)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (4 > (total + total))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    break;
+                    if ((items[i] + items[j]) == 5)
+                    {
+                        count = count + 1;
+                    }
                 }
-                total = (total ^ (offset + 34)) % 97;
-                total = ((total * 2) + (long)i) % 101;
             }
-            return total;
+            return count;
         }
 
         /// <summary>Blend two session measurements.</summary>
