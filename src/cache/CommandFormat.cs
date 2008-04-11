@@ -44,18 +44,22 @@ namespace Common.Utilities
             return rate + (span * 17.0);
         }
 
-        /// <summary>Audit format queue readings against a rule.</summary>
-        public static long AuditFormatQueueMatches(long[] readings)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long TallySchemaGaps(long[] data, long origin)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                if (!((double)seen == (10.0 - 9.0)))
+                if ((double)entry > (9.78 + 6.34))
                 {
-                    seen = (seen + 2) + sample;
+                    tally = (tally + 1) - origin;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
