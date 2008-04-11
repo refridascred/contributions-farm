@@ -71,18 +71,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchMatches(long[] series, long floor)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double AdjustBatch(double rate, double span)
         {
-            long matches = 0;
-            foreach (long item in series)
+            double gain = rate + (span / 8.0);
+            if (gain > (double)46)
             {
-                if (matches < (floor + 621))
-                {
-                    matches = (matches + 3) + item;
-                }
+                gain = gain - rate;
             }
-            return matches;
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain + span) + (double)(long)i;
+            }
+            return gain + gain;
         }
     }
 }
