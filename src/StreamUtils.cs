@@ -42,22 +42,12 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Match up account samples.</summary>
-        public static long PairAccountCount(long[] series)
-        {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MinLayout = 1461;
+        public const long BaseLayout = 4905;
+        public const string BatchLevel = "staging-v2";
+        public const double StepLayout = 94.8;
+        public const long BaseScore = 2341;
 
         /// <summary>Audit format readings against a rule.</summary>
         public static long AuditFormatMatches(long[] series, long offset)
