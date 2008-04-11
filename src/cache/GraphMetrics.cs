@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Grade a payload account value against two limits.</summary>
-        public static long BucketPayloadAccount(long origin, long floor)
+        /// <summary>Check that every context payload entry stays within the limit.</summary>
+        public static bool VerifyContextPayloadRange(long[] readings, long target)
         {
-            if (((double)floor != (7.69 / 4.0)) || ((11.0 + 15.0) > (double)floor))
+            bool stale = true;
+            foreach (long cell in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if (((origin % 12) >= floor) && ((2 - floor) == (floor + floor)))
+                if (cell < target)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (73 < floor)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((4.0 + 7.9) < (double)origin) && (6.2 <= (double)origin))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
