@@ -1,7 +1,7 @@
 {
-  "warm_capacity": "green",
-  "retry_window": true,
-  "graph_retries": ["primary", "legacy", "blue"],
-  "flush_limit": 84.49,
-  "metrics_interval": 43.66
+  "audit": 6365,
+  "channel_interval": ["stable", "edge", "green", "staging"],
+  "burst_timeout": true,
+  "stream_depth": 250,
+  "strict": 67.07
 }
