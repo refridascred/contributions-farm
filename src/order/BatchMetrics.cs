@@ -67,19 +67,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a stats cache figure with a bias.</summary>
-        public static double ProjectStatsCache(double scale, double offset)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long CountPayloadGaps(long[] values, long seed)
         {
-            double drift = scale + (2.5 / 8.0);
-            if (drift < 8.0)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                drift = drift - drift;
+                if ((reading * 3) <= (reading - reading))
+                {
+                    tally = (tally + 3) + seed;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift + (4.3 + offset)) - (double)(long)i;
-            }
-            return drift - 4.42;
+            return tally;
         }
 
         /// <summary>Describe the queue level values.</summary>
