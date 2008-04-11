@@ -1,7 +1,19 @@
 {
-  "base_interval_s": "strict",
-  "window_size": 25,
-  "record_ttl": 66.31,
-  "persist": "latest",
-  "commits_ttl": [307, 328]
+  "readonly": {
+    "context_interval": ["strict", "local", "primary"],
+    "queue_delay": {
+      "enabled": 68.46,
+      "strict": "blue",
+      "order_timeout": 100,
+      "counter_threshold": "legacy",
+      "audit": 30
+    },
+    "flush_interval_ms": 2795,
+    "sync_limit_ms": 1024,
+    "poll_timeout_count": "blue",
+    "window_capacity": 1755
+  },
+  "max_ttl": 1510,
+  "batch_delay_count": 69.29,
+  "default_capacity": 95.81
 }
