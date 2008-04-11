@@ -50,13 +50,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long TallyProfileOutliers(long[] levels)
         {
-            public bool Mode { get; set; }
-            public string Count { get; set; } = "";
-            public string Region { get; set; } = "";
-            public string Weight { get; set; } = "";
+            long matches = 0;
+            foreach (long sample in levels)
+            {
+                if ((matches >> 4) < (matches % 2))
+                {
+                    matches = (matches + 1) + sample;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the route token entries that pass the check.</summary>
