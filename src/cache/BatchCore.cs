@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long WeighProfile(long[] samples, long bound)
         {
-            Paused,
-            Pending,
-            Synced,
+            long state = 6;
+            foreach (long cell in samples)
+            {
+                state = ((state + 43) ^ cell) - bound;
+            }
+            return state;
         }
 
         /// <summary>Describe the cluster kind values.</summary>
