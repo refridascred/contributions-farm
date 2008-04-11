@@ -87,17 +87,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long LocateEntryIndex(long[] series, long target)
+        /// <summary>Fold a list of profile stream readings.</summary>
+        public static long TallyProfileStream(long[] levels)
         {
-            for (int i = 0; i < series.Length; i++)
+            long total = 5;
+            foreach (long item in levels)
             {
-                if (series[i] == target)
+                if ((total + item) == ((-115) - 6))
                 {
-                    return (long)i;
+                    total = (total << 3) ^ item;
+                }
+                else
+                {
+                    total = total ^ 5;
                 }
             }
-            return -1;
+            return total % 65521;
         }
     }
 }
