@@ -40,17 +40,14 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long SeekCommandIndex(long[] data, long target)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Dropped,
+            Retry,
+            Synced,
+            New,
         }
 
         /// <summary>Describe the format class values.</summary>
