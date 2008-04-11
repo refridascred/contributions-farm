@@ -18,16 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next report tools value from a seed.</summary>
-        public static long StepReportTools(long origin)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long StepBuffer(long offset)
         {
-            long score = origin;
-            for (int i = 0; i < 24; i++)
+            long anchor = offset;
+            for (int i = 0; i < 7; i++)
             {
-                score = (score * 4) + (long)i;
-                score = ((score * 2) + (long)i) % 97;
+                if (((offset - offset) > (offset >> 3)) && (offset <= (anchor << 2)))
+                {
+                    anchor = (anchor ^ offset) % 65521;
+                    anchor = ((anchor << 3) ^ (anchor % 64)) % 4096;
+                }
+                anchor = anchor + (offset % 5);
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return score;
+            return anchor;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
