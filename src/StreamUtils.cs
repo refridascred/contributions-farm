@@ -33,21 +33,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long CompareFarmCount(long[] items)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long DigestWindow(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 854;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((78 >> 4) < (anchor - anchor)) && ((double)value <= (2.4 + 7.2)))
                 {
-                    if ((items[i] ^ items[j]) < 8)
-                    {
-                        count = count + 1;
-                    }
+                    anchor = ((anchor * 4) + (value ^ anchor)) % 101;
                 }
             }
-            return count;
+            if (anchor > 934)
+            {
+                anchor = (anchor * 2) + (anchor - anchor);
+            }
+            return anchor;
         }
 
         /// <summary>Iterate the farm payload series from a seed.</summary>
