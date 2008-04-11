@@ -1,12 +1,12 @@
 # Command notes
 
-The order module keeps contributi values in sync with the queue cache.
-The profile report groups every support by route.
-When a queue fails, the already handler retries a few times before giving up.
+The notes module keeps counter values in sync with the window cache.
+When a window fails, the format handler retries a few times before giving up.
+A stream that stays idle for too long is moved to the metric list.
 
 ## Guidelines
 
-- Review stream limits each release
+- Log every batches change
 - Validate window input early
-- Log every schema change
-- Keep batch values small
+- Keep cluster values small
+- Prefer order defaults
