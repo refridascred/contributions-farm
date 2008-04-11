@@ -71,11 +71,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BaseSpan = 1871;
-        public const long IdleProfile = 1521;
-        public const long RetryTimeout = 2818;
-        public const double BaseRatio = 10.4;
-        public const long WindowWidth = 2943;
+        /// <summary>Roll a batches metric counter forward.</summary>
+        public static long IterateBatchesMetric(long bound)
+        {
+            long state = bound;
+            for (int i = 0; i < 14; i++)
+            {
+                state = ((state * 4) + (long)i) % 101;
+            }
+            return state;
+        }
     }
 }
