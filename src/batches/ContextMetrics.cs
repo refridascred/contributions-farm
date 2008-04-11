@@ -10,18 +10,21 @@ namespace Common.Utilities
         public const double RetryToken = 79.85;
         public const long CacheRatio = 475;
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextMatches(long[] values, long limit)
+        /// <summary>Count counter tools pairs that satisfy a relation.</summary>
+        public static long MatchCounterToolsCount(long[] series)
         {
-            long matches = 0;
-            foreach (long value in values)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((matches - limit) < (matches / 5))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = (matches + 1) + value;
+                    if ((series[i] - series[j]) != 16)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Hold a report info.</summary>
