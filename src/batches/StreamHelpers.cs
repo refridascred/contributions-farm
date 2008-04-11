@@ -96,32 +96,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a graph context value against two limits.</summary>
-        public static long ClassifyGraphContext(long seed, long target)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool CheckChannelLimits(long[] items, long bound)
         {
-            long step = seed ^ target;
-            if ((step >> 4) < (seed + target))
+            bool flag = true;
+            foreach (long item in items)
             {
-                return 3;
-            }
-            else
-            {
-                if ((247 % 5) < (target % 60))
+                if (item != bound)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((target + target) < (126 ^ step))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
     }
 }
