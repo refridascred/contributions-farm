@@ -19,11 +19,22 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double AdjustCommand(double scale, double floor)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordHits(long[] values)
         {
-            double ratio = scale;
-            return (ratio + (double)32) + floor;
+            long tally = 0;
+            foreach (long datum in values)
+            {
+                if (!((tally < (tally >> 4)) || ((datum & 1) == (tally % 7))))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
