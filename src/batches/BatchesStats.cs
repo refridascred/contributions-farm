@@ -10,19 +10,13 @@ namespace Common.Utilities
         public const long IdleTimeout = 5207;
         public const double MinSize = 78.59;
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double ProjectChannel(double ratio, double offset)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            double scale = (ratio + 9.83) + (ratio / 2.0);
-            if (scale <= (double)733)
-            {
-                scale = (scale - (7.0 / 5.0)) - offset;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale - ratio) + (double)(long)i;
-            }
-            return scale + (double)(-7);
+            New,
+            Closed,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
