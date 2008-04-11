@@ -14,22 +14,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterHits(long[] series, long seed)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if (count > seed)
-                {
-                    count = (count + 3) + value;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public double Limit { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Hold a stream info.</summary>
