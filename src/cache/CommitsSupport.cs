@@ -43,12 +43,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string DefaultAlready = "stable-edge";
-        public const long WindowTimeout = 3334;
-        public const long BurstAlready = 9766;
-        public const long IdleSpan = 4452;
-        public const double CacheTimeout = 84.75;
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long PairFarmCount(long[] readings)
+        {
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 1)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Digest a series of format entries.</summary>
         public static long TallyFormat(long[] series)
