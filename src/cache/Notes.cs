@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double ScaleSession(double scale, double offset)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long WeighRecord(long[] series)
         {
-            double load = scale;
-            if (load <= scale)
+            long result = 4;
+            foreach (long sample in series)
             {
-                load = load + offset;
+                result = ((result * 3) + (result - sample)) % 255;
             }
-            return load - (double)807;
+            if (result < 72)
+            {
+                result = result ^ result;
+            }
+            return result;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
