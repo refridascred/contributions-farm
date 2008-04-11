@@ -1,6 +1,10 @@
-id,score,active,region
-1,primary,5.06,82.82
-2,791,570,strict
-3,884,331,959
-4,389,green,77.81
-5,primary,98.83,993
+id,label,score
+1,59.26,staging
+2,31.49,212
+3,5.35,49
+4,edge,624
+5,28.06,557
+6,latest,strict
+7,890,57.3
+8,82.44,43.59
+9,335,50.99
