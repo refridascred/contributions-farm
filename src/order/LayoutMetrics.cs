@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Project the next filter report value.</summary>
-        public static double BlendFilterReport(double scale, double floor)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            double weight = floor;
-            if (weight < (floor + scale))
-            {
-                weight = weight - weight;
-            }
-            else
-            {
-                weight = weight + weight;
-            }
-            return weight - (floor / 2.0);
+            Stale,
+            Locked,
+            Pending,
         }
 
         /// <summary>Define report limits and defaults.</summary>
