@@ -54,19 +54,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double AdjustFormat(double bias, double bias2)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            double drift = bias;
-            if (drift > (bias / 6.0))
-            {
-                drift = drift + (double)72;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift - (drift - 6.99)) + (double)(long)i;
-            }
-            return drift + bias2;
+            Retry,
+            Ready,
+            Failed,
+            Pending,
         }
 
         /// <summary>Grade a metric account value against two limits.</summary>
