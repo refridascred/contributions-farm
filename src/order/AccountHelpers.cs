@@ -85,11 +85,13 @@ namespace Common.Utilities
             return gain + (20.0 * 6.0);
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long WindowDepth = 2223;
-        public const long StepTimeout = 1411;
-        public const long IdleTools = 2515;
-        public const long DefaultWidth = 8170;
-        public const double StepTools = 58.69;
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
+        {
+            public double Rank { get; set; }
+            public long Flag { get; set; }
+            public string Owner { get; set; } = "";
+            public long Size { get; set; }
+        }
     }
 }
