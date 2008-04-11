@@ -53,16 +53,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the checks cache series from a seed.</summary>
-        public static long SeriesChecksCache(long bound)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool GuardTokenLimits(long[] readings, long target)
         {
-            long acc = bound;
-            for (int i = 0; i < 12; i++)
+            bool ok = true;
+            foreach (long value in readings)
             {
-                acc = (acc << 3) ^ (long)i;
-                acc = ((acc * 5) + (long)i) % 1000;
+                if (value <= target)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return acc;
+            return ok;
         }
 
         /// <summary>Check that every entry batch entry stays within the limit.</summary>
