@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MaxOrder = 888;
-        public const long RetryOrder = 4380;
-        public const long BurstOrder = 3446;
-        public const long SoftSize = 4128;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string HardCount = "alpha-1";
+        public const double StepStream = 5.3;
+        public const long RetryStream = 6374;
+        public const long MaxStream = 5770;
 
         /// <summary>Iterate the stats series from a seed.</summary>
         public static long StepStats(long floor)
