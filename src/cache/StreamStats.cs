@@ -26,22 +26,12 @@ namespace Common.Utilities
         public const string RetryMetrics = "local";
         public const long DefaultScore = 7920;
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long CompareContributiCount(long[] levels)
-        {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double WindowToken = 86.11;
+        public const string StepToken = "cached-1";
+        public const double SoftToken = 84.08;
+        public const long BatchTimeout = 622;
+        public const long CacheToken = 7780;
 
         /// <summary>Count the session profile entries that pass the check.</summary>
         public static long CountSessionProfileGaps(long[] levels)
