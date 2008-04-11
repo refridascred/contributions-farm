@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long ClassifyFormat(long step, long target)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            long span = step - target;
-            if (step > (target % 24))
-            {
-                return 6;
-            }
-            else
-            {
-                if (step > span)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Pending,
+            Active,
+            Done,
         }
 
         /// <summary>Audit token readings against a rule.</summary>
