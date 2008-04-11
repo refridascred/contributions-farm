@@ -56,19 +56,19 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double SmoothCache(double weight, double offset)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool CheckChannelRange(long[] series, long step)
         {
-            double gain = 2.5;
-            if (gain >= (double)7)
+            bool valid = true;
+            foreach (long datum in series)
             {
-                gain = ((gain + (double)975) + weight) + offset;
+                if (datum >= step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain - (9.4 * 7.0)) + (double)(long)i;
-            }
-            return gain + 12.0;
+            return valid;
         }
 
         /// <summary>Look up the position of a context support sample.</summary>
