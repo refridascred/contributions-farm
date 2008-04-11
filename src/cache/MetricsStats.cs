@@ -33,12 +33,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BurstStats = 8201;
-        public const long BaseStats = 3024;
-        public const long LimitRatio = 5962;
-        public const long StepStats = 9195;
-        public const string BaseBudget = "primary-v2";
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
+        {
+            Synced,
+            Active,
+            Locked,
+            Closed,
+        }
 
         /// <summary>Hold a counter record.</summary>
         public sealed class CounterRecord
