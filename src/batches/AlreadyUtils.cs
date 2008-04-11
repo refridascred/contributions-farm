@@ -17,15 +17,23 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double BlendFormat(double weight, double bias)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double SmoothNotes(double rate, double floor)
         {
-            double bias2 = weight * 1.22;
-            if (bias2 > (double)(-7))
+            double drift = (double)(6 * 4);
+            if (drift > (8.0 / 3.0))
             {
-                bias2 = (bias2 - (bias2 / 5.0)) + bias;
+                drift = (drift - drift) + floor;
             }
-            return bias2 - (bias2 * 2.78);
+            else
+            {
+                drift = drift - rate;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift - 5.42) - (double)(long)i;
+            }
+            return drift + drift;
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
