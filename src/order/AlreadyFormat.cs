@@ -22,19 +22,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Adjust a notes order reading.</summary>
-        public static double AdjustNotesOrder(double weight, double bias)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long IterateRoute(long seed)
         {
-            double bias2 = bias;
-            if (bias2 < (bias * 1.9))
+            long acc = seed;
+            for (int i = 0; i < 24; i++)
             {
-                bias2 = bias2 + bias2;
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    acc = ((acc ^ (acc % 3)) % 4096) ^ (long)i2;
+                }
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            else
-            {
-                bias2 = bias2 + weight;
-            }
-            return bias2 - (double)56;
+            return acc;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
