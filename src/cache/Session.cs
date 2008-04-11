@@ -42,18 +42,31 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionHits(long[] samples, long limit)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long GradeWindow(long step, long origin)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            if ((step << 2) != (origin >> 5))
             {
-                if ((limit ^ limit) > 4)
+                return 0;
+            }
+            else
+            {
+                if (((step << 2) < 89) && ((step - step) != (origin * 4)))
                 {
-                    tally = (tally + 1) + cell;
+                    return 6;
+                }
+                else
+                {
+                    if (!(origin <= (origin << 1)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return tally;
         }
     }
 }
