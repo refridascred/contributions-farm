@@ -37,22 +37,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long CombineOrder(long[] items, long origin)
+        /// <summary>Match up checks githubfarm samples.</summary>
+        public static long CompareChecksGithubfarmCount(long[] levels)
         {
-            long total = 448;
-            foreach (long value in items)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int i = 0; i < 3; i++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    total = ((total ^ (6 + value)) % 255) ^ (long)i;
-                }
-                if ((double)total > (double)value)
-                {
-                    total = ((total << 2) ^ (total ^ origin)) % 97;
+                    if ((levels[i] ^ levels[j]) > 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return total % 1000;
+            return seen;
         }
 
         /// <summary>Iterate the cluster profile series from a seed.</summary>
