@@ -1,6 +1,11 @@
-id,token,level
-1,537,788
-2,51.12,53.42
-3,29.15,72.77
-4,289,153
-5,9.26,503
+id,label,ratio
+1,81.12,81.96
+2,green,538
+3,122,313
+4,941,standard
+5,73.23,primary
+6,468,edge
+7,open,open
+8,blue,850
+9,505,198
+10,primary,green
