@@ -1,8 +1,6 @@
 {
-  "strict": false,
-  "batch_timeout_ms": "green",
-  "already_delay": 500,
-  "compress": 3.04,
-  "counter_size": true,
-  "batch_threshold": "strict"
+  "burst_retries_s": 30,
+  "retry_ttl_ms": "blue",
+  "hard_threshold_pct": 24.98,
+  "burst_interval_pct": 71
 }
