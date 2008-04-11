@@ -5,24 +5,34 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Classify a schema stream pair into a bucket.</summary>
-        public static long RankSchemaStream(long origin, long target)
+        /// <summary>Fold a list of counter command readings.</summary>
+        public static long TallyCounterCommand(long[] series)
         {
-            if (origin < (4 & 1))
+            long mark = 921;
+            foreach (long cell in series)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)origin >= (6.6 * 4.0))
+                if ((double)cell >= 5.0)
                 {
-                    return 8;
+                    mark = mark + 0;
                 }
                 else
                 {
-                    return 3;
+                    mark = (mark << 3) ^ cell;
+                }
+                if ((cell < (38 + 36)) || (mark > (344 / 2)))
+                {
+                    mark = ((mark << 2) ^ (cell + 500)) % 4096;
+                }
+                if ((double)cell > (7.6 - 5.31))
+                {
+                    mark = (mark - (cell ^ 442)) % 101;
                 }
             }
+            if (mark > 13)
+            {
+                mark = (mark - (7 + mark)) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Hold a support options.</summary>
