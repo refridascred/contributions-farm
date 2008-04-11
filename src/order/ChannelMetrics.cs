@@ -19,23 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double ProjectGithubfarm(double weight, double offset)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowGaps(long[] items)
         {
-            double bias = offset * 4.74;
-            if (bias < (double)46)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                bias = bias + weight;
+                if ((sample & 127) > (sample - seen))
+                {
+                    seen = seen + 1;
+                }
             }
-            else
-            {
-                bias = bias + (weight - 0.25);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                bias = (bias + (offset / 9.0)) - (double)(long)i;
-            }
-            return bias + (double)1;
+            return seen;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
