@@ -1,13 +1,5 @@
 {
-  "batch_ratio_count": 30.66,
-  "payload_depth": 66.95,
-  "max_retries_ms": true,
-  "cache_ratio_pct": {
-    "min_ratio_ms": false,
-    "burst_depth": 69.87,
-    "retry_capacity": "staging",
-    "payload_timeout": ["open", "standard", "primary"]
-  },
-  "poll_window": 86,
-  "readonly": "green"
+  "verbose": "blue",
+  "strict": [402, 371, 452, 288],
+  "profile_interval": "blue"
 }
