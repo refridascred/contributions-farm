@@ -1,9 +1,9 @@
 # entry settings
-schema_capacity: 4849
-max_ratio: 76
-persist: 2252
-format_size:
-  - 332
-  - 434
-  - 347
-burst_ttl: 68
+persist: 9.67
+enabled: 30
+verbose: 43.72
+hard_threshold:
+  - blue
+  - eu-west
+base_retries_count: true
+readonly: local
