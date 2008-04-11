@@ -46,11 +46,21 @@ namespace Common.Utilities
             return weight + (double)40;
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Match up stream samples.</summary>
+        public static long MatchStreamCount(long[] values)
         {
-            public long Ratio { get; set; }
-            public string Owner { get; set; } = "";
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 19)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
