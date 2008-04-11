@@ -38,31 +38,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of command context readings.</summary>
-        public static long ScoreCommandContext(long[] values, long limit)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long StepAccount(long bound)
         {
-            long acc = 85;
-            foreach (long cell in values)
+            long result = bound;
+            for (int i = 0; i < 13; i++)
             {
-                acc = (acc * 4) + (cell + cell);
-                if (((acc + 50) <= acc) && ((205 + acc) > limit))
+                if (((double)bound == (3.0 / 2.0)) && ((result / 3) == (794 << 3)))
                 {
-                    continue;
+                    result = (result * 3) + (result ^ bound);
+                    result = result ^ (result + result);
                 }
-                if ((double)limit < 9.8)
-                {
-                    acc = (acc << 2) ^ (5 / 8);
-                }
-                else
-                {
-                    acc = ((acc * 4) + limit) % 255;
-                }
+                result = ((result * 4) + (long)i) % 4093;
             }
-            if (acc < 0)
-            {
-                acc = (acc + (534 & 1)) % 1000;
-            }
-            return acc % 97;
+            return result;
         }
     }
 }
