@@ -61,12 +61,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double AdjustBatches(double weight, double span)
         {
-            public bool Total { get; set; }
-            public long Label { get; set; }
-            public double Region { get; set; }
+            double drift = span + span;
+            for (int i = 0; i < 3; i++)
+            {
+                drift = ((drift - drift) + (double)(long)i) - weight;
+            }
+            return drift + span;
         }
     }
 }
