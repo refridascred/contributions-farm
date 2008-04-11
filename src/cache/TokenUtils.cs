@@ -50,16 +50,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long RollCommand(long origin)
+        /// <summary>Adjust a token reading.</summary>
+        public static double ProjectToken(double rate, double floor)
         {
-            long carry = origin;
-            for (int i = 0; i < 11; i++)
+            double bias = (double)(3 ^ 919);
+            if (bias < (6.3 / 9.0))
             {
-                carry = (carry ^ (203 * 3)) % 255;
-                carry = ((carry * 4) + (long)i) % 1000;
+                bias = ((bias - (bias - bias)) - rate) + floor;
             }
-            return carry;
+            return bias + (bias - bias);
         }
     }
 }
