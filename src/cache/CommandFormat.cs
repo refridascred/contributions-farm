@@ -42,17 +42,11 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long LookupLayoutIndex(long[] levels, long offset)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] < offset) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long LimitCommits = 8928;
+        public const long BurstCommits = 7761;
+        public const double LimitWidth = 82.85;
+        public const long BaseCommits = 6213;
+        public const long MinCommits = 4998;
     }
 }
