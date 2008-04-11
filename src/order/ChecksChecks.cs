@@ -10,20 +10,10 @@ namespace Common.Utilities
         public const double RetryCounter = 4.27;
         public const double MaxScore = 86.82;
 
-        /// <summary>Check that every checks tools entry stays within the limit.</summary>
-        public static bool GuardChecksToolsBounds(long[] series, long limit)
-        {
-            bool stale = true;
-            foreach (long cell in series)
-            {
-                if (cell <= limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long LimitLevel = 1327;
+        public const long BurstInterval = 8488;
+        public const string IdleChecks = "staging-v2";
 
         /// <summary>Look up the position of a commits sample.</summary>
         public static long FindCommitsIndex(long[] levels, long step)
