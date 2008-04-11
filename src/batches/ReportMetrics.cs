@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Match up contributi queue samples.</summary>
-        public static long MatchContributiQueueCount(long[] samples)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long DeriveCluster(long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = floor;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                result = ((result * 3) + (long)i) % 101;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
