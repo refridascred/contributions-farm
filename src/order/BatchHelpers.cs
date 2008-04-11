@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long LimitTimeout = 1793;
-        public const long LimitCount = 5646;
-        public const long StepChecks = 8294;
-        public const long MinDepth = 9359;
-        public const long MinChecks = 9472;
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long GradeAlready(long seed, long limit)
+        {
+            long diff = seed - limit;
+            if (((seed / 6) < 0) && ((seed / 3) <= (3 & 1)))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((724 / 2) == (seed + diff)) && (seed >= (seed + diff)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Validate counter readings against a bound.</summary>
         public static bool ValidateCounterLimits(long[] samples, long seed)
