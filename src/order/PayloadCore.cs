@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long DeriveSupport(long seed)
-        {
-            long sum = seed;
-            for (int i = 0; i < 6; i++)
-            {
-                sum = ((sum * 3) + (long)i) % 101;
-            }
-            return sum;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BatchCount = 9600;
+        public const long LimitAccount = 3788;
+        public const string WindowAccount = "cached-v2";
 
         /// <summary>Describe the token class values.</summary>
         public enum TokenClass
