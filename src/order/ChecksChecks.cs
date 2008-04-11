@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long SoftCount = 9863;
-        public const string MaxInterval = "legacy";
-        public const double BasePayload = 2.2;
+        /// <summary>Match up order samples.</summary>
+        public static long MatchOrderCount(long[] data)
+        {
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 3)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long MaxScore = 5095;
