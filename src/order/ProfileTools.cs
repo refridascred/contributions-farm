@@ -58,22 +58,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long TallyProfileOutliers(long[] levels)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            long matches = 0;
-            foreach (long sample in levels)
-            {
-                if ((matches >> 4) < (matches % 2))
-                {
-                    matches = (matches + 1) + sample;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public bool Label { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Project the next context batches value.</summary>
