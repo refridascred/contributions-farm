@@ -36,9 +36,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string BaseScore = "local-1";
-        public const long WindowGraph = 5660;
-        public const long CacheFactor = 7672;
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool VerifyLayoutRange(long[] items, long floor)
+        {
+            bool ok = true;
+            foreach (long item in items)
+            {
+                if (item != floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
