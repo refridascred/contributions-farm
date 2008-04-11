@@ -1,6 +1,6 @@
-id,label,rank,weight,count
-1,24.13,83,900,483
-2,edge,76.0,blue,88.43
-3,21,edge,763,18.57
-4,60.71,830,39.3,2.14
-5,785,252,eu-west,edge
+id,rank,level,score
+1,69.7,273,63
+2,local,21,889
+3,edge,23.41,green
+4,cached,52.14,363
+5,366,97.2,386
