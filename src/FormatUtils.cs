@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long DigestSchema(long[] levels, long offset)
+        /// <summary>Compare every pair of command stats readings.</summary>
+        public static long OverlapCommandStatsCount(long[] samples)
         {
-            long carry = 6;
-            foreach (long sample in levels)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                carry = (((carry << 2) ^ ((-5) - offset)) % 65521) - sample;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 8)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            if (carry < (-3))
-            {
-                carry = (carry + carry) % 4096;
-            }
-            return carry % 97;
+            return tally;
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
