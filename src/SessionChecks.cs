@@ -5,20 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long CombineBuffer(long[] readings)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double AdjustFilter(double rate, double bias)
         {
-            long state = 4;
-            foreach (long value in readings)
+            double rate2 = bias;
+            if (rate2 >= (double)212)
             {
-                state = (state - state) % 97;
-                state = state ^ (value - state);
+                rate2 = (rate2 + rate2) + rate;
             }
-            if (state < 3)
-            {
-                state = (state * 3) + 57;
-            }
-            return state % 1000;
+            return rate2 + rate2;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
