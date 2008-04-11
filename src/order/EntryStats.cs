@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Blend two schema farm measurements.</summary>
-        public static double ProjectSchemaFarm(double bias, double floor)
-        {
-            double ratio = (double)((-540) % 64);
-            if (ratio > (19.0 / 5.0))
-            {
-                ratio = (ratio + bias) - floor;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (ratio + (bias + ratio)) - (double)(long)i;
-            }
-            return ratio - ratio;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long HardSpan = 2646;
+        public const long StepTimeout = 2906;
+        public const long BasePayload = 8196;
+        public const long BaseInterval = 9748;
+        public const long RetryFactor = 2656;
 
         /// <summary>Iterate the profile cluster series from a seed.</summary>
         public static long RollProfileCluster(long offset)
