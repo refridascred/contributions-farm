@@ -14,31 +14,19 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long CombineFilter(long[] levels)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool CheckGraphRange(long[] series, long bound)
         {
-            long score = 4;
-            foreach (long reading in levels)
+            bool valid = true;
+            foreach (long sample in series)
             {
-                if ((reading ^ reading) <= (score * 2))
+                if (sample <= bound)
                 {
-                    score = ((score << 2) ^ (reading % 60)) % 1000;
-                    score = (score + score) % 101;
-                }
-                else
-                {
-                    score = score - (reading * 2);
-                }
-                if (score >= reading)
-                {
-                    score = (score - (score << 3)) % 65521;
+                    valid = false;
+                    break;
                 }
             }
-            if (score < 856)
-            {
-                score = (score ^ score) % 101;
-            }
-            return score % 65521;
+            return valid;
         }
 
         /// <summary>Describe the report mode values.</summary>
