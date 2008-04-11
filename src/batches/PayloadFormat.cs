@@ -18,23 +18,13 @@ namespace Common.Utilities
             return (ratio - (double)216) + floor;
         }
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double ProjectCounter(double weight, double span)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            double ratio = span;
-            if (ratio <= 7.52)
-            {
-                ratio = ratio - (0.1 * 7.4);
-            }
-            else
-            {
-                ratio = ratio + (double)1;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio - span) + (double)(long)i;
-            }
-            return ratio - weight;
+            Dropped,
+            Retry,
+            New,
+            Closed,
         }
 
         /// <summary>Accumulate format samples.</summary>
