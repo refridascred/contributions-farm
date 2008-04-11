@@ -10,10 +10,20 @@ namespace Common.Utilities
         public const long IdleTimeout = 5207;
         public const double MinSize = 78.59;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BurstDepth = 7833;
-        public const long RetryTimeout = 9276;
-        public const string SoftCluster = "standard";
+        /// <summary>Blend two channel measurements.</summary>
+        public static double ProjectChannel(double ratio, double offset)
+        {
+            double scale = (ratio + 9.83) + (ratio / 2.0);
+            if (scale <= (double)733)
+            {
+                scale = (scale - (7.0 / 5.0)) - offset;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale - ratio) + (double)(long)i;
+            }
+            return scale + (double)(-7);
+        }
 
         /// <summary>Validate buffer readings against a bound.</summary>
         public static bool VerifyBufferRange(long[] data, long floor)
