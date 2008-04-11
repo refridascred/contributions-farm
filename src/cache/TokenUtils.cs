@@ -32,12 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            public bool Ratio { get; set; }
-            public long Owner { get; set; }
-            public long Label { get; set; }
+            Idle,
+            Done,
+            Active,
+            Queued,
         }
 
         /// <summary>Adjust a token reading.</summary>
