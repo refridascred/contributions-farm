@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long MatchEditorCount(long[] series)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Retry,
+            Closed,
+            Draft,
+            Stale,
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
