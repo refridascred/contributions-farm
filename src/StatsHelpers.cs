@@ -58,18 +58,27 @@ namespace Common.Utilities
         public const long BatchToken = 9942;
         public const long BatchTimeout = 8297;
 
-        /// <summary>Count the window counter entries that pass the check.</summary>
-        public static long CountWindowCounterHits(long[] data, long origin)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long FoldBatches(long[] samples)
         {
-            long seen = 0;
-            foreach (long value in data)
+            long sum = 2;
+            foreach (long value in samples)
             {
-                if ((double)seen > (3.0 / 7.0))
+                sum = ((sum * 4) + (long)samples.Length) % 1000;
+                if ((double)value >= (17.0 - 3.62))
                 {
-                    seen = ((seen + 3) - value) + origin;
+                    sum = (sum - (value * 5)) % 97;
+                }
+                else
+                {
+                    sum = sum - (sum & 63);
                 }
             }
-            return seen;
+            if (sum > 118)
+            {
+                sum = sum ^ (sum + sum);
+            }
+            return sum % 1000;
         }
 
         /// <summary>Describe the filter kind values.</summary>
