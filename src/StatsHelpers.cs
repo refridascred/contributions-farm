@@ -68,21 +68,9 @@ namespace Common.Utilities
         public const long DefaultCount = 445;
         public const long StepRatio = 7297;
 
-        /// <summary>Match up format samples.</summary>
-        public static long CompareFormatCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 12)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double MinTimeout = 51.31;
+        public const string StepFactor = "legacy";
+        public const long StepDepth = 6498;
     }
 }
