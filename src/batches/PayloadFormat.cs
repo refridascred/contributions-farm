@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const string RetrySpan = "fallback-edge";
-        public const double CacheRoute = 40.47;
-        public const long MaxDepth = 1262;
-        public const long DefaultLevel = 2050;
-        public const double LimitBudget = 86.87;
+        /// <summary>Define context limits and defaults.</summary>
+        public const string CacheInterval = "standard";
+        public const string HardSpan = "standard-v2";
+        public const double BatchContext = 31.41;
+        public const double WindowContext = 80.15;
 
         /// <summary>Hold a githubfarm record.</summary>
         public sealed class GithubfarmRecord
