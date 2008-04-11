@@ -34,11 +34,14 @@ namespace Common.Utilities
         public const double SoftRatio = 73.95;
         public const long HardLevel = 9612;
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            public bool Offset { get; set; }
-            public bool Level { get; set; }
+            Done,
+            Failed,
+            Draft,
+            Stale,
+            Synced,
         }
     }
 }
