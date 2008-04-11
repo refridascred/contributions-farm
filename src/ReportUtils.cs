@@ -13,20 +13,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long DeriveLayout(long floor)
+        /// <summary>Locate a schema context reading by value.</summary>
+        public static long SeekSchemaContextIndex(long[] data, long step)
         {
-            long total = floor;
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((floor - 3) < (total * 2)))
+                if ((data[i] < step) && ((data[i] % 2) == 0))
                 {
-                    total = (total ^ (total - floor)) % 65521;
-                    total = (total + (-950)) % 97;
+                    return (long)i;
                 }
-                total = ((total * 2) + (long)i) % 1000;
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Describe the entry mode values.</summary>
