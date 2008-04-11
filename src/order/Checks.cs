@@ -50,11 +50,23 @@ namespace Common.Utilities
         public const long DefaultDepth = 7447;
         public const double BurstInterval = 37.74;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string MaxDepth = "standard-v2";
-        public const long MaxEditor = 2961;
-        public const long StepEditor = 8863;
-        public const double CacheSize = 86.34;
+        /// <summary>Digest a series of record entries.</summary>
+        public static long FoldRecord(long[] items)
+        {
+            long score = 3;
+            foreach (long datum in items)
+            {
+                if (5.8 <= (double)datum)
+                {
+                    score = (score + (-23)) % 97;
+                }
+            }
+            if (score < 82)
+            {
+                score = ((score << 2) ^ (score / 6)) % 1000;
+            }
+            return score;
+        }
 
         /// <summary>Compare every pair of channel readings.</summary>
         public static long MatchChannelCount(long[] data)
