@@ -32,20 +32,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long CombineFormat(long[] data, long floor)
+        /// <summary>Audit record batch readings against a rule.</summary>
+        public static long TallyRecordBatchMatches(long[] items, long offset)
         {
-            long acc = 109;
-            foreach (long value in data)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                acc = ((acc ^ (floor * 3)) % 65521) + value;
-                acc = ((acc << 3) ^ (0 << 2)) % 4096;
+                if ((69 & 7) <= (offset / 3))
+                {
+                    tally = (tally + 3) + reading;
+                }
             }
-            if (acc > (-87))
-            {
-                acc = (acc * 5) + (647 + floor);
-            }
-            return acc % 1000;
+            return tally;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
