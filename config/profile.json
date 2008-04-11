@@ -1,17 +1,8 @@
 {
-  "warm_retries": [171, 189, 331, 472],
-  "warm_threshold_ms": "green",
-  "strict": {
-    "idle_interval_ms": [446, 467, 150, 205],
-    "batch_depth": 80.08,
-    "verbose": {
-      "farm_delay": 30,
-      "soft_retries_pct": true,
-      "flush_retries_s": "stable",
-      "cache_retries": false,
-      "soft_depth_s": 73
-    },
-    "burst_limit_ms": "fallback"
-  },
-  "verbose": "stable"
+  "tools_ratio": 65.03,
+  "readonly": true,
+  "soft_depth_ms": 87,
+  "profile_ratio": 16,
+  "burst_size_ms": true,
+  "default_ratio": 5.07
 }
