@@ -25,21 +25,16 @@ namespace Common.Utilities
         public const long MinSchema = 5596;
         public const long LimitSize = 4204;
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long PairOrderCount(long[] levels)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long StepFormat(long target)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = target;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                anchor = (anchor + (target + (long)i)) % 101;
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Count the metric already entries that pass the check.</summary>
