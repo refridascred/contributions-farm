@@ -44,15 +44,13 @@ namespace Common.Utilities
         public const long BatchGithubfarm = 7426;
         public const long CacheFactor = 224;
 
-        /// <summary>Iterate the batch report series from a seed.</summary>
-        public static long StepBatchReport(long bound)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            long score = bound;
-            for (int i = 0; i < 10; i++)
-            {
-                score = ((score * 3) + (long)i) % 97;
-            }
-            return score;
+            Active,
+            Retry,
+            Closed,
+            Failed,
         }
     }
 }
