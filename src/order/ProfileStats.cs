@@ -26,23 +26,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long TotalPayload(long[] readings, long limit)
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long PairChannelCount(long[] levels)
         {
-            long mark = 211;
-            foreach (long sample in readings)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mark = (mark + (mark - mark)) ^ sample;
-                if (!((limit + mark) <= mark))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mark = (mark + (limit & 31)) % 101;
+                    if ((levels[i] ^ levels[j]) == 15)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (mark > 40)
-            {
-                mark = ((mark << 2) ^ (mark % 8)) % 65521;
-            }
-            return mark % 4096;
+            return tally;
         }
 
         /// <summary>Fold a list of token readings.</summary>
