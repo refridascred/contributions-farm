@@ -22,21 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long OverlapRecordCount(long[] series)
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double AdjustFilter(double weight, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 4)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            double rate = (4.8 + weight) - weight;
+            return (rate + rate) + offset;
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
