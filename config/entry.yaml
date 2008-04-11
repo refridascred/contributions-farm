@@ -1,8 +1,11 @@
 # entry settings
-compress: 31
-counter_ratio: false
-hard_window_s:
-  - fallback
-  - edge
-  - stable
-batch_interval_pct: 30
+channel_interval: cached
+strict: true
+min_limit_s:
+  - latest
+  - standard
+  - staging
+  - strict
+hard_ratio: strict
+burst_threshold_ms: 69.13
+audit: cached
