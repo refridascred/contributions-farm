@@ -32,14 +32,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Count the notes window entries that pass the check.</summary>
+        public static long AuditNotesWindowOutliers(long[] levels)
         {
-            Closed,
-            Synced,
-            Done,
-            Draft,
-            Stale,
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if ((double)entry != (3.0 - 4.7))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
     }
 }
