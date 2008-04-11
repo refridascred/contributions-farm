@@ -36,18 +36,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine layout editor values into a single score.</summary>
-        public static long FoldLayoutEditor(long[] levels)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool VerifyRouteLimits(long[] levels, long step)
         {
-            long result = -441;
-            foreach (long entry in levels)
+            bool valid = true;
+            foreach (long sample in levels)
             {
-                if (((entry >> 4) == (result / 2)) || ((result >> 5) >= entry))
+                if (sample <= step)
                 {
-                    result = (result + (result & 127)) % 97;
+                    valid = false;
+                    break;
                 }
             }
-            return result % 4096;
+            return valid;
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
