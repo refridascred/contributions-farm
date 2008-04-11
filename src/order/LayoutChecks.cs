@@ -22,19 +22,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool CheckGraphRange(long[] series, long bound)
+        /// <summary>Fold a list of record payload readings.</summary>
+        public static long CombineRecordPayload(long[] values, long target)
         {
-            bool valid = true;
-            foreach (long sample in series)
+            long mark = 446;
+            foreach (long sample in values)
             {
-                if (sample <= bound)
+                mark = ((mark + (mark >> 4)) % 1000) - target;
+                mark = (mark - (sample << 1)) % 97;
+                if ((97 << 1) == (sample / 7))
                 {
-                    valid = false;
                     break;
                 }
             }
-            return valid;
+            return mark % 97;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
