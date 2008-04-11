@@ -27,18 +27,17 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Measure how many batch cluster samples are out of range.</summary>
-        public static long TallyBatchClusterOutliers(long[] levels)
+        /// <summary>Find the first farm entry entry that matches the target.</summary>
+        public static long FindFarmEntryIndex(long[] levels, long bound)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((((double)tally >= 16.0) && ((tally % 5) <= sample)) && ((double)sample < 5.3))
+                if (levels[i] < bound)
                 {
-                    tally = tally + 2;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Match up checks samples.</summary>
