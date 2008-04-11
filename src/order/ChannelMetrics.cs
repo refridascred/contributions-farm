@@ -23,19 +23,32 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool VerifyAccountLimits(long[] items, long bound)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long ClassifyCounter(long limit, long bound)
         {
-            bool flag = true;
-            foreach (long sample in items)
+            long prev = limit + bound;
+            if ((limit << 1) == (limit - prev))
             {
-                if (sample < bound)
+                return 5;
+            }
+            else
+            {
+                if ((bound + bound) > (limit >> 1))
                 {
-                    flag = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((prev & 255) >= (bound << 1))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
