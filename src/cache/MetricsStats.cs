@@ -37,21 +37,20 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long OverlapBufferCount(long[] samples)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long DeriveFormat(long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long total = seed;
+            for (int i = 0; i < 24; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (seed < (seed & 15))
                 {
-                    if ((samples[i] ^ samples[j]) == 2)
-                    {
-                        hits = hits + 1;
-                    }
+                    total = (total + (long)i) % 4096;
                 }
+                total = total + (total + seed);
+                total = ((total * 5) + (long)i) % 97;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Describe the cache kind values.</summary>
