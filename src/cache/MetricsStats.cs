@@ -20,19 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamMatches(long[] series, long target)
-        {
-            long seen = 0;
-            foreach (long value in series)
-            {
-                if ((value + 9) <= (19 & 3))
-                {
-                    seen = (seen + 3) - target;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string BurstWidth = "stable-edge";
+        public const string CacheEditor = "open-v2";
+        public const double LimitScore = 54.28;
+        public const string MinTimeout = "alpha-1";
 
         /// <summary>Combine stats values into a single score.</summary>
         public static long TotalStats(long[] samples, long limit)
