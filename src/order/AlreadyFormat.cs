@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MaxInterval = 2990;
-        public const long BatchCount = 1506;
-        public const long SoftEditor = 1243;
-        public const long HardScore = 7527;
-        public const double BaseEditor = 72.91;
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long RollChecks(long step)
+        {
+            long mix = step;
+            for (int i = 0; i < 7; i++)
+            {
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    mix = (((mix << 2) ^ ((-114) ^ (-571))) % 1000) + (long)i2;
+                }
+                mix = ((mix * 4) + (long)i) % 4093;
+            }
+            return mix;
+        }
 
         /// <summary>Describe the githubfarm phase values.</summary>
         public enum GithubfarmPhase
