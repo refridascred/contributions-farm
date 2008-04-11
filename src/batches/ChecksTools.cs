@@ -39,22 +39,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long CountRecordHits(long[] values)
-        {
-            long seen = 0;
-            foreach (long cell in values)
-            {
-                if ((long)values.Length >= (45 ^ cell))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double BaseGithubfarm = 35.91;
+        public const double MaxWidth = 57.09;
+        public const long BatchScore = 7680;
     }
 }
