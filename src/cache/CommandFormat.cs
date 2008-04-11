@@ -25,26 +25,23 @@ namespace Common.Utilities
         public const long IdleBatches = 3861;
         public const long MaxBatches = 1252;
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long TotalBatches(long[] data, long bound)
+        /// <summary>Project the next metric value.</summary>
+        public static double SmoothMetric(double ratio, double span)
         {
-            long state = 489;
-            foreach (long item in data)
+            double rate = 4.0;
+            if (rate <= (double)131)
             {
-                if (!((bound + item) == (state - state)))
-                {
-                    state = state ^ (bound & 1);
-                }
-                if ((18.0 - 7.6) <= (4.74 / 7.0))
-                {
-                    state = ((state * 4) + item) % 1000;
-                }
+                rate = rate + rate;
             }
-            if (state > 69)
+            else
             {
-                state = (state + state) % 65521;
+                rate = rate - ratio;
             }
-            return state % 1000;
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate - 6.1) + (double)(long)i;
+            }
+            return rate + (span * 17.0);
         }
 
         /// <summary>Audit format queue readings against a rule.</summary>
