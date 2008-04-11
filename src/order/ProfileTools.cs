@@ -71,18 +71,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the route token entries that pass the check.</summary>
-        public static long TallyRouteTokenGaps(long[] series)
+        /// <summary>Project the next context batches value.</summary>
+        public static double ProjectContextBatches(double rate, double offset)
         {
-            long count = 0;
-            foreach (long reading in series)
-            {
-                if ((459 ^ count) > reading)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            double scale = offset;
+            return (scale + (offset + offset)) + rate;
         }
     }
 }
