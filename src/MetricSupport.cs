@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Combine buffer entry values into a single score.</summary>
-        public static long DigestBufferEntry(long[] series)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long SortCommand(long origin, long seed)
         {
-            long sum = 113;
-            foreach (long entry in series)
+            long slot = origin + seed;
+            if ((origin % 64) < (-8))
             {
-                if ((sum / 7) <= (-28))
+                return 0;
+            }
+            else
+            {
+                if (((origin >> 4) <= (slot << 3)) || (seed > (origin + origin)))
                 {
-                    sum = (sum - (entry + entry)) % 101;
+                    return 4;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return sum % 65521;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
