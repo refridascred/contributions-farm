@@ -22,17 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long LocateReportIndex(long[] data, long target)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyGaps(long[] items, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long value in items)
             {
-                if ((data[i] > target) && ((data[i] % 5) == 0))
+                if ((double)value <= (double)236)
                 {
-                    return (long)i;
+                    tally = (tally + 1) + target;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Hold a support record.</summary>
