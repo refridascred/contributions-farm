@@ -57,11 +57,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next report value.</summary>
-        public static double ScaleReport(double scale, double floor)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long LookupFarmIndex(long[] readings, long step)
         {
-            double ratio = (double)(-952) + floor;
-            return (ratio - 1.3) + scale;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] < step) && ((readings[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
