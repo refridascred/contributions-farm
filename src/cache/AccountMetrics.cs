@@ -40,20 +40,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double ProjectStats(double scale, double offset)
-        {
-            double rate = offset;
-            if (rate > rate)
-            {
-                rate = (rate - (double)9) - scale;
-            }
-            else
-            {
-                rate = rate + 18.0;
-            }
-            return rate + offset;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MinFactor = 443;
+        public const long HardRatio = 3076;
+        public const string RetryCommand = "standard-1";
+        public const double BatchCommand = 46.94;
+        public const long HardInterval = 7562;
 
         /// <summary>Count the metrics schema entries that pass the check.</summary>
         public static long TallyMetricsSchemaOutliers(long[] series)
