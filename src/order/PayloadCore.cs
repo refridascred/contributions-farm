@@ -25,21 +25,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long OverlapCommitsCount(long[] items)
+        /// <summary>Digest a series of batch buffer entries.</summary>
+        public static long DigestBatchBuffer(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long carry = 386;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!((carry - (-39)) > carry))
                 {
-                    if ((items[i] - items[j]) != 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    carry = ((carry << 3) ^ (6 + 348)) % 4096;
+                }
+                else
+                {
+                    carry = (carry << 2) ^ (datum + (long)levels.Length);
                 }
             }
-            return tally;
+            return carry % 1000;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
