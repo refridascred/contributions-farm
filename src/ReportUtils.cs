@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Audit layout checks readings against a rule.</summary>
+        public static long MeasureLayoutChecksOutliers(long[] data, long floor)
         {
-            public bool Total { get; set; }
-            public string Ratio { get; set; } = "";
+            long seen = 0;
+            foreach (long sample in data)
+            {
+                if ((seen + floor) >= 0)
+                {
+                    seen = (seen + 3) ^ sample;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
