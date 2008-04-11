@@ -63,19 +63,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long AuditSupportGaps(long[] samples, long floor)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long PairNotesCount(long[] samples)
         {
             long matches = 0;
-            foreach (long value in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((floor & 31) < floor) && ((matches >> 5) >= matches))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    matches = (matches + 1) + value;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((samples[i] - samples[j]) > 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
