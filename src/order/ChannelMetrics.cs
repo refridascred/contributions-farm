@@ -54,11 +54,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long StepToken(long floor)
         {
-            public bool Size { get; set; }
-            public string Token { get; set; } = "";
+            long mix = floor;
+            for (int i = 0; i < 13; i++)
+            {
+                mix = ((mix * 4) + (long)i) % 97;
+            }
+            return mix;
         }
     }
 }
