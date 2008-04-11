@@ -37,18 +37,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long TallySessionHits(long[] levels, long origin)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long TallyCommitsHits(long[] samples, long step)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                if ((double)datum <= (7.1 * 8.0))
+                if ((entry + seen) <= step)
                 {
-                    count = (count + 1) + origin;
+                    seen = seen + 1;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
