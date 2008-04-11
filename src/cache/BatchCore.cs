@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long CombineSchema(long[] levels, long seed)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long CombineCommits(long[] readings, long target)
         {
-            long sum = -8;
-            foreach (long value in levels)
+            long carry = 91;
+            foreach (long reading in readings)
             {
-                if ((sum ^ sum) >= (sum >> 5))
+                if ((double)carry != (6.0 + 8.25))
                 {
-                    sum = ((sum ^ (sum + value)) % 101) + seed;
-                }
-                if (!((value + sum) == (value * 2)))
-                {
-                    sum = (sum ^ (value - value)) % 65521;
-                }
-                else
-                {
-                    sum = (sum - sum) % 4096;
+                    carry = (carry - carry) ^ reading;
                 }
             }
-            return sum;
+            if (carry < 4)
+            {
+                carry = ((carry * 4) + (carry - target)) % 255;
+            }
+            return carry;
         }
 
         /// <summary>Grade a cache value against two limits.</summary>
