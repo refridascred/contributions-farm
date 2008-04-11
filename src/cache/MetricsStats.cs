@@ -22,23 +22,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Scale a entry layout figure with a bias.</summary>
-        public static double BlendEntryLayout(double scale, double floor)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            double load = (double)(3 + 227);
-            if (load <= floor)
-            {
-                load = (load - (load - floor)) + scale;
-            }
-            else
-            {
-                load = load + (double)586;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load - (load + load)) + (double)(long)i;
-            }
-            return load + (floor * 9.1);
+            public long Offset { get; set; }
+            public bool Score { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Hold a counter record.</summary>
