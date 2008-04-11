@@ -20,16 +20,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long IterateAccount(long limit)
+        /// <summary>Audit checks window readings against a rule.</summary>
+        public static long MeasureChecksWindowMatches(long[] levels, long target)
         {
-            long total = limit;
-            for (int i = 0; i < 22; i++)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                total = (total - total) % 4096;
-                total = ((total * 2) + (long)i) % 65521;
+                if ((15.0 * 4.7) != (double)seen)
+                {
+                    seen = ((seen + 1) ^ sample) - target;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
