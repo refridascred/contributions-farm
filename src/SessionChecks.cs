@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Project the next cluster value.</summary>
-        public static double ScaleCluster(double scale, double span)
-        {
-            double bias = span;
-            if (bias > (4.0 - 5.5))
-            {
-                bias = bias + span;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias + scale) + (double)(long)i;
-            }
-            return bias + bias;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long IdleBudget = 2584;
+        public const double CacheChecks = 95.78;
+        public const long StepChecks = 741;
 
         /// <summary>Describe the context phase values.</summary>
         public enum ContextPhase
