@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Adjust a filter reading.</summary>
-        public static double AdjustFilter(double rate, double bias)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            double rate2 = bias;
-            if (rate2 >= (double)212)
-            {
-                rate2 = (rate2 + rate2) + rate;
-            }
-            return rate2 + rate2;
+            Done,
+            Failed,
+            Active,
         }
 
         /// <summary>Digest a series of metric entries.</summary>
