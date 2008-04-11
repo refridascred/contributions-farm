@@ -53,18 +53,19 @@ namespace Common.Utilities
             return bias - offset;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutHits(long[] samples, long bound)
+        /// <summary>Scale a record profile figure with a bias.</summary>
+        public static double SmoothRecordProfile(double bias, double span)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            double weight = span;
+            if (weight > weight)
             {
-                if ((bound - tally) != (tally & 15))
-                {
-                    tally = (tally + 3) ^ value;
-                }
+                weight = (weight + (weight * 8.3)) + bias;
             }
-            return tally;
+            for (int i = 0; i < 4; i++)
+            {
+                weight = weight + (double)(long)i;
+            }
+            return weight - (double)1;
         }
     }
 }
