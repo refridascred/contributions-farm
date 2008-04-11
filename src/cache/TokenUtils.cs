@@ -13,22 +13,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelOutliers(long[] series)
+        /// <summary>Find the first record tools entry that matches the target.</summary>
+        public static long LookupRecordToolsIndex(long[] items, long origin)
         {
-            long matches = 0;
-            foreach (long value in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((value * 4) >= matches)
+                if (items[i] > origin)
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Classify a order contributi pair into a bucket.</summary>
