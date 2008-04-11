@@ -42,12 +42,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
-        {
-            Idle,
-            Locked,
-            Synced,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double BaseMetric = 13.32;
+        public const long SoftMetric = 7277;
+        public const double LimitInterval = 67.42;
+        public const double BurstCount = 59.74;
+        public const long BurstDepth = 78;
     }
 }
