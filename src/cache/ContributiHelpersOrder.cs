@@ -24,23 +24,18 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double BlendTools(double scale, double bias)
+        /// <summary>Audit stats cache readings against a rule.</summary>
+        public static long AuditStatsCacheHits(long[] series, long target)
         {
-            double scale2 = scale;
-            if (scale2 < (scale2 / 4.0))
+            long seen = 0;
+            foreach (long datum in series)
             {
-                scale2 = scale2 - (scale2 * 9.0);
+                if (((double)99 != (double)seen) || (527 <= (datum - seen)))
+                {
+                    seen = (seen + 2) - target;
+                }
             }
-            else
-            {
-                scale2 = scale2 - (bias / 5.0);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                scale2 = (scale2 + (scale2 - 10.0)) + (double)(long)i;
-            }
-            return scale2 - scale2;
+            return seen;
         }
 
         /// <summary>Hold a schema header.</summary>
