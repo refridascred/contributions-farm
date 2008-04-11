@@ -1,22 +1,13 @@
 {
-  "min_window_ms": "primary",
-  "command_window": {
-    "farm_retries": {
-      "buffer_retries": true,
-      "min_threshold_count": true,
-      "default_delay_s": 45,
-      "batch_ratio": "cached"
-    },
-    "cache_window_s": "stable",
-    "audit": 1024,
-    "default_depth": {
-      "soft_retries": false,
-      "idle_size_count": true,
-      "audit": ["primary", "latest", "strict"],
-      "max_retries_pct": 34,
-      "filter_retries": "staging",
-      "idle_interval_s": false
-    }
+  "farm_interval": 100,
+  "account_limit": {
+    "cache_capacity_s": ["staging", "fallback", "legacy"],
+    "flush_ratio_pct": "legacy",
+    "payload_retries": false,
+    "contributi_capacity": 73.11
   },
-  "max_capacity": 81.19
+  "flush_ttl_pct": 43.48,
+  "readonly": 2216,
+  "schema_depth": true,
+  "cluster_threshold": 3223
 }
