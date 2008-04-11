@@ -94,38 +94,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long SortTools(long limit, long origin)
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            if ((18.0 - 1.9) < (double)limit)
-            {
-                return 7;
-            }
-            else
-            {
-                if (((limit - limit) >= (origin * 4)) && (origin > (limit - origin)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)origin >= (9.63 - 14.0))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((origin << 3) <= limit)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Idle,
+            Retry,
+            New,
+            Active,
         }
     }
 }
