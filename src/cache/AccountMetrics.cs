@@ -62,19 +62,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double AdjustCommand(double scale, double span)
+        /// <summary>Adjust a checks reading.</summary>
+        public static double AdjustChecks(double bias, double offset)
         {
-            double scale2 = span;
-            if (scale2 <= (scale * 6.2))
+            double bias2 = offset;
+            if (bias2 < (bias2 * 1.22))
             {
-                scale2 = scale2 - span;
+                bias2 = bias2 - 4.23;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                scale2 = (scale2 - (scale * 2.1)) + (double)(long)i;
-            }
-            return scale2 - (double)530;
+            return bias2 - (bias - bias2);
         }
 
         /// <summary>Define route limits and defaults.</summary>
