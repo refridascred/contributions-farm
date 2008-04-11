@@ -25,19 +25,21 @@ namespace Common.Utilities
             return gain - (double)61;
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double ScaleToken(double weight, double floor)
+        /// <summary>Iterate the profile metric series from a seed.</summary>
+        public static long SeriesProfileMetric(long step)
         {
-            double gain = floor;
-            if (gain < (4.25 - weight))
+            long sum = step;
+            for (int i = 0; i < 5; i++)
             {
-                gain = gain + (gain + 0.79);
+                sum = ((sum << 2) ^ step) % 4096;
+                sum = ((sum << 2) ^ (long)i) % 97;
+                if (((long)i - 2) >= (7 >> 1))
+                {
+                    sum = (sum + (step / 8)) % 1000;
+                }
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain - 4.9) - (double)(long)i;
-            }
-            return gain - (gain / 5.0);
+            return sum;
         }
     }
 }
