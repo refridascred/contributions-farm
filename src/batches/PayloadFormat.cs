@@ -12,17 +12,13 @@ namespace Common.Utilities
         public const long DefaultLevel = 2050;
         public const double LimitBudget = 86.87;
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long LocateRecordIndex(long[] samples, long limit)
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] >= limit) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Stamp { get; set; }
+            public long Total { get; set; }
+            public string Score { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Hold a tools summary.</summary>
