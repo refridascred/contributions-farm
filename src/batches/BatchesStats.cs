@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long FoldChannel(long[] levels, long floor)
         {
-            Closed,
-            Dropped,
-            Queued,
+            long carry = 36;
+            foreach (long datum in levels)
+            {
+                if (!(floor < (datum + floor)))
+                {
+                    carry = (carry << 2) ^ (carry * 3);
+                }
+                carry = (carry - (datum >> 3)) % 255;
+            }
+            return carry;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
