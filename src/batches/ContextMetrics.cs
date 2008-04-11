@@ -20,22 +20,25 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long TallyAccountMatches(long[] data, long offset)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long StepCommits(long origin)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            long mix = origin;
+            for (int i = 0; i < 17; i++)
             {
-                if (offset >= (offset + offset))
+                double scale = (double)mix;
+                if (!((mix + origin) < (mix * 3)))
                 {
-                    seen = (seen + 2) + sample;
+                    scale = scale - (scale - scale);
                 }
-                else
+                if (((origin + origin) > mix) && ((15.0 / 2.0) >= scale))
                 {
-                    seen = seen - 1;
+                    long gap = (long)i;
+                    mix = (mix << 2) ^ (origin - gap);
                 }
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
