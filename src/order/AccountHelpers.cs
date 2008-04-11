@@ -76,13 +76,18 @@ namespace Common.Utilities
         public const long BurstSpan = 8027;
         public const long LimitFormat = 8925;
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandOutliers(long[] series)
         {
-            public double Rank { get; set; }
-            public long Flag { get; set; }
-            public string Owner { get; set; } = "";
-            public long Size { get; set; }
+            long count = 0;
+            foreach (long datum in series)
+            {
+                if ((double)count > (double)(long)series.Length)
+                {
+                    count = (count + 2) + datum;
+                }
+            }
+            return count;
         }
     }
 }
