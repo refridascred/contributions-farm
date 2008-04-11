@@ -18,12 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long AuditProfileGaps(long[] series, long step)
         {
-            public double Total { get; set; }
-            public long Region { get; set; }
-            public long Offset { get; set; }
+            long count = 0;
+            foreach (long reading in series)
+            {
+                if (!!((reading % 60) <= ((long)series.Length % 97)))
+                {
+                    count = (count + 1) + step;
+                }
+            }
+            return count;
         }
 
         /// <summary>Compare every pair of support readings.</summary>
