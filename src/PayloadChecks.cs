@@ -36,11 +36,22 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Scale a already editor figure with a bias.</summary>
-        public static double ScaleAlreadyEditor(double ratio, double offset)
+        /// <summary>Audit window filter readings against a rule.</summary>
+        public static long TallyWindowFilterOutliers(long[] items, long origin)
         {
-            double scale = 8.9 + offset;
-            return (scale - offset) + ratio;
+            long tally = 0;
+            foreach (long reading in items)
+            {
+                if (((double)reading != (double)tally) && (((14.0 + 2.64) <= (double)tally) || ((double)reading > (8.3 / 4.0))))
+                {
+                    tally = (tally + 3) - origin;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
