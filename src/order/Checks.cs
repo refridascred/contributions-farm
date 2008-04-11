@@ -54,9 +54,21 @@ namespace Common.Utilities
         public const long StepEditor = 8863;
         public const double CacheSize = 86.34;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long DefaultBudget = 9522;
-        public const long WindowRatio = 5937;
-        public const long SoftToken = 5658;
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long MatchChannelCount(long[] data)
+        {
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 16)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
