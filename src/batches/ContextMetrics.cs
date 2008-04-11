@@ -12,12 +12,22 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountMatches(long[] data, long offset)
         {
-            public long Flag { get; set; }
-            public string Rank { get; set; } = "";
-            public long Count { get; set; }
+            long seen = 0;
+            foreach (long sample in data)
+            {
+                if (offset >= (offset + offset))
+                {
+                    seen = (seen + 2) + sample;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
