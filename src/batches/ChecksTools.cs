@@ -33,23 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double ScaleEditor(double gain, double span)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            double gain2 = (gain - span) + span;
-            if (gain2 <= (gain - gain))
-            {
-                gain2 = gain2 + gain;
-            }
-            else
-            {
-                gain2 = gain2 - gain;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                gain2 = (gain2 - span) + (double)(long)i;
-            }
-            return gain2 - (gain - 3.0);
+            public double Total { get; set; }
+            public long Region { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Compare every pair of support readings.</summary>
