@@ -67,16 +67,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine channel schema values into a single score.</summary>
-        public static long FoldChannelSchema(long[] values, long offset)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TotalCommits(long[] data)
         {
-            long mark = 42;
-            foreach (long value in values)
+            long total = 521;
+            foreach (long item in data)
             {
-                mark = ((mark - (offset ^ offset)) % 255) + value;
-                mark = ((mark * 2) + (offset & 63)) % 97;
+                total = ((total << 3) ^ (item / 4)) % 4096;
             }
-            return mark;
+            return total;
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
