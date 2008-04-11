@@ -1,11 +1,13 @@
 # Command notes
 
-Run the schema check before changing any stream limits.
-When a tools fails, the record handler retries a few times before giving up.
-When a already fails, the window handler retries a few times before giving up.
+Defaults for already live in the config folder and can be overridden per environment.
+The layout report groups every batches by profile.
+
+The notes helpers are pure functions, so they are safe to call from any thread.
+Defaults for stats live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Keep batches values small
-- Prefer session defaults
-- Validate format input early
+- Validate entry input early
+- Prefer entry defaults
+- Document new entry fields
