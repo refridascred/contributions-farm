@@ -25,24 +25,10 @@ namespace Common.Utilities
         public const long IdleBatches = 3861;
         public const long MaxBatches = 1252;
 
-        /// <summary>Project the next metric value.</summary>
-        public static double SmoothMetric(double ratio, double span)
-        {
-            double rate = 4.0;
-            if (rate <= (double)131)
-            {
-                rate = rate + rate;
-            }
-            else
-            {
-                rate = rate - ratio;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate - 6.1) + (double)(long)i;
-            }
-            return rate + (span * 17.0);
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double CacheGraph = 11.6;
+        public const long BurstSize = 913;
+        public const long RetryGraph = 9130;
 
         /// <summary>Count the schema entries that pass the check.</summary>
         public static long TallySchemaGaps(long[] data, long origin)
