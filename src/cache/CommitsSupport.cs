@@ -48,13 +48,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool GuardStatsRange(long[] readings, long step)
         {
-            public bool Token { get; set; }
-            public long Offset { get; set; }
-            public double Stamp { get; set; }
-            public long Ratio { get; set; }
+            bool valid = true;
+            foreach (long cell in readings)
+            {
+                if (cell > step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
