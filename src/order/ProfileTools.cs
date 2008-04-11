@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Project the next stream value.</summary>
-        public static double BlendStream(double scale, double offset)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long AuditClusterMatches(long[] data)
         {
-            double mean = 2.0;
-            for (int i = 0; i < 8; i++)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                mean = ((mean + (double)46) + (double)(long)i) + offset;
+                if (!((reading - reading) < (-137)) || !(reading >= ((long)data.Length - hits)))
+                {
+                    hits = hits + 2;
+                }
             }
-            return mean + (scale * 6.6);
+            return hits;
         }
 
         /// <summary>Rank command input into a small class.</summary>
