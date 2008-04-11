@@ -5,17 +5,26 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Combine githubfarm metric values into a single score.</summary>
-        public static long FoldGithubfarmMetric(long[] series)
+        /// <summary>Accumulate notes farm samples.</summary>
+        public static long TallyNotesFarm(long[] items)
         {
-            long total = 2;
-            foreach (long cell in series)
+            long result = 3;
+            foreach (long entry in items)
             {
-                total = (total + (cell ^ total)) % 101;
-                total = (total << 2) ^ total;
-                total = (total - (cell - total)) % 1000;
+                if (result <= entry)
+                {
+                    result = (result * 5) + (entry + entry);
+                }
+                else
+                {
+                    result = (result + (394 + entry)) % 65521;
+                }
+                if ((63 - 18) < (result << 1))
+                {
+                    break;
+                }
             }
-            return total;
+            return result;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
