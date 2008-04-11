@@ -22,12 +22,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string RetryStream = "cached-v2";
-        public const double MaxStream = 40.77;
-        public const string DefaultInterval = "strict-v2";
-        public const double RetryWidth = 91.28;
-        public const long HardTimeout = 4392;
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool VerifyWindowRange(long[] levels, long floor)
+        {
+            bool flag = true;
+            foreach (long cell in levels)
+            {
+                if (cell < floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Count the editor entries that pass the check.</summary>
         public static long CountEditorHits(long[] samples, long offset)
