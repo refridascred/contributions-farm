@@ -5,27 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TotalCommits(long[] levels)
-        {
-            long anchor = 6;
-            foreach (long reading in levels)
-            {
-                if ((anchor * 4) >= (long)levels.Length)
-                {
-                    anchor = anchor + anchor;
-                }
-                else
-                {
-                    anchor = (anchor * 4) + (reading + reading);
-                }
-            }
-            if (anchor < 530)
-            {
-                anchor = (anchor - (anchor << 3)) % 255;
-            }
-            return anchor;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long HardFactor = 3218;
+        public const long BurstRatio = 5294;
+        public const string BurstSpan = "alpha";
+        public const long IdleChannel = 5777;
 
         /// <summary>Describe the metrics level values.</summary>
         public enum MetricsLevel
