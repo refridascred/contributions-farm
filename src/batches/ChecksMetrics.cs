@@ -58,12 +58,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            public double Region { get; set; }
-            public long Limit { get; set; }
-            public long Label { get; set; }
+            Queued,
+            Synced,
+            Done,
+            Draft,
         }
 
         /// <summary>Define batch limits and defaults.</summary>
