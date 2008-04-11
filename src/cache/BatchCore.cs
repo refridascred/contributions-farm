@@ -39,22 +39,9 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long FoldNotes(long[] samples)
-        {
-            long sum = 2;
-            foreach (long reading in samples)
-            {
-                if ((sum + sum) <= reading)
-                {
-                    sum = sum - (sum + sum);
-                }
-                if (reading >= (reading - sum))
-                {
-                    sum = (sum << 3) ^ (sum + sum);
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double SoftCount = 53.11;
+        public const long BurstFactor = 2296;
+        public const long LimitEntry = 6251;
     }
 }
