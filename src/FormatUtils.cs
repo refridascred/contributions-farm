@@ -32,24 +32,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long RankChecks(long offset, long target)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long LocateChecksIndex(long[] readings, long origin)
         {
-            if (((double)target >= (2.76 / 3.0)) || ((target << 3) <= (target - target)))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (offset >= (offset & 1))
+                if (readings[i] >= origin)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Roll a format counter forward.</summary>
