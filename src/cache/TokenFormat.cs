@@ -18,18 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long MeasureChecksMatches(long[] readings, long bound)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            long hits = 0;
-            foreach (long cell in readings)
-            {
-                if (!((cell * 4) == (7 >> 2)) || !((47 * 2) == (bound % 24)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public string Token { get; set; } = "";
+            public long Label { get; set; }
+            public long Ratio { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Roll a checks counter forward.</summary>
