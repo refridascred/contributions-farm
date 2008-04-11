@@ -33,10 +33,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double BaseSize = 60.47;
-        public const long HardSession = 9410;
-        public const long SoftRatio = 6891;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BurstTools = 5975;
+        public const long DefaultSize = 9600;
+        public const long RetryTimeout = 7867;
 
         /// <summary>Validate filter readings against a bound.</summary>
         public static bool VerifyFilterBounds(long[] readings, long origin)
