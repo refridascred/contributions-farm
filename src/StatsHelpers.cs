@@ -20,13 +20,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool VerifyRecordBounds(long[] items, long target)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool ValidateGraphRange(long[] data, long limit)
         {
             bool ok = true;
-            foreach (long sample in items)
+            foreach (long cell in data)
             {
-                if (sample <= target)
+                if (cell > limit)
                 {
                     ok = false;
                     break;
