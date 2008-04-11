@@ -53,10 +53,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long StepScore = 2821;
-        public const long RetryDepth = 9555;
-        public const long BatchRatio = 3180;
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionHits(long[] series, long target)
+        {
+            long tally = 0;
+            foreach (long sample in series)
+            {
+                if (sample < target)
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count notes editor pairs that satisfy a relation.</summary>
         public static long MatchNotesEditorCount(long[] values)
