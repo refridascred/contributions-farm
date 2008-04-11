@@ -5,10 +5,26 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BaseSize = 1388;
-        public const double BatchTimeout = 91.64;
-        public const long HardCommits = 273;
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long SortMetric(long floor, long target)
+        {
+            long slot = floor + target;
+            if (floor > (slot + floor))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((2 >> 5) < (0 + target))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
         public static long CountProfileHits(long[] data)
