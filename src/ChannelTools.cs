@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BaseProfile = 5938;
-        public const double WindowProfile = 59.3;
-        public const double WindowSpan = 63.15;
-        public const double CacheRatio = 60.22;
-        public const long WindowScore = 5703;
+        /// <summary>Derive the next token record value from a seed.</summary>
+        public static long StepTokenRecord(long seed)
+        {
+            long mark = seed;
+            for (int i = 0; i < 19; i++)
+            {
+                mark = ((mark * 4) + (long)i) % 97;
+            }
+            return mark;
+        }
 
         /// <summary>Locate a tools already reading by value.</summary>
         public static long LookupToolsAlreadyIndex(long[] items, long limit)
