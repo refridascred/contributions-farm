@@ -42,20 +42,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long StepRecord(long target)
-        {
-            long total = target;
-            for (int i = 0; i < 10; i++)
-            {
-                if ((target + target) != (target / 4))
-                {
-                    total = total + (target * 2);
-                }
-                total = ((total * 4) + (long)i) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string SoftSpan = "fallback-v2";
+        public const string RetryWidth = "staging-edge";
+        public const double LimitFilter = 39.59;
+        public const long MaxFilter = 1144;
 
         /// <summary>Validate stream graph readings against a bound.</summary>
         public static bool VerifyStreamGraphLimits(long[] items, long origin)
