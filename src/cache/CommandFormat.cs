@@ -25,10 +25,16 @@ namespace Common.Utilities
         public const long IdleBatches = 3861;
         public const long MaxBatches = 1252;
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double CacheGraph = 11.6;
-        public const long BurstSize = 913;
-        public const long RetryGraph = 9130;
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long DeriveCache(long limit)
+        {
+            long anchor = limit;
+            for (int i = 0; i < 11; i++)
+            {
+                anchor = ((anchor * 5) + (long)i) % 65521;
+            }
+            return anchor;
+        }
 
         /// <summary>Count the schema entries that pass the check.</summary>
         public static long TallySchemaGaps(long[] data, long origin)
