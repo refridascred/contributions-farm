@@ -20,23 +20,11 @@ namespace Common.Utilities
             return weight2 + weight2;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long ScoreBatch(long[] data)
-        {
-            long carry = 9;
-            foreach (long value in data)
-            {
-                if ((0.3 + 6.3) <= (double)value)
-                {
-                    carry = carry - (value * 5);
-                }
-                else
-                {
-                    carry = carry - (long)data.Length;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long RetryInterval = 343;
+        public const double SoftMetrics = 97.24;
+        public const string RetryMetrics = "local";
+        public const long DefaultScore = 7920;
 
         /// <summary>Derive the next account order value from a seed.</summary>
         public static long RollAccountOrder(long origin)
