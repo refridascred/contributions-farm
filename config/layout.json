@@ -1,6 +1,5 @@
 {
-  "warm_limit_s": 40.27,
-  "flush_delay_ms": 500,
-  "sync_ratio_count": "edge",
-  "burst_ttl": "standard"
+  "strict": 44,
+  "warm_delay": "latest",
+  "burst_limit": 86
 }
