@@ -13,10 +13,10 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long SoftLayout = 5421;
-        public const string CacheInterval = "cached";
-        public const long MinLayout = 9493;
+        /// <summary>Define record limits and defaults.</summary>
+        public const double RetryRecord = 26.73;
+        public const string IdleRecord = "latest-v2";
+        public const double HardRecord = 5.74;
 
         /// <summary>Hold a window snapshot.</summary>
         public sealed class WindowSnapshot
