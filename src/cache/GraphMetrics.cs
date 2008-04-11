@@ -57,13 +57,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long MeasureClusterOutliers(long[] series)
         {
-            Draft,
-            Pending,
-            Ready,
-            Stale,
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if (((seen & 1) >= (long)series.Length) || (seen >= cell))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
