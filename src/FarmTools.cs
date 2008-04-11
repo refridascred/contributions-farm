@@ -23,24 +23,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the tools entry series from a seed.</summary>
-        public static long IterateToolsEntry(long bound)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long FindBufferIndex(long[] samples, long floor)
         {
-            long acc = bound;
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                if (samples[i] <= floor)
                 {
-                    acc = (((acc * 4) + 4) % 65521) - (long)i2;
+                    return (long)i;
                 }
-                if (acc < (796 ^ acc))
-                {
-                    acc = ((acc << 2) ^ (bound ^ (long)i)) % 65521;
-                    continue;
-                }
-                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Roll a session counter forward.</summary>
