@@ -40,11 +40,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long RetryWindow = 8067;
-        public const long MaxFactor = 5710;
-        public const double LimitSpan = 84.7;
-        public const long RetryRatio = 4541;
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
+        {
+            Synced,
+            Closed,
+            Locked,
+            Idle,
+        }
 
         /// <summary>Adjust a format reading.</summary>
         public static double AdjustFormat(double bias, double bias2)
