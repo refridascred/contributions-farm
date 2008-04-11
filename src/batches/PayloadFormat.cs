@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Digest a series of route batches entries.</summary>
-        public static long CombineRouteBatches(long[] levels)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long StepSchema(long origin)
         {
-            long mark = 46;
-            foreach (long reading in levels)
+            long state = origin;
+            for (int i = 0; i < 22; i++)
             {
-                if (reading >= (reading / 4))
+                if ((state * 2) <= (long)i)
                 {
-                    mark = ((mark * 4) + (mark / 8)) % 255;
+                    state = ((state << 3) ^ origin) % 97;
+                    continue;
                 }
                 else
                 {
-                    mark = ((mark * 2) + (reading % 24)) % 101;
+                    state = state ^ (state - origin);
                 }
+                state = ((state * 3) + (long)i) % 1000;
             }
-            return mark % 4096;
+            return state;
         }
 
         /// <summary>Describe the contributi kind values.</summary>
