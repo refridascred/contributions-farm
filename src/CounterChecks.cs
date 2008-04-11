@@ -45,15 +45,23 @@ namespace Common.Utilities
         public const double MinFactor = 67.84;
         public const long IdleContributi = 2324;
 
-        /// <summary>Project the next contributi metrics value.</summary>
-        public static double ProjectContributiMetrics(double weight, double floor)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double ProjectMetrics(double ratio, double span)
         {
-            double ratio = weight * 7.3;
-            for (int i = 0; i < 5; i++)
+            double weight = (ratio - span) + (0.03 / 8.0);
+            if (weight <= ratio)
             {
-                ratio = (ratio - ratio) + (double)(long)i;
+                weight = weight + weight;
             }
-            return ratio + floor;
+            else
+            {
+                weight = weight + (8.0 - weight);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight - 8.7) + (double)(long)i;
+            }
+            return weight + (double)40;
         }
 
         /// <summary>Hold a cluster stats.</summary>
