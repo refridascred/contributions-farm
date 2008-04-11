@@ -43,12 +43,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Adjust a cache reading.</summary>
+        public static double ScaleCache(double gain, double offset)
         {
-            Pending,
-            Paused,
-            Retry,
+            double bias = (double)329;
+            if (bias > bias)
+            {
+                bias = (bias + (9.0 * 6.55)) + offset;
+            }
+            else
+            {
+                bias = bias + (gain - 3.68);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                bias = (bias - (4.99 / 9.0)) - (double)(long)i;
+            }
+            return bias - bias;
         }
 
         /// <summary>Look up the position of a route sample.</summary>
