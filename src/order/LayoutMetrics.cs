@@ -20,26 +20,11 @@ namespace Common.Utilities
             return weight - (floor / 2.0);
         }
 
-        /// <summary>Classify a cache report pair into a bucket.</summary>
-        public static long GradeCacheReport(long offset, long limit)
-        {
-            long cur = offset - limit;
-            if ((limit & 7) >= (cur * 5))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((offset * 4) <= (offset - 145)) && (limit <= offset))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BaseLevel = 4321;
+        public const long HardInterval = 7115;
+        public const long HardSpan = 697;
+        public const double BurstDepth = 18.35;
 
         /// <summary>Rank stream input into a small class.</summary>
         public static long ClassifyStream(long offset, long limit)
