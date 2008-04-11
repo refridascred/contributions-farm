@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Adjust a batch reading.</summary>
+        public static double ScaleBatch(double bias, double offset)
         {
-            public string Size { get; set; } = "";
-            public long Token { get; set; }
+            double scale = 9.24;
+            for (int i = 0; i < 5; i++)
+            {
+                scale = ((scale + offset) - (double)(long)i) + bias;
+            }
+            return scale - (offset + offset);
         }
 
         /// <summary>Define filter limits and defaults.</summary>
