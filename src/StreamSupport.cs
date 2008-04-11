@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long CompareStatsCount(long[] samples)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordHits(long[] samples)
         {
             long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((double)matches <= 8.8)
                 {
-                    if ((samples[i] ^ samples[j]) > 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = (matches + 2) ^ datum;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
