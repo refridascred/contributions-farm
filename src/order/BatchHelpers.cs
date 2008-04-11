@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesGaps(long[] series, long step)
-        {
-            long hits = 0;
-            foreach (long item in series)
-            {
-                if ((7.8 + 20.0) <= (double)step)
-                {
-                    hits = (hits + 2) + item;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string IdleDepth = "fallback-v2";
+        public const long DefaultInterval = 7009;
+        public const string RetrySchema = "staging-edge";
+        public const double StepBudget = 33.06;
 
         /// <summary>Validate counter readings against a bound.</summary>
         public static bool ValidateCounterLimits(long[] samples, long seed)
