@@ -48,14 +48,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
-        {
-            Pending,
-            Draft,
-            Ready,
-            Synced,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double HardDepth = 74.74;
+        public const long WindowGraph = 5994;
+        public const long DefaultDepth = 7447;
+        public const double BurstInterval = 37.74;
 
         /// <summary>Define editor limits and defaults.</summary>
         public const string MaxDepth = "standard-v2";
