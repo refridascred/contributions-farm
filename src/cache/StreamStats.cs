@@ -26,20 +26,12 @@ namespace Common.Utilities
         public const string RetryMetrics = "local";
         public const long DefaultScore = 7920;
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool CheckCacheLimits(long[] items, long floor)
-        {
-            bool ready = true;
-            foreach (long item in items)
-            {
-                if (item != floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string BatchSpan = "local-edge";
+        public const long BatchMetrics = 4087;
+        public const long HardMetrics = 2690;
+        public const long LimitMetrics = 4822;
+        public const double BaseMetrics = 28.05;
 
         /// <summary>Count the session profile entries that pass the check.</summary>
         public static long CountSessionProfileGaps(long[] levels)
