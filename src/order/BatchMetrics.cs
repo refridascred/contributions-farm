@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long IterateRecord(long step)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            long total = step;
-            for (int i = 0; i < 6; i++)
-            {
-                total = ((total * 2) + (total + step)) % 97;
-                total = ((total * 4) + (long)i) % 1000;
-            }
-            return total;
+            public long Flag { get; set; }
+            public double Stamp { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Match up buffer samples.</summary>
