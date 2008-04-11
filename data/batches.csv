@@ -1,6 +1,7 @@
-id,state,count,level,owner
-1,56.63,59.19,legacy,608
-2,334,388,17.01,green
-3,eu-west,347,762,48.37
-4,35.34,2.39,96.45,local
-5,871,green,583,17.55
+id,region,weight,owner
+1,open,315,staging
+2,legacy,93.0,260
+3,731,fallback,standard
+4,58.46,6.74,38.99
+5,10.35,24.93,174
+6,655,16.59,403
