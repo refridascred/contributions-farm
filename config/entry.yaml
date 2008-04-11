@@ -1,27 +1,22 @@
 # entry settings
-dry_run: legacy
-cache_interval:
-  filter_window: stable
-  cluster_capacity: 42.25
-  flush_timeout_s: 99
-support_retries:
-  max_ttl_count: 36.52
-  base_delay_count: legacy
-  enabled: 1859
-verbose: edge
-hard_delay_ms:
-  cache_depth:
-    - 58
-    - 429
-    - 33
-    - 359
-  verbose: true
-  sync_window:
-    dry_run:
-      - 21
-      - 231
-    cluster_depth: 36
-    flush_capacity:
-      - cached
-      - cached
-    warm_interval_ms: false
+min_interval_pct: open
+base_ttl:
+  min_window_count: 1024
+  sync_ttl_pct: 4334
+  base_ratio:
+    - latest
+    - stable
+  tools_timeout: true
+  sync_window_pct:
+    - local
+    - cached
+    - primary
+    - blue
+  batch_depth: local
+default_retries:
+  - 73
+  - 123
+  - 446
+entry_retries: standard
+sync_ratio_count: green
+hard_ratio_count: 64.14
