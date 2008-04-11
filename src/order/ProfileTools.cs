@@ -32,21 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long CompareRecordCount(long[] readings)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterHits(long[] readings, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)4 >= (double)hits)
                 {
-                    if ((readings[i] + readings[j]) == 1)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = ((hits + 3) + value) + origin;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
