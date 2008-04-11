@@ -20,20 +20,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long IterateFarm(long offset)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long IterateAccount(long limit)
         {
-            long mark = offset;
-            for (int i = 0; i < 19; i++)
+            long total = limit;
+            for (int i = 0; i < 22; i++)
             {
-                mark = ((mark * 2) + offset) % 255;
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    mark = ((mark - (mark + 52)) % 101) + (long)i2;
-                }
-                mark = ((mark * 4) + (long)i) % 101;
+                total = (total - total) % 4096;
+                total = ((total * 2) + (long)i) % 65521;
             }
-            return mark;
+            return total;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
