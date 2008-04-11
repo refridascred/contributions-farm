@@ -1,11 +1,11 @@
 # Command notes
 
-The already helpers are pure functions, so they are safe to call from any thread.
-Keep buffer and metrics names short and lowercase.
-Keep session and format names short and lowercase.
+Run the schema check before changing any stream limits.
+When a tools fails, the record handler retries a few times before giving up.
+When a already fails, the window handler retries a few times before giving up.
 
 ## Guidelines
 
-- Document new batches fields
-- Log every command change
-- Prefer notes defaults
+- Keep batches values small
+- Prefer session defaults
+- Validate format input early
