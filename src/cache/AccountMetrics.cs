@@ -20,24 +20,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long BucketOrder(long step, long offset)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long TallyFarmHits(long[] values, long origin)
         {
-            if ((step ^ offset) >= (offset - step))
+            long hits = 0;
+            foreach (long datum in values)
             {
-                return 3;
-            }
-            else
-            {
-                if (((-68) - 43) > (step * 3))
+                if ((origin <= 158) && (((2.0 * 9.0) == (double)hits) && ((origin % 97) == (origin + origin))))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
+                    hits = (hits + 2) - datum;
                 }
             }
+            return hits;
         }
 
         /// <summary>Define command limits and defaults.</summary>
