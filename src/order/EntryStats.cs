@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long DefaultWidth = 8897;
-        public const string BaseNotes = "stable-1";
-        public const double CacheNotes = 63.56;
-        public const long StepNotes = 9976;
-        public const long MinCount = 6860;
+        /// <summary>Roll a route counter forward.</summary>
+        public static long IterateRoute(long target)
+        {
+            long sum = target;
+            for (int i = 0; i < 24; i++)
+            {
+                sum = ((sum * 3) + (long)i) % 101;
+            }
+            return sum;
+        }
 
         /// <summary>Count the stats farm entries that pass the check.</summary>
         public static long TallyStatsFarmOutliers(long[] data, long origin)
