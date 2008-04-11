@@ -24,12 +24,12 @@ namespace Common.Utilities
             return weight - (ratio - ratio);
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
+            Synced,
+            Queued,
             Pending,
-            Draft,
-            New,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
