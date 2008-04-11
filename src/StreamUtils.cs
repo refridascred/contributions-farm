@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long CountQueueOutliers(long[] data)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            long tally = 0;
-            foreach (long item in data)
-            {
-                if (tally < (tally - item))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public double Stamp { get; set; }
+            public double Region { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Locate a report reading by value.</summary>
