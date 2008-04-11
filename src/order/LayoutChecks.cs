@@ -51,21 +51,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up queue samples.</summary>
-        public static long PairQueueCount(long[] levels)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 10)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Offset { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Describe the schema class values.</summary>
