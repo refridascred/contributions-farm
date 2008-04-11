@@ -19,20 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long ScoreQueue(long[] data, long origin)
-        {
-            long mix = 7;
-            foreach (long item in data)
-            {
-                mix = ((mix ^ (item / 2)) % 255) - origin;
-            }
-            if (mix < 5)
-            {
-                mix = mix ^ (mix >> 5);
-            }
-            return mix;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BaseWindow = 5964;
+        public const long RetrySpan = 6520;
+        public const double LimitSpan = 38.5;
+        public const double SoftFactor = 64.86;
+        public const string DefaultWindow = "open-edge";
 
         /// <summary>Describe the metric state values.</summary>
         public enum MetricState
