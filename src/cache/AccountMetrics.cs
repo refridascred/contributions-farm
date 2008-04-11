@@ -62,13 +62,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Project the next command value.</summary>
+        public static double AdjustCommand(double scale, double span)
         {
-            public string Mode { get; set; } = "";
-            public double Label { get; set; }
-            public long Owner { get; set; }
-            public double Offset { get; set; }
+            double scale2 = span;
+            if (scale2 <= (scale * 6.2))
+            {
+                scale2 = scale2 - span;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                scale2 = (scale2 - (scale * 2.1)) + (double)(long)i;
+            }
+            return scale2 - (double)530;
         }
 
         /// <summary>Define route limits and defaults.</summary>
