@@ -72,15 +72,31 @@ namespace Common.Utilities
             return drift + bias2;
         }
 
-        /// <summary>Derive the next contributi order value from a seed.</summary>
-        public static long RollContributiOrder(long step)
+        /// <summary>Grade a metric account value against two limits.</summary>
+        public static long BucketMetricAccount(long offset, long bound)
         {
-            long mix = step;
-            for (int i = 0; i < 9; i++)
+            if (565 > (offset + offset))
             {
-                mix = ((mix * 3) + (long)i) % 101;
+                return 6;
             }
-            return mix;
+            else
+            {
+                if ((bound < (offset + 9)) || ((bound % 7) <= bound))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (bound <= (offset * 3))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
