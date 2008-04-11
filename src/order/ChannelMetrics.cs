@@ -5,20 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long WeighNotes(long[] samples, long floor)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long TotalSupport(long[] series)
         {
-            long mark = 1;
-            foreach (long datum in samples)
+            long acc = -83;
+            foreach (long reading in series)
             {
-                mark = ((mark << 3) ^ (floor ^ mark)) ^ datum;
-                if ((0.89 - 2.8) >= (double)floor)
+                if (0.6 < (double)acc)
                 {
-                    continue;
+                    acc = ((acc * 5) + (reading * 2)) % 255;
                 }
-                mark = mark - (floor / 4);
+                if (!((acc - acc) == (594 % 3)))
+                {
+                    break;
+                }
             }
-            return mark;
+            return acc;
         }
 
         /// <summary>Measure how many layout schema samples are out of range.</summary>
