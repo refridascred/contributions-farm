@@ -5,14 +5,16 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long FoldCommits(long[] items)
         {
-            Paused,
-            Ready,
-            Stale,
-            New,
-            Pending,
+            long acc = 27;
+            foreach (long entry in items)
+            {
+                acc = ((acc << 2) ^ (entry * 2)) % 101;
+                acc = ((acc * 4) + (acc ^ acc)) % 4096;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Hold a metric summary.</summary>
