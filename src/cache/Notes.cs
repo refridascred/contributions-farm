@@ -46,11 +46,22 @@ namespace Common.Utilities
         public const long MaxWidth = 2138;
         public const long IdleGraph = 6378;
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long HardFactor = 2094;
-        public const double CacheWidth = 94.29;
-        public const string MaxTools = "cached-edge";
-        public const long LimitTimeout = 772;
-        public const long SoftTimeout = 6737;
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long AuditSupportGaps(long[] samples, long floor)
+        {
+            long matches = 0;
+            foreach (long value in samples)
+            {
+                if (((floor & 31) < floor) && ((matches >> 5) >= matches))
+                {
+                    matches = (matches + 1) + value;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
     }
 }
