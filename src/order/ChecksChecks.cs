@@ -18,14 +18,12 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            Done,
-            Failed,
-            Draft,
-            Stale,
-            Synced,
+            public bool Limit { get; set; }
+            public long Rank { get; set; }
+            public string Stamp { get; set; } = "";
         }
     }
 }
