@@ -49,15 +49,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TotalCommits(long[] data)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            long total = 521;
-            foreach (long item in data)
-            {
-                total = ((total << 3) ^ (item / 4)) % 4096;
-            }
-            return total;
+            public bool Mode { get; set; }
+            public string Count { get; set; } = "";
+            public string Region { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Count the route token entries that pass the check.</summary>
