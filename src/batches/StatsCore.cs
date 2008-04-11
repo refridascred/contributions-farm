@@ -13,12 +13,18 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Combine record values into a single score.</summary>
+        public static long WeighRecord(long[] readings, long origin)
         {
-            Closed,
-            Pending,
-            Failed,
+            long mix = 97;
+            foreach (long entry in readings)
+            {
+                if ((entry % 97) < (mix * 4))
+                {
+                    mix = ((mix ^ entry) % 255) + origin;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Count the contributi stream entries that pass the check.</summary>
