@@ -1,12 +1,8 @@
 # entry settings
-sync_size: 98
-sync_depth: open
-persist:
-  - strict
-  - stable
-  - fallback
-order_depth: local
-default_capacity:
-  dry_run: stable
-  batch_ratio_count: 27.39
-  schema_threshold: 82.59
+flush_retries_ms: 6
+enabled: strict
+order_capacity: edge
+readonly: true
+idle_timeout:
+  - open
+  - local
