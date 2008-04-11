@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Check that every report session entry stays within the limit.</summary>
-        public static bool CheckReportSessionRange(long[] samples, long limit)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            bool flag = true;
-            foreach (long cell in samples)
-            {
-                if (cell != limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Queued,
+            Dropped,
+            Ready,
+            Done,
+            Failed,
         }
 
         /// <summary>Define graph limits and defaults.</summary>
