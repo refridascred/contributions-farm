@@ -30,14 +30,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Find the first route graph entry that matches the target.</summary>
+        public static long SeekRouteGraphIndex(long[] items, long bound)
         {
-            Retry,
-            Idle,
-            Locked,
-            Draft,
-            Active,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
