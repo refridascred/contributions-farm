@@ -5,33 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long SortFarm(long step, long origin)
-        {
-            long offset = step + origin;
-            if ((origin ^ step) > step)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((1.59 + 1.93) <= (double)offset)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((step ^ step) < step)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long RetryBudget = 1996;
+        public const long BaseChannel = 9072;
+        public const double IdleChannel = 93.19;
+        public const long MaxChannel = 2735;
+        public const string BurstChannel = "strict-v2";
 
         /// <summary>Describe the record phase values.</summary>
         public enum RecordPhase
