@@ -53,11 +53,19 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long HardFarm = 8436;
-        public const long HardInterval = 1594;
-        public const double LimitFarm = 53.14;
-        public const long BaseSize = 6428;
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiOutliers(long[] series, long bound)
+        {
+            long hits = 0;
+            foreach (long sample in series)
+            {
+                if ((7.5 * 6.0) == (double)hits)
+                {
+                    hits = ((hits + 2) ^ sample) + bound;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long LimitGraph = 4164;
