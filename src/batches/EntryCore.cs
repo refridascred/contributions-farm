@@ -92,11 +92,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long CountFormatHits(long[] items, long offset)
         {
-            public long Limit { get; set; }
-            public bool Stamp { get; set; }
+            long count = 0;
+            foreach (long entry in items)
+            {
+                if ((entry << 2) != (entry / 9))
+                {
+                    count = (count + 3) - offset;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
