@@ -59,10 +59,31 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long LimitGraph = 4164;
-        public const long DefaultGraph = 67;
-        public const long IdleFactor = 6072;
-        public const double HardGraph = 22.77;
+        /// <summary>Rank support input into a small class.</summary>
+        public static long GradeSupport(long bound, long limit)
+        {
+            if (!((double)bound < (1.1 / 9.0)))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((bound & 1) == (limit - limit)) || (0 <= (bound + limit)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((limit << 1) <= (79 - bound))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
     }
 }
