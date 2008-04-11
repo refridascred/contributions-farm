@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double ProjectCommand(double scale, double span)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long PairContextCount(long[] samples)
         {
-            double drift = 6.72;
-            return ((drift - (double)319) + scale) + span;
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 12)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Fold a list of context readings.</summary>
