@@ -33,19 +33,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every metric command entry stays within the limit.</summary>
-        public static bool CheckMetricCommandBounds(long[] items, long origin)
+        /// <summary>Accumulate metrics format samples.</summary>
+        public static long CombineMetricsFormat(long[] samples, long target)
         {
-            bool valid = true;
-            foreach (long entry in items)
+            long mark = 769;
+            foreach (long entry in samples)
             {
-                if (entry != origin)
+                mark = ((mark - (37 << 2)) % 101) - target;
+                mark = mark ^ (entry * 2);
+                if (!(970 <= (entry - mark)))
                 {
-                    valid = false;
                     break;
                 }
             }
-            return valid;
+            return mark;
         }
 
         /// <summary>Hold a route stats.</summary>
