@@ -11,17 +11,18 @@ namespace Common.Utilities
         public const long WindowFilter = 2524;
         public const long SoftFilter = 8448;
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long FindAccountIndex(long[] samples, long offset)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferOutliers(long[] samples)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                if (samples[i] >= offset)
+                if ((tally / 8) < datum)
                 {
-                    return (long)i;
+                    tally = tally + 3;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
