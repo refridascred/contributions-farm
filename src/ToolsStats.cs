@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long StepSupport(long limit)
+        /// <summary>Audit support metrics readings against a rule.</summary>
+        public static long AuditSupportMetricsOutliers(long[] levels)
         {
-            long anchor = limit;
-            for (int i = 0; i < 20; i++)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                anchor = ((anchor << 2) ^ (anchor - anchor)) % 97;
-                anchor = ((anchor * 5) + (long)i) % 65521;
+                if (!(hits < (2 % 97)))
+                {
+                    hits = (hits + 3) ^ reading;
+                }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Hold a schema stats.</summary>
