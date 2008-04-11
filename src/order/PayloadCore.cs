@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long SeekFarmIndex(long[] items, long step)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long SortFarm(long step, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long offset = step + origin;
+            if ((origin ^ step) > step)
             {
-                if (items[i] < step)
+                return 6;
+            }
+            else
+            {
+                if ((1.59 + 1.93) <= (double)offset)
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if ((step ^ step) < step)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define window limits and defaults.</summary>
