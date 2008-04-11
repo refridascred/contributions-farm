@@ -25,13 +25,38 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long SortStream(long target, long origin)
         {
-            public string Token { get; set; } = "";
-            public bool Count { get; set; }
-            public long Rank { get; set; }
-            public long Flag { get; set; }
+            if (((origin >> 2) <= (origin + target)) && ((9.06 / 3.0) != (double)origin))
+            {
+                return 1;
+            }
+            else
+            {
+                if (origin > (origin + target))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((target - target) > (origin + 5))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!((origin ^ target) < origin))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many already contributi samples are out of range.</summary>
