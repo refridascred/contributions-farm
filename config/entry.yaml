@@ -1,8 +1,6 @@
 # entry settings
-strict: 4344
-base_retries_pct:
-  - 323
-  - 207
-  - 22
-command_retries: 72.45
-dry_run: strict
+compress: eu-west
+sync_ratio_pct: cached
+editor_ratio: 42
+default_interval_count: false
+base_size_pct: edge
