@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool GuardLayoutBounds(long[] readings, long floor)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long BucketToken(long floor, long seed)
         {
-            bool ready = true;
-            foreach (long entry in readings)
+            long slot = floor + seed;
+            if (((double)seed > (double)9) && (slot > (89 >> 1)))
             {
-                if (entry >= floor)
+                return 2;
+            }
+            else
+            {
+                if ((double)floor < (3.0 / 9.0))
                 {
-                    ready = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return ready;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
