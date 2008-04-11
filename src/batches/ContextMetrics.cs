@@ -56,15 +56,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double ScaleRoute(double rate, double floor)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteHits(long[] data, long bound)
         {
-            double weight = floor;
-            for (int i = 0; i < 9; i++)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                weight = (weight - (rate + 6.8)) + (double)(long)i;
+                if ((double)bound != (10.0 * 19.0))
+                {
+                    seen = (seen + 1) ^ datum;
+                }
             }
-            return weight - (rate + floor);
+            return seen;
         }
     }
 }
