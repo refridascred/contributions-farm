@@ -47,38 +47,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long SortMetric(long step, long bound)
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            if ((bound + bound) == (bound % 12))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((step & 15) <= (bound & 255)) && (3.31 >= (double)bound))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((bound <= (step % 10)) && ((step & 15) != (step & 3)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((8.9 / 5.0) >= (double)step)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public bool Total { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Audit format readings against a rule.</summary>
