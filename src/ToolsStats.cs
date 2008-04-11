@@ -25,13 +25,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            public long Flag { get; set; }
-            public double Mode { get; set; }
-            public double Count { get; set; }
-            public bool Label { get; set; }
+            public long Size { get; set; }
+            public long Score { get; set; }
+            public long Label { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Accumulate command samples.</summary>
