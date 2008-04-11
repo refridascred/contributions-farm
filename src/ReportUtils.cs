@@ -27,38 +27,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long RankNotes(long offset, long target)
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            if (target <= (target / 7))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((offset / 2) < (offset * 4))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((target % 5) < (offset ^ offset))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((offset & 3) >= (target + offset))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public long Label { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Describe the queue level values.</summary>
