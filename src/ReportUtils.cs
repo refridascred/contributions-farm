@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Match up batch samples.</summary>
-        public static long PairBatchCount(long[] series)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long FoldBatch(long[] values, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mark = 0;
+            foreach (long item in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)origin != (3.0 / 5.0))
                 {
-                    if ((series[i] ^ series[j]) > 11)
-                    {
-                        count = count + 1;
-                    }
+                    mark = mark + item;
                 }
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Locate a channel checks reading by value.</summary>
