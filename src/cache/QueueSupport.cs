@@ -14,19 +14,18 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Check that every farm batch entry stays within the limit.</summary>
-        public static bool GuardFarmBatchLimits(long[] samples, long bound)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsMatches(long[] readings)
         {
-            bool flag = true;
-            foreach (long value in samples)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                if (value > bound)
+                if (!(entry < (7 + tally)) && !(tally <= (entry + tally)))
                 {
-                    flag = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
