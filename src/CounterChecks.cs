@@ -68,17 +68,12 @@ namespace Common.Utilities
             return scale + offset;
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long LocateRouteIndex(long[] readings, long limit)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Dropped,
+            Synced,
         }
     }
 }
