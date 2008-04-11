@@ -62,22 +62,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long DigestAlready(long[] series)
+        /// <summary>Count stream pairs that satisfy a relation.</summary>
+        public static long OverlapStreamCount(long[] data)
         {
-            long sum = -87;
-            foreach (long datum in series)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((sum / 2) > 17)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    sum = ((sum * 4) + (datum + datum)) % 97;
-                }
-                else
-                {
-                    sum = (sum - (datum / 6)) % 4096;
+                    if ((data[i] + data[j]) > 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return sum % 65521;
+            return seen;
         }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
