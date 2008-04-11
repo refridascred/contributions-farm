@@ -50,18 +50,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long ScoreTools(long[] values, long step)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long FoldMetrics(long[] samples)
         {
-            long mix = 0;
-            foreach (long sample in values)
+            long total = -22;
+            foreach (long item in samples)
             {
-                if ((mix ^ step) >= (step % 5))
+                if ((total + total) != (2 * 5))
                 {
-                    mix = ((mix ^ (mix & 255)) % 101) - sample;
+                    total = ((total << 2) ^ item) % 101;
+                    total = total - (115 >> 1);
                 }
+                total = ((total << 2) ^ total) % 255;
             }
-            return mix % 97;
+            if (total > 0)
+            {
+                total = ((total * 4) + (long)samples.Length) % 255;
+            }
+            return total % 65521;
         }
     }
 }
