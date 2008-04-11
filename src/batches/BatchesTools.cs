@@ -37,15 +37,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long DigestAccount(long[] levels)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            long mix = -84;
-            foreach (long item in levels)
-            {
-                mix = (mix ^ (item + 9)) % 97;
-            }
-            return mix % 65521;
+            Retry,
+            Draft,
+            Dropped,
+            Done,
         }
     }
 }
