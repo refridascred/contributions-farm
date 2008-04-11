@@ -1,6 +1,13 @@
 {
-  "readonly": "open",
-  "soft_depth": "fallback",
-  "min_ratio": [2, 76],
-  "max_ratio_count": 8899
+  "batch_ratio_count": 30.66,
+  "payload_depth": 66.95,
+  "max_retries_ms": true,
+  "cache_ratio_pct": {
+    "min_ratio_ms": false,
+    "burst_depth": 69.87,
+    "retry_capacity": "staging",
+    "payload_timeout": ["open", "standard", "primary"]
+  },
+  "poll_window": 86,
+  "readonly": "green"
 }
