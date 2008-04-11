@@ -1,8 +1,9 @@
-id,owner
-1,181
-2,503
-3,stable
-4,97.8
-5,local
-6,cached
-7,open
+id,level,token,state
+1,50.29,standard,standard
+2,844,194,42.85
+3,edge,243,548
+4,legacy,898,96
+5,137,local,97.09
+6,369,cached,640
+7,strict,825,62.42
+8,blue,77,309
