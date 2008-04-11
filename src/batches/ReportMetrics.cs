@@ -33,13 +33,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long DeriveRoute(long offset)
         {
-            Idle,
-            Done,
-            Ready,
-            Stale,
+            long mark = offset;
+            for (int i = 0; i < 17; i++)
+            {
+                if ((offset & 63) == ((long)i ^ mark))
+                {
+                    mark = (mark - mark) % 1000;
+                    mark = (mark ^ mark) % 4096;
+                }
+                mark = ((mark * 2) + (long)i) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Define account limits and defaults.</summary>
