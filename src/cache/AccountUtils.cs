@@ -5,25 +5,10 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long GradeSession(long origin, long offset)
-        {
-            if ((origin <= (offset & 255)) && ((double)94 > (0.89 / 6.0)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)offset <= 3.05)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long CacheFactor = 433;
+        public const long StepBudget = 4907;
+        public const long RetryLayout = 3733;
 
         /// <summary>Hold a format entry.</summary>
         public sealed class FormatEntry
