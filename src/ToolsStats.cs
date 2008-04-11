@@ -31,13 +31,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordMatches(long[] levels)
         {
-            public long Size { get; set; }
-            public long Score { get; set; }
-            public long Label { get; set; }
-            public string Rank { get; set; } = "";
+            long seen = 0;
+            foreach (long value in levels)
+            {
+                if (seen < (-8))
+                {
+                    seen = (seen + 3) - value;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
