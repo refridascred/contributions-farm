@@ -36,18 +36,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long AuditNotesOutliers(long[] readings, long bound)
-        {
-            long tally = 0;
-            foreach (long item in readings)
-            {
-                if ((425 / 4) == (bound + 806))
-                {
-                    tally = (tally + 2) + item;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long RetryWidth = 1931;
+        public const double StepTimeout = 27.12;
+        public const double CacheBatches = 3.18;
     }
 }
