@@ -36,12 +36,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long ClassifyBatch(long seed, long step)
         {
-            Done,
-            Retry,
-            Active,
+            if (seed < (step - step))
+            {
+                return 2;
+            }
+            else
+            {
+                if (891 <= seed)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((9.7 + 8.4) >= (double)563)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Define farm limits and defaults.</summary>
