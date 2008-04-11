@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long GradeAlready(long seed, long limit)
-        {
-            long diff = seed - limit;
-            if (((seed / 6) < 0) && ((seed / 3) <= (3 & 1)))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((724 / 2) == (seed + diff)) && (seed >= (seed + diff)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long LimitTimeout = 6949;
+        public const double StepDepth = 73.76;
+        public const long BurstBuffer = 1884;
+        public const long BatchTimeout = 3202;
 
         /// <summary>Validate counter readings against a bound.</summary>
         public static bool ValidateCounterLimits(long[] samples, long seed)
