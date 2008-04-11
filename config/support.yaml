@@ -1,15 +1,10 @@
 # support settings
-idle_depth: 1024
-cache_delay_ms:
-  - 125
-  - 28
-  - 374
-  - 63
-enabled:
-  soft_capacity_count: strict
-  hard_timeout: fallback
-  soft_depth: 61
-  enabled: true
-entry_size: 60
-dry_run: blue
-githubfarm_capacity: 29.32
+idle_ratio_ms: 60
+idle_window_count: local
+sync_interval_s: 95
+soft_window: local
+checks_capacity:
+  - 62
+  - 383
+  - 265
+contributi_timeout: 97.31
