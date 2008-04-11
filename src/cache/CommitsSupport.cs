@@ -22,13 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            Idle,
-            Closed,
-            Paused,
-            Done,
+            Queued,
+            Draft,
+            Active,
         }
 
         /// <summary>Count the metric order entries that pass the check.</summary>
