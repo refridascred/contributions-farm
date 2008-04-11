@@ -23,38 +23,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a support metrics value against two limits.</summary>
-        public static long RankSupportMetrics(long target, long step)
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            if ((step - target) != (step - step))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((target / 2) <= step) && ((step << 3) < step))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((822 + 1) != (step << 2)) && (step < target))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((target - step) >= (254 - 44))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public long Total { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Combine already values into a single score.</summary>
