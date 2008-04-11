@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Locate a entry cache reading by value.</summary>
-        public static long LocateEntryCacheIndex(long[] readings, long limit)
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] <= limit) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Limit { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Token { get; set; } = "";
+            public double Count { get; set; }
         }
 
         /// <summary>Audit route readings against a rule.</summary>
