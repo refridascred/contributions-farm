@@ -33,22 +33,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionHits(long[] series, long target)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            long tally = 0;
-            foreach (long sample in series)
-            {
-                if (sample < target)
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            New,
+            Draft,
+            Pending,
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
