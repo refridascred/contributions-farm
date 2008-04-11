@@ -34,12 +34,13 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            public bool Ratio { get; set; }
-            public bool Score { get; set; }
-            public double Flag { get; set; }
+            Retry,
+            Paused,
+            Failed,
+            New,
         }
     }
 }
