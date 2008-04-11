@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long LocateChannelIndex(long[] levels, long limit)
         {
-            Synced,
-            Queued,
-            Retry,
-            Dropped,
-            Stale,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Rank report input into a small class.</summary>
