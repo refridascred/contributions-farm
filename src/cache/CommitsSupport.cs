@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Match up tools samples.</summary>
-        public static long PairToolsCount(long[] items)
-        {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double BurstBudget = 19.39;
+        public const long IdleRecord = 7401;
+        public const double DefaultRatio = 63.82;
+        public const double CacheRecord = 32.6;
+        public const long MaxDepth = 1917;
 
         /// <summary>Find the first account entry that matches the target.</summary>
         public static long FindAccountIndex(long[] samples, long offset)
