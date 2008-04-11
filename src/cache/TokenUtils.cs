@@ -31,23 +31,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long StepSession(long floor)
+        /// <summary>Classify a order contributi pair into a bucket.</summary>
+        public static long BucketOrderContributi(long offset, long limit)
         {
-            long anchor = floor;
-            for (int i = 0; i < 7; i++)
+            if ((double)limit != (2.01 + 8.81))
             {
-                if ((7 % 5) == (anchor & 7))
-                {
-                    break;
-                }
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    anchor = (((anchor << 2) ^ anchor) % 97) - (long)i2;
-                }
-                anchor = ((anchor * 5) + (long)i) % 65521;
+                return 0;
             }
-            return anchor;
+            else
+            {
+                if ((offset % 64) <= offset)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
