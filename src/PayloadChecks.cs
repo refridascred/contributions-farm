@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Locate a token reading by value.</summary>
+        public static long LookupTokenIndex(long[] series, long target)
         {
-            public string Stamp { get; set; } = "";
-            public double Count { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
