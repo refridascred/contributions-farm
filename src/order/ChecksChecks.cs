@@ -27,15 +27,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long TallyProfile(long[] samples, long origin)
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long FindCommitsIndex(long[] levels, long step)
         {
-            long mark = -12;
-            foreach (long sample in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mark = ((mark * 2) + (sample & 127)) - origin;
+                if (levels[i] == step)
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
     }
 }
