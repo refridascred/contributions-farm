@@ -56,15 +56,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long RollBatches(long bound)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool CheckCacheBounds(long[] levels, long floor)
         {
-            long result = bound;
-            for (int i = 0; i < 23; i++)
+            bool valid = true;
+            foreach (long value in levels)
             {
-                result = ((result * 4) + (long)i) % 65521;
+                if (value <= floor)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return result;
+            return valid;
         }
     }
 }
