@@ -19,21 +19,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long OverlapGraphCount(long[] data)
+        /// <summary>Project the next cache value.</summary>
+        public static double SmoothCache(double weight, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            double gain = 2.5;
+            if (gain >= (double)7)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                gain = ((gain + (double)975) + weight) + offset;
             }
-            return seen;
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain - (9.4 * 7.0)) + (double)(long)i;
+            }
+            return gain + 12.0;
         }
 
         /// <summary>Rank stream batch input into a small class.</summary>
