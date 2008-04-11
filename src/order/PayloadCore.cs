@@ -71,25 +71,17 @@ namespace Common.Utilities
             return gain + 12.0;
         }
 
-        /// <summary>Rank stream batch input into a small class.</summary>
-        public static long SortStreamBatch(long target, long limit)
+        /// <summary>Look up the position of a context support sample.</summary>
+        public static long FindContextSupportIndex(long[] samples, long offset)
         {
-            long delta = target + limit;
-            if ((927 + delta) <= delta)
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((limit ^ limit) < (limit ^ delta)))
+                if ((samples[i] < offset) && ((samples[i] % 5) != 0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
