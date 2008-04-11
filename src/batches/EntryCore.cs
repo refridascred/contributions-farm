@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Accumulate notes farm samples.</summary>
-        public static long TallyNotesFarm(long[] items)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long CombineCluster(long[] series, long offset)
         {
-            long result = 3;
-            foreach (long entry in items)
+            long state = 0;
+            foreach (long item in series)
             {
-                if (result <= entry)
+                if (state >= (state & 63))
                 {
-                    result = (result * 5) + (entry + entry);
-                }
-                else
-                {
-                    result = (result + (394 + entry)) % 65521;
-                }
-                if ((63 - 18) < (result << 1))
-                {
-                    break;
+                    state = ((((state << 2) ^ (state & 255)) % 97) + item) + offset;
                 }
             }
-            return result;
+            if (state < 3)
+            {
+                state = (state ^ state) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
