@@ -33,20 +33,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long IterateEditor(long step)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            long acc = step;
-            for (int i = 0; i < 19; i++)
-            {
-                acc = acc + (step >> 4);
-                if (!((139 + acc) <= step))
-                {
-                    acc = ((acc << 2) ^ (acc - (long)i)) % 101;
-                }
-                acc = ((acc * 3) + (long)i) % 97;
-            }
-            return acc;
+            public long Weight { get; set; }
+            public bool Offset { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
