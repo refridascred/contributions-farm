@@ -1,14 +1,5 @@
 {
-  "githubfarm_capacity": ["staging", "cached", "cached", "blue"],
-  "audit": ["green", "eu-west"],
-  "min_size": true,
-  "min_retries": 71,
-  "batch_threshold": 71,
-  "schema_retries": {
-    "profile_ttl": "local",
-    "support_ratio": "eu-west",
-    "persist": 41.95,
-    "flush_ratio_pct": "eu-west",
-    "cache_ratio": 71
-  }
+  "enabled": 58.81,
+  "cache_threshold_ms": 6436,
+  "max_window_ms": true
 }
