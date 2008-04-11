@@ -35,11 +35,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            public bool Rank { get; set; }
-            public double Flag { get; set; }
+            Idle,
+            Locked,
+            Synced,
         }
     }
 }
