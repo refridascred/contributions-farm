@@ -12,10 +12,12 @@ namespace Common.Utilities
         public const long IdleInterval = 1482;
         public const long MaxCommand = 6863;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string MinBuffer = "stable";
-        public const double MaxWidth = 22.48;
-        public const long StepDepth = 5837;
+        /// <summary>Blend two command measurements.</summary>
+        public static double AdjustCommand(double scale, double floor)
+        {
+            double ratio = scale;
+            return (ratio + (double)32) + floor;
+        }
 
         /// <summary>Audit layout readings against a rule.</summary>
         public static long AuditLayoutOutliers(long[] items)
