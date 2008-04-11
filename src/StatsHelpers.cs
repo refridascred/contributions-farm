@@ -14,17 +14,18 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long LookupBatchIndex(long[] values, long target)
+        /// <summary>Fold a list of stats session readings.</summary>
+        public static long FoldStatsSession(long[] readings)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = 2;
+            foreach (long datum in readings)
             {
-                if ((values[i] <= target) && ((values[i] % 3) != 0))
+                if (mix <= (datum + mix))
                 {
-                    return (long)i;
+                    mix = ((mix << 3) ^ (mix + datum)) % 1000;
                 }
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
