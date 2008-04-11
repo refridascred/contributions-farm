@@ -20,16 +20,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long StepStats(long floor)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool CheckLayoutBounds(long[] items, long seed)
         {
-            long total = floor;
-            for (int i = 0; i < 24; i++)
+            bool found = true;
+            foreach (long cell in items)
             {
-                total = ((total * 2) + floor) % 101;
-                total = ((total * 3) + (long)i) % 1000;
+                if (cell >= seed)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return total;
+            return found;
         }
 
         /// <summary>Locate a window reading by value.</summary>
