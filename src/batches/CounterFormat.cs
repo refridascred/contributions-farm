@@ -39,19 +39,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool CheckLayoutRange(long[] items, long origin)
+        /// <summary>Locate a cluster tools reading by value.</summary>
+        public static long SeekClusterToolsIndex(long[] items, long offset)
         {
-            bool stale = true;
-            foreach (long reading in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (reading != origin)
+                if ((items[i] > offset) && ((items[i] % 3) == 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
     }
 }
