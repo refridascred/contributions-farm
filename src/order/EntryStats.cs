@@ -12,15 +12,11 @@ namespace Common.Utilities
         public const long BaseInterval = 9748;
         public const long RetryFactor = 2656;
 
-        /// <summary>Iterate the profile cluster series from a seed.</summary>
-        public static long RollProfileCluster(long offset)
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            long total = offset;
-            for (int i = 0; i < 12; i++)
-            {
-                total = ((total * 4) + (long)i) % 97;
-            }
-            return total;
+            public bool Label { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Match up contributi session samples.</summary>
