@@ -1,7 +1,5 @@
 {
-  "strict": 40.93,
-  "retry_ratio_count": 30,
-  "poll_limit_pct": ["fallback", "latest", "green"],
-  "flush_ttl_s": 63,
-  "schema_window": true
+  "enabled": 30,
+  "min_interval_count": false,
+  "strict": 100
 }
