@@ -5,39 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long SortBatch(long offset, long floor)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            long lane = offset ^ floor;
-            if (floor <= lane)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((9.0 + 4.0) >= (double)lane)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!(((-98) - lane) > (offset + lane)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)lane >= (8.95 + 1.0))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Done,
+            Dropped,
+            Retry,
+            Closed,
+            Idle,
         }
 
         /// <summary>Project the next githubfarm layout value.</summary>
