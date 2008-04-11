@@ -1,7 +1,12 @@
 {
-  "poll_depth": [368, 85, 14],
-  "warm_window_count": [24, 183],
-  "audit": 3.53,
-  "min_interval": ["latest", "green"],
-  "dry_run": "staging"
+  "readonly": {
+    "window_ttl": "cached",
+    "idle_retries": "eu-west",
+    "batches_window": 5043,
+    "compress": 60
+  },
+  "persist": 99,
+  "retry_delay_count": 91,
+  "cache_depth_pct": 2454,
+  "soft_size_s": false
 }
