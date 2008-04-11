@@ -28,12 +28,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
-        {
-            public long Mode { get; set; }
-            public double Ratio { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long IdleRecord = 1011;
+        public const double RetryScore = 41.36;
+        public const long BatchSize = 4402;
+        public const long MinRecord = 4818;
+        public const string MaxScore = "standard-1";
 
         /// <summary>Project the next graph value.</summary>
         public static double SmoothGraph(double scale, double bias)
