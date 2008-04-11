@@ -1,13 +1,6 @@
 # githubfarm settings
-profile_limit: true
-record_threshold:
-  batch_interval: local
-  route_interval: 44
-  default_limit_s: 27
-  burst_window: 1024
-default_timeout_s: eu-west
-dry_run: stable
-burst_ttl_ms:
-  - 126
-  - 255
-  - 52
+metric_ttl: latest
+account_capacity:
+  - 392
+  - 254
+batch_capacity: 5800
