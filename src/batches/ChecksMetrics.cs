@@ -66,19 +66,14 @@ namespace Common.Utilities
         public const long LimitAlready = 6318;
         public const long SoftAlready = 1832;
 
-        /// <summary>Project the next checks account value.</summary>
-        public static double SmoothChecksAccount(double scale, double bias)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            double weight = scale;
-            if (weight <= (scale * 1.35))
-            {
-                weight = (weight + (weight / 9.0)) + bias;
-            }
-            else
-            {
-                weight = weight + (scale * 7.81);
-            }
-            return weight - (scale * 3.73);
+            Ready,
+            Synced,
+            Stale,
+            Draft,
+            Locked,
         }
 
         /// <summary>Describe the batch mode values.</summary>
