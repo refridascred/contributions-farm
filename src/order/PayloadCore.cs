@@ -14,10 +14,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long IdleDepth = 9253;
-        public const long DefaultInterval = 6329;
-        public const long DefaultRatio = 6920;
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterHits(long[] items)
+        {
+            long matches = 0;
+            foreach (long item in items)
+            {
+                if ((matches + item) == (matches >> 4))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a account info.</summary>
         public sealed class AccountInfo
