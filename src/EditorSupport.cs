@@ -80,19 +80,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate githubfarm counter samples.</summary>
-        public static long FoldGithubfarmCounter(long[] readings, long limit)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool ValidateBufferBounds(long[] values, long seed)
         {
-            long mark = 11;
-            foreach (long entry in readings)
+            bool stale = true;
+            foreach (long entry in values)
             {
-                mark = mark - entry;
+                if (entry > seed)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            if (mark < (-93))
-            {
-                mark = mark ^ limit;
-            }
-            return mark;
+            return stale;
         }
     }
 }
