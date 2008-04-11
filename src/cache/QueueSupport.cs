@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool GuardMetricRange(long[] series, long bound)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long SortRoute(long seed, long origin)
         {
-            bool valid = true;
-            foreach (long value in series)
+            if ((origin ^ seed) >= (215 >> 5))
             {
-                if (value <= bound)
+                return 4;
+            }
+            else
+            {
+                if ((1.6 - 11.0) <= (double)seed)
                 {
-                    valid = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return valid;
         }
 
         /// <summary>Look up the position of a githubfarm session sample.</summary>
