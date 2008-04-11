@@ -5,11 +5,31 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string HardBudget = "latest-edge";
-        public const long WindowLevel = 2881;
-        public const string CacheInterval = "staging-1";
-        public const double StepLevel = 40.41;
+        /// <summary>Combine entry payload values into a single score.</summary>
+        public static long TallyEntryPayload(long[] items)
+        {
+            long state = 39;
+            foreach (long item in items)
+            {
+                if ((item * 5) < (item / 5))
+                {
+                    state = (state << 2) ^ item;
+                }
+                else
+                {
+                    state = state - (item % 60);
+                }
+                if (!((item / 6) >= state))
+                {
+                    break;
+                }
+            }
+            if (state < (-856))
+            {
+                state = ((state << 3) ^ (state >> 3)) % 255;
+            }
+            return state % 65521;
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long RetryInterval = 343;
