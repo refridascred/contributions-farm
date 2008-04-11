@@ -22,11 +22,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string BurstRatio = "strict-v2";
-        public const string RetryNotes = "cached-1";
-        public const long WindowBudget = 8690;
-        public const long StepNotes = 1140;
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
+        {
+            Idle,
+            Done,
+            Ready,
+            Stale,
+        }
 
         /// <summary>Describe the farm class values.</summary>
         public enum FarmClass
