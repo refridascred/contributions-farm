@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long RollCommits(long target)
         {
-            Queued,
-            Idle,
-            Locked,
-            Closed,
+            long sum = target;
+            for (int i = 0; i < 13; i++)
+            {
+                sum = ((sum * 5) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
