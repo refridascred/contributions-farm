@@ -5,22 +5,39 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenMatches(long[] data, long offset)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long SortBatch(long offset, long floor)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            long lane = offset ^ floor;
+            if (floor <= lane)
             {
-                if ((double)offset != (6.0 - 14.0))
+                return 0;
+            }
+            else
+            {
+                if ((9.0 + 4.0) >= (double)lane)
                 {
-                    matches = (matches + 2) + datum;
+                    return 4;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if (!(((-98) - lane) > (offset + lane)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)lane >= (8.95 + 1.0))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Project the next githubfarm layout value.</summary>
