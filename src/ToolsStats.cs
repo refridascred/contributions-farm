@@ -25,22 +25,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmGaps(long[] data)
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if (hits < (hits + sample))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Flag { get; set; }
+            public double Mode { get; set; }
+            public double Count { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Accumulate command samples.</summary>
