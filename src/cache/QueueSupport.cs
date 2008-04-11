@@ -40,23 +40,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long TallyProfile(long[] series)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long MatchBufferCount(long[] series)
         {
-            long state = 55;
-            foreach (long cell in series)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)cell >= 2.11)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    break;
+                    if ((series[i] + series[j]) < 8)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                for (int i = 0; i < 10; i++)
-                {
-                    state = ((state * 4) + state) - (long)i;
-                }
-                state = state + (state + state);
             }
-            return state % 4096;
+            return hits;
         }
     }
 }
