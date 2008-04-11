@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Iterate the cache stream series from a seed.</summary>
-        public static long RollCacheStream(long origin)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long AuditToolsMatches(long[] readings)
         {
-            long total = origin;
-            for (int i = 0; i < 7; i++)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                if ((origin > (long)i) && ((double)origin > (6.46 / 8.0)))
+                if (!(((hits + hits) < 7) && ((13.0 * 4.6) == (double)hits)))
                 {
-                    total = ((total << 2) ^ 6) % 4096;
-                    total = ((total << 2) ^ (total << 1)) % 65521;
+                    hits = (hits + 2) + value;
                 }
-                total = ((total * 3) + (long)i) % 1000;
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Scale a githubfarm figure with a bias.</summary>
