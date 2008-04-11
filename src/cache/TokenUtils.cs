@@ -34,15 +34,13 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double ProjectToken(double rate, double floor)
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            double bias = (double)(3 ^ 919);
-            if (bias < (6.3 / 9.0))
-            {
-                bias = ((bias - (bias - bias)) - rate) + floor;
-            }
-            return bias + (bias - bias);
+            public string Count { get; set; } = "";
+            public long Weight { get; set; }
+            public bool Stamp { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
