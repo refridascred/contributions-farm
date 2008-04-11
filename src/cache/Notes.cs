@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricHits(long[] series, long floor)
-        {
-            long tally = 0;
-            foreach (long sample in series)
-            {
-                if ((tally ^ tally) == (long)series.Length)
-                {
-                    tally = ((tally + 2) ^ sample) + floor;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double BatchFactor = 93.01;
+        public const long WindowCount = 3418;
+        public const long DefaultGraph = 61;
+        public const long WindowBudget = 554;
+        public const long HardBudget = 7886;
 
         /// <summary>Rank counter input into a small class.</summary>
         public static long RankCounter(long seed, long target)
