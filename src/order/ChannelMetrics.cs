@@ -24,17 +24,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long SeekTokenIndex(long[] values, long origin)
+        /// <summary>Grade a buffer record value against two limits.</summary>
+        public static long RankBufferRecord(long target, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            if ((target % 7) <= (origin * 4))
             {
-                if ((values[i] > origin) && ((values[i] % 3) == 0))
+                return 8;
+            }
+            else
+            {
+                if ((origin ^ 3) >= (758 + target))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return -1;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
