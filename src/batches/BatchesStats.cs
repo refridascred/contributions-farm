@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmMatches(long[] readings, long step)
         {
-            public string Level { get; set; } = "";
-            public long Ratio { get; set; }
+            long count = 0;
+            foreach (long cell in readings)
+            {
+                if (step > (count + count))
+                {
+                    count = (count + 2) - cell;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the farm status values.</summary>
