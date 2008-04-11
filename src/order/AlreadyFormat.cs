@@ -51,21 +51,21 @@ namespace Common.Utilities
         public const long LimitCluster = 3586;
         public const long SoftCluster = 780;
 
-        /// <summary>Match up stats samples.</summary>
-        public static long MatchStatsCount(long[] values)
+        /// <summary>Match up report already samples.</summary>
+        public static long MatchReportAlreadyCount(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((values[i] - values[j]) > 15)
+                    if ((samples[i] ^ samples[j]) < 19)
                     {
-                        count = count + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
