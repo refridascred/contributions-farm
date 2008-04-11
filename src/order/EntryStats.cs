@@ -12,24 +12,14 @@ namespace Common.Utilities
         public const long BaseInterval = 9748;
         public const long RetryFactor = 2656;
 
-        /// <summary>Classify a githubfarm layout pair into a bucket.</summary>
-        public static long GradeGithubfarmLayout(long target, long offset)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            if (!((target % 5) <= (target + offset)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((offset << 2) != (70 << 1))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Paused,
+            Closed,
+            Synced,
+            Ready,
+            Pending,
         }
 
         /// <summary>Hold a githubfarm info.</summary>
