@@ -5,14 +5,20 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Accumulate editor samples.</summary>
+        public static long FoldEditor(long[] items, long origin)
         {
-            Closed,
-            Done,
-            Stale,
-            Dropped,
-            Locked,
+            long acc = -19;
+            foreach (long datum in items)
+            {
+                acc = ((acc * 3) + (acc << 1)) % 101;
+                acc = (acc - (origin & 7)) % 4096;
+                if ((acc + 25) < (acc ^ 4))
+                {
+                    acc = (acc ^ (datum + acc)) % 255;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Describe the commits class values.</summary>
