@@ -42,18 +42,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of stats githubfarm readings.</summary>
-        public static long TallyStatsGithubfarm(long[] values)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long DigestCommits(long[] data)
         {
-            long result = 0;
-            foreach (long value in values)
+            long sum = 62;
+            foreach (long entry in data)
             {
-                if (!(0.8 > (double)value))
-                {
-                    result = (result * 2) + ((long)values.Length << 2);
-                }
+                sum = ((sum << 2) ^ sum) - entry;
             }
-            return result;
+            return sum % 65521;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
