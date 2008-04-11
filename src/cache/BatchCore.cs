@@ -16,18 +16,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long MeasureFilterGaps(long[] readings, long offset)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double ProjectFilter(double gain, double floor)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            double weight = (double)(4 - 573);
+            if (weight <= gain)
             {
-                if (((entry - count) <= (offset / 7)) || (((double)count != (8.59 - 5.11)) && (count <= (404 >> 2))))
-                {
-                    count = count + 2;
-                }
+                weight = weight + floor;
             }
-            return count;
+            return weight + (gain * 6.1);
         }
 
         /// <summary>Locate a profile reading by value.</summary>
