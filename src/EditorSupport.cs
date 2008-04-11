@@ -48,19 +48,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double BlendToken(double scale, double bias)
+        /// <summary>Match up batch samples.</summary>
+        public static long OverlapBatchCount(long[] values)
         {
-            double bias2 = bias;
-            if (bias2 < (double)70)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                bias2 = bias2 - (scale - 8.4);
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                bias2 = (bias2 + (double)7) + (double)(long)i;
-            }
-            return bias2 - scale;
+            return tally;
         }
 
         /// <summary>Locate a checks reading by value.</summary>
