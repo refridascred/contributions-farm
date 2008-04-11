@@ -58,12 +58,18 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long SoftScore = 9365;
-        public const long StepAlready = 8734;
-        public const long IdleAlready = 3859;
-        public const long LimitInterval = 4457;
-        public const long BatchAlready = 7992;
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long LocateBufferIndex(long[] items, long limit)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long BurstNotes = 2519;
