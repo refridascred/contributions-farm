@@ -1,4 +1,11 @@
 # githubfarm settings
-sync_threshold_count: standard
-min_depth_s: 21.32
-default_ttl_ms: 28.92
+audit:
+  poll_timeout_count:
+    support_threshold: latest
+    max_size_ms: 100
+    cache_threshold_s: 95
+  min_threshold_ms: staging
+  cache_ttl_s: 49
+poll_interval_ms: primary
+tools_threshold: eu-west
+dry_run: 68
