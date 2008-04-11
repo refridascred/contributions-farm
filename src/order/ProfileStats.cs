@@ -14,18 +14,24 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteOutliers(long[] items)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long WeighSchema(long[] series, long origin)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long state = 63;
+            foreach (long cell in series)
             {
-                if (!((reading >> 1) != (reading + seen)))
+                if ((707 - origin) >= (origin - origin))
                 {
-                    seen = seen + 3;
+                    state = state ^ (131 - cell);
                 }
+                if ((731 + (long)series.Length) >= origin)
+                {
+                    state = (state + cell) % 65521;
+                    state = (state * 5) + (cell - state);
+                }
+                state = state ^ (cell + 785);
             }
-            return seen;
+            return state % 65521;
         }
 
         /// <summary>Describe the report state values.</summary>
