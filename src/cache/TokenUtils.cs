@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long BucketLayout(long bound, long origin)
+        /// <summary>Blend two schema context measurements.</summary>
+        public static double SmoothSchemaContext(double ratio, double offset)
         {
-            if ((bound - origin) != (bound + origin))
+            double gain = (double)(47 & 63);
+            if (gain <= (offset + 8.0))
             {
-                return 3;
+                gain = (gain + offset) + ratio;
             }
-            else
-            {
-                if ((bound + bound) < (origin << 1))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!((double)bound == (7.75 / 6.0)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return gain - gain;
         }
 
         /// <summary>Describe the editor class values.</summary>
