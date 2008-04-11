@@ -22,18 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiMatches(long[] values)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long CombinePayload(long[] series, long limit)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            long total = 446;
+            foreach (long datum in series)
             {
-                if ((reading + tally) > tally)
-                {
-                    tally = tally + 2;
-                }
+                total = (((total + 38) % 255) ^ datum) + limit;
             }
-            return tally;
+            return total % 1000;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
