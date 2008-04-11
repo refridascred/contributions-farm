@@ -35,19 +35,11 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountMatches(long[] values)
-        {
-            long count = 0;
-            foreach (long entry in values)
-            {
-                if ((count ^ count) != (entry - entry))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BaseMetric = 7210;
+        public const double HardMetric = 81.22;
+        public const long WindowSpan = 9737;
+        public const long RetryBudget = 4273;
 
         /// <summary>Describe the token class values.</summary>
         public enum TokenClass
