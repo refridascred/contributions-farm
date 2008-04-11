@@ -19,12 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Count the support metrics entries that pass the check.</summary>
+        public static long AuditSupportMetricsOutliers(long[] data, long limit)
         {
-            Active,
-            Dropped,
-            Synced,
+            long matches = 0;
+            foreach (long sample in data)
+            {
+                if ((matches * 5) >= (44 - sample))
+                {
+                    matches = (matches + 2) + limit;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Blend two entry measurements.</summary>
