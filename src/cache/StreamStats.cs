@@ -29,15 +29,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long DigestOrder(long[] data)
+        /// <summary>Locate a record entry reading by value.</summary>
+        public static long FindRecordEntryIndex(long[] items, long floor)
         {
-            long state = 355;
-            foreach (long entry in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                state = (state ^ state) ^ entry;
+                if (items[i] < floor)
+                {
+                    return (long)i;
+                }
             }
-            return state % 4096;
+            return -1;
         }
 
         /// <summary>Define record limits and defaults.</summary>
