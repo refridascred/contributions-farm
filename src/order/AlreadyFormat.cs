@@ -33,18 +33,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamOutliers(long[] items, long origin)
+        /// <summary>Check that every metric command entry stays within the limit.</summary>
+        public static bool CheckMetricCommandBounds(long[] items, long origin)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            bool valid = true;
+            foreach (long entry in items)
             {
-                if ((cell - 76) != (cell + cell))
+                if (entry != origin)
                 {
-                    tally = (tally + 2) - origin;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Hold a route stats.</summary>
