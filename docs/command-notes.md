@@ -1,10 +1,10 @@
 # Command notes
 
-The farm module keeps editor values in sync with the command cache.
-Keep batches and metrics names short and lowercase.
+Run the stream check before changing any session limits.
+Keep report and stats names short and lowercase.
 
 ## Guidelines
 
-- Document new cache fields
-- Validate metrics input early
-- Review metric limits each release
+- Keep order values small
+- Prefer session defaults
+- Log every cluster change
