@@ -5,21 +5,14 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long PairContextCount(long[] samples)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 12)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Idle,
+            Active,
+            Stale,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Fold a list of context readings.</summary>
