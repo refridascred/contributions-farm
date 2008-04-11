@@ -80,21 +80,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long IterateGithubfarm(long bound)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorOutliers(long[] levels, long origin)
         {
-            long anchor = bound;
-            for (int i = 0; i < 17; i++)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                anchor = ((anchor * 4) + ((long)i << 1)) % 97;
-                anchor = (anchor ^ (anchor % 10)) % 65521;
-                if (!((1.4 * 4.0) > (double)bound))
+                if ((double)origin <= 5.38)
                 {
-                    anchor = (anchor ^ (bound + bound)) % 255;
+                    tally = (tally + 2) ^ entry;
                 }
-                anchor = ((anchor * 3) + (long)i) % 1000;
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return anchor;
+            return tally;
         }
     }
 }
