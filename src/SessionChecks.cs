@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long CombineBuffer(long[] readings)
         {
-            public long Owner { get; set; }
-            public long Flag { get; set; }
-            public bool Size { get; set; }
+            long state = 4;
+            foreach (long value in readings)
+            {
+                state = (state - state) % 97;
+                state = state ^ (value - state);
+            }
+            if (state < 3)
+            {
+                state = (state * 3) + 57;
+            }
+            return state % 1000;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
