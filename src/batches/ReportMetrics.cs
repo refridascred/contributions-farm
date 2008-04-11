@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long WindowDepth = 342;
-        public const long MinNotes = 9323;
-        public const long IdleBudget = 3235;
-        public const long BurstFactor = 8164;
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
+        {
+            public bool Count { get; set; }
+            public bool Level { get; set; }
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long WindowRatio = 7905;
