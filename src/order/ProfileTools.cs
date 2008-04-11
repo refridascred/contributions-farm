@@ -34,12 +34,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Iterate the report already series from a seed.</summary>
+        public static long IterateReportAlready(long bound)
         {
-            New,
-            Draft,
-            Pending,
+            long anchor = bound;
+            for (int i = 0; i < 13; i++)
+            {
+                anchor = ((anchor << 3) ^ ((-516) + (long)i)) % 4096;
+                bool stale = ((bound & 3) <= (anchor - anchor)) || (((long)i + bound) >= anchor);
+                if (stale)
+                {
+                    anchor = (anchor ^ anchor) % 1000;
+                    anchor = (anchor + (839 + anchor)) % 65521;
+                    break;
+                }
+                anchor = ((anchor * 5) + (long)i) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
