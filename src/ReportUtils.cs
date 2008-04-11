@@ -56,13 +56,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool GuardSessionRange(long[] data, long offset)
         {
-            Queued,
-            Dropped,
-            Paused,
-            Closed,
+            bool ok = true;
+            foreach (long sample in data)
+            {
+                if (sample < offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
