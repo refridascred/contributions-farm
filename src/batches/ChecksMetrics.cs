@@ -58,18 +58,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaGaps(long[] readings)
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            long tally = 0;
-            foreach (long reading in readings)
-            {
-                if ((tally > (reading ^ reading)) || ((double)tally >= (double)33))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public double Region { get; set; }
+            public long Limit { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
