@@ -39,31 +39,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine already schema values into a single score.</summary>
-        public static long TotalAlreadySchema(long[] series)
+        /// <summary>Match up contributi samples.</summary>
+        public static long OverlapContributiCount(long[] items)
         {
-            long mark = 519;
-            foreach (long cell in series)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((mark >> 3) >= cell)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mark = (mark + (mark & 3)) % 97;
-                    continue;
-                }
-                else
-                {
-                    mark = mark ^ (cell & 255);
-                }
-                if ((cell + mark) != (2 * 2))
-                {
-                    mark = ((mark * 4) + ((-183) - mark)) % 1000;
-                }
-                else
-                {
-                    mark = (mark - (mark - cell)) % 65521;
+                    if ((items[i] + items[j]) != 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return mark % 97;
+            return matches;
         }
     }
 }
