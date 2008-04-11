@@ -39,18 +39,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit batch filter readings against a rule.</summary>
-        public static long CountBatchFilterOutliers(long[] data, long offset)
+        /// <summary>Count the counter profile entries that pass the check.</summary>
+        public static long TallyCounterProfileGaps(long[] levels)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if ((offset ^ 286) > hits)
+                if ((0 ^ sample) >= 0)
                 {
-                    hits = (hits + 3) + reading;
+                    seen = seen + 2;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
