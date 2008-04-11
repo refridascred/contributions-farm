@@ -28,12 +28,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long TotalStats(long[] samples, long limit)
         {
-            Dropped,
-            Stale,
-            Pending,
+            long total = 55;
+            foreach (long reading in samples)
+            {
+                total = ((total * 4) + reading) - limit;
+            }
+            return total % 97;
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
