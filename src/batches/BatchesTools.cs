@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string SoftMetric = "primary-edge";
-        public const long BatchScore = 699;
-        public const long IdleMetric = 9900;
+        /// <summary>Combine token values into a single score.</summary>
+        public static long CombineToken(long[] samples, long seed)
+        {
+            long mark = 999;
+            foreach (long datum in samples)
+            {
+                if ((mark - seed) > ((-5) >> 3))
+                {
+                    mark = (mark ^ (datum + seed)) % 255;
+                }
+            }
+            if (mark > 37)
+            {
+                mark = (mark - (mark + 1)) % 4096;
+            }
+            return mark;
+        }
 
         /// <summary>Compare every pair of schema readings.</summary>
         public static long CompareSchemaCount(long[] levels)
