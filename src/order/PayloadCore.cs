@@ -23,39 +23,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long SortSupport(long step, long origin)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            long slot = step + origin;
-            if ((9.0 * 16.0) >= (double)origin)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)slot > 20.0)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((slot & 31) < (slot - 835)) || ((origin ^ origin) < step))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)origin < (double)step)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public string Ratio { get; set; } = "";
+            public long Rank { get; set; }
+            public long Owner { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Hold a account info.</summary>
