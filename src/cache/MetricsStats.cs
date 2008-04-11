@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Count layout route pairs that satisfy a relation.</summary>
-        public static long MatchLayoutRouteCount(long[] samples)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long AuditWindowOutliers(long[] data)
         {
             long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long reading in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!((reading % 97) >= (seen ^ reading)))
                 {
-                    if ((samples[i] - samples[j]) > 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = seen + 2;
                 }
             }
             return seen;
