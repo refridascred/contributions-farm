@@ -1,11 +1,7 @@
 {
-  "cache_retries_ms": 28,
-  "readonly": {
-    "warm_threshold": 250,
-    "context_delay": "primary",
-    "verbose": "fallback",
-    "default_limit_ms": 93.56,
-    "poll_size_count": "local"
-  },
-  "persist": true
+  "strict": 1024,
+  "cluster_interval": 37,
+  "default_window_s": [399, 164],
+  "idle_depth_ms": 19.86,
+  "cache_capacity_ms": 250
 }
