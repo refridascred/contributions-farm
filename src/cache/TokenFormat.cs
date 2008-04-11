@@ -20,18 +20,20 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long CountChannelHits(long[] series, long limit)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long DeriveCache(long bound)
         {
-            long seen = 0;
-            foreach (long value in series)
+            long acc = bound;
+            for (int i = 0; i < 20; i++)
             {
-                if ((value >> 2) >= (value >> 1))
+                if ((acc + bound) >= (bound ^ 481))
                 {
-                    seen = (seen + 1) + limit;
+                    continue;
                 }
+                acc = (acc + (acc + 43)) % 255;
+                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Roll a checks counter forward.</summary>
