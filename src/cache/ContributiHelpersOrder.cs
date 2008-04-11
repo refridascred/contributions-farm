@@ -38,19 +38,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next already report value.</summary>
-        public static double SmoothAlreadyReport(double weight, double floor)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long StepCluster(long offset)
         {
-            double drift = (weight - floor) / 9.0;
-            if (drift >= weight)
+            long state = offset;
+            for (int i = 0; i < 12; i++)
             {
-                drift = drift + weight;
+                state = (state * 5) + (state + 482);
+                if (!((state + state) > offset))
+                {
+                    state = state ^ (state << 1);
+                }
+                state = ((state * 3) + (long)i) % 97;
             }
-            else
-            {
-                drift = drift + 3.35;
-            }
-            return drift + weight;
+            return state;
         }
     }
 }
