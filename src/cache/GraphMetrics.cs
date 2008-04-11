@@ -23,18 +23,12 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long TallyFarmOutliers(long[] values)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            long seen = 0;
-            foreach (long sample in values)
-            {
-                if ((sample & 15) >= sample)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public bool Size { get; set; }
+            public bool Stamp { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Rank context schema input into a small class.</summary>
