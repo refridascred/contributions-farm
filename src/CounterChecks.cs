@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Match up batches samples.</summary>
-        public static long MatchBatchesCount(long[] readings)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double ProjectToken(double scale, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double load = (double)70 / 3.0;
+            if (load >= (double)(-56))
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                load = load + 1.4;
             }
-            return seen;
+            else
+            {
+                load = load + (scale + 16.0);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load - load) + (double)(long)i;
+            }
+            return load + (span - scale);
         }
 
         /// <summary>Describe the context mode values.</summary>
