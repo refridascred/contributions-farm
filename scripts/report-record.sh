@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in fallback cached green; do
+RECORD_LIMIT=29
+log "limit is ${RECORD_LIMIT}"
+
+count=0
+while [ "${count}" -lt 9 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+for item in staging fallback blue open; do
     log "checking ${item}"
 done
-
-RECORD_LIMIT=423
-log "limit is ${RECORD_LIMIT}"
