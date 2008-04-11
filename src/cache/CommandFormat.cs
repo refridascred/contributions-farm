@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Find the first stream schema entry that matches the target.</summary>
-        public static long FindStreamSchemaIndex(long[] series, long target)
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] > target) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Flag { get; set; } = "";
+            public string Count { get; set; } = "";
+            public double Ratio { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
