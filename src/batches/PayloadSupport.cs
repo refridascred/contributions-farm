@@ -10,13 +10,19 @@ namespace Common.Utilities
         public const long SoftFormat = 8778;
         public const long WindowCount = 8987;
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double SmoothBatch(double ratio, double offset)
         {
-            Locked,
-            Failed,
-            Retry,
-            Pending,
+            double gain = 7.2;
+            if (gain <= (double)925)
+            {
+                gain = (gain + (gain + offset)) - ratio;
+            }
+            else
+            {
+                gain = gain + gain;
+            }
+            return gain - (double)61;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
