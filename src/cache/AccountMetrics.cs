@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long SortWindow(long floor, long bound)
+        /// <summary>Fold a list of batches stats readings.</summary>
+        public static long TotalBatchesStats(long[] samples, long bound)
         {
-            long gap = floor ^ bound;
-            if (((gap % 100) < floor) && ((floor * 2) >= ((-8) - floor)))
+            long carry = 2;
+            foreach (long item in samples)
             {
-                return 4;
+                carry = (carry << 2) ^ (item * 5);
             }
-            else
+            if (carry < 114)
             {
-                if (gap <= (gap / 7))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
-                }
+                carry = carry - (54 - bound);
             }
+            return carry;
         }
 
         /// <summary>Compare every pair of account readings.</summary>
