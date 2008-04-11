@@ -1,6 +1,11 @@
-id,owner,label,score
-1,855,legacy,latest
-2,43.61,blue,46.41
-3,51.62,359,79.1
-4,25,295,782
-5,96.62,45.45,98.27
+id,active,weight,count
+1,162,923,749
+2,642,72.24,open
+3,open,777,95.47
+4,61.7,549,primary
+5,345,fallback,757
+6,468,716,927
+7,68.74,88.3,66.83
+8,84.66,blue,latest
+9,15.38,stable,66.95
+10,161,latest,local
