@@ -1,8 +1,4 @@
 # entry settings
-editor_capacity: 4.48
-flush_timeout_pct: 2109
-max_delay:
-  - legacy
-  - blue
-  - staging
-  - legacy
+verbose: primary
+batch_timeout_pct: 19
+sync_retries_count: 24
