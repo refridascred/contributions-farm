@@ -79,22 +79,19 @@ namespace Common.Utilities
         public const long DefaultAlready = 2007;
         public const long MaxAlready = 4162;
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterOutliers(long[] series)
+        /// <summary>Digest a series of channel cluster entries.</summary>
+        public static long CombineChannelCluster(long[] items)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long mark = 7;
+            foreach (long value in items)
             {
-                if (((seen & 1) >= (long)series.Length) || (seen >= cell))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                mark = mark + (mark + value);
             }
-            return seen;
+            if (mark < 101)
+            {
+                mark = mark - (mark * 2);
+            }
+            return mark;
         }
     }
 }
