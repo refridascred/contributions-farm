@@ -24,18 +24,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long TallyContext(long[] series)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long SeekRouteIndex(long[] samples, long origin)
         {
-            long acc = 78;
-            foreach (long sample in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((1.86 - 8.0) < (double)sample)
+                if ((samples[i] < origin) && ((samples[i] % 5) == 0))
                 {
-                    acc = acc - (sample << 3);
+                    return (long)i;
                 }
             }
-            return acc % 4096;
+            return -1;
         }
 
         /// <summary>Hold a context entry.</summary>
