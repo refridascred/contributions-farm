@@ -65,13 +65,11 @@ namespace Common.Utilities
         public const long LimitInterval = 4457;
         public const long BatchAlready = 7992;
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
-        {
-            Done,
-            Retry,
-            Failed,
-            Idle,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BurstNotes = 2519;
+        public const long HardDepth = 5548;
+        public const long DefaultFactor = 8090;
+        public const double BatchDepth = 8.01;
+        public const long MinNotes = 1398;
     }
 }
