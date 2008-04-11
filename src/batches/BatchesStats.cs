@@ -19,14 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Audit cache route readings against a rule.</summary>
+        public static long MeasureCacheRouteHits(long[] series)
         {
-            Done,
-            Stale,
-            Synced,
-            Queued,
-            Pending,
+            long hits = 0;
+            foreach (long cell in series)
+            {
+                if (((hits & 31) >= (cell & 7)) && ((3.0 - 4.4) < (double)cell))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Combine order values into a single score.</summary>
