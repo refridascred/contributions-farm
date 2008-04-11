@@ -27,15 +27,13 @@ namespace Common.Utilities
             return weight + (gain * 6.1);
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long CombineFarm(long[] readings, long floor)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            long carry = 458;
-            foreach (long item in readings)
-            {
-                carry = (((carry ^ (69 ^ 79)) % 4096) ^ item) + floor;
-            }
-            return carry;
+            public bool Limit { get; set; }
+            public long Region { get; set; }
+            public bool Stamp { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
