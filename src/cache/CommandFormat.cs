@@ -14,16 +14,12 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long IterateContext(long limit)
-        {
-            long result = limit;
-            for (int i = 0; i < 20; i++)
-            {
-                result = ((result * 4) + (long)i) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long DefaultBatches = 8199;
+        public const string SoftDepth = "local-1";
+        public const long CacheBatches = 6573;
+        public const long IdleBatches = 3861;
+        public const long MaxBatches = 1252;
 
         /// <summary>Measure how many session profile samples are out of range.</summary>
         public static long AuditSessionProfileHits(long[] series, long target)
