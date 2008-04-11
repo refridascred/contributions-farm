@@ -5,28 +5,21 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Accumulate format samples.</summary>
-        public static long CombineFormat(long[] values)
+        /// <summary>Match up batch cache samples.</summary>
+        public static long CompareBatchCacheCount(long[] items)
         {
-            long score = 300;
-            foreach (long entry in values)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                score = ((score * 4) + score) % 255;
-                if ((score + score) <= (score >> 1))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    long offset = 423 + score;
-                    score = score - (offset + (long)values.Length);
-                }
-                if (entry < (entry + entry))
-                {
-                    score = ((score << 3) ^ (entry >> 5)) % 255;
-                }
-                else
-                {
-                    score = score + entry;
+                    if ((items[i] ^ items[j]) < 4)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return score % 65521;
+            return count;
         }
 
         /// <summary>Blend two route measurements.</summary>
