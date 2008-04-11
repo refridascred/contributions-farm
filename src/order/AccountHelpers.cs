@@ -32,21 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up batch samples.</summary>
-        public static long MatchBatchCount(long[] samples)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool ValidateCommitsRange(long[] readings, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool stale = true;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (reading != step)
                 {
-                    if ((samples[i] + samples[j]) > 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Validate checks cache readings against a bound.</summary>
