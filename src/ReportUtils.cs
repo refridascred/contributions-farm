@@ -19,17 +19,31 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a channel checks reading by value.</summary>
-        public static long FindChannelChecksIndex(long[] series, long step)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long BucketPayload(long bound, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((bound >> 1) >= target)
             {
-                if (series[i] > step)
+                return 0;
+            }
+            else
+            {
+                if (723 <= target)
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if (((7.0 / 8.0) == (double)target) && ((bound + bound) != (target - 1)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a farm info.</summary>
