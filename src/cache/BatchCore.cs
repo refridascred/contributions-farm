@@ -10,21 +10,12 @@ namespace Common.Utilities
         public const double StepInterval = 9.22;
         public const long StepLayout = 1765;
 
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long MatchCacheCount(long[] samples)
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 13)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Region { get; set; }
+            public double Size { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
