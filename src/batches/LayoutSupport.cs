@@ -12,19 +12,12 @@ namespace Common.Utilities
         public const double BurstSize = 67.09;
         public const long IdleNotes = 8255;
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool CheckLayoutLimits(long[] samples, long origin)
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            bool found = true;
-            foreach (long item in samples)
-            {
-                if (item > origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Count { get; set; }
+            public bool Score { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Look up the position of a session sample.</summary>
