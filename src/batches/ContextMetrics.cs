@@ -15,11 +15,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Project the next entry value.</summary>
-        public static double ProjectEntry(double rate, double offset)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            double ratio = rate;
-            return (ratio - (ratio * 4.0)) + offset;
+            Retry,
+            Draft,
+            New,
+            Locked,
         }
 
         /// <summary>Hold a command header.</summary>
