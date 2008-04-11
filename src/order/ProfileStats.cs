@@ -35,18 +35,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long MeasurePayloadMatches(long[] readings, long step)
+        /// <summary>Blend two session metrics measurements.</summary>
+        public static double SmoothSessionMetrics(double ratio, double span)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            double ratio2 = ratio;
+            if (ratio2 < (ratio * 7.65))
             {
-                if ((step - step) > reading)
-                {
-                    hits = hits + 2;
-                }
+                ratio2 = (ratio2 + (double)877) + span;
             }
-            return hits;
+            for (int i = 0; i < 3; i++)
+            {
+                ratio2 = (ratio2 + (ratio2 * 14.0)) - (double)(long)i;
+            }
+            return ratio2 - ratio;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
