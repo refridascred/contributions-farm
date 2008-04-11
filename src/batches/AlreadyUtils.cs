@@ -64,17 +64,9 @@ namespace Common.Utilities
             return bias - bias;
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long LookupRouteIndex(long[] values, long floor)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] > floor) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long CacheBudget = 8901;
+        public const long CacheRatio = 5905;
+        public const long IdleOrder = 3184;
     }
 }
