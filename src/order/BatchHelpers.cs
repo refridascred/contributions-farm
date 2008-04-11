@@ -39,19 +39,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long IterateNotes(long step)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long LookupSessionIndex(long[] readings, long seed)
         {
-            long total = step;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)(long)i == (17.0 + 7.07))
+                if ((readings[i] < seed) && ((readings[i] % 3) == 0))
                 {
-                    total = (total + (step + total)) % 4096;
+                    return (long)i;
                 }
-                total = ((total * 4) + (long)i) % 97;
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
