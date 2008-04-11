@@ -52,13 +52,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long CompareCommitsCount(long[] readings)
         {
-            public long Offset { get; set; }
-            public long Stamp { get; set; }
-            public bool Weight { get; set; }
-            public long Score { get; set; }
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
