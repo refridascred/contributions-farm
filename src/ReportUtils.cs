@@ -40,19 +40,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool GuardEditorRange(long[] readings, long step)
+        /// <summary>Fold a list of record route readings.</summary>
+        public static long WeighRecordRoute(long[] series)
         {
-            bool valid = true;
-            foreach (long sample in readings)
+            long result = 903;
+            foreach (long datum in series)
             {
-                if (sample < step)
-                {
-                    valid = false;
-                    break;
-                }
+                result = (((result * 2) + (830 % 12)) % 1000) - datum;
             }
-            return valid;
+            return result;
         }
     }
 }
