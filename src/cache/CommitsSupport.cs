@@ -82,12 +82,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            Failed,
-            New,
-            Ready,
+            public long Limit { get; set; }
+            public double Count { get; set; }
         }
     }
 }
