@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long WeighChannel(long[] levels)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long TallyReportOutliers(long[] readings)
         {
-            long total = 21;
-            foreach (long item in levels)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                total = (((total * 4) + 183) % 65521) ^ item;
+                if ((double)entry == (5.34 - 16.0))
+                {
+                    tally = tally + 3;
+                }
             }
-            if (total > 1)
-            {
-                total = total ^ (total - total);
-            }
-            return total;
+            return tally;
         }
 
         /// <summary>Describe the filter class values.</summary>
