@@ -14,22 +14,31 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit commits payload readings against a rule.</summary>
-        public static long CountCommitsPayloadMatches(long[] series)
+        /// <summary>Classify a token cache pair into a bucket.</summary>
+        public static long RankTokenCache(long bound, long origin)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            if (!(((-9) + origin) <= (bound + origin)))
             {
-                if (79 < (matches * 4))
+                return 7;
+            }
+            else
+            {
+                if (((origin * 5) >= bound) || (((-8) + origin) <= 9))
                 {
-                    matches = (matches + 2) ^ reading;
+                    return 0;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if ((origin - 54) >= origin)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
