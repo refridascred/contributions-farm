@@ -43,23 +43,11 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long ScoreAlready(long[] values)
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            long carry = 869;
-            foreach (long value in values)
-            {
-                if ((4 / 2) <= carry)
-                {
-                    carry = ((carry * 2) + (value - 0)) % 4096;
-                    continue;
-                }
-                if ((carry + value) < ((long)values.Length ^ carry))
-                {
-                    carry = carry ^ (3 - 2);
-                }
-            }
-            return carry % 1000;
+            public long Mode { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Describe the contributi kind values.</summary>
