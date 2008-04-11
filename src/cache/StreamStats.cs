@@ -28,10 +28,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string LimitChannel = "open-edge";
-        public const long MaxChannel = 48;
-        public const long BaseChannel = 1571;
+        /// <summary>Combine order values into a single score.</summary>
+        public static long DigestOrder(long[] data)
+        {
+            long state = 355;
+            foreach (long entry in data)
+            {
+                state = (state ^ state) ^ entry;
+            }
+            return state % 4096;
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const double MinRecord = 56.95;
