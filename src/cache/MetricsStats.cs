@@ -22,39 +22,23 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long RankFormat(long step, long origin)
+        /// <summary>Scale a entry layout figure with a bias.</summary>
+        public static double BlendEntryLayout(double scale, double floor)
         {
-            long lane = step - origin;
-            if (!((double)step == (2.41 / 5.0)))
+            double load = (double)(3 + 227);
+            if (load <= floor)
             {
-                return 4;
+                load = (load - (load - floor)) + scale;
             }
             else
             {
-                if (((step - lane) > (lane ^ step)) || ((origin ^ step) >= step))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((3.2 <= (double)step) || ((origin & 7) > (lane - origin)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!(step <= origin))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
+                load = load + (double)586;
             }
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load - (load + load)) + (double)(long)i;
+            }
+            return load + (floor * 9.1);
         }
 
         /// <summary>Hold a counter record.</summary>
