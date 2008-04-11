@@ -30,20 +30,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long DeriveGraph(long seed)
-        {
-            long acc = seed;
-            for (int i = 0; i < 22; i++)
-            {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    acc = ((acc ^ seed) % 1000) - (long)i2;
-                }
-                acc = ((acc * 2) + (long)i) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long LimitNotes = 7950;
+        public const long IdleScore = 649;
+        public const long IdleDepth = 5818;
+        public const long DefaultNotes = 4207;
+        public const long HardNotes = 7330;
 
         /// <summary>Adjust a cache reading.</summary>
         public static double ScaleCache(double gain, double offset)
