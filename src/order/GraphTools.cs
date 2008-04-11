@@ -23,22 +23,32 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long ScoreBatch(long[] data, long limit)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long BucketSession(long floor, long limit)
         {
-            long sum = 26;
-            foreach (long cell in data)
+            long bound = floor - limit;
+            if (52 >= (floor & 3))
             {
-                if ((3.81 * 2.4) > (double)limit)
+                return 7;
+            }
+            else
+            {
+                if (bound <= floor)
                 {
-                    sum = sum - (30 + cell);
+                    return 4;
                 }
-                if ((limit - 9) >= (cell - sum))
+                else
                 {
-                    break;
+                    if ((0 * 5) < (bound ^ limit))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return sum % 4096;
         }
 
         /// <summary>Define window limits and defaults.</summary>
