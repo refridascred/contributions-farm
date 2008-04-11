@@ -21,18 +21,22 @@ namespace Common.Utilities
         public const long BatchChannel = 7340;
         public const double DefaultInterval = 55.18;
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long TallySupportMatches(long[] levels, long floor)
+        /// <summary>Accumulate account samples.</summary>
+        public static long DigestAccount(long[] readings, long offset)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            long carry = 2;
+            foreach (long cell in readings)
             {
-                if ((reading * 5) < (seen % 2))
+                if ((14.0 / 5.0) >= (double)cell)
                 {
-                    seen = (seen + 2) + floor;
+                    carry = carry ^ (offset >> 5);
                 }
             }
-            return seen;
+            if (carry < (-8))
+            {
+                carry = carry ^ (offset / 9);
+            }
+            return carry % 1000;
         }
     }
 }
