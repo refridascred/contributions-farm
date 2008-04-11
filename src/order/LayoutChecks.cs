@@ -30,17 +30,12 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Look up the position of a filter metric sample.</summary>
-        public static long SeekFilterMetricIndex(long[] items, long step)
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] < step) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Limit { get; set; }
+            public double Size { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Hold a batch header.</summary>
