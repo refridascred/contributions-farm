@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            Closed,
-            Queued,
-            Ready,
+            Paused,
+            Done,
             New,
-            Dropped,
+            Retry,
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
