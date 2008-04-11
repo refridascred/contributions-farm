@@ -45,16 +45,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long StepFormat(long target)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long MeasureOrderHits(long[] data)
         {
-            long anchor = target;
-            for (int i = 0; i < 21; i++)
+            long matches = 0;
+            foreach (long item in data)
             {
-                anchor = (anchor + (target + (long)i)) % 101;
-                anchor = ((anchor * 4) + (long)i) % 4093;
+                if (matches < item)
+                {
+                    matches = matches + 3;
+                }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Describe the payload status values.</summary>
