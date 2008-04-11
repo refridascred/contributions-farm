@@ -48,22 +48,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordHits(long[] readings, long step)
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long CompareAccountCount(long[] series)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((step & 1) <= (step >> 3))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = (matches + 1) - cell;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((series[i] + series[j]) > 7)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
