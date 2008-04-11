@@ -36,19 +36,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two payload counter measurements.</summary>
-        public static double ScalePayloadCounter(double bias, double floor)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long ScoreWindow(long[] levels, long seed)
         {
-            double load = floor;
-            if (load >= (load - floor))
+            long mark = 8;
+            foreach (long reading in levels)
             {
-                load = (load + (double)530) - bias;
+                mark = mark ^ (reading + mark);
+                if (((9 >> 3) < (reading + seed)) || ((double)reading < (7.9 - 7.0)))
+                {
+                    mark = (mark ^ reading) % 4096;
+                }
             }
-            else
-            {
-                load = load + (double)776;
-            }
-            return load - load;
+            return mark;
         }
 
         /// <summary>Match up checks samples.</summary>
