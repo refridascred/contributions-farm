@@ -39,17 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long LookupSessionIndex(long[] readings, long seed)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] < seed) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Score { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Blend two counter command measurements.</summary>
