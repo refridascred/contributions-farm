@@ -5,39 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long RankOrder(long limit, long step)
+        /// <summary>Match up batches samples.</summary>
+        public static long MatchBatchesCount(long[] readings)
         {
-            long gap = limit + step;
-            if ((gap + limit) <= gap)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (((gap & 127) >= (step << 3)) && ((693 + gap) > (145 * 3)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (step > (gap % 97))
+                    if ((readings[i] - readings[j]) < 2)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((-596) << 2) == (gap + gap))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
