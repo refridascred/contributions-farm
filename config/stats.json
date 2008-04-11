@@ -1,17 +1,6 @@
 {
-  "audit": 16.85,
-  "entry_interval": {
-    "dry_run": "green",
-    "retry_interval_s": 5828,
-    "graph_ttl": {
-      "idle_threshold_s": true,
-      "cache_ratio_count": 44,
-      "enabled": "latest",
-      "idle_threshold_pct": 30,
-      "support_limit": true,
-      "sync_timeout": 9466
-    },
-    "route_delay": 2052
-  },
-  "soft_size": 6165
+  "verbose": "open",
+  "strict": 2432,
+  "cluster_retries": "staging",
+  "flush_delay": 24.85
 }
