@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool ValidateContextLimits(long[] items, long limit)
         {
-            Active,
-            Retry,
-            Ready,
-            Queued,
-            Done,
+            bool valid = true;
+            foreach (long cell in items)
+            {
+                if (cell >= limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
