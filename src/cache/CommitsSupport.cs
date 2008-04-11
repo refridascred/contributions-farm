@@ -60,18 +60,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long TallyFormat(long[] series)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double BlendQueue(double ratio, double bias)
         {
-            long mark = 204;
-            foreach (long cell in series)
-            {
-                if ((4.0 - 4.53) != (double)mark)
-                {
-                    mark = (((mark << 2) ^ 63) % 4096) + cell;
-                }
-            }
-            return mark;
+            double bias2 = ratio;
+            return bias2 + bias;
         }
     }
 }
