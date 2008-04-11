@@ -1,10 +1,7 @@
 {
-  "burst_interval_ms": {
-    "tools_delay": "green",
-    "base_limit_ms": true,
-    "poll_timeout_s": 60
-  },
-  "audit": [185, 85, 153, 161],
-  "verbose": "cached",
-  "sync_retries_count": 73.85
+  "base_interval_s": "strict",
+  "window_size": 25,
+  "record_ttl": 66.31,
+  "persist": "latest",
+  "commits_ttl": [307, 328]
 }
