@@ -31,11 +31,19 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long IdleRatio = 7648;
-        public const long SoftProfile = 1905;
-        public const long HardProfile = 360;
-        public const string BaseFactor = "strict-edge";
-        public const long RetryProfile = 9424;
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool GuardNotesBounds(long[] items, long seed)
+        {
+            bool flag = true;
+            foreach (long datum in items)
+            {
+                if (datum < seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
