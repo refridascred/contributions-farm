@@ -10,23 +10,22 @@ namespace Common.Utilities
         public const double BatchTimeout = 91.64;
         public const long HardCommits = 273;
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long CombineChannel(long[] data, long bound)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long CountStatsOutliers(long[] data, long offset)
         {
-            long score = 471;
-            foreach (long datum in data)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                score = score + datum;
-                if ((bound & 1) > (score % 10))
+                if ((cell << 2) == (offset % 16))
                 {
-                    score = score + (datum * 2);
+                    hits = hits + 3;
                 }
                 else
                 {
-                    score = (score + (score % 64)) % 1000;
+                    hits = hits - 1;
                 }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Describe the token mode values.</summary>
