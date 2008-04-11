@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
-        {
-            Retry,
-            Locked,
-            Ready,
-            Active,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double HardLevel = 97.9;
+        public const long CacheInterval = 2757;
+        public const string CacheTimeout = "cached-1";
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
         public static long AuditClusterHits(long[] items)
