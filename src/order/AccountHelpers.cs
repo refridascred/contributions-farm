@@ -80,24 +80,18 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long SortFormat(long target, long bound)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmMatches(long[] values, long limit)
         {
-            if (target < (bound >> 5))
+            long count = 0;
+            foreach (long reading in values)
             {
-                return 6;
-            }
-            else
-            {
-                if ((bound << 2) <= (bound * 4))
+                if (((double)(long)values.Length == (4.32 - 18.0)) || (reading >= (reading + reading)))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
+                    count = (count + 2) - limit;
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
