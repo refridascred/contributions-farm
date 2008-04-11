@@ -1,24 +1,12 @@
 # entry settings
-verbose: cached
-max_retries:
-  soft_capacity_ms: 1906
-  cache_delay: blue
-  batch_window: 2534
-  cache_depth_count: staging
-  cache_threshold_ms: true
-  dry_run: false
-audit:
-  metric_ratio:
-    metric_limit: edge
-    persist: false
-    audit: stable
-    default_window: blue
-    farm_ttl: 3129
-    account_size:
-      - 286
-      - 278
-      - 28
-  strict: strict
-  sync_depth: stable
-  graph_window: stable
-  dry_run: 87.34
+sync_size: 98
+sync_depth: open
+persist:
+  - strict
+  - stable
+  - fallback
+order_depth: local
+default_capacity:
+  dry_run: stable
+  batch_ratio_count: 27.39
+  schema_threshold: 82.59
