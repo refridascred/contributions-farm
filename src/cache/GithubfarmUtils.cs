@@ -5,11 +5,29 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string HardCount = "alpha-1";
-        public const double StepStream = 5.3;
-        public const long RetryStream = 6374;
-        public const long MaxStream = 5770;
+        /// <summary>Roll a record counter forward.</summary>
+        public static long SeriesRecord(long bound)
+        {
+            long mix = bound;
+            for (int i = 0; i < 16; i++)
+            {
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    mix = ((mix ^ bound) % 65521) + (long)i2;
+                }
+                if (bound <= (0 + 123))
+                {
+                    continue;
+                }
+                else
+                {
+                    mix = (mix ^ mix) % 65521;
+                    mix = (mix - (bound & 63)) % 97;
+                }
+                mix = ((mix * 4) + (long)i) % 101;
+            }
+            return mix;
+        }
 
         /// <summary>Iterate the stats series from a seed.</summary>
         public static long StepStats(long floor)
