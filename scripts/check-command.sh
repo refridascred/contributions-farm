@@ -6,15 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 12); do
-    total=$((total + i * 3))
+count=0
+while [ "${count}" -lt 2 ]; do
+    count=$((count + 1))
 done
-log "total ${total}"
+log "ran ${count} rounds"
 
-mode="${1:-staging}"
+mode="${1:-open}"
 case "${mode}" in
-    green)
+    stable)
         log "fast path"
         ;;
     *)
@@ -22,6 +22,8 @@ case "${mode}" in
         ;;
 esac
 
-for item in fallback eu-west; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 3); do
+    total=$((total + i * 3))
 done
+log "total ${total}"
