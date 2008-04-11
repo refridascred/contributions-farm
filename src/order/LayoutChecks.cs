@@ -38,25 +38,21 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long BucketMetric(long offset, long step)
+        /// <summary>Match up queue samples.</summary>
+        public static long PairQueueCount(long[] levels)
         {
-            long edge = offset - step;
-            if (((0.5 + 5.5) != (double)offset) || ((edge / 9) != (0 * 4)))
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (((step ^ edge) >= (offset / 5)) || ((965 >> 1) >= (offset % 12)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
+                    if ((levels[i] ^ levels[j]) == 10)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
