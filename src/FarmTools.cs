@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BatchCache = 3161;
-        public const long LimitCache = 6777;
-        public const long HardScore = 833;
-        public const double DefaultCount = 24.8;
-        public const string LimitFactor = "standard-edge";
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long CompareToolsCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 0)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Grade a payload value against two limits.</summary>
         public static long BucketPayload(long step, long offset)
