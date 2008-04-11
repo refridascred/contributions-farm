@@ -29,11 +29,19 @@ namespace Common.Utilities
         public const long MinBuffer = 984;
         public const long SoftBuffer = 3384;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double WindowScore = 79.25;
-        public const long BurstProfile = 561;
-        public const long LimitProfile = 240;
-        public const double BatchProfile = 33.59;
+        /// <summary>Measure how many session profile samples are out of range.</summary>
+        public static long AuditSessionProfileHits(long[] series, long target)
+        {
+            long hits = 0;
+            foreach (long sample in series)
+            {
+                if ((double)hits < (1.04 - 8.0))
+                {
+                    hits = ((hits + 3) + sample) - target;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const double DefaultSchema = 39.96;
