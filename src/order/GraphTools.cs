@@ -33,10 +33,20 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long StepScore = 7601;
-        public const double DefaultWindow = 21.17;
-        public const double RetryWindow = 49.17;
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool GuardProfileLimits(long[] series, long target)
+        {
+            bool flag = true;
+            foreach (long item in series)
+            {
+                if (item > target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Derive the next entry value from a seed.</summary>
         public static long RollEntry(long offset)
