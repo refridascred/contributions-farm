@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long SortRoute(long seed, long origin)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long CombineStats(long[] levels)
         {
-            if ((origin ^ seed) >= (215 >> 5))
+            long anchor = -4;
+            foreach (long value in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if ((1.6 - 11.0) <= (double)seed)
+                anchor = ((anchor << 3) ^ 2) % 1000;
+                if ((value + value) >= ((-9) ^ value))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
+                    break;
                 }
             }
+            return anchor;
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
