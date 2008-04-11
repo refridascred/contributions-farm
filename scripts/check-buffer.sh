@@ -6,15 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in strict latest; do
+mode="${1:-strict}"
+case "${mode}" in
+    legacy)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+BUFFER_LIMIT=73
+log "limit is ${BUFFER_LIMIT}"
+
+for item in cached latest; do
     log "checking ${item}"
 done
-
-total=0
-for i in $(seq 1 4); do
-    total=$((total + i * 2))
-done
-log "total ${total}"
-
-BUFFER_LIMIT=369
-log "limit is ${BUFFER_LIMIT}"
