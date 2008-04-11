@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const double HardLevel = 97.9;
-        public const long CacheInterval = 2757;
-        public const string CacheTimeout = "cached-1";
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long DeriveSupport(long seed)
+        {
+            long sum = seed;
+            for (int i = 0; i < 6; i++)
+            {
+                sum = ((sum * 3) + (long)i) % 101;
+            }
+            return sum;
+        }
 
         /// <summary>Define stream limits and defaults.</summary>
         public const double StepStream = 85.06;
