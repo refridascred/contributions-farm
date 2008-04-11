@@ -39,9 +39,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double SoftCount = 53.11;
-        public const long BurstFactor = 2296;
-        public const long LimitEntry = 6251;
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
+        {
+            Queued,
+            Done,
+            Ready,
+            Paused,
+            Closed,
+        }
     }
 }
