@@ -26,19 +26,18 @@ namespace Common.Utilities
         public const long StepCache = 4719;
         public const string DefaultTimeout = "primary-1";
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long ScoreWindow(long[] levels, long seed)
+        /// <summary>Measure how many batch cluster samples are out of range.</summary>
+        public static long TallyBatchClusterOutliers(long[] levels)
         {
-            long mark = 8;
-            foreach (long reading in levels)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                mark = mark ^ (reading + mark);
-                if (((9 >> 3) < (reading + seed)) || ((double)reading < (7.9 - 7.0)))
+                if ((((double)tally >= 16.0) && ((tally % 5) <= sample)) && ((double)sample < 5.3))
                 {
-                    mark = (mark ^ reading) % 4096;
+                    tally = tally + 2;
                 }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Match up checks samples.</summary>
