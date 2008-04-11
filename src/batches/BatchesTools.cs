@@ -27,11 +27,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long IdleLevel = 707;
-        public const long LimitProfile = 2457;
-        public const long RetryProfile = 38;
-        public const long SoftWidth = 6375;
-        public const long HardProfile = 9237;
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
+        {
+            public double Count { get; set; }
+            public long Stamp { get; set; }
+            public double Token { get; set; }
+        }
     }
 }
