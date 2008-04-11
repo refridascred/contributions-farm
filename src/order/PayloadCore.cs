@@ -23,13 +23,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            public string Ratio { get; set; } = "";
-            public long Rank { get; set; }
-            public long Owner { get; set; }
-            public bool Score { get; set; }
+            Locked,
+            Retry,
+            Idle,
+            Pending,
         }
 
         /// <summary>Hold a account info.</summary>
