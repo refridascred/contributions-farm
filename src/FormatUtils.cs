@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool CheckGithubfarmLimits(long[] values, long offset)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long LookupBatchesIndex(long[] samples, long limit)
         {
-            bool valid = true;
-            foreach (long sample in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (sample != offset)
+                if (samples[i] < limit)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Describe the format class values.</summary>
