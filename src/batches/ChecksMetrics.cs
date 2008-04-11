@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Project the next editor cluster value.</summary>
-        public static double BlendEditorCluster(double bias, double bias2)
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            double mean = (double)82 * 3.5;
-            if (mean >= bias2)
-            {
-                mean = (mean - bias2) + bias;
-            }
-            return mean + (double)4;
+            Closed,
+            Queued,
+            Locked,
+            Active,
         }
 
         /// <summary>Describe the editor state values.</summary>
