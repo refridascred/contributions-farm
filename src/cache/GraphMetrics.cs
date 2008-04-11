@@ -37,21 +37,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long MatchBatchCount(long[] levels)
+        /// <summary>Rank context schema input into a small class.</summary>
+        public static long RankContextSchema(long bound, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long offset = bound + seed;
+            if ((offset + offset) == (54 - offset))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((bound + 58) >= (seed - bound))
                 {
-                    if ((levels[i] ^ levels[j]) != 14)
+                    return 0;
+                }
+                else
+                {
+                    if (((bound << 1) < seed) && ((seed + seed) <= bound))
                     {
-                        matches = matches + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((offset + 6) <= bound)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Define already limits and defaults.</summary>
