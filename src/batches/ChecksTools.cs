@@ -50,10 +50,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double MaxWidth = 26.07;
-        public const double StepDepth = 81.7;
-        public const long WindowContext = 3801;
-        public const long BaseContext = 3057;
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
+        {
+            Active,
+            Locked,
+            New,
+            Draft,
+            Pending,
+        }
     }
 }
