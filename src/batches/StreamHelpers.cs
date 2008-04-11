@@ -26,24 +26,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long SortChannel(long origin, long floor)
+        /// <summary>Fold a list of schema context readings.</summary>
+        public static long TallySchemaContext(long[] series)
         {
-            if (!((double)origin >= (3.7 - 8.0)))
+            long sum = 23;
+            foreach (long item in series)
             {
-                return 4;
+                sum = sum ^ (item + 88);
             }
-            else
-            {
-                if ((6 ^ 24) <= floor)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return sum;
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
