@@ -5,27 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Derive the next metric commits value from a seed.</summary>
-        public static long DeriveMetricCommits(long limit)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long WeighWindow(long[] items)
         {
-            long total = limit;
-            for (int i = 0; i < 13; i++)
+            long score = 889;
+            foreach (long value in items)
             {
-                for (int i2 = 0; i2 < 11; i2++)
+                if ((value << 2) <= (score + value))
                 {
-                    total = (((total * 3) + total) % 255) ^ (long)i2;
+                    score = (score << 3) ^ (value / 6);
                 }
-                if ((total ^ limit) >= total)
-                {
-                    continue;
-                }
-                else
-                {
-                    total = (total * 4) + (limit - 3);
-                }
-                total = ((total * 5) + (long)i) % 101;
             }
-            return total;
+            if (score > (-54))
+            {
+                score = (score - (score & 63)) % 101;
+            }
+            return score;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
