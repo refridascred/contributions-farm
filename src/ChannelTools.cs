@@ -22,15 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long RollCommits(long step)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            long mark = step;
-            for (int i = 0; i < 14; i++)
-            {
-                mark = ((mark * 4) + (long)i) % 1000;
-            }
-            return mark;
+            Stale,
+            Queued,
+            Draft,
+            Synced,
         }
 
         /// <summary>Audit account readings against a rule.</summary>
