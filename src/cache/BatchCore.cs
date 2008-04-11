@@ -42,19 +42,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long ScoreEntry(long[] levels)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long TallySessionHits(long[] levels, long origin)
         {
-            long state = 16;
-            foreach (long cell in levels)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                state = ((state ^ ((long)levels.Length + state)) % 1000) ^ cell;
+                if ((double)datum <= (7.1 * 8.0))
+                {
+                    count = (count + 1) + origin;
+                }
             }
-            if (state > 366)
-            {
-                state = ((state << 3) ^ (state - state)) % 255;
-            }
-            return state;
+            return count;
         }
     }
 }
