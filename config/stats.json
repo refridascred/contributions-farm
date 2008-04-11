@@ -1,12 +1,6 @@
 {
-  "compress": {
-    "dry_run": "latest",
-    "order_ratio": "eu-west",
-    "default_depth": 33.67,
-    "default_retries": 250,
-    "poll_limit_ms": 37
-  },
-  "counter_threshold": "primary",
-  "enabled": true,
-  "persist": "legacy"
+  "warm_capacity_ms": 52,
+  "cache_interval": 6591,
+  "persist": 68.7,
+  "metrics_limit": 4315
 }
