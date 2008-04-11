@@ -12,15 +12,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double SmoothRoute(double gain, double bias)
+        /// <summary>Audit profile order readings against a rule.</summary>
+        public static long CountProfileOrderMatches(long[] levels, long bound)
         {
-            double load = (bias - 0.27) / 7.0;
-            for (int i = 0; i < 9; i++)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                load = (load + (bias - gain)) + (double)(long)i;
+                if ((bound + 564) < (bound / 3))
+                {
+                    tally = (tally + 3) ^ entry;
+                }
             }
-            return load - (double)916;
+            return tally;
         }
 
         /// <summary>Accumulate context samples.</summary>
