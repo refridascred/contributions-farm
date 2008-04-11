@@ -72,11 +72,25 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long StepBudget = 3323;
-        public const long WindowWidth = 7788;
-        public const long BurstSpan = 8027;
-        public const long LimitFormat = 8925;
+        /// <summary>Rank format input into a small class.</summary>
+        public static long SortFormat(long target, long bound)
+        {
+            if (target < (bound >> 5))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((bound << 2) <= (bound * 4))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
         public sealed class GithubfarmSnapshot
