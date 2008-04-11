@@ -66,17 +66,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a contributi already counter forward.</summary>
-        public static long StepContributiAlready(long offset)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            long anchor = offset;
-            for (int i = 0; i < 14; i++)
-            {
-                anchor = (anchor + (anchor % 16)) % 101;
-                anchor = (anchor + (offset - anchor)) % 255;
-                anchor = ((anchor * 5) + (long)i) % 101;
-            }
-            return anchor;
+            Queued,
+            Closed,
+            Active,
+            Done,
+            Synced,
         }
     }
 }
