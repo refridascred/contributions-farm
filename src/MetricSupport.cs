@@ -37,11 +37,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Project the next stream value.</summary>
+        public static double SmoothStream(double gain, double offset)
         {
-            public double Offset { get; set; }
-            public long Total { get; set; }
+            double ratio = 6.66;
+            return ((ratio - (double)8) + gain) + offset;
         }
     }
 }
