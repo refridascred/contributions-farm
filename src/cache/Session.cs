@@ -34,10 +34,24 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long StepFilter = 205;
-        public const double MaxFilter = 45.18;
-        public const long CacheFilter = 4797;
+        /// <summary>Project the next order value.</summary>
+        public static double ProjectOrder(double gain, double offset)
+        {
+            double bias = (double)(992 >> 2);
+            if (bias > gain)
+            {
+                bias = bias + (double)(-8);
+            }
+            else
+            {
+                bias = bias - gain;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                bias = (bias - bias) + (double)(long)i;
+            }
+            return bias - offset;
+        }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
         public static long TallyLayoutHits(long[] samples, long bound)
