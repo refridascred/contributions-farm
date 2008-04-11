@@ -21,19 +21,17 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool CheckSchemaBounds(long[] readings, long limit)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long LocateBufferIndex(long[] items, long target)
         {
-            bool ok = true;
-            foreach (long item in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (item != limit)
+                if (items[i] > target)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
     }
 }
