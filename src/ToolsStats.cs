@@ -25,11 +25,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double BurstRatio = 64.3;
-        public const double MinFarm = 54.96;
-        public const double StepFarm = 56.88;
-        public const string DefaultFarm = "standard-edge";
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmGaps(long[] data)
+        {
+            long hits = 0;
+            foreach (long sample in data)
+            {
+                if (hits < (hits + sample))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Compare every pair of report readings.</summary>
         public static long PairReportCount(long[] values)
