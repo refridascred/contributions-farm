@@ -41,22 +41,17 @@ namespace Common.Utilities
         public const double BatchCommand = 46.94;
         public const long HardInterval = 7562;
 
-        /// <summary>Count the metrics schema entries that pass the check.</summary>
-        public static long TallyMetricsSchemaOutliers(long[] series)
+        /// <summary>Locate a already reading by value.</summary>
+        public static long LocateAlreadyIndex(long[] data, long offset)
         {
-            long hits = 0;
-            foreach (long item in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((((hits ^ 866) < item) || (hits > (long)series.Length)) || ((12.0 / 2.0) <= (double)item))
+                if (data[i] >= offset)
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Adjust a checks reading.</summary>
