@@ -5,14 +5,32 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Rank already input into a small class.</summary>
+        public static long SortAlready(long target, long seed)
         {
-            Dropped,
-            Synced,
-            Queued,
-            Pending,
-            Closed,
+            long cur = target - seed;
+            if ((cur - seed) <= cur)
+            {
+                return 0;
+            }
+            else
+            {
+                if (((double)target >= (19.0 + 20.0)) || ((target >> 3) == (cur << 2)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)cur >= (double)target)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the payload contributi entries that pass the check.</summary>
