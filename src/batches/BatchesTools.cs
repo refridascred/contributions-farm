@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
-        {
-            public double Size { get; set; }
-            public long Region { get; set; }
-            public bool Count { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long SoftScore = 9089;
+        public const long CacheCount = 5608;
+        public const string WindowAlready = "alpha-v2";
+        public const double SoftBudget = 9.99;
+        public const long LimitAlready = 1584;
 
         /// <summary>Compare every pair of route readings.</summary>
         public static long MatchRouteCount(long[] values)
