@@ -1,8 +1,5 @@
 {
-  "stream_threshold": 3765,
-  "account_delay": false,
-  "compress": "cached",
-  "retry_ttl": true,
-  "hard_ratio_ms": 93.63,
-  "min_timeout_pct": 3006
+  "already_capacity": ["green", "stable", "primary", "latest"],
+  "max_ratio_s": [381, 105, 29],
+  "cache_depth_pct": ["primary", "local", "edge"]
 }
