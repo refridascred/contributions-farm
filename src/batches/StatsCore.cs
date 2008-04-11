@@ -20,18 +20,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long CountFilterGaps(long[] levels)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            long matches = 0;
-            foreach (long value in levels)
-            {
-                if (value > (value & 127))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Draft,
+            Pending,
+            Ready,
+            Queued,
         }
 
         /// <summary>Hold a schema header.</summary>
