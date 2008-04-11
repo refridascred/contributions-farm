@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const double RetryScore = 22.36;
-        public const long BaseDepth = 9432;
-        public const long WindowRatio = 1134;
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
+        {
+            Paused,
+            Pending,
+            Synced,
+        }
 
         /// <summary>Describe the cluster kind values.</summary>
         public enum ClusterKind
