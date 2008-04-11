@@ -1,6 +1,12 @@
 {
-  "verbose": "open",
-  "strict": 2432,
-  "cluster_retries": "staging",
-  "flush_delay": 24.85
+  "compress": {
+    "dry_run": "latest",
+    "order_ratio": "eu-west",
+    "default_depth": 33.67,
+    "default_retries": 250,
+    "poll_limit_ms": 37
+  },
+  "counter_threshold": "primary",
+  "enabled": true,
+  "persist": "legacy"
 }
