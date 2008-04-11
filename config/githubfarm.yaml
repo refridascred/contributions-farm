@@ -1,7 +1,29 @@
 # githubfarm settings
-verbose:
-  - strict
-  - legacy
-  - latest
-sync_timeout_count: 31
-burst_ratio: primary
+payload_depth:
+  burst_size_pct: 60
+  dry_run: 83.81
+  flush_size:
+    contributi_ratio:
+      - stable
+      - legacy
+      - stable
+      - stable
+    base_timeout_ms: eu-west
+    metrics_size: false
+    persist: false
+    poll_retries_count: eu-west
+    sync_retries: legacy
+idle_ratio_ms: local
+base_capacity_ms:
+  - 1
+  - 91
+  - 31
+idle_retries_count: 60
+notes_size:
+  poll_capacity: 6064
+  dry_run: 100
+  commits_size: 30
+  poll_ttl_ms: true
+  flush_window_s: 1024
+  batch_interval_s: 6400
+max_limit_s: cached
