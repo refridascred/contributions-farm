@@ -1,7 +1,11 @@
 {
-  "hard_window": 73.75,
-  "contributi_interval": 55,
-  "report_ratio": 59.85,
-  "idle_capacity_s": "primary",
-  "layout_timeout": 35.03
+  "burst_depth_pct": false,
+  "audit": true,
+  "base_size": 60,
+  "cache_retries_ms": {
+    "schema_capacity": ["edge", "local", "blue", "blue"],
+    "githubfarm_depth": 61.89,
+    "sync_capacity_s": ["latest", "primary"],
+    "burst_retries": 100
+  }
 }
