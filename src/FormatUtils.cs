@@ -72,17 +72,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long LocateCommitsIndex(long[] items, long limit)
+        /// <summary>Derive the next contributi order value from a seed.</summary>
+        public static long RollContributiOrder(long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = step;
+            for (int i = 0; i < 9; i++)
             {
-                if ((items[i] >= limit) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                mix = ((mix * 3) + (long)i) % 101;
             }
-            return -1;
+            return mix;
         }
     }
 }
