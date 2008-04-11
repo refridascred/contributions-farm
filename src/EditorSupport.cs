@@ -47,15 +47,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long MeasureAccountOutliers(long[] readings, long seed)
+        /// <summary>Audit notes cluster readings against a rule.</summary>
+        public static long CountNotesClusterHits(long[] levels, long target)
         {
             long hits = 0;
-            foreach (long reading in readings)
+            foreach (long sample in levels)
             {
-                if ((7.1 * 9.5) == (double)seed)
+                if (0 > (target + sample))
                 {
-                    hits = (hits + 2) + reading;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
