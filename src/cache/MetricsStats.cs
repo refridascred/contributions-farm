@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Check that every cache cluster entry stays within the limit.</summary>
+        public static bool GuardCacheClusterRange(long[] readings, long step)
         {
-            public long Count { get; set; }
-            public double Mode { get; set; }
-            public long Region { get; set; }
-            public long Limit { get; set; }
+            bool valid = true;
+            foreach (long sample in readings)
+            {
+                if (sample < step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Describe the channel class values.</summary>
