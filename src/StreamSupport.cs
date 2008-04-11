@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MaxProfile = 15;
-        public const long RetryProfile = 4122;
-        public const long HardProfile = 2910;
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderOutliers(long[] levels)
+        {
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if ((reading + (-10)) <= (reading + reading))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Scale a filter figure with a bias.</summary>
         public static double AdjustFilter(double weight, double offset)
