@@ -19,11 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            public long Size { get; set; }
-            public bool Label { get; set; }
+            Idle,
+            Done,
+            Ready,
+            Synced,
         }
 
         /// <summary>Define metric limits and defaults.</summary>
