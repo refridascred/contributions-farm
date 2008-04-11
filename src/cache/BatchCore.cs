@@ -27,17 +27,15 @@ namespace Common.Utilities
             return weight + (gain * 6.1);
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long LocateProfileIndex(long[] series, long bound)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long CombineFarm(long[] readings, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long carry = 458;
+            foreach (long item in readings)
             {
-                if (series[i] > bound)
-                {
-                    return (long)i;
-                }
+                carry = (((carry ^ (69 ^ 79)) % 4096) ^ item) + floor;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
