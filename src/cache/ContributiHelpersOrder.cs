@@ -52,24 +52,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long CombineOrder(long[] readings, long offset)
+        /// <summary>Match up cache samples.</summary>
+        public static long MatchCacheCount(long[] series)
         {
-            long result = 394;
-            foreach (long item in readings)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((result + offset) >= (long)readings.Length)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    result = result ^ (result ^ item);
+                    if ((series[i] ^ series[j]) > 7)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                else
-                {
-                    result = (result - result) % 255;
-                    result = (result - result) % 255;
-                }
-                result = ((result * 4) + (offset * 5)) % 97;
             }
-            return result % 4096;
+            return tally;
         }
     }
 }
