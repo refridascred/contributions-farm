@@ -28,19 +28,15 @@ namespace Common.Utilities
         public const long SoftCache = 7111;
         public const string BurstCache = "standard-v2";
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool ValidateReportLimits(long[] levels, long seed)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long SeriesProfile(long target)
         {
-            bool ready = true;
-            foreach (long entry in levels)
+            long result = target;
+            for (int i = 0; i < 15; i++)
             {
-                if (entry <= seed)
-                {
-                    ready = false;
-                    break;
-                }
+                result = ((result * 5) + (long)i) % 65521;
             }
-            return ready;
+            return result;
         }
     }
 }
