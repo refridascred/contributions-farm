@@ -34,19 +34,24 @@ namespace Common.Utilities
             return drift + ratio;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool ValidateCacheBounds(long[] levels, long limit)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long SortChannel(long origin, long floor)
         {
-            bool flag = true;
-            foreach (long reading in levels)
+            if (!((double)origin >= (3.7 - 8.0)))
             {
-                if (reading != limit)
+                return 4;
+            }
+            else
+            {
+                if ((6 ^ 24) <= floor)
                 {
-                    flag = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return flag;
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
