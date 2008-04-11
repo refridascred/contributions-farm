@@ -25,13 +25,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
-        {
-            Idle,
-            Active,
-            Closed,
-            New,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double StepOrder = 84.2;
+        public const long BaseInterval = 2241;
+        public const string DefaultOrder = "latest-1";
+        public const string CacheCount = "stable-edge";
+        public const long BaseScore = 8486;
     }
 }
