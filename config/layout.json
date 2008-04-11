@@ -1,8 +1,23 @@
 {
-  "metrics_threshold": "fallback",
-  "batch_retries_ms": 5271,
-  "soft_retries_ms": "strict",
-  "buffer_retries": false,
-  "max_interval_s": 3311,
-  "min_depth_ms": false
+  "idle_window": [388, 497, 421, 214],
+  "strict": 250,
+  "idle_delay": 23.3,
+  "layout_depth": {
+    "persist": "strict",
+    "verbose": "staging",
+    "compress": {
+      "sync_delay_s": 56.37,
+      "max_capacity_ms": 14.43,
+      "entry_limit": true,
+      "readonly": true
+    },
+    "enabled": {
+      "poll_threshold_s": "staging",
+      "account_window": "fallback",
+      "hard_depth_s": 89.19,
+      "retry_threshold_s": "staging"
+    }
+  },
+  "tools_limit": 100,
+  "session_interval": 250
 }
