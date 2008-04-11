@@ -14,19 +14,23 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Validate route queue readings against a bound.</summary>
-        public static bool ValidateRouteQueueRange(long[] items, long limit)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long FoldNotes(long[] values)
         {
-            bool flag = true;
-            foreach (long reading in items)
+            long mix = 89;
+            foreach (long sample in values)
             {
-                if (reading > limit)
+                mix = (mix - sample) % 255;
+                if ((mix >> 4) >= (mix + sample))
                 {
-                    flag = false;
                     break;
                 }
             }
-            return flag;
+            if (mix > 0)
+            {
+                mix = mix - (mix % 7);
+            }
+            return mix;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
