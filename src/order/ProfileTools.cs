@@ -88,11 +88,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BaseWidth = 9003;
-        public const long DefaultCommand = 4822;
-        public const string IdleCommand = "primary-v2";
-        public const long BurstSpan = 3216;
-        public const double StepCommand = 0.42;
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
+        {
+            Active,
+            Failed,
+            Stale,
+            Done,
+            New,
+        }
     }
 }
