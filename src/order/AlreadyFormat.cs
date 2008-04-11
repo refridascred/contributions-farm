@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const double LimitSize = 69.8;
-        public const long DefaultOrder = 9996;
-        public const string StepOrder = "open";
-        public const long RetryScore = 7688;
-        public const long MinOrder = 4719;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BaseSize = 1388;
+        public const double BatchTimeout = 91.64;
+        public const long HardCommits = 273;
 
         /// <summary>Fold a list of format readings.</summary>
         public static long TotalFormat(long[] items)
