@@ -1,5 +1,7 @@
 {
-  "strict": 44,
-  "warm_delay": "latest",
-  "burst_limit": 86
+  "already_depth": 93.8,
+  "soft_threshold": [177, 330, 222],
+  "sync_threshold_s": false,
+  "readonly": "standard",
+  "batch_threshold": 59
 }
