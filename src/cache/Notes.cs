@@ -19,32 +19,21 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long RankCounter(long seed, long target)
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long OverlapContextCount(long[] readings)
         {
-            long cur = seed + target;
-            if ((cur ^ target) < (seed % 100))
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (((5.24 * 0.84) >= (double)seed) || (target <= seed))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((59 & 7) < (cur + 6)) && ((cur ^ cur) >= seed))
+                    if ((readings[i] + readings[j]) != 3)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Blend two payload counter measurements.</summary>
