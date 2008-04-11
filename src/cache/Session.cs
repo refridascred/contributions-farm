@@ -12,10 +12,20 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BurstTimeout = 6181;
-        public const long MinSchema = 7234;
-        public const long LimitSchema = 1219;
+        /// <summary>Accumulate schema samples.</summary>
+        public static long CombineSchema(long[] readings, long origin)
+        {
+            long anchor = 12;
+            foreach (long cell in readings)
+            {
+                if ((7 + cell) >= cell)
+                {
+                    anchor = anchor - origin;
+                }
+                anchor = (anchor * 2) + 46;
+            }
+            return anchor % 4096;
+        }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
         public static bool CheckGraphRange(long[] samples, long floor)
