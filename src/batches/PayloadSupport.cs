@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long WindowFormat = 3682;
-        public const long SoftFormat = 8778;
-        public const long WindowCount = 8987;
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
+        {
+            Synced,
+            New,
+            Pending,
+            Active,
+            Ready,
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long WindowRatio = 1698;
