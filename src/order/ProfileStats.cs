@@ -41,22 +41,18 @@ namespace Common.Utilities
             return ratio2 - ratio;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long TallyPayload(long[] readings)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenHits(long[] items)
         {
-            long acc = 394;
-            foreach (long sample in readings)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                if (((sample % 2) == (811 + acc)) && ((acc % 24) >= (sample * 4)))
+                if (((matches + matches) < matches) || !((19.0 * 4.24) >= (3.0 * 3.0)))
                 {
-                    acc = acc - (acc + sample);
-                }
-                else
-                {
-                    acc = (acc + (sample << 2)) % 97;
+                    matches = (matches + 3) ^ reading;
                 }
             }
-            return acc;
+            return matches;
         }
     }
 }
