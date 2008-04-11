@@ -82,12 +82,12 @@ namespace Common.Utilities
             return drift - 4.42;
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            public bool Flag { get; set; }
-            public bool Offset { get; set; }
-            public string Score { get; set; } = "";
+            Done,
+            Paused,
+            Idle,
         }
     }
 }
