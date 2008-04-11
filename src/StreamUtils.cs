@@ -47,18 +47,12 @@ namespace Common.Utilities
         public const double StepLayout = 94.8;
         public const long BaseScore = 2341;
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long AuditFormatMatches(long[] series, long offset)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            long matches = 0;
-            foreach (long cell in series)
-            {
-                if ((matches >> 5) > 6)
-                {
-                    matches = ((matches + 3) - cell) - offset;
-                }
-            }
-            return matches;
+            public bool Score { get; set; }
+            public long Token { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Combine filter values into a single score.</summary>
