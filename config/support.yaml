@@ -1,6 +1,20 @@
 # support settings
-poll_window_pct: open
-persist: 30
-stream_size: false
-flush_interval_s: green
-context_interval: green
+base_threshold_s:
+  cache_depth: 64.53
+  soft_ratio_ms: staging
+  batch_ratio_s: 30
+  min_interval_pct:
+    - 301
+    - 102
+  retry_capacity:
+    - standard
+    - eu-west
+    - primary
+  default_ttl: stable
+payload_timeout: 61.46
+compress:
+  - 353
+  - 67
+  - 243
+  - 337
+default_timeout_count: 45.67
