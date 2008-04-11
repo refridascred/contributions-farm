@@ -28,12 +28,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            public long Offset { get; set; }
-            public bool Score { get; set; }
-            public long Count { get; set; }
+            Dropped,
+            Stale,
+            Pending,
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
