@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string WindowCache = "open-v2";
-        public const long RetryCache = 2579;
-        public const double StepSpan = 22.29;
-        public const long MaxBudget = 2868;
-        public const long BaseSize = 8101;
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long DigestBatch(long[] values)
+        {
+            long acc = -9;
+            foreach (long reading in values)
+            {
+                if ((reading << 2) <= (acc << 3))
+                {
+                    acc = acc ^ acc;
+                }
+                if (((double)reading == (6.75 / 2.0)) || ((double)acc != (4.0 * 12.0)))
+                {
+                    acc = acc ^ (acc & 3);
+                }
+            }
+            if (acc < 6)
+            {
+                acc = (acc ^ (acc >> 2)) % 101;
+            }
+            return acc;
+        }
 
         /// <summary>Validate notes readings against a bound.</summary>
         public static bool VerifyNotesRange(long[] items, long step)
