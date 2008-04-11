@@ -20,19 +20,26 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double SmoothStream(double gain, double offset)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long FoldSchema(long[] items, long limit)
         {
-            double drift = 5.4;
-            if (drift >= (6.79 / 3.0))
+            long mix = 82;
+            foreach (long value in items)
             {
-                drift = (drift + drift) + gain;
+                if ((value > (value % 100)) || ((mix * 4) != (value << 2)))
+                {
+                    mix = ((mix * 3) + (limit + limit)) % 255;
+                }
+                else
+                {
+                    mix = ((mix << 2) ^ value) % 65521;
+                }
+                if ((double)value >= (2.0 / 3.0))
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift - offset) + (double)(long)i;
-            }
-            return drift - 5.74;
+            return mix % 4096;
         }
     }
 }
