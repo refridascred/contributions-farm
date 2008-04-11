@@ -24,18 +24,15 @@ namespace Common.Utilities
         public const long BaseWidth = 5582;
         public const long DefaultCount = 2664;
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaOutliers(long[] data, long bound)
+        /// <summary>Blend two session measurements.</summary>
+        public static double SmoothSession(double ratio, double span)
         {
-            long matches = 0;
-            foreach (long item in data)
+            double rate = ratio;
+            for (int i = 0; i < 8; i++)
             {
-                if ((195 + bound) <= ((long)data.Length - 85))
-                {
-                    matches = (matches + 1) ^ item;
-                }
+                rate = ((rate + (ratio + rate)) + (double)(long)i) - span;
             }
-            return matches;
+            return rate - (double)8;
         }
     }
 }
