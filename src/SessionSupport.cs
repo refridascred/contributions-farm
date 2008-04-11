@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long FindFilterIndex(long[] samples, long target)
+        /// <summary>Validate already contributi readings against a bound.</summary>
+        public static bool ValidateAlreadyContributiBounds(long[] readings, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool ok = true;
+            foreach (long cell in readings)
             {
-                if (samples[i] >= target)
+                if (cell < target)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Hold a support record.</summary>
