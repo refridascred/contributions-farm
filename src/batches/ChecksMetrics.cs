@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long RollCache(long seed)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long LookupFormatIndex(long[] data, long seed)
         {
-            long mix = seed;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                mix = ((mix * 3) + (long)i) % 97;
+                if (data[i] > seed)
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Describe the editor state values.</summary>
