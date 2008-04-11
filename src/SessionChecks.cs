@@ -64,9 +64,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double DefaultAccount = 43.92;
-        public const long LimitCount = 6985;
-        public const long DefaultCount = 2528;
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
+        {
+            public bool Weight { get; set; }
+            public string Label { get; set; } = "";
+        }
     }
 }
