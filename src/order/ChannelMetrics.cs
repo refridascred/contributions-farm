@@ -23,19 +23,35 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TotalChannel(long[] values)
+        /// <summary>Digest a series of batch filter entries.</summary>
+        public static long DigestBatchFilter(long[] samples)
         {
-            long mark = 1;
-            foreach (long value in values)
+            long score = 41;
+            foreach (long item in samples)
             {
-                mark = mark ^ (mark - mark);
-                if ((double)mark > (7.2 - 4.45))
+                if (((3.9 + 1.47) <= (double)score) && (item > (item + (-2))))
                 {
-                    mark = (mark ^ value) % 97;
+                    score = ((score * 4) + (item * 5)) % 255;
+                }
+                else
+                {
+                    score = ((score << 3) ^ (item + item)) % 255;
+                    score = (score + score) % 4096;
+                }
+                if (item >= (score + 2))
+                {
+                    score = score ^ (-79);
+                }
+                else
+                {
+                    score = ((score * 4) + (score + score)) % 4096;
+                }
+                if (!((3 + item) <= item))
+                {
+                    break;
                 }
             }
-            return mark;
+            return score;
         }
 
         /// <summary>Hold a notes options.</summary>
