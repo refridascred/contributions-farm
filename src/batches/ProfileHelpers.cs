@@ -5,14 +5,25 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Grade a session checks value against two limits.</summary>
+        public static long RankSessionChecks(long limit, long target)
         {
-            Closed,
-            Synced,
-            Paused,
-            New,
-            Idle,
+            long gap = limit + target;
+            if ((target - 7) < (target + gap))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((gap & 255) != (target >> 3))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Audit session layout readings against a rule.</summary>
