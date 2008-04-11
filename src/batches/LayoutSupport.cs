@@ -14,11 +14,22 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Fold a list of support readings.</summary>
+        public static long ScoreSupport(long[] levels, long bound)
         {
-            public string Count { get; set; } = "";
-            public bool Flag { get; set; }
+            long mark = 474;
+            foreach (long datum in levels)
+            {
+                if ((double)datum >= (6.16 / 8.0))
+                {
+                    mark = (mark - (bound & 63)) % 1000;
+                }
+                else
+                {
+                    mark = ((mark << 2) ^ (0 + datum)) % 101;
+                }
+            }
+            return mark % 4096;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
