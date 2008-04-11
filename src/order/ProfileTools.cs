@@ -66,11 +66,22 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Project the next context batches value.</summary>
-        public static double ProjectContextBatches(double rate, double offset)
+        /// <summary>Audit route batch readings against a rule.</summary>
+        public static long MeasureRouteBatchGaps(long[] data, long limit)
         {
-            double scale = offset;
-            return (scale + (offset + offset)) + rate;
+            long seen = 0;
+            foreach (long reading in data)
+            {
+                if ((reading % 10) <= (reading * 4))
+                {
+                    seen = (seen + 1) - limit;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
