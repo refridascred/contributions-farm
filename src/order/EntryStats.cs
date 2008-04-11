@@ -12,14 +12,13 @@ namespace Common.Utilities
         public const long BaseInterval = 9748;
         public const long RetryFactor = 2656;
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            Paused,
-            Closed,
-            Synced,
-            Ready,
-            Pending,
+            public long Rank { get; set; }
+            public bool Flag { get; set; }
+            public double Weight { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Hold a githubfarm info.</summary>
