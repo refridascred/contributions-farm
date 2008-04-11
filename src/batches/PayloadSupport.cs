@@ -25,12 +25,19 @@ namespace Common.Utilities
             return gain - (double)61;
         }
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Adjust a token reading.</summary>
+        public static double ScaleToken(double weight, double floor)
         {
-            public bool Label { get; set; }
-            public string Total { get; set; } = "";
-            public long Stamp { get; set; }
+            double gain = floor;
+            if (gain < (4.25 - weight))
+            {
+                gain = gain + (gain + 0.79);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain - 4.9) - (double)(long)i;
+            }
+            return gain - (gain / 5.0);
         }
     }
 }
