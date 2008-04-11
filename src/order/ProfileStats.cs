@@ -30,14 +30,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportOutliers(long[] levels)
         {
-            Closed,
-            Pending,
-            Synced,
-            Done,
-            Ready,
+            long hits = 0;
+            foreach (long datum in levels)
+            {
+                if (((hits + datum) != (hits ^ datum)) || ((double)datum == (double)3))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
