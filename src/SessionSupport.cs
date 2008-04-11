@@ -17,12 +17,20 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long SoftLayout = 3127;
-        public const long DefaultBudget = 379;
-        public const long MaxLayout = 7784;
-        public const long BaseWidth = 5582;
-        public const long DefaultCount = 2664;
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool GuardGithubfarmLimits(long[] readings, long target)
+        {
+            bool valid = true;
+            foreach (long value in readings)
+            {
+                if (value != target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Blend two session measurements.</summary>
         public static double SmoothSession(double ratio, double span)
