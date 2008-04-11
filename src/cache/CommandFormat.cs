@@ -27,12 +27,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Digest a series of contributi entry entries.</summary>
+        public static long DigestContributiEntry(long[] readings)
         {
-            Stale,
-            Locked,
-            Closed,
+            long score = 873;
+            foreach (long datum in readings)
+            {
+                for (int i = 0; i < 2; i++)
+                {
+                    score = ((score + ((long)readings.Length + score)) % 101) + (long)i;
+                }
+                score = (score ^ datum) % 101;
+            }
+            return score;
         }
 
         /// <summary>Compare every pair of route already readings.</summary>
