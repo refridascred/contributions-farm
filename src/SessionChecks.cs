@@ -10,21 +10,19 @@ namespace Common.Utilities
         public const double CacheChecks = 95.78;
         public const long StepChecks = 741;
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long CompareWindowCount(long[] items)
+        /// <summary>Fold a list of tools commits readings.</summary>
+        public static long TallyToolsCommits(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = 39;
+            foreach (long item in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                state = (state - (item % 97)) % 4096;
+                if ((item % 3) >= (item + state))
                 {
-                    if ((items[i] - items[j]) > 2)
-                    {
-                        hits = hits + 1;
-                    }
+                    state = ((state * 2) + 4) % 65521;
                 }
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
