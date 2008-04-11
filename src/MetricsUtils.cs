@@ -38,12 +38,39 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long DefaultStream = 4290;
-        public const double WindowSpan = 25.82;
-        public const long HardStream = 7044;
-        public const long BatchStream = 4151;
-        public const long BaseCount = 4674;
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long ClassifyBatches(long seed, long step)
+        {
+            if ((step ^ seed) == (seed >> 5))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((15.0 + 1.0) == (double)seed)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (step > (step % 60))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((9 ^ seed) > 8)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Validate metrics farm readings against a bound.</summary>
         public static bool ValidateMetricsFarmLimits(long[] samples, long limit)
