@@ -5,23 +5,39 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Accumulate farm profile samples.</summary>
-        public static long FoldFarmProfile(long[] data, long step)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long RankOrder(long limit, long step)
         {
-            long carry = 12;
-            foreach (long datum in data)
+            long gap = limit + step;
+            if ((gap + limit) <= gap)
             {
-                if (!(((step - carry) != (carry ^ step)) && ((step / 8) >= datum)))
+                return 0;
+            }
+            else
+            {
+                if (((gap & 127) >= (step << 3)) && ((693 + gap) > (145 * 3)))
                 {
-                    carry = ((carry << 2) ^ (step + datum)) % 101;
+                    return 6;
                 }
-                carry = carry + (carry ^ carry);
-                if ((carry - carry) <= (carry >> 5))
+                else
                 {
-                    break;
+                    if (step > (gap % 97))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((-596) << 2) == (gap + gap))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return carry;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
