@@ -1,4 +1,25 @@
 # support settings
-warm_delay: 250
-dry_run: 38
-default_depth: 97.33
+default_limit_count:
+  warm_delay_ms: 90
+  poll_limit_pct: true
+  verbose:
+    - 29
+    - 8
+    - 376
+    - 315
+  min_delay_pct: strict
+  sync_window_s:
+    flush_retries_ms: 2879
+    batch_ratio_s:
+      - 155
+      - 140
+    compress:
+      - cached
+      - cached
+      - stable
+      - latest
+    soft_depth: cached
+    soft_timeout: 63.25
+schema_threshold: local
+poll_threshold_pct: true
+poll_retries_ms: edge
