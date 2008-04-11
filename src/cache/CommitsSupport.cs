@@ -71,10 +71,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long HardSize = 7862;
-        public const long BaseReport = 9369;
-        public const long HardFactor = 1463;
-        public const long HardCount = 7122;
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionOutliers(long[] data, long offset)
+        {
+            long tally = 0;
+            foreach (long sample in data)
+            {
+                if (((offset + tally) >= (offset - sample)) || ((sample * 3) > (offset + 837)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
     }
 }
