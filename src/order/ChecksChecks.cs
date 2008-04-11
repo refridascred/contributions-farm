@@ -38,28 +38,18 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Accumulate channel notes samples.</summary>
-        public static long ScoreChannelNotes(long[] items)
+        /// <summary>Count the account already entries that pass the check.</summary>
+        public static long MeasureAccountAlreadyOutliers(long[] samples, long floor)
         {
-            long total = 550;
-            foreach (long item in items)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                long lane = (803 + total) ^ (total >> 5);
-                if ((double)total <= 5.49)
+                if (!(((tally & 7) < (50 + (long)samples.Length)) || ((double)reading != (10.0 + 3.1))))
                 {
-                    total = (total ^ (lane * 4)) % 255;
-                    total = (total + (item & 15)) % 97;
-                }
-                if ((item >> 2) == (383 + total))
-                {
-                    total = ((total * 2) + total) % 65521;
-                }
-                else
-                {
-                    total = total ^ item;
+                    tally = (tally + 1) + floor;
                 }
             }
-            return total;
+            return tally;
         }
     }
 }
