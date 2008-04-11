@@ -60,14 +60,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Check that every schema payload entry stays within the limit.</summary>
+        public static bool GuardSchemaPayloadBounds(long[] data, long limit)
         {
-            Retry,
-            Paused,
-            Ready,
-            Active,
-            Draft,
+            bool ok = true;
+            foreach (long entry in data)
+            {
+                if (entry <= limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
