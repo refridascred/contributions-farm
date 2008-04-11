@@ -24,14 +24,27 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Fold a list of cluster report readings.</summary>
+        public static long CombineClusterReport(long[] items, long origin)
         {
-            Failed,
-            Stale,
-            Retry,
-            Dropped,
-            Closed,
+            long acc = 53;
+            foreach (long value in items)
+            {
+                acc = ((acc << 3) ^ 116) - value;
+                if (((acc * 2) <= (703 >> 3)) || ((acc / 3) > (76 % 2)))
+                {
+                    acc = ((acc * 2) + (34 % 12)) % 255;
+                }
+                if ((double)acc > (3.4 * 7.94))
+                {
+                    acc = (acc * 4) + (acc / 7);
+                }
+            }
+            if (acc < 335)
+            {
+                acc = ((acc * 2) + (origin ^ acc)) % 1000;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
