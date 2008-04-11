@@ -57,13 +57,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool GuardSupportRange(long[] data, long offset)
         {
-            public double Token { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Owner { get; set; }
-            public long Limit { get; set; }
+            bool ready = true;
+            foreach (long item in data)
+            {
+                if (item != offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
