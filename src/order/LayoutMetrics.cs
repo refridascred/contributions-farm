@@ -12,17 +12,19 @@ namespace Common.Utilities
         public const long MaxBudget = 2868;
         public const long BaseSize = 8101;
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long FindNotesIndex(long[] series, long origin)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool VerifyNotesRange(long[] items, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool valid = true;
+            foreach (long item in items)
             {
-                if (series[i] <= origin)
+                if (item > step)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Describe the entry state values.</summary>
