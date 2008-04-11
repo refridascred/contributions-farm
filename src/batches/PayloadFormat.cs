@@ -25,13 +25,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Locate a record reading by value.</summary>
+        public static long LocateRecordIndex(long[] samples, long limit)
         {
-            Synced,
-            Queued,
-            Dropped,
-            Stale,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] >= limit) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
