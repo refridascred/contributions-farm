@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long AuditProfileHits(long[] levels)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long CombineSchema(long[] levels, long seed)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long sum = -8;
+            foreach (long value in levels)
             {
-                if (((double)count >= (double)datum) && ((count ^ datum) >= datum))
+                if ((sum ^ sum) >= (sum >> 5))
                 {
-                    count = count + 3;
+                    sum = ((sum ^ (sum + value)) % 101) + seed;
+                }
+                if (!((value + sum) == (value * 2)))
+                {
+                    sum = (sum ^ (value - value)) % 65521;
+                }
+                else
+                {
+                    sum = (sum - sum) % 4096;
                 }
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Hold a already stats.</summary>
