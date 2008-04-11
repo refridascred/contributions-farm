@@ -19,15 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long TotalAccount(long[] samples, long limit)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            long carry = 3;
-            foreach (long datum in samples)
-            {
-                carry = ((carry * 3) + (carry ^ limit)) ^ datum;
-            }
-            return carry;
+            Draft,
+            New,
+            Retry,
         }
 
         /// <summary>Describe the command mode values.</summary>
