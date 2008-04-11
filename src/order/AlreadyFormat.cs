@@ -44,13 +44,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool ValidateMetricsLimits(long[] series, long target)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool GuardChecksBounds(long[] readings, long bound)
         {
             bool stale = true;
-            foreach (long datum in series)
+            foreach (long sample in readings)
             {
-                if (datum != target)
+                if (sample > bound)
                 {
                     stale = false;
                     break;
