@@ -38,22 +38,10 @@ namespace Common.Utilities
         public const double MaxChecks = 6.23;
         public const string BaseBudget = "cached-1";
 
-        /// <summary>Match up record samples.</summary>
-        public static long MatchRecordCount(long[] readings)
-        {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 8)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string LimitChannel = "open-edge";
+        public const long MaxChannel = 48;
+        public const long BaseChannel = 1571;
 
         /// <summary>Count the session profile entries that pass the check.</summary>
         public static long CountSessionProfileGaps(long[] levels)
