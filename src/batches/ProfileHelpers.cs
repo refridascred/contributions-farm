@@ -56,31 +56,19 @@ namespace Common.Utilities
         public const double BatchTimeout = 32.41;
         public const string BaseBuffer = "staging-1";
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long SortContext(long floor, long offset)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool VerifyEntryRange(long[] data, long step)
         {
-            if (1.09 < (double)offset)
+            bool ok = true;
+            foreach (long reading in data)
             {
-                return 4;
-            }
-            else
-            {
-                if ((offset % 64) != (offset + floor))
+                if (reading > step)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)floor >= (0.73 / 2.0))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
