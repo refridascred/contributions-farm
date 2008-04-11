@@ -18,32 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank payload order input into a small class.</summary>
-        public static long GradePayloadOrder(long limit, long offset)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long DigestMetric(long[] data, long target)
         {
-            long cur = limit + offset;
-            if ((cur - cur) < cur)
+            long anchor = 21;
+            foreach (long value in data)
             {
-                return 3;
-            }
-            else
-            {
-                if ((offset - cur) < (658 + offset))
+                if (2.4 <= (double)value)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((limit >> 5) == (limit + offset))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    anchor = (((anchor * 4) + (value << 3)) % 4096) + target;
                 }
             }
+            if (anchor > 4)
+            {
+                anchor = anchor - (anchor ^ anchor);
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
