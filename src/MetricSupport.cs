@@ -5,25 +5,21 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long SortCommand(long origin, long seed)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long SeriesFilter(long seed)
         {
-            long slot = origin + seed;
-            if ((origin % 64) < (-8))
+            long result = seed;
+            for (int i = 0; i < 15; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (((origin >> 4) <= (slot << 3)) || (seed > (origin + origin)))
+                result = ((result * 5) + (result << 3)) % 255;
+                if (!((((long)i << 3) != (894 + (-75))) && ((double)result < (double)seed)))
                 {
-                    return 4;
+                    long matches = (result >> 2) / 9;
+                    result = result - matches;
                 }
-                else
-                {
-                    return 7;
-                }
+                result = ((result * 3) + (long)i) % 1000;
             }
+            return result;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
