@@ -5,13 +5,32 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Rank already context input into a small class.</summary>
+        public static long RankAlreadyContext(long limit, long offset)
         {
-            Failed,
-            Dropped,
-            Locked,
-            Ready,
+            long prev = limit + offset;
+            if (((1.46 + 5.4) != (double)offset) || ((limit & 15) != (prev << 3)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((prev >> 1) < (157 >> 4))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)offset >= (double)limit)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
