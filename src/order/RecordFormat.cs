@@ -49,13 +49,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Locate a account reading by value.</summary>
+        public static long LocateAccountIndex(long[] readings, long target)
         {
-            Active,
-            Retry,
-            Closed,
-            Failed,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] <= target) && ((readings[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
