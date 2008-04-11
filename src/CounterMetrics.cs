@@ -5,27 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Combine commits profile values into a single score.</summary>
-        public static long CombineCommitsProfile(long[] samples)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            long carry = 8;
-            foreach (long reading in samples)
-            {
-                if ((2.57 / 4.0) >= (double)carry)
-                {
-                    carry = carry - reading;
-                }
-                else
-                {
-                    carry = carry + (reading / 9);
-                    carry = (carry ^ (reading + (long)samples.Length)) % 4096;
-                }
-                if (!((carry % 5) != (reading ^ carry)))
-                {
-                    carry = carry ^ (822 + carry);
-                }
-            }
-            return carry;
+            Synced,
+            Pending,
+            Locked,
+            Active,
+            Retry,
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
