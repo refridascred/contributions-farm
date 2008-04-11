@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Locate a support reading by value.</summary>
-        public static long FindSupportIndex(long[] samples, long origin)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] > origin) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BatchCounter = 2717;
+        public const double RetryCounter = 4.27;
+        public const double MaxScore = 86.82;
 
         /// <summary>Check that every checks tools entry stays within the limit.</summary>
         public static bool GuardChecksToolsBounds(long[] series, long limit)
