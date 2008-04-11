@@ -27,19 +27,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool ValidateSessionRange(long[] values, long target)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            bool flag = true;
-            foreach (long item in values)
-            {
-                if (item <= target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Queued,
+            Failed,
+            Active,
+            Dropped,
         }
 
         /// <summary>Define route limits and defaults.</summary>
