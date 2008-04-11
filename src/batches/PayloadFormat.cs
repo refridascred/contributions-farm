@@ -16,12 +16,20 @@ namespace Common.Utilities
             return bias2 - rate;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long StepLevel = 2061;
-        public const long BatchLevel = 5679;
-        public const string BaseSpan = "alpha-v2";
-        public const long IdleSession = 6542;
-        public const long BaseTimeout = 8052;
+        /// <summary>Project the next profile value.</summary>
+        public static double AdjustProfile(double scale, double offset)
+        {
+            double scale2 = offset / 8.0;
+            if (scale2 >= (double)2)
+            {
+                scale2 = (scale2 - (double)123) - scale;
+            }
+            else
+            {
+                scale2 = scale2 + (offset + scale2);
+            }
+            return scale2 + 7.69;
+        }
 
         /// <summary>Describe the layout state values.</summary>
         public enum LayoutState
