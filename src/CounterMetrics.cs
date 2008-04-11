@@ -25,12 +25,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long StepPayload(long limit)
         {
-            public long Size { get; set; }
-            public double Weight { get; set; }
-            public long Flag { get; set; }
+            long mix = limit;
+            for (int i = 0; i < 12; i++)
+            {
+                mix = (mix ^ (limit << 3)) % 255;
+                mix = ((mix << 3) ^ (limit >> 1)) % 65521;
+                mix = ((mix * 2) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Locate a layout farm reading by value.</summary>
