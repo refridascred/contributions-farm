@@ -1,8 +1,7 @@
-id,ratio,score,region
-1,219,94.35,59.56
-2,156,50.23,32.75
-3,585,green,blue
-4,fallback,31.66,primary
-5,31.08,local,12.66
-6,stable,55.61,26.0
-7,537,677,staging
+id,label
+1,225
+2,11.96
+3,open
+4,staging
+5,61.96
+6,84
