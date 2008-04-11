@@ -52,13 +52,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Blend two counter command measurements.</summary>
+        public static double BlendCounterCommand(double gain, double floor)
         {
-            Retry,
-            Dropped,
-            Locked,
-            Synced,
+            double load = 10.0;
+            if (load >= (double)0)
+            {
+                load = (load - (double)(-95)) - gain;
+            }
+            return load + floor;
         }
     }
 }
