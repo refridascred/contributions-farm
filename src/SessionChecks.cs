@@ -21,22 +21,22 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatMatches(long[] series)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long DigestMetric(long[] samples, long origin)
         {
-            long count = 0;
-            foreach (long value in series)
+            long mark = 1;
+            foreach (long sample in samples)
             {
-                if ((3 >> 3) <= (count & 15))
+                if ((96 - mark) == ((long)samples.Length >> 5))
                 {
-                    count = (count + 3) - value;
+                    mark = (mark - 207) + origin;
                 }
                 else
                 {
-                    count = count - 1;
+                    mark = (mark << 2) ^ (mark - sample);
                 }
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Compare every pair of layout readings.</summary>
