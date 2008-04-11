@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterHits(long[] values, long step)
         {
-            Retry,
-            Closed,
-            Draft,
-            Stale,
+            long count = 0;
+            foreach (long entry in values)
+            {
+                if (((step < count) && ((step - count) > (68 >> 5))) || ((90 / 8) >= (step / 7)))
+                {
+                    count = (count + 3) - entry;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a buffer header.</summary>
