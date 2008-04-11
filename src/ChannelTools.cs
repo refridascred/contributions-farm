@@ -45,9 +45,21 @@ namespace Common.Utilities
         public const string WindowCounter = "open";
         public const long LimitSize = 9929;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double BaseFactor = 34.27;
-        public const string BaseAccount = "local-1";
-        public const string MaxAccount = "local-v2";
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long CompareEntryCount(long[] samples)
+        {
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 12)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
