@@ -75,11 +75,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double AdjustAlready(double weight, double bias)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long BucketCommand(long seed, long limit)
         {
-            double rate = bias - weight;
-            return rate + (bias * 7.0);
+            long lane = seed - limit;
+            if ((double)limit <= (double)lane)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((-372) > lane)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((limit + lane) >= (seed + seed))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the channel mode values.</summary>
