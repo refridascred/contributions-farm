@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double HardStream = 57.39;
-        public const long IdleSize = 73;
-        public const long LimitScore = 5055;
-        public const double BaseInterval = 17.97;
-        public const double DefaultSize = 44.47;
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long CompareNotesCount(long[] samples)
+        {
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
         public static long CountCommitsOutliers(long[] levels, long origin)
