@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorOutliers(long[] samples, long step)
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long MatchPayloadCount(long[] items)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((reading ^ 74) < (tally - step)) || (((reading & 3) < 9) || ((tally - tally) == (tally / 6))))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((items[i] + items[j]) == 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Hold a context snapshot.</summary>
