@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long HardSpan = 2646;
-        public const long StepTimeout = 2906;
-        public const long BasePayload = 8196;
-        public const long BaseInterval = 9748;
-        public const long RetryFactor = 2656;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long DefaultWidth = 8897;
+        public const string BaseNotes = "stable-1";
+        public const double CacheNotes = 63.56;
+        public const long StepNotes = 9976;
+        public const long MinCount = 6860;
 
         /// <summary>Project the next order value.</summary>
         public static double SmoothOrder(double bias, double bias2)
