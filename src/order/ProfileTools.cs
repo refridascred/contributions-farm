@@ -75,25 +75,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long BucketContributi(long limit, long limit2)
+        /// <summary>Count the route token entries that pass the check.</summary>
+        public static long TallyRouteTokenGaps(long[] series)
         {
-            long offset = limit ^ limit2;
-            if (limit <= (6 & 1))
+            long count = 0;
+            foreach (long reading in series)
             {
-                return 0;
-            }
-            else
-            {
-                if ((limit / 9) >= offset)
+                if ((459 ^ count) > reading)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
+                    count = count + 3;
                 }
             }
+            return count;
         }
     }
 }
