@@ -1,10 +1,12 @@
 {
-  "warm_ratio": "edge",
-  "poll_threshold_ms": 90.21,
-  "stats_timeout": {
-    "commits_size": "staging",
-    "poll_ratio": 3395,
-    "stats_window": 61.37,
-    "notes_capacity": 500
-  }
+  "cache_delay_ms": {
+    "max_window_count": "green",
+    "checks_window": [6, 219],
+    "strict": [160, 91, 462],
+    "flush_threshold": 6958,
+    "poll_ratio_count": 87.47
+  },
+  "base_ratio": 23,
+  "base_capacity_ms": 250,
+  "burst_depth": "strict"
 }
