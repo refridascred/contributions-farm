@@ -1,8 +1,8 @@
 {
-  "compress": 60,
-  "verbose": 43,
-  "queue_depth": ["stable", "edge", "edge"],
-  "enabled": 100,
-  "window_timeout": "open",
-  "dry_run": 1024
+  "default_delay_pct": false,
+  "batch_window_count": true,
+  "flush_size_s": 77.64,
+  "max_size_s": 2027,
+  "soft_size_s": ["staging", "legacy", "eu-west", "edge"],
+  "retry_retries_ms": "strict"
 }
