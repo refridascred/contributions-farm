@@ -14,12 +14,16 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BatchRatio = 6825;
-        public const double LimitFactor = 82.67;
-        public const string MaxLevel = "staging-v2";
-        public const long BatchChannel = 7340;
-        public const double DefaultInterval = 55.18;
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long WeighFarm(long[] items, long origin)
+        {
+            long acc = 6;
+            foreach (long datum in items)
+            {
+                acc = ((acc ^ (44 >> 4)) ^ datum) + origin;
+            }
+            return acc;
+        }
 
         /// <summary>Accumulate profile samples.</summary>
         public static long TallyProfile(long[] series)
