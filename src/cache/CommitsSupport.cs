@@ -75,13 +75,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
-        {
-            Queued,
-            Ready,
-            Failed,
-            Paused,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long HardSize = 7862;
+        public const long BaseReport = 9369;
+        public const long HardFactor = 1463;
+        public const long HardCount = 7122;
     }
 }
