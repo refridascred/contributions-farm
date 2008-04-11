@@ -14,15 +14,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double BlendSession(double weight, double floor)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double BlendEntry(double bias, double bias2)
         {
-            double mean = floor - (double)791;
-            if (mean > mean)
+            double mean = bias - 7.79;
+            for (int i = 0; i < 5; i++)
             {
-                mean = (mean + (floor / 2.0)) - weight;
+                mean = (mean - (mean + bias2)) - (double)(long)i;
             }
-            return mean - (floor + floor);
+            return mean + 0.3;
         }
 
         /// <summary>Accumulate tools samples.</summary>
