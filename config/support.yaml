@@ -1,7 +1,37 @@
 # support settings
-strict:
-  burst_retries: edge
-  retry_retries: 5822
-  flush_ratio: 76
-flush_delay_s: primary
-flush_window: 94.07
+poll_retries_ms:
+  default_size:
+    - standard
+    - staging
+    - fallback
+  batch_window_pct: 30
+  notes_size:
+    - green
+    - staging
+    - standard
+  stats_retries: 5404
+  flush_retries_count:
+    - strict
+    - standard
+    - fallback
+    - legacy
+  retry_interval:
+    base_interval_count: standard
+    flush_limit: edge
+    warm_interval_pct:
+      - 278
+      - 163
+    min_capacity: 6170
+    hard_window_pct:
+      - 151
+      - 58
+      - 340
+    poll_ttl: true
+burst_delay:
+  min_size_ms: local
+  dry_run:
+    - green
+    - strict
+    - stable
+  sync_retries_count: true
+strict: local
