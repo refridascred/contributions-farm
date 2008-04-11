@@ -32,21 +32,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up graph samples.</summary>
-        public static long MatchGraphCount(long[] samples)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long RankGraph(long bound, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if (((-64) & 63) < floor)
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((floor + floor) >= (floor / 8))
                 {
-                    if ((samples[i] ^ samples[j]) != 2)
+                    return 6;
+                }
+                else
+                {
+                    if (((double)floor == (double)bound) || ((60 - floor) >= (379 - floor)))
                     {
-                        count = count + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        if (bound < (674 & 255))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
-            return count;
         }
     }
 }
