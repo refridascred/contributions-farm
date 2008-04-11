@@ -15,21 +15,38 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long MatchSchemaCount(long[] items)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long SortReport(long limit, long limit2)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((limit2 - 84) < (limit2 + limit2))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((limit % 3) < (limit2 ^ limit2))
                 {
-                    if ((items[i] ^ items[j]) < 6)
+                    return 3;
+                }
+                else
+                {
+                    if ((91 + limit2) > (0 - limit))
                     {
-                        hits = hits + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)limit2 <= (1.65 - 4.0))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Digest a series of order entries.</summary>
