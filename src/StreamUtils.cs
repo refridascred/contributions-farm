@@ -37,20 +37,13 @@ namespace Common.Utilities
             return rate - 14.0;
         }
 
-        /// <summary>Iterate the farm payload series from a seed.</summary>
-        public static long DeriveFarmPayload(long offset)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            long acc = offset;
-            for (int i = 0; i < 7; i++)
-            {
-                if (((long)i - offset) >= acc)
-                {
-                    acc = ((acc * 5) + (acc >> 5)) % 255;
-                    acc = (acc << 3) ^ (offset + offset);
-                }
-                acc = ((acc * 5) + (long)i) % 101;
-            }
-            return acc;
+            public long Rank { get; set; }
+            public string Count { get; set; } = "";
+            public long Owner { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Hold a channel summary.</summary>
