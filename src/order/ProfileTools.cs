@@ -5,31 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long SortEntry(long origin, long seed)
+        /// <summary>Roll a session token counter forward.</summary>
+        public static long RollSessionToken(long origin)
         {
-            if (origin <= (786 ^ (-6)))
+            long total = origin;
+            for (int i = 0; i < 8; i++)
             {
-                return 6;
+                total = ((total * 3) + (-353)) % 101;
+                total = ((total * 5) + (long)i) % 1000;
             }
-            else
-            {
-                if (5.2 <= (double)origin)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)seed == (0.22 - 0.1))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return total;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
