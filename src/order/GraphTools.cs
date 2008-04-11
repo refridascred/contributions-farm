@@ -25,32 +25,12 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long BucketSession(long floor, long limit)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            long bound = floor - limit;
-            if (52 >= (floor & 3))
-            {
-                return 7;
-            }
-            else
-            {
-                if (bound <= floor)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((0 * 5) < (bound ^ limit))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Pending,
+            Stale,
+            Done,
         }
 
         /// <summary>Define window limits and defaults.</summary>
