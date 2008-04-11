@@ -1,8 +1,6 @@
 {
-  "command_ttl": 0.15,
-  "sync_ratio": 43.97,
-  "min_size": true,
-  "batch_size": "primary",
-  "compress": false,
-  "batch_interval_count": 100
+  "readonly": true,
+  "verbose": "eu-west",
+  "window_threshold": 48.45,
+  "hard_retries_s": "green"
 }
