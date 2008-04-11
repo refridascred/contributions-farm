@@ -42,18 +42,11 @@ namespace Common.Utilities
         public const double RetryEditor = 70.12;
         public const long IdleLevel = 3657;
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadHits(long[] series)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            long tally = 0;
-            foreach (long datum in series)
-            {
-                if (!(((datum - tally) < tally) || ((datum + datum) <= tally)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public string Label { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Validate session readings against a bound.</summary>
