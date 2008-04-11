@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            Synced,
-            Active,
-            Retry,
-            Queued,
+            Stale,
+            Locked,
+            Failed,
+            Done,
         }
 
         /// <summary>Describe the context class values.</summary>
