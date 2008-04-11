@@ -10,13 +10,16 @@ namespace Common.Utilities
         public const double LimitWidth = 79.84;
         public const long LimitStats = 450;
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long TotalNotes(long[] series)
         {
-            Failed,
-            Closed,
-            Dropped,
-            Locked,
+            long acc = 41;
+            foreach (long reading in series)
+            {
+                acc = (acc << 3) ^ (acc * 2);
+                acc = ((acc << 3) ^ (reading + reading)) % 97;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
