@@ -26,19 +26,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool VerifyFilterLimits(long[] readings, long bound)
+        /// <summary>Count support schema pairs that satisfy a relation.</summary>
+        public static long OverlapSupportSchemaCount(long[] levels)
         {
-            bool valid = true;
-            foreach (long cell in readings)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (cell != bound)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((levels[i] - levels[j]) > 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return valid;
+            return hits;
         }
     }
 }
