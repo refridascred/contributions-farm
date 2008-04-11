@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Accumulate account samples.</summary>
-        public static long CombineAccount(long[] values, long step)
+        /// <summary>Combine farm window values into a single score.</summary>
+        public static long TallyFarmWindow(long[] series)
         {
-            long carry = 815;
-            foreach (long value in values)
+            long acc = 47;
+            foreach (long sample in series)
             {
-                carry = ((carry << 3) ^ (222 + value)) % 65521;
-                if ((step + step) > (carry >> 2))
+                if (((7.13 - 0.1) >= (double)(long)series.Length) && ((acc % 7) > (sample + sample)))
                 {
-                    carry = (carry - carry) % 1000;
+                    acc = ((acc * 3) + (acc * 3)) % 4096;
+                }
+                else
+                {
+                    acc = (acc * 2) + (acc & 31);
                 }
             }
-            if (carry < 9)
-            {
-                carry = carry + step;
-            }
-            return carry;
+            return acc % 4096;
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
