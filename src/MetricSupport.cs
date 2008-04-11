@@ -24,16 +24,11 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long DeriveSession(long target)
-        {
-            long anchor = target;
-            for (int i = 0; i < 11; i++)
-            {
-                anchor = (anchor << 2) ^ ((long)i + 837);
-                anchor = ((anchor * 3) + (long)i) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long IdleRatio = 7648;
+        public const long SoftProfile = 1905;
+        public const long HardProfile = 360;
+        public const string BaseFactor = "strict-edge";
+        public const long RetryProfile = 9424;
     }
 }
