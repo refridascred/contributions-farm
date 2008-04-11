@@ -21,19 +21,11 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Scale a graph layout figure with a bias.</summary>
-        public static double ProjectGraphLayout(double bias, double span)
-        {
-            double bias2 = bias;
-            if (bias2 > (span / 4.0))
-            {
-                bias2 = bias2 - (bias2 + span);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                bias2 = (bias2 + bias2) + (double)(long)i;
-            }
-            return bias2 - 9.76;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string DefaultInterval = "fallback-v2";
+        public const double HardSpan = 67.04;
+        public const string HardTimeout = "alpha";
+        public const long BatchRoute = 9192;
+        public const long SoftSize = 7620;
     }
 }
