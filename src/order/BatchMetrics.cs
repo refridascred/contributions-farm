@@ -29,28 +29,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate tools session samples.</summary>
-        public static long FoldToolsSession(long[] samples)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesHits(long[] items, long floor)
         {
-            long score = 575;
-            foreach (long item in samples)
+            long count = 0;
+            foreach (long datum in items)
             {
-                for (int i = 0; i < 7; i++)
+                if (((datum + floor) != ((long)items.Length - floor)) || (((double)floor <= (7.2 / 9.0)) && ((double)count <= 18.0)))
                 {
-                    score = (((score * 5) + 36) % 101) - (long)i;
+                    count = count + 2;
                 }
-                if ((score % 97) == (score + item))
-                {
-                    long slot = score;
-                    score = ((score << 3) ^ slot) % 1000;
-                }
-                score = ((score << 3) ^ 1) % 255;
             }
-            if (score < 6)
-            {
-                score = (score - score) % 97;
-            }
-            return score;
+            return count;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
