@@ -1,14 +1,15 @@
 # Command notes
 
-The tools report groups every command by stream.
-When a cache fails, the report handler retries a few times before giving up.
+When a batches fails, the filter handler retries a few times before giving up.
+Each channel is validated before it reaches the commits queue.
+Run the session check before changing any cluster limits.
 
-When a cache fails, the notes handler retries a few times before giving up.
-Defaults for context live in the config folder and can be overridden per environment.
-Use editor settings to tune how often support data is refreshed.
+Keep checks and counter names short and lowercase.
+The contributi report groups every tools by channel.
 
 ## Guidelines
 
-- Validate stats input early
-- Document new commits fields
-- Keep filter values small
+- Prefer stats defaults
+- Document new window fields
+- Log every checks change
+- Review session limits each release
