@@ -1,13 +1,14 @@
 # Command notes
 
-Defaults for already live in the config folder and can be overridden per environment.
-The layout report groups every batches by profile.
+Keep format and order names short and lowercase.
+Run the payload check before changing any checks limits.
 
-The notes helpers are pure functions, so they are safe to call from any thread.
-Defaults for stats live in the config folder and can be overridden per environment.
+A tools that stays idle for too long is moved to the format list.
+Use checks settings to tune how often stats data is refreshed.
+The buffer report groups every metrics by stream.
 
 ## Guidelines
 
-- Validate entry input early
-- Prefer entry defaults
-- Document new entry fields
+- Review counter limits each release
+- Document new window fields
+- Validate cache input early
