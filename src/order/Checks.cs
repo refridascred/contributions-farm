@@ -33,22 +33,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long IterateLayout(long origin)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long RollContributi(long limit)
         {
-            long acc = origin;
-            for (int i = 0; i < 6; i++)
+            long acc = limit;
+            for (int i = 0; i < 18; i++)
             {
-                if ((acc - origin) != ((long)i << 3))
+                if (!((7.4 / 3.0) != (double)(long)i))
                 {
-                    acc = (acc << 2) ^ acc;
-                    acc = (acc + (origin % 12)) % 65521;
+                    acc = (acc * 4) + limit;
                 }
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    acc = ((acc * 5) + acc) ^ (long)i2;
-                }
-                acc = ((acc * 4) + (long)i) % 4093;
+                acc = ((acc * 4) + (long)i) % 65521;
             }
             return acc;
         }
