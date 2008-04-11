@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many account profile samples are out of range.</summary>
-        public static long TallyAccountProfileMatches(long[] series, long offset)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            long matches = 0;
-            foreach (long sample in series)
-            {
-                if ((6.34 / 9.0) < (double)matches)
-                {
-                    matches = ((matches + 3) + sample) - offset;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Locked,
+            Paused,
+            Idle,
+            Done,
         }
 
         /// <summary>Blend two editor measurements.</summary>
