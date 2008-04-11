@@ -1,4 +1,40 @@
 # entry settings
-verbose: primary
-batch_timeout_pct: 19
-sync_retries_count: 24
+min_size_s:
+  poll_ttl: 45
+  soft_threshold_count:
+    - 11
+    - 218
+    - 213
+    - 471
+  channel_threshold:
+    - cached
+    - cached
+    - primary
+    - strict
+  idle_depth_pct: open
+poll_retries_count:
+  burst_timeout_ms:
+    readonly: 6864
+    soft_interval_count: false
+    graph_threshold: 1024
+    min_size:
+      - 159
+      - 251
+    idle_limit: fallback
+    queue_capacity: 8352
+  tools_retries: true
+  already_size: 35
+  soft_window: stable
+  dry_run:
+    default_retries_count: stable
+    payload_timeout: edge
+    default_interval_count: 2355
+    audit: 73
+warm_threshold_count:
+  account_delay: true
+  enabled:
+    format_ttl: 62
+    flush_limit_s: 55.9
+    idle_capacity: 100
+    max_interval_count: 11
+  default_timeout_s: blue
