@@ -48,31 +48,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long GradeWindow(long step, long origin)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long ScoreBuffer(long[] data, long target)
         {
-            if ((step << 2) != (origin >> 5))
+            long score = -39;
+            foreach (long entry in data)
             {
-                return 0;
-            }
-            else
-            {
-                if (((step << 2) < 89) && ((step - step) != (origin * 4)))
+                if ((target << 3) <= (target / 9))
                 {
-                    return 6;
+                    score = ((score << 3) ^ (entry ^ entry)) % 1000;
                 }
-                else
-                {
-                    if (!(origin <= (origin << 1)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                score = ((score * 4) + (entry << 2)) % 255;
             }
+            return score;
         }
     }
 }
