@@ -36,22 +36,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaGaps(long[] data, long origin)
+        /// <summary>Compare every pair of route already readings.</summary>
+        public static long PairRouteAlreadyCount(long[] levels)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)entry > (9.78 + 6.34))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    tally = (tally + 1) - origin;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((levels[i] + levels[j]) < 16)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
