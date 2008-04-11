@@ -47,21 +47,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Compare every pair of filter stats readings.</summary>
-        public static long PairFilterStatsCount(long[] data)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Pending,
+            Paused,
+            Retry,
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
