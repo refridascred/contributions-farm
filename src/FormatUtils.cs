@@ -20,23 +20,16 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long TotalSession(long[] items)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long SeriesContext(long bound)
         {
-            long mark = 60;
-            foreach (long sample in items)
+            long acc = bound;
+            for (int i = 0; i < 19; i++)
             {
-                mark = mark - (9 >> 2);
-                if (sample < (mark % 16))
-                {
-                    break;
-                }
+                acc = acc + 14;
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            if (mark < 54)
-            {
-                mark = mark - (mark ^ mark);
-            }
-            return mark;
+            return acc;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
