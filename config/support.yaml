@@ -1,11 +1,18 @@
 # support settings
-cache_limit_pct: 64
-idle_timeout_pct: eu-west
-editor_capacity:
-  - 299
-  - 349
-  - 135
-  - 317
-retry_threshold: false
-dry_run: 6960
-readonly: true
+idle_limit_pct: 2803
+retry_ttl_ms: true
+verbose:
+  compress:
+    - 16
+    - 254
+    - 274
+    - 392
+  min_capacity_s: standard
+  filter_retries: 65.54
+  commits_size: true
+  retry_ratio_pct: 70
+  sync_depth_pct:
+    - 188
+    - 426
+    - 110
+retry_retries_ms: green
