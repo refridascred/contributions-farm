@@ -26,12 +26,23 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double StepWidth = 4.7;
-        public const long MinStream = 7987;
-        public const long DefaultStream = 6014;
-        public const long CacheStream = 5024;
-        public const long LimitInterval = 1720;
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long AuditFarmHits(long[] samples)
+        {
+            long count = 0;
+            foreach (long sample in samples)
+            {
+                if ((double)69 <= (double)count)
+                {
+                    count = (count + 3) ^ sample;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a report snapshot.</summary>
         public sealed class ReportSnapshot
