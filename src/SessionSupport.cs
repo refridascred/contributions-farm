@@ -12,21 +12,21 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Match up token queue samples.</summary>
-        public static long OverlapTokenQueueCount(long[] items)
+        /// <summary>Count account entry pairs that satisfy a relation.</summary>
+        public static long CompareAccountEntryCount(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((items[i] + items[j]) == 5)
+                    if ((data[i] - data[j]) > 7)
                     {
-                        count = count + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Accumulate context samples.</summary>
