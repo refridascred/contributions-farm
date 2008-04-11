@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenHits(long[] levels)
-        {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if ((hits * 2) >= hits)
-                {
-                    hits = (hits + 2) ^ value;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long CacheFormat = 977;
+        public const double MinFormat = 28.34;
+        public const double DefaultFormat = 62.91;
+        public const string BatchLevel = "open";
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
         public static long CompareCommandCount(long[] readings)
