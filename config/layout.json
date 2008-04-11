@@ -1,11 +1,14 @@
 {
-  "burst_depth_pct": false,
-  "audit": true,
-  "base_size": 60,
-  "cache_retries_ms": {
-    "schema_capacity": ["edge", "local", "blue", "blue"],
-    "githubfarm_depth": 61.89,
-    "sync_capacity_s": ["latest", "primary"],
-    "burst_retries": 100
+  "githubfarm_capacity": ["staging", "cached", "cached", "blue"],
+  "audit": ["green", "eu-west"],
+  "min_size": true,
+  "min_retries": 71,
+  "batch_threshold": 71,
+  "schema_retries": {
+    "profile_ttl": "local",
+    "support_ratio": "eu-west",
+    "persist": 41.95,
+    "flush_ratio_pct": "eu-west",
+    "cache_ratio": 71
   }
 }
