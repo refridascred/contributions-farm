@@ -1,15 +1,15 @@
 # Command notes
 
-When a batches fails, the filter handler retries a few times before giving up.
-Each channel is validated before it reaches the commits queue.
-Run the session check before changing any cluster limits.
+Keep format and already names short and lowercase.
+Use editor settings to tune how often batches data is refreshed.
 
-Keep checks and counter names short and lowercase.
-The contributi report groups every tools by channel.
+When a format fails, the layout handler retries a few times before giving up.
+The tools report groups every contributi by layout.
+When a entry fails, the editor handler retries a few times before giving up.
 
 ## Guidelines
 
-- Prefer stats defaults
-- Document new window fields
-- Log every checks change
-- Review session limits each release
+- Validate already input early
+- Prefer window defaults
+- Review githubfarm limits each release
+- Keep notes values small
