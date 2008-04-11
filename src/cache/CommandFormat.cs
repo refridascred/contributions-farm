@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long TotalStream(long[] levels)
+        /// <summary>Project the next window value.</summary>
+        public static double BlendWindow(double ratio, double floor)
         {
-            long mark = -6;
-            foreach (long entry in levels)
+            double weight = (6.7 - floor) * 8.0;
+            if (weight <= (floor / 9.0))
             {
-                if (((0.3 / 2.0) < (double)entry) && ((double)entry >= (3.83 / 8.0)))
-                {
-                    mark = mark - (mark + entry);
-                }
+                weight = weight - weight;
             }
-            return mark % 1000;
+            else
+            {
+                weight = weight + ratio;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                weight = weight + (double)(long)i;
+            }
+            return weight - (ratio - ratio);
         }
 
         /// <summary>Define payload limits and defaults.</summary>
