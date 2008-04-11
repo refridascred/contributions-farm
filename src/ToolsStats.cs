@@ -71,17 +71,30 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long LookupEntryIndex(long[] values, long step)
+        /// <summary>Accumulate batches session samples.</summary>
+        public static long DigestBatchesSession(long[] values, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long sum = 19;
+            foreach (long cell in values)
             {
-                if (values[i] > step)
+                if ((double)sum >= 4.0)
                 {
-                    return (long)i;
+                    sum = (sum - cell) % 4096;
+                }
+                else
+                {
+                    sum = (sum - (15 << 3)) % 101;
+                }
+                if (((sum * 3) <= limit) || ((limit >> 4) < (cell % 3)))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (sum > 817)
+            {
+                sum = sum ^ limit;
+            }
+            return sum;
         }
     }
 }
