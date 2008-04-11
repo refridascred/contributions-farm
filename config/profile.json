@@ -1,6 +1,7 @@
 {
-  "base_window_ms": 96.71,
-  "persist": [177, 161, 13],
-  "warm_threshold_ms": [219, 88, 53],
-  "hard_ratio_ms": 6805
+  "compress": ["staging", "green", "eu-west"],
+  "batch_delay_ms": 60,
+  "strict": 4276,
+  "batches_capacity": "edge",
+  "min_timeout_pct": 6745
 }
