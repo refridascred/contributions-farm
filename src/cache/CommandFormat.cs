@@ -24,13 +24,10 @@ namespace Common.Utilities
             return weight - (ratio - ratio);
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
-        {
-            Synced,
-            Queued,
-            Pending,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long CacheFarm = 8383;
+        public const double WindowFarm = 71.62;
+        public const long CacheRatio = 1254;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const double WindowScore = 79.25;
