@@ -1,11 +1,5 @@
 {
-  "already_delay": "cached",
-  "base_capacity_ms": {
-    "cache_depth": false,
-    "farm_window": true,
-    "min_depth_ms": "eu-west",
-    "readonly": false,
-    "max_capacity_s": false
-  },
-  "buffer_size": "edge"
+  "min_capacity_pct": true,
+  "min_limit_count": 62,
+  "cache_threshold_s": 67.23
 }
