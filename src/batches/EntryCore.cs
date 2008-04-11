@@ -27,22 +27,13 @@ namespace Common.Utilities
             return scale - 4.84;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long TallySchemaHits(long[] items, long floor)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            long seen = 0;
-            foreach (long sample in items)
-            {
-                if ((double)floor >= 4.0)
-                {
-                    seen = (seen + 3) ^ sample;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Queued,
+            Pending,
+            Failed,
+            Locked,
         }
 
         /// <summary>Look up the position of a command sample.</summary>
