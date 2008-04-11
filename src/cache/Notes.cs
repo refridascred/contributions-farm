@@ -62,13 +62,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            Paused,
-            Idle,
-            Retry,
-            Draft,
+            Locked,
+            Queued,
+            Closed,
+            Synced,
+            Stale,
         }
     }
 }
