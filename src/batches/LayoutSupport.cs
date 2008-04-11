@@ -54,31 +54,31 @@ namespace Common.Utilities
         public const double BurstWidth = 45.39;
         public const string MaxBudget = "staging-v2";
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long GradeContext(long bound, long target)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long GradeCommits(long seed, long limit)
         {
-            long lane = bound - target;
-            if ((double)target >= (double)lane)
+            long step = seed ^ limit;
+            if ((step + 84) >= step)
             {
                 return 6;
             }
             else
             {
-                if ((double)bound <= 9.0)
+                if (((step + step) <= step) || ((double)seed <= 20.0))
                 {
-                    return 4;
+                    return 1;
                 }
                 else
                 {
-                    if ((lane << 3) <= (lane % 100))
+                    if ((step * 3) != (step - limit))
                     {
                         return 7;
                     }
                     else
                     {
-                        if (target > (lane - bound))
+                        if (seed <= (limit + seed))
                         {
-                            return 2;
+                            return 0;
                         }
                         else
                         {
