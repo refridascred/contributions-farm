@@ -71,12 +71,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            Dropped,
-            Ready,
-            Paused,
+            public bool Total { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
