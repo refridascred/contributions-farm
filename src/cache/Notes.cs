@@ -20,18 +20,32 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long AuditSchemaHits(long[] series, long floor)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long RankCounter(long seed, long target)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            long cur = seed + target;
+            if ((cur ^ target) < (seed % 100))
             {
-                if ((double)165 <= (double)floor)
+                return 3;
+            }
+            else
+            {
+                if (((5.24 * 0.84) >= (double)seed) || (target <= seed))
                 {
-                    matches = (matches + 2) ^ sample;
+                    return 4;
+                }
+                else
+                {
+                    if (((59 & 7) < (cur + 6)) && ((cur ^ cur) >= seed))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Check that every layout cluster entry stays within the limit.</summary>
