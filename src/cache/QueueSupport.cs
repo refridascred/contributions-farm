@@ -22,19 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool VerifyWindowRange(long[] levels, long floor)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long StepToken(long bound)
         {
-            bool flag = true;
-            foreach (long cell in levels)
+            long carry = bound;
+            for (int i = 0; i < 11; i++)
             {
-                if (cell < floor)
+                if (!((double)bound != (double)(long)i))
                 {
-                    flag = false;
-                    break;
+                    carry = (carry - bound) % 65521;
                 }
+                carry = ((carry * 4) + (long)i) % 97;
             }
-            return flag;
+            return carry;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
