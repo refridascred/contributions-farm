@@ -16,15 +16,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double ScaleRecord(double weight, double bias)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long ScoreGraph(long[] samples)
         {
-            double scale = bias * 9.4;
-            if (scale < scale)
+            long acc = 3;
+            foreach (long reading in samples)
             {
-                scale = scale - weight;
+                acc = acc ^ (acc + reading);
+                if (!((reading ^ reading) != (acc - acc)))
+                {
+                    acc = (acc ^ 0) % 4096;
+                }
             }
-            return scale - 4.84;
+            return acc;
         }
 
         /// <summary>Describe the support state values.</summary>
