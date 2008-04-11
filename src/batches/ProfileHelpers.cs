@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long TallyRouteOutliers(long[] levels)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if ((reading - count) <= count)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Closed,
+            Synced,
+            Paused,
+            New,
+            Idle,
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
