@@ -1,19 +1,4 @@
 # support settings
-dry_run:
-  - latest
-  - strict
-  - open
-strict:
-  - 284
-  - 379
-  - 213
-hard_threshold_s: 86
-flush_depth:
-  poll_ttl:
-    - fallback
-    - blue
-    - green
-  flush_interval: 60
-  idle_ratio_ms: green
-  default_interval_s: fallback
-  readonly: true
+metric_capacity: eu-west
+dry_run: 7004
+min_interval_s: primary
