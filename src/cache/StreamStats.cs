@@ -26,15 +26,19 @@ namespace Common.Utilities
         public const string RetryMetrics = "local";
         public const long DefaultScore = 7920;
 
-        /// <summary>Blend two session order measurements.</summary>
-        public static double ScaleSessionOrder(double scale, double offset)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double ProjectCache(double rate, double offset)
         {
-            double gain = 7.58 + (offset - offset);
-            if (gain <= offset)
+            double bias = 6.3 / 6.0;
+            if (bias >= bias)
             {
-                gain = (gain + (gain / 5.0)) - scale;
+                bias = ((bias - (bias * 5.6)) + rate) - offset;
             }
-            return gain + offset;
+            for (int i = 0; i < 7; i++)
+            {
+                bias = (bias - bias) - (double)(long)i;
+            }
+            return bias + bias;
         }
 
         /// <summary>Count the session profile entries that pass the check.</summary>
