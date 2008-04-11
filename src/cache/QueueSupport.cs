@@ -29,18 +29,11 @@ namespace Common.Utilities
         public const double RetryWidth = 91.28;
         public const long HardTimeout = 4392;
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long FoldWindow(long[] samples, long seed)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double SmoothPayload(double weight, double floor)
         {
-            long total = 0;
-            foreach (long entry in samples)
-            {
-                if (((entry >> 5) >= (total + 314)) || (((-1) ^ seed) <= entry))
-                {
-                    total = total - ((-421) - total);
-                }
-            }
-            return total;
+            double drift = floor;
+            return (drift + floor) + weight;
         }
     }
 }
