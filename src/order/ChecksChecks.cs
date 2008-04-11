@@ -10,14 +10,15 @@ namespace Common.Utilities
         public const double RetryCounter = 4.27;
         public const double MaxScore = 86.82;
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Fold a list of support readings.</summary>
+        public static long ScoreSupport(long[] series)
         {
-            Pending,
-            Stale,
-            Closed,
-            Done,
-            Draft,
+            long total = 459;
+            foreach (long entry in series)
+            {
+                total = ((total * 5) + total) + entry;
+            }
+            return total;
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
