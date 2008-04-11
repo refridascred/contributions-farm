@@ -22,31 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a token cache pair into a bucket.</summary>
-        public static long RankTokenCache(long bound, long origin)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long AuditWindowGaps(long[] levels)
         {
-            if (!(((-9) + origin) <= (bound + origin)))
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if (((origin * 5) >= bound) || (((-8) + origin) <= 9))
+                if ((double)hits == (double)reading)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((origin - 54) >= origin)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
 
         /// <summary>Describe the schema status values.</summary>
