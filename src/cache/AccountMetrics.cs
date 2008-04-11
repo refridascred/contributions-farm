@@ -5,14 +5,25 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long SortWindow(long floor, long bound)
         {
-            Failed,
-            Active,
-            Paused,
-            Pending,
-            Done,
+            long gap = floor ^ bound;
+            if (((gap % 100) < floor) && ((floor * 2) >= ((-8) - floor)))
+            {
+                return 4;
+            }
+            else
+            {
+                if (gap <= (gap / 7))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
