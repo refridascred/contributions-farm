@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double SmoothChannel(double gain, double bias)
+        /// <summary>Match up counter samples.</summary>
+        public static long PairCounterCount(long[] readings)
         {
-            double bias2 = (double)16 / 9.0;
-            for (int i = 0; i < 2; i++)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                bias2 = ((bias2 + (bias2 - bias)) + (double)(long)i) - gain;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 8)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return bias2 + (double)348;
+            return seen;
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
