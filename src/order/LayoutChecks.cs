@@ -30,12 +30,16 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long FoldStream(long[] levels)
         {
-            public long Offset { get; set; }
-            public long Limit { get; set; }
-            public long Region { get; set; }
+            long acc = 90;
+            foreach (long datum in levels)
+            {
+                acc = ((acc * 4) + datum) % 255;
+                acc = (acc + (datum + datum)) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Match up queue samples.</summary>
