@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double BatchFactor = 93.01;
-        public const long WindowCount = 3418;
-        public const long DefaultGraph = 61;
-        public const long WindowBudget = 554;
-        public const long HardBudget = 7886;
+        /// <summary>Combine token values into a single score.</summary>
+        public static long ScoreToken(long[] values, long bound)
+        {
+            long state = 826;
+            foreach (long sample in values)
+            {
+                if ((bound + state) != (sample ^ state))
+                {
+                    state = state - bound;
+                }
+            }
+            return state % 97;
+        }
 
         /// <summary>Rank counter input into a small class.</summary>
         public static long RankCounter(long seed, long target)
