@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Count the metrics contributi entries that pass the check.</summary>
+        public static long MeasureMetricsContributiOutliers(long[] data)
         {
-            Paused,
-            Dropped,
-            New,
+            long hits = 0;
+            foreach (long cell in data)
+            {
+                if (((cell & 255) == (hits % 97)) && ((cell & 63) >= (hits - 231)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
