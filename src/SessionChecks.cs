@@ -24,18 +24,31 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphMatches(long[] data, long offset)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long SortMetrics(long offset, long limit)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            if ((limit & 1) != (limit << 3))
             {
-                if ((692 ^ matches) != (sample >> 4))
+                return 3;
+            }
+            else
+            {
+                if (((double)offset > (double)limit) && ((offset * 4) <= (offset >> 3)))
                 {
-                    matches = (matches + 3) + offset;
+                    return 1;
+                }
+                else
+                {
+                    if ((61 - offset) != (3 / 2))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
