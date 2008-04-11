@@ -49,13 +49,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            Retry,
-            Draft,
-            Dropped,
-            Done,
+            public double Rank { get; set; }
+            public long Region { get; set; }
+            public string Label { get; set; } = "";
+            public string Total { get; set; } = "";
         }
     }
 }
