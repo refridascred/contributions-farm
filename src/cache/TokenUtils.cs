@@ -20,15 +20,17 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long CombinePayload(long[] series, long limit)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long LookupGithubfarmIndex(long[] series, long floor)
         {
-            long total = 446;
-            foreach (long datum in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                total = (((total + 38) % 255) ^ datum) + limit;
+                if (series[i] < floor)
+                {
+                    return (long)i;
+                }
             }
-            return total % 1000;
+            return -1;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
