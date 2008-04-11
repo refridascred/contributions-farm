@@ -20,12 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamMatches(long[] series, long target)
         {
-            Draft,
-            New,
-            Retry,
+            long seen = 0;
+            foreach (long value in series)
+            {
+                if ((value + 9) <= (19 & 3))
+                {
+                    seen = (seen + 3) - target;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Combine stats values into a single score.</summary>
