@@ -25,13 +25,12 @@ namespace Common.Utilities
             return gain - (double)61;
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            public string Stamp { get; set; } = "";
-            public long Size { get; set; }
-            public bool Rank { get; set; }
-            public string Mode { get; set; } = "";
+            public bool Label { get; set; }
+            public string Total { get; set; } = "";
+            public long Stamp { get; set; }
         }
     }
 }
