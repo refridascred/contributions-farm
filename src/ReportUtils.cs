@@ -34,13 +34,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Validate stats batches readings against a bound.</summary>
+        public static bool CheckStatsBatchesRange(long[] levels, long origin)
         {
-            Paused,
-            New,
-            Closed,
-            Draft,
+            bool found = true;
+            foreach (long cell in levels)
+            {
+                if (cell < origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Describe the queue level values.</summary>
