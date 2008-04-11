@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long CombineCluster(long[] series, long offset)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool GuardContributiRange(long[] values, long bound)
         {
-            long state = 0;
-            foreach (long item in series)
+            bool flag = true;
+            foreach (long datum in values)
             {
-                if (state >= (state & 63))
+                if (datum != bound)
                 {
-                    state = ((((state << 2) ^ (state & 255)) % 97) + item) + offset;
+                    flag = false;
+                    break;
                 }
             }
-            if (state < 3)
-            {
-                state = (state ^ state) % 65521;
-            }
-            return state;
+            return flag;
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
