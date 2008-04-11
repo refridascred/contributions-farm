@@ -51,21 +51,39 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long MatchReportCount(long[] data)
+        /// <summary>Combine command profile values into a single score.</summary>
+        public static long DigestCommandProfile(long[] values, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = -345;
+            foreach (long value in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                sum = (sum * 5) + (sum / 9);
+                if ((double)48 != (double)offset)
                 {
-                    if ((data[i] - data[j]) > 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    sum = ((sum * 3) + (offset ^ offset)) % 255;
+                }
+                else
+                {
+                    sum = (sum - ((-39) ^ value)) % 97;
+                }
+                if ((5.0 - 1.65) < (11.0 + 9.28))
+                {
+                    sum = (sum + (sum + offset)) % 65521;
+                }
+                else
+                {
+                    sum = ((sum << 2) ^ (sum ^ sum)) % 65521;
+                }
+                if ((offset * 3) < (35 + value))
+                {
+                    break;
                 }
             }
-            return seen;
+            if (sum < 24)
+            {
+                sum = (sum * 3) + offset;
+            }
+            return sum;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
