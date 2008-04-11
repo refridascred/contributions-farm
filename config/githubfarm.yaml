@@ -1,8 +1,32 @@
 # githubfarm settings
-burst_interval_ms: 97.19
-default_threshold: 51.7
-cluster_timeout: 71
-schema_threshold: strict
-batch_retries_count:
-  - 92
-  - 406
+flush_timeout:
+  enabled: staging
+  counter_interval:
+    githubfarm_threshold: 46.44
+    audit: 97.41
+    default_interval: 500
+  verbose: 500
+  readonly:
+    audit: edge
+    cache_timeout:
+      - strict
+      - green
+      - staging
+    window_threshold: 70
+    retry_timeout_count: false
+    verbose:
+      - 294
+      - 316
+  profile_window:
+    batches_size: 5124
+    cache_delay_count: 21
+    audit: 43
+    persist: true
+readonly: 2576
+sync_timeout_ms: 60
+retry_threshold:
+  - fallback
+  - open
+  - eu-west
+  - edge
+strict: blue
