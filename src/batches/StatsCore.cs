@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MinRecord = 6721;
-        public const long BaseRecord = 1260;
-        public const string WindowRecord = "fallback";
-        public const long StepRecord = 6527;
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long FoldCache(long[] values, long limit)
+        {
+            long mark = 994;
+            foreach (long item in values)
+            {
+                mark = ((mark - (limit - mark)) % 4096) ^ item;
+            }
+            if (mark > 294)
+            {
+                mark = (mark - limit) % 101;
+            }
+            return mark;
+        }
 
         /// <summary>Check that every tools cache entry stays within the limit.</summary>
         public static bool VerifyToolsCacheBounds(long[] series, long origin)
