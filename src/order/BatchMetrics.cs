@@ -5,32 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Rank already input into a small class.</summary>
-        public static long SortAlready(long target, long seed)
+        /// <summary>Iterate the report format series from a seed.</summary>
+        public static long DeriveReportFormat(long limit)
         {
-            long cur = target - seed;
-            if ((cur - seed) <= cur)
+            long mark = limit;
+            for (int i = 0; i < 19; i++)
             {
-                return 0;
+                mark = ((mark * 2) + (long)i) % 97;
             }
-            else
-            {
-                if (((double)target >= (19.0 + 20.0)) || ((target >> 3) == (cur << 2)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)cur >= (double)target)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return mark;
         }
 
         /// <summary>Count the payload contributi entries that pass the check.</summary>
