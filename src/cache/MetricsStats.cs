@@ -19,24 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long ClassifyBatches(long origin, long floor)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long TotalAccount(long[] samples, long limit)
         {
-            if (origin > (floor % 2))
+            long carry = 3;
+            foreach (long datum in samples)
             {
-                return 0;
+                carry = ((carry * 3) + (carry ^ limit)) ^ datum;
             }
-            else
-            {
-                if (floor < origin)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return carry;
         }
 
         /// <summary>Describe the command mode values.</summary>
