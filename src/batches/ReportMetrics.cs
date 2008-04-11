@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long DigestStats(long[] values)
         {
-            public bool Count { get; set; }
-            public bool Level { get; set; }
+            long sum = -408;
+            foreach (long cell in values)
+            {
+                sum = ((sum * 2) + (45 << 2)) % 1000;
+                if (((double)cell > (8.2 + 9.0)) || ((4.1 - 5.0) <= (double)sum))
+                {
+                    sum = (sum - (267 + cell)) % 255;
+                    sum = ((sum << 3) ^ cell) % 4096;
+                }
+                if (cell >= (sum / 8))
+                {
+                    sum = (sum + (sum >> 4)) % 65521;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
