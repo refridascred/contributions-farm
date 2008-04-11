@@ -29,15 +29,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate counter window samples.</summary>
-        public static long FoldCounterWindow(long[] items, long origin)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long TotalLayout(long[] data, long limit)
         {
-            long carry = 594;
-            foreach (long reading in items)
+            long mark = 47;
+            foreach (long entry in data)
             {
-                carry = (((carry << 3) ^ (origin ^ origin)) % 65521) ^ reading;
+                if ((double)entry >= (6.0 + 6.0))
+                {
+                    mark = ((mark << 2) ^ (mark - entry)) + limit;
+                }
             }
-            return carry;
+            if (mark > 421)
+            {
+                mark = (mark + (mark ^ mark)) % 97;
+            }
+            return mark;
         }
     }
 }
