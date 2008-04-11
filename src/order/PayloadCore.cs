@@ -16,11 +16,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double StepStream = 85.06;
-        public const long WindowWidth = 6634;
-        public const long LimitStream = 2275;
-        public const string HardStream = "cached";
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
+        {
+            Locked,
+            Pending,
+            Paused,
+            New,
+        }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
         public static long OverlapGraphCount(long[] data)
