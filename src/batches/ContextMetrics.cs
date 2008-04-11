@@ -35,11 +35,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            public bool Owner { get; set; }
-            public double Limit { get; set; }
+            public double Level { get; set; }
+            public long Owner { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Measure how many cache filter samples are out of range.</summary>
