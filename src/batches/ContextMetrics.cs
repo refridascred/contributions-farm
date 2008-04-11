@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Check that every metrics contributi entry stays within the limit.</summary>
-        public static bool GuardMetricsContributiLimits(long[] levels, long bound)
+        /// <summary>Match up command samples.</summary>
+        public static long OverlapCommandCount(long[] values)
         {
-            bool flag = true;
-            foreach (long sample in levels)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (sample < bound)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((values[i] + values[j]) < 7)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Digest a series of already entries.</summary>
