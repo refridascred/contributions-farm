@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool GuardMetricLimits(long[] readings, long target)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            bool found = true;
-            foreach (long entry in readings)
-            {
-                if (entry >= target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Queued,
+            Idle,
+            Locked,
+            Closed,
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
