@@ -1,4 +1,7 @@
 # githubfarm settings
-dry_run: 30
-default_ratio_ms: blue
-max_limit_pct: true
+verbose:
+  - strict
+  - legacy
+  - latest
+sync_timeout_count: 31
+burst_ratio: primary
