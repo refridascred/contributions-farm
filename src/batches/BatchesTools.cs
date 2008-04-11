@@ -14,12 +14,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteGaps(long[] levels)
         {
-            public string Score { get; set; } = "";
-            public string Level { get; set; } = "";
-            public bool Mode { get; set; }
+            long seen = 0;
+            foreach (long sample in levels)
+            {
+                if ((3.0 + 7.15) == (double)sample)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the cluster class values.</summary>
