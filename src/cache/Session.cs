@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count the layout account entries that pass the check.</summary>
-        public static long TallyLayoutAccountMatches(long[] levels)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool GuardSchemaRange(long[] readings, long limit)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            bool stale = true;
+            foreach (long value in readings)
             {
-                if ((tally ^ 67) <= tally)
+                if (value != limit)
                 {
-                    tally = (tally + 2) - cell;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Hold a batch entry.</summary>
