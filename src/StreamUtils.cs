@@ -31,13 +31,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Iterate the farm payload series from a seed.</summary>
+        public static long DeriveFarmPayload(long offset)
         {
-            public long Rank { get; set; }
-            public string Mode { get; set; } = "";
-            public bool Weight { get; set; }
-            public long Region { get; set; }
+            long acc = offset;
+            for (int i = 0; i < 7; i++)
+            {
+                if (((long)i - offset) >= acc)
+                {
+                    acc = ((acc * 5) + (acc >> 5)) % 255;
+                    acc = (acc << 3) ^ (offset + offset);
+                }
+                acc = ((acc * 5) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
