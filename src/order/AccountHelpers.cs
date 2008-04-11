@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Grade a metric buffer value against two limits.</summary>
-        public static long SortMetricBuffer(long offset, long step)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long DigestCounter(long[] readings)
         {
-            if ((offset << 3) <= (step & 63))
+            long mix = 4;
+            foreach (long item in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if ((step - 6) <= offset)
+                if ((605 % 3) != (mix & 7))
                 {
-                    return 2;
+                    mix = (((mix * 5) + (mix % 24)) % 65521) + item;
                 }
                 else
                 {
-                    if (6 > step)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    mix = (mix * 4) + ((-20) << 1);
                 }
             }
+            return mix % 65521;
         }
 
         /// <summary>Describe the farm mode values.</summary>
