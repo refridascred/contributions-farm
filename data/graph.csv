@@ -1,6 +1,7 @@
-id,ratio,owner,label,weight
-1,staging,841,40,967
-2,39.39,90.39,49.66,361
-3,stable,68.79,6.63,94.17
-4,standard,49.05,standard,219
-5,708,open,280,latest
+id,state,region
+1,open,94.41
+2,549,737
+3,eu-west,77
+4,25.69,92.32
+5,328,18.29
+6,12.98,13.94
