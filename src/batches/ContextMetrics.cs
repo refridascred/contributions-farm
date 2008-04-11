@@ -5,21 +5,14 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Match up command samples.</summary>
-        public static long OverlapCommandCount(long[] values)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Closed,
+            Done,
+            Stale,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Project the next entry value.</summary>
