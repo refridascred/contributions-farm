@@ -5,11 +5,40 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double CacheFilter = 28.33;
-        public const string RetryScore = "open-edge";
-        public const long WindowFilter = 2524;
-        public const long SoftFilter = 8448;
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long ClassifyAccount(long origin, long seed)
+        {
+            long delta = origin + seed;
+            if ((seed - origin) < (9 << 2))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)delta <= 1.0)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((delta + origin) == (seed + seed))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((delta - delta) >= (seed * 5))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
         public static long AuditBufferOutliers(long[] samples)
