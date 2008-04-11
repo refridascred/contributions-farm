@@ -1,6 +1,6 @@
 {
-  "warm_capacity_ms": 52,
-  "cache_interval": 6591,
-  "persist": 68.7,
-  "metrics_limit": 4315
+  "cache_interval_ms": 30,
+  "max_ttl_pct": false,
+  "cache_capacity_s": ["cached", "local", "blue"],
+  "min_delay": ["blue", "latest", "open"]
 }
