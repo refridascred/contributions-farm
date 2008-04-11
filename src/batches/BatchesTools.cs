@@ -5,31 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long BucketQueue(long seed, long seed2)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long FoldAccount(long[] data)
         {
-            if ((seed * 3) < (seed2 % 97))
+            long mix = 83;
+            foreach (long value in data)
             {
-                return 8;
+                if ((double)mix <= (18.0 * 18.0))
+                {
+                    mix = (((mix << 2) ^ (92 & 7)) % 1000) ^ value;
+                }
+                mix = (mix - (mix % 5)) % 101;
             }
-            else
+            if (mix < 45)
             {
-                if ((seed2 & 31) > (29 + seed))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)seed2 >= (2.23 / 2.0))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
+                mix = ((mix << 3) ^ ((-179) * 4)) % 255;
             }
+            return mix;
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
