@@ -5,38 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Classify a stream already pair into a bucket.</summary>
-        public static long RankStreamAlready(long bound, long bound2)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            if ((bound2 + bound) <= 120)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((bound2 + 79) != (894 - bound))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((21 * 4) == (bound2 + bound))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((bound2 - bound) != (719 % 2))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public long Size { get; set; }
+            public long Region { get; set; }
+            public bool Flag { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
