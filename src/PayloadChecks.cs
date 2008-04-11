@@ -62,18 +62,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many queue window samples are out of range.</summary>
-        public static long AuditQueueWindowMatches(long[] data)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            long count = 0;
-            foreach (long sample in data)
-            {
-                if (count >= (sample & 63))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Synced,
+            Ready,
+            Idle,
         }
 
         /// <summary>Rank tools input into a small class.</summary>
