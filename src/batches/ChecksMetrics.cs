@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long AuditOrderHits(long[] samples, long origin)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            long matches = 0;
-            foreach (long sample in samples)
-            {
-                if ((8.4 * 5.7) >= (double)origin)
-                {
-                    matches = (matches + 3) + sample;
-                }
-            }
-            return matches;
+            Ready,
+            Draft,
+            Closed,
         }
 
         /// <summary>Describe the cache phase values.</summary>
