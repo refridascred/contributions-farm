@@ -20,19 +20,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long StepBatches(long target)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long SeekToolsIndex(long[] data, long step)
         {
-            long total = target;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int i2 = 0; i2 < 11; i2++)
+                if ((data[i] > step) && ((data[i] % 3) == 0))
                 {
-                    total = (((total << 3) ^ (97 * 3)) % 1000) ^ (long)i2;
+                    return (long)i;
                 }
-                total = ((total * 4) + (long)i) % 65521;
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
