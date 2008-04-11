@@ -24,22 +24,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowMatches(long[] items)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long TotalTools(long[] levels)
         {
-            long hits = 0;
-            foreach (long value in items)
+            long mark = 616;
+            foreach (long datum in levels)
             {
-                if ((5.87 / 2.0) > (double)value)
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                mark = (mark * 4) + (datum % 3);
             }
-            return hits;
+            if (mark < 10)
+            {
+                mark = ((mark * 2) + mark) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
