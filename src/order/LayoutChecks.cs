@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Digest a series of graph stream entries.</summary>
-        public static long CombineGraphStream(long[] values, long seed)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesMatches(long[] samples)
         {
-            long sum = 21;
-            foreach (long entry in values)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                if (seed <= 94)
+                if ((cell % 5) <= (seen / 9))
                 {
-                    sum = sum ^ entry;
+                    seen = seen + 1;
                 }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
