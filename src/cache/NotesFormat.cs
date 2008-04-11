@@ -47,16 +47,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of queue filter readings.</summary>
-        public static long TallyQueueFilter(long[] samples, long floor)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            long score = 412;
-            foreach (long cell in samples)
-            {
-                score = score - (score ^ score);
-                score = ((score << 3) ^ (floor ^ cell)) % 101;
-            }
-            return score;
+            Queued,
+            Locked,
+            Idle,
+            Failed,
         }
     }
 }
