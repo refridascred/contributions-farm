@@ -19,18 +19,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many command stats samples are out of range.</summary>
-        public static long AuditCommandStatsOutliers(long[] items)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long ClassifyBatches(long origin, long floor)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            if (origin > (floor % 2))
             {
-                if (1 > tally)
+                return 0;
+            }
+            else
+            {
+                if (floor < origin)
                 {
-                    tally = (tally + 2) + datum;
+                    return 5;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the command mode values.</summary>
