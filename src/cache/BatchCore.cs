@@ -55,21 +55,26 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long MatchBufferCount(long[] levels)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long TotalWindow(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 314;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((59 < (cell >> 4)) || ((12.0 * 17.0) >= (double)sum))
                 {
-                    if ((levels[i] - levels[j]) != 0)
-                    {
-                        tally = tally + 1;
-                    }
+                    sum = sum + (cell + cell);
+                }
+                else
+                {
+                    sum = (sum ^ (sum + sum)) % 65521;
                 }
             }
-            return tally;
+            if (sum > 903)
+            {
+                sum = ((sum * 4) + (sum * 3)) % 65521;
+            }
+            return sum % 65521;
         }
     }
 }
