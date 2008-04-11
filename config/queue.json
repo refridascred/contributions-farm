@@ -1,7 +1,6 @@
 {
-  "strict": 1024,
-  "cluster_interval": 37,
-  "default_window_s": [399, 164],
-  "idle_depth_ms": 19.86,
-  "cache_capacity_ms": 250
+  "flush_limit_pct": 13.11,
+  "default_threshold": 98,
+  "burst_limit": 63.83,
+  "hard_timeout_pct": 2971
 }
