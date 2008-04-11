@@ -32,22 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long CombineCluster(long[] levels, long floor)
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            long sum = 232;
-            foreach (long cell in levels)
-            {
-                if (!((sum - cell) < (sum & 3)))
-                {
-                    sum = sum ^ (floor / 3);
-                }
-            }
-            if (sum > 248)
-            {
-                sum = ((sum << 2) ^ (floor ^ sum)) % 97;
-            }
-            return sum;
+            public bool Ratio { get; set; }
+            public long Owner { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Adjust a token reading.</summary>
