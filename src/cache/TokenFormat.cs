@@ -13,17 +13,21 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long LookupStreamIndex(long[] levels, long bound)
+        /// <summary>Roll a command profile counter forward.</summary>
+        public static long StepCommandProfile(long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mark = target;
+            for (int i = 0; i < 12; i++)
             {
-                if (levels[i] == bound)
+                mark = (mark - (target + 9)) % 255;
+                if ((long)i <= target)
                 {
-                    return (long)i;
+                    mark = mark + (target >> 5);
+                    break;
                 }
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Roll a checks counter forward.</summary>
