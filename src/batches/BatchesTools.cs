@@ -5,24 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Digest a series of account entries.</summary>
-        public static long FoldAccount(long[] data)
-        {
-            long mix = 83;
-            foreach (long value in data)
-            {
-                if ((double)mix <= (18.0 * 18.0))
-                {
-                    mix = (((mix << 2) ^ (92 & 7)) % 1000) ^ value;
-                }
-                mix = (mix - (mix % 5)) % 101;
-            }
-            if (mix < 45)
-            {
-                mix = ((mix << 3) ^ ((-179) * 4)) % 255;
-            }
-            return mix;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string SoftMetric = "primary-edge";
+        public const long BatchScore = 699;
+        public const long IdleMetric = 9900;
 
         /// <summary>Compare every pair of schema readings.</summary>
         public static long CompareSchemaCount(long[] levels)
