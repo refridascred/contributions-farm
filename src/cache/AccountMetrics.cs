@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Combine context values into a single score.</summary>
-        public static long TotalContext(long[] items, long seed)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            long carry = 31;
-            foreach (long sample in items)
-            {
-                if (!((-9) <= (carry % 3)))
-                {
-                    carry = ((carry ^ (seed >> 2)) % 4096) ^ sample;
-                }
-            }
-            return carry;
+            public long Label { get; set; }
+            public long Total { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Check that every payload profile entry stays within the limit.</summary>
