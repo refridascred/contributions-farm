@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long PairContributiCount(long[] levels)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long CountStatsMatches(long[] values, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((offset + 253) > ((long)values.Length + 791))
                 {
-                    if ((levels[i] - levels[j]) < 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = (matches + 3) + cell;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
