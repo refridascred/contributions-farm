@@ -23,12 +23,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Iterate the tools entry series from a seed.</summary>
+        public static long IterateToolsEntry(long bound)
         {
-            Done,
-            Locked,
-            Ready,
+            long acc = bound;
+            for (int i = 0; i < 11; i++)
+            {
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    acc = (((acc * 4) + 4) % 65521) - (long)i2;
+                }
+                if (acc < (796 ^ acc))
+                {
+                    acc = ((acc << 2) ^ (bound ^ (long)i)) % 65521;
+                    continue;
+                }
+                acc = ((acc * 5) + (long)i) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Match up layout samples.</summary>
