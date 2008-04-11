@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Project the next window value.</summary>
-        public static double BlendWindow(double ratio, double floor)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            double weight = (6.7 - floor) * 8.0;
-            if (weight <= (floor / 9.0))
-            {
-                weight = weight - weight;
-            }
-            else
-            {
-                weight = weight + ratio;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = weight + (double)(long)i;
-            }
-            return weight - (ratio - ratio);
+            public string Owner { get; set; } = "";
+            public double Total { get; set; }
+            public long Flag { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
