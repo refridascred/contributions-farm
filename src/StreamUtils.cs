@@ -66,11 +66,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            public bool Total { get; set; }
-            public string Ratio { get; set; } = "";
+            public long Weight { get; set; }
+            public long Rank { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Audit format readings against a rule.</summary>
