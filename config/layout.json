@@ -1,14 +1,10 @@
 {
-  "persist": true,
-  "command_threshold": [256, 477],
-  "base_window": {
-    "poll_threshold": 25.48,
-    "cache_size": 6064,
-    "enabled": 36.39,
-    "dry_run": "cached",
-    "min_size": 657,
-    "max_capacity_count": 30
+  "flush_window_pct": {
+    "token_depth": 1604,
+    "poll_limit": 13,
+    "batch_interval": "green",
+    "verbose": true
   },
-  "hard_size_ms": "staging",
-  "poll_capacity_s": ["staging", "staging", "blue", "strict"]
+  "filter_timeout": [22, 169, 377],
+  "default_ratio_ms": [241, 153, 182]
 }
