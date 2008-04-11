@@ -1,28 +1,21 @@
 # entry settings
-default_retries_count:
-  support_retries:
-    - 388
-    - 317
-  window_interval:
-    idle_delay_ms: strict
-    context_threshold:
-      - latest
-      - local
-      - blue
-    retry_interval_ms: 6108
-    contributi_size: strict
-  poll_depth_ms:
-    - 273
-    - 486
-    - 301
-    - 321
-  dry_run:
-    default_size: true
-    command_ratio: 82.97
-    counter_depth: false
-  warm_timeout_ms: legacy
-enabled: 1024
-notes_threshold:
-  - 111
-  - 202
-notes_window: 5428
+entry_interval: cached
+burst_ratio: true
+retry_ttl_s:
+  soft_depth: 30
+  warm_window: true
+  layout_limit: true
+poll_window_pct: 53.56
+sync_timeout_s:
+  cluster_timeout:
+    default_ttl_pct: standard
+    burst_ttl: 36.16
+    base_window_pct: 25
+    base_interval_count: 69
+  cache_threshold: local
+  batch_ratio: 500
+  audit: false
+strict:
+  - edge
+  - edge
+  - stable
