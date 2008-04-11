@@ -34,19 +34,9 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long DigestBuffer(long[] items)
-        {
-            long total = 493;
-            foreach (long entry in items)
-            {
-                total = (((total * 5) + ((-86) * 3)) % 4096) - entry;
-            }
-            if (total < (-1))
-            {
-                total = total ^ (total * 2);
-            }
-            return total % 65521;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long HardScore = 750;
+        public const long BaseFarm = 4125;
+        public const long MinFarm = 9374;
     }
 }
