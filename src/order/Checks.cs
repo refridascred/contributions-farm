@@ -50,15 +50,39 @@ namespace Common.Utilities
         public const long LimitInterval = 4457;
         public const long BatchAlready = 7992;
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long RollSchema(long target)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long ClassifyFilter(long limit, long origin)
         {
-            long anchor = target;
-            for (int i = 0; i < 15; i++)
+            long delta = limit ^ origin;
+            if ((delta >> 3) <= (0 - delta))
             {
-                anchor = ((anchor * 3) + (long)i) % 101;
+                return 0;
             }
-            return anchor;
+            else
+            {
+                if ((delta & 1) > (limit + 609))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((delta ^ delta) <= (delta + delta))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((limit < (delta ^ 4)) || ((limit % 100) >= (origin - origin)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
     }
 }
