@@ -17,15 +17,18 @@ namespace Common.Utilities
         public const double MaxWidth = 22.48;
         public const long StepDepth = 5837;
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double ScaleLayout(double weight, double floor)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long AuditLayoutOutliers(long[] items)
         {
-            double scale = weight * 8.0;
-            for (int i = 0; i < 7; i++)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                scale = ((scale + weight) + (double)(long)i) + floor;
+                if ((tally & 1) <= (tally + sample))
+                {
+                    tally = tally + 1;
+                }
             }
-            return scale - (11.0 * 20.0);
+            return tally;
         }
     }
 }
