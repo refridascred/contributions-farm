@@ -54,18 +54,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many order metric samples are out of range.</summary>
-        public static long AuditOrderMetricOutliers(long[] series, long step)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if ((seen >= (seen / 8)) || (((-6) << 3) < (seen >> 3)))
-                {
-                    seen = ((seen + 3) - reading) - step;
-                }
-            }
-            return seen;
+            Synced,
+            Idle,
+            Paused,
         }
     }
 }
