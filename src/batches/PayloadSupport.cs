@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long OverlapEntryCount(long[] readings)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 3)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public string Offset { get; set; } = "";
+            public long Rank { get; set; }
+            public double Weight { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Count stats checks pairs that satisfy a relation.</summary>
