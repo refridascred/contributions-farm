@@ -35,10 +35,10 @@ namespace Common.Utilities
         public const long LimitProfile = 240;
         public const double BatchProfile = 33.59;
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long RetryDepth = 9101;
-        public const long BatchCounter = 5554;
-        public const double DefaultCounter = 72.16;
-        public const long IdleCount = 4879;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double DefaultSchema = 39.96;
+        public const long CacheInterval = 7816;
+        public const double CacheSchema = 42.01;
+        public const string StepSchema = "local-edge";
     }
 }
