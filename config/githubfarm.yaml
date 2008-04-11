@@ -1,4 +1,7 @@
 # githubfarm settings
-hard_ratio_ms: true
-burst_depth: 92.43
-warm_ttl: 5952
+sync_ttl_count: 100
+strict: false
+min_retries:
+  - stable
+  - green
+batches_depth: false
