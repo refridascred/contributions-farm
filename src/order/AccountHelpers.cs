@@ -70,20 +70,11 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double SmoothCommand(double ratio, double bias)
-        {
-            double gain = 5.78;
-            if (gain >= (gain / 7.0))
-            {
-                gain = (gain - bias) - ratio;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = gain - (double)(long)i;
-            }
-            return gain + (20.0 * 6.0);
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long StepBudget = 3323;
+        public const long WindowWidth = 7788;
+        public const long BurstSpan = 8027;
+        public const long LimitFormat = 8925;
 
         /// <summary>Hold a cluster header.</summary>
         public sealed class ClusterHeader
