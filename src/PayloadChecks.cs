@@ -47,10 +47,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double MaxSchema = 98.46;
-        public const long MinWidth = 2845;
-        public const long WindowSchema = 2109;
+        /// <summary>Iterate the checks cache series from a seed.</summary>
+        public static long SeriesChecksCache(long bound)
+        {
+            long acc = bound;
+            for (int i = 0; i < 12; i++)
+            {
+                acc = (acc << 3) ^ (long)i;
+                acc = ((acc * 5) + (long)i) % 1000;
+            }
+            return acc;
+        }
 
         /// <summary>Check that every entry batch entry stays within the limit.</summary>
         public static bool ValidateEntryBatchBounds(long[] values, long limit)
