@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double ScaleSession(double scale, double offset)
         {
-            Pending,
-            Stale,
-            Locked,
-            Idle,
-            Paused,
+            double load = scale;
+            if (load <= scale)
+            {
+                load = load + offset;
+            }
+            return load - (double)807;
         }
 
         /// <summary>Hold a token entry.</summary>
