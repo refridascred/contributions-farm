@@ -48,19 +48,18 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool CheckCommitsRange(long[] items, long limit)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaOutliers(long[] data, long bound)
         {
-            bool valid = true;
-            foreach (long reading in items)
+            long matches = 0;
+            foreach (long item in data)
             {
-                if (reading < limit)
+                if ((195 + bound) <= ((long)data.Length - 85))
                 {
-                    valid = false;
-                    break;
+                    matches = (matches + 1) ^ item;
                 }
             }
-            return valid;
+            return matches;
         }
     }
 }
