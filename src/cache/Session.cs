@@ -20,10 +20,20 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long StepSession = 5233;
-        public const double CacheSession = 3.72;
-        public const long SoftSession = 3209;
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool GuardReportBounds(long[] series, long origin)
+        {
+            bool stale = true;
+            foreach (long sample in series)
+            {
+                if (sample < origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
         public static bool VerifyFarmBounds(long[] samples, long limit)
