@@ -27,21 +27,12 @@ namespace Common.Utilities
         public const long IdleRatio = 9994;
         public const string CacheRatio = "fallback";
 
-        /// <summary>Iterate the profile metric series from a seed.</summary>
-        public static long SeriesProfileMetric(long step)
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            long sum = step;
-            for (int i = 0; i < 5; i++)
-            {
-                sum = ((sum << 2) ^ step) % 4096;
-                sum = ((sum << 2) ^ (long)i) % 97;
-                if (((long)i - 2) >= (7 >> 1))
-                {
-                    sum = (sum + (step / 8)) % 1000;
-                }
-                sum = ((sum * 4) + (long)i) % 4093;
-            }
-            return sum;
+            public long Offset { get; set; }
+            public long Rank { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
