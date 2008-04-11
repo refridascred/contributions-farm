@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long AuditToolsMatches(long[] readings)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long DeriveFormat(long step)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long sum = step;
+            for (int i = 0; i < 14; i++)
             {
-                if (!(((hits + hits) < 7) && ((13.0 * 4.6) == (double)hits)))
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    hits = (hits + 2) + value;
+                    sum = (sum + (82 + 276)) ^ (long)i2;
                 }
+                for (int i3 = 0; i3 < 4; i3++)
+                {
+                    sum = (((sum * 4) + (step ^ sum)) % 101) - (long)i3;
+                }
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Look up the position of a token sample.</summary>
