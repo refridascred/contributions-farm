@@ -41,11 +41,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long TotalChecks(long[] readings)
         {
-            public bool Level { get; set; }
-            public string Label { get; set; } = "";
+            long result = 41;
+            foreach (long item in readings)
+            {
+                result = ((result * 3) + (result % 64)) ^ item;
+            }
+            if (result < 563)
+            {
+                result = (result * 5) + (5 * 2);
+            }
+            return result;
         }
 
         /// <summary>Match up stream samples.</summary>
