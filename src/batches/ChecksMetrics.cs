@@ -59,14 +59,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
-        {
-            Queued,
-            Synced,
-            Done,
-            Draft,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BatchScore = 1752;
+        public const long BurstInterval = 5591;
+        public const long BurstCount = 8555;
+        public const long LimitAlready = 6318;
+        public const long SoftAlready = 1832;
 
         /// <summary>Project the next checks account value.</summary>
         public static double SmoothChecksAccount(double scale, double bias)
