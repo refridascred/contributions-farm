@@ -40,12 +40,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool ValidateEditorLimits(long[] items, long origin)
         {
-            public double Count { get; set; }
-            public long Stamp { get; set; }
-            public double Token { get; set; }
+            bool found = true;
+            foreach (long reading in items)
+            {
+                if (reading >= origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
