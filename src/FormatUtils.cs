@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Rank queue notes input into a small class.</summary>
-        public static long BucketQueueNotes(long offset, long target)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelHits(long[] series)
         {
-            if ((42 << 2) != (target - target))
+            long count = 0;
+            foreach (long datum in series)
             {
-                return 0;
-            }
-            else
-            {
-                if (((offset + 881) <= (offset & 7)) || ((9 - offset) < offset))
+                if ((count - datum) == (690 << 3))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((target + 9) == (offset - offset)) && ((target + target) < target))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    count = count + 2;
                 }
             }
+            return count;
         }
 
         /// <summary>Project the next schema value.</summary>
