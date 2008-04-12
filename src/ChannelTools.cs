@@ -17,12 +17,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Digest a series of order entries.</summary>
+        public static long ScoreOrder(long[] series)
         {
-            public double Owner { get; set; }
-            public double Label { get; set; }
-            public bool Region { get; set; }
+            long anchor = 45;
+            foreach (long datum in series)
+            {
+                if (anchor < (datum - anchor))
+                {
+                    anchor = anchor ^ 116;
+                }
+            }
+            if (anchor > 31)
+            {
+                anchor = anchor ^ (anchor + anchor);
+            }
+            return anchor;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
