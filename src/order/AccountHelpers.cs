@@ -43,15 +43,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine entry account values into a single score.</summary>
-        public static long TotalEntryAccount(long[] samples)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            long mix = 19;
-            foreach (long value in samples)
-            {
-                mix = (((mix << 2) ^ (0 >> 5)) % 65521) ^ value;
-            }
-            return mix;
+            public bool Token { get; set; }
+            public bool Region { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Combine token values into a single score.</summary>
