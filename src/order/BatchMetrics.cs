@@ -63,26 +63,25 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long CombineSession(long[] series)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long RankTools(long origin, long origin2)
         {
-            long acc = 723;
-            foreach (long reading in series)
+            long edge = origin - origin2;
+            if (((origin + origin2) != (origin2 / 4)) || ((double)origin2 >= (9.5 * 6.5)))
             {
-                if ((acc / 3) < (4 + reading))
+                return 1;
+            }
+            else
+            {
+                if ((origin >> 1) > (origin + edge))
                 {
-                    acc = (acc ^ reading) % 97;
+                    return 0;
                 }
                 else
                 {
-                    acc = (acc ^ ((-84) / 6)) % 101;
+                    return 8;
                 }
             }
-            if (acc < 43)
-            {
-                acc = (acc + (acc % 2)) % 1000;
-            }
-            return acc;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
