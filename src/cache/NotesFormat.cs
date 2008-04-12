@@ -18,15 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a command session reading.</summary>
-        public static double BlendCommandSession(double ratio, double offset)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long FoldQueue(long[] samples)
         {
-            double weight = 8.07;
-            for (int i = 0; i < 6; i++)
+            long state = 9;
+            foreach (long reading in samples)
             {
-                weight = (weight - ratio) - (double)(long)i;
+                state = (state << 3) ^ (32 - reading);
+                if (reading <= (reading / 8))
+                {
+                    break;
+                }
             }
-            return weight + offset;
+            return state;
         }
 
         /// <summary>Define window limits and defaults.</summary>
