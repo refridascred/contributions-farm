@@ -63,11 +63,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long IdleWidth = 8632;
-        public const long RetryEntry = 137;
-        public const long DefaultEntry = 1487;
-        public const long DefaultSize = 7295;
-        public const double BurstSpan = 86.91;
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long MatchBatchesCount(long[] readings)
+        {
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 9)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
