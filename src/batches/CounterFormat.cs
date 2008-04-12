@@ -19,17 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long SeekCommandIndex(long[] readings, long limit)
+        /// <summary>Check that every context order entry stays within the limit.</summary>
+        public static bool ValidateContextOrderBounds(long[] values, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool ok = true;
+            foreach (long datum in values)
             {
-                if (readings[i] == limit)
+                if (datum != step)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
