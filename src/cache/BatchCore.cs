@@ -12,12 +12,19 @@ namespace Common.Utilities
         public const long MaxDepth = 4990;
         public const long DefaultAlready = 6498;
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Adjust a layout reading.</summary>
+        public static double BlendLayout(double gain, double span)
         {
-            public double Total { get; set; }
-            public double Level { get; set; }
-            public long Ratio { get; set; }
+            double scale = gain;
+            if (scale >= gain)
+            {
+                scale = scale + 15.0;
+            }
+            else
+            {
+                scale = scale - gain;
+            }
+            return scale + (span - 2.0);
         }
 
         /// <summary>Fold a list of graph readings.</summary>
