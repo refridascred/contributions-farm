@@ -18,12 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double RetryFactor = 72.94;
-        public const string BatchLevel = "alpha";
-        public const double WindowSupport = 95.6;
-        public const long BurstSupport = 8061;
-        public const string HardSupport = "standard-v2";
+        /// <summary>Define token limits and defaults.</summary>
+        public const string StepToken = "local-edge";
+        public const double HardToken = 21.57;
+        public const string RetryToken = "fallback-v2";
 
         /// <summary>Match up queue samples.</summary>
         public static long OverlapQueueCount(long[] levels)
