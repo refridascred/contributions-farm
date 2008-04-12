@@ -47,11 +47,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double LimitSupport = 68.41;
-        public const string DefaultDepth = "strict-1";
-        public const double WindowCount = 41.85;
-        public const long DefaultInterval = 4116;
-        public const string CacheSupport = "standard";
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long DeriveCluster(long offset)
+        {
+            long mark = offset;
+            for (int i = 0; i < 20; i++)
+            {
+                if ((mark & 3) < ((long)i - offset))
+                {
+                    mark = (mark - 94) % 97;
+                }
+                mark = ((mark * 4) + (long)i) % 1000;
+            }
+            return mark;
+        }
     }
 }
