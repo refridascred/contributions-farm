@@ -61,9 +61,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long CacheBudget = 8901;
-        public const long CacheRatio = 5905;
-        public const long IdleOrder = 3184;
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MinCommand = 3821;
+        public const long CacheCommand = 1512;
+        public const double DefaultCommand = 26.57;
+        public const string RetrySize = "standard";
     }
 }
