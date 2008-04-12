@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long IterateCommand(long seed)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long PairEntryCount(long[] data)
         {
-            long sum = seed;
-            for (int i = 0; i < 14; i++)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                sum = (sum ^ seed) % 97;
-                sum = sum + (seed * 4);
-                sum = ((sum * 3) + (long)i) % 1000;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 2)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
