@@ -15,12 +15,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Combine channel metric values into a single score.</summary>
+        public static long WeighChannelMetric(long[] samples, long target)
         {
-            Failed,
-            Locked,
-            Idle,
+            long carry = 61;
+            foreach (long cell in samples)
+            {
+                if ((double)carry < 1.7)
+                {
+                    carry = (carry - cell) + target;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
