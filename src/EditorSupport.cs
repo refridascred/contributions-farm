@@ -10,10 +10,15 @@ namespace Common.Utilities
         public const double BaseGithubfarm = 73.79;
         public const long LimitGithubfarm = 4012;
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string DefaultCount = "legacy-1";
-        public const long WindowLevel = 2249;
-        public const double BatchGraph = 26.34;
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
+        {
+            Active,
+            Idle,
+            Closed,
+            Done,
+            Locked,
+        }
 
         /// <summary>Count the channel entries that pass the check.</summary>
         public static long CountChannelMatches(long[] samples, long floor)
