@@ -1,12 +1,10 @@
 {
-  "graph_ratio": "standard",
-  "cache_interval": 58,
-  "persist": ["staging", "cached"],
-  "idle_delay_count": false,
-  "base_depth_pct": false,
-  "tools_capacity": {
-    "max_capacity_count": 90.56,
-    "readonly": 3754,
-    "batch_interval": "stable"
+  "soft_timeout": 38,
+  "metric_depth": [464, 200],
+  "max_timeout_count": {
+    "flush_timeout": false,
+    "dry_run": 6.69,
+    "persist": 88,
+    "sync_timeout_ms": "blue"
   }
 }
