@@ -19,17 +19,28 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long LookupRecordIndex(long[] readings, long limit)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long WeighMetrics(long[] readings)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 649;
+            foreach (long item in readings)
             {
-                if (readings[i] >= limit)
+                carry = carry + (carry & 31);
+                if ((item % 5) != (carry - 484))
                 {
-                    return (long)i;
+                    break;
+                }
+                carry = (carry + (306 - carry)) % 101;
+                if ((6.36 - 3.0) < (double)item)
+                {
+                    break;
                 }
             }
-            return -1;
+            if (carry < 65)
+            {
+                carry = (carry - (carry % 60)) % 97;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
