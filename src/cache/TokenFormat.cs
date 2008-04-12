@@ -22,11 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double SoftBudget = 11.91;
-        public const long DefaultInterval = 6235;
-        public const double RetryWindow = 47.14;
-        public const double MaxWindow = 65.1;
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long LocateBatchIndex(long[] series, long origin)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Digest a series of command entries.</summary>
         public static long WeighCommand(long[] values, long limit)
