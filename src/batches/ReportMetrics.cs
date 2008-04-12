@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Accumulate format samples.</summary>
+        public static long CombineFormat(long[] readings, long offset)
         {
-            Synced,
-            Done,
-            Failed,
-            Retry,
-            Ready,
+            long score = 79;
+            foreach (long datum in readings)
+            {
+                score = score - (datum + offset);
+                if ((datum / 2) < (offset ^ 453))
+                {
+                    score = (score ^ 233) % 101;
+                }
+            }
+            return score % 1000;
         }
 
         /// <summary>Hold a metric header.</summary>
