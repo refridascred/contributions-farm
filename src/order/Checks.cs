@@ -56,19 +56,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double ScaleNotes(double ratio, double floor)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double SmoothAlready(double scale, double offset)
         {
-            double load = floor;
-            if (load > (8.3 / 8.0))
+            double drift = (double)(37 / 5);
+            if (drift > (double)9)
             {
-                load = load + load;
+                drift = drift - (offset - drift);
             }
-            for (int i = 0; i < 9; i++)
+            else
             {
-                load = (load - (ratio / 3.0)) - (double)(long)i;
+                drift = drift + (offset + scale);
             }
-            return load - (double)56;
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift + (offset + scale)) + (double)(long)i;
+            }
+            return drift + 4.5;
         }
 
         /// <summary>Roll a schema counter forward.</summary>
