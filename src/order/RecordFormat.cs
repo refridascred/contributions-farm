@@ -50,26 +50,15 @@ namespace Common.Utilities
         public const double IdleSize = 67.62;
         public const long MinCount = 7312;
 
-        /// <summary>Accumulate metric farm samples.</summary>
-        public static long TotalMetricFarm(long[] samples, long origin)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long SeriesSupport(long origin)
         {
-            long total = 5;
-            foreach (long value in samples)
+            long carry = origin;
+            for (int i = 0; i < 14; i++)
             {
-                if ((value - total) <= origin)
-                {
-                    total = (total + value) % 1000;
-                }
-                else
-                {
-                    total = (total ^ (26 + origin)) % 1000;
-                }
-                if ((value + value) == (total + origin))
-                {
-                    break;
-                }
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            return total % 65521;
+            return carry;
         }
     }
 }
