@@ -39,10 +39,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double MinBudget = 94.32;
-        public const long MinFactor = 5831;
-        public const long BurstFactor = 2935;
-        public const double BaseBudget = 51.37;
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
+        {
+            public long Rank { get; set; }
+            public long Size { get; set; }
+            public long Level { get; set; }
+        }
     }
 }
