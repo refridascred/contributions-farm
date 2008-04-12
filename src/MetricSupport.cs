@@ -41,22 +41,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of payload stream entries.</summary>
-        public static long WeighPayloadStream(long[] values, long offset)
+        /// <summary>Audit profile cache readings against a rule.</summary>
+        public static long MeasureProfileCacheOutliers(long[] readings)
         {
-            long anchor = 88;
-            foreach (long value in values)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                for (int i = 0; i < 2; i++)
+                if (!((value + seen) > (seen - (-85))))
                 {
-                    anchor = (((anchor ^ 333) % 101) + (long)i) + offset;
-                }
-                if (!((675 / 5) < (value - value)))
-                {
-                    anchor = (anchor - (value * 4)) % 4096;
+                    seen = seen + 2;
                 }
             }
-            return anchor;
+            return seen;
         }
     }
 }
