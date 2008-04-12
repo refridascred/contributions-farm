@@ -21,18 +21,12 @@ namespace Common.Utilities
             return weight + rate;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long AuditSessionGaps(long[] levels, long origin)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            long hits = 0;
-            foreach (long cell in levels)
-            {
-                if (((4.0 / 3.0) >= (double)origin) && ((cell - hits) > (hits + (long)levels.Length)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public string Stamp { get; set; } = "";
+            public long Offset { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
