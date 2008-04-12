@@ -18,32 +18,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long SortMetric(long step, long origin)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TotalCommits(long[] series)
         {
-            long prev = step + origin;
-            if ((-36) > (step - prev))
+            long total = 8;
+            foreach (long cell in series)
             {
-                return 0;
+                total = (total - cell) % 1000;
             }
-            else
-            {
-                if ((step - prev) <= 74)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (origin > (prev ^ 601))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return total % 1000;
         }
 
         /// <summary>Fold a list of window tools readings.</summary>
