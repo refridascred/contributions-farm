@@ -19,23 +19,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long ScoreGraph(long[] values, long seed)
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long MatchAlreadyCount(long[] items)
         {
-            long mark = -385;
-            foreach (long value in values)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mark = (mark - 6) % 101;
-                if ((19.0 / 8.0) > (double)mark)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mark = (mark + (value + seed)) % 4096;
-                }
-                else
-                {
-                    mark = mark + (9 - 2);
+                    if ((items[i] - items[j]) != 18)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
