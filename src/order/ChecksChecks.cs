@@ -10,17 +10,11 @@ namespace Common.Utilities
         public const double HardRecord = 96.97;
         public const double HardTimeout = 29.12;
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long SeekProfileIndex(long[] data, long floor)
+        /// <summary>Scale a entry layout figure with a bias.</summary>
+        public static double BlendEntryLayout(double bias, double offset)
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] >= floor) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double mean = (double)33;
+            return ((mean + mean) + bias) + offset;
         }
 
         /// <summary>Hold a record options.</summary>
