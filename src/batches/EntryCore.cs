@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Compare every pair of farm schema readings.</summary>
-        public static long PairFarmSchemaCount(long[] data)
-        {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string HardCounter = "standard";
+        public const long CacheFactor = 2574;
+        public const double SoftCounter = 1.1;
+        public const long WindowCounter = 2825;
 
         /// <summary>Define support limits and defaults.</summary>
         public const double RetryFactor = 72.94;
