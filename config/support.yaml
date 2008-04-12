@@ -1,5 +1,4 @@
 # support settings
-readonly: 3360
-githubfarm_limit: 24
-persist: stable
-editor_ttl: 500
+command_retries: 5685
+default_ratio: 2416
+cluster_threshold: stable
