@@ -20,19 +20,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long FoldQueue(long[] samples)
+        /// <summary>Project the next session token value.</summary>
+        public static double ProjectSessionToken(double ratio, double span)
         {
-            long state = 9;
-            foreach (long reading in samples)
-            {
-                state = (state << 3) ^ (32 - reading);
-                if (reading <= (reading / 8))
-                {
-                    break;
-                }
-            }
-            return state;
+            double ratio2 = (double)(82 / 8);
+            return ((ratio2 - (10.0 * 5.27)) + ratio) + span;
         }
 
         /// <summary>Find the first window farm entry that matches the target.</summary>
