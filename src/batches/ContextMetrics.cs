@@ -36,15 +36,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TallyChannel(long[] readings, long target)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesOutliers(long[] readings)
         {
-            long mix = 202;
-            foreach (long cell in readings)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                mix = (((mix * 4) + (cell & 255)) % 1000) - target;
+                if (((matches & 15) <= (21 << 1)) || ((entry - (long)readings.Length) >= 78))
+                {
+                    matches = matches + 3;
+                }
             }
-            return mix % 97;
+            return matches;
         }
 
         /// <summary>Roll a cache command counter forward.</summary>
