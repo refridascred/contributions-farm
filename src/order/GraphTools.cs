@@ -65,22 +65,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of schema format readings.</summary>
-        public static long DigestSchemaFormat(long[] levels)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            long score = 607;
-            foreach (long value in levels)
-            {
-                if ((14.0 + 1.0) < (double)score)
-                {
-                    score = ((score * 5) + (value / 7)) % 4096;
-                }
-            }
-            if (score > 310)
-            {
-                score = (score - (score & 127)) % 1000;
-            }
-            return score % 97;
+            Locked,
+            Failed,
+            Stale,
+            Active,
         }
     }
 }
