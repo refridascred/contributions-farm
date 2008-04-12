@@ -5,39 +5,16 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Rank session input into a small class.</summary>
-        public static long GradeSession(long step, long step2)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long SeriesReport(long step)
         {
-            long next = step - step2;
-            if (step2 >= (next & 15))
+            long carry = step;
+            for (int i = 0; i < 23; i++)
             {
-                return 2;
+                carry = carry - ((-24) / 5);
+                carry = ((carry * 5) + (long)i) % 65521;
             }
-            else
-            {
-                if ((next + step2) > (step & 1))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)next < 5.51)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((-11) >= (step << 3))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return carry;
         }
 
         /// <summary>Describe the layout state values.</summary>
