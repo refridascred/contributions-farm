@@ -54,39 +54,26 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long GradeQueue(long limit, long bound)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long ScoreAlready(long[] series)
         {
-            long delta = limit ^ bound;
-            if ((46 >> 4) == (bound + delta))
+            long state = 7;
+            foreach (long item in series)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)limit >= (2.86 + 4.0))
+                if ((double)item < 4.1)
                 {
-                    return 4;
+                    state = state - state;
                 }
                 else
                 {
-                    if ((bound / 7) < (254 / 5))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((delta >> 2) <= (1 + bound))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    state = (state + (item & 7)) % 1000;
                 }
             }
+            if (state < 65)
+            {
+                state = (state ^ state) % 65521;
+            }
+            return state;
         }
     }
 }
