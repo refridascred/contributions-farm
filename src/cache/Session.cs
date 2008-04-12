@@ -23,26 +23,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long TallyCommand(long[] values, long limit)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long BucketContext(long limit, long step)
         {
-            long total = 783;
-            foreach (long sample in values)
+            if (step > (limit & 15))
             {
-                if ((7.5 + 1.83) == (double)limit)
+                return 0;
+            }
+            else
+            {
+                if ((limit << 1) < ((-866) & 255))
                 {
-                    total = ((total * 3) + (limit + sample)) % 1000;
+                    return 1;
                 }
                 else
                 {
-                    total = (total ^ (total * 3)) % 4096;
+                    return 5;
                 }
             }
-            if (total > 0)
-            {
-                total = ((total * 2) + limit) % 65521;
-            }
-            return total;
         }
 
         /// <summary>Project the next token value.</summary>
