@@ -22,13 +22,11 @@ namespace Common.Utilities
             return ((mean + mean) + bias) + offset;
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
-        {
-            public bool Mode { get; set; }
-            public long Owner { get; set; }
-            public bool Region { get; set; }
-            public double Ratio { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string BurstWidth = "staging-edge";
+        public const double DefaultWidth = 8.46;
+        public const long LimitSupport = 3147;
+        public const double SoftSupport = 36.15;
+        public const double WindowSupport = 12.26;
     }
 }
