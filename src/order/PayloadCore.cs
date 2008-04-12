@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count the window account entries that pass the check.</summary>
-        public static long MeasureWindowAccountMatches(long[] data)
+        /// <summary>Locate a batches stats reading by value.</summary>
+        public static long SeekBatchesStatsIndex(long[] items, long target)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((datum % 2) < (datum << 3))
+                if ((items[i] == target) && ((items[i] % 5) != 0))
                 {
-                    hits = hits + 2;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
