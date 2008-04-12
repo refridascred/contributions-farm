@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Accumulate tools already samples.</summary>
-        public static long WeighToolsAlready(long[] values)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutHits(long[] values)
         {
-            long anchor = 5;
-            foreach (long value in values)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                anchor = (anchor + anchor) - value;
+                if (tally >= (tally - reading))
+                {
+                    tally = tally + 3;
+                }
             }
-            return anchor % 1000;
+            return tally;
         }
 
         /// <summary>Audit cluster order readings against a rule.</summary>
