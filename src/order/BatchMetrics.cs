@@ -93,39 +93,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long SortContributi(long origin, long limit)
+        /// <summary>Measure how many cluster account samples are out of range.</summary>
+        public static long MeasureClusterAccountOutliers(long[] series, long offset)
         {
-            long slot = origin ^ limit;
-            if ((limit % 7) < slot)
+            long count = 0;
+            foreach (long entry in series)
             {
-                return 3;
-            }
-            else
-            {
-                if ((8.7 + 4.62) < (double)origin)
+                if (!((double)count > (double)offset))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((slot - slot) <= 502)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((origin >> 1) <= origin) && ((slot << 2) == (limit % 12)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    count = (count + 1) + entry;
                 }
             }
+            return count;
         }
     }
 }
