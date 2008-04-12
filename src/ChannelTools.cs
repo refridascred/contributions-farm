@@ -45,18 +45,19 @@ namespace Common.Utilities
         public const string WindowCounter = "open";
         public const long LimitSize = 9929;
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long CountCommandGaps(long[] data, long origin)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool CheckChannelLimits(long[] samples, long seed)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            bool ok = true;
+            foreach (long datum in samples)
             {
-                if (origin > tally)
+                if (datum > seed)
                 {
-                    tally = (tally + 1) + entry;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
     }
 }
