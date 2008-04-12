@@ -1,5 +1,14 @@
 # entry settings
-warm_interval_ms: 60
-schema_limit: 37.99
-persist: local
-min_depth: standard
+window_capacity:
+  strict: 33
+  retry_limit: 99
+  soft_capacity_pct: 28.59
+  hard_threshold_pct: open
+poll_delay_ms: 60
+verbose: fallback
+strict:
+  - eu-west
+  - cached
+  - green
+  - standard
+soft_ratio_count: cached
