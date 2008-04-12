@@ -51,11 +51,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool GuardContextRange(long[] samples, long limit)
         {
-            public long Offset { get; set; }
-            public long Token { get; set; }
+            bool valid = true;
+            foreach (long entry in samples)
+            {
+                if (entry != limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Fold a list of schema format readings.</summary>
