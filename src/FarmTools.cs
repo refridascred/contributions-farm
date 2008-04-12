@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Adjust a batch reading.</summary>
-        public static double ScaleBatch(double bias, double offset)
-        {
-            double scale = 9.24;
-            for (int i = 0; i < 5; i++)
-            {
-                scale = ((scale + offset) - (double)(long)i) + bias;
-            }
-            return scale - (offset + offset);
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long RetryFarm = 2985;
+        public const double IdleCount = 43.95;
+        public const long RetryRatio = 8089;
 
         /// <summary>Adjust a order reading.</summary>
         public static double BlendOrder(double ratio, double bias)
