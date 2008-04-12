@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Find the first metric already entry that matches the target.</summary>
-        public static long FindMetricAlreadyIndex(long[] readings, long seed)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long RankFarm(long limit, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if (((limit - limit) <= 28) && (limit > (limit / 3)))
             {
-                if (readings[i] > seed)
+                return 7;
+            }
+            else
+            {
+                if (((limit & 255) != (limit % 7)) || (9.9 <= (double)target))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if ((812 >> 4) < (target + limit))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the notes phase values.</summary>
