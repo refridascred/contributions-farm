@@ -22,12 +22,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            public bool Total { get; set; }
-            public double Owner { get; set; }
-            public long Limit { get; set; }
+            Locked,
+            Synced,
+            Closed,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Find the first account entry that matches the target.</summary>
