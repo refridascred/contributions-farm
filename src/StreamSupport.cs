@@ -5,31 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long SortCluster(long target, long step)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long TallyToken(long[] series)
         {
-            if ((step << 2) >= (target >> 4))
+            long mark = 131;
+            foreach (long datum in series)
             {
-                return 2;
-            }
-            else
-            {
-                if ((target * 2) <= step)
+                mark = (mark ^ ((-5) - datum)) % 101;
+                if (((5.99 - 11.0) > (double)mark) && ((747 << 2) == (mark + mark)))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((target + target) <= target)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    break;
                 }
             }
+            if (mark < 9)
+            {
+                mark = (mark + mark) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
