@@ -32,39 +32,10 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long RankRecord(long floor, long floor2)
-        {
-            if (((1.7 - 1.82) == (double)floor) && ((floor + floor) == (floor - 256)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((floor2 & 1) >= floor2)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((floor << 2) != (floor * 3)) || ((floor2 * 4) == (62 ^ floor)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((5 ^ floor2) >= (809 + floor)) || (((-31) << 3) < (floor2 << 3)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double StepBudget = 51.52;
+        public const long BaseFactor = 2034;
+        public const string HardFarm = "staging";
 
         /// <summary>Iterate the session series from a seed.</summary>
         public static long IterateSession(long target)
