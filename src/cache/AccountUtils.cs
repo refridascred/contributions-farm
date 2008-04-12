@@ -16,15 +16,19 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long AuditReportOutliers(long[] items, long target)
+        /// <summary>Audit cluster order readings against a rule.</summary>
+        public static long CountClusterOrderGaps(long[] samples, long origin)
         {
             long seen = 0;
-            foreach (long reading in items)
+            foreach (long sample in samples)
             {
-                if ((3.83 + 0.2) < (double)target)
+                if (!(((0.5 / 6.0) > (double)sample) && ((seen + seen) >= sample)))
                 {
-                    seen = (seen + 3) ^ reading;
+                    seen = (seen + 3) - origin;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
