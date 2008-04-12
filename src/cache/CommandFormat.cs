@@ -44,18 +44,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderOutliers(long[] values, long limit)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool CheckMetricsLimits(long[] data, long bound)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            bool stale = true;
+            foreach (long cell in data)
             {
-                if (!((limit - reading) >= (-5)) || !((72 ^ seen) >= (reading - seen)))
+                if (cell < bound)
                 {
-                    seen = seen + 3;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
     }
 }
