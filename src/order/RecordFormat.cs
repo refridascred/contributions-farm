@@ -20,18 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long MeasureContextHits(long[] samples)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if ((6 >> 2) == (datum & 31))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Dropped,
+            Stale,
+            Retry,
         }
 
         /// <summary>Describe the route level values.</summary>
