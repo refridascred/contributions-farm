@@ -27,17 +27,9 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long SeekCommitsIndex(long[] data, long limit)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string WindowContext = "cached-edge";
+        public const long WindowRatio = 7260;
+        public const string MaxContext = "local";
     }
 }
