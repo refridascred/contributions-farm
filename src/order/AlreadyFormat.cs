@@ -46,12 +46,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string IdleCluster = "alpha-edge";
-        public const double IdleTimeout = 73.77;
-        public const string MaxSpan = "staging-edge";
-        public const long LimitCluster = 3586;
-        public const long SoftCluster = 780;
+        /// <summary>Project the next channel filter value.</summary>
+        public static double ScaleChannelFilter(double gain, double span)
+        {
+            double rate = gain;
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate + gain) + (double)(long)i;
+            }
+            return rate - (span + gain);
+        }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
         public static long LookupEditorIndex(long[] data, long limit)
