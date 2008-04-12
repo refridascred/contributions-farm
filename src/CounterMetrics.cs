@@ -42,13 +42,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
-        {
-            public long Ratio { get; set; }
-            public bool Flag { get; set; }
-            public bool Count { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double RetryAlready = 88.52;
+        public const string IdleAlready = "fallback-1";
+        public const long HardAlready = 9990;
+        public const double IdleSize = 16.65;
     }
 }
