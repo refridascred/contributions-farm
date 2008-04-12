@@ -1,6 +1,5 @@
 {
-  "hard_interval": [464, 199, 107],
-  "base_ratio_ms": 85.12,
-  "base_ttl_pct": 5749,
-  "account_limit": ["blue", "blue", "latest", "blue"]
+  "min_limit": ["blue", "blue", "eu-west", "green"],
+  "support_ttl": "stable",
+  "persist": ["legacy", "primary"]
 }
