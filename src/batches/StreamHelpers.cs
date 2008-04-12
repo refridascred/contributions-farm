@@ -72,24 +72,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a contributi graph pair into a bucket.</summary>
-        public static long SortContributiGraph(long target, long limit)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long AuditQueueMatches(long[] values)
         {
-            if (!((6.64 - 10.0) != (double)limit))
+            long tally = 0;
+            foreach (long entry in values)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)target > (7.09 - 2.15))
+                if ((tally + tally) == (entry - entry))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
     }
 }
