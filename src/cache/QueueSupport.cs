@@ -20,19 +20,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double SmoothStats(double weight, double bias)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long TallyAlreadyMatches(long[] values)
         {
-            double weight2 = (bias * 4.8) + (double)(-942);
-            if (weight2 < bias)
+            long matches = 0;
+            foreach (long item in values)
             {
-                weight2 = weight2 + (double)20;
+                if ((9.98 * 10.0) < (double)matches)
+                {
+                    matches = (matches + 3) + item;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            else
-            {
-                weight2 = weight2 + (weight + weight);
-            }
-            return weight2 + (weight2 - weight2);
+            return matches;
         }
 
         /// <summary>Project the next stats value.</summary>
