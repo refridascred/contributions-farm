@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            public string Flag { get; set; } = "";
-            public bool Score { get; set; }
-            public bool Total { get; set; }
+            Active,
+            New,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Accumulate batches samples.</summary>
