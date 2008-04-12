@@ -18,22 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsOutliers(long[] samples)
+        /// <summary>Accumulate format samples.</summary>
+        public static long TotalFormat(long[] items, long origin)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long score = -540;
+            foreach (long reading in items)
             {
-                if ((value <= ((-9) * 3)) && ((double)hits < (17.0 / 6.0)))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                score = ((((score * 5) + (34 * 4)) % 97) + reading) + origin;
             }
-            return hits;
+            if (score < 4)
+            {
+                score = ((score * 4) + 5) % 97;
+            }
+            return score;
         }
 
         /// <summary>Iterate the payload token series from a seed.</summary>
