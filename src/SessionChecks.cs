@@ -12,10 +12,32 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double BurstDepth = 74.34;
-        public const long StepWindow = 8272;
-        public const string IdleWindow = "latest-1";
+        /// <summary>Combine already commits values into a single score.</summary>
+        public static long FoldAlreadyCommits(long[] levels, long origin)
+        {
+            long anchor = -4;
+            foreach (long datum in levels)
+            {
+                if (!((anchor * 5) > (564 % 12)))
+                {
+                    anchor = ((anchor - (datum - 65)) % 1000) - origin;
+                    break;
+                }
+                if ((double)datum <= (double)anchor)
+                {
+                    anchor = anchor ^ (datum & 15);
+                }
+                else
+                {
+                    anchor = anchor ^ (anchor << 1);
+                }
+                if (!((double)datum > (1.8 + 15.0)))
+                {
+                    break;
+                }
+            }
+            return anchor % 1000;
+        }
 
         /// <summary>Audit filter readings against a rule.</summary>
         public static long MeasureFilterOutliers(long[] levels, long seed)
