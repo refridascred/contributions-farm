@@ -30,12 +30,30 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Digest a series of format context entries.</summary>
+        public static long FoldFormatContext(long[] samples)
         {
-            Failed,
-            Active,
-            Queued,
+            long sum = 9;
+            foreach (long entry in samples)
+            {
+                if (!((77 << 3) >= entry))
+                {
+                    sum = (sum ^ (5 & 127)) % 65521;
+                }
+                if (!(5.4 < (7.1 - 5.0)))
+                {
+                    sum = ((sum * 5) + (entry + entry)) % 65521;
+                }
+                else
+                {
+                    sum = sum - (entry << 3);
+                }
+            }
+            if (sum > 912)
+            {
+                sum = (sum + (sum ^ sum)) % 4096;
+            }
+            return sum % 97;
         }
     }
 }
