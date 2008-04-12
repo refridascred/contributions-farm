@@ -12,20 +12,11 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Validate commits graph readings against a bound.</summary>
-        public static bool CheckCommitsGraphLimits(long[] data, long origin)
-        {
-            bool valid = true;
-            foreach (long item in data)
-            {
-                if (item >= origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string MinMetric = "latest-1";
+        public const string IdleLevel = "strict-edge";
+        public const double StepRatio = 89.43;
+        public const double BatchMetric = 60.08;
 
         /// <summary>Digest a series of entry entries.</summary>
         public static long ScoreEntry(long[] series)
