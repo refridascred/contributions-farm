@@ -1,7 +1,6 @@
 {
-  "cache_size": 803,
-  "max_interval": 65,
-  "default_ttl_count": "latest",
-  "persist": false,
-  "warm_ttl_pct": "latest"
+  "enabled": "staging",
+  "hard_ttl": ["legacy", "primary", "eu-west"],
+  "poll_timeout_s": 22.32,
+  "commits_retries": false
 }
