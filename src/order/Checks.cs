@@ -44,11 +44,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double HardDepth = 74.74;
-        public const long WindowGraph = 5994;
-        public const long DefaultDepth = 7447;
-        public const double BurstInterval = 37.74;
+        /// <summary>Look up the position of a editor commits sample.</summary>
+        public static long FindEditorCommitsIndex(long[] values, long seed)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a filter summary.</summary>
         public sealed class FilterSummary
