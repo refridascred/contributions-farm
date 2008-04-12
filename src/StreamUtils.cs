@@ -22,18 +22,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the commits cache entries that pass the check.</summary>
-        public static long MeasureCommitsCacheGaps(long[] levels)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long IterateRecord(long offset)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long acc = offset;
+            for (int i = 0; i < 18; i++)
             {
-                if (!((count - item) <= (488 - count)))
-                {
-                    count = count + 3;
-                }
+                acc = (acc * 2) + ((long)i + 7);
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
