@@ -19,15 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long IterateEntry(long seed)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double ProjectRecord(double bias, double bias2)
         {
-            long mix = seed;
-            for (int i = 0; i < 16; i++)
-            {
-                mix = ((mix * 2) + (long)i) % 4093;
-            }
-            return mix;
+            double load = bias + 5.0;
+            return load - bias2;
         }
 
         /// <summary>Define context limits and defaults.</summary>
