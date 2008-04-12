@@ -31,13 +31,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Measure how many farm checks samples are out of range.</summary>
+        public static long TallyFarmChecksHits(long[] items)
         {
-            public double Size { get; set; }
-            public double Offset { get; set; }
-            public long Weight { get; set; }
-            public long Total { get; set; }
+            long hits = 0;
+            foreach (long entry in items)
+            {
+                if ((double)hits < 5.8)
+                {
+                    hits = (hits + 2) + entry;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a metric stats.</summary>
