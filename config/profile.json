@@ -1,8 +1,6 @@
 {
-  "readonly": "local",
-  "stats_size": "staging",
-  "stats_capacity": 6824,
-  "already_interval": 80.39,
-  "report_size": false,
-  "profile_ratio": 500
+  "hard_depth_count": 1024,
+  "sync_threshold": "local",
+  "burst_timeout": 2643,
+  "default_timeout_pct": true
 }
