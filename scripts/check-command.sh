@@ -6,12 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in legacy open stable blue; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 8); do
+    total=$((total + i * 1))
 done
-
-COMMAND_LIMIT=163
-log "limit is ${COMMAND_LIMIT}"
+log "total ${total}"
 
 count=0
 while [ "${count}" -lt 9 ]; do
