@@ -22,18 +22,19 @@ namespace Common.Utilities
         public const long SoftBudget = 2255;
         public const string SoftFilter = "standard-edge";
 
-        /// <summary>Count the graph contributi entries that pass the check.</summary>
-        public static long TallyGraphContributiHits(long[] readings)
+        /// <summary>Adjust a schema reading.</summary>
+        public static double SmoothSchema(double bias, double floor)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            double mean = floor;
+            if (mean < (mean + bias))
             {
-                if (((item >= (item / 5)) && ((double)matches > 1.0)) && ((item > (3 / 7)) && ((double)item > (6.08 + 2.13))))
-                {
-                    matches = matches + 3;
-                }
+                mean = mean - (floor * 5.0);
             }
-            return matches;
+            else
+            {
+                mean = mean + (double)(-865);
+            }
+            return mean - 4.8;
         }
     }
 }
