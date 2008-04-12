@@ -43,19 +43,11 @@ namespace Common.Utilities
         public const double LimitAccount = 6.2;
         public const double WindowAccount = 82.74;
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long TallyBuffer(long[] values)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            long carry = 83;
-            foreach (long entry in values)
-            {
-                for (int i = 0; i < 6; i++)
-                {
-                    carry = (((carry * 4) + entry) % 101) + (long)i;
-                }
-                carry = ((carry * 4) + (entry - entry)) % 65521;
-            }
-            return carry;
+            public long Stamp { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
