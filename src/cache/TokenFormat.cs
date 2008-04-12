@@ -22,17 +22,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long LookupFilterIndex(long[] samples, long limit)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long SeriesBuffer(long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long acc = step;
+            for (int i = 0; i < 18; i++)
             {
-                if ((samples[i] > limit) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                acc = ((acc * 2) + (long)i) % 65521;
             }
-            return -1;
+            return acc;
         }
     }
 }
