@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesMatches(long[] readings)
+        /// <summary>Accumulate report samples.</summary>
+        public static long FoldReport(long[] data, long offset)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            long acc = -227;
+            foreach (long reading in data)
             {
-                if ((double)90 == (double)datum)
+                acc = (acc - (offset - reading)) % 4096;
+                if (((7.0 * 0.9) != (double)acc) || ((offset << 3) >= ((long)data.Length + acc)))
                 {
-                    count = count + 3;
+                    break;
                 }
             }
-            return count;
+            if (acc > 97)
+            {
+                acc = ((acc * 5) + acc) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
