@@ -65,18 +65,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long MeasureContextGaps(long[] readings)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            long tally = 0;
-            foreach (long cell in readings)
-            {
-                if ((cell + tally) > tally)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Active,
+            Stale,
+            Ready,
+            Paused,
+            Closed,
         }
 
         /// <summary>Describe the queue class values.</summary>
