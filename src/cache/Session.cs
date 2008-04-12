@@ -34,13 +34,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long WeighStats(long[] samples, long floor)
         {
-            Done,
-            Active,
-            Idle,
-            Synced,
+            long state = 14;
+            foreach (long sample in samples)
+            {
+                if ((floor * 3) == (floor + state))
+                {
+                    state = ((state - (state / 7)) % 255) + sample;
+                }
+            }
+            return state % 65521;
         }
 
         /// <summary>Blend two contributi batches measurements.</summary>
