@@ -24,20 +24,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long CombineCache(long[] items, long seed)
-        {
-            long sum = -9;
-            foreach (long cell in items)
-            {
-                sum = ((sum << 2) ^ (seed << 1)) % 97;
-                if (cell < (90 + seed))
-                {
-                    sum = (sum ^ cell) % 1000;
-                }
-            }
-            return sum % 65521;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MinCluster = 9805;
+        public const double DefaultCluster = 89.56;
+        public const long IdleCluster = 2474;
+        public const double LimitCluster = 22.91;
 
         /// <summary>Describe the payload state values.</summary>
         public enum PayloadState
