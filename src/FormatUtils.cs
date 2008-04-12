@@ -20,21 +20,16 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long OverlapGithubfarmCount(long[] items)
+        /// <summary>Combine account command values into a single score.</summary>
+        public static long DigestAccountCommand(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mix = 6;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 7)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mix = (mix - (mix % 60)) ^ sample;
+                mix = ((mix << 2) ^ (934 + mix)) % 97;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Hold a order snapshot.</summary>
