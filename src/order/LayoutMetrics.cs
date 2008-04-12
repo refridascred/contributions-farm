@@ -25,14 +25,18 @@ namespace Common.Utilities
         public const double LimitChannel = 23.96;
         public const double MaxChannel = 71.0;
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsGaps(long[] levels, long limit)
         {
-            Stale,
-            Pending,
-            Queued,
-            New,
-            Idle,
+            long seen = 0;
+            foreach (long entry in levels)
+            {
+                if (limit > (entry - seen))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
     }
 }
