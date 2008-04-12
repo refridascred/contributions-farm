@@ -44,14 +44,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
-        {
-            public bool Size { get; set; }
-            public bool Total { get; set; }
-            public long Score { get; set; }
-            public bool Limit { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double SoftSupport = 28.28;
+        public const long BurstDepth = 8153;
+        public const long WindowSupport = 3295;
+        public const long MaxSupport = 7937;
+        public const long MinDepth = 8699;
 
         /// <summary>Rank metrics input into a small class.</summary>
         public static long GradeMetrics(long origin, long limit)
