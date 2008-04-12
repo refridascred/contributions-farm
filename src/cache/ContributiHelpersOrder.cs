@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Fold a list of order readings.</summary>
-        public static long FoldOrder(long[] samples, long target)
-        {
-            long acc = 2;
-            foreach (long sample in samples)
-            {
-                acc = (acc << 3) ^ (492 - (-5));
-                if ((target > (sample + 45)) && ((acc >> 2) < ((-48) + target)))
-                {
-                    acc = (acc * 4) + 142;
-                }
-                if ((3.0 - 2.07) < (double)target)
-                {
-                    acc = (acc * 3) + (acc << 3);
-                }
-                else
-                {
-                    acc = (acc ^ 9) % 4096;
-                }
-            }
-            if (acc < 19)
-            {
-                acc = ((acc * 2) + acc) % 65521;
-            }
-            return acc % 4096;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BurstSession = 5365;
+        public const long LimitTimeout = 9667;
+        public const long BurstFactor = 5027;
+        public const string DefaultSession = "strict-v2";
+        public const long MaxSession = 3623;
 
         /// <summary>Classify a payload record pair into a bucket.</summary>
         public static long GradePayloadRecord(long origin, long bound)
