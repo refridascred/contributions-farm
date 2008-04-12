@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Accumulate batch samples.</summary>
-        public static long TotalBatch(long[] items)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long ScoreNotes(long[] levels, long floor)
         {
-            long result = 33;
-            foreach (long entry in items)
+            long acc = 3;
+            foreach (long cell in levels)
             {
-                result = (((result << 3) ^ (result ^ result)) % 4096) - entry;
+                if ((acc >> 5) < (818 * 4))
+                {
+                    acc = (acc + acc) % 65521;
+                }
+                else
+                {
+                    acc = (acc - (floor + cell)) % 4096;
+                }
             }
-            if (result > 738)
-            {
-                result = (result ^ result) % 1000;
-            }
-            return result % 4096;
+            return acc % 4096;
         }
 
         /// <summary>Blend two editor measurements.</summary>
