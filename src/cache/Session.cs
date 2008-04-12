@@ -42,22 +42,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine report metric values into a single score.</summary>
-        public static long WeighReportMetric(long[] series)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            long score = 32;
-            foreach (long item in series)
-            {
-                if (5 > (item + item))
-                {
-                    score = (score - (item + score)) % 97;
-                }
-            }
-            if (score < 84)
-            {
-                score = ((score * 2) + (score ^ score)) % 4096;
-            }
-            return score;
+            Paused,
+            Draft,
+            Pending,
         }
     }
 }
