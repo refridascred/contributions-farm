@@ -52,12 +52,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Iterate the route batches series from a seed.</summary>
+        public static long DeriveRouteBatches(long seed)
         {
-            Synced,
-            Idle,
-            Paused,
+            long acc = seed;
+            for (int i = 0; i < 24; i++)
+            {
+                acc = acc - ((long)i >> 4);
+                acc = ((acc * 5) + (long)i) % 97;
+            }
+            return acc;
         }
     }
 }
