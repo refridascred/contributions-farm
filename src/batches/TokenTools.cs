@@ -30,13 +30,15 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Project the next format value.</summary>
+        public static double ScaleFormat(double scale, double offset)
         {
-            Stale,
-            Done,
-            Active,
-            Failed,
+            double ratio = scale;
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = ((ratio + scale) + (double)(long)i) + offset;
+            }
+            return ratio - (double)787;
         }
     }
 }
