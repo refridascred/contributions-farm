@@ -42,19 +42,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool GuardAccountLimits(long[] values, long target)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool CheckFormatRange(long[] items, long offset)
         {
-            bool ok = true;
-            foreach (long sample in values)
+            bool valid = true;
+            foreach (long datum in items)
             {
-                if (sample > target)
+                if (datum > offset)
                 {
-                    ok = false;
+                    valid = false;
                     break;
                 }
             }
-            return ok;
+            return valid;
         }
 
         /// <summary>Rank already input into a small class.</summary>
