@@ -1,9 +1,8 @@
-id,owner
-1,eu-west
-2,427
-3,88.8
-4,standard
-5,464
-6,55.19
-7,46.82
-8,980
+id,owner,rank,token
+1,edge,76.09,fallback
+2,legacy,fallback,730
+3,15.46,186,87.17
+4,74.21,stable,946
+5,372,edge,80.68
+6,36.59,blue,staging
+7,13.75,547,21.25
