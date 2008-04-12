@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            public double Limit { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Token { get; set; } = "";
             public double Count { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Roll a channel counter forward.</summary>
