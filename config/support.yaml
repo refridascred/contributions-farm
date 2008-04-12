@@ -1,11 +1,13 @@
 # support settings
-base_ttl_s:
-  min_threshold_pct:
-    max_retries_s: false
-    sync_depth_pct: edge
-    order_interval: 23.26
-  flush_depth_ms: 39.47
-  retry_limit_count: false
-  max_limit_count: open
-profile_timeout: 31.65
-contributi_ttl: primary
+base_ttl:
+  soft_threshold: 250
+  readonly: 90.37
+  buffer_ttl:
+    - latest
+    - cached
+    - green
+    - cached
+  context_depth: true
+idle_size: primary
+soft_retries: 52.68
+max_window: 11
