@@ -1,8 +1,10 @@
 # support settings
-burst_retries_pct: 13
-base_timeout_count:
-  - 315
-  - 374
-max_depth_s: legacy
-burst_depth_s: true
-soft_window: edge
+soft_size: 8402
+compress: staging
+cache_delay_ms:
+  idle_ratio_count: open
+  metrics_size:
+    - green
+    - strict
+  channel_window: 807
+sync_limit: 4.03
