@@ -14,18 +14,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteOutliers(long[] data, long limit)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long FindGraphIndex(long[] items, long offset)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((seen << 2) < (seen - limit))
+                if (items[i] < offset)
                 {
-                    seen = (seen + 3) ^ entry;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Derive the next batch contributi value from a seed.</summary>
