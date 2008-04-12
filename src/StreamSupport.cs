@@ -28,18 +28,11 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Digest a series of stats report entries.</summary>
-        public static long CombineStatsReport(long[] readings)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            long result = 550;
-            foreach (long sample in readings)
-            {
-                if (!((sample - sample) == (sample * 2)))
-                {
-                    result = (result - (result / 5)) % 255;
-                }
-            }
-            return result % 4096;
+            public long Limit { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
