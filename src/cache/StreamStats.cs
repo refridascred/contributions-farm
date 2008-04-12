@@ -10,19 +10,22 @@ namespace Common.Utilities
         public const long CacheInterval = 1681;
         public const string MinGraph = "stable-edge";
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long StepChannel(long seed)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long AuditProfileHits(long[] data)
         {
-            long score = seed;
-            for (int i = 0; i < 10; i++)
+            long count = 0;
+            foreach (long datum in data)
             {
-                if ((54 % 5) != (score - score))
+                if ((count ^ datum) > (datum - (-36)))
                 {
-                    continue;
+                    count = count + 2;
                 }
-                score = ((score * 5) + (long)i) % 1000;
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Rank buffer command input into a small class.</summary>
