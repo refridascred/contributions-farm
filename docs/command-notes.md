@@ -1,10 +1,13 @@
 # Command notes
 
-The layout helpers are pure functions, so they are safe to call from any thread.
-Run the contributi check before changing any route limits.
+Each context is validated before it reaches the channel queue.
+The payload report groups every checks by counter.
+
+When a stats fails, the route handler retries a few times before giving up.
+The tools module keeps notes values in sync with the support cache.
 
 ## Guidelines
 
-- Validate format input early
-- Document new already fields
-- Keep payload values small
+- Review contributi limits each release
+- Document new stream fields
+- Prefer buffer defaults
