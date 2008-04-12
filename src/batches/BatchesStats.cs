@@ -18,24 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a format layout value against two limits.</summary>
-        public static long RankFormatLayout(long floor, long target)
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            if ((double)floor == (7.0 * 13.0))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((target + 1) >= (floor - 2))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public string Region { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public bool Token { get; set; }
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
