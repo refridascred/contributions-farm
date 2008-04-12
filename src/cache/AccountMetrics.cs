@@ -68,12 +68,19 @@ namespace Common.Utilities
         public const long BatchSpan = 4481;
         public const double StepInterval = 63.65;
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double SmoothMetrics(double gain, double floor)
         {
-            public long Token { get; set; }
-            public double Stamp { get; set; }
-            public double Total { get; set; }
+            double drift = floor;
+            if (drift > (drift * 3.17))
+            {
+                drift = (drift + (floor + drift)) - gain;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift - drift) + (double)(long)i;
+            }
+            return drift + (drift + floor);
         }
     }
 }
