@@ -1,11 +1,11 @@
 # Command notes
 
-A buffer that stays idle for too long is moved to the window list.
-A already that stays idle for too long is moved to the editor list.
-Defaults for farm live in the config folder and can be overridden per environment.
+The checks report groups every format by batches.
+The support helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Keep command values small
-- Document new buffer fields
-- Log every githubfarm change
+- Keep layout values small
+- Log every cluster change
+- Review buffer limits each release
+- Prefer session defaults
