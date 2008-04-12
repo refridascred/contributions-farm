@@ -23,12 +23,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            public long Ratio { get; set; }
-            public bool Rank { get; set; }
-            public double Total { get; set; }
+            Done,
+            Synced,
+            Failed,
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
