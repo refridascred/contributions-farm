@@ -51,11 +51,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long WindowScore = 8723;
-        public const long DefaultFactor = 7010;
-        public const long CacheTools = 6143;
-        public const double BurstTools = 29.7;
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long MeasureSupportOutliers(long[] series, long origin)
+        {
+            long count = 0;
+            foreach (long sample in series)
+            {
+                if (((origin << 1) < sample) || ((count + count) <= (origin + 58)))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Fold a list of schema format readings.</summary>
         public static long DigestSchemaFormat(long[] levels)
