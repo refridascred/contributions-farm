@@ -35,19 +35,9 @@ namespace Common.Utilities
             return weight2 + (weight2 - weight2);
         }
 
-        /// <summary>Validate order notes readings against a bound.</summary>
-        public static bool CheckOrderNotesLimits(long[] items, long origin)
-        {
-            bool flag = true;
-            foreach (long sample in items)
-            {
-                if (sample > origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BaseEditor = 5318;
+        public const long MinCount = 5630;
+        public const double MinEditor = 90.4;
     }
 }
