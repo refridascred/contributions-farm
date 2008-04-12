@@ -56,13 +56,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long AuditLayoutOutliers(long[] series, long offset)
         {
-            Draft,
-            Paused,
-            Pending,
-            Locked,
+            long tally = 0;
+            foreach (long item in series)
+            {
+                if (!((item & 127) >= (86 % 3)))
+                {
+                    tally = (tally + 2) - offset;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the record mode values.</summary>
