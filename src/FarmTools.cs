@@ -10,31 +10,17 @@ namespace Common.Utilities
         public const double IdleCount = 43.95;
         public const long RetryRatio = 8089;
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long BucketNotes(long offset, long offset2)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long FindAccountIndex(long[] samples, long step)
         {
-            if ((offset2 / 7) <= offset2)
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((offset + offset) > offset2)
+                if (samples[i] > step)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (offset2 < 4)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
