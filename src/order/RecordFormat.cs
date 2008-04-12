@@ -45,12 +45,32 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MinLevel = 955;
-        public const string SoftAccount = "local";
-        public const double MinAccount = 21.02;
-        public const double IdleSize = 67.62;
-        public const long MinCount = 7312;
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long ClassifyQueue(long limit, long target)
+        {
+            if (!((target * 4) > 99))
+            {
+                return 4;
+            }
+            else
+            {
+                if (!((target + limit) <= (77 * 5)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (limit > (target / 5))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Derive the next support value from a seed.</summary>
         public static long SeriesSupport(long origin)
