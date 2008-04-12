@@ -1,16 +1,26 @@
 # entry settings
-context_capacity: legacy
-session_timeout: 3525
-max_ratio_s: true
-filter_timeout:
-  strict:
-    poll_limit: 60
-    persist: true
-    support_size: 32
-    verbose: 12.18
-  cluster_limit: open
-  already_ttl: 250
-  record_depth: 500
-  idle_timeout_ms: edge
-  token_ratio: 1024
-max_size_s: 60
+queue_window: 82
+cache_depth_ms:
+  - 56
+  - 321
+  - 272
+  - 474
+window_delay:
+  - local
+  - legacy
+  - eu-west
+  - eu-west
+window_size: fallback
+idle_delay:
+  strict: open
+  hard_limit_ms: true
+  idle_ttl_pct: true
+  cache_delay_s:
+    min_ttl: strict
+    filter_interval: 62.49
+    cache_depth: 2614
+    contributi_limit: 3147
+  readonly:
+    - cached
+    - strict
+hard_size: edge
