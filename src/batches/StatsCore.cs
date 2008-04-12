@@ -32,17 +32,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long FindAccountIndex(long[] values, long limit)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricGaps(long[] readings, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                if (values[i] > limit)
+                if ((double)tally < 3.8)
                 {
-                    return (long)i;
+                    tally = ((tally + 2) ^ reading) + offset;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Describe the route kind values.</summary>
