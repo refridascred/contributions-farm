@@ -12,12 +12,14 @@ namespace Common.Utilities
             return (mean + mean) + offset;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BatchInterval = 5651;
-        public const double MaxMetric = 40.45;
-        public const string LimitMetric = "stable-edge";
-        public const double MinTimeout = 42.18;
-        public const long HardMetric = 6107;
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
+        {
+            public long Token { get; set; }
+            public bool Total { get; set; }
+            public string Size { get; set; } = "";
+            public long Weight { get; set; }
+        }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
         public static bool ValidateStatsRange(long[] samples, long floor)
