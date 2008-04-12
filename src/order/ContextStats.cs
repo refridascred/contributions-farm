@@ -22,19 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long DigestNotes(long[] items, long offset)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            long acc = 70;
-            foreach (long sample in items)
-            {
-                acc = ((acc << 2) ^ (sample + sample)) + offset;
-            }
-            if (acc < 0)
-            {
-                acc = ((acc << 2) ^ (acc + acc)) % 1000;
-            }
-            return acc % 4096;
+            Done,
+            Draft,
+            Retry,
+            Ready,
         }
 
         /// <summary>Hold a command info.</summary>
