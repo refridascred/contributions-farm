@@ -1,5 +1,12 @@
 {
-  "min_size_s": "cached",
-  "audit": "open",
-  "cache_ratio_s": ["latest", "primary"]
+  "base_window_pct": "green",
+  "schema_interval": "primary",
+  "layout_ratio": 76.16,
+  "sync_window_pct": {
+    "metric_capacity": false,
+    "retry_limit_pct": 80.11,
+    "layout_threshold": [446, 275, 207],
+    "layout_ttl": 100
+  },
+  "record_ttl": [368, 405, 429]
 }
