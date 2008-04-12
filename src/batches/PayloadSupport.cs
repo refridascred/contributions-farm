@@ -27,18 +27,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueGaps(long[] levels, long step)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long TallyGraphOutliers(long[] data)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long count = 0;
+            foreach (long datum in data)
             {
-                if (((step / 9) >= (cell / 9)) && (14 <= (7 + step)))
+                if (((datum / 7) != (datum * 3)) || (((9.92 * 8.27) == (double)datum) && (3.0 <= (double)datum)))
                 {
-                    matches = matches + 2;
+                    count = count + 3;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
