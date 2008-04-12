@@ -1,10 +1,7 @@
 {
-  "soft_size_pct": "legacy",
-  "burst_interval_pct": {
-    "dry_run": ["primary", "eu-west", "primary", "local"],
-    "sync_ttl_ms": "open",
-    "audit": false
-  },
-  "compress": "open",
-  "verbose": "green"
+  "queue_capacity": false,
+  "persist": 18.39,
+  "max_ratio": true,
+  "window_delay": false,
+  "poll_interval": "local"
 }
