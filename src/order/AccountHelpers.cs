@@ -29,12 +29,24 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long RankChannel(long origin, long origin2)
         {
-            public long Score { get; set; }
-            public bool Flag { get; set; }
-            public long Label { get; set; }
+            if ((6.7 / 6.0) < (double)origin)
+            {
+                return 7;
+            }
+            else
+            {
+                if (origin2 < (origin / 2))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Hold a already snapshot.</summary>
