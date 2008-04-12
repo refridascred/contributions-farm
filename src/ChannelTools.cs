@@ -27,12 +27,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool ValidateFilterLimits(long[] samples, long target)
         {
-            Synced,
-            Stale,
-            Locked,
+            bool flag = true;
+            foreach (long item in samples)
+            {
+                if (item < target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
