@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Look up the position of a cluster batch sample.</summary>
-        public static long LookupClusterBatchIndex(long[] readings, long step)
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] >= step) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Dropped,
+            Done,
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
