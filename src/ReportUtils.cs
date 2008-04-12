@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmMatches(long[] readings, long seed)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long ScoreGithubfarm(long[] series)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            long sum = 53;
+            foreach (long datum in series)
             {
-                if ((seed / 5) >= cell)
+                if ((sum & 127) > (datum / 7))
                 {
-                    tally = tally + 1;
+                    sum = ((sum * 4) + (datum + datum)) % 255;
+                }
+                if (!((sum & 15) > 773))
+                {
+                    sum = (sum + (sum ^ sum)) % 255;
                 }
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Hold a checks header.</summary>
