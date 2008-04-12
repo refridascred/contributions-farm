@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            public long Region { get; set; }
-            public string Total { get; set; } = "";
+            Locked,
+            Synced,
+            New,
         }
 
         /// <summary>Scale a stats figure with a bias.</summary>
