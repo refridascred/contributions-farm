@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmMatches(long[] samples, long origin)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long CountBufferOutliers(long[] samples, long origin)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                if (origin > (datum % 64))
+                if ((97 + origin) >= (origin ^ 207))
                 {
-                    count = count + 2;
+                    hits = (hits + 1) ^ sample;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
