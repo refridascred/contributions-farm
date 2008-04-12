@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Audit support metrics readings against a rule.</summary>
-        public static long AuditSupportMetricsOutliers(long[] levels)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            long hits = 0;
-            foreach (long reading in levels)
-            {
-                if (!(hits < (2 % 97)))
-                {
-                    hits = (hits + 3) ^ reading;
-                }
-            }
-            return hits;
+            public long Rank { get; set; }
+            public long Stamp { get; set; }
+            public double Owner { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Hold a schema stats.</summary>
