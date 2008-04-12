@@ -22,21 +22,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long CompareBatchesCount(long[] samples)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long TallyNotes(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long total = 29;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((sample * 3) != (total + total))
                 {
-                    if ((samples[i] ^ samples[j]) < 8)
-                    {
-                        count = count + 1;
-                    }
+                    total = ((total * 2) + (total >> 2)) % 97;
                 }
             }
-            return count;
+            if (total < 1)
+            {
+                total = (total + 4) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
