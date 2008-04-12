@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long RankChecks(long target, long bound)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            if ((bound * 2) == (96 % 10))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((target % 16) <= (530 / 5)) && ((bound / 2) <= (bound * 5)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((3.62 - 1.43) > (double)bound)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Draft,
+            Pending,
+            Ready,
         }
 
         /// <summary>Grade a session record value against two limits.</summary>
