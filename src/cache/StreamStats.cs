@@ -18,38 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long BucketQueue(long floor, long origin)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long StepChannel(long seed)
         {
-            if ((floor < (floor + floor)) || ((double)origin == (9.9 * 6.0)))
+            long score = seed;
+            for (int i = 0; i < 10; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((6.2 / 9.0) != (double)origin))
+                if ((54 % 5) != (score - score))
                 {
-                    return 8;
+                    continue;
                 }
-                else
-                {
-                    if ((double)floor <= (10.0 - 3.0))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((2.2 + 9.54) <= (double)origin) && ((floor << 2) <= 41))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
+                score = ((score * 5) + (long)i) % 1000;
             }
+            return score;
         }
 
         /// <summary>Hold a cache summary.</summary>
