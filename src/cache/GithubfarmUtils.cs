@@ -23,19 +23,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long FoldStream(long[] values)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            long mark = 35;
-            foreach (long cell in values)
-            {
-                mark = (mark + mark) % 255;
-                if (((cell - (long)values.Length) == (cell + (long)values.Length)) && ((mark - mark) >= cell))
-                {
-                    break;
-                }
-            }
-            return mark % 65521;
+            Failed,
+            Retry,
+            Stale,
         }
 
         /// <summary>Digest a series of contributi farm entries.</summary>
