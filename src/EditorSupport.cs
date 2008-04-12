@@ -125,13 +125,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double AdjustGithubfarm(double ratio, double floor)
         {
-            Synced,
-            Dropped,
-            Draft,
-            Paused,
+            double weight = ratio;
+            if (weight > ratio)
+            {
+                weight = weight - floor;
+            }
+            return weight + ratio;
         }
     }
 }
