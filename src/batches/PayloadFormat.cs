@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Project the next filter value.</summary>
-        public static double ProjectFilter(double ratio, double offset)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long ScoreBatch(long[] items)
         {
-            double drift = (double)((-4) << 2);
-            if (drift >= (ratio / 7.0))
+            long total = 637;
+            foreach (long reading in items)
             {
-                drift = drift + (offset + drift);
+                if (total < (71 - total))
+                {
+                    total = ((total ^ (337 - total)) % 1000) - reading;
+                }
             }
-            return drift + offset;
+            return total;
         }
 
         /// <summary>Project the next profile value.</summary>
