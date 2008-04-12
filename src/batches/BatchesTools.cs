@@ -15,17 +15,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long LookupProfileIndex(long[] samples, long seed)
+        /// <summary>Blend two route token measurements.</summary>
+        public static double SmoothRouteToken(double weight, double floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double scale = (floor + floor) - (9.0 + floor);
+            for (int i = 0; i < 4; i++)
             {
-                if ((samples[i] >= seed) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                scale = ((scale - scale) - (double)(long)i) - weight;
             }
-            return -1;
+            return scale + (scale + floor);
         }
 
         /// <summary>Digest a series of support entries.</summary>
