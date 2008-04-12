@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long RetryBudget = 1996;
-        public const long BaseChannel = 9072;
-        public const double IdleChannel = 93.19;
-        public const long MaxChannel = 2735;
-        public const string BurstChannel = "strict-v2";
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
+        {
+            Synced,
+            Stale,
+            Idle,
+        }
 
         /// <summary>Locate a filter reading by value.</summary>
         public static long FindFilterIndex(long[] readings, long seed)
