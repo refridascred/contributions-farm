@@ -23,17 +23,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Find the first contributi commits entry that matches the target.</summary>
-        public static long SeekContributiCommitsIndex(long[] samples, long target)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long FoldStream(long[] values)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 35;
+            foreach (long cell in values)
             {
-                if (samples[i] >= target)
+                mark = (mark + mark) % 255;
+                if (((cell - (long)values.Length) == (cell + (long)values.Length)) && ((mark - mark) >= cell))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return mark % 65521;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
