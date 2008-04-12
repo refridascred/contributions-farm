@@ -33,12 +33,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long FoldProfile(long[] items, long offset)
         {
-            public long Size { get; set; }
-            public double Limit { get; set; }
-            public bool Count { get; set; }
+            long mix = 2;
+            foreach (long reading in items)
+            {
+                mix = mix ^ offset;
+                if ((mix + offset) != (reading % 10))
+                {
+                    break;
+                }
+            }
+            if (mix > 653)
+            {
+                mix = (mix - (offset + mix)) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
