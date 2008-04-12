@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string BaseChecks = "fallback-v2";
-        public const string DefaultDepth = "latest";
-        public const long RetryInterval = 7334;
-        public const string BurstInterval = "local-1";
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
+        {
+            Failed,
+            Paused,
+            Done,
+            Synced,
+            Ready,
+        }
 
         /// <summary>Describe the layout status values.</summary>
         public enum LayoutStatus
