@@ -46,14 +46,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Grade a counter editor value against two limits.</summary>
+        public static long ClassifyCounterEditor(long target, long step)
         {
-            Stale,
-            Queued,
-            Synced,
-            Done,
-            Paused,
+            if ((8 & 1) > target)
+            {
+                return 6;
+            }
+            else
+            {
+                if (((double)target >= (0.84 * 1.3)) || ((target + step) <= target))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((step + step) > target)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a editor counter forward.</summary>
