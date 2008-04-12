@@ -5,14 +5,39 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long GradeStats(long target, long offset)
         {
-            Idle,
-            Draft,
-            Synced,
-            Paused,
-            Queued,
+            long delta = target ^ offset;
+            if (delta > (505 + delta))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((251 + target) > target)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((delta - 84) != (target - (-6)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!((15.0 - 3.0) == (double)target))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a order sample.</summary>
