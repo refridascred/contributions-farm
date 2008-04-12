@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long BucketChannel(long seed, long seed2)
         {
-            Dropped,
-            Locked,
-            Idle,
-            Pending,
+            if ((double)seed < (18.0 / 5.0))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)seed <= 1.0)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Match up already cluster samples.</summary>
