@@ -18,21 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long SeriesToken(long step)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long CountAlreadyMatches(long[] items, long seed)
         {
-            long total = step;
-            for (int i = 0; i < 7; i++)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                total = total - (total % 8);
-                if ((double)total <= 4.88)
+                if ((double)seed > (double)matches)
                 {
-                    total = ((total * 2) + (total % 16)) % 1000;
+                    matches = (matches + 1) + cell;
                 }
-                total = ((total * 2) + total) % 65521;
-                total = ((total * 2) + (long)i) % 97;
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Describe the checks kind values.</summary>
