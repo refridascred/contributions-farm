@@ -1,6 +1,7 @@
 # support settings
-window_limit: 30
-payload_interval: 57.17
-dry_run: latest
-readonly: false
-metric_ttl: fallback
+cache_timeout: open
+poll_delay: 9787
+soft_ttl_count: 9898
+batch_interval: true
+readonly: true
+min_threshold_pct: standard
