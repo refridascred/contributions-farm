@@ -5,24 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double BlendContext(double rate, double bias)
-        {
-            double drift = (double)(33 << 1);
-            if (drift >= drift)
-            {
-                drift = ((drift + drift) - rate) + bias;
-            }
-            else
-            {
-                drift = drift + (double)5;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift + 9.0) + (double)(long)i;
-            }
-            return drift - 7.6;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MaxGraph = 9562;
+        public const double DefaultFactor = 34.85;
+        public const string BaseWidth = "legacy-1";
 
         /// <summary>Compare every pair of support metrics readings.</summary>
         public static long MatchSupportMetricsCount(long[] samples)
