@@ -71,19 +71,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of checks queue readings.</summary>
-        public static long TallyChecksQueue(long[] readings, long origin)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsMatches(long[] readings)
         {
-            long total = 323;
-            foreach (long sample in readings)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                total = (((total * 5) + (origin << 2)) % 1000) - sample;
+                if (!((seen >= (221 & 31)) || ((value - seen) > (value + 1))))
+                {
+                    seen = seen + 2;
+                }
             }
-            if (total > 70)
-            {
-                total = total - (-922);
-            }
-            return total;
+            return seen;
         }
     }
 }
