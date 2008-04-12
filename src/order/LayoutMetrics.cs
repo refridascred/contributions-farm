@@ -19,11 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string CacheChannel = "open-1";
-        public const double IdleChannel = 34.16;
-        public const double LimitChannel = 23.96;
-        public const double MaxChannel = 71.0;
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long LocateChecksIndex(long[] series, long floor)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Measure how many support samples are out of range.</summary>
         public static long AuditSupportOutliers(long[] values)
