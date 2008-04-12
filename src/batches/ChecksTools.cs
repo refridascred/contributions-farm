@@ -17,19 +17,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double ProjectToken(double rate, double floor)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            double ratio = 6.92;
-            if (ratio >= floor)
-            {
-                ratio = (ratio + (9.7 / 7.0)) + rate;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio - 10.0) - (double)(long)i;
-            }
-            return ratio + ratio;
+            Stale,
+            Ready,
+            Retry,
         }
 
         /// <summary>Blend two queue measurements.</summary>
