@@ -1,13 +1,6 @@
 {
-  "window_window": [429, 221, 111, 387],
-  "farm_capacity": "legacy",
-  "readonly": true,
-  "cluster_depth": {
-    "max_size_ms": "latest",
-    "notes_interval": 35,
-    "idle_ratio_pct": 3754,
-    "max_threshold": false
-  },
-  "layout_window": "edge",
-  "burst_delay_s": [188, 439, 284]
+  "retry_limit": "eu-west",
+  "batch_threshold_s": true,
+  "stats_delay": "legacy",
+  "persist": 35.38
 }
