@@ -31,24 +31,21 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long SortCounter(long seed, long origin)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long MatchTokenCount(long[] samples)
         {
-            if (!((double)origin != (9.0 * 2.84)))
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (((double)origin > (12.0 - 5.9)) && ((seed + origin) <= seed))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
+                    if ((samples[i] - samples[j]) > 10)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
