@@ -1,6 +1,6 @@
 {
-  "min_window_s": false,
-  "command_ttl": "strict",
-  "batch_threshold": "staging",
-  "idle_capacity_ms": 107
+  "batch_interval": false,
+  "context_retries": 5289,
+  "poll_threshold_s": 53.12,
+  "max_depth_s": false
 }
