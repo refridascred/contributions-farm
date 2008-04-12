@@ -29,18 +29,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long MeasureFilterOutliers(long[] levels, long seed)
+        /// <summary>Rank stream window input into a small class.</summary>
+        public static long SortStreamWindow(long limit, long step)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            if ((85 < (limit + limit)) || ((double)step >= (14.0 * 7.12)))
             {
-                if (!(19.0 < (double)seen))
+                return 7;
+            }
+            else
+            {
+                if (limit <= (694 / 3))
                 {
-                    seen = ((seen + 1) - reading) - seed;
+                    return 4;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return seen;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
