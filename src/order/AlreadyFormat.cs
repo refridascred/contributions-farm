@@ -51,12 +51,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double CacheQueue = 28.82;
-        public const long LimitLevel = 2497;
-        public const long SoftQueue = 6248;
-        public const long StepFactor = 5600;
-        public const long WindowQueue = 3274;
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheMatches(long[] samples, long offset)
+        {
+            long count = 0;
+            foreach (long entry in samples)
+            {
+                if ((entry % 24) > (offset + count))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const string BaseInterval = "latest";
