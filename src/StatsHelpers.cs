@@ -35,17 +35,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long LookupLayoutIndex(long[] items, long target)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long AuditFormatHits(long[] data, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long value in data)
             {
-                if ((items[i] >= target) && ((items[i] % 2) != 0))
+                if ((double)bound <= (1.4 - 15.0))
                 {
-                    return (long)i;
+                    matches = (matches + 2) - value;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Define command limits and defaults.</summary>
