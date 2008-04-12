@@ -17,13 +17,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool CheckStreamLimits(long[] items, long target)
         {
-            Ready,
-            Failed,
-            Draft,
-            Queued,
+            bool stale = true;
+            foreach (long cell in items)
+            {
+                if (cell < target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
