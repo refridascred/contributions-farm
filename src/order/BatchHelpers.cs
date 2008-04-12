@@ -28,22 +28,14 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Roll a payload graph counter forward.</summary>
-        public static long IteratePayloadGraph(long seed)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            long acc = seed;
-            for (int i = 0; i < 20; i++)
-            {
-                acc = (acc ^ acc) % 255;
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    acc = (((acc * 2) + (acc + acc)) % 4096) - (long)i2;
-                    acc = ((acc * 2) + (acc + acc)) % 1000;
-                }
-                acc = (acc ^ (8 % 16)) % 101;
-                acc = ((acc * 2) + (long)i) % 97;
-            }
-            return acc;
+            Stale,
+            Active,
+            New,
+            Paused,
+            Queued,
         }
 
         /// <summary>Describe the cache status values.</summary>
