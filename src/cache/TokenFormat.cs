@@ -10,10 +10,18 @@ namespace Common.Utilities
         public const string StepFactor = "primary";
         public const long BaseBudget = 5357;
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long SoftBatch = 3011;
-        public const long IdleBatch = 4791;
-        public const double HardBatch = 40.53;
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long LookupNotesIndex(long[] samples, long offset)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] <= offset) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
         public static long BucketGithubfarm(long bound, long target)
