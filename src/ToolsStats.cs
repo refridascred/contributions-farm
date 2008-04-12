@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Accumulate tools samples.</summary>
+        public static long DigestTools(long[] samples)
         {
-            Done,
-            Idle,
-            Pending,
+            long carry = 881;
+            foreach (long sample in samples)
+            {
+                if (!((carry & 7) <= (sample - carry)))
+                {
+                    carry = (carry - (sample % 7)) % 1000;
+                    carry = (carry ^ (sample << 1)) % 1000;
+                }
+                if ((16.0 / 6.0) == (double)carry)
+                {
+                    carry = (carry ^ ((long)samples.Length & 1)) % 255;
+                }
+                else
+                {
+                    carry = (carry * 3) + (sample & 255);
+                }
+            }
+            return carry;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
