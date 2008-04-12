@@ -26,18 +26,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the command layout entries that pass the check.</summary>
-        public static long MeasureCommandLayoutMatches(long[] levels)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsMatches(long[] items, long limit)
         {
-            long count = 0;
-            foreach (long value in levels)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                if ((value - (long)levels.Length) == (value & 7))
+                if (!((hits + 7) < hits))
                 {
-                    count = count + 1;
+                    hits = ((hits + 3) + sample) + limit;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Hold a githubfarm record.</summary>
