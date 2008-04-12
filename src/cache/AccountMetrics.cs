@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Fold a list of batches stats readings.</summary>
-        public static long TotalBatchesStats(long[] samples, long bound)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long LookupReportIndex(long[] values, long bound)
         {
-            long carry = 2;
-            foreach (long item in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                carry = (carry << 2) ^ (item * 5);
+                if ((values[i] <= bound) && ((values[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (carry < 114)
-            {
-                carry = carry - (54 - bound);
-            }
-            return carry;
+            return -1;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
