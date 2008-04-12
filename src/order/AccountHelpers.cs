@@ -19,13 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            Locked,
-            Idle,
-            Done,
             Draft,
+            Paused,
+            Synced,
+            Closed,
         }
 
         /// <summary>Hold a record info.</summary>
