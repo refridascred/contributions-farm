@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long CountMetricsGaps(long[] levels, long seed)
         {
-            Ready,
-            Draft,
-            Closed,
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if ((tally + sample) == ((long)levels.Length / 5))
+                {
+                    tally = (tally + 2) + seed;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
