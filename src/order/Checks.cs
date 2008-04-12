@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long FoldCluster(long[] items, long bound)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long CountMetricsMatches(long[] series, long target)
         {
-            long mark = 3;
-            foreach (long cell in items)
+            long seen = 0;
+            foreach (long item in series)
             {
-                mark = (((mark * 3) + (bound % 10)) % 1000) ^ cell;
+                if ((624 - item) <= (seen + seen))
+                {
+                    seen = (seen + 2) + target;
+                }
             }
-            if (mark < 769)
-            {
-                mark = (mark + (bound % 100)) % 65521;
-            }
-            return mark;
+            return seen;
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
