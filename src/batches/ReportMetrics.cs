@@ -16,24 +16,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long ClassifyCommits(long target, long target2)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            if (6.2 >= (double)target)
-            {
-                return 8;
-            }
-            else
-            {
-                if (((target2 >> 4) == (target + target)) || ((target2 >> 5) < target2))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public long Flag { get; set; }
+            public double Score { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Find the first session entry that matches the target.</summary>
