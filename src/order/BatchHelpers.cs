@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Match up buffer samples.</summary>
-        public static long CompareBufferCount(long[] values)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long SortRoute(long step, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((460 - seed) >= (seed & 31))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((double)step > (7.2 + 5.17))
                 {
-                    if ((values[i] + values[j]) < 8)
+                    return 5;
+                }
+                else
+                {
+                    if (!((step + (-644)) < ((-2) + step)))
                     {
-                        matches = matches + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Validate record payload readings against a bound.</summary>
