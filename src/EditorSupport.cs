@@ -38,18 +38,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelMatches(long[] samples, long floor)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            long matches = 0;
-            foreach (long datum in samples)
-            {
-                if ((double)floor != (double)60)
-                {
-                    matches = (matches + 3) + datum;
-                }
-            }
-            return matches;
+            Idle,
+            Draft,
+            Pending,
         }
 
         /// <summary>Count the order filter entries that pass the check.</summary>
