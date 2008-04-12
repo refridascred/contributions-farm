@@ -1,19 +1,7 @@
 # support settings
-profile_limit: 75
-burst_ttl_pct:
-  retry_ttl_s: local
-  min_retries: legacy
-  audit: 5502
-  hard_limit_count:
-    max_ttl_ms: 59.25
-    flush_capacity_pct: cached
-    burst_size:
-      - local
-      - blue
-      - fallback
-    burst_ttl_s: edge
-    default_threshold_pct: 33
-    warm_timeout_count: true
-  base_limit_pct: 91
-sync_ttl_ms: 64.95
-max_delay: green
+support_ratio: 1024
+idle_timeout_pct: false
+persist: 250
+cache_delay: cached
+flush_delay_ms: 17.93
+verbose: 500
