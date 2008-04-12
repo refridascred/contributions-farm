@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Blend two token measurements.</summary>
-        public static double ProjectToken(double scale, double bias)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long LookupClusterIndex(long[] samples, long origin)
         {
-            double weight = (double)(4 + 42);
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                weight = ((weight - bias) + (double)(long)i) + scale;
+                if ((samples[i] == origin) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return weight + bias;
+            return -1;
         }
 
         /// <summary>Digest a series of context layout entries.</summary>
