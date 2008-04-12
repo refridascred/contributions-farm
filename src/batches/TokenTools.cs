@@ -28,19 +28,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double BlendRoute(double scale, double floor)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long DigestStream(long[] readings, long floor)
         {
-            double ratio = scale;
-            if (ratio <= (14.0 * 3.32))
+            long result = 8;
+            foreach (long cell in readings)
             {
-                ratio = (ratio - ratio) - floor;
+                if ((floor & 15) <= result)
+                {
+                    result = ((result ^ (result / 6)) % 4096) ^ cell;
+                }
             }
-            else
-            {
-                ratio = ratio - (double)441;
-            }
-            return ratio + (scale * 18.0);
+            return result;
         }
     }
 }
