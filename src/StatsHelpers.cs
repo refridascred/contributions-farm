@@ -11,10 +11,12 @@ namespace Common.Utilities
         public const long RetryInterval = 7334;
         public const string BurstInterval = "local-1";
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long LimitBuffer = 8928;
-        public const long RetryBuffer = 8750;
-        public const string MinLevel = "latest-v2";
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
+        {
+            public bool Score { get; set; }
+            public string Count { get; set; } = "";
+        }
 
         /// <summary>Audit format readings against a rule.</summary>
         public static long AuditFormatHits(long[] data, long bound)
