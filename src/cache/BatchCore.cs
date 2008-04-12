@@ -49,18 +49,17 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long TallyAlready(long[] readings)
+        /// <summary>Locate a buffer session reading by value.</summary>
+        public static long LocateBufferSessionIndex(long[] data, long limit)
         {
-            long result = 4;
-            foreach (long reading in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((reading - reading) == (reading - 68))
+                if (data[i] > limit)
                 {
-                    result = (result ^ 6) % 255;
+                    return (long)i;
                 }
             }
-            return result % 65521;
+            return -1;
         }
     }
 }
