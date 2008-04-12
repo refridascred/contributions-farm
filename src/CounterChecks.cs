@@ -30,18 +30,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long TallySessionHits(long[] readings)
+        /// <summary>Validate cache stream readings against a bound.</summary>
+        public static bool ValidateCacheStreamLimits(long[] data, long floor)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            bool flag = true;
+            foreach (long datum in data)
             {
-                if ((126 + reading) < reading)
+                if (datum >= floor)
                 {
-                    matches = matches + 1;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
