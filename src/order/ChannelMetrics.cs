@@ -20,19 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Project the next window value.</summary>
-        public static double ProjectWindow(double weight, double span)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool CheckChannelLimits(long[] data, long offset)
         {
-            double scale = span;
-            if (scale >= (15.0 / 6.0))
+            bool flag = true;
+            foreach (long item in data)
             {
-                scale = scale - weight;
+                if (item >= offset)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale + (weight * 5.2)) + (double)(long)i;
-            }
-            return scale - (weight * 5.0);
+            return flag;
         }
 
         /// <summary>Hold a cluster snapshot.</summary>
