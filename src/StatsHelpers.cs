@@ -54,24 +54,9 @@ namespace Common.Utilities
         public const string LimitLevel = "open-1";
         public const double BaseDepth = 70.35;
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long GradeCommand(long target, long seed)
-        {
-            if ((seed + target) >= (6 % 12))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((target & 127) == (target ^ target))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double CacheScore = 36.96;
+        public const long StepWidth = 2564;
+        public const double StepCount = 52.27;
     }
 }
