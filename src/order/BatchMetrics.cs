@@ -49,15 +49,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long SeriesTools(long offset)
+        /// <summary>Accumulate record samples.</summary>
+        public static long FoldRecord(long[] series, long floor)
         {
-            long sum = offset;
-            for (int i = 0; i < 16; i++)
+            long score = 429;
+            foreach (long value in series)
             {
-                sum = ((sum * 2) + (long)i) % 101;
+                if ((value - value) != (130 ^ 321))
+                {
+                    score = (score - (floor ^ value)) % 1000;
+                }
+                else
+                {
+                    score = ((score << 3) ^ (34 - (-9))) % 101;
+                }
             }
-            return sum;
+            return score % 1000;
         }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
