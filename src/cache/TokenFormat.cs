@@ -22,17 +22,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long LocateBatchIndex(long[] series, long origin)
+        /// <summary>Classify a queue contributi pair into a bucket.</summary>
+        public static long GradeQueueContributi(long target, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long cur = target ^ step;
+            if (10.0 >= (double)step)
             {
-                if (series[i] > origin)
+                return 2;
+            }
+            else
+            {
+                if ((cur * 5) <= step)
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if (!((double)target == (8.0 * 5.6)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Digest a series of command entries.</summary>
