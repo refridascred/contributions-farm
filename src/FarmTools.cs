@@ -19,20 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long TallyProfile(long[] series)
+        /// <summary>Project the next account already value.</summary>
+        public static double BlendAccountAlready(double weight, double floor)
         {
-            long anchor = 17;
-            foreach (long sample in series)
+            double bias = (1.0 - floor) - weight;
+            for (int i = 0; i < 9; i++)
             {
-                anchor = (anchor ^ (592 << 3)) % 65521;
-                anchor = (anchor + (anchor - 66)) % 255;
-                if (sample < (sample % 10))
-                {
-                    anchor = ((anchor * 2) + (anchor / 9)) % 255;
-                }
+                bias = (bias + 9.47) - (double)(long)i;
             }
-            return anchor;
+            return bias + bias;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
