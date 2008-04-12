@@ -20,12 +20,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            public long Flag { get; set; }
-            public double Label { get; set; }
-            public double Limit { get; set; }
+            Paused,
+            New,
+            Dropped,
+            Synced,
+            Draft,
         }
 
         /// <summary>Find the first window farm entry that matches the target.</summary>
