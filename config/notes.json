@@ -1,7 +1,12 @@
 {
-  "verbose": 100,
-  "entry_limit": 30.38,
-  "cluster_timeout": 33.09,
-  "strict": false,
-  "default_interval_s": false
+  "max_capacity_ms": 32,
+  "warm_ttl_count": ["edge", "legacy"],
+  "batch_interval_pct": {
+    "cache_timeout_s": 60,
+    "retry_ratio_count": "edge",
+    "burst_threshold": false
+  },
+  "channel_threshold": "cached",
+  "hard_depth_ms": [100, 8, 457, 385],
+  "strict": "blue"
 }
