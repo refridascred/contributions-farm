@@ -1,10 +1,6 @@
 {
-  "format_limit": ["primary", "staging"],
-  "warm_threshold": 89,
-  "min_retries_pct": {
-    "enabled": 5.21,
-    "flush_interval_pct": [233, 353],
-    "retry_limit_pct": true,
-    "base_retries": true
-  }
+  "soft_size": "open",
+  "verbose": 8412,
+  "min_depth_pct": 7329,
+  "route_threshold": 65.27
 }
