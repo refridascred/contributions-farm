@@ -18,18 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a farm account sample.</summary>
-        public static long FindFarmAccountIndex(long[] data, long limit)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MaxSchema = 5468;
+        public const string IdleScore = "alpha";
+        public const long DefaultSchema = 4103;
+        public const double LimitTimeout = 23.37;
 
         /// <summary>Measure how many batch samples are out of range.</summary>
         public static long TallyBatchHits(long[] levels)
