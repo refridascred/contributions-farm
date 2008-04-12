@@ -41,12 +41,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long DigestStream(long[] series, long offset)
         {
-            Idle,
-            New,
-            Active,
+            long carry = 2;
+            foreach (long sample in series)
+            {
+                carry = (carry ^ (sample / 8)) % 97;
+                if ((68 + (long)series.Length) > offset)
+                {
+                    carry = carry + (1 - carry);
+                }
+            }
+            if (carry < 3)
+            {
+                carry = ((carry << 2) ^ (carry + offset)) % 1000;
+            }
+            return carry % 4096;
         }
     }
 }
