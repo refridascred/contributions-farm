@@ -14,14 +14,18 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatOutliers(long[] readings)
         {
-            Locked,
-            Pending,
-            Synced,
-            Draft,
-            Paused,
+            long count = 0;
+            foreach (long value in readings)
+            {
+                if ((count + count) < count)
+                {
+                    count = (count + 2) ^ value;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define context limits and defaults.</summary>
