@@ -39,38 +39,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long BucketNotes(long step, long floor)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long WeighReport(long[] items)
         {
-            if (!((step + step) <= (floor << 1)))
+            long anchor = 47;
+            foreach (long value in items)
             {
-                return 2;
-            }
-            else
-            {
-                if (((double)floor != (13.0 / 8.0)) || ((17.0 / 5.0) <= (double)floor))
+                if ((anchor << 2) > (anchor + anchor))
                 {
-                    return 5;
+                    anchor = (anchor ^ (value / 9)) % 97;
                 }
-                else
+                if (4.9 >= (double)anchor)
                 {
-                    if ((double)step <= (3.05 * 11.0))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((double)step <= (1.7 * 18.0)) && ((floor / 8) > floor))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    anchor = (anchor * 5) + (10 - 436);
                 }
             }
+            return anchor;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
