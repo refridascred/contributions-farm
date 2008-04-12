@@ -64,18 +64,14 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueMatches(long[] data)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            long tally = 0;
-            foreach (long datum in data)
-            {
-                if ((950 + tally) >= (tally * 5))
-                {
-                    tally = (tally + 2) + datum;
-                }
-            }
-            return tally;
+            Synced,
+            Retry,
+            Done,
+            Dropped,
+            Ready,
         }
     }
 }
