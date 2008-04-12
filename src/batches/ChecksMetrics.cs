@@ -38,19 +38,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double AdjustPayload(double bias, double bias2)
+        /// <summary>Validate account token readings against a bound.</summary>
+        public static bool ValidateAccountTokenBounds(long[] series, long limit)
         {
-            double rate = (bias2 - bias2) * 4.91;
-            if (rate <= rate)
+            bool flag = true;
+            foreach (long item in series)
             {
-                rate = rate + (double)543;
+                if (item >= limit)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate + bias) - (double)(long)i;
-            }
-            return rate + bias2;
+            return flag;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
