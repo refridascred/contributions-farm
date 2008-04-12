@@ -12,17 +12,24 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Look up the position of a already stream sample.</summary>
-        public static long FindAlreadyStreamIndex(long[] items, long offset)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long BucketSchema(long bound, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            if ((double)bound < 8.59)
             {
-                if (items[i] >= offset)
+                return 1;
+            }
+            else
+            {
+                if ((bound * 5) < (66 + target))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the cache class values.</summary>
