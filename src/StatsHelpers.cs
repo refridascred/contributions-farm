@@ -44,10 +44,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MaxTimeout = 5882;
-        public const double CacheInterval = 92.47;
-        public const string StepTimeout = "fallback";
-        public const long BaseBatches = 60;
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
+        {
+            public long Count { get; set; }
+            public long Stamp { get; set; }
+            public long Label { get; set; }
+            public long Region { get; set; }
+        }
     }
 }
