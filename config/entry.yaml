@@ -1,9 +1,16 @@
 # entry settings
-tools_retries: false
-account_ttl:
-  - edge
-  - green
-  - legacy
-hard_timeout_pct: 30
-hard_interval: 37
-burst_ttl: false
+context_capacity: legacy
+session_timeout: 3525
+max_ratio_s: true
+filter_timeout:
+  strict:
+    poll_limit: 60
+    persist: true
+    support_size: 32
+    verbose: 12.18
+  cluster_limit: open
+  already_ttl: 250
+  record_depth: 500
+  idle_timeout_ms: edge
+  token_ratio: 1024
+max_size_s: 60
