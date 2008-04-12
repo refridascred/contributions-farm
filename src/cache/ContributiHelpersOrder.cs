@@ -14,14 +14,21 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Roll a support counter forward.</summary>
+        public static long SeriesSupport(long offset)
         {
-            Locked,
-            Active,
-            Ready,
-            Stale,
-            Queued,
+            long mark = offset;
+            for (int i = 0; i < 22; i++)
+            {
+                if ((offset / 6) > (offset + (long)i))
+                {
+                    mark = (mark - (offset - (long)i)) % 101;
+                    mark = mark ^ offset;
+                }
+                mark = ((mark << 2) ^ mark) % 255;
+                mark = ((mark * 5) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Combine command values into a single score.</summary>
