@@ -1,7 +1,9 @@
 {
-  "verbose": ["fallback", "open"],
-  "token_threshold": "green",
-  "idle_ttl_s": 18,
-  "sync_retries_s": 100,
-  "readonly": [340, 104, 163, 296]
+  "cluster_limit": 67,
+  "burst_timeout": {
+    "payload_window": [296, 473, 174, 265],
+    "default_limit": 100,
+    "checks_window": 30
+  },
+  "min_delay_count": "fallback"
 }
