@@ -63,21 +63,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up buffer route samples.</summary>
-        public static long PairBufferRouteCount(long[] samples)
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Offset { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
