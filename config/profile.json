@@ -1,7 +1,13 @@
 {
-  "dry_run": 5452,
-  "readonly": 8.85,
-  "hard_depth_s": 100,
-  "filter_limit": false,
-  "poll_capacity_s": false
+  "readonly": "open",
+  "window_depth": 69,
+  "batch_ttl": {
+    "poll_ratio": true,
+    "retry_capacity": "legacy",
+    "githubfarm_interval": 96.12,
+    "compress": "strict",
+    "base_interval_pct": true
+  },
+  "default_threshold": "cached",
+  "strict": 505
 }
