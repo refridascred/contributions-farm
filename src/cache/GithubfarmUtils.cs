@@ -19,13 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool CheckLayoutBounds(long[] items, long seed)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool CheckTokenRange(long[] levels, long seed)
         {
             bool found = true;
-            foreach (long cell in items)
+            foreach (long entry in levels)
             {
-                if (cell >= seed)
+                if (entry > seed)
                 {
                     found = false;
                     break;
