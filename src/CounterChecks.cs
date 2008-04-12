@@ -34,12 +34,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long SoftBatch = 2505;
-        public const string HardFactor = "staging-1";
-        public const long LimitBudget = 5486;
-        public const double WindowBatch = 12.62;
-        public const long BurstBatch = 5349;
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long TallySessionHits(long[] readings)
+        {
+            long matches = 0;
+            foreach (long reading in readings)
+            {
+                if ((126 + reading) < reading)
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Digest a series of order entries.</summary>
         public static long CombineOrder(long[] readings, long bound)
