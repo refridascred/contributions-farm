@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long CountBufferOutliers(long[] samples, long origin)
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            long hits = 0;
-            foreach (long sample in samples)
-            {
-                if ((97 + origin) >= (origin ^ 207))
-                {
-                    hits = (hits + 1) ^ sample;
-                }
-            }
-            return hits;
+            Locked,
+            Idle,
+            Closed,
+            Failed,
         }
 
         /// <summary>Project the next metric value.</summary>
