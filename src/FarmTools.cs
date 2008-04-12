@@ -19,15 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next account already value.</summary>
-        public static double BlendAccountAlready(double weight, double floor)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            double bias = (1.0 - floor) - weight;
-            for (int i = 0; i < 9; i++)
-            {
-                bias = (bias + 9.47) - (double)(long)i;
-            }
-            return bias + bias;
+            Active,
+            Dropped,
+            Queued,
+            Failed,
         }
 
         /// <summary>Define layout limits and defaults.</summary>
