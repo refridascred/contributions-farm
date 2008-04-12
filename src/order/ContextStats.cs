@@ -51,24 +51,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long ClassifyRoute(long limit, long seed)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowHits(long[] samples)
         {
-            if (!((limit + limit) > (limit + seed)))
+            long count = 0;
+            foreach (long value in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if (((limit << 1) != (seed * 3)) && ((4 >> 2) <= (limit / 3)))
+                if ((count ^ count) == (count * 4))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
+                    count = (count + 3) - value;
                 }
             }
+            return count;
         }
     }
 }
