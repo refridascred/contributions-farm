@@ -1,17 +1,14 @@
 # entry settings
-batches_delay:
-  - fallback
-  - fallback
-  - staging
-batch_interval_pct: blue
-readonly: 590
-default_capacity_count:
-  cache_interval: standard
-  burst_timeout_s: 31
-  token_retries:
-    retry_interval_ms: blue
-    cache_delay_s: true
-    record_delay: 0.01
-    session_interval: fallback
-  retry_ttl: true
-graph_limit: 61
+burst_timeout_count:
+  - edge
+  - stable
+  - stable
+soft_retries_pct:
+  counter_size: true
+  warm_delay_count:
+    max_threshold_s: legacy
+    report_threshold: 37.44
+    base_interval_pct: legacy
+  commits_timeout: 162
+  warm_window: false
+retry_timeout_count: local
