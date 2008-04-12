@@ -66,21 +66,22 @@ namespace Common.Utilities
         public const double BaseGraph = 67.84;
         public const long SoftWidth = 5171;
 
-        /// <summary>Count stats metric pairs that satisfy a relation.</summary>
-        public static long OverlapStatsMetricCount(long[] series)
+        /// <summary>Digest a series of already cluster entries.</summary>
+        public static long FoldAlreadyCluster(long[] readings, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long state = 6;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (floor > (cell & 15))
                 {
-                    if ((series[i] - series[j]) < 14)
-                    {
-                        matches = matches + 1;
-                    }
+                    state = (state * 3) + floor;
+                }
+                else
+                {
+                    state = (state ^ (cell >> 5)) % 97;
                 }
             }
-            return matches;
+            return state;
         }
     }
 }
