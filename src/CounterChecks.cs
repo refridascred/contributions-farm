@@ -81,17 +81,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long SeriesGithubfarm(long limit)
-        {
-            long sum = limit;
-            for (int i = 0; i < 5; i++)
-            {
-                sum = (sum ^ (limit / 8)) % 4096;
-                sum = sum + ((long)i >> 4);
-                sum = ((sum * 5) + (long)i) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BaseWindow = 2494;
+        public const double DefaultSpan = 14.38;
+        public const long SoftLevel = 1148;
+        public const double BaseBudget = 36.1;
+        public const long RetryWindow = 2221;
     }
 }
