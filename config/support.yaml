@@ -1,6 +1,8 @@
 # support settings
-audit: true
-hard_ratio: local
-cache_window: 5467
-dry_run: 61.02
-hard_retries: 1024
+min_delay_pct: 2338
+default_capacity_pct:
+  - standard
+  - staging
+  - standard
+  - stable
+readonly: 82
