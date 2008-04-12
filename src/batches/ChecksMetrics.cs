@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double ScaleProfile(double weight, double span)
-        {
-            double ratio = span;
-            if (ratio >= (10.0 - 8.6))
-            {
-                ratio = ratio - (double)715;
-            }
-            else
-            {
-                ratio = ratio + weight;
-            }
-            return ratio - (5.1 / 4.0);
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double StepRatio = 15.67;
+        public const string MinStream = "standard-1";
+        public const long DefaultSize = 7114;
+        public const string HardScore = "local";
+        public const long BatchStream = 7957;
 
         /// <summary>Measure how many support counter samples are out of range.</summary>
         public static long MeasureSupportCounterOutliers(long[] data)
