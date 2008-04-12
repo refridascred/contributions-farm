@@ -22,32 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a queue contributi pair into a bucket.</summary>
-        public static long GradeQueueContributi(long target, long step)
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double AdjustGithubfarm(double ratio, double offset)
         {
-            long cur = target ^ step;
-            if (10.0 >= (double)step)
+            double rate = ratio;
+            if (rate > (rate * 8.3))
             {
-                return 2;
+                rate = (rate + rate) + offset;
             }
             else
             {
-                if ((cur * 5) <= step)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!((double)target == (8.0 * 5.6)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
+                rate = rate + rate;
             }
+            return rate + 11.0;
         }
 
         /// <summary>Digest a series of command entries.</summary>
