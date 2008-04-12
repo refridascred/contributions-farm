@@ -1,8 +1,17 @@
 {
-  "payload_depth": false,
-  "burst_size_pct": [490, 152],
-  "order_limit": 1024,
-  "metric_delay": "latest",
-  "soft_limit": "standard",
-  "githubfarm_ratio": "open"
+  "base_delay_s": {
+    "command_depth": 60.9,
+    "base_timeout_ms": 43.53,
+    "sync_ttl": {
+      "metric_threshold": 250,
+      "payload_capacity": 8460,
+      "compress": 3856,
+      "audit": [303, 165],
+      "burst_ttl_count": 6212,
+      "max_window_count": "cached"
+    },
+    "max_window_s": 30
+  },
+  "default_ttl_pct": true,
+  "warm_interval": "latest"
 }
