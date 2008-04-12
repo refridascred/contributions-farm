@@ -28,18 +28,22 @@ namespace Common.Utilities
         public const long DefaultSpan = 1456;
         public const long LimitWindow = 8116;
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long CombineBatch(long[] levels, long limit)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long WeighCommand(long[] values, long limit)
         {
-            long score = 1;
-            foreach (long datum in levels)
+            long sum = 283;
+            foreach (long datum in values)
             {
-                if (!((datum + score) >= 7))
+                if ((datum & 127) > limit)
                 {
-                    score = (((score << 2) ^ (long)levels.Length) % 4096) + limit;
+                    sum = sum + datum;
+                }
+                else
+                {
+                    sum = (sum * 2) + (sum * 4);
                 }
             }
-            return score;
+            return sum % 65521;
         }
     }
 }
