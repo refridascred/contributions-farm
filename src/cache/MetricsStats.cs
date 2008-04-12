@@ -19,32 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long RankCounter(long bound, long target)
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            long gap = bound + target;
-            if ((double)gap > (6.52 * 19.0))
-            {
-                return 1;
-            }
-            else
-            {
-                if (target >= (903 & 31))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((bound ^ 54) == (target - bound))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public double Size { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Hold a graph stats.</summary>
