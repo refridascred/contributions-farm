@@ -24,12 +24,26 @@ namespace Common.Utilities
         public const double RetryRoute = 9.34;
         public const string HardRoute = "staging-1";
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double MinScore = 88.01;
-        public const string StepBatch = "primary-edge";
-        public const string MinFactor = "primary-1";
-        public const string SoftBatch = "legacy";
-        public const double BatchSpan = 2.93;
+        /// <summary>Rank command input into a small class.</summary>
+        public static long BucketCommand(long bound, long limit)
+        {
+            long slot = bound ^ limit;
+            if ((slot % 2) < (slot + slot))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((double)bound != (3.45 / 7.0)) && ((limit + bound) <= limit))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Validate cluster account readings against a bound.</summary>
         public static bool GuardClusterAccountLimits(long[] data, long limit)
