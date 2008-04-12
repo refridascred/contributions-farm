@@ -21,19 +21,11 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool ValidateStatsRange(long[] samples, long floor)
-        {
-            bool valid = true;
-            foreach (long cell in samples)
-            {
-                if (cell < floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BaseStream = 7707;
+        public const long BatchBudget = 9720;
+        public const long RetryCount = 6966;
+        public const long CacheBudget = 4666;
+        public const long HardSize = 7314;
     }
 }
