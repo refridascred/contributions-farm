@@ -28,13 +28,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            Pending,
-            Ready,
-            Queued,
-            Active,
+            public long Flag { get; set; }
+            public long Token { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
