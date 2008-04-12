@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
-        {
-            Draft,
-            Dropped,
-            Retry,
-            Synced,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MinWidth = 9750;
+        public const string RetryCount = "fallback-edge";
+        public const long IdleTimeout = 6891;
+        public const long MaxScore = 9096;
+        public const string LimitToken = "legacy-edge";
 
         /// <summary>Define format limits and defaults.</summary>
         public const long HardFormat = 3485;
