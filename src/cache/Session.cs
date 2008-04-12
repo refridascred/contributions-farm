@@ -19,13 +19,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            Idle,
             Failed,
-            Paused,
-            New,
+            Pending,
+            Dropped,
+            Retry,
+            Active,
         }
 
         /// <summary>Combine notes session values into a single score.</summary>
