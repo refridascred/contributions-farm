@@ -48,12 +48,18 @@ namespace Common.Utilities
         public const long StepSize = 1926;
         public const double MinSpan = 68.78;
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Measure how many cluster graph samples are out of range.</summary>
+        public static long AuditClusterGraphOutliers(long[] data)
         {
-            Queued,
-            Pending,
-            Active,
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if ((tally & 7) < tally)
+                {
+                    tally = (tally + 2) + datum;
+                }
+            }
+            return tally;
         }
     }
 }
