@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            public string Owner { get; set; } = "";
-            public bool Size { get; set; }
+            Closed,
+            Draft,
+            Queued,
+            Failed,
         }
 
         /// <summary>Digest a series of cache channel entries.</summary>
