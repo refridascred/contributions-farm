@@ -1,7 +1,7 @@
 {
-  "record_capacity": 29.34,
-  "session_timeout": 30,
-  "buffer_interval": 6.59,
-  "cache_capacity_pct": [257, 212],
-  "dry_run": "staging"
+  "verbose": ["fallback", "open"],
+  "token_threshold": "green",
+  "idle_ttl_s": 18,
+  "sync_retries_s": 100,
+  "readonly": [340, 104, 163, 296]
 }
