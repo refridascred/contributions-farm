@@ -12,19 +12,19 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool GuardBatchesRange(long[] items, long target)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double SmoothStats(double weight, double bias)
         {
-            bool stale = true;
-            foreach (long sample in items)
+            double weight2 = (bias * 4.8) + (double)(-942);
+            if (weight2 < bias)
             {
-                if (sample > target)
-                {
-                    stale = false;
-                    break;
-                }
+                weight2 = weight2 + (double)20;
             }
-            return stale;
+            else
+            {
+                weight2 = weight2 + (weight + weight);
+            }
+            return weight2 + (weight2 - weight2);
         }
 
         /// <summary>Define commits limits and defaults.</summary>
