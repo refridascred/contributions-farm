@@ -28,15 +28,20 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double ProjectCounter(double scale, double bias)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long DigestMetric(long[] series, long seed)
         {
-            double ratio = bias / 4.0;
-            if (ratio < bias)
+            long anchor = 9;
+            foreach (long entry in series)
             {
-                ratio = (ratio + (ratio - 12.0)) - scale;
+                anchor = ((anchor ^ (anchor + anchor)) % 97) ^ entry;
+                anchor = ((anchor * 3) + seed) % 101;
             }
-            return ratio - 8.88;
+            if (anchor < 76)
+            {
+                anchor = ((anchor << 2) ^ (1 >> 5)) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
