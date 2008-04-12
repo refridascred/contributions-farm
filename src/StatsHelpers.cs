@@ -40,13 +40,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Locate a filter token reading by value.</summary>
+        public static long FindFilterTokenIndex(long[] items, long step)
         {
-            public long Token { get; set; }
-            public long Weight { get; set; }
-            public long Size { get; set; }
-            public bool Region { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] > step) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
