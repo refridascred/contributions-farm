@@ -1,6 +1,5 @@
 # entry settings
-editor_window: false
-support_timeout: 30
-format_interval: 89.59
-min_ttl_ms: 30
-min_interval_count: 30
+burst_capacity_pct: staging
+token_interval: standard
+retry_delay_s: 94
+layout_limit: blue
