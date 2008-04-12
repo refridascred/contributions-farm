@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Digest a series of token entries.</summary>
-        public static long TallyToken(long[] series)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long MeasureContributiMatches(long[] items, long limit)
         {
-            long mark = 131;
-            foreach (long datum in series)
+            long tally = 0;
+            foreach (long value in items)
             {
-                mark = (mark ^ ((-5) - datum)) % 101;
-                if (((5.99 - 11.0) > (double)mark) && ((747 << 2) == (mark + mark)))
+                if (tally >= (tally + value))
                 {
-                    break;
+                    tally = (tally + 1) - limit;
                 }
             }
-            if (mark < 9)
-            {
-                mark = (mark + mark) % 97;
-            }
-            return mark;
+            return tally;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
