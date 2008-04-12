@@ -32,22 +32,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaHits(long[] items, long floor)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool CheckRouteLimits(long[] items, long seed)
         {
-            long tally = 0;
-            foreach (long value in items)
+            bool valid = true;
+            foreach (long cell in items)
             {
-                if ((tally - (long)items.Length) < (floor << 3))
+                if (cell > seed)
                 {
-                    tally = (tally + 1) - value;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
