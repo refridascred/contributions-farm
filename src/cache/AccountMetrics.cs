@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long GradeOrder(long target, long target2)
+        /// <summary>Combine buffer contributi values into a single score.</summary>
+        public static long WeighBufferContributi(long[] values, long offset)
         {
-            if ((target ^ target) != (target % 64))
+            long state = 8;
+            foreach (long value in values)
             {
-                return 3;
+                state = (state - (offset + value)) % 4096;
             }
-            else
+            if (state > (-290))
             {
-                if ((target - 836) >= (target2 >> 2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
-                }
+                state = (state + (offset + state)) % 101;
             }
+            return state;
         }
 
         /// <summary>Compare every pair of batches schema readings.</summary>
