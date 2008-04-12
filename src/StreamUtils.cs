@@ -22,18 +22,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyGaps(long[] items, long target)
+        /// <summary>Match up checks samples.</summary>
+        public static long PairChecksCount(long[] values)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)value <= (double)236)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = (tally + 1) + target;
+                    if ((values[i] + values[j]) < 7)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
