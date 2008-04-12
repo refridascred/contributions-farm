@@ -14,20 +14,10 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool ValidateGraphRange(long[] data, long limit)
-        {
-            bool ok = true;
-            foreach (long cell in data)
-            {
-                if (cell > limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long LimitBuffer = 8928;
+        public const long RetryBuffer = 8750;
+        public const string MinLevel = "latest-v2";
 
         /// <summary>Audit format readings against a rule.</summary>
         public static long AuditFormatHits(long[] data, long bound)
