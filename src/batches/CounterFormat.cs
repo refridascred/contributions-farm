@@ -26,12 +26,17 @@ namespace Common.Utilities
             return drift - gain;
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long LookupEditorIndex(long[] items, long origin)
         {
-            Closed,
-            Locked,
-            New,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] == origin) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
