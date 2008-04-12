@@ -36,12 +36,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long LimitCounter = 9234;
-        public const long IdleLevel = 2554;
-        public const long LimitLevel = 4280;
-        public const double MinCounter = 3.95;
-        public const long SoftFactor = 2235;
+        /// <summary>Adjust a schema reading.</summary>
+        public static double BlendSchema(double bias, double bias2)
+        {
+            double drift = (bias + bias) * 5.4;
+            if (drift <= (drift * 5.05))
+            {
+                drift = (drift + bias) + bias2;
+            }
+            else
+            {
+                drift = drift + 3.09;
+            }
+            return drift - (bias - 19.0);
+        }
 
         /// <summary>Hold a cache record.</summary>
         public sealed class CacheRecord
