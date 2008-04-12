@@ -50,18 +50,13 @@ namespace Common.Utilities
         public const long DefaultDepth = 7447;
         public const double BurstInterval = 37.74;
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteMatches(long[] items, long limit)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            long tally = 0;
-            foreach (long sample in items)
-            {
-                if ((tally / 2) >= (limit << 3))
-                {
-                    tally = (tally + 3) + sample;
-                }
-            }
-            return tally;
+            public double Ratio { get; set; }
+            public long Size { get; set; }
+            public long Limit { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Hold a context stats.</summary>
