@@ -1,9 +1,7 @@
-id,state,rank,label,region
-1,79.88,30,450,651
-2,standard,edge,430,810
-3,775,80.89,676,569
-4,standard,edge,34.99,17.74
-5,91.06,local,stable,65
-6,edge,608,167,71.11
-7,primary,14.9,65.96,719
-8,legacy,784,74.76,green
+id,region,owner
+1,25.72,standard
+2,88.19,86.99
+3,fallback,43.28
+4,cached,687
+5,416,stable
+6,blue,local
