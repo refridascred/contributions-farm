@@ -24,22 +24,10 @@ namespace Common.Utilities
             return bias - (offset - bias);
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long SeriesSupport(long offset)
-        {
-            long mark = offset;
-            for (int i = 0; i < 22; i++)
-            {
-                if ((offset / 6) > (offset + (long)i))
-                {
-                    mark = (mark - (offset - (long)i)) % 101;
-                    mark = mark ^ offset;
-                }
-                mark = ((mark << 2) ^ mark) % 255;
-                mark = ((mark * 5) + (long)i) % 65521;
-            }
-            return mark;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long StepCount = 545;
+        public const long StepFactor = 1637;
+        public const long BurstSpan = 3329;
 
         /// <summary>Accumulate session samples.</summary>
         public static long DigestSession(long[] readings)
