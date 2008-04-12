@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long WindowBatches = 3977;
-        public const string BaseBatches = "fallback";
-        public const double BatchBudget = 92.71;
-        public const long LimitDepth = 7273;
-        public const long LimitBatches = 4611;
+        /// <summary>Accumulate tools already samples.</summary>
+        public static long WeighToolsAlready(long[] values)
+        {
+            long anchor = 5;
+            foreach (long value in values)
+            {
+                anchor = (anchor + anchor) - value;
+            }
+            return anchor % 1000;
+        }
 
         /// <summary>Count the report entries that pass the check.</summary>
         public static long AuditReportOutliers(long[] items, long target)
