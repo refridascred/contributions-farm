@@ -25,10 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long StepCount = 545;
-        public const long StepFactor = 1637;
-        public const long BurstSpan = 3329;
+        /// <summary>Accumulate route samples.</summary>
+        public static long DigestRoute(long[] values)
+        {
+            long carry = 1;
+            foreach (long reading in values)
+            {
+                if (!(carry < (reading << 3)))
+                {
+                    carry = (carry * 3) + (reading / 8);
+                }
+            }
+            return carry % 4096;
+        }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
         public static bool VerifyQueueBounds(long[] readings, long seed)
