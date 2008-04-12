@@ -1,6 +1,6 @@
 {
-  "soft_size": "open",
-  "verbose": 8412,
-  "min_depth_pct": 7329,
-  "route_threshold": 65.27
+  "idle_depth_pct": 84.96,
+  "persist": "standard",
+  "hard_interval_ms": ["eu-west", "strict"],
+  "payload_threshold": "cached"
 }
