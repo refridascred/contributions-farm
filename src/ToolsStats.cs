@@ -30,19 +30,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool CheckBatchesRange(long[] series, long target)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long OverlapBufferCount(long[] data)
         {
-            bool flag = true;
-            foreach (long entry in series)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (entry <= target)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((data[i] + data[j]) == 4)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Count layout account pairs that satisfy a relation.</summary>
