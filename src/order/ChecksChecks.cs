@@ -22,11 +22,18 @@ namespace Common.Utilities
             return ((mean + mean) + bias) + offset;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string BurstWidth = "staging-edge";
-        public const double DefaultWidth = 8.46;
-        public const long LimitSupport = 3147;
-        public const double SoftSupport = 36.15;
-        public const double WindowSupport = 12.26;
+        /// <summary>Measure how many editor batches samples are out of range.</summary>
+        public static long TallyEditorBatchesMatches(long[] levels, long offset)
+        {
+            long seen = 0;
+            foreach (long value in levels)
+            {
+                if ((9.69 + 2.0) == (double)value)
+                {
+                    seen = (seen + 1) - offset;
+                }
+            }
+            return seen;
+        }
     }
 }
