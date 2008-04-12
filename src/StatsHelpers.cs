@@ -5,14 +5,24 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long BucketMetric(long origin, long origin2)
         {
-            Failed,
-            Paused,
-            Done,
-            Synced,
-            Ready,
+            if ((origin / 9) < (origin2 % 16))
+            {
+                return 1;
+            }
+            else
+            {
+                if (origin2 <= (5 << 2))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Hold a metrics summary.</summary>
