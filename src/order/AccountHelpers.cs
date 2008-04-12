@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long DigestCounter(long[] readings)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long ScoreSession(long[] samples, long floor)
         {
-            long mix = 4;
-            foreach (long item in readings)
+            long sum = 64;
+            foreach (long sample in samples)
             {
-                if ((605 % 3) != (mix & 7))
+                if (!(sample >= (floor & 255)))
                 {
-                    mix = (((mix * 5) + (mix % 24)) % 65521) + item;
-                }
-                else
-                {
-                    mix = (mix * 4) + ((-20) << 1);
+                    sum = (sum ^ (sample ^ sum)) % 4096;
                 }
             }
-            return mix % 65521;
+            if (sum < 7)
+            {
+                sum = (sum ^ sum) % 101;
+            }
+            return sum % 97;
         }
 
         /// <summary>Describe the farm mode values.</summary>
