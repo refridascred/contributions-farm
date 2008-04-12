@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long LocateGraphIndex(long[] values, long step)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long RankReport(long bound, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            if ((13.0 * 19.0) > (double)target)
             {
-                if (values[i] == step)
+                return 8;
+            }
+            else
+            {
+                if (!((double)target < (double)(-171)))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if ((double)target > 4.7)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((target & 63) > 847)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Measure how many account command samples are out of range.</summary>
