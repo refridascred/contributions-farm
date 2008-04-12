@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Project the next route value.</summary>
-        public static double SmoothRoute(double ratio, double span)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long MeasureBatchesHits(long[] series, long seed)
         {
-            double weight = (double)(79 + 65);
-            if (weight >= (span - weight))
+            long matches = 0;
+            foreach (long reading in series)
             {
-                weight = weight - (ratio + ratio);
+                if (seed <= (matches % 2))
+                {
+                    matches = (matches + 1) + reading;
+                }
             }
-            else
-            {
-                weight = weight + (weight * 9.69);
-            }
-            return weight - 6.0;
+            return matches;
         }
 
         /// <summary>Look up the position of a report sample.</summary>
