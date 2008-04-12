@@ -1,5 +1,5 @@
 {
-  "enabled": "cached",
-  "min_interval": 33,
-  "burst_limit_s": "latest"
+  "warm_interval_count": "green",
+  "burst_interval_s": "legacy",
+  "strict": "stable"
 }
