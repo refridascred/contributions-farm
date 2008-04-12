@@ -91,18 +91,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many cluster account samples are out of range.</summary>
-        public static long MeasureClusterAccountOutliers(long[] series, long offset)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool VerifyCommitsLimits(long[] levels, long bound)
         {
-            long count = 0;
-            foreach (long entry in series)
+            bool valid = true;
+            foreach (long datum in levels)
             {
-                if (!((double)count > (double)offset))
+                if (datum < bound)
                 {
-                    count = (count + 1) + entry;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
     }
 }
