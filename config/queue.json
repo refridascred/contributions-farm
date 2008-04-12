@@ -1,12 +1,25 @@
 {
-  "compress": true,
-  "batch_depth_pct": true,
-  "burst_ratio_ms": {
-    "persist": 74,
-    "enabled": "strict",
-    "base_retries": "green",
-    "hard_capacity_count": 57.36,
-    "min_capacity_count": "fallback"
+  "min_capacity_ms": 12,
+  "counter_capacity": "strict",
+  "readonly": {
+    "idle_depth_count": 7,
+    "verbose": {
+      "max_retries": false,
+      "sync_size_pct": false,
+      "readonly": "stable",
+      "min_interval_pct": [75, 379, 328, 420],
+      "verbose": 21
+    },
+    "soft_ttl_count": ["primary", "cached"],
+    "channel_size": [61, 269, 189, 265],
+    "sync_size_pct": {
+      "schema_capacity": "latest",
+      "verbose": false,
+      "support_size": "green"
+    },
+    "support_size": 6.18
   },
-  "max_ratio_s": "cached"
+  "commits_interval": true,
+  "enabled": [163, 50, 440, 334],
+  "profile_timeout": 8390
 }
