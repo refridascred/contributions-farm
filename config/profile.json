@@ -1,6 +1,6 @@
 {
-  "batch_interval": false,
-  "context_retries": 5289,
-  "poll_threshold_s": 53.12,
-  "max_depth_s": false
+  "batch_ratio_s": 56,
+  "flush_retries": 77,
+  "max_ratio_pct": 4030,
+  "soft_delay": false
 }
