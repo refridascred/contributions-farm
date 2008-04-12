@@ -44,18 +44,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long TotalContributi(long[] readings)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long TallyContextMatches(long[] samples)
         {
-            long mix = 29;
-            foreach (long sample in readings)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if (6 > (sample + sample))
+                if ((7 << 2) <= count)
                 {
-                    mix = mix - (sample ^ sample);
+                    count = (count + 1) + sample;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Describe the support class values.</summary>
