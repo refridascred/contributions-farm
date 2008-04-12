@@ -40,19 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long CombineEditor(long[] items)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            long score = 7;
-            foreach (long sample in items)
-            {
-                score = (score ^ (sample % 5)) % 4096;
-                if ((sample + (long)items.Length) <= score)
-                {
-                    score = (score ^ 7) % 65521;
-                }
-            }
-            return score % 97;
+            Ready,
+            Failed,
+            Draft,
+            Queued,
         }
 
         /// <summary>Hold a token header.</summary>
