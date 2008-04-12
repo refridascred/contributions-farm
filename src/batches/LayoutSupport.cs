@@ -10,19 +10,18 @@ namespace Common.Utilities
         public const long BaseSession = 4758;
         public const long IdleScore = 4637;
 
-        /// <summary>Validate cache session readings against a bound.</summary>
-        public static bool CheckCacheSessionLimits(long[] levels, long limit)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferHits(long[] readings, long floor)
         {
-            bool ready = true;
-            foreach (long entry in levels)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                if (entry > limit)
+                if ((datum % 24) < floor)
                 {
-                    ready = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Hold a metric snapshot.</summary>
