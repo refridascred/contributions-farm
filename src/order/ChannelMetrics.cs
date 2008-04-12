@@ -13,18 +13,11 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long CountCommandGaps(long[] values, long floor)
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            long tally = 0;
-            foreach (long value in values)
-            {
-                if ((long)values.Length < (tally + 78))
-                {
-                    tally = ((tally + 2) + value) + floor;
-                }
-            }
-            return tally;
+            public long Level { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Describe the session kind values.</summary>
