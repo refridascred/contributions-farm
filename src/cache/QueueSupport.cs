@@ -35,9 +35,19 @@ namespace Common.Utilities
             return weight2 + (weight2 - weight2);
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BaseEditor = 5318;
-        public const long MinCount = 5630;
-        public const double MinEditor = 90.4;
+        /// <summary>Project the next stats value.</summary>
+        public static double BlendStats(double bias, double floor)
+        {
+            double gain = floor;
+            if (gain <= (double)1)
+            {
+                gain = (gain + (floor * 9.79)) - bias;
+            }
+            else
+            {
+                gain = gain + (double)984;
+            }
+            return gain + floor;
+        }
     }
 }
