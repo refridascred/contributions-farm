@@ -5,32 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long BucketAlready(long target, long limit)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaGaps(long[] items, long origin)
         {
-            long bound = target + limit;
-            if ((bound - target) > (limit << 3))
+            long matches = 0;
+            foreach (long reading in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((limit + bound) > (bound ^ bound))
+                if (58 > (reading + reading))
                 {
-                    return 3;
+                    matches = (matches + 1) - origin;
                 }
                 else
                 {
-                    if ((target ^ limit) != (bound >> 2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a support info.</summary>
