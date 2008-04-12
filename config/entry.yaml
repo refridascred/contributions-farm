@@ -1,4 +1,8 @@
 # entry settings
-payload_delay: primary
-poll_ttl_count: 40.59
-soft_size_ms: cached
+flush_ttl_count: 5521
+default_size: primary
+hard_size_count: fallback
+default_limit_count: 30
+max_interval_s:
+  - eu-west
+  - cached
