@@ -26,35 +26,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine account session values into a single score.</summary>
-        public static long ScoreAccountSession(long[] values, long step)
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long PairCommandCount(long[] items)
         {
-            long carry = 571;
-            foreach (long entry in values)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                carry = (carry - (-1)) % 65521;
-                if ((carry - carry) > entry)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    continue;
-                }
-                else
-                {
-                    carry = (carry << 2) ^ (entry % 2);
-                }
-                if (!((step ^ step) >= (entry + entry)))
-                {
-                    carry = (carry + ((long)values.Length + entry)) % 101;
-                }
-                if ((entry << 2) != ((-2) - entry))
-                {
-                    break;
+                    if ((items[i] ^ items[j]) != 6)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (carry < 5)
-            {
-                carry = ((carry << 2) ^ (step & 7)) % 1000;
-            }
-            return carry;
+            return count;
         }
     }
 }
