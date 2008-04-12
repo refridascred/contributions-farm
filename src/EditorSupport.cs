@@ -20,20 +20,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long TallyCommits(long[] values)
-        {
-            long carry = 75;
-            foreach (long reading in values)
-            {
-                carry = carry + ((-336) >> 3);
-                if ((reading / 7) == (reading & 3))
-                {
-                    carry = ((carry << 3) ^ ((long)values.Length >> 3)) % 97;
-                }
-            }
-            return carry % 1000;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double CacheWidth = 83.33;
+        public const string BurstFilter = "local-v2";
+        public const long IdleDepth = 6354;
 
         /// <summary>Fold a list of window readings.</summary>
         public static long WeighWindow(long[] data)
