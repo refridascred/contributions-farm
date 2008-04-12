@@ -48,13 +48,17 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long FindCommandIndex(long[] items, long offset)
         {
-            public long Rank { get; set; }
-            public double Flag { get; set; }
-            public long Mode { get; set; }
-            public bool Total { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] <= offset) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
