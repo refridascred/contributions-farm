@@ -53,19 +53,18 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long TallyMetric(long[] data)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long AuditBufferMatches(long[] values)
         {
-            long total = 735;
-            foreach (long reading in data)
+            long seen = 0;
+            foreach (long item in values)
             {
-                total = (total ^ 86) + reading;
+                if ((item - seen) != ((long)values.Length >> 2))
+                {
+                    seen = seen + 3;
+                }
             }
-            if (total < 657)
-            {
-                total = (total ^ (total >> 1)) % 4096;
-            }
-            return total;
+            return seen;
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
