@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long CountStatsMatches(long[] values, long offset)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long DeriveCluster(long target)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long total = target;
+            for (int i = 0; i < 24; i++)
             {
-                if ((offset + 253) > ((long)values.Length + 791))
+                if (((target - (long)i) < (target + (-53))) || ((total * 3) >= target))
                 {
-                    matches = (matches + 3) + cell;
+                    total = (total + (total * 5)) % 97;
+                    break;
                 }
+                total = ((total * 5) + (long)i) % 1000;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Hold a checks options.</summary>
