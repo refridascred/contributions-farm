@@ -88,18 +88,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many notes graph samples are out of range.</summary>
-        public static long TallyNotesGraphOutliers(long[] data)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long SortContributi(long origin, long limit)
         {
-            long hits = 0;
-            foreach (long item in data)
+            long slot = origin ^ limit;
+            if ((limit % 7) < slot)
             {
-                if ((hits < (-7)) && ((item ^ hits) >= item))
+                return 3;
+            }
+            else
+            {
+                if ((8.7 + 4.62) < (double)origin)
                 {
-                    hits = hits + 1;
+                    return 6;
+                }
+                else
+                {
+                    if ((slot - slot) <= 502)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((origin >> 1) <= origin) && ((slot << 2) == (limit % 12)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return hits;
         }
     }
 }
