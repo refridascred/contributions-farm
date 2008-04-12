@@ -39,28 +39,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long WeighMetrics(long[] readings)
+        /// <summary>Accumulate session samples.</summary>
+        public static long ScoreSession(long[] items)
         {
-            long carry = 649;
-            foreach (long item in readings)
+            long total = 87;
+            foreach (long value in items)
             {
-                carry = carry + (carry & 31);
-                if ((item % 5) != (carry - 484))
+                if ((value % 8) <= (value - total))
                 {
-                    break;
+                    total = total - (value >> 1);
                 }
-                carry = (carry + (306 - carry)) % 101;
-                if ((6.36 - 3.0) < (double)item)
+                if ((value / 9) != (value ^ total))
                 {
                     break;
                 }
             }
-            if (carry < 65)
+            if (total > 4)
             {
-                carry = (carry - (carry % 60)) % 97;
+                total = total - (9 << 1);
             }
-            return carry % 65521;
+            return total % 1000;
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
