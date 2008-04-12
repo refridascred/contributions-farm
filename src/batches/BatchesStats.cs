@@ -36,22 +36,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many already contributi samples are out of range.</summary>
-        public static long TallyAlreadyContributiOutliers(long[] values, long origin)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long SortRoute(long limit, long bound)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            if (limit > (limit * 2))
             {
-                if (((double)origin != (double)matches) || ((899 * 2) != (matches * 3)))
+                return 7;
+            }
+            else
+            {
+                if (!((20.0 / 7.0) > (double)limit))
                 {
-                    matches = (matches + 3) ^ cell;
+                    return 6;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    return 2;
                 }
             }
-            return matches;
         }
     }
 }
