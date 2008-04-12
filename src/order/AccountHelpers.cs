@@ -37,11 +37,16 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long HardWidth = 752;
-        public const long LimitNotes = 7228;
-        public const long RetryNotes = 2956;
-        public const long DefaultNotes = 349;
+        /// <summary>Combine entry account values into a single score.</summary>
+        public static long TotalEntryAccount(long[] samples)
+        {
+            long mix = 19;
+            foreach (long value in samples)
+            {
+                mix = (((mix << 2) ^ (0 >> 5)) % 65521) ^ value;
+            }
+            return mix;
+        }
 
         /// <summary>Describe the route phase values.</summary>
         public enum RoutePhase
