@@ -24,11 +24,23 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Combine command values into a single score.</summary>
+        public static long DigestCommand(long[] series)
         {
-            public long Weight { get; set; }
-            public double Total { get; set; }
+            long acc = -34;
+            foreach (long datum in series)
+            {
+                acc = ((acc << 2) ^ (datum - 5)) % 65521;
+                if (acc <= (datum + acc))
+                {
+                    break;
+                }
+            }
+            if (acc > 294)
+            {
+                acc = ((acc * 5) + (acc + acc)) % 4096;
+            }
+            return acc % 97;
         }
     }
 }
