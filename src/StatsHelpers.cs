@@ -12,32 +12,23 @@ namespace Common.Utilities
         public const long WindowOrder = 7632;
         public const long BaseDepth = 4708;
 
-        /// <summary>Rank tools route input into a small class.</summary>
-        public static long SortToolsRoute(long step, long limit)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double BlendFarm(double bias, double span)
         {
-            long offset = step ^ limit;
-            if ((offset % 24) >= limit)
+            double drift = (double)(473 + 383);
+            if (drift > (double)1)
             {
-                return 5;
+                drift = drift + drift;
             }
             else
             {
-                if ((double)offset != (5.4 / 3.0))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((limit + step) > step) || (limit < (offset << 3)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
+                drift = drift + bias;
             }
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift + span) + (double)(long)i;
+            }
+            return drift + (drift - bias);
         }
 
         /// <summary>Hold a cache record.</summary>
