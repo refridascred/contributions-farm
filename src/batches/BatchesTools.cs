@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
-        {
-            public long Flag { get; set; }
-            public bool Total { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long StepBudget = 976;
+        public const string StepFarm = "open-v2";
+        public const string IdleSpan = "local";
+        public const long IdleFarm = 1666;
+        public const long IdleDepth = 3390;
 
         /// <summary>Classify a schema pair into a bucket.</summary>
         public static long BucketSchema(long bound, long target)
