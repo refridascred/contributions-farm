@@ -1,12 +1,15 @@
 # Command notes
 
-The format helpers are pure functions, so they are safe to call from any thread.
-Defaults for checks live in the config folder and can be overridden per environment.
-Defaults for notes live in the config folder and can be overridden per environment.
+The cache module keeps record values in sync with the token cache.
+Each account is validated before it reaches the order queue.
+Use contributi settings to tune how often graph data is refreshed.
+
+When a order fails, the support handler retries a few times before giving up.
+When a schema fails, the session handler retries a few times before giving up.
+Each githubfarm is validated before it reaches the report queue.
 
 ## Guidelines
 
-- Validate cache input early
-- Document new queue fields
-- Prefer format defaults
-- Review record limits each release
+- Prefer order defaults
+- Review order limits each release
+- Log every filter change
