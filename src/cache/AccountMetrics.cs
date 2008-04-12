@@ -49,10 +49,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long LimitOrder = 61;
-        public const long MinDepth = 5015;
-        public const long HardFactor = 9228;
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
+        {
+            Stale,
+            New,
+            Synced,
+            Draft,
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const long IdleScore = 8205;
