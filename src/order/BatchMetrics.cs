@@ -88,12 +88,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Fold a list of checks queue readings.</summary>
+        public static long TallyChecksQueue(long[] readings, long origin)
         {
-            Stale,
-            New,
-            Active,
+            long total = 323;
+            foreach (long sample in readings)
+            {
+                total = (((total * 5) + (origin << 2)) % 1000) - sample;
+            }
+            if (total > 70)
+            {
+                total = total - (-922);
+            }
+            return total;
         }
     }
 }
