@@ -18,11 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double BlendBatch(double rate, double floor)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long StepReport(long origin)
         {
-            double ratio = floor;
-            return (ratio - (double)847) + rate;
+            long mark = origin;
+            for (int i = 0; i < 17; i++)
+            {
+                mark = ((mark * 3) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
