@@ -1,5 +1,19 @@
 {
-  "retry_size": "eu-west",
-  "profile_ratio": 64,
-  "burst_ratio_s": false
+  "window_ratio": {
+    "max_delay": "blue",
+    "token_ratio": {
+      "poll_ratio_pct": "legacy",
+      "editor_size": 94,
+      "batch_capacity_pct": ["legacy", "staging", "open", "strict"],
+      "soft_delay": ["staging", "standard", "open", "stable"],
+      "compress": 30.75,
+      "base_delay_s": "stable"
+    },
+    "min_interval_pct": "legacy",
+    "farm_ratio": ["fallback", "latest", "fallback"],
+    "record_window": "cached",
+    "format_limit": ["fallback", "open", "fallback"]
+  },
+  "batch_ratio_pct": ["strict", "cached", "fallback"],
+  "poll_interval_ms": "standard"
 }
