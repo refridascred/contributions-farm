@@ -50,18 +50,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long AuditLayoutOutliers(long[] series, long offset)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long LocateRecordIndex(long[] series, long target)
         {
-            long tally = 0;
-            foreach (long item in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((item & 127) >= (86 % 3)))
+                if (series[i] < target)
                 {
-                    tally = (tally + 2) - offset;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Describe the record mode values.</summary>
