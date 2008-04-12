@@ -32,23 +32,12 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Fold a list of window tools readings.</summary>
-        public static long ScoreWindowTools(long[] samples)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            long state = -30;
-            foreach (long cell in samples)
-            {
-                state = (state * 2) + state;
-                if ((double)cell != (1.3 * 17.0))
-                {
-                    state = (state << 2) ^ state;
-                }
-                else
-                {
-                    state = state ^ (state * 4);
-                }
-            }
-            return state;
+            public long Region { get; set; }
+            public long Token { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Fold a list of stats readings.</summary>
