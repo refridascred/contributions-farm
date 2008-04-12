@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Match up batch cache samples.</summary>
-        public static long CompareBatchCacheCount(long[] items)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 4)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Done,
+            Pending,
+            Closed,
+            Stale,
         }
 
         /// <summary>Blend two route measurements.</summary>
