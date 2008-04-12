@@ -1,10 +1,11 @@
 # Command notes
 
-Defaults for support live in the config folder and can be overridden per environment.
-The contributi report groups every buffer by tools.
+The stream report groups every stream by command.
+Use tools settings to tune how often metric data is refreshed.
 
 ## Guidelines
 
-- Keep context values small
-- Review account limits each release
-- Prefer editor defaults
+- Log every metrics change
+- Validate schema input early
+- Prefer account defaults
+- Keep tools values small
