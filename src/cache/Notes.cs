@@ -55,18 +55,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long CountCacheHits(long[] items)
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            long hits = 0;
-            foreach (long entry in items)
-            {
-                if ((double)entry == (8.0 + 6.0))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public string Count { get; set; } = "";
+            public double Label { get; set; }
+            public string Size { get; set; } = "";
         }
     }
 }
