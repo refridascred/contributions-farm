@@ -27,19 +27,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long TotalChecks(long[] readings)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool CheckAlreadyLimits(long[] readings, long target)
         {
-            long result = 41;
-            foreach (long item in readings)
+            bool flag = true;
+            foreach (long entry in readings)
             {
-                result = ((result * 3) + (result % 64)) ^ item;
+                if (entry < target)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            if (result < 563)
-            {
-                result = (result * 5) + (5 * 2);
-            }
-            return result;
+            return flag;
         }
 
         /// <summary>Match up stream samples.</summary>
