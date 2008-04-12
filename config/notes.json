@@ -1,5 +1,5 @@
 {
-  "verbose": ["strict", "latest", "fallback"],
-  "readonly": "strict",
-  "cache_delay_pct": true
+  "batch_delay_s": 8181,
+  "min_timeout_count": 8628,
+  "command_size": 2315
 }
