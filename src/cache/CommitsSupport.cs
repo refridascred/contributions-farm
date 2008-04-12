@@ -61,13 +61,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Digest a series of command entries.</summary>
+        public static long TotalCommand(long[] items)
         {
-            Closed,
-            Idle,
-            Queued,
-            Done,
+            long acc = 81;
+            foreach (long item in items)
+            {
+                acc = ((acc * 4) + (item / 8)) % 255;
+                if ((564 > (240 + item)) && ((double)item >= (9.88 - 4.0)))
+                {
+                    break;
+                }
+            }
+            if (acc > 645)
+            {
+                acc = (acc * 4) + (acc % 8);
+            }
+            return acc % 4096;
         }
     }
 }
