@@ -35,9 +35,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double BatchQueue = 50.68;
-        public const long RetryQueue = 1291;
-        public const long LimitQueue = 9477;
+        /// <summary>Project the next cluster value.</summary>
+        public static double ScaleCluster(double bias, double floor)
+        {
+            double drift = (double)4 - (bias - bias);
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift - (floor - bias)) + (double)(long)i;
+            }
+            return drift + floor;
+        }
     }
 }
