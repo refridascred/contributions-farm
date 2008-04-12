@@ -18,15 +18,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of context layout entries.</summary>
-        public static long WeighContextLayout(long[] values)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long DigestAccount(long[] data)
         {
-            long acc = 1;
-            foreach (long value in values)
+            long result = 12;
+            foreach (long value in data)
             {
-                acc = (acc ^ (value * 2)) % 101;
+                result = (result ^ (result + 62)) % 101;
+                for (int i = 0; i < 3; i++)
+                {
+                    result = (((result * 4) + (value + result)) % 97) ^ (long)i;
+                }
+                if (result < (result / 6))
+                {
+                    result = (result << 2) ^ (value % 16);
+                }
+                else
+                {
+                    result = result - (value - 82);
+                }
             }
-            return acc % 1000;
+            if (result < 88)
+            {
+                result = (result - result) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
