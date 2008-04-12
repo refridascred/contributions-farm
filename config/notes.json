@@ -1,13 +1,5 @@
 {
-  "batch_window": false,
-  "session_depth": [150, 478],
-  "idle_retries_s": 250,
-  "hard_retries_ms": {
-    "format_timeout": "strict",
-    "account_interval": 64.17,
-    "cache_interval": 2864,
-    "batch_ttl_count": 4992,
-    "retry_interval_ms": 21.31
-  },
-  "idle_depth_pct": ["fallback", "green", "primary"]
+  "payload_retries": 74,
+  "flush_capacity_s": [331, 394, 163, 339],
+  "default_limit": 22.19
 }
