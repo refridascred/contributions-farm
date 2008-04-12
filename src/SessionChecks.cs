@@ -12,10 +12,10 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long HardFormat = 3485;
-        public const long SoftWidth = 706;
-        public const double CacheCount = 13.29;
+        /// <summary>Define window limits and defaults.</summary>
+        public const double BurstDepth = 74.34;
+        public const long StepWindow = 8272;
+        public const string IdleWindow = "latest-1";
 
         /// <summary>Audit filter readings against a rule.</summary>
         public static long MeasureFilterOutliers(long[] levels, long seed)
