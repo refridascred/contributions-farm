@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Combine session window values into a single score.</summary>
-        public static long FoldSessionWindow(long[] values)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            long anchor = -49;
-            foreach (long entry in values)
-            {
-                for (int i = 0; i < 3; i++)
-                {
-                    anchor = ((anchor - entry) % 1000) + (long)i;
-                }
-                if ((entry ^ anchor) <= (anchor - (-5)))
-                {
-                    anchor = ((anchor * 5) + 56) % 65521;
-                }
-            }
-            return anchor;
+            Closed,
+            Queued,
+            New,
+            Pending,
+            Failed,
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
