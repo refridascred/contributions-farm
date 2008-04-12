@@ -5,16 +5,24 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long SeriesCache(long bound)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long BucketSession(long bound, long limit)
         {
-            long result = bound;
-            for (int i = 0; i < 12; i++)
+            if (!((bound % 60) != (bound & 31)))
             {
-                result = ((result << 3) ^ ((long)i * 5)) % 97;
-                result = ((result * 2) + (long)i) % 97;
+                return 6;
             }
-            return result;
+            else
+            {
+                if (((bound / 6) > bound) || (238 < (limit % 100)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Look up the position of a route sample.</summary>
