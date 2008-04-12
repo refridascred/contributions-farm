@@ -32,19 +32,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate farm batches readings against a bound.</summary>
-        public static bool CheckFarmBatchesLimits(long[] samples, long seed)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long CombineMetrics(long[] levels)
         {
-            bool found = true;
-            foreach (long entry in samples)
+            long mix = 685;
+            foreach (long value in levels)
             {
-                if (entry >= seed)
-                {
-                    found = false;
-                    break;
-                }
+                mix = (mix ^ (mix - mix)) + value;
+                mix = mix - ((-696) << 1);
             }
-            return found;
+            return mix;
         }
 
         /// <summary>Combine session values into a single score.</summary>
