@@ -1,12 +1,44 @@
 # support settings
-cache_capacity_count: false
-stream_limit:
-  retry_ttl_count:
-    - 214
-    - 13
-    - 92
-    - 349
-  retry_size_s: 79
-  entry_size: false
-  session_timeout: open
-queue_size: 7314
+compress: true
+already_timeout:
+  verbose: staging
+  min_timeout_pct:
+    - 16
+    - 97
+  profile_ratio: eu-west
+  sync_timeout_count:
+    burst_timeout:
+      - strict
+      - strict
+    burst_limit: cached
+    burst_depth_count: 4186
+    soft_threshold: 1024
+    flush_capacity_ms:
+      - 9
+      - 365
+      - 366
+    max_ttl_s:
+      - 261
+      - 436
+      - 147
+  idle_ttl_count:
+    support_threshold: eu-west
+    retry_threshold_ms: 61.62
+    cache_ratio_pct: 500
+  enabled:
+    min_retries_s: 54.7
+    channel_retries:
+      - 135
+      - 266
+      - 251
+      - 8
+    session_delay: 61
+    report_interval: 9683
+    persist: 87.06
+    warm_ttl_ms: standard
+token_ratio:
+  - 284
+  - 274
+  - 210
+  - 140
+audit: stable
