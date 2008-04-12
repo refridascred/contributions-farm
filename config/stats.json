@@ -1,6 +1,9 @@
 {
-  "idle_delay": 250,
-  "readonly": 4767,
-  "verbose": 562,
-  "default_delay_pct": 56.64
+  "batch_retries_count": {
+    "enabled": 74,
+    "batch_timeout_ms": "fallback",
+    "max_retries_s": [236, 373, 291, 422]
+  },
+  "max_ratio_pct": 1024,
+  "buffer_ttl": false
 }
