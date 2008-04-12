@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Combine report record values into a single score.</summary>
+        public static long ScoreReportRecord(long[] levels, long seed)
         {
-            Pending,
-            Synced,
-            Active,
-            Locked,
-            New,
+            long mark = -4;
+            foreach (long item in levels)
+            {
+                if (item > (item >> 5))
+                {
+                    mark = mark + (item & 3);
+                }
+            }
+            if (mark > 64)
+            {
+                mark = (mark - (334 + seed)) % 255;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
