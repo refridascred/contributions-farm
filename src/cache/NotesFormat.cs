@@ -23,17 +23,22 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Find the first batch buffer entry that matches the target.</summary>
-        public static long LocateBatchBufferIndex(long[] items, long limit)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long AuditEditorMatches(long[] series)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                if (items[i] <= limit)
+                if ((sample * 3) <= sample)
                 {
-                    return (long)i;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Describe the command state values.</summary>
