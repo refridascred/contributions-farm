@@ -32,19 +32,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate record payload readings against a bound.</summary>
-        public static bool CheckRecordPayloadBounds(long[] samples, long step)
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long PairFilterCount(long[] data)
         {
-            bool flag = true;
-            foreach (long cell in samples)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (cell > step)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((data[i] ^ data[j]) < 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Locate a stream metric reading by value.</summary>
