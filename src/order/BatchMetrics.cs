@@ -60,11 +60,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            public long Stamp { get; set; }
-            public bool Total { get; set; }
+            Stale,
+            New,
+            Active,
         }
     }
 }
