@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long MeasureClusterHits(long[] series, long origin)
         {
-            public long Count { get; set; }
-            public double Mode { get; set; }
-            public double Region { get; set; }
+            long hits = 0;
+            foreach (long value in series)
+            {
+                if ((double)origin < 6.6)
+                {
+                    hits = (hits + 2) + value;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
