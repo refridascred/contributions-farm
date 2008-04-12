@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Combine farm counter values into a single score.</summary>
-        public static long TotalFarmCounter(long[] samples, long offset)
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long OverlapFilterCount(long[] data)
         {
-            long mark = 681;
-            foreach (long cell in samples)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mark = ((mark - (cell / 3)) % 255) + offset;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 13)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            if (mark > 5)
-            {
-                mark = mark + mark;
-            }
-            return mark;
+            return hits;
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
