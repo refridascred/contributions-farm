@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long BucketAlready(long target, long origin)
         {
-            Draft,
-            Ready,
-            Active,
+            long edge = target - origin;
+            if ((edge % 3) > target)
+            {
+                return 1;
+            }
+            else
+            {
+                if (((edge / 3) != (origin + 6)) && (edge > target))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
