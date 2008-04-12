@@ -53,11 +53,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string RetryLayout = "cached-edge";
-        public const long CacheDepth = 4302;
-        public const long MinLayout = 5831;
-        public const string CacheCount = "stable-v2";
-        public const long BurstLayout = 2798;
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
+        {
+            public double Offset { get; set; }
+            public string Stamp { get; set; } = "";
+        }
     }
 }
