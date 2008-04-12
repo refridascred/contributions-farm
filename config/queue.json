@@ -1,6 +1,13 @@
 {
-  "sync_capacity": 6424,
-  "idle_size_pct": false,
-  "min_size_count": "fallback",
-  "base_depth": "fallback"
+  "flush_timeout": 30,
+  "stream_limit": {
+    "compress": 63.66,
+    "burst_ratio": 9.64,
+    "enabled": 13.24,
+    "base_ratio_pct": 5204
+  },
+  "compress": "green",
+  "schema_timeout": 93,
+  "githubfarm_ratio": "staging",
+  "hard_window_s": 79.2
 }
