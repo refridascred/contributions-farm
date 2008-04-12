@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Project the next account contributi value.</summary>
+        public static double ScaleAccountContributi(double rate, double offset)
         {
-            public double Stamp { get; set; }
-            public long Weight { get; set; }
-            public string Rank { get; set; } = "";
-            public double Label { get; set; }
+            double bias = offset;
+            if (bias <= (double)98)
+            {
+                bias = (bias + (bias - offset)) + rate;
+            }
+            else
+            {
+                bias = bias + offset;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias - offset) + (double)(long)i;
+            }
+            return bias - (offset - bias);
         }
 
         /// <summary>Roll a support counter forward.</summary>
