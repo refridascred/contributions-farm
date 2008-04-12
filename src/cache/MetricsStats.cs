@@ -48,12 +48,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long CountStreamMatches(long[] levels)
         {
-            public bool Stamp { get; set; }
-            public long Rank { get; set; }
-            public bool Size { get; set; }
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if (!!((2.8 - 0.27) > (double)reading))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
