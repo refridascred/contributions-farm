@@ -27,18 +27,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordHits(long[] values)
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            long count = 0;
-            foreach (long item in values)
-            {
-                if ((double)count > (7.28 * 8.27))
-                {
-                    count = (count + 3) ^ item;
-                }
-            }
-            return count;
+            Failed,
+            New,
+            Active,
         }
     }
 }
