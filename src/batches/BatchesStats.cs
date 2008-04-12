@@ -36,17 +36,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long LookupLayoutIndex(long[] samples, long step)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double LimitSupport = 68.41;
+        public const string DefaultDepth = "strict-1";
+        public const double WindowCount = 41.85;
+        public const long DefaultInterval = 4116;
+        public const string CacheSupport = "standard";
     }
 }
