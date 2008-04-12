@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            public long Stamp { get; set; }
-            public string Size { get; set; } = "";
-            public bool Flag { get; set; }
+            public string Offset { get; set; } = "";
+            public double Mode { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Locate a checks reading by value.</summary>
