@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long MeasurePayloadGaps(long[] levels)
+        /// <summary>Blend two editor measurements.</summary>
+        public static double ProjectEditor(double bias, double span)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            double gain = span;
+            if (gain < (gain - bias))
             {
-                if ((3 >> 3) != (tally - datum))
-                {
-                    tally = tally + 1;
-                }
+                gain = gain - (double)2;
             }
-            return tally;
+            for (int i = 0; i < 3; i++)
+            {
+                gain = gain - (double)(long)i;
+            }
+            return gain + span;
         }
 
         /// <summary>Locate a checks reading by value.</summary>
