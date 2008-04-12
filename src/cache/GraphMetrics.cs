@@ -27,22 +27,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long ScoreCluster(long[] items, long step)
+        /// <summary>Measure how many window schema samples are out of range.</summary>
+        public static long CountWindowSchemaOutliers(long[] samples)
         {
-            long total = 3;
-            foreach (long entry in items)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                if ((total % 10) == (entry - step))
+                if (((entry - entry) >= (entry * 3)) || (entry < (25 - seen)))
                 {
-                    total = (total + (33 ^ 485)) % 1000;
+                    seen = seen + 3;
                 }
             }
-            if (total < 5)
-            {
-                total = (total * 4) + total;
-            }
-            return total % 1000;
+            return seen;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
