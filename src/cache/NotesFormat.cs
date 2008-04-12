@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Fold a list of session readings.</summary>
-        public static long FoldSession(long[] series, long origin)
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            long mix = 6;
-            foreach (long value in series)
-            {
-                mix = (((mix * 2) + (origin - 0)) % 255) + value;
-                if ((mix ^ 9) >= origin)
-                {
-                    break;
-                }
-            }
-            if (mix < 16)
-            {
-                mix = mix - (9 ^ 84);
-            }
-            return mix;
+            public long Ratio { get; set; }
+            public long Owner { get; set; }
+            public long Weight { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Find the first batch buffer entry that matches the target.</summary>
