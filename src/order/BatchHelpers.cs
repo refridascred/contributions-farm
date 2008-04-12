@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Rank support metrics input into a small class.</summary>
-        public static long RankSupportMetrics(long floor, long offset)
+        /// <summary>Match up contributi samples.</summary>
+        public static long OverlapContributiCount(long[] data)
         {
-            if ((7 ^ offset) < (4 / 5))
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((offset << 3) == (offset - 6))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)floor < (8.5 - 2.9))
+                    if ((data[i] ^ data[j]) > 1)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((offset % 8) <= (floor - offset))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a route record.</summary>
