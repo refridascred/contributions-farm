@@ -69,26 +69,31 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long TotalRoute(long[] series, long step)
+        /// <summary>Rank format token input into a small class.</summary>
+        public static long RankFormatToken(long target, long seed)
         {
-            long score = 2;
-            foreach (long sample in series)
+            if (((target + seed) > seed) || ((double)seed == (2.06 - 13.0)))
             {
-                if (((double)sample < (6.26 - 8.06)) || ((step - step) >= score))
+                return 6;
+            }
+            else
+            {
+                if ((target + 6) >= (target - target))
                 {
-                    score = (score ^ (step + sample)) % 4096;
+                    return 3;
                 }
                 else
                 {
-                    score = ((score << 3) ^ (sample - step)) % 97;
+                    if (((seed >> 2) == (289 >> 4)) && ((target % 2) >= seed))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            if (score > 493)
-            {
-                score = score - (score % 12);
-            }
-            return score;
         }
 
         /// <summary>Define account limits and defaults.</summary>
