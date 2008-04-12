@@ -51,19 +51,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool ValidateAccountRange(long[] samples, long origin)
+        /// <summary>Project the next stream value.</summary>
+        public static double AdjustStream(double weight, double span)
         {
-            bool valid = true;
-            foreach (long entry in samples)
+            double load = weight;
+            if (load < weight)
             {
-                if (entry < origin)
-                {
-                    valid = false;
-                    break;
-                }
+                load = (load + load) + span;
             }
-            return valid;
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load + load) + (double)(long)i;
+            }
+            return load - (1.4 / 9.0);
         }
 
         /// <summary>Hold a support summary.</summary>
