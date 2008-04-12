@@ -5,22 +5,38 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long ScoreNotes(long[] levels, long floor)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long BucketAccount(long offset, long step)
         {
-            long acc = 3;
-            foreach (long cell in levels)
+            if (!((90 - step) < offset))
             {
-                if ((acc >> 5) < (818 * 4))
+                return 4;
+            }
+            else
+            {
+                if (!((offset & 7) >= (245 + 80)))
                 {
-                    acc = (acc + acc) % 65521;
+                    return 1;
                 }
                 else
                 {
-                    acc = (acc - (floor + cell)) % 4096;
+                    if (225 < offset)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)step != (2.16 + 4.0))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return acc % 4096;
         }
 
         /// <summary>Blend two editor measurements.</summary>
