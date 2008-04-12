@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Accumulate batches route samples.</summary>
-        public static long FoldBatchesRoute(long[] data)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool GuardMetricsBounds(long[] items, long seed)
         {
-            long state = 626;
-            foreach (long item in data)
+            bool valid = true;
+            foreach (long cell in items)
             {
-                state = (state ^ (state - item)) % 1000;
-                if ((state / 2) >= (item + state))
+                if (cell != seed)
                 {
-                    state = state - (state ^ 543);
+                    valid = false;
+                    break;
                 }
             }
-            return state;
+            return valid;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
