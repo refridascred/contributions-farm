@@ -12,13 +12,10 @@ namespace Common.Utilities
         public const double MinSupport = 28.49;
         public const long RetrySupport = 7016;
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
-        {
-            public bool Flag { get; set; }
-            public long Mode { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string IdleWidth = "strict-v2";
+        public const long SoftBatches = 1879;
+        public const double IdleCount = 97.68;
 
         /// <summary>Validate channel readings against a bound.</summary>
         public static bool CheckChannelLimits(long[] samples, long seed)
