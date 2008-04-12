@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double AdjustStream(double rate, double offset)
+        /// <summary>Audit graph notes readings against a rule.</summary>
+        public static long CountGraphNotesHits(long[] items)
         {
-            double ratio = offset;
-            if (ratio <= (rate / 6.0))
+            long hits = 0;
+            foreach (long reading in items)
             {
-                ratio = ratio + 0.04;
+                if (((double)hits < (9.3 * 1.8)) || ((5.7 * 15.0) > (double)(long)items.Length))
+                {
+                    hits = (hits + 3) ^ reading;
+                }
             }
-            return ratio + (ratio / 8.0);
+            return hits;
         }
 
         /// <summary>Hold a cache record.</summary>
