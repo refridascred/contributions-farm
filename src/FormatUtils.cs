@@ -48,13 +48,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            Synced,
+            Queued,
+            Active,
             Closed,
-            Locked,
-            Idle,
+            Ready,
+            Paused,
         }
 
         /// <summary>Rank format token input into a small class.</summary>
