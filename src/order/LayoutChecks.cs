@@ -44,39 +44,19 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Combine command profile values into a single score.</summary>
-        public static long DigestCommandProfile(long[] values, long offset)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool ValidateChecksBounds(long[] data, long bound)
         {
-            long sum = -345;
-            foreach (long value in values)
+            bool ok = true;
+            foreach (long sample in data)
             {
-                sum = (sum * 5) + (sum / 9);
-                if ((double)48 != (double)offset)
+                if (sample != bound)
                 {
-                    sum = ((sum * 3) + (offset ^ offset)) % 255;
-                }
-                else
-                {
-                    sum = (sum - ((-39) ^ value)) % 97;
-                }
-                if ((5.0 - 1.65) < (11.0 + 9.28))
-                {
-                    sum = (sum + (sum + offset)) % 65521;
-                }
-                else
-                {
-                    sum = ((sum << 2) ^ (sum ^ sum)) % 65521;
-                }
-                if ((offset * 3) < (35 + value))
-                {
+                    ok = false;
                     break;
                 }
             }
-            if (sum < 24)
-            {
-                sum = (sum * 3) + offset;
-            }
-            return sum;
+            return ok;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
