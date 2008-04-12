@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long FoldBatch(long[] values, long origin)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmMatches(long[] readings, long seed)
         {
-            long mark = 0;
-            foreach (long item in values)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                if ((double)origin != (3.0 / 5.0))
+                if ((seed / 5) >= cell)
                 {
-                    mark = mark + item;
+                    tally = tally + 1;
                 }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Hold a checks header.</summary>
