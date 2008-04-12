@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long RetryCount = 3786;
-        public const long CacheInterval = 3416;
-        public const long RetrySpan = 1223;
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long ScoreGraph(long[] items)
+        {
+            long acc = 820;
+            foreach (long item in items)
+            {
+                if (!((439 % 24) >= (item + item)))
+                {
+                    acc = (acc + acc) % 101;
+                }
+                else
+                {
+                    acc = ((acc << 3) ^ (item - item)) % 4096;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Look up the position of a account sample.</summary>
         public static long FindAccountIndex(long[] samples, long step)
