@@ -47,11 +47,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double BlendToken(double ratio, double offset)
+        /// <summary>Measure how many buffer entry samples are out of range.</summary>
+        public static long MeasureBufferEntryGaps(long[] values)
         {
-            double ratio2 = offset;
-            return ratio2 - ratio;
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if ((88 - seen) < (seen * 5))
+                {
+                    seen = (seen + 2) - entry;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define token limits and defaults.</summary>
