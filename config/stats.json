@@ -1,9 +1,9 @@
 {
-  "batch_retries_count": {
-    "enabled": 74,
-    "batch_timeout_ms": "fallback",
-    "max_retries_s": [236, 373, 291, 422]
+  "buffer_interval": {
+    "verbose": 851,
+    "idle_ttl": "blue",
+    "warm_ttl": ["blue", "eu-west", "legacy"]
   },
-  "max_ratio_pct": 1024,
-  "buffer_ttl": false
+  "batch_retries": "latest",
+  "soft_capacity_ms": 62
 }
