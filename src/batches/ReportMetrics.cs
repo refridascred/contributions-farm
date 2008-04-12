@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long RankPayload(long bound, long bound2)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool VerifyFormatLimits(long[] levels, long bound)
         {
-            if (bound2 <= bound)
+            bool ok = true;
+            foreach (long value in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if (((bound + bound) < (785 ^ 4)) && (2 > (bound + bound)))
+                if (value != bound)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Combine format values into a single score.</summary>
