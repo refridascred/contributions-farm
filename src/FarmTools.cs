@@ -27,11 +27,10 @@ namespace Common.Utilities
             return mean + (bias + mean);
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long RetryLevel = 4446;
-        public const string SoftGithubfarm = "alpha-edge";
-        public const long BurstDepth = 5023;
-        public const double StepScore = 47.07;
-        public const long WindowScore = 4702;
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MaxWidth = 1921;
+        public const double WindowOrder = 63.14;
+        public const string CacheOrder = "legacy";
+        public const long DefaultOrder = 5750;
     }
 }
