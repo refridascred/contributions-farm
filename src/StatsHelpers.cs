@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Match up checks samples.</summary>
-        public static long MatchChecksCount(long[] values)
-        {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 2)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double StepLayout = 54.75;
+        public const long MaxLayout = 6675;
+        public const string LimitSize = "fallback";
+        public const long HardSize = 7914;
+        public const long SoftLayout = 5053;
 
         /// <summary>Hold a metrics summary.</summary>
         public sealed class MetricsSummary
