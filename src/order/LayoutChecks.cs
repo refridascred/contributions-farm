@@ -38,23 +38,19 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double ScaleReport(double scale, double bias)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool VerifyRouteBounds(long[] series, long floor)
         {
-            double mean = scale;
-            if (mean <= (bias / 7.0))
+            bool valid = true;
+            foreach (long entry in series)
             {
-                mean = mean - (scale + mean);
+                if (entry <= floor)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            else
-            {
-                mean = mean - (bias + 1.1);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean - scale) + (double)(long)i;
-            }
-            return mean + (scale + mean);
+            return valid;
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
