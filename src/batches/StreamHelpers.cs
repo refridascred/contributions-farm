@@ -10,25 +10,10 @@ namespace Common.Utilities
         public const long MaxMetrics = 8438;
         public const long BatchMetrics = 2516;
 
-        /// <summary>Digest a series of order contributi entries.</summary>
-        public static long FoldOrderContributi(long[] items)
-        {
-            long sum = -229;
-            foreach (long entry in items)
-            {
-                sum = (sum + (sum + sum)) % 97;
-                sum = (sum ^ entry) % 4096;
-                if (((long)items.Length / 2) >= (entry % 97))
-                {
-                    break;
-                }
-            }
-            if (sum > 466)
-            {
-                sum = (sum - (sum + sum)) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BaseGithubfarm = 5219;
+        public const long DefaultGithubfarm = 363;
+        public const long CacheGithubfarm = 7358;
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
         public static bool GuardPayloadBounds(long[] readings, long step)
