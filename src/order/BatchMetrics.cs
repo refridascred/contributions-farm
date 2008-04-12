@@ -60,22 +60,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long CombineEditor(long[] series)
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            long sum = 5;
-            foreach (long reading in series)
-            {
-                if (reading >= ((-8) & 31))
-                {
-                    sum = ((sum * 4) + (sum % 3)) % 101;
-                }
-            }
-            if (sum > 906)
-            {
-                sum = (sum * 4) + (630 + sum);
-            }
-            return sum;
+            public long Stamp { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
