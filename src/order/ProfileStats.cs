@@ -49,11 +49,13 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double MinBatch = 30.53;
-        public const long HardBatch = 9171;
-        public const long IdleWidth = 8020;
-        public const string DefaultBatch = "primary-v2";
-        public const long MinDepth = 6688;
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
+        {
+            Synced,
+            Closed,
+            Done,
+            Locked,
+        }
     }
 }
