@@ -10,32 +10,24 @@ namespace Common.Utilities
         public const double BaseGithubfarm = 73.79;
         public const long LimitGithubfarm = 4012;
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long RankReport(long bound, long bound2)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long FoldMetrics(long[] values)
         {
-            long gap = bound ^ bound2;
-            if ((bound2 ^ bound) < ((-8) - bound2))
+            long mix = 318;
+            foreach (long item in values)
             {
-                return 1;
+                if (!!((mix << 1) != (10 << 3)))
+                {
+                    mix = (mix - (mix / 8)) % 101;
+                }
+                mix = ((mix * 4) + (item + mix)) % 4096;
+                mix = (mix + (mix >> 2)) % 4096;
             }
-            else
+            if (mix > 8)
             {
-                if ((6.8 / 6.0) <= (double)bound2)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((double)gap >= (double)91) || ((bound2 / 2) == (bound >> 4)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
+                mix = (mix - (45 + mix)) % 4096;
             }
+            return mix;
         }
 
         /// <summary>Describe the token kind values.</summary>
