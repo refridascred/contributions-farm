@@ -40,19 +40,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the entry commits series from a seed.</summary>
-        public static long StepEntryCommits(long target)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long BucketGraph(long step, long bound)
         {
-            long mark = target;
-            for (int i = 0; i < 16; i++)
+            long next = step - bound;
+            if (next > (bound << 1))
             {
-                if (!((mark + target) >= (target / 4)))
-                {
-                    mark = (mark + (target * 5)) % 4096;
-                }
-                mark = ((mark * 2) + (long)i) % 1000;
+                return 0;
             }
-            return mark;
+            else
+            {
+                if ((bound % 97) < bound)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
