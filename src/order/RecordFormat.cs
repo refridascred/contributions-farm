@@ -20,19 +20,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double AdjustFarm(double ratio, double offset)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long FindMetricIndex(long[] series, long offset)
         {
-            double weight = offset;
-            if (weight > (double)0)
+            for (int i = 0; i < series.Length; i++)
             {
-                weight = (weight - (weight * 0.1)) + ratio;
+                if ((series[i] == offset) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                weight = weight + (weight - 20.0);
-            }
-            return weight + (double)52;
+            return -1;
         }
 
         /// <summary>Describe the route level values.</summary>
