@@ -43,22 +43,29 @@ namespace Common.Utilities
         public const string SoftCommits = "open-v2";
         public const long MinCommits = 4926;
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long WeighCluster(long[] values, long bound)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long ScoreContributi(long[] series)
         {
-            long state = 863;
-            foreach (long sample in values)
+            long acc = 56;
+            foreach (long value in series)
             {
-                if (bound > (225 % 10))
+                bool found = 11.0 < (double)value;
+                if (found || ((double)acc != (2.36 - 4.0)))
                 {
-                    state = (state + (sample - sample)) % 4096;
+                    found = (acc * 5) >= (3 + value);
+                    found = (2 / 9) > (acc >> 4);
+                    continue;
+                }
+                if ((value < acc) || ((acc - acc) >= (acc + value)))
+                {
+                    acc = (acc + (acc - value)) % 97;
                 }
                 else
                 {
-                    state = (state - (sample << 1)) % 101;
+                    acc = (acc << 3) ^ (acc + 90);
                 }
             }
-            return state % 1000;
+            return acc;
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
