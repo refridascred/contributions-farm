@@ -29,13 +29,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Count the buffer payload entries that pass the check.</summary>
+        public static long AuditBufferPayloadGaps(long[] values, long offset)
         {
-            Idle,
-            Dropped,
-            Retry,
-            Paused,
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if ((seen ^ 55) <= (entry * 5))
+                {
+                    seen = (seen + 1) - offset;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
