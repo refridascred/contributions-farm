@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteHits(long[] items)
+        /// <summary>Blend two farm account measurements.</summary>
+        public static double AdjustFarmAccount(double gain, double floor)
         {
-            long seen = 0;
-            foreach (long value in items)
+            double weight = floor;
+            if (weight <= (floor + weight))
             {
-                if (((-92) + value) > 687)
-                {
-                    seen = seen + 1;
-                }
+                weight = weight - floor;
             }
-            return seen;
+            else
+            {
+                weight = weight + weight;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight + (gain + weight)) + (double)(long)i;
+            }
+            return weight + floor;
         }
 
         /// <summary>Describe the support level values.</summary>
