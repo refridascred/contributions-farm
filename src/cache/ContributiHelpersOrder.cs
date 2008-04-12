@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BurstSession = 5365;
-        public const long LimitTimeout = 9667;
-        public const long BurstFactor = 5027;
-        public const string DefaultSession = "strict-v2";
-        public const long MaxSession = 3623;
+        /// <summary>Audit record cluster readings against a rule.</summary>
+        public static long AuditRecordClusterGaps(long[] series, long floor)
+        {
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if (((floor % 5) <= 82) || !(4.22 > (double)sample))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Classify a payload record pair into a bucket.</summary>
         public static long GradePayloadRecord(long origin, long bound)
