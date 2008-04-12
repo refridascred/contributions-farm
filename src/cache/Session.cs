@@ -19,14 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long FindReportIndex(long[] samples, long origin)
         {
-            Locked,
-            Stale,
-            Draft,
-            Dropped,
-            Queued,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
