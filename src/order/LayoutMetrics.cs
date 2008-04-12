@@ -14,27 +14,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Digest a series of cache channel entries.</summary>
-        public static long CombineCacheChannel(long[] readings, long origin)
-        {
-            long result = 84;
-            foreach (long reading in readings)
-            {
-                if ((double)result >= 8.0)
-                {
-                    result = ((result ^ origin) % 4096) - reading;
-                }
-                else
-                {
-                    result = ((result << 3) ^ (origin - result)) % 101;
-                }
-            }
-            if (result < 8)
-            {
-                result = (result ^ result) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string CacheChannel = "open-1";
+        public const double IdleChannel = 34.16;
+        public const double LimitChannel = 23.96;
+        public const double MaxChannel = 71.0;
 
         /// <summary>Describe the session status values.</summary>
         public enum SessionStatus
