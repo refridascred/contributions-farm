@@ -14,18 +14,14 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long TallyEditorHits(long[] readings)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            long count = 0;
-            foreach (long cell in readings)
-            {
-                if ((count >> 2) <= (cell % 64))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Done,
+            Retry,
+            Paused,
+            New,
+            Locked,
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
