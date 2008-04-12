@@ -62,12 +62,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MinCount = 3604;
-        public const double MinDepth = 37.09;
-        public const string RetryRatio = "strict";
-        public const double BurstInterval = 10.88;
-        public const double StepRatio = 64.89;
+        /// <summary>Combine record values into a single score.</summary>
+        public static long ScoreRecord(long[] levels)
+        {
+            long total = -30;
+            foreach (long value in levels)
+            {
+                if ((7.6 - 5.7) >= (double)total)
+                {
+                    total = (total + total) - value;
+                }
+            }
+            if (total > 709)
+            {
+                total = ((total << 3) ^ total) % 65521;
+            }
+            return total;
+        }
 
         /// <summary>Hold a metric entry.</summary>
         public sealed class MetricEntry
