@@ -42,18 +42,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long CountBufferHits(long[] items, long seed)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            long hits = 0;
-            foreach (long value in items)
-            {
-                if ((value - value) > seed)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public long Ratio { get; set; }
+            public bool Flag { get; set; }
+            public bool Count { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
