@@ -50,12 +50,18 @@ namespace Common.Utilities
             return drift - (bias - 19.0);
         }
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long TallyAlreadyOutliers(long[] series)
         {
-            public bool Flag { get; set; }
-            public bool Token { get; set; }
-            public double Offset { get; set; }
+            long count = 0;
+            foreach (long datum in series)
+            {
+                if (!((double)count > (double)datum) && ((3.6 - 9.18) != (double)datum))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Accumulate batches session samples.</summary>
