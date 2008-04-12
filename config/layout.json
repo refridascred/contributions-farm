@@ -1,23 +1,12 @@
 {
-  "layout_retries": "stable",
-  "burst_ttl_ms": {
-    "notes_depth": 17,
-    "editor_size": {
-      "verbose": ["edge", "edge"],
-      "account_ttl": true,
-      "min_timeout_pct": 9.0,
-      "report_limit": "stable",
-      "flush_capacity_s": "green"
-    },
-    "editor_interval": 4685,
-    "channel_delay": {
-      "compress": "edge",
-      "hard_timeout": 4184,
-      "filter_depth": 250,
-      "metrics_size": 19.82,
-      "order_threshold": 254
-    },
-    "enabled": 1820
+  "buffer_timeout": 54.07,
+  "commits_ratio": "local",
+  "idle_timeout": {
+    "max_ttl": 93,
+    "metrics_capacity": 55.1,
+    "poll_depth": false,
+    "retry_limit": 71.89
   },
-  "flush_delay": "eu-west"
+  "support_retries": "edge",
+  "format_ttl": "legacy"
 }
