@@ -1,5 +1,6 @@
 {
-  "sync_timeout": "stable",
-  "audit": 6.66,
-  "enabled": 30
+  "retry_retries_pct": true,
+  "compress": "latest",
+  "graph_ttl": 1024,
+  "tools_window": "edge"
 }
