@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long RankSession(long bound, long bound2)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            long bound3 = bound ^ bound2;
-            if (((bound + bound3) < (bound3 >> 1)) && ((bound2 & 63) == (bound3 * 4)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((94 * 4) < (bound2 << 1))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (!((double)bound != (8.0 / 3.0)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Draft,
+            Ready,
+            Active,
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
