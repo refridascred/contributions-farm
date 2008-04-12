@@ -15,15 +15,32 @@ namespace Common.Utilities
         public const long IdleBatch = 4791;
         public const double HardBatch = 40.53;
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long SeriesBuffer(long step)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long BucketGithubfarm(long bound, long target)
         {
-            long acc = step;
-            for (int i = 0; i < 18; i++)
+            long step = bound - target;
+            if (((step & 31) >= ((-71) % 60)) || ((step + 6) <= (target << 1)))
             {
-                acc = ((acc * 2) + (long)i) % 65521;
+                return 5;
             }
-            return acc;
+            else
+            {
+                if ((27 & 255) > bound)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((-195) >= (step ^ target))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
