@@ -1,14 +1,5 @@
 {
-  "channel_depth": false,
-  "hard_delay_ms": {
-    "burst_ttl": "primary",
-    "batch_depth": true,
-    "poll_interval_ms": 44,
-    "enabled": "fallback",
-    "audit": 8580
-  },
-  "channel_timeout": false,
-  "persist": 23.88,
-  "commits_window": 250,
-  "strict": [48, 90, 305]
+  "tools_retries": 3082,
+  "base_interval_ms": 5474,
+  "sync_capacity_ms": 93
 }
