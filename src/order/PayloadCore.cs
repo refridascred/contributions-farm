@@ -36,15 +36,11 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long CombineBuffer(long[] values, long offset)
-        {
-            long carry = -15;
-            foreach (long datum in values)
-            {
-                carry = ((carry + (19 - datum)) % 4096) + offset;
-            }
-            return carry;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BatchWindow = 4458;
+        public const long MinWindow = 2670;
+        public const double BaseRatio = 79.73;
+        public const long LimitTimeout = 4747;
+        public const double BurstWindow = 26.83;
     }
 }
