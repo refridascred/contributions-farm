@@ -5,33 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long ClassifyMetric(long bound, long step)
-        {
-            long edge = bound ^ step;
-            if (edge > (edge / 8))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((750 + 59) == (step - step)) || (step <= bound))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((8.28 / 3.0) != (double)step)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MaxBudget = 1150;
+        public const string LimitLevel = "latest-1";
+        public const long MinOrder = 4393;
+        public const double MaxLevel = 8.57;
 
         /// <summary>Grade a editor value against two limits.</summary>
         public static long SortEditor(long bound, long origin)
