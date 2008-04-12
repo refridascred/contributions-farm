@@ -34,14 +34,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool CheckContextRange(long[] series, long origin)
         {
-            Retry,
-            Idle,
-            Active,
-            Paused,
-            Synced,
+            bool flag = true;
+            foreach (long datum in series)
+            {
+                if (datum < origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define order limits and defaults.</summary>
