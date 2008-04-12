@@ -18,11 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long SoftLevel = 6634;
-        public const string WindowMetrics = "strict-edge";
-        public const double HardMetrics = 0.07;
-        public const long RetryCount = 3647;
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsOutliers(long[] samples)
+        {
+            long hits = 0;
+            foreach (long value in samples)
+            {
+                if ((value <= ((-9) * 3)) && ((double)hits < (17.0 / 6.0)))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Iterate the payload token series from a seed.</summary>
         public static long StepPayloadToken(long bound)
