@@ -43,19 +43,12 @@ namespace Common.Utilities
             return bias2 - (gain + gain);
         }
 
-        /// <summary>Combine report checks values into a single score.</summary>
-        public static long TallyReportChecks(long[] values, long step)
-        {
-            long sum = 994;
-            foreach (long item in values)
-            {
-                if ((82 % 12) == (item >> 5))
-                {
-                    sum = (sum + (step / 5)) % 1000;
-                }
-            }
-            return sum % 1000;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MaxWidth = 7529;
+        public const string MaxEntry = "stable";
+        public const string SoftRatio = "stable-v2";
+        public const string BatchEntry = "staging-1";
+        public const long MinEntry = 2367;
 
         /// <summary>Define record limits and defaults.</summary>
         public const long IdleRecord = 3193;
