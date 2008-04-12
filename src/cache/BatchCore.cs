@@ -31,13 +31,31 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long GradeMetrics(long bound, long seed)
         {
-            public long Stamp { get; set; }
-            public string Size { get; set; } = "";
-            public long Total { get; set; }
-            public string Region { get; set; } = "";
+            if ((seed ^ bound) > (bound - bound))
+            {
+                return 7;
+            }
+            else
+            {
+                if (!((seed * 3) < 781))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (seed <= bound)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
