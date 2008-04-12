@@ -56,19 +56,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool CheckCacheBounds(long[] levels, long floor)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            bool valid = true;
-            foreach (long value in levels)
-            {
-                if (value <= floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public bool Ratio { get; set; }
+            public long Owner { get; set; }
+            public double Size { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
