@@ -15,13 +15,25 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long SortBatch(long step, long seed)
         {
-            Draft,
-            Active,
-            Synced,
-            Queued,
+            long offset = step - seed;
+            if ((seed + step) > ((-931) << 2))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((step + step) < (offset ^ 9))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Rank filter input into a small class.</summary>
