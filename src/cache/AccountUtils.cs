@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long CountLayoutMatches(long[] series, long limit)
         {
-            Paused,
-            Pending,
-            Draft,
-            Synced,
+            long count = 0;
+            foreach (long datum in series)
+            {
+                if ((853 - count) >= (datum << 2))
+                {
+                    count = (count + 3) - limit;
+                }
+            }
+            return count;
         }
 
         /// <summary>Adjust a commits reading.</summary>
