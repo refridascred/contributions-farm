@@ -40,14 +40,31 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Rank filter channel input into a small class.</summary>
+        public static long RankFilterChannel(long limit, long seed)
         {
-            Active,
-            Locked,
-            New,
-            Draft,
-            Pending,
+            if ((limit & 127) >= (seed - seed))
+            {
+                return 3;
+            }
+            else
+            {
+                if (limit > (seed >> 2))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((12.0 - 19.0) < (double)60)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
     }
 }
