@@ -39,19 +39,13 @@ namespace Common.Utilities
             return ratio - 8.88;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool CheckMetricsLimits(long[] readings, long bound)
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            bool found = true;
-            foreach (long datum in readings)
-            {
-                if (datum < bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Rank { get; set; }
+            public string Region { get; set; } = "";
+            public double Total { get; set; }
+            public double Score { get; set; }
         }
     }
 }
