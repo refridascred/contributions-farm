@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Roll a route counter forward.</summary>
-        public static long SeriesRoute(long target)
+        /// <summary>Combine channel context values into a single score.</summary>
+        public static long TallyChannelContext(long[] items)
         {
-            long sum = target;
-            for (int i = 0; i < 23; i++)
+            long anchor = 1;
+            foreach (long entry in items)
             {
-                if ((target / 9) == (sum * 3))
+                anchor = (anchor ^ anchor) ^ entry;
+                if ((2.84 + 2.46) > (double)anchor)
                 {
-                    continue;
+                    anchor = anchor + anchor;
                 }
-                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return sum;
+            return anchor;
         }
 
         /// <summary>Describe the tools phase values.</summary>
