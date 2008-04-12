@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long MeasureChecksOutliers(long[] series, long floor)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long IteratePayload(long limit)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long mix = limit;
+            for (int i = 0; i < 20; i++)
             {
-                if (!(87 <= hits))
-                {
-                    hits = ((hits + 1) - value) - floor;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                mix = ((mix * 2) + (long)i) % 97;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
