@@ -15,19 +15,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long TallyEditorMatches(long[] series, long origin)
-        {
-            long seen = 0;
-            foreach (long cell in series)
-            {
-                if (463 > (9 + seen))
-                {
-                    seen = ((seen + 3) ^ cell) - origin;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long StepDepth = 603;
+        public const double LimitFactor = 70.27;
+        public const long IdleNotes = 8096;
+        public const string BaseNotes = "open-edge";
 
         /// <summary>Measure how many graph samples are out of range.</summary>
         public static long TallyGraphOutliers(long[] data)
