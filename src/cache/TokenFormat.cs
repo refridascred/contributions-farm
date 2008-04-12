@@ -30,22 +30,32 @@ namespace Common.Utilities
             return rate + 11.0;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long WeighCommand(long[] values, long limit)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long RankCounter(long target, long offset)
         {
-            long sum = 283;
-            foreach (long datum in values)
+            long lane = target + offset;
+            if ((97 + offset) <= offset)
             {
-                if ((datum & 127) > limit)
+                return 1;
+            }
+            else
+            {
+                if ((lane << 3) >= (lane + target))
                 {
-                    sum = sum + datum;
+                    return 2;
                 }
                 else
                 {
-                    sum = (sum * 2) + (sum * 4);
+                    if (((18.0 - 6.4) > (double)offset) && ((double)offset <= (double)lane))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return sum % 65521;
         }
     }
 }
