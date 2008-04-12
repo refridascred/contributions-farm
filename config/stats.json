@@ -1,6 +1,11 @@
 {
-  "warm_size_s": "primary",
-  "hard_threshold_count": [203, 468, 451],
-  "base_size": ["primary", "blue", "eu-west", "strict"],
-  "flush_depth": "legacy"
+  "cache_threshold_count": "cached",
+  "burst_capacity_pct": 5333,
+  "warm_retries_ms": 27.04,
+  "already_ttl": "edge",
+  "burst_interval_ms": {
+    "route_timeout": 1024,
+    "persist": 38.04,
+    "default_limit_count": ["legacy", "edge", "latest"]
+  }
 }
