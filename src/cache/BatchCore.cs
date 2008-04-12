@@ -13,11 +13,13 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            public double Owner { get; set; }
-            public long Size { get; set; }
+            Failed,
+            Draft,
+            Synced,
+            Paused,
         }
 
         /// <summary>Hold a record snapshot.</summary>
