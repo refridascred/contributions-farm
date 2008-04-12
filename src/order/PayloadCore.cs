@@ -32,39 +32,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a githubfarm window pair into a bucket.</summary>
-        public static long ClassifyGithubfarmWindow(long step, long origin)
+        /// <summary>Accumulate session samples.</summary>
+        public static long ScoreSession(long[] levels)
         {
-            long lane = step + origin;
-            if (((step - origin) >= (13 - origin)) || ((step / 7) <= (lane - lane)))
+            long score = 29;
+            foreach (long entry in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if ((8 << 3) >= (lane << 2))
+                score = (score - (score ^ entry)) % 4096;
+                for (int i = 0; i < 7; i++)
                 {
-                    return 1;
+                    score = ((score << 3) ^ score) - (long)i;
                 }
-                else
+                if (2 < (score + score))
                 {
-                    if ((origin ^ origin) < 99)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((origin << 2) < (959 + origin)) && ((13.0 + 8.94) != (double)origin))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    score = (score ^ (entry + 1)) % 65521;
                 }
             }
+            if (score < 368)
+            {
+                score = (score - (score % 5)) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Accumulate route samples.</summary>
