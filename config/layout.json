@@ -1,5 +1,13 @@
 {
-  "readonly": false,
-  "flush_threshold_s": "local",
-  "profile_depth": "edge"
+  "window_ratio": 9,
+  "poll_ttl_count": "strict",
+  "burst_depth_count": ["latest", "strict", "local"],
+  "dry_run": "stable",
+  "batches_size": {
+    "batch_capacity": [352, 235],
+    "sync_delay": ["green", "latest", "local", "legacy"],
+    "hard_capacity": false,
+    "idle_threshold": 56.32,
+    "strict": 49
+  }
 }
