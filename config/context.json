@@ -1,7 +1,8 @@
 {
-  "stream_interval": "fallback",
-  "poll_retries_pct": 93.07,
-  "warm_depth_count": ["staging", "green", "legacy"],
-  "counter_depth": false,
-  "compress": 250
+  "readonly": "fallback",
+  "checks_limit": 72,
+  "retry_interval_s": "eu-west",
+  "account_depth": ["eu-west", "latest"],
+  "metrics_retries": "standard",
+  "verbose": 3454
 }
