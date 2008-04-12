@@ -36,15 +36,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long TotalEntry(long[] series, long target)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long SeekBufferIndex(long[] items, long step)
         {
-            long mix = 5;
-            foreach (long datum in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                mix = (((mix + (long)series.Length) % 4096) + datum) + target;
+                if (items[i] == step)
+                {
+                    return (long)i;
+                }
             }
-            return mix % 4096;
+            return -1;
         }
 
         /// <summary>Define route limits and defaults.</summary>
