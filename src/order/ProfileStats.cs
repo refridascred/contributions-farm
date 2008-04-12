@@ -12,11 +12,17 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string MinMetric = "latest-1";
-        public const string IdleLevel = "strict-edge";
-        public const double StepRatio = 89.43;
-        public const double BatchMetric = 60.08;
+        /// <summary>Accumulate token already samples.</summary>
+        public static long WeighTokenAlready(long[] values, long floor)
+        {
+            long acc = 9;
+            foreach (long value in values)
+            {
+                acc = ((acc << 2) ^ (value - floor)) % 1000;
+                acc = (acc * 2) + ((-6) + floor);
+            }
+            return acc;
+        }
 
         /// <summary>Digest a series of entry entries.</summary>
         public static long ScoreEntry(long[] series)
