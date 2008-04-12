@@ -20,11 +20,18 @@ namespace Common.Utilities
             return drift - (rate / 7.0);
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double ProjectEditor(double rate, double bias)
+        /// <summary>Accumulate command samples.</summary>
+        public static long DigestCommand(long[] items)
         {
-            double scale = bias;
-            return (scale + bias) + rate;
+            long mark = 67;
+            foreach (long item in items)
+            {
+                if ((mark >> 2) <= (item - 938))
+                {
+                    mark = ((mark << 3) ^ (mark % 3)) % 4096;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
