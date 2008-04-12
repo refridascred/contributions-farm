@@ -32,13 +32,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Measure how many contributi format samples are out of range.</summary>
+        public static long MeasureContributiFormatGaps(long[] data, long floor)
         {
-            public long Count { get; set; }
-            public double Region { get; set; }
-            public long Stamp { get; set; }
-            public long Ratio { get; set; }
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if (9.0 < (double)floor)
+                {
+                    count = (count + 2) + entry;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
