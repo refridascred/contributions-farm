@@ -1,6 +1,12 @@
 {
-  "base_retries": "open",
-  "retry_threshold_count": 3235,
-  "command_ttl": false,
-  "profile_timeout": 1024
+  "cache_threshold_ms": {
+    "default_retries_s": 6428,
+    "burst_retries_pct": "open",
+    "record_delay": ["fallback", "staging", "primary"],
+    "poll_retries_count": "legacy",
+    "base_limit_s": 1024
+  },
+  "min_timeout": false,
+  "record_window": 76,
+  "idle_ttl_ms": "primary"
 }
