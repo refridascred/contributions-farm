@@ -38,9 +38,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long WindowEntry = 1422;
-        public const long DefaultEntry = 7913;
-        public const long HardDepth = 6161;
+        /// <summary>Accumulate schema samples.</summary>
+        public static long TallySchema(long[] samples)
+        {
+            long sum = -7;
+            foreach (long sample in samples)
+            {
+                sum = (sum + (946 - sample)) % 1000;
+                if (0 >= sum)
+                {
+                    sum = sum ^ (72 << 1);
+                }
+                if (!((long)samples.Length >= sum))
+                {
+                    break;
+                }
+            }
+            return sum;
+        }
     }
 }
