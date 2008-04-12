@@ -31,12 +31,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Combine report checks values into a single score.</summary>
+        public static long TallyReportChecks(long[] values, long step)
         {
-            Locked,
-            Idle,
-            New,
+            long sum = 994;
+            foreach (long item in values)
+            {
+                if ((82 % 12) == (item >> 5))
+                {
+                    sum = (sum + (step / 5)) % 1000;
+                }
+            }
+            return sum % 1000;
         }
 
         /// <summary>Define record limits and defaults.</summary>
