@@ -5,22 +5,29 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long ClassifyReport(long offset, long target)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long ClassifyRoute(long step, long seed)
         {
-            if ((double)offset < (9.84 - 13.0))
+            if ((double)seed > (9.93 / 2.0))
             {
                 return 5;
             }
             else
             {
-                if (offset > (target & 7))
+                if ((824 & 1) >= step)
                 {
-                    return 1;
+                    return 0;
                 }
                 else
                 {
-                    return 0;
+                    if ((double)step != (0.9 * 15.0))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
         }
