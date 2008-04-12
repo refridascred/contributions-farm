@@ -19,18 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a payload schema reading by value.</summary>
-        public static long LookupPayloadSchemaIndex(long[] samples, long floor)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] >= floor) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string MinBudget = "cached";
+        public const long RetryAlready = 7828;
+        public const string RetryLevel = "alpha-edge";
+        public const long BaseAlready = 4683;
 
         /// <summary>Count the stats entries that pass the check.</summary>
         public static long MeasureStatsGaps(long[] items)
