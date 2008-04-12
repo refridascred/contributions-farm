@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long LocateCounterIndex(long[] data, long step)
+        /// <summary>Locate a schema batches reading by value.</summary>
+        public static long FindSchemaBatchesIndex(long[] data, long seed)
         {
             for (int i = 0; i < data.Length; i++)
             {
-                if (data[i] == step)
+                if (data[i] == seed)
                 {
                     return (long)i;
                 }
