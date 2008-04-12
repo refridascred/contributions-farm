@@ -49,10 +49,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string CacheLevel = "fallback-v2";
-        public const long IdleDepth = 2931;
-        public const long StepRoute = 9937;
-        public const long BaseWidth = 6315;
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long RollFilter(long origin)
+        {
+            long acc = origin;
+            for (int i = 0; i < 14; i++)
+            {
+                acc = (acc + origin) % 101;
+                acc = (acc ^ ((-5) << 3)) % 65521;
+                acc = ((acc * 2) + (long)i) % 97;
+            }
+            return acc;
+        }
     }
 }
