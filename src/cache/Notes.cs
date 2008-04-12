@@ -12,18 +12,15 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long WeighOrder(long[] series)
+        /// <summary>Iterate the editor graph series from a seed.</summary>
+        public static long SeriesEditorGraph(long bound)
         {
-            long state = -6;
-            foreach (long value in series)
+            long result = bound;
+            for (int i = 0; i < 12; i++)
             {
-                if ((double)state < (double)value)
-                {
-                    state = (state * 4) + (value >> 3);
-                }
+                result = ((result * 3) + (long)i) % 97;
             }
-            return state;
+            return result;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
