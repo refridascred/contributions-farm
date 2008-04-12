@@ -37,22 +37,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the farm order entries that pass the check.</summary>
-        public static long AuditFarmOrderGaps(long[] values)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long TotalEntry(long[] series, long target)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long mix = 5;
+            foreach (long datum in series)
             {
-                if (item <= (item + hits))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                mix = (((mix + (long)series.Length) % 4096) + datum) + target;
             }
-            return hits;
+            return mix % 4096;
         }
 
         /// <summary>Define route limits and defaults.</summary>
