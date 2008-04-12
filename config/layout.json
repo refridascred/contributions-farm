@@ -1,7 +1,18 @@
 {
-  "batches_capacity": ["eu-west", "latest", "latest", "legacy"],
-  "compress": ["fallback", "open"],
-  "base_limit_s": false,
-  "hard_ratio_count": false,
-  "readonly": 68.85
+  "sync_depth": {
+    "cluster_limit": "latest",
+    "profile_capacity": false,
+    "retry_capacity_ms": "local"
+  },
+  "base_size_pct": "legacy",
+  "sync_delay_ms": 25,
+  "verbose": {
+    "session_threshold": 100,
+    "checks_delay": {
+      "route_size": 30,
+      "readonly": [373, 284],
+      "sync_interval_count": "latest"
+    },
+    "batches_size": 52
+  }
 }
