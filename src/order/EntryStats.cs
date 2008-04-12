@@ -60,17 +60,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long SeekEditorIndex(long[] samples, long limit)
+        /// <summary>Match up checks command samples.</summary>
+        public static long CompareChecksCommandCount(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((samples[i] < limit) && ((samples[i] % 5) != 0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] + series[j]) < 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
