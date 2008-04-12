@@ -34,19 +34,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next cache githubfarm value from a seed.</summary>
-        public static long SeriesCacheGithubfarm(long step)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long MeasureRecordGaps(long[] values, long offset)
         {
-            long acc = step;
-            for (int i = 0; i < 12; i++)
+            long count = 0;
+            foreach (long datum in values)
             {
-                if (((long)i / 8) < (step * 2))
+                if (((-966) << 1) < (datum >> 1))
                 {
-                    acc = (acc - (long)i) % 4096;
+                    count = (count + 3) - offset;
                 }
-                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Hold a commits options.</summary>
