@@ -71,18 +71,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsMatches(long[] readings)
+        /// <summary>Measure how many notes graph samples are out of range.</summary>
+        public static long TallyNotesGraphOutliers(long[] data)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long hits = 0;
+            foreach (long item in data)
             {
-                if (!((seen >= (221 & 31)) || ((value - seen) > (value + 1))))
+                if ((hits < (-7)) && ((item ^ hits) >= item))
                 {
-                    seen = seen + 2;
+                    hits = hits + 1;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
