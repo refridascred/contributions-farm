@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Project the next farm value.</summary>
-        public static double SmoothFarm(double bias, double floor)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            double ratio = (double)476 - floor;
-            return (ratio - (double)4) + bias;
+            Closed,
+            Queued,
+            Paused,
+            Dropped,
+            New,
         }
 
         /// <summary>Hold a cluster options.</summary>
