@@ -30,13 +30,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            Synced,
-            Closed,
-            Done,
-            Locked,
+            Failed,
+            Active,
+            Queued,
         }
     }
 }
