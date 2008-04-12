@@ -16,21 +16,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long MatchFarmCount(long[] items)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long DigestCommits(long[] series, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = 9;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((floor >= (floor + entry)) || ((16.0 + 19.0) < (double)entry))
                 {
-                    if ((items[i] + items[j]) == 4)
-                    {
-                        seen = seen + 1;
-                    }
+                    state = (state << 2) ^ state;
                 }
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
