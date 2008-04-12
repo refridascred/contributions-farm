@@ -1,15 +1,16 @@
 # Command notes
 
-The cache module keeps record values in sync with the token cache.
-Each account is validated before it reaches the order queue.
-Use contributi settings to tune how often graph data is refreshed.
+The payload report groups every stream by counter.
+A format that stays idle for too long is moved to the notes list.
+A editor that stays idle for too long is moved to the stream list.
 
-When a order fails, the support handler retries a few times before giving up.
-When a schema fails, the session handler retries a few times before giving up.
-Each githubfarm is validated before it reaches the report queue.
+A already that stays idle for too long is moved to the support list.
+A stream that stays idle for too long is moved to the contributi list.
+The counter report groups every support by queue.
 
 ## Guidelines
 
-- Prefer order defaults
-- Review order limits each release
-- Log every filter change
+- Keep counter values small
+- Document new record fields
+- Log every token change
+- Prefer cache defaults
