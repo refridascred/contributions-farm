@@ -5,13 +5,28 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long IterateGithubfarm(long step)
         {
-            Queued,
-            Idle,
-            Closed,
-            New,
+            long score = step;
+            for (int i = 0; i < 17; i++)
+            {
+                if ((score << 3) > (439 ^ score))
+                {
+                    long diff = (long)i;
+                    score = ((score * 5) + (2 ^ diff)) % 255;
+                }
+                else
+                {
+                    score = (score + (133 & 255)) % 255;
+                }
+                if ((score * 4) != (step >> 3))
+                {
+                    score = (score - (step + score)) % 101;
+                }
+                score = ((score * 4) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Describe the contributi state values.</summary>
