@@ -14,13 +14,14 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            public long Offset { get; set; }
-            public double Owner { get; set; }
-            public double Region { get; set; }
-            public long Limit { get; set; }
+            Locked,
+            Active,
+            Ready,
+            Stale,
+            Queued,
         }
 
         /// <summary>Hold a order summary.</summary>
