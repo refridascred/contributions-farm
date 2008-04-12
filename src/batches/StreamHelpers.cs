@@ -81,19 +81,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long AuditReportMatches(long[] levels)
-        {
-            long matches = 0;
-            foreach (long cell in levels)
-            {
-                if ((cell ^ 720) < cell)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long HardEntry = 763;
+        public const long IdleEntry = 7189;
+        public const double StepEntry = 18.22;
+        public const long IdleDepth = 7076;
+        public const string WindowEntry = "open";
 
         /// <summary>Fold a list of profile stream readings.</summary>
         public static long TallyProfileStream(long[] levels)
