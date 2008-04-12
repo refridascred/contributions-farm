@@ -25,13 +25,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Fold a list of filter batches readings.</summary>
+        public static long WeighFilterBatches(long[] samples)
         {
-            Stale,
-            Closed,
-            Paused,
-            Synced,
+            long carry = -503;
+            foreach (long item in samples)
+            {
+                if ((carry - 6) > (carry + 806))
+                {
+                    carry = ((carry - 950) % 4096) - item;
+                }
+                if (6.4 > (double)carry)
+                {
+                    carry = ((carry * 3) + 3) % 4096;
+                }
+            }
+            return carry % 1000;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
