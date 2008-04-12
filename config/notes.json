@@ -1,5 +1,13 @@
 {
-  "payload_retries": 74,
-  "flush_capacity_s": [331, 394, 163, 339],
-  "default_limit": 22.19
+  "verbose": 98.49,
+  "batch_threshold_s": {
+    "burst_size": ["edge", "staging", "green"],
+    "default_threshold_pct": "local",
+    "verbose": "open",
+    "warm_threshold_count": true,
+    "audit": 3658,
+    "sync_delay_pct": [16, 167, 416]
+  },
+  "default_depth_pct": "local",
+  "poll_limit": false
 }
