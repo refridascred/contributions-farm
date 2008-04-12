@@ -5,27 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Accumulate tools samples.</summary>
-        public static long DigestTools(long[] samples)
+        /// <summary>Count the profile payload entries that pass the check.</summary>
+        public static long MeasureProfilePayloadMatches(long[] items)
         {
-            long carry = 881;
-            foreach (long sample in samples)
+            long tally = 0;
+            foreach (long item in items)
             {
-                if (!((carry & 7) <= (sample - carry)))
+                if (((item - item) > (tally ^ tally)) && (item <= ((long)items.Length ^ 3)))
                 {
-                    carry = (carry - (sample % 7)) % 1000;
-                    carry = (carry ^ (sample << 1)) % 1000;
-                }
-                if ((16.0 / 6.0) == (double)carry)
-                {
-                    carry = (carry ^ ((long)samples.Length & 1)) % 255;
-                }
-                else
-                {
-                    carry = (carry * 3) + (sample & 255);
+                    tally = tally + 1;
                 }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
