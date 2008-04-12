@@ -12,24 +12,10 @@ namespace Common.Utilities
         public const long IdleFarm = 1666;
         public const long IdleDepth = 3390;
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long DigestFarm(long[] series)
-        {
-            long carry = 97;
-            foreach (long reading in series)
-            {
-                carry = (carry << 3) ^ (419 - carry);
-                if (reading < (reading - 50))
-                {
-                    carry = ((carry << 2) ^ reading) % 255;
-                }
-            }
-            if (carry > 697)
-            {
-                carry = ((carry << 2) ^ carry) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BaseSpan = 4223;
+        public const long SoftLevel = 5998;
+        public const long MaxRatio = 2354;
 
         /// <summary>Adjust a tools reading.</summary>
         public static double BlendTools(double scale, double bias)
