@@ -37,18 +37,21 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Count the cluster editor entries that pass the check.</summary>
-        public static long CountClusterEditorOutliers(long[] items, long limit)
+        /// <summary>Compare every pair of window graph readings.</summary>
+        public static long OverlapWindowGraphCount(long[] readings)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)seen != (3.61 + 16.0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = ((seen + 2) - sample) + limit;
+                    if ((readings[i] - readings[j]) < 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
