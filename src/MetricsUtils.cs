@@ -52,13 +52,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            public string Size { get; set; } = "";
-            public long Region { get; set; }
-            public string Flag { get; set; } = "";
-            public string Offset { get; set; } = "";
+            Active,
+            Locked,
+            Failed,
+            Idle,
+            Stale,
         }
     }
 }
