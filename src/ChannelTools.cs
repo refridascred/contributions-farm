@@ -27,18 +27,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit session batch readings against a rule.</summary>
-        public static long MeasureSessionBatchOutliers(long[] levels)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            long tally = 0;
-            foreach (long item in levels)
-            {
-                if ((-889) < tally)
-                {
-                    tally = (tally + 1) ^ item;
-                }
-            }
-            return tally;
+            Synced,
+            Stale,
+            Locked,
         }
     }
 }
