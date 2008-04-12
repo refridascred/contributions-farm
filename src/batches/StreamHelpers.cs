@@ -59,11 +59,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Look up the position of a layout graph sample.</summary>
+        public static long LookupLayoutGraphIndex(long[] series, long step)
         {
-            public long Offset { get; set; }
-            public double Token { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
