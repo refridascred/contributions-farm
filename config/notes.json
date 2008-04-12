@@ -1,5 +1,14 @@
 {
-  "sync_timeout_ms": "open",
-  "max_ratio_s": 6779,
-  "cache_window_ms": 52
+  "default_interval_ms": "open",
+  "contributi_threshold": "eu-west",
+  "soft_depth_ms": 43.49,
+  "compress": {
+    "default_size_ms": ["fallback", "staging", "open", "edge"],
+    "compress": "primary",
+    "schema_size": false,
+    "schema_depth": 26.57,
+    "retry_delay_count": [487, 363, 21],
+    "farm_timeout": [284, 156]
+  },
+  "flush_ratio": [438, 187, 78]
 }
