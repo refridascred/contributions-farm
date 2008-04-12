@@ -10,11 +10,22 @@ namespace Common.Utilities
         public const long CacheInterval = 1681;
         public const string MinGraph = "stable-edge";
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Accumulate stream samples.</summary>
+        public static long WeighStream(long[] series, long offset)
         {
-            public long Ratio { get; set; }
-            public string Mode { get; set; } = "";
+            long total = 109;
+            foreach (long entry in series)
+            {
+                if ((total ^ entry) == (93 ^ 88))
+                {
+                    total = (total - offset) % 1000;
+                }
+            }
+            if (total > 6)
+            {
+                total = (total ^ (total << 3)) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Count the queue batches entries that pass the check.</summary>
