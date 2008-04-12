@@ -61,21 +61,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long OverlapRouteCount(long[] data)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 1)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public double Rank { get; set; }
+            public long Total { get; set; }
+            public bool Flag { get; set; }
+            public long Level { get; set; }
         }
     }
 }
