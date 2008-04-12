@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
             Active,
-            Idle,
+            Paused,
             Ready,
+            Locked,
+            Idle,
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
