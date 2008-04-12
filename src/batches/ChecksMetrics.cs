@@ -60,13 +60,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long DeriveLayout(long limit)
         {
-            New,
-            Idle,
-            Done,
-            Pending,
+            long result = limit;
+            for (int i = 0; i < 11; i++)
+            {
+                result = ((result * 4) + (long)i) % 97;
+            }
+            return result;
         }
     }
 }
