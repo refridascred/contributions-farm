@@ -1,11 +1,10 @@
 # entry settings
-verbose: stable
-soft_ttl: true
-poll_threshold_s: stable
-enabled:
-  entry_depth: 9832
-  soft_ttl_count: 93
-  min_retries_count: 27.1
-  idle_window_count: true
-  default_limit_s: 63.05
-  format_capacity: false
+verbose:
+  - 220
+  - 176
+  - 358
+  - 361
+retry_limit_count: 46
+flush_threshold_s: 91.64
+audit: 65
+cache_timeout: 45.78
