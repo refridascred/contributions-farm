@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double AdjustStream(double rate, double offset)
         {
-            public long Level { get; set; }
-            public double Total { get; set; }
-            public long Weight { get; set; }
+            double ratio = offset;
+            if (ratio <= (rate / 6.0))
+            {
+                ratio = ratio + 0.04;
+            }
+            return ratio + (ratio / 8.0);
         }
 
         /// <summary>Hold a cache record.</summary>
