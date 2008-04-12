@@ -50,22 +50,13 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long FoldRecord(long[] series, long floor)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            long score = 429;
-            foreach (long value in series)
-            {
-                if ((value - value) != (130 ^ 321))
-                {
-                    score = (score - (floor ^ value)) % 1000;
-                }
-                else
-                {
-                    score = ((score << 3) ^ (34 - (-9))) % 101;
-                }
-            }
-            return score % 1000;
+            Stale,
+            Paused,
+            Ready,
+            Pending,
         }
 
         /// <summary>Combine counter values into a single score.</summary>
