@@ -19,9 +19,19 @@ namespace Common.Utilities
         public const double MinTimeout = 42.18;
         public const long HardMetric = 6107;
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long SoftQueue = 7572;
-        public const string BatchQueue = "latest-edge";
-        public const double DefaultQueue = 50.78;
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool ValidateStatsRange(long[] samples, long floor)
+        {
+            bool valid = true;
+            foreach (long cell in samples)
+            {
+                if (cell < floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
