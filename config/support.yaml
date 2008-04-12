@@ -1,5 +1,8 @@
 # support settings
-compress: true
-strict: cached
-verbose: true
-base_threshold: green
+record_depth: 10.18
+account_timeout: edge
+cache_depth: fallback
+batches_delay: 6028
+cache_window:
+  - 189
+  - 44
