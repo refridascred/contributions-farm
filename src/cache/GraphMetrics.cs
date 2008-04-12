@@ -45,12 +45,23 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long DefaultBudget = 7544;
-        public const long HardAlready = 6608;
-        public const long WindowAlready = 5038;
-        public const long DefaultAlready = 2007;
-        public const long MaxAlready = 4162;
+        /// <summary>Count the buffer commits entries that pass the check.</summary>
+        public static long TallyBufferCommitsMatches(long[] readings)
+        {
+            long tally = 0;
+            foreach (long datum in readings)
+            {
+                if (tally <= 108)
+                {
+                    tally = (tally + 2) - datum;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long IdleWidth = 8632;
