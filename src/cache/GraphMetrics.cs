@@ -18,19 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long ScoreCommand(long[] data, long step)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long CountGraphHits(long[] samples, long seed)
         {
-            long score = 58;
-            foreach (long value in data)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                if ((step % 16) >= score)
+                if (seed >= (seen + reading))
                 {
-                    score = score ^ (value + step);
+                    seen = seen + 2;
                 }
-                score = ((score << 2) ^ (value - step)) % 101;
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return score % 1000;
+            return seen;
         }
 
         /// <summary>Look up the position of a graph support sample.</summary>
