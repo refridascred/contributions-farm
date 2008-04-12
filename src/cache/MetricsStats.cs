@@ -12,14 +12,13 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            Idle,
-            Failed,
-            Done,
-            Draft,
-            Stale,
+            public string Weight { get; set; } = "";
+            public long Label { get; set; }
+            public long Offset { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Hold a checks stats.</summary>
