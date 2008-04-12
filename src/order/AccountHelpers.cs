@@ -42,10 +42,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double BaseSpan = 2.91;
-        public const double LimitAccount = 6.2;
-        public const double WindowAccount = 82.74;
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportMatches(long[] samples)
+        {
+            long matches = 0;
+            foreach (long item in samples)
+            {
+                if ((matches & 15) > item)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the route phase values.</summary>
         public enum RoutePhase
