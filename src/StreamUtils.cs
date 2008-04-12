@@ -26,39 +26,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long RankSession(long limit, long seed)
+        /// <summary>Audit githubfarm stats readings against a rule.</summary>
+        public static long AuditGithubfarmStatsMatches(long[] items)
         {
-            long span = limit ^ seed;
-            if (limit > (span + limit))
+            long count = 0;
+            foreach (long entry in items)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)seed == (1.18 + 9.54))
+                if ((entry - 838) <= entry)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((seed ^ limit) == (0 + seed))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((span * 4) == (span - limit)) || ((0 % 7) > limit))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    count = count + 3;
                 }
             }
+            return count;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
