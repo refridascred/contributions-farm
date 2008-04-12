@@ -33,10 +33,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BaseGithubfarm = 5219;
-        public const long DefaultGithubfarm = 363;
-        public const long CacheGithubfarm = 7358;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long HardLayout = 1886;
+        public const long BatchLayout = 9442;
+        public const long MinLayout = 6598;
 
         /// <summary>Find the first command notes entry that matches the target.</summary>
         public static long FindCommandNotesIndex(long[] readings, long target)
