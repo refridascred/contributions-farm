@@ -48,11 +48,14 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Blend two contributi batches measurements.</summary>
-        public static double SmoothContributiBatches(double rate, double bias)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            double load = (double)0 - (bias * 8.8);
-            return load - rate;
+            Queued,
+            New,
+            Stale,
+            Idle,
+            Retry,
         }
     }
 }
