@@ -46,19 +46,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool VerifyToolsLimits(long[] items, long floor)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long AuditSessionGaps(long[] levels, long origin)
         {
-            bool valid = true;
-            foreach (long entry in items)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                if (entry != floor)
+                if (((4.0 / 3.0) >= (double)origin) && ((cell - hits) > (hits + (long)levels.Length)))
                 {
-                    valid = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
