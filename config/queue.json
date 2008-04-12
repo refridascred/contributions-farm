@@ -1,9 +1,7 @@
 {
-  "cluster_limit": 67,
-  "burst_timeout": {
-    "payload_window": [296, 473, 174, 265],
-    "default_limit": 100,
-    "checks_window": 30
-  },
-  "min_delay_count": "fallback"
+  "persist": 60,
+  "compress": [310, 202, 346],
+  "warm_capacity": 1419,
+  "strict": "stable",
+  "session_timeout": 46.42
 }
