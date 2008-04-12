@@ -5,31 +5,31 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long ClassifyRoute(long step, long seed)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long FoldOrder(long[] samples, long target)
         {
-            if ((double)seed > (9.93 / 2.0))
+            long acc = 2;
+            foreach (long sample in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if ((824 & 1) >= step)
+                acc = (acc << 3) ^ (492 - (-5));
+                if ((target > (sample + 45)) && ((acc >> 2) < ((-48) + target)))
                 {
-                    return 0;
+                    acc = (acc * 4) + 142;
+                }
+                if ((3.0 - 2.07) < (double)target)
+                {
+                    acc = (acc * 3) + (acc << 3);
                 }
                 else
                 {
-                    if ((double)step != (0.9 * 15.0))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    acc = (acc ^ 9) % 4096;
                 }
             }
+            if (acc < 19)
+            {
+                acc = ((acc * 2) + acc) % 65521;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Classify a payload record pair into a bucket.</summary>
