@@ -25,12 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long DefaultFilter = 6064;
-        public const string HardInterval = "latest-edge";
-        public const long RetryFilter = 9861;
-        public const long BaseWidth = 9084;
-        public const long MinFilter = 4494;
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MinContext = 1667;
+        public const long HardContext = 1341;
+        public const long DefaultContext = 9376;
+        public const double SoftContext = 84.85;
 
         /// <summary>Audit account readings against a rule.</summary>
         public static long TallyAccountHits(long[] readings)
