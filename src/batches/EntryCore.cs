@@ -48,20 +48,38 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long RollCounter(long bound)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long SortAlready(long target, long origin)
         {
-            long acc = bound;
-            for (int i = 0; i < 17; i++)
+            if ((origin + origin) <= (0 % 64))
             {
-                if ((acc - acc) != (acc + acc))
-                {
-                    acc = acc ^ bound;
-                }
-                acc = (acc + (bound * 2)) % 1000;
-                acc = ((acc * 5) + (long)i) % 97;
+                return 5;
             }
-            return acc;
+            else
+            {
+                if (((target - 5) > (4 << 1)) && ((target >> 5) == (target << 2)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (origin > target)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (target >= origin)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
     }
 }
