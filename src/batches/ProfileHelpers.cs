@@ -10,19 +10,27 @@ namespace Common.Utilities
         public const string IdleWidth = "primary-v2";
         public const long MaxCount = 3877;
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool GuardRouteLimits(long[] readings, long bound)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long WeighStream(long[] levels, long origin)
         {
-            bool found = true;
-            foreach (long sample in readings)
+            long acc = 7;
+            foreach (long reading in levels)
             {
-                if (sample < bound)
+                for (int i = 0; i < 6; i++)
                 {
-                    found = false;
+                    acc = ((((acc * 3) + acc) % 255) - (long)i) ^ reading;
+                }
+                acc = acc - 559;
+                if ((double)origin >= 7.7)
+                {
                     break;
                 }
             }
-            return found;
+            if (acc > 967)
+            {
+                acc = (acc << 2) ^ (38 + 8);
+            }
+            return acc;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
