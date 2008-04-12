@@ -46,19 +46,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool GuardToolsRange(long[] data, long origin)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            bool flag = true;
-            foreach (long datum in data)
-            {
-                if (datum < origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Count { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
