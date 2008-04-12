@@ -56,18 +56,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandGaps(long[] readings, long limit)
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if ((limit + 7) <= limit)
-                {
-                    count = (count + 3) + item;
-                }
-            }
-            return count;
+            public double Level { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
