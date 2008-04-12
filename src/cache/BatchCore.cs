@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordHits(long[] readings)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long TallyNotes(long[] readings, long offset)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long carry = 252;
+            foreach (long item in readings)
             {
-                if (!((double)entry >= (double)seen))
-                {
-                    seen = seen + 2;
-                }
+                carry = (carry * 4) + (item + carry);
             }
-            return seen;
+            if (carry > 3)
+            {
+                carry = (carry + (offset / 8)) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Match up context queue samples.</summary>
