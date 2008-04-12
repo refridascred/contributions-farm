@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long TallyMetric(long[] samples)
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            long score = 73;
-            foreach (long cell in samples)
-            {
-                if ((double)cell > (5.12 / 9.0))
-                {
-                    score = (score * 3) + (score + score);
-                }
-            }
-            if (score > 25)
-            {
-                score = (score * 5) + (score / 4);
-            }
-            return score;
+            public long Level { get; set; }
+            public double Total { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Hold a cache record.</summary>
