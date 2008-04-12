@@ -38,22 +38,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate queue report samples.</summary>
-        public static long DigestQueueReport(long[] values)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double BlendQueue(double bias, double bias2)
         {
-            long mark = 40;
-            foreach (long cell in values)
+            double rate = bias;
+            if (rate >= (rate / 2.0))
             {
-                if (0.8 >= (double)cell)
-                {
-                    mark = ((mark * 3) + (mark / 4)) % 65521;
-                }
-                else
-                {
-                    mark = mark - (mark + 61);
-                }
+                rate = rate - (bias2 + bias2);
             }
-            return mark;
+            return rate - bias;
         }
 
         /// <summary>Rank filter input into a small class.</summary>
