@@ -22,11 +22,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
+            public bool Stamp { get; set; }
             public long Rank { get; set; }
-            public long Label { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Rank checks input into a small class.</summary>
