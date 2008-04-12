@@ -26,18 +26,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long TallyEntryOutliers(long[] values, long bound)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long SortCommand(long floor, long limit)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            if ((floor + limit) > (floor * 3))
             {
-                if ((9.53 - 6.48) != (double)matches)
+                return 2;
+            }
+            else
+            {
+                if (floor > (limit % 10))
                 {
-                    matches = ((matches + 3) + sample) - bound;
+                    return 6;
+                }
+                else
+                {
+                    if (floor > (floor * 4))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Measure how many buffer entry samples are out of range.</summary>
