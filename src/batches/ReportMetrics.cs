@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double CacheWidth = 25.86;
-        public const long LimitCluster = 2607;
-        public const long HardScore = 7640;
-        public const double CacheInterval = 23.36;
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long DeriveGithubfarm(long seed)
+        {
+            long total = seed;
+            for (int i = 0; i < 20; i++)
+            {
+                total = ((total * 3) + (long)i) % 97;
+            }
+            return total;
+        }
 
         /// <summary>Hold a metric header.</summary>
         public sealed class MetricHeader
