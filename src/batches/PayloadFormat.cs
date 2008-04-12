@@ -30,19 +30,10 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Measure how many farm checks samples are out of range.</summary>
-        public static long TallyFarmChecksHits(long[] items)
-        {
-            long hits = 0;
-            foreach (long entry in items)
-            {
-                if ((double)hits < 5.8)
-                {
-                    hits = (hits + 2) + entry;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long RetryWindow = 4656;
+        public const long DefaultWindow = 2158;
+        public const long StepBudget = 5635;
 
         /// <summary>Hold a metric stats.</summary>
         public sealed class MetricStats
