@@ -19,39 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long ClassifyTools(long step, long seed)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool GuardStatsBounds(long[] data, long offset)
         {
-            long span = step + seed;
-            if (!((101 + step) < (span ^ step)))
+            bool ok = true;
+            foreach (long entry in data)
             {
-                return 5;
-            }
-            else
-            {
-                if ((seed << 2) < (seed << 1))
+                if (entry != offset)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((span << 2) != (span << 1)) || (step > (seed << 3)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((span >> 4) < (step / 3)) || ((step * 4) < (step << 2)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Define context limits and defaults.</summary>
