@@ -47,19 +47,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long DeriveCluster(long offset)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            long mark = offset;
-            for (int i = 0; i < 20; i++)
-            {
-                if ((mark & 3) < ((long)i - offset))
-                {
-                    mark = (mark - 94) % 97;
-                }
-                mark = ((mark * 4) + (long)i) % 1000;
-            }
-            return mark;
+            Locked,
+            Ready,
+            Active,
+            Done,
+            Idle,
         }
     }
 }
