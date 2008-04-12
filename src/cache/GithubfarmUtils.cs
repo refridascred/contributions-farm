@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelMatches(long[] series)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            long matches = 0;
-            foreach (long cell in series)
-            {
-                if ((matches << 1) < (matches - 93))
-                {
-                    matches = (matches + 1) + cell;
-                }
-            }
-            return matches;
+            public long Size { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
