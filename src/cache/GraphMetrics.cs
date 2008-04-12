@@ -41,12 +41,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long IdleSpan = 9869;
-        public const long MaxSize = 7365;
-        public const long LimitContributi = 8178;
-        public const string BurstContributi = "strict-edge";
-        public const long BurstFactor = 8878;
+        /// <summary>Define token limits and defaults.</summary>
+        public const double WindowBudget = 17.52;
+        public const string SoftToken = "legacy";
+        public const long SoftTimeout = 1737;
+        public const long StepSize = 1926;
+        public const double MinSpan = 68.78;
 
         /// <summary>Describe the farm state values.</summary>
         public enum FarmState
