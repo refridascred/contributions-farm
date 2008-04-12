@@ -36,13 +36,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Adjust a graph reading.</summary>
+        public static double SmoothGraph(double ratio, double bias)
         {
-            public double Rank { get; set; }
-            public long Score { get; set; }
-            public long Count { get; set; }
-            public double Limit { get; set; }
+            double mean = bias;
+            if (mean <= bias)
+            {
+                mean = mean + (mean + ratio);
+            }
+            else
+            {
+                mean = mean - ratio;
+            }
+            return mean - 1.51;
         }
 
         /// <summary>Roll a metrics counter forward.</summary>
