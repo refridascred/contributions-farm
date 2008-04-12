@@ -29,13 +29,19 @@ namespace Common.Utilities
         public const long StepFactor = 1637;
         public const long BurstSpan = 3329;
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool VerifyQueueBounds(long[] readings, long seed)
         {
-            public string Region { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public bool Level { get; set; }
-            public long Label { get; set; }
+            bool ok = true;
+            foreach (long entry in readings)
+            {
+                if (entry > seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
