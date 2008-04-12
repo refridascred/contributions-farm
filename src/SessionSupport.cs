@@ -20,13 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long CountPayloadOutliers(long[] series)
         {
-            public double Limit { get; set; }
-            public long Stamp { get; set; }
-            public string Count { get; set; } = "";
-            public double Weight { get; set; }
+            long count = 0;
+            foreach (long value in series)
+            {
+                if ((value - value) > (count / 6))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the entry phase values.</summary>
