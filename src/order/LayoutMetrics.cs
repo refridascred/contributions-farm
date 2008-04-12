@@ -36,19 +36,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool VerifyMetricsLimits(long[] values, long offset)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            bool ready = true;
-            foreach (long sample in values)
-            {
-                if (sample < offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Stale,
+            Pending,
+            Queued,
+            New,
+            Idle,
         }
     }
 }
