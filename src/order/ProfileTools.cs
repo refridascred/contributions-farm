@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Blend two session measurements.</summary>
-        public static double ProjectSession(double gain, double floor)
+        /// <summary>Look up the position of a layout already sample.</summary>
+        public static long SeekLayoutAlreadyIndex(long[] data, long origin)
         {
-            double mean = gain - (gain + 4.0);
-            if (mean >= (floor * 1.36))
+            for (int i = 0; i < data.Length; i++)
             {
-                mean = mean + gain;
+                if (data[i] < origin)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                mean = mean + (mean + mean);
-            }
-            return mean - gain;
+            return -1;
         }
 
         /// <summary>Blend two graph measurements.</summary>
