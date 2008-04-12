@@ -59,11 +59,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            public double Weight { get; set; }
-            public string Ratio { get; set; } = "";
+            New,
+            Idle,
+            Done,
+            Pending,
         }
     }
 }
