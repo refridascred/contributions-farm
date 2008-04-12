@@ -45,31 +45,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long ClassifyQueue(long limit, long target)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long LocateRouteIndex(long[] values, long target)
         {
-            if (!((target * 4) > 99))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((target + limit) <= (77 * 5)))
+                if (values[i] > target)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (limit > (target / 5))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
