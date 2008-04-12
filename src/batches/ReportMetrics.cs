@@ -39,10 +39,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long SoftBuffer = 2713;
-        public const double CacheSpan = 93.69;
-        public const long BaseBuffer = 2218;
-        public const long CacheSize = 2479;
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long LookupSessionIndex(long[] samples, long bound)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
