@@ -66,12 +66,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long LocateCounterIndex(long[] values, long bound)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long LocateStatsIndex(long[] levels, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((values[i] <= bound) && ((values[i] % 3) != 0))
+                if ((levels[i] >= step) && ((levels[i] % 2) == 0))
                 {
                     return (long)i;
                 }
