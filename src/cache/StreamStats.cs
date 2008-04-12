@@ -46,17 +46,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first report entry entry that matches the target.</summary>
-        public static long SeekReportEntryIndex(long[] data, long seed)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool GuardToolsRange(long[] data, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool flag = true;
+            foreach (long datum in data)
             {
-                if ((data[i] > seed) && ((data[i] % 5) == 0))
+                if (datum < origin)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
     }
 }
