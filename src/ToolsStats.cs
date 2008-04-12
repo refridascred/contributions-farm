@@ -38,19 +38,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double BlendSchema(double bias, double bias2)
+        /// <summary>Count layout account pairs that satisfy a relation.</summary>
+        public static long PairLayoutAccountCount(long[] data)
         {
-            double drift = (bias + bias) * 5.4;
-            if (drift <= (drift * 5.05))
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                drift = (drift + bias) + bias2;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 14)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                drift = drift + 3.09;
-            }
-            return drift - (bias - 19.0);
+            return count;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
