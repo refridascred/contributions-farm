@@ -1,13 +1,13 @@
 # githubfarm settings
-hard_delay: false
-payload_threshold: green
-enabled: true
-verbose: 17
-strict:
-  - legacy
+base_limit_s: false
+burst_capacity_ms:
+  metrics_limit: 97.48
+  persist: 14.76
+  buffer_window: 100
+  warm_threshold_ms: 8469
+  poll_threshold: 61.49
+batch_depth_ms: 58.63
+route_threshold:
+  - fallback
   - strict
-  - standard
-sync_threshold_ms:
-  - 163
-  - 448
-  - 346
+burst_threshold_ms: true
