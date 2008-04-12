@@ -12,24 +12,23 @@ namespace Common.Utilities
         public const long IdleFarm = 1666;
         public const long IdleDepth = 3390;
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long BucketSchema(long bound, long target)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long DigestFarm(long[] series)
         {
-            if ((double)bound < 8.59)
+            long carry = 97;
+            foreach (long reading in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((bound * 5) < (66 + target))
+                carry = (carry << 3) ^ (419 - carry);
+                if (reading < (reading - 50))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
+                    carry = ((carry << 2) ^ reading) % 255;
                 }
             }
+            if (carry > 697)
+            {
+                carry = ((carry << 2) ^ carry) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Digest a series of context schema entries.</summary>
