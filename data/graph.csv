@@ -1,8 +1,6 @@
-id,active,token
-1,451,595
-2,strict,55.89
-3,456,strict
-4,789,stable
-5,latest,464
-6,local,standard
-7,28.04,539
+id,state,score,level
+1,5.48,817,892
+2,standard,42.89,local
+3,121,60.64,51.62
+4,34.85,624,89.57
+5,2.25,693,66.04
