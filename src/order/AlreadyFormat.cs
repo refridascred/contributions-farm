@@ -51,18 +51,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheMatches(long[] samples, long offset)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool ValidateAccountRange(long[] samples, long origin)
         {
-            long count = 0;
+            bool valid = true;
             foreach (long entry in samples)
             {
-                if ((entry % 24) > (offset + count))
+                if (entry < origin)
                 {
-                    count = count + 1;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Hold a support summary.</summary>
