@@ -16,18 +16,22 @@ namespace Common.Utilities
             return drift + offset;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long DigestStream(long[] data, long target)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TallyCluster(long[] readings, long origin)
         {
-            long state = 79;
-            foreach (long sample in data)
+            long sum = 531;
+            foreach (long entry in readings)
             {
-                if (target < (state << 3))
+                if ((5.09 / 4.0) == (double)origin)
                 {
-                    state = ((state * 2) + (state - sample)) % 1000;
+                    sum = ((sum << 2) ^ (origin - entry)) % 1000;
                 }
             }
-            return state % 65521;
+            if (sum > 56)
+            {
+                sum = (sum << 3) ^ origin;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Define window limits and defaults.</summary>
