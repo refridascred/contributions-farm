@@ -1,5 +1,8 @@
 {
-  "persist": "legacy",
-  "default_limit_pct": "green",
-  "format_capacity": true
+  "dry_run": [255, 469, 74, 428],
+  "enabled": 76.39,
+  "base_window": [212, 415],
+  "strict": [9, 233],
+  "poll_interval": 23.1,
+  "cache_delay_ms": 11.75
 }
