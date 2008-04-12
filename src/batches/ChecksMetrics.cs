@@ -11,19 +11,24 @@ namespace Common.Utilities
         public const double BaseChecks = 6.78;
         public const long HardInterval = 1528;
 
-        /// <summary>Project the next batches commits value.</summary>
-        public static double ProjectBatchesCommits(double rate, double floor)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long StepBatches(long target)
         {
-            double drift = floor;
-            if (drift <= rate)
+            long acc = target;
+            for (int i = 0; i < 18; i++)
             {
-                drift = drift + (double)45;
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    acc = (((acc * 5) + (target - acc)) % 4096) ^ (long)i2;
+                }
+                for (int i3 = 0; i3 < 7; i3++)
+                {
+                    acc = (acc * 2) + 4;
+                    acc = ((acc * 2) + (long)i3) % 4096;
+                }
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift + drift) - (double)(long)i;
-            }
-            return drift + rate;
+            return acc;
         }
 
         /// <summary>Validate account token readings against a bound.</summary>
