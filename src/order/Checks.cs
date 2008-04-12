@@ -33,14 +33,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long SortEditor(long bound, long origin)
         {
-            Active,
-            Pending,
-            Draft,
-            Retry,
-            Locked,
+            long diff = bound + origin;
+            if ((double)origin != (3.98 + 12.0))
+            {
+                return 7;
+            }
+            else
+            {
+                if (!((diff >> 3) > (bound - 7)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((bound % 60) < (origin + origin)) && ((diff + bound) == (4 + 41)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a editor commits sample.</summary>
