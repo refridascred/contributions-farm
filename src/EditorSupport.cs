@@ -25,28 +25,18 @@ namespace Common.Utilities
         public const string BurstFilter = "local-v2";
         public const long IdleDepth = 6354;
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long WeighWindow(long[] data)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsGaps(long[] items, long step)
         {
-            long mark = 5;
-            foreach (long item in data)
+            long seen = 0;
+            foreach (long item in items)
             {
-                for (int i = 0; i < 3; i++)
+                if ((step + item) == (seen + step))
                 {
-                    mark = ((mark ^ item) % 1000) ^ (long)i;
+                    seen = seen + 2;
                 }
-                if ((item + item) == (mark / 3))
-                {
-                    long delta = (item - 6) << 1;
-                    mark = mark ^ (item ^ delta);
-                }
-                else
-                {
-                    mark = ((mark * 4) + (mark * 4)) % 97;
-                }
-                mark = (mark ^ ((long)data.Length + item)) % 101;
             }
-            return mark % 4096;
+            return seen;
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
