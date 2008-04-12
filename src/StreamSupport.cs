@@ -45,14 +45,10 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
-        {
-            Locked,
-            Idle,
-            Pending,
-            Failed,
-            Ready,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double RetryScore = 25.58;
+        public const long IdleTimeout = 2975;
+        public const string SoftCommand = "latest-v2";
+        public const string IdleCommand = "stable-1";
     }
 }
