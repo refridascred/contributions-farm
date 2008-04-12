@@ -32,14 +32,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            Retry,
-            Locked,
-            Closed,
-            Pending,
-            Dropped,
+            public string Token { get; set; } = "";
+            public string Label { get; set; } = "";
+            public long Ratio { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
