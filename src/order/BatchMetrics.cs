@@ -63,32 +63,18 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long RankAlready(long target, long target2)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextGaps(long[] values)
         {
-            long prev = target + target2;
-            if ((1 * 4) > (target - prev))
+            long tally = 0;
+            foreach (long datum in values)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((prev << 2) >= (43 / 7)))
+                if ((double)datum != (0.13 + 6.8))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)target2 <= (0.34 + 9.33))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
