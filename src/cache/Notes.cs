@@ -43,18 +43,13 @@ namespace Common.Utilities
         public const long MaxEntry = 3495;
         public const double RetryEntry = 55.8;
 
-        /// <summary>Measure how many editor payload samples are out of range.</summary>
-        public static long AuditEditorPayloadOutliers(long[] data)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            long tally = 0;
-            foreach (long value in data)
-            {
-                if (!(value >= (tally - value)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Stale,
+            Locked,
+            Failed,
+            Queued,
         }
     }
 }
