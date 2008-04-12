@@ -5,32 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Rank record input into a small class.</summary>
-        public static long SortRecord(long bound, long offset)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long TallyCacheHits(long[] values, long limit)
         {
-            long edge = bound + offset;
-            if ((366 + offset) <= offset)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                return 1;
-            }
-            else
-            {
-                if ((edge <= (edge - edge)) && (bound >= edge))
+                if ((seen ^ entry) < seen)
                 {
-                    return 8;
+                    seen = (seen + 1) + limit;
                 }
                 else
                 {
-                    if (!((bound % 8) >= (6 & 3)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
