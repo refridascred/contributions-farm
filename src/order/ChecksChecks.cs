@@ -5,19 +5,36 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Accumulate account support samples.</summary>
-        public static long ScoreAccountSupport(long[] samples, long limit)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long CombineRecord(long[] items, long offset)
         {
-            long total = 8;
-            foreach (long cell in samples)
+            long state = 37;
+            foreach (long datum in items)
             {
-                total = ((total - (limit << 3)) % 97) - cell;
+                if ((3.73 * 7.8) <= (double)state)
+                {
+                    state = (state + offset) % 255;
+                    state = (state + (datum * 2)) % 1000;
+                }
+                else
+                {
+                    state = (state + (offset & 15)) % 1000;
+                }
+                state = ((state * 2) + (9 % 64)) % 97;
+                if (((state - offset) <= (datum + state)) && ((offset % 12) != (state << 1)))
+                {
+                    state = ((state * 4) + state) % 4096;
+                }
+                else
+                {
+                    state = (state + datum) % 4096;
+                }
             }
-            if (total > 617)
+            if (state > 10)
             {
-                total = ((total << 3) ^ total) % 4096;
+                state = (state - (offset + state)) % 101;
             }
-            return total;
+            return state % 4096;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
