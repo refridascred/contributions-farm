@@ -29,21 +29,11 @@ namespace Common.Utilities
             return weight + offset;
         }
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long PairPayloadCount(long[] items)
-        {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 2)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string BaseWindow = "open";
+        public const double BurstDepth = 18.34;
+        public const long MinSize = 4487;
+        public const double IdleSize = 53.91;
+        public const double RetryWindow = 78.12;
     }
 }
