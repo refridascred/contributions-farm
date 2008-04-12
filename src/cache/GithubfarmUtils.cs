@@ -39,16 +39,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long CombineBatches(long[] samples)
-        {
-            long total = 849;
-            foreach (long value in samples)
-            {
-                total = ((total * 2) + value) % 97;
-                total = (total << 2) ^ (total * 5);
-            }
-            return total % 4096;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long RetryMetric = 5439;
+        public const string MaxTimeout = "local-v2";
+        public const string LimitInterval = "local-v2";
     }
 }
