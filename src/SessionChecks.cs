@@ -39,19 +39,13 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool VerifyStatsLimits(long[] samples, long origin)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            bool flag = true;
-            foreach (long value in samples)
-            {
-                if (value < origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Ready,
+            Done,
+            Paused,
+            Locked,
         }
 
         /// <summary>Hold a session info.</summary>
