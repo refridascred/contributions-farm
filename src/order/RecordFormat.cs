@@ -55,12 +55,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            public bool Label { get; set; }
-            public double Rank { get; set; }
-            public bool Count { get; set; }
+            public long Level { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
