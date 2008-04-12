@@ -32,11 +32,12 @@ namespace Common.Utilities
         public const long BaseWidth = 9084;
         public const long MinFilter = 4494;
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long StepFactor = 2857;
-        public const string RetrySupport = "strict-v2";
-        public const double DefaultSupport = 34.89;
-        public const string MinSupport = "stable-v2";
-        public const long HardLevel = 2176;
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
+        {
+            Done,
+            New,
+            Failed,
+        }
     }
 }
