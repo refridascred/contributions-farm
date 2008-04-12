@@ -1,8 +1,5 @@
 {
-  "poll_limit": "local",
-  "sync_capacity": 77,
-  "readonly": false,
-  "default_depth_pct": true,
-  "batches_window": false,
-  "dry_run": 23.31
+  "default_delay_s": 67.7,
+  "readonly": 52.94,
+  "notes_threshold": 45
 }
