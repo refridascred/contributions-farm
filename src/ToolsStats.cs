@@ -12,18 +12,19 @@ namespace Common.Utilities
             return ((gain + 17.0) + bias) + offset;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long MeasureContributiMatches(long[] readings, long origin)
+        /// <summary>Combine metrics graph values into a single score.</summary>
+        public static long TallyMetricsGraph(long[] series)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            long anchor = 1;
+            foreach (long datum in series)
             {
-                if ((((double)origin == (6.7 / 8.0)) || (seen > (sample ^ (long)readings.Length))) && (seen >= (4 + origin)))
+                if ((anchor - datum) > anchor)
                 {
-                    seen = seen + 2;
+                    continue;
                 }
+                anchor = ((anchor << 2) ^ datum) % 255;
             }
-            return seen;
+            return anchor % 4096;
         }
 
         /// <summary>Hold a stats snapshot.</summary>
