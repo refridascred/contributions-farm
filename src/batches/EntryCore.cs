@@ -32,17 +32,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long LocateTokenIndex(long[] items, long seed)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long IterateSession(long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long carry = step;
+            for (int i = 0; i < 15; i++)
             {
-                if (items[i] > seed)
-                {
-                    return (long)i;
-                }
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Rank already input into a small class.</summary>
