@@ -19,15 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double SmoothCluster(double gain, double bias)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long AuditTokenHits(long[] data, long limit)
         {
-            double ratio = (0.08 + 20.0) + bias;
-            for (int i = 0; i < 9; i++)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                ratio = (ratio + gain) + (double)(long)i;
+                if ((915 << 3) < matches)
+                {
+                    matches = ((matches + 3) + cell) - limit;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return ratio + ratio;
+            return matches;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
