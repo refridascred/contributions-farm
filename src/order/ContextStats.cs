@@ -29,22 +29,12 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Count command commits pairs that satisfy a relation.</summary>
-        public static long PairCommandCommitsCount(long[] readings)
-        {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double LimitWidth = 58.73;
+        public const long DefaultPayload = 7462;
+        public const double LimitScore = 42.53;
+        public const double DefaultInterval = 94.45;
+        public const double SoftWidth = 44.99;
 
         /// <summary>Hold a route summary.</summary>
         public sealed class RouteSummary
