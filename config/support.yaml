@@ -1,4 +1,9 @@
 # support settings
-command_retries: 5685
-default_ratio: 2416
-cluster_threshold: stable
+counter_ratio: green
+already_ratio:
+  - strict
+  - fallback
+  - staging
+cache_capacity_pct: 1198
+audit: 68
+schema_timeout: 23.19
