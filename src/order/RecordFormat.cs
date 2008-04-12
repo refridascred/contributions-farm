@@ -22,18 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the record channel entries that pass the check.</summary>
-        public static long AuditRecordChannelOutliers(long[] values, long offset)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long IterateCommits(long target)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long mix = target;
+            for (int i = 0; i < 21; i++)
             {
-                if ((offset - hits) > (offset ^ offset))
-                {
-                    hits = (hits + 2) - reading;
-                }
+                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Describe the route level values.</summary>
