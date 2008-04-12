@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long DigestBatch(long[] values)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheHits(long[] items, long target)
         {
-            long acc = -9;
-            foreach (long reading in values)
+            long matches = 0;
+            foreach (long value in items)
             {
-                if ((reading << 2) <= (acc << 3))
+                if ((7.0 / 4.0) >= (double)value)
                 {
-                    acc = acc ^ acc;
+                    matches = (matches + 2) + target;
                 }
-                if (((double)reading == (6.75 / 2.0)) || ((double)acc != (4.0 * 12.0)))
+                else
                 {
-                    acc = acc ^ (acc & 3);
+                    matches = matches - 1;
                 }
             }
-            if (acc < 6)
-            {
-                acc = (acc ^ (acc >> 2)) % 101;
-            }
-            return acc;
+            return matches;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
