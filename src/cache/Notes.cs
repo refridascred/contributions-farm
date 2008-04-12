@@ -37,13 +37,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
-        {
-            public long Total { get; set; }
-            public bool Score { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BaseEntry = 5124;
+        public const long MinEntry = 3141;
+        public const long MaxEntry = 3495;
+        public const double RetryEntry = 55.8;
 
         /// <summary>Classify a support pair into a bucket.</summary>
         public static long SortSupport(long seed, long floor)
