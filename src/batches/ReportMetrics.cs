@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long SeriesEditor(long floor)
         {
-            Retry,
-            Synced,
-            Pending,
+            long score = floor;
+            for (int i = 0; i < 23; i++)
+            {
+                score = ((score * 4) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Combine format values into a single score.</summary>
