@@ -40,18 +40,13 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long DigestStream(long[] readings, long floor)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            long result = 8;
-            foreach (long cell in readings)
-            {
-                if ((floor & 15) <= result)
-                {
-                    result = ((result ^ (result / 6)) % 4096) ^ cell;
-                }
-            }
-            return result;
+            Stale,
+            Done,
+            Active,
+            Failed,
         }
     }
 }
