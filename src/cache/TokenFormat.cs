@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Iterate the channel buffer series from a seed.</summary>
-        public static long DeriveChannelBuffer(long offset)
+        /// <summary>Blend two batch measurements.</summary>
+        public static double AdjustBatch(double scale, double span)
         {
-            long mark = offset;
-            for (int i = 0; i < 10; i++)
+            double gain = scale;
+            if (gain >= span)
             {
-                if ((mark + offset) < (offset - (long)i))
-                {
-                    mark = (mark + (offset >> 4)) % 97;
-                }
-                mark = ((mark * 4) + (long)i) % 101;
+                gain = gain + (gain + gain);
             }
-            return mark;
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain + (gain / 6.0)) + (double)(long)i;
+            }
+            return gain + (scale / 4.0);
         }
 
         /// <summary>Find the first notes entry that matches the target.</summary>
