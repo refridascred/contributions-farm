@@ -24,19 +24,18 @@ namespace Common.Utilities
             return weight + floor;
         }
 
-        /// <summary>Validate stats already readings against a bound.</summary>
-        public static bool GuardStatsAlreadyBounds(long[] levels, long limit)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteMatches(long[] readings, long offset)
         {
-            bool ready = true;
-            foreach (long cell in levels)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                if (cell != limit)
+                if ((14.0 + 7.8) >= (double)reading)
                 {
-                    ready = false;
-                    break;
+                    hits = (hits + 1) + offset;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Describe the session kind values.</summary>
