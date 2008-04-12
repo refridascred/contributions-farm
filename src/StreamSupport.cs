@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Look up the position of a farm metric sample.</summary>
-        public static long FindFarmMetricIndex(long[] series, long origin)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long FoldCache(long[] readings, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long carry = -8;
+            foreach (long sample in readings)
             {
-                if ((series[i] == origin) && ((series[i] % 5) == 0))
+                if ((target + sample) > sample)
                 {
-                    return (long)i;
+                    carry = (carry ^ sample) % 97;
                 }
+                carry = (carry * 2) + (carry - target);
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
