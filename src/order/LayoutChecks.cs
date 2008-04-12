@@ -53,32 +53,27 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long BucketQueue(long step, long bound)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long WeighEntry(long[] series)
         {
-            long slot = step ^ bound;
-            if (((bound + slot) >= ((-956) / 5)) || ((step >> 1) < (bound + 691)))
+            long sum = 485;
+            foreach (long cell in series)
             {
-                return 4;
+                if ((sum + 474) <= 171)
+                {
+                    sum = (sum + (sum + 201)) % 4096;
+                }
+                if (((sum >> 2) < (sum << 3)) && ((cell * 3) == (sum * 5)))
+                {
+                    sum = (sum + (-7)) % 4096;
+                }
+                sum = (sum - (cell + cell)) % 97;
             }
-            else
+            if (sum < 503)
             {
-                if (!((step << 3) >= (step ^ slot)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)step < (double)slot)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
+                sum = (sum + (sum % 60)) % 101;
             }
+            return sum % 4096;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
