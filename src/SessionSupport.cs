@@ -5,11 +5,31 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long RankChecks(long target, long bound)
         {
-            public string Owner { get; set; } = "";
-            public long Weight { get; set; }
+            if ((bound * 2) == (96 % 10))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((target % 16) <= (530 / 5)) && ((bound / 2) <= (bound * 5)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((3.62 - 1.43) > (double)bound)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a session record value against two limits.</summary>
