@@ -56,24 +56,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double SmoothAlready(double scale, double offset)
-        {
-            double drift = (double)(37 / 5);
-            if (drift > (double)9)
-            {
-                drift = drift - (offset - drift);
-            }
-            else
-            {
-                drift = drift + (offset + scale);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift + (offset + scale)) + (double)(long)i;
-            }
-            return drift + 4.5;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BurstSpan = 8238;
+        public const long LimitBudget = 6206;
+        public const long MaxFilter = 7061;
+        public const long BurstLevel = 1797;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const double HardSpan = 78.51;
