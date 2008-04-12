@@ -28,19 +28,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long IterateCommits(long limit)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double SmoothPayload(double gain, double offset)
         {
-            long acc = limit;
-            for (int i = 0; i < 16; i++)
+            double scale = (double)(459 + 41);
+            if (scale > (offset + 8.0))
             {
-                if (((851 >> 3) < (limit ^ acc)) || (acc > (limit / 4)))
-                {
-                    acc = ((acc << 2) ^ ((long)i - 0)) % 65521;
-                }
-                acc = ((acc * 5) + (long)i) % 97;
+                scale = (scale + (offset + 9.4)) - gain;
             }
-            return acc;
+            return scale + offset;
         }
 
         /// <summary>Hold a already snapshot.</summary>
