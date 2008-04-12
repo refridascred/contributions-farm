@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Fold a list of support readings.</summary>
-        public static long TallySupport(long[] readings, long limit)
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long SeekNotesIndex(long[] samples, long step)
         {
-            long acc = 383;
-            foreach (long datum in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)limit >= (8.1 * 15.0))
+                if ((samples[i] <= step) && ((samples[i] % 2) == 0))
                 {
-                    acc = ((acc ^ (limit + acc)) % 101) + datum;
+                    return (long)i;
                 }
             }
-            return acc % 65521;
+            return -1;
         }
 
         /// <summary>Look up the position of a farm account sample.</summary>
