@@ -1,6 +1,8 @@
 {
-  "window_window": 67.52,
-  "token_window": 1024,
-  "account_window": false,
-  "flush_window": "primary"
+  "retry_size": false,
+  "default_delay_pct": 60,
+  "hard_ratio": 1024,
+  "stream_timeout": 82,
+  "readonly": 1.53,
+  "session_ratio": 63
 }
