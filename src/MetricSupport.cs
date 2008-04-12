@@ -19,12 +19,17 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Locate a record reading by value.</summary>
+        public static long LookupRecordIndex(long[] readings, long limit)
         {
-            Active,
-            Retry,
-            Locked,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
