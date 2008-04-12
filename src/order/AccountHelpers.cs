@@ -28,12 +28,20 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string StepContext = "open";
-        public const long RetryFactor = 4604;
-        public const long BurstBudget = 3173;
-        public const double SoftCount = 51.6;
-        public const double BurstSize = 77.33;
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long IterateCommits(long limit)
+        {
+            long acc = limit;
+            for (int i = 0; i < 16; i++)
+            {
+                if (((851 >> 3) < (limit ^ acc)) || (acc > (limit / 4)))
+                {
+                    acc = ((acc << 2) ^ ((long)i - 0)) % 65521;
+                }
+                acc = ((acc * 5) + (long)i) % 97;
+            }
+            return acc;
+        }
 
         /// <summary>Combine entry account values into a single score.</summary>
         public static long TotalEntryAccount(long[] samples)
