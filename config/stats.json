@@ -1,8 +1,6 @@
 {
-  "batch_depth": "fallback",
-  "idle_ttl": "green",
-  "idle_capacity_count": 250,
-  "layout_threshold": 1024,
-  "editor_interval": "primary",
-  "sync_interval": 60
+  "base_ttl_pct": 70,
+  "sync_ttl_pct": "cached",
+  "persist": 43.95,
+  "queue_ttl": 82.24
 }
