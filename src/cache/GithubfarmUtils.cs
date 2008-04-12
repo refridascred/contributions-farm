@@ -23,12 +23,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            Failed,
-            Retry,
-            Stale,
+            public long Weight { get; set; }
+            public long Count { get; set; }
+            public double Offset { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Digest a series of contributi farm entries.</summary>
