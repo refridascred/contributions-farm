@@ -1,12 +1,5 @@
 {
-  "cache_threshold_ms": {
-    "default_retries_s": 6428,
-    "burst_retries_pct": "open",
-    "record_delay": ["fallback", "staging", "primary"],
-    "poll_retries_count": "legacy",
-    "base_limit_s": 1024
-  },
-  "min_timeout": false,
-  "record_window": 76,
-  "idle_ttl_ms": "primary"
+  "poll_ttl": "open",
+  "cache_interval": [380, 240, 174, 11],
+  "support_limit": [402, 243, 322, 93]
 }
