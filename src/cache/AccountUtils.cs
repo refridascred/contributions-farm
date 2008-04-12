@@ -14,16 +14,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long StepLayout(long step)
-        {
-            long score = step;
-            for (int i = 0; i < 15; i++)
-            {
-                score = ((score * 5) + (long)i) % 4093;
-            }
-            return score;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long SoftSize = 4117;
+        public const long BurstWindow = 3960;
+        public const long MaxBudget = 9656;
 
         /// <summary>Find the first checks entry that matches the target.</summary>
         public static long SeekChecksIndex(long[] levels, long seed)
