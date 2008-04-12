@@ -36,13 +36,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Match up metrics editor samples.</summary>
+        public static long MatchMetricsEditorCount(long[] levels)
         {
-            public bool Weight { get; set; }
-            public double Stamp { get; set; }
-            public long Rank { get; set; }
-            public double Region { get; set; }
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Validate cluster account readings against a bound.</summary>
