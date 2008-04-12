@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool CheckSessionLimits(long[] levels, long origin)
+        /// <summary>Match up cache samples.</summary>
+        public static long OverlapCacheCount(long[] levels)
         {
-            bool flag = true;
-            foreach (long datum in levels)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (datum != origin)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((levels[i] ^ levels[j]) > 20)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Count stats checks pairs that satisfy a relation.</summary>
