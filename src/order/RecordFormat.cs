@@ -19,17 +19,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Find the first notes already entry that matches the target.</summary>
-        public static long LookupNotesAlreadyIndex(long[] data, long origin)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long TotalGraph(long[] levels, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long score = 6;
+            foreach (long reading in levels)
             {
-                if (data[i] == origin)
-                {
-                    return (long)i;
-                }
+                score = ((score * 3) + (score % 100)) ^ reading;
             }
-            return -1;
+            if (score < (-139))
+            {
+                score = (score ^ (origin & 3)) % 97;
+            }
+            return score;
         }
 
         /// <summary>Describe the route level values.</summary>
