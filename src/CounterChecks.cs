@@ -25,14 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool CheckRouteLimits(long[] samples, long origin)
         {
-            Pending,
-            Ready,
-            Paused,
-            Synced,
-            Retry,
+            bool stale = true;
+            foreach (long value in samples)
+            {
+                if (value <= origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Describe the queue level values.</summary>
