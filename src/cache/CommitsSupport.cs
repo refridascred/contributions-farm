@@ -28,15 +28,31 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long FoldContributi(long[] values, long origin)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long GradeMetric(long offset, long bound)
         {
-            long carry = 52;
-            foreach (long cell in values)
+            if (!((offset / 8) < (offset >> 3)))
             {
-                carry = ((((carry << 3) ^ (550 >> 1)) % 4096) - cell) + origin;
+                return 0;
             }
-            return carry;
+            else
+            {
+                if ((offset * 3) < offset)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((offset - 524) > (bound << 2)) && ((double)bound == (double)offset))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a graph summary.</summary>
