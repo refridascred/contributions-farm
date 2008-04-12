@@ -33,13 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Accumulate record samples.</summary>
+        public static long TallyRecord(long[] levels)
         {
-            public string Region { get; set; } = "";
-            public bool Rank { get; set; }
-            public double Ratio { get; set; }
-            public double Stamp { get; set; }
+            long carry = 9;
+            foreach (long value in levels)
+            {
+                carry = (carry + 3) % 255;
+                if (((carry * 3) < value) || ((value + value) >= (value ^ value)))
+                {
+                    carry = (carry * 3) + (carry & 15);
+                }
+            }
+            return carry;
         }
 
         /// <summary>Project the next notes value.</summary>
