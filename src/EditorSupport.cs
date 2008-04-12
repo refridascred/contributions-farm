@@ -20,18 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many account command samples are out of range.</summary>
-        public static long TallyAccountCommandHits(long[] values, long origin)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long TallyCommits(long[] values)
         {
-            long seen = 0;
+            long carry = 75;
             foreach (long reading in values)
             {
-                if (seen <= (90 - seen))
+                carry = carry + ((-336) >> 3);
+                if ((reading / 7) == (reading & 3))
                 {
-                    seen = ((seen + 3) + reading) - origin;
+                    carry = ((carry << 3) ^ ((long)values.Length >> 3)) % 97;
                 }
             }
-            return seen;
+            return carry % 1000;
         }
 
         /// <summary>Fold a list of window readings.</summary>
