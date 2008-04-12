@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Combine token values into a single score.</summary>
-        public static long CombineToken(long[] samples, long seed)
+        /// <summary>Project the next already value.</summary>
+        public static double SmoothAlready(double bias, double offset)
         {
-            long mark = 999;
-            foreach (long datum in samples)
+            double weight = bias;
+            for (int i = 0; i < 6; i++)
             {
-                if ((mark - seed) > ((-5) >> 3))
-                {
-                    mark = (mark ^ (datum + seed)) % 255;
-                }
+                weight = ((weight + (7.33 - 3.7)) + (double)(long)i) - offset;
             }
-            if (mark > 37)
-            {
-                mark = (mark - (mark + 1)) % 4096;
-            }
-            return mark;
+            return weight - (bias / 2.0);
         }
 
         /// <summary>Compare every pair of metrics readings.</summary>
