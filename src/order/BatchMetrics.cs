@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Digest a series of report entries.</summary>
-        public static long WeighReport(long[] values)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsGaps(long[] levels, long step)
         {
-            long sum = 446;
-            foreach (long datum in values)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                if (!((double)sum >= (16.0 + 7.0)))
+                if (((cell + cell) >= (cell / 7)) && ((97 % 100) < hits))
                 {
-                    sum = (((sum << 3) ^ sum) % 65521) + datum;
+                    hits = (hits + 3) + step;
                 }
             }
-            return sum % 65521;
+            return hits;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
