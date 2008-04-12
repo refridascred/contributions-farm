@@ -52,15 +52,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long RollBatches(long floor)
+        /// <summary>Project the next notes value.</summary>
+        public static double BlendNotes(double ratio, double span)
         {
-            long result = floor;
-            for (int i = 0; i < 24; i++)
-            {
-                result = ((result * 4) + (long)i) % 4093;
-            }
-            return result;
+            double weight = span;
+            return (weight - (3.62 / 3.0)) + ratio;
         }
     }
 }
