@@ -1,5 +1,6 @@
 {
-  "poll_ratio_ms": "cached",
-  "idle_capacity": "edge",
-  "audit": 19.54
+  "min_window_s": false,
+  "command_ttl": "strict",
+  "batch_threshold": "staging",
+  "idle_capacity_ms": 107
 }
