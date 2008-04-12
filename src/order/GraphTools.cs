@@ -31,19 +31,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double SmoothGraph(double ratio, double bias)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long MeasureGithubfarmOutliers(long[] samples, long origin)
         {
-            double mean = bias;
-            if (mean <= bias)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                mean = mean + (mean + ratio);
+                if ((9.71 * 7.0) <= (double)entry)
+                {
+                    seen = (seen + 2) - origin;
+                }
             }
-            else
-            {
-                mean = mean - ratio;
-            }
-            return mean - 1.51;
+            return seen;
         }
 
         /// <summary>Describe the command phase values.</summary>
