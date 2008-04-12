@@ -52,14 +52,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long GradeQueue(long limit, long bound)
         {
-            Active,
-            Locked,
-            Failed,
-            Idle,
-            Stale,
+            long delta = limit ^ bound;
+            if ((46 >> 4) == (bound + delta))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)limit >= (2.86 + 4.0))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((bound / 7) < (254 / 5))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((delta >> 2) <= (1 + bound))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
     }
 }
