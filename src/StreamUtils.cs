@@ -85,21 +85,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of commits profile readings.</summary>
-        public static long OverlapCommitsProfileCount(long[] values)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double BlendQueue(double ratio, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            double load = span;
+            if (load >= 4.0)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 12)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                load = load + (load - ratio);
             }
-            return seen;
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load + (double)(-7)) + (double)(long)i;
+            }
+            return load + ratio;
         }
     }
 }
