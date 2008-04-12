@@ -31,12 +31,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            Closed,
-            Locked,
-            Synced,
+            public long Score { get; set; }
+            public bool Owner { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
