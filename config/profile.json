@@ -1,19 +1,12 @@
 {
-  "idle_ttl_ms": 60,
-  "sync_limit_pct": {
-    "metrics_threshold": 26.77,
-    "soft_window_count": [65, 9],
-    "hard_delay": false,
-    "default_retries_s": 92,
-    "batch_interval": 1024
+  "verbose": {
+    "cache_timeout": 12.59,
+    "max_ratio_count": 68.26,
+    "flush_limit_pct": 90
   },
-  "enabled": {
-    "warm_ttl_count": 2582,
-    "min_ratio": false,
-    "default_delay_ms": "green",
-    "checks_retries": 64
-  },
-  "audit": 23,
-  "min_ttl_s": ["staging", "standard", "strict"],
-  "flush_timeout": 87.87
+  "strict": "local",
+  "channel_interval": 3390,
+  "channel_size": 65.85,
+  "warm_retries": false,
+  "flush_size": 100
 }
