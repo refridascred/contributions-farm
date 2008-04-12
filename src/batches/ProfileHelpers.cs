@@ -21,12 +21,11 @@ namespace Common.Utilities
         public const long RetryContext = 175;
         public const long MaxContext = 7662;
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
-        {
-            public long Count { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long LimitBatches = 8141;
+        public const long MaxSize = 7874;
+        public const long IdleBatches = 1809;
+        public const long BurstBatches = 2496;
 
         /// <summary>Iterate the stats entry series from a seed.</summary>
         public static long RollStatsEntry(long floor)
