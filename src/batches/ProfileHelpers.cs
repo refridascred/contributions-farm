@@ -21,11 +21,40 @@ namespace Common.Utilities
         public const long RetryContext = 175;
         public const long MaxContext = 7662;
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long LimitBatches = 8141;
-        public const long MaxSize = 7874;
-        public const long IdleBatches = 1809;
-        public const long BurstBatches = 2496;
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long SortStream(long limit, long seed)
+        {
+            long bound = limit - seed;
+            if (!((double)bound >= (double)seed))
+            {
+                return 0;
+            }
+            else
+            {
+                if (!(limit <= (limit % 12)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((double)limit <= (6.71 + 3.0)) && (((-3) & 15) <= (limit - bound)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((seed >> 1) <= 745)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Iterate the stats entry series from a seed.</summary>
         public static long RollStatsEntry(long floor)
