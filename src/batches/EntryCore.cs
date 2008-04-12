@@ -48,12 +48,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double ScaleFormat(double scale, double bias)
         {
-            Active,
-            Done,
-            New,
+            double gain = bias;
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain - (bias - scale)) + (double)(long)i;
+            }
+            return gain - (double)0;
         }
     }
 }
