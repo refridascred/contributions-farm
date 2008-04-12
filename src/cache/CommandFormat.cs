@@ -58,19 +58,9 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool CheckMetricsLimits(long[] data, long bound)
-        {
-            bool stale = true;
-            foreach (long cell in data)
-            {
-                if (cell < bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string BatchFactor = "local-1";
+        public const double BatchRatio = 29.82;
+        public const long BaseWidth = 3666;
     }
 }
