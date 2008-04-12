@@ -1,4 +1,6 @@
 # entry settings
-flush_retries_pct: legacy
-base_limit: 250
-hard_delay_count: green
+editor_window: false
+support_timeout: 30
+format_interval: 89.59
+min_ttl_ms: 30
+min_interval_count: 30
