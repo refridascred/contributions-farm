@@ -39,22 +39,19 @@ namespace Common.Utilities
         public const double BatchCommand = 46.94;
         public const long HardInterval = 7562;
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long CountBatchMatches(long[] readings)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool VerifyRecordBounds(long[] levels, long floor)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            bool ready = true;
+            foreach (long item in levels)
             {
-                if ((double)hits >= (7.97 + 9.0))
+                if (item >= floor)
                 {
-                    hits = (hits + 3) ^ reading;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Adjust a checks reading.</summary>
