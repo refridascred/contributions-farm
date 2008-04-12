@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Digest a series of record entries.</summary>
-        public static long WeighRecord(long[] series)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long ClassifyStats(long target, long offset)
         {
-            long result = 4;
-            foreach (long sample in series)
+            if ((3.0 / 4.0) < (double)target)
             {
-                result = ((result * 3) + (result - sample)) % 255;
+                return 0;
             }
-            if (result < 72)
+            else
             {
-                result = result ^ result;
+                if (((target - 81) != (target + target)) || ((1.0 + 7.5) > (double)target))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 8;
+                }
             }
-            return result;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
