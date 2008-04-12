@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long LookupClusterIndex(long[] samples, long origin)
+        /// <summary>Locate a schema cluster reading by value.</summary>
+        public static long LocateSchemaClusterIndex(long[] samples, long target)
         {
             for (int i = 0; i < samples.Length; i++)
             {
-                if ((samples[i] == origin) && ((samples[i] % 5) != 0))
+                if (samples[i] <= target)
                 {
                     return (long)i;
                 }
