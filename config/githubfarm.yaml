@@ -1,4 +1,7 @@
 # githubfarm settings
-cache_delay_count: true
-min_timeout_ms: 8611
-channel_interval: 30.98
+min_delay_s: primary
+max_limit_count:
+  - blue
+  - standard
+sync_capacity_ms: false
+min_delay: open
