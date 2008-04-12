@@ -35,14 +35,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
-        {
-            Done,
-            Closed,
-            Synced,
-            Active,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long LimitFactor = 8777;
+        public const long MaxCluster = 4523;
+        public const long IdleFactor = 3275;
+        public const long WindowDepth = 3698;
 
         /// <summary>Scale a record profile figure with a bias.</summary>
         public static double SmoothRecordProfile(double bias, double span)
