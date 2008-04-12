@@ -1,10 +1,26 @@
 # support settings
-soft_size: 8402
-compress: staging
-cache_delay_ms:
-  idle_ratio_count: open
-  metrics_size:
-    - green
-    - strict
-  channel_window: 807
-sync_limit: 4.03
+already_window: 6599
+cache_ratio_s: false
+counter_delay: true
+burst_ttl:
+  flush_threshold:
+    idle_size: 500
+    batch_limit_ms: local
+    enabled: 1024
+    batch_ttl_count: 30
+    batches_timeout:
+      - 292
+      - 184
+      - 164
+      - 173
+    cache_capacity_pct: 43
+  poll_retries_count: fallback
+  readonly: 9897
+  strict: fallback
+  cache_limit_count:
+    - 202
+    - 405
+    - 121
+    - 13
+warm_window_count: 100
+soft_limit_s: 63
