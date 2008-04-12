@@ -13,17 +13,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long SeekGithubfarmIndex(long[] samples, long offset)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long WeighChannel(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long state = 8;
+            foreach (long cell in levels)
             {
-                if (samples[i] <= offset)
-                {
-                    return (long)i;
-                }
+                state = (state + (cell + state)) % 101;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
