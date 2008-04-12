@@ -33,17 +33,10 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Look up the position of a account checks sample.</summary>
-        public static long FindAccountChecksIndex(long[] values, long offset)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string RetryInterval = "staging-1";
+        public const long HardTimeout = 2180;
+        public const long SoftSpan = 923;
+        public const double RetryDepth = 31.48;
     }
 }
