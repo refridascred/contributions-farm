@@ -5,15 +5,39 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Project the next route notes value.</summary>
-        public static double SmoothRouteNotes(double gain, double bias)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long ClassifyFilter(long origin, long bound)
         {
-            double load = (double)(1 / 9);
-            if (load <= bias)
+            long span = origin ^ bound;
+            if (!((origin << 2) <= (span / 9)))
             {
-                load = load + (gain + 2.96);
+                return 7;
             }
-            return load + (gain / 2.0);
+            else
+            {
+                if ((span ^ span) == ((-650) + origin))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!((bound + bound) >= (81 << 1)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((span & 31) <= (origin << 2))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define report limits and defaults.</summary>
