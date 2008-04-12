@@ -41,18 +41,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportOutliers(long[] values)
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            long tally = 0;
-            foreach (long value in values)
-            {
-                if (!((double)tally != (5.93 * 6.0)))
-                {
-                    tally = (tally + 2) + value;
-                }
-            }
-            return tally;
+            public bool Size { get; set; }
+            public string Label { get; set; } = "";
+            public long Level { get; set; }
         }
     }
 }
