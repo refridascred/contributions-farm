@@ -1,5 +1,13 @@
 {
-  "batch_ratio_ms": "local",
-  "githubfarm_timeout": "staging",
-  "readonly": 6
+  "enabled": "stable",
+  "default_depth_ms": [439, 26, 15, 280],
+  "warm_capacity_s": ["edge", "fallback", "strict"],
+  "base_ratio_count": {
+    "notes_depth": 15.8,
+    "dry_run": 500,
+    "stream_retries": 100,
+    "sync_retries_ms": [352, 22, 84],
+    "default_interval_ms": ["local", "green", "local", "open"]
+  },
+  "order_ratio": "eu-west"
 }
