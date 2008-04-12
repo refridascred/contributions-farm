@@ -43,10 +43,18 @@ namespace Common.Utilities
         public const long MaxEntry = 3495;
         public const double RetryEntry = 55.8;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long StepSpan = 4128;
-        public const long DefaultAccount = 3572;
-        public const long WindowAccount = 5759;
-        public const long WindowScore = 1930;
+        /// <summary>Measure how many editor payload samples are out of range.</summary>
+        public static long AuditEditorPayloadOutliers(long[] data)
+        {
+            long tally = 0;
+            foreach (long value in data)
+            {
+                if (!(value >= (tally - value)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
     }
 }
