@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long RankPayload(long floor, long bound)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmMatches(long[] samples, long origin)
         {
-            long slot = floor + bound;
-            if (bound < (3 / 5))
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if ((floor + floor) != (5 - bound))
+                if ((double)hits > (5.9 / 6.0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (6 > slot)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    hits = ((hits + 1) - sample) - origin;
                 }
             }
+            return hits;
         }
 
         /// <summary>Accumulate record samples.</summary>
