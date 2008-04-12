@@ -10,14 +10,32 @@ namespace Common.Utilities
         public const double BaseGithubfarm = 73.79;
         public const long LimitGithubfarm = 4012;
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Rank report input into a small class.</summary>
+        public static long RankReport(long bound, long bound2)
         {
-            Active,
-            Idle,
-            Closed,
-            Done,
-            Locked,
+            long gap = bound ^ bound2;
+            if ((bound2 ^ bound) < ((-8) - bound2))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((6.8 / 6.0) <= (double)bound2)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((double)gap >= (double)91) || ((bound2 / 2) == (bound >> 4)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
