@@ -19,31 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long GradeMetric(long offset, long bound)
+        /// <summary>Project the next metric value.</summary>
+        public static double BlendMetric(double rate, double floor)
         {
-            if (!((offset / 8) < (offset >> 3)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((offset * 3) < offset)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((offset - 524) > (bound << 2)) && ((double)bound == (double)offset))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            double weight = (5.93 / 2.0) + floor;
+            return weight + rate;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
