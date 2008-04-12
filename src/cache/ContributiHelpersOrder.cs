@@ -31,12 +31,12 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long FindFormatIndex(long[] samples, long floor)
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long LocateQueueIndex(long[] samples, long origin)
         {
             for (int i = 0; i < samples.Length; i++)
             {
-                if (samples[i] <= floor)
+                if (samples[i] == origin)
                 {
                     return (long)i;
                 }
