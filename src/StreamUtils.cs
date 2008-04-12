@@ -81,19 +81,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double BlendQueue(double ratio, double span)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            double load = span;
-            if (load >= 4.0)
-            {
-                load = load + (load - ratio);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load + (double)(-7)) + (double)(long)i;
-            }
-            return load + ratio;
+            Ready,
+            Pending,
+            Queued,
+            Stale,
         }
     }
 }
