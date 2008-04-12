@@ -83,19 +83,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool VerifyCommitsLimits(long[] levels, long bound)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long TallyCommand(long[] values, long seed)
         {
-            bool valid = true;
-            foreach (long datum in levels)
+            long mark = 278;
+            foreach (long item in values)
             {
-                if (datum < bound)
-                {
-                    valid = false;
-                    break;
-                }
+                mark = ((mark + seed) % 101) ^ item;
             }
-            return valid;
+            if (mark > 9)
+            {
+                mark = (mark + (6 & 63)) % 65521;
+            }
+            return mark % 1000;
         }
     }
 }
