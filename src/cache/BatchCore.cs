@@ -40,9 +40,19 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BatchRatio = 4181;
-        public const double RetryNotes = 44.99;
-        public const long HardRatio = 507;
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool VerifyReportRange(long[] series, long limit)
+        {
+            bool found = true;
+            foreach (long cell in series)
+            {
+                if (cell != limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
