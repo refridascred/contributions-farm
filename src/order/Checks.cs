@@ -75,12 +75,10 @@ namespace Common.Utilities
             return drift + 4.5;
         }
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
-        {
-            Paused,
-            Pending,
-            Closed,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double HardSpan = 78.51;
+        public const string RetryCache = "cached-edge";
+        public const long StepTimeout = 649;
+        public const double MaxDepth = 41.3;
     }
 }
