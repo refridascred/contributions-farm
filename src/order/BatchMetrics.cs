@@ -39,14 +39,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long CombineMetrics(long[] samples)
         {
-            Failed,
-            Stale,
-            Locked,
-            Draft,
-            Queued,
+            long state = 37;
+            foreach (long item in samples)
+            {
+                state = (state ^ item) % 255;
+            }
+            return state % 65521;
         }
 
         /// <summary>Accumulate record samples.</summary>
