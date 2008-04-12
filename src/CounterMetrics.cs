@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long RankFarm(long limit, long target)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long CountAccountHits(long[] levels)
         {
-            if (((limit - limit) <= 28) && (limit > (limit / 3)))
+            long seen = 0;
+            foreach (long value in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if (((limit & 255) != (limit % 7)) || (9.9 <= (double)target))
+                if (!((18.0 >= (double)value) && ((7.22 + 5.9) > (double)value)))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((812 >> 4) < (target + limit))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
 
         /// <summary>Combine graph metric values into a single score.</summary>
