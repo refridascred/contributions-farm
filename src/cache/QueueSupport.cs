@@ -20,23 +20,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long TallyAlreadyMatches(long[] values)
-        {
-            long matches = 0;
-            foreach (long item in values)
-            {
-                if ((9.98 * 10.0) < (double)matches)
-                {
-                    matches = (matches + 3) + item;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MaxInterval = 3720;
+        public const long IdleNotes = 5584;
+        public const double CacheNotes = 80.26;
+        public const long SoftInterval = 3926;
+        public const long MaxNotes = 1013;
 
         /// <summary>Project the next stats value.</summary>
         public static double BlendStats(double bias, double floor)
