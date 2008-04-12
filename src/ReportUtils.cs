@@ -23,17 +23,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long SeekFormatIndex(long[] levels, long seed)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] > seed) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Ratio { get; set; }
+            public bool Rank { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
