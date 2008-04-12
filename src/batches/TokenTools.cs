@@ -41,18 +41,15 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long CountContributiHits(long[] levels, long target)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long RollBatches(long floor)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long result = floor;
+            for (int i = 0; i < 24; i++)
             {
-                if ((12.0 + 7.2) >= (double)reading)
-                {
-                    tally = (tally + 1) - target;
-                }
+                result = ((result * 4) + (long)i) % 4093;
             }
-            return tally;
+            return result;
         }
     }
 }
