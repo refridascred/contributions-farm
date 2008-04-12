@@ -57,11 +57,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MinInterval = 2473;
-        public const string LimitContext = "latest-1";
-        public const long SoftContext = 3750;
-        public const string RetryRatio = "local-1";
+        /// <summary>Blend two commits measurements.</summary>
+        public static double ProjectCommits(double rate, double offset)
+        {
+            double bias = rate / 6.0;
+            if (bias <= rate)
+            {
+                bias = bias - (rate * 1.2);
+            }
+            else
+            {
+                bias = bias - (offset * 20.0);
+            }
+            return bias + offset;
+        }
 
         /// <summary>Hold a layout record.</summary>
         public sealed class LayoutRecord
