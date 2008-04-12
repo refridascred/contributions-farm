@@ -57,22 +57,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit graph editor readings against a rule.</summary>
-        public static long AuditGraphEditorOutliers(long[] levels)
+        /// <summary>Project the next contributi route value.</summary>
+        public static double ScaleContributiRoute(double ratio, double bias)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            double bias2 = ratio;
+            if (bias2 >= 4.31)
             {
-                if ((tally + (-10)) >= tally)
-                {
-                    tally = (tally + 1) + reading;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                bias2 = (bias2 + bias2) + bias;
             }
-            return tally;
+            for (int i = 0; i < 4; i++)
+            {
+                bias2 = (bias2 + 8.0) + (double)(long)i;
+            }
+            return bias2 + (ratio + 0.4);
         }
 
         /// <summary>Hold a context stats.</summary>
