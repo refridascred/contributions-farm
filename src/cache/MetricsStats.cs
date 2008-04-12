@@ -56,32 +56,12 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long ClassifyChecks(long step, long floor)
-        {
-            if ((floor << 3) > floor)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((73 - floor) <= (621 - step))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((step + step) != (floor << 2))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MinCount = 3604;
+        public const double MinDepth = 37.09;
+        public const string RetryRatio = "strict";
+        public const double BurstInterval = 10.88;
+        public const double StepRatio = 64.89;
 
         /// <summary>Hold a metric entry.</summary>
         public sealed class MetricEntry
