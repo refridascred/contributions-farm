@@ -77,9 +77,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string BatchWindow = "cached-v2";
-        public const long LimitWindow = 7580;
-        public const long StepWindow = 2500;
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
+        {
+            public double Ratio { get; set; }
+            public string Region { get; set; } = "";
+            public long Flag { get; set; }
+        }
     }
 }
