@@ -5,32 +5,21 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long BucketProfile(long floor, long offset)
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long MatchStreamCount(long[] items)
         {
-            long lane = floor ^ offset;
-            if (floor <= (lane + floor))
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (((double)73 > (double)lane) && ((lane * 4) < 39))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((1.0 * 4.0) == (double)lane)
+                    if ((items[i] ^ items[j]) < 1)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Look up the position of a account sample.</summary>
