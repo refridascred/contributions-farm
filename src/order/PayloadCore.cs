@@ -13,25 +13,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long RankCommand(long offset, long offset2)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool GuardBatchesRange(long[] data, long offset)
         {
-            long prev = offset ^ offset2;
-            if (4 < (prev - offset))
+            bool valid = true;
+            foreach (long value in data)
             {
-                return 3;
-            }
-            else
-            {
-                if ((offset + offset) == (offset - prev))
+                if (value != offset)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
