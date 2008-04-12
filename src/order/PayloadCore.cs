@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            public long Limit { get; set; }
-            public long Level { get; set; }
+            Failed,
+            Active,
+            Retry,
         }
 
         /// <summary>Classify a githubfarm window pair into a bucket.</summary>
