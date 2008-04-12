@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long CombineFilter(long[] data, long bound)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long RankReport(long limit, long target)
         {
-            long mix = 387;
-            foreach (long value in data)
+            if (((double)target < (8.1 * 9.4)) && ((limit * 5) > target))
             {
-                if ((646 ^ mix) != (value << 2))
+                return 4;
+            }
+            else
+            {
+                if (target <= limit)
                 {
-                    mix = (mix ^ bound) % 255;
+                    return 2;
+                }
+                else
+                {
+                    if ((limit / 5) == (target + 800))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (limit < (9 & 127))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return mix % 1000;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
