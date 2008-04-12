@@ -48,16 +48,11 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Fold a list of layout queue readings.</summary>
-        public static long TallyLayoutQueue(long[] data)
-        {
-            long result = 47;
-            foreach (long entry in data)
-            {
-                result = ((result << 2) ^ result) - entry;
-            }
-            return result % 65521;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BatchCounter = 2139;
+        public const double SoftTimeout = 75.02;
+        public const long IdleRatio = 2373;
+        public const long HardSpan = 3949;
 
         /// <summary>Match up channel samples.</summary>
         public static long CompareChannelCount(long[] levels)
