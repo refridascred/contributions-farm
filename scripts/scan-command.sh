@@ -6,11 +6,7 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in local open primary; do
-    log "checking ${item}"
-done
-
-mode="${1:-latest}"
+mode="${1:-primary}"
 case "${mode}" in
     local)
         log "fast path"
@@ -19,3 +15,13 @@ case "${mode}" in
         log "default path for ${mode}"
         ;;
 esac
+
+for item in cached latest strict standard; do
+    log "checking ${item}"
+done
+
+total=0
+for i in $(seq 1 8); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
