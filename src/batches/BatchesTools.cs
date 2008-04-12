@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long AuditToolsOutliers(long[] series)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            long matches = 0;
-            foreach (long datum in series)
-            {
-                if (((long)series.Length >> 1) == (matches << 3))
-                {
-                    matches = (matches + 3) + datum;
-                }
-            }
-            return matches;
+            public bool Count { get; set; }
+            public string Label { get; set; } = "";
+            public double Stamp { get; set; }
         }
 
         /// <summary>Digest a series of profile entries.</summary>
