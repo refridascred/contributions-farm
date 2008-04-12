@@ -12,12 +12,32 @@ namespace Common.Utilities
         public const long HardSize = 7914;
         public const long SoftLayout = 5053;
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Rank tools route input into a small class.</summary>
+        public static long SortToolsRoute(long step, long limit)
         {
-            public string Score { get; set; } = "";
-            public double Ratio { get; set; }
-            public bool Flag { get; set; }
+            long offset = step ^ limit;
+            if ((offset % 24) >= limit)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)offset != (5.4 / 3.0))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((limit + step) > step) || (limit < (offset << 3)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a stream summary.</summary>
