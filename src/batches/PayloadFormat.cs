@@ -34,17 +34,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a stream account reading by value.</summary>
-        public static long LocateStreamAccountIndex(long[] series, long target)
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Size { get; set; }
+            public double Offset { get; set; }
+            public long Weight { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Hold a metric stats.</summary>
