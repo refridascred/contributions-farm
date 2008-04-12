@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionMatches(long[] data, long bound)
         {
-            public long Size { get; set; }
-            public long Weight { get; set; }
+            long seen = 0;
+            foreach (long cell in data)
+            {
+                if (!((seen ^ 23) >= ((long)data.Length & 255)))
+                {
+                    seen = ((seen + 2) + cell) + bound;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
