@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Blend two editor measurements.</summary>
-        public static double ProjectEditor(double bias, double span)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            double gain = span;
-            if (gain < (gain - bias))
-            {
-                gain = gain - (double)2;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = gain - (double)(long)i;
-            }
-            return gain + span;
+            public long Stamp { get; set; }
+            public string Size { get; set; } = "";
+            public bool Flag { get; set; }
         }
 
         /// <summary>Locate a checks reading by value.</summary>
