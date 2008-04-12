@@ -1,11 +1,8 @@
 {
-  "poll_limit_ms": 250,
-  "sync_size_pct": "primary",
-  "soft_retries": {
-    "poll_retries": 52.7,
-    "idle_depth": "eu-west",
-    "cache_depth_ms": 72.14
-  },
-  "command_size": "staging",
-  "dry_run": 97.26
+  "max_depth": 500,
+  "poll_capacity_pct": 56.88,
+  "token_size": 94.8,
+  "warm_interval": 1024,
+  "hard_timeout": false,
+  "warm_window_pct": 65
 }
