@@ -20,17 +20,21 @@ namespace Common.Utilities
             return gain + (scale / 4.0);
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long LookupNotesIndex(long[] samples, long offset)
+        /// <summary>Match up session samples.</summary>
+        public static long OverlapSessionCount(long[] values)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((samples[i] <= offset) && ((samples[i] % 5) == 0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] - values[j]) < 18)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
