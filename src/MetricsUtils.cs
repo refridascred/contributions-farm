@@ -49,26 +49,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long ScoreAlready(long[] series)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long LocateCounterIndex(long[] samples, long origin)
         {
-            long state = 7;
-            foreach (long item in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)item < 4.1)
+                if (samples[i] == origin)
                 {
-                    state = state - state;
-                }
-                else
-                {
-                    state = (state + (item & 7)) % 1000;
+                    return (long)i;
                 }
             }
-            if (state < 65)
-            {
-                state = (state ^ state) % 65521;
-            }
-            return state;
+            return -1;
         }
     }
 }
