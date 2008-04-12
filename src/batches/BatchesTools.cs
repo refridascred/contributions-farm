@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Grade a contributi buffer value against two limits.</summary>
-        public static long RankContributiBuffer(long origin, long origin2)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long AuditToolsOutliers(long[] series)
         {
-            if ((origin >> 3) >= (origin2 >> 1))
+            long matches = 0;
+            foreach (long datum in series)
             {
-                return 3;
-            }
-            else
-            {
-                if (((3 % 5) != (origin2 + origin)) && ((11.0 + 7.61) >= (double)origin2))
+                if (((long)series.Length >> 1) == (matches << 3))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (origin < (origin2 / 9))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    matches = (matches + 3) + datum;
                 }
             }
+            return matches;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
