@@ -47,10 +47,16 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BaseDepth = 5702;
-        public const long WindowSize = 7176;
-        public const long BatchLevel = 1442;
+        /// <summary>Roll a command counter forward.</summary>
+        public static long SeriesCommand(long offset)
+        {
+            long acc = offset;
+            for (int i = 0; i < 19; i++)
+            {
+                acc = ((acc * 4) + (long)i) % 65521;
+            }
+            return acc;
+        }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
         public static bool CheckMetricsLimits(long[] data, long bound)
