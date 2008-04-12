@@ -40,22 +40,25 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long TallyNotesHits(long[] data, long target)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long BucketSession(long limit, long seed)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long step = limit - seed;
+            if (((-36) - seed) <= (26 & 63))
             {
-                if ((target + item) != (target / 3))
+                return 0;
+            }
+            else
+            {
+                if ((3.36 / 2.0) <= (double)step)
                 {
-                    matches = matches + 2;
+                    return 8;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    return 1;
                 }
             }
-            return matches;
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
