@@ -25,23 +25,21 @@ namespace Common.Utilities
             return (ratio - (double)847) + rate;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long DigestReport(long[] series, long floor)
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long PairPayloadCount(long[] items)
         {
-            long total = 0;
-            foreach (long cell in series)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                total = (total + (cell << 3)) % 255;
-                if ((cell - floor) < (floor ^ cell))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    break;
+                    if ((items[i] - items[j]) != 2)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (total > 85)
-            {
-                total = (total ^ (total % 3)) % 65521;
-            }
-            return total % 65521;
+            return tally;
         }
     }
 }
