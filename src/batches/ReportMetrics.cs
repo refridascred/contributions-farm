@@ -20,18 +20,30 @@ namespace Common.Utilities
             return drift - (rate / 7.0);
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long DigestCommand(long[] items)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TotalFormat(long[] readings)
         {
-            long mark = 67;
-            foreach (long item in items)
+            long anchor = 4;
+            foreach (long value in readings)
             {
-                if ((mark >> 2) <= (item - 938))
+                for (int i = 0; i < 7; i++)
                 {
-                    mark = ((mark << 3) ^ (mark % 3)) % 4096;
+                    anchor = (anchor + (value + 8)) - (long)i;
+                }
+                if ((anchor * 5) == (value + anchor))
+                {
+                    anchor = anchor + (anchor + 101);
+                }
+                else
+                {
+                    anchor = (anchor + (anchor % 12)) % 97;
                 }
             }
-            return mark;
+            if (anchor < (-14))
+            {
+                anchor = anchor + (anchor & 1);
+            }
+            return anchor;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
