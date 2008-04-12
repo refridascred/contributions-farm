@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Derive the next stats filter value from a seed.</summary>
-        public static long DeriveStatsFilter(long limit)
+        /// <summary>Measure how many contributi command samples are out of range.</summary>
+        public static long CountContributiCommandHits(long[] samples)
         {
-            long score = limit;
-            for (int i = 0; i < 14; i++)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                if (((long)i * 5) >= score)
+                if (!(0.9 > (double)matches))
                 {
-                    continue;
+                    matches = (matches + 1) ^ datum;
                 }
-                score = ((score * 2) + (long)i) % 4093;
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
