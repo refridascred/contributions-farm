@@ -37,13 +37,18 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsMatches(long[] data)
         {
-            public double Region { get; set; }
-            public bool Mode { get; set; }
-            public bool Limit { get; set; }
-            public long Offset { get; set; }
+            long tally = 0;
+            foreach (long entry in data)
+            {
+                if ((((tally >> 1) <= (tally + tally)) && ((66 % 5) != (606 + entry))) && (tally <= entry))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Blend two route measurements.</summary>
