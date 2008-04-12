@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long RankReport(long bound, long target)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool VerifyCommandRange(long[] data, long bound)
         {
-            if ((13.0 * 19.0) > (double)target)
+            bool valid = true;
+            foreach (long cell in data)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((double)target < (double)(-171)))
+                if (cell <= bound)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)target > 4.7)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((target & 63) > 847)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Measure how many account command samples are out of range.</summary>
