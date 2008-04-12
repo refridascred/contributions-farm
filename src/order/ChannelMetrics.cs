@@ -40,20 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a channel account counter forward.</summary>
-        public static long StepChannelAccount(long target)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long StepSession(long target)
         {
-            long carry = target;
-            for (int i = 0; i < 7; i++)
+            long mark = target;
+            for (int i = 0; i < 20; i++)
             {
-                if (!((long)i > (carry + (long)i)))
-                {
-                    carry = ((carry << 2) ^ (57 + 9)) % 1000;
-                    carry = ((carry << 3) ^ (carry + target)) % 101;
-                }
-                carry = ((carry * 3) + (long)i) % 4093;
+                mark = ((mark * 5) + (long)i) % 97;
             }
-            return carry;
+            return mark;
         }
 
         /// <summary>Hold a cluster snapshot.</summary>
