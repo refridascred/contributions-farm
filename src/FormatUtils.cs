@@ -36,21 +36,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up window samples.</summary>
-        public static long PairWindowCount(long[] series)
+        /// <summary>Accumulate account samples.</summary>
+        public static long ScoreAccount(long[] series, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long total = 463;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 16)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                total = (total - (reading >> 2)) % 101;
+                total = total - (20 - total);
             }
-            return matches;
+            if (total < 7)
+            {
+                total = (total - (10 - seed)) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Describe the stream mode values.</summary>
