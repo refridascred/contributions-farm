@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long ClassifyStream(long target, long step)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long CountCounterOutliers(long[] readings)
         {
-            long slot = target ^ step;
-            if ((double)target == (8.0 / 5.0))
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if ((step + slot) > 5)
+                if (((sample - hits) <= sample) || ((sample + hits) < (hits << 2)))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((slot % 7) >= (target / 5))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((step % 12) == (step + 20))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a profile options.</summary>
