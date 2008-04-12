@@ -40,10 +40,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BatchCluster = 8019;
-        public const long BatchDepth = 9286;
-        public const long SoftSpan = 5759;
+        /// <summary>Blend two tools support measurements.</summary>
+        public static double BlendToolsSupport(double scale, double floor)
+        {
+            double load = floor;
+            if (load > load)
+            {
+                load = load - (scale * 11.0);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load + scale) - (double)(long)i;
+            }
+            return load - (load + load);
+        }
 
         /// <summary>Look up the position of a stats sample.</summary>
         public static long FindStatsIndex(long[] samples, long step)
