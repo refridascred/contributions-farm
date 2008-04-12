@@ -59,9 +59,12 @@ namespace Common.Utilities
         public const double DefaultSpan = 77.15;
         public const string BurstFormat = "staging-v2";
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string BaseCounter = "open-edge";
-        public const long RetryRatio = 9209;
-        public const long RetryBudget = 1571;
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
+        {
+            public double Size { get; set; }
+            public long Level { get; set; }
+            public string Limit { get; set; } = "";
+        }
     }
 }
