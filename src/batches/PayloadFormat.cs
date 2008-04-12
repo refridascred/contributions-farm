@@ -16,18 +16,22 @@ namespace Common.Utilities
             return bias2 - rate;
         }
 
-        /// <summary>Count the command profile entries that pass the check.</summary>
-        public static long MeasureCommandProfileGaps(long[] values, long floor)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenMatches(long[] values, long floor)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                if (13.0 <= (double)(long)values.Length)
+                if (450 < (datum - 619))
                 {
-                    seen = ((seen + 3) + reading) - floor;
+                    matches = (matches + 3) + floor;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Describe the layout state values.</summary>
