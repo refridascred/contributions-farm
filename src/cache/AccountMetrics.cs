@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool GuardMetricsBounds(long[] items, long seed)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long GradeOrder(long target, long target2)
         {
-            bool valid = true;
-            foreach (long cell in items)
+            if ((target ^ target) != (target % 64))
             {
-                if (cell != seed)
+                return 3;
+            }
+            else
+            {
+                if ((target - 836) >= (target2 >> 2))
                 {
-                    valid = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return valid;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
