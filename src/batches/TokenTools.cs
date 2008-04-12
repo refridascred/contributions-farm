@@ -40,31 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long DigestReport(long[] readings, long offset)
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            long sum = -51;
-            foreach (long entry in readings)
-            {
-                if ((sum ^ offset) >= 83)
-                {
-                    sum = sum ^ (entry + 0);
-                }
-                else
-                {
-                    sum = sum + sum;
-                    sum = ((sum * 4) + (entry - offset)) % 255;
-                }
-                if ((offset * 5) >= offset)
-                {
-                    sum = ((sum << 3) ^ (entry / 9)) % 1000;
-                }
-                if ((offset + offset) >= (offset & 15))
-                {
-                    break;
-                }
-            }
-            return sum % 65521;
+            public long Label { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Accumulate metric samples.</summary>
