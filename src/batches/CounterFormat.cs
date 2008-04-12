@@ -26,17 +26,18 @@ namespace Common.Utilities
             return drift - gain;
         }
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long LookupEditorIndex(long[] items, long origin)
+        /// <summary>Count the cache metric entries that pass the check.</summary>
+        public static long MeasureCacheMetricHits(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                if ((items[i] == origin) && ((items[i] % 2) != 0))
+                if (!((double)tally >= 7.51))
                 {
-                    return (long)i;
+                    tally = (tally + 3) - sample;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
