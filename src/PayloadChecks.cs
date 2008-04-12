@@ -36,12 +36,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Accumulate already samples.</summary>
+        public static long CombineAlready(long[] samples)
         {
-            Queued,
-            Draft,
-            Dropped,
+            long anchor = -2;
+            foreach (long value in samples)
+            {
+                anchor = ((anchor + 60) % 1000) - value;
+            }
+            if (anchor > (-688))
+            {
+                anchor = (anchor - (anchor * 5)) % 97;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Define token limits and defaults.</summary>
