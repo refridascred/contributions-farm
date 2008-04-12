@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long TotalChannel(long[] levels, long limit)
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long PairSessionCount(long[] data)
         {
-            long mark = -385;
-            foreach (long datum in levels)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (mark <= (716 >> 4))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mark = (((mark * 3) + limit) % 1000) ^ datum;
+                    if ((data[i] - data[j]) > 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Count the record channel entries that pass the check.</summary>
