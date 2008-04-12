@@ -1,16 +1,8 @@
 {
-  "contributi_limit": "cached",
-  "default_ratio_count": "open",
-  "persist": {
-    "payload_ratio": 73.95,
-    "flush_ratio_count": [371, 344],
-    "enabled": 97.73,
-    "verbose": false
-  },
-  "default_interval_count": {
-    "retry_ratio": ["latest", "stable", "green"],
-    "idle_retries": true,
-    "cache_depth": 2926,
-    "strict": "eu-west"
-  }
+  "retry_depth_s": ["standard", "primary", "latest", "stable"],
+  "max_window_count": "blue",
+  "max_ttl_pct": "latest",
+  "retry_size_pct": ["blue", "open", "blue", "stable"],
+  "soft_ratio_ms": true,
+  "min_size_count": ["green", "staging"]
 }
