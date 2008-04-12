@@ -1,6 +1,10 @@
-id,region,owner
-1,50.78,50.49
-2,956,994
-3,legacy,446
-4,stable,legacy
-5,edge,398
+id,rank,state,label,region
+1,blue,32.72,579,blue
+2,88.12,46.06,134,46.51
+3,edge,725,49.14,staging
+4,blue,899,legacy,903
+5,edge,557,762,12
+6,92.81,edge,636,88.36
+7,503,637,stable,eu-west
+8,18,standard,215,309
+9,cached,90.34,83.85,393
