@@ -33,11 +33,12 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BurstQueue = 3042;
-        public const long BatchFactor = 6929;
-        public const long CacheQueue = 8483;
-        public const long BatchDepth = 4009;
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
+        {
+            public long Offset { get; set; }
+            public long Token { get; set; }
+        }
 
         /// <summary>Fold a list of schema format readings.</summary>
         public static long DigestSchemaFormat(long[] levels)
