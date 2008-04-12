@@ -63,12 +63,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long HardEntry = 763;
-        public const long IdleEntry = 7189;
-        public const double StepEntry = 18.22;
-        public const long IdleDepth = 7076;
-        public const string WindowEntry = "open";
+        /// <summary>Match up buffer route samples.</summary>
+        public static long PairBufferRouteCount(long[] samples)
+        {
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 9)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
         public static long PairFarmCount(long[] values)
