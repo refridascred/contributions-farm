@@ -31,22 +31,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long DigestLayout(long[] readings, long offset)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double ProjectPayload(double scale, double offset)
         {
-            long carry = 648;
-            foreach (long sample in readings)
+            double rate = offset;
+            if (rate < (3.87 + rate))
             {
-                if ((sample % 3) <= offset)
-                {
-                    carry = carry + (sample - sample);
-                }
+                rate = (rate + rate) - scale;
             }
-            if (carry < 9)
-            {
-                carry = carry + (carry - carry);
-            }
-            return carry % 1000;
+            return rate + rate;
         }
     }
 }
