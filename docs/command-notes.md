@@ -1,11 +1,11 @@
 # Command notes
 
-The format helpers are pure functions, so they are safe to call from any thread.
-Use batches settings to tune how often token data is refreshed.
+Run the filter check before changing any tools limits.
+Defaults for payload live in the config folder and can be overridden per environment.
+A stream that stays idle for too long is moved to the report list.
 
 ## Guidelines
 
-- Review metric limits each release
-- Validate schema input early
-- Keep token values small
-- Log every command change
+- Keep metric values small
+- Document new counter fields
+- Review buffer limits each release
