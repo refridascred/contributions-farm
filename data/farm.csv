@@ -1,6 +1,9 @@
-id,weight,active,owner
-1,715,857,582
-2,15,89.13,581
-3,932,579,652
-4,local,885,stable
-5,791,530,966
+id,level,count,ratio
+1,236,885,739
+2,66.87,80.74,cached
+3,local,31.44,61.41
+4,53.96,blue,97.97
+5,825,0.02,946
+6,stable,98.78,985
+7,8.97,366,staging
+8,staging,39.9,legacy
