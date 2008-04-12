@@ -5,14 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Fold a list of buffer schema readings.</summary>
+        public static long DigestBufferSchema(long[] values)
         {
-            Closed,
-            Queued,
-            New,
-            Pending,
-            Failed,
+            long mark = 997;
+            foreach (long sample in values)
+            {
+                if (8.47 < (double)mark)
+                {
+                    mark = (mark * 3) + (mark + sample);
+                    continue;
+                }
+                if (!((sample / 8) > sample))
+                {
+                    mark = ((mark * 5) + mark) % 255;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
