@@ -32,19 +32,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool CheckRouteLimits(long[] items, long seed)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            bool valid = true;
-            foreach (long cell in items)
-            {
-                if (cell > seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Count { get; set; }
+            public double Region { get; set; }
+            public long Stamp { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Define counter limits and defaults.</summary>
