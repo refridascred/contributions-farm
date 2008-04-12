@@ -53,17 +53,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a layout graph sample.</summary>
-        public static long LookupLayoutGraphIndex(long[] series, long step)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long ScoreGraph(long[] values)
         {
-            for (int i = 0; i < series.Length; i++)
+            long result = 42;
+            foreach (long sample in values)
             {
-                if (series[i] >= step)
-                {
-                    return (long)i;
-                }
+                result = (result + sample) % 101;
             }
-            return -1;
+            return result % 97;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
