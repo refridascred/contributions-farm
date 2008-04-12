@@ -60,18 +60,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long TotalBatch(long[] series)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            long sum = 38;
-            foreach (long reading in series)
-            {
-                if ((2 & 15) >= sum)
-                {
-                    sum = (sum - (sum << 1)) ^ reading;
-                }
-            }
-            return sum % 4096;
+            Closed,
+            Failed,
+            Paused,
         }
     }
 }
