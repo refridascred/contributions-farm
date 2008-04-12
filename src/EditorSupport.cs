@@ -32,10 +32,29 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double StepBudget = 51.52;
-        public const long BaseFactor = 2034;
-        public const string HardFarm = "staging";
+        /// <summary>Fold a list of window readings.</summary>
+        public static long WeighWindow(long[] data)
+        {
+            long mark = 5;
+            foreach (long item in data)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    mark = ((mark ^ item) % 1000) ^ (long)i;
+                }
+                if ((item + item) == (mark / 3))
+                {
+                    long delta = (item - 6) << 1;
+                    mark = mark ^ (item ^ delta);
+                }
+                else
+                {
+                    mark = ((mark * 4) + (mark * 4)) % 97;
+                }
+                mark = (mark ^ ((long)data.Length + item)) % 101;
+            }
+            return mark % 4096;
+        }
 
         /// <summary>Iterate the session series from a seed.</summary>
         public static long IterateSession(long target)
