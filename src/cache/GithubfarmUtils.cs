@@ -10,22 +10,11 @@ namespace Common.Utilities
         public const string HardProfile = "primary-1";
         public const long MaxInterval = 1867;
 
-        /// <summary>Combine filter layout values into a single score.</summary>
-        public static long TotalFilterLayout(long[] levels)
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            long acc = 2;
-            foreach (long sample in levels)
-            {
-                if ((sample + acc) <= sample)
-                {
-                    acc = (acc - (acc - acc)) % 97;
-                }
-                else
-                {
-                    acc = (acc ^ (acc - 29)) % 101;
-                }
-            }
-            return acc % 65521;
+            public double Mode { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
