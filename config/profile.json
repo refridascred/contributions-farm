@@ -1,6 +1,7 @@
 {
-  "hard_depth_count": 1024,
-  "sync_threshold": "local",
-  "burst_timeout": 2643,
-  "default_timeout_pct": true
+  "flush_interval_count": "edge",
+  "idle_depth_ms": "latest",
+  "dry_run": "green",
+  "sync_window_pct": ["stable", "cached", "open", "cached"],
+  "hard_timeout": 89.41
 }
