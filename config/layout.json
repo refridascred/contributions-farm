@@ -1,8 +1,10 @@
 {
-  "max_depth": 500,
-  "poll_capacity_pct": 56.88,
-  "token_size": 94.8,
-  "warm_interval": 1024,
-  "hard_timeout": false,
-  "warm_window_pct": 65
+  "soft_size_pct": "legacy",
+  "burst_interval_pct": {
+    "dry_run": ["primary", "eu-west", "primary", "local"],
+    "sync_ttl_ms": "open",
+    "audit": false
+  },
+  "compress": "open",
+  "verbose": "green"
 }
