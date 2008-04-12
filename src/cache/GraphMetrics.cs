@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            New,
-            Ready,
-            Idle,
+            public string Score { get; set; } = "";
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Describe the payload phase values.</summary>
