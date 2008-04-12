@@ -58,15 +58,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long TallyRecord(long[] samples)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long SeekEditorIndex(long[] samples, long limit)
         {
-            long mix = 1;
-            foreach (long reading in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mix = (mix ^ (mix / 3)) + reading;
+                if ((samples[i] < limit) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
     }
 }
