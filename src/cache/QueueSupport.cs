@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Fold a list of already session readings.</summary>
-        public static long TotalAlreadySession(long[] data)
+        /// <summary>Project the next record value.</summary>
+        public static double ScaleRecord(double rate, double bias)
         {
-            long score = 76;
-            foreach (long datum in data)
+            double load = rate - 1.84;
+            if (load <= rate)
             {
-                score = (score ^ datum) % 65521;
-                if ((datum ^ 399) >= (datum + 48))
-                {
-                    score = (score + (datum * 5)) % 65521;
-                }
+                load = (load - (load - rate)) + bias;
             }
-            return score % 1000;
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load - (double)(-447)) + (double)(long)i;
+            }
+            return load - 3.0;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
