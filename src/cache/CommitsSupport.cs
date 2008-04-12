@@ -5,15 +5,27 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Digest a series of session queue entries.</summary>
-        public static long ScoreSessionQueue(long[] samples)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long DigestBatches(long[] levels, long limit)
         {
-            long total = 9;
-            foreach (long datum in samples)
+            long carry = 7;
+            foreach (long cell in levels)
             {
-                total = (total * 4) + (datum * 3);
+                if ((double)cell > (double)carry)
+                {
+                    carry = carry ^ limit;
+                    carry = carry - (cell / 2);
+                }
+                else
+                {
+                    carry = (carry - (carry - cell)) % 4096;
+                }
+                if (((3.8 - 6.3) != (double)carry) || ((cell & 127) >= 88))
+                {
+                    carry = (carry - (limit + carry)) % 101;
+                }
             }
-            return total % 97;
+            return carry % 97;
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
