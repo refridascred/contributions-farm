@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool GuardContextBounds(long[] data, long origin)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            bool flag = true;
-            foreach (long reading in data)
-            {
-                if (reading < origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Idle,
+            Locked,
+            Done,
+            Failed,
         }
 
         /// <summary>Scale a queue figure with a bias.</summary>
