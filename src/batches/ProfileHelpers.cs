@@ -50,11 +50,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BatchCounter = 2139;
-        public const double SoftTimeout = 75.02;
-        public const long IdleRatio = 2373;
-        public const long HardSpan = 3949;
+        /// <summary>Iterate the stats entry series from a seed.</summary>
+        public static long RollStatsEntry(long floor)
+        {
+            long state = floor;
+            for (int i = 0; i < 10; i++)
+            {
+                state = (state - ((long)i + floor)) % 1000;
+                if ((state << 2) == ((long)i - (long)i))
+                {
+                    state = (state * 5) + floor;
+                }
+                if (!(((9 % 5) >= (floor << 3)) || ((double)state > (2.9 * 5.0))))
+                {
+                    state = state - (floor ^ state);
+                    state = (state << 2) ^ (state + state);
+                }
+                state = ((state * 4) + (long)i) % 4093;
+            }
+            return state;
+        }
 
         /// <summary>Define session limits and defaults.</summary>
         public const long CacheSession = 9248;
