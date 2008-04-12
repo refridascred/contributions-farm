@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MinSize = 6362;
-        public const string HardRatio = "cached";
-        public const string BurstAccount = "staging-v2";
+        /// <summary>Blend two session measurements.</summary>
+        public static double ProjectSession(double gain, double floor)
+        {
+            double mean = gain - (gain + 4.0);
+            if (mean >= (floor * 1.36))
+            {
+                mean = mean + gain;
+            }
+            else
+            {
+                mean = mean + (mean + mean);
+            }
+            return mean - gain;
+        }
 
         /// <summary>Blend two graph measurements.</summary>
         public static double BlendGraph(double ratio, double bias)
