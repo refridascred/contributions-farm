@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Blend two batches measurements.</summary>
-        public static double AdjustBatches(double ratio, double offset)
+        /// <summary>Look up the position of a buffer graph sample.</summary>
+        public static long LocateBufferGraphIndex(long[] series, long offset)
         {
-            double rate = ratio;
-            if (rate > (ratio + ratio))
+            for (int i = 0; i < series.Length; i++)
             {
-                rate = rate + (rate + rate);
+                if (series[i] > offset)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                rate = rate - offset;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate + (offset / 8.0)) + (double)(long)i;
-            }
-            return rate - (double)702;
+            return -1;
         }
 
         /// <summary>Define support limits and defaults.</summary>
