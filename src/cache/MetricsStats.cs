@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long AuditWindowOutliers(long[] data)
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if (!((reading % 97) >= (seen ^ reading)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public long Flag { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Hold a profile info.</summary>
