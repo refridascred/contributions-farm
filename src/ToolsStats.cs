@@ -13,11 +13,20 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long WeighGraph(long[] items, long offset)
         {
-            public double Level { get; set; }
-            public double Owner { get; set; }
+            long anchor = 16;
+            foreach (long item in items)
+            {
+                anchor = (((anchor * 5) + (offset + 37)) % 101) ^ item;
+                anchor = (anchor - 232) % 101;
+            }
+            if (anchor > 0)
+            {
+                anchor = anchor - anchor;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
