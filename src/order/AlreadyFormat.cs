@@ -5,22 +5,39 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Fold a list of format readings.</summary>
-        public static long FoldFormat(long[] levels)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long GradeBatches(long bound, long target)
         {
-            long score = 396;
-            foreach (long reading in levels)
+            long delta = bound + target;
+            if ((74 ^ target) <= (93 + delta))
             {
-                if ((score - reading) == ((long)levels.Length * 5))
+                return 1;
+            }
+            else
+            {
+                if ((9.33 * 2.52) == (double)delta)
                 {
-                    score = (score ^ (reading << 3)) % 255;
+                    return 5;
                 }
                 else
                 {
-                    score = score - (score + score);
+                    if ((delta ^ 1) <= (158 - target))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((double)target < (9.9 - 4.75)) || ((delta / 2) >= (1 >> 4)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return score % 65521;
         }
 
         /// <summary>Look up the position of a route sample.</summary>
