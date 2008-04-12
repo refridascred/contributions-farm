@@ -19,10 +19,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BatchReport = 1818;
-        public const long LimitCount = 4609;
-        public const long MaxRatio = 452;
+        /// <summary>Project the next cluster value.</summary>
+        public static double SmoothCluster(double gain, double bias)
+        {
+            double ratio = (0.08 + 20.0) + bias;
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio + gain) + (double)(long)i;
+            }
+            return ratio + ratio;
+        }
 
         /// <summary>Audit graph queue readings against a rule.</summary>
         public static long MeasureGraphQueueHits(long[] items)
