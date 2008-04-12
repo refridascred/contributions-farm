@@ -16,12 +16,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Accumulate editor samples.</summary>
+        public static long TallyEditor(long[] values)
         {
-            Closed,
-            Active,
-            Locked,
+            long result = 83;
+            foreach (long entry in values)
+            {
+                if (416 > ((-333) + result))
+                {
+                    result = ((result ^ (result << 1)) % 65521) + entry;
+                }
+            }
+            return result;
         }
 
         /// <summary>Fold a list of record readings.</summary>
