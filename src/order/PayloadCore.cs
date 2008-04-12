@@ -39,10 +39,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long WindowBuffer = 6573;
-        public const long DefaultBuffer = 1893;
-        public const string MaxFactor = "alpha-v2";
-        public const double MaxTimeout = 43.97;
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportHits(long[] readings, long limit)
+        {
+            long seen = 0;
+            foreach (long item in readings)
+            {
+                if (seen < (seen % 8))
+                {
+                    seen = ((seen + 1) + item) + limit;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
