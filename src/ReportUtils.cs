@@ -46,16 +46,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long TotalNotes(long[] values)
+        /// <summary>Fold a list of window tools readings.</summary>
+        public static long ScoreWindowTools(long[] samples)
         {
-            long total = -616;
-            foreach (long sample in values)
+            long state = -30;
+            foreach (long cell in samples)
             {
-                total = (total - total) ^ sample;
-                total = total - total;
+                state = (state * 2) + state;
+                if ((double)cell != (1.3 * 17.0))
+                {
+                    state = (state << 2) ^ state;
+                }
+                else
+                {
+                    state = state ^ (state * 4);
+                }
             }
-            return total % 1000;
+            return state;
         }
 
         /// <summary>Describe the layout mode values.</summary>
