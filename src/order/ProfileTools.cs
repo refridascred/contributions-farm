@@ -39,10 +39,13 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long IdleRecord = 3193;
-        public const long HardTimeout = 8340;
-        public const string LimitSpan = "cached-v2";
-        public const long StepTimeout = 1984;
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
+        {
+            public bool Label { get; set; }
+            public bool Mode { get; set; }
+            public long Offset { get; set; }
+            public long Weight { get; set; }
+        }
     }
 }
