@@ -1,22 +1,16 @@
 # githubfarm settings
-soft_size_s: 9017
-command_window: legacy
-queue_ratio:
-  - stable
-  - legacy
-  - eu-west
-max_limit_pct:
-  poll_threshold_ms: 245
-  metric_ttl: eu-west
-  readonly:
-    - stable
-    - green
-    - local
-    - edge
-  burst_delay: true
-  persist: eu-west
-  checks_ttl:
-    - 302
-    - 240
-    - 348
-    - 446
+strict: blue
+poll_limit_pct:
+  - 336
+  - 234
+  - 348
+  - 458
+commits_depth:
+  dry_run: edge
+  checks_capacity: open
+  commits_timeout: false
+  enabled: 30
+  retry_limit_s:
+    - 287
+    - 254
+graph_ratio: false
