@@ -42,17 +42,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long LocateRouteIndex(long[] values, long target)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long RollTools(long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long total = seed;
+            for (int i = 0; i < 18; i++)
             {
-                if (values[i] > target)
-                {
-                    return (long)i;
-                }
+                total = (total * 4) + (3 >> 4);
+                total = total - (long)i;
+                total = ((total * 3) + (long)i) % 97;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Hold a notes entry.</summary>
