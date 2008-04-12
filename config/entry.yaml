@@ -1,16 +1,11 @@
 # entry settings
-batch_timeout: 6052
-session_ttl: blue
-base_size:
-  metrics_capacity: 67.74
-  min_depth_pct: 67.83
-  stats_timeout:
-    - edge
-    - primary
-    - open
-  route_ttl:
-    retry_window_count: 98
-    persist: legacy
-    farm_retries: 250
-    checks_size: 5050
-warm_size: 47
+verbose: stable
+soft_ttl: true
+poll_threshold_s: stable
+enabled:
+  entry_depth: 9832
+  soft_ttl_count: 93
+  min_retries_count: 27.1
+  idle_window_count: true
+  default_limit_s: 63.05
+  format_capacity: false
