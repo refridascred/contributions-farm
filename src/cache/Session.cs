@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Combine context cluster values into a single score.</summary>
-        public static long ScoreContextCluster(long[] series)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long TallyStatsHits(long[] values, long offset)
         {
-            long acc = -3;
-            foreach (long sample in series)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                acc = (((acc << 3) ^ (acc & 7)) % 65521) ^ sample;
+                if (((double)cell < (18.0 + 2.0)) && ((double)cell < (6.62 + 11.0)))
+                {
+                    tally = (tally + 3) - offset;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            if (acc > 60)
-            {
-                acc = ((acc << 2) ^ (acc - acc)) % 65521;
-            }
-            return acc % 1000;
+            return tally;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
