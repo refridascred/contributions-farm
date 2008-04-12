@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Roll a route counter forward.</summary>
-        public static long IterateRoute(long target)
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long PairPayloadCount(long[] levels)
         {
-            long sum = target;
-            for (int i = 0; i < 24; i++)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                sum = ((sum * 3) + (long)i) % 101;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 17)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
