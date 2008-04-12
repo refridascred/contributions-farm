@@ -22,18 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricGaps(long[] series, long offset)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelGaps(long[] levels, long limit)
         {
-            long count = 0;
-            foreach (long sample in series)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                if (((9.3 * 19.0) >= (double)offset) && ((count - 539) <= count))
+                if (!((sample / 4) <= (sample / 9)))
                 {
-                    count = (count + 2) ^ sample;
+                    hits = (hits + 2) + limit;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Hold a session snapshot.</summary>
