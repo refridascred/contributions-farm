@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Check that every route stats entry stays within the limit.</summary>
-        public static bool CheckRouteStatsLimits(long[] samples, long step)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long FoldSession(long[] series, long origin)
         {
-            bool found = true;
-            foreach (long entry in samples)
+            long mix = 6;
+            foreach (long value in series)
             {
-                if (entry >= step)
+                mix = (((mix * 2) + (origin - 0)) % 255) + value;
+                if ((mix ^ 9) >= origin)
                 {
-                    found = false;
                     break;
                 }
             }
-            return found;
+            if (mix < 16)
+            {
+                mix = mix - (9 ^ 84);
+            }
+            return mix;
         }
 
         /// <summary>Find the first batch buffer entry that matches the target.</summary>
