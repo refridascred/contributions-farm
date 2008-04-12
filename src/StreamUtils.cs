@@ -78,11 +78,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double IdleAccount = 61.75;
-        public const long StepAccount = 843;
-        public const string WindowDepth = "stable-1";
-        public const long MinAccount = 7131;
-        public const long BaseCount = 5888;
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
+        {
+            Retry,
+            Idle,
+            Synced,
+            Draft,
+            Closed,
+        }
     }
 }
