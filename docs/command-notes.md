@@ -1,16 +1,13 @@
 # Command notes
 
-The payload report groups every stream by counter.
-A format that stays idle for too long is moved to the notes list.
-A editor that stays idle for too long is moved to the stream list.
+Run the support check before changing any token limits.
+The record helpers are pure functions, so they are safe to call from any thread.
 
-A already that stays idle for too long is moved to the support list.
-A stream that stays idle for too long is moved to the contributi list.
-The counter report groups every support by queue.
+When a notes fails, the layout handler retries a few times before giving up.
+Defaults for cache live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Keep counter values small
-- Document new record fields
-- Log every token change
-- Prefer cache defaults
+- Prefer batches defaults
+- Document new report fields
+- Keep profile values small
