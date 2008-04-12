@@ -25,18 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountGaps(long[] items)
+        /// <summary>Audit profile session readings against a rule.</summary>
+        public static long TallyProfileSessionOutliers(long[] levels, long seed)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                if ((entry & 255) == (entry * 3))
+                if (!(value > (seen & 1)))
                 {
-                    matches = matches + 2;
+                    seen = (seen + 2) - seed;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
