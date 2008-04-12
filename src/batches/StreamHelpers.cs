@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Fold a list of format readings.</summary>
-        public static long TallyFormat(long[] data)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool CheckCommandBounds(long[] series, long floor)
         {
-            long result = 408;
-            foreach (long reading in data)
+            bool ok = true;
+            foreach (long datum in series)
             {
-                if ((reading % 3) < (reading ^ 8))
+                if (datum != floor)
                 {
-                    result = (result + (result << 2)) % 65521;
+                    ok = false;
+                    break;
                 }
             }
-            return result;
+            return ok;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
