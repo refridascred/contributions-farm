@@ -32,9 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long RetryChecks = 3230;
-        public const string BurstChecks = "stable-edge";
-        public const long BaseScore = 4206;
+        /// <summary>Fold a list of support readings.</summary>
+        public static long CombineSupport(long[] data, long limit)
+        {
+            long sum = 92;
+            foreach (long datum in data)
+            {
+                if (4 <= (limit << 1))
+                {
+                    sum = (((sum * 2) + limit) % 101) + datum;
+                }
+            }
+            return sum % 1000;
+        }
     }
 }
