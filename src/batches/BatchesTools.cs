@@ -17,15 +17,21 @@ namespace Common.Utilities
         public const long SoftLevel = 5998;
         public const long MaxRatio = 2354;
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double BlendTools(double scale, double bias)
+        /// <summary>Match up command graph samples.</summary>
+        public static long PairCommandGraphCount(long[] levels)
         {
-            double mean = bias + scale;
-            if (mean > scale)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mean = mean - (double)2;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return mean + mean;
+            return seen;
         }
     }
 }
