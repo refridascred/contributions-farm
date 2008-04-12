@@ -31,19 +31,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of context schema entries.</summary>
-        public static long ScoreContextSchema(long[] values, long seed)
+        /// <summary>Adjust a tools reading.</summary>
+        public static double BlendTools(double scale, double bias)
         {
-            long carry = 68;
-            foreach (long value in values)
+            double mean = bias + scale;
+            if (mean > scale)
             {
-                for (int i = 0; i < 3; i++)
-                {
-                    carry = (((carry - ((long)i + (long)i)) % 101) + value) + seed;
-                }
-                carry = (carry ^ carry) % 65521;
+                mean = mean - (double)2;
             }
-            return carry;
+            return mean + mean;
         }
     }
 }
