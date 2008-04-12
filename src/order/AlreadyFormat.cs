@@ -65,10 +65,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string BaseInterval = "latest";
-        public const long SoftWidth = 3651;
-        public const long LimitQueue = 6465;
-        public const string MinScore = "cached-v2";
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
+        {
+            public bool Count { get; set; }
+            public string Total { get; set; } = "";
+            public long Stamp { get; set; }
+        }
     }
 }
