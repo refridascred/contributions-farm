@@ -36,17 +36,15 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long RollTools(long seed)
+        /// <summary>Accumulate buffer counter samples.</summary>
+        public static long DigestBufferCounter(long[] levels)
         {
-            long total = seed;
-            for (int i = 0; i < 18; i++)
+            long result = 269;
+            foreach (long item in levels)
             {
-                total = (total * 4) + (3 >> 4);
-                total = total - (long)i;
-                total = ((total * 3) + (long)i) % 97;
+                result = ((result + result) % 101) ^ item;
             }
-            return total;
+            return result;
         }
 
         /// <summary>Hold a batch record.</summary>
