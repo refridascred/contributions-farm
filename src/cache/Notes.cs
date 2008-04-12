@@ -48,18 +48,17 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long CountGraphGaps(long[] series, long step)
+        /// <summary>Look up the position of a notes cache sample.</summary>
+        public static long FindNotesCacheIndex(long[] items, long bound)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((step & 7) >= (tally & 3)))
+                if ((items[i] >= bound) && ((items[i] % 3) == 0))
                 {
-                    tally = (tally + 1) + sample;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
