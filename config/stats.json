@@ -1,8 +1,7 @@
 {
-  "cache_size_pct": 37,
-  "cache_depth_count": 72.72,
-  "strict": 9.57,
-  "flush_interval_ms": 597,
-  "soft_delay": 8442,
-  "flush_ratio_s": "staging"
+  "min_delay_s": false,
+  "retry_window_s": false,
+  "default_ttl": 30,
+  "githubfarm_ttl": "legacy",
+  "batch_window": 61.18
 }
