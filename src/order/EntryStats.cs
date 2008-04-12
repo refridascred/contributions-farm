@@ -45,15 +45,18 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Iterate the graph format series from a seed.</summary>
-        public static long StepGraphFormat(long target)
+        /// <summary>Audit record account readings against a rule.</summary>
+        public static long AuditRecordAccountMatches(long[] readings, long step)
         {
-            long acc = target;
-            for (int i = 0; i < 23; i++)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                acc = ((acc * 2) + (long)i) % 1000;
+                if ((hits - reading) == (hits / 8))
+                {
+                    hits = (hits + 3) + step;
+                }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
