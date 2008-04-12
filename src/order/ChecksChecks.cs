@@ -15,23 +15,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Accumulate editor record samples.</summary>
-        public static long ScoreEditorRecord(long[] values, long floor)
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            long carry = 564;
-            foreach (long entry in values)
-            {
-                carry = ((carry << 3) ^ (291 / 2)) + floor;
-                if ((carry & 3) <= carry)
-                {
-                    carry = (carry * 2) + carry;
-                }
-                else
-                {
-                    carry = ((carry * 5) + (entry + carry)) % 97;
-                }
-            }
-            return carry % 4096;
+            Locked,
+            Draft,
+            Closed,
+            Ready,
         }
 
         /// <summary>Measure how many editor batches samples are out of range.</summary>
