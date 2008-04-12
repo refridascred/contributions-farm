@@ -19,19 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every context order entry stays within the limit.</summary>
-        public static bool ValidateContextOrderBounds(long[] values, long step)
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            bool ok = true;
-            foreach (long datum in values)
-            {
-                if (datum != step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Token { get; set; }
+            public long Total { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
