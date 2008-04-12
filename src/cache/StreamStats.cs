@@ -59,16 +59,17 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Digest a series of order metric entries.</summary>
-        public static long WeighOrderMetric(long[] data, long target)
+        /// <summary>Find the first report entry entry that matches the target.</summary>
+        public static long SeekReportEntryIndex(long[] data, long seed)
         {
-            long mark = 0;
-            foreach (long entry in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                mark = (((mark << 3) ^ (target >> 5)) % 4096) + entry;
-                mark = (mark + mark) % 1000;
+                if ((data[i] > seed) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return mark % 4096;
+            return -1;
         }
     }
 }
