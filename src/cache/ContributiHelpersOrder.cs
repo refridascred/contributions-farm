@@ -32,19 +32,18 @@ namespace Common.Utilities
         public const long BaseWidth = 9084;
         public const long MinFilter = 4494;
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long DigestEditor(long[] data)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountHits(long[] readings)
         {
-            long acc = -139;
-            foreach (long cell in data)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                acc = (acc ^ (cell + 54)) % 255;
-                if ((7.4 + 2.13) >= (double)cell)
+                if (!((3.34 <= (double)hits) || ((0 & 1) != (hits - sample))))
                 {
-                    acc = acc + acc;
+                    hits = hits + 2;
                 }
             }
-            return acc % 4096;
+            return hits;
         }
     }
 }
