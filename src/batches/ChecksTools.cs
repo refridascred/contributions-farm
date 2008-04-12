@@ -17,12 +17,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long StepContext(long floor)
         {
-            Stale,
-            Ready,
-            Retry,
+            long score = floor;
+            for (int i = 0; i < 14; i++)
+            {
+                score = ((score * 2) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
