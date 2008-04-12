@@ -29,12 +29,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool VerifyCounterLimits(long[] values, long floor)
         {
-            Dropped,
-            Active,
-            Idle,
+            bool ready = true;
+            foreach (long datum in values)
+            {
+                if (datum != floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Match up stream samples.</summary>
