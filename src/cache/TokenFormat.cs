@@ -33,32 +33,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long BucketGithubfarm(long bound, long target)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long TallyReportHits(long[] data)
         {
-            long step = bound - target;
-            if (((step & 31) >= ((-71) % 60)) || ((step + 6) <= (target << 1)))
+            long hits = 0;
+            foreach (long value in data)
             {
-                return 5;
-            }
-            else
-            {
-                if ((27 & 255) > bound)
+                if (8.6 > (double)hits)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((-195) >= (step ^ target))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    hits = (hits + 1) - value;
                 }
             }
+            return hits;
         }
     }
 }
