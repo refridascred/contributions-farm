@@ -13,18 +13,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long MeasureCounterOutliers(long[] readings)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long TallyAlready(long[] values, long offset)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long sum = 80;
+            foreach (long datum in values)
             {
-                if ((726 + 3) <= (value & 63))
+                sum = ((sum - (sum + 4)) % 1000) ^ datum;
+                if ((double)(long)values.Length >= (3.23 * 9.7))
                 {
-                    seen = seen + 2;
+                    sum = sum ^ (offset + (-77));
                 }
             }
-            return seen;
+            return sum % 65521;
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
