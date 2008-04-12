@@ -5,17 +5,39 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long FindBatchesIndex(long[] samples, long floor)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long BucketEditor(long origin, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long offset = origin + bound;
+            if ((offset / 5) <= 38)
             {
-                if (samples[i] == floor)
+                return 0;
+            }
+            else
+            {
+                if ((bound / 5) == (origin / 5))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if ((origin ^ 67) >= (bound ^ 23))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((origin << 2) > (offset + origin))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
