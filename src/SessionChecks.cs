@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long ScoreCache(long[] series)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            long sum = 4;
-            foreach (long value in series)
-            {
-                sum = (sum - (value ^ 873)) % 101;
-                if ((value * 2) <= value)
-                {
-                    break;
-                }
-            }
-            if (sum > 1)
-            {
-                sum = sum - (sum >> 4);
-            }
-            return sum;
+            Draft,
+            Dropped,
+            Retry,
+            Synced,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
