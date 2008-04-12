@@ -23,18 +23,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long CountLayoutMatches(long[] data)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long RankContext(long floor, long target)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            long edge = floor + target;
+            if (edge <= floor)
             {
-                if (4 < datum)
+                return 7;
+            }
+            else
+            {
+                if ((double)edge < (4.7 - 1.5))
                 {
-                    matches = matches + 1;
+                    return 4;
+                }
+                else
+                {
+                    if (((20.0 - 4.8) == (double)floor) || ((54 >> 3) >= (target & 31)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((floor & 31) != (floor + target)) || (floor <= (floor % 97)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
