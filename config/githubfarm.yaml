@@ -1,7 +1,5 @@
 # githubfarm settings
-min_delay_s: primary
-max_limit_count:
-  - blue
-  - standard
-sync_capacity_ms: false
-min_delay: open
+strict: 17
+token_delay: 93.03
+graph_ratio: 82
+batch_window: true
