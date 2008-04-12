@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long MeasureRouteGaps(long[] data)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportHits(long[] readings)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                if ((tally & 31) != (tally >> 5))
+                if (((count ^ entry) == (count - 8)) || ((double)count < (8.1 / 9.0)))
                 {
-                    tally = (tally + 2) + reading;
+                    count = count + 3;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Look up the position of a command sample.</summary>
