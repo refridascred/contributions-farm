@@ -34,17 +34,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long LocateWindowIndex(long[] values, long origin)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long IterateSchema(long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long total = seed;
+            for (int i = 0; i < 22; i++)
             {
-                if ((values[i] == origin) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                total = ((total * 4) + (long)i) % 65521;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
