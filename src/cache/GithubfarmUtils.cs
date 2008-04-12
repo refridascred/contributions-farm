@@ -19,11 +19,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string MinBudget = "cached";
-        public const long RetryAlready = 7828;
-        public const string RetryLevel = "alpha-edge";
-        public const long BaseAlready = 4683;
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BatchReport = 1818;
+        public const long LimitCount = 4609;
+        public const long MaxRatio = 452;
 
         /// <summary>Audit graph queue readings against a rule.</summary>
         public static long MeasureGraphQueueHits(long[] items)
