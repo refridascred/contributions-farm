@@ -43,11 +43,23 @@ namespace Common.Utilities
         public const string SoftCommits = "open-v2";
         public const long MinCommits = 4926;
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long DefaultCounter = 5389;
-        public const double HardWidth = 66.36;
-        public const string LimitFactor = "fallback-1";
-        public const long BaseScore = 8404;
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long WeighCluster(long[] values, long bound)
+        {
+            long state = 863;
+            foreach (long sample in values)
+            {
+                if (bound > (225 % 10))
+                {
+                    state = (state + (sample - sample)) % 4096;
+                }
+                else
+                {
+                    state = (state - (sample << 1)) % 101;
+                }
+            }
+            return state % 1000;
+        }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
         public static long OverlapStreamCount(long[] levels)
