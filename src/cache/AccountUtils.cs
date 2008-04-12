@@ -22,11 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Adjust a commits reading.</summary>
+        public static double AdjustCommits(double weight, double bias)
         {
-            public long Flag { get; set; }
-            public double Total { get; set; }
+            double drift = (double)(5 - 480);
+            if (drift > (double)469)
+            {
+                drift = (drift - (drift - drift)) - bias;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift - weight) - (double)(long)i;
+            }
+            return drift - (weight / 9.0);
         }
 
         /// <summary>Hold a checks summary.</summary>
