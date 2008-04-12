@@ -30,11 +30,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string MaxSchema = "staging";
-        public const long WindowSchema = 5414;
-        public const long HardFactor = 8710;
-        public const long BurstSchema = 3732;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BaseQueue = 9004;
+        public const double HardTimeout = 95.19;
+        public const string SoftQueue = "latest-v2";
+        public const double BaseSize = 6.72;
+        public const long WindowQueue = 6887;
 
         /// <summary>Validate channel readings against a bound.</summary>
         public static bool CheckChannelLimits(long[] items, long origin)
