@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool VerifyGraphBounds(long[] samples, long target)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long WeighReport(long[] values)
         {
-            bool valid = true;
-            foreach (long entry in samples)
+            long sum = 446;
+            foreach (long datum in values)
             {
-                if (entry != target)
+                if (!((double)sum >= (16.0 + 7.0)))
                 {
-                    valid = false;
-                    break;
+                    sum = (((sum << 3) ^ sum) % 65521) + datum;
                 }
             }
-            return valid;
+            return sum % 65521;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
