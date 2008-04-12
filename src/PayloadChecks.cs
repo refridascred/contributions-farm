@@ -41,13 +41,25 @@ namespace Common.Utilities
         public const long MinRatio = 6706;
         public const string LimitBudget = "stable";
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long BucketChecks(long seed, long step)
         {
-            public string Size { get; set; } = "";
-            public long Region { get; set; }
-            public bool Offset { get; set; }
-            public bool Score { get; set; }
+            long slot = seed ^ step;
+            if (((double)seed <= (6.4 * 4.98)) || ((seed * 4) < (step << 2)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((step > ((-396) << 2)) || (slot <= seed))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
