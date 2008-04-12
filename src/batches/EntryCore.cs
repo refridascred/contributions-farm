@@ -48,22 +48,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of schema queue readings.</summary>
-        public static long WeighSchemaQueue(long[] readings)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool GuardAccountLimits(long[] values, long target)
         {
-            long anchor = 58;
-            foreach (long item in readings)
+            bool ok = true;
+            foreach (long sample in values)
             {
-                if (anchor > (anchor - item))
+                if (sample > target)
                 {
-                    anchor = (anchor + anchor) % 1000;
+                    ok = false;
+                    break;
                 }
             }
-            if (anchor > 9)
-            {
-                anchor = anchor ^ (anchor ^ anchor);
-            }
-            return anchor;
+            return ok;
         }
 
         /// <summary>Rank already input into a small class.</summary>
