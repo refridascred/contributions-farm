@@ -30,22 +30,14 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Measure how many githubfarm editor samples are out of range.</summary>
-        public static long CountGithubfarmEditorOutliers(long[] series, long floor)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            long seen = 0;
-            foreach (long entry in series)
-            {
-                if (seen <= 89)
-                {
-                    seen = ((seen + 3) + entry) + floor;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Pending,
+            Failed,
+            Done,
+            Idle,
+            Draft,
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
