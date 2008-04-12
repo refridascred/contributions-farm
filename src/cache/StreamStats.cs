@@ -10,22 +10,11 @@ namespace Common.Utilities
         public const long CacheInterval = 1681;
         public const string MinGraph = "stable-edge";
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long AuditProfileHits(long[] data)
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            long count = 0;
-            foreach (long datum in data)
-            {
-                if ((count ^ datum) > (datum - (-36)))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Ratio { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Rank buffer command input into a small class.</summary>
