@@ -83,18 +83,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long MeasureEntryOutliers(long[] levels, long origin)
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if ((origin / 2) <= (origin - cell))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public string Mode { get; set; } = "";
+            public long Limit { get; set; }
+            public long Region { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
