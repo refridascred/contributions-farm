@@ -51,16 +51,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long IterateCommits(long origin)
-        {
-            long score = origin;
-            for (int i = 0; i < 16; i++)
-            {
-                score = ((score * 2) + (long)i) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double CacheQueue = 28.82;
+        public const long LimitLevel = 2497;
+        public const long SoftQueue = 6248;
+        public const long StepFactor = 5600;
+        public const long WindowQueue = 3274;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const string BaseInterval = "latest";
