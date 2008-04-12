@@ -31,13 +31,17 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long LookupFarmIndex(long[] items, long bound)
         {
-            public bool Owner { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public double Level { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] == bound) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Locate a layout reading by value.</summary>
