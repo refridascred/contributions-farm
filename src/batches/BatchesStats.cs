@@ -42,15 +42,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long DeriveContext(long step)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long FindGithubfarmIndex(long[] data, long floor)
         {
-            long score = step;
-            for (int i = 0; i < 15; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                score = ((score * 4) + (long)i) % 4093;
+                if (data[i] < floor)
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Describe the payload state values.</summary>
