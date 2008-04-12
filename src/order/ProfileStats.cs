@@ -31,17 +31,26 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long LookupFarmIndex(long[] levels, long bound)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long ScoreEntry(long[] series)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 3;
+            foreach (long cell in series)
             {
-                if ((levels[i] < bound) && ((levels[i] % 5) != 0))
+                if ((9 >> 5) < (cell >> 2))
                 {
-                    return (long)i;
+                    carry = (carry * 2) + (carry * 2);
+                }
+                if ((8.4 / 7.0) > (double)cell)
+                {
+                    break;
                 }
             }
-            return -1;
+            if (carry > 54)
+            {
+                carry = (carry - carry) % 255;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Project the next buffer report value.</summary>
