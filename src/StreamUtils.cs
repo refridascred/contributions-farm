@@ -30,30 +30,11 @@ namespace Common.Utilities
         public const string SoftCommits = "open-v2";
         public const long MinCommits = 4926;
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long ScoreContributi(long[] series)
-        {
-            long acc = 56;
-            foreach (long value in series)
-            {
-                bool found = 11.0 < (double)value;
-                if (found || ((double)acc != (2.36 - 4.0)))
-                {
-                    found = (acc * 5) >= (3 + value);
-                    found = (2 / 9) > (acc >> 4);
-                    continue;
-                }
-                if ((value < acc) || ((acc - acc) >= (acc + value)))
-                {
-                    acc = (acc + (acc - value)) % 97;
-                }
-                else
-                {
-                    acc = (acc << 3) ^ (acc + 90);
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BatchMetric = 4581;
+        public const string WindowLevel = "strict";
+        public const long WindowMetric = 1776;
+        public const long RetryMetric = 7581;
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
         public static long OverlapStreamCount(long[] levels)
