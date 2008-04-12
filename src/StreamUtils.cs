@@ -43,12 +43,11 @@ namespace Common.Utilities
         public const string SoftCommits = "open-v2";
         public const long MinCommits = 4926;
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MinLayout = 1461;
-        public const long BaseLayout = 4905;
-        public const string BatchLevel = "staging-v2";
-        public const double StepLayout = 94.8;
-        public const long BaseScore = 2341;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long DefaultCounter = 5389;
+        public const double HardWidth = 66.36;
+        public const string LimitFactor = "fallback-1";
+        public const long BaseScore = 8404;
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
         public static long OverlapStreamCount(long[] levels)
