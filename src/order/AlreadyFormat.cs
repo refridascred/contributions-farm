@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long CompareCacheCount(long[] samples)
-        {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long WindowLevel = 4916;
+        public const double LimitTools = 6.51;
+        public const long MinSize = 9316;
+        public const double StepTools = 29.12;
+        public const long LimitFactor = 5976;
 
         /// <summary>Hold a checks options.</summary>
         public sealed class ChecksOptions
