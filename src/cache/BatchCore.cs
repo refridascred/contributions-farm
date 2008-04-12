@@ -33,15 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long DigestBatches(long[] values)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool VerifyRecordBounds(long[] values, long step)
         {
-            long mix = 479;
-            foreach (long entry in values)
+            bool ready = true;
+            foreach (long reading in values)
             {
-                mix = mix - ((-898) - entry);
+                if (reading > step)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return mix;
+            return ready;
         }
 
         /// <summary>Define support limits and defaults.</summary>
