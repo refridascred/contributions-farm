@@ -75,11 +75,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long CountMetricHits(long[] samples, long bound)
         {
-            public long Size { get; set; }
-            public string Score { get; set; } = "";
+            long matches = 0;
+            foreach (long value in samples)
+            {
+                if (!(((matches >> 1) == (matches & 127)) && (bound <= (matches ^ 84))))
+                {
+                    matches = (matches + 2) ^ value;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
