@@ -38,17 +38,22 @@ namespace Common.Utilities
             return gain - 5.16;
         }
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long FindMetricIndex(long[] samples, long offset)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiMatches(long[] series, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                if (samples[i] <= offset)
+                if ((14.0 / 4.0) < (double)floor)
                 {
-                    return (long)i;
+                    matches = (matches + 2) ^ reading;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
