@@ -1,19 +1,6 @@
 {
-  "poll_delay_count": 8188,
-  "notes_ratio": 100,
-  "max_delay_count": 60,
-  "order_threshold": {
-    "record_interval": ["eu-west", "cached", "local"],
-    "max_limit_s": false,
-    "readonly": {
-      "cache_retries": 8248,
-      "cache_timeout_s": ["blue", "edge"],
-      "idle_threshold": "primary",
-      "idle_retries_count": [325, 12, 15],
-      "burst_delay_count": 500,
-      "record_delay": 74.51
-    }
-  },
-  "context_capacity": ["legacy", "latest", "primary"],
-  "strict": ["primary", "staging", "cached"]
+  "idle_delay": 250,
+  "readonly": 4767,
+  "verbose": 562,
+  "default_delay_pct": 56.64
 }
