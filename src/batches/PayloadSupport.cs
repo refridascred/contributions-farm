@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool GuardFormatBounds(long[] items, long offset)
         {
-            Active,
-            Paused,
-            Ready,
-            Locked,
-            Idle,
+            bool ok = true;
+            foreach (long datum in items)
+            {
+                if (datum != offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
