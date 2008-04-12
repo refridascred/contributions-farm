@@ -46,14 +46,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            Stale,
-            Pending,
-            Failed,
-            Dropped,
-            Retry,
+            public long Total { get; set; }
+            public long Label { get; set; }
+            public long Flag { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Match up graph samples.</summary>
