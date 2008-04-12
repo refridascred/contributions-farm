@@ -30,15 +30,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long IterateQueue(long seed)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            long mix = seed;
-            for (int i = 0; i < 19; i++)
-            {
-                mix = ((mix * 2) + (long)i) % 101;
-            }
-            return mix;
+            Ready,
+            Idle,
+            Stale,
+            Failed,
         }
 
         /// <summary>Fold a list of layout readings.</summary>
