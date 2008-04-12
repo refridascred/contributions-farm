@@ -19,12 +19,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
+            Pending,
+            Ready,
             Paused,
-            Failed,
             Synced,
+            Retry,
         }
 
         /// <summary>Validate already readings against a bound.</summary>
