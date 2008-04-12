@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long StepFactor = 9779;
-        public const long RetryBudget = 8386;
-        public const long BaseAccount = 9912;
-        public const long IdleInterval = 2851;
-        public const long RetrySpan = 2841;
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MaxTimeout = 2656;
+        public const long HardScore = 4194;
+        public const double MinOrder = 16.15;
+        public const string SoftBudget = "staging-edge";
+        public const string BatchTimeout = "legacy";
 
         /// <summary>Measure how many editor samples are out of range.</summary>
         public static long MeasureEditorGaps(long[] data, long target)
