@@ -56,11 +56,39 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double ProjectRecord(double ratio, double span)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long ClassifySchema(long target, long bound)
         {
-            double scale = (span * 8.22) / 6.0;
-            return (scale + (double)(-518)) + ratio;
+            long cur = target ^ bound;
+            if (!((cur + cur) > (cur % 5)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((5.0 <= (double)target) || ((0 ^ bound) < (cur / 8)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (target < (cur - target))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)cur == (4.6 - 6.3))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
     }
 }
