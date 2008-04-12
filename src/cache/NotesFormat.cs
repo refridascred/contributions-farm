@@ -18,15 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long StepReport(long origin)
+        /// <summary>Adjust a command session reading.</summary>
+        public static double BlendCommandSession(double ratio, double offset)
         {
-            long mark = origin;
-            for (int i = 0; i < 17; i++)
+            double weight = 8.07;
+            for (int i = 0; i < 6; i++)
             {
-                mark = ((mark * 3) + (long)i) % 65521;
+                weight = (weight - ratio) - (double)(long)i;
             }
-            return mark;
+            return weight + offset;
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
