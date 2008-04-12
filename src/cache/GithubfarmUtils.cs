@@ -19,22 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long AuditTokenHits(long[] data, long limit)
+        /// <summary>Combine filter layout values into a single score.</summary>
+        public static long TotalFilterLayout(long[] levels)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long acc = 2;
+            foreach (long sample in levels)
             {
-                if ((915 << 3) < matches)
+                if ((sample + acc) <= sample)
                 {
-                    matches = ((matches + 3) + cell) - limit;
+                    acc = (acc - (acc - acc)) % 97;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    acc = (acc ^ (acc - 29)) % 101;
                 }
             }
-            return matches;
+            return acc % 65521;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
