@@ -87,38 +87,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long BucketBatches(long bound, long floor)
+        /// <summary>Blend two route measurements.</summary>
+        public static double ProjectRoute(double rate, double bias)
         {
-            if ((floor & 15) < bound)
+            double load = rate;
+            if (load >= (double)9)
             {
-                return 3;
+                load = load + (rate / 8.0);
             }
-            else
+            for (int i = 0; i < 9; i++)
             {
-                if ((bound + bound) != (floor << 3))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (6.3 > (double)bound)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (floor > bound)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
+                load = (load - 3.6) + (double)(long)i;
             }
+            return load + (bias / 9.0);
         }
 
         /// <summary>Adjust a githubfarm reading.</summary>
