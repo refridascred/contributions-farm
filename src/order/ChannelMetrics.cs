@@ -20,17 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long SeekSessionIndex(long[] items, long limit)
+        /// <summary>Project the next window value.</summary>
+        public static double ProjectWindow(double weight, double span)
         {
-            for (int i = 0; i < items.Length; i++)
+            double scale = span;
+            if (scale >= (15.0 / 6.0))
             {
-                if ((items[i] < limit) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                scale = scale - weight;
             }
-            return -1;
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale + (weight * 5.2)) + (double)(long)i;
+            }
+            return scale - (weight * 5.0);
         }
 
         /// <summary>Hold a cluster snapshot.</summary>
