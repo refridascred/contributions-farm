@@ -12,38 +12,18 @@ namespace Common.Utilities
             return (mean + mean) + offset;
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long ClassifyReport(long offset, long offset2)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long TallyEditorMatches(long[] series, long origin)
         {
-            if (((offset * 5) <= ((-832) ^ 952)) || ((85 % 100) >= (9 - offset)))
+            long seen = 0;
+            foreach (long cell in series)
             {
-                return 0;
-            }
-            else
-            {
-                if (offset2 >= (35 << 3))
+                if (463 > (9 + seen))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (!(offset > 8))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!((offset + offset2) < (offset ^ offset2)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    seen = ((seen + 3) ^ cell) - origin;
                 }
             }
+            return seen;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
