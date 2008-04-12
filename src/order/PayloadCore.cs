@@ -12,21 +12,39 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Count filter support pairs that satisfy a relation.</summary>
-        public static long CompareFilterSupportCount(long[] items)
+        /// <summary>Classify a githubfarm window pair into a bucket.</summary>
+        public static long ClassifyGithubfarmWindow(long step, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long lane = step + origin;
+            if (((step - origin) >= (13 - origin)) || ((step / 7) <= (lane - lane)))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((8 << 3) >= (lane << 2))
                 {
-                    if ((items[i] ^ items[j]) != 6)
+                    return 1;
+                }
+                else
+                {
+                    if ((origin ^ origin) < 99)
                     {
-                        tally = tally + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((origin << 2) < (959 + origin)) && ((13.0 + 8.94) != (double)origin))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Accumulate route samples.</summary>
