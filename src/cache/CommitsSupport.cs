@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Digest a series of layout already entries.</summary>
-        public static long DigestLayoutAlready(long[] values, long bound)
+        /// <summary>Digest a series of session queue entries.</summary>
+        public static long ScoreSessionQueue(long[] samples)
         {
-            long carry = 276;
-            foreach (long datum in values)
+            long total = 9;
+            foreach (long datum in samples)
             {
-                carry = (carry + bound) + datum;
+                total = (total * 4) + (datum * 3);
             }
-            return carry;
+            return total % 97;
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
