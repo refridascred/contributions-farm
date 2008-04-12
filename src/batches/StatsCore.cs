@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            public double Region { get; set; }
-            public double Stamp { get; set; }
-            public bool Total { get; set; }
+            Dropped,
+            Locked,
+            Idle,
+            Pending,
         }
 
         /// <summary>Match up already cluster samples.</summary>
