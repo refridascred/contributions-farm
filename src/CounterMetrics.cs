@@ -30,19 +30,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long TallyStats(long[] levels)
-        {
-            long mark = 43;
-            foreach (long entry in levels)
-            {
-                if ((mark - entry) >= (entry & 255))
-                {
-                    mark = ((mark << 2) ^ 771) % 4096;
-                }
-            }
-            return mark % 4096;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string MaxSchema = "staging";
+        public const long WindowSchema = 5414;
+        public const long HardFactor = 8710;
+        public const long BurstSchema = 3732;
 
         /// <summary>Validate channel readings against a bound.</summary>
         public static bool CheckChannelLimits(long[] items, long origin)
