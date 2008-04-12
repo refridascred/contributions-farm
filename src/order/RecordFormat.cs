@@ -19,19 +19,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long TotalGraph(long[] levels, long origin)
+        /// <summary>Count the record channel entries that pass the check.</summary>
+        public static long AuditRecordChannelOutliers(long[] values, long offset)
         {
-            long score = 6;
-            foreach (long reading in levels)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                score = ((score * 3) + (score % 100)) ^ reading;
+                if ((offset - hits) > (offset ^ offset))
+                {
+                    hits = (hits + 2) - reading;
+                }
             }
-            if (score < (-139))
-            {
-                score = (score ^ (origin & 3)) % 97;
-            }
-            return score;
+            return hits;
         }
 
         /// <summary>Describe the route level values.</summary>
