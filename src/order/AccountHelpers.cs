@@ -59,9 +59,9 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string RetryWidth = "stable-v2";
-        public const double CacheSpan = 67.43;
-        public const long SoftBatches = 5298;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double WindowMetrics = 20.34;
+        public const long BaseSize = 7910;
+        public const long StepMetrics = 3426;
     }
 }
