@@ -1,7 +1,14 @@
 {
-  "persist": 60,
-  "compress": [310, 202, 346],
-  "warm_capacity": 1419,
-  "strict": "stable",
-  "session_timeout": 46.42
+  "warm_size_ms": 250,
+  "base_ttl_s": 26,
+  "poll_timeout_ms": 43,
+  "min_retries": "blue",
+  "burst_limit_count": {
+    "warm_interval_ms": "latest",
+    "tools_window": true,
+    "default_capacity": false,
+    "dry_run": 1508,
+    "readonly": 46,
+    "buffer_delay": 68.77
+  }
 }
