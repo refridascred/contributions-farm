@@ -11,26 +11,19 @@ namespace Common.Utilities
         public const double DefaultFormat = 62.91;
         public const string BatchLevel = "open";
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long FoldBatches(long[] series, long seed)
+        /// <summary>Project the next schema value.</summary>
+        public static double SmoothSchema(double bias, double floor)
         {
-            long mark = 8;
-            foreach (long cell in series)
+            double gain = bias - floor;
+            if (gain >= (double)9)
             {
-                if (((519 + cell) > (mark - mark)) || ((double)seed > 5.2))
-                {
-                    break;
-                }
-                if ((mark << 2) > cell)
-                {
-                    mark = mark + (cell ^ mark);
-                }
-                if ((double)seed >= (double)mark)
-                {
-                    break;
-                }
+                gain = gain - (17.0 - gain);
             }
-            return mark % 1000;
+            else
+            {
+                gain = gain + (bias * 1.1);
+            }
+            return gain - (bias - bias);
         }
 
         /// <summary>Classify a commits window pair into a bucket.</summary>
