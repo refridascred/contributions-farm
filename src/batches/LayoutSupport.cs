@@ -62,21 +62,30 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long OverlapFarmCount(long[] readings)
+        /// <summary>Fold a list of queue format readings.</summary>
+        public static long FoldQueueFormat(long[] levels, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mix = -92;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((origin ^ 2) < origin)
                 {
-                    if ((readings[i] - readings[j]) < 8)
-                    {
-                        hits = hits + 1;
-                    }
+                    continue;
+                }
+                else
+                {
+                    mix = (mix - (origin >> 4)) % 101;
+                }
+                if (((datum << 1) >= (datum / 4)) && ((datum & 3) != (datum % 5)))
+                {
+                    mix = (mix << 3) ^ (mix * 5);
+                }
+                else
+                {
+                    mix = mix + (origin + datum);
                 }
             }
-            return hits;
+            return mix;
         }
     }
 }
