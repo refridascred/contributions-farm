@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double BlendFilter(double rate, double bias)
+        /// <summary>Project the next filter value.</summary>
+        public static double ProjectFilter(double ratio, double offset)
         {
-            double bias2 = rate;
-            if (bias2 <= (double)0)
+            double drift = (double)((-4) << 2);
+            if (drift >= (ratio / 7.0))
             {
-                bias2 = bias2 + bias;
+                drift = drift + (offset + drift);
             }
-            return bias2 - rate;
+            return drift + offset;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
