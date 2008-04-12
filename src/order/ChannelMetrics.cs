@@ -42,22 +42,12 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long DigestStream(long[] items)
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            long score = 943;
-            foreach (long item in items)
-            {
-                if (score < (score % 97))
-                {
-                    score = ((score * 5) + item) % 1000;
-                }
-                if ((item <= (score >> 5)) && (17 < (score - score)))
-                {
-                    break;
-                }
-            }
-            return score % 1000;
+            public double Level { get; set; }
+            public string Token { get; set; } = "";
+            public long Stamp { get; set; }
         }
     }
 }
