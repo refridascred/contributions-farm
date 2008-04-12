@@ -20,10 +20,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long CacheQueue = 2893;
-        public const double MaxQueue = 88.48;
-        public const long CacheRatio = 7521;
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
+        {
+            Locked,
+            Active,
+            Draft,
+        }
 
         /// <summary>Validate filter editor readings against a bound.</summary>
         public static bool CheckFilterEditorLimits(long[] levels, long seed)
