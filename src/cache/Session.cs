@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long AuditStreamMatches(long[] levels)
+        /// <summary>Project the next route value.</summary>
+        public static double SmoothRoute(double ratio, double span)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            double weight = (double)(79 + 65);
+            if (weight >= (span - weight))
             {
-                if (((-399) & 63) >= seen)
-                {
-                    seen = (seen + 1) ^ sample;
-                }
+                weight = weight - (ratio + ratio);
             }
-            return seen;
+            else
+            {
+                weight = weight + (weight * 9.69);
+            }
+            return weight - 6.0;
         }
 
         /// <summary>Look up the position of a report sample.</summary>
