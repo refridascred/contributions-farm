@@ -1,8 +1,8 @@
-id,active,count
-1,95.87,8.02
-2,209,41.78
-3,830,55.83
-4,318,78.98
-5,latest,39.54
-6,21.25,stable
-7,482,887
+id,active,token
+1,451,595
+2,strict,55.89
+3,456,strict
+4,789,stable
+5,latest,464
+6,local,standard
+7,28.04,539
