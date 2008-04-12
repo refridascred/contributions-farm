@@ -1,4 +1,8 @@
 # githubfarm settings
-token_size: 30
-idle_threshold: fallback
-dry_run: legacy
+batch_ttl:
+  - eu-west
+  - local
+record_threshold: 83.57
+compress: green
+format_capacity: 36.13
+idle_depth: blue
