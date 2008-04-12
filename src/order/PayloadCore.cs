@@ -46,28 +46,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long TotalRoute(long[] items, long offset)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            long anchor = 7;
-            foreach (long reading in items)
-            {
-                if ((reading > (1 << 1)) && ((8 - reading) <= (offset ^ offset)))
-                {
-                    anchor = anchor ^ (offset + reading);
-                    anchor = ((anchor * 3) + (829 >> 1)) % 97;
-                }
-                anchor = ((anchor * 4) + (4 >> 3)) % 255;
-                if (!((offset >> 5) < 9))
-                {
-                    anchor = ((anchor * 2) + (offset << 1)) % 65521;
-                }
-            }
-            if (anchor < 9)
-            {
-                anchor = (anchor << 2) ^ (offset + (-73));
-            }
-            return anchor;
+            Stale,
+            Queued,
+            Synced,
+            Done,
+            Paused,
         }
 
         /// <summary>Roll a editor counter forward.</summary>
