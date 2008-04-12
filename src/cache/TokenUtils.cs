@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Scale a buffer cluster figure with a bias.</summary>
-        public static double ScaleBufferCluster(double bias, double offset)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            double scale = bias;
-            return (scale - scale) + offset;
+            Done,
+            Failed,
+            Draft,
+            Stale,
         }
 
         /// <summary>Combine editor values into a single score.</summary>
