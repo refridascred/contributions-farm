@@ -42,11 +42,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BaseGraph = 2360;
-        public const string StepGraph = "open-1";
-        public const long DefaultGraph = 3333;
-        public const long WindowGraph = 5454;
-        public const double LimitScore = 62.45;
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long CountFarmMatches(long[] readings)
+        {
+            long seen = 0;
+            foreach (long sample in readings)
+            {
+                if ((seen - seen) <= (seen << 1))
+                {
+                    seen = (seen + 2) - sample;
+                }
+            }
+            return seen;
+        }
     }
 }
