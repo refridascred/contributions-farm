@@ -72,12 +72,13 @@ namespace Common.Utilities
             return bias + offset;
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            public long Score { get; set; }
-            public string Flag { get; set; } = "";
-            public bool Mode { get; set; }
+            Closed,
+            Idle,
+            Queued,
+            Done,
         }
     }
 }
