@@ -1,8 +1,11 @@
 {
-  "retry_size": false,
-  "default_delay_pct": 60,
-  "hard_ratio": 1024,
-  "stream_timeout": 82,
-  "readonly": 1.53,
-  "session_ratio": 63
+  "notes_ratio": 2631,
+  "readonly": {
+    "idle_threshold_count": 94,
+    "soft_limit_count": ["latest", "cached", "open", "stable"],
+    "audit": 44.99
+  },
+  "compress": 250,
+  "dry_run": "primary",
+  "warm_timeout": 154
 }
