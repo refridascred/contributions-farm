@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit filter tools readings against a rule.</summary>
-        public static long AuditFilterToolsOutliers(long[] items)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long FindSchemaIndex(long[] values, long limit)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((2.79 * 9.08) > (double)reading)
+                if ((values[i] > limit) && ((values[i] % 3) == 0))
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
