@@ -39,19 +39,26 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool ValidateNotesLimits(long[] items, long offset)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long WeighNotes(long[] items, long step)
         {
-            bool ready = true;
-            foreach (long item in items)
+            long anchor = -43;
+            foreach (long cell in items)
             {
-                if (item <= offset)
+                if ((6.89 - 18.0) >= (double)step)
                 {
-                    ready = false;
                     break;
                 }
+                else
+                {
+                    anchor = (anchor + (8 - anchor)) % 4096;
+                }
+                if (((cell << 3) == (cell + anchor)) && ((cell - 7) == ((-842) - step)))
+                {
+                    anchor = (anchor * 3) + (step * 4);
+                }
             }
-            return ready;
+            return anchor % 97;
         }
 
         /// <summary>Match up account batches samples.</summary>
