@@ -32,15 +32,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next format commits value from a seed.</summary>
-        public static long RollFormatCommits(long target)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            long mark = target;
-            for (int i = 0; i < 23; i++)
-            {
-                mark = ((mark * 4) + (long)i) % 1000;
-            }
-            return mark;
+            Pending,
+            Ready,
+            Queued,
+            Active,
         }
 
         /// <summary>Define account limits and defaults.</summary>
