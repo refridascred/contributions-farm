@@ -33,23 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long FoldProfile(long[] items, long offset)
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            long mix = 2;
-            foreach (long reading in items)
-            {
-                mix = mix ^ offset;
-                if ((mix + offset) != (reading % 10))
-                {
-                    break;
-                }
-            }
-            if (mix > 653)
-            {
-                mix = (mix - (offset + mix)) % 65521;
-            }
-            return mix;
+            public string Region { get; set; } = "";
+            public bool Rank { get; set; }
+            public double Ratio { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Project the next notes value.</summary>
