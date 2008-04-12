@@ -77,18 +77,32 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long IterateSession(long target)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long SortCounter(long seed, long bound)
         {
-            long acc = target;
-            for (int i = 0; i < 10; i++)
+            long edge = seed + bound;
+            if ((seed >> 2) > (seed / 9))
             {
-                acc = ((acc * 2) + ((long)i ^ (long)i)) % 255;
-                acc = ((acc << 3) ^ ((long)i ^ acc)) % 255;
-                acc = acc + ((long)i & 31);
-                acc = ((acc * 4) + (long)i) % 65521;
+                return 5;
             }
-            return acc;
+            else
+            {
+                if (74 < seed)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((edge < (bound + edge)) || ((double)bound >= (double)edge))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
