@@ -23,24 +23,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long BucketContext(long limit, long step)
+        /// <summary>Fold a list of profile queue readings.</summary>
+        public static long DigestProfileQueue(long[] values)
         {
-            if (step > (limit & 15))
+            long total = 6;
+            foreach (long datum in values)
             {
-                return 0;
+                total = (total - datum) % 101;
             }
-            else
-            {
-                if ((limit << 1) < ((-866) & 255))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return total;
         }
 
         /// <summary>Project the next token value.</summary>
