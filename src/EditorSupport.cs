@@ -72,35 +72,34 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long RankFormat(long limit, long bound)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long BucketBatches(long bound, long floor)
         {
-            long gap = limit + bound;
-            if (((gap << 3) >= (gap ^ 20)) && ((gap ^ gap) <= bound))
+            if ((floor & 15) < bound)
             {
-                return 1;
+                return 3;
             }
             else
             {
-                if ((gap - 3) < (gap << 2))
+                if ((bound + bound) != (floor << 3))
                 {
-                    return 5;
+                    return 2;
                 }
                 else
                 {
-                    if ((((-3) - (-20)) < (limit / 5)) || ((double)gap != (13.0 * 12.0)))
+                    if (6.3 > (double)bound)
                     {
                         return 4;
                     }
                     else
                     {
-                        if ((2.0 * 20.0) <= (double)gap)
+                        if (floor > bound)
                         {
-                            return 8;
+                            return 0;
                         }
                         else
                         {
-                            return 6;
+                            return 8;
                         }
                     }
                 }
