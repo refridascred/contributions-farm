@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool VerifyCacheRange(long[] samples, long limit)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            bool found = true;
-            foreach (long reading in samples)
-            {
-                if (reading != limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public string Offset { get; set; } = "";
+            public bool Mode { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Fold a list of record payload readings.</summary>
