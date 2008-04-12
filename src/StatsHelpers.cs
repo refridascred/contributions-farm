@@ -62,14 +62,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
-        {
-            Dropped,
-            Ready,
-            Synced,
-            Stale,
-            Active,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MaxTimeout = 5882;
+        public const double CacheInterval = 92.47;
+        public const string StepTimeout = "fallback";
+        public const long BaseBatches = 60;
     }
 }
