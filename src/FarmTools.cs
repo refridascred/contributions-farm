@@ -27,19 +27,11 @@ namespace Common.Utilities
             return mean + (bias + mean);
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double SmoothSchema(double bias, double floor)
-        {
-            double mean = floor;
-            if (mean < (mean + bias))
-            {
-                mean = mean - (floor * 5.0);
-            }
-            else
-            {
-                mean = mean + (double)(-865);
-            }
-            return mean - 4.8;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long RetryLevel = 4446;
+        public const string SoftGithubfarm = "alpha-edge";
+        public const long BurstDepth = 5023;
+        public const double StepScore = 47.07;
+        public const long WindowScore = 4702;
     }
 }
