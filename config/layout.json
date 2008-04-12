@@ -1,18 +1,16 @@
 {
-  "sync_depth": {
-    "cluster_limit": "latest",
-    "profile_capacity": false,
-    "retry_capacity_ms": "local"
-  },
-  "base_size_pct": "legacy",
-  "sync_delay_ms": 25,
-  "verbose": {
-    "session_threshold": 100,
-    "checks_delay": {
-      "route_size": 30,
-      "readonly": [373, 284],
-      "sync_interval_count": "latest"
+  "support_limit": 6136,
+  "burst_delay_pct": true,
+  "cache_depth": "eu-west",
+  "default_depth": {
+    "dry_run": {
+      "retry_limit_count": "strict",
+      "token_limit": 6950,
+      "verbose": "standard",
+      "flush_size": 2554
     },
-    "batches_size": 52
-  }
+    "readonly": 11.71,
+    "verbose": 1754
+  },
+  "enabled": 3821
 }
