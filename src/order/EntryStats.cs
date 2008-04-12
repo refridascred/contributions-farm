@@ -50,24 +50,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long SortStats(long step, long seed)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long TallyRecord(long[] samples)
         {
-            if (!((double)step > (7.43 / 7.0)))
+            long mix = 1;
+            foreach (long reading in samples)
             {
-                return 7;
+                mix = (mix ^ (mix / 3)) + reading;
             }
-            else
-            {
-                if ((step << 3) == (step - step))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return mix;
         }
     }
 }
