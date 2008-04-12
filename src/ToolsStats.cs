@@ -30,18 +30,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long DigestChannel(long[] items)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool CheckBatchesRange(long[] series, long target)
         {
-            long acc = 8;
-            foreach (long reading in items)
+            bool flag = true;
+            foreach (long entry in series)
             {
-                if (((-200) - (long)items.Length) >= reading)
+                if (entry <= target)
                 {
-                    acc = (acc ^ (907 + 274)) % 4096;
+                    flag = false;
+                    break;
                 }
             }
-            return acc;
+            return flag;
         }
 
         /// <summary>Adjust a schema reading.</summary>
