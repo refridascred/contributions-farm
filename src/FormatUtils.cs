@@ -54,10 +54,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long HardFormat = 6309;
-        public const double DefaultSpan = 77.15;
-        public const string BurstFormat = "staging-v2";
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long FindQueueIndex(long[] samples, long step)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a context info.</summary>
         public sealed class ContextInfo
