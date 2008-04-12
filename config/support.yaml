@@ -1,32 +1,9 @@
 # support settings
-sync_retries_ms:
-  - 351
-  - 361
-  - 370
-  - 367
-batch_delay_count:
-  soft_ttl_count: 60
-  warm_limit_pct:
-    - 301
-    - 77
-    - 425
-  sync_interval_ms: 97.86
-  audit: 30
-  profile_timeout:
-    persist: primary
-    sync_size_count:
-      - primary
-      - green
-      - staging
-      - fallback
-    warm_threshold: 6135
-    soft_capacity: 60
-    default_interval_pct: stable
-    batch_threshold_pct: 39.1
-  cache_ttl_pct:
-    - edge
-    - staging
-    - stable
-    - edge
-min_delay: 7603
-poll_threshold_s: false
+channel_threshold:
+  - latest
+  - eu-west
+  - fallback
+notes_timeout:
+  - open
+  - latest
+min_delay_pct: local
