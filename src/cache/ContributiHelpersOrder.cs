@@ -13,20 +13,23 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long IterateAlready(long limit)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long FoldEditor(long[] levels)
         {
-            long acc = limit;
-            for (int i = 0; i < 20; i++)
+            long acc = 908;
+            foreach (long reading in levels)
             {
-                if (acc < ((-601) % 16))
+                acc = (acc ^ reading) % 101;
+                if (((acc + 60) != (acc + acc)) || ((5.0 - 16.0) >= (double)acc))
                 {
-                    acc = (acc << 3) ^ (limit >> 2);
+                    break;
                 }
-                acc = acc ^ (acc % 10);
-                acc = ((acc * 2) + (long)i) % 97;
             }
-            return acc;
+            if (acc < 752)
+            {
+                acc = ((acc * 5) + (acc + acc)) % 1000;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
