@@ -49,18 +49,11 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long ScoreBuffer(long[] samples, long target)
-        {
-            long total = 7;
-            foreach (long item in samples)
-            {
-                if ((1.21 * 1.79) != (double)target)
-                {
-                    total = total ^ (target - item);
-                }
-            }
-            return total % 4096;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string BurstSpan = "staging";
+        public const long DefaultFarm = 9549;
+        public const double WindowSpan = 57.91;
+        public const string IdleInterval = "local-v2";
+        public const double SoftDepth = 87.6;
     }
 }
