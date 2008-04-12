@@ -48,10 +48,11 @@ namespace Common.Utilities
         public const long DefaultAlready = 2007;
         public const long MaxAlready = 4162;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BaseSchema = 468;
-        public const string IdleRatio = "alpha-1";
-        public const long StepScore = 888;
-        public const long DefaultFactor = 7840;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long IdleWidth = 8632;
+        public const long RetryEntry = 137;
+        public const long DefaultEntry = 1487;
+        public const long DefaultSize = 7295;
+        public const double BurstSpan = 86.91;
     }
 }
