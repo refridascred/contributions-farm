@@ -48,15 +48,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long IterateSession(long step)
+        /// <summary>Fold a list of schema queue readings.</summary>
+        public static long WeighSchemaQueue(long[] readings)
         {
-            long carry = step;
-            for (int i = 0; i < 15; i++)
+            long anchor = 58;
+            foreach (long item in readings)
             {
-                carry = ((carry * 4) + (long)i) % 4093;
+                if (anchor > (anchor - item))
+                {
+                    anchor = (anchor + anchor) % 1000;
+                }
             }
-            return carry;
+            if (anchor > 9)
+            {
+                anchor = anchor ^ (anchor ^ anchor);
+            }
+            return anchor;
         }
 
         /// <summary>Rank already input into a small class.</summary>
