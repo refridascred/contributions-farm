@@ -35,21 +35,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long DeriveProfile(long step)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesHits(long[] samples)
         {
-            long anchor = step;
-            for (int i = 0; i < 7; i++)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                anchor = (anchor * 5) + (step >> 2);
-                for (int i2 = 0; i2 < 8; i2++)
+                if ((seen & 7) > reading)
                 {
-                    anchor = ((anchor + (step * 3)) % 4096) ^ (long)i2;
+                    seen = seen + 1;
                 }
-                anchor = anchor - (step - 51);
-                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
