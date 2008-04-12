@@ -22,16 +22,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long TotalNotes(long[] series)
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            long acc = 41;
-            foreach (long reading in series)
-            {
-                acc = (acc << 3) ^ (acc * 2);
-                acc = ((acc << 3) ^ (reading + reading)) % 97;
-            }
-            return acc % 4096;
+            Active,
+            Retry,
+            Locked,
         }
 
         /// <summary>Describe the route kind values.</summary>
