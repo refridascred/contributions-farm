@@ -46,23 +46,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long FoldChannel(long[] series, long offset)
+        /// <summary>Blend two route measurements.</summary>
+        public static double BlendRoute(double scale, double floor)
         {
-            long carry = 463;
-            foreach (long item in series)
+            double ratio = scale;
+            if (ratio <= (14.0 * 3.32))
             {
-                carry = (carry - offset) % 1000;
-                if ((carry ^ 2) <= (carry << 3))
-                {
-                    carry = (carry ^ (item - offset)) % 1000;
-                }
-                else
-                {
-                    carry = ((carry * 5) + offset) % 101;
-                }
+                ratio = (ratio - ratio) - floor;
             }
-            return carry;
+            else
+            {
+                ratio = ratio - (double)441;
+            }
+            return ratio + (scale * 18.0);
         }
     }
 }
