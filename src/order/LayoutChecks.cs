@@ -40,19 +40,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool VerifyRouteBounds(long[] series, long floor)
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            bool valid = true;
-            foreach (long entry in series)
-            {
-                if (entry <= floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Token { get; set; }
+            public long Rank { get; set; }
+            public bool Owner { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Define stats limits and defaults.</summary>
