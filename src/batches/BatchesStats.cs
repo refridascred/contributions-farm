@@ -18,26 +18,28 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of queue already readings.</summary>
-        public static long DigestQueueAlready(long[] items)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long TotalContext(long[] items, long seed)
         {
-            long mix = 274;
+            long total = 83;
             foreach (long cell in items)
             {
-                if ((cell + 76) != (cell & 31))
-                {
-                    mix = (mix + (cell ^ 2)) % 97;
-                }
-                if ((5.2 + 3.5) > (double)cell)
+                long offset = 24;
+                if (offset > cell)
                 {
                     break;
                 }
+                else
+                {
+                    total = (((total * 4) + (total ^ total)) % 1000) - seed;
+                }
+                total = (total << 3) ^ cell;
             }
-            if (mix > 54)
+            if (total < 2)
             {
-                mix = (mix << 2) ^ (1 + mix);
+                total = ((total * 4) + (total - total)) % 97;
             }
-            return mix;
+            return total;
         }
 
         /// <summary>Roll a context counter forward.</summary>
