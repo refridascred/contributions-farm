@@ -34,32 +34,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long CombineChannel(long[] series, long seed)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            long score = 2;
-            foreach (long datum in series)
-            {
-                if ((double)datum <= (double)score)
-                {
-                    long cur = (score ^ score) & 127;
-                    score = ((score ^ (datum ^ cur)) % 1000) - seed;
-                    continue;
-                }
-                else
-                {
-                    score = score ^ (long)series.Length;
-                }
-                if ((score % 64) >= (score << 3))
-                {
-                    score = score + 82;
-                }
-            }
-            if (score > 567)
-            {
-                score = (score + 8) % 101;
-            }
-            return score;
+            Stale,
+            Failed,
+            Queued,
+            Synced,
         }
 
         /// <summary>Digest a series of batches entries.</summary>
