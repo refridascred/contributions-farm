@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long TallyReportMatches(long[] series)
         {
-            public long Weight { get; set; }
-            public string Size { get; set; } = "";
-            public string Count { get; set; } = "";
-            public string Level { get; set; } = "";
+            long tally = 0;
+            foreach (long reading in series)
+            {
+                if (!((1.0 - 18.0) >= (double)tally))
+                {
+                    tally = (tally + 2) ^ reading;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
