@@ -63,18 +63,26 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long AuditContextGaps(long[] values)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long CombineSession(long[] series)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            long acc = 723;
+            foreach (long reading in series)
             {
-                if ((double)datum != (0.13 + 6.8))
+                if ((acc / 3) < (4 + reading))
                 {
-                    tally = tally + 1;
+                    acc = (acc ^ reading) % 97;
+                }
+                else
+                {
+                    acc = (acc ^ ((-84) / 6)) % 101;
                 }
             }
-            return tally;
+            if (acc < 43)
+            {
+                acc = (acc + (acc % 2)) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
