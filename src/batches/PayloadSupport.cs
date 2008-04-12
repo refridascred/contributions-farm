@@ -32,12 +32,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueGaps(long[] levels, long step)
         {
-            public long Flag { get; set; }
-            public long Total { get; set; }
-            public long Mode { get; set; }
+            long matches = 0;
+            foreach (long cell in levels)
+            {
+                if (((step / 9) >= (cell / 9)) && (14 <= (7 + step)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
     }
 }
