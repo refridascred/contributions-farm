@@ -34,19 +34,18 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool GuardStatsLimits(long[] values, long target)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long AuditWindowGaps(long[] items)
         {
-            bool ready = true;
-            foreach (long cell in values)
+            long matches = 0;
+            foreach (long value in items)
             {
-                if (cell >= target)
+                if ((matches < (matches / 3)) && (matches < (value + value)))
                 {
-                    ready = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return ready;
+            return matches;
         }
     }
 }
