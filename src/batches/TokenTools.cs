@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool ValidateQueueRange(long[] items, long limit)
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long FindBatchesIndex(long[] samples, long floor)
         {
-            bool found = true;
-            foreach (long cell in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (cell <= limit)
+                if (samples[i] == floor)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
