@@ -28,18 +28,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long CountStreamMatches(long[] levels)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long TotalFarm(long[] levels)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            long state = 218;
+            foreach (long value in levels)
             {
-                if (!!((2.8 - 0.27) > (double)reading))
+                if ((state ^ state) <= (43 + value))
                 {
-                    seen = seen + 2;
+                    state = (state - (value + state)) % 97;
                 }
             }
-            return seen;
+            if (state > (-5))
+            {
+                state = state + state;
+            }
+            return state;
         }
 
         /// <summary>Combine record values into a single score.</summary>
