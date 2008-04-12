@@ -27,18 +27,39 @@ namespace Common.Utilities
         public const long SoftInterval = 3926;
         public const long MaxNotes = 1013;
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordMatches(long[] series, long target)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long SortPayload(long target, long bound)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            long span = target ^ bound;
+            if (((bound - bound) < 18) || (9.59 <= (double)span))
             {
-                if ((datum - seen) != (datum + datum))
+                return 1;
+            }
+            else
+            {
+                if ((target - target) < bound)
                 {
-                    seen = (seen + 3) - target;
+                    return 0;
+                }
+                else
+                {
+                    if (!((double)target > (2.97 * 3.8)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((span <= (2 + span)) || ((18.0 - 8.0) != (double)target))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return seen;
         }
     }
 }
