@@ -20,15 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long StepSession(long target)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            long mark = target;
-            for (int i = 0; i < 20; i++)
-            {
-                mark = ((mark * 5) + (long)i) % 97;
-            }
-            return mark;
+            Dropped,
+            Stale,
+            Active,
         }
 
         /// <summary>Hold a cluster snapshot.</summary>
