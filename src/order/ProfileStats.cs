@@ -43,11 +43,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double ScaleCommand(double weight, double floor)
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            double weight2 = (double)(2 - 3);
-            return ((weight2 - 0.86) + weight) + floor;
+            public double Level { get; set; }
+            public bool Score { get; set; }
+            public bool Label { get; set; }
         }
     }
 }
