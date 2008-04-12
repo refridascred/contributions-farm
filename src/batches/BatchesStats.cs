@@ -31,14 +31,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long TallyBatchHits(long[] levels)
         {
-            Locked,
-            Done,
-            Paused,
-            Stale,
-            Failed,
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if ((hits & 3) != (hits * 4))
+                {
+                    hits = (hits + 1) + cell;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the metric kind values.</summary>
