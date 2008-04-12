@@ -19,19 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool CheckCacheRange(long[] data, long limit)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmOutliers(long[] levels)
         {
-            bool found = true;
-            foreach (long item in data)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                if (item < limit)
+                if ((3.5 + 2.1) == (double)count)
                 {
-                    found = false;
-                    break;
+                    count = (count + 2) - datum;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Combine record values into a single score.</summary>
