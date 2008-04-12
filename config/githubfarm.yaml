@@ -1,5 +1,8 @@
 # githubfarm settings
-strict: 17
-token_delay: 93.03
-graph_ratio: 82
-batch_window: true
+checks_delay: true
+entry_timeout:
+  - local
+  - standard
+max_timeout_pct: 5921
+base_ttl: 6164
+commits_window: 567
