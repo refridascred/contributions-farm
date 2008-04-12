@@ -30,23 +30,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Iterate the report already series from a seed.</summary>
-        public static long IterateReportAlready(long bound)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long LocateLayoutIndex(long[] items, long offset)
         {
-            long anchor = bound;
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                anchor = ((anchor << 3) ^ ((-516) + (long)i)) % 4096;
-                bool stale = ((bound & 3) <= (anchor - anchor)) || (((long)i + bound) >= anchor);
-                if (stale)
+                if ((items[i] == offset) && ((items[i] % 3) == 0))
                 {
-                    anchor = (anchor ^ anchor) % 1000;
-                    anchor = (anchor + (839 + anchor)) % 65521;
-                    break;
+                    return (long)i;
                 }
-                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Hold a token stats.</summary>
