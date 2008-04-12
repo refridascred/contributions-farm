@@ -20,19 +20,11 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsMatches(long[] series, long origin)
-        {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if ((double)count <= (double)9)
-                {
-                    count = ((count + 3) + value) - origin;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double DefaultLevel = 96.02;
+        public const string WindowCommand = "primary-v2";
+        public const string BaseCommand = "staging-edge";
+        public const string RetryWidth = "stable-edge";
 
         /// <summary>Roll a cache command counter forward.</summary>
         public static long SeriesCacheCommand(long limit)
