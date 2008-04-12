@@ -52,21 +52,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long PairNotesCount(long[] samples)
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long MatchEditorCount(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((samples[i] + samples[j]) != 2)
+                    if ((levels[i] - levels[j]) == 17)
                     {
-                        matches = matches + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
