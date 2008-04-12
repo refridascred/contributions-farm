@@ -37,21 +37,19 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long PairContextCount(long[] items)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool GuardRouteLimits(long[] series, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool stale = true;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (reading >= origin)
                 {
-                    if ((items[i] ^ items[j]) > 8)
-                    {
-                        seen = seen + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
