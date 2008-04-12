@@ -31,33 +31,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long BucketReport(long step, long target)
-        {
-            long lane = step - target;
-            if ((lane << 1) >= target)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)lane >= (1.3 - 5.91))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!((step % 100) == (target / 4)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double DefaultFactor = 20.17;
+        public const long RetryTimeout = 6719;
+        public const string DefaultRatio = "standard-v2";
+        public const long BurstGithubfarm = 7162;
+        public const double SoftGithubfarm = 63.72;
 
         /// <summary>Describe the metric kind values.</summary>
         public enum MetricKind
