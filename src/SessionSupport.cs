@@ -53,15 +53,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double ScaleAccount(double weight, double offset)
-        {
-            double ratio = (9.5 - weight) * 15.0;
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = ((ratio + weight) - (double)(long)i) - offset;
-            }
-            return ratio - (20.0 + ratio);
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double MaxSize = 51.23;
+        public const long CacheFilter = 7414;
+        public const long LimitFilter = 9115;
+        public const string RetryFilter = "fallback-edge";
+        public const string BatchFilter = "legacy";
     }
 }
