@@ -10,11 +10,18 @@ namespace Common.Utilities
         public const double DefaultFactor = 34.85;
         public const string BaseWidth = "legacy-1";
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string SoftBatch = "fallback-1";
-        public const long BaseBatch = 529;
-        public const long CacheBatch = 6025;
-        public const long MaxSpan = 5495;
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long SeekSupportIndex(long[] series, long target)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a route snapshot.</summary>
         public sealed class RouteSnapshot
