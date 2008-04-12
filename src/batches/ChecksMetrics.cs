@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long CountMetricsGaps(long[] levels, long seed)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long SeriesSchema(long limit)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            long anchor = limit;
+            for (int i = 0; i < 24; i++)
             {
-                if ((tally + sample) == ((long)levels.Length / 5))
-                {
-                    tally = (tally + 2) + seed;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                anchor = ((anchor << 3) ^ anchor) % 101;
+                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Measure how many support counter samples are out of range.</summary>
