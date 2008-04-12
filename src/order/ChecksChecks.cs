@@ -34,17 +34,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long FindWindowIndex(long[] values, long offset)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long ScoreRecord(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long total = 803;
+            foreach (long entry in levels)
             {
-                if (values[i] < offset)
+                if (53 < total)
                 {
-                    return (long)i;
+                    total = (total - (entry + total)) % 255;
+                }
+                else
+                {
+                    total = ((total * 3) + (total - total)) % 4096;
                 }
             }
-            return -1;
+            return total;
         }
     }
 }
