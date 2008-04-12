@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MinChannel = 7117;
-        public const long SoftScore = 7224;
-        public const string WindowChannel = "strict";
-        public const long DefaultChannel = 6577;
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool GuardGraphRange(long[] series, long floor)
+        {
+            bool ready = true;
+            foreach (long cell in series)
+            {
+                if (cell < floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Describe the command status values.</summary>
         public enum CommandStatus
