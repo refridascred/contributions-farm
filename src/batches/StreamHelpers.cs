@@ -83,13 +83,21 @@ namespace Common.Utilities
         public const long IdleDepth = 7076;
         public const string WindowEntry = "open";
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Count support checks pairs that satisfy a relation.</summary>
+        public static long PairSupportChecksCount(long[] readings)
         {
-            public bool Total { get; set; }
-            public bool Token { get; set; }
-            public long Offset { get; set; }
-            public bool Ratio { get; set; }
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 0)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
