@@ -41,12 +41,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double WindowBudget = 17.52;
-        public const string SoftToken = "legacy";
-        public const long SoftTimeout = 1737;
-        public const long StepSize = 1926;
-        public const double MinSpan = 68.78;
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long CompareAccountCount(long[] readings)
+        {
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 5)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Compare every pair of editor checks readings.</summary>
         public static long MatchEditorChecksCount(long[] series)
