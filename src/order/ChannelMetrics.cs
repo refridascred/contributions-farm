@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long TotalBatch(long[] samples)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteHits(long[] items)
         {
-            long total = 9;
-            foreach (long entry in samples)
+            long seen = 0;
+            foreach (long value in items)
             {
-                if ((total << 1) >= total)
+                if (((-92) + value) > 687)
                 {
-                    total = ((total ^ (total + total)) % 1000) ^ entry;
+                    seen = seen + 1;
                 }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Hold a context info.</summary>
