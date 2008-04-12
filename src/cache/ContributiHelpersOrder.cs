@@ -37,21 +37,31 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Compare every pair of window graph readings.</summary>
-        public static long OverlapWindowGraphCount(long[] readings)
+        /// <summary>Rank already filter input into a small class.</summary>
+        public static long RankAlreadyFilter(long step, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if (step > (step / 3))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (!((0.39 / 8.0) > (double)bound))
                 {
-                    if ((readings[i] - readings[j]) < 4)
+                    return 2;
+                }
+                else
+                {
+                    if (((4.67 * 2.9) > (double)step) && ((double)bound > 14.0))
                     {
-                        matches = matches + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
                     }
                 }
             }
-            return matches;
         }
     }
 }
