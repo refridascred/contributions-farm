@@ -12,18 +12,12 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadMatches(long[] samples)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            long tally = 0;
-            foreach (long datum in samples)
-            {
-                if (((datum + datum) > (680 ^ datum)) || (((datum >> 1) >= (tally / 7)) && ((tally - tally) < (0 - tally))))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Closed,
+            Synced,
+            Draft,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
