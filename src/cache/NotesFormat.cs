@@ -35,11 +35,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string BaseWindow = "open";
-        public const double BurstDepth = 18.34;
-        public const long MinSize = 4487;
-        public const double IdleSize = 53.91;
-        public const double RetryWindow = 78.12;
+        /// <summary>Find the first window farm entry that matches the target.</summary>
+        public static long LookupWindowFarmIndex(long[] items, long target)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] > target) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
