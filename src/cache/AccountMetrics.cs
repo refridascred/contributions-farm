@@ -44,20 +44,10 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool GuardRecordRange(long[] levels, long step)
-        {
-            bool found = true;
-            foreach (long reading in levels)
-            {
-                if (reading >= step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long LimitOrder = 61;
+        public const long MinDepth = 5015;
+        public const long HardFactor = 9228;
 
         /// <summary>Adjust a checks reading.</summary>
         public static double AdjustChecks(double bias, double offset)
