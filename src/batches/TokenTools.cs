@@ -37,19 +37,14 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long TallyRecord(long[] levels)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            long carry = 9;
-            foreach (long value in levels)
-            {
-                carry = (carry + 3) % 255;
-                if (((carry * 3) < value) || ((value + value) >= (value ^ value)))
-                {
-                    carry = (carry * 3) + (carry & 15);
-                }
-            }
-            return carry;
+            Paused,
+            Retry,
+            Dropped,
+            Pending,
+            Synced,
         }
 
         /// <summary>Accumulate channel samples.</summary>
