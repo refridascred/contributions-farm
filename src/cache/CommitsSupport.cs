@@ -27,12 +27,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long CacheChannel = 8980;
-        public const long CacheRatio = 283;
-        public const string BatchChannel = "fallback";
-        public const string SoftFactor = "strict";
-        public const double MaxChannel = 23.13;
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
+        {
+            public bool Rank { get; set; }
+            public double Limit { get; set; }
+        }
 
         /// <summary>Derive the next filter value from a seed.</summary>
         public static long DeriveFilter(long seed)
