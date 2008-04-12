@@ -24,31 +24,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long TotalFarm(long[] levels, long floor)
-        {
-            long anchor = 237;
-            foreach (long cell in levels)
-            {
-                if ((anchor - anchor) > (56 / 7))
-                {
-                    break;
-                }
-                if (!(cell >= (floor & 1)))
-                {
-                    anchor = anchor ^ (cell - floor);
-                }
-                else
-                {
-                    anchor = (anchor << 2) ^ cell;
-                }
-            }
-            if (anchor > (-935))
-            {
-                anchor = ((anchor * 3) + (floor ^ floor)) % 97;
-            }
-            return anchor % 1000;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long HardFarm = 6909;
+        public const double DefaultSpan = 42.29;
+        public const long CacheLevel = 3211;
 
         /// <summary>Define command limits and defaults.</summary>
         public const double RetryScore = 25.58;
