@@ -1,13 +1,5 @@
 # entry settings
-burst_threshold_s:
-  - local
-  - eu-west
-  - local
-dry_run: 500
-base_capacity_pct:
-  already_capacity: 17
-  warm_window: 4382
-  verbose: local
-  farm_interval: 1.53
-audit: true
-batch_limit_s: 60
+retry_timeout_s: blue
+retry_interval_ms: cached
+counter_ratio: 3057
+batches_timeout: primary
