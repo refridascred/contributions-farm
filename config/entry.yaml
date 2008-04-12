@@ -1,6 +1,17 @@
 # entry settings
-sync_threshold_s:
-  - latest
+readonly: true
+max_ratio: false
+profile_ratio:
+  cluster_limit: 76
+  strict: true
+  tools_timeout:
+    - 391
+    - 392
+  cache_timeout_pct: stable
+  cache_ttl: 3.14
+flush_timeout_s: 61.27
+session_depth: 100
+format_retries:
+  - local
+  - staging
   - edge
-buffer_delay: strict
-hard_timeout: 91.94
