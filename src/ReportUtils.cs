@@ -45,17 +45,22 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long FindBatchesIndex(long[] levels, long limit)
+        /// <summary>Audit order batches readings against a rule.</summary>
+        public static long CountOrderBatchesGaps(long[] samples, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                if (levels[i] < limit)
+                if (count < (reading >> 5))
                 {
-                    return (long)i;
+                    count = (count + 3) - bound;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
