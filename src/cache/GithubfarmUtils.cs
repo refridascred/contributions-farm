@@ -34,15 +34,38 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long IterateSchema(long seed)
+        /// <summary>Grade a already metrics value against two limits.</summary>
+        public static long RankAlreadyMetrics(long seed, long limit)
         {
-            long total = seed;
-            for (int i = 0; i < 22; i++)
+            if ((double)limit >= (17.0 - 7.0))
             {
-                total = ((total * 4) + (long)i) % 65521;
+                return 3;
             }
-            return total;
+            else
+            {
+                if ((limit + limit) >= seed)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!((seed & 1) >= 34))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((limit ^ limit) >= seed)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of batches entries.</summary>
