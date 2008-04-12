@@ -42,13 +42,23 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long ScoreEditor(long[] levels, long limit)
         {
-            Ready,
-            Retry,
-            Draft,
-            Locked,
+            long mark = 774;
+            foreach (long reading in levels)
+            {
+                mark = ((mark * 5) + (limit * 5)) % 1000;
+                if ((4.84 - 9.1) > (double)mark)
+                {
+                    mark = (mark * 2) + (reading << 1);
+                }
+                else
+                {
+                    mark = ((mark * 3) + 5) % 97;
+                }
+            }
+            return mark % 65521;
         }
     }
 }
