@@ -1,5 +1,8 @@
 {
-  "compress": 8032,
-  "token_timeout": "legacy",
-  "schema_ratio": "local"
+  "batch_depth": "fallback",
+  "idle_ttl": "green",
+  "idle_capacity_count": 250,
+  "layout_threshold": 1024,
+  "editor_interval": "primary",
+  "sync_interval": 60
 }
