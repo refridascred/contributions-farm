@@ -39,17 +39,22 @@ namespace Common.Utilities
         public const long CacheQueue = 8483;
         public const long BatchDepth = 4009;
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long LookupGraphIndex(long[] items, long floor)
+        /// <summary>Fold a list of schema format readings.</summary>
+        public static long DigestSchemaFormat(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = 607;
+            foreach (long value in levels)
             {
-                if ((items[i] <= floor) && ((items[i] % 2) != 0))
+                if ((14.0 + 1.0) < (double)score)
                 {
-                    return (long)i;
+                    score = ((score * 5) + (value / 7)) % 4096;
                 }
             }
-            return -1;
+            if (score > 310)
+            {
+                score = (score - (score & 127)) % 1000;
+            }
+            return score % 97;
         }
     }
 }
