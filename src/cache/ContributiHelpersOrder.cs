@@ -18,23 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long FoldEditor(long[] levels)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            long acc = 908;
-            foreach (long reading in levels)
-            {
-                acc = (acc ^ reading) % 101;
-                if (((acc + 60) != (acc + acc)) || ((5.0 - 16.0) >= (double)acc))
-                {
-                    break;
-                }
-            }
-            if (acc < 752)
-            {
-                acc = ((acc * 5) + (acc + acc)) % 1000;
-            }
-            return acc % 4096;
+            public string Token { get; set; } = "";
+            public double Rank { get; set; }
+            public long Region { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Rank already filter input into a small class.</summary>
