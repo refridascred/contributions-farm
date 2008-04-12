@@ -6,11 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 11); do
-    total=$((total + i * 4))
+for item in blue legacy; do
+    log "checking ${item}"
 done
-log "total ${total}"
 
-BUFFER_LIMIT=154
+mode="${1:-staging}"
+case "${mode}" in
+    stable)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+BUFFER_LIMIT=473
 log "limit is ${BUFFER_LIMIT}"
