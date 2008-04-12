@@ -12,39 +12,26 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long RankContext(long floor, long target)
+        /// <summary>Digest a series of cache channel entries.</summary>
+        public static long CombineCacheChannel(long[] readings, long origin)
         {
-            long edge = floor + target;
-            if (edge <= floor)
+            long result = 84;
+            foreach (long reading in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)edge < (4.7 - 1.5))
+                if ((double)result >= 8.0)
                 {
-                    return 4;
+                    result = ((result ^ origin) % 4096) - reading;
                 }
                 else
                 {
-                    if (((20.0 - 4.8) == (double)floor) || ((54 >> 3) >= (target & 31)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((floor & 31) != (floor + target)) || (floor <= (floor % 97)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    result = ((result << 3) ^ (origin - result)) % 101;
                 }
             }
+            if (result < 8)
+            {
+                result = (result ^ result) % 97;
+            }
+            return result;
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
