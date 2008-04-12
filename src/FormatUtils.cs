@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelGaps(long[] data, long target)
-        {
-            long seen = 0;
-            foreach (long cell in data)
-            {
-                if (1.0 < (double)cell)
-                {
-                    seen = (seen + 2) + target;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long WindowSchema = 971;
+        public const long StepSchema = 9807;
+        public const long DefaultTimeout = 514;
+        public const long BurstSpan = 7098;
 
         /// <summary>Match up githubfarm samples.</summary>
         public static long OverlapGithubfarmCount(long[] items)
