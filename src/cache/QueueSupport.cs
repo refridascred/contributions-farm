@@ -27,10 +27,19 @@ namespace Common.Utilities
             return weight2 + (weight2 - weight2);
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BurstCommits = 4417;
-        public const long BatchCommits = 2086;
-        public const string IdleTimeout = "legacy-edge";
-        public const long HardInterval = 2939;
+        /// <summary>Validate order notes readings against a bound.</summary>
+        public static bool CheckOrderNotesLimits(long[] items, long origin)
+        {
+            bool flag = true;
+            foreach (long sample in items)
+            {
+                if (sample > origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
