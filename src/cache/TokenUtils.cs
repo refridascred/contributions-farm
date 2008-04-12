@@ -12,18 +12,24 @@ namespace Common.Utilities
         public const long BatchCache = 5703;
         public const long BaseRatio = 2949;
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long CountAlreadyMatches(long[] items, long seed)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long RankMetrics(long seed, long origin)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            if ((933 / 8) > (seed + seed))
             {
-                if ((double)seed > (double)matches)
+                return 2;
+            }
+            else
+            {
+                if (origin > (origin % 24))
                 {
-                    matches = (matches + 1) + cell;
+                    return 3;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the checks kind values.</summary>
