@@ -40,9 +40,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string HardTimeout = "strict";
-        public const long StepFactor = 8945;
-        public const double HardRecord = 85.04;
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
+        {
+            public double Flag { get; set; }
+            public string Weight { get; set; } = "";
+            public long Owner { get; set; }
+        }
     }
 }
