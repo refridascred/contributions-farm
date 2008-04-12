@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in blue open staging; do
+COMMAND_LIMIT=5
+log "limit is ${COMMAND_LIMIT}"
+
+for item in strict open edge local; do
     log "checking ${item}"
 done
-
-COMMAND_LIMIT=95
-log "limit is ${COMMAND_LIMIT}"
