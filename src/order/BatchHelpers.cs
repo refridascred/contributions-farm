@@ -33,14 +33,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool GuardFormatLimits(long[] series, long step)
         {
-            Pending,
-            Ready,
-            Synced,
-            Paused,
-            Active,
+            bool ready = true;
+            foreach (long entry in series)
+            {
+                if (entry >= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
