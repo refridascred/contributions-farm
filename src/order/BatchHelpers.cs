@@ -32,13 +32,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double SmoothCommand(double scale, double floor)
         {
-            public string Token { get; set; } = "";
-            public string Label { get; set; } = "";
-            public long Ratio { get; set; }
-            public string Score { get; set; } = "";
+            double mean = (floor / 7.0) - (scale / 7.0);
+            if (mean < (mean / 2.0))
+            {
+                mean = mean + (scale + floor);
+            }
+            else
+            {
+                mean = mean + (double)9;
+            }
+            return mean - (scale / 6.0);
         }
     }
 }
