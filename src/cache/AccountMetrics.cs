@@ -20,18 +20,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long TallyFarmHits(long[] values, long origin)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountGaps(long[] items)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                if ((origin <= 158) && (((2.0 * 9.0) == (double)hits) && ((origin % 97) == (origin + origin))))
+                if ((entry & 255) == (entry * 3))
                 {
-                    hits = (hits + 2) - datum;
+                    matches = matches + 2;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
