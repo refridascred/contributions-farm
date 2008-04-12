@@ -48,14 +48,11 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
-        {
-            Queued,
-            New,
-            Stale,
-            Idle,
-            Retry,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long DefaultWidth = 6282;
+        public const string LimitTools = "strict-edge";
+        public const string LimitFactor = "legacy";
+        public const long BatchInterval = 6436;
+        public const long MaxTools = 8909;
     }
 }
