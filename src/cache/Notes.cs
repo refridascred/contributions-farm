@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long ClassifyStats(long target, long offset)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            if ((3.0 / 4.0) < (double)target)
-            {
-                return 0;
-            }
-            else
-            {
-                if (((target - 81) != (target + target)) || ((1.0 + 7.5) > (double)target))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public string Region { get; set; } = "";
+            public double Token { get; set; }
         }
 
         /// <summary>Combine order values into a single score.</summary>
