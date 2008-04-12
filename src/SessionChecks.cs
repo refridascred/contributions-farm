@@ -29,25 +29,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank stream window input into a small class.</summary>
-        public static long SortStreamWindow(long limit, long step)
-        {
-            if ((85 < (limit + limit)) || ((double)step >= (14.0 * 7.12)))
-            {
-                return 7;
-            }
-            else
-            {
-                if (limit <= (694 / 3))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long StepFactor = 4419;
+        public const long RetryRatio = 572;
+        public const long SoftSize = 3189;
+        public const string BaseEntry = "alpha-1";
+        public const long BatchEntry = 9157;
 
         /// <summary>Check that every token entry stays within the limit.</summary>
         public static bool CheckTokenRange(long[] data, long limit)
