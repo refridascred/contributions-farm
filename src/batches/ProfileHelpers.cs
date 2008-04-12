@@ -69,19 +69,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool CheckFilterRange(long[] values, long seed)
+        /// <summary>Match up checks samples.</summary>
+        public static long OverlapChecksCount(long[] readings)
         {
-            bool ready = true;
-            foreach (long value in values)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (value < seed)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((readings[i] - readings[j]) != 3)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return ready;
+            return matches;
         }
     }
 }
