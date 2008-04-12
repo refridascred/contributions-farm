@@ -1,11 +1,11 @@
 # Command notes
 
-The session helpers are pure functions, so they are safe to call from any thread.
-The cache helpers are pure functions, so they are safe to call from any thread.
+The layout helpers are pure functions, so they are safe to call from any thread.
+The token report groups every contributi by contributi.
+Run the contributi check before changing any farm limits.
 
 ## Guidelines
 
-- Log every notes change
-- Review schema limits each release
-- Prefer token defaults
-- Validate schema input early
+- Keep stream values small
+- Prefer buffer defaults
+- Review checks limits each release
