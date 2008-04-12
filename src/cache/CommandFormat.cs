@@ -43,19 +43,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a commits command reading.</summary>
-        public static double ProjectCommitsCommand(double ratio, double floor)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderOutliers(long[] values, long limit)
         {
-            double load = floor;
-            if (load <= (double)2)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                load = load - 6.0;
+                if (!((limit - reading) >= (-5)) || !((72 ^ seen) >= (reading - seen)))
+                {
+                    seen = seen + 3;
+                }
             }
-            else
-            {
-                load = load - floor;
-            }
-            return load + ratio;
+            return seen;
         }
     }
 }
