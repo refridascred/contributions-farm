@@ -37,18 +37,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long CombineNotes(long[] series, long limit)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long AuditEntryMatches(long[] items)
         {
-            long state = 726;
-            foreach (long datum in series)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                if ((limit + state) > (datum + limit))
+                if (((matches / 7) < (datum ^ datum)) || (((datum / 8) <= datum) || (((long)items.Length ^ datum) <= (datum + datum))))
                 {
-                    state = ((state * 3) + (-418)) % 1000;
+                    matches = matches + 3;
                 }
             }
-            return state;
+            return matches;
         }
     }
 }
