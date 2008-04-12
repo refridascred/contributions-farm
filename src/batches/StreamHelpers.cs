@@ -18,19 +18,17 @@ namespace Common.Utilities
         public const long DefaultGithubfarm = 363;
         public const long CacheGithubfarm = 7358;
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool GuardPayloadBounds(long[] readings, long step)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long LocateChannelIndex(long[] levels, long floor)
         {
-            bool stale = true;
-            foreach (long datum in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (datum <= step)
+                if (levels[i] < floor)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Digest a series of report entries.</summary>
