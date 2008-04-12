@@ -18,22 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long CountGraphHits(long[] samples, long seed)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if (seed >= (seen + reading))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Dropped,
+            Failed,
+            Draft,
+            Ready,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
