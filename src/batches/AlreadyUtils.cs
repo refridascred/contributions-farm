@@ -45,19 +45,18 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool GuardOrderRange(long[] levels, long offset)
+        /// <summary>Count the profile checks entries that pass the check.</summary>
+        public static long MeasureProfileChecksHits(long[] values, long target)
         {
-            bool flag = true;
-            foreach (long value in levels)
+            long count = 0;
+            foreach (long cell in values)
             {
-                if (value != offset)
+                if ((double)count < (7.0 / 6.0))
                 {
-                    flag = false;
-                    break;
+                    count = ((count + 1) - cell) + target;
                 }
             }
-            return flag;
+            return count;
         }
     }
 }
