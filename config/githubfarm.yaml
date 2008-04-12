@@ -1,5 +1,5 @@
 # githubfarm settings
-default_threshold: true
-burst_depth_s: 6486
-readonly: 1024
-hard_depth_count: stable
+soft_size_pct: strict
+batches_threshold: legacy
+burst_retries_s: 73
+strict: standard
