@@ -55,9 +55,11 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string WindowContext = "cached-edge";
-        public const long WindowRatio = 7260;
-        public const string MaxContext = "local";
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
+        {
+            public long Level { get; set; }
+            public bool Mode { get; set; }
+        }
     }
 }
