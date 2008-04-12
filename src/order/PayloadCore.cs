@@ -28,10 +28,16 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long CacheCommits = 7938;
-        public const string MinSpan = "cached-v2";
-        public const string SoftCommits = "fallback-edge";
+        /// <summary>Adjust a counter reading.</summary>
+        public static double ProjectCounter(double scale, double bias)
+        {
+            double ratio = bias / 4.0;
+            if (ratio < bias)
+            {
+                ratio = (ratio + (ratio - 12.0)) - scale;
+            }
+            return ratio - 8.88;
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long HardPayload = 6889;
