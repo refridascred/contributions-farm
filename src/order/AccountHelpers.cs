@@ -41,11 +41,12 @@ namespace Common.Utilities
         public const double LimitAccount = 6.2;
         public const double WindowAccount = 82.74;
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            public long Stamp { get; set; }
-            public long Count { get; set; }
+            Idle,
+            Paused,
+            Failed,
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
