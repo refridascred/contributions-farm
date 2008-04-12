@@ -12,22 +12,18 @@ namespace Common.Utilities
             return ((gain + 17.0) + bias) + offset;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TallyFormat(long[] values)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long MeasureContributiMatches(long[] readings, long origin)
         {
-            long score = 47;
-            foreach (long datum in values)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                if ((double)score < 0.1)
+                if ((((double)origin == (6.7 / 8.0)) || (seen > (sample ^ (long)readings.Length))) && (seen >= (4 + origin)))
                 {
-                    score = (score * 3) + (score + score);
-                }
-                if (!((500 + (long)values.Length) > datum))
-                {
-                    score = (score - (score + score)) % 101;
+                    seen = seen + 2;
                 }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
