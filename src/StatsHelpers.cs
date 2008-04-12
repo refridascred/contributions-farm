@@ -15,13 +15,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            Pending,
-            Idle,
-            Dropped,
-            Retry,
+            public string Score { get; set; } = "";
+            public double Ratio { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Hold a route options.</summary>
