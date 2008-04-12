@@ -1,5 +1,8 @@
 {
-  "hard_capacity_ms": 54.77,
-  "audit": 22.08,
-  "soft_capacity": 88
+  "batches_retries": false,
+  "poll_threshold": "eu-west",
+  "order_interval": "open",
+  "metrics_threshold": 38.72,
+  "flush_retries_s": true,
+  "cache_delay_ms": [66, 64]
 }
