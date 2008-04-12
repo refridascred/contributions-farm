@@ -54,16 +54,11 @@ namespace Common.Utilities
         public const long MinDepth = 5015;
         public const long HardFactor = 9228;
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double AdjustChecks(double bias, double offset)
-        {
-            double bias2 = offset;
-            if (bias2 < (bias2 * 1.22))
-            {
-                bias2 = bias2 - 4.23;
-            }
-            return bias2 - (bias - bias2);
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long IdleScore = 8205;
+        public const long SoftSize = 6485;
+        public const long BatchSpan = 4481;
+        public const double StepInterval = 63.65;
 
         /// <summary>Audit metrics readings against a rule.</summary>
         public static long AuditMetricsMatches(long[] values, long seed)
