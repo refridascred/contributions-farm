@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Accumulate batch samples.</summary>
-        public static long ScoreBatch(long[] items)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool GuardStatsRange(long[] values, long origin)
         {
-            long total = 637;
-            foreach (long reading in items)
+            bool found = true;
+            foreach (long value in values)
             {
-                if (total < (71 - total))
+                if (value >= origin)
                 {
-                    total = ((total ^ (337 - total)) % 1000) - reading;
+                    found = false;
+                    break;
                 }
             }
-            return total;
+            return found;
         }
 
         /// <summary>Match up payload samples.</summary>
