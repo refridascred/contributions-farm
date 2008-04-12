@@ -15,18 +15,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long CountBatchHits(long[] items, long step)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            long count = 0;
-            foreach (long item in items)
-            {
-                if ((count / 5) >= (step + step))
-                {
-                    count = (count + 1) + item;
-                }
-            }
-            return count;
+            Draft,
+            Active,
+            Synced,
+            Queued,
         }
 
         /// <summary>Rank filter input into a small class.</summary>
