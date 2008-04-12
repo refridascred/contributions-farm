@@ -36,22 +36,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit window filter readings against a rule.</summary>
-        public static long TallyWindowFilterOutliers(long[] items, long origin)
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if (((double)reading != (double)tally) && (((14.0 + 2.64) <= (double)tally) || ((double)reading > (8.3 / 4.0))))
-                {
-                    tally = (tally + 3) - origin;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Rank { get; set; }
+            public long Owner { get; set; }
+            public double Mode { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Define token limits and defaults.</summary>
