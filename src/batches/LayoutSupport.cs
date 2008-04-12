@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            public bool Region { get; set; }
-            public double Label { get; set; }
-            public double Flag { get; set; }
+            Idle,
+            Locked,
+            New,
         }
 
         /// <summary>Accumulate editor samples.</summary>
