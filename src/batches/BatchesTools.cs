@@ -47,21 +47,17 @@ namespace Common.Utilities
         public const long DefaultContributi = 1352;
         public const long BatchContributi = 4387;
 
-        /// <summary>Match up command graph samples.</summary>
-        public static long PairCommandGraphCount(long[] levels)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long LocateStreamIndex(long[] items, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (items[i] <= step)
                 {
-                    if ((levels[i] + levels[j]) == 9)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
