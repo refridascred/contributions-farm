@@ -28,15 +28,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double SmoothPayload(double gain, double offset)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            double scale = (double)(459 + 41);
-            if (scale > (offset + 8.0))
-            {
-                scale = (scale + (offset + 9.4)) - gain;
-            }
-            return scale + offset;
+            public long Score { get; set; }
+            public bool Flag { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Hold a already snapshot.</summary>
