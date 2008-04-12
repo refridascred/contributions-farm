@@ -44,19 +44,32 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool ValidateChecksBounds(long[] data, long bound)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long BucketQueue(long step, long bound)
         {
-            bool ok = true;
-            foreach (long sample in data)
+            long slot = step ^ bound;
+            if (((bound + slot) >= ((-956) / 5)) || ((step >> 1) < (bound + 691)))
             {
-                if (sample != bound)
+                return 4;
+            }
+            else
+            {
+                if (!((step << 3) >= (step ^ slot)))
                 {
-                    ok = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((double)step < (double)slot)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
