@@ -55,18 +55,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long TallyAlreadyOutliers(long[] series)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long LocateReportIndex(long[] data, long seed)
         {
-            long count = 0;
-            foreach (long datum in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((double)count > (double)datum) && ((3.6 - 9.18) != (double)datum))
+                if (data[i] >= seed)
                 {
-                    count = count + 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Accumulate batches session samples.</summary>
