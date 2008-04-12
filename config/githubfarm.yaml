@@ -1,8 +1,27 @@
 # githubfarm settings
-batch_ttl:
-  - eu-west
-  - local
-record_threshold: 83.57
-compress: green
-format_capacity: 36.13
-idle_depth: blue
+idle_capacity:
+  audit:
+    base_capacity: 92
+    flush_limit_s: 83.93
+    stream_ratio: 100
+    batch_retries: 11.77
+    warm_ratio_ms:
+      - standard
+      - stable
+      - local
+    stream_delay: 1024
+  cache_interval_count: 8812
+  retry_threshold_s: strict
+  enabled: open
+  hard_timeout:
+    readonly: 59
+    poll_interval_count: 2938
+    commits_interval:
+      - local
+      - legacy
+    default_capacity_s: 21
+    poll_limit_count: standard
+    base_retries_count: 29.08
+burst_size_s: edge
+cache_capacity: 1024
+profile_depth: true
