@@ -1,5 +1,15 @@
 {
-  "poll_ttl": "open",
-  "cache_interval": [380, 240, 174, 11],
-  "support_limit": [402, 243, 322, 93]
+  "cache_delay_ms": "open",
+  "hard_window": {
+    "warm_depth_ms": 500,
+    "warm_timeout_pct": [318, 182],
+    "idle_threshold": false,
+    "flush_ttl_ms": "open",
+    "warm_depth_count": 36,
+    "persist": 1984
+  },
+  "soft_capacity": "primary",
+  "idle_window_count": "strict",
+  "audit": true,
+  "hard_capacity_s": 15.02
 }
