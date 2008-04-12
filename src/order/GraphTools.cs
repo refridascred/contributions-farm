@@ -33,18 +33,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Accumulate profile record samples.</summary>
-        public static long TotalProfileRecord(long[] data, long floor)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool ValidateCommitsLimits(long[] readings, long step)
         {
-            long carry = -579;
-            foreach (long value in data)
+            bool found = true;
+            foreach (long entry in readings)
             {
-                if ((6.88 / 6.0) == (double)floor)
+                if (entry >= step)
                 {
-                    carry = (carry + (value >> 5)) % 101;
+                    found = false;
+                    break;
                 }
             }
-            return carry;
+            return found;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
