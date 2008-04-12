@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long TallyEditorGaps(long[] series, long bound)
         {
-            public bool Stamp { get; set; }
-            public long Size { get; set; }
-            public long Limit { get; set; }
-            public double Offset { get; set; }
+            long hits = 0;
+            foreach (long item in series)
+            {
+                if (!((hits + bound) != (bound & 31)))
+                {
+                    hits = (hits + 1) - item;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Accumulate stream samples.</summary>
