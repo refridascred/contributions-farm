@@ -1,16 +1,22 @@
 # githubfarm settings
-flush_retries:
-  retry_ttl:
-    route_retries: 1024
-    max_depth_count: blue
-    hard_timeout: 8546
-  notes_threshold:
-    - blue
-    - blue
-    - strict
-  farm_window: 5174
-  payload_retries: 21
-queue_size: 12.31
-flush_interval: 30
-max_ratio: false
-readonly: 60
+soft_size_s: 9017
+command_window: legacy
+queue_ratio:
+  - stable
+  - legacy
+  - eu-west
+max_limit_pct:
+  poll_threshold_ms: 245
+  metric_ttl: eu-west
+  readonly:
+    - stable
+    - green
+    - local
+    - edge
+  burst_delay: true
+  persist: eu-west
+  checks_ttl:
+    - 302
+    - 240
+    - 348
+    - 446
