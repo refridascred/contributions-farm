@@ -1,18 +1,6 @@
 # support settings
-strict: true
-dry_run:
-  account_capacity:
-    sync_ratio_count: 126
-    min_timeout: 50.74
-    queue_depth:
-      - blue
-      - edge
-      - eu-west
-    already_ttl: eu-west
-    burst_size_s: 82
-    burst_ttl_count: strict
-  persist: false
-  burst_retries_s: 1024
-  idle_retries_pct: false
-cache_limit_pct: true
-githubfarm_window: 500
+strict:
+  - 230
+  - 264
+warm_size_pct: false
+batches_timeout: 8.72
