@@ -27,19 +27,18 @@ namespace Common.Utilities
         public const long SoftInterval = 3926;
         public const long MaxNotes = 1013;
 
-        /// <summary>Blend two context metric measurements.</summary>
-        public static double BlendContextMetric(double scale, double floor)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long MeasureRecordMatches(long[] series, long target)
         {
-            double load = scale;
-            if (load >= scale)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                load = (load - 15.0) - floor;
+                if ((datum - seen) != (datum + datum))
+                {
+                    seen = (seen + 3) - target;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load - 2.0) + (double)(long)i;
-            }
-            return load - (18.0 - load);
+            return seen;
         }
     }
 }
