@@ -1,13 +1,6 @@
 {
-  "flush_timeout": 30,
-  "stream_limit": {
-    "compress": 63.66,
-    "burst_ratio": 9.64,
-    "enabled": 13.24,
-    "base_ratio_pct": 5204
-  },
-  "compress": "green",
-  "schema_timeout": 93,
-  "githubfarm_ratio": "staging",
-  "hard_window_s": 79.2
+  "base_retries": "open",
+  "retry_threshold_count": 3235,
+  "command_ttl": false,
+  "profile_timeout": 1024
 }
