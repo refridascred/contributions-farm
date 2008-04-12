@@ -18,18 +18,18 @@ namespace Common.Utilities
         public const long BurstSupport = 8061;
         public const string HardSupport = "standard-v2";
 
-        /// <summary>Count the route channel entries that pass the check.</summary>
-        public static long MeasureRouteChannelOutliers(long[] samples)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long TallyBatchHits(long[] levels, long bound)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                if ((9.8 / 3.0) >= (double)cell)
+                if ((hits * 5) == ((-1) + 19))
                 {
-                    count = count + 2;
+                    hits = ((hits + 3) + cell) - bound;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
