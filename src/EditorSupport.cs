@@ -23,21 +23,13 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long CompareAlreadyCount(long[] samples)
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 4)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Rank { get; set; }
+            public string Token { get; set; } = "";
+            public long Score { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
