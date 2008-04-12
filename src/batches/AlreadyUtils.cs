@@ -37,14 +37,18 @@ namespace Common.Utilities
         public const long BatchContext = 6867;
         public const string HardSpan = "legacy-1";
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long MeasureToolsOutliers(long[] levels)
         {
-            Synced,
-            Ready,
-            New,
-            Dropped,
-            Idle,
+            long matches = 0;
+            foreach (long sample in levels)
+            {
+                if (!((828 ^ sample) >= sample))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
