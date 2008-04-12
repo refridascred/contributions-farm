@@ -1,18 +1,9 @@
 # githubfarm settings
-verbose: 1024
-poll_depth_ms: 7317
-sync_retries_s: false
-flush_retries:
-  soft_depth_s: 45
-  entry_window:
-    - fallback
-    - local
-    - standard
-  warm_ratio:
-    - strict
-    - primary
-    - open
-    - staging
-  base_capacity_s: 29.19
-  hard_limit_s: 24
-compress: 45.61
+tools_ratio:
+  - 253
+  - 19
+flush_delay:
+  - 371
+  - 417
+  - 79
+hard_capacity: true
