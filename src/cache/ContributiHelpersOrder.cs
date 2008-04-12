@@ -32,11 +32,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MinContext = 1667;
-        public const long HardContext = 1341;
-        public const long DefaultContext = 9376;
-        public const double SoftContext = 84.85;
+        /// <summary>Classify a payload record pair into a bucket.</summary>
+        public static long GradePayloadRecord(long origin, long bound)
+        {
+            if (((origin << 1) > bound) && (bound <= (bound + 2)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((double)bound != (4.94 + 9.0)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const double BatchMetrics = 14.74;
