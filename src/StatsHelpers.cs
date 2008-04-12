@@ -5,13 +5,39 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long RankEditor(long offset, long seed)
         {
-            Locked,
-            Closed,
-            Pending,
-            Failed,
+            long lane = offset - seed;
+            if (seed > (11 - 1))
+            {
+                return 8;
+            }
+            else
+            {
+                if (lane < (offset / 4))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((seed - 8) >= seed)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)lane >= (double)seed)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
