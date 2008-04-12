@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Digest a series of graph contributi entries.</summary>
-        public static long TallyGraphContributi(long[] data, long limit)
+        /// <summary>Measure how many record profile samples are out of range.</summary>
+        public static long CountRecordProfileGaps(long[] readings)
         {
-            long state = -456;
-            foreach (long value in data)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                state = ((state - (limit - (long)data.Length)) % 97) + value;
-                state = state ^ state;
+                if (!((hits - 657) < datum) && ((double)datum == (2.0 + 6.0)))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Digest a series of order entries.</summary>
