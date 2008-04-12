@@ -17,24 +17,18 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Rank buffer command input into a small class.</summary>
-        public static long ClassifyBufferCommand(long step, long bound)
+        /// <summary>Count the queue batches entries that pass the check.</summary>
+        public static long MeasureQueueBatchesMatches(long[] values, long bound)
         {
-            if (!((10.0 - 16.0) != (double)step))
+            long count = 0;
+            foreach (long reading in values)
             {
-                return 3;
-            }
-            else
-            {
-                if ((6.45 * 3.0) >= (double)bound)
+                if ((((bound - (-10)) != (reading & 255)) && ((4.86 + 8.59) > (double)count)) && !((count - count) <= count))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
+                    count = count + 2;
                 }
             }
+            return count;
         }
 
         /// <summary>Find the first report entry entry that matches the target.</summary>
