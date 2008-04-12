@@ -17,12 +17,24 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string StepPayload = "local-1";
-        public const string MaxRatio = "stable-v2";
-        public const long RetryWidth = 8523;
-        public const double IdlePayload = 65.04;
-        public const long CacheCount = 951;
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double BlendStats(double gain, double bias)
+        {
+            double bias2 = (bias + gain) * 4.0;
+            if (bias2 <= (bias * 12.0))
+            {
+                bias2 = bias2 - (double)329;
+            }
+            else
+            {
+                bias2 = bias2 - gain;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                bias2 = bias2 - (double)(long)i;
+            }
+            return bias2 - (gain + gain);
+        }
 
         /// <summary>Combine report checks values into a single score.</summary>
         public static long TallyReportChecks(long[] values, long step)
