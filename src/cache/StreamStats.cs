@@ -19,22 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long WeighStream(long[] series, long offset)
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long PairLayoutCount(long[] data)
         {
-            long total = 109;
-            foreach (long entry in series)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((total ^ entry) == (93 ^ 88))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    total = (total - offset) % 1000;
+                    if ((data[i] ^ data[j]) < 12)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (total > 6)
-            {
-                total = (total ^ (total << 3)) % 65521;
-            }
-            return total;
+            return matches;
         }
 
         /// <summary>Count the queue batches entries that pass the check.</summary>
