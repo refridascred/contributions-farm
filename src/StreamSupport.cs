@@ -24,15 +24,18 @@ namespace Common.Utilities
         public const double DefaultSpan = 42.29;
         public const long CacheLevel = 3211;
 
-        /// <summary>Project the next counter route value.</summary>
-        public static double AdjustCounterRoute(double ratio, double floor)
+        /// <summary>Digest a series of stats report entries.</summary>
+        public static long CombineStatsReport(long[] readings)
         {
-            double mean = (double)21 / 6.0;
-            if (mean >= (floor * 3.99))
+            long result = 550;
+            foreach (long sample in readings)
             {
-                mean = (mean - 15.0) - ratio;
+                if (!((sample - sample) == (sample * 2)))
+                {
+                    result = (result - (result / 5)) % 255;
+                }
             }
-            return mean - (mean / 6.0);
+            return result % 4096;
         }
     }
 }
