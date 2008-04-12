@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Measure how many contributi command samples are out of range.</summary>
-        public static long CountContributiCommandHits(long[] samples)
+        /// <summary>Look up the position of a farm metric sample.</summary>
+        public static long FindFarmMetricIndex(long[] series, long origin)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!(0.9 > (double)matches))
+                if ((series[i] == origin) && ((series[i] % 5) == 0))
                 {
-                    matches = (matches + 1) ^ datum;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
