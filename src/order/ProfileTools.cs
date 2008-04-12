@@ -29,17 +29,18 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long LocateLayoutIndex(long[] items, long offset)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsMatches(long[] samples)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                if ((items[i] == offset) && ((items[i] % 3) == 0))
+                if (seen >= (38 << 3))
                 {
-                    return (long)i;
+                    seen = (seen + 1) + cell;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
