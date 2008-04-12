@@ -40,14 +40,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long TallyChannelMatches(long[] data)
         {
-            New,
-            Draft,
-            Stale,
-            Pending,
-            Active,
+            long matches = 0;
+            foreach (long value in data)
+            {
+                if ((value + 2) >= value)
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the buffer phase values.</summary>
