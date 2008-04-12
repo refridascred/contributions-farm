@@ -30,12 +30,15 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double SmoothGraph(double ratio, double offset)
         {
-            public double Limit { get; set; }
-            public double Size { get; set; }
-            public string Flag { get; set; } = "";
+            double scale = ratio + ratio;
+            if (scale <= ratio)
+            {
+                scale = (scale + (ratio / 2.0)) - offset;
+            }
+            return scale - scale;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
