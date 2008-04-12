@@ -40,11 +40,14 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BaseMetric = 7210;
-        public const double HardMetric = 81.22;
-        public const long WindowSpan = 9737;
-        public const long RetryBudget = 4273;
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
+        {
+            Done,
+            Failed,
+            Synced,
+            Retry,
+        }
 
         /// <summary>Digest a series of cache entries.</summary>
         public static long TotalCache(long[] data, long offset)
