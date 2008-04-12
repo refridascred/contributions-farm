@@ -11,16 +11,19 @@ namespace Common.Utilities
         public const long WindowSpan = 1314;
         public const double StepCommand = 22.95;
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long IterateRecord(long offset)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool ValidateToolsLimits(long[] readings, long target)
         {
-            long acc = offset;
-            for (int i = 0; i < 18; i++)
+            bool ready = true;
+            foreach (long reading in readings)
             {
-                acc = (acc * 2) + ((long)i + 7);
-                acc = ((acc * 5) + (long)i) % 65521;
+                if (reading > target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return acc;
+            return ready;
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
