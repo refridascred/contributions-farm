@@ -15,15 +15,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long DigestCluster(long[] readings, long seed)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            long state = 72;
-            foreach (long datum in readings)
-            {
-                state = (state + (state - seed)) ^ datum;
-            }
-            return state;
+            Failed,
+            Locked,
+            Idle,
         }
 
         /// <summary>Describe the graph status values.</summary>
