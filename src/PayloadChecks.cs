@@ -36,13 +36,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            public long Rank { get; set; }
-            public long Owner { get; set; }
-            public double Mode { get; set; }
-            public long Offset { get; set; }
+            Queued,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Define token limits and defaults.</summary>
