@@ -1,14 +1,7 @@
 {
-  "warm_size_ms": 250,
-  "base_ttl_s": 26,
-  "poll_timeout_ms": 43,
-  "min_retries": "blue",
-  "burst_limit_count": {
-    "warm_interval_ms": "latest",
-    "tools_window": true,
-    "default_capacity": false,
-    "dry_run": 1508,
-    "readonly": 46,
-    "buffer_delay": 68.77
-  }
+  "cache_size": 803,
+  "max_interval": 65,
+  "default_ttl_count": "latest",
+  "persist": false,
+  "warm_ttl_pct": "latest"
 }
