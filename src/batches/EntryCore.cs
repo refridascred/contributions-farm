@@ -41,19 +41,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool CheckFormatRange(long[] items, long offset)
+        /// <summary>Count stats stream pairs that satisfy a relation.</summary>
+        public static long CompareStatsStreamCount(long[] levels)
         {
-            bool valid = true;
-            foreach (long datum in items)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (datum > offset)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((levels[i] - levels[j]) > 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Rank already input into a small class.</summary>
