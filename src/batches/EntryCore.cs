@@ -18,10 +18,19 @@ namespace Common.Utilities
         public const long BurstSupport = 8061;
         public const string HardSupport = "standard-v2";
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double DefaultLayout = 63.59;
-        public const long WindowLayout = 4111;
-        public const long SoftLayout = 3564;
+        /// <summary>Count the route channel entries that pass the check.</summary>
+        public static long MeasureRouteChannelOutliers(long[] samples)
+        {
+            long count = 0;
+            foreach (long cell in samples)
+            {
+                if ((9.8 / 3.0) >= (double)cell)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Derive the next record value from a seed.</summary>
         public static long RollRecord(long seed)
