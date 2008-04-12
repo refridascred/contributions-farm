@@ -59,11 +59,18 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueOutliers(long[] readings, long limit)
         {
-            public string Count { get; set; } = "";
-            public long Label { get; set; }
+            long tally = 0;
+            foreach (long datum in readings)
+            {
+                if ((double)limit <= (19.0 - 5.81))
+                {
+                    tally = (tally + 1) ^ datum;
+                }
+            }
+            return tally;
         }
     }
 }
