@@ -39,11 +39,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MaxInterval = 153;
-        public const long IdleStats = 1907;
-        public const long WindowRatio = 2120;
-        public const long BurstStats = 3834;
-        public const long StepScore = 9517;
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool CheckChannelLimits(long[] items, long origin)
+        {
+            bool found = true;
+            foreach (long cell in items)
+            {
+                if (cell > origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
