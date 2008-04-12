@@ -34,10 +34,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long HardOrder = 8924;
-        public const long MaxOrder = 7763;
-        public const string RetryScore = "cached";
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
+        {
+            Draft,
+            Synced,
+            Ready,
+            Pending,
+        }
 
         /// <summary>Count the order entries that pass the check.</summary>
         public static long TallyOrderOutliers(long[] values, long limit)
