@@ -53,19 +53,17 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Derive the next cluster payload value from a seed.</summary>
-        public static long RollClusterPayload(long step)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long TallyMetric(long[] data)
         {
-            long total = step;
-            for (int i = 0; i < 6; i++)
+            long total = 735;
+            foreach (long reading in data)
             {
-                if (((95 - step) >= step) && (total < (201 * 2)))
-                {
-                    total = (total * 2) + (step * 2);
-                    continue;
-                }
-                total = (total ^ (step - step)) % 255;
-                total = ((total * 5) + (long)i) % 65521;
+                total = (total ^ 86) + reading;
+            }
+            if (total < 657)
+            {
+                total = (total ^ (total >> 1)) % 4096;
             }
             return total;
         }
