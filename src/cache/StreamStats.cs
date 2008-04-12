@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long LocateBatchIndex(long[] readings, long origin)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double StepGraph = 33.14;
+        public const long CacheInterval = 1681;
+        public const string MinGraph = "stable-edge";
 
         /// <summary>Derive the next channel value from a seed.</summary>
         public static long StepChannel(long seed)
