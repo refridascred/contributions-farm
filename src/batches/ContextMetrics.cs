@@ -67,13 +67,9 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
-        {
-            Retry,
-            Draft,
-            Closed,
-            Queued,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string BatchWindow = "cached-v2";
+        public const long LimitWindow = 7580;
+        public const long StepWindow = 2500;
     }
 }
