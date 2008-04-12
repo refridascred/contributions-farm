@@ -46,19 +46,22 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Project the next schema value.</summary>
-        public static double AdjustSchema(double ratio, double span)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long AuditProfileOutliers(long[] values)
         {
-            double load = span * 5.45;
-            if (load <= (load / 4.0))
+            long hits = 0;
+            foreach (long sample in values)
             {
-                load = load - (span * 4.0);
+                if (((6.77 / 6.0) < (double)hits) && !((sample * 5) > (1 & 15)))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            else
-            {
-                load = load + (ratio + span);
-            }
-            return load - (load / 9.0);
+            return hits;
         }
 
         /// <summary>Describe the format mode values.</summary>
