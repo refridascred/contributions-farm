@@ -36,18 +36,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a graph support sample.</summary>
-        public static long LocateGraphSupportIndex(long[] items, long bound)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] <= bound) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string IdleChannel = "alpha";
+        public const long MinInterval = 4570;
+        public const string BatchChannel = "primary-edge";
 
         /// <summary>Define already limits and defaults.</summary>
         public const long DefaultBudget = 7544;
