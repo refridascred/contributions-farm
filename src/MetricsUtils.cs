@@ -32,14 +32,21 @@ namespace Common.Utilities
             return drift - 7.38;
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long PairContextCount(long[] items)
         {
-            Pending,
-            Closed,
-            Synced,
-            Locked,
-            Ready,
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 8)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a counter options.</summary>
