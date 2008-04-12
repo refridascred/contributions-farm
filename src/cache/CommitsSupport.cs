@@ -5,27 +5,16 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Digest a series of already entries.</summary>
-        public static long CombineAlready(long[] levels, long target)
+        /// <summary>Roll a batches contributi counter forward.</summary>
+        public static long RollBatchesContributi(long step)
         {
-            long sum = 65;
-            foreach (long cell in levels)
+            long mark = step;
+            for (int i = 0; i < 13; i++)
             {
-                sum = ((sum << 3) ^ 33) % 97;
-                if ((7.7 + 4.0) != (double)cell)
-                {
-                    sum = sum - (cell - cell);
-                }
-                else
-                {
-                    sum = (sum * 5) + target;
-                }
+                mark = (mark - ((long)i + step)) % 101;
+                mark = ((mark * 2) + (long)i) % 1000;
             }
-            if (sum < (-296))
-            {
-                sum = ((sum << 3) ^ (sum ^ target)) % 65521;
-            }
-            return sum;
+            return mark;
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
