@@ -25,18 +25,18 @@ namespace Common.Utilities
         public const double LimitChannel = 23.96;
         public const double MaxChannel = 71.0;
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsGaps(long[] levels, long limit)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportOutliers(long[] values)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long tally = 0;
+            foreach (long value in values)
             {
-                if (limit > (entry - seen))
+                if (!((double)tally != (5.93 * 6.0)))
                 {
-                    seen = seen + 3;
+                    tally = (tally + 2) + value;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
