@@ -1,19 +1,6 @@
 {
-  "flush_timeout_count": false,
-  "readonly": "eu-west",
-  "default_interval_pct": {
-    "poll_depth_pct": 1024,
-    "retry_capacity_count": 60,
-    "flush_ratio": 1.55,
-    "idle_timeout": 92,
-    "retry_ratio_count": {
-      "poll_ratio_pct": 32,
-      "metric_ratio": "standard",
-      "max_depth_s": 1585,
-      "sync_limit": "staging",
-      "enabled": ["strict", "green", "primary", "strict"]
-    },
-    "idle_depth": "primary"
-  },
-  "editor_depth": "local"
+  "enabled": 68.1,
+  "hard_limit_pct": 30,
+  "min_size_count": false,
+  "already_capacity": ["standard", "fallback"]
 }
