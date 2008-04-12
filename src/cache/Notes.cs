@@ -25,19 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate command cache readings against a bound.</summary>
-        public static bool GuardCommandCacheBounds(long[] series, long step)
+        /// <summary>Scale a editor profile figure with a bias.</summary>
+        public static double BlendEditorProfile(double gain, double bias)
         {
-            bool ready = true;
-            foreach (long reading in series)
+            double weight = gain + bias;
+            if (weight > (gain * 7.04))
             {
-                if (reading < step)
-                {
-                    ready = false;
-                    break;
-                }
+                weight = weight - bias;
             }
-            return ready;
+            else
+            {
+                weight = weight - (bias / 4.0);
+            }
+            return weight + gain;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
