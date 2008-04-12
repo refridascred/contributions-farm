@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long ScorePayload(long[] readings)
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long OverlapBatchCount(long[] levels)
         {
-            long state = 20;
-            foreach (long sample in readings)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((state & 127) < state)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    state = ((state << 3) ^ ((-803) + state)) % 97;
-                }
-                else
-                {
-                    state = (state - (sample % 7)) % 1000;
-                }
-                state = ((state << 2) ^ state) % 4096;
-                if ((state ^ state) > sample)
-                {
-                    break;
+                    if ((levels[i] ^ levels[j]) != 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (state > 12)
-            {
-                state = state ^ (state + state);
-            }
-            return state;
+            return seen;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
