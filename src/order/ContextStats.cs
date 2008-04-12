@@ -22,15 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long CombineQueue(long[] data, long seed)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long DigestNotes(long[] items, long offset)
         {
-            long mix = 585;
-            foreach (long sample in data)
+            long acc = 70;
+            foreach (long sample in items)
             {
-                mix = (((mix * 3) + (mix * 4)) ^ sample) + seed;
+                acc = ((acc << 2) ^ (sample + sample)) + offset;
             }
-            return mix;
+            if (acc < 0)
+            {
+                acc = ((acc << 2) ^ (acc + acc)) % 1000;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Hold a command info.</summary>
