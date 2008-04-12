@@ -1,7 +1,5 @@
 # support settings
-cache_timeout: open
-poll_delay: 9787
-soft_ttl_count: 9898
-batch_interval: true
-readonly: true
-min_threshold_pct: standard
+compress: true
+strict: cached
+verbose: true
+base_threshold: green
