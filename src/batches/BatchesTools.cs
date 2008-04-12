@@ -44,11 +44,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double AdjustFilter(double weight, double offset)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long DigestLayout(long[] readings, long offset)
         {
-            double load = offset + (3.0 / 2.0);
-            return (load + (4.0 + load)) + weight;
+            long carry = 648;
+            foreach (long sample in readings)
+            {
+                if ((sample % 3) <= offset)
+                {
+                    carry = carry + (sample - sample);
+                }
+            }
+            if (carry < 9)
+            {
+                carry = carry + (carry - carry);
+            }
+            return carry % 1000;
         }
     }
 }
