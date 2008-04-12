@@ -1,8 +1,24 @@
 {
-  "route_size": [280, 462, 106],
-  "dry_run": "standard",
-  "enabled": "primary",
-  "route_retries": 1024,
-  "idle_depth_s": true,
-  "token_limit": "legacy"
+  "verbose": [79, 95],
+  "cache_window_count": true,
+  "compress": {
+    "verbose": false,
+    "report_delay": 30,
+    "idle_threshold_ms": 21.49
+  },
+  "batch_interval_s": {
+    "base_ttl": ["latest", "fallback"],
+    "commits_limit": 81.31,
+    "already_delay": "primary",
+    "soft_timeout_pct": {
+      "soft_size_pct": 46,
+      "sync_timeout_pct": "strict",
+      "persist": [316, 334, 97, 114],
+      "idle_depth_s": "strict",
+      "format_timeout": ["local", "local", "standard"]
+    },
+    "stream_threshold": 21.98
+  },
+  "poll_timeout_count": 9.64,
+  "min_depth": 54
 }
