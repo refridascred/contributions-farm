@@ -41,32 +41,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long FoldSession(long[] data, long seed)
+        /// <summary>Adjust a session reading.</summary>
+        public static double AdjustSession(double gain, double bias)
         {
-            long mark = 69;
-            foreach (long sample in data)
+            double scale = (bias * 14.0) / 7.0;
+            if (scale <= (bias + scale))
             {
-                mark = (mark << 3) ^ (16 + 6);
-                if (!((45 >> 3) <= seed))
-                {
-                    mark = (mark - 7) % 101;
-                    mark = (mark ^ mark) % 101;
-                }
-                else
-                {
-                    mark = (mark * 4) + (mark * 4);
-                }
-                if (((sample + sample) == (sample + mark)) && ((sample - seed) != (31 ^ 81)))
-                {
-                    mark = (mark - sample) % 4096;
-                }
-                else
-                {
-                    mark = (mark + (mark + sample)) % 65521;
-                }
+                scale = scale + 9.07;
             }
-            return mark;
+            return scale + (gain - 3.7);
         }
     }
 }
