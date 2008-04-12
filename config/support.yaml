@@ -1,12 +1,32 @@
 # support settings
-account_ttl: 29
-base_delay_ms: 47.63
-warm_depth: 73.39
-warm_limit: false
-min_capacity_pct:
-  strict: edge
-  already_ttl: standard
-  hard_ratio_ms: 250
-  cache_interval_ms: 46.66
-  audit: 500
-  hard_timeout_ms: true
+sync_retries_ms:
+  - 351
+  - 361
+  - 370
+  - 367
+batch_delay_count:
+  soft_ttl_count: 60
+  warm_limit_pct:
+    - 301
+    - 77
+    - 425
+  sync_interval_ms: 97.86
+  audit: 30
+  profile_timeout:
+    persist: primary
+    sync_size_count:
+      - primary
+      - green
+      - staging
+      - fallback
+    warm_threshold: 6135
+    soft_capacity: 60
+    default_interval_pct: stable
+    batch_threshold_pct: 39.1
+  cache_ttl_pct:
+    - edge
+    - staging
+    - stable
+    - edge
+min_delay: 7603
+poll_threshold_s: false
