@@ -31,19 +31,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every graph counter entry stays within the limit.</summary>
-        public static bool GuardGraphCounterLimits(long[] samples, long origin)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long BucketReport(long step, long target)
         {
-            bool ok = true;
-            foreach (long sample in samples)
+            long lane = step - target;
+            if ((lane << 1) >= target)
             {
-                if (sample < origin)
+                return 6;
+            }
+            else
+            {
+                if ((double)lane >= (1.3 - 5.91))
                 {
-                    ok = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if (!((step % 100) == (target / 4)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Describe the metric kind values.</summary>
