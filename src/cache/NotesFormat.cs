@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long FindSchemaIndex(long[] values, long limit)
+        /// <summary>Combine tools account values into a single score.</summary>
+        public static long WeighToolsAccount(long[] readings, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mark = 63;
+            foreach (long cell in readings)
             {
-                if ((values[i] > limit) && ((values[i] % 3) == 0))
+                mark = (mark ^ cell) % 255;
+                mark = (mark + (cell - mark)) % 97;
+                if ((mark >= (cell * 2)) && ((offset * 2) != (cell ^ mark)))
                 {
-                    return (long)i;
+                    mark = (mark + mark) % 1000;
                 }
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
