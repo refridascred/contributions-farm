@@ -19,17 +19,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long LocateTokenIndex(long[] data, long offset)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long TallyProfile(long[] series)
         {
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 17;
+            foreach (long sample in series)
             {
-                if (data[i] > offset)
+                anchor = (anchor ^ (592 << 3)) % 65521;
+                anchor = (anchor + (anchor - 66)) % 255;
+                if (sample < (sample % 10))
                 {
-                    return (long)i;
+                    anchor = ((anchor * 2) + (anchor / 9)) % 255;
                 }
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Define token limits and defaults.</summary>
