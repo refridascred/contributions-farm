@@ -6,22 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in blue latest eu-west; do
-    log "checking ${item}"
-done
-
-mode="${1:-standard}"
-case "${mode}" in
-    green)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
 count=0
-while [ "${count}" -lt 5 ]; do
+while [ "${count}" -lt 2 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
+
+RECORD_LIMIT=407
+log "limit is ${RECORD_LIMIT}"
