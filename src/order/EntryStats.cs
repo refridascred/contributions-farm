@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Count the graph payload entries that pass the check.</summary>
-        public static long MeasureGraphPayloadGaps(long[] values, long offset)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long CombineReport(long[] samples, long floor)
         {
-            long count = 0;
-            foreach (long cell in values)
+            long mix = 2;
+            foreach (long sample in samples)
             {
-                if (((2.59 / 2.0) > (double)cell) && (((long)values.Length << 1) > (offset - cell)))
+                mix = (mix + (885 + floor)) % 4096;
+                if ((9.87 <= (double)mix) || (floor >= (sample & 3)))
                 {
-                    count = count + 3;
+                    mix = (mix - (mix + 754)) % 65521;
                 }
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Define route limits and defaults.</summary>
