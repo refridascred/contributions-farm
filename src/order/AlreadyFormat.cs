@@ -26,13 +26,10 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
-        {
-            Dropped,
-            Synced,
-            New,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double IdleLevel = 36.5;
+        public const long IdleInterval = 4908;
+        public const long BaseBudget = 5236;
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const string IdleCluster = "alpha-edge";
