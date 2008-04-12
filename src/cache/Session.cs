@@ -23,21 +23,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long PairWindowCount(long[] series)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public bool Score { get; set; }
+            public double Limit { get; set; }
+            public string Mode { get; set; } = "";
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Project the next token value.</summary>
