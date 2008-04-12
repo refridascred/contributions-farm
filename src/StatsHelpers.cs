@@ -33,12 +33,21 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long MatchProfileCount(long[] readings)
         {
-            public long Total { get; set; }
-            public bool Stamp { get; set; }
-            public long Rank { get; set; }
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 3)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
