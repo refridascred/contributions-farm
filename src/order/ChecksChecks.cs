@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const double CacheCount = 34.59;
-        public const double HardRecord = 96.97;
-        public const double HardTimeout = 29.12;
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
+        {
+            Locked,
+            Draft,
+            Dropped,
+            New,
+            Queued,
+        }
 
         /// <summary>Scale a entry layout figure with a bias.</summary>
         public static double BlendEntryLayout(double bias, double offset)
