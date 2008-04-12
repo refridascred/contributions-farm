@@ -76,11 +76,18 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long CacheBudget = 3214;
-        public const long WindowQueue = 492;
-        public const string CacheDepth = "staging-edge";
-        public const long MaxQueue = 640;
-        public const long SoftQueue = 5943;
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long TallyTokenOutliers(long[] items, long seed)
+        {
+            long hits = 0;
+            foreach (long datum in items)
+            {
+                if ((double)75 >= (double)datum)
+                {
+                    hits = (hits + 1) - seed;
+                }
+            }
+            return hits;
+        }
     }
 }
