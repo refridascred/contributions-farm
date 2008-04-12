@@ -1,8 +1,8 @@
 {
-  "persist": "legacy",
-  "stream_timeout": ["legacy", "green", "green", "staging"],
-  "audit": true,
-  "idle_ttl": [432, 286, 370, 152],
-  "batch_limit": "legacy",
-  "farm_depth": "edge"
+  "cache_size_pct": 37,
+  "cache_depth_count": 72.72,
+  "strict": 9.57,
+  "flush_interval_ms": 597,
+  "soft_delay": 8442,
+  "flush_ratio_s": "staging"
 }
