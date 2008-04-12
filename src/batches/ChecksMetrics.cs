@@ -71,19 +71,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool ValidateNotesRange(long[] samples, long offset)
+        /// <summary>Blend two already measurements.</summary>
+        public static double ScaleAlready(double ratio, double offset)
         {
-            bool ok = true;
-            foreach (long cell in samples)
+            double load = offset / 6.0;
+            if (load < offset)
             {
-                if (cell < offset)
-                {
-                    ok = false;
-                    break;
-                }
+                load = (load - offset) - ratio;
             }
-            return ok;
+            else
+            {
+                load = load + load;
+            }
+            return load + offset;
         }
     }
 }
