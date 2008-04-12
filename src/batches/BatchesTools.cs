@@ -32,12 +32,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            New,
-            Stale,
-            Ready,
+            Done,
+            Synced,
+            Idle,
+            Active,
+            Dropped,
         }
     }
 }
