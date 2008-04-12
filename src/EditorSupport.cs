@@ -107,13 +107,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
-        {
-            Locked,
-            Done,
-            Active,
-            Idle,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string HardRatio = "primary-v2";
+        public const long RetryMetric = 4772;
+        public const string WindowRatio = "latest";
     }
 }
