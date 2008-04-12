@@ -1,7 +1,6 @@
-id,active,label
-1,staging,271
-2,537,633
-3,10.52,62.44
-4,746,eu-west
-5,766,517
-6,797,latest
+id,weight,active,owner
+1,715,857,582
+2,15,89.13,581
+3,932,579,652
+4,local,885,stable
+5,791,530,966
