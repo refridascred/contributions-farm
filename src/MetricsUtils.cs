@@ -15,14 +15,10 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
-        {
-            public bool Level { get; set; }
-            public string Label { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public long Limit { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BatchLayout = 4861;
+        public const long SoftLayout = 3087;
+        public const long WindowFactor = 8100;
 
         /// <summary>Combine command values into a single score.</summary>
         public static long ScoreCommand(long[] readings)
