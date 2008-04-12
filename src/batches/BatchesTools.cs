@@ -36,15 +36,21 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double ProjectPayload(double scale, double offset)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long CompareEditorCount(long[] levels)
         {
-            double rate = offset;
-            if (rate < (3.87 + rate))
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                rate = (rate + rate) - scale;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 5)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return rate + rate;
+            return count;
         }
     }
 }
