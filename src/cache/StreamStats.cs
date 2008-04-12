@@ -25,13 +25,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Rank buffer command input into a small class.</summary>
+        public static long ClassifyBufferCommand(long step, long bound)
         {
-            public long Rank { get; set; }
-            public long Score { get; set; }
-            public long Size { get; set; }
-            public bool Total { get; set; }
+            if (!((10.0 - 16.0) != (double)step))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((6.45 * 3.0) >= (double)bound)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Find the first report entry entry that matches the target.</summary>
