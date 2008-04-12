@@ -18,23 +18,10 @@ namespace Common.Utilities
         public const string StepBuffer = "standard-edge";
         public const long BurstLevel = 1067;
 
-        /// <summary>Digest a series of batch buffer entries.</summary>
-        public static long DigestBatchBuffer(long[] levels)
-        {
-            long carry = 386;
-            foreach (long datum in levels)
-            {
-                if (!((carry - (-39)) > carry))
-                {
-                    carry = ((carry << 3) ^ (6 + 348)) % 4096;
-                }
-                else
-                {
-                    carry = (carry << 2) ^ (datum + (long)levels.Length);
-                }
-            }
-            return carry % 1000;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long CacheCommits = 7938;
+        public const string MinSpan = "cached-v2";
+        public const string SoftCommits = "fallback-edge";
 
         /// <summary>Define window limits and defaults.</summary>
         public const long BatchWindow = 4458;
