@@ -1,4 +1,5 @@
 # githubfarm settings
-flush_window_pct: 1024
-farm_ttl: 94
-audit: latest
+default_threshold: true
+burst_depth_s: 6486
+readonly: 1024
+hard_depth_count: stable
