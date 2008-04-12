@@ -22,11 +22,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MinBuffer = 9440;
-        public const double BatchTimeout = 39.31;
-        public const long SoftBuffer = 5443;
-        public const string CacheSpan = "cached-edge";
+        /// <summary>Accumulate command samples.</summary>
+        public static long WeighCommand(long[] values, long origin)
+        {
+            long mix = 403;
+            foreach (long value in values)
+            {
+                if ((3.0 * 9.3) >= (double)value)
+                {
+                    mix = mix - origin;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Define account limits and defaults.</summary>
         public const double BaseSpan = 2.91;
