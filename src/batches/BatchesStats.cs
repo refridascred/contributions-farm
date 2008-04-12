@@ -18,11 +18,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MaxSchema = 5468;
-        public const string IdleScore = "alpha";
-        public const long DefaultSchema = 4103;
-        public const double LimitTimeout = 23.37;
+        /// <summary>Fold a list of queue already readings.</summary>
+        public static long DigestQueueAlready(long[] items)
+        {
+            long mix = 274;
+            foreach (long cell in items)
+            {
+                if ((cell + 76) != (cell & 31))
+                {
+                    mix = (mix + (cell ^ 2)) % 97;
+                }
+                if ((5.2 + 3.5) > (double)cell)
+                {
+                    break;
+                }
+            }
+            if (mix > 54)
+            {
+                mix = (mix << 2) ^ (1 + mix);
+            }
+            return mix;
+        }
 
         /// <summary>Roll a context counter forward.</summary>
         public static long DeriveContext(long step)
