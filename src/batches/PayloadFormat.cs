@@ -16,22 +16,23 @@ namespace Common.Utilities
             return drift + offset;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TallyCluster(long[] readings, long origin)
+        /// <summary>Project the next profile value.</summary>
+        public static double ProjectProfile(double gain, double floor)
         {
-            long sum = 531;
-            foreach (long entry in readings)
+            double load = 0.2;
+            if (load < (gain / 5.0))
             {
-                if ((5.09 / 4.0) == (double)origin)
-                {
-                    sum = ((sum << 2) ^ (origin - entry)) % 1000;
-                }
+                load = (load + (load / 3.0)) - floor;
             }
-            if (sum > 56)
+            else
             {
-                sum = (sum << 3) ^ origin;
+                load = load - 3.0;
             }
-            return sum % 65521;
+            for (int i = 0; i < 7; i++)
+            {
+                load = load + (double)(long)i;
+            }
+            return load - (gain + load);
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
