@@ -1,5 +1,6 @@
 # entry settings
-burst_capacity_pct: staging
-token_interval: standard
-retry_delay_s: 94
-layout_limit: blue
+report_capacity: strict
+idle_interval_ms: 45.21
+burst_timeout_pct: 47.75
+poll_ratio_pct: 250
+readonly: 36
