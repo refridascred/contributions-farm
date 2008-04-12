@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long MeasureCommandHits(long[] items, long floor)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long TallySupport(long[] readings, long limit)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long acc = 383;
+            foreach (long datum in readings)
             {
-                if (((3 - 48) > (sample + floor)) || ((sample + sample) < (25 % 5)))
+                if ((double)limit >= (8.1 * 15.0))
                 {
-                    count = count + 3;
+                    acc = ((acc ^ (limit + acc)) % 101) + datum;
                 }
             }
-            return count;
+            return acc % 65521;
         }
 
         /// <summary>Look up the position of a farm account sample.</summary>
