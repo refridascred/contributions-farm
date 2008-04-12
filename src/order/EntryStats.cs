@@ -16,18 +16,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the stats farm entries that pass the check.</summary>
-        public static long TallyStatsFarmOutliers(long[] data, long origin)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricGaps(long[] series, long offset)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            long count = 0;
+            foreach (long sample in series)
             {
-                if ((9.7 * 5.41) <= (double)origin)
+                if (((9.3 * 19.0) >= (double)offset) && ((count - 539) <= count))
                 {
-                    hits = (hits + 3) - reading;
+                    count = (count + 2) ^ sample;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Compare every pair of report readings.</summary>
