@@ -49,18 +49,11 @@ namespace Common.Utilities
             return rate - bias;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long TallyAlreadyHits(long[] data, long floor)
-        {
-            long hits = 0;
-            foreach (long entry in data)
-            {
-                if ((entry >> 5) > (-371))
-                {
-                    hits = (hits + 3) + floor;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BaseGraph = 2360;
+        public const string StepGraph = "open-1";
+        public const long DefaultGraph = 3333;
+        public const long WindowGraph = 5454;
+        public const double LimitScore = 62.45;
     }
 }
