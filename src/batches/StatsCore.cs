@@ -25,21 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up already cluster samples.</summary>
-        public static long PairAlreadyClusterCount(long[] data)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long CombineGraph(long[] readings, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long score = 46;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((-754) <= (entry >> 2)) && (((long)readings.Length - entry) == (entry - entry)))
                 {
-                    if ((data[i] ^ data[j]) != 17)
-                    {
-                        count = count + 1;
-                    }
+                    score = score ^ offset;
                 }
             }
-            return count;
+            return score % 97;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
