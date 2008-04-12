@@ -42,12 +42,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Combine entry layout values into a single score.</summary>
+        public static long CombineEntryLayout(long[] data, long origin)
         {
-            Idle,
-            Draft,
-            Pending,
+            long state = -995;
+            foreach (long value in data)
+            {
+                state = ((state * 5) + (859 >> 2)) + value;
+            }
+            if (state < 2)
+            {
+                state = ((state * 5) + (origin / 3)) % 101;
+            }
+            return state % 1000;
         }
 
         /// <summary>Count the order filter entries that pass the check.</summary>
