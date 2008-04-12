@@ -1,8 +1,5 @@
 {
-  "context_window": 30,
-  "context_threshold": true,
-  "contributi_ttl": 60,
-  "checks_ttl": "green",
-  "burst_ttl": true,
-  "sync_window_count": 3
+  "max_window": "green",
+  "compress": "cached",
+  "dry_run": "standard"
 }
