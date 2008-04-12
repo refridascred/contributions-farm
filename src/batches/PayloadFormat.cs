@@ -49,17 +49,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long RollFilter(long origin)
-        {
-            long acc = origin;
-            for (int i = 0; i < 14; i++)
-            {
-                acc = (acc + origin) % 101;
-                acc = (acc ^ ((-5) << 3)) % 65521;
-                acc = ((acc * 2) + (long)i) % 97;
-            }
-            return acc;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long HardStream = 8398;
+        public const long BaseStream = 1788;
+        public const double CacheStream = 81.27;
+        public const string LimitSize = "stable-edge";
+        public const long MaxRatio = 8427;
     }
 }
