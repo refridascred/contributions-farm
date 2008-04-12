@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Fold a list of buffer schema readings.</summary>
-        public static long DigestBufferSchema(long[] values)
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            long mark = 997;
-            foreach (long sample in values)
-            {
-                if (8.47 < (double)mark)
-                {
-                    mark = (mark * 3) + (mark + sample);
-                    continue;
-                }
-                if (!((sample / 8) > sample))
-                {
-                    mark = ((mark * 5) + mark) % 255;
-                }
-            }
-            return mark;
+            public long Flag { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Define order limits and defaults.</summary>
