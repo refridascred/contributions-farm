@@ -20,18 +20,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long AuditFormatHits(long[] data, long bound)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            long matches = 0;
-            foreach (long value in data)
-            {
-                if ((double)bound <= (1.4 - 15.0))
-                {
-                    matches = (matches + 2) - value;
-                }
-            }
-            return matches;
+            public long Total { get; set; }
+            public bool Stamp { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Define command limits and defaults.</summary>
