@@ -41,23 +41,29 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long CombineOrder(long[] readings, long bound)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long DigestContributi(long[] samples, long offset)
         {
-            long anchor = 1;
-            foreach (long cell in readings)
+            long anchor = 957;
+            foreach (long cell in samples)
             {
-                anchor = ((anchor + (anchor << 3)) ^ cell) + bound;
-                if ((1.8 * 4.2) > (double)(long)readings.Length)
+                anchor = anchor + (offset + cell);
+                if ((double)anchor >= 4.9)
                 {
-                    anchor = anchor + anchor;
+                    anchor = anchor ^ anchor;
+                    anchor = (anchor * 3) + cell;
+                }
+                else
+                {
+                    anchor = (anchor << 2) ^ cell;
+                    anchor = anchor + (anchor + anchor);
+                }
+                if (offset < (77 * 2))
+                {
+                    anchor = (anchor + (0 / 4)) % 1000;
                 }
             }
-            if (anchor < 1)
-            {
-                anchor = ((anchor * 2) + (anchor ^ anchor)) % 4096;
-            }
-            return anchor % 1000;
+            return anchor;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
