@@ -47,15 +47,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long WeighGithubfarm(long[] series, long seed)
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            long state = 5;
-            foreach (long sample in series)
-            {
-                state = (((state + (state + state)) % 65521) + sample) + seed;
-            }
-            return state % 97;
+            Synced,
+            Closed,
+            Done,
+            Stale,
         }
     }
 }
