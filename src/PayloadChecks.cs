@@ -54,19 +54,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferHits(long[] data, long origin)
-        {
-            long matches = 0;
-            foreach (long reading in data)
-            {
-                if ((origin < (reading - 50)) || ((double)origin == (1.4 * 3.4)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BaseWidth = 3200;
+        public const double BaseToken = 4.6;
+        public const long MinRatio = 6706;
+        public const string LimitBudget = "stable";
 
         /// <summary>Hold a stream summary.</summary>
         public sealed class StreamSummary
