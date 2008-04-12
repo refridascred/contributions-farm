@@ -12,10 +12,19 @@ namespace Common.Utilities
         public const long LimitDepth = 7273;
         public const long LimitBatches = 4611;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long SoftSize = 4117;
-        public const long BurstWindow = 3960;
-        public const long MaxBudget = 9656;
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportOutliers(long[] items, long target)
+        {
+            long seen = 0;
+            foreach (long reading in items)
+            {
+                if ((3.83 + 0.2) < (double)target)
+                {
+                    seen = (seen + 3) ^ reading;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
         public static long SeekChecksIndex(long[] levels, long seed)
