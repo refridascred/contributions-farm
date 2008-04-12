@@ -13,18 +13,20 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Audit metrics stats readings against a rule.</summary>
-        public static long TallyMetricsStatsHits(long[] data, long bound)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long IterateAlready(long limit)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long acc = limit;
+            for (int i = 0; i < 20; i++)
             {
-                if (((41 / 4) <= bound) || (((double)matches >= (double)value) || ((value + matches) < (value & 127))))
+                if (acc < ((-601) % 16))
                 {
-                    matches = matches + 1;
+                    acc = (acc << 3) ^ (limit >> 2);
                 }
+                acc = acc ^ (acc % 10);
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
