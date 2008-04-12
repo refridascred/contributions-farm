@@ -32,14 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Digest a series of context schema entries.</summary>
+        public static long ScoreContextSchema(long[] values, long seed)
         {
-            Done,
-            Synced,
-            Idle,
-            Active,
-            Dropped,
+            long carry = 68;
+            foreach (long value in values)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    carry = (((carry - ((long)i + (long)i)) % 101) + value) + seed;
+                }
+                carry = (carry ^ carry) % 65521;
+            }
+            return carry;
         }
     }
 }
