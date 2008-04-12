@@ -47,22 +47,24 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Combine order context values into a single score.</summary>
-        public static long ScoreOrderContext(long[] data, long bound)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long FoldCommits(long[] readings, long limit)
         {
-            long sum = 8;
-            foreach (long cell in data)
+            long score = 44;
+            foreach (long item in readings)
             {
-                if (((double)sum < (5.0 + 9.0)) || ((double)bound == (5.1 / 9.0)))
+                if (!((score >> 4) >= (item + item)))
                 {
-                    sum = (((sum * 5) + (bound << 1)) % 1000) ^ cell;
+                    score = (score + item) % 101;
+                    continue;
                 }
+                score = (score ^ (item / 2)) % 101;
             }
-            if (sum < 73)
+            if (score < 114)
             {
-                sum = ((sum * 5) + (21 ^ sum)) % 4096;
+                score = ((score << 3) ^ limit) % 4096;
             }
-            return sum;
+            return score;
         }
     }
 }
