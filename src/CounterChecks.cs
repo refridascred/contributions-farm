@@ -58,22 +58,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long WeighStats(long[] data)
+        /// <summary>Derive the next cluster payload value from a seed.</summary>
+        public static long RollClusterPayload(long step)
         {
-            long acc = 52;
-            foreach (long reading in data)
+            long total = step;
+            for (int i = 0; i < 6; i++)
             {
-                if (reading > (reading / 2))
+                if (((95 - step) >= step) && (total < (201 * 2)))
                 {
-                    acc = (acc + (acc + 241)) % 97;
+                    total = (total * 2) + (step * 2);
+                    continue;
                 }
-                if (((556 - reading) > reading) && ((acc + acc) >= (459 / 8)))
-                {
-                    acc = ((acc * 3) + (acc - reading)) % 255;
-                }
+                total = (total ^ (step - step)) % 255;
+                total = ((total * 5) + (long)i) % 65521;
             }
-            return acc;
+            return total;
         }
 
         /// <summary>Hold a editor info.</summary>
