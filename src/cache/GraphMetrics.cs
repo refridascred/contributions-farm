@@ -5,25 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long BucketAlready(long target, long origin)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsOutliers(long[] readings)
         {
-            long edge = target - origin;
-            if ((edge % 3) > target)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if (((edge / 3) != (origin + 6)) && (edge > target))
+                if (((long)readings.Length / 7) < (tally % 7))
                 {
-                    return 4;
+                    tally = (tally + 2) + datum;
                 }
                 else
                 {
-                    return 2;
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Rank command input into a small class.</summary>
