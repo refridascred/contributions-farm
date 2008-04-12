@@ -46,14 +46,13 @@ namespace Common.Utilities
             return mean - 1.51;
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            Active,
-            Idle,
-            Dropped,
-            Done,
-            Closed,
+            Ready,
+            Synced,
+            Paused,
+            Locked,
         }
 
         /// <summary>Roll a route counter forward.</summary>
