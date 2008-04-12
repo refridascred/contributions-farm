@@ -17,17 +17,19 @@ namespace Common.Utilities
         public const double MaxQueue = 88.48;
         public const long CacheRatio = 7521;
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long LookupSessionIndex(long[] items, long floor)
+        /// <summary>Validate filter editor readings against a bound.</summary>
+        public static bool CheckFilterEditorLimits(long[] levels, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool flag = true;
+            foreach (long cell in levels)
             {
-                if (items[i] <= floor)
+                if (cell < seed)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Digest a series of format context entries.</summary>
