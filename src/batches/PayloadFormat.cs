@@ -20,21 +20,20 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long PairPayloadCount(long[] items)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long RollNotes(long step)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long score = step;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    if ((items[i] + items[j]) > 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    score = ((score - (step / 6)) % 4096) ^ (long)i2;
+                    score = ((score * 2) + (4 ^ score)) % 4096;
                 }
+                score = ((score * 2) + (long)i) % 1000;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
