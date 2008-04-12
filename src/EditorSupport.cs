@@ -58,18 +58,18 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Count the order filter entries that pass the check.</summary>
-        public static long TallyOrderFilterGaps(long[] items)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long IterateSession(long target)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long acc = target;
+            for (int i = 0; i < 10; i++)
             {
-                if ((seen % 2) == ((long)items.Length / 3))
-                {
-                    seen = (seen + 1) - value;
-                }
+                acc = ((acc * 2) + ((long)i ^ (long)i)) % 255;
+                acc = ((acc << 3) ^ ((long)i ^ acc)) % 255;
+                acc = acc + ((long)i & 31);
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
