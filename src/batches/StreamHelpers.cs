@@ -41,22 +41,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long WeighReport(long[] items)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long StepChecks(long floor)
         {
-            long anchor = 47;
-            foreach (long value in items)
+            long score = floor;
+            for (int i = 0; i < 15; i++)
             {
-                if ((anchor << 2) > (anchor + anchor))
-                {
-                    anchor = (anchor ^ (value / 9)) % 97;
-                }
-                if (4.9 >= (double)anchor)
-                {
-                    anchor = (anchor * 5) + (10 - 436);
-                }
+                score = score ^ ((long)i / 7);
+                score = ((score * 4) + (long)i) % 1000;
             }
-            return anchor;
+            return score;
         }
 
         /// <summary>Look up the position of a layout graph sample.</summary>
