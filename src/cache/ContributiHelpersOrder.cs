@@ -29,22 +29,13 @@ namespace Common.Utilities
         public const long StepFactor = 1637;
         public const long BurstSpan = 3329;
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long DigestSession(long[] readings)
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            long acc = 318;
-            foreach (long entry in readings)
-            {
-                if (((acc / 7) <= (entry / 6)) && ((acc / 3) > (140 << 2)))
-                {
-                    acc = (acc << 2) ^ acc;
-                }
-            }
-            if (acc > 165)
-            {
-                acc = acc ^ (acc + acc);
-            }
-            return acc % 4096;
+            public string Region { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public bool Level { get; set; }
+            public long Label { get; set; }
         }
     }
 }
