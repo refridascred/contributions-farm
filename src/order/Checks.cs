@@ -75,12 +75,9 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
-        {
-            New,
-            Draft,
-            Stale,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BaseDepth = 1661;
+        public const long BatchScore = 9272;
+        public const long LimitSize = 4543;
     }
 }
