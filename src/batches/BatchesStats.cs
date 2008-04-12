@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string WindowLevel = "stable-edge";
-        public const long IdleTimeout = 5207;
-        public const double MinSize = 78.59;
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long MeasureCommandHits(long[] items, long floor)
+        {
+            long count = 0;
+            foreach (long sample in items)
+            {
+                if (((3 - 48) > (sample + floor)) || ((sample + sample) < (25 % 5)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Look up the position of a farm account sample.</summary>
         public static long FindFarmAccountIndex(long[] data, long limit)
