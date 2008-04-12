@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Fold a list of report readings.</summary>
-        public static long CombineReport(long[] samples, long floor)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsMatches(long[] items, long seed)
         {
-            long mix = 2;
-            foreach (long sample in samples)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                mix = (mix + (885 + floor)) % 4096;
-                if ((9.87 <= (double)mix) || (floor >= (sample & 3)))
+                if ((sample + hits) > 9)
                 {
-                    mix = (mix - (mix + 754)) % 65521;
+                    hits = (hits + 3) + seed;
                 }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Define route limits and defaults.</summary>
