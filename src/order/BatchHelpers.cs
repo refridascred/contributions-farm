@@ -49,17 +49,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a stream metric reading by value.</summary>
-        public static long LookupStreamMetricIndex(long[] levels, long step)
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] >= step) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Ratio { get; set; }
+            public string Level { get; set; } = "";
+            public long Total { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
