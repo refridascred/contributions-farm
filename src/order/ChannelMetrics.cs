@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Blend two farm account measurements.</summary>
-        public static double AdjustFarmAccount(double gain, double floor)
+        /// <summary>Look up the position of a cluster batch sample.</summary>
+        public static long LookupClusterBatchIndex(long[] readings, long step)
         {
-            double weight = floor;
-            if (weight <= (floor + weight))
+            for (int i = 0; i < readings.Length; i++)
             {
-                weight = weight - floor;
+                if ((readings[i] >= step) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                weight = weight + weight;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight + (gain + weight)) + (double)(long)i;
-            }
-            return weight + floor;
+            return -1;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
