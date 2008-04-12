@@ -39,25 +39,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank buffer record input into a small class.</summary>
-        public static long ClassifyBufferRecord(long bound, long limit)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long TallyNotesHits(long[] data, long target)
         {
-            long lane = bound + limit;
-            if ((lane / 8) <= (lane >> 4))
+            long matches = 0;
+            foreach (long item in data)
             {
-                return 7;
-            }
-            else
-            {
-                if ((3.3 - 0.2) != (double)lane)
+                if ((target + item) != (target / 3))
                 {
-                    return 6;
+                    matches = matches + 2;
                 }
                 else
                 {
-                    return 0;
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
