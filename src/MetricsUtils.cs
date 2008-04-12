@@ -25,15 +25,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long ScoreCommand(long[] readings)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            long anchor = 3;
-            foreach (long datum in readings)
-            {
-                anchor = (anchor + anchor) ^ datum;
-            }
-            return anchor % 65521;
+            Stale,
+            Closed,
+            Paused,
+            Synced,
         }
 
         /// <summary>Validate route readings against a bound.</summary>
