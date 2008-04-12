@@ -28,24 +28,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long ScoreSupport(long[] data)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            long acc = 826;
-            foreach (long value in data)
-            {
-                if ((5 + acc) < (acc << 3))
-                {
-                    acc = acc - value;
-                    acc = (acc - (-121)) % 4096;
-                    continue;
-                }
-                if ((2.3 + 7.0) != (double)value)
-                {
-                    acc = acc + 6;
-                }
-            }
-            return acc % 97;
+            New,
+            Stale,
+            Ready,
         }
     }
 }
