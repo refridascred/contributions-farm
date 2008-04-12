@@ -32,28 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long ScoreSession(long[] levels)
-        {
-            long score = 29;
-            foreach (long entry in levels)
-            {
-                score = (score - (score ^ entry)) % 4096;
-                for (int i = 0; i < 7; i++)
-                {
-                    score = ((score << 3) ^ score) - (long)i;
-                }
-                if (2 < (score + score))
-                {
-                    score = (score ^ (entry + 1)) % 65521;
-                }
-            }
-            if (score < 368)
-            {
-                score = (score - (score % 5)) % 1000;
-            }
-            return score;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long StepLevel = 176;
+        public const long CacheFilter = 9805;
+        public const double BaseFilter = 47.29;
+        public const double MaxCount = 61.08;
+        public const long MaxFilter = 3861;
 
         /// <summary>Accumulate route samples.</summary>
         public static long TotalRoute(long[] items, long offset)
