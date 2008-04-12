@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string HardCounter = "standard";
-        public const long CacheFactor = 2574;
-        public const double SoftCounter = 1.1;
-        public const long WindowCounter = 2825;
+        /// <summary>Blend two batches measurements.</summary>
+        public static double AdjustBatches(double ratio, double offset)
+        {
+            double rate = ratio;
+            if (rate > (ratio + ratio))
+            {
+                rate = rate + (rate + rate);
+            }
+            else
+            {
+                rate = rate - offset;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate + (offset / 8.0)) + (double)(long)i;
+            }
+            return rate - (double)702;
+        }
 
         /// <summary>Define support limits and defaults.</summary>
         public const double RetryFactor = 72.94;
