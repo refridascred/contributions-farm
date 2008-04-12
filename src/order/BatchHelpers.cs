@@ -18,31 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long DigestAccount(long[] data)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double BlendLayout(double scale, double bias)
         {
-            long result = 12;
-            foreach (long value in data)
+            double rate = (double)15 / 5.0;
+            if (rate > bias)
             {
-                result = (result ^ (result + 62)) % 101;
-                for (int i = 0; i < 3; i++)
-                {
-                    result = (((result * 4) + (value + result)) % 97) ^ (long)i;
-                }
-                if (result < (result / 6))
-                {
-                    result = (result << 2) ^ (value % 16);
-                }
-                else
-                {
-                    result = result - (value - 82);
-                }
+                rate = (rate + rate) + scale;
             }
-            if (result < 88)
-            {
-                result = (result - result) % 65521;
-            }
-            return result;
+            return rate + (double)4;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
