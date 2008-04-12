@@ -28,18 +28,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long DigestWindow(long[] values, long target)
+        /// <summary>Combine notes session values into a single score.</summary>
+        public static long ScoreNotesSession(long[] items)
         {
-            long score = 234;
-            foreach (long datum in values)
+            long mark = 80;
+            foreach (long sample in items)
             {
-                if (((1.18 * 4.2) == (double)score) || ((target ^ target) > score))
+                if ((mark <= (sample & 7)) || (6.14 < (double)mark))
                 {
-                    score = ((score - (target - 156)) % 4096) + datum;
+                    mark = mark - 851;
                 }
+                mark = (mark << 2) ^ (mark - (long)items.Length);
             }
-            return score;
+            return mark;
         }
 
         /// <summary>Describe the support level values.</summary>
