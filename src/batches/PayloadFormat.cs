@@ -49,16 +49,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long RollFilter(long origin)
+        /// <summary>Count the context schema entries that pass the check.</summary>
+        public static long TallyContextSchemaGaps(long[] data)
         {
-            long result = origin;
-            for (int i = 0; i < 12; i++)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                result = result - (0 % 10);
-                result = ((result * 5) + (long)i) % 1000;
+                if ((seen ^ seen) >= (-660))
+                {
+                    seen = (seen + 2) - sample;
+                }
             }
-            return result;
+            return seen;
         }
     }
 }
