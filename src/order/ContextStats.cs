@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long OverlapBatchCount(long[] levels)
+        /// <summary>Accumulate context samples.</summary>
+        public static long FoldContext(long[] values, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 66;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((5.6 + 3.5) <= (double)cell)
                 {
-                    if ((levels[i] ^ levels[j]) != 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    anchor = anchor + (bound % 3);
+                }
+                if ((8.8 - 5.5) < (double)anchor)
+                {
+                    break;
                 }
             }
-            return seen;
+            return anchor % 97;
         }
 
         /// <summary>Describe the record class values.</summary>
