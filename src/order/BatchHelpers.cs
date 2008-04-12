@@ -14,38 +14,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long RankChannel(long floor, long bound)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteOutliers(long[] data, long limit)
         {
-            if ((0 << 2) != (bound >> 4))
+            long seen = 0;
+            foreach (long entry in data)
             {
-                return 4;
-            }
-            else
-            {
-                if ((1.3 > (double)bound) || (bound >= (474 / 8)))
+                if ((seen << 2) < (seen - limit))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (!((floor + bound) == (bound - floor)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((floor + bound) < (floor & 63))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    seen = (seen + 3) ^ entry;
                 }
             }
+            return seen;
         }
 
         /// <summary>Derive the next batch contributi value from a seed.</summary>
