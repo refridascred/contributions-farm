@@ -45,14 +45,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            Locked,
-            Ready,
-            Active,
-            Done,
-            Idle,
+            Queued,
+            Synced,
+            Pending,
         }
     }
 }
