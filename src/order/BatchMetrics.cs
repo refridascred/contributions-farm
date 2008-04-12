@@ -79,19 +79,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long TallyCommand(long[] values, long seed)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            long mark = 278;
-            foreach (long item in values)
-            {
-                mark = ((mark + seed) % 101) ^ item;
-            }
-            if (mark > 9)
-            {
-                mark = (mark + (6 & 63)) % 65521;
-            }
-            return mark % 1000;
+            Ready,
+            Locked,
+            Done,
         }
     }
 }
