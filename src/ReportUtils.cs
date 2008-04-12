@@ -65,14 +65,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            Synced,
-            Retry,
-            Done,
             Dropped,
-            Ready,
+            Draft,
+            Synced,
+            Paused,
         }
     }
 }
