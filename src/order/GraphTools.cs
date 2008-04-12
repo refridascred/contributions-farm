@@ -33,19 +33,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool ValidateCommitsLimits(long[] readings, long step)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            bool found = true;
-            foreach (long entry in readings)
-            {
-                if (entry >= step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Stale,
+            Synced,
+            Draft,
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
