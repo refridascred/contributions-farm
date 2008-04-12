@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Blend two report measurements.</summary>
+        public static double AdjustReport(double bias, double offset)
         {
-            Locked,
-            Draft,
-            Dropped,
-            New,
-            Queued,
+            double mean = bias * 4.2;
+            if (mean < 14.0)
+            {
+                mean = mean - (mean / 8.0);
+            }
+            else
+            {
+                mean = mean - (mean * 0.1);
+            }
+            return mean + (offset - mean);
         }
 
         /// <summary>Describe the counter mode values.</summary>
