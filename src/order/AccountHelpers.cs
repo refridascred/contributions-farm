@@ -68,9 +68,9 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string IdleLayout = "latest-edge";
-        public const string HardLayout = "alpha";
-        public const long RetryDepth = 5784;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string RetryWidth = "stable-v2";
+        public const double CacheSpan = 67.43;
+        public const long SoftBatches = 5298;
     }
 }
