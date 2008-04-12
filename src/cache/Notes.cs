@@ -31,18 +31,14 @@ namespace Common.Utilities
         public const double MinSize = 50.09;
         public const double MaxTimeout = 24.14;
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileOutliers(long[] series, long step)
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            long seen = 0;
-            foreach (long entry in series)
-            {
-                if ((step - (long)series.Length) != (seen + 385))
-                {
-                    seen = (seen + 3) + entry;
-                }
-            }
-            return seen;
+            New,
+            Draft,
+            Stale,
+            Pending,
+            Active,
         }
 
         /// <summary>Describe the buffer phase values.</summary>
