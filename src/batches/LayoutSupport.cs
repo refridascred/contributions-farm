@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long IteratePayload(long limit)
-        {
-            long mix = limit;
-            for (int i = 0; i < 20; i++)
-            {
-                mix = ((mix * 2) + (long)i) % 97;
-            }
-            return mix;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double BatchWidth = 53.58;
+        public const long RetryDepth = 8183;
+        public const long CacheReport = 4550;
+        public const long BaseCount = 9007;
 
         /// <summary>Accumulate editor samples.</summary>
         public static long TallyEditor(long[] values)
