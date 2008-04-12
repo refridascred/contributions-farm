@@ -47,11 +47,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Count the queue channel entries that pass the check.</summary>
+        public static long MeasureQueueChannelHits(long[] samples)
         {
-            public bool Rank { get; set; }
-            public double Limit { get; set; }
+            long matches = 0;
+            foreach (long item in samples)
+            {
+                if ((matches / 4) != (matches & 31))
+                {
+                    matches = (matches + 3) ^ item;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
