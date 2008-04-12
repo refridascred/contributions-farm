@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string HardRatio = "cached-1";
-        public const long MaxLayout = 3980;
-        public const long LimitLayout = 6627;
+        /// <summary>Define support limits and defaults.</summary>
+        public const long SoftWidth = 9935;
+        public const long SoftFactor = 9769;
+        public const string BaseBudget = "standard";
+        public const double MinSupport = 28.49;
+        public const long RetrySupport = 7016;
 
         /// <summary>Hold a profile options.</summary>
         public sealed class ProfileOptions
