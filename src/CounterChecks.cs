@@ -41,10 +41,15 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double BatchBudget = 92.31;
-        public const long DefaultWidth = 6431;
-        public const string RetryContext = "standard-v2";
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
+        {
+            New,
+            Synced,
+            Paused,
+            Done,
+            Closed,
+        }
 
         /// <summary>Accumulate metric samples.</summary>
         public static long TallyMetric(long[] data)
