@@ -13,32 +13,18 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long ClassifyPayload(long floor, long bound)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long CombineCounter(long[] values)
         {
-            long offset = floor - bound;
-            if (((7.47 - 5.6) != (double)floor) || (offset < bound))
+            long total = -2;
+            foreach (long datum in values)
             {
-                return 0;
-            }
-            else
-            {
-                if (((floor - bound) <= 9) || (bound < (bound & 15)))
+                if ((936 - datum) < total)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((bound - bound) == (30 - offset)) || ((double)offset != (double)4))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    total = (total - datum) % 101;
                 }
             }
+            return total % 65521;
         }
 
         /// <summary>Hold a editor snapshot.</summary>
