@@ -40,22 +40,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the githubfarm batch entries that pass the check.</summary>
-        public static long CountGithubfarmBatchMatches(long[] items, long limit)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool VerifyContributiBounds(long[] readings, long bound)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            bool flag = true;
+            foreach (long item in readings)
             {
-                if ((limit % 12) < (tally - datum))
+                if (item <= bound)
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
