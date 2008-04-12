@@ -63,12 +63,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
-        {
-            public double Level { get; set; }
-            public double Ratio { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long DefaultStats = 8224;
+        public const long BatchStats = 9918;
+        public const long SoftSpan = 6794;
 
         /// <summary>Hold a filter summary.</summary>
         public sealed class FilterSummary
