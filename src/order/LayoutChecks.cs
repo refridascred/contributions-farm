@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double ProjectAlready(double weight, double offset)
         {
-            public string Offset { get; set; } = "";
-            public bool Mode { get; set; }
-            public string Score { get; set; } = "";
+            double load = 7.0;
+            if (load > weight)
+            {
+                load = (load - (weight - load)) - offset;
+            }
+            return load + 11.0;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
