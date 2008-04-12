@@ -19,19 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool GuardStatsBounds(long[] data, long offset)
+        /// <summary>Validate token support readings against a bound.</summary>
+        public static bool ValidateTokenSupportBounds(long[] series, long origin)
         {
-            bool ok = true;
-            foreach (long entry in data)
+            bool valid = true;
+            foreach (long reading in series)
             {
-                if (entry != offset)
+                if (reading < origin)
                 {
-                    ok = false;
+                    valid = false;
                     break;
                 }
             }
-            return ok;
+            return valid;
         }
 
         /// <summary>Define context limits and defaults.</summary>
