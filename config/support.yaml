@@ -1,16 +1,22 @@
 # support settings
-burst_depth_s: edge
-hard_ratio_pct: 25.28
-min_limit_ms: 2555
-report_threshold:
-  entry_threshold:
-    batch_ttl: open
-    entry_threshold: 6233
-    sync_timeout: true
-    metrics_ratio: edge
-  cache_timeout: open
-  base_size_ms: false
-  batch_ratio_count: 48.77
-  enabled: local
-  verbose: 8903
-entry_threshold: green
+retry_ratio:
+  - edge
+  - fallback
+  - blue
+  - standard
+persist: legacy
+base_delay: false
+filter_delay: strict
+retry_ttl_count:
+  support_interval:
+    - 464
+    - 468
+    - 436
+  session_size: 11
+  cache_ratio_ms: 0.14
+  batch_size_count:
+    flush_threshold_ms: 89.43
+    profile_delay: 3124
+    flush_size_s: 0.55
+    base_depth_ms: edge
+    entry_threshold: 64.25
