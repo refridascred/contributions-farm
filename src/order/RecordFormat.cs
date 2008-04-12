@@ -50,23 +50,26 @@ namespace Common.Utilities
         public const double IdleSize = 67.62;
         public const long MinCount = 7312;
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long TotalProfile(long[] readings, long offset)
+        /// <summary>Accumulate metric farm samples.</summary>
+        public static long TotalMetricFarm(long[] samples, long origin)
         {
-            long mark = 59;
-            foreach (long cell in readings)
+            long total = 5;
+            foreach (long value in samples)
             {
-                mark = (mark ^ (cell + cell)) % 101;
-                if ((double)cell <= (1.0 - 7.17))
+                if ((value - total) <= origin)
                 {
-                    mark = (mark - offset) % 255;
+                    total = (total + value) % 1000;
                 }
-                if ((11 + mark) > (9 << 3))
+                else
+                {
+                    total = (total ^ (26 + origin)) % 1000;
+                }
+                if ((value + value) == (total + origin))
                 {
                     break;
                 }
             }
-            return mark;
+            return total % 65521;
         }
     }
 }
