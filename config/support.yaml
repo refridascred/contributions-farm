@@ -1,22 +1,7 @@
 # support settings
-retry_ratio:
-  - edge
-  - fallback
-  - blue
-  - standard
-persist: legacy
-base_delay: false
-filter_delay: strict
-retry_ttl_count:
-  support_interval:
-    - 464
-    - 468
-    - 436
-  session_size: 11
-  cache_ratio_ms: 0.14
-  batch_size_count:
-    flush_threshold_ms: 89.43
-    profile_delay: 3124
-    flush_size_s: 0.55
-    base_depth_ms: edge
-    entry_threshold: 64.25
+dry_run: 500
+cache_depth:
+  - latest
+  - legacy
+  - local
+base_depth_ms: cached
