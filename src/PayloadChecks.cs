@@ -62,18 +62,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long TallyReportHits(long[] samples, long target)
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if (target < (matches >> 4))
-                {
-                    matches = (matches + 2) ^ entry;
-                }
-            }
-            return matches;
+            public long Size { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
