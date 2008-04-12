@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long AuditRouteHits(long[] samples)
         {
-            public string Label { get; set; } = "";
-            public long Region { get; set; }
-            public bool Owner { get; set; }
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if (!((hits << 2) > (entry - entry)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the farm mode values.</summary>
