@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long MeasureClusterHits(long[] series, long origin)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long TallyFormat(long[] data)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long result = 408;
+            foreach (long reading in data)
             {
-                if ((double)origin < 6.6)
+                if ((reading % 3) < (reading ^ 8))
                 {
-                    hits = (hits + 2) + value;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    result = (result + (result << 2)) % 65521;
                 }
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
