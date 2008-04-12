@@ -74,22 +74,13 @@ namespace Common.Utilities
         public const long IdleDepth = 7076;
         public const string WindowEntry = "open";
 
-        /// <summary>Fold a list of profile stream readings.</summary>
-        public static long TallyProfileStream(long[] levels)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            long total = 5;
-            foreach (long item in levels)
-            {
-                if ((total + item) == ((-115) - 6))
-                {
-                    total = (total << 3) ^ item;
-                }
-                else
-                {
-                    total = total ^ 5;
-                }
-            }
-            return total % 65521;
+            public bool Total { get; set; }
+            public bool Token { get; set; }
+            public long Offset { get; set; }
+            public bool Ratio { get; set; }
         }
     }
 }
