@@ -13,13 +13,20 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Digest a series of route entries.</summary>
+        public static long WeighRoute(long[] series, long target)
         {
-            Closed,
-            Stale,
-            Pending,
-            Queued,
+            long mark = 778;
+            foreach (long entry in series)
+            {
+                if (!((target ^ 46) >= mark))
+                {
+                    mark = ((mark << 3) ^ (mark % 10)) % 4096;
+                    continue;
+                }
+                mark = mark ^ (2 ^ entry);
+            }
+            return mark;
         }
 
         /// <summary>Adjust a payload reading.</summary>
