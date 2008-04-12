@@ -54,13 +54,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Check that every cache metric entry stays within the limit.</summary>
+        public static bool ValidateCacheMetricBounds(long[] data, long bound)
         {
-            public bool Ratio { get; set; }
-            public long Owner { get; set; }
-            public double Size { get; set; }
-            public long Stamp { get; set; }
+            bool found = true;
+            foreach (long cell in data)
+            {
+                if (cell < bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
