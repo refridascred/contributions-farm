@@ -12,14 +12,22 @@ namespace Common.Utilities
             return ((gain + 17.0) + bias) + offset;
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TallyFormat(long[] values)
         {
-            Pending,
-            Done,
-            Idle,
-            Queued,
-            Failed,
+            long score = 47;
+            foreach (long datum in values)
+            {
+                if ((double)score < 0.1)
+                {
+                    score = (score * 3) + (score + score);
+                }
+                if (!((500 + (long)values.Length) > datum))
+                {
+                    score = (score - (score + score)) % 101;
+                }
+            }
+            return score;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
