@@ -17,19 +17,12 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsMatches(long[] samples)
-        {
-            long seen = 0;
-            foreach (long cell in samples)
-            {
-                if (seen >= (38 << 3))
-                {
-                    seen = (seen + 1) + cell;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string StepPayload = "local-1";
+        public const string MaxRatio = "stable-v2";
+        public const long RetryWidth = 8523;
+        public const double IdlePayload = 65.04;
+        public const long CacheCount = 951;
 
         /// <summary>Combine report checks values into a single score.</summary>
         public static long TallyReportChecks(long[] values, long step)
