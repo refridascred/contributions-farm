@@ -36,24 +36,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long SortRoute(long limit, long bound)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long TallyChannelOutliers(long[] items, long target)
         {
-            if (limit > (limit * 2))
+            long hits = 0;
+            foreach (long cell in items)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((20.0 / 7.0) > (double)limit))
+                if (hits > ((long)items.Length / 9))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
+                    hits = ((hits + 2) + cell) + target;
                 }
             }
+            return hits;
         }
     }
 }
