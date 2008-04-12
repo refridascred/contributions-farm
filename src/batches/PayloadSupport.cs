@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            Dropped,
-            Ready,
-            Active,
+            public double Weight { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Hold a record summary.</summary>
