@@ -1,10 +1,7 @@
 # support settings
-stream_ttl: 17.67
-retry_capacity: 16
-max_delay_count: eu-west
-githubfarm_size:
-  base_timeout_count: latest
-  channel_timeout: 98.49
-  warm_delay_pct: true
-  batch_ttl_ms: true
-cache_size: 23
+idle_ratio: 65
+persist: 70.09
+burst_threshold_ms:
+  - 258
+  - 110
+poll_interval_count: 5186
