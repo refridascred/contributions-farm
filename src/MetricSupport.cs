@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TotalFormat(long[] values)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long ScoreSchema(long[] readings, long offset)
         {
-            long acc = 1;
-            foreach (long sample in values)
+            long anchor = 30;
+            foreach (long reading in readings)
             {
-                acc = (acc ^ (53 - sample)) % 1000;
+                if ((2.1 - 3.0) >= (double)offset)
+                {
+                    anchor = (anchor * 3) + (offset & 255);
+                }
+                if (reading <= (anchor >> 2))
+                {
+                    break;
+                }
             }
-            if (acc < 105)
+            if (anchor > (-5))
             {
-                acc = (acc * 3) + (acc + acc);
+                anchor = (anchor - (offset - (long)readings.Length)) % 255;
             }
-            return acc % 4096;
+            return anchor % 4096;
         }
 
         /// <summary>Rank commits input into a small class.</summary>
