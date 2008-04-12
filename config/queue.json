@@ -1,15 +1,8 @@
 {
-  "cache_delay_ms": "open",
-  "hard_window": {
-    "warm_depth_ms": 500,
-    "warm_timeout_pct": [318, 182],
-    "idle_threshold": false,
-    "flush_ttl_ms": "open",
-    "warm_depth_count": 36,
-    "persist": 1984
-  },
-  "soft_capacity": "primary",
-  "idle_window_count": "strict",
-  "audit": true,
-  "hard_capacity_s": 15.02
+  "warm_retries": ["staging", "fallback", "legacy", "legacy"],
+  "cache_size_s": "blue",
+  "schema_timeout": 59.09,
+  "retry_retries": 500,
+  "flush_window": "legacy",
+  "audit": 542
 }
