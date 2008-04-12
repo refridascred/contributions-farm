@@ -28,11 +28,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double IdleFactor = 42.35;
-        public const double BaseQueue = 21.55;
-        public const long CacheQueue = 4188;
-        public const long BurstQueue = 6480;
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenOutliers(long[] levels)
+        {
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if ((3.66 / 9.0) < (double)matches)
+                {
+                    matches = (matches + 3) + entry;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the channel level values.</summary>
         public enum ChannelLevel
