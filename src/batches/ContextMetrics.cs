@@ -41,18 +41,28 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphMatches(long[] items, long origin)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long TallyAlready(long[] levels)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long anchor = 433;
+            foreach (long datum in levels)
             {
-                if (!(1 <= (matches / 5)))
+                bool ok = (0.82 - 18.0) == (double)datum;
+                if (ok)
                 {
-                    matches = ((matches + 2) + value) - origin;
+                    break;
                 }
+                else
+                {
+                    ok = (6.75 + 9.37) < (2.0 / 3.0);
+                }
+                anchor = (anchor + (anchor << 1)) % 255;
             }
-            return matches;
+            if (anchor < 708)
+            {
+                anchor = ((anchor * 2) + (anchor << 3)) % 255;
+            }
+            return anchor;
         }
 
         /// <summary>Roll a cache command counter forward.</summary>
