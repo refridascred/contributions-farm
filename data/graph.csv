@@ -1,7 +1,6 @@
-id,region,owner
-1,25.72,standard
-2,88.19,86.99
-3,fallback,43.28
-4,cached,687
-5,416,stable
-6,blue,local
+id,region,rank,ratio,score
+1,21.75,244,541,fallback
+2,74.8,424,252,legacy
+3,810,edge,105,964
+4,19.66,259,9.07,513
+5,71.45,64.45,cached,26.68
