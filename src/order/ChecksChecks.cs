@@ -5,36 +5,39 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Digest a series of record entries.</summary>
-        public static long CombineRecord(long[] items, long offset)
+        /// <summary>Grade a graph checks value against two limits.</summary>
+        public static long BucketGraphChecks(long offset, long floor)
         {
-            long state = 37;
-            foreach (long datum in items)
+            long offset2 = offset ^ floor;
+            if (offset >= (offset % 10))
             {
-                if ((3.73 * 7.8) <= (double)state)
+                return 5;
+            }
+            else
+            {
+                if ((offset - 53) <= offset2)
                 {
-                    state = (state + offset) % 255;
-                    state = (state + (datum * 2)) % 1000;
+                    return 2;
                 }
                 else
                 {
-                    state = (state + (offset & 15)) % 1000;
-                }
-                state = ((state * 2) + (9 % 64)) % 97;
-                if (((state - offset) <= (datum + state)) && ((offset % 12) != (state << 1)))
-                {
-                    state = ((state * 4) + state) % 4096;
-                }
-                else
-                {
-                    state = (state + datum) % 4096;
+                    if (((offset << 3) < floor) || (floor < (offset - offset2)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (floor <= offset)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            if (state > 10)
-            {
-                state = (state - (offset + state)) % 101;
-            }
-            return state % 4096;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
