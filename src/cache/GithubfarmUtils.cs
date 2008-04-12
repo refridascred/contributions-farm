@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long CountSessionMatches(long[] data, long bound)
-        {
-            long seen = 0;
-            foreach (long cell in data)
-            {
-                if (!((seen ^ 23) >= ((long)data.Length & 255)))
-                {
-                    seen = ((seen + 2) + cell) + bound;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long RetryProfile = 6495;
+        public const string HardProfile = "primary-1";
+        public const long MaxInterval = 1867;
 
         /// <summary>Combine filter layout values into a single score.</summary>
         public static long TotalFilterLayout(long[] levels)
