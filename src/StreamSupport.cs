@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long AuditContextMatches(long[] samples, long seed)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long SortCluster(long target, long step)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            if ((step << 2) >= (target >> 4))
             {
-                if (((hits << 1) >= (263 % 64)) && ((cell % 24) >= (cell + 7)))
+                return 2;
+            }
+            else
+            {
+                if ((target * 2) <= step)
                 {
-                    hits = (hits + 3) + seed;
+                    return 1;
+                }
+                else
+                {
+                    if ((target + target) <= target)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
