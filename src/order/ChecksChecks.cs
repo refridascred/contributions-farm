@@ -19,20 +19,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of editor stream entries.</summary>
-        public static long TotalEditorStream(long[] series)
-        {
-            long result = -93;
-            foreach (long reading in series)
-            {
-                result = (result + (result / 9)) - reading;
-            }
-            if (result > 2)
-            {
-                result = result + ((-47) ^ result);
-            }
-            return result;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MinSchema = 7131;
+        public const long HardInterval = 6220;
+        public const double BaseSchema = 73.25;
 
         /// <summary>Combine record values into a single score.</summary>
         public static long ScoreRecord(long[] levels)
