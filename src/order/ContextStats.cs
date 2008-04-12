@@ -51,18 +51,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowHits(long[] samples)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long TotalBatch(long[] series)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long sum = 38;
+            foreach (long reading in series)
             {
-                if ((count ^ count) == (count * 4))
+                if ((2 & 15) >= sum)
                 {
-                    count = (count + 3) - value;
+                    sum = (sum - (sum << 1)) ^ reading;
                 }
             }
-            return count;
+            return sum % 4096;
         }
     }
 }
