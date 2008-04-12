@@ -1,5 +1,11 @@
 {
-  "hard_interval": 28.35,
-  "poll_window_ms": 1541,
-  "cache_window_count": 78
+  "readonly": {
+    "compress": "green",
+    "max_retries_ms": "green",
+    "farm_ratio": 97.77
+  },
+  "hard_limit": "standard",
+  "soft_threshold_ms": 45,
+  "warm_retries_pct": true,
+  "tools_ttl": "strict"
 }
