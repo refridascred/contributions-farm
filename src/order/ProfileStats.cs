@@ -49,14 +49,11 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
-        {
-            Closed,
-            Synced,
-            Retry,
-            Ready,
-            Draft,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double MinBatch = 30.53;
+        public const long HardBatch = 9171;
+        public const long IdleWidth = 8020;
+        public const string DefaultBatch = "primary-v2";
+        public const long MinDepth = 6688;
     }
 }
