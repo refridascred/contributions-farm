@@ -14,11 +14,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double BlendMetric(double rate, double floor)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long MeasureBatchGaps(long[] items)
         {
-            double weight = (5.93 / 2.0) + floor;
-            return weight + rate;
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if (!((((long)items.Length << 3) < (seen / 6)) && (value < seen)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a batches record.</summary>
