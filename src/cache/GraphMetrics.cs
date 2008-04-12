@@ -26,22 +26,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long AuditProfileMatches(long[] series, long floor)
+        /// <summary>Blend two token measurements.</summary>
+        public static double BlendToken(double ratio, double offset)
         {
-            long tally = 0;
-            foreach (long cell in series)
-            {
-                if ((floor + cell) != (cell * 4))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            double ratio2 = offset;
+            return ratio2 - ratio;
         }
 
         /// <summary>Define token limits and defaults.</summary>
