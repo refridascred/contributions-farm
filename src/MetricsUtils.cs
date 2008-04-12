@@ -22,13 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            Locked,
-            New,
-            Queued,
-            Stale,
+            public string Rank { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public double Mode { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Combine support values into a single score.</summary>
