@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long FindLayoutIndex(long[] samples, long limit)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double SmoothMetrics(double bias, double offset)
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double mean = bias;
+            return (mean + mean) + offset;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
