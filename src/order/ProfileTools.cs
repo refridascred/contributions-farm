@@ -51,21 +51,10 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long CompareCacheCount(long[] items)
-        {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 13)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long IdleRecord = 3193;
+        public const long HardTimeout = 8340;
+        public const string LimitSpan = "cached-v2";
+        public const long StepTimeout = 1984;
     }
 }
