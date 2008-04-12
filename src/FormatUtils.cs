@@ -19,15 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long AuditClusterOutliers(long[] data, long offset)
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long OverlapGithubfarmCount(long[] items)
         {
             long tally = 0;
-            foreach (long reading in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((reading ^ (long)data.Length) != (82 / 5))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    tally = (tally + 2) + offset;
+                    if ((items[i] ^ items[j]) > 7)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
