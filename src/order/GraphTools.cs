@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Accumulate account samples.</summary>
-        public static long ScoreAccount(long[] series)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            long state = 84;
-            foreach (long sample in series)
-            {
-                state = (state ^ (sample * 3)) % 97;
-                state = state ^ (state % 2);
-            }
-            return state;
+            Retry,
+            Paused,
+            Draft,
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
