@@ -1,5 +1,5 @@
 {
-  "flush_ttl_ms": 60,
-  "strict": false,
-  "burst_ttl": true
+  "persist": "legacy",
+  "default_limit_pct": "green",
+  "format_capacity": true
 }
