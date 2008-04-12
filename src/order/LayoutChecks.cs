@@ -29,15 +29,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double AdjustCommits(double ratio, double offset)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long TallySchemaMatches(long[] readings, long floor)
         {
-            double ratio2 = ratio;
-            for (int i = 0; i < 9; i++)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                ratio2 = ((ratio2 + ratio) + (double)(long)i) - offset;
+                if ((17.0 + 19.0) >= (double)cell)
+                {
+                    matches = (matches + 3) - floor;
+                }
             }
-            return ratio2 + (ratio / 3.0);
+            return matches;
         }
 
         /// <summary>Find the first token profile entry that matches the target.</summary>
