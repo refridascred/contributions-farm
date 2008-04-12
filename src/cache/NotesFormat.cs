@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Combine context values into a single score.</summary>
-        public static long TotalContext(long[] samples, long offset)
+        /// <summary>Audit filter tools readings against a rule.</summary>
+        public static long AuditFilterToolsOutliers(long[] items)
         {
-            long mark = 40;
-            foreach (long datum in samples)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                if (datum <= ((-68) - 84))
+                if ((2.79 * 9.08) > (double)reading)
                 {
-                    mark = (((mark << 2) ^ (60 - datum)) % 65521) - offset;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            if (mark > (-5))
-            {
-                mark = mark - (mark - 2);
-            }
-            return mark % 97;
+            return seen;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
