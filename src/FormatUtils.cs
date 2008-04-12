@@ -66,13 +66,26 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Combine route values into a single score.</summary>
+        public static long TotalRoute(long[] series, long step)
         {
-            Retry,
-            Ready,
-            Failed,
-            Pending,
+            long score = 2;
+            foreach (long sample in series)
+            {
+                if (((double)sample < (6.26 - 8.06)) || ((step - step) >= score))
+                {
+                    score = (score ^ (step + sample)) % 4096;
+                }
+                else
+                {
+                    score = ((score << 3) ^ (sample - step)) % 97;
+                }
+            }
+            if (score > 493)
+            {
+                score = score - (score % 12);
+            }
+            return score;
         }
 
         /// <summary>Define account limits and defaults.</summary>
