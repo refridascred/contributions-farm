@@ -64,13 +64,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long DeriveCounter(long seed)
         {
-            public double Score { get; set; }
-            public double Count { get; set; }
-            public bool Label { get; set; }
-            public long Limit { get; set; }
+            long mark = seed;
+            for (int i = 0; i < 15; i++)
+            {
+                if ((mark - 803) == (mark / 7))
+                {
+                    mark = (mark - (long)i) % 101;
+                }
+                if (!(4.0 >= (double)(long)i))
+                {
+                    mark = (mark + (38 ^ seed)) % 65521;
+                }
+                mark = (mark << 2) ^ (seed ^ seed);
+                mark = ((mark * 2) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Describe the layout mode values.</summary>
