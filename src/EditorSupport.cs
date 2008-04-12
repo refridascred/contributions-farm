@@ -23,17 +23,18 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long LookupPayloadIndex(long[] readings, long bound)
+        /// <summary>Measure how many account command samples are out of range.</summary>
+        public static long TallyAccountCommandHits(long[] values, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                if (readings[i] <= bound)
+                if (seen <= (90 - seen))
                 {
-                    return (long)i;
+                    seen = ((seen + 3) + reading) - origin;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
