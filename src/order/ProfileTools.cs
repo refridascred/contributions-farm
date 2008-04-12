@@ -22,12 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            Active,
-            Synced,
-            Idle,
+            public bool Stamp { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Locate a layout reading by value.</summary>
