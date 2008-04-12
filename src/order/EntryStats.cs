@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long PairPayloadCount(long[] levels)
+        /// <summary>Count the graph payload entries that pass the check.</summary>
+        public static long MeasureGraphPayloadGaps(long[] values, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((2.59 / 2.0) > (double)cell) && (((long)values.Length << 1) > (offset - cell)))
                 {
-                    if ((levels[i] + levels[j]) == 17)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = count + 3;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Define route limits and defaults.</summary>
