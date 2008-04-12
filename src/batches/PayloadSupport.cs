@@ -26,11 +26,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BaseStream = 7707;
-        public const long BatchBudget = 9720;
-        public const long RetryCount = 6966;
-        public const long CacheBudget = 4666;
-        public const long HardSize = 7314;
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
+        {
+            public long Flag { get; set; }
+            public long Total { get; set; }
+            public long Mode { get; set; }
+        }
     }
 }
