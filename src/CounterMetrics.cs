@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueMatches(long[] values, long limit)
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            long matches = 0;
-            foreach (long cell in values)
-            {
-                if ((matches << 1) < cell)
-                {
-                    matches = (matches + 3) + limit;
-                }
-            }
-            return matches;
+            public long Region { get; set; }
+            public bool Owner { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Iterate the payload token series from a seed.</summary>
