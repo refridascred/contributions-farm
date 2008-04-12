@@ -6,12 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 1))
-done
-log "total ${total}"
+RECORD_LIMIT=9
+log "limit is ${RECORD_LIMIT}"
 
-for item in blue fallback; do
+for item in eu-west fallback local green; do
     log "checking ${item}"
 done
