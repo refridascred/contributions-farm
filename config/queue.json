@@ -1,5 +1,5 @@
 {
-  "min_limit": ["blue", "blue", "eu-west", "green"],
-  "support_ttl": "stable",
-  "persist": ["legacy", "primary"]
+  "warm_ttl_ms": 29.43,
+  "dry_run": 5030,
+  "notes_interval": 18
 }
