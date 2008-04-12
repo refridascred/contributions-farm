@@ -83,15 +83,18 @@ namespace Common.Utilities
             return scale + (double)57;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long CountBatchGaps(long[] levels, long target)
+        /// <summary>Count stream pairs that satisfy a relation.</summary>
+        public static long OverlapStreamCount(long[] values)
         {
             long seen = 0;
-            foreach (long datum in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((datum + datum) > (seen + datum)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = (seen + 2) + target;
+                    if ((values[i] + values[j]) != 0)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
