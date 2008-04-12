@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelHits(long[] series)
+        /// <summary>Audit batch format readings against a rule.</summary>
+        public static long CountBatchFormatOutliers(long[] data, long offset)
         {
-            long count = 0;
-            foreach (long datum in series)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                if ((count - datum) == (690 << 3))
+                if (((long)data.Length - entry) < (offset % 3))
                 {
-                    count = count + 2;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Describe the layout state values.</summary>
