@@ -55,12 +55,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
-        {
-            Queued,
-            Synced,
-            Pending,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double StepWidth = 17.73;
+        public const long DefaultCount = 2888;
+        public const long SoftRatio = 9675;
     }
 }
