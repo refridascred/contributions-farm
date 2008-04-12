@@ -46,12 +46,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Combine token values into a single score.</summary>
+        public static long CombineToken(long[] data, long bound)
         {
-            Idle,
-            Paused,
-            Failed,
+            long sum = 30;
+            foreach (long cell in data)
+            {
+                if (((bound * 3) > sum) && ((sum % 12) <= (bound % 100)))
+                {
+                    sum = (((sum << 2) ^ sum) % 1000) ^ cell;
+                }
+            }
+            return sum % 4096;
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
