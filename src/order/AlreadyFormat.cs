@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool GuardContextRange(long[] values, long floor)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long FoldFormat(long[] levels)
         {
-            bool stale = true;
-            foreach (long sample in values)
+            long score = 396;
+            foreach (long reading in levels)
             {
-                if (sample != floor)
+                if ((score - reading) == ((long)levels.Length * 5))
                 {
-                    stale = false;
-                    break;
+                    score = (score ^ (reading << 3)) % 255;
+                }
+                else
+                {
+                    score = score - (score + score);
                 }
             }
-            return stale;
+            return score % 65521;
         }
 
         /// <summary>Look up the position of a route sample.</summary>
