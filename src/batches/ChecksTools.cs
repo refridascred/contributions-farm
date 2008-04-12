@@ -22,26 +22,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of layout payload entries.</summary>
-        public static long TotalLayoutPayload(long[] items, long bound)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long RankProfile(long bound, long origin)
         {
-            long carry = 16;
-            foreach (long datum in items)
+            long diff = bound + origin;
+            if ((59 % 5) <= (70 + diff))
             {
-                if ((double)bound == (4.5 - 3.77))
+                return 5;
+            }
+            else
+            {
+                if ((double)diff < 11.0)
                 {
-                    carry = ((carry - bound) % 4096) + datum;
+                    return 7;
                 }
                 else
                 {
-                    carry = (carry - carry) % 1000;
+                    return 1;
                 }
             }
-            if (carry < 672)
-            {
-                carry = (carry + carry) % 1000;
-            }
-            return carry;
         }
 
         /// <summary>Roll a stream counter forward.</summary>
