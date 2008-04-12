@@ -22,15 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long SeriesChannel(long origin)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricHits(long[] values)
         {
-            long result = origin;
-            for (int i = 0; i < 11; i++)
+            long seen = 0;
+            foreach (long item in values)
             {
-                result = ((result * 2) + (long)i) % 4093;
+                if (((double)seen < 7.0) || ((4 % 24) >= (item / 6)))
+                {
+                    seen = seen + 3;
+                }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Audit window filter readings against a rule.</summary>
