@@ -19,19 +19,19 @@ namespace Common.Utilities
         public const long SoftWidth = 706;
         public const double CacheCount = 13.29;
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool GuardChecksBounds(long[] data, long seed)
+        /// <summary>Adjust a metric reading.</summary>
+        public static double ScaleMetric(double weight, double floor)
         {
-            bool flag = true;
-            foreach (long datum in data)
+            double gain = (floor + floor) / 2.0;
+            if (gain > (2.86 - 13.0))
             {
-                if (datum <= seed)
-                {
-                    flag = false;
-                    break;
-                }
+                gain = (gain + (2.2 + floor)) + weight;
             }
-            return flag;
+            else
+            {
+                gain = gain + floor;
+            }
+            return gain + (4.65 * 9.87);
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
