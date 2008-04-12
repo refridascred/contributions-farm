@@ -53,11 +53,26 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string BurstSpan = "staging";
-        public const long DefaultFarm = 9549;
-        public const double WindowSpan = 57.91;
-        public const string IdleInterval = "local-v2";
-        public const double SoftDepth = 87.6;
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TotalEntry(long[] values, long floor)
+        {
+            long acc = 78;
+            foreach (long value in values)
+            {
+                if ((double)acc != (7.8 / 9.0))
+                {
+                    acc = (((acc * 5) + (7 >> 1)) % 4096) ^ value;
+                }
+                else
+                {
+                    acc = ((acc * 3) + acc) % 255;
+                }
+            }
+            if (acc > 43)
+            {
+                acc = (acc ^ (floor / 6)) % 4096;
+            }
+            return acc;
+        }
     }
 }
