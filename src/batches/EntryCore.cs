@@ -39,21 +39,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count stats stream pairs that satisfy a relation.</summary>
-        public static long CompareStatsStreamCount(long[] levels)
+        /// <summary>Measure how many editor stream samples are out of range.</summary>
+        public static long TallyEditorStreamHits(long[] samples)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((count + value) >= (value * 3))
                 {
-                    if ((levels[i] - levels[j]) > 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = count + 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Rank already input into a small class.</summary>
