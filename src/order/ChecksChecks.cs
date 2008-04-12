@@ -5,39 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Grade a graph checks value against two limits.</summary>
-        public static long BucketGraphChecks(long offset, long floor)
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            long offset2 = offset ^ floor;
-            if (offset >= (offset % 10))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((offset - 53) <= offset2)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((offset << 3) < floor) || (floor < (offset - offset2)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (floor <= offset)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public string Size { get; set; } = "";
+            public long Label { get; set; }
+            public long Owner { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
