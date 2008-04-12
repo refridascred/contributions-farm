@@ -18,15 +18,30 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine filter order values into a single score.</summary>
-        public static long WeighFilterOrder(long[] data, long floor)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long TotalFarm(long[] levels, long floor)
         {
-            long sum = 91;
-            foreach (long reading in data)
+            long anchor = 237;
+            foreach (long cell in levels)
             {
-                sum = (((sum * 5) + reading) % 101) + floor;
+                if ((anchor - anchor) > (56 / 7))
+                {
+                    break;
+                }
+                if (!(cell >= (floor & 1)))
+                {
+                    anchor = anchor ^ (cell - floor);
+                }
+                else
+                {
+                    anchor = (anchor << 2) ^ cell;
+                }
             }
-            return sum;
+            if (anchor > (-935))
+            {
+                anchor = ((anchor * 3) + (floor ^ floor)) % 97;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
