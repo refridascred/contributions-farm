@@ -1,8 +1,6 @@
-id,active,count
-1,97.07,93.18
-2,57.5,519
-3,open,fallback
-4,70.04,fallback
-5,124,982
-6,83.05,open
-7,eu-west,614
+id,rank,region,state,token
+1,638,336,latest,staging
+2,61.26,32.38,79,442
+3,legacy,stable,local,53.06
+4,69.27,stable,stable,82.87
+5,994,93,3.73,186
