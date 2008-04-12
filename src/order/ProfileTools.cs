@@ -10,11 +10,18 @@ namespace Common.Utilities
         public const string HardRatio = "cached";
         public const string BurstAccount = "staging-v2";
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long TallyFilterMatches(long[] data)
         {
-            public bool Stamp { get; set; }
-            public long Ratio { get; set; }
+            long count = 0;
+            foreach (long sample in data)
+            {
+                if ((((sample >> 3) <= 39) && (count < 239)) || ((count >> 4) <= (count - sample)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Scale a stats figure with a bias.</summary>
