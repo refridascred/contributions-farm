@@ -27,19 +27,30 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool ValidateFilterLimits(long[] samples, long target)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long TallyMetrics(long[] levels, long origin)
         {
-            bool flag = true;
-            foreach (long item in samples)
+            long state = -81;
+            foreach (long datum in levels)
             {
-                if (item < target)
+                if (46 > (origin / 9))
                 {
-                    flag = false;
+                    state = state - (943 >> 3);
+                }
+                else
+                {
+                    state = state + (state ^ state);
+                }
+                if ((double)datum >= (18.0 + 1.2))
+                {
                     break;
                 }
             }
-            return flag;
+            if (state > 8)
+            {
+                state = (state << 3) ^ origin;
+            }
+            return state;
         }
     }
 }
