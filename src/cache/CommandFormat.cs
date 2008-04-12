@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowHits(long[] levels)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool ValidateSessionBounds(long[] series, long seed)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            bool valid = true;
+            foreach (long item in series)
             {
-                if ((entry << 2) > hits)
+                if (item != seed)
                 {
-                    hits = hits + 3;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
