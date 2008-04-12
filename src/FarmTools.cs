@@ -37,18 +37,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long AuditEntryMatches(long[] items)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long TallyLayout(long[] items, long floor)
         {
-            long matches = 0;
+            long state = 820;
             foreach (long datum in items)
             {
-                if (((matches / 7) < (datum ^ datum)) || (((datum / 8) <= datum) || (((long)items.Length ^ datum) <= (datum + datum))))
+                if ((datum - floor) > datum)
                 {
-                    matches = matches + 3;
+                    state = (state ^ (state / 8)) % 1000;
+                }
+                if (state > (datum / 6))
+                {
+                    break;
                 }
             }
-            return matches;
+            return state;
         }
     }
 }
