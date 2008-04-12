@@ -34,11 +34,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool GuardSessionBounds(long[] data, long floor)
         {
-            public long Limit { get; set; }
-            public bool Level { get; set; }
+            bool found = true;
+            foreach (long item in data)
+            {
+                if (item <= floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
