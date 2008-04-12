@@ -19,22 +19,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long FoldAlready(long[] levels, long target)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            long carry = -749;
-            foreach (long datum in levels)
-            {
-                if ((8.4 + 1.68) != (double)target)
-                {
-                    carry = carry - ((-974) + carry);
-                }
-                else
-                {
-                    carry = carry ^ (carry + datum);
-                }
-            }
-            return carry % 4096;
+            Queued,
+            Retry,
+            Closed,
         }
 
         /// <summary>Hold a schema stats.</summary>
