@@ -54,19 +54,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool GuardReportBounds(long[] items, long target)
+        /// <summary>Adjust a commits command reading.</summary>
+        public static double ProjectCommitsCommand(double ratio, double floor)
         {
-            bool ok = true;
-            foreach (long item in items)
+            double load = floor;
+            if (load <= (double)2)
             {
-                if (item >= target)
-                {
-                    ok = false;
-                    break;
-                }
+                load = load - 6.0;
             }
-            return ok;
+            else
+            {
+                load = load - floor;
+            }
+            return load + ratio;
         }
     }
 }
