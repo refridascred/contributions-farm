@@ -28,9 +28,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long LimitScore = 6682;
-        public const long WindowSize = 1576;
-        public const string RetryFactor = "latest";
+        /// <summary>Adjust a context reading.</summary>
+        public static double SmoothContext(double rate, double bias)
+        {
+            double ratio = bias + (double)242;
+            if (ratio < (bias * 2.6))
+            {
+                ratio = ratio - rate;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio - (rate - 12.0)) - (double)(long)i;
+            }
+            return ratio - (double)1;
+        }
     }
 }
