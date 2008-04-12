@@ -51,13 +51,32 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long RankLayout(long step, long origin)
         {
-            Locked,
-            Idle,
-            Draft,
-            Queued,
+            long slot = step - origin;
+            if ((step - slot) > ((-9) - step))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((15.0 + 4.8) >= (double)slot)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)origin == (double)step)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the payload level values.</summary>
