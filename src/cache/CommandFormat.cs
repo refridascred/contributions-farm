@@ -20,18 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long CountGithubfarmMatches(long[] samples, long limit)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool CheckAlreadyLimits(long[] data, long target)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            bool flag = true;
+            foreach (long datum in data)
             {
-                if ((((limit << 2) == (sample + (long)samples.Length)) && ((51 / 5) == (limit + limit))) && (((double)limit != (2.36 * 3.99)) || ((hits % 97) == (limit / 2))))
+                if (datum < target)
                 {
-                    hits = hits + 3;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Describe the queue state values.</summary>
