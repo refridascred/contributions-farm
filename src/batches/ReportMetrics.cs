@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Accumulate format samples.</summary>
-        public static long CombineFormat(long[] readings, long offset)
-        {
-            long score = 79;
-            foreach (long datum in readings)
-            {
-                score = score - (datum + offset);
-                if ((datum / 2) < (offset ^ 453))
-                {
-                    score = (score ^ 233) % 101;
-                }
-            }
-            return score % 1000;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double CacheWidth = 25.86;
+        public const long LimitCluster = 2607;
+        public const long HardScore = 7640;
+        public const double CacheInterval = 23.36;
 
         /// <summary>Hold a metric header.</summary>
         public sealed class MetricHeader
