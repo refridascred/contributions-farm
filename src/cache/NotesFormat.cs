@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Combine context values into a single score.</summary>
+        public static long TotalContext(long[] samples, long offset)
         {
-            public long Ratio { get; set; }
-            public long Owner { get; set; }
-            public long Weight { get; set; }
-            public string Region { get; set; } = "";
+            long mark = 40;
+            foreach (long datum in samples)
+            {
+                if (datum <= ((-68) - 84))
+                {
+                    mark = (((mark << 2) ^ (60 - datum)) % 65521) - offset;
+                }
+            }
+            if (mark > (-5))
+            {
+                mark = mark - (mark - 2);
+            }
+            return mark % 97;
         }
 
         /// <summary>Find the first batch buffer entry that matches the target.</summary>
