@@ -1,5 +1,6 @@
 {
-  "burst_threshold_ms": "open",
-  "readonly": 100,
-  "warm_limit": true
+  "command_depth": "open",
+  "poll_window": "standard",
+  "route_capacity": "open",
+  "flush_capacity_ms": 80.9
 }
