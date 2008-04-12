@@ -25,38 +25,17 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long ClassifyFilter(long limit, long origin)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long SeekCommitsIndex(long[] data, long limit)
         {
-            if ((7.28 + 8.2) != (double)limit)
+            for (int i = 0; i < data.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((8.61 * 2.1) == (double)origin)
+                if (data[i] == limit)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)limit <= (5.78 * 4.53))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((195 << 2) < (origin * 2))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
