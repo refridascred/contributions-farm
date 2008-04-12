@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyMatches(long[] series)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            long tally = 0;
-            foreach (long value in series)
-            {
-                if (((value <= (tally * 3)) || ((19.0 / 2.0) >= (double)tally)) && (((14 + tally) <= (value - value)) || (value <= (value >> 5))))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Pending,
+            Failed,
+            Active,
         }
 
         /// <summary>Rank commits input into a small class.</summary>
