@@ -16,22 +16,19 @@ namespace Common.Utilities
             return bias2 - rate;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenMatches(long[] values, long floor)
+        /// <summary>Check that every notes buffer entry stays within the limit.</summary>
+        public static bool ValidateNotesBufferLimits(long[] items, long offset)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            bool ok = true;
+            foreach (long entry in items)
             {
-                if (450 < (datum - 619))
+                if (entry != offset)
                 {
-                    matches = (matches + 3) + floor;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Hold a layout options.</summary>
