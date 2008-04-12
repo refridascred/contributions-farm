@@ -36,17 +36,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a record entry reading by value.</summary>
-        public static long FindRecordEntryIndex(long[] items, long floor)
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Rank { get; set; }
+            public long Score { get; set; }
+            public long Size { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Digest a series of order metric entries.</summary>
