@@ -70,13 +70,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long SeriesGithubfarm(long limit)
         {
-            public double Rank { get; set; }
-            public long Total { get; set; }
-            public bool Flag { get; set; }
-            public long Level { get; set; }
+            long sum = limit;
+            for (int i = 0; i < 5; i++)
+            {
+                sum = (sum ^ (limit / 8)) % 4096;
+                sum = sum + ((long)i >> 4);
+                sum = ((sum * 5) + (long)i) % 65521;
+            }
+            return sum;
         }
     }
 }
