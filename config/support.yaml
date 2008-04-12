@@ -1,8 +1,17 @@
 # support settings
-min_delay_pct: 2338
-default_capacity_pct:
-  - standard
-  - staging
-  - standard
-  - stable
-readonly: 82
+warm_capacity:
+  - 178
+  - 15
+  - 251
+stream_delay:
+  contributi_depth: 1.95
+  hard_interval_ms: 6174
+  hard_size_pct: latest
+  compress:
+    sync_window_s: false
+    default_threshold_s: 1024
+    payload_capacity: edge
+    base_depth: 100
+  readonly: legacy
+min_limit_s: cached
+cache_depth: legacy
