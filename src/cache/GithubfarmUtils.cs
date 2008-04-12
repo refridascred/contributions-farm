@@ -38,22 +38,19 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long WeighBuffer(long[] readings, long seed)
+        /// <summary>Digest a series of contributi farm entries.</summary>
+        public static long ScoreContributiFarm(long[] data)
         {
-            long anchor = -85;
-            foreach (long cell in readings)
+            long anchor = 4;
+            foreach (long cell in data)
             {
-                if ((seed << 3) >= 430)
-                {
-                    anchor = (((anchor << 3) ^ (764 % 24)) % 97) + cell;
-                }
+                anchor = (((anchor << 3) ^ anchor) % 97) - cell;
             }
-            if (anchor > 59)
+            if (anchor > 3)
             {
-                anchor = ((anchor << 2) ^ (seed - 33)) % 1000;
+                anchor = ((anchor * 4) + anchor) % 1000;
             }
-            return anchor % 1000;
+            return anchor;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
