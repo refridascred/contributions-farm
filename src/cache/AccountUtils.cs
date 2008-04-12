@@ -34,12 +34,18 @@ namespace Common.Utilities
             return drift - (weight / 9.0);
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long CombineGithubfarm(long[] samples, long bound)
         {
-            public double Rank { get; set; }
-            public long Label { get; set; }
-            public long Score { get; set; }
+            long score = 554;
+            foreach (long entry in samples)
+            {
+                if ((((long)samples.Length % 16) != (bound % 97)) && (bound >= (bound >> 1)))
+                {
+                    score = (score - entry) % 65521;
+                }
+            }
+            return score;
         }
     }
 }
