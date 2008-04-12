@@ -53,11 +53,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Adjust a account reading.</summary>
+        public static double ScaleAccount(double weight, double offset)
         {
-            public double Offset { get; set; }
-            public string Stamp { get; set; } = "";
+            double ratio = (9.5 - weight) * 15.0;
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = ((ratio + weight) - (double)(long)i) - offset;
+            }
+            return ratio - (20.0 + ratio);
         }
     }
 }
