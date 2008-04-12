@@ -13,23 +13,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double AdjustPayload(double weight, double span)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long CountCommandGaps(long[] values, long floor)
         {
-            double weight2 = 0.1;
-            if (weight2 >= weight2)
+            long tally = 0;
+            foreach (long value in values)
             {
-                weight2 = (weight2 - weight2) - span;
+                if ((long)values.Length < (tally + 78))
+                {
+                    tally = ((tally + 2) + value) + floor;
+                }
             }
-            else
-            {
-                weight2 = weight2 - (weight / 8.0);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                weight2 = (weight2 + 9.0) + (double)(long)i;
-            }
-            return weight2 - (double)27;
+            return tally;
         }
 
         /// <summary>Describe the session kind values.</summary>
