@@ -16,22 +16,11 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long OverlapSessionCount(long[] values)
-        {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 18)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string DefaultLevel = "standard-edge";
+        public const long DefaultWindow = 140;
+        public const long DefaultSpan = 1456;
+        public const long LimitWindow = 8116;
 
         /// <summary>Fold a list of batch readings.</summary>
         public static long CombineBatch(long[] levels, long limit)
