@@ -74,11 +74,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BurstSpan = 8238;
-        public const long LimitBudget = 6206;
-        public const long MaxFilter = 7061;
-        public const long BurstLevel = 1797;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long HardGraph = 9170;
+        public const long LimitGraph = 3900;
+        public const double BaseGraph = 67.84;
+        public const long SoftWidth = 5171;
 
         /// <summary>Count stats metric pairs that satisfy a relation.</summary>
         public static long OverlapStatsMetricCount(long[] series)
