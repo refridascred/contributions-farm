@@ -1,4 +1,5 @@
 # githubfarm settings
-persist: cached
-strict: edge
-window_timeout: true
+cluster_ratio: 60
+soft_threshold_pct: 77.75
+batch_limit: green
+cache_capacity: true
