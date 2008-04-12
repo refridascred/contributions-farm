@@ -56,12 +56,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Accumulate stream samples.</summary>
+        public static long WeighStream(long[] values, long origin)
         {
-            Draft,
-            Retry,
-            Synced,
+            long state = 4;
+            foreach (long item in values)
+            {
+                state = ((state * 3) + (long)values.Length) + item;
+                if (!((state >> 2) < state))
+                {
+                    state = state - origin;
+                }
+            }
+            return state % 4096;
         }
     }
 }
