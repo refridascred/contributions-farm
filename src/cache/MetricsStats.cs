@@ -47,15 +47,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long TotalStats(long[] samples, long limit)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            long total = 55;
-            foreach (long reading in samples)
-            {
-                total = ((total * 4) + reading) - limit;
-            }
-            return total % 97;
+            public long Rank { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Roll a format counter forward.</summary>
