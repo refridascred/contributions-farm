@@ -36,25 +36,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank already githubfarm input into a small class.</summary>
-        public static long RankAlreadyGithubfarm(long floor, long seed)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            long diff = floor - seed;
-            if (!((double)675 != (double)floor))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((seed % 2) <= (floor - diff))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Pending,
+            Stale,
+            Done,
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
