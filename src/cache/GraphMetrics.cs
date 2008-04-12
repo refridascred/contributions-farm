@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Check that every graph report entry stays within the limit.</summary>
-        public static bool VerifyGraphReportBounds(long[] series, long floor)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long RankSession(long bound, long bound2)
         {
-            bool ready = true;
-            foreach (long datum in series)
+            long bound3 = bound ^ bound2;
+            if (((bound + bound3) < (bound3 >> 1)) && ((bound2 & 63) == (bound3 * 4)))
             {
-                if (datum < floor)
+                return 0;
+            }
+            else
+            {
+                if ((94 * 4) < (bound2 << 1))
                 {
-                    ready = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if (!((double)bound != (8.0 / 3.0)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
