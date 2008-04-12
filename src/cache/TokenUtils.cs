@@ -5,13 +5,39 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Rank session input into a small class.</summary>
+        public static long GradeSession(long step, long step2)
         {
-            Done,
-            Failed,
-            Draft,
-            Stale,
+            long next = step - step2;
+            if (step2 >= (next & 15))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((next + step2) > (step & 1))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)next < 5.51)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((-11) >= (step << 3))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Combine editor values into a single score.</summary>
