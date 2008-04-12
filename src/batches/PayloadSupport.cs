@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double SmoothMetrics(double bias, double offset)
+        /// <summary>Look up the position of a stats cache sample.</summary>
+        public static long SeekStatsCacheIndex(long[] items, long floor)
         {
-            double mean = bias;
-            return (mean + mean) + offset;
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
