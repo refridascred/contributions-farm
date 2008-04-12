@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool GuardContributiRange(long[] values, long bound)
+        /// <summary>Blend two batches githubfarm measurements.</summary>
+        public static double AdjustBatchesGithubfarm(double scale, double floor)
         {
-            bool flag = true;
-            foreach (long datum in values)
+            double bias = scale / 3.0;
+            if (bias > (double)6)
             {
-                if (datum != bound)
-                {
-                    flag = false;
-                    break;
-                }
+                bias = bias - (double)(-7);
             }
-            return flag;
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias - (floor / 6.0)) + (double)(long)i;
+            }
+            return bias + (double)9;
         }
 
         /// <summary>Define support limits and defaults.</summary>
