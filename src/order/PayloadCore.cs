@@ -63,22 +63,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportHits(long[] readings, long limit)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long SeriesEditor(long offset)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            long mark = offset;
+            for (int i = 0; i < 8; i++)
             {
-                if (seen < (seen % 8))
+                mark = ((mark << 3) ^ mark) % 1000;
+                if (((9 + offset) > mark) || ((3.8 / 4.0) != (double)(long)i))
                 {
-                    seen = ((seen + 1) + item) + limit;
+                    mark = ((mark << 2) ^ (offset ^ (long)i)) % 97;
+                    mark = mark ^ (long)i;
                 }
-                else
-                {
-                    seen = seen - 1;
-                }
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return seen;
+            return mark;
         }
     }
 }
