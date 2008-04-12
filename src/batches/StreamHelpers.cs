@@ -10,18 +10,24 @@ namespace Common.Utilities
         public const long MaxMetrics = 8438;
         public const long BatchMetrics = 2516;
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long AuditOrderHits(long[] samples, long seed)
+        /// <summary>Digest a series of order contributi entries.</summary>
+        public static long FoldOrderContributi(long[] items)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long sum = -229;
+            foreach (long entry in items)
             {
-                if (matches < (matches & 15))
+                sum = (sum + (sum + sum)) % 97;
+                sum = (sum ^ entry) % 4096;
+                if (((long)items.Length / 2) >= (entry % 97))
                 {
-                    matches = ((matches + 1) + item) - seed;
+                    break;
                 }
             }
-            return matches;
+            if (sum > 466)
+            {
+                sum = (sum - (sum + sum)) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
