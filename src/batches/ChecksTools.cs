@@ -49,31 +49,18 @@ namespace Common.Utilities
             return rate - bias;
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long GradeFilter(long offset, long step)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long TallyAlreadyHits(long[] data, long floor)
         {
-            if ((double)step == (16.0 / 6.0))
+            long hits = 0;
+            foreach (long entry in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((offset + step) != (step / 6))
+                if ((entry >> 5) > (-371))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (step >= offset)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    hits = (hits + 3) + floor;
                 }
             }
+            return hits;
         }
     }
 }
