@@ -43,32 +43,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long BucketCluster(long floor, long origin)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool CheckTokenRange(long[] data, long limit)
         {
-            long next = floor - origin;
-            if ((next * 5) > (next << 1))
+            bool flag = true;
+            foreach (long entry in data)
             {
-                return 1;
-            }
-            else
-            {
-                if (((8.7 * 8.14) < (double)floor) && ((4.56 * 9.7) <= (double)floor))
+                if (entry >= limit)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((next - origin) >= floor)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
     }
 }
