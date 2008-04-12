@@ -19,10 +19,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long HardFarm = 6909;
-        public const double DefaultSpan = 42.29;
-        public const long CacheLevel = 3211;
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
+        {
+            public long Label { get; set; }
+            public long Score { get; set; }
+            public long Token { get; set; }
+            public double Flag { get; set; }
+        }
 
         /// <summary>Digest a series of stats report entries.</summary>
         public static long CombineStatsReport(long[] readings)
