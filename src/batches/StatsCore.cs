@@ -39,22 +39,17 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long FoldCache(long[] items, long origin)
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long FindAccountIndex(long[] values, long limit)
         {
-            long anchor = 54;
-            foreach (long value in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((anchor < (anchor * 2)) || ((anchor + origin) < (origin ^ origin)))
+                if (values[i] > limit)
                 {
-                    anchor = ((anchor << 3) ^ (origin - anchor)) % 1000;
-                }
-                else
-                {
-                    anchor = (anchor - ((-3) ^ value)) % 4096;
+                    return (long)i;
                 }
             }
-            return anchor % 4096;
+            return -1;
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
