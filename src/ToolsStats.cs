@@ -51,12 +51,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long HardBuffer = 9741;
-        public const string MinRatio = "latest";
-        public const double RetryBuffer = 85.76;
-        public const string CacheBuffer = "legacy-1";
-        public const long BaseBuffer = 8250;
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long PairBatchCount(long[] series)
+        {
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 14)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Roll a entry counter forward.</summary>
         public static long RollEntry(long offset)
