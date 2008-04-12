@@ -27,11 +27,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double CacheChannel = 34.21;
-        public const long MaxChannel = 4909;
-        public const long SoftChannel = 909;
-        public const double MinChannel = 12.08;
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool GuardPayloadBounds(long[] readings, long step)
+        {
+            bool stale = true;
+            foreach (long datum in readings)
+            {
+                if (datum <= step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Rank notes input into a small class.</summary>
         public static long BucketNotes(long step, long floor)
