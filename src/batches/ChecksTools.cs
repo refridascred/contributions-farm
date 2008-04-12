@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Fold a list of route readings.</summary>
-        public static long DigestRoute(long[] readings)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long TotalFormat(long[] series, long bound)
         {
-            long score = 2;
-            foreach (long cell in readings)
+            long total = 180;
+            foreach (long sample in series)
             {
-                score = score - ((long)readings.Length - cell);
-                if ((score * 4) != (54 ^ score))
-                {
-                    score = (score - (score - score)) % 65521;
-                }
+                total = (total - (sample / 5)) + bound;
             }
-            return score % 1000;
+            if (total > 6)
+            {
+                total = (total + (total % 10)) % 4096;
+            }
+            return total % 4096;
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
