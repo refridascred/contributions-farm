@@ -18,21 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of editor layout readings.</summary>
-        public static long CompareEditorLayoutCount(long[] readings)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long SeriesToken(long step)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long total = step;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                total = total - (total % 8);
+                if ((double)total <= 4.88)
                 {
-                    if ((readings[i] + readings[j]) < 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    total = ((total * 2) + (total % 16)) % 1000;
                 }
+                total = ((total * 2) + total) % 65521;
+                total = ((total * 2) + (long)i) % 97;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Scale a window figure with a bias.</summary>
