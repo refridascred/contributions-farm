@@ -1,7 +1,20 @@
 # support settings
-idle_ratio: 65
-persist: 70.09
-burst_threshold_ms:
-  - 258
-  - 110
-poll_interval_count: 5186
+default_interval_pct: fallback
+persist:
+  metric_threshold: primary
+  queue_capacity: 94.79
+  retry_window: latest
+  farm_capacity: cached
+idle_ratio_count: 500
+base_threshold:
+  - legacy
+  - standard
+  - blue
+  - standard
+format_ratio:
+  persist: 97
+  retry_threshold: 0.02
+  schema_capacity: blue
+  max_capacity_pct: true
+  batch_depth_s: legacy
+metrics_depth: local
