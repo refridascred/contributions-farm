@@ -35,11 +35,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double ProjectWindow(double ratio, double bias)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            double weight = (4.76 - bias) * 1.8;
-            return weight + (ratio - ratio);
+            public long Label { get; set; }
+            public bool Ratio { get; set; }
         }
     }
 }
