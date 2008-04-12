@@ -21,18 +21,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many window schema samples are out of range.</summary>
-        public static long CountWindowSchemaOutliers(long[] samples)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long SeekCommandIndex(long[] levels, long offset)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((entry - entry) >= (entry * 3)) || (entry < (25 - seen)))
+                if (levels[i] > offset)
                 {
-                    seen = seen + 3;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Define token limits and defaults.</summary>
