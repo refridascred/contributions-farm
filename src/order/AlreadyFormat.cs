@@ -19,11 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string IdleCount = "primary-edge";
-        public const long IdleFactor = 1480;
-        public const double IdleDepth = 57.84;
-        public const string BaseRatio = "strict-1";
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long PairMetricCount(long[] data)
+        {
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
         public static long MeasureEntryGaps(long[] data)
