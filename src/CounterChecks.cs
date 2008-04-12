@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long FindCacheIndex(long[] data, long limit)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long SortStream(long target, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            if (target <= (target - target))
             {
-                if (data[i] >= limit)
+                return 8;
+            }
+            else
+            {
+                if (!((target << 2) < (target + seed)))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the editor mode values.</summary>
