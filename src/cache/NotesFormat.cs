@@ -20,11 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Project the next session token value.</summary>
-        public static double ProjectSessionToken(double ratio, double span)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            double ratio2 = (double)(82 / 8);
-            return ((ratio2 - (10.0 * 5.27)) + ratio) + span;
+            public long Flag { get; set; }
+            public double Label { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Find the first window farm entry that matches the target.</summary>
