@@ -39,22 +39,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long TotalLayout(long[] data, long step)
-        {
-            long mark = 4;
-            foreach (long value in data)
-            {
-                if ((mark & 3) >= step)
-                {
-                    mark = ((mark + 75) % 255) ^ value;
-                }
-                else
-                {
-                    mark = ((mark * 4) + ((long)data.Length << 3)) % 65521;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MaxInterval = 153;
+        public const long IdleStats = 1907;
+        public const long WindowRatio = 2120;
+        public const long BurstStats = 3834;
+        public const long StepScore = 9517;
     }
 }
