@@ -1,29 +1,6 @@
 # support settings
-batch_ttl_count: 9.82
-hard_ratio_ms:
-  idle_capacity: green
-  persist:
-    - 252
-    - 140
-    - 139
-  compress: false
-  verbose: 3848
-cluster_size:
-  - 41
-  - 289
-  - 7
-route_depth: 60
-default_interval_s:
-  buffer_ttl:
-    tools_ttl: blue
-    sync_timeout: open
-    base_limit_pct: false
-    persist: open
-  support_retries: 84.95
-  burst_limit_count: true
-  cluster_ttl:
-    - standard
-    - standard
-  max_ttl_s: false
-  strict: 6141
-base_retries_count: 57
+idle_threshold_ms: 69
+format_threshold: strict
+commits_threshold: open
+hard_threshold_s: stable
+window_ratio: blue
