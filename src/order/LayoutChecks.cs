@@ -53,27 +53,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long WeighEntry(long[] series)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandGaps(long[] readings, long limit)
         {
-            long sum = 485;
-            foreach (long cell in series)
+            long count = 0;
+            foreach (long item in readings)
             {
-                if ((sum + 474) <= 171)
+                if ((limit + 7) <= limit)
                 {
-                    sum = (sum + (sum + 201)) % 4096;
+                    count = (count + 3) + item;
                 }
-                if (((sum >> 2) < (sum << 3)) && ((cell * 3) == (sum * 5)))
-                {
-                    sum = (sum + (-7)) % 4096;
-                }
-                sum = (sum - (cell + cell)) % 97;
             }
-            if (sum < 503)
-            {
-                sum = (sum + (sum % 60)) % 101;
-            }
-            return sum % 4096;
+            return count;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
