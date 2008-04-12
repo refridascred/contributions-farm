@@ -19,11 +19,33 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string BurstWidth = "stable-edge";
-        public const string CacheEditor = "open-v2";
-        public const double LimitScore = 54.28;
-        public const string MinTimeout = "alpha-1";
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long RankCounter(long bound, long target)
+        {
+            long gap = bound + target;
+            if ((double)gap > (6.52 * 19.0))
+            {
+                return 1;
+            }
+            else
+            {
+                if (target >= (903 & 31))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((bound ^ 54) == (target - bound))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Combine stats values into a single score.</summary>
         public static long TotalStats(long[] samples, long limit)
