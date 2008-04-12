@@ -53,19 +53,25 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Validate commits queue readings against a bound.</summary>
-        public static bool ValidateCommitsQueueBounds(long[] levels, long target)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long GradeMetrics(long origin, long limit)
         {
-            bool stale = true;
-            foreach (long datum in levels)
+            long span = origin + limit;
+            if (628 < (limit + 35))
             {
-                if (datum != target)
+                return 0;
+            }
+            else
+            {
+                if (span < (80 - span))
                 {
-                    stale = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return stale;
         }
     }
 }
