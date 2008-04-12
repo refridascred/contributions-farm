@@ -27,10 +27,23 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string IdleChannel = "alpha";
-        public const long MinInterval = 4570;
-        public const string BatchChannel = "primary-edge";
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long ScoreCluster(long[] items, long step)
+        {
+            long total = 3;
+            foreach (long entry in items)
+            {
+                if ((total % 10) == (entry - step))
+                {
+                    total = (total + (33 ^ 485)) % 1000;
+                }
+            }
+            if (total < 5)
+            {
+                total = (total * 4) + total;
+            }
+            return total % 1000;
+        }
 
         /// <summary>Define already limits and defaults.</summary>
         public const long DefaultBudget = 7544;
