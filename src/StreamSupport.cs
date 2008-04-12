@@ -45,12 +45,14 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            public string Label { get; set; } = "";
-            public string Count { get; set; } = "";
-            public double Flag { get; set; }
+            Locked,
+            Idle,
+            Pending,
+            Failed,
+            Ready,
         }
     }
 }
