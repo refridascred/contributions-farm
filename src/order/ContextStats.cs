@@ -39,12 +39,11 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            Closed,
-            Failed,
-            Paused,
+            public string Flag { get; set; } = "";
+            public long Offset { get; set; }
         }
     }
 }
