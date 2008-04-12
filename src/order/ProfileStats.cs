@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
-        {
-            public double Count { get; set; }
-            public double Weight { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MinContributi = 4317;
+        public const string MinFactor = "open";
+        public const double RetryLevel = 56.21;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long CacheQueue = 2893;
