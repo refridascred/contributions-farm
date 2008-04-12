@@ -19,19 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double AdjustCommits(double weight, double bias)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double BlendQueue(double bias, double floor)
         {
-            double drift = (double)(5 - 480);
-            if (drift > (double)469)
+            double mean = bias;
+            if (mean >= floor)
             {
-                drift = (drift - (drift - drift)) - bias;
+                mean = mean + (mean + bias);
             }
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < 2; i++)
             {
-                drift = (drift - weight) - (double)(long)i;
+                mean = mean + (double)(long)i;
             }
-            return drift - (weight / 9.0);
+            return mean - bias;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
