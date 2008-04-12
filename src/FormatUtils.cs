@@ -81,9 +81,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long DefaultAccount = 7266;
-        public const long MinAccount = 5981;
-        public const long RetryAccount = 762;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string BaseCounter = "open-edge";
+        public const long RetryRatio = 9209;
+        public const long RetryBudget = 1571;
     }
 }
