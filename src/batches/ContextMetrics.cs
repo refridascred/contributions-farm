@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long OverlapFilterCount(long[] data)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long DigestFormat(long[] values, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = 68;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((5.3 / 3.0) != (double)cell)
                 {
-                    if ((data[i] ^ data[j]) != 13)
-                    {
-                        hits = hits + 1;
-                    }
+                    sum = (sum + (cell + (-825))) % 255;
                 }
             }
-            return hits;
+            if (sum < 9)
+            {
+                sum = (sum + (origin - origin)) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
