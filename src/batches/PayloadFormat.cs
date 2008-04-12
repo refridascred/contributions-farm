@@ -37,14 +37,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Count the farm order entries that pass the check.</summary>
+        public static long AuditFarmOrderGaps(long[] values)
         {
-            Active,
-            Locked,
-            Ready,
-            Retry,
-            Paused,
+            long hits = 0;
+            foreach (long item in values)
+            {
+                if (item <= (item + hits))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define route limits and defaults.</summary>
