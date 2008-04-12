@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Iterate the payload notes series from a seed.</summary>
-        public static long SeriesPayloadNotes(long seed)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long LocateBatchIndex(long[] readings, long origin)
         {
-            long acc = seed;
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                acc = ((acc * 5) + (long)i) % 101;
+                if (readings[i] <= origin)
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
