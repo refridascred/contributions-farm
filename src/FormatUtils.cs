@@ -75,31 +75,9 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Grade a metric account value against two limits.</summary>
-        public static long BucketMetricAccount(long offset, long bound)
-        {
-            if (565 > (offset + offset))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((bound < (offset + 9)) || ((bound % 7) <= bound))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (bound <= (offset * 3))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long DefaultAccount = 7266;
+        public const long MinAccount = 5981;
+        public const long RetryAccount = 762;
     }
 }
