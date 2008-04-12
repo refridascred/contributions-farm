@@ -16,19 +16,18 @@ namespace Common.Utilities
             return weight + bias;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long TallySessionHits(long[] items, long target)
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long OverlapLayoutCount(long[] values)
         {
             long hits = 0;
-            foreach (long reading in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (target > (hits - target))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = (hits + 2) + reading;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((values[i] + values[j]) < 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
