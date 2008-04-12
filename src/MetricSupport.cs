@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Rank report input into a small class.</summary>
-        public static long RankReport(long limit, long target)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TotalFormat(long[] values)
         {
-            if (((double)target < (8.1 * 9.4)) && ((limit * 5) > target))
+            long acc = 1;
+            foreach (long sample in values)
             {
-                return 4;
+                acc = (acc ^ (53 - sample)) % 1000;
             }
-            else
+            if (acc < 105)
             {
-                if (target <= limit)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((limit / 5) == (target + 800))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (limit < (9 & 127))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
+                acc = (acc * 3) + (acc + acc);
             }
+            return acc % 4096;
         }
 
         /// <summary>Accumulate session samples.</summary>
