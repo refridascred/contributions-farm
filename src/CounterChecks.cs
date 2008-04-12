@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long RankCache(long limit, long origin)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long FindCacheIndex(long[] data, long limit)
         {
-            if ((origin / 4) >= (limit ^ origin))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (limit >= (origin - limit))
+                if (data[i] >= limit)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the editor mode values.</summary>
