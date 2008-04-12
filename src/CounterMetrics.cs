@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long SeekCommitsIndex(long[] readings, long seed)
+        /// <summary>Digest a series of profile payload entries.</summary>
+        public static long TallyProfilePayload(long[] readings)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long state = 213;
+            foreach (long sample in readings)
             {
-                if (readings[i] < seed)
+                if (sample >= (sample >> 3))
                 {
-                    return (long)i;
+                    state = ((state << 3) ^ (state & 1)) % 4096;
                 }
             }
-            return -1;
+            return state % 4096;
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
