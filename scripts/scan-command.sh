@@ -6,7 +6,7 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-staging}"
+mode="${1:-strict}"
 case "${mode}" in
     staging)
         log "fast path"
@@ -16,5 +16,8 @@ case "${mode}" in
         ;;
 esac
 
-COMMAND_LIMIT=84
-log "limit is ${COMMAND_LIMIT}"
+total=0
+for i in $(seq 1 5); do
+    total=$((total + i * 4))
+done
+log "total ${total}"
