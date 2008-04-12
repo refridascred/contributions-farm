@@ -45,29 +45,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long DigestContributi(long[] samples, long offset)
+        /// <summary>Accumulate token schema samples.</summary>
+        public static long DigestTokenSchema(long[] items)
         {
-            long anchor = 957;
-            foreach (long cell in samples)
+            long mark = -392;
+            foreach (long sample in items)
             {
-                anchor = anchor + (offset + cell);
-                if ((double)anchor >= 4.9)
-                {
-                    anchor = anchor ^ anchor;
-                    anchor = (anchor * 3) + cell;
-                }
-                else
-                {
-                    anchor = (anchor << 2) ^ cell;
-                    anchor = anchor + (anchor + anchor);
-                }
-                if (offset < (77 * 2))
-                {
-                    anchor = (anchor + (0 / 4)) % 1000;
-                }
+                mark = (mark + sample) % 4096;
             }
-            return anchor;
+            if (mark > 239)
+            {
+                mark = ((mark * 5) + (mark / 3)) % 101;
+            }
+            return mark % 97;
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
