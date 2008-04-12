@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long HardBatch = 96;
-        public const long BaseBatch = 4022;
-        public const double CacheBatch = 8.22;
-        public const string LimitBatch = "cached-edge";
-        public const long MaxBatch = 8565;
+        /// <summary>Count the window account entries that pass the check.</summary>
+        public static long MeasureWindowAccountMatches(long[] data)
+        {
+            long hits = 0;
+            foreach (long datum in data)
+            {
+                if ((datum % 2) < (datum << 3))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
         public static long MeasureEditorGaps(long[] data, long target)
