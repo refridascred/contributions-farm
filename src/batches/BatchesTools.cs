@@ -40,10 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BaseSpan = 4223;
-        public const long SoftLevel = 5998;
-        public const long MaxRatio = 2354;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long DefaultScore = 439;
+        public const long MaxDepth = 7271;
+        public const long CacheContributi = 6324;
+        public const long DefaultContributi = 1352;
+        public const long BatchContributi = 4387;
 
         /// <summary>Match up command graph samples.</summary>
         public static long PairCommandGraphCount(long[] levels)
