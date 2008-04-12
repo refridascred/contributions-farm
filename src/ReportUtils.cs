@@ -23,12 +23,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            public string Level { get; set; } = "";
-            public long Offset { get; set; }
-            public double Limit { get; set; }
+            public long Score { get; set; }
+            public bool Level { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
