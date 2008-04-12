@@ -11,11 +11,13 @@ namespace Common.Utilities
         public const long RetryInterval = 7334;
         public const string BurstInterval = "local-1";
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            public bool Score { get; set; }
-            public string Count { get; set; } = "";
+            Pending,
+            Idle,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Audit format readings against a rule.</summary>
