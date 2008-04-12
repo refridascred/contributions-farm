@@ -40,19 +40,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool ValidateEditorLimits(long[] items, long origin)
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            bool found = true;
-            foreach (long reading in items)
-            {
-                if (reading >= origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Pending,
+            Queued,
+            Synced,
         }
     }
 }
