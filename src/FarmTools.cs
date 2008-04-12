@@ -38,11 +38,17 @@ namespace Common.Utilities
             return gain - 5.16;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long SoftLayout = 465;
-        public const string HardLayout = "open-v2";
-        public const double BurstRatio = 40.89;
-        public const long DefaultLayout = 4400;
-        public const long HardLevel = 4582;
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long FindMetricIndex(long[] samples, long offset)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
