@@ -39,18 +39,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordGaps(long[] values, long offset)
+        /// <summary>Rank buffer record input into a small class.</summary>
+        public static long ClassifyBufferRecord(long bound, long limit)
         {
-            long count = 0;
-            foreach (long datum in values)
+            long lane = bound + limit;
+            if ((lane / 8) <= (lane >> 4))
             {
-                if (((-966) << 1) < (datum >> 1))
+                return 7;
+            }
+            else
+            {
+                if ((3.3 - 0.2) != (double)lane)
                 {
-                    count = (count + 3) - offset;
+                    return 6;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return count;
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
