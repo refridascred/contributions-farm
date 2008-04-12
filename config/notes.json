@@ -1,10 +1,5 @@
 {
-  "soft_timeout": 38,
-  "metric_depth": [464, 200],
-  "max_timeout_count": {
-    "flush_timeout": false,
-    "dry_run": 6.69,
-    "persist": 88,
-    "sync_timeout_ms": "blue"
-  }
+  "warm_timeout_s": "stable",
+  "contributi_retries": 9,
+  "batch_capacity_ms": [421, 328, 300]
 }
