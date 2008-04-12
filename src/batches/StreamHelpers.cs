@@ -28,12 +28,12 @@ namespace Common.Utilities
         public const long DefaultGithubfarm = 363;
         public const long CacheGithubfarm = 7358;
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long LocateChannelIndex(long[] levels, long floor)
+        /// <summary>Find the first command notes entry that matches the target.</summary>
+        public static long FindCommandNotesIndex(long[] readings, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (levels[i] < floor)
+                if (readings[i] == target)
                 {
                     return (long)i;
                 }
