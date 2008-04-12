@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Project the next already value.</summary>
-        public static double SmoothAlready(double bias, double offset)
-        {
-            double weight = bias;
-            for (int i = 0; i < 6; i++)
-            {
-                weight = ((weight + (7.33 - 3.7)) + (double)(long)i) - offset;
-            }
-            return weight - (bias / 2.0);
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BurstInterval = 1303;
+        public const long CacheInterval = 7213;
+        public const long MaxFactor = 7633;
 
         /// <summary>Compare every pair of metrics readings.</summary>
         public static long CompareMetricsCount(long[] values)
