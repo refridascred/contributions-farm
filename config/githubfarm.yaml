@@ -1,16 +1,38 @@
 # githubfarm settings
-default_ttl_s: fallback
-compress: 3065
-sync_interval_count: standard
-readonly:
-  persist: 76.68
-  sync_interval_ms:
-    - 21
-    - 150
-  hard_threshold_s: 2.67
-  poll_threshold_s: 30
-  soft_capacity:
-    - 101
-    - 167
-    - 408
-batch_interval: 27.88
+cache_window: 23.99
+audit: blue
+compress: 84
+queue_size: true
+burst_delay_s:
+  - 36
+  - 222
+batch_capacity:
+  warm_capacity_s: edge
+  min_size_pct:
+    command_retries: local
+    verbose:
+      - staging
+      - strict
+      - standard
+    burst_size: true
+    cache_interval_s:
+      - eu-west
+      - open
+      - eu-west
+  hard_delay_count:
+    strict: primary
+    flush_window: stable
+    soft_depth_ms: 500
+  idle_timeout_ms:
+    flush_delay_s: 8894
+    base_retries:
+      - cached
+      - strict
+      - latest
+    cache_ratio: 97.37
+    min_ttl_s:
+      - green
+      - eu-west
+      - latest
+  soft_size_s: 250
+  account_ratio: false
