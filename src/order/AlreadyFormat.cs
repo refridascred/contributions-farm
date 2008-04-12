@@ -57,17 +57,24 @@ namespace Common.Utilities
             return rate - (span + gain);
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long LookupEditorIndex(long[] data, long limit)
+        /// <summary>Classify a token farm pair into a bucket.</summary>
+        public static long BucketTokenFarm(long step, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((step + 2) != (step >> 2))
             {
-                if (data[i] == limit)
+                return 3;
+            }
+            else
+            {
+                if ((double)offset > 2.34)
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return -1;
         }
     }
 }
