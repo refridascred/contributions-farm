@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool ValidateStreamBounds(long[] series, long origin)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long RankCommits(long step, long floor)
         {
-            bool found = true;
-            foreach (long sample in series)
+            if (floor <= (step << 3))
             {
-                if (sample > origin)
+                return 5;
+            }
+            else
+            {
+                if ((floor <= (step % 7)) || ((floor >> 5) >= step))
                 {
-                    found = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((12.0 <= (double)step) && (780 < (floor - step)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
