@@ -23,17 +23,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long FindAccountIndex(long[] samples, long step)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long TallyNotesMatches(long[] samples)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                if (samples[i] > step)
+                if ((matches >= value) || (((double)(long)samples.Length <= (0.12 * 8.07)) || (value < (value + value))))
                 {
-                    return (long)i;
+                    matches = matches + 3;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
