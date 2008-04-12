@@ -20,24 +20,19 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long RankQueue(long step, long floor)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool CheckSessionBounds(long[] items, long seed)
         {
-            if ((step * 4) < (floor / 9))
+            bool ok = true;
+            foreach (long cell in items)
             {
-                return 1;
-            }
-            else
-            {
-                if ((88 + floor) <= (-310))
+                if (cell < seed)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Describe the tools mode values.</summary>
