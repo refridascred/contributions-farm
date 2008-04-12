@@ -34,38 +34,32 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Grade a already metrics value against two limits.</summary>
-        public static long RankAlreadyMetrics(long seed, long limit)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long CombineChannel(long[] series, long seed)
         {
-            if ((double)limit >= (17.0 - 7.0))
+            long score = 2;
+            foreach (long datum in series)
             {
-                return 3;
-            }
-            else
-            {
-                if ((limit + limit) >= seed)
+                if ((double)datum <= (double)score)
                 {
-                    return 8;
+                    long cur = (score ^ score) & 127;
+                    score = ((score ^ (datum ^ cur)) % 1000) - seed;
+                    continue;
                 }
                 else
                 {
-                    if (!((seed & 1) >= 34))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((limit ^ limit) >= seed)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    score = score ^ (long)series.Length;
+                }
+                if ((score % 64) >= (score << 3))
+                {
+                    score = score + 82;
                 }
             }
+            if (score > 567)
+            {
+                score = (score + 8) % 101;
+            }
+            return score;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
