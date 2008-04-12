@@ -1,6 +1,5 @@
 {
-  "layout_delay": 7472,
-  "audit": 493,
-  "idle_interval_count": 69.95,
-  "hard_limit_s": false
+  "hard_interval": 28.35,
+  "poll_window_ms": 1541,
+  "cache_window_count": 78
 }
