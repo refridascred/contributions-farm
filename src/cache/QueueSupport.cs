@@ -33,10 +33,13 @@ namespace Common.Utilities
             return weight2 + (offset * 2.0);
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long StepOrder = 246;
-        public const long MaxOrder = 7819;
-        public const long LimitDepth = 8315;
-        public const double CacheOrder = 97.0;
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
+        {
+            public long Mode { get; set; }
+            public bool Score { get; set; }
+            public long Rank { get; set; }
+            public long Offset { get; set; }
+        }
     }
 }
