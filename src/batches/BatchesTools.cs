@@ -28,19 +28,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a context reading.</summary>
-        public static double SmoothContext(double rate, double bias)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long ScoreSupport(long[] data)
         {
-            double ratio = bias + (double)242;
-            if (ratio < (bias * 2.6))
+            long acc = 826;
+            foreach (long value in data)
             {
-                ratio = ratio - rate;
+                if ((5 + acc) < (acc << 3))
+                {
+                    acc = acc - value;
+                    acc = (acc - (-121)) % 4096;
+                    continue;
+                }
+                if ((2.3 + 7.0) != (double)value)
+                {
+                    acc = acc + 6;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (ratio - (rate - 12.0)) - (double)(long)i;
-            }
-            return ratio - (double)1;
+            return acc % 97;
         }
     }
 }
