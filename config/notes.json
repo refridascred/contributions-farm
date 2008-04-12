@@ -1,19 +1,5 @@
 {
-  "dry_run": {
-    "flush_threshold": 44.43,
-    "idle_limit_count": {
-      "idle_threshold_pct": [486, 412, 301],
-      "sync_size": 21,
-      "warm_retries_pct": 2,
-      "farm_ttl": 75.31,
-      "retry_threshold_ms": true,
-      "base_interval": "edge"
-    },
-    "layout_depth": "latest"
-  },
-  "metrics_limit": 31,
-  "window_timeout": 54,
-  "batches_limit": 78,
-  "soft_limit_pct": 94.46,
-  "sync_window_ms": 1024
+  "sync_timeout_ms": "open",
+  "max_ratio_s": 6779,
+  "cache_window_ms": 52
 }
