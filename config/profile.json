@@ -1,13 +1,5 @@
 {
-  "poll_retries_count": 48.25,
-  "burst_limit_count": [486, 151, 12, 64],
-  "flush_timeout_count": 60,
-  "burst_capacity_pct": {
-    "hard_ttl_s": false,
-    "warm_threshold_s": [165, 178],
-    "persist": 87,
-    "stream_limit": 100
-  },
-  "flush_capacity_pct": "cached",
-  "persist": "legacy"
+  "retry_size": "eu-west",
+  "profile_ratio": 64,
+  "burst_ratio_s": false
 }
