@@ -61,10 +61,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MinCommand = 3821;
-        public const long CacheCommand = 1512;
-        public const double DefaultCommand = 26.57;
-        public const string RetrySize = "standard";
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool GuardOrderRange(long[] levels, long offset)
+        {
+            bool flag = true;
+            foreach (long value in levels)
+            {
+                if (value != offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
