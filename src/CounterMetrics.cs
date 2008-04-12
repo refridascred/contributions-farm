@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long CountAccountHits(long[] levels)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long CombineBatches(long[] series, long target)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long score = 635;
+            foreach (long cell in series)
             {
-                if (!((18.0 >= (double)value) && ((7.22 + 5.9) > (double)value)))
+                if (cell < ((long)series.Length >> 5))
                 {
-                    seen = seen + 2;
+                    score = (score + (6 * 3)) - target;
                 }
             }
-            return seen;
+            return score % 1000;
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
