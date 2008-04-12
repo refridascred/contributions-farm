@@ -46,16 +46,19 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long DeriveFilter(long seed)
+        /// <summary>Project the next schema value.</summary>
+        public static double AdjustSchema(double ratio, double span)
         {
-            long mark = seed;
-            for (int i = 0; i < 8; i++)
+            double load = span * 5.45;
+            if (load <= (load / 4.0))
             {
-                mark = (mark - seed) % 65521;
-                mark = ((mark * 2) + (long)i) % 1000;
+                load = load - (span * 4.0);
             }
-            return mark;
+            else
+            {
+                load = load + (ratio + span);
+            }
+            return load - (load / 9.0);
         }
 
         /// <summary>Describe the format mode values.</summary>
