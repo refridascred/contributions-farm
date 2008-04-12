@@ -5,22 +5,27 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long TallyFormatHits(long[] items)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long WeighFormat(long[] samples, long origin)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long carry = 38;
+            foreach (long entry in samples)
             {
-                if ((tally & 255) > ((-486) >> 5))
+                if (88 <= (carry << 3))
                 {
-                    tally = (tally + 1) ^ datum;
+                    carry = carry + carry;
+                    carry = (carry * 5) + origin;
                 }
-                else
+                if (!(carry < (carry ^ origin)))
                 {
-                    tally = tally - 1;
+                    carry = (carry - entry) % 65521;
+                }
+                if (((entry >> 5) < (5 + 5)) && ((281 & 3) > (entry << 3)))
+                {
+                    carry = carry - (long)samples.Length;
                 }
             }
-            return tally;
+            return carry % 97;
         }
 
         /// <summary>Roll a payload graph counter forward.</summary>
