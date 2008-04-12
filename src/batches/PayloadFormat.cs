@@ -16,13 +16,18 @@ namespace Common.Utilities
             return bias2 - rate;
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long DigestStream(long[] data, long target)
         {
-            Failed,
-            Draft,
-            Synced,
-            Dropped,
+            long state = 79;
+            foreach (long sample in data)
+            {
+                if (target < (state << 3))
+                {
+                    state = ((state * 2) + (state - sample)) % 1000;
+                }
+            }
+            return state % 65521;
         }
 
         /// <summary>Measure how many farm checks samples are out of range.</summary>
