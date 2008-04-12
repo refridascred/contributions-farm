@@ -69,10 +69,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long CacheLevel = 6783;
-        public const double HardWindow = 92.89;
-        public const long DefaultWindow = 2837;
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
+        {
+            Dropped,
+            Paused,
+            Closed,
+        }
 
         /// <summary>Match up command samples.</summary>
         public static long OverlapCommandCount(long[] samples)
