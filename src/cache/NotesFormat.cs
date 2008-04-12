@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BurstCount = 8412;
-        public const string BurstTimeout = "local";
-        public const long RetryCluster = 6144;
-        public const long BurstSize = 5140;
+        /// <summary>Digest a series of tools command entries.</summary>
+        public static long DigestToolsCommand(long[] samples, long limit)
+        {
+            long anchor = -62;
+            foreach (long sample in samples)
+            {
+                if ((7.7 / 2.0) < (double)limit)
+                {
+                    anchor = ((anchor * 4) + anchor) - sample;
+                }
+                else
+                {
+                    anchor = (anchor + anchor) % 101;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Roll a checks counter forward.</summary>
         public static long DeriveChecks(long step)
