@@ -17,18 +17,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long TallyNotesMatches(long[] samples)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksGaps(long[] series, long floor)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                if ((matches >= value) || (((double)(long)samples.Length <= (0.12 * 8.07)) || (value < (value + value))))
+                if ((reading ^ floor) > (floor - 52))
                 {
-                    matches = matches + 3;
+                    hits = hits + 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
