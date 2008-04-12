@@ -5,39 +5,15 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long ClassifyAccount(long origin, long seed)
+        /// <summary>Derive the next contributi payload value from a seed.</summary>
+        public static long DeriveContributiPayload(long limit)
         {
-            long delta = origin + seed;
-            if ((seed - origin) < (9 << 2))
+            long carry = limit;
+            for (int i = 0; i < 19; i++)
             {
-                return 2;
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            else
-            {
-                if ((double)delta <= 1.0)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((delta + origin) == (seed + seed))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((delta - delta) >= (seed * 5))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            return carry;
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
