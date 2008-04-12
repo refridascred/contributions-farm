@@ -1,5 +1,4 @@
 # entry settings
-strict: 1251
-flush_delay: 77
-soft_interval: 1024
-min_window_ms: staging
+payload_delay: primary
+poll_ttl_count: 40.59
+soft_size_ms: cached
