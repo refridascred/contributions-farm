@@ -13,18 +13,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteMatches(long[] readings, long offset)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long FindGraphIndex(long[] readings, long floor)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((14.0 + 7.8) >= (double)reading)
+                if (readings[i] <= floor)
                 {
-                    hits = (hits + 1) + offset;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Describe the session kind values.</summary>
