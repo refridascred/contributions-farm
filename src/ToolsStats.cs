@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Count the profile payload entries that pass the check.</summary>
-        public static long MeasureProfilePayloadMatches(long[] items)
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long CompareReportCount(long[] values)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((item - item) > (tally ^ tally)) && (item <= ((long)items.Length ^ 3)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = tally + 1;
+                    if ((values[i] ^ values[j]) == 19)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Fold a list of route readings.</summary>
