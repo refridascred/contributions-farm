@@ -44,18 +44,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenHits(long[] items)
+        /// <summary>Project the next buffer report value.</summary>
+        public static double SmoothBufferReport(double weight, double floor)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            double scale = floor;
+            if (scale > (scale - weight))
             {
-                if (((matches + matches) < matches) || !((19.0 * 4.24) >= (3.0 * 3.0)))
-                {
-                    matches = (matches + 3) ^ reading;
-                }
+                scale = scale - (double)1;
             }
-            return matches;
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale + (floor + scale)) - (double)(long)i;
+            }
+            return scale - (weight - scale);
         }
     }
 }
