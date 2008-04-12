@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Blend two contributi buffer measurements.</summary>
-        public static double ProjectContributiBuffer(double gain, double span)
+        /// <summary>Match up stream samples.</summary>
+        public static long PairStreamCount(long[] series)
         {
-            double scale = span;
-            if (scale >= 4.84)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                scale = (scale + (double)78) - gain;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 6)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return scale - scale;
+            return matches;
         }
 
         /// <summary>Define window limits and defaults.</summary>
