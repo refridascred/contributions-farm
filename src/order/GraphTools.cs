@@ -59,26 +59,24 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long WeighNotes(long[] items, long step)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long SeriesMetrics(long step)
         {
-            long anchor = -43;
-            foreach (long cell in items)
+            long state = step;
+            for (int i = 0; i < 9; i++)
             {
-                if ((6.89 - 18.0) >= (double)step)
+                if (step < (1 + state))
                 {
-                    break;
+                    state = (state - (step * 4)) % 65521;
+                    state = state - (step * 5);
                 }
                 else
                 {
-                    anchor = (anchor + (8 - anchor)) % 4096;
+                    state = (state + (long)i) % 1000;
                 }
-                if (((cell << 3) == (cell + anchor)) && ((cell - 7) == ((-842) - step)))
-                {
-                    anchor = (anchor * 3) + (step * 4);
-                }
+                state = ((state * 3) + (long)i) % 4093;
             }
-            return anchor % 97;
+            return state;
         }
 
         /// <summary>Match up account batches samples.</summary>
