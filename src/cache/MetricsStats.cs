@@ -54,20 +54,31 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long DeriveFormat(long seed)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long ClassifyChecks(long step, long floor)
         {
-            long total = seed;
-            for (int i = 0; i < 24; i++)
+            if ((floor << 3) > floor)
             {
-                if (seed < (seed & 15))
-                {
-                    total = (total + (long)i) % 4096;
-                }
-                total = total + (total + seed);
-                total = ((total * 5) + (long)i) % 97;
+                return 0;
             }
-            return total;
+            else
+            {
+                if ((73 - floor) <= (621 - step))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((step + step) != (floor << 2))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the route batches series from a seed.</summary>
