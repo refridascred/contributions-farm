@@ -38,11 +38,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long LimitFactor = 8777;
-        public const long MaxCluster = 4523;
-        public const long IdleFactor = 3275;
-        public const long WindowDepth = 3698;
+        /// <summary>Project the next token value.</summary>
+        public static double BlendToken(double rate, double floor)
+        {
+            double bias = floor;
+            return (bias - (floor + 4.4)) + rate;
+        }
 
         /// <summary>Describe the githubfarm class values.</summary>
         public enum GithubfarmClass
