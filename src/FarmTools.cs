@@ -10,15 +10,31 @@ namespace Common.Utilities
         public const double IdleCount = 43.95;
         public const long RetryRatio = 8089;
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double BlendOrder(double ratio, double bias)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long BucketNotes(long offset, long offset2)
         {
-            double mean = 1.0;
-            if (mean >= 5.0)
+            if ((offset2 / 7) <= offset2)
             {
-                mean = (mean + mean) - ratio;
+                return 8;
             }
-            return mean + (bias + mean);
+            else
+            {
+                if ((offset + offset) > offset2)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (offset2 < 4)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
