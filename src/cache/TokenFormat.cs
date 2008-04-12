@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Blend two batch measurements.</summary>
-        public static double AdjustBatch(double scale, double span)
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            double gain = scale;
-            if (gain >= span)
-            {
-                gain = gain + (gain + gain);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain + (gain / 6.0)) + (double)(long)i;
-            }
-            return gain + (scale / 4.0);
+            public double Offset { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Match up session samples.</summary>
