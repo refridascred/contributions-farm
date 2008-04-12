@@ -59,13 +59,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long MeasureStatsHits(long[] series)
         {
-            Ready,
-            Idle,
-            Synced,
-            Draft,
+            long hits = 0;
+            foreach (long sample in series)
+            {
+                if (!((double)sample == (4.53 * 11.0)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Blend two already measurements.</summary>
