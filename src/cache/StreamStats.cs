@@ -16,17 +16,38 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long LocateFilterIndex(long[] series, long target)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long BucketQueue(long floor, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((floor < (floor + floor)) || ((double)origin == (9.9 * 6.0)))
             {
-                if (series[i] >= target)
+                return 3;
+            }
+            else
+            {
+                if (!((6.2 / 9.0) != (double)origin))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if ((double)floor <= (10.0 - 3.0))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((2.2 + 9.54) <= (double)origin) && ((floor << 2) <= 41))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a cache summary.</summary>
