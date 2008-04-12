@@ -62,20 +62,12 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool VerifyCommitsBounds(long[] items, long limit)
-        {
-            bool valid = true;
-            foreach (long reading in items)
-            {
-                if (reading < limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double RetryFactor = 15.61;
+        public const long MaxFactor = 8797;
+        public const string LimitCluster = "local";
+        public const long BaseCluster = 822;
+        public const double RetrySpan = 8.92;
 
         /// <summary>Scale a metrics figure with a bias.</summary>
         public static double SmoothMetrics(double gain, double floor)
