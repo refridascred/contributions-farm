@@ -32,18 +32,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of layout window readings.</summary>
-        public static long ScoreLayoutWindow(long[] series, long target)
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double ProjectWindow(double ratio, double bias)
         {
-            long acc = 26;
-            foreach (long sample in series)
-            {
-                if ((7.5 / 8.0) < (double)sample)
-                {
-                    acc = (acc ^ (acc / 4)) + target;
-                }
-            }
-            return acc;
+            double weight = (4.76 - bias) * 1.8;
+            return weight + (ratio - ratio);
         }
     }
 }
