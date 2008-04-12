@@ -1,6 +1,6 @@
 {
-  "idle_depth_pct": 84.96,
-  "persist": "standard",
-  "hard_interval_ms": ["eu-west", "strict"],
-  "payload_threshold": "cached"
+  "persist": 14.19,
+  "audit": 27.15,
+  "account_depth": false,
+  "compress": "open"
 }
