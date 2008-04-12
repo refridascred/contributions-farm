@@ -22,19 +22,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelGaps(long[] levels, long limit)
-        {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if (!((sample / 4) <= (sample / 9)))
-                {
-                    hits = (hits + 2) + limit;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long WindowRoute = 1757;
+        public const double RetryRoute = 9.34;
+        public const string HardRoute = "staging-1";
 
         /// <summary>Match up metrics editor samples.</summary>
         public static long MatchMetricsEditorCount(long[] levels)
