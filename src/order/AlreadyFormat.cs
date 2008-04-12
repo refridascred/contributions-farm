@@ -60,19 +60,10 @@ namespace Common.Utilities
             return rate - (span + gain);
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long TotalAlready(long[] levels, long seed)
-        {
-            long carry = 7;
-            foreach (long entry in levels)
-            {
-                carry = (carry * 2) + (seed % 60);
-                if (((6.0 * 6.0) <= (double)entry) || ((9.32 + 8.09) == (double)seed))
-                {
-                    carry = (carry - (carry - seed)) % 65521;
-                }
-            }
-            return carry % 1000;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string BaseInterval = "latest";
+        public const long SoftWidth = 3651;
+        public const long LimitQueue = 6465;
+        public const string MinScore = "cached-v2";
     }
 }
