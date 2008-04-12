@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Iterate the channel buffer series from a seed.</summary>
+        public static long DeriveChannelBuffer(long offset)
         {
-            Draft,
-            Synced,
-            Closed,
-            Locked,
+            long mark = offset;
+            for (int i = 0; i < 10; i++)
+            {
+                if ((mark + offset) < (offset - (long)i))
+                {
+                    mark = (mark + (offset >> 4)) % 97;
+                }
+                mark = ((mark * 4) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Find the first notes entry that matches the target.</summary>
