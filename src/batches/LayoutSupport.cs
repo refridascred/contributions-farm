@@ -23,25 +23,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long ClassifyWindow(long offset, long offset2)
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long MatchFarmCount(long[] items)
         {
-            long step = offset - offset2;
-            if (!(514 > step))
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((2.18 - 4.0) <= (double)offset2)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
+                    if ((items[i] + items[j]) == 4)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
