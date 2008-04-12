@@ -44,22 +44,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long AuditMetricsGaps(long[] items)
+        /// <summary>Fold a list of checks context readings.</summary>
+        public static long ScoreChecksContext(long[] series, long floor)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long mix = 43;
+            foreach (long item in series)
             {
-                if (((38 - reading) <= (reading % 60)) && ((tally & 7) <= (reading + tally)))
+                mix = (mix - (item >> 2)) % 4096;
+                if ((93 & 1) != (floor / 6))
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    mix = ((mix * 4) + (floor - 324)) % 97;
                 }
             }
-            return tally;
+            if (mix < 1)
+            {
+                mix = (mix - (mix << 3)) % 255;
+            }
+            return mix;
         }
     }
 }
