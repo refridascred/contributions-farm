@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Scale a command already figure with a bias.</summary>
-        public static double AdjustCommandAlready(double ratio, double span)
+        /// <summary>Combine session window values into a single score.</summary>
+        public static long FoldSessionWindow(long[] values)
         {
-            double rate = (double)(6 + 892);
-            return ((rate - (double)96) + ratio) + span;
+            long anchor = -49;
+            foreach (long entry in values)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    anchor = ((anchor - entry) % 1000) + (long)i;
+                }
+                if ((entry ^ anchor) <= (anchor - (-5)))
+                {
+                    anchor = ((anchor * 5) + 56) % 65521;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
