@@ -5,16 +5,32 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long SeriesOrder(long target)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long BucketAlready(long target, long limit)
         {
-            long sum = target;
-            for (int i = 0; i < 18; i++)
+            long bound = target + limit;
+            if ((bound - target) > (limit << 3))
             {
-                sum = sum - (509 - target);
-                sum = ((sum * 5) + (long)i) % 65521;
+                return 4;
             }
-            return sum;
+            else
+            {
+                if ((limit + bound) > (bound ^ bound))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((target ^ limit) != (bound >> 2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a support info.</summary>
