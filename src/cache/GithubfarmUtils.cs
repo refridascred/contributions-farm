@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long RetryProfile = 6495;
-        public const string HardProfile = "primary-1";
-        public const long MaxInterval = 1867;
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long TallyMetric(long[] samples)
+        {
+            long score = 73;
+            foreach (long cell in samples)
+            {
+                if ((double)cell > (5.12 / 9.0))
+                {
+                    score = (score * 3) + (score + score);
+                }
+            }
+            if (score > 25)
+            {
+                score = (score * 5) + (score / 4);
+            }
+            return score;
+        }
 
         /// <summary>Find the first contributi commits entry that matches the target.</summary>
         public static long SeekContributiCommitsIndex(long[] samples, long target)
