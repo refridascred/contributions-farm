@@ -29,11 +29,15 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Derive the next batch contributi value from a seed.</summary>
+        public static long RollBatchContributi(long step)
         {
-            public string Stamp { get; set; } = "";
-            public long Flag { get; set; }
+            long sum = step;
+            for (int i = 0; i < 12; i++)
+            {
+                sum = ((sum * 4) + (long)i) % 101;
+            }
+            return sum;
         }
     }
 }
