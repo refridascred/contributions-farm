@@ -14,22 +14,19 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long AuditToolsHits(long[] levels, long floor)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool VerifyGraphLimits(long[] items, long bound)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            bool stale = true;
+            foreach (long sample in items)
             {
-                if ((36 - floor) != (floor + floor))
+                if (sample > bound)
                 {
-                    seen = (seen + 1) + cell;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Define context limits and defaults.</summary>
