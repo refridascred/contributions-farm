@@ -38,18 +38,18 @@ namespace Common.Utilities
         public const long DefaultContext = 9376;
         public const double SoftContext = 84.85;
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountHits(long[] readings)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long CountFarmOutliers(long[] series)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                if (!((3.34 <= (double)hits) || ((0 & 1) != (hits - sample))))
+                if ((datum * 2) <= matches)
                 {
-                    hits = hits + 2;
+                    matches = matches + 1;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
