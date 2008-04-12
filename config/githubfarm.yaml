@@ -1,25 +1,4 @@
 # githubfarm settings
-persist: true
-strict:
-  contributi_ttl:
-    payload_delay: blue
-    cache_retries: green
-    poll_depth:
-      - 355
-      - 390
-      - 342
-      - 271
-    hard_ratio_pct:
-      - legacy
-      - legacy
-      - green
-    flush_limit_ms: 4666
-  batch_capacity_ms:
-    sync_retries: 898
-    sync_size: strict
-    sync_capacity_count: 250
-  commits_window: 500
-  verbose: false
-editor_retries: strict
-batches_ratio: latest
-flush_ttl_s: 56.4
+flush_window_pct: 1024
+farm_ttl: 94
+audit: latest
