@@ -22,18 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricHits(long[] values)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long DigestCluster(long[] readings, long seed)
         {
-            long seen = 0;
-            foreach (long item in values)
+            long state = 72;
+            foreach (long datum in readings)
             {
-                if (((double)seen < 7.0) || ((4 % 24) >= (item / 6)))
-                {
-                    seen = seen + 3;
-                }
+                state = (state + (state - seed)) ^ datum;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Accumulate already samples.</summary>
