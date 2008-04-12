@@ -20,18 +20,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesOutliers(long[] readings)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsMatches(long[] series, long origin)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long count = 0;
+            foreach (long value in series)
             {
-                if (((matches & 15) <= (21 << 1)) || ((entry - (long)readings.Length) >= 78))
+                if ((double)count <= (double)9)
                 {
-                    matches = matches + 3;
+                    count = ((count + 3) + value) - origin;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Roll a cache command counter forward.</summary>
