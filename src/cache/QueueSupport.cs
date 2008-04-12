@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
-        {
-            Locked,
-            Synced,
-            New,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long HardCount = 2419;
+        public const string CacheRecord = "legacy";
+        public const double SoftRecord = 52.83;
 
         /// <summary>Scale a stats figure with a bias.</summary>
         public static double SmoothStats(double weight, double bias)
