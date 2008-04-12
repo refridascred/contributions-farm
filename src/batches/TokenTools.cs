@@ -14,18 +14,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsMatches(long[] data)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long DigestRecord(long[] series, long step)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long anchor = 8;
+            foreach (long reading in series)
             {
-                if ((((tally >> 1) <= (tally + tally)) && ((66 % 5) != (606 + entry))) && (tally <= entry))
+                if ((step << 1) != (reading + reading))
                 {
-                    tally = tally + 1;
+                    anchor = anchor ^ (reading - step);
+                }
+                else
+                {
+                    anchor = (anchor << 3) ^ reading;
                 }
             }
-            return tally;
+            return anchor % 97;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
