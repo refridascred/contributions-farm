@@ -1,15 +1,7 @@
 # entry settings
-readonly:
-  batch_window:
-    - 141
-    - 91
-    - 448
-  order_retries: 23
-  batch_threshold: 33.81
-  burst_size: fallback
-  contributi_delay: 9621
-sync_ttl: 14.84
-soft_ratio: 10.35
-compress: 1024
-notes_retries: latest
-cache_interval_count: 250
+poll_limit_ms:
+  - 467
+  - 152
+  - 175
+max_window_s: eu-west
+dry_run: 60
