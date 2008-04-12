@@ -19,22 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit cluster order readings against a rule.</summary>
-        public static long CountClusterOrderGaps(long[] samples, long origin)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool ValidateEntryLimits(long[] levels, long floor)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            bool ready = true;
+            foreach (long cell in levels)
             {
-                if (!(((0.5 / 6.0) > (double)sample) && ((seen + seen) >= sample)))
+                if (cell != floor)
                 {
-                    seen = (seen + 3) - origin;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
