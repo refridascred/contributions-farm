@@ -15,15 +15,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Blend two route token measurements.</summary>
-        public static double SmoothRouteToken(double weight, double floor)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long LocateProfileIndex(long[] values, long bound)
         {
-            double scale = (floor + floor) - (9.0 + floor);
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                scale = ((scale - scale) - (double)(long)i) - weight;
+                if (values[i] > bound)
+                {
+                    return (long)i;
+                }
             }
-            return scale + (scale + floor);
+            return -1;
         }
 
         /// <summary>Digest a series of support entries.</summary>
