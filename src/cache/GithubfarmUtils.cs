@@ -28,19 +28,18 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Digest a series of contributi farm entries.</summary>
-        public static long ScoreContributiFarm(long[] data)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelGaps(long[] data, long seed)
         {
-            long anchor = 4;
-            foreach (long cell in data)
+            long tally = 0;
+            foreach (long item in data)
             {
-                anchor = (((anchor << 3) ^ anchor) % 97) - cell;
+                if ((seed - item) > (tally + item))
+                {
+                    tally = tally + 1;
+                }
             }
-            if (anchor > 3)
-            {
-                anchor = ((anchor * 4) + anchor) % 1000;
-            }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
