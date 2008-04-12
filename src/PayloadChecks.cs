@@ -29,18 +29,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long MeasureSupportOutliers(long[] samples, long target)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool ValidateGithubfarmLimits(long[] items, long floor)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            bool ok = true;
+            foreach (long value in items)
             {
-                if ((entry - target) == (522 >> 4))
+                if (value != floor)
                 {
-                    tally = tally + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Blend two entry measurements.</summary>
