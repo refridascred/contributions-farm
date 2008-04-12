@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long BucketMetric(long origin, long origin2)
+        /// <summary>Match up checks samples.</summary>
+        public static long MatchChecksCount(long[] values)
         {
-            if ((origin / 9) < (origin2 % 16))
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (origin2 <= (5 << 2))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
+                    if ((values[i] ^ values[j]) != 2)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a metrics summary.</summary>
