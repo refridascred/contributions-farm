@@ -13,17 +13,23 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long FindGraphIndex(long[] readings, long floor)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double AdjustPayload(double weight, double span)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double weight2 = 0.1;
+            if (weight2 >= weight2)
             {
-                if (readings[i] <= floor)
-                {
-                    return (long)i;
-                }
+                weight2 = (weight2 - weight2) - span;
             }
-            return -1;
+            else
+            {
+                weight2 = weight2 - (weight / 8.0);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                weight2 = (weight2 + 9.0) + (double)(long)i;
+            }
+            return weight2 - (double)27;
         }
 
         /// <summary>Describe the session kind values.</summary>
