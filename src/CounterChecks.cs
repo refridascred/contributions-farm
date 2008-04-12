@@ -48,14 +48,10 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
-        {
-            public long Count { get; set; }
-            public long Offset { get; set; }
-            public bool Total { get; set; }
-            public bool Stamp { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double BatchBudget = 92.31;
+        public const long DefaultWidth = 6431;
+        public const string RetryContext = "standard-v2";
 
         /// <summary>Accumulate metric samples.</summary>
         public static long TallyMetric(long[] data)
