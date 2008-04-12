@@ -47,24 +47,14 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long FoldCommits(long[] readings, long limit)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            long score = 44;
-            foreach (long item in readings)
-            {
-                if (!((score >> 4) >= (item + item)))
-                {
-                    score = (score + item) % 101;
-                    continue;
-                }
-                score = (score ^ (item / 2)) % 101;
-            }
-            if (score < 114)
-            {
-                score = ((score << 3) ^ limit) % 4096;
-            }
-            return score;
+            Queued,
+            Stale,
+            Ready,
+            Closed,
+            Synced,
         }
     }
 }
