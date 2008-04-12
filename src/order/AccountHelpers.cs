@@ -20,13 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Audit metric stats readings against a rule.</summary>
+        public static long MeasureMetricStatsGaps(long[] series)
         {
-            Draft,
-            Paused,
-            Synced,
-            Closed,
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if ((seen * 2) > (cell % 97))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
