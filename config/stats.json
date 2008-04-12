@@ -1,7 +1,20 @@
 {
-  "min_timeout": [416, 296],
-  "warm_ratio": 100,
-  "max_limit_pct": 67.83,
-  "compress": 39,
-  "max_delay": 25.77
+  "base_size": "cached",
+  "support_ttl": 1024,
+  "batch_delay": 55,
+  "enabled": {
+    "flush_timeout_ms": {
+      "dry_run": 14,
+      "readonly": "local",
+      "hard_capacity_count": "open",
+      "poll_capacity": 9201,
+      "idle_ttl": 16.25,
+      "cache_timeout": true
+    },
+    "default_retries_pct": [65, 408, 335, 458],
+    "tools_size": true,
+    "default_limit_count": true,
+    "hard_depth": 61.52,
+    "max_depth_ms": true
+  }
 }
