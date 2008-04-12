@@ -32,20 +32,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long SeriesAccount(long origin)
+        /// <summary>Locate a stream metric reading by value.</summary>
+        public static long LookupStreamMetricIndex(long[] levels, long step)
         {
-            long acc = origin;
-            for (int i = 0; i < 17; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                acc = (acc * 3) + (origin - (long)i);
-                if ((origin > (origin - acc)) || ((acc << 2) >= origin))
+                if ((levels[i] >= step) && ((levels[i] % 5) == 0))
                 {
-                    acc = (acc ^ (acc / 9)) % 1000;
+                    return (long)i;
                 }
-                acc = ((acc * 2) + (long)i) % 97;
             }
-            return acc;
+            return -1;
         }
     }
 }
