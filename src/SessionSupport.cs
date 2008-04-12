@@ -53,11 +53,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double MaxSize = 51.23;
-        public const long CacheFilter = 7414;
-        public const long LimitFilter = 9115;
-        public const string RetryFilter = "fallback-edge";
-        public const string BatchFilter = "legacy";
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long LocateRouteIndex(long[] levels, long offset)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
