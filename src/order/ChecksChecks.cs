@@ -14,18 +14,14 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long MeasureToolsHits(long[] samples, long limit)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            long seen = 0;
-            foreach (long value in samples)
-            {
-                if ((double)seen <= 4.32)
-                {
-                    seen = ((seen + 3) ^ value) + limit;
-                }
-            }
-            return seen;
+            Active,
+            Idle,
+            Failed,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Combine record values into a single score.</summary>
