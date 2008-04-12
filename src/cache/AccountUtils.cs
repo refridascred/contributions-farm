@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
-        {
-            Queued,
-            Draft,
-            Retry,
-            Pending,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long WindowBatches = 3977;
+        public const string BaseBatches = "fallback";
+        public const double BatchBudget = 92.71;
+        public const long LimitDepth = 7273;
+        public const long LimitBatches = 4611;
 
         /// <summary>Define window limits and defaults.</summary>
         public const long SoftSize = 4117;
