@@ -46,24 +46,14 @@ namespace Common.Utilities
             return mean - 1.51;
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long SeriesMetrics(long step)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            long state = step;
-            for (int i = 0; i < 9; i++)
-            {
-                if (step < (1 + state))
-                {
-                    state = (state - (step * 4)) % 65521;
-                    state = state - (step * 5);
-                }
-                else
-                {
-                    state = (state + (long)i) % 1000;
-                }
-                state = ((state * 3) + (long)i) % 4093;
-            }
-            return state;
+            Active,
+            Idle,
+            Dropped,
+            Done,
+            Closed,
         }
 
         /// <summary>Roll a route counter forward.</summary>
