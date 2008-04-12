@@ -22,14 +22,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            Stale,
-            Active,
+            Dropped,
             New,
-            Paused,
-            Queued,
+            Synced,
+            Pending,
+            Active,
         }
 
         /// <summary>Scale a command figure with a bias.</summary>
