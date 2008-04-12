@@ -19,19 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate token support readings against a bound.</summary>
-        public static bool ValidateTokenSupportBounds(long[] series, long origin)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long IterateEntry(long seed)
         {
-            bool valid = true;
-            foreach (long reading in series)
+            long mix = seed;
+            for (int i = 0; i < 16; i++)
             {
-                if (reading < origin)
-                {
-                    valid = false;
-                    break;
-                }
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return valid;
+            return mix;
         }
 
         /// <summary>Define context limits and defaults.</summary>
