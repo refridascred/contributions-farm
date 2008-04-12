@@ -1,17 +1,5 @@
 # entry settings
-readonly: true
-max_ratio: false
-profile_ratio:
-  cluster_limit: 76
-  strict: true
-  tools_timeout:
-    - 391
-    - 392
-  cache_timeout_pct: stable
-  cache_ttl: 3.14
-flush_timeout_s: 61.27
-session_depth: 100
-format_retries:
-  - local
-  - staging
-  - edge
+strict: 1251
+flush_delay: 77
+soft_interval: 1024
+min_window_ms: staging
