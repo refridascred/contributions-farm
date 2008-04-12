@@ -10,11 +10,17 @@ namespace Common.Utilities
         public const string HardProfile = "primary-1";
         public const long MaxInterval = 1867;
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Find the first contributi commits entry that matches the target.</summary>
+        public static long SeekContributiCommitsIndex(long[] samples, long target)
         {
-            public double Mode { get; set; }
-            public string Weight { get; set; } = "";
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
