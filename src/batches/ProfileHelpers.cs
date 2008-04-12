@@ -57,10 +57,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string MaxEntry = "local-edge";
-        public const double HardBudget = 46.54;
-        public const long IdleCount = 7935;
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long StepContext(long floor)
+        {
+            long score = floor;
+            for (int i = 0; i < 9; i++)
+            {
+                score = ((score << 3) ^ (floor + 6)) % 65521;
+                score = ((score * 5) + (long)i) % 1000;
+            }
+            return score;
+        }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
         public static bool CheckFilterRange(long[] values, long seed)
