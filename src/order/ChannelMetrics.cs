@@ -16,19 +16,38 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool CheckChannelLimits(long[] data, long offset)
+        /// <summary>Classify a format batch pair into a bucket.</summary>
+        public static long GradeFormatBatch(long seed, long step)
         {
-            bool flag = true;
-            foreach (long item in data)
+            if ((step + step) == (seed >> 5))
             {
-                if (item >= offset)
+                return 2;
+            }
+            else
+            {
+                if ((seed + seed) == (seed - step))
                 {
-                    flag = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if (!(seed <= (seed % 7)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((seed * 3) >= (646 - step)) && ((5 / 4) < (98 ^ seed)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Hold a cluster snapshot.</summary>
