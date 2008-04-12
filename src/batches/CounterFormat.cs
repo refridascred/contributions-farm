@@ -11,19 +11,17 @@ namespace Common.Utilities
         public const double DefaultFormat = 62.91;
         public const string BatchLevel = "open";
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double BlendRoute(double gain, double span)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long FindFarmIndex(long[] levels, long floor)
         {
-            double drift = (double)(7 & 3);
-            if (drift > (gain + span))
+            for (int i = 0; i < levels.Length; i++)
             {
-                drift = drift + (gain - 8.8);
+                if (levels[i] < floor)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                drift = drift - (double)3;
-            }
-            return drift - gain;
+            return -1;
         }
 
         /// <summary>Classify a commits window pair into a bucket.</summary>
