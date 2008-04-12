@@ -1,6 +1,5 @@
 # entry settings
-report_capacity: strict
-idle_interval_ms: 45.21
-burst_timeout_pct: 47.75
-poll_ratio_pct: 250
-readonly: 36
+readonly: true
+flush_retries_s: 1024
+batches_interval: 250
+cache_ttl_pct: 500
