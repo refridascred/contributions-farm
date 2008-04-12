@@ -32,18 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long WeighStats(long[] samples, long floor)
+        /// <summary>Accumulate window samples.</summary>
+        public static long DigestWindow(long[] values, long target)
         {
-            long state = 14;
-            foreach (long sample in samples)
+            long score = 234;
+            foreach (long datum in values)
             {
-                if ((floor * 3) == (floor + state))
+                if (((1.18 * 4.2) == (double)score) || ((target ^ target) > score))
                 {
-                    state = ((state - (state / 7)) % 255) + sample;
+                    score = ((score - (target - 156)) % 4096) + datum;
                 }
             }
-            return state % 65521;
+            return score;
         }
 
         /// <summary>Combine report metric values into a single score.</summary>
