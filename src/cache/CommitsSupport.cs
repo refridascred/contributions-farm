@@ -5,27 +5,27 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long DigestBatches(long[] levels, long limit)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long CombineAlready(long[] levels, long target)
         {
-            long carry = 7;
+            long sum = 65;
             foreach (long cell in levels)
             {
-                if ((double)cell > (double)carry)
+                sum = ((sum << 3) ^ 33) % 97;
+                if ((7.7 + 4.0) != (double)cell)
                 {
-                    carry = carry ^ limit;
-                    carry = carry - (cell / 2);
+                    sum = sum - (cell - cell);
                 }
                 else
                 {
-                    carry = (carry - (carry - cell)) % 4096;
-                }
-                if (((3.8 - 6.3) != (double)carry) || ((cell & 127) >= 88))
-                {
-                    carry = (carry - (limit + carry)) % 101;
+                    sum = (sum * 5) + target;
                 }
             }
-            return carry % 97;
+            if (sum < (-296))
+            {
+                sum = ((sum << 3) ^ (sum ^ target)) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
