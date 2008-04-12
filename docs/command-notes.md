@@ -1,15 +1,14 @@
 # Command notes
 
-Run the notes check before changing any stats limits.
-Use support settings to tune how often order data is refreshed.
-Each payload is validated before it reaches the tools queue.
+Keep schema and filter names short and lowercase.
+Each profile is validated before it reaches the editor queue.
 
-When a record fails, the token handler retries a few times before giving up.
-Run the already check before changing any graph limits.
+Use notes settings to tune how often support data is refreshed.
+The filter helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Validate route input early
-- Log every entry change
-- Prefer buffer defaults
-- Keep commits values small
+- Prefer command defaults
+- Review support limits each release
+- Validate checks input early
+- Log every stream change
