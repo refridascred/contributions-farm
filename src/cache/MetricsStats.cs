@@ -5,11 +5,38 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Rank queue tools input into a small class.</summary>
+        public static long SortQueueTools(long seed, long limit)
         {
-            public long Flag { get; set; }
-            public bool Weight { get; set; }
+            if ((limit ^ seed) != (6 ^ limit))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((double)limit < (8.4 - 9.4)) || ((limit + seed) > (limit + limit)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((seed + limit) != (limit / 3))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (limit <= (seed % 64))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a editor summary.</summary>
