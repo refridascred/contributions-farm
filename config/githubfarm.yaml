@@ -1,27 +1,13 @@
 # githubfarm settings
-soft_ttl_s:
-  idle_ttl_count: legacy
-  flush_retries_ms:
-    - 456
-    - 145
-    - 373
-    - 6
-  warm_limit: staging
-farm_limit:
-  flush_delay_s: stable
-  base_interval: 8263
-  min_delay_ms:
-    - 86
-    - 299
-    - 267
-    - 263
-  compress:
-    poll_window_ms: 100
-    hard_limit_pct: 5994
-    warm_window_ms: false
-    compress: 23.57
-    default_retries_count: 25.19
-metrics_delay: 5694
-flush_limit_count:
-  - primary
+hard_delay: false
+payload_threshold: green
+enabled: true
+verbose: 17
+strict:
+  - legacy
+  - strict
   - standard
+sync_threshold_ms:
+  - 163
+  - 448
+  - 346
