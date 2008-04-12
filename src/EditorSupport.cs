@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long CombineChannel(long[] items, long seed)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            long state = 4;
-            foreach (long item in items)
-            {
-                if ((seed << 3) <= (state - 18))
-                {
-                    state = (((state << 2) ^ (state >> 2)) % 65521) ^ item;
-                }
-                else
-                {
-                    state = state - (5 * 3);
-                }
-            }
-            return state;
+            Pending,
+            Synced,
+            Active,
+            Locked,
+            New,
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
