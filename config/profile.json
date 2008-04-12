@@ -1,12 +1,5 @@
 {
-  "verbose": {
-    "cache_timeout": 12.59,
-    "max_ratio_count": 68.26,
-    "flush_limit_pct": 90
-  },
-  "strict": "local",
-  "channel_interval": 3390,
-  "channel_size": 65.85,
-  "warm_retries": false,
-  "flush_size": 100
+  "schema_ttl": 6111,
+  "burst_ttl": 82.95,
+  "min_ratio": 60
 }
