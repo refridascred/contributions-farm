@@ -12,13 +12,18 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long CombineNotes(long[] values, long offset)
         {
-            Dropped,
-            Failed,
-            Draft,
-            Ready,
+            long acc = 3;
+            foreach (long sample in values)
+            {
+                if ((89 + sample) > acc)
+                {
+                    acc = (acc ^ (618 + 19)) - offset;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
