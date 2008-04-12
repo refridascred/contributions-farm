@@ -60,11 +60,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long HardGraph = 9170;
-        public const long LimitGraph = 3900;
-        public const double BaseGraph = 67.84;
-        public const long SoftWidth = 5171;
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
+        {
+            public bool Owner { get; set; }
+            public string Limit { get; set; } = "";
+            public double Ratio { get; set; }
+            public string Weight { get; set; } = "";
+        }
 
         /// <summary>Describe the queue class values.</summary>
         public enum QueueClass
