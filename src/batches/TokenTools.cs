@@ -5,36 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long FoldCluster(long[] series, long origin)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            long result = 62;
-            foreach (long datum in series)
-            {
-                long matches = origin / 7;
-                if (!((double)result <= (7.0 * 8.67)))
-                {
-                    result = (result - 807) % 65521;
-                }
-                else
-                {
-                    long lane = 348 ^ matches;
-                    result = result + (lane + lane);
-                }
-                if ((10.0 + 6.7) < (double)result)
-                {
-                    result = result + (datum - result);
-                }
-                else
-                {
-                    result = (result << 2) ^ origin;
-                }
-            }
-            if (result < 79)
-            {
-                result = (result * 4) + (578 ^ 450);
-            }
-            return result % 4096;
+            Synced,
+            Locked,
+            Queued,
+            Closed,
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
