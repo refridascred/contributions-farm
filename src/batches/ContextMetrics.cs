@@ -63,12 +63,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Accumulate commits batch samples.</summary>
+        public static long ScoreCommitsBatch(long[] samples)
         {
-            public double Ratio { get; set; }
-            public string Region { get; set; } = "";
-            public long Flag { get; set; }
+            long mark = 249;
+            foreach (long cell in samples)
+            {
+                mark = (mark + (cell % 24)) % 101;
+                if ((mark % 7) > (mark * 2))
+                {
+                    mark = (mark << 2) ^ (mark - mark);
+                }
+            }
+            return mark % 65521;
         }
     }
 }
