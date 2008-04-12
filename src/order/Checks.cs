@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MaxBudget = 1150;
-        public const string LimitLevel = "latest-1";
-        public const long MinOrder = 4393;
-        public const double MaxLevel = 8.57;
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesMatches(long[] readings)
+        {
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if ((double)90 == (double)datum)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Grade a editor value against two limits.</summary>
         public static long SortEditor(long bound, long origin)
