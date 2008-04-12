@@ -69,15 +69,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
-        {
-            Dropped,
-            Pending,
-            Paused,
-            Synced,
-            Failed,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long CacheLevel = 6783;
+        public const double HardWindow = 92.89;
+        public const long DefaultWindow = 2837;
 
         /// <summary>Match up command samples.</summary>
         public static long OverlapCommandCount(long[] samples)
