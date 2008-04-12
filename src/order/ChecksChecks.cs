@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Blend two report measurements.</summary>
-        public static double AdjustReport(double bias, double offset)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            double mean = bias * 4.2;
-            if (mean < 14.0)
-            {
-                mean = mean - (mean / 8.0);
-            }
-            else
-            {
-                mean = mean - (mean * 0.1);
-            }
-            return mean + (offset - mean);
+            Locked,
+            Draft,
+            Closed,
         }
 
         /// <summary>Describe the counter mode values.</summary>
