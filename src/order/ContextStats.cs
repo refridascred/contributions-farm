@@ -23,12 +23,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long CombineQueue(long[] data, long seed)
         {
-            public bool Stamp { get; set; }
-            public string Size { get; set; } = "";
-            public bool Mode { get; set; }
+            long mix = 585;
+            foreach (long sample in data)
+            {
+                mix = (((mix * 3) + (mix * 4)) ^ sample) + seed;
+            }
+            return mix;
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
