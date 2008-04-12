@@ -1,6 +1,32 @@
 {
-  "enabled": "staging",
-  "hard_ttl": ["legacy", "primary", "eu-west"],
-  "poll_timeout_s": 22.32,
-  "commits_retries": false
+  "cache_interval_count": {
+    "soft_limit_ms": [286, 462, 474, 226],
+    "stream_window": [232, 370, 373],
+    "farm_delay": 81.36,
+    "idle_capacity_s": {
+      "githubfarm_ratio": 68.15,
+      "max_interval_pct": 500,
+      "order_timeout": 250,
+      "base_capacity": 250,
+      "buffer_ttl": true
+    },
+    "max_window": true
+  },
+  "soft_retries_count": "fallback",
+  "hard_size": {
+    "account_ttl": 25,
+    "commits_size": {
+      "session_limit": "blue",
+      "base_ratio_s": [124, 244, 262, 48],
+      "verbose": true,
+      "flush_interval_pct": 78,
+      "graph_limit": "cached",
+      "base_size": 2110
+    },
+    "compress": "staging",
+    "order_interval": 73.12,
+    "default_interval_s": "local",
+    "enabled": "latest"
+  },
+  "audit": 71.86
 }
