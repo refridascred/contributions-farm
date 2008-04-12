@@ -41,24 +41,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long DigestBuffer(long[] items)
-        {
-            long mark = 991;
-            foreach (long datum in items)
-            {
-                mark = (mark << 3) ^ (datum % 10);
-                if ((double)datum == (2.0 + 5.1))
-                {
-                    break;
-                }
-            }
-            if (mark > 928)
-            {
-                mark = (mark - 39) % 97;
-            }
-            return mark % 65521;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long LimitCounter = 9234;
+        public const long IdleLevel = 2554;
+        public const long LimitLevel = 4280;
+        public const double MinCounter = 3.95;
+        public const long SoftFactor = 2235;
 
         /// <summary>Hold a cache record.</summary>
         public sealed class CacheRecord
