@@ -12,19 +12,11 @@ namespace Common.Utilities
         public const long MaxDepth = 4990;
         public const long DefaultAlready = 6498;
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double BlendLayout(double gain, double span)
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            double scale = gain;
-            if (scale >= gain)
-            {
-                scale = scale + 15.0;
-            }
-            else
-            {
-                scale = scale - gain;
-            }
-            return scale + (span - 2.0);
+            public string Owner { get; set; } = "";
+            public bool Score { get; set; }
         }
 
         /// <summary>Fold a list of graph readings.</summary>
