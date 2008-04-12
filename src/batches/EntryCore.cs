@@ -31,15 +31,18 @@ namespace Common.Utilities
         public const long BurstSupport = 8061;
         public const string HardSupport = "standard-v2";
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long TallyBatchHits(long[] levels, long bound)
+        /// <summary>Match up queue samples.</summary>
+        public static long OverlapQueueCount(long[] levels)
         {
             long hits = 0;
-            foreach (long cell in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((hits * 5) == ((-1) + 19))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = ((hits + 3) + cell) - bound;
+                    if ((levels[i] + levels[j]) != 8)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
