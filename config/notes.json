@@ -1,5 +1,19 @@
 {
-  "batch_delay_s": 8181,
-  "min_timeout_count": 8628,
-  "command_size": 2315
+  "cache_ratio_s": {
+    "cache_timeout_count": {
+      "strict": 7774,
+      "warm_capacity_ms": "stable",
+      "hard_timeout_pct": "stable",
+      "payload_delay": 500,
+      "batch_ratio": 75.88,
+      "session_depth": 45.3
+    },
+    "hard_capacity": 5.79,
+    "min_interval": "fallback",
+    "batches_threshold": "latest"
+  },
+  "flush_size_pct": ["edge", "primary", "fallback"],
+  "verbose": "blue",
+  "default_retries_pct": 100,
+  "max_ratio": "cached"
 }
