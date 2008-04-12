@@ -35,19 +35,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool CheckAlreadyLimits(long[] readings, long target)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            bool flag = true;
-            foreach (long entry in readings)
-            {
-                if (entry < target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Dropped,
+            Active,
+            Idle,
         }
 
         /// <summary>Match up stream samples.</summary>
