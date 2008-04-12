@@ -1,12 +1,5 @@
 # githubfarm settings
-graph_depth: open
-warm_limit:
-  - fallback
-  - open
-  - stable
-poll_interval: green
-flush_size_s: false
-warm_window_pct: local
-filter_depth:
-  - 405
-  - 158
+hard_delay_count: 30
+soft_ttl_count: latest
+enabled: true
+compress: eu-west
