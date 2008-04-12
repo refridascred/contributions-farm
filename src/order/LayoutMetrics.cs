@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            Queued,
-            Locked,
-            Synced,
-            New,
-            Failed,
+            public string Owner { get; set; } = "";
+            public bool Size { get; set; }
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
