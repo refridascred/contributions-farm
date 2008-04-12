@@ -1,6 +1,7 @@
 {
-  "command_depth": "open",
-  "poll_window": "standard",
-  "route_capacity": "open",
-  "flush_capacity_ms": 80.9
+  "batch_ttl": 71.24,
+  "min_size_s": ["staging", "open"],
+  "readonly": "standard",
+  "burst_threshold_ms": "standard",
+  "min_limit_pct": 60
 }
