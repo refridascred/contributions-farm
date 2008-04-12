@@ -1,6 +1,7 @@
 {
-  "burst_size_s": 71,
-  "default_depth_pct": 500,
-  "batch_limit_count": ["primary", "green", "legacy", "primary"],
-  "min_delay_pct": 92
+  "warm_window": 92.59,
+  "contributi_limit": 11.52,
+  "max_window": 3472,
+  "counter_retries": 250,
+  "enabled": true
 }
