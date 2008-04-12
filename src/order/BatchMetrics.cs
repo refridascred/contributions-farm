@@ -47,13 +47,16 @@ namespace Common.Utilities
         public const string IdleFactor = "fallback";
         public const string BurstFactor = "stable-edge";
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long SeriesCounter(long seed)
         {
-            Stale,
-            Draft,
-            Active,
-            Idle,
+            long state = seed;
+            for (int i = 0; i < 15; i++)
+            {
+                state = (state + (state ^ (long)i)) % 255;
+                state = ((state * 5) + (long)i) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
