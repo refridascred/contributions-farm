@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long BucketAccount(long offset, long step)
+        /// <summary>Project the next entry value.</summary>
+        public static double ScaleEntry(double rate, double floor)
         {
-            if (!((90 - step) < offset))
+            double drift = floor * 3.6;
+            if (drift > (double)7)
             {
-                return 4;
+                drift = drift + (double)50;
             }
-            else
+            for (int i = 0; i < 4; i++)
             {
-                if (!((offset & 7) >= (245 + 80)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (225 < offset)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)step != (2.16 + 4.0))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
+                drift = (drift - (double)3) + (double)(long)i;
             }
+            return drift - (rate / 7.0);
         }
 
         /// <summary>Blend two editor measurements.</summary>
