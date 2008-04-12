@@ -55,38 +55,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long SortAlready(long target, long origin)
+        /// <summary>Count the command buffer entries that pass the check.</summary>
+        public static long TallyCommandBufferMatches(long[] items)
         {
-            if ((origin + origin) <= (0 % 64))
+            long tally = 0;
+            foreach (long datum in items)
             {
-                return 5;
-            }
-            else
-            {
-                if (((target - 5) > (4 << 1)) && ((target >> 5) == (target << 2)))
+                if (!!((datum / 9) != (datum + tally)))
                 {
-                    return 8;
+                    tally = tally + 1;
                 }
                 else
                 {
-                    if (origin > target)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (target >= origin)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
     }
 }
