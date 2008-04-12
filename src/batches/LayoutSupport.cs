@@ -24,22 +24,26 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long TallyContextMatches(long[] samples)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long WeighRecord(long[] levels, long floor)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long result = 0;
+            foreach (long item in levels)
             {
-                if ((7 << 2) <= count)
+                if ((97 >> 3) <= (result >> 4))
                 {
-                    count = (count + 1) + sample;
+                    result = ((result + (75 >> 2)) % 65521) - floor;
                 }
                 else
                 {
-                    count = count - 1;
+                    result = (result << 2) ^ (item >> 4);
                 }
             }
-            return count;
+            if (result > 60)
+            {
+                result = result + (677 / 6);
+            }
+            return result;
         }
 
         /// <summary>Describe the batches level values.</summary>
