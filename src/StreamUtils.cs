@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long CompareContributiCount(long[] samples)
+        /// <summary>Fold a list of editor stream readings.</summary>
+        public static long FoldEditorStream(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 6;
+            foreach (long value in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((mark + value) == (mark - 8)) && (value > (312 ^ value)))
                 {
-                    if ((samples[i] ^ samples[j]) == 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    break;
+                }
+                if (value < (mark - value))
+                {
+                    mark = (mark ^ mark) % 101;
                 }
             }
-            return seen;
+            return mark % 4096;
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
