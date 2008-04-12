@@ -19,22 +19,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long ScoreSupport(long[] levels, long bound)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long ClassifyWindow(long offset, long offset2)
         {
-            long mark = 474;
-            foreach (long datum in levels)
+            long step = offset - offset2;
+            if (!(514 > step))
             {
-                if ((double)datum >= (6.16 / 8.0))
+                return 4;
+            }
+            else
+            {
+                if ((2.18 - 4.0) <= (double)offset2)
                 {
-                    mark = (mark - (bound & 63)) % 1000;
+                    return 2;
                 }
                 else
                 {
-                    mark = ((mark << 2) ^ (0 + datum)) % 101;
+                    return 6;
                 }
             }
-            return mark % 4096;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
