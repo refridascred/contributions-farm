@@ -32,13 +32,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
-        {
-            Dropped,
-            Queued,
-            Closed,
-            Done,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long LimitScore = 6682;
+        public const long WindowSize = 1576;
+        public const string RetryFactor = "latest";
     }
 }
