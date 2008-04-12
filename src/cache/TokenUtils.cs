@@ -32,13 +32,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Fold a list of layout window readings.</summary>
+        public static long ScoreLayoutWindow(long[] series, long target)
         {
-            Paused,
-            Retry,
-            Ready,
-            Failed,
+            long acc = 26;
+            foreach (long sample in series)
+            {
+                if ((7.5 / 8.0) < (double)sample)
+                {
+                    acc = (acc ^ (acc / 4)) + target;
+                }
+            }
+            return acc;
         }
     }
 }
