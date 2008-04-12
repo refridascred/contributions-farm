@@ -20,15 +20,20 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double AdjustQueue(double gain, double floor)
+        /// <summary>Iterate the buffer payload series from a seed.</summary>
+        public static long DeriveBufferPayload(long floor)
         {
-            double load = (double)(7 ^ 211);
-            if (load <= (floor / 7.0))
+            long total = floor;
+            for (int i = 0; i < 9; i++)
             {
-                load = (load + load) - gain;
+                if ((total < floor) && (floor <= total))
+                {
+                    total = (total * 5) + (total % 24);
+                }
+                total = (total ^ (total * 4)) % 4096;
+                total = ((total * 5) + (long)i) % 97;
             }
-            return load - floor;
+            return total;
         }
 
         /// <summary>Describe the entry phase values.</summary>
