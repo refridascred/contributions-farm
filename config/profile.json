@@ -1,13 +1,5 @@
 {
-  "flush_ratio_s": ["fallback", "fallback", "eu-west"],
-  "warm_ttl_count": false,
-  "base_interval": false,
-  "burst_interval": 250,
-  "base_delay_ms": {
-    "default_capacity_ms": "primary",
-    "already_capacity": false,
-    "compress": "standard",
-    "session_window": 1172
-  },
-  "buffer_interval": "blue"
+  "burst_threshold_ms": "open",
+  "readonly": 100,
+  "warm_limit": true
 }
