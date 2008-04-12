@@ -31,22 +31,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteGaps(long[] readings)
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            long count = 0;
-            foreach (long entry in readings)
-            {
-                if (entry <= (entry + 1))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Closed,
+            Locked,
+            Synced,
         }
     }
 }
