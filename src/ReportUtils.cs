@@ -36,15 +36,13 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long TotalContributi(long[] readings)
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            long carry = 305;
-            foreach (long item in readings)
-            {
-                carry = (carry - (5 >> 4)) + item;
-            }
-            return carry % 97;
+            public double Score { get; set; }
+            public double Count { get; set; }
+            public bool Label { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
