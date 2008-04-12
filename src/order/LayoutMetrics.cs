@@ -47,31 +47,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a window support value against two limits.</summary>
-        public static long BucketWindowSupport(long target, long bound)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool VerifyMetricsLimits(long[] values, long offset)
         {
-            if ((double)bound > (double)target)
+            bool ready = true;
+            foreach (long sample in values)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)bound <= (4.56 * 5.7))
+                if (sample < offset)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (target >= (target ^ target))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
     }
 }
