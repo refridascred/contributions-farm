@@ -1,26 +1,4 @@
 # entry settings
-queue_window: 82
-cache_depth_ms:
-  - 56
-  - 321
-  - 272
-  - 474
-window_delay:
-  - local
-  - legacy
-  - eu-west
-  - eu-west
-window_size: fallback
-idle_delay:
-  strict: open
-  hard_limit_ms: true
-  idle_ttl_pct: true
-  cache_delay_s:
-    min_ttl: strict
-    filter_interval: 62.49
-    cache_depth: 2614
-    contributi_limit: 3147
-  readonly:
-    - cached
-    - strict
-hard_size: edge
+flush_retries_pct: legacy
+base_limit: 250
+hard_delay_count: green
