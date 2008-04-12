@@ -1,6 +1,13 @@
 {
-  "context_capacity": true,
-  "poll_size_ms": ["blue", "staging", "green", "fallback"],
-  "record_capacity": true,
-  "dry_run": true
+  "flush_ratio_s": ["fallback", "fallback", "eu-west"],
+  "warm_ttl_count": false,
+  "base_interval": false,
+  "burst_interval": 250,
+  "base_delay_ms": {
+    "default_capacity_ms": "primary",
+    "already_capacity": false,
+    "compress": "standard",
+    "session_window": 1172
+  },
+  "buffer_interval": "blue"
 }
