@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Fold a list of editor stream readings.</summary>
-        public static long FoldEditorStream(long[] series)
-        {
-            long mark = 6;
-            foreach (long value in series)
-            {
-                if (((mark + value) == (mark - 8)) && (value > (312 ^ value)))
-                {
-                    break;
-                }
-                if (value < (mark - value))
-                {
-                    mark = (mark ^ mark) % 101;
-                }
-            }
-            return mark % 4096;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string LimitCommand = "alpha";
+        public const long WindowCommand = 6989;
+        public const long WindowSpan = 1314;
+        public const double StepCommand = 22.95;
 
         /// <summary>Iterate the record series from a seed.</summary>
         public static long IterateRecord(long offset)
