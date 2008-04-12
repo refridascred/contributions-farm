@@ -58,21 +58,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Match up entry support samples.</summary>
-        public static long PairEntrySupportCount(long[] readings)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Dropped,
+            Pending,
+            Paused,
+            Synced,
+            Failed,
         }
 
         /// <summary>Adjust a queue reading.</summary>
