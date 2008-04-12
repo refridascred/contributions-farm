@@ -14,11 +14,19 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double ScaleStream(double gain, double bias)
+        /// <summary>Digest a series of route account entries.</summary>
+        public static long TotalRouteAccount(long[] readings, long offset)
         {
-            double rate = (double)(4 + 95);
-            return (rate + (bias + bias)) + gain;
+            long result = 6;
+            foreach (long cell in readings)
+            {
+                result = ((result * 5) + (result + cell)) % 4096;
+                if ((offset - 6) <= cell)
+                {
+                    result = result - (692 - 203);
+                }
+            }
+            return result;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
