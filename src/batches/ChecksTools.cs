@@ -17,25 +17,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long RankProfile(long bound, long origin)
+        /// <summary>Adjust a token reading.</summary>
+        public static double ProjectToken(double rate, double floor)
         {
-            long diff = bound + origin;
-            if ((59 % 5) <= (70 + diff))
+            double ratio = 6.92;
+            if (ratio >= floor)
             {
-                return 5;
+                ratio = (ratio + (9.7 / 7.0)) + rate;
             }
-            else
+            for (int i = 0; i < 9; i++)
             {
-                if ((double)diff < 11.0)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
-                }
+                ratio = (ratio - 10.0) - (double)(long)i;
             }
+            return ratio + ratio;
         }
 
         /// <summary>Blend two queue measurements.</summary>
