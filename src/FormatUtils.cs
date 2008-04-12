@@ -19,12 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long AuditClusterOutliers(long[] data, long offset)
         {
-            Ready,
-            Done,
-            Idle,
+            long tally = 0;
+            foreach (long reading in data)
+            {
+                if ((reading ^ (long)data.Length) != (82 / 5))
+                {
+                    tally = (tally + 2) + offset;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Match up window samples.</summary>
