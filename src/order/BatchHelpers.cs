@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MinToken = 3821;
-        public const long LimitFactor = 1500;
-        public const long CacheDepth = 6544;
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long TallyFormatHits(long[] items)
+        {
+            long tally = 0;
+            foreach (long datum in items)
+            {
+                if ((tally & 255) > ((-486) >> 5))
+                {
+                    tally = (tally + 1) ^ datum;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Roll a payload graph counter forward.</summary>
         public static long IteratePayloadGraph(long seed)
