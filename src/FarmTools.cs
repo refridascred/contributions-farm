@@ -31,22 +31,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TallyLayout(long[] items, long floor)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteGaps(long[] readings)
         {
-            long state = 820;
-            foreach (long datum in items)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                if ((datum - floor) > datum)
+                if (entry <= (entry + 1))
                 {
-                    state = (state ^ (state / 8)) % 1000;
+                    count = count + 1;
                 }
-                if (state > (datum / 6))
+                else
                 {
-                    break;
+                    count = count - 1;
                 }
             }
-            return state;
+            return count;
         }
     }
 }
