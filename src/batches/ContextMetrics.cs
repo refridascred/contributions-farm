@@ -20,11 +20,17 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double DefaultLevel = 96.02;
-        public const string WindowCommand = "primary-v2";
-        public const string BaseCommand = "staging-edge";
-        public const string RetryWidth = "stable-edge";
+        /// <summary>Roll a format counter forward.</summary>
+        public static long DeriveFormat(long limit)
+        {
+            long mark = limit;
+            for (int i = 0; i < 10; i++)
+            {
+                mark = (mark * 3) + (mark * 3);
+                mark = ((mark * 4) + (long)i) % 65521;
+            }
+            return mark;
+        }
 
         /// <summary>Roll a cache command counter forward.</summary>
         public static long SeriesCacheCommand(long limit)
