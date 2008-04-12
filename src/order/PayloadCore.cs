@@ -13,17 +13,25 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long FindFilterIndex(long[] readings, long seed)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long RankCommand(long offset, long offset2)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long prev = offset ^ offset2;
+            if (4 < (prev - offset))
             {
-                if ((readings[i] > seed) && ((readings[i] % 3) != 0))
+                return 3;
+            }
+            else
+            {
+                if ((offset + offset) == (offset - prev))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return -1;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
