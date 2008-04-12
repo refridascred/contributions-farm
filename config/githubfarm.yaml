@@ -1,8 +1,16 @@
 # githubfarm settings
-checks_delay: true
-entry_timeout:
-  - local
-  - standard
-max_timeout_pct: 5921
-base_ttl: 6164
-commits_window: 567
+flush_retries:
+  retry_ttl:
+    route_retries: 1024
+    max_depth_count: blue
+    hard_timeout: 8546
+  notes_threshold:
+    - blue
+    - blue
+    - strict
+  farm_window: 5174
+  payload_retries: 21
+queue_size: 12.31
+flush_interval: 30
+max_ratio: false
+readonly: 60
