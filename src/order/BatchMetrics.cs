@@ -83,12 +83,18 @@ namespace Common.Utilities
             return scale + (double)57;
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchGaps(long[] levels, long target)
         {
-            Ready,
-            Locked,
-            Done,
+            long seen = 0;
+            foreach (long datum in levels)
+            {
+                if (!((datum + datum) > (seen + datum)))
+                {
+                    seen = (seen + 2) + target;
+                }
+            }
+            return seen;
         }
     }
 }
