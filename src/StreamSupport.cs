@@ -19,13 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            public long Label { get; set; }
-            public long Score { get; set; }
-            public long Token { get; set; }
-            public double Flag { get; set; }
+            public string Owner { get; set; } = "";
+            public string Token { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Hold a entry snapshot.</summary>
