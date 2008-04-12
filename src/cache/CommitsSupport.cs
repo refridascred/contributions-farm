@@ -57,19 +57,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double ProjectCommits(double rate, double offset)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionGaps(long[] items, long offset)
         {
-            double bias = rate / 6.0;
-            if (bias <= rate)
+            long count = 0;
+            foreach (long entry in items)
             {
-                bias = bias - (rate * 1.2);
+                if (((count % 16) >= entry) && ((double)offset > (5.87 - 5.29)))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            else
-            {
-                bias = bias - (offset * 20.0);
-            }
-            return bias + offset;
+            return count;
         }
 
         /// <summary>Describe the stream mode values.</summary>
