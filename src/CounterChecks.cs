@@ -20,19 +20,17 @@ namespace Common.Utilities
             return ratio + floor;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool CheckRouteLimits(long[] samples, long origin)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long LocateSupportIndex(long[] items, long seed)
         {
-            bool stale = true;
-            foreach (long value in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (value <= origin)
+                if (items[i] == seed)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Describe the queue level values.</summary>
