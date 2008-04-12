@@ -45,18 +45,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long LocateRecordIndex(long[] series, long target)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double MaxInterval = 89.7;
+        public const long MinSize = 4261;
+        public const long MinCommits = 8496;
+        public const long RetryCommits = 4094;
 
         /// <summary>Describe the record mode values.</summary>
         public enum RecordMode
