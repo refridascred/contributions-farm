@@ -18,28 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long TotalContext(long[] items, long seed)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long WeighOrder(long[] samples, long origin)
         {
-            long total = 83;
-            foreach (long cell in items)
+            long state = 35;
+            foreach (long sample in samples)
             {
-                long offset = 24;
-                if (offset > cell)
-                {
-                    break;
-                }
-                else
-                {
-                    total = (((total * 4) + (total ^ total)) % 1000) - seed;
-                }
-                total = (total << 3) ^ cell;
+                state = ((state * 4) + (sample + origin)) % 97;
+                state = state + (state ^ 67);
             }
-            if (total < 2)
+            if (state < 7)
             {
-                total = ((total * 4) + (total - total)) % 97;
+                state = ((state * 5) + (origin << 2)) % 4096;
             }
-            return total;
+            return state % 65521;
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
