@@ -27,30 +27,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long TallyMetrics(long[] levels, long origin)
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            long state = -81;
-            foreach (long datum in levels)
-            {
-                if (46 > (origin / 9))
-                {
-                    state = state - (943 >> 3);
-                }
-                else
-                {
-                    state = state + (state ^ state);
-                }
-                if ((double)datum >= (18.0 + 1.2))
-                {
-                    break;
-                }
-            }
-            if (state > 8)
-            {
-                state = (state << 3) ^ origin;
-            }
-            return state;
+            public string Total { get; set; } = "";
+            public string Size { get; set; } = "";
         }
     }
 }
