@@ -10,17 +10,22 @@ namespace Common.Utilities
         public const long LimitFactor = 1500;
         public const long CacheDepth = 6544;
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long FindGraphIndex(long[] items, long offset)
+        /// <summary>Roll a payload graph counter forward.</summary>
+        public static long IteratePayloadGraph(long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = seed;
+            for (int i = 0; i < 20; i++)
             {
-                if (items[i] < offset)
+                acc = (acc ^ acc) % 255;
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    return (long)i;
+                    acc = (((acc * 2) + (acc + acc)) % 4096) - (long)i2;
+                    acc = ((acc * 2) + (acc + acc)) % 1000;
                 }
+                acc = (acc ^ (8 % 16)) % 101;
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Derive the next batch contributi value from a seed.</summary>
