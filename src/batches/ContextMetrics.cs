@@ -32,16 +32,32 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a cache command counter forward.</summary>
-        public static long SeriesCacheCommand(long limit)
+        /// <summary>Classify a schema metric pair into a bucket.</summary>
+        public static long BucketSchemaMetric(long origin, long step)
         {
-            long mark = limit;
-            for (int i = 0; i < 19; i++)
+            long diff = origin - step;
+            if (((step / 8) < (origin - diff)) && ((step + origin) != (137 / 8)))
             {
-                mark = ((mark << 2) ^ limit) % 4096;
-                mark = ((mark * 4) + (long)i) % 97;
+                return 5;
             }
-            return mark;
+            else
+            {
+                if (!(694 <= (origin % 3)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((464 % 24) <= diff) || ((step >> 1) < (diff >> 4)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Combine stream metrics values into a single score.</summary>
