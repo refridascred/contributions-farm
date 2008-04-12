@@ -34,10 +34,19 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long RetryWindow = 4656;
-        public const long DefaultWindow = 2158;
-        public const long StepBudget = 5635;
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterOutliers(long[] series, long floor)
+        {
+            long tally = 0;
+            foreach (long value in series)
+            {
+                if ((tally + tally) <= floor)
+                {
+                    tally = (tally + 1) + value;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a metric stats.</summary>
         public sealed class MetricStats
