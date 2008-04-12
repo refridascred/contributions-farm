@@ -10,18 +10,12 @@ namespace Common.Utilities
         public const long BaseSession = 4758;
         public const long IdleScore = 4637;
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferHits(long[] readings, long floor)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if ((datum % 24) < floor)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Failed,
+            Done,
+            Closed,
         }
 
         /// <summary>Hold a metric snapshot.</summary>
