@@ -41,14 +41,18 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountHits(long[] series)
         {
-            New,
-            Synced,
-            Paused,
-            Done,
-            Closed,
+            long count = 0;
+            foreach (long value in series)
+            {
+                if ((value - value) > count)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Accumulate metric samples.</summary>
