@@ -13,19 +13,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool GuardGithubfarmRange(long[] series, long bound)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long LookupMetricsIndex(long[] samples, long target)
         {
-            bool found = true;
-            foreach (long item in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (item != bound)
+                if (samples[i] >= target)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Hold a context snapshot.</summary>
