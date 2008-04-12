@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Locate a schema batches reading by value.</summary>
-        public static long FindSchemaBatchesIndex(long[] data, long seed)
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Label { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Describe the payload phase values.</summary>
