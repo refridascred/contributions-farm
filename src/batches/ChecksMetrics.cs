@@ -53,12 +53,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BaseInterval = 4463;
-        public const long CacheBatches = 9287;
-        public const long IdleBatches = 7788;
-        public const long HardSpan = 4262;
-        public const long CacheScore = 5174;
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
+        {
+            Draft,
+            Paused,
+            Pending,
+            Locked,
+        }
 
         /// <summary>Describe the record mode values.</summary>
         public enum RecordMode
