@@ -30,10 +30,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long SoftQueue = 9218;
-        public const string IdleSize = "strict";
-        public const long MaxSpan = 3468;
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
+        {
+            public double Rank { get; set; }
+            public long Score { get; set; }
+            public long Count { get; set; }
+            public double Limit { get; set; }
+        }
 
         /// <summary>Validate notes readings against a bound.</summary>
         public static bool ValidateNotesLimits(long[] items, long offset)
