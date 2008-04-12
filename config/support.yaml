@@ -1,7 +1,12 @@
 # support settings
-dry_run: 500
-cache_depth:
-  - latest
-  - legacy
-  - local
-base_depth_ms: cached
+cache_capacity_count: false
+stream_limit:
+  retry_ttl_count:
+    - 214
+    - 13
+    - 92
+    - 349
+  retry_size_s: 79
+  entry_size: false
+  session_timeout: open
+queue_size: 7314
