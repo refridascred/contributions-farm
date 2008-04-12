@@ -32,19 +32,20 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double SmoothCommand(double scale, double floor)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long SeriesAccount(long origin)
         {
-            double mean = (floor / 7.0) - (scale / 7.0);
-            if (mean < (mean / 2.0))
+            long acc = origin;
+            for (int i = 0; i < 17; i++)
             {
-                mean = mean + (scale + floor);
+                acc = (acc * 3) + (origin - (long)i);
+                if ((origin > (origin - acc)) || ((acc << 2) >= origin))
+                {
+                    acc = (acc ^ (acc / 9)) % 1000;
+                }
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            else
-            {
-                mean = mean + (double)9;
-            }
-            return mean - (scale / 6.0);
+            return acc;
         }
     }
 }
