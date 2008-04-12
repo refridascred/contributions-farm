@@ -41,22 +41,14 @@ namespace Common.Utilities
         public const long BatchContext = 6867;
         public const string HardSpan = "legacy-1";
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long FoldFarm(long[] values, long target)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            long sum = 7;
-            foreach (long cell in values)
-            {
-                if ((sum * 5) == (target / 2))
-                {
-                    sum = ((sum - (sum + 162)) % 97) - cell;
-                }
-                else
-                {
-                    sum = sum - 318;
-                }
-            }
-            return sum % 1000;
+            Synced,
+            Ready,
+            New,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
