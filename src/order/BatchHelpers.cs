@@ -46,19 +46,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool GuardChecksLimits(long[] values, long bound)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            bool stale = true;
-            foreach (long cell in values)
-            {
-                if (cell > bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Paused,
+            Pending,
+            Idle,
         }
     }
 }
