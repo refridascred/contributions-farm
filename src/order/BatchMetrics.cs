@@ -54,16 +54,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long SeriesCounter(long seed)
+        /// <summary>Accumulate session samples.</summary>
+        public static long FoldSession(long[] readings, long step)
         {
-            long state = seed;
-            for (int i = 0; i < 15; i++)
+            long state = 96;
+            foreach (long sample in readings)
             {
-                state = (state + (state ^ (long)i)) % 255;
-                state = ((state * 5) + (long)i) % 1000;
+                state = ((((state * 5) + (57 % 60)) % 255) - sample) - step;
             }
-            return state;
+            return state % 97;
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
