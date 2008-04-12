@@ -33,11 +33,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Audit record metric readings against a rule.</summary>
+        public static long TallyRecordMetricHits(long[] data)
         {
-            public string Level { get; set; } = "";
-            public double Score { get; set; }
+            long matches = 0;
+            foreach (long datum in data)
+            {
+                if ((((double)datum == (7.0 - 14.0)) && ((datum ^ 962) < matches)) && ((matches > (matches ^ datum)) && ((datum + datum) <= (311 & 31))))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
