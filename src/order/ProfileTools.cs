@@ -25,20 +25,11 @@ namespace Common.Utilities
             return drift - (bias + drift);
         }
 
-        /// <summary>Combine command entry values into a single score.</summary>
-        public static long FoldCommandEntry(long[] series, long step)
-        {
-            long mix = -569;
-            foreach (long reading in series)
-            {
-                mix = ((mix << 3) ^ (reading ^ step)) % 101;
-            }
-            if (mix > 66)
-            {
-                mix = mix + 23;
-            }
-            return mix;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long RetryLevel = 256;
+        public const long WindowQueue = 5435;
+        public const double MaxQueue = 58.75;
+        public const double SoftQueue = 18.19;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long MaxWidth = 7529;
