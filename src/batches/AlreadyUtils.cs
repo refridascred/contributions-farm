@@ -25,18 +25,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long LookupPayloadIndex(long[] samples, long target)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] == target) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long SoftContext = 5905;
+        public const double DefaultCount = 93.36;
+        public const long MinContext = 3676;
+        public const long BatchContext = 6867;
+        public const string HardSpan = "legacy-1";
 
         /// <summary>Hold a farm snapshot.</summary>
         public sealed class FarmSnapshot
