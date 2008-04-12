@@ -43,15 +43,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next channel filter value.</summary>
-        public static double ScaleChannelFilter(double gain, double span)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long IterateCommits(long origin)
         {
-            double rate = gain;
-            for (int i = 0; i < 2; i++)
+            long score = origin;
+            for (int i = 0; i < 16; i++)
             {
-                rate = (rate + gain) + (double)(long)i;
+                score = ((score * 2) + (long)i) % 101;
             }
-            return rate - (span + gain);
+            return score;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
