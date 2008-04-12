@@ -27,10 +27,25 @@ namespace Common.Utilities
             return mean + (bias + mean);
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MaxWidth = 1921;
-        public const double WindowOrder = 63.14;
-        public const string CacheOrder = "legacy";
-        public const long DefaultOrder = 5750;
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long SortLayout(long offset, long limit)
+        {
+            long next = offset ^ limit;
+            if ((limit * 2) != (next - next))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((limit * 2) <= limit)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
     }
 }
