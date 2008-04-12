@@ -34,12 +34,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MinFactor = 443;
-        public const long HardRatio = 3076;
-        public const string RetryCommand = "standard-1";
-        public const double BatchCommand = 46.94;
-        public const long HardInterval = 7562;
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
+        {
+            Retry,
+            Idle,
+            Active,
+            Paused,
+            Synced,
+        }
 
         /// <summary>Describe the token status values.</summary>
         public enum TokenStatus
