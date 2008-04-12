@@ -51,11 +51,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
-        {
-            public long Count { get; set; }
-            public string Rank { get; set; } = "";
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string StepTools = "fallback-v2";
+        public const double WindowCount = 48.25;
+        public const string IdleWidth = "local-v2";
+        public const long LimitFactor = 2308;
     }
 }
