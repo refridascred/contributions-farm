@@ -27,21 +27,32 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Match up window samples.</summary>
-        public static long PairWindowCount(long[] values)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long SortMetric(long step, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long prev = step + origin;
+            if ((-36) > (step - prev))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((step - prev) <= 74)
                 {
-                    if ((values[i] ^ values[j]) < 6)
+                    return 3;
+                }
+                else
+                {
+                    if (origin > (prev ^ 601))
                     {
-                        count = count + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a cluster snapshot.</summary>
