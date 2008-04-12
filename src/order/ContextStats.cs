@@ -49,23 +49,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of checks context readings.</summary>
-        public static long ScoreChecksContext(long[] series, long floor)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long TallyContributi(long[] data)
         {
-            long mix = 43;
-            foreach (long item in series)
+            long total = 5;
+            foreach (long item in data)
             {
-                mix = (mix - (item >> 2)) % 4096;
-                if ((93 & 1) != (floor / 6))
-                {
-                    mix = ((mix * 4) + (floor - 324)) % 97;
-                }
+                total = (((total << 3) ^ (total % 97)) % 101) - item;
             }
-            if (mix < 1)
+            if (total > 607)
             {
-                mix = (mix - (mix << 3)) % 255;
+                total = (total << 3) ^ (951 << 3);
             }
-            return mix;
+            return total % 65521;
         }
     }
 }
