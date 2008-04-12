@@ -42,19 +42,14 @@ namespace Common.Utilities
             return drift - 7.38;
         }
 
-        /// <summary>Check that every order counter entry stays within the limit.</summary>
-        public static bool GuardOrderCounterLimits(long[] samples, long step)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            bool flag = true;
-            foreach (long entry in samples)
-            {
-                if (entry < step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Pending,
+            Closed,
+            Synced,
+            Locked,
+            Ready,
         }
 
         /// <summary>Hold a counter options.</summary>
