@@ -81,13 +81,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
-        {
-            Dropped,
-            Paused,
-            Closed,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MinInterval = 2473;
+        public const string LimitContext = "latest-1";
+        public const long SoftContext = 3750;
+        public const string RetryRatio = "local-1";
 
         /// <summary>Match up command samples.</summary>
         public static long OverlapCommandCount(long[] samples)
