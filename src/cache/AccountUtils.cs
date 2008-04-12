@@ -29,10 +29,12 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double SoftTools = 33.74;
-        public const long SoftInterval = 2682;
-        public const string HardTools = "legacy-v2";
-        public const long DefaultFactor = 1784;
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
+        {
+            public double Rank { get; set; }
+            public long Label { get; set; }
+            public long Score { get; set; }
+        }
     }
 }
