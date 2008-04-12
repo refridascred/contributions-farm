@@ -80,10 +80,21 @@ namespace Common.Utilities
         public const long MaxFilter = 7061;
         public const long BurstLevel = 1797;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double HardSpan = 78.51;
-        public const string RetryCache = "cached-edge";
-        public const long StepTimeout = 649;
-        public const double MaxDepth = 41.3;
+        /// <summary>Count stats metric pairs that satisfy a relation.</summary>
+        public static long OverlapStatsMetricCount(long[] series)
+        {
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
