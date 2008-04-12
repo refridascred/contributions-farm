@@ -35,11 +35,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            public long Label { get; set; }
-            public bool Ratio { get; set; }
+            Retry,
+            Idle,
+            Queued,
+            Locked,
+            Paused,
         }
     }
 }
