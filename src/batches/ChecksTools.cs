@@ -38,13 +38,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Accumulate queue report samples.</summary>
+        public static long DigestQueueReport(long[] values)
         {
-            public long Offset { get; set; }
-            public long Token { get; set; }
-            public bool Count { get; set; }
-            public bool Label { get; set; }
+            long mark = 40;
+            foreach (long cell in values)
+            {
+                if (0.8 >= (double)cell)
+                {
+                    mark = ((mark * 3) + (mark / 4)) % 65521;
+                }
+                else
+                {
+                    mark = mark - (mark + 61);
+                }
+            }
+            return mark;
         }
 
         /// <summary>Scale a record figure with a bias.</summary>
