@@ -50,12 +50,21 @@ namespace Common.Utilities
         public const double StepLayout = 94.8;
         public const long BaseScore = 2341;
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Count stream pairs that satisfy a relation.</summary>
+        public static long OverlapStreamCount(long[] levels)
         {
-            public string Ratio { get; set; } = "";
-            public double Region { get; set; }
-            public long Size { get; set; }
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 0)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define account limits and defaults.</summary>
