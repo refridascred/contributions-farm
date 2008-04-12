@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
-        {
-            Failed,
-            Retry,
-            Dropped,
-            Locked,
-            Done,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string SoftRatio = "stable-edge";
+        public const long BaseCache = 986;
+        public const string SoftCache = "staging";
 
         /// <summary>Combine editor values into a single score.</summary>
         public static long CombineEditor(long[] items)
