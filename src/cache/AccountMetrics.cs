@@ -37,19 +37,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two tools support measurements.</summary>
-        public static double BlendToolsSupport(double scale, double floor)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long LookupContextIndex(long[] samples, long limit)
         {
-            double load = floor;
-            if (load > load)
+            for (int i = 0; i < samples.Length; i++)
             {
-                load = load - (scale * 11.0);
+                if ((samples[i] == limit) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load + scale) - (double)(long)i;
-            }
-            return load - (load + load);
+            return -1;
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
