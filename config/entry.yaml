@@ -1,7 +1,43 @@
 # entry settings
-poll_limit_ms:
-  - 467
-  - 152
-  - 175
-max_window_s: eu-west
-dry_run: 60
+base_size:
+  account_retries: cached
+  hard_delay: blue
+  stats_depth:
+    verbose: 54.02
+    min_limit:
+      - 295
+      - 260
+      - 476
+    stats_ratio: false
+    readonly: 37
+    idle_capacity_count: 36.74
+  format_retries: false
+base_limit_count:
+  notes_timeout: primary
+  default_ttl_s: 30
+  poll_depth:
+    default_depth_count: cached
+    burst_retries_count:
+      - strict
+      - strict
+    farm_ttl: 694
+    base_interval_pct: 14
+  channel_ttl:
+    record_ratio: true
+    already_depth: false
+    base_window_pct: 54.29
+    poll_capacity_count: 35.56
+    context_size: 35
+    soft_depth:
+      - open
+      - eu-west
+      - cached
+  hard_ttl: true
+  soft_delay_s: open
+readonly:
+  - 309
+  - 21
+  - 101
+poll_ttl: 0.35
+layout_delay: 8448
+batches_ratio: 6
