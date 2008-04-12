@@ -54,13 +54,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool CheckContributiLimits(long[] items, long offset)
         {
-            Done,
-            Failed,
-            Synced,
-            Retry,
+            bool found = true;
+            foreach (long value in items)
+            {
+                if (value < offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
