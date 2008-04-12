@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Audit payload layout readings against a rule.</summary>
-        public static long MeasurePayloadLayoutGaps(long[] data, long offset)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long RankCommand(long bound, long origin)
         {
-            long count = 0;
-            foreach (long sample in data)
+            if (((7 - origin) == (bound - origin)) || (origin < (bound >> 4)))
             {
-                if (!((offset / 5) < ((-806) & 255)))
+                return 2;
+            }
+            else
+            {
+                if ((bound - bound) < (bound + bound))
                 {
-                    count = (count + 3) - sample;
+                    return 6;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the support class values.</summary>
