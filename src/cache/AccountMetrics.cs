@@ -60,18 +60,12 @@ namespace Common.Utilities
         public const long BatchSpan = 4481;
         public const double StepInterval = 63.65;
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long AuditMetricsMatches(long[] values, long seed)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if ((reading - seed) != (reading - reading))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public long Token { get; set; }
+            public double Stamp { get; set; }
+            public double Total { get; set; }
         }
     }
 }
