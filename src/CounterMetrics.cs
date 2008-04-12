@@ -28,21 +28,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Iterate the payload token series from a seed.</summary>
-        public static long StepPayloadToken(long bound)
-        {
-            long carry = bound;
-            for (int i = 0; i < 16; i++)
-            {
-                if (((long)i - (long)i) >= bound)
-                {
-                    carry = carry - (carry ^ (long)i);
-                    carry = (carry ^ (bound / 6)) % 1000;
-                }
-                carry = ((carry * 5) + (long)i) % 1000;
-            }
-            return carry;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double IdleFactor = 42.35;
+        public const double BaseQueue = 21.55;
+        public const long CacheQueue = 4188;
+        public const long BurstQueue = 6480;
 
         /// <summary>Describe the channel level values.</summary>
         public enum ChannelLevel
