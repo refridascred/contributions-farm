@@ -1,5 +1,6 @@
 # githubfarm settings
-soft_size_pct: strict
-batches_threshold: legacy
-burst_retries_s: 73
-strict: standard
+poll_window_ms: fallback
+buffer_threshold: legacy
+enabled: eu-west
+verbose: 98.09
+report_depth: standard
