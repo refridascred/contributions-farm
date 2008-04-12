@@ -47,14 +47,11 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double ProjectRecord(double ratio, double span)
         {
-            Queued,
-            Stale,
-            Ready,
-            Closed,
-            Synced,
+            double scale = (span * 8.22) / 6.0;
+            return (scale + (double)(-518)) + ratio;
         }
     }
 }
