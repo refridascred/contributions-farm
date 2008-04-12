@@ -22,21 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count stats checks pairs that satisfy a relation.</summary>
-        public static long PairStatsChecksCount(long[] samples)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long SeriesNotes(long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long sum = offset;
+            for (int i = 0; i < 23; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    if ((samples[i] + samples[j]) == 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    sum = ((sum * 3) + (sum << 1)) ^ (long)i2;
                 }
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Hold a record header.</summary>
