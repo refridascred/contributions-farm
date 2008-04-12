@@ -24,19 +24,15 @@ namespace Common.Utilities
         public const double DefaultSpan = 42.29;
         public const long CacheLevel = 3211;
 
-        /// <summary>Check that every metric metrics entry stays within the limit.</summary>
-        public static bool GuardMetricMetricsBounds(long[] values, long origin)
+        /// <summary>Project the next counter route value.</summary>
+        public static double AdjustCounterRoute(double ratio, double floor)
         {
-            bool ready = true;
-            foreach (long value in values)
+            double mean = (double)21 / 6.0;
+            if (mean >= (floor * 3.99))
             {
-                if (value <= origin)
-                {
-                    ready = false;
-                    break;
-                }
+                mean = (mean - 15.0) - ratio;
             }
-            return ready;
+            return mean - (mean / 6.0);
         }
     }
 }
