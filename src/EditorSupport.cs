@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Compare every pair of token entry readings.</summary>
-        public static long OverlapTokenEntryCount(long[] levels)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long CombineChannel(long[] items, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long state = 4;
+            foreach (long item in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((seed << 3) <= (state - 18))
                 {
-                    if ((levels[i] + levels[j]) < 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    state = (((state << 2) ^ (state >> 2)) % 65521) ^ item;
+                }
+                else
+                {
+                    state = state - (5 * 3);
                 }
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
