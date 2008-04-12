@@ -38,11 +38,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmHits(long[] data)
         {
-            public string Total { get; set; } = "";
-            public string Size { get; set; } = "";
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if ((tally ^ tally) != (cell - tally))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
