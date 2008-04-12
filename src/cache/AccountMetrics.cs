@@ -39,17 +39,22 @@ namespace Common.Utilities
         public const double BatchCommand = 46.94;
         public const long HardInterval = 7562;
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long LocateAlreadyIndex(long[] data, long offset)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long CountBatchMatches(long[] readings)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                if (data[i] >= offset)
+                if ((double)hits >= (7.97 + 9.0))
                 {
-                    return (long)i;
+                    hits = (hits + 3) ^ reading;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Adjust a checks reading.</summary>
