@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long TallyStatsHits(long[] values, long offset)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamMatches(long[] levels)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if (((double)cell < (18.0 + 2.0)) && ((double)cell < (6.62 + 11.0)))
+                if (((-399) & 63) >= seen)
                 {
-                    tally = (tally + 3) - offset;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    seen = (seen + 1) ^ sample;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Fold a list of profile queue readings.</summary>
