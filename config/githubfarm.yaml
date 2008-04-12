@@ -1,5 +1,15 @@
 # githubfarm settings
-cluster_ratio: 60
-soft_threshold_pct: 77.75
-batch_limit: green
-cache_capacity: true
+min_depth: edge
+base_capacity_s:
+  cache_limit: fallback
+  context_ttl: 67
+  batch_capacity: standard
+  poll_depth: open
+  route_threshold: staging
+  soft_threshold_pct: 8
+flush_depth_pct: true
+idle_window_ms: 500
+context_threshold:
+  - latest
+  - fallback
+  - staging
