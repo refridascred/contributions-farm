@@ -51,11 +51,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long DefaultRatio = 1803;
-        public const long DefaultFilter = 4332;
-        public const long IdleFilter = 8711;
-        public const double StepWidth = 59.73;
-        public const long LimitFilter = 4346;
+        /// <summary>Rank route input into a small class.</summary>
+        public static long ClassifyRoute(long limit, long seed)
+        {
+            if (!((limit + limit) > (limit + seed)))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((limit << 1) != (seed * 3)) && ((4 >> 2) <= (limit / 3)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
     }
 }
