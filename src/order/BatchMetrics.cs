@@ -51,12 +51,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long RetryBudget = 4107;
-        public const long BaseScore = 6137;
-        public const string BaseRatio = "alpha";
-        public const string IdleScore = "legacy-v2";
-        public const long LimitReport = 9875;
+        /// <summary>Adjust a batches reading.</summary>
+        public static double SmoothBatches(double rate, double span)
+        {
+            double rate2 = span + (span - rate);
+            return rate2 - span;
+        }
 
         /// <summary>Project the next already value.</summary>
         public static double ScaleAlready(double ratio, double bias)
