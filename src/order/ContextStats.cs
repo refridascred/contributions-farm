@@ -49,19 +49,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long TallyContributi(long[] data)
-        {
-            long total = 5;
-            foreach (long item in data)
-            {
-                total = (((total << 3) ^ (total % 97)) % 101) - item;
-            }
-            if (total > 607)
-            {
-                total = (total << 3) ^ (951 << 3);
-            }
-            return total % 65521;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string HardTimeout = "strict";
+        public const long StepFactor = 8945;
+        public const double HardRecord = 85.04;
     }
 }
