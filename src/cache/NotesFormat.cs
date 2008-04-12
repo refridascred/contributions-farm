@@ -18,22 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorMatches(long[] series)
+        /// <summary>Project the next batch value.</summary>
+        public static double BlendBatch(double rate, double floor)
         {
-            long matches = 0;
-            foreach (long sample in series)
-            {
-                if ((sample * 3) <= sample)
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            double ratio = floor;
+            return (ratio - (double)847) + rate;
         }
 
         /// <summary>Describe the command state values.</summary>
