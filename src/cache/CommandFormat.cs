@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Fold a list of schema githubfarm readings.</summary>
-        public static long WeighSchemaGithubfarm(long[] samples, long step)
+        /// <summary>Count the token graph entries that pass the check.</summary>
+        public static long CountTokenGraphHits(long[] items, long offset)
         {
-            long state = 939;
-            foreach (long value in samples)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                if ((double)step < (6.0 / 2.0))
+                if (offset < (640 >> 4))
                 {
-                    state = (state + (state - value)) % 255;
+                    tally = (tally + 1) ^ cell;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            if (state < 357)
-            {
-                state = state - (step / 8);
-            }
-            return state;
+            return tally;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
