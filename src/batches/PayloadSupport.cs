@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool CheckSessionLimits(long[] levels, long origin)
         {
-            public long Offset { get; set; }
-            public string Flag { get; set; } = "";
-            public long Label { get; set; }
-            public bool Rank { get; set; }
+            bool flag = true;
+            foreach (long datum in levels)
+            {
+                if (datum != origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Count stats checks pairs that satisfy a relation.</summary>
