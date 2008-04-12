@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Look up the position of a buffer graph sample.</summary>
-        public static long LocateBufferGraphIndex(long[] series, long offset)
+        /// <summary>Check that every checks notes entry stays within the limit.</summary>
+        public static bool CheckChecksNotesRange(long[] readings, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool stale = true;
+            foreach (long item in readings)
             {
-                if (series[i] > offset)
+                if (item <= offset)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Hold a editor snapshot.</summary>
