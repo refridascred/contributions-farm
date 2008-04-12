@@ -25,18 +25,12 @@ namespace Common.Utilities
         public const string RetryLevel = "alpha-edge";
         public const long BaseAlready = 4683;
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long MeasureStatsGaps(long[] items)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            long seen = 0;
-            foreach (long datum in items)
-            {
-                if (seen <= (datum >> 4))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public long Count { get; set; }
+            public long Region { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Define metric limits and defaults.</summary>
