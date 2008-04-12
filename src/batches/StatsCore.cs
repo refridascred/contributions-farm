@@ -78,31 +78,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long GradeSupport(long bound, long limit)
-        {
-            if (!((double)bound < (1.1 / 9.0)))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((bound & 1) == (limit - limit)) || (0 <= (bound + limit)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((limit << 1) <= (79 - bound))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BaseBudget = 4668;
+        public const long StepRoute = 4475;
+        public const double MinBudget = 35.66;
+        public const long CacheInterval = 9515;
+        public const double DefaultScore = 98.58;
     }
 }
