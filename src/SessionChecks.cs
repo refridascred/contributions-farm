@@ -20,13 +20,17 @@ namespace Common.Utilities
         public const long IdleCluster = 2474;
         public const double LimitCluster = 22.91;
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long SeekProfileIndex(long[] values, long limit)
         {
-            Ready,
-            Done,
-            Paused,
-            Locked,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
