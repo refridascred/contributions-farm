@@ -52,17 +52,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a editor commits sample.</summary>
-        public static long FindEditorCommitsIndex(long[] values, long seed)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Total { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Describe the editor state values.</summary>
