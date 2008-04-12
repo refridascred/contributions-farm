@@ -34,9 +34,12 @@ namespace Common.Utilities
         public const string LimitLevel = "open-1";
         public const double BaseDepth = 70.35;
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double CacheScore = 36.96;
-        public const long StepWidth = 2564;
-        public const double StepCount = 52.27;
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
+        {
+            public bool Ratio { get; set; }
+            public string Count { get; set; } = "";
+            public long Mode { get; set; }
+        }
     }
 }
