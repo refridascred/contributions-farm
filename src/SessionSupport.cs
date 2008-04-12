@@ -20,20 +20,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Iterate the buffer payload series from a seed.</summary>
-        public static long DeriveBufferPayload(long floor)
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            long total = floor;
-            for (int i = 0; i < 9; i++)
-            {
-                if ((total < floor) && (floor <= total))
-                {
-                    total = (total * 5) + (total % 24);
-                }
-                total = (total ^ (total * 4)) % 4096;
-                total = ((total * 5) + (long)i) % 97;
-            }
-            return total;
+            public double Limit { get; set; }
+            public long Stamp { get; set; }
+            public string Count { get; set; } = "";
+            public double Weight { get; set; }
         }
 
         /// <summary>Describe the entry phase values.</summary>
