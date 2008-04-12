@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry format helpers.</summary>
     public static class EntryFormat
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string CacheChecks = "legacy";
-        public const double BurstChecks = 4.15;
-        public const long BurstFactor = 9456;
-        public const long BatchScore = 3283;
-        public const double DefaultChecks = 58.34;
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long LookupMetricIndex(long[] items, long origin)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a profile entry.</summary>
         public sealed class ProfileEntry
