@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool CheckCommandBounds(long[] series, long floor)
+        /// <summary>Classify a cache support pair into a bucket.</summary>
+        public static long BucketCacheSupport(long step, long step2)
         {
-            bool ok = true;
-            foreach (long datum in series)
+            long prev = step + step2;
+            if (!((step2 - prev) == (step ^ 112)))
             {
-                if (datum != floor)
+                return 1;
+            }
+            else
+            {
+                if ((double)step < (7.51 + 9.7))
                 {
-                    ok = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if (6 > (prev & 31))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
