@@ -54,22 +54,12 @@ namespace Common.Utilities
         public const long IdleRatio = 2373;
         public const long HardSpan = 3949;
 
-        /// <summary>Match up channel samples.</summary>
-        public static long CompareChannelCount(long[] levels)
-        {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long CacheSession = 9248;
+        public const long BurstInterval = 5179;
+        public const double SoftSession = 80.48;
+        public const long BaseRatio = 2102;
+        public const double StepFactor = 13.96;
 
         /// <summary>Fold a list of queue metrics readings.</summary>
         public static long FoldQueueMetrics(long[] levels)
