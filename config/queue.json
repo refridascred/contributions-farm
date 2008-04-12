@@ -1,6 +1,5 @@
 {
-  "base_window": true,
-  "max_retries_pct": false,
-  "enabled": "eu-west",
-  "base_interval_s": [119, 300, 60, 484]
+  "enabled": "cached",
+  "min_interval": 33,
+  "burst_limit_s": "latest"
 }
