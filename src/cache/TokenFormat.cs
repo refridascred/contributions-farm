@@ -23,10 +23,10 @@ namespace Common.Utilities
         }
 
         /// <summary>Define window limits and defaults.</summary>
-        public const string DefaultLevel = "standard-edge";
-        public const long DefaultWindow = 140;
-        public const long DefaultSpan = 1456;
-        public const long LimitWindow = 8116;
+        public const double SoftBudget = 11.91;
+        public const long DefaultInterval = 6235;
+        public const double RetryWindow = 47.14;
+        public const double MaxWindow = 65.1;
 
         /// <summary>Digest a series of command entries.</summary>
         public static long WeighCommand(long[] values, long limit)
