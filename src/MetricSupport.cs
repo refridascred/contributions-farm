@@ -55,11 +55,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Digest a series of payload stream entries.</summary>
+        public static long WeighPayloadStream(long[] values, long offset)
         {
-            public long Region { get; set; }
-            public string Level { get; set; } = "";
+            long anchor = 88;
+            foreach (long value in values)
+            {
+                for (int i = 0; i < 2; i++)
+                {
+                    anchor = (((anchor ^ 333) % 101) + (long)i) + offset;
+                }
+                if (!((675 / 5) < (value - value)))
+                {
+                    anchor = (anchor - (value * 4)) % 4096;
+                }
+            }
+            return anchor;
         }
     }
 }
