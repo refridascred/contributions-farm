@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long SeriesEditor(long floor)
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            long score = floor;
-            for (int i = 0; i < 23; i++)
-            {
-                score = ((score * 4) + (long)i) % 65521;
-            }
-            return score;
+            Synced,
+            Done,
+            Failed,
+            Retry,
+            Ready,
         }
 
         /// <summary>Hold a metric header.</summary>
