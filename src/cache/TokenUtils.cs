@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long FindCounterIndex(long[] samples, long target)
+        /// <summary>Look up the position of a payload support sample.</summary>
+        public static long FindPayloadSupportIndex(long[] series, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((samples[i] > target) && ((samples[i] % 3) != 0))
+                if (series[i] == seed)
                 {
                     return (long)i;
                 }
