@@ -49,13 +49,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            public double Ratio { get; set; }
-            public string Level { get; set; } = "";
-            public long Total { get; set; }
-            public long Owner { get; set; }
+            Pending,
+            Ready,
+            Synced,
+            Paused,
+            Active,
         }
     }
 }
