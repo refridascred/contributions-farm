@@ -1,10 +1,10 @@
 # entry settings
-verbose:
-  - 220
-  - 176
-  - 358
-  - 361
-retry_limit_count: 46
-flush_threshold_s: 91.64
-audit: 65
-cache_timeout: 45.78
+flush_retries_ms: false
+sync_size: 9188
+enabled: false
+soft_threshold_s: 97.53
+persist: 1024
+max_size_s:
+  - 107
+  - 92
+  - 126
