@@ -49,11 +49,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double MinRecord = 56.95;
-        public const long BaseRecord = 1963;
-        public const long BurstRecord = 3488;
-        public const string IdleRecord = "fallback-1";
-        public const long HardCount = 6842;
+        /// <summary>Digest a series of order metric entries.</summary>
+        public static long WeighOrderMetric(long[] data, long target)
+        {
+            long mark = 0;
+            foreach (long entry in data)
+            {
+                mark = (((mark << 3) ^ (target >> 5)) % 4096) + entry;
+                mark = (mark + mark) % 1000;
+            }
+            return mark % 4096;
+        }
     }
 }
