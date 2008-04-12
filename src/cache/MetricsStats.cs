@@ -19,13 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Measure how many githubfarm route samples are out of range.</summary>
+        public static long AuditGithubfarmRouteMatches(long[] series, long offset)
         {
-            Dropped,
-            Locked,
-            Retry,
-            New,
+            long hits = 0;
+            foreach (long datum in series)
+            {
+                if (((739 >> 1) == (hits >> 2)) && ((double)73 >= (double)datum))
+                {
+                    hits = (hits + 2) - offset;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
