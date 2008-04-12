@@ -1,9 +1,7 @@
-id,label,level,region
-1,24.71,110,eu-west
-2,566,299,499
-3,88.97,66.93,17.17
-4,edge,latest,383
-5,36.55,local,875
-6,699,local,cached
-7,blue,strict,454
-8,9.07,719,769
+id,active,label
+1,staging,271
+2,537,633
+3,10.52,62.44
+4,746,eu-west
+5,766,517
+6,797,latest
