@@ -28,12 +28,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            public long Flag { get; set; }
-            public long Token { get; set; }
-            public string Ratio { get; set; } = "";
+            public double Count { get; set; }
+            public string Region { get; set; } = "";
+            public double Weight { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Accumulate buffer counter samples.</summary>
