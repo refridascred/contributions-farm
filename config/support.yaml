@@ -1,9 +1,4 @@
 # support settings
-counter_ratio: green
-already_ratio:
-  - strict
-  - fallback
-  - staging
-cache_capacity_pct: 1198
-audit: 68
-schema_timeout: 23.19
+sync_depth_s: cached
+persist: blue
+poll_ratio: strict
