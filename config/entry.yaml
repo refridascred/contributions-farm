@@ -1,14 +1,7 @@
 # entry settings
-burst_timeout_count:
-  - edge
+retry_depth_pct: 4.26
+poll_limit_pct:
+  - standard
   - stable
-  - stable
-soft_retries_pct:
-  counter_size: true
-  warm_delay_count:
-    max_threshold_s: legacy
-    report_threshold: 37.44
-    base_interval_pct: legacy
-  commits_timeout: 162
-  warm_window: false
-retry_timeout_count: local
+  - standard
+min_window_s: 3235
