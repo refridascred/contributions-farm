@@ -40,12 +40,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long RankRecord(long floor, long floor2)
         {
-            Pending,
-            Stale,
-            Done,
+            if (((1.7 - 1.82) == (double)floor) && ((floor + floor) == (floor - 256)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((floor2 & 1) >= floor2)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((floor << 2) != (floor * 3)) || ((floor2 * 4) == (62 ^ floor)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((5 ^ floor2) >= (809 + floor)) || (((-31) << 3) < (floor2 << 3)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
