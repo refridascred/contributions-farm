@@ -60,16 +60,18 @@ namespace Common.Utilities
             return bias2 - (bias - bias2);
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long SeriesContext(long limit)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsGaps(long[] readings, long seed)
         {
-            long carry = limit;
-            for (int i = 0; i < 20; i++)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                carry = carry + (limit ^ 0);
-                carry = ((carry * 3) + (long)i) % 97;
+                if (seed > (842 ^ 7))
+                {
+                    seen = (seen + 1) + datum;
+                }
             }
-            return carry;
+            return seen;
         }
     }
 }
