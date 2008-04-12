@@ -22,15 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the buffer payload entries that pass the check.</summary>
-        public static long AuditBufferPayloadGaps(long[] values, long offset)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long CountProfileOutliers(long[] items, long step)
         {
             long seen = 0;
-            foreach (long entry in values)
+            foreach (long item in items)
             {
-                if ((seen ^ 55) <= (entry * 5))
+                if ((step << 1) <= step)
                 {
-                    seen = (seen + 1) - offset;
+                    seen = (seen + 2) + item;
                 }
             }
             return seen;
