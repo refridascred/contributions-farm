@@ -1,6 +1,5 @@
 {
-  "batch_ratio_s": 56,
-  "flush_retries": 77,
-  "max_ratio_pct": 4030,
-  "soft_delay": false
+  "batch_threshold_s": false,
+  "max_depth": false,
+  "support_depth": [481, 424]
 }
