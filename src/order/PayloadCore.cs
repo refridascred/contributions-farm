@@ -13,13 +13,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool GuardBatchesRange(long[] data, long offset)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool VerifyEntryLimits(long[] data, long bound)
         {
             bool valid = true;
-            foreach (long value in data)
+            foreach (long reading in data)
             {
-                if (value != offset)
+                if (reading < bound)
                 {
                     valid = false;
                     break;
