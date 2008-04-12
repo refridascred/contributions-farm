@@ -19,13 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool GuardCacheBounds(long[] readings, long floor)
         {
-            public long Weight { get; set; }
-            public long Count { get; set; }
-            public double Offset { get; set; }
-            public string Flag { get; set; } = "";
+            bool valid = true;
+            foreach (long entry in readings)
+            {
+                if (entry < floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
