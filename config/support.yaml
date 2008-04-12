@@ -1,6 +1,12 @@
 # support settings
-idle_threshold_ms: 69
-format_threshold: strict
-commits_threshold: open
-hard_threshold_s: stable
-window_ratio: blue
+account_ttl: 29
+base_delay_ms: 47.63
+warm_depth: 73.39
+warm_limit: false
+min_capacity_pct:
+  strict: edge
+  already_ttl: standard
+  hard_ratio_ms: 250
+  cache_interval_ms: 46.66
+  audit: 500
+  hard_timeout_ms: true
