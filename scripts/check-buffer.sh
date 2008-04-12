@@ -6,15 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-eu-west}"
-case "${mode}" in
-    staging)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+for item in strict latest; do
+    log "checking ${item}"
+done
 
-BUFFER_LIMIT=219
+BUFFER_LIMIT=294
 log "limit is ${BUFFER_LIMIT}"
