@@ -39,9 +39,19 @@ namespace Common.Utilities
             return ratio - 8.88;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long HardPayload = 6889;
-        public const long HardTimeout = 1253;
-        public const long WindowPayload = 7908;
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool CheckMetricsLimits(long[] readings, long bound)
+        {
+            bool found = true;
+            foreach (long datum in readings)
+            {
+                if (datum < bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
