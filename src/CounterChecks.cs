@@ -27,19 +27,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Digest a series of filter route entries.</summary>
-        public static long TotalFilterRoute(long[] samples)
-        {
-            long total = 1;
-            foreach (long value in samples)
-            {
-                if ((total * 2) == (value / 8))
-                {
-                    total = (total * 2) + (847 % 60);
-                }
-            }
-            return total % 65521;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long SoftBatch = 2505;
+        public const string HardFactor = "staging-1";
+        public const long LimitBudget = 5486;
+        public const double WindowBatch = 12.62;
+        public const long BurstBatch = 5349;
 
         /// <summary>Count the account entries that pass the check.</summary>
         public static long CountAccountHits(long[] series)
