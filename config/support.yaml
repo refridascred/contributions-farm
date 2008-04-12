@@ -1,13 +1,5 @@
 # support settings
-base_ttl:
-  soft_threshold: 250
-  readonly: 90.37
-  buffer_ttl:
-    - latest
-    - cached
-    - green
-    - cached
-  context_depth: true
-idle_size: primary
-soft_retries: 52.68
-max_window: 11
+poll_window_ms: 2.62
+stats_window: staging
+githubfarm_ratio: 6.22
+base_limit_s: true
