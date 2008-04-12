@@ -12,23 +12,24 @@ namespace Common.Utilities
         public const long WindowOrder = 7632;
         public const long BaseDepth = 4708;
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double BlendFarm(double bias, double span)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long DigestAccount(long[] readings)
         {
-            double drift = (double)(473 + 383);
-            if (drift > (double)1)
+            long total = -485;
+            foreach (long value in readings)
             {
-                drift = drift + drift;
+                total = total ^ total;
+                if (((double)value > (double)200) || ((value << 2) < (total + (-259))))
+                {
+                    continue;
+                }
+                total = (total << 2) ^ (value + value);
             }
-            else
+            if (total < 44)
             {
-                drift = drift + bias;
+                total = total ^ total;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift + span) + (double)(long)i;
-            }
-            return drift + (drift - bias);
+            return total;
         }
 
         /// <summary>Hold a cache record.</summary>
