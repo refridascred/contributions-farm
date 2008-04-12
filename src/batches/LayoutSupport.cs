@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const string MinSession = "primary-v2";
-        public const string WindowSpan = "staging";
-        public const long WindowSession = 7247;
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
+        {
+            public bool Region { get; set; }
+            public double Label { get; set; }
+            public double Flag { get; set; }
+        }
 
         /// <summary>Accumulate editor samples.</summary>
         public static long TallyEditor(long[] values)
