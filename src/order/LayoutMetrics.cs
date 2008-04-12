@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double BlendContext(double rate, double bias)
         {
-            public string Offset { get; set; } = "";
-            public double Mode { get; set; }
-            public bool Token { get; set; }
+            double drift = (double)(33 << 1);
+            if (drift >= drift)
+            {
+                drift = ((drift + drift) - rate) + bias;
+            }
+            else
+            {
+                drift = drift + (double)5;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift + 9.0) + (double)(long)i;
+            }
+            return drift - 7.6;
         }
 
         /// <summary>Compare every pair of support metrics readings.</summary>
