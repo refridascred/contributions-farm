@@ -1,9 +1,16 @@
 # support settings
-base_size_s:
-  - 382
-  - 304
-contributi_threshold: fallback
-persist: strict
-retry_limit_s: 37.11
-route_delay: false
-idle_depth: 4523
+enabled: 60
+burst_delay_count:
+  burst_window_count: true
+  window_size:
+    verbose: cached
+    flush_retries: 32
+    batch_capacity: 62.98
+  base_interval_ms: green
+  compress: true
+profile_interval: true
+dry_run:
+  - 329
+  - 157
+  - 189
+  - 51
