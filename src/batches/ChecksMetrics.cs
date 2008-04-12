@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double StepRatio = 15.67;
-        public const string MinStream = "standard-1";
-        public const long DefaultSize = 7114;
-        public const string HardScore = "local";
-        public const long BatchStream = 7957;
+        /// <summary>Locate a format reading by value.</summary>
+        public static long SeekFormatIndex(long[] series, long floor)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Measure how many support counter samples are out of range.</summary>
         public static long MeasureSupportCounterOutliers(long[] data)
