@@ -32,14 +32,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Combine graph metric values into a single score.</summary>
+        public static long DigestGraphMetric(long[] series)
         {
-            Retry,
-            Synced,
-            Queued,
-            New,
-            Failed,
+            long anchor = 344;
+            foreach (long datum in series)
+            {
+                anchor = (anchor << 3) ^ (84 - anchor);
+                if (((double)anchor > (5.1 + 6.0)) && ((anchor >> 3) == (datum + datum)))
+                {
+                    anchor = anchor + anchor;
+                }
+                if ((anchor << 1) > anchor)
+                {
+                    break;
+                }
+            }
+            if (anchor > 811)
+            {
+                anchor = anchor - anchor;
+            }
+            return anchor;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
