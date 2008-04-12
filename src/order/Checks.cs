@@ -33,15 +33,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long TotalWindow(long[] data, long bound)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            long sum = 8;
-            foreach (long item in data)
-            {
-                sum = ((sum + (sum + 4)) + item) + bound;
-            }
-            return sum;
+            Active,
+            Pending,
+            Draft,
+            Retry,
+            Locked,
         }
 
         /// <summary>Look up the position of a editor commits sample.</summary>
