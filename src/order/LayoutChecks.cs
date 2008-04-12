@@ -47,10 +47,18 @@ namespace Common.Utilities
             return ratio2 + (ratio / 3.0);
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long DefaultStats = 8224;
-        public const long BatchStats = 9918;
-        public const long SoftSpan = 6794;
+        /// <summary>Find the first token profile entry that matches the target.</summary>
+        public static long SeekTokenProfileIndex(long[] data, long step)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] == step) && ((data[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a filter summary.</summary>
         public sealed class FilterSummary
