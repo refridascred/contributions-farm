@@ -24,18 +24,15 @@ namespace Common.Utilities
         public const long DefaultSchema = 4103;
         public const double LimitTimeout = 23.37;
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long TallyBatchHits(long[] levels)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long DeriveContext(long step)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long score = step;
+            for (int i = 0; i < 15; i++)
             {
-                if ((hits & 3) != (hits * 4))
-                {
-                    hits = (hits + 1) + cell;
-                }
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Describe the payload state values.</summary>
