@@ -1,5 +1,6 @@
 {
-  "retry_capacity_ms": ["strict", "cached"],
-  "support_interval": 500,
-  "default_timeout_ms": 56
+  "base_window": true,
+  "max_retries_pct": false,
+  "enabled": "eu-west",
+  "base_interval_s": [119, 300, 60, 484]
 }
