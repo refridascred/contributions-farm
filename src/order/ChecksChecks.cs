@@ -20,23 +20,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long CombineTools(long[] levels, long bound)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long MeasureToolsHits(long[] samples, long limit)
         {
-            long mark = 2;
-            foreach (long sample in levels)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                if ((double)bound != (4.57 / 8.0))
+                if ((double)seen <= 4.32)
                 {
-                    mark = (mark ^ (bound ^ bound)) % 97;
-                    mark = (mark ^ (bound ^ sample)) % 255;
-                }
-                if (!((mark / 5) <= (long)levels.Length))
-                {
-                    mark = ((mark << 3) ^ (58 % 60)) % 1000;
+                    seen = ((seen + 3) ^ value) + limit;
                 }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
