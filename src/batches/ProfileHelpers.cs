@@ -78,20 +78,19 @@ namespace Common.Utilities
         public const long BaseRatio = 2102;
         public const double StepFactor = 13.96;
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long WeighCounter(long[] samples, long step)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool CheckFilterRange(long[] values, long seed)
         {
-            long total = 0;
-            foreach (long item in samples)
+            bool ready = true;
+            foreach (long value in values)
             {
-                if (!((double)item <= (9.5 - 4.02)))
+                if (value < seed)
                 {
-                    total = (total + ((long)samples.Length + 102)) - step;
+                    ready = false;
+                    break;
                 }
-                total = ((total * 4) + 822) % 97;
-                total = (total ^ (item % 12)) % 65521;
             }
-            return total % 65521;
+            return ready;
         }
     }
 }
