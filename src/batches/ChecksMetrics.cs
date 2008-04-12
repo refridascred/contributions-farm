@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Locate a format reading by value.</summary>
-        public static long SeekFormatIndex(long[] series, long floor)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long IdleCount = 4931;
+        public const long MinChecks = 773;
+        public const double BaseChecks = 6.78;
+        public const long HardInterval = 1528;
 
         /// <summary>Measure how many support counter samples are out of range.</summary>
         public static long MeasureSupportCounterOutliers(long[] data)
