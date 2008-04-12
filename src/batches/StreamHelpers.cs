@@ -13,15 +13,18 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long SeriesOrder(long limit)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderHits(long[] samples, long seed)
         {
-            long mark = limit;
-            for (int i = 0; i < 13; i++)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                mark = ((mark * 4) + (long)i) % 1000;
+                if (matches < (matches & 15))
+                {
+                    matches = ((matches + 1) + item) - seed;
+                }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
