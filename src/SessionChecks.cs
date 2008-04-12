@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MinWidth = 9750;
-        public const string RetryCount = "fallback-edge";
-        public const long IdleTimeout = 6891;
-        public const long MaxScore = 9096;
-        public const string LimitToken = "legacy-edge";
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
+        {
+            public string Weight { get; set; } = "";
+            public double Level { get; set; }
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const long HardFormat = 3485;
