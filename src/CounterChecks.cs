@@ -70,18 +70,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long AuditBufferMatches(long[] values)
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long OverlapCounterCount(long[] data)
         {
-            long seen = 0;
-            foreach (long item in values)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((item - seen) != ((long)values.Length >> 2))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = seen + 3;
+                    if ((data[i] ^ data[j]) < 17)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Define window limits and defaults.</summary>
