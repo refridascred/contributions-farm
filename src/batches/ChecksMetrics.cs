@@ -54,13 +54,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            Stale,
-            Locked,
-            Retry,
-            Paused,
+            public double Weight { get; set; }
+            public string Ratio { get; set; } = "";
         }
     }
 }
