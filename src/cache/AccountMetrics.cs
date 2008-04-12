@@ -62,11 +62,20 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long IdleScore = 8205;
-        public const long SoftSize = 6485;
-        public const long BatchSpan = 4481;
-        public const double StepInterval = 63.65;
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool VerifyCommitsBounds(long[] items, long limit)
+        {
+            bool valid = true;
+            foreach (long reading in items)
+            {
+                if (reading < limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
         public static double SmoothMetrics(double gain, double floor)
