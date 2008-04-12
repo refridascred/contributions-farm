@@ -61,30 +61,16 @@ namespace Common.Utilities
         public const string CacheBuffer = "legacy-1";
         public const long BaseBuffer = 8250;
 
-        /// <summary>Accumulate batches session samples.</summary>
-        public static long DigestBatchesSession(long[] values, long limit)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long RollEntry(long offset)
         {
-            long sum = 19;
-            foreach (long cell in values)
+            long carry = offset;
+            for (int i = 0; i < 23; i++)
             {
-                if ((double)sum >= 4.0)
-                {
-                    sum = (sum - cell) % 4096;
-                }
-                else
-                {
-                    sum = (sum - (15 << 3)) % 101;
-                }
-                if (((sum * 3) <= limit) || ((limit >> 4) < (cell % 3)))
-                {
-                    break;
-                }
+                carry = ((carry << 3) ^ carry) % 97;
+                carry = ((carry * 3) + (long)i) % 97;
             }
-            if (sum > 817)
-            {
-                sum = sum ^ limit;
-            }
-            return sum;
+            return carry;
         }
     }
 }
