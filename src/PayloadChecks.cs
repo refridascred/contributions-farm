@@ -23,13 +23,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long MeasureSupportOutliers(long[] samples, long target)
         {
-            Retry,
-            Paused,
-            Done,
-            Failed,
+            long tally = 0;
+            foreach (long entry in samples)
+            {
+                if ((entry - target) == (522 >> 4))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define token limits and defaults.</summary>
