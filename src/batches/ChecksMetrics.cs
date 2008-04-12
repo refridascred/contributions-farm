@@ -44,14 +44,12 @@ namespace Common.Utilities
         public const long HardSpan = 4262;
         public const long CacheScore = 5174;
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            Ready,
-            Synced,
-            Stale,
+            Pending,
             Draft,
-            Locked,
+            Dropped,
         }
 
         /// <summary>Hold a metrics record.</summary>
