@@ -21,19 +21,19 @@ namespace Common.Utilities
         public const long SoftInterval = 3926;
         public const long MaxNotes = 1013;
 
-        /// <summary>Project the next stats value.</summary>
-        public static double BlendStats(double bias, double floor)
+        /// <summary>Blend two context metric measurements.</summary>
+        public static double BlendContextMetric(double scale, double floor)
         {
-            double gain = floor;
-            if (gain <= (double)1)
+            double load = scale;
+            if (load >= scale)
             {
-                gain = (gain + (floor * 9.79)) - bias;
+                load = (load - 15.0) - floor;
             }
-            else
+            for (int i = 0; i < 7; i++)
             {
-                gain = gain + (double)984;
+                load = (load - 2.0) + (double)(long)i;
             }
-            return gain + floor;
+            return load - (18.0 - load);
         }
     }
 }
