@@ -17,12 +17,13 @@ namespace Common.Utilities
             return ((mean + mean) + bias) + offset;
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            public bool Limit { get; set; }
-            public long Rank { get; set; }
-            public string Stamp { get; set; } = "";
+            public bool Mode { get; set; }
+            public long Owner { get; set; }
+            public bool Region { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
