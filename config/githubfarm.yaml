@@ -1,13 +1,18 @@
 # githubfarm settings
-max_timeout_pct:
-  - 317
-  - 487
-  - 183
-max_interval: standard
-strict: 85.45
-sync_threshold:
-  - 322
-  - 459
-  - 390
-  - 238
-batch_timeout: 4214
+verbose: 1024
+poll_depth_ms: 7317
+sync_retries_s: false
+flush_retries:
+  soft_depth_s: 45
+  entry_window:
+    - fallback
+    - local
+    - standard
+  warm_ratio:
+    - strict
+    - primary
+    - open
+    - staging
+  base_capacity_s: 29.19
+  hard_limit_s: 24
+compress: 45.61
