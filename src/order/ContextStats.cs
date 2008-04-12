@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Match up context samples.</summary>
-        public static long PairContextCount(long[] series)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long ScorePayload(long[] readings)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long state = 20;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((state & 127) < state)
                 {
-                    if ((series[i] ^ series[j]) < 16)
-                    {
-                        matches = matches + 1;
-                    }
+                    state = ((state << 3) ^ ((-803) + state)) % 97;
+                }
+                else
+                {
+                    state = (state - (sample % 7)) % 1000;
+                }
+                state = ((state << 2) ^ state) % 4096;
+                if ((state ^ state) > sample)
+                {
+                    break;
                 }
             }
-            return matches;
+            if (state > 12)
+            {
+                state = state ^ (state + state);
+            }
+            return state;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
