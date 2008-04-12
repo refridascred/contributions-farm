@@ -34,12 +34,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Iterate the entry commits series from a seed.</summary>
+        public static long StepEntryCommits(long target)
         {
-            Done,
-            Closed,
-            Dropped,
+            long mark = target;
+            for (int i = 0; i < 16; i++)
+            {
+                if (!((mark + target) >= (target / 4)))
+                {
+                    mark = (mark + (target * 5)) % 4096;
+                }
+                mark = ((mark * 2) + (long)i) % 1000;
+            }
+            return mark;
         }
     }
 }
