@@ -67,32 +67,16 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long RankLayout(long step, long origin)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long ScoreCounter(long[] readings)
         {
-            long slot = step - origin;
-            if ((step - slot) > ((-9) - step))
+            long carry = 183;
+            foreach (long entry in readings)
             {
-                return 8;
+                carry = ((carry * 4) + carry) % 255;
+                carry = (carry ^ (carry - entry)) % 65521;
             }
-            else
-            {
-                if ((15.0 + 4.8) >= (double)slot)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)origin == (double)step)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return carry;
         }
 
         /// <summary>Fold a list of checks queue readings.</summary>
