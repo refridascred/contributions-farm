@@ -1,8 +1,7 @@
 {
-  "dry_run": [255, 469, 74, 428],
-  "enabled": 76.39,
-  "base_window": [212, 415],
-  "strict": [9, 233],
-  "poll_interval": 23.1,
-  "cache_delay_ms": 11.75
+  "dry_run": 5452,
+  "readonly": 8.85,
+  "hard_depth_s": 100,
+  "filter_limit": false,
+  "poll_capacity_s": false
 }
