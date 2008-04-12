@@ -32,17 +32,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Derive the next session buffer value from a seed.</summary>
-        public static long SeriesSessionBuffer(long limit)
+        /// <summary>Count command commits pairs that satisfy a relation.</summary>
+        public static long PairCommandCommitsCount(long[] readings)
         {
-            long acc = limit;
-            for (int i = 0; i < 14; i++)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                acc = (acc ^ (acc << 3)) % 4096;
-                acc = acc ^ ((long)i & 63);
-                acc = ((acc * 5) + (long)i) % 1000;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 20)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Fold a list of checks context readings.</summary>
