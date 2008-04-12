@@ -45,14 +45,12 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            Closed,
-            Synced,
-            Idle,
-            Paused,
-            Locked,
+            public string Label { get; set; } = "";
+            public string Count { get; set; } = "";
+            public double Flag { get; set; }
         }
     }
 }
