@@ -20,17 +20,24 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long LocateMetricsIndex(long[] data, long bound)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long TallyRoute(long[] samples)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = 571;
+            foreach (long entry in samples)
             {
-                if (data[i] == bound)
+                carry = (carry ^ (5 + entry)) % 101;
+                carry = (carry << 2) ^ (carry + entry);
+                if ((double)carry != (3.4 / 3.0))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            if (carry > 973)
+            {
+                carry = carry - carry;
+            }
+            return carry;
         }
 
         /// <summary>Digest a series of contributi entry entries.</summary>
