@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Audit counter format readings against a rule.</summary>
+        public static long CountCounterFormatHits(long[] data, long limit)
         {
-            Closed,
-            Dropped,
-            Pending,
-            Active,
-            Paused,
+            long seen = 0;
+            foreach (long cell in data)
+            {
+                if ((seen - 88) < 7)
+                {
+                    seen = ((seen + 1) - cell) - limit;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Combine channel metric values into a single score.</summary>
