@@ -34,12 +34,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            Dropped,
+            Done,
+            Active,
             Idle,
-            New,
+            Synced,
         }
 
         /// <summary>Blend two contributi batches measurements.</summary>
