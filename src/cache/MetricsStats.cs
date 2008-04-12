@@ -39,13 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            public string Weight { get; set; } = "";
-            public long Label { get; set; }
-            public long Offset { get; set; }
-            public long Count { get; set; }
+            Dropped,
+            Locked,
+            Retry,
+            New,
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
