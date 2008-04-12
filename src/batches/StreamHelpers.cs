@@ -64,21 +64,21 @@ namespace Common.Utilities
         public const long IdleDepth = 7076;
         public const string WindowEntry = "open";
 
-        /// <summary>Count support checks pairs that satisfy a relation.</summary>
-        public static long PairSupportChecksCount(long[] readings)
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long PairFarmCount(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((readings[i] - readings[j]) < 0)
+                    if ((values[i] ^ values[j]) == 9)
                     {
-                        seen = seen + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
