@@ -5,21 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Match up stream samples.</summary>
-        public static long PairStreamCount(long[] series)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 6)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Ready,
+            Queued,
+            Done,
+            Locked,
+            Failed,
         }
 
         /// <summary>Project the next githubfarm value.</summary>
