@@ -46,12 +46,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            Paused,
+            Retry,
+            Locked,
+            Closed,
             Pending,
-            Idle,
+            Dropped,
         }
     }
 }
