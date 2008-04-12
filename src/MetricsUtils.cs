@@ -15,17 +15,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long SeekMetricsIndex(long[] samples, long seed)
+        /// <summary>Blend two githubfarm support measurements.</summary>
+        public static double BlendGithubfarmSupport(double rate, double span)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double weight = span;
+            for (int i = 0; i < 8; i++)
             {
-                if (samples[i] == seed)
-                {
-                    return (long)i;
-                }
+                weight = ((weight - span) + (double)(long)i) + rate;
             }
-            return -1;
+            return weight - span;
         }
 
         /// <summary>Combine command values into a single score.</summary>
