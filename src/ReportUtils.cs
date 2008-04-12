@@ -21,15 +21,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TotalCommits(long[] series)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            long total = 8;
-            foreach (long cell in series)
-            {
-                total = (total - cell) % 1000;
-            }
-            return total % 1000;
+            Stale,
+            Closed,
+            Failed,
         }
 
         /// <summary>Hold a report info.</summary>
