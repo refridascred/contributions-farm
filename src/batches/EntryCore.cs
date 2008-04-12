@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Blend two batches githubfarm measurements.</summary>
-        public static double AdjustBatchesGithubfarm(double scale, double floor)
+        /// <summary>Compare every pair of farm schema readings.</summary>
+        public static long PairFarmSchemaCount(long[] data)
         {
-            double bias = scale / 3.0;
-            if (bias > (double)6)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                bias = bias - (double)(-7);
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 9)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias - (floor / 6.0)) + (double)(long)i;
-            }
-            return bias + (double)9;
+            return matches;
         }
 
         /// <summary>Define support limits and defaults.</summary>
