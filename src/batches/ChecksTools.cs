@@ -38,16 +38,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long SeriesStream(long bound)
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            long carry = bound;
-            for (int i = 0; i < 5; i++)
-            {
-                carry = ((carry << 3) ^ bound) % 255;
-                carry = ((carry * 5) + (long)i) % 1000;
-            }
-            return carry;
+            public long Offset { get; set; }
+            public long Token { get; set; }
+            public bool Count { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Combine order context values into a single score.</summary>
