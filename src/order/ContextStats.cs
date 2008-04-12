@@ -14,13 +14,19 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Project the next metrics stream value.</summary>
+        public static double BlendMetricsStream(double weight, double floor)
         {
-            Done,
-            Draft,
-            Retry,
-            Ready,
+            double mean = (floor * 1.8) + (double)88;
+            if (mean >= floor)
+            {
+                mean = mean + (6.2 - weight);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean + weight) + (double)(long)i;
+            }
+            return mean - mean;
         }
 
         /// <summary>Count command commits pairs that satisfy a relation.</summary>
