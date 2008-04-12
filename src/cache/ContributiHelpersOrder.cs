@@ -37,11 +37,18 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Count the cluster editor entries that pass the check.</summary>
+        public static long CountClusterEditorOutliers(long[] items, long limit)
         {
-            public bool Total { get; set; }
-            public bool Size { get; set; }
+            long seen = 0;
+            foreach (long sample in items)
+            {
+                if ((double)seen != (3.61 + 16.0))
+                {
+                    seen = ((seen + 2) - sample) + limit;
+                }
+            }
+            return seen;
         }
     }
 }
