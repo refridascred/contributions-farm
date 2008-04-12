@@ -23,25 +23,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long StepCommits(long origin)
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long PairNotesCount(long[] levels)
         {
-            long mix = origin;
-            for (int i = 0; i < 17; i++)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                double scale = (double)mix;
-                if (!((mix + origin) < (mix * 3)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    scale = scale - (scale - scale);
+                    if ((levels[i] ^ levels[j]) != 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                if (((origin + origin) > mix) && ((15.0 / 2.0) >= scale))
-                {
-                    long gap = (long)i;
-                    mix = (mix << 2) ^ (origin - gap);
-                }
-                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
