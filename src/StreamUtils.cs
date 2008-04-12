@@ -78,14 +78,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Locate a cache record reading by value.</summary>
+        public static long SeekCacheRecordIndex(long[] items, long target)
         {
-            Retry,
-            Idle,
-            Synced,
-            Draft,
-            Closed,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] <= target) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
