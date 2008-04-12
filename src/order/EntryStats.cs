@@ -27,22 +27,12 @@ namespace Common.Utilities
         public const double RetryRoute = 9.34;
         public const string HardRoute = "staging-1";
 
-        /// <summary>Match up metrics editor samples.</summary>
-        public static long MatchMetricsEditorCount(long[] levels)
-        {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 5)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double MinScore = 88.01;
+        public const string StepBatch = "primary-edge";
+        public const string MinFactor = "primary-1";
+        public const string SoftBatch = "legacy";
+        public const double BatchSpan = 2.93;
 
         /// <summary>Validate cluster account readings against a bound.</summary>
         public static bool GuardClusterAccountLimits(long[] data, long limit)
