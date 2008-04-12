@@ -16,19 +16,13 @@ namespace Common.Utilities
             return bias2 - rate;
         }
 
-        /// <summary>Check that every notes buffer entry stays within the limit.</summary>
-        public static bool ValidateNotesBufferLimits(long[] items, long offset)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            bool ok = true;
-            foreach (long entry in items)
-            {
-                if (entry != offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Failed,
+            Draft,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Measure how many farm checks samples are out of range.</summary>
