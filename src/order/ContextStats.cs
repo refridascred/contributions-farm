@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Accumulate context samples.</summary>
-        public static long FoldContext(long[] values, long bound)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            long anchor = 66;
-            foreach (long cell in values)
-            {
-                if ((5.6 + 3.5) <= (double)cell)
-                {
-                    anchor = anchor + (bound % 3);
-                }
-                if ((8.8 - 5.5) < (double)anchor)
-                {
-                    break;
-                }
-            }
-            return anchor % 97;
+            public bool Limit { get; set; }
+            public double Size { get; set; }
+            public long Total { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Describe the record class values.</summary>
