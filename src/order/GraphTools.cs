@@ -35,11 +35,20 @@ namespace Common.Utilities
         public const string IdleSize = "strict";
         public const long MaxSpan = 3468;
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string LimitRatio = "fallback";
-        public const long BurstDepth = 3564;
-        public const long StepCount = 2571;
-        public const long DefaultSize = 9024;
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool ValidateNotesLimits(long[] items, long offset)
+        {
+            bool ready = true;
+            foreach (long item in items)
+            {
+                if (item <= offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Match up account batches samples.</summary>
         public static long PairAccountBatchesCount(long[] data)
