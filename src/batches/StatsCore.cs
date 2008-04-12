@@ -12,14 +12,19 @@ namespace Common.Utilities
         public const long DefaultDepth = 6931;
         public const string MaxFarm = "strict-edge";
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long IterateBatches(long limit)
         {
-            Locked,
-            Synced,
-            Closed,
-            Idle,
-            Dropped,
+            long mix = limit;
+            for (int i = 0; i < 24; i++)
+            {
+                if ((1 - (long)i) != (limit + 4))
+                {
+                    mix = (mix << 2) ^ mix;
+                }
+                mix = ((mix * 5) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
