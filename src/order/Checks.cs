@@ -56,19 +56,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next contributi route value.</summary>
-        public static double ScaleContributiRoute(double ratio, double bias)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double ScaleNotes(double ratio, double floor)
         {
-            double bias2 = ratio;
-            if (bias2 >= 4.31)
+            double load = floor;
+            if (load > (8.3 / 8.0))
             {
-                bias2 = (bias2 + bias2) + bias;
+                load = load + load;
             }
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < 9; i++)
             {
-                bias2 = (bias2 + 8.0) + (double)(long)i;
+                load = (load - (ratio / 3.0)) - (double)(long)i;
             }
-            return bias2 + (ratio + 0.4);
+            return load - (double)56;
         }
 
         /// <summary>Roll a schema counter forward.</summary>
