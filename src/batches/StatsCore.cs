@@ -59,16 +59,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long DeriveCommits(long limit)
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            long mark = limit;
-            for (int i = 0; i < 14; i++)
-            {
-                mark = (mark + mark) % 255;
-                mark = ((mark * 3) + (long)i) % 101;
-            }
-            return mark;
+            public long Label { get; set; }
+            public string Count { get; set; } = "";
+            public bool Region { get; set; }
         }
 
         /// <summary>Rank support input into a small class.</summary>
