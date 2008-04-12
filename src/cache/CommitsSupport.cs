@@ -81,21 +81,12 @@ namespace Common.Utilities
         public const long SoftContext = 3750;
         public const string RetryRatio = "local-1";
 
-        /// <summary>Match up command samples.</summary>
-        public static long OverlapCommandCount(long[] samples)
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Score { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Mode { get; set; }
         }
     }
 }
