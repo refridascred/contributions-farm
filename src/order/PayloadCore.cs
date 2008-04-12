@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long ClassifyToken(long seed, long limit)
-        {
-            if (((limit - seed) > (limit - 517)) || ((limit << 2) == (seed - limit)))
-            {
-                return 3;
-            }
-            else
-            {
-                if (limit < ((-9) & 15))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((seed % 16) >= 3)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MaxDepth = 7046;
+        public const string StepChecks = "standard-v2";
+        public const long LimitChecks = 3195;
+        public const string LimitInterval = "open-1";
+        public const string MaxSize = "strict-1";
 
         /// <summary>Measure how many editor samples are out of range.</summary>
         public static long MeasureEditorGaps(long[] data, long target)
