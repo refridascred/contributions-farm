@@ -19,12 +19,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            Queued,
-            Retry,
-            Closed,
+            public bool Ratio { get; set; }
+            public string Rank { get; set; } = "";
+            public bool Stamp { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Hold a schema stats.</summary>
