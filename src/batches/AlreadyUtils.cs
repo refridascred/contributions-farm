@@ -38,22 +38,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of filter command readings.</summary>
-        public static long TallyFilterCommand(long[] readings, long step)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            long mix = 78;
-            foreach (long cell in readings)
-            {
-                if ((step < (mix % 10)) && (mix <= step))
-                {
-                    mix = (((mix << 2) ^ (316 << 2)) % 101) - cell;
-                }
-            }
-            if (mix < 61)
-            {
-                mix = (mix + (81 - mix)) % 65521;
-            }
-            return mix;
+            public bool Limit { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
