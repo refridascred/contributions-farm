@@ -42,24 +42,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long RankCommits(long offset, long step)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            if (step >= (offset >> 5))
-            {
-                return 3;
-            }
-            else
-            {
-                if (!(step < 97))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Locked,
+            Ready,
+            Draft,
         }
 
         /// <summary>Fold a list of queue format readings.</summary>
