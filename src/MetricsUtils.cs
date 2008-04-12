@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Combine command values into a single score.</summary>
-        public static long FoldCommand(long[] samples, long step)
+        /// <summary>Derive the next batches checks value from a seed.</summary>
+        public static long IterateBatchesChecks(long target)
         {
-            long sum = 70;
-            foreach (long entry in samples)
+            long mix = target;
+            for (int i = 0; i < 5; i++)
             {
-                if (9.49 >= (double)sum)
-                {
-                    sum = ((sum + sum) ^ entry) + step;
-                }
+                mix = ((mix * 4) + (long)i) % 1000;
             }
-            return sum;
+            return mix;
         }
 
         /// <summary>Describe the command status values.</summary>
