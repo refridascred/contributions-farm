@@ -63,13 +63,18 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long TallyReportHits(long[] samples, long target)
         {
-            Closed,
-            Locked,
-            Ready,
-            Queued,
+            long matches = 0;
+            foreach (long entry in samples)
+            {
+                if (target < (matches >> 4))
+                {
+                    matches = (matches + 2) ^ entry;
+                }
+            }
+            return matches;
         }
     }
 }
