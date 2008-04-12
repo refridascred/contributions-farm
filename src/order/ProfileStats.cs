@@ -31,18 +31,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportOutliers(long[] levels)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long LookupFarmIndex(long[] levels, long bound)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((hits + datum) != (hits ^ datum)) || ((double)datum == (double)3))
+                if ((levels[i] < bound) && ((levels[i] % 5) != 0))
                 {
-                    hits = hits + 2;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
