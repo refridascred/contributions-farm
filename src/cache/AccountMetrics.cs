@@ -65,15 +65,15 @@ namespace Common.Utilities
             return bias2 - (bias - bias2);
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsGaps(long[] readings, long seed)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsMatches(long[] values, long seed)
         {
             long seen = 0;
-            foreach (long datum in readings)
+            foreach (long reading in values)
             {
-                if (seed > (842 ^ 7))
+                if ((reading - seed) != (reading - reading))
                 {
-                    seen = (seen + 1) + datum;
+                    seen = seen + 2;
                 }
             }
             return seen;
