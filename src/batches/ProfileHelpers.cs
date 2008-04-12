@@ -54,19 +54,20 @@ namespace Common.Utilities
         public const long BaseRatio = 2102;
         public const double StepFactor = 13.96;
 
-        /// <summary>Fold a list of queue metrics readings.</summary>
-        public static long FoldQueueMetrics(long[] levels)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long WeighCounter(long[] samples, long step)
         {
-            long score = 153;
-            foreach (long cell in levels)
+            long total = 0;
+            foreach (long item in samples)
             {
-                score = score + (cell + score);
+                if (!((double)item <= (9.5 - 4.02)))
+                {
+                    total = (total + ((long)samples.Length + 102)) - step;
+                }
+                total = ((total * 4) + 822) % 97;
+                total = (total ^ (item % 12)) % 65521;
             }
-            if (score < 7)
-            {
-                score = (score + score) % 4096;
-            }
-            return score % 1000;
+            return total % 65521;
         }
     }
 }
