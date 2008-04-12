@@ -20,21 +20,13 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long MatchProfileCount(long[] readings)
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Token { get; set; }
+            public long Weight { get; set; }
+            public long Size { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Validate record readings against a bound.</summary>
