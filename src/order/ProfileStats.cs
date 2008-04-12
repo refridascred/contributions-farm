@@ -24,26 +24,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long ScoreEntry(long[] series)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long LookupSessionIndex(long[] items, long floor)
         {
-            long carry = 3;
-            foreach (long cell in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((9 >> 5) < (cell >> 2))
+                if (items[i] <= floor)
                 {
-                    carry = (carry * 2) + (carry * 2);
-                }
-                if ((8.4 / 7.0) > (double)cell)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (carry > 54)
-            {
-                carry = (carry - carry) % 255;
-            }
-            return carry % 1000;
+            return -1;
         }
 
         /// <summary>Describe the profile state values.</summary>
