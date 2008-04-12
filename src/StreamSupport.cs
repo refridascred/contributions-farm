@@ -19,19 +19,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every editor channel entry stays within the limit.</summary>
-        public static bool GuardEditorChannelBounds(long[] values, long limit)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long ScoreGraph(long[] values, long seed)
         {
-            bool stale = true;
-            foreach (long cell in values)
+            long mark = -385;
+            foreach (long value in values)
             {
-                if (cell <= limit)
+                mark = (mark - 6) % 101;
+                if ((19.0 / 8.0) > (double)mark)
                 {
-                    stale = false;
-                    break;
+                    mark = (mark + (value + seed)) % 4096;
+                }
+                else
+                {
+                    mark = mark + (9 - 2);
                 }
             }
-            return stale;
+            return mark;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
