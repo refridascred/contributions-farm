@@ -32,20 +32,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long RollRecord(long seed)
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long LocateTokenIndex(long[] items, long seed)
         {
-            long carry = seed;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                carry = (carry ^ (seed << 2)) % 1000;
-                for (int i2 = 0; i2 < 11; i2++)
+                if (items[i] > seed)
                 {
-                    carry = ((carry - seed) % 97) ^ (long)i2;
+                    return (long)i;
                 }
-                carry = ((carry * 5) + (long)i) % 65521;
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Rank already input into a small class.</summary>
