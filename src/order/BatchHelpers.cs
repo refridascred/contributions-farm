@@ -22,14 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Validate record payload readings against a bound.</summary>
+        public static bool CheckRecordPayloadBounds(long[] samples, long step)
         {
-            Dropped,
-            New,
-            Synced,
-            Pending,
-            Active,
+            bool flag = true;
+            foreach (long cell in samples)
+            {
+                if (cell > step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Locate a stream metric reading by value.</summary>
