@@ -48,13 +48,9 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
-        {
-            public bool Weight { get; set; }
-            public bool Count { get; set; }
-            public long Limit { get; set; }
-            public string Token { get; set; } = "";
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long CacheSchema = 51;
+        public const long RetrySchema = 1577;
+        public const long BaseSchema = 9948;
     }
 }
