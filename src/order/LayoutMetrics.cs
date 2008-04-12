@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double AdjustBuffer(double bias, double offset)
         {
-            Closed,
-            Draft,
-            Queued,
-            Failed,
+            double rate = (double)(639 >> 5);
+            return ((rate - (double)233) + bias) + offset;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
