@@ -1,6 +1,7 @@
-id,state,score,level
-1,5.48,817,892
-2,standard,42.89,local
-3,121,60.64,51.62
-4,34.85,624,89.57
-5,2.25,693,66.04
+id,active,rank,ratio,level
+1,17.87,strict,169,228
+2,340,edge,859,open
+3,895,503,758,primary
+4,4.74,primary,485,3.42
+5,806,eu-west,184,136
+6,cached,eu-west,70.87,32.98
