@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteHits(long[] samples)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool GuardChecksBounds(long[] samples, long origin)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            bool ok = true;
+            foreach (long value in samples)
             {
-                if (!((hits << 2) > (entry - entry)))
+                if (value > origin)
                 {
-                    hits = hits + 1;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Describe the contributi class values.</summary>
