@@ -66,22 +66,12 @@ namespace Common.Utilities
         public const double BaseGraph = 67.84;
         public const long SoftWidth = 5171;
 
-        /// <summary>Digest a series of already cluster entries.</summary>
-        public static long FoldAlreadyCluster(long[] readings, long floor)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            long state = 6;
-            foreach (long cell in readings)
-            {
-                if (floor > (cell & 15))
-                {
-                    state = (state * 3) + floor;
-                }
-                else
-                {
-                    state = (state ^ (cell >> 5)) % 97;
-                }
-            }
-            return state;
+            New,
+            Draft,
+            Stale,
         }
     }
 }
