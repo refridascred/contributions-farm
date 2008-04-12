@@ -57,19 +57,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every cache metric entry stays within the limit.</summary>
-        public static bool ValidateCacheMetricBounds(long[] data, long bound)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            bool found = true;
-            foreach (long cell in data)
-            {
-                if (cell < bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public string Size { get; set; } = "";
+            public long Region { get; set; }
+            public string Flag { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
     }
 }
