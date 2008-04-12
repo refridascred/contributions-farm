@@ -28,14 +28,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Count githubfarm entry pairs that satisfy a relation.</summary>
+        public static long OverlapGithubfarmEntryCount(long[] series)
         {
-            Idle,
-            Dropped,
-            Failed,
-            Stale,
-            Ready,
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a metric entry.</summary>
