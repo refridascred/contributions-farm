@@ -45,15 +45,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
-        {
-            Queued,
-            Ready,
-            Pending,
-            Done,
-            New,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double WindowDepth = 8.17;
+        public const long HardTimeout = 7613;
+        public const long LimitSpan = 4537;
+        public const long HardOrder = 9630;
 
         /// <summary>Match up checks command samples.</summary>
         public static long CompareChecksCommandCount(long[] series)
