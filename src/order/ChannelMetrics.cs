@@ -24,12 +24,19 @@ namespace Common.Utilities
             return weight + floor;
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Validate stats already readings against a bound.</summary>
+        public static bool GuardStatsAlreadyBounds(long[] levels, long limit)
         {
-            Pending,
-            Ready,
-            Active,
+            bool ready = true;
+            foreach (long cell in levels)
+            {
+                if (cell != limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Hold a schema stats.</summary>
