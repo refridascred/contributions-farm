@@ -15,18 +15,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long TallyCommandOutliers(long[] samples)
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long LookupProfileIndex(long[] samples, long seed)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((double)matches <= (double)value))
+                if ((samples[i] >= seed) && ((samples[i] % 5) == 0))
                 {
-                    matches = matches + 2;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
