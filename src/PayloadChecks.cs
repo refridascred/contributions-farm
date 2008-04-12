@@ -18,22 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long DigestMetric(long[] data, long target)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long AuditClusterHits(long[] series)
         {
-            long anchor = 21;
-            foreach (long value in data)
+            long count = 0;
+            foreach (long sample in series)
             {
-                if (2.4 <= (double)value)
+                if ((sample << 1) == (count - 155))
                 {
-                    anchor = (((anchor * 4) + (value << 3)) % 4096) + target;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            if (anchor > 4)
-            {
-                anchor = anchor - (anchor ^ anchor);
-            }
-            return anchor % 65521;
+            return count;
         }
 
         /// <summary>Audit window filter readings against a rule.</summary>
