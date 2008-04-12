@@ -76,22 +76,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long CountMetricHits(long[] samples, long bound)
-        {
-            long matches = 0;
-            foreach (long value in samples)
-            {
-                if (!(((matches >> 1) == (matches & 127)) && (bound <= (matches ^ 84))))
-                {
-                    matches = (matches + 2) ^ value;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long DefaultMetrics = 8502;
+        public const long StepMetrics = 6570;
+        public const double MinRatio = 63.1;
+        public const long BatchDepth = 1162;
     }
 }
