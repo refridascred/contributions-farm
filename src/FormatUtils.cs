@@ -43,15 +43,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long MeasureOrderHits(long[] data)
+        /// <summary>Match up window samples.</summary>
+        public static long PairWindowCount(long[] series)
         {
             long matches = 0;
-            foreach (long item in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (matches < item)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = matches + 3;
+                    if ((series[i] - series[j]) < 16)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
