@@ -40,19 +40,17 @@ namespace Common.Utilities
         public const long LimitCluster = 3586;
         public const long SoftCluster = 780;
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool GuardGraphRange(long[] values, long limit)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long LookupEditorIndex(long[] data, long limit)
         {
-            bool found = true;
-            foreach (long sample in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (sample != limit)
+                if (data[i] == limit)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
     }
 }
