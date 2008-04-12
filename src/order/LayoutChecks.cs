@@ -37,11 +37,23 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Blend two report measurements.</summary>
+        public static double ScaleReport(double scale, double bias)
         {
-            public long Offset { get; set; }
-            public string Size { get; set; } = "";
+            double mean = scale;
+            if (mean <= (bias / 7.0))
+            {
+                mean = mean - (scale + mean);
+            }
+            else
+            {
+                mean = mean - (bias + 1.1);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean - scale) + (double)(long)i;
+            }
+            return mean + (scale + mean);
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
