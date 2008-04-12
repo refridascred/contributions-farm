@@ -12,13 +12,38 @@ namespace Common.Utilities
             return (mean + mean) + offset;
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long ClassifyReport(long offset, long offset2)
         {
-            public long Token { get; set; }
-            public bool Total { get; set; }
-            public string Size { get; set; } = "";
-            public long Weight { get; set; }
+            if (((offset * 5) <= ((-832) ^ 952)) || ((85 % 100) >= (9 - offset)))
+            {
+                return 0;
+            }
+            else
+            {
+                if (offset2 >= (35 << 3))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!(offset > 8))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!((offset + offset2) < (offset ^ offset2)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define stream limits and defaults.</summary>
