@@ -27,28 +27,36 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Rank already filter input into a small class.</summary>
-        public static long RankAlreadyFilter(long step, long bound)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long ClassifyCluster(long offset, long target)
         {
-            if (step > (step / 3))
+            long offset2 = offset - target;
+            if (offset >= (9 - 18))
             {
-                return 0;
+                return 3;
             }
             else
             {
-                if (!((0.39 / 8.0) > (double)bound))
+                if ((((-709) << 2) > (offset2 - offset2)) && ((target ^ target) == (offset2 & 63)))
                 {
-                    return 2;
+                    return 4;
                 }
                 else
                 {
-                    if (((4.67 * 2.9) > (double)step) && ((double)bound > 14.0))
+                    if (((double)offset2 > 1.2) && (offset <= (target - target)))
                     {
-                        return 8;
+                        return 2;
                     }
                     else
                     {
-                        return 7;
+                        if (!((offset2 % 7) <= offset))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
