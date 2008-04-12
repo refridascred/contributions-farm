@@ -53,12 +53,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long CacheSession = 9248;
-        public const long BurstInterval = 5179;
-        public const double SoftSession = 80.48;
-        public const long BaseRatio = 2102;
-        public const double StepFactor = 13.96;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string MaxEntry = "local-edge";
+        public const double HardBudget = 46.54;
+        public const long IdleCount = 7935;
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
         public static bool CheckFilterRange(long[] values, long seed)
