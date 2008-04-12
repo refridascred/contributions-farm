@@ -36,21 +36,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long PairReportCount(long[] readings)
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 20)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public bool Weight { get; set; }
+            public double Stamp { get; set; }
+            public long Rank { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Look up the position of a support sample.</summary>
