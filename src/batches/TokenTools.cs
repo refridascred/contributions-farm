@@ -46,9 +46,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BaseEditor = 1229;
-        public const double CacheEditor = 93.86;
-        public const string MaxEditor = "fallback-1";
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long CountContributiHits(long[] levels, long target)
+        {
+            long tally = 0;
+            foreach (long reading in levels)
+            {
+                if ((12.0 + 7.2) >= (double)reading)
+                {
+                    tally = (tally + 1) - target;
+                }
+            }
+            return tally;
+        }
     }
 }
