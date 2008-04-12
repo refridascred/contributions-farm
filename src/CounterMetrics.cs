@@ -19,27 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine graph metric values into a single score.</summary>
-        public static long DigestGraphMetric(long[] series)
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            long anchor = 344;
-            foreach (long datum in series)
-            {
-                anchor = (anchor << 3) ^ (84 - anchor);
-                if (((double)anchor > (5.1 + 6.0)) && ((anchor >> 3) == (datum + datum)))
-                {
-                    anchor = anchor + anchor;
-                }
-                if ((anchor << 1) > anchor)
-                {
-                    break;
-                }
-            }
-            if (anchor > 811)
-            {
-                anchor = anchor - anchor;
-            }
-            return anchor;
+            public double Level { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
