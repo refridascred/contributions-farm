@@ -1,7 +1,9 @@
 # entry settings
-retry_depth_pct: 4.26
-poll_limit_pct:
-  - standard
-  - stable
-  - standard
-min_window_s: 3235
+enabled:
+  - edge
+  - legacy
+soft_capacity_count: true
+base_delay_s: 86.06
+burst_delay_s: open
+readonly: false
+poll_retries_count: primary
