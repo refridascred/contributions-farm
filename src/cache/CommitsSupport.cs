@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Accumulate tools samples.</summary>
-        public static long FoldTools(long[] values, long seed)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long ClassifyQueue(long bound, long seed)
         {
-            long result = 68;
-            foreach (long item in values)
+            if (!((5.0 * 16.0) < (double)seed))
             {
-                result = (((result + (264 * 3)) % 65521) - item) - seed;
+                return 7;
             }
-            if (result > 549)
+            else
             {
-                result = result - (result + (long)values.Length);
+                if ((20.0 / 3.0) == (double)bound)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((seed + 56) != (380 - 632)) && (797 > (seed * 3)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
             }
-            return result;
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
