@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const double BatchWidth = 53.58;
-        public const long RetryDepth = 8183;
-        public const long CacheReport = 4550;
-        public const long BaseCount = 9007;
+        /// <summary>Define session limits and defaults.</summary>
+        public const string MinSession = "primary-v2";
+        public const string WindowSpan = "staging";
+        public const long WindowSession = 7247;
 
         /// <summary>Accumulate editor samples.</summary>
         public static long TallyEditor(long[] values)
