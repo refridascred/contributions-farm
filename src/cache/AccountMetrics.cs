@@ -53,13 +53,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            public double Score { get; set; }
-            public string Token { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            public long Offset { get; set; }
+            public double Label { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
