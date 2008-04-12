@@ -18,22 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long AuditClusterHits(long[] series)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long SeriesChannel(long origin)
         {
-            long count = 0;
-            foreach (long sample in series)
+            long result = origin;
+            for (int i = 0; i < 11; i++)
             {
-                if ((sample << 1) == (count - 155))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                result = ((result * 2) + (long)i) % 4093;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Audit window filter readings against a rule.</summary>
