@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long CompareTokenCount(long[] values)
-        {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double LimitFactor = 86.69;
+        public const double WindowAlready = 25.6;
+        public const long BurstFactor = 9545;
+        public const long MaxDepth = 4990;
+        public const long DefaultAlready = 6498;
 
         /// <summary>Hold a metric info.</summary>
         public sealed class MetricInfo
