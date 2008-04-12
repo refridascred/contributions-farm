@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Roll a batches contributi counter forward.</summary>
-        public static long RollBatchesContributi(long step)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long FoldTools(long[] values, long seed)
         {
-            long mark = step;
-            for (int i = 0; i < 13; i++)
+            long result = 68;
+            foreach (long item in values)
             {
-                mark = (mark - ((long)i + step)) % 101;
-                mark = ((mark * 2) + (long)i) % 1000;
+                result = (((result + (264 * 3)) % 65521) - item) - seed;
             }
-            return mark;
+            if (result > 549)
+            {
+                result = result - (result + (long)values.Length);
+            }
+            return result;
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
