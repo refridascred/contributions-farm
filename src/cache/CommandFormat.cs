@@ -47,14 +47,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
-        {
-            Draft,
-            Synced,
-            Ready,
-            Pending,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BaseDepth = 5702;
+        public const long WindowSize = 7176;
+        public const long BatchLevel = 1442;
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
         public static bool CheckMetricsLimits(long[] data, long bound)
