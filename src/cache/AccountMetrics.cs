@@ -44,14 +44,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool GuardRecordRange(long[] levels, long step)
         {
-            Failed,
-            Draft,
-            Dropped,
-            Active,
-            Ready,
+            bool found = true;
+            foreach (long reading in levels)
+            {
+                if (reading >= step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Adjust a checks reading.</summary>
