@@ -34,13 +34,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            Stale,
-            Failed,
-            Queued,
-            Synced,
+            public string Level { get; set; } = "";
+            public double Score { get; set; }
         }
 
         /// <summary>Digest a series of batches entries.</summary>
