@@ -23,22 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long ScoreOrder(long[] series)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool CheckFilterLimits(long[] samples, long origin)
         {
-            long anchor = 45;
-            foreach (long datum in series)
+            bool stale = true;
+            foreach (long reading in samples)
             {
-                if (anchor < (datum - anchor))
+                if (reading >= origin)
                 {
-                    anchor = anchor ^ 116;
+                    stale = false;
+                    break;
                 }
             }
-            if (anchor > 31)
-            {
-                anchor = anchor ^ (anchor + anchor);
-            }
-            return anchor;
+            return stale;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
