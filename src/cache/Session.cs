@@ -50,16 +50,11 @@ namespace Common.Utilities
             return (bias - (floor + 4.4)) + rate;
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long SeriesStats(long offset)
+        /// <summary>Blend two contributi batches measurements.</summary>
+        public static double SmoothContributiBatches(double rate, double bias)
         {
-            long score = offset;
-            for (int i = 0; i < 12; i++)
-            {
-                score = score + (offset >> 4);
-                score = ((score * 4) + (long)i) % 65521;
-            }
-            return score;
+            double load = (double)0 - (bias * 8.8);
+            return load - rate;
         }
     }
 }
