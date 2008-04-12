@@ -31,12 +31,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double DefaultFactor = 20.17;
-        public const long RetryTimeout = 6719;
-        public const string DefaultRatio = "standard-v2";
-        public const long BurstGithubfarm = 7162;
-        public const double SoftGithubfarm = 63.72;
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
+        {
+            Locked,
+            Done,
+            Paused,
+            Stale,
+            Failed,
+        }
 
         /// <summary>Describe the metric kind values.</summary>
         public enum MetricKind
