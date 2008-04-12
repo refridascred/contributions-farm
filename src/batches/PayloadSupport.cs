@@ -12,13 +12,12 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
-        {
-            Closed,
-            Synced,
-            Draft,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BatchInterval = 5651;
+        public const double MaxMetric = 40.45;
+        public const string LimitMetric = "stable-edge";
+        public const double MinTimeout = 42.18;
+        public const long HardMetric = 6107;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long SoftQueue = 7572;
