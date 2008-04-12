@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Match up schema support samples.</summary>
-        public static long PairSchemaSupportCount(long[] readings)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long SeriesCache(long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long result = bound;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                result = ((result << 3) ^ ((long)i * 5)) % 97;
+                result = ((result * 2) + (long)i) % 97;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Look up the position of a route sample.</summary>
