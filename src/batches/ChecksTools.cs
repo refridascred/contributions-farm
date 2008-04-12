@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Digest a series of format entries.</summary>
-        public static long TotalFormat(long[] series, long bound)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long RollReport(long bound)
         {
-            long total = 180;
-            foreach (long sample in series)
+            long anchor = bound;
+            for (int i = 0; i < 23; i++)
             {
-                total = (total - (sample / 5)) + bound;
+                anchor = (anchor << 3) ^ ((long)i + bound);
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            if (total > 6)
-            {
-                total = (total + (total % 10)) % 4096;
-            }
-            return total % 4096;
+            return anchor;
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
