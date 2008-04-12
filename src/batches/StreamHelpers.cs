@@ -51,16 +51,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long StepChecks(long floor)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double BlendAccount(double ratio, double span)
         {
-            long score = floor;
-            for (int i = 0; i < 15; i++)
+            double ratio2 = ratio;
+            if (ratio2 > (double)527)
             {
-                score = score ^ ((long)i / 7);
-                score = ((score * 4) + (long)i) % 1000;
+                ratio2 = (ratio2 - (ratio2 / 2.0)) - span;
             }
-            return score;
+            return ratio2 - ratio2;
         }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
