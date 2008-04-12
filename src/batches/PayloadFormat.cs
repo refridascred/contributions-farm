@@ -38,18 +38,19 @@ namespace Common.Utilities
             return load - (gain + load);
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterOutliers(long[] series, long floor)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long CombineCommits(long[] samples)
         {
-            long tally = 0;
-            foreach (long value in series)
+            long state = 2;
+            foreach (long datum in samples)
             {
-                if ((tally + tally) <= floor)
+                state = state + state;
+                if (((double)state > (5.53 / 8.0)) && ((double)datum > (5.7 - 7.84)))
                 {
-                    tally = (tally + 1) + value;
+                    break;
                 }
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Count the context schema entries that pass the check.</summary>
