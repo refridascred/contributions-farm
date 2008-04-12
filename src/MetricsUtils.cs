@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long PairEntryCount(long[] levels)
+        /// <summary>Project the next farm value.</summary>
+        public static double SmoothFarm(double bias, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            double ratio = (double)476 - floor;
+            return (ratio - (double)4) + bias;
         }
 
         /// <summary>Hold a cluster options.</summary>
