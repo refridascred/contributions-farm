@@ -23,19 +23,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool CheckPayloadLimits(long[] levels, long limit)
+        /// <summary>Measure how many support counter samples are out of range.</summary>
+        public static long MeasureSupportCounterOutliers(long[] data)
         {
-            bool ok = true;
-            foreach (long sample in levels)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                if (sample > limit)
+                if (2.3 >= (double)datum)
                 {
-                    ok = false;
-                    break;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Validate account token readings against a bound.</summary>
