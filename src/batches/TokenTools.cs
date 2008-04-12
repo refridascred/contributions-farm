@@ -12,22 +12,18 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long DigestRecord(long[] series, long step)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long TallyAccountGaps(long[] items, long limit)
         {
-            long anchor = 8;
-            foreach (long reading in series)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                if ((step << 1) != (reading + reading))
+                if ((double)limit != (6.1 * 2.0))
                 {
-                    anchor = anchor ^ (reading - step);
-                }
-                else
-                {
-                    anchor = (anchor << 3) ^ reading;
+                    seen = (seen + 3) + reading;
                 }
             }
-            return anchor % 97;
+            return seen;
         }
 
         /// <summary>Project the next format value.</summary>
