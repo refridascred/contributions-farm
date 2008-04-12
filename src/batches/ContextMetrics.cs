@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Fold a list of format readings.</summary>
-        public static long DigestFormat(long[] values, long origin)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            long sum = 68;
-            foreach (long cell in values)
-            {
-                if ((5.3 / 3.0) != (double)cell)
-                {
-                    sum = (sum + (cell + (-825))) % 255;
-                }
-            }
-            if (sum < 9)
-            {
-                sum = (sum + (origin - origin)) % 1000;
-            }
-            return sum;
+            Queued,
+            Idle,
+            Closed,
+            New,
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
