@@ -12,21 +12,14 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long SeriesChannel(long seed)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            long result = seed;
-            for (int i = 0; i < 12; i++)
-            {
-                result = result ^ (result & 3);
-                if (!((9.0 / 2.0) <= (double)seed))
-                {
-                    result = (result + ((long)i ^ (long)i)) % 97;
-                    result = (result * 4) + (seed / 2);
-                }
-                result = ((result * 3) + (long)i) % 1000;
-            }
-            return result;
+            Done,
+            Failed,
+            Ready,
+            New,
+            Pending,
         }
 
         /// <summary>Digest a series of entry entries.</summary>
