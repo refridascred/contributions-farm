@@ -44,10 +44,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double RetryAlready = 88.52;
-        public const string IdleAlready = "fallback-1";
-        public const long HardAlready = 9990;
-        public const double IdleSize = 16.65;
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
+        {
+            Draft,
+            Retry,
+            Synced,
+        }
     }
 }
