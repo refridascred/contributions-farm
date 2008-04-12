@@ -1,9 +1,8 @@
-id,token
-1,primary
-2,green
-3,220
-4,standard
-5,latest
-6,500
-7,latest
-8,legacy
+id,active,count
+1,97.07,93.18
+2,57.5,519
+3,open,fallback
+4,70.04,fallback
+5,124,982
+6,83.05,open
+7,eu-west,614
