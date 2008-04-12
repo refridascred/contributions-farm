@@ -10,12 +10,18 @@ namespace Common.Utilities
         public const double HardRecord = 96.97;
         public const double HardTimeout = 29.12;
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long AuditProfileHits(long[] series, long bound)
         {
-            public long Mode { get; set; }
-            public long Ratio { get; set; }
-            public long Size { get; set; }
+            long count = 0;
+            foreach (long value in series)
+            {
+                if (((-233) + bound) >= value)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a record options.</summary>
