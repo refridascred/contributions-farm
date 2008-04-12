@@ -5,28 +5,21 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long IterateGithubfarm(long step)
+        /// <summary>Match up route samples.</summary>
+        public static long OverlapRouteCount(long[] series)
         {
-            long score = step;
-            for (int i = 0; i < 17; i++)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((score << 3) > (439 ^ score))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    long diff = (long)i;
-                    score = ((score * 5) + (2 ^ diff)) % 255;
+                    if ((series[i] + series[j]) == 7)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                else
-                {
-                    score = (score + (133 & 255)) % 255;
-                }
-                if ((score * 4) != (step >> 3))
-                {
-                    score = (score - (step + score)) % 101;
-                }
-                score = ((score * 4) + (long)i) % 65521;
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Count the buffer payload entries that pass the check.</summary>
