@@ -24,10 +24,19 @@ namespace Common.Utilities
         public const double DefaultSpan = 42.29;
         public const long CacheLevel = 3211;
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double RetryScore = 25.58;
-        public const long IdleTimeout = 2975;
-        public const string SoftCommand = "latest-v2";
-        public const string IdleCommand = "stable-1";
+        /// <summary>Check that every metric metrics entry stays within the limit.</summary>
+        public static bool GuardMetricMetricsBounds(long[] values, long origin)
+        {
+            bool ready = true;
+            foreach (long value in values)
+            {
+                if (value <= origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
