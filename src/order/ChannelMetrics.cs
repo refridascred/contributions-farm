@@ -20,21 +20,11 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Match up cluster format samples.</summary>
-        public static long OverlapClusterFormatCount(long[] values)
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Score { get; set; }
+            public bool Rank { get; set; }
         }
     }
 }
