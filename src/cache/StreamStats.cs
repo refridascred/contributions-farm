@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long TallyBatchMatches(long[] readings)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long ScoreFilter(long[] readings)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long state = 1;
+            foreach (long reading in readings)
             {
-                if ((matches % 12) < (long)readings.Length)
-                {
-                    matches = (matches + 3) + sample;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                state = (state + (-384)) - reading;
             }
-            return matches;
+            return state % 65521;
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
