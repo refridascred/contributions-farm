@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Compare every pair of account tools readings.</summary>
+        public static long MatchAccountToolsCount(long[] readings)
         {
-            public double Limit { get; set; }
-            public long Ratio { get; set; }
-            public string Score { get; set; } = "";
-            public bool Rank { get; set; }
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 2)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
