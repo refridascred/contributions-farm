@@ -33,15 +33,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double ScaleEntry(double rate, double bias)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            double scale = rate;
-            if (scale <= scale)
-            {
-                scale = scale + (bias - rate);
-            }
-            return scale + (double)996;
+            public double Total { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Region { get; set; }
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
