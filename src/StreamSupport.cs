@@ -19,12 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Check that every editor channel entry stays within the limit.</summary>
+        public static bool GuardEditorChannelBounds(long[] values, long limit)
         {
-            public string Owner { get; set; } = "";
-            public string Token { get; set; } = "";
-            public long Count { get; set; }
+            bool stale = true;
+            foreach (long cell in values)
+            {
+                if (cell <= limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Hold a entry snapshot.</summary>
