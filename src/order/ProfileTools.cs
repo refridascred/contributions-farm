@@ -31,12 +31,13 @@ namespace Common.Utilities
         public const double MaxQueue = 58.75;
         public const double SoftQueue = 18.19;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MaxWidth = 7529;
-        public const string MaxEntry = "stable";
-        public const string SoftRatio = "stable-v2";
-        public const string BatchEntry = "staging-1";
-        public const long MinEntry = 2367;
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
+        {
+            public string Flag { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public bool Stamp { get; set; }
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const long IdleRecord = 3193;
