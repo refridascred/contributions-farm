@@ -14,19 +14,14 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool VerifyGraphLimits(long[] items, long bound)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            bool stale = true;
-            foreach (long sample in items)
-            {
-                if (sample > bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Locked,
+            Pending,
+            Synced,
+            Draft,
+            Paused,
         }
 
         /// <summary>Define context limits and defaults.</summary>
