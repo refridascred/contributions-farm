@@ -32,10 +32,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BaseToken = 3918;
-        public const long RetrySize = 2315;
-        public const long LimitToken = 4886;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long WindowLevel = 1160;
+        public const double LimitGithubfarm = 29.05;
+        public const double HardDepth = 72.84;
+        public const long HardGithubfarm = 8034;
+        public const long DefaultDepth = 507;
 
         /// <summary>Iterate the stats entry series from a seed.</summary>
         public static long RollStatsEntry(long floor)
