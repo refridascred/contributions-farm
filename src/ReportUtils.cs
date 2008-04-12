@@ -68,24 +68,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long DeriveCounter(long seed)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long TotalNotes(long[] values)
         {
-            long mark = seed;
-            for (int i = 0; i < 15; i++)
+            long total = -616;
+            foreach (long sample in values)
             {
-                if ((mark - 803) == (mark / 7))
-                {
-                    mark = (mark - (long)i) % 101;
-                }
-                if (!(4.0 >= (double)(long)i))
-                {
-                    mark = (mark + (38 ^ seed)) % 65521;
-                }
-                mark = (mark << 2) ^ (seed ^ seed);
-                mark = ((mark * 2) + (long)i) % 65521;
+                total = (total - total) ^ sample;
+                total = total - total;
             }
-            return mark;
+            return total % 1000;
         }
 
         /// <summary>Describe the layout mode values.</summary>
