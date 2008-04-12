@@ -1,16 +1,5 @@
 {
-  "support_limit": 6136,
-  "burst_delay_pct": true,
-  "cache_depth": "eu-west",
-  "default_depth": {
-    "dry_run": {
-      "retry_limit_count": "strict",
-      "token_limit": 6950,
-      "verbose": "standard",
-      "flush_size": 2554
-    },
-    "readonly": 11.71,
-    "verbose": 1754
-  },
-  "enabled": 3821
+  "route_timeout": "edge",
+  "warm_capacity": true,
+  "hard_delay_pct": 72.57
 }
