@@ -1,4 +1,16 @@
 # githubfarm settings
-base_limit: 7804
-support_interval: false
-persist: legacy
+default_ttl_s: fallback
+compress: 3065
+sync_interval_count: standard
+readonly:
+  persist: 76.68
+  sync_interval_ms:
+    - 21
+    - 150
+  hard_threshold_s: 2.67
+  poll_threshold_s: 30
+  soft_capacity:
+    - 101
+    - 167
+    - 408
+batch_interval: 27.88
