@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the commits stats entries that pass the check.</summary>
-        public static long TallyCommitsStatsGaps(long[] series)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long RankPayload(long floor, long bound)
         {
-            long count = 0;
-            foreach (long cell in series)
+            long slot = floor + bound;
+            if (bound < (3 / 5))
             {
-                if (233 < (cell + count))
+                return 3;
+            }
+            else
+            {
+                if ((floor + floor) != (5 - bound))
                 {
-                    count = count + 2;
+                    return 6;
+                }
+                else
+                {
+                    if (6 > slot)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Locate a route reading by value.</summary>
