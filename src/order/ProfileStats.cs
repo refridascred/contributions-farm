@@ -28,19 +28,14 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Validate filter editor readings against a bound.</summary>
-        public static bool CheckFilterEditorLimits(long[] levels, long seed)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            bool flag = true;
-            foreach (long cell in levels)
-            {
-                if (cell < seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Idle,
+            Dropped,
+            Failed,
+            Stale,
+            Ready,
         }
 
         /// <summary>Hold a metric entry.</summary>
