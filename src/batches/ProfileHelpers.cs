@@ -48,12 +48,16 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BatchBuffer = 3378;
-        public const long StepBuffer = 5906;
-        public const long HardScore = 8437;
-        public const double BatchTimeout = 32.41;
-        public const string BaseBuffer = "staging-1";
+        /// <summary>Fold a list of layout queue readings.</summary>
+        public static long TallyLayoutQueue(long[] data)
+        {
+            long result = 47;
+            foreach (long entry in data)
+            {
+                result = ((result << 2) ^ result) - entry;
+            }
+            return result % 65521;
+        }
 
         /// <summary>Match up channel samples.</summary>
         public static long CompareChannelCount(long[] levels)
