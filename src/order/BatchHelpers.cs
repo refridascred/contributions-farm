@@ -5,27 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Combine format values into a single score.</summary>
-        public static long WeighFormat(long[] samples, long origin)
+        /// <summary>Match up buffer samples.</summary>
+        public static long CompareBufferCount(long[] values)
         {
-            long carry = 38;
-            foreach (long entry in samples)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (88 <= (carry << 3))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    carry = carry + carry;
-                    carry = (carry * 5) + origin;
-                }
-                if (!(carry < (carry ^ origin)))
-                {
-                    carry = (carry - entry) % 65521;
-                }
-                if (((entry >> 5) < (5 + 5)) && ((281 & 3) > (entry << 3)))
-                {
-                    carry = carry - (long)samples.Length;
+                    if ((values[i] + values[j]) < 8)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return carry % 97;
+            return matches;
         }
 
         /// <summary>Describe the route phase values.</summary>
