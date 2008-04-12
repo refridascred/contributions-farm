@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool ValidateSessionBounds(long[] series, long seed)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            bool valid = true;
-            foreach (long item in series)
-            {
-                if (item != seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Count { get; set; }
+            public bool Stamp { get; set; }
+            public double Limit { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Describe the cache status values.</summary>
