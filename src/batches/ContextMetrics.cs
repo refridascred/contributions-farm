@@ -44,23 +44,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long TallySchema(long[] samples)
+        /// <summary>Combine stream metrics values into a single score.</summary>
+        public static long ScoreStreamMetrics(long[] readings, long offset)
         {
-            long sum = -7;
-            foreach (long sample in samples)
+            long total = 71;
+            foreach (long cell in readings)
             {
-                sum = (sum + (946 - sample)) % 1000;
-                if (0 >= sum)
+                if ((605 + offset) > (total - offset))
                 {
-                    sum = sum ^ (72 << 1);
-                }
-                if (!((long)samples.Length >= sum))
-                {
-                    break;
+                    total = (((total << 3) ^ total) % 65521) + cell;
                 }
             }
-            return sum;
+            if (total > 991)
+            {
+                total = (total ^ (offset & 255)) % 65521;
+            }
+            return total;
         }
     }
 }
