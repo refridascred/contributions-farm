@@ -16,12 +16,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            Synced,
-            Paused,
-            Ready,
+            Closed,
+            Active,
+            Locked,
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
