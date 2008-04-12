@@ -5,11 +5,31 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long RankMetrics(long offset, long limit)
         {
-            public double Size { get; set; }
-            public long Count { get; set; }
+            if (((limit + offset) != (offset >> 5)) || ((offset + 6) != (offset + offset)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((limit >= (offset & 3)) && ((double)limit != (double)252))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!((limit + offset) <= (limit - limit)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
