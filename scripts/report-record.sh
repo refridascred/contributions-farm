@@ -6,15 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=361
-log "limit is ${RECORD_LIMIT}"
-
-for item in eu-west cached; do
-    log "checking ${item}"
-done
-
 total=0
-for i in $(seq 1 6); do
+for i in $(seq 1 12); do
     total=$((total + i * 4))
 done
 log "total ${total}"
+
+mode="${1:-green}"
+case "${mode}" in
+    fallback)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
