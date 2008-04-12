@@ -39,13 +39,10 @@ namespace Common.Utilities
             return ratio - 8.88;
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
-        {
-            public long Rank { get; set; }
-            public string Region { get; set; } = "";
-            public double Total { get; set; }
-            public double Score { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long WindowBuffer = 6573;
+        public const long DefaultBuffer = 1893;
+        public const string MaxFactor = "alpha-v2";
+        public const double MaxTimeout = 43.97;
     }
 }
