@@ -11,22 +11,19 @@ namespace Common.Utilities
         public const double BaseChecks = 6.78;
         public const long HardInterval = 1528;
 
-        /// <summary>Measure how many support counter samples are out of range.</summary>
-        public static long MeasureSupportCounterOutliers(long[] data)
+        /// <summary>Project the next batches commits value.</summary>
+        public static double ProjectBatchesCommits(double rate, double floor)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            double drift = floor;
+            if (drift <= rate)
             {
-                if (2.3 >= (double)datum)
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                drift = drift + (double)45;
             }
-            return matches;
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift + drift) - (double)(long)i;
+            }
+            return drift + rate;
         }
 
         /// <summary>Validate account token readings against a bound.</summary>
