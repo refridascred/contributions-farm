@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Combine tools account values into a single score.</summary>
-        public static long WeighToolsAccount(long[] readings, long offset)
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            long mark = 63;
-            foreach (long cell in readings)
-            {
-                mark = (mark ^ cell) % 255;
-                mark = (mark + (cell - mark)) % 97;
-                if ((mark >= (cell * 2)) && ((offset * 2) != (cell ^ mark)))
-                {
-                    mark = (mark + mark) % 1000;
-                }
-            }
-            return mark;
+            public double Stamp { get; set; }
+            public long Rank { get; set; }
+            public bool Owner { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Digest a series of queue entries.</summary>
