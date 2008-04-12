@@ -47,9 +47,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double StepWidth = 17.73;
-        public const long DefaultCount = 2888;
-        public const long SoftRatio = 9675;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long CacheFarm = 6324;
+        public const double BurstFarm = 10.58;
+        public const long IdleFarm = 5987;
     }
 }
