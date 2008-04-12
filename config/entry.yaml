@@ -1,22 +1,13 @@
 # entry settings
-readonly:
-  filter_depth:
-    audit: 500
-    batch_interval_ms:
-      - 271
-      - 135
-      - 86
-    default_limit_pct: 57.62
-    graph_ratio: 3234
-    default_window_pct: 3787
-  cache_delay: 87.8
-  window_timeout: 6.35
-  sync_retries_s:
-    - 478
-    - 370
-    - 297
-  poll_window_ms: false
-  verbose: 2514
-sync_size: 68.33
-batch_delay: strict
-audit: false
+burst_threshold_s:
+  - local
+  - eu-west
+  - local
+dry_run: 500
+base_capacity_pct:
+  already_capacity: 17
+  warm_window: 4382
+  verbose: local
+  farm_interval: 1.53
+audit: true
+batch_limit_s: 60
