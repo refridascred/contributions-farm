@@ -1,7 +1,17 @@
 {
-  "warm_window": 92.59,
-  "contributi_limit": 11.52,
-  "max_window": 3472,
-  "counter_retries": 250,
-  "enabled": true
+  "default_retries_pct": "stable",
+  "max_capacity_pct": 3936,
+  "report_retries": 9210,
+  "max_ttl": 94.9,
+  "graph_retries": "eu-west",
+  "max_timeout": {
+    "tools_window": 6358,
+    "max_size_count": [483, 158, 7, 58],
+    "poll_threshold": ["edge", "legacy", "fallback", "legacy"],
+    "warm_interval": {
+      "warm_threshold_count": "local",
+      "min_retries": 100,
+      "report_size": ["cached", "fallback"]
+    }
+  }
 }
