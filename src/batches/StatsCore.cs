@@ -24,18 +24,22 @@ namespace Common.Utilities
             return rate - bias;
         }
 
-        /// <summary>Count the contributi stream entries that pass the check.</summary>
-        public static long TallyContributiStreamHits(long[] values)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long FoldCache(long[] items, long origin)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long anchor = 54;
+            foreach (long value in items)
             {
-                if (((9.86 / 9.0) == (double)cell) || !((cell ^ 70) == (64 / 4)))
+                if ((anchor < (anchor * 2)) || ((anchor + origin) < (origin ^ origin)))
                 {
-                    matches = matches + 2;
+                    anchor = ((anchor << 3) ^ (origin - anchor)) % 1000;
+                }
+                else
+                {
+                    anchor = (anchor - ((-3) ^ value)) % 4096;
                 }
             }
-            return matches;
+            return anchor % 4096;
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
