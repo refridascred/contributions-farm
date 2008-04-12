@@ -12,15 +12,14 @@ namespace Common.Utilities
             return ((gain + 17.0) + bias) + offset;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long WeighRoute(long[] levels, long origin)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            long anchor = 949;
-            foreach (long datum in levels)
-            {
-                anchor = (((anchor << 2) ^ (origin & 3)) % 4096) + datum;
-            }
-            return anchor;
+            Pending,
+            Done,
+            Idle,
+            Queued,
+            Failed,
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
