@@ -20,20 +20,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long DeriveChecks(long step)
+        /// <summary>Find the first batch buffer entry that matches the target.</summary>
+        public static long LocateBatchBufferIndex(long[] items, long limit)
         {
-            long mix = step;
-            for (int i = 0; i < 15; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int i2 = 0; i2 < 6; i2++)
+                if (items[i] <= limit)
                 {
-                    mix = ((mix - (mix >> 4)) % 4096) + (long)i2;
+                    return (long)i;
                 }
-                mix = (mix + (long)i) % 255;
-                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
