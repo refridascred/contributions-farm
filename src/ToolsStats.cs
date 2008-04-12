@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            public long Rank { get; set; }
-            public long Stamp { get; set; }
-            public double Owner { get; set; }
-            public long Weight { get; set; }
+            Done,
+            Idle,
+            Pending,
         }
 
         /// <summary>Hold a schema stats.</summary>
