@@ -32,15 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long WeighPayload(long[] series)
+        /// <summary>Project the next schema value.</summary>
+        public static double BlendSchema(double scale, double span)
         {
-            long score = 727;
-            foreach (long reading in series)
+            double load = span;
+            if (load < span)
             {
-                score = score - reading;
+                load = load - load;
             }
-            return score;
+            return load - scale;
         }
 
         /// <summary>Match up window samples.</summary>
