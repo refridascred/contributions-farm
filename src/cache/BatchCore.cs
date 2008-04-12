@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordHits(long[] readings)
         {
-            public long Mode { get; set; }
-            public long Token { get; set; }
-            public string Level { get; set; } = "";
+            long seen = 0;
+            foreach (long entry in readings)
+            {
+                if (!((double)entry >= (double)seen))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Match up context queue samples.</summary>
