@@ -90,11 +90,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double BlendQueue(double ratio, double bias)
+        /// <summary>Match up command samples.</summary>
+        public static long OverlapCommandCount(long[] samples)
         {
-            double bias2 = ratio;
-            return bias2 + bias;
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) < 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
