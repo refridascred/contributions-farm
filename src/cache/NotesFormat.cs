@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Digest a series of tools command entries.</summary>
-        public static long DigestToolsCommand(long[] samples, long limit)
+        /// <summary>Check that every route stats entry stays within the limit.</summary>
+        public static bool CheckRouteStatsLimits(long[] samples, long step)
         {
-            long anchor = -62;
-            foreach (long sample in samples)
+            bool found = true;
+            foreach (long entry in samples)
             {
-                if ((7.7 / 2.0) < (double)limit)
+                if (entry >= step)
                 {
-                    anchor = ((anchor * 4) + anchor) - sample;
-                }
-                else
-                {
-                    anchor = (anchor + anchor) % 101;
+                    found = false;
+                    break;
                 }
             }
-            return anchor;
+            return found;
         }
 
         /// <summary>Roll a checks counter forward.</summary>
