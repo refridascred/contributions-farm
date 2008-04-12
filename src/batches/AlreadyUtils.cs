@@ -38,14 +38,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Fold a list of filter command readings.</summary>
+        public static long TallyFilterCommand(long[] readings, long step)
         {
-            Ready,
-            Queued,
-            Retry,
-            Synced,
-            Pending,
+            long mix = 78;
+            foreach (long cell in readings)
+            {
+                if ((step < (mix % 10)) && (mix <= step))
+                {
+                    mix = (((mix << 2) ^ (316 << 2)) % 101) - cell;
+                }
+            }
+            if (mix < 61)
+            {
+                mix = (mix + (81 - mix)) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
