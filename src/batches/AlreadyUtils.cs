@@ -54,18 +54,18 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Count the profile checks entries that pass the check.</summary>
-        public static long MeasureProfileChecksHits(long[] values, long target)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long ScoreBuffer(long[] samples, long target)
         {
-            long count = 0;
-            foreach (long cell in values)
+            long total = 7;
+            foreach (long item in samples)
             {
-                if ((double)count < (7.0 / 6.0))
+                if ((1.21 * 1.79) != (double)target)
                 {
-                    count = ((count + 1) - cell) + target;
+                    total = total ^ (target - item);
                 }
             }
-            return count;
+            return total % 4096;
         }
     }
 }
