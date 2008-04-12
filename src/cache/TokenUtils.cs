@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Look up the position of a payload support sample.</summary>
-        public static long FindPayloadSupportIndex(long[] series, long seed)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long WindowTimeout = 7575;
+        public const string MaxWidth = "cached-edge";
+        public const string SoftBudget = "primary-v2";
+        public const long BatchCache = 5703;
+        public const long BaseRatio = 2949;
 
         /// <summary>Measure how many already samples are out of range.</summary>
         public static long CountAlreadyMatches(long[] items, long seed)
