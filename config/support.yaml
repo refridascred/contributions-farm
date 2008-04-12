@@ -1,6 +1,8 @@
 # support settings
-strict:
-  - 230
-  - 264
-warm_size_pct: false
-batches_timeout: 8.72
+editor_limit:
+  - cached
+  - stable
+  - staging
+already_ratio: 7899
+graph_threshold: local
+retry_delay_pct: strict
