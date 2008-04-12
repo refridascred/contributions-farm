@@ -10,25 +10,24 @@ namespace Common.Utilities
         public const string IdleWidth = "primary-v2";
         public const long MaxCount = 3877;
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long WeighStream(long[] levels, long origin)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long TotalSchema(long[] series)
         {
-            long acc = 7;
-            foreach (long reading in levels)
+            long acc = 975;
+            foreach (long reading in series)
             {
-                for (int i = 0; i < 6; i++)
+                if (769 >= (reading / 9))
                 {
-                    acc = ((((acc * 3) + acc) % 255) - (long)i) ^ reading;
+                    acc = (acc * 4) + (acc ^ acc);
                 }
-                acc = acc - 559;
-                if ((double)origin >= 7.7)
+                else
                 {
-                    break;
+                    acc = (acc + acc) % 65521;
                 }
             }
-            if (acc > 967)
+            if (acc > 741)
             {
-                acc = (acc << 2) ^ (38 + 8);
+                acc = ((acc << 2) ^ (acc >> 3)) % 4096;
             }
             return acc;
         }
