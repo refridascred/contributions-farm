@@ -32,12 +32,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long DefaultScore = 439;
-        public const long MaxDepth = 7271;
-        public const long CacheContributi = 6324;
-        public const long DefaultContributi = 1352;
-        public const long BatchContributi = 4387;
+        /// <summary>Validate farm batches readings against a bound.</summary>
+        public static bool CheckFarmBatchesLimits(long[] samples, long seed)
+        {
+            bool found = true;
+            foreach (long entry in samples)
+            {
+                if (entry >= seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
         public static long LocateStreamIndex(long[] items, long step)
