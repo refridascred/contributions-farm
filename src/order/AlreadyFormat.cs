@@ -26,18 +26,12 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryGaps(long[] data)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            long matches = 0;
-            foreach (long cell in data)
-            {
-                if ((cell + 856) < cell)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Dropped,
+            Synced,
+            New,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
