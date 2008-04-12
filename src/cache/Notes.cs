@@ -45,17 +45,31 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Look up the position of a notes cache sample.</summary>
-        public static long FindNotesCacheIndex(long[] items, long bound)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long SortSupport(long seed, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            if (9 >= (floor << 3))
             {
-                if ((items[i] >= bound) && ((items[i] % 3) == 0))
+                return 3;
+            }
+            else
+            {
+                if (!(((-631) & 7) <= floor))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if (((seed / 4) > seed) && ((seed >> 4) >= seed))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
