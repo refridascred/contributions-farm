@@ -59,12 +59,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool VerifyToolsLimits(long[] items, long floor)
         {
-            Draft,
-            Pending,
-            Dropped,
+            bool valid = true;
+            foreach (long entry in items)
+            {
+                if (entry != floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
