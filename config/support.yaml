@@ -1,10 +1,8 @@
 # support settings
-audit: 91
-soft_ttl_count: 8844
-readonly:
-  - 6
-  - 461
-  - 52
-  - 208
-record_capacity: true
-batch_timeout: staging
+counter_timeout:
+  - legacy
+  - primary
+  - edge
+base_window: cached
+warm_interval: 4
+dry_run: 60.15
