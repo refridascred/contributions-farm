@@ -1,13 +1,5 @@
 {
-  "verbose": 98.49,
-  "batch_threshold_s": {
-    "burst_size": ["edge", "staging", "green"],
-    "default_threshold_pct": "local",
-    "verbose": "open",
-    "warm_threshold_count": true,
-    "audit": 3658,
-    "sync_delay_pct": [16, 167, 416]
-  },
-  "default_depth_pct": "local",
-  "poll_limit": false
+  "contributi_depth": 60,
+  "compress": "latest",
+  "warm_retries_count": false
 }
