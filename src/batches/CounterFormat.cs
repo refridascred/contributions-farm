@@ -32,18 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long CombineSupport(long[] data, long limit)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool ValidateFarmLimits(long[] values, long target)
         {
-            long sum = 92;
-            foreach (long datum in data)
+            bool stale = true;
+            foreach (long item in values)
             {
-                if (4 <= (limit << 1))
+                if (item >= target)
                 {
-                    sum = (((sum * 2) + limit) % 101) + datum;
+                    stale = false;
+                    break;
                 }
             }
-            return sum % 1000;
+            return stale;
         }
     }
 }
