@@ -20,12 +20,9 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
-        {
-            public long Offset { get; set; }
-            public long Rank { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long SoftQueue = 7572;
+        public const string BatchQueue = "latest-edge";
+        public const double DefaultQueue = 50.78;
     }
 }
