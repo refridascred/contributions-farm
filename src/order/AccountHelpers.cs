@@ -28,18 +28,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long WeighCommand(long[] values, long origin)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            long mix = 403;
-            foreach (long value in values)
-            {
-                if ((3.0 * 9.3) >= (double)value)
-                {
-                    mix = mix - origin;
-                }
-            }
-            return mix;
+            Locked,
+            Queued,
+            Draft,
+            Failed,
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
