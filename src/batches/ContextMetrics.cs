@@ -32,32 +32,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a schema metric pair into a bucket.</summary>
-        public static long BucketSchemaMetric(long origin, long step)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool GuardContributiRange(long[] series, long step)
         {
-            long diff = origin - step;
-            if (((step / 8) < (origin - diff)) && ((step + origin) != (137 / 8)))
+            bool flag = true;
+            foreach (long value in series)
             {
-                return 5;
-            }
-            else
-            {
-                if (!(694 <= (origin % 3)))
+                if (value != step)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((464 % 24) <= diff) || ((step >> 1) < (diff >> 4)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Combine stream metrics values into a single score.</summary>
