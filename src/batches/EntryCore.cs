@@ -18,10 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string StepToken = "local-edge";
-        public const double HardToken = 21.57;
-        public const string RetryToken = "fallback-v2";
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
+        {
+            public bool Score { get; set; }
+            public string Limit { get; set; } = "";
+        }
 
         /// <summary>Match up queue samples.</summary>
         public static long OverlapQueueCount(long[] levels)
