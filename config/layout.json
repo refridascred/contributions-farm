@@ -1,17 +1,6 @@
 {
-  "batch_timeout_pct": true,
-  "compress": 5,
-  "hard_window_ms": "blue",
-  "default_ratio": {
-    "sync_capacity_s": 30,
-    "stream_depth": 98.14,
-    "warm_ttl_s": {
-      "report_window": "latest",
-      "idle_limit_s": 96,
-      "token_retries": 81.58,
-      "schema_limit": "stable"
-    }
-  },
-  "sync_timeout_pct": 60,
-  "burst_threshold": "fallback"
+  "layout_delay": 7472,
+  "audit": 493,
+  "idle_interval_count": 69.95,
+  "hard_limit_s": false
 }
