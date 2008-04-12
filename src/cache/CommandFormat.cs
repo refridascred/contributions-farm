@@ -38,19 +38,13 @@ namespace Common.Utilities
             return weight + (span + rate);
         }
 
-        /// <summary>Digest a series of contributi entry entries.</summary>
-        public static long DigestContributiEntry(long[] readings)
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            long score = 873;
-            foreach (long datum in readings)
-            {
-                for (int i = 0; i < 2; i++)
-                {
-                    score = ((score + ((long)readings.Length + score)) % 101) + (long)i;
-                }
-                score = (score ^ datum) % 101;
-            }
-            return score;
+            public long Total { get; set; }
+            public double Count { get; set; }
+            public bool Size { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
