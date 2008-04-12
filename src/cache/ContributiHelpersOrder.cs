@@ -38,18 +38,10 @@ namespace Common.Utilities
         public const long DefaultContext = 9376;
         public const double SoftContext = 84.85;
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long CountFarmOutliers(long[] series)
-        {
-            long matches = 0;
-            foreach (long datum in series)
-            {
-                if ((datum * 2) <= matches)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double BatchMetrics = 14.74;
+        public const double MinTimeout = 8.78;
+        public const string HardSpan = "open-v2";
+        public const long MinMetrics = 609;
     }
 }
