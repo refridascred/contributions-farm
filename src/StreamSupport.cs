@@ -45,21 +45,14 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long OverlapGraphCount(long[] samples)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Closed,
+            Synced,
+            Idle,
+            Paused,
+            Locked,
         }
     }
 }
