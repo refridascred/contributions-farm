@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long SoftWidth = 9935;
-        public const long SoftFactor = 9769;
-        public const string BaseBudget = "standard";
-        public const double MinSupport = 28.49;
-        public const long RetrySupport = 7016;
+        /// <summary>Digest a series of graph contributi entries.</summary>
+        public static long TallyGraphContributi(long[] data, long limit)
+        {
+            long state = -456;
+            foreach (long value in data)
+            {
+                state = ((state - (limit - (long)data.Length)) % 97) + value;
+                state = state ^ state;
+            }
+            return state;
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const string IdleWidth = "strict-v2";
