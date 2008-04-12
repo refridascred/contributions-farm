@@ -6,12 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=225
-log "limit is ${CHANNEL_LIMIT}"
+for item in local eu-west latest; do
+    log "checking ${item}"
+done
 
-mode="${1:-fallback}"
+mode="${1:-primary}"
 case "${mode}" in
-    blue)
+    edge)
         log "fast path"
         ;;
     *)
