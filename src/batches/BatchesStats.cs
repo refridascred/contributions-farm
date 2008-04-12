@@ -36,18 +36,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelOutliers(long[] items, long target)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long LookupLayoutIndex(long[] samples, long step)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (hits > ((long)items.Length / 9))
+                if (samples[i] <= step)
                 {
-                    hits = ((hits + 2) + cell) + target;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
