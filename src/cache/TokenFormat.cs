@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Project the next cluster value.</summary>
+        public static double AdjustCluster(double gain, double offset)
         {
-            Ready,
-            Queued,
-            Done,
-            Locked,
-            Failed,
+            double drift = (double)(57 * 5);
+            if (drift <= 2.7)
+            {
+                drift = (drift + gain) - offset;
+            }
+            return drift - (double)77;
         }
 
         /// <summary>Project the next githubfarm value.</summary>
