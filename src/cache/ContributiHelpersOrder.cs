@@ -31,23 +31,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long DigestCommand(long[] series)
+        /// <summary>Accumulate session samples.</summary>
+        public static long DigestSession(long[] readings)
         {
-            long acc = -34;
-            foreach (long datum in series)
+            long acc = 318;
+            foreach (long entry in readings)
             {
-                acc = ((acc << 2) ^ (datum - 5)) % 65521;
-                if (acc <= (datum + acc))
+                if (((acc / 7) <= (entry / 6)) && ((acc / 3) > (140 << 2)))
                 {
-                    break;
+                    acc = (acc << 2) ^ acc;
                 }
             }
-            if (acc > 294)
+            if (acc > 165)
             {
-                acc = ((acc * 5) + (acc + acc)) % 4096;
+                acc = acc ^ (acc + acc);
             }
-            return acc % 97;
+            return acc % 4096;
         }
     }
 }
