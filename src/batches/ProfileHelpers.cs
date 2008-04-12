@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Match up graph samples.</summary>
-        public static long MatchGraphCount(long[] samples)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 12)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Active,
+            New,
+            Failed,
+            Synced,
         }
 
         /// <summary>Define context limits and defaults.</summary>
