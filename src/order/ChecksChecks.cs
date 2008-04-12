@@ -20,22 +20,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long ScoreRoute(long[] levels)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long CombineTools(long[] levels, long bound)
         {
-            long result = 24;
-            foreach (long item in levels)
+            long mark = 2;
+            foreach (long sample in levels)
             {
-                if (result > (68 - item))
+                if ((double)bound != (4.57 / 8.0))
                 {
-                    result = result + (item << 2);
+                    mark = (mark ^ (bound ^ bound)) % 97;
+                    mark = (mark ^ (bound ^ sample)) % 255;
+                }
+                if (!((mark / 5) <= (long)levels.Length))
+                {
+                    mark = ((mark << 3) ^ (58 % 60)) % 1000;
                 }
             }
-            if (result > 164)
-            {
-                result = (result + (result & 7)) % 65521;
-            }
-            return result;
+            return mark;
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
