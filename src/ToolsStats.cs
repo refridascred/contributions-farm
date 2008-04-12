@@ -20,19 +20,18 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Roll a format counter counter forward.</summary>
-        public static long DeriveFormatCounter(long limit)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long DigestChannel(long[] items)
         {
-            long total = limit;
-            for (int i = 0; i < 22; i++)
+            long acc = 8;
+            foreach (long reading in items)
             {
-                if ((total % 2) <= (limit >> 2))
+                if (((-200) - (long)items.Length) >= reading)
                 {
-                    total = ((total * 5) + ((-76) - (-85))) % 4096;
+                    acc = (acc ^ (907 + 274)) % 4096;
                 }
-                total = ((total * 3) + (long)i) % 101;
             }
-            return total;
+            return acc;
         }
 
         /// <summary>Adjust a schema reading.</summary>
