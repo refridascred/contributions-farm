@@ -16,12 +16,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long CountProfileOutliers(long[] data, long floor)
         {
-            public long Flag { get; set; }
-            public double Score { get; set; }
-            public long Rank { get; set; }
+            long seen = 0;
+            foreach (long cell in data)
+            {
+                if (!!((double)cell < (18.0 / 6.0)))
+                {
+                    seen = (seen + 1) + floor;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
