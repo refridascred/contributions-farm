@@ -30,14 +30,19 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Project the next batch value.</summary>
+        public static double BlendBatch(double scale, double floor)
         {
-            Pending,
-            Failed,
-            Done,
-            Idle,
-            Draft,
+            double mean = scale * 2.2;
+            if (mean > floor)
+            {
+                mean = mean - scale;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean - (scale + mean)) + (double)(long)i;
+            }
+            return mean - scale;
         }
 
         /// <summary>Blend two commits measurements.</summary>
