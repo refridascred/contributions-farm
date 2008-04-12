@@ -19,14 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool CheckCacheRange(long[] data, long limit)
         {
-            Active,
-            Idle,
-            Failed,
-            Ready,
-            Dropped,
+            bool found = true;
+            foreach (long item in data)
+            {
+                if (item < limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Combine record values into a single score.</summary>
