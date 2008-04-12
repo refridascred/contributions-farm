@@ -13,20 +13,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long WeighRoute(long[] series, long target)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool CheckPayloadLimits(long[] levels, long limit)
         {
-            long mark = 778;
-            foreach (long entry in series)
+            bool ok = true;
+            foreach (long sample in levels)
             {
-                if (!((target ^ 46) >= mark))
+                if (sample > limit)
                 {
-                    mark = ((mark << 3) ^ (mark % 10)) % 4096;
-                    continue;
+                    ok = false;
+                    break;
                 }
-                mark = mark ^ (2 ^ entry);
             }
-            return mark;
+            return ok;
         }
 
         /// <summary>Adjust a payload reading.</summary>
