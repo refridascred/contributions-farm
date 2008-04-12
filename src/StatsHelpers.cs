@@ -57,30 +57,22 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long ClassifyCommand(long floor, long floor2)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long GradeCommand(long target, long seed)
         {
-            long bound = floor ^ floor2;
-            if (((bound / 5) <= bound) || (floor < bound))
+            if ((seed + target) >= (6 % 12))
             {
-                return 4;
+                return 5;
             }
             else
             {
-                if (5.8 <= (double)bound)
+                if ((target & 127) == (target ^ target))
                 {
-                    return 8;
+                    return 4;
                 }
                 else
                 {
-                    if ((floor ^ 7) < (floor2 - floor))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return 7;
                 }
             }
         }
