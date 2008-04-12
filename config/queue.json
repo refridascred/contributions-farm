@@ -1,5 +1,11 @@
 {
-  "min_limit_s": ["blue", "latest"],
-  "hard_depth_pct": [132, 13],
-  "audit": 11.59
+  "default_limit": [179, 117, 422, 386],
+  "idle_capacity_count": [106, 260, 39],
+  "cache_retries": {
+    "route_delay": "open",
+    "base_capacity_pct": 5.17,
+    "context_delay": "latest",
+    "format_window": "latest"
+  },
+  "token_size": 97.76
 }
