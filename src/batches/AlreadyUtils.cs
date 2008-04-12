@@ -51,18 +51,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long CountQueueOutliers(long[] readings, long limit)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long WeighGithubfarm(long[] series, long seed)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long state = 5;
+            foreach (long sample in series)
             {
-                if ((double)limit <= (19.0 - 5.81))
-                {
-                    tally = (tally + 1) ^ datum;
-                }
+                state = (((state + (state + state)) % 65521) + sample) + seed;
             }
-            return tally;
+            return state % 97;
         }
     }
 }
