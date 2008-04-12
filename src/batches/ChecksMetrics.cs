@@ -51,11 +51,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double MaxInterval = 89.7;
-        public const long MinSize = 4261;
-        public const long MinCommits = 8496;
-        public const long RetryCommits = 4094;
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
+        {
+            Active,
+            Paused,
+            Closed,
+        }
 
         /// <summary>Describe the record mode values.</summary>
         public enum RecordMode
