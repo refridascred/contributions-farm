@@ -18,23 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long TallyStream(long[] samples)
+        /// <summary>Scale a entry queue figure with a bias.</summary>
+        public static double ScaleEntryQueue(double bias, double span)
         {
-            long sum = 124;
-            foreach (long value in samples)
-            {
-                sum = (sum - (667 << 3)) % 4096;
-                if ((value ^ sum) == (97 + 42))
-                {
-                    sum = sum ^ (sum << 3);
-                }
-            }
-            if (sum < (-2))
-            {
-                sum = ((sum << 3) ^ (959 + sum)) % 4096;
-            }
-            return sum % 1000;
+            double rate = span;
+            return (rate + 6.3) + bias;
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
