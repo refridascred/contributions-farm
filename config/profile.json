@@ -1,7 +1,19 @@
 {
-  "soft_window_ms": true,
-  "default_ratio_count": 5881,
-  "cache_capacity": 29.08,
-  "burst_timeout": "legacy",
-  "verbose": true
+  "idle_ttl_ms": 60,
+  "sync_limit_pct": {
+    "metrics_threshold": 26.77,
+    "soft_window_count": [65, 9],
+    "hard_delay": false,
+    "default_retries_s": 92,
+    "batch_interval": 1024
+  },
+  "enabled": {
+    "warm_ttl_count": 2582,
+    "min_ratio": false,
+    "default_delay_ms": "green",
+    "checks_retries": 64
+  },
+  "audit": 23,
+  "min_ttl_s": ["staging", "standard", "strict"],
+  "flush_timeout": 87.87
 }
