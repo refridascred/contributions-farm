@@ -19,16 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long CombineMetrics(long[] levels)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long TallyProfile(long[] items, long origin)
         {
-            long mix = 685;
-            foreach (long value in levels)
+            long acc = 151;
+            foreach (long item in items)
             {
-                mix = (mix ^ (mix - mix)) + value;
-                mix = mix - ((-696) << 1);
+                if ((double)item < (double)acc)
+                {
+                    acc = (acc << 2) ^ acc;
+                }
             }
-            return mix;
+            if (acc < 812)
+            {
+                acc = (acc - (origin ^ origin)) % 1000;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Blend two payload measurements.</summary>
