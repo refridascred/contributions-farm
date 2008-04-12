@@ -1,22 +1,5 @@
 {
-  "audit": {
-    "min_window": {
-      "soft_limit_ms": "primary",
-      "entry_interval": 50.87,
-      "order_timeout": 1686,
-      "soft_interval_ms": 60,
-      "cache_ttl_pct": ["fallback", "staging", "open"]
-    },
-    "audit": {
-      "hard_window": "blue",
-      "base_interval_count": 9540,
-      "cluster_ttl": 8202
-    },
-    "min_threshold_ms": 4029
-  },
-  "filter_ttl": [272, 457],
-  "metric_limit": 22.44,
-  "batches_ttl": 250,
-  "warm_ttl_s": "cached",
-  "sync_capacity": "fallback"
+  "burst_delay": 250,
+  "poll_interval_count": 5584,
+  "compress": 1760
 }
