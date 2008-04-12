@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsGaps(long[] levels, long step)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long ClassifyQueue(long bound, long target)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long cur = bound ^ target;
+            if ((cur + target) < target)
             {
-                if (((cell + cell) >= (cell / 7)) && ((97 % 100) < hits))
+                return 0;
+            }
+            else
+            {
+                if (target < (target + bound))
                 {
-                    hits = (hits + 3) + step;
+                    return 7;
+                }
+                else
+                {
+                    if (!((double)cur != (1.0 / 7.0)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
