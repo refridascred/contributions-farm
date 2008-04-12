@@ -58,23 +58,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long DigestStream(long[] series, long offset)
+        /// <summary>Grade a window support value against two limits.</summary>
+        public static long BucketWindowSupport(long target, long bound)
         {
-            long carry = 2;
-            foreach (long sample in series)
+            if ((double)bound > (double)target)
             {
-                carry = (carry ^ (sample / 8)) % 97;
-                if ((68 + (long)series.Length) > offset)
+                return 5;
+            }
+            else
+            {
+                if ((double)bound <= (4.56 * 5.7))
                 {
-                    carry = carry + (1 - carry);
+                    return 0;
+                }
+                else
+                {
+                    if (target >= (target ^ target))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            if (carry < 3)
-            {
-                carry = ((carry << 2) ^ (carry + offset)) % 1000;
-            }
-            return carry % 4096;
         }
     }
 }
