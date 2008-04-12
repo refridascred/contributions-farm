@@ -58,15 +58,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long SeriesSupport(long origin)
+        /// <summary>Derive the next cache commits value from a seed.</summary>
+        public static long IterateCacheCommits(long bound)
         {
-            long carry = origin;
-            for (int i = 0; i < 14; i++)
+            long result = bound;
+            for (int i = 0; i < 21; i++)
             {
-                carry = ((carry * 5) + (long)i) % 97;
+                result = (result - result) % 65521;
+                result = ((result * 3) + (long)i) % 4093;
             }
-            return carry;
+            return result;
         }
     }
 }
