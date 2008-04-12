@@ -50,9 +50,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long CacheFarm = 6324;
-        public const double BurstFarm = 10.58;
-        public const long IdleFarm = 5987;
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool ValidateBatchesLimits(long[] values, long limit)
+        {
+            bool valid = true;
+            foreach (long item in values)
+            {
+                if (item > limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
