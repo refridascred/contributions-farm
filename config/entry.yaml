@@ -1,21 +1,9 @@
 # entry settings
-min_ttl:
-  batch_timeout_s: 100
-  schema_size: 9710
-  hard_depth: standard
-  compress:
-    filter_limit:
-      - 255
-      - 442
-      - 339
-      - 440
-    hard_delay_pct: 1024
-    retry_delay_count: true
-    burst_interval_s: 30
-  cache_ttl_count: 77
-  support_capacity: 56
-base_depth_pct: blue
-payload_threshold: 5.75
-batch_threshold: true
-idle_window_s: primary
-flush_ttl_count: 98
+warm_window_pct: true
+warm_capacity: edge
+sync_limit:
+  - 233
+  - 115
+  - 416
+audit: 3845
+support_depth: blue
