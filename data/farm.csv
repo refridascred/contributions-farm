@@ -1,6 +1,11 @@
-id,rank,region,state,token
-1,638,336,latest,staging
-2,61.26,32.38,79,442
-3,legacy,stable,local,53.06
-4,69.27,stable,stable,82.87
-5,994,93,3.73,186
+id,weight,token,ratio,rank
+1,38.06,108,11.32,226
+2,cached,484,97.79,45.15
+3,520,legacy,primary,91.76
+4,55.08,eu-west,latest,81.54
+5,fallback,10.4,199,816
+6,807,primary,28.68,8.6
+7,218,local,eu-west,557
+8,756,784,894,553
+9,standard,staging,451,573
+10,25.95,25.87,400,19.7
