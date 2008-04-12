@@ -6,21 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 3); do
-    total=$((total + i * 5))
+for item in eu-west cached fallback open; do
+    log "checking ${item}"
 done
-log "total ${total}"
 
-CHANNEL_LIMIT=303
-log "limit is ${CHANNEL_LIMIT}"
-
-mode="${1:-eu-west}"
+mode="${1:-open}"
 case "${mode}" in
-    local)
+    open)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+count=0
+while [ "${count}" -lt 9 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
