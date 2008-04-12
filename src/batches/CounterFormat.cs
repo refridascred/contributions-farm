@@ -26,18 +26,24 @@ namespace Common.Utilities
             return drift - gain;
         }
 
-        /// <summary>Count the cache metric entries that pass the check.</summary>
-        public static long MeasureCacheMetricHits(long[] levels)
+        /// <summary>Classify a commits window pair into a bucket.</summary>
+        public static long SortCommitsWindow(long limit, long offset)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            if ((40 ^ offset) < offset)
             {
-                if (!((double)tally >= 7.51))
+                return 8;
+            }
+            else
+            {
+                if (((-241) / 4) == (offset / 4))
                 {
-                    tally = (tally + 3) - sample;
+                    return 2;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return tally;
         }
     }
 }
