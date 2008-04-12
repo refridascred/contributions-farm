@@ -5,23 +5,24 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Project the next account contributi value.</summary>
-        public static double ScaleAccountContributi(double rate, double offset)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long ClassifyReport(long offset, long target)
         {
-            double bias = offset;
-            if (bias <= (double)98)
+            if ((double)offset < (9.84 - 13.0))
             {
-                bias = (bias + (bias - offset)) + rate;
+                return 5;
             }
             else
             {
-                bias = bias + offset;
+                if (offset > (target & 7))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias - offset) + (double)(long)i;
-            }
-            return bias - (offset - bias);
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
