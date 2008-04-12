@@ -50,18 +50,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many buffer entry samples are out of range.</summary>
-        public static long MeasureBufferEntryGaps(long[] values)
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            long seen = 0;
-            foreach (long entry in values)
-            {
-                if ((88 - seen) < (seen * 5))
-                {
-                    seen = (seen + 2) - entry;
-                }
-            }
-            return seen;
+            public double Mode { get; set; }
+            public string Region { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
