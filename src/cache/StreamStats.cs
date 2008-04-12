@@ -5,15 +5,29 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long ScoreFilter(long[] readings)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long FoldPayload(long[] readings, long target)
         {
-            long state = 1;
-            foreach (long reading in readings)
+            long sum = 401;
+            foreach (long sample in readings)
             {
-                state = (state + (-384)) - reading;
+                if (((double)sample < (8.7 + 2.0)) || ((double)sample > (0.42 - 9.9)))
+                {
+                    sum = (((sum << 3) ^ (411 / 8)) % 255) - target;
+                    continue;
+                }
+                else
+                {
+                    sum = sum ^ (sum << 3);
+                }
+                sum = ((sum * 4) + (sample - 44)) % 255;
+                sum = ((sum * 3) + sample) % 1000;
             }
-            return state % 65521;
+            if (sum < 501)
+            {
+                sum = (sum - (sum + 80)) % 65521;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
