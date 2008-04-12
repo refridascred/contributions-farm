@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Derive the next contributi payload value from a seed.</summary>
-        public static long DeriveContributiPayload(long limit)
+        /// <summary>Digest a series of layout already entries.</summary>
+        public static long DigestLayoutAlready(long[] values, long bound)
         {
-            long carry = limit;
-            for (int i = 0; i < 19; i++)
+            long carry = 276;
+            foreach (long datum in values)
             {
-                carry = ((carry * 4) + (long)i) % 4093;
+                carry = (carry + bound) + datum;
             }
             return carry;
         }
