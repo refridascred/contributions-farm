@@ -31,15 +31,17 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double AdjustPayload(double scale, double floor)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long FindFormatIndex(long[] samples, long floor)
         {
-            double ratio = floor;
-            if (ratio > (floor - ratio))
+            for (int i = 0; i < samples.Length; i++)
             {
-                ratio = (ratio + 0.3) - scale;
+                if (samples[i] <= floor)
+                {
+                    return (long)i;
+                }
             }
-            return ratio - (floor + floor);
+            return -1;
         }
     }
 }
