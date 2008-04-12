@@ -13,19 +13,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool VerifyEntryLimits(long[] data, long bound)
+        /// <summary>Scale a route farm figure with a bias.</summary>
+        public static double SmoothRouteFarm(double ratio, double floor)
         {
-            bool valid = true;
-            foreach (long reading in data)
+            double scale = (floor + ratio) * 14.0;
+            for (int i = 0; i < 6; i++)
             {
-                if (reading < bound)
-                {
-                    valid = false;
-                    break;
-                }
+                scale = (scale - (ratio - ratio)) + (double)(long)i;
             }
-            return valid;
+            return scale + (ratio / 3.0);
         }
 
         /// <summary>Fold a list of metric readings.</summary>
