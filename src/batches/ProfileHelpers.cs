@@ -32,23 +32,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many contributi format samples are out of range.</summary>
-        public static long MeasureContributiFormatGaps(long[] data, long floor)
-        {
-            long count = 0;
-            foreach (long entry in data)
-            {
-                if (9.0 < (double)floor)
-                {
-                    count = (count + 2) + entry;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BaseToken = 3918;
+        public const long RetrySize = 2315;
+        public const long LimitToken = 4886;
 
         /// <summary>Iterate the stats entry series from a seed.</summary>
         public static long RollStatsEntry(long floor)
