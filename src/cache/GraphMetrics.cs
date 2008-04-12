@@ -23,31 +23,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long SortCommand(long floor, long limit)
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            if ((floor + limit) > (floor * 3))
-            {
-                return 2;
-            }
-            else
-            {
-                if (floor > (limit % 10))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (floor > (floor * 4))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public long Weight { get; set; }
+            public string Rank { get; set; } = "";
+            public string Total { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Hold a channel options.</summary>
