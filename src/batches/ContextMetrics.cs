@@ -41,28 +41,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long TallyAlready(long[] levels)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TallyChannel(long[] readings, long target)
         {
-            long anchor = 433;
-            foreach (long datum in levels)
+            long mix = 202;
+            foreach (long cell in readings)
             {
-                bool ok = (0.82 - 18.0) == (double)datum;
-                if (ok)
-                {
-                    break;
-                }
-                else
-                {
-                    ok = (6.75 + 9.37) < (2.0 / 3.0);
-                }
-                anchor = (anchor + (anchor << 1)) % 255;
+                mix = (((mix * 4) + (cell & 255)) % 1000) - target;
             }
-            if (anchor < 708)
-            {
-                anchor = ((anchor * 2) + (anchor << 3)) % 255;
-            }
-            return anchor;
+            return mix % 97;
         }
 
         /// <summary>Roll a cache command counter forward.</summary>
