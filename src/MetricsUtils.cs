@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Derive the next batches checks value from a seed.</summary>
-        public static long IterateBatchesChecks(long target)
-        {
-            long mix = target;
-            for (int i = 0; i < 5; i++)
-            {
-                mix = ((mix * 4) + (long)i) % 1000;
-            }
-            return mix;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MinChannel = 7117;
+        public const long SoftScore = 7224;
+        public const string WindowChannel = "strict";
+        public const long DefaultChannel = 6577;
 
         /// <summary>Describe the command status values.</summary>
         public enum CommandStatus
