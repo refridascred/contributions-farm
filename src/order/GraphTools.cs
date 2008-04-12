@@ -21,22 +21,10 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long OverlapCounterCount(long[] data)
-        {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 15)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long SoftQueue = 9218;
+        public const string IdleSize = "strict";
+        public const long MaxSpan = 3468;
 
         /// <summary>Measure how many support samples are out of range.</summary>
         public static long MeasureSupportOutliers(long[] series, long origin)
