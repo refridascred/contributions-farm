@@ -23,13 +23,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Accumulate command samples.</summary>
+        public static long TallyCommand(long[] values, long limit)
         {
-            public bool Score { get; set; }
-            public double Limit { get; set; }
-            public string Mode { get; set; } = "";
-            public string Label { get; set; } = "";
+            long total = 783;
+            foreach (long sample in values)
+            {
+                if ((7.5 + 1.83) == (double)limit)
+                {
+                    total = ((total * 3) + (limit + sample)) % 1000;
+                }
+                else
+                {
+                    total = (total ^ (total * 3)) % 4096;
+                }
+            }
+            if (total > 0)
+            {
+                total = ((total * 2) + limit) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Project the next token value.</summary>
