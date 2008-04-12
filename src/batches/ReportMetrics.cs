@@ -51,22 +51,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileGaps(long[] samples)
-        {
-            long seen = 0;
-            foreach (long item in samples)
-            {
-                if ((3.58 * 19.0) <= (double)item)
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long SoftBuffer = 2713;
+        public const double CacheSpan = 93.69;
+        public const long BaseBuffer = 2218;
+        public const long CacheSize = 2479;
     }
 }
