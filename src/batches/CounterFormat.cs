@@ -27,19 +27,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool ValidateFarmLimits(long[] values, long target)
+        /// <summary>Check that every route queue entry stays within the limit.</summary>
+        public static bool VerifyRouteQueueBounds(long[] samples, long seed)
         {
-            bool stale = true;
-            foreach (long item in values)
+            bool valid = true;
+            foreach (long cell in samples)
             {
-                if (item >= target)
+                if (cell >= seed)
                 {
-                    stale = false;
+                    valid = false;
                     break;
                 }
             }
-            return stale;
+            return valid;
         }
     }
 }
