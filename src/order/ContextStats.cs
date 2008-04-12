@@ -36,12 +36,18 @@ namespace Common.Utilities
         public const double DefaultInterval = 94.45;
         public const double SoftWidth = 44.99;
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowOutliers(long[] values, long seed)
         {
-            public double Flag { get; set; }
-            public string Weight { get; set; } = "";
-            public long Owner { get; set; }
+            long count = 0;
+            foreach (long cell in values)
+            {
+                if (!((cell % 7) <= (count >> 5)))
+                {
+                    count = (count + 1) - seed;
+                }
+            }
+            return count;
         }
     }
 }
