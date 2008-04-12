@@ -22,12 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Count the commits cache entries that pass the check.</summary>
+        public static long MeasureCommitsCacheGaps(long[] levels)
         {
-            public long Weight { get; set; }
-            public string Level { get; set; } = "";
-            public long Token { get; set; }
+            long count = 0;
+            foreach (long item in levels)
+            {
+                if (!((count - item) <= (488 - count)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
