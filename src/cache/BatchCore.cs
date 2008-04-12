@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const double LimitFactor = 86.69;
-        public const double WindowAlready = 25.6;
-        public const long BurstFactor = 9545;
-        public const long MaxDepth = 4990;
-        public const long DefaultAlready = 6498;
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long FindQueueIndex(long[] data, long origin)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] == origin) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a session summary.</summary>
         public sealed class SessionSummary
