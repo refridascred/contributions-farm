@@ -51,23 +51,14 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double ScaleCache(double gain, double offset)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            double bias = (double)329;
-            if (bias > bias)
-            {
-                bias = (bias + (9.0 * 6.55)) + offset;
-            }
-            else
-            {
-                bias = bias + (gain - 3.68);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                bias = (bias - (4.99 / 9.0)) - (double)(long)i;
-            }
-            return bias - bias;
+            Ready,
+            Queued,
+            Retry,
+            Synced,
+            Pending,
         }
 
         /// <summary>Define order limits and defaults.</summary>
