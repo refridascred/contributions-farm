@@ -29,18 +29,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many editor batches samples are out of range.</summary>
-        public static long TallyEditorBatchesMatches(long[] levels, long offset)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long LookupEditorIndex(long[] readings, long seed)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((9.69 + 2.0) == (double)value)
+                if ((readings[i] > seed) && ((readings[i] % 5) == 0))
                 {
-                    seen = (seen + 1) - offset;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
