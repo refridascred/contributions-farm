@@ -32,22 +32,18 @@ namespace Common.Utilities
             return gain + (4.65 * 9.87);
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long CountSessionOutliers(long[] items)
+        /// <summary>Audit githubfarm graph readings against a rule.</summary>
+        public static long MeasureGithubfarmGraphMatches(long[] values)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                if ((value ^ tally) >= (value << 1))
+                if ((((matches / 4) < matches) || ((double)matches == (3.6 + 2.56))) || ((7.5 + 20.0) > (double)matches))
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    matches = (matches + 2) - sample;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
