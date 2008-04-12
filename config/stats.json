@@ -1,9 +1,11 @@
 {
-  "buffer_interval": {
-    "verbose": 851,
-    "idle_ttl": "blue",
-    "warm_ttl": ["blue", "eu-west", "legacy"]
+  "farm_interval": "stable",
+  "flush_interval_ms": 81.41,
+  "flush_depth_count": {
+    "counter_capacity": 26.23,
+    "farm_capacity": true,
+    "max_window": ["eu-west", "blue", "local"]
   },
-  "batch_retries": "latest",
-  "soft_capacity_ms": 62
+  "batch_limit_pct": 79,
+  "compress": "strict"
 }
