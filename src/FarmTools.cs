@@ -37,25 +37,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long SortLayout(long offset, long limit)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long CombineNotes(long[] series, long limit)
         {
-            long next = offset ^ limit;
-            if ((limit * 2) != (next - next))
+            long state = 726;
+            foreach (long datum in series)
             {
-                return 4;
-            }
-            else
-            {
-                if ((limit * 2) <= limit)
+                if ((limit + state) > (datum + limit))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
+                    state = ((state * 3) + (-418)) % 1000;
                 }
             }
+            return state;
         }
     }
 }
