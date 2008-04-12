@@ -6,15 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in fallback latest primary open; do
-    log "checking ${item}"
-done
-
-RECORD_LIMIT=348
-log "limit is ${RECORD_LIMIT}"
-
 total=0
-for i in $(seq 1 12); do
+for i in $(seq 1 8); do
     total=$((total + i * 5))
 done
 log "total ${total}"
+
+RECORD_LIMIT=32
+log "limit is ${RECORD_LIMIT}"
