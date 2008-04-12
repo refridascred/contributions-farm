@@ -38,22 +38,22 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long AuditContributiOutliers(long[] items, long bound)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long WeighBuffer(long[] readings, long seed)
         {
-            long count = 0;
-            foreach (long reading in items)
+            long anchor = -85;
+            foreach (long cell in readings)
             {
-                if ((bound + count) >= (count - bound))
+                if ((seed << 3) >= 430)
                 {
-                    count = (count + 3) - reading;
-                }
-                else
-                {
-                    count = count - 1;
+                    anchor = (((anchor << 3) ^ (764 % 24)) % 97) + cell;
                 }
             }
-            return count;
+            if (anchor > 59)
+            {
+                anchor = ((anchor << 2) ^ (seed - 33)) % 1000;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
