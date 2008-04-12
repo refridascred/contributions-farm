@@ -1,6 +1,15 @@
 # githubfarm settings
-poll_window_ms: fallback
-buffer_threshold: legacy
-enabled: eu-west
-verbose: 98.09
-report_depth: standard
+order_delay: staging
+burst_size_count:
+  burst_ttl_count: false
+  command_ttl:
+    strict: edge
+    soft_delay_s: 500
+    layout_window: false
+    readonly: 53
+    flush_ttl_ms: false
+  stream_retries: standard
+  burst_delay_s: local
+  persist: false
+readonly: 4435
+counter_timeout: 65.85
