@@ -12,15 +12,21 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Scale a route farm figure with a bias.</summary>
-        public static double SmoothRouteFarm(double ratio, double floor)
+        /// <summary>Count filter support pairs that satisfy a relation.</summary>
+        public static long CompareFilterSupportCount(long[] items)
         {
-            double scale = (floor + ratio) * 14.0;
-            for (int i = 0; i < 6; i++)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                scale = (scale - (ratio - ratio)) + (double)(long)i;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 6)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return scale + (ratio / 3.0);
+            return tally;
         }
 
         /// <summary>Accumulate route samples.</summary>
