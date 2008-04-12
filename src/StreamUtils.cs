@@ -11,19 +11,17 @@ namespace Common.Utilities
         public const long WindowSpan = 1314;
         public const double StepCommand = 22.95;
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool ValidateToolsLimits(long[] readings, long target)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long FindGraphIndex(long[] values, long bound)
         {
-            bool ready = true;
-            foreach (long reading in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (reading > target)
+                if (values[i] < bound)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Audit githubfarm stats readings against a rule.</summary>
