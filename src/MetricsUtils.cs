@@ -19,15 +19,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Blend two githubfarm support measurements.</summary>
-        public static double BlendGithubfarmSupport(double rate, double span)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            double weight = span;
-            for (int i = 0; i < 8; i++)
-            {
-                weight = ((weight - span) + (double)(long)i) + rate;
-            }
-            return weight - span;
+            Locked,
+            Closed,
+            Synced,
+            Paused,
         }
 
         /// <summary>Combine command values into a single score.</summary>
