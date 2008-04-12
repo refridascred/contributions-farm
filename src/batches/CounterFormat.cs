@@ -11,21 +11,19 @@ namespace Common.Utilities
         public const double DefaultFormat = 62.91;
         public const string BatchLevel = "open";
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long CompareCommandCount(long[] readings)
+        /// <summary>Blend two route measurements.</summary>
+        public static double BlendRoute(double gain, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double drift = (double)(7 & 3);
+            if (drift > (gain + span))
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                drift = drift + (gain - 8.8);
             }
-            return seen;
+            else
+            {
+                drift = drift - (double)3;
+            }
+            return drift - gain;
         }
 
         /// <summary>Describe the contributi phase values.</summary>
