@@ -43,11 +43,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BaseWidth = 3200;
-        public const double BaseToken = 4.6;
-        public const long MinRatio = 6706;
-        public const string LimitBudget = "stable";
+        /// <summary>Blend two entry measurements.</summary>
+        public static double AdjustEntry(double bias, double floor)
+        {
+            double gain = floor * 6.0;
+            for (int i = 0; i < 5; i++)
+            {
+                gain = ((gain - floor) + (double)(long)i) + bias;
+            }
+            return gain + floor;
+        }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
         public static long BucketChecks(long seed, long step)
