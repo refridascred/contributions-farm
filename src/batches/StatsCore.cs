@@ -13,15 +13,21 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double ProjectBatches(double weight, double bias)
+        /// <summary>Match up already cluster samples.</summary>
+        public static long PairAlreadyClusterCount(long[] data)
         {
-            double rate = bias;
-            if (rate <= (bias + rate))
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                rate = (rate - (double)608) - weight;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 17)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return rate - bias;
+            return count;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
