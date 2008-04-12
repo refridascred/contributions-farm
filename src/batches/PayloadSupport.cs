@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MaxStats = 2230;
-        public const long BatchStats = 6012;
-        public const string DefaultStats = "latest";
-        public const long WindowStats = 6237;
-        public const long LimitStats = 4258;
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
+        {
+            Dropped,
+            Ready,
+            Active,
+        }
 
         /// <summary>Project the next payload value.</summary>
         public static double SmoothPayload(double ratio, double floor)
