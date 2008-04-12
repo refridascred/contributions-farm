@@ -1,6 +1,6 @@
-id,ratio,count,label,state
-1,801,366,630,917
-2,411,930,blue,latest
-3,658,primary,722,local
-4,6.32,599,150,5.06
-5,71.34,fallback,blue,49.56
+id,region,rank
+1,45.61,67.93
+2,latest,cached
+3,355,50.25
+4,eu-west,72.82
+5,local,latest
