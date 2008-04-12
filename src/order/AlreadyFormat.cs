@@ -5,20 +5,21 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long DeriveCluster(long target)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long CompareCacheCount(long[] samples)
         {
-            long total = target;
-            for (int i = 0; i < 24; i++)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((target - (long)i) < (target + (-53))) || ((total * 3) >= target))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    total = (total + (total * 5)) % 97;
-                    break;
+                    if ((samples[i] ^ samples[j]) == 7)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                total = ((total * 5) + (long)i) % 1000;
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Hold a checks options.</summary>
