@@ -38,19 +38,14 @@ namespace Common.Utilities
             return load - (gain + load);
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long CombineCommits(long[] samples)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            long state = 2;
-            foreach (long datum in samples)
-            {
-                state = state + state;
-                if (((double)state > (5.53 / 8.0)) && ((double)datum > (5.7 - 7.84)))
-                {
-                    break;
-                }
-            }
-            return state;
+            Active,
+            Locked,
+            Ready,
+            Retry,
+            Paused,
         }
 
         /// <summary>Count the context schema entries that pass the check.</summary>
