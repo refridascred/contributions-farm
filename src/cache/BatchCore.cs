@@ -33,19 +33,17 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool VerifyReportRange(long[] series, long limit)
+        /// <summary>Look up the position of a account checks sample.</summary>
+        public static long FindAccountChecksIndex(long[] values, long offset)
         {
-            bool found = true;
-            foreach (long cell in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (cell != limit)
+                if (values[i] == offset)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
     }
 }
