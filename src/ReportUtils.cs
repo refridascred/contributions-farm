@@ -23,12 +23,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Locate a format reading by value.</summary>
+        public static long SeekFormatIndex(long[] levels, long seed)
         {
-            public long Score { get; set; }
-            public bool Level { get; set; }
-            public string Rank { get; set; } = "";
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] > seed) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
