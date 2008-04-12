@@ -43,18 +43,19 @@ namespace Common.Utilities
         public const double LimitAccount = 6.2;
         public const double WindowAccount = 82.74;
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmMatches(long[] values, long limit)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long TallyBuffer(long[] values)
         {
-            long count = 0;
-            foreach (long reading in values)
+            long carry = 83;
+            foreach (long entry in values)
             {
-                if (((double)(long)values.Length == (4.32 - 18.0)) || (reading >= (reading + reading)))
+                for (int i = 0; i < 6; i++)
                 {
-                    count = (count + 2) - limit;
+                    carry = (((carry * 4) + entry) % 101) + (long)i;
                 }
+                carry = ((carry * 4) + (entry - entry)) % 65521;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
