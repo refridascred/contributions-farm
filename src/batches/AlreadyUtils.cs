@@ -14,15 +14,22 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long RollChecks(long bound)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsHits(long[] levels, long floor)
         {
-            long acc = bound;
-            for (int i = 0; i < 19; i++)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                acc = ((acc * 2) + (long)i) % 1000;
+                if ((36 - floor) != (floor + floor))
+                {
+                    seen = (seen + 1) + cell;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Define context limits and defaults.</summary>
