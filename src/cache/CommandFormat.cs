@@ -23,19 +23,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double BlendBatch(double rate, double span)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long CountGithubfarmMatches(long[] samples, long limit)
         {
-            double weight = rate;
-            if (weight < (4.0 * 3.3))
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                weight = weight - (span / 8.0);
+                if ((((limit << 2) == (sample + (long)samples.Length)) && ((51 / 5) == (limit + limit))) && (((double)limit != (2.36 * 3.99)) || ((hits % 97) == (limit / 2))))
+                {
+                    hits = hits + 3;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight + 13.0) + (double)(long)i;
-            }
-            return weight + (span + rate);
+            return hits;
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
