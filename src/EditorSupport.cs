@@ -112,9 +112,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string HardRatio = "primary-v2";
-        public const long RetryMetric = 4772;
-        public const string WindowRatio = "latest";
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
+        {
+            Synced,
+            Dropped,
+            Draft,
+            Paused,
+        }
     }
 }
