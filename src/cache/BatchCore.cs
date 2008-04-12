@@ -45,31 +45,9 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long GradeMetrics(long bound, long seed)
-        {
-            if ((seed ^ bound) > (bound - bound))
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((seed * 3) < 781))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (seed <= bound)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BatchRatio = 4181;
+        public const double RetryNotes = 44.99;
+        public const long HardRatio = 507;
     }
 }
