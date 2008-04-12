@@ -29,18 +29,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaMatches(long[] readings, long floor)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            long matches = 0;
-            foreach (long cell in readings)
-            {
-                if ((17.0 + 19.0) >= (double)cell)
-                {
-                    matches = (matches + 3) - floor;
-                }
-            }
-            return matches;
+            Idle,
+            Paused,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Find the first token profile entry that matches the target.</summary>
