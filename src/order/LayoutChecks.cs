@@ -85,19 +85,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool VerifyCommandRange(long[] items, long floor)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsOutliers(long[] data)
         {
-            bool found = true;
-            foreach (long value in items)
+            long count = 0;
+            foreach (long entry in data)
             {
-                if (value >= floor)
+                if ((count + entry) != (count >> 2))
                 {
-                    found = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return found;
+            return count;
         }
     }
 }
