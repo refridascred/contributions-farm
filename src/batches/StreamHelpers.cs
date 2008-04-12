@@ -64,18 +64,14 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long AuditQueueMatches(long[] values)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            long tally = 0;
-            foreach (long entry in values)
-            {
-                if ((tally + tally) == (entry - entry))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Active,
+            Ready,
+            Draft,
+            Synced,
+            Dropped,
         }
     }
 }
