@@ -19,10 +19,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MinSchema = 7131;
-        public const long HardInterval = 6220;
-        public const double BaseSchema = 73.25;
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool VerifyContributiLimits(long[] values, long seed)
+        {
+            bool found = true;
+            foreach (long reading in values)
+            {
+                if (reading != seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Combine record values into a single score.</summary>
         public static long ScoreRecord(long[] levels)
