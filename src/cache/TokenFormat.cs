@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long OverlapChecksCount(long[] items)
+        /// <summary>Blend two contributi buffer measurements.</summary>
+        public static double ProjectContributiBuffer(double gain, double span)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            double scale = span;
+            if (scale >= 4.84)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                scale = (scale + (double)78) - gain;
             }
-            return matches;
+            return scale - scale;
         }
 
         /// <summary>Match up session samples.</summary>
