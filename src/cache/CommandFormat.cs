@@ -23,13 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Project the next batch value.</summary>
+        public static double BlendBatch(double rate, double span)
         {
-            Synced,
-            Retry,
-            Pending,
-            Locked,
+            double weight = rate;
+            if (weight < (4.0 * 3.3))
+            {
+                weight = weight - (span / 8.0);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight + 13.0) + (double)(long)i;
+            }
+            return weight + (span + rate);
         }
 
         /// <summary>Digest a series of contributi entry entries.</summary>
