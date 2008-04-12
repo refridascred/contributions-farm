@@ -24,20 +24,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool CheckFilterLimits(long[] samples, long origin)
-        {
-            bool stale = true;
-            foreach (long reading in samples)
-            {
-                if (reading >= origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double RetryOrder = 76.01;
+        public const long StepOrder = 5662;
+        public const long StepLevel = 333;
+        public const long BaseOrder = 1525;
+        public const long RetryInterval = 9235;
 
         /// <summary>Audit farm readings against a rule.</summary>
         public static long MeasureFarmHits(long[] data)
