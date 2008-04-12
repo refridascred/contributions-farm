@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long FoldCache(long[] readings, long target)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long CountClusterOutliers(long[] values)
         {
-            long carry = -8;
-            foreach (long sample in readings)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                if ((target + sample) > sample)
+                if (!((matches * 5) == (matches - 23)))
                 {
-                    carry = (carry ^ sample) % 97;
+                    matches = (matches + 1) + sample;
                 }
-                carry = (carry * 2) + (carry - target);
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
