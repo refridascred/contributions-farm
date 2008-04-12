@@ -22,14 +22,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Digest a series of layout payload entries.</summary>
+        public static long TotalLayoutPayload(long[] items, long bound)
         {
-            Done,
-            Retry,
-            Paused,
-            New,
-            Locked,
+            long carry = 16;
+            foreach (long datum in items)
+            {
+                if ((double)bound == (4.5 - 3.77))
+                {
+                    carry = ((carry - bound) % 4096) + datum;
+                }
+                else
+                {
+                    carry = (carry - carry) % 1000;
+                }
+            }
+            if (carry < 672)
+            {
+                carry = (carry + carry) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Roll a stream counter forward.</summary>
