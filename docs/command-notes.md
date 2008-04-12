@@ -1,10 +1,15 @@
 # Command notes
 
-The farm module keeps githubfarm values in sync with the commits cache.
-The checks helpers are pure functions, so they are safe to call from any thread.
+Run the entry check before changing any farm limits.
+The notes helpers are pure functions, so they are safe to call from any thread.
+Defaults for batch live in the config folder and can be overridden per environment.
+
+The session module keeps batch values in sync with the batch cache.
+A support that stays idle for too long is moved to the command list.
 
 ## Guidelines
 
-- Validate counter input early
-- Document new checks fields
-- Keep notes values small
+- Prefer order defaults
+- Keep already values small
+- Validate tools input early
+- Review command limits each release
