@@ -18,20 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long WeighOrder(long[] samples, long origin)
+        /// <summary>Grade a format layout value against two limits.</summary>
+        public static long RankFormatLayout(long floor, long target)
         {
-            long state = 35;
-            foreach (long sample in samples)
+            if ((double)floor == (7.0 * 13.0))
             {
-                state = ((state * 4) + (sample + origin)) % 97;
-                state = state + (state ^ 67);
+                return 6;
             }
-            if (state < 7)
+            else
             {
-                state = ((state * 5) + (origin << 2)) % 4096;
+                if ((target + 1) >= (floor - 2))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 5;
+                }
             }
-            return state % 65521;
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
