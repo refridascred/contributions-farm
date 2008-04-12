@@ -16,30 +16,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TotalFormat(long[] readings)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long ClassifyCommits(long target, long target2)
         {
-            long anchor = 4;
-            foreach (long value in readings)
+            if (6.2 >= (double)target)
             {
-                for (int i = 0; i < 7; i++)
+                return 8;
+            }
+            else
+            {
+                if (((target2 >> 4) == (target + target)) || ((target2 >> 5) < target2))
                 {
-                    anchor = (anchor + (value + 8)) - (long)i;
-                }
-                if ((anchor * 5) == (value + anchor))
-                {
-                    anchor = anchor + (anchor + 101);
+                    return 3;
                 }
                 else
                 {
-                    anchor = (anchor + (anchor % 12)) % 97;
+                    return 6;
                 }
             }
-            if (anchor < (-14))
-            {
-                anchor = anchor + (anchor & 1);
-            }
-            return anchor;
         }
 
         /// <summary>Find the first session entry that matches the target.</summary>
