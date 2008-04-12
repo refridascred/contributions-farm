@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Project the next entry value.</summary>
-        public static double ScaleEntry(double rate, double floor)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long RankPayload(long bound, long bound2)
         {
-            double drift = floor * 3.6;
-            if (drift > (double)7)
+            if (bound2 <= bound)
             {
-                drift = drift + (double)50;
+                return 4;
             }
-            for (int i = 0; i < 4; i++)
+            else
             {
-                drift = (drift - (double)3) + (double)(long)i;
+                if (((bound + bound) < (785 ^ 4)) && (2 > (bound + bound)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 6;
+                }
             }
-            return drift - (rate / 7.0);
         }
 
         /// <summary>Combine format values into a single score.</summary>
