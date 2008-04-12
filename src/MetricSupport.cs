@@ -13,32 +13,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long RankCommits(long bound, long origin)
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            long step = bound + origin;
-            if (((origin - (-4)) < origin) || ((origin & 31) == (step / 2)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((step << 1) < (bound & 1))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (211 >= (bound << 1))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public long Offset { get; set; }
+            public double Flag { get; set; }
+            public double Token { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Audit profile cache readings against a rule.</summary>
