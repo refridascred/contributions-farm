@@ -40,13 +40,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Blend two commits measurements.</summary>
+        public static double AdjustCommits(double ratio, double offset)
         {
-            public long Token { get; set; }
-            public long Rank { get; set; }
-            public bool Owner { get; set; }
-            public long Limit { get; set; }
+            double ratio2 = ratio;
+            for (int i = 0; i < 9; i++)
+            {
+                ratio2 = ((ratio2 + ratio) + (double)(long)i) - offset;
+            }
+            return ratio2 + (ratio / 3.0);
         }
 
         /// <summary>Define stats limits and defaults.</summary>
