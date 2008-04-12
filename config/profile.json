@@ -1,5 +1,18 @@
 {
-  "schema_ttl": 6111,
-  "burst_ttl": 82.95,
-  "min_ratio": 60
+  "warm_depth_pct": {
+    "strict": 86,
+    "payload_ratio": 13.24,
+    "flush_interval_s": 54,
+    "compress": "stable",
+    "hard_ratio_ms": true
+  },
+  "flush_depth_ms": "latest",
+  "default_ratio": 1024,
+  "warm_delay_s": true,
+  "compress": "legacy",
+  "base_size": {
+    "dry_run": "cached",
+    "cluster_capacity": ["legacy", "primary", "local"],
+    "warm_limit_pct": "fallback"
+  }
 }
