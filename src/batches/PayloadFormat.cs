@@ -19,23 +19,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double ProjectProfile(double gain, double floor)
+        /// <summary>Match up payload samples.</summary>
+        public static long PairPayloadCount(long[] items)
         {
-            double load = 0.2;
-            if (load < (gain / 5.0))
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                load = (load + (load / 3.0)) - floor;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                load = load - 3.0;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                load = load + (double)(long)i;
-            }
-            return load - (gain + load);
+            return matches;
         }
 
         /// <summary>Describe the batches state values.</summary>
