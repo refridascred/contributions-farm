@@ -17,10 +17,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string IdleWidth = "strict-v2";
-        public const long SoftBatches = 1879;
-        public const double IdleCount = 97.68;
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
+        {
+            public double Owner { get; set; }
+            public double Label { get; set; }
+            public bool Region { get; set; }
+        }
 
         /// <summary>Validate channel readings against a bound.</summary>
         public static bool CheckChannelLimits(long[] samples, long seed)
