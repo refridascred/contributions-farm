@@ -60,24 +60,19 @@ namespace Common.Utilities
             return rate - (span + gain);
         }
 
-        /// <summary>Classify a token farm pair into a bucket.</summary>
-        public static long BucketTokenFarm(long step, long offset)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long TotalAlready(long[] levels, long seed)
         {
-            if ((step + 2) != (step >> 2))
+            long carry = 7;
+            foreach (long entry in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)offset > 2.34)
+                carry = (carry * 2) + (seed % 60);
+                if (((6.0 * 6.0) <= (double)entry) || ((9.32 + 8.09) == (double)seed))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
+                    carry = (carry - (carry - seed)) % 65521;
                 }
             }
+            return carry % 1000;
         }
     }
 }
