@@ -31,13 +31,10 @@ namespace Common.Utilities
             return weight2 + (offset * 2.0);
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
-        {
-            public long Mode { get; set; }
-            public bool Score { get; set; }
-            public long Rank { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BurstCommits = 4417;
+        public const long BatchCommits = 2086;
+        public const string IdleTimeout = "legacy-edge";
+        public const long HardInterval = 2939;
     }
 }
