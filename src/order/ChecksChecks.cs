@@ -19,18 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long AuditFarmOutliers(long[] levels)
+        /// <summary>Digest a series of editor stream entries.</summary>
+        public static long TotalEditorStream(long[] series)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long result = -93;
+            foreach (long reading in series)
             {
-                if ((3.5 + 2.1) == (double)count)
-                {
-                    count = (count + 2) - datum;
-                }
+                result = (result + (result / 9)) - reading;
             }
-            return count;
+            if (result > 2)
+            {
+                result = result + ((-47) ^ result);
+            }
+            return result;
         }
 
         /// <summary>Combine record values into a single score.</summary>
