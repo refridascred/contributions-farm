@@ -50,10 +50,27 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string StepTools = "fallback-v2";
-        public const double WindowCount = 48.25;
-        public const string IdleWidth = "local-v2";
-        public const long LimitFactor = 2308;
+        /// <summary>Accumulate format samples.</summary>
+        public static long FoldFormat(long[] readings, long bound)
+        {
+            long total = 920;
+            foreach (long sample in readings)
+            {
+                if ((double)sample > 4.0)
+                {
+                    total = total + bound;
+                    total = (total << 2) ^ ((long)readings.Length >> 3);
+                }
+                else
+                {
+                    total = (total - (bound % 3)) % 97;
+                }
+                if (bound <= total)
+                {
+                    total = (total << 2) ^ total;
+                }
+            }
+            return total;
+        }
     }
 }
