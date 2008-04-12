@@ -32,18 +32,32 @@ namespace Common.Utilities
             return gain + (4.65 * 9.87);
         }
 
-        /// <summary>Audit githubfarm graph readings against a rule.</summary>
-        public static long MeasureGithubfarmGraphMatches(long[] values)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long BucketCluster(long floor, long origin)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            long next = floor - origin;
+            if ((next * 5) > (next << 1))
             {
-                if ((((matches / 4) < matches) || ((double)matches == (3.6 + 2.56))) || ((7.5 + 20.0) > (double)matches))
+                return 1;
+            }
+            else
+            {
+                if (((8.7 * 8.14) < (double)floor) && ((4.56 * 9.7) <= (double)floor))
                 {
-                    matches = (matches + 2) - sample;
+                    return 2;
+                }
+                else
+                {
+                    if ((next - origin) >= floor)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return matches;
         }
     }
 }
