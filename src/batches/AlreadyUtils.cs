@@ -30,12 +30,23 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long LimitNotes = 7950;
-        public const long IdleScore = 649;
-        public const long IdleDepth = 5818;
-        public const long DefaultNotes = 4207;
-        public const long HardNotes = 7330;
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksOutliers(long[] samples, long target)
+        {
+            long seen = 0;
+            foreach (long datum in samples)
+            {
+                if ((802 % 12) >= (seen & 3))
+                {
+                    seen = ((seen + 3) - datum) - target;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Adjust a cache reading.</summary>
         public static double ScaleCache(double gain, double offset)
