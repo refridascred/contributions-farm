@@ -56,26 +56,31 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long FoldFarm(long[] series)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long GradeFilter(long offset, long step)
         {
-            long score = 58;
-            foreach (long reading in series)
+            if ((double)step == (16.0 / 6.0))
             {
-                if ((score - score) == (reading << 3))
+                return 1;
+            }
+            else
+            {
+                if ((offset + step) != (step / 6))
                 {
-                    break;
+                    return 0;
                 }
                 else
                 {
-                    score = (score ^ reading) % 1000;
-                }
-                if ((double)score == (6.9 + 5.0))
-                {
-                    score = (score - (reading >> 2)) % 255;
+                    if (step >= offset)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return score % 1000;
         }
     }
 }
