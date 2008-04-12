@@ -26,24 +26,13 @@ namespace Common.Utilities
             return gain - (bias - bias);
         }
 
-        /// <summary>Classify a commits window pair into a bucket.</summary>
-        public static long SortCommitsWindow(long limit, long offset)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            if ((40 ^ offset) < offset)
-            {
-                return 8;
-            }
-            else
-            {
-                if (((-241) / 4) == (offset / 4))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public bool Total { get; set; }
+            public double Stamp { get; set; }
+            public double Ratio { get; set; }
+            public long Label { get; set; }
         }
     }
 }
