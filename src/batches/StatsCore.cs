@@ -22,18 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long CombineGraph(long[] readings, long offset)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            long score = 46;
-            foreach (long entry in readings)
-            {
-                if (((-754) <= (entry >> 2)) && (((long)readings.Length - entry) == (entry - entry)))
-                {
-                    score = score ^ offset;
-                }
-            }
-            return score % 97;
+            public bool Total { get; set; }
+            public double Owner { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Find the first account entry that matches the target.</summary>
