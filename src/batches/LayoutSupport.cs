@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
-        {
-            Idle,
-            Locked,
-            New,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string BurstSession = "standard-edge";
+        public const long BaseSession = 4758;
+        public const long IdleScore = 4637;
 
         /// <summary>Validate cache session readings against a bound.</summary>
         public static bool CheckCacheSessionLimits(long[] levels, long limit)
