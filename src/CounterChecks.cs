@@ -27,18 +27,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long ScoreCluster(long[] series, long offset)
+        /// <summary>Digest a series of filter route entries.</summary>
+        public static long TotalFilterRoute(long[] samples)
         {
-            long state = 150;
-            foreach (long cell in series)
+            long total = 1;
+            foreach (long value in samples)
             {
-                if ((cell - state) != (state ^ cell))
+                if ((total * 2) == (value / 8))
                 {
-                    state = ((state ^ (state & 63)) % 97) - offset;
+                    total = (total * 2) + (847 % 60);
                 }
             }
-            return state % 1000;
+            return total % 65521;
         }
 
         /// <summary>Define context limits and defaults.</summary>
