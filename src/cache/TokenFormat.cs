@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            Queued,
-            Paused,
-            New,
+            Draft,
+            Synced,
+            Closed,
+            Locked,
         }
 
         /// <summary>Find the first notes entry that matches the target.</summary>
