@@ -12,12 +12,12 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long FindOrderIndex(long[] readings, long step)
+        /// <summary>Look up the position of a already stream sample.</summary>
+        public static long FindAlreadyStreamIndex(long[] items, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (readings[i] >= step)
+                if (items[i] >= offset)
                 {
                     return (long)i;
                 }
