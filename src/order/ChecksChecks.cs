@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmHits(long[] readings)
         {
-            public string Size { get; set; } = "";
-            public long Label { get; set; }
-            public long Owner { get; set; }
-            public double Score { get; set; }
+            long seen = 0;
+            foreach (long entry in readings)
+            {
+                if ((116 >> 3) > (entry - entry))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the session mode values.</summary>
