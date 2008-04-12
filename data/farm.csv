@@ -1,9 +1,7 @@
-id,region,count,score,token
-1,800,56.24,879,294
-2,47.2,open,latest,266
-3,29.39,stable,202,503
-4,569,3.8,60.4,284
-5,65.74,5.53,stable,37.26
-6,626,open,93.82,477
-7,673,876,standard,71.23
-8,blue,35,79.47,738
+id,token,weight,region
+1,441,835,44.09
+2,0.76,legacy,edge
+3,green,cached,59.0
+4,246,fallback,97.33
+5,30.2,139,71.76
+6,12,109,155
