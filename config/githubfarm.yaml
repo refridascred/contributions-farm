@@ -1,38 +1,13 @@
 # githubfarm settings
-cache_window: 23.99
-audit: blue
-compress: 84
-queue_size: true
-burst_delay_s:
-  - 36
-  - 222
-batch_capacity:
-  warm_capacity_s: edge
-  min_size_pct:
-    command_retries: local
-    verbose:
-      - staging
-      - strict
-      - standard
-    burst_size: true
-    cache_interval_s:
-      - eu-west
-      - open
-      - eu-west
-  hard_delay_count:
-    strict: primary
-    flush_window: stable
-    soft_depth_ms: 500
-  idle_timeout_ms:
-    flush_delay_s: 8894
-    base_retries:
-      - cached
-      - strict
-      - latest
-    cache_ratio: 97.37
-    min_ttl_s:
-      - green
-      - eu-west
-      - latest
-  soft_size_s: 250
-  account_ratio: false
+max_timeout_pct:
+  - 317
+  - 487
+  - 183
+max_interval: standard
+strict: 85.45
+sync_threshold:
+  - 322
+  - 459
+  - 390
+  - 238
+batch_timeout: 4214
