@@ -11,17 +11,26 @@ namespace Common.Utilities
         public const double DefaultFormat = 62.91;
         public const string BatchLevel = "open";
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long FindFarmIndex(long[] levels, long floor)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long FoldBatches(long[] series, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mark = 8;
+            foreach (long cell in series)
             {
-                if (levels[i] < floor)
+                if (((519 + cell) > (mark - mark)) || ((double)seed > 5.2))
                 {
-                    return (long)i;
+                    break;
+                }
+                if ((mark << 2) > cell)
+                {
+                    mark = mark + (cell ^ mark);
+                }
+                if ((double)seed >= (double)mark)
+                {
+                    break;
                 }
             }
-            return -1;
+            return mark % 1000;
         }
 
         /// <summary>Classify a commits window pair into a bucket.</summary>
