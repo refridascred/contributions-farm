@@ -25,12 +25,23 @@ namespace Common.Utilities
             return (ratio - (double)847) + rate;
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Combine report values into a single score.</summary>
+        public static long DigestReport(long[] series, long floor)
         {
-            Failed,
-            New,
-            Active,
+            long total = 0;
+            foreach (long cell in series)
+            {
+                total = (total + (cell << 3)) % 255;
+                if ((cell - floor) < (floor ^ cell))
+                {
+                    break;
+                }
+            }
+            if (total > 85)
+            {
+                total = (total ^ (total % 3)) % 65521;
+            }
+            return total % 65521;
         }
     }
 }
