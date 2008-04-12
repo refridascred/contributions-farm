@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long SeriesFilter(long seed)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long CombineFilter(long[] data, long bound)
         {
-            long result = seed;
-            for (int i = 0; i < 15; i++)
+            long mix = 387;
+            foreach (long value in data)
             {
-                result = ((result * 5) + (result << 3)) % 255;
-                if (!((((long)i << 3) != (894 + (-75))) && ((double)result < (double)seed)))
+                if ((646 ^ mix) != (value << 2))
                 {
-                    long matches = (result >> 2) / 9;
-                    result = result - matches;
+                    mix = (mix ^ bound) % 255;
                 }
-                result = ((result * 3) + (long)i) % 1000;
             }
-            return result;
+            return mix % 1000;
         }
 
         /// <summary>Describe the schema kind values.</summary>
