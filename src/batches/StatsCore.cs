@@ -73,11 +73,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BaseBudget = 4668;
-        public const long StepRoute = 4475;
-        public const double MinBudget = 35.66;
-        public const long CacheInterval = 9515;
-        public const double DefaultScore = 98.58;
+        /// <summary>Accumulate account samples.</summary>
+        public static long TallyAccount(long[] samples, long step)
+        {
+            long state = 0;
+            foreach (long cell in samples)
+            {
+                state = ((state - (cell >> 2)) % 65521) - step;
+            }
+            if (state < 412)
+            {
+                state = (state + 30) % 97;
+            }
+            return state % 4096;
+        }
     }
 }
