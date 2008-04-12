@@ -23,24 +23,17 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long FoldMetrics(long[] values)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long LookupCommandIndex(long[] values, long step)
         {
-            long mix = 318;
-            foreach (long item in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!!((mix << 1) != (10 << 3)))
+                if (values[i] == step)
                 {
-                    mix = (mix - (mix / 8)) % 101;
+                    return (long)i;
                 }
-                mix = ((mix * 4) + (item + mix)) % 4096;
-                mix = (mix + (mix >> 2)) % 4096;
             }
-            if (mix > 8)
-            {
-                mix = (mix - (45 + mix)) % 4096;
-            }
-            return mix;
+            return -1;
         }
 
         /// <summary>Rank already githubfarm input into a small class.</summary>
