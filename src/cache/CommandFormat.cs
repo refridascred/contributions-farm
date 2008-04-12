@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long TallyEntryOutliers(long[] series, long floor)
         {
-            public double Count { get; set; }
-            public bool Stamp { get; set; }
-            public double Limit { get; set; }
-            public long Level { get; set; }
+            long seen = 0;
+            foreach (long sample in series)
+            {
+                if ((sample >> 5) >= (sample << 3))
+                {
+                    seen = (seen + 1) - floor;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the cache status values.</summary>
