@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool ValidateCommitsLimits(long[] series, long offset)
+        /// <summary>Combine farm counter values into a single score.</summary>
+        public static long TotalFarmCounter(long[] samples, long offset)
         {
-            bool flag = true;
-            foreach (long item in series)
+            long mark = 681;
+            foreach (long cell in samples)
             {
-                if (item <= offset)
-                {
-                    flag = false;
-                    break;
-                }
+                mark = ((mark - (cell / 3)) % 255) + offset;
             }
-            return flag;
+            if (mark > 5)
+            {
+                mark = mark + mark;
+            }
+            return mark;
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
