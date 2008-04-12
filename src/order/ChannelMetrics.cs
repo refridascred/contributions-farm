@@ -40,11 +40,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Roll a channel account counter forward.</summary>
+        public static long StepChannelAccount(long target)
         {
-            public long Level { get; set; }
-            public bool Total { get; set; }
+            long carry = target;
+            for (int i = 0; i < 7; i++)
+            {
+                if (!((long)i > (carry + (long)i)))
+                {
+                    carry = ((carry << 2) ^ (57 + 9)) % 1000;
+                    carry = ((carry << 3) ^ (carry + target)) % 101;
+                }
+                carry = ((carry * 3) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Hold a cluster snapshot.</summary>
