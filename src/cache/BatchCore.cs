@@ -5,13 +5,32 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Rank record input into a small class.</summary>
+        public static long SortRecord(long bound, long offset)
         {
-            Active,
-            New,
-            Failed,
-            Dropped,
+            long edge = bound + offset;
+            if ((366 + offset) <= offset)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((edge <= (edge - edge)) && (bound >= edge))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!((bound % 8) >= (6 & 3)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate batches samples.</summary>
