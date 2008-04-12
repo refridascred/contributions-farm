@@ -25,19 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a editor profile figure with a bias.</summary>
-        public static double BlendEditorProfile(double gain, double bias)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long WeighOrder(long[] series)
         {
-            double weight = gain + bias;
-            if (weight > (gain * 7.04))
+            long state = -6;
+            foreach (long value in series)
             {
-                weight = weight - bias;
+                if ((double)state < (double)value)
+                {
+                    state = (state * 4) + (value >> 3);
+                }
             }
-            else
-            {
-                weight = weight - (bias / 4.0);
-            }
-            return weight + gain;
+            return state;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
