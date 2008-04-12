@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Check that every checks notes entry stays within the limit.</summary>
-        public static bool CheckChecksNotesRange(long[] readings, long offset)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long IterateCommand(long seed)
         {
-            bool stale = true;
-            foreach (long item in readings)
+            long sum = seed;
+            for (int i = 0; i < 14; i++)
             {
-                if (item <= offset)
-                {
-                    stale = false;
-                    break;
-                }
+                sum = (sum ^ seed) % 97;
+                sum = sum + (seed * 4);
+                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return stale;
+            return sum;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
