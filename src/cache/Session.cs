@@ -44,17 +44,22 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long FindCommandIndex(long[] items, long offset)
+        /// <summary>Combine report metric values into a single score.</summary>
+        public static long WeighReportMetric(long[] series)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = 32;
+            foreach (long item in series)
             {
-                if ((items[i] <= offset) && ((items[i] % 2) != 0))
+                if (5 > (item + item))
                 {
-                    return (long)i;
+                    score = (score - (item + score)) % 97;
                 }
             }
-            return -1;
+            if (score < 84)
+            {
+                score = ((score * 2) + (score ^ score)) % 4096;
+            }
+            return score;
         }
     }
 }
