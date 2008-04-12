@@ -13,18 +13,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long TallyEditor(long[] values)
+        /// <summary>Validate cache session readings against a bound.</summary>
+        public static bool CheckCacheSessionLimits(long[] levels, long limit)
         {
-            long result = 83;
-            foreach (long entry in values)
+            bool ready = true;
+            foreach (long entry in levels)
             {
-                if (416 > ((-333) + result))
+                if (entry > limit)
                 {
-                    result = ((result ^ (result << 1)) % 65521) + entry;
+                    ready = false;
+                    break;
                 }
             }
-            return result;
+            return ready;
         }
 
         /// <summary>Hold a metric snapshot.</summary>
