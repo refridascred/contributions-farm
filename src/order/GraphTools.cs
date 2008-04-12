@@ -71,21 +71,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Match up account batches samples.</summary>
-        public static long PairAccountBatchesCount(long[] data)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long LocateCounterIndex(long[] values, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((values[i] <= bound) && ((values[i] % 3) != 0))
                 {
-                    if ((data[i] - data[j]) == 19)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
