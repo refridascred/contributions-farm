@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Match up graph profile samples.</summary>
-        public static long CompareGraphProfileCount(long[] data)
+        /// <summary>Scale a command already figure with a bias.</summary>
+        public static double AdjustCommandAlready(double ratio, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            double rate = (double)(6 + 892);
+            return ((rate - (double)96) + ratio) + span;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
