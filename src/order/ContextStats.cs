@@ -14,19 +14,11 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Project the next metrics stream value.</summary>
-        public static double BlendMetricsStream(double weight, double floor)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double ScaleStream(double gain, double bias)
         {
-            double mean = (floor * 1.8) + (double)88;
-            if (mean >= floor)
-            {
-                mean = mean + (6.2 - weight);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean + weight) + (double)(long)i;
-            }
-            return mean - mean;
+            double rate = (double)(4 + 95);
+            return (rate + (bias + bias)) + gain;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
