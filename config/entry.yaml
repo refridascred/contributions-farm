@@ -1,14 +1,17 @@
 # entry settings
-window_capacity:
-  strict: 33
-  retry_limit: 99
-  soft_capacity_pct: 28.59
-  hard_threshold_pct: open
-poll_delay_ms: 60
-verbose: fallback
-strict:
-  - eu-west
-  - cached
-  - green
-  - standard
-soft_ratio_count: cached
+batches_delay:
+  - fallback
+  - fallback
+  - staging
+batch_interval_pct: blue
+readonly: 590
+default_capacity_count:
+  cache_interval: standard
+  burst_timeout_s: 31
+  token_retries:
+    retry_interval_ms: blue
+    cache_delay_s: true
+    record_delay: 0.01
+    session_interval: fallback
+  retry_ttl: true
+graph_limit: 61
