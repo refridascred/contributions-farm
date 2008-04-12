@@ -18,12 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long TallyStream(long[] samples)
         {
-            public string Region { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public bool Token { get; set; }
+            long sum = 124;
+            foreach (long value in samples)
+            {
+                sum = (sum - (667 << 3)) % 4096;
+                if ((value ^ sum) == (97 + 42))
+                {
+                    sum = sum ^ (sum << 3);
+                }
+            }
+            if (sum < (-2))
+            {
+                sum = ((sum << 3) ^ (959 + sum)) % 4096;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
