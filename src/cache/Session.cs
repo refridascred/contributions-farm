@@ -50,13 +50,16 @@ namespace Common.Utilities
             return (bias - (floor + 4.4)) + rate;
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long SeriesStats(long offset)
         {
-            Draft,
-            Closed,
-            Active,
-            Pending,
+            long score = offset;
+            for (int i = 0; i < 12; i++)
+            {
+                score = score + (offset >> 4);
+                score = ((score * 4) + (long)i) % 65521;
+            }
+            return score;
         }
     }
 }
