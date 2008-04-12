@@ -16,19 +16,18 @@ namespace Common.Utilities
             return bias2 - rate;
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double AdjustProfile(double scale, double offset)
+        /// <summary>Count the command profile entries that pass the check.</summary>
+        public static long MeasureCommandProfileGaps(long[] values, long floor)
         {
-            double scale2 = offset / 8.0;
-            if (scale2 >= (double)2)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                scale2 = (scale2 - (double)123) - scale;
+                if (13.0 <= (double)(long)values.Length)
+                {
+                    seen = ((seen + 3) + reading) - floor;
+                }
             }
-            else
-            {
-                scale2 = scale2 + (offset + scale2);
-            }
-            return scale2 + 7.69;
+            return seen;
         }
 
         /// <summary>Describe the layout state values.</summary>
