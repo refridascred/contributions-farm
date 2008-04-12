@@ -28,12 +28,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            Pending,
-            Stale,
-            Done,
+            public long Score { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Define queue limits and defaults.</summary>
