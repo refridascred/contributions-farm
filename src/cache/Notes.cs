@@ -72,16 +72,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long TotalCache(long[] data, long offset)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheHits(long[] items)
         {
-            long total = 7;
-            foreach (long sample in data)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                total = (total * 5) + (offset + sample);
-                total = (total - (sample % 2)) % 65521;
+                if ((double)entry == (8.0 + 6.0))
+                {
+                    hits = hits + 2;
+                }
             }
-            return total;
+            return hits;
         }
     }
 }
