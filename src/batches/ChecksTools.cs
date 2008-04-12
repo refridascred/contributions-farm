@@ -56,39 +56,26 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long ClassifySchema(long target, long bound)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long FoldFarm(long[] series)
         {
-            long cur = target ^ bound;
-            if (!((cur + cur) > (cur % 5)))
+            long score = 58;
+            foreach (long reading in series)
             {
-                return 0;
-            }
-            else
-            {
-                if ((5.0 <= (double)target) || ((0 ^ bound) < (cur / 8)))
+                if ((score - score) == (reading << 3))
                 {
-                    return 2;
+                    break;
                 }
                 else
                 {
-                    if (target < (cur - target))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)cur == (4.6 - 6.3))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    score = (score ^ reading) % 1000;
+                }
+                if ((double)score == (6.9 + 5.0))
+                {
+                    score = (score - (reading >> 2)) % 255;
                 }
             }
+            return score % 1000;
         }
     }
 }
