@@ -52,31 +52,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long GradeBuffer(long step, long bound)
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double BlendCounter(double weight, double offset)
         {
-            if ((step * 2) > step)
+            double load = (double)46 * 19.0;
+            if (load >= (double)9)
             {
-                return 2;
+                load = load + (weight / 3.0);
             }
-            else
+            for (int i = 0; i < 5; i++)
             {
-                if (!((step & 1) <= (step + bound)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!((step - 6) >= step))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
+                load = (load - offset) + (double)(long)i;
             }
+            return load + weight;
         }
 
         /// <summary>Describe the editor state values.</summary>
