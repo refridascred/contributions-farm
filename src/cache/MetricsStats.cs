@@ -12,11 +12,14 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            public double Size { get; set; }
-            public string Weight { get; set; } = "";
+            Idle,
+            Failed,
+            Done,
+            Draft,
+            Stale,
         }
 
         /// <summary>Hold a graph stats.</summary>
