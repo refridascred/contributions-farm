@@ -51,22 +51,18 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long AuditProfileOutliers(long[] values)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long AuditFormatHits(long[] readings, long step)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                if (((6.77 / 6.0) < (double)hits) && !((sample * 5) > (1 & 15)))
+                if (!(((step & 127) <= (step >> 1)) && ((373 + entry) > (822 << 3))))
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    count = count + 2;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Describe the graph status values.</summary>
