@@ -1,15 +1,5 @@
 {
-  "sync_ratio": "green",
-  "sync_interval_pct": {
-    "verbose": true,
-    "max_interval_s": 1024,
-    "default_size_count": 7909
-  },
-  "retry_size_count": {
-    "persist": "edge",
-    "audit": true,
-    "enabled": "local",
-    "default_ratio_count": 504
-  },
-  "persist": false
+  "batch_ratio_ms": "local",
+  "githubfarm_timeout": "staging",
+  "readonly": 6
 }
