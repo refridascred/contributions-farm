@@ -53,19 +53,14 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Project the next buffer report value.</summary>
-        public static double SmoothBufferReport(double weight, double floor)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            double scale = floor;
-            if (scale > (scale - weight))
-            {
-                scale = scale - (double)1;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale + (floor + scale)) - (double)(long)i;
-            }
-            return scale - (weight - scale);
+            Closed,
+            Synced,
+            Retry,
+            Ready,
+            Draft,
         }
     }
 }
