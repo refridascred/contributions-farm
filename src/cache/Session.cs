@@ -20,19 +20,24 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool CheckRecordLimits(long[] series, long bound)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long RankQueue(long step, long floor)
         {
-            bool ready = true;
-            foreach (long reading in series)
+            if ((step * 4) < (floor / 9))
             {
-                if (reading < bound)
+                return 1;
+            }
+            else
+            {
+                if ((88 + floor) <= (-310))
                 {
-                    ready = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return ready;
         }
 
         /// <summary>Describe the tools mode values.</summary>
