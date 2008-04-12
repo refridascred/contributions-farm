@@ -5,36 +5,28 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long ClassifyFilter(long origin, long bound)
+        /// <summary>Grade a contributi buffer value against two limits.</summary>
+        public static long RankContributiBuffer(long origin, long origin2)
         {
-            long span = origin ^ bound;
-            if (!((origin << 2) <= (span / 9)))
+            if ((origin >> 3) >= (origin2 >> 1))
             {
-                return 7;
+                return 3;
             }
             else
             {
-                if ((span ^ span) == ((-650) + origin))
+                if (((3 % 5) != (origin2 + origin)) && ((11.0 + 7.61) >= (double)origin2))
                 {
-                    return 6;
+                    return 7;
                 }
                 else
                 {
-                    if (!((bound + bound) >= (81 << 1)))
+                    if (origin < (origin2 / 9))
                     {
-                        return 0;
+                        return 4;
                     }
                     else
                     {
-                        if ((span & 31) <= (origin << 2))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        return 6;
                     }
                 }
             }
