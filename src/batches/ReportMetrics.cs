@@ -46,11 +46,22 @@ namespace Common.Utilities
             return (scale + bias) + rate;
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileGaps(long[] samples)
         {
-            public string Offset { get; set; } = "";
-            public bool Size { get; set; }
+            long seen = 0;
+            foreach (long item in samples)
+            {
+                if ((3.58 * 19.0) <= (double)item)
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
