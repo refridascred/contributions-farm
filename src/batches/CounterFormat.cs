@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long CacheFormat = 977;
-        public const double MinFormat = 28.34;
-        public const double DefaultFormat = 62.91;
-        public const string BatchLevel = "open";
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long MeasureRouteGaps(long[] data)
+        {
+            long tally = 0;
+            foreach (long reading in data)
+            {
+                if ((tally & 31) != (tally >> 5))
+                {
+                    tally = (tally + 2) + reading;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Look up the position of a command sample.</summary>
         public static long SeekCommandIndex(long[] readings, long limit)
