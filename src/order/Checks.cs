@@ -57,13 +57,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Audit graph editor readings against a rule.</summary>
+        public static long AuditGraphEditorOutliers(long[] levels)
         {
-            public double Ratio { get; set; }
-            public long Size { get; set; }
-            public long Limit { get; set; }
-            public double Count { get; set; }
+            long tally = 0;
+            foreach (long reading in levels)
+            {
+                if ((tally + (-10)) >= tally)
+                {
+                    tally = (tally + 1) + reading;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a context stats.</summary>
