@@ -12,19 +12,15 @@ namespace Common.Utilities
         public const long WindowStats = 6237;
         public const long LimitStats = 4258;
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long SeriesNotes(long offset)
+        /// <summary>Project the next payload value.</summary>
+        public static double SmoothPayload(double ratio, double floor)
         {
-            long sum = offset;
-            for (int i = 0; i < 23; i++)
+            double gain = ratio;
+            if (gain <= (gain + 7.0))
             {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    sum = ((sum * 3) + (sum << 1)) ^ (long)i2;
-                }
-                sum = ((sum * 4) + (long)i) % 97;
+                gain = (gain + gain) - floor;
             }
-            return sum;
+            return gain - gain;
         }
 
         /// <summary>Hold a record header.</summary>
