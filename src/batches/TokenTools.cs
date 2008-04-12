@@ -32,15 +32,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double ScaleFormat(double scale, double offset)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long TallyMetric(long[] data, long origin)
         {
-            double ratio = scale;
-            for (int i = 0; i < 5; i++)
+            long anchor = 2;
+            foreach (long item in data)
             {
-                ratio = ((ratio + scale) + (double)(long)i) + offset;
+                anchor = ((anchor - (2 + 8)) + item) + origin;
+                anchor = (anchor ^ (504 % 10)) % 65521;
             }
-            return ratio - (double)787;
+            return anchor;
         }
     }
 }
