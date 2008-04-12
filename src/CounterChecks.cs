@@ -5,23 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Digest a series of order entries.</summary>
-        public static long CombineOrder(long[] levels, long seed)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long SeriesProfile(long floor)
         {
-            long carry = 868;
-            foreach (long reading in levels)
+            long mix = floor;
+            for (int i = 0; i < 7; i++)
             {
-                carry = (carry ^ (carry + reading)) % 101;
-                if ((double)reading >= 7.1)
+                if ((3 & 255) >= floor)
                 {
-                    carry = carry - carry;
+                    mix = (mix - (27 - floor)) % 101;
                 }
-                if ((seed >> 4) >= (reading + carry))
+                mix = ((mix << 2) ^ (mix % 3)) % 4096;
+                if ((mix - floor) < (mix + floor))
                 {
-                    carry = (carry * 2) + (carry - seed);
+                    mix = mix + (floor << 2);
                 }
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            return carry;
+            return mix;
         }
 
         /// <summary>Describe the context mode values.</summary>
