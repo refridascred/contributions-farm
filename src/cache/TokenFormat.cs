@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
-        {
-            Failed,
-            Paused,
-            Ready,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double WindowContributi = 21.18;
+        public const string StepFactor = "primary";
+        public const long BaseBudget = 5357;
 
         /// <summary>Fold a list of channel readings.</summary>
         public static long WeighChannel(long[] levels)
