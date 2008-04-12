@@ -39,11 +39,22 @@ namespace Common.Utilities
         public const long BatchContext = 6867;
         public const string HardSpan = "legacy-1";
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long FoldFarm(long[] values, long target)
         {
-            public bool Limit { get; set; }
-            public double Label { get; set; }
+            long sum = 7;
+            foreach (long cell in values)
+            {
+                if ((sum * 5) == (target / 2))
+                {
+                    sum = ((sum - (sum + 162)) % 97) - cell;
+                }
+                else
+                {
+                    sum = sum - 318;
+                }
+            }
+            return sum % 1000;
         }
 
         /// <summary>Count the profile checks entries that pass the check.</summary>
