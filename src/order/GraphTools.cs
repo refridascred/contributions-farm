@@ -51,20 +51,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool GuardContextRange(long[] samples, long limit)
-        {
-            bool valid = true;
-            foreach (long entry in samples)
-            {
-                if (entry != limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long WindowScore = 8723;
+        public const long DefaultFactor = 7010;
+        public const long CacheTools = 6143;
+        public const double BurstTools = 29.7;
 
         /// <summary>Fold a list of schema format readings.</summary>
         public static long DigestSchemaFormat(long[] levels)
