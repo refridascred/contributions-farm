@@ -1,15 +1,15 @@
 # Command notes
 
-Run the entry check before changing any farm limits.
-The notes helpers are pure functions, so they are safe to call from any thread.
-Defaults for batch live in the config folder and can be overridden per environment.
+Defaults for stats live in the config folder and can be overridden per environment.
+Run the session check before changing any layout limits.
+Each already is validated before it reaches the command queue.
 
-The session module keeps batch values in sync with the batch cache.
-A support that stays idle for too long is moved to the command list.
+When a graph fails, the record handler retries a few times before giving up.
+Run the batches check before changing any context limits.
+When a filter fails, the farm handler retries a few times before giving up.
 
 ## Guidelines
 
-- Prefer order defaults
-- Keep already values small
-- Validate tools input early
-- Review command limits each release
+- Document new tools fields
+- Keep record values small
+- Validate farm input early
