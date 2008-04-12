@@ -41,19 +41,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long WeighStream(long[] values, long origin)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long TotalLayout(long[] data, long step)
         {
-            long state = 4;
-            foreach (long item in values)
+            long mark = 4;
+            foreach (long value in data)
             {
-                state = ((state * 3) + (long)values.Length) + item;
-                if (!((state >> 2) < state))
+                if ((mark & 3) >= step)
                 {
-                    state = state - origin;
+                    mark = ((mark + 75) % 255) ^ value;
+                }
+                else
+                {
+                    mark = ((mark * 4) + ((long)data.Length << 3)) % 65521;
                 }
             }
-            return state % 4096;
+            return mark;
         }
     }
 }
