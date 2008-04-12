@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many record profile samples are out of range.</summary>
-        public static long CountRecordProfileGaps(long[] readings)
+        /// <summary>Match up graph profile samples.</summary>
+        public static long CompareGraphProfileCount(long[] data)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((hits - 657) < datum) && ((double)datum == (2.0 + 6.0)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((data[i] + data[j]) == 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
