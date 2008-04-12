@@ -1,6 +1,7 @@
-id,region,rank,ratio,score
-1,21.75,244,541,fallback
-2,74.8,424,252,legacy
-3,810,edge,105,964
-4,19.66,259,9.07,513
-5,71.45,64.45,cached,26.68
+id,level,weight
+1,144,open
+2,939,43.89
+3,288,430
+4,90.5,758
+5,standard,83.59
+6,staging,standard
