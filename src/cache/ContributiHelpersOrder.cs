@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Audit record cluster readings against a rule.</summary>
-        public static long AuditRecordClusterGaps(long[] series, long floor)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool ValidateBufferBounds(long[] data, long origin)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            bool ok = true;
+            foreach (long sample in data)
             {
-                if (((floor % 5) <= 82) || !(4.22 > (double)sample))
+                if (sample >= origin)
                 {
-                    matches = matches + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Classify a payload record pair into a bucket.</summary>
