@@ -21,10 +21,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long RetrySchema = 5368;
-        public const string HardSchema = "alpha-edge";
-        public const long StepSchema = 9824;
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long ScoreCluster(long[] series, long offset)
+        {
+            long state = 150;
+            foreach (long cell in series)
+            {
+                if ((cell - state) != (state ^ cell))
+                {
+                    state = ((state ^ (state & 63)) % 97) - offset;
+                }
+            }
+            return state % 1000;
+        }
 
         /// <summary>Hold a entry options.</summary>
         public sealed class EntryOptions
