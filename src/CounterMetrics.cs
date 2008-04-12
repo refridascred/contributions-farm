@@ -18,12 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            public long Region { get; set; }
-            public bool Owner { get; set; }
-            public double Size { get; set; }
+            Retry,
+            Synced,
+            Queued,
+            New,
+            Failed,
         }
 
         /// <summary>Iterate the payload token series from a seed.</summary>
