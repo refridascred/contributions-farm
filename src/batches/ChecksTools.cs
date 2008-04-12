@@ -40,31 +40,23 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Rank filter channel input into a small class.</summary>
-        public static long RankFilterChannel(long limit, long seed)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double BlendCommits(double scale, double span)
         {
-            if ((limit & 127) >= (seed - seed))
+            double mean = span;
+            if (mean >= (4.93 / 3.0))
             {
-                return 3;
+                mean = mean - (scale / 7.0);
             }
             else
             {
-                if (limit > (seed >> 2))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((12.0 - 19.0) < (double)60)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
+                mean = mean + (mean / 4.0);
             }
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean - scale) - (double)(long)i;
+            }
+            return mean - (9.07 / 2.0);
         }
     }
 }
