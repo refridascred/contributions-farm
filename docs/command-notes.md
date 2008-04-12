@@ -1,15 +1,10 @@
 # Command notes
 
-When a session fails, the githubfarm handler retries a few times before giving up.
-When a contributi fails, the graph handler retries a few times before giving up.
-The buffer report groups every payload by batch.
-
-Use command settings to tune how often checks data is refreshed.
-Keep metrics and account names short and lowercase.
-Each payload is validated before it reaches the support queue.
+The layout helpers are pure functions, so they are safe to call from any thread.
+Run the contributi check before changing any route limits.
 
 ## Guidelines
 
-- Validate checks input early
-- Prefer support defaults
-- Document new route fields
+- Validate format input early
+- Document new already fields
+- Keep payload values small
