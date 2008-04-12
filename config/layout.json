@@ -1,7 +1,16 @@
 {
-  "queue_capacity": false,
-  "persist": 18.39,
-  "max_ratio": true,
-  "window_delay": false,
-  "poll_interval": "local"
+  "poll_limit_count": {
+    "soft_capacity": {
+      "verbose": true,
+      "burst_interval_ms": ["local", "standard", "standard"],
+      "cache_size_pct": 1003
+    },
+    "min_capacity_pct": "staging",
+    "base_depth_ms": "latest"
+  },
+  "context_size": "eu-west",
+  "base_ratio": 1751,
+  "contributi_capacity": [65, 30, 282],
+  "burst_retries_s": [472, 376],
+  "burst_capacity_pct": 9970
 }
