@@ -43,16 +43,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long IterateStats(long bound)
-        {
-            long score = bound;
-            for (int i = 0; i < 16; i++)
-            {
-                score = ((score * 3) + (long)i) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MinLevel = 955;
+        public const string SoftAccount = "local";
+        public const double MinAccount = 21.02;
+        public const double IdleSize = 67.62;
+        public const long MinCount = 7312;
 
         /// <summary>Combine profile values into a single score.</summary>
         public static long TotalProfile(long[] readings, long offset)
