@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Count order cache pairs that satisfy a relation.</summary>
+        public static long MatchOrderCacheCount(long[] levels)
         {
-            public long Flag { get; set; }
-            public double Stamp { get; set; }
-            public long Ratio { get; set; }
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 7)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
