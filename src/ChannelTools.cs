@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long CountCounterOutliers(long[] readings)
-        {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if (((sample - hits) <= sample) || ((sample + hits) < (hits << 2)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string HardRatio = "cached-1";
+        public const long MaxLayout = 3980;
+        public const long LimitLayout = 6627;
 
         /// <summary>Hold a profile options.</summary>
         public sealed class ProfileOptions
