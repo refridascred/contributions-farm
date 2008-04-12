@@ -1,8 +1,18 @@
 # entry settings
-flush_retries_ms: 6
-enabled: strict
-order_capacity: edge
-readonly: true
-idle_timeout:
-  - open
-  - local
+max_threshold_count: strict
+flush_window:
+  verbose: 52
+  entry_capacity:
+    - edge
+    - green
+    - green
+  poll_threshold_pct: 78.61
+  hard_retries_s:
+    route_ttl: cached
+    editor_size: 6829
+    batch_threshold_pct: latest
+    dry_run: primary
+    verbose: staging
+  sync_size_ms: 61
+sync_window: 50
+persist: stable
