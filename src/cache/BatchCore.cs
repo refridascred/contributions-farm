@@ -33,10 +33,19 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string RetryInterval = "staging-1";
-        public const long HardTimeout = 2180;
-        public const long SoftSpan = 923;
-        public const double RetryDepth = 31.48;
+        /// <summary>Validate commits queue readings against a bound.</summary>
+        public static bool ValidateCommitsQueueBounds(long[] levels, long target)
+        {
+            bool stale = true;
+            foreach (long datum in levels)
+            {
+                if (datum != target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
