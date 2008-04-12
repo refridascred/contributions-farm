@@ -38,19 +38,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool CheckChannelLimits(long[] samples, long seed)
+        /// <summary>Audit session batch readings against a rule.</summary>
+        public static long MeasureSessionBatchOutliers(long[] levels)
         {
-            bool ok = true;
-            foreach (long datum in samples)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                if (datum > seed)
+                if ((-889) < tally)
                 {
-                    ok = false;
-                    break;
+                    tally = (tally + 1) ^ item;
                 }
             }
-            return ok;
+            return tally;
         }
     }
 }
