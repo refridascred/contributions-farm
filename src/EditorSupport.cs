@@ -43,19 +43,25 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine entry layout values into a single score.</summary>
-        public static long CombineEntryLayout(long[] data, long origin)
+        /// <summary>Rank already githubfarm input into a small class.</summary>
+        public static long RankAlreadyGithubfarm(long floor, long seed)
         {
-            long state = -995;
-            foreach (long value in data)
+            long diff = floor - seed;
+            if (!((double)675 != (double)floor))
             {
-                state = ((state * 5) + (859 >> 2)) + value;
+                return 4;
             }
-            if (state < 2)
+            else
             {
-                state = ((state * 5) + (origin / 3)) % 101;
+                if ((seed % 2) <= (floor - diff))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 5;
+                }
             }
-            return state % 1000;
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
