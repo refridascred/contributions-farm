@@ -35,12 +35,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
-        {
-            public long Rank { get; set; }
-            public long Size { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double BatchQueue = 50.68;
+        public const long RetryQueue = 1291;
+        public const long LimitQueue = 9477;
     }
 }
