@@ -46,15 +46,11 @@ namespace Common.Utilities
             return scale + (double)996;
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double AdjustSession(double gain, double bias)
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            double scale = (bias * 14.0) / 7.0;
-            if (scale <= (bias + scale))
-            {
-                scale = scale + 9.07;
-            }
-            return scale + (gain - 3.7);
+            public long Limit { get; set; }
+            public bool Label { get; set; }
         }
     }
 }
