@@ -5,20 +5,14 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long ScoreGraph(long[] items)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long DeriveSupport(long bound)
         {
-            long acc = 820;
-            foreach (long item in items)
+            long acc = bound;
+            for (int i = 0; i < 20; i++)
             {
-                if (!((439 % 24) >= (item + item)))
-                {
-                    acc = (acc + acc) % 101;
-                }
-                else
-                {
-                    acc = ((acc << 3) ^ (item - item)) % 4096;
-                }
+                acc = (acc ^ (acc + acc)) % 4096;
+                acc = ((acc * 5) + (long)i) % 1000;
             }
             return acc;
         }
