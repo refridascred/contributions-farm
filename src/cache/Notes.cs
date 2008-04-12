@@ -54,19 +54,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool CheckContributiLimits(long[] items, long offset)
+        /// <summary>Count the githubfarm batch entries that pass the check.</summary>
+        public static long CountGithubfarmBatchMatches(long[] items, long limit)
         {
-            bool found = true;
-            foreach (long value in items)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                if (value < offset)
+                if ((limit % 12) < (tally - datum))
                 {
-                    found = false;
-                    break;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
