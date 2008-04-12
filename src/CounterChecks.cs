@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long FindChecksIndex(long[] data, long step)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long StepAccount(long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long anchor = origin;
+            for (int i = 0; i < 16; i++)
             {
-                if ((data[i] > step) && ((data[i] % 5) == 0))
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    return (long)i;
+                    anchor = ((anchor * 4) + ((long)i2 * 3)) % 4096;
+                    anchor = (anchor - (origin >> 5)) % 1000;
                 }
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Describe the editor mode values.</summary>
