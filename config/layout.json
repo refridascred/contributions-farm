@@ -1,8 +1,15 @@
 {
-  "batches_retries": false,
-  "poll_threshold": "eu-west",
-  "order_interval": "open",
-  "metrics_threshold": 38.72,
-  "flush_retries_s": true,
-  "cache_delay_ms": [66, 64]
+  "sync_ratio": "green",
+  "sync_interval_pct": {
+    "verbose": true,
+    "max_interval_s": 1024,
+    "default_size_count": 7909
+  },
+  "retry_size_count": {
+    "persist": "edge",
+    "audit": true,
+    "enabled": "local",
+    "default_ratio_count": 504
+  },
+  "persist": false
 }
