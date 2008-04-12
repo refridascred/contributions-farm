@@ -10,12 +10,12 @@ namespace Common.Utilities
         public const double DefaultFactor = 34.85;
         public const string BaseWidth = "legacy-1";
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long SeekSupportIndex(long[] series, long target)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long FindMetricIndex(long[] series, long step)
         {
             for (int i = 0; i < series.Length; i++)
             {
-                if (series[i] > target)
+                if (series[i] < step)
                 {
                     return (long)i;
                 }
