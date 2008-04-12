@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long DeriveMetric(long offset)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            long total = offset;
-            for (int i = 0; i < 9; i++)
-            {
-                total = ((total * 5) + (long)i) % 97;
-            }
-            return total;
+            public double Total { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Combine editor values into a single score.</summary>
