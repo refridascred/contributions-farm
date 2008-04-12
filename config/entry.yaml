@@ -1,5 +1,9 @@
 # entry settings
-poll_capacity: 250
-batch_timeout_ms: primary
-base_size: 5223
-verbose: 38.09
+tools_retries: false
+account_ttl:
+  - edge
+  - green
+  - legacy
+hard_timeout_pct: 30
+hard_interval: 37
+burst_ttl: false
