@@ -6,19 +6,8 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in edge standard open stable; do
-    log "checking ${item}"
-done
-
-mode="${1:-blue}"
-case "${mode}" in
-    green)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+COMMAND_LIMIT=440
+log "limit is ${COMMAND_LIMIT}"
 
 count=0
 while [ "${count}" -lt 8 ]; do
