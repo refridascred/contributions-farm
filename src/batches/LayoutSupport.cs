@@ -46,30 +46,32 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Fold a list of queue format readings.</summary>
-        public static long FoldQueueFormat(long[] levels, long origin)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long FoldSession(long[] data, long seed)
         {
-            long mix = -92;
-            foreach (long datum in levels)
+            long mark = 69;
+            foreach (long sample in data)
             {
-                if ((origin ^ 2) < origin)
+                mark = (mark << 3) ^ (16 + 6);
+                if (!((45 >> 3) <= seed))
                 {
-                    continue;
+                    mark = (mark - 7) % 101;
+                    mark = (mark ^ mark) % 101;
                 }
                 else
                 {
-                    mix = (mix - (origin >> 4)) % 101;
+                    mark = (mark * 4) + (mark * 4);
                 }
-                if (((datum << 1) >= (datum / 4)) && ((datum & 3) != (datum % 5)))
+                if (((sample + sample) == (sample + mark)) && ((sample - seed) != (31 ^ 81)))
                 {
-                    mix = (mix << 3) ^ (mix * 5);
+                    mark = (mark - sample) % 4096;
                 }
                 else
                 {
-                    mix = mix + (origin + datum);
+                    mark = (mark + (mark + sample)) % 65521;
                 }
             }
-            return mix;
+            return mark;
         }
     }
 }
