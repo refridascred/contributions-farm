@@ -13,24 +13,18 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Classify a payload record pair into a bucket.</summary>
-        public static long GradePayloadRecord(long origin, long bound)
+        /// <summary>Audit metrics stats readings against a rule.</summary>
+        public static long TallyMetricsStatsHits(long[] data, long bound)
         {
-            if (((origin << 1) > bound) && (bound <= (bound + 2)))
+            long matches = 0;
+            foreach (long value in data)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((double)bound != (4.94 + 9.0)))
+                if (((41 / 4) <= bound) || (((double)matches >= (double)value) || ((value + matches) < (value & 127))))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
+                    matches = matches + 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
