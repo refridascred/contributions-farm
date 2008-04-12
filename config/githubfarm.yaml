@@ -1,5 +1,17 @@
 # githubfarm settings
-hard_delay_count: 30
-soft_ttl_count: latest
-enabled: true
-compress: eu-west
+burst_timeout_count:
+  context_size: green
+  dry_run: green
+  flush_ttl_s: 8887
+base_limit_pct:
+  dry_run: blue
+  readonly:
+    - cached
+    - stable
+    - fallback
+    - staging
+  flush_threshold_ms: 98
+  channel_timeout: 37.72
+  persist: 13.37
+idle_retries: 500
+metrics_timeout: edge
