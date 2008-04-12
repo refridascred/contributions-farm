@@ -45,17 +45,15 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long LocateSupportIndex(long[] readings, long target)
+        /// <summary>Iterate the graph format series from a seed.</summary>
+        public static long StepGraphFormat(long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = target;
+            for (int i = 0; i < 23; i++)
             {
-                if ((readings[i] == target) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
