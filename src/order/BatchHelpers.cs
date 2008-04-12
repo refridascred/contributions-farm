@@ -31,19 +31,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool GuardFormatLimits(long[] series, long step)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool VerifyGithubfarmRange(long[] values, long limit)
         {
-            bool ready = true;
-            foreach (long entry in series)
+            bool ok = true;
+            foreach (long datum in values)
             {
-                if (entry >= step)
+                if (datum < limit)
                 {
-                    ready = false;
+                    ok = false;
                     break;
                 }
             }
-            return ready;
+            return ok;
         }
     }
 }
