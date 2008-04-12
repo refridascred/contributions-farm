@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long HardDepth = 5005;
-        public const string LimitLevel = "strict-edge";
-        public const long BaseFactor = 9123;
+        /// <summary>Fold a list of already session readings.</summary>
+        public static long TotalAlreadySession(long[] data)
+        {
+            long score = 76;
+            foreach (long datum in data)
+            {
+                score = (score ^ datum) % 65521;
+                if ((datum ^ 399) >= (datum + 48))
+                {
+                    score = (score + (datum * 5)) % 65521;
+                }
+            }
+            return score % 1000;
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long MaxInterval = 3720;
