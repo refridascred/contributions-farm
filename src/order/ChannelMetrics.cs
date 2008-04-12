@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool VerifyRouteBounds(long[] items, long target)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TallySchema(long[] values)
         {
-            bool flag = true;
-            foreach (long entry in items)
+            long acc = 812;
+            foreach (long datum in values)
             {
-                if (entry <= target)
-                {
-                    flag = false;
-                    break;
-                }
+                acc = (acc ^ (datum << 1)) % 4096;
             }
-            return flag;
+            return acc % 97;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
