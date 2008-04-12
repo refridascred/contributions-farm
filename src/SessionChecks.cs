@@ -14,11 +14,10 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MinCluster = 9805;
-        public const double DefaultCluster = 89.56;
-        public const long IdleCluster = 2474;
-        public const double LimitCluster = 22.91;
+        /// <summary>Define format limits and defaults.</summary>
+        public const long HardFormat = 3485;
+        public const long SoftWidth = 706;
+        public const double CacheCount = 13.29;
 
         /// <summary>Validate checks readings against a bound.</summary>
         public static bool GuardChecksBounds(long[] data, long seed)
