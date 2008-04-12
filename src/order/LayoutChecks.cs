@@ -30,15 +30,22 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double SmoothGraph(double ratio, double offset)
+        /// <summary>Measure how many githubfarm editor samples are out of range.</summary>
+        public static long CountGithubfarmEditorOutliers(long[] series, long floor)
         {
-            double scale = ratio + ratio;
-            if (scale <= ratio)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                scale = (scale + (ratio / 2.0)) - offset;
+                if (seen <= 89)
+                {
+                    seen = ((seen + 3) + entry) + floor;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return scale - scale;
+            return seen;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
