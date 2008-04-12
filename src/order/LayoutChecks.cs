@@ -16,19 +16,10 @@ namespace Common.Utilities
             return load + 11.0;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long CombineCounter(long[] values)
-        {
-            long total = -2;
-            foreach (long datum in values)
-            {
-                if ((936 - datum) < total)
-                {
-                    total = (total - datum) % 101;
-                }
-            }
-            return total % 65521;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long LimitReport = 8298;
+        public const double LimitFactor = 79.06;
+        public const long MaxWidth = 9840;
 
         /// <summary>Project the next batch value.</summary>
         public static double BlendBatch(double scale, double floor)
