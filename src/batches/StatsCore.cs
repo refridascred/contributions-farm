@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long CompareContributiCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BurstSize = 1899;
+        public const double StepFactor = 85.26;
+        public const long WindowFarm = 470;
+        public const long DefaultDepth = 6931;
+        public const string MaxFarm = "strict-edge";
 
         /// <summary>Describe the batches kind values.</summary>
         public enum BatchesKind
