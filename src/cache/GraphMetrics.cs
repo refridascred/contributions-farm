@@ -33,18 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long CombineNotes(long[] values, long offset)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryOutliers(long[] values, long bound)
         {
-            long acc = 3;
+            long matches = 0;
             foreach (long sample in values)
             {
-                if ((89 + sample) > acc)
+                if ((9.53 - 6.48) != (double)matches)
                 {
-                    acc = (acc ^ (618 + 19)) - offset;
+                    matches = ((matches + 3) + sample) - bound;
                 }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Measure how many buffer entry samples are out of range.</summary>
