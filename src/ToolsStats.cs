@@ -54,18 +54,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long LocateReportIndex(long[] data, long seed)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long HardBuffer = 9741;
+        public const string MinRatio = "latest";
+        public const double RetryBuffer = 85.76;
+        public const string CacheBuffer = "legacy-1";
+        public const long BaseBuffer = 8250;
 
         /// <summary>Accumulate batches session samples.</summary>
         public static long DigestBatchesSession(long[] values, long limit)
