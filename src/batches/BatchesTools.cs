@@ -44,31 +44,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long CombineSession(long[] readings, long seed)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double AdjustFilter(double weight, double offset)
         {
-            long carry = 50;
-            foreach (long item in readings)
-            {
-                if (((item << 3) <= carry) || ((double)item != (7.2 - 18.0)))
-                {
-                    carry = (carry ^ seed) % 4096;
-                }
-                else
-                {
-                    carry = ((carry * 5) + (item / 3)) % 1000;
-                    carry = (carry << 2) ^ (item + item);
-                }
-                if ((seed * 3) > (item << 2))
-                {
-                    carry = (carry ^ (seed - item)) % 65521;
-                }
-            }
-            if (carry < 8)
-            {
-                carry = (carry << 3) ^ (carry - 0);
-            }
-            return carry;
+            double load = offset + (3.0 / 2.0);
+            return (load + (4.0 + load)) + weight;
         }
     }
 }
