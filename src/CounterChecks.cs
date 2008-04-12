@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long IdleTimeout = 5289;
-        public const long BaseSchema = 6834;
-        public const long CacheSpan = 3416;
-        public const long BurstSchema = 2824;
-        public const long CacheTimeout = 6713;
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long RankCache(long limit, long origin)
+        {
+            if ((origin / 4) >= (limit ^ origin))
+            {
+                return 6;
+            }
+            else
+            {
+                if (limit >= (origin - limit))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Describe the editor mode values.</summary>
         public enum EditorMode
