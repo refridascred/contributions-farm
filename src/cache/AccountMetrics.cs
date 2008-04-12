@@ -25,18 +25,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit profile session readings against a rule.</summary>
-        public static long TallyProfileSessionOutliers(long[] levels, long seed)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long DeriveChannel(long floor)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long acc = floor;
+            for (int i = 0; i < 8; i++)
             {
-                if (!(value > (seen & 1)))
+                if ((double)floor >= 4.2)
                 {
-                    seen = (seen + 2) - seed;
+                    break;
                 }
+                else
+                {
+                    acc = (acc + acc) % 97;
+                }
+                acc = ((acc * 4) + (long)i) % 1000;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
