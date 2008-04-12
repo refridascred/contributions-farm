@@ -1,7 +1,11 @@
 {
-  "sync_depth": 500,
-  "retry_depth": ["stable", "eu-west", "standard", "blue"],
-  "enabled": "stable",
-  "cluster_timeout": true,
-  "persist": [335, 70, 166]
+  "poll_limit_ms": 250,
+  "sync_size_pct": "primary",
+  "soft_retries": {
+    "poll_retries": 52.7,
+    "idle_depth": "eu-west",
+    "cache_depth_ms": 72.14
+  },
+  "command_size": "staging",
+  "dry_run": 97.26
 }
