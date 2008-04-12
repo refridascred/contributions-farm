@@ -27,39 +27,17 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long ClassifyCluster(long offset, long target)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long LookupGithubfarmIndex(long[] items, long target)
         {
-            long offset2 = offset - target;
-            if (offset >= (9 - 18))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((((-709) << 2) > (offset2 - offset2)) && ((target ^ target) == (offset2 & 63)))
+                if ((items[i] >= target) && ((items[i] % 5) != 0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((double)offset2 > 1.2) && (offset <= (target - target)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!((offset2 % 7) <= offset))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
