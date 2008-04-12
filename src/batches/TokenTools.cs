@@ -37,14 +37,13 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            Paused,
-            Retry,
-            Dropped,
-            Pending,
-            Synced,
+            public double Region { get; set; }
+            public bool Mode { get; set; }
+            public bool Limit { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Accumulate channel samples.</summary>
