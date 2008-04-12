@@ -1,13 +1,12 @@
 # githubfarm settings
-base_limit_s: false
-burst_capacity_ms:
-  metrics_limit: 97.48
-  persist: 14.76
-  buffer_window: 100
-  warm_threshold_ms: 8469
-  poll_threshold: 61.49
-batch_depth_ms: 58.63
-route_threshold:
+graph_depth: open
+warm_limit:
   - fallback
-  - strict
-burst_threshold_ms: true
+  - open
+  - stable
+poll_interval: green
+flush_size_s: false
+warm_window_pct: local
+filter_depth:
+  - 405
+  - 158
