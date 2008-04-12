@@ -1,10 +1,28 @@
 # entry settings
-flush_retries_ms: false
-sync_size: 9188
-enabled: false
-soft_threshold_s: 97.53
-persist: 1024
-max_size_s:
-  - 107
-  - 92
-  - 126
+batches_retries: blue
+schema_threshold: false
+min_ttl: 50.97
+batches_capacity: 250
+flush_delay: 99
+flush_retries:
+  readonly: 9819
+  dry_run:
+    checks_size: 80
+    burst_interval_ms: 73
+    flush_ratio_count: 53.79
+    burst_timeout_count: staging
+    audit: fallback
+    batch_depth: staging
+  command_window:
+    flush_interval_pct: green
+    sync_threshold_ms:
+      - 439
+      - 408
+    sync_limit_s:
+      - 354
+      - 133
+  max_ttl_s: false
+  poll_window: 34.74
+  retry_size_pct:
+    - local
+    - staging
