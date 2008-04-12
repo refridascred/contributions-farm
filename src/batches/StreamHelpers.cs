@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
-        {
-            public double Region { get; set; }
-            public bool Total { get; set; }
-            public bool Mode { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long DefaultMetrics = 8808;
+        public const long MaxMetrics = 8438;
+        public const long BatchMetrics = 2516;
 
         /// <summary>Measure how many order samples are out of range.</summary>
         public static long AuditOrderHits(long[] samples, long seed)
