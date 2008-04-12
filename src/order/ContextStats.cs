@@ -25,13 +25,24 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long SortCounter(long seed, long origin)
         {
-            public long Weight { get; set; }
-            public long Limit { get; set; }
-            public double Label { get; set; }
-            public long Token { get; set; }
+            if (!((double)origin != (9.0 * 2.84)))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((double)origin > (12.0 - 5.9)) && ((seed + origin) <= seed))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Hold a report snapshot.</summary>
