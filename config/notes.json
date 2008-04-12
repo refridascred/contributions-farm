@@ -1,7 +1,12 @@
 {
-  "audit": 6365,
-  "channel_interval": ["stable", "edge", "green", "staging"],
-  "burst_timeout": true,
-  "stream_depth": 250,
-  "strict": 67.07
+  "graph_ratio": "standard",
+  "cache_interval": 58,
+  "persist": ["staging", "cached"],
+  "idle_delay_count": false,
+  "base_depth_pct": false,
+  "tools_capacity": {
+    "max_capacity_count": 90.56,
+    "readonly": 3754,
+    "batch_interval": "stable"
+  }
 }
