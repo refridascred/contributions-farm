@@ -59,12 +59,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Locate a payload queue reading by value.</summary>
+        public static long LookupPayloadQueueIndex(long[] items, long step)
         {
-            public long Label { get; set; }
-            public string Count { get; set; } = "";
-            public bool Region { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Rank support input into a small class.</summary>
