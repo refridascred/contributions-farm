@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long CountClusterOutliers(long[] values)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextMatches(long[] samples, long seed)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                if (!((matches * 5) == (matches - 23)))
+                if (((hits << 1) >= (263 % 64)) && ((cell % 24) >= (cell + 7)))
                 {
-                    matches = (matches + 1) + sample;
+                    hits = (hits + 3) + seed;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
