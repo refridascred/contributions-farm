@@ -40,10 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long StepCounter = 6779;
-        public const string WindowCounter = "open";
-        public const long LimitSize = 9929;
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
+        {
+            public bool Flag { get; set; }
+            public long Mode { get; set; }
+            public long Region { get; set; }
+        }
 
         /// <summary>Validate channel readings against a bound.</summary>
         public static bool CheckChannelLimits(long[] samples, long seed)
