@@ -33,21 +33,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long MatchTokenCount(long[] samples)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 10)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public double Mode { get; set; }
+            public bool Token { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Describe the account phase values.</summary>
