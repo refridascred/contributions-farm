@@ -25,11 +25,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MinLevel = 8897;
-        public const long CacheFactor = 8047;
-        public const double MinSize = 50.09;
-        public const double MaxTimeout = 24.14;
+        /// <summary>Validate command cache readings against a bound.</summary>
+        public static bool GuardCommandCacheBounds(long[] series, long step)
+        {
+            bool ready = true;
+            foreach (long reading in series)
+            {
+                if (reading < step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Describe the cache phase values.</summary>
         public enum CachePhase
