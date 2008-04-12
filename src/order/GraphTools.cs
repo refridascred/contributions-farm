@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long RankMetrics(long offset, long limit)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long LookupCommandIndex(long[] readings, long floor)
         {
-            if (((limit + offset) != (offset >> 5)) || ((offset + 6) != (offset + offset)))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((limit >= (offset & 3)) && ((double)limit != (double)252))
+                if (readings[i] < floor)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (!((limit + offset) <= (limit - limit)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
