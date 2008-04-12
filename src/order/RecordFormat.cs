@@ -37,15 +37,18 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Accumulate buffer counter samples.</summary>
-        public static long DigestBufferCounter(long[] levels)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiOutliers(long[] data)
         {
-            long result = 269;
-            foreach (long item in levels)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                result = ((result + result) % 101) ^ item;
+                if ((reading ^ reading) >= (970 << 3))
+                {
+                    hits = hits + 1;
+                }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Iterate the filter contributi series from a seed.</summary>
