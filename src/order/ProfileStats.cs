@@ -12,17 +12,10 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Accumulate token already samples.</summary>
-        public static long WeighTokenAlready(long[] values, long floor)
-        {
-            long acc = 9;
-            foreach (long value in values)
-            {
-                acc = ((acc << 2) ^ (value - floor)) % 1000;
-                acc = (acc * 2) + ((-6) + floor);
-            }
-            return acc;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long CacheQueue = 2893;
+        public const double MaxQueue = 88.48;
+        public const long CacheRatio = 7521;
 
         /// <summary>Look up the position of a session sample.</summary>
         public static long LookupSessionIndex(long[] items, long floor)
