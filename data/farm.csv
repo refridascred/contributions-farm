@@ -1,9 +1,7 @@
-id,rank,token
-1,fallback,15.54
-2,standard,810
-3,128,63.28
-4,816,green
-5,46.87,323
-6,edge,23.27
-7,213,legacy
-8,74.81,657
+id,region,weight
+1,105,178
+2,820,331
+3,strict,60.14
+4,cached,298
+5,38.28,open
+6,630,62.65
