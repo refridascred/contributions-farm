@@ -13,13 +13,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long SeekGithubfarmIndex(long[] samples, long offset)
         {
-            Queued,
-            Failed,
-            Active,
-            Dropped,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
