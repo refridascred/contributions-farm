@@ -34,11 +34,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double BlendToken(double rate, double floor)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            double bias = floor;
-            return (bias - (floor + 4.4)) + rate;
+            Dropped,
+            Idle,
+            New,
         }
 
         /// <summary>Blend two contributi batches measurements.</summary>
