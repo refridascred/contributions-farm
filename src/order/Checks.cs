@@ -52,11 +52,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long GradeBuffer(long step, long bound)
         {
-            public string Total { get; set; } = "";
-            public string Weight { get; set; } = "";
+            if ((step * 2) > step)
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((step & 1) <= (step + bound)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!((step - 6) >= step))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the editor state values.</summary>
