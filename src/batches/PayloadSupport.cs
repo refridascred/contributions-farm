@@ -13,15 +13,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Project the next payload value.</summary>
-        public static double SmoothPayload(double ratio, double floor)
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            double gain = ratio;
-            if (gain <= (gain + 7.0))
-            {
-                gain = (gain + gain) - floor;
-            }
-            return gain - gain;
+            public double Level { get; set; }
+            public long Size { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Hold a record header.</summary>
