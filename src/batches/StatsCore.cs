@@ -65,12 +65,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a payload queue reading by value.</summary>
-        public static long LookupPayloadQueueIndex(long[] items, long step)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long LookupChannelIndex(long[] samples, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (items[i] >= step)
+                if ((samples[i] == offset) && ((samples[i] % 2) == 0))
                 {
                     return (long)i;
                 }
