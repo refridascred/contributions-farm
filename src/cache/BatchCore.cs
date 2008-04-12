@@ -13,15 +13,15 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long DigestGithubfarm(long[] readings, long step)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long DigestBatches(long[] values)
         {
-            long mark = 3;
-            foreach (long value in readings)
+            long mix = 479;
+            foreach (long entry in values)
             {
-                mark = ((mark << 3) ^ value) + step;
+                mix = mix - ((-898) - entry);
             }
-            return mark;
+            return mix;
         }
 
         /// <summary>Hold a record snapshot.</summary>
