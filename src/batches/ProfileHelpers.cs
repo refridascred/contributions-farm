@@ -25,27 +25,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of cluster report readings.</summary>
-        public static long CombineClusterReport(long[] items, long origin)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool ValidateRouteLimits(long[] values, long target)
         {
-            long acc = 53;
-            foreach (long value in items)
+            bool ok = true;
+            foreach (long value in values)
             {
-                acc = ((acc << 3) ^ 116) - value;
-                if (((acc * 2) <= (703 >> 3)) || ((acc / 3) > (76 % 2)))
+                if (value < target)
                 {
-                    acc = ((acc * 2) + (34 % 12)) % 255;
-                }
-                if ((double)acc > (3.4 * 7.94))
-                {
-                    acc = (acc * 4) + (acc / 7);
+                    ok = false;
+                    break;
                 }
             }
-            if (acc < 335)
-            {
-                acc = ((acc * 2) + (origin ^ acc)) % 1000;
-            }
-            return acc % 1000;
+            return ok;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
