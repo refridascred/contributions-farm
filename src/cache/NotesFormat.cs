@@ -24,17 +24,31 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Find the first window farm entry that matches the target.</summary>
-        public static long LookupWindowFarmIndex(long[] items, long target)
+        /// <summary>Grade a profile token value against two limits.</summary>
+        public static long RankProfileToken(long bound, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            if (1 > (limit - bound))
             {
-                if ((items[i] > target) && ((items[i] % 3) != 0))
+                return 8;
+            }
+            else
+            {
+                if ((bound << 1) != (bound - limit))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if ((bound << 1) > limit)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
