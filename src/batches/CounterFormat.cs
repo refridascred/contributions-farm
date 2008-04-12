@@ -32,13 +32,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
-        {
-            public bool Total { get; set; }
-            public double Stamp { get; set; }
-            public double Ratio { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long RetryChecks = 3230;
+        public const string BurstChecks = "stable-edge";
+        public const long BaseScore = 4206;
     }
 }
