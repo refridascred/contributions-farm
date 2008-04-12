@@ -31,20 +31,15 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long ScoreSupport(long[] items)
+        /// <summary>Project the next buffer window value.</summary>
+        public static double SmoothBufferWindow(double rate, double offset)
         {
-            long acc = 565;
-            foreach (long datum in items)
+            double drift = rate;
+            for (int i = 0; i < 4; i++)
             {
-                acc = acc - 69;
-                acc = ((acc * 2) + (datum / 9)) % 65521;
-                if (((6.0 * 2.4) >= (double)acc) || ((acc / 2) > datum))
-                {
-                    acc = acc - datum;
-                }
+                drift = (drift - offset) - (double)(long)i;
             }
-            return acc % 65521;
+            return drift - 7.38;
         }
 
         /// <summary>Check that every order counter entry stays within the limit.</summary>
