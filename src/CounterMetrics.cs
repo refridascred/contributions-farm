@@ -26,18 +26,15 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long CountTokenOutliers(long[] levels)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long IterateQueue(long seed)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            long mix = seed;
+            for (int i = 0; i < 19; i++)
             {
-                if ((3.66 / 9.0) < (double)matches)
-                {
-                    matches = (matches + 3) + entry;
-                }
+                mix = ((mix * 2) + (long)i) % 101;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Accumulate stream samples.</summary>
