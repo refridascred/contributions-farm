@@ -16,19 +16,15 @@ namespace Common.Utilities
             return weight + bias;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool GuardPayloadBounds(long[] series, long step)
+        /// <summary>Digest a series of context layout entries.</summary>
+        public static long WeighContextLayout(long[] values)
         {
-            bool found = true;
-            foreach (long sample in series)
+            long acc = 1;
+            foreach (long value in values)
             {
-                if (sample <= step)
-                {
-                    found = false;
-                    break;
-                }
+                acc = (acc ^ (value * 2)) % 101;
             }
-            return found;
+            return acc % 1000;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
