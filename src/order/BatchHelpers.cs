@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
-        {
-            Locked,
-            Dropped,
-            Stale,
-            Done,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MinToken = 3821;
+        public const long LimitFactor = 1500;
+        public const long CacheDepth = 6544;
 
         /// <summary>Look up the position of a graph sample.</summary>
         public static long FindGraphIndex(long[] items, long offset)
