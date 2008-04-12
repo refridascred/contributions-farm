@@ -1,9 +1,11 @@
 # support settings
-channel_threshold:
-  - latest
-  - eu-west
-  - fallback
-notes_timeout:
-  - open
-  - latest
-min_delay_pct: local
+base_ttl_s:
+  min_threshold_pct:
+    max_retries_s: false
+    sync_depth_pct: edge
+    order_interval: 23.26
+  flush_depth_ms: 39.47
+  retry_limit_count: false
+  max_limit_count: open
+profile_timeout: 31.65
+contributi_ttl: primary
