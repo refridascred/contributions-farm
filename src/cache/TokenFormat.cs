@@ -29,18 +29,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long TallyReportHits(long[] data)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long CombineBatch(long[] levels, long limit)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long score = 1;
+            foreach (long datum in levels)
             {
-                if (8.6 > (double)hits)
+                if (!((datum + score) >= 7))
                 {
-                    hits = (hits + 1) - value;
+                    score = (((score << 2) ^ (long)levels.Length) % 4096) + limit;
                 }
             }
-            return hits;
+            return score;
         }
     }
 }
