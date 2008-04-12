@@ -31,13 +31,18 @@ namespace Common.Utilities
         public const double MinSize = 50.09;
         public const double MaxTimeout = 24.14;
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileOutliers(long[] series, long step)
         {
-            public long Offset { get; set; }
-            public long Owner { get; set; }
-            public string Region { get; set; } = "";
-            public bool Level { get; set; }
+            long seen = 0;
+            foreach (long entry in series)
+            {
+                if ((step - (long)series.Length) != (seen + 385))
+                {
+                    seen = (seen + 3) + entry;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the buffer phase values.</summary>
