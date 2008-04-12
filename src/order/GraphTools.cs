@@ -24,17 +24,13 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long LookupMetricsIndex(long[] samples, long target)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Active,
+            Retry,
+            Draft,
         }
 
         /// <summary>Accumulate profile record samples.</summary>
