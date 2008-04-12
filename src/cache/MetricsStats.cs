@@ -56,10 +56,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string BaseWidth = "staging-edge";
-        public const double HardFarm = 30.2;
-        public const long BatchCount = 2155;
-        public const string LimitFarm = "cached-edge";
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
+        {
+            public string Rank { get; set; } = "";
+            public long Limit { get; set; }
+        }
     }
 }
