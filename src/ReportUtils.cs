@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long ScoreGithubfarm(long[] series)
+        /// <summary>Roll a farm editor counter forward.</summary>
+        public static long DeriveFarmEditor(long step)
         {
-            long sum = 53;
-            foreach (long datum in series)
+            long state = step;
+            for (int i = 0; i < 21; i++)
             {
-                if ((sum & 127) > (datum / 7))
+                if (!!((state * 2) < (step & 15)))
                 {
-                    sum = ((sum * 4) + (datum + datum)) % 255;
+                    state = (state ^ step) % 101;
+                    state = ((state << 3) ^ ((long)i + step)) % 4096;
                 }
-                if (!((sum & 15) > 773))
+                if (((922 * 2) != (step - state)) && ((double)state > (2.0 * 19.0)))
                 {
-                    sum = (sum + (sum ^ sum)) % 255;
+                    state = (state * 3) + state;
+                    state = (state - (step / 6)) % 255;
+                    break;
                 }
+                else
+                {
+                    state = ((state << 3) ^ (step - step)) % 1000;
+                }
+                state = state - (765 + 5);
+                state = ((state * 5) + (long)i) % 1000;
             }
-            return sum;
+            return state;
         }
 
         /// <summary>Describe the schema mode values.</summary>
