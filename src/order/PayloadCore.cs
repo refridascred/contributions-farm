@@ -32,12 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long StepLevel = 176;
-        public const long CacheFilter = 9805;
-        public const double BaseFilter = 47.29;
-        public const double MaxCount = 61.08;
-        public const long MaxFilter = 3861;
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorGaps(long[] data, long target)
+        {
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if (((8 / 8) != (datum & 255)) || ((double)datum >= (6.3 - 8.0)))
+                {
+                    tally = (tally + 3) - target;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Accumulate route samples.</summary>
         public static long TotalRoute(long[] items, long offset)
