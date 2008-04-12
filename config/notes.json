@@ -1,13 +1,8 @@
 {
-  "command_limit": {
-    "filter_threshold": false,
-    "base_size_s": 35,
-    "session_threshold": {
-      "enabled": [171, 332, 87],
-      "persist": [409, 216, 480, 441],
-      "tools_window": 250
-    }
-  },
-  "report_window": true,
-  "burst_size_ms": 8383
+  "warm_limit_ms": ["stable", "primary", "staging", "latest"],
+  "cache_threshold_pct": "legacy",
+  "metric_ratio": ["cached", "primary"],
+  "schema_ratio": "legacy",
+  "max_ttl_count": 100,
+  "batch_timeout": "standard"
 }
