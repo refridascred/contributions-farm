@@ -25,19 +25,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long IterateCommand(long offset)
+        /// <summary>Compare every pair of batches schema readings.</summary>
+        public static long CompareBatchesSchemaCount(long[] values)
         {
-            long carry = offset;
-            for (int i = 0; i < 13; i++)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int i2 = 0; i2 < 3; i2++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    carry = (((carry * 4) + offset) % 101) ^ (long)i2;
+                    if ((values[i] - values[j]) != 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Blend two tools support measurements.</summary>
