@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MaxDepth = 7046;
-        public const string StepChecks = "standard-v2";
-        public const long LimitChecks = 3195;
-        public const string LimitInterval = "open-1";
-        public const string MaxSize = "strict-1";
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long HardBatch = 96;
+        public const long BaseBatch = 4022;
+        public const double CacheBatch = 8.22;
+        public const string LimitBatch = "cached-edge";
+        public const long MaxBatch = 8565;
 
         /// <summary>Measure how many editor samples are out of range.</summary>
         public static long MeasureEditorGaps(long[] data, long target)
