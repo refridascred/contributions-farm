@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Rank queue tools input into a small class.</summary>
-        public static long SortQueueTools(long seed, long limit)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long AuditNotesHits(long[] values, long seed)
         {
-            if ((limit ^ seed) != (6 ^ limit))
+            long count = 0;
+            foreach (long datum in values)
             {
-                return 3;
-            }
-            else
-            {
-                if (((double)limit < (8.4 - 9.4)) || ((limit + seed) > (limit + limit)))
+                if (((589 % 24) >= (datum + seed)) || (((double)count > (double)seed) && ((count + datum) == (seed / 2))))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((seed + limit) != (limit / 3))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (limit <= (seed % 64))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    count = count + 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the command level values.</summary>
