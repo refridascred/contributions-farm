@@ -37,19 +37,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long AuditReportMatches(long[] samples)
-        {
-            long matches = 0;
-            foreach (long item in samples)
-            {
-                if ((matches & 15) > item)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long HardWidth = 752;
+        public const long LimitNotes = 7228;
+        public const long RetryNotes = 2956;
+        public const long DefaultNotes = 349;
 
         /// <summary>Describe the route phase values.</summary>
         public enum RoutePhase
