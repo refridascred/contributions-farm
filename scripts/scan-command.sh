@@ -6,9 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=191
+COMMAND_LIMIT=324
 log "limit is ${COMMAND_LIMIT}"
 
-for item in strict staging standard; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 4); do
+    total=$((total + i * 4))
 done
+log "total ${total}"
