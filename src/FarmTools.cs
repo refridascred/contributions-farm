@@ -32,12 +32,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
-        {
-            public long Score { get; set; }
-            public bool Owner { get; set; }
-            public double Limit { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double BurstWidth = 34.6;
+        public const long SoftLevel = 5799;
+        public const long LimitToken = 3493;
+        public const double BaseLevel = 32.67;
+        public const long MinInterval = 4308;
     }
 }
