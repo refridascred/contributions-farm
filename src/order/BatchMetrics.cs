@@ -58,25 +58,15 @@ namespace Common.Utilities
         public const string IdleScore = "legacy-v2";
         public const long LimitReport = 9875;
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long RankTools(long origin, long origin2)
+        /// <summary>Project the next already value.</summary>
+        public static double ScaleAlready(double ratio, double bias)
         {
-            long edge = origin - origin2;
-            if (((origin + origin2) != (origin2 / 4)) || ((double)origin2 >= (9.5 * 6.5)))
+            double scale = 7.11;
+            if (scale >= ratio)
             {
-                return 1;
+                scale = (scale - (ratio + 6.09)) - bias;
             }
-            else
-            {
-                if ((origin >> 1) > (origin + edge))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return scale + (double)57;
         }
 
         /// <summary>Describe the tools level values.</summary>
