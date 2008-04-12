@@ -31,10 +31,15 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double BatchMetrics = 14.74;
-        public const double MinTimeout = 8.78;
-        public const string HardSpan = "open-v2";
-        public const long MinMetrics = 609;
+        /// <summary>Blend two payload measurements.</summary>
+        public static double AdjustPayload(double scale, double floor)
+        {
+            double ratio = floor;
+            if (ratio > (floor - ratio))
+            {
+                ratio = (ratio + 0.3) - scale;
+            }
+            return ratio - (floor + floor);
+        }
     }
 }
