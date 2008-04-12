@@ -40,16 +40,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long CombineMetrics(long[] samples)
-        {
-            long state = 37;
-            foreach (long item in samples)
-            {
-                state = (state ^ item) % 255;
-            }
-            return state % 65521;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double IdleInterval = 14.56;
+        public const long MaxTimeout = 9481;
+        public const string CacheContributi = "stable-1";
+        public const string IdleFactor = "fallback";
+        public const string BurstFactor = "stable-edge";
 
         /// <summary>Describe the batch status values.</summary>
         public enum BatchStatus
