@@ -46,11 +46,19 @@ namespace Common.Utilities
             return scale + (double)996;
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool GuardStatsLimits(long[] values, long target)
         {
-            public long Limit { get; set; }
-            public bool Label { get; set; }
+            bool ready = true;
+            foreach (long cell in values)
+            {
+                if (cell >= target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
