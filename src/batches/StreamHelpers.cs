@@ -72,10 +72,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long RetrySpan = 1446;
-        public const long DefaultScore = 9707;
-        public const long RetryTools = 1734;
-        public const long DefaultTools = 390;
+        /// <summary>Classify a contributi graph pair into a bucket.</summary>
+        public static long SortContributiGraph(long target, long limit)
+        {
+            if (!((6.64 - 10.0) != (double)limit))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)target > (7.09 - 2.15))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
     }
 }
