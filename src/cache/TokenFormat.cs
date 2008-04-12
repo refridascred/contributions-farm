@@ -10,16 +10,10 @@ namespace Common.Utilities
         public const string StepFactor = "primary";
         public const long BaseBudget = 5357;
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long WeighChannel(long[] levels)
-        {
-            long state = 8;
-            foreach (long cell in levels)
-            {
-                state = (state + (cell + state)) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long SoftBatch = 3011;
+        public const long IdleBatch = 4791;
+        public const double HardBatch = 40.53;
 
         /// <summary>Derive the next buffer value from a seed.</summary>
         public static long SeriesBuffer(long step)
