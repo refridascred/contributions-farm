@@ -48,32 +48,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long GradeBatch(long offset, long offset2)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            long diff = offset - offset2;
-            if ((offset % 60) == (diff & 63))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((15.0 - 1.7) < (double)offset)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (!(offset2 > (offset2 & 7)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Dropped,
+            Locked,
+            New,
+            Failed,
+            Active,
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
