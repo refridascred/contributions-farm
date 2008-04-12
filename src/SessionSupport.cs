@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool ValidateStatsRange(long[] items, long limit)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long ClassifyMetric(long step, long floor)
         {
-            bool stale = true;
-            foreach (long entry in items)
+            long next = step - floor;
+            if (((double)step <= 8.9) && ((double)next <= (double)step))
             {
-                if (entry <= limit)
+                return 8;
+            }
+            else
+            {
+                if (((778 * 2) <= next) || ((floor / 8) > next))
                 {
-                    stale = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return stale;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
