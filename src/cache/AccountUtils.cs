@@ -25,19 +25,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool GuardLayoutLimits(long[] levels, long offset)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long SeekChecksIndex(long[] levels, long seed)
         {
-            bool ok = true;
-            foreach (long cell in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (cell <= offset)
+                if (levels[i] >= seed)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
     }
 }
