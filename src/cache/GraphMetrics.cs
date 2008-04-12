@@ -61,18 +61,21 @@ namespace Common.Utilities
         public const long StepSize = 1926;
         public const double MinSpan = 68.78;
 
-        /// <summary>Measure how many cluster graph samples are out of range.</summary>
-        public static long AuditClusterGraphOutliers(long[] data)
+        /// <summary>Compare every pair of editor checks readings.</summary>
+        public static long MatchEditorChecksCount(long[] series)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((tally & 7) < tally)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = (tally + 2) + datum;
+                    if ((series[i] - series[j]) == 7)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
