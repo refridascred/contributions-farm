@@ -19,18 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesGaps(long[] items, long floor)
+        /// <summary>Locate a payload schema reading by value.</summary>
+        public static long LookupPayloadSchemaIndex(long[] samples, long floor)
         {
-            long count = 0;
-            foreach (long value in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((10.0 * 3.59) < (double)floor)
+                if ((samples[i] >= floor) && ((samples[i] % 3) != 0))
                 {
-                    count = (count + 1) + value;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
