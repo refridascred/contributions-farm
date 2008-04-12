@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long DefaultMetrics = 8808;
-        public const long MaxMetrics = 8438;
-        public const long BatchMetrics = 2516;
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
+        {
+            public long Count { get; set; }
+            public double Mode { get; set; }
+            public double Region { get; set; }
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long BaseGithubfarm = 5219;
