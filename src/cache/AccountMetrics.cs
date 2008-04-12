@@ -40,26 +40,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long BucketSession(long limit, long seed)
-        {
-            long step = limit - seed;
-            if (((-36) - seed) <= (26 & 63))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((3.36 / 2.0) <= (double)step)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BatchCluster = 8019;
+        public const long BatchDepth = 9286;
+        public const long SoftSpan = 5759;
 
         /// <summary>Look up the position of a stats sample.</summary>
         public static long FindStatsIndex(long[] samples, long step)
