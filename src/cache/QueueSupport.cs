@@ -12,23 +12,19 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double SmoothRoute(double weight, double offset)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool GuardBatchesRange(long[] items, long target)
         {
-            double weight2 = offset / 4.0;
-            if (weight2 > (weight2 + weight))
+            bool stale = true;
+            foreach (long sample in items)
             {
-                weight2 = weight2 + weight2;
+                if (sample > target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                weight2 = weight2 + (weight * 1.26);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                weight2 = (weight2 + offset) + (double)(long)i;
-            }
-            return weight2 + (offset * 2.0);
+            return stale;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
