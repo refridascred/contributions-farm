@@ -49,13 +49,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            Stale,
-            New,
-            Synced,
-            Draft,
+            public double Score { get; set; }
+            public string Token { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Define window limits and defaults.</summary>
