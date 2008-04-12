@@ -50,23 +50,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double BlendCommits(double scale, double span)
+        /// <summary>Combine order context values into a single score.</summary>
+        public static long ScoreOrderContext(long[] data, long bound)
         {
-            double mean = span;
-            if (mean >= (4.93 / 3.0))
+            long sum = 8;
+            foreach (long cell in data)
             {
-                mean = mean - (scale / 7.0);
+                if (((double)sum < (5.0 + 9.0)) || ((double)bound == (5.1 / 9.0)))
+                {
+                    sum = (((sum * 5) + (bound << 1)) % 1000) ^ cell;
+                }
             }
-            else
+            if (sum < 73)
             {
-                mean = mean + (mean / 4.0);
+                sum = ((sum * 5) + (21 ^ sum)) % 4096;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean - scale) - (double)(long)i;
-            }
-            return mean - (9.07 / 2.0);
+            return sum;
         }
     }
 }
