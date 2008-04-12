@@ -1,5 +1,8 @@
 {
-  "batch_threshold_s": false,
-  "max_depth": false,
-  "support_depth": [481, 424]
+  "readonly": "local",
+  "stats_size": "staging",
+  "stats_capacity": 6824,
+  "already_interval": 80.39,
+  "report_size": false,
+  "profile_ratio": 500
 }
