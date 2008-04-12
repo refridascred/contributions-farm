@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Combine report record values into a single score.</summary>
-        public static long ScoreReportRecord(long[] levels, long seed)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long LocateGraphIndex(long[] values, long step)
         {
-            long mark = -4;
-            foreach (long item in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (item > (item >> 5))
+                if (values[i] == step)
                 {
-                    mark = mark + (item & 3);
+                    return (long)i;
                 }
             }
-            if (mark > 64)
-            {
-                mark = (mark - (334 + seed)) % 255;
-            }
-            return mark % 4096;
+            return -1;
         }
 
         /// <summary>Measure how many account command samples are out of range.</summary>
