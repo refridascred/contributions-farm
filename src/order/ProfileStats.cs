@@ -12,14 +12,19 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Validate commits graph readings against a bound.</summary>
+        public static bool CheckCommitsGraphLimits(long[] data, long origin)
         {
-            Done,
-            Failed,
-            Ready,
-            New,
-            Pending,
+            bool valid = true;
+            foreach (long item in data)
+            {
+                if (item >= origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
