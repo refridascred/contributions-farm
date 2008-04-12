@@ -21,20 +21,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool VerifyCounterLimits(long[] values, long floor)
-        {
-            bool ready = true;
-            foreach (long datum in values)
-            {
-                if (datum != floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long RetrySchema = 5368;
+        public const string HardSchema = "alpha-edge";
+        public const long StepSchema = 9824;
 
         /// <summary>Hold a entry options.</summary>
         public sealed class EntryOptions
