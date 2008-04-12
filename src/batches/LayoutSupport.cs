@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long MeasureWindowHits(long[] items)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long MeasureChecksOutliers(long[] series, long floor)
         {
-            long count = 0;
-            foreach (long item in items)
+            long hits = 0;
+            foreach (long value in series)
             {
-                if (item < (144 + item))
+                if (!(87 <= hits))
                 {
-                    count = count + 3;
+                    hits = ((hits + 1) - value) - floor;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
