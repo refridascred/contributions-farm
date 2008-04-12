@@ -30,22 +30,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksOutliers(long[] samples, long target)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long CombineOrder(long[] data)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long total = 11;
+            foreach (long reading in data)
             {
-                if ((802 % 12) >= (seen & 3))
+                if ((19.0 * 4.1) >= (double)total)
                 {
-                    seen = ((seen + 3) - datum) - target;
+                    total = (total * 4) + (total + 66);
                 }
                 else
                 {
-                    seen = seen - 1;
+                    total = (total + (reading / 7)) % 101;
                 }
             }
-            return seen;
+            return total % 97;
         }
 
         /// <summary>Adjust a cache reading.</summary>
