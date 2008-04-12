@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long DeriveSupport(long bound)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long TallyCounterHits(long[] samples)
         {
-            long acc = bound;
-            for (int i = 0; i < 20; i++)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                acc = (acc ^ (acc + acc)) % 4096;
-                acc = ((acc * 5) + (long)i) % 1000;
+                if (hits < cell)
+                {
+                    hits = hits + 3;
+                }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
