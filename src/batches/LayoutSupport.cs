@@ -32,12 +32,15 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Blend two entry measurements.</summary>
+        public static double ScaleEntry(double rate, double bias)
         {
-            Locked,
-            Ready,
-            Draft,
+            double scale = rate;
+            if (scale <= scale)
+            {
+                scale = scale + (bias - rate);
+            }
+            return scale + (double)996;
         }
 
         /// <summary>Adjust a session reading.</summary>
