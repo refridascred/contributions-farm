@@ -35,15 +35,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double ScaleCluster(double bias, double floor)
-        {
-            double drift = (double)4 - (bias - bias);
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift - (floor - bias)) + (double)(long)i;
-            }
-            return drift + floor;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double SoftTools = 33.74;
+        public const long SoftInterval = 2682;
+        public const string HardTools = "legacy-v2";
+        public const long DefaultFactor = 1784;
     }
 }
