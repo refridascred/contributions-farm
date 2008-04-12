@@ -25,22 +25,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long CombineOrder(long[] data)
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long LookupPayloadIndex(long[] samples, long target)
         {
-            long total = 11;
-            foreach (long reading in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((19.0 * 4.1) >= (double)total)
+                if ((samples[i] == target) && ((samples[i] % 2) == 0))
                 {
-                    total = (total * 4) + (total + 66);
-                }
-                else
-                {
-                    total = (total + (reading / 7)) % 101;
+                    return (long)i;
                 }
             }
-            return total % 97;
+            return -1;
         }
 
         /// <summary>Describe the route phase values.</summary>
