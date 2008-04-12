@@ -20,12 +20,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Roll a format counter forward.</summary>
+        public static long StepFormat(long target)
         {
-            Dropped,
-            Stale,
-            Retry,
+            long state = target;
+            for (int i = 0; i < 15; i++)
+            {
+                state = ((state * 3) + (long)i) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Hold a window summary.</summary>
