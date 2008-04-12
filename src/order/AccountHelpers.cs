@@ -68,11 +68,9 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
-        {
-            public long Mode { get; set; }
-            public string Level { get; set; } = "";
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string IdleLayout = "latest-edge";
+        public const string HardLayout = "alpha";
+        public const long RetryDepth = 5784;
     }
 }
