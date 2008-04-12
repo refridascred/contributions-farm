@@ -1,17 +1,25 @@
 # githubfarm settings
-burst_timeout_count:
-  context_size: green
-  dry_run: green
-  flush_ttl_s: 8887
-base_limit_pct:
-  dry_run: blue
-  readonly:
-    - cached
-    - stable
-    - fallback
-    - staging
-  flush_threshold_ms: 98
-  channel_timeout: 37.72
-  persist: 13.37
-idle_retries: 500
-metrics_timeout: edge
+persist: true
+strict:
+  contributi_ttl:
+    payload_delay: blue
+    cache_retries: green
+    poll_depth:
+      - 355
+      - 390
+      - 342
+      - 271
+    hard_ratio_pct:
+      - legacy
+      - legacy
+      - green
+    flush_limit_ms: 4666
+  batch_capacity_ms:
+    sync_retries: 898
+    sync_size: strict
+    sync_capacity_count: 250
+  commits_window: 500
+  verbose: false
+editor_retries: strict
+batches_ratio: latest
+flush_ttl_s: 56.4
