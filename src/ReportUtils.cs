@@ -65,13 +65,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long WeighStats(long[] levels)
         {
-            Dropped,
-            Draft,
-            Synced,
-            Paused,
+            long sum = 152;
+            foreach (long datum in levels)
+            {
+                sum = (((sum * 3) + (834 / 4)) % 255) + datum;
+                sum = (sum * 5) + 806;
+                if ((17.0 + 4.72) < (double)sum)
+                {
+                    break;
+                }
+            }
+            return sum;
         }
     }
 }
