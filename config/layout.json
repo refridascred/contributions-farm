@@ -1,15 +1,12 @@
 {
-  "persist": {
-    "soft_interval_pct": "staging",
-    "flush_capacity_ms": 0.41,
-    "persist": {
-      "default_delay_pct": false,
-      "commits_timeout": false,
-      "compress": "eu-west"
-    },
-    "flush_threshold_s": "latest"
+  "sync_delay": {
+    "readonly": 6.81,
+    "buffer_limit": 7.24,
+    "audit": ["open", "cached", "local", "eu-west"]
   },
-  "base_timeout_ms": true,
-  "hard_interval": "local",
-  "warm_depth": 1024
+  "flush_ttl_count": [359, 71, 73],
+  "soft_capacity_ms": 70,
+  "soft_retries_count": "green",
+  "format_threshold": true,
+  "base_interval_count": "primary"
 }
