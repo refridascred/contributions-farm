@@ -76,16 +76,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long RollEntry(long offset)
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            long carry = offset;
-            for (int i = 0; i < 23; i++)
-            {
-                carry = ((carry << 3) ^ carry) % 97;
-                carry = ((carry * 3) + (long)i) % 97;
-            }
-            return carry;
+            public long Flag { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
