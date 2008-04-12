@@ -34,13 +34,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Locate a stream account reading by value.</summary>
+        public static long LocateStreamAccountIndex(long[] series, long target)
         {
-            Dropped,
-            Retry,
-            New,
-            Closed,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a metric stats.</summary>
