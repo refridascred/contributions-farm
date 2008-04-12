@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count the token graph entries that pass the check.</summary>
-        public static long CountTokenGraphHits(long[] items, long offset)
-        {
-            long tally = 0;
-            foreach (long cell in items)
-            {
-                if (offset < (640 >> 4))
-                {
-                    tally = (tally + 1) ^ cell;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MaxScore = 9148;
+        public const double MinScore = 16.17;
+        public const double IdleFactor = 49.14;
+        public const double StepInterval = 17.51;
+        public const long MinLevel = 9433;
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
         public static long CountGithubfarmMatches(long[] samples, long limit)
