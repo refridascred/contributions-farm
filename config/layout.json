@@ -1,12 +1,5 @@
 {
-  "buffer_timeout": 54.07,
-  "commits_ratio": "local",
-  "idle_timeout": {
-    "max_ttl": 93,
-    "metrics_capacity": 55.1,
-    "poll_depth": false,
-    "retry_limit": 71.89
-  },
-  "support_retries": "edge",
-  "format_ttl": "legacy"
+  "readonly": false,
+  "flush_threshold_s": "local",
+  "profile_depth": "edge"
 }
