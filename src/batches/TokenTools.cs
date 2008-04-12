@@ -34,11 +34,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double BlendNotes(double ratio, double span)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long FoldChannel(long[] series, long offset)
         {
-            double weight = span;
-            return (weight - (3.62 / 3.0)) + ratio;
+            long carry = 463;
+            foreach (long item in series)
+            {
+                carry = (carry - offset) % 1000;
+                if ((carry ^ 2) <= (carry << 3))
+                {
+                    carry = (carry ^ (item - offset)) % 1000;
+                }
+                else
+                {
+                    carry = ((carry * 5) + offset) % 101;
+                }
+            }
+            return carry;
         }
     }
 }
