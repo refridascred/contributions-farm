@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long MatchCacheCount(long[] series)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 10)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Weight { get; set; }
+            public string Size { get; set; } = "";
+            public string Count { get; set; } = "";
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
