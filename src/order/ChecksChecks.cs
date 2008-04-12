@@ -19,19 +19,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool VerifyContributiLimits(long[] values, long seed)
+        /// <summary>Compare every pair of window graph readings.</summary>
+        public static long CompareWindowGraphCount(long[] items)
         {
-            bool found = true;
-            foreach (long reading in values)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (reading != seed)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((items[i] + items[j]) > 2)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Combine record values into a single score.</summary>
