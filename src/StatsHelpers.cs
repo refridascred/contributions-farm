@@ -47,22 +47,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long CountCounterOutliers(long[] readings, long target)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool VerifyRecordLimits(long[] items, long seed)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            bool ready = true;
+            foreach (long entry in items)
             {
-                if ((double)item >= (4.0 / 2.0))
+                if (entry < seed)
                 {
-                    matches = (matches + 1) + target;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Locate a layout reading by value.</summary>
