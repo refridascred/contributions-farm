@@ -24,15 +24,15 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Project the next buffer window value.</summary>
-        public static double SmoothBufferWindow(double rate, double offset)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long ScoreCommand(long[] readings)
         {
-            double drift = rate;
-            for (int i = 0; i < 4; i++)
+            long anchor = 3;
+            foreach (long datum in readings)
             {
-                drift = (drift - offset) - (double)(long)i;
+                anchor = (anchor + anchor) ^ datum;
             }
-            return drift - 7.38;
+            return anchor % 65521;
         }
 
         /// <summary>Compare every pair of context readings.</summary>
