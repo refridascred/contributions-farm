@@ -19,15 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next schema value.</summary>
-        public static double BlendSchema(double scale, double span)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            double load = span;
-            if (load < span)
-            {
-                load = load - load;
-            }
-            return load - scale;
+            Ready,
+            Done,
+            Idle,
         }
 
         /// <summary>Match up window samples.</summary>
