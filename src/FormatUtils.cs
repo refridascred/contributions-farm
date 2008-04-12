@@ -54,32 +54,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Rank format token input into a small class.</summary>
-        public static long RankFormatToken(long target, long seed)
-        {
-            if (((target + seed) > seed) || ((double)seed == (2.06 - 13.0)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((target + 6) >= (target - target))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((seed >> 2) == (289 >> 4)) && ((target % 2) >= seed))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long HardFormat = 6309;
+        public const double DefaultSpan = 77.15;
+        public const string BurstFormat = "staging-v2";
 
         /// <summary>Define counter limits and defaults.</summary>
         public const string BaseCounter = "open-edge";
