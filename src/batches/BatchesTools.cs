@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BurstInterval = 1303;
-        public const long CacheInterval = 7213;
-        public const long MaxFactor = 7633;
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
+        {
+            Idle,
+            Draft,
+            Synced,
+            Paused,
+            Queued,
+        }
 
         /// <summary>Compare every pair of metrics readings.</summary>
         public static long CompareMetricsCount(long[] values)
