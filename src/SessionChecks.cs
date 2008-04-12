@@ -12,11 +12,22 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string LimitContext = "strict-v2";
-        public const double BatchContext = 3.24;
-        public const long SoftContext = 708;
-        public const string BaseInterval = "legacy-v2";
+        /// <summary>Match up buffer account samples.</summary>
+        public static long PairBufferAccountCount(long[] items)
+        {
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 3)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Audit filter readings against a rule.</summary>
         public static long MeasureFilterOutliers(long[] levels, long seed)
