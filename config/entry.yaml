@@ -1,18 +1,23 @@
 # entry settings
-max_threshold_count: strict
-flush_window:
-  verbose: 52
-  entry_capacity:
+warm_ratio_s:
+  idle_depth_ms: 24
+  poll_ratio_s:
     - edge
-    - green
-    - green
-  poll_threshold_pct: 78.61
-  hard_retries_s:
-    route_ttl: cached
-    editor_size: 6829
-    batch_threshold_pct: latest
-    dry_run: primary
-    verbose: staging
-  sync_size_ms: 61
-sync_window: 50
-persist: stable
+    - cached
+    - open
+    - blue
+  sync_ttl: blue
+  sync_size: false
+enabled: local
+max_depth: blue
+schema_interval:
+  burst_capacity_count: cached
+  order_retries:
+    - open
+    - primary
+    - standard
+    - blue
+  sync_ttl_count: standard
+  idle_window_count: false
+default_timeout: cached
+batch_interval: stable
