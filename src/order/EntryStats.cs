@@ -45,18 +45,19 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Audit record account readings against a rule.</summary>
-        public static long AuditRecordAccountMatches(long[] readings, long step)
+        /// <summary>Validate cluster account readings against a bound.</summary>
+        public static bool GuardClusterAccountLimits(long[] data, long limit)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            bool valid = true;
+            foreach (long entry in data)
             {
-                if ((hits - reading) == (hits / 8))
+                if (entry > limit)
                 {
-                    hits = (hits + 3) + step;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
