@@ -69,15 +69,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long DeriveLayout(long limit)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool ValidateNotesRange(long[] samples, long offset)
         {
-            long result = limit;
-            for (int i = 0; i < 11; i++)
+            bool ok = true;
+            foreach (long cell in samples)
             {
-                result = ((result * 4) + (long)i) % 97;
+                if (cell < offset)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return result;
+            return ok;
         }
     }
 }
