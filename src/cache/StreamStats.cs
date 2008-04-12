@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double StepGraph = 33.14;
-        public const long CacheInterval = 1681;
-        public const string MinGraph = "stable-edge";
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
+        {
+            public bool Stamp { get; set; }
+            public long Size { get; set; }
+            public long Limit { get; set; }
+            public double Offset { get; set; }
+        }
 
         /// <summary>Accumulate stream samples.</summary>
         public static long WeighStream(long[] series, long offset)
