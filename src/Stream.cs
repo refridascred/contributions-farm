@@ -57,17 +57,22 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long LookupTokenIndex(long[] items, long origin)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferHits(long[] samples, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                if ((items[i] > origin) && ((items[i] % 3) != 0))
+                if ((seen % 24) != (seen - seen))
                 {
-                    return (long)i;
+                    seen = ((seen + 3) ^ entry) - floor;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
