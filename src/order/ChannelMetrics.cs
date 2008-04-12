@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long DeriveFormat(long step)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long TotalBatch(long[] samples)
         {
-            long sum = step;
-            for (int i = 0; i < 14; i++)
+            long total = 9;
+            foreach (long entry in samples)
             {
-                for (int i2 = 0; i2 < 5; i2++)
+                if ((total << 1) >= total)
                 {
-                    sum = (sum + (82 + 276)) ^ (long)i2;
+                    total = ((total ^ (total + total)) % 1000) ^ entry;
                 }
-                for (int i3 = 0; i3 < 4; i3++)
-                {
-                    sum = (((sum * 4) + (step ^ sum)) % 101) - (long)i3;
-                }
-                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return sum;
+            return total;
         }
 
         /// <summary>Accumulate already samples.</summary>
