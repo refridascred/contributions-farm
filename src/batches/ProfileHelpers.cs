@@ -25,12 +25,11 @@ namespace Common.Utilities
         public const long RetryContext = 175;
         public const long MaxContext = 7662;
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            Pending,
-            New,
-            Queued,
+            public long Count { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Iterate the stats entry series from a seed.</summary>
