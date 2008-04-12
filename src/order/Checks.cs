@@ -60,13 +60,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long MeasureContextGaps(long[] readings)
         {
-            public bool Owner { get; set; }
-            public string Limit { get; set; } = "";
-            public double Ratio { get; set; }
-            public string Weight { get; set; } = "";
+            long tally = 0;
+            foreach (long cell in readings)
+            {
+                if ((cell + tally) > tally)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the queue class values.</summary>
