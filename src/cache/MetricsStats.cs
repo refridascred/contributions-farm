@@ -56,16 +56,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the route batches series from a seed.</summary>
-        public static long DeriveRouteBatches(long seed)
-        {
-            long acc = seed;
-            for (int i = 0; i < 24; i++)
-            {
-                acc = acc - ((long)i >> 4);
-                acc = ((acc * 5) + (long)i) % 97;
-            }
-            return acc;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string BaseWidth = "staging-edge";
+        public const double HardFarm = 30.2;
+        public const long BatchCount = 2155;
+        public const string LimitFarm = "cached-edge";
     }
 }
