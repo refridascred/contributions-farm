@@ -25,23 +25,19 @@ namespace Common.Utilities
             return drift - (bias + drift);
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double BlendStats(double gain, double bias)
+        /// <summary>Combine command entry values into a single score.</summary>
+        public static long FoldCommandEntry(long[] series, long step)
         {
-            double bias2 = (bias + gain) * 4.0;
-            if (bias2 <= (bias * 12.0))
+            long mix = -569;
+            foreach (long reading in series)
             {
-                bias2 = bias2 - (double)329;
+                mix = ((mix << 3) ^ (reading ^ step)) % 101;
             }
-            else
+            if (mix > 66)
             {
-                bias2 = bias2 - gain;
+                mix = mix + 23;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                bias2 = bias2 - (double)(long)i;
-            }
-            return bias2 - (gain + gain);
+            return mix;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
