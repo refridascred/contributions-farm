@@ -13,11 +13,16 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string SoftCounter = "latest-1";
-        public const long IdleBudget = 9537;
-        public const long BaseSize = 5604;
-        public const double MaxCounter = 30.66;
+        /// <summary>Roll a order counter forward.</summary>
+        public static long SeriesOrder(long limit)
+        {
+            long mark = limit;
+            for (int i = 0; i < 13; i++)
+            {
+                mark = ((mark * 4) + (long)i) % 1000;
+            }
+            return mark;
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const double CacheChannel = 34.21;
