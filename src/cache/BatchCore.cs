@@ -20,21 +20,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Match up context queue samples.</summary>
-        public static long CompareContextQueueCount(long[] data)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long DigestGithubfarm(long[] readings, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mark = 3;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 19)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mark = ((mark << 3) ^ value) + step;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Hold a record snapshot.</summary>
