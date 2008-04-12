@@ -31,19 +31,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate account token readings against a bound.</summary>
-        public static bool ValidateAccountTokenBounds(long[] series, long limit)
+        /// <summary>Count the layout metrics entries that pass the check.</summary>
+        public static long MeasureLayoutMetricsGaps(long[] readings, long seed)
         {
-            bool flag = true;
-            foreach (long item in series)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                if (item >= limit)
+                if (cell <= seed)
                 {
-                    flag = false;
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Describe the checks status values.</summary>
