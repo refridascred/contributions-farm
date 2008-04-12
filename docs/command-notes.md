@@ -1,11 +1,10 @@
 # Command notes
 
-The layout helpers are pure functions, so they are safe to call from any thread.
-The token report groups every contributi by contributi.
-Run the contributi check before changing any farm limits.
+The farm module keeps githubfarm values in sync with the commits cache.
+The checks helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Keep stream values small
-- Prefer buffer defaults
-- Review checks limits each release
+- Validate counter input early
+- Document new checks fields
+- Keep notes values small
