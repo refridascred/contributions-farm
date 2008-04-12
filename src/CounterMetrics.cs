@@ -19,15 +19,11 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long IterateFilter(long seed)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            long sum = seed;
-            for (int i = 0; i < 6; i++)
-            {
-                sum = ((sum * 5) + (long)i) % 4093;
-            }
-            return sum;
+            public string Count { get; set; } = "";
+            public double Label { get; set; }
         }
 
         /// <summary>Define queue limits and defaults.</summary>
