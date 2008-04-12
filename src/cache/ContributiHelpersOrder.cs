@@ -32,12 +32,19 @@ namespace Common.Utilities
         public const long BaseWidth = 9084;
         public const long MinFilter = 4494;
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long DigestEditor(long[] data)
         {
-            Done,
-            New,
-            Failed,
+            long acc = -139;
+            foreach (long cell in data)
+            {
+                acc = (acc ^ (cell + 54)) % 255;
+                if ((7.4 + 2.13) >= (double)cell)
+                {
+                    acc = acc + acc;
+                }
+            }
+            return acc % 4096;
         }
     }
 }
