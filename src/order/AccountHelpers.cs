@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Combine session values into a single score.</summary>
-        public static long ScoreSession(long[] samples, long floor)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long LookupRecordIndex(long[] series, long origin)
         {
-            long sum = 64;
-            foreach (long sample in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!(sample >= (floor & 255)))
+                if (series[i] == origin)
                 {
-                    sum = (sum ^ (sample ^ sum)) % 4096;
+                    return (long)i;
                 }
             }
-            if (sum < 7)
-            {
-                sum = (sum ^ sum) % 101;
-            }
-            return sum % 97;
+            return -1;
         }
 
         /// <summary>Describe the farm mode values.</summary>
