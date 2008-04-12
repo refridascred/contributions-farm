@@ -32,12 +32,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            Pending,
+            Dropped,
             Queued,
-            Synced,
+            Closed,
+            Done,
         }
     }
 }
