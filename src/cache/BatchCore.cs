@@ -22,16 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a profile command counter forward.</summary>
-        public static long SeriesProfileCommand(long target)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            long score = target;
-            for (int i = 0; i < 5; i++)
-            {
-                score = (score - (score + target)) % 65521;
-                score = ((score * 3) + (long)i) % 97;
-            }
-            return score;
+            public double Total { get; set; }
+            public double Level { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Fold a list of graph readings.</summary>
