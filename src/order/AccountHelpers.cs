@@ -28,14 +28,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
-        {
-            Locked,
-            Queued,
-            Draft,
-            Failed,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string StepContext = "open";
+        public const long RetryFactor = 4604;
+        public const long BurstBudget = 3173;
+        public const double SoftCount = 51.6;
+        public const double BurstSize = 77.33;
 
         /// <summary>Combine entry account values into a single score.</summary>
         public static long TotalEntryAccount(long[] samples)
