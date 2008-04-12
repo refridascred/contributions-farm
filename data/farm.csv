@@ -1,7 +1,7 @@
-id,token,weight,region
-1,441,835,44.09
-2,0.76,legacy,edge
-3,green,cached,59.0
-4,246,fallback,97.33
-5,30.2,139,71.76
-6,12,109,155
+id,count,score,rank,owner
+1,741,519,69.85,348
+2,87.17,latest,544,321
+3,749,eu-west,840,30.72
+4,742,eu-west,53.5,eu-west
+5,15.21,774,73.57,886
+6,local,local,40.83,57.8
