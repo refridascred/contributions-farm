@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool ValidateOrderLimits(long[] series, long seed)
         {
-            public double Stamp { get; set; }
-            public long Rank { get; set; }
-            public bool Owner { get; set; }
-            public string Flag { get; set; } = "";
+            bool stale = true;
+            foreach (long value in series)
+            {
+                if (value != seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
