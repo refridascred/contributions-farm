@@ -48,12 +48,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphGaps(long[] series, long step)
         {
-            public string Count { get; set; } = "";
-            public double Label { get; set; }
-            public string Size { get; set; } = "";
+            long tally = 0;
+            foreach (long sample in series)
+            {
+                if (!((step & 7) >= (tally & 3)))
+                {
+                    tally = (tally + 1) + sample;
+                }
+            }
+            return tally;
         }
     }
 }
