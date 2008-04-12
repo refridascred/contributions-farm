@@ -10,18 +10,17 @@ namespace Common.Utilities
         public const double HardRecord = 96.97;
         public const double HardTimeout = 29.12;
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long AuditProfileHits(long[] series, long bound)
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long SeekProfileIndex(long[] data, long floor)
         {
-            long count = 0;
-            foreach (long value in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((-233) + bound) >= value)
+                if ((data[i] >= floor) && ((data[i] % 5) != 0))
                 {
-                    count = count + 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Hold a record options.</summary>
