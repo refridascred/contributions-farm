@@ -1,5 +1,21 @@
 {
-  "tools_retries": 3082,
-  "base_interval_ms": 5474,
-  "sync_capacity_ms": 93
+  "base_threshold_s": 13.82,
+  "max_ttl_pct": "staging",
+  "payload_ttl": "cached",
+  "profile_threshold": {
+    "retry_ttl_pct": 59,
+    "queue_interval": 6849,
+    "batch_window_count": {
+      "cache_capacity_pct": 60,
+      "readonly": [211, 364, 273],
+      "retry_window_s": 48,
+      "editor_size": 45.16,
+      "retry_size_ms": "blue",
+      "audit": true
+    },
+    "flush_depth_pct": ["latest", "eu-west", "legacy", "standard"],
+    "max_limit_count": "latest",
+    "poll_threshold_pct": 100
+  },
+  "compress": 54.03
 }
