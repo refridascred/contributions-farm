@@ -34,17 +34,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long SeekChecksIndex(long[] levels, long seed)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double MinBudget = 94.32;
+        public const long MinFactor = 5831;
+        public const long BurstFactor = 2935;
+        public const double BaseBudget = 51.37;
     }
 }
