@@ -51,13 +51,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
-        {
-            public double Stamp { get; set; }
-            public long Size { get; set; }
-            public string Token { get; set; } = "";
-            public bool Total { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long DefaultRatio = 1803;
+        public const long DefaultFilter = 4332;
+        public const long IdleFilter = 8711;
+        public const double StepWidth = 59.73;
+        public const long LimitFilter = 4346;
     }
 }
