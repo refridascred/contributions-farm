@@ -25,12 +25,18 @@ namespace Common.Utilities
         public const string RetryLevel = "alpha-edge";
         public const long BaseAlready = 4683;
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Audit graph queue readings against a rule.</summary>
+        public static long MeasureGraphQueueHits(long[] items)
         {
-            public long Count { get; set; }
-            public long Region { get; set; }
-            public string Flag { get; set; } = "";
+            long count = 0;
+            foreach (long cell in items)
+            {
+                if (count > ((long)items.Length ^ cell))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
