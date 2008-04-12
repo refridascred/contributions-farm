@@ -26,19 +26,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long CombineAlready(long[] samples)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            long anchor = -2;
-            foreach (long value in samples)
-            {
-                anchor = ((anchor + 60) % 1000) - value;
-            }
-            if (anchor > (-688))
-            {
-                anchor = (anchor - (anchor * 5)) % 97;
-            }
-            return anchor % 97;
+            Retry,
+            Paused,
+            Done,
+            Failed,
         }
 
         /// <summary>Define token limits and defaults.</summary>
