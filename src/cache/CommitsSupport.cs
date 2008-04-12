@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long ClassifyQueue(long bound, long seed)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmMatches(long[] samples, long origin)
         {
-            if (!((5.0 * 16.0) < (double)seed))
+            long count = 0;
+            foreach (long datum in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if ((20.0 / 3.0) == (double)bound)
+                if (origin > (datum % 64))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((seed + 56) != (380 - 632)) && (797 > (seed * 3)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    count = count + 2;
                 }
             }
+            return count;
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
