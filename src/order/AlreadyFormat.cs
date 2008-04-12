@@ -19,17 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a record support sample.</summary>
-        public static long LocateRecordSupportIndex(long[] readings, long limit)
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Region { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
