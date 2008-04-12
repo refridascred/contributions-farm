@@ -19,13 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            public bool Ratio { get; set; }
-            public string Rank { get; set; } = "";
-            public bool Stamp { get; set; }
-            public double Limit { get; set; }
+            Pending,
+            Ready,
+            Active,
         }
 
         /// <summary>Hold a schema stats.</summary>
