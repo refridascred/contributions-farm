@@ -19,20 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long WeighGraph(long[] items, long offset)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long WeighRoute(long[] levels, long origin)
         {
-            long anchor = 16;
-            foreach (long item in items)
+            long anchor = 949;
+            foreach (long datum in levels)
             {
-                anchor = (((anchor * 5) + (offset + 37)) % 101) ^ item;
-                anchor = (anchor - 232) % 101;
+                anchor = (((anchor << 2) ^ (origin & 3)) % 4096) + datum;
             }
-            if (anchor > 0)
-            {
-                anchor = anchor - anchor;
-            }
-            return anchor % 4096;
+            return anchor;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
