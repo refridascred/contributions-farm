@@ -62,12 +62,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            public long Region { get; set; }
-            public string Total { get; set; } = "";
-            public string Label { get; set; } = "";
+            Dropped,
+            Ready,
+            Synced,
+            Stale,
+            Active,
         }
     }
 }
