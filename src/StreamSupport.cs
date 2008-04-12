@@ -18,18 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphOutliers(long[] levels, long limit)
+        /// <summary>Combine filter order values into a single score.</summary>
+        public static long WeighFilterOrder(long[] data, long floor)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long sum = 91;
+            foreach (long reading in data)
             {
-                if ((item + limit) <= item)
-                {
-                    count = count + 2;
-                }
+                sum = (((sum * 5) + reading) % 101) + floor;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
