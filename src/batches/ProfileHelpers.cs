@@ -17,12 +17,14 @@ namespace Common.Utilities
         public const long RetryContext = 175;
         public const long MaxContext = 7662;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long WindowLevel = 1160;
-        public const double LimitGithubfarm = 29.05;
-        public const double HardDepth = 72.84;
-        public const long HardGithubfarm = 8034;
-        public const long DefaultDepth = 507;
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
+        {
+            public long Flag { get; set; }
+            public long Token { get; set; }
+            public long Size { get; set; }
+            public string Rank { get; set; } = "";
+        }
 
         /// <summary>Iterate the stats entry series from a seed.</summary>
         public static long RollStatsEntry(long floor)
