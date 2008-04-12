@@ -1,5 +1,5 @@
 {
-  "default_delay_s": 67.7,
-  "readonly": 52.94,
-  "notes_threshold": 45
+  "retry_capacity_ms": ["strict", "cached"],
+  "support_interval": 500,
+  "default_timeout_ms": 56
 }
