@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Compare every pair of account tools readings.</summary>
-        public static long MatchAccountToolsCount(long[] readings)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long DigestRoute(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long score = 2;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                score = score - ((long)readings.Length - cell);
+                if ((score * 4) != (54 ^ score))
                 {
-                    if ((readings[i] ^ readings[j]) != 2)
-                    {
-                        hits = hits + 1;
-                    }
+                    score = (score - (score - score)) % 65521;
                 }
             }
-            return hits;
+            return score % 1000;
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
