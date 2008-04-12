@@ -17,19 +17,18 @@ namespace Common.Utilities
         public const long SoftWidth = 706;
         public const double CacheCount = 13.29;
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double ScaleMetric(double weight, double floor)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long MeasureFilterOutliers(long[] levels, long seed)
         {
-            double gain = (floor + floor) / 2.0;
-            if (gain > (2.86 - 13.0))
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                gain = (gain + (2.2 + floor)) + weight;
+                if (!(19.0 < (double)seen))
+                {
+                    seen = ((seen + 1) - reading) - seed;
+                }
             }
-            else
-            {
-                gain = gain + floor;
-            }
-            return gain + (4.65 * 9.87);
+            return seen;
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
