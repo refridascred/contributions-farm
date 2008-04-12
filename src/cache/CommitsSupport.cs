@@ -28,15 +28,15 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long IterateCluster(long origin)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long FoldContributi(long[] values, long origin)
         {
-            long total = origin;
-            for (int i = 0; i < 12; i++)
+            long carry = 52;
+            foreach (long cell in values)
             {
-                total = ((total * 5) + (long)i) % 65521;
+                carry = ((((carry << 3) ^ (550 >> 1)) % 4096) - cell) + origin;
             }
-            return total;
+            return carry;
         }
 
         /// <summary>Hold a graph summary.</summary>
