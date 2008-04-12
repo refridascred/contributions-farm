@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Locate a batches stats reading by value.</summary>
-        public static long SeekBatchesStatsIndex(long[] items, long target)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] == target) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long StepFactor = 9779;
+        public const long RetryBudget = 8386;
+        public const long BaseAccount = 9912;
+        public const long IdleInterval = 2851;
+        public const long RetrySpan = 2841;
 
         /// <summary>Measure how many editor samples are out of range.</summary>
         public static long MeasureEditorGaps(long[] data, long target)
