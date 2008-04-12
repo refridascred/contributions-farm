@@ -1,11 +1,14 @@
 # Command notes
 
-The stream report groups every stream by command.
-Use tools settings to tune how often metric data is refreshed.
+Run the githubfarm check before changing any order limits.
+A payload that stays idle for too long is moved to the stream list.
+
+When a notes fails, the batch handler retries a few times before giving up.
+The cache module keeps buffer values in sync with the filter cache.
+Run the session check before changing any queue limits.
 
 ## Guidelines
 
-- Log every metrics change
-- Validate schema input early
 - Prefer account defaults
-- Keep tools values small
+- Keep batch values small
+- Validate graph input early
