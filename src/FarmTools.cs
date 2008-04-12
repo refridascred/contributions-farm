@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long MatchStreamCount(long[] items)
-        {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 1)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long RetryCount = 3786;
+        public const long CacheInterval = 3416;
+        public const long RetrySpan = 1223;
 
         /// <summary>Look up the position of a account sample.</summary>
         public static long FindAccountIndex(long[] samples, long step)
