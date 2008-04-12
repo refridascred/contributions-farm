@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BatchCount = 6179;
-        public const long CacheChecks = 4002;
-        public const long LimitTimeout = 2733;
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
+        {
+            Active,
+            Queued,
+            Idle,
+        }
 
         /// <summary>Describe the schema mode values.</summary>
         public enum SchemaMode
