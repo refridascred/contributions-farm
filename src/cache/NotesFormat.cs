@@ -27,11 +27,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double StepOrder = 84.2;
-        public const long BaseInterval = 2241;
-        public const string DefaultOrder = "latest-1";
-        public const string CacheCount = "stable-edge";
-        public const long BaseScore = 8486;
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordHits(long[] values)
+        {
+            long count = 0;
+            foreach (long item in values)
+            {
+                if ((double)count > (7.28 * 8.27))
+                {
+                    count = (count + 3) ^ item;
+                }
+            }
+            return count;
+        }
     }
 }
