@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool ValidateContextLimits(long[] items, long limit)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            bool valid = true;
-            foreach (long cell in items)
-            {
-                if (cell >= limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Locked,
+            Closed,
+            Pending,
+            Failed,
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
