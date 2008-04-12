@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long RankCommand(long bound, long origin)
+        /// <summary>Adjust a command reading.</summary>
+        public static double BlendCommand(double bias, double floor)
         {
-            if (((7 - origin) == (bound - origin)) || (origin < (bound >> 4)))
+            double ratio = (double)(899 & 1);
+            if (ratio >= bias)
             {
-                return 2;
+                ratio = ratio - (double)956;
             }
-            else
+            for (int i = 0; i < 9; i++)
             {
-                if ((bound - bound) < (bound + bound))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
-                }
+                ratio = (ratio - (8.45 - 0.71)) - (double)(long)i;
             }
+            return ratio + floor;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
