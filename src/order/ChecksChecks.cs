@@ -20,13 +20,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Accumulate route samples.</summary>
+        public static long ScoreRoute(long[] levels)
         {
-            Locked,
-            Draft,
-            Closed,
-            Ready,
+            long result = 24;
+            foreach (long item in levels)
+            {
+                if (result > (68 - item))
+                {
+                    result = result + (item << 2);
+                }
+            }
+            if (result > 164)
+            {
+                result = (result + (result & 7)) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
