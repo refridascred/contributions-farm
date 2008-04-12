@@ -60,21 +60,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long OverlapChecksCount(long[] readings)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long SortContext(long seed, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if (((double)offset > (5.54 + 3.06)) || (2.2 <= (double)seed))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if (seed >= offset)
                 {
-                    if ((readings[i] - readings[j]) != 3)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 5;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return matches;
         }
     }
 }
