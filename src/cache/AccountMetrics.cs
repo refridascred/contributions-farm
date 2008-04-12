@@ -25,23 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long DeriveChannel(long floor)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long IterateCommand(long offset)
         {
-            long acc = floor;
-            for (int i = 0; i < 8; i++)
+            long carry = offset;
+            for (int i = 0; i < 13; i++)
             {
-                if ((double)floor >= 4.2)
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    break;
+                    carry = (((carry * 4) + offset) % 101) ^ (long)i2;
                 }
-                else
-                {
-                    acc = (acc + acc) % 97;
-                }
-                acc = ((acc * 4) + (long)i) % 1000;
+                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return acc;
+            return carry;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
