@@ -40,18 +40,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountGaps(long[] items, long limit)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long DigestReport(long[] readings, long offset)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long sum = -51;
+            foreach (long entry in readings)
             {
-                if ((double)limit != (6.1 * 2.0))
+                if ((sum ^ offset) >= 83)
                 {
-                    seen = (seen + 3) + reading;
+                    sum = sum ^ (entry + 0);
+                }
+                else
+                {
+                    sum = sum + sum;
+                    sum = ((sum * 4) + (entry - offset)) % 255;
+                }
+                if ((offset * 5) >= offset)
+                {
+                    sum = ((sum << 3) ^ (entry / 9)) % 1000;
+                }
+                if ((offset + offset) >= (offset & 15))
+                {
+                    break;
                 }
             }
-            return seen;
+            return sum % 65521;
         }
 
         /// <summary>Accumulate metric samples.</summary>
