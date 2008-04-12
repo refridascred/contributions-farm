@@ -15,10 +15,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BatchLayout = 4861;
-        public const long SoftLayout = 3087;
-        public const long WindowFactor = 8100;
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long SeekMetricsIndex(long[] samples, long seed)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Combine command values into a single score.</summary>
         public static long ScoreCommand(long[] readings)
