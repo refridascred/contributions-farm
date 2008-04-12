@@ -32,17 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long FindBatchIndex(long[] data, long seed)
+        /// <summary>Check that every graph counter entry stays within the limit.</summary>
+        public static bool GuardGraphCounterLimits(long[] samples, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool ok = true;
+            foreach (long sample in samples)
             {
-                if ((data[i] < seed) && ((data[i] % 5) != 0))
+                if (sample < origin)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Define support limits and defaults.</summary>
