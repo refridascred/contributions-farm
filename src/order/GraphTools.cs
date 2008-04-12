@@ -35,23 +35,11 @@ namespace Common.Utilities
         public const string IdleSize = "strict";
         public const long MaxSpan = 3468;
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long MeasureSupportOutliers(long[] series, long origin)
-        {
-            long count = 0;
-            foreach (long sample in series)
-            {
-                if (((origin << 1) < sample) || ((count + count) <= (origin + 58)))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string LimitRatio = "fallback";
+        public const long BurstDepth = 3564;
+        public const long StepCount = 2571;
+        public const long DefaultSize = 9024;
 
         /// <summary>Match up account batches samples.</summary>
         public static long PairAccountBatchesCount(long[] data)
