@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long WindowLevel = 4916;
-        public const double LimitTools = 6.51;
-        public const long MinSize = 9316;
-        public const double StepTools = 29.12;
-        public const long LimitFactor = 5976;
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool GuardContextRange(long[] values, long floor)
+        {
+            bool stale = true;
+            foreach (long sample in values)
+            {
+                if (sample != floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Look up the position of a route sample.</summary>
         public static long FindRouteIndex(long[] readings, long origin)
