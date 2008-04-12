@@ -28,15 +28,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next batch contributi value from a seed.</summary>
-        public static long RollBatchContributi(long step)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool GuardChecksLimits(long[] values, long bound)
         {
-            long sum = step;
-            for (int i = 0; i < 12; i++)
+            bool stale = true;
+            foreach (long cell in values)
             {
-                sum = ((sum * 4) + (long)i) % 101;
+                if (cell > bound)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return sum;
+            return stale;
         }
     }
 }
