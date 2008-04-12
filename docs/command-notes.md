@@ -1,11 +1,13 @@
 # Command notes
 
-When a filter fails, the metric handler retries a few times before giving up.
-The stream module keeps command values in sync with the account cache.
+Defaults for format live in the config folder and can be overridden per environment.
+When a cluster fails, the schema handler retries a few times before giving up.
+
+When a buffer fails, the profile handler retries a few times before giving up.
+Each batch is validated before it reaches the payload queue.
 
 ## Guidelines
 
-- Prefer commits defaults
-- Validate counter input early
-- Log every commits change
-- Review layout limits each release
+- Validate batch input early
+- Review farm limits each release
+- Document new route fields
