@@ -1,9 +1,24 @@
 # githubfarm settings
-tools_ratio:
-  - 253
-  - 19
-flush_delay:
-  - 371
-  - 417
-  - 79
-hard_capacity: true
+batch_retries_ms:
+  - standard
+  - edge
+  - primary
+  - strict
+channel_delay:
+  - 426
+  - 377
+  - 55
+  - 228
+dry_run: green
+burst_threshold_ms:
+  cache_size:
+    - fallback
+    - eu-west
+  retry_retries_s: 9121
+  batch_capacity_count:
+    - 267
+    - 184
+    - 443
+  soft_threshold: 63.23
+base_retries_s: true
+context_ratio: edge
