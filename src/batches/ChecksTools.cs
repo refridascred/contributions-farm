@@ -25,15 +25,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double BlendQueue(double bias, double bias2)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long PairCacheCount(long[] data)
         {
-            double rate = bias;
-            if (rate >= (rate / 2.0))
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                rate = rate - (bias2 + bias2);
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return rate - bias;
+            return seen;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
