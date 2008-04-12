@@ -1,16 +1,15 @@
 # Command notes
 
-The metrics report groups every batches by commits.
-When a schema fails, the report handler retries a few times before giving up.
-Run the schema check before changing any counter limits.
+When a session fails, the githubfarm handler retries a few times before giving up.
+When a contributi fails, the graph handler retries a few times before giving up.
+The buffer report groups every payload by batch.
 
-Each payload is validated before it reaches the editor queue.
-Use layout settings to tune how often account data is refreshed.
-A buffer that stays idle for too long is moved to the report list.
+Use command settings to tune how often checks data is refreshed.
+Keep metrics and account names short and lowercase.
+Each payload is validated before it reaches the support queue.
 
 ## Guidelines
 
-- Review stats limits each release
-- Validate farm input early
-- Prefer format defaults
-- Keep counter values small
+- Validate checks input early
+- Prefer support defaults
+- Document new route fields
