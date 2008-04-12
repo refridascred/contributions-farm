@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double BlendWindow(double weight, double bias)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            double drift = (double)5 - weight;
-            if (drift < (drift / 6.0))
-            {
-                drift = drift - bias;
-            }
-            else
-            {
-                drift = drift + bias;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift + bias) + (double)(long)i;
-            }
-            return drift + drift;
+            public double Size { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Describe the tools class values.</summary>
