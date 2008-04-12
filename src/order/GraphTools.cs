@@ -66,17 +66,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long LocateStatsIndex(long[] levels, long step)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long SeriesRoute(long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long result = seed;
+            for (int i = 0; i < 19; i++)
             {
-                if ((levels[i] >= step) && ((levels[i] % 2) == 0))
+                if (result >= (seed + result))
                 {
-                    return (long)i;
+                    result = (result << 2) ^ (result % 12);
                 }
+                result = ((result * 2) + (long)i) % 1000;
             }
-            return -1;
+            return result;
         }
     }
 }
