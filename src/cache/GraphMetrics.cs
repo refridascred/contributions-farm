@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Check that every graph report entry stays within the limit.</summary>
+        public static bool VerifyGraphReportBounds(long[] series, long floor)
         {
-            public string Score { get; set; } = "";
-            public string Label { get; set; } = "";
+            bool ready = true;
+            foreach (long datum in series)
+            {
+                if (datum < floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
