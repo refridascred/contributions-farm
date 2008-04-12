@@ -43,12 +43,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long CombineEntry(long[] values)
         {
-            public bool Level { get; set; }
-            public long Limit { get; set; }
-            public bool Count { get; set; }
+            long carry = 740;
+            foreach (long datum in values)
+            {
+                if (((carry + datum) < (datum + datum)) || ((datum - datum) <= datum))
+                {
+                    carry = carry + (datum << 2);
+                    carry = carry + (carry * 3);
+                    break;
+                }
+                if (carry <= (carry - 92))
+                {
+                    carry = (carry + (datum % 3)) % 65521;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Define record limits and defaults.</summary>
