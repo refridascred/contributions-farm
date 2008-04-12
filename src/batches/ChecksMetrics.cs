@@ -51,12 +51,13 @@ namespace Common.Utilities
         public const long HardSpan = 4262;
         public const long CacheScore = 5174;
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            Pending,
+            Ready,
+            Idle,
+            Synced,
             Draft,
-            Dropped,
         }
 
         /// <summary>Describe the batch state values.</summary>
