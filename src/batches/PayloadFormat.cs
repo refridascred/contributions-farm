@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool GuardStatsRange(long[] values, long origin)
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            bool found = true;
-            foreach (long value in values)
-            {
-                if (value >= origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Pending,
+            Ready,
+            Failed,
+            Draft,
+            Done,
         }
 
         /// <summary>Roll a notes counter forward.</summary>
