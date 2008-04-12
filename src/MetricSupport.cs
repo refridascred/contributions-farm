@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long ScoreSchema(long[] readings, long offset)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyMatches(long[] series)
         {
-            long anchor = 30;
-            foreach (long reading in readings)
+            long tally = 0;
+            foreach (long value in series)
             {
-                if ((2.1 - 3.0) >= (double)offset)
+                if (((value <= (tally * 3)) || ((19.0 / 2.0) >= (double)tally)) && (((14 + tally) <= (value - value)) || (value <= (value >> 5))))
                 {
-                    anchor = (anchor * 3) + (offset & 255);
-                }
-                if (reading <= (anchor >> 2))
-                {
-                    break;
+                    tally = tally + 2;
                 }
             }
-            if (anchor > (-5))
-            {
-                anchor = (anchor - (offset - (long)readings.Length)) % 255;
-            }
-            return anchor % 4096;
+            return tally;
         }
 
         /// <summary>Rank commits input into a small class.</summary>
