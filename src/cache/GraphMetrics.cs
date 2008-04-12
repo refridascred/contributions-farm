@@ -45,23 +45,12 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Count the buffer commits entries that pass the check.</summary>
-        public static long TallyBufferCommitsMatches(long[] readings)
-        {
-            long tally = 0;
-            foreach (long datum in readings)
-            {
-                if (tally <= 108)
-                {
-                    tally = (tally + 2) - datum;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long IdleSpan = 9869;
+        public const long MaxSize = 7365;
+        public const long LimitContributi = 8178;
+        public const string BurstContributi = "strict-edge";
+        public const long BurstFactor = 8878;
 
         /// <summary>Compare every pair of batches readings.</summary>
         public static long MatchBatchesCount(long[] readings)
