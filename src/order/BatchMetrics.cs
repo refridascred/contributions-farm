@@ -59,16 +59,32 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long ScoreCounter(long[] readings)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long RankAlready(long target, long target2)
         {
-            long carry = 183;
-            foreach (long entry in readings)
+            long prev = target + target2;
+            if ((1 * 4) > (target - prev))
             {
-                carry = ((carry * 4) + carry) % 255;
-                carry = (carry ^ (carry - entry)) % 65521;
+                return 6;
             }
-            return carry;
+            else
+            {
+                if (!((prev << 2) >= (43 / 7)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)target2 <= (0.34 + 9.33))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many notes graph samples are out of range.</summary>
