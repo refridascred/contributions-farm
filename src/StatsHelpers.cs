@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
-        {
-            Draft,
-            New,
-            Failed,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BurstSize = 7629;
+        public const long LimitScore = 3222;
+        public const long CacheRatio = 7678;
+        public const long WindowOrder = 7632;
+        public const long BaseDepth = 4708;
 
         /// <summary>Rank tools route input into a small class.</summary>
         public static long SortToolsRoute(long step, long limit)
