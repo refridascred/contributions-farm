@@ -37,20 +37,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long ScoreAccount(long[] series, long seed)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            long total = 463;
-            foreach (long reading in series)
-            {
-                total = (total - (reading >> 2)) % 101;
-                total = total - (20 - total);
-            }
-            if (total < 7)
-            {
-                total = (total - (10 - seed)) % 65521;
-            }
-            return total;
+            public long Count { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Describe the stream mode values.</summary>
