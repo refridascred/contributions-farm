@@ -1,12 +1,11 @@
 # Command notes
 
-The notes module keeps counter values in sync with the window cache.
-When a window fails, the format handler retries a few times before giving up.
-A stream that stays idle for too long is moved to the metric list.
+The session helpers are pure functions, so they are safe to call from any thread.
+The cache helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Log every batches change
-- Validate window input early
-- Keep cluster values small
-- Prefer order defaults
+- Log every notes change
+- Review schema limits each release
+- Prefer token defaults
+- Validate schema input early
