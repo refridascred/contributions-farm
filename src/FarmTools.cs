@@ -5,10 +5,33 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long RetryFarm = 2985;
-        public const double IdleCount = 43.95;
-        public const long RetryRatio = 8089;
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long BucketProfile(long floor, long offset)
+        {
+            long lane = floor ^ offset;
+            if (floor <= (lane + floor))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((double)73 > (double)lane) && ((lane * 4) < 39))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((1.0 * 4.0) == (double)lane)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Look up the position of a account sample.</summary>
         public static long FindAccountIndex(long[] samples, long step)
