@@ -1,10 +1,11 @@
 # Command notes
 
-When a farm fails, the account handler retries a few times before giving up.
-The counter helpers are pure functions, so they are safe to call from any thread.
+Use account settings to tune how often graph data is refreshed.
+Each order is validated before it reaches the checks queue.
 
 ## Guidelines
 
-- Validate stream input early
-- Log every githubfarm change
-- Keep metric values small
+- Validate support input early
+- Log every token change
+- Document new contributi fields
+- Keep session values small
