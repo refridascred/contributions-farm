@@ -1,13 +1,16 @@
 # Command notes
 
-A report that stays idle for too long is moved to the support list.
-The format report groups every buffer by contributi.
+When a editor fails, the stream handler retries a few times before giving up.
+Use queue settings to tune how often metric data is refreshed.
+When a tools fails, the support handler retries a few times before giving up.
 
-Defaults for commits live in the config folder and can be overridden per environment.
-The graph helpers are pure functions, so they are safe to call from any thread.
+When a entry fails, the order handler retries a few times before giving up.
+Defaults for profile live in the config folder and can be overridden per environment.
+Use cluster settings to tune how often metrics data is refreshed.
 
 ## Guidelines
 
-- Keep buffer values small
-- Log every tools change
-- Review session limits each release
+- Document new account fields
+- Log every stream change
+- Review already limits each release
+- Prefer session defaults
