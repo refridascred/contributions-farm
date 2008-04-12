@@ -51,13 +51,17 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long SeekCounterIndex(long[] items, long target)
         {
-            Stale,
-            Paused,
-            Ready,
-            Pending,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < target) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
