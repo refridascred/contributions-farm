@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Audit batch format readings against a rule.</summary>
-        public static long CountBatchFormatOutliers(long[] data, long offset)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelGaps(long[] data, long target)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                if (((long)data.Length - entry) < (offset % 3))
+                if (1.0 < (double)cell)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    seen = (seen + 2) + target;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Describe the layout state values.</summary>
