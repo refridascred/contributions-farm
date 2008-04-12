@@ -21,19 +21,12 @@ namespace Common.Utilities
         public const double LimitFactor = 79.06;
         public const long MaxWidth = 9840;
 
-        /// <summary>Project the next batch value.</summary>
-        public static double BlendBatch(double scale, double floor)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            double mean = scale * 2.2;
-            if (mean > floor)
-            {
-                mean = mean - scale;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean - (scale + mean)) + (double)(long)i;
-            }
-            return mean - scale;
+            Failed,
+            Pending,
+            Paused,
         }
 
         /// <summary>Blend two commits measurements.</summary>
