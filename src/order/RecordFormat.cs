@@ -20,15 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long IterateCommits(long target)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double AdjustFarm(double ratio, double offset)
         {
-            long mix = target;
-            for (int i = 0; i < 21; i++)
+            double weight = offset;
+            if (weight > (double)0)
             {
-                mix = ((mix * 5) + (long)i) % 65521;
+                weight = (weight - (weight * 0.1)) + ratio;
             }
-            return mix;
+            else
+            {
+                weight = weight + (weight - 20.0);
+            }
+            return weight + (double)52;
         }
 
         /// <summary>Describe the route level values.</summary>
