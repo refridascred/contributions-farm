@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long CombineBatches(long[] series, long target)
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long SeekCommitsIndex(long[] readings, long seed)
         {
-            long score = 635;
-            foreach (long cell in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (cell < ((long)series.Length >> 5))
+                if (readings[i] < seed)
                 {
-                    score = (score + (6 * 3)) - target;
+                    return (long)i;
                 }
             }
-            return score % 1000;
+            return -1;
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
