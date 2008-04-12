@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long TotalFormat(long[] items, long origin)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueMatches(long[] values, long limit)
         {
-            long score = -540;
-            foreach (long reading in items)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                score = ((((score * 5) + (34 * 4)) % 97) + reading) + origin;
+                if ((matches << 1) < cell)
+                {
+                    matches = (matches + 3) + limit;
+                }
             }
-            if (score < 4)
-            {
-                score = ((score * 4) + 5) % 97;
-            }
-            return score;
+            return matches;
         }
 
         /// <summary>Iterate the payload token series from a seed.</summary>
