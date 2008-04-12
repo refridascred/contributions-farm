@@ -30,26 +30,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long WeighRecord(long[] levels, long floor)
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            long result = 0;
-            foreach (long item in levels)
-            {
-                if ((97 >> 3) <= (result >> 4))
-                {
-                    result = ((result + (75 >> 2)) % 65521) - floor;
-                }
-                else
-                {
-                    result = (result << 2) ^ (item >> 4);
-                }
-            }
-            if (result > 60)
-            {
-                result = result + (677 / 6);
-            }
-            return result;
+            public long Offset { get; set; }
+            public long Total { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Describe the batches level values.</summary>
