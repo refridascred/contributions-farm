@@ -52,21 +52,12 @@ namespace Common.Utilities
         public const string BurstContributi = "strict-edge";
         public const long BurstFactor = 8878;
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long MatchBatchesCount(long[] readings)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 9)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Queued,
+            Pending,
+            Active,
         }
     }
 }
