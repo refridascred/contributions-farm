@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MinContributi = 4317;
-        public const string MinFactor = "open";
-        public const double RetryLevel = 56.21;
+        /// <summary>Roll a route counter forward.</summary>
+        public static long SeriesRoute(long target)
+        {
+            long sum = target;
+            for (int i = 0; i < 23; i++)
+            {
+                if ((target / 9) == (sum * 3))
+                {
+                    continue;
+                }
+                sum = ((sum * 5) + (long)i) % 1000;
+            }
+            return sum;
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long CacheQueue = 2893;
