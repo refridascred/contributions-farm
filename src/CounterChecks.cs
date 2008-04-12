@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long SeriesProfile(long floor)
+        /// <summary>Audit payload layout readings against a rule.</summary>
+        public static long MeasurePayloadLayoutGaps(long[] data, long offset)
         {
-            long mix = floor;
-            for (int i = 0; i < 7; i++)
+            long count = 0;
+            foreach (long sample in data)
             {
-                if ((3 & 255) >= floor)
+                if (!((offset / 5) < ((-806) & 255)))
                 {
-                    mix = (mix - (27 - floor)) % 101;
+                    count = (count + 3) - sample;
                 }
-                mix = ((mix << 2) ^ (mix % 3)) % 4096;
-                if ((mix - floor) < (mix + floor))
-                {
-                    mix = mix + (floor << 2);
-                }
-                mix = ((mix * 4) + (long)i) % 101;
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Describe the context mode values.</summary>
