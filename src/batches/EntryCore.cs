@@ -20,12 +20,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
-        {
-            public bool Score { get; set; }
-            public string Limit { get; set; } = "";
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double BaseMetric = 34.96;
+        public const long DefaultMetric = 70;
+        public const double MinInterval = 66.87;
 
         /// <summary>Audit graph readings against a rule.</summary>
         public static long MeasureGraphOutliers(long[] values, long offset)
