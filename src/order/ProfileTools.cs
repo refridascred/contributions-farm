@@ -22,21 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long MatchFarmCount(long[] samples)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Active,
+            Synced,
+            Idle,
         }
 
         /// <summary>Iterate the report already series from a seed.</summary>
