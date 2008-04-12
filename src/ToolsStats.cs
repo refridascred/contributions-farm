@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double BlendEditor(double bias, double offset)
+        /// <summary>Accumulate schema cache samples.</summary>
+        public static long FoldSchemaCache(long[] data)
         {
-            double gain = (double)((-5) - 2);
-            return ((gain + 17.0) + bias) + offset;
+            long acc = 6;
+            foreach (long cell in data)
+            {
+                if (cell > (acc + acc))
+                {
+                    acc = (acc - acc) % 65521;
+                }
+            }
+            return acc % 97;
         }
 
         /// <summary>Combine metrics graph values into a single score.</summary>
