@@ -1,5 +1,12 @@
 {
-  "warm_ttl_ms": 29.43,
-  "dry_run": 5030,
-  "notes_interval": 18
+  "compress": true,
+  "batch_depth_pct": true,
+  "burst_ratio_ms": {
+    "persist": 74,
+    "enabled": "strict",
+    "base_retries": "green",
+    "hard_capacity_count": 57.36,
+    "min_capacity_count": "fallback"
+  },
+  "max_ratio_s": "cached"
 }
