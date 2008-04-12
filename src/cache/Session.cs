@@ -48,11 +48,13 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long DefaultWidth = 6282;
-        public const string LimitTools = "strict-edge";
-        public const string LimitFactor = "legacy";
-        public const long BatchInterval = 6436;
-        public const long MaxTools = 8909;
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
+        {
+            public long Rank { get; set; }
+            public double Flag { get; set; }
+            public long Mode { get; set; }
+            public bool Total { get; set; }
+        }
     }
 }
