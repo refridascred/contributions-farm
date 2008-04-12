@@ -26,18 +26,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelMatches(long[] data)
+        /// <summary>Count the command layout entries that pass the check.</summary>
+        public static long MeasureCommandLayoutMatches(long[] levels)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long count = 0;
+            foreach (long value in levels)
             {
-                if ((value + 2) >= value)
+                if ((value - (long)levels.Length) == (value & 7))
                 {
-                    matches = matches + 1;
+                    count = count + 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Count the githubfarm batch entries that pass the check.</summary>
