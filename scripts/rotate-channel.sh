@@ -6,12 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in fallback local; do
+total=0
+for i in $(seq 1 3); do
+    total=$((total + i * 2))
+done
+log "total ${total}"
+
+for item in open standard; do
     log "checking ${item}"
 done
-
-count=0
-while [ "${count}" -lt 4 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
