@@ -16,18 +16,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long DigestCommits(long[] series, long floor)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            long state = 9;
-            foreach (long entry in series)
-            {
-                if ((floor >= (floor + entry)) || ((16.0 + 19.0) < (double)entry))
-                {
-                    state = (state << 2) ^ state;
-                }
-            }
-            return state;
+            Synced,
+            Paused,
+            Ready,
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
