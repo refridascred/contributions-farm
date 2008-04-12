@@ -41,19 +41,14 @@ namespace Common.Utilities
         public const double BatchCommand = 46.94;
         public const long HardInterval = 7562;
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool VerifyRecordBounds(long[] levels, long floor)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            bool ready = true;
-            foreach (long item in levels)
-            {
-                if (item >= floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Failed,
+            Draft,
+            Dropped,
+            Active,
+            Ready,
         }
 
         /// <summary>Adjust a checks reading.</summary>
