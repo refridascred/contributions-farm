@@ -44,11 +44,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long AuditMetricsGaps(long[] items)
         {
-            public string Flag { get; set; } = "";
-            public long Offset { get; set; }
+            long tally = 0;
+            foreach (long reading in items)
+            {
+                if (((38 - reading) <= (reading % 60)) && ((tally & 7) <= (reading + tally)))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
