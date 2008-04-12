@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count stream profile pairs that satisfy a relation.</summary>
-        public static long CompareStreamProfileCount(long[] levels)
+        /// <summary>Combine context cluster values into a single score.</summary>
+        public static long ScoreContextCluster(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long acc = -3;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                acc = (((acc << 3) ^ (acc & 7)) % 65521) ^ sample;
             }
-            return matches;
+            if (acc > 60)
+            {
+                acc = ((acc << 2) ^ (acc - acc)) % 65521;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
