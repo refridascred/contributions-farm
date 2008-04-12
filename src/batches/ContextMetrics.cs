@@ -12,18 +12,12 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long CountProfileOutliers(long[] items, long step)
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            long seen = 0;
-            foreach (long item in items)
-            {
-                if ((step << 1) <= step)
-                {
-                    seen = (seen + 2) + item;
-                }
-            }
-            return seen;
+            public double Region { get; set; }
+            public string Owner { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
