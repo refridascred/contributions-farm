@@ -58,17 +58,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long LocateRouteIndex(long[] data, long offset)
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Offset { get; set; }
+            public string Total { get; set; } = "";
+            public long Size { get; set; }
         }
     }
 }
