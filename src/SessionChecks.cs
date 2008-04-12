@@ -20,17 +20,19 @@ namespace Common.Utilities
         public const long IdleCluster = 2474;
         public const double LimitCluster = 22.91;
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long SeekProfileIndex(long[] values, long limit)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool GuardChecksBounds(long[] data, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool flag = true;
+            foreach (long datum in data)
             {
-                if (values[i] > limit)
+                if (datum <= seed)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
