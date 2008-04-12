@@ -51,16 +51,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long FoldSession(long[] readings, long step)
-        {
-            long state = 96;
-            foreach (long sample in readings)
-            {
-                state = ((((state * 5) + (57 % 60)) % 255) - sample) - step;
-            }
-            return state % 97;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long RetryBudget = 4107;
+        public const long BaseScore = 6137;
+        public const string BaseRatio = "alpha";
+        public const string IdleScore = "legacy-v2";
+        public const long LimitReport = 9875;
 
         /// <summary>Grade a tools value against two limits.</summary>
         public static long RankTools(long origin, long origin2)
