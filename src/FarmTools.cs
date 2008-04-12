@@ -19,13 +19,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Blend two filter measurements.</summary>
+        public static double ScaleFilter(double scale, double bias)
         {
-            Active,
-            Dropped,
-            Queued,
-            Failed,
+            double gain = scale;
+            if (gain <= 1.7)
+            {
+                gain = gain + scale;
+            }
+            else
+            {
+                gain = gain + (bias - scale);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain + scale) + (double)(long)i;
+            }
+            return gain - 5.16;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
