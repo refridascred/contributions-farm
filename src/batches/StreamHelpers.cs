@@ -63,15 +63,39 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long ScoreGraph(long[] values)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long SortStream(long seed, long bound)
         {
-            long result = 42;
-            foreach (long sample in values)
+            long next = seed + bound;
+            if ((7.13 + 17.0) > 19.0)
             {
-                result = (result + sample) % 101;
+                return 6;
             }
-            return result % 97;
+            else
+            {
+                if (((4.39 / 3.0) < (double)next) || ((2.97 + 15.0) > (double)bound))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((8.1 - 1.25) > (double)seed)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!((seed >> 2) != (seed & 15)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the cache level values.</summary>
