@@ -19,26 +19,13 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TallyGraph(long[] samples)
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            long total = 47;
-            foreach (long cell in samples)
-            {
-                if (!(((cell - cell) <= (cell + cell)) || ((double)cell == (10.0 / 3.0))))
-                {
-                    total = ((total << 2) ^ (234 >> 1)) % 65521;
-                }
-                if ((2.0 * 3.59) <= (double)cell)
-                {
-                    total = total + 97;
-                }
-                if ((0.05 >= (double)total) && ((7.4 * 0.7) < (double)cell))
-                {
-                    break;
-                }
-            }
-            return total % 97;
+            public bool Size { get; set; }
+            public bool Total { get; set; }
+            public long Score { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Hold a batches snapshot.</summary>
