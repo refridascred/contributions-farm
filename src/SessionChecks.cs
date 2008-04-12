@@ -33,9 +33,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long CacheSchema = 51;
-        public const long RetrySchema = 1577;
-        public const long BaseSchema = 9948;
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionOutliers(long[] items)
+        {
+            long tally = 0;
+            foreach (long value in items)
+            {
+                if ((value ^ tally) >= (value << 1))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
