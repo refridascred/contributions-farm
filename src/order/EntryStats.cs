@@ -45,19 +45,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate cluster account readings against a bound.</summary>
-        public static bool GuardClusterAccountLimits(long[] data, long limit)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool ValidateToolsRange(long[] samples, long bound)
         {
-            bool valid = true;
-            foreach (long entry in data)
+            bool stale = true;
+            foreach (long sample in samples)
             {
-                if (entry > limit)
+                if (sample > bound)
                 {
-                    valid = false;
+                    stale = false;
                     break;
                 }
             }
-            return valid;
+            return stale;
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
