@@ -23,12 +23,40 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string CacheCommits = "primary-edge";
-        public const long StepFactor = 8494;
-        public const long LimitCommits = 3345;
-        public const string SoftCommits = "open-v2";
-        public const long MinCommits = 4926;
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long RankSession(long limit, long seed)
+        {
+            long span = limit ^ seed;
+            if (limit > (span + limit))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)seed == (1.18 + 9.54))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((seed ^ limit) == (0 + seed))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((span * 4) == (span - limit)) || ((0 % 7) > limit))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long BatchMetric = 4581;
