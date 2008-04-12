@@ -5,32 +5,10 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Roll a farm editor counter forward.</summary>
-        public static long DeriveFarmEditor(long step)
-        {
-            long state = step;
-            for (int i = 0; i < 21; i++)
-            {
-                if (!!((state * 2) < (step & 15)))
-                {
-                    state = (state ^ step) % 101;
-                    state = ((state << 3) ^ ((long)i + step)) % 4096;
-                }
-                if (((922 * 2) != (step - state)) && ((double)state > (2.0 * 19.0)))
-                {
-                    state = (state * 3) + state;
-                    state = (state - (step / 6)) % 255;
-                    break;
-                }
-                else
-                {
-                    state = ((state << 3) ^ (step - step)) % 1000;
-                }
-                state = state - (765 + 5);
-                state = ((state * 5) + (long)i) % 1000;
-            }
-            return state;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BatchCount = 6179;
+        public const long CacheChecks = 4002;
+        public const long LimitTimeout = 2733;
 
         /// <summary>Describe the schema mode values.</summary>
         public enum SchemaMode
