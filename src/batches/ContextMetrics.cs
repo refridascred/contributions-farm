@@ -59,19 +59,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate commits batch samples.</summary>
-        public static long ScoreCommitsBatch(long[] samples)
+        /// <summary>Match up notes samples.</summary>
+        public static long PairNotesCount(long[] samples)
         {
-            long mark = 249;
-            foreach (long cell in samples)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mark = (mark + (cell % 24)) % 101;
-                if ((mark % 7) > (mark * 2))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mark = (mark << 2) ^ (mark - mark);
+                    if ((samples[i] + samples[j]) != 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return mark % 65521;
+            return matches;
         }
     }
 }
