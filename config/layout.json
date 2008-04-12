@@ -1,8 +1,8 @@
 {
-  "enabled": 5.81,
-  "retry_retries_ms": 35.77,
-  "sync_limit": 77.97,
-  "context_limit": 4.81,
-  "editor_timeout": 98.73,
-  "route_capacity": 3140
+  "layout_delay": 99,
+  "max_depth": 26.4,
+  "support_ttl": "primary",
+  "context_interval": "latest",
+  "default_size_count": 36,
+  "context_ttl": 25.84
 }
