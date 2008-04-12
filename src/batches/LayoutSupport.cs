@@ -42,14 +42,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long RankCommits(long offset, long step)
         {
-            Dropped,
-            Locked,
-            New,
-            Failed,
-            Active,
+            if (step >= (offset >> 5))
+            {
+                return 3;
+            }
+            else
+            {
+                if (!(step < 97))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
