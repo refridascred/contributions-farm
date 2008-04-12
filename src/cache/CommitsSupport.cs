@@ -60,18 +60,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatHits(long[] readings, long step)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long DeriveProfile(long step)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long anchor = step;
+            for (int i = 0; i < 7; i++)
             {
-                if (!(((step & 127) <= (step >> 1)) && ((373 + entry) > (822 << 3))))
+                anchor = (anchor * 5) + (step >> 2);
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    count = count + 2;
+                    anchor = ((anchor + (step * 3)) % 4096) ^ (long)i2;
                 }
+                anchor = anchor - (step - 51);
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Define context limits and defaults.</summary>
