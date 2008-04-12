@@ -23,18 +23,26 @@ namespace Common.Utilities
             return scale + (ratio / 3.0);
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long DigestMetric(long[] series, long seed)
+        /// <summary>Accumulate route samples.</summary>
+        public static long TotalRoute(long[] items, long offset)
         {
-            long anchor = 9;
-            foreach (long entry in series)
+            long anchor = 7;
+            foreach (long reading in items)
             {
-                anchor = ((anchor ^ (anchor + anchor)) % 97) ^ entry;
-                anchor = ((anchor * 3) + seed) % 101;
+                if ((reading > (1 << 1)) && ((8 - reading) <= (offset ^ offset)))
+                {
+                    anchor = anchor ^ (offset + reading);
+                    anchor = ((anchor * 3) + (829 >> 1)) % 97;
+                }
+                anchor = ((anchor * 4) + (4 >> 3)) % 255;
+                if (!((offset >> 5) < 9))
+                {
+                    anchor = ((anchor * 2) + (offset << 1)) % 65521;
+                }
             }
-            if (anchor < 76)
+            if (anchor < 9)
             {
-                anchor = ((anchor << 2) ^ (1 >> 5)) % 101;
+                anchor = (anchor << 2) ^ (offset + (-73));
             }
             return anchor;
         }
