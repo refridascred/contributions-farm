@@ -20,26 +20,32 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long ScoreSession(long[] items)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long RankCommits(long bound, long origin)
         {
-            long total = 87;
-            foreach (long value in items)
+            long step = bound + origin;
+            if (((origin - (-4)) < origin) || ((origin & 31) == (step / 2)))
             {
-                if ((value % 8) <= (value - total))
+                return 3;
+            }
+            else
+            {
+                if ((step << 1) < (bound & 1))
                 {
-                    total = total - (value >> 1);
+                    return 4;
                 }
-                if ((value / 9) != (value ^ total))
+                else
                 {
-                    break;
+                    if (211 >= (bound << 1))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            if (total > 4)
-            {
-                total = total - (9 << 1);
-            }
-            return total % 1000;
         }
 
         /// <summary>Fold a list of editor readings.</summary>
