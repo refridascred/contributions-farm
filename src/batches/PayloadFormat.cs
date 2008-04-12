@@ -48,18 +48,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the context schema entries that pass the check.</summary>
-        public static long TallyContextSchemaGaps(long[] data)
-        {
-            long seen = 0;
-            foreach (long sample in data)
-            {
-                if ((seen ^ seen) >= (-660))
-                {
-                    seen = (seen + 2) - sample;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string CacheLevel = "fallback-v2";
+        public const long IdleDepth = 2931;
+        public const long StepRoute = 9937;
+        public const long BaseWidth = 6315;
     }
 }
