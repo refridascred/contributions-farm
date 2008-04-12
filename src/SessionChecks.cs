@@ -24,31 +24,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long SortMetrics(long offset, long limit)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long CombineCache(long[] items, long seed)
         {
-            if ((limit & 1) != (limit << 3))
+            long sum = -9;
+            foreach (long cell in items)
             {
-                return 3;
-            }
-            else
-            {
-                if (((double)offset > (double)limit) && ((offset * 4) <= (offset >> 3)))
+                sum = ((sum << 2) ^ (seed << 1)) % 97;
+                if (cell < (90 + seed))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((61 - offset) != (3 / 2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    sum = (sum ^ cell) % 1000;
                 }
             }
+            return sum % 65521;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
