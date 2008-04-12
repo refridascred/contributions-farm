@@ -1,6 +1,11 @@
-id,ratio,region,owner
-1,15.94,444,50.14
-2,latest,260,392
-3,85.43,736,7.08
-4,20.75,947,811
-5,61.59,cached,open
+id,rank,level,label,score
+1,71.69,238,72.06,strict
+2,98.3,24.47,338,70.59
+3,91.08,9.82,315,71.93
+4,open,green,343,12.21
+5,blue,33.0,673,1.23
+6,standard,91.71,open,935
+7,110,43.4,381,55
+8,standard,blue,233,194
+9,21.3,standard,standard,stable
+10,34.75,683,563,638
