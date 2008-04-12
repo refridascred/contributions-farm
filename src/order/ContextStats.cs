@@ -31,12 +31,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Derive the next session buffer value from a seed.</summary>
+        public static long SeriesSessionBuffer(long limit)
         {
-            public double Mode { get; set; }
-            public bool Token { get; set; }
-            public bool Count { get; set; }
+            long acc = limit;
+            for (int i = 0; i < 14; i++)
+            {
+                acc = (acc ^ (acc << 3)) % 4096;
+                acc = acc ^ ((long)i & 63);
+                acc = ((acc * 5) + (long)i) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Hold a batches summary.</summary>
