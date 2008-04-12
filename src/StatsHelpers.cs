@@ -28,11 +28,14 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long WindowWidth = 9585;
-        public const long DefaultSpan = 4735;
-        public const string LimitLevel = "open-1";
-        public const double BaseDepth = 70.35;
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
+        {
+            public bool Owner { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public double Level { get; set; }
+        }
 
         /// <summary>Hold a window entry.</summary>
         public sealed class WindowEntry
