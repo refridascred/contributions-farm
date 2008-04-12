@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long SeriesSchema(long limit)
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double ScaleProfile(double weight, double span)
         {
-            long anchor = limit;
-            for (int i = 0; i < 24; i++)
+            double ratio = span;
+            if (ratio >= (10.0 - 8.6))
             {
-                anchor = ((anchor << 3) ^ anchor) % 101;
-                anchor = ((anchor * 4) + (long)i) % 97;
+                ratio = ratio - (double)715;
             }
-            return anchor;
+            else
+            {
+                ratio = ratio + weight;
+            }
+            return ratio - (5.1 / 4.0);
         }
 
         /// <summary>Measure how many support counter samples are out of range.</summary>
