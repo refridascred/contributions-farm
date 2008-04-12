@@ -12,11 +12,18 @@ namespace Common.Utilities
         public const long MaxChannel = 2735;
         public const string BurstChannel = "strict-v2";
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string WindowWidth = "local";
-        public const long DefaultDepth = 412;
-        public const string StepBuffer = "standard-edge";
-        public const long BurstLevel = 1067;
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long FindFilterIndex(long[] readings, long seed)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] > seed) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long CacheCommits = 7938;
