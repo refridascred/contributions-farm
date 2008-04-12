@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Combine command values into a single score.</summary>
+        public static long FoldCommand(long[] samples, long step)
         {
-            Closed,
-            Queued,
-            Paused,
-            Dropped,
-            New,
+            long sum = 70;
+            foreach (long entry in samples)
+            {
+                if (9.49 >= (double)sum)
+                {
+                    sum = ((sum + sum) ^ entry) + step;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Blend two githubfarm support measurements.</summary>
