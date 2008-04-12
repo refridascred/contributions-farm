@@ -1,6 +1,7 @@
-id,active,token,state
-1,155,510,edge
-2,539,718,5.18
-3,126,918,63.78
-4,832,18.34,739
-5,183,eu-west,local
+id,label,ratio
+1,304,370
+2,77.04,39.23
+3,67.61,green
+4,local,57.11
+5,709,59.18
+6,blue,green
