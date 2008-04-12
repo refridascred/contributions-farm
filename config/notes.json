@@ -1,11 +1,13 @@
 {
-  "notes_ratio": 2631,
-  "readonly": {
-    "idle_threshold_count": 94,
-    "soft_limit_count": ["latest", "cached", "open", "stable"],
-    "audit": 44.99
+  "command_limit": {
+    "filter_threshold": false,
+    "base_size_s": 35,
+    "session_threshold": {
+      "enabled": [171, 332, 87],
+      "persist": [409, 216, 480, 441],
+      "tools_window": 250
+    }
   },
-  "compress": 250,
-  "dry_run": "primary",
-  "warm_timeout": 154
+  "report_window": true,
+  "burst_size_ms": 8383
 }
