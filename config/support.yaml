@@ -1,18 +1,10 @@
 # support settings
-session_timeout: true
-command_threshold: local
-flush_ttl_pct:
-  default_interval_pct:
-    filter_threshold: local
-    hard_ttl_s: 100
-    retry_timeout_count: false
-  flush_interval_pct: true
-  min_capacity: open
-  stream_ttl: edge
-persist:
-  session_capacity: local
-  default_delay_pct: false
-  persist: 5.86
-  format_capacity: cached
-  hard_ttl_count: 80
-report_interval: 91.41
+audit: 91
+soft_ttl_count: 8844
+readonly:
+  - 6
+  - 461
+  - 52
+  - 208
+record_capacity: true
+batch_timeout: staging
