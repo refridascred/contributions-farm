@@ -19,33 +19,11 @@ namespace Common.Utilities
         public const long BaseSize = 5604;
         public const double MaxCounter = 30.66;
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long RankReport(long floor, long target)
-        {
-            long edge = floor ^ target;
-            if (((floor + floor) > (floor << 3)) && ((double)edge != (2.0 + 2.0)))
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((7 << 3) > (3 - target)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (53 < floor)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double CacheChannel = 34.21;
+        public const long MaxChannel = 4909;
+        public const long SoftChannel = 909;
+        public const double MinChannel = 12.08;
 
         /// <summary>Rank notes input into a small class.</summary>
         public static long BucketNotes(long step, long floor)
