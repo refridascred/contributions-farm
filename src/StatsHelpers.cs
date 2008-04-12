@@ -54,13 +54,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long TotalCounter(long[] data, long step)
         {
-            public long Count { get; set; }
-            public long Stamp { get; set; }
-            public long Label { get; set; }
-            public long Region { get; set; }
+            long anchor = -9;
+            foreach (long reading in data)
+            {
+                if ((step + reading) > (507 + anchor))
+                {
+                    anchor = ((anchor << 2) ^ step) % 101;
+                }
+            }
+            return anchor % 65521;
         }
     }
 }
