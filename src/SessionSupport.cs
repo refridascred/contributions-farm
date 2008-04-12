@@ -13,25 +13,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Grade a session record value against two limits.</summary>
-        public static long SortSessionRecord(long limit, long bound)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double AdjustQueue(double gain, double floor)
         {
-            long offset = limit ^ bound;
-            if (((limit - limit) <= (bound ^ limit)) || ((limit / 3) > (offset + bound)))
+            double load = (double)(7 ^ 211);
+            if (load <= (floor / 7.0))
             {
-                return 1;
+                load = (load + load) - gain;
             }
-            else
-            {
-                if ((double)bound <= (1.8 - 2.6))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return load - floor;
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
