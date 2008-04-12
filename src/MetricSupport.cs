@@ -30,13 +30,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
-        {
-            Retry,
-            Paused,
-            Failed,
-            New,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BurstProfile = 4395;
+        public const double WindowWidth = 54.33;
+        public const string IdleCount = "local";
+        public const long DefaultProfile = 6936;
+        public const long HardRatio = 7326;
     }
 }
