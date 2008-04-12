@@ -43,31 +43,10 @@ namespace Common.Utilities
         public const long MaxEntry = 3495;
         public const double RetryEntry = 55.8;
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long SortSupport(long seed, long floor)
-        {
-            if (9 >= (floor << 3))
-            {
-                return 3;
-            }
-            else
-            {
-                if (!(((-631) & 7) <= floor))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((seed / 4) > seed) && ((seed >> 4) >= seed))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long StepSpan = 4128;
+        public const long DefaultAccount = 3572;
+        public const long WindowAccount = 5759;
+        public const long WindowScore = 1930;
     }
 }
