@@ -26,11 +26,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Accumulate profile record samples.</summary>
+        public static long TotalProfileRecord(long[] data, long floor)
         {
-            public long Score { get; set; }
-            public long Stamp { get; set; }
+            long carry = -579;
+            foreach (long value in data)
+            {
+                if ((6.88 / 6.0) == (double)floor)
+                {
+                    carry = (carry + (value >> 5)) % 101;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Hold a schema summary.</summary>
