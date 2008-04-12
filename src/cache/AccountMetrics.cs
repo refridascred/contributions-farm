@@ -34,19 +34,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool CheckContextRange(long[] series, long origin)
+        /// <summary>Derive the next cache githubfarm value from a seed.</summary>
+        public static long SeriesCacheGithubfarm(long step)
         {
-            bool flag = true;
-            foreach (long datum in series)
+            long acc = step;
+            for (int i = 0; i < 12; i++)
             {
-                if (datum < origin)
+                if (((long)i / 8) < (step * 2))
                 {
-                    flag = false;
-                    break;
+                    acc = (acc - (long)i) % 4096;
                 }
+                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return flag;
+            return acc;
         }
 
         /// <summary>Define order limits and defaults.</summary>
