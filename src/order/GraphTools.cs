@@ -12,13 +12,22 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long MeasureRecordHits(long[] items)
         {
-            Closed,
-            Active,
-            Retry,
-            Draft,
+            long hits = 0;
+            foreach (long entry in items)
+            {
+                if (!(hits > (entry << 1)))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
