@@ -1,17 +1,8 @@
 {
-  "base_delay_s": {
-    "command_depth": 60.9,
-    "base_timeout_ms": 43.53,
-    "sync_ttl": {
-      "metric_threshold": 250,
-      "payload_capacity": 8460,
-      "compress": 3856,
-      "audit": [303, 165],
-      "burst_ttl_count": 6212,
-      "max_window_count": "cached"
-    },
-    "max_window_s": 30
-  },
-  "default_ttl_pct": true,
-  "warm_interval": "latest"
+  "persist": "legacy",
+  "stream_timeout": ["legacy", "green", "green", "staging"],
+  "audit": true,
+  "idle_ttl": [432, 286, 370, 152],
+  "batch_limit": "legacy",
+  "farm_depth": "edge"
 }
