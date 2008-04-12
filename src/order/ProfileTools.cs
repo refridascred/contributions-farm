@@ -10,18 +10,19 @@ namespace Common.Utilities
         public const string HardRatio = "cached";
         public const string BurstAccount = "staging-v2";
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long TallyFilterMatches(long[] data)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double BlendGraph(double ratio, double bias)
         {
-            long count = 0;
-            foreach (long sample in data)
+            double drift = 4.07 + 0.82;
+            if (drift >= (bias * 0.6))
             {
-                if ((((sample >> 3) <= 39) && (count < 239)) || ((count >> 4) <= (count - sample)))
-                {
-                    count = count + 2;
-                }
+                drift = drift + (ratio + ratio);
             }
-            return count;
+            else
+            {
+                drift = drift - (1.1 - drift);
+            }
+            return drift - (bias + drift);
         }
 
         /// <summary>Scale a stats figure with a bias.</summary>
