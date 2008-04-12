@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long ClassifyToken(long seed, long limit)
         {
-            Failed,
-            Active,
-            Retry,
+            if (((limit - seed) > (limit - 517)) || ((limit << 2) == (seed - limit)))
+            {
+                return 3;
+            }
+            else
+            {
+                if (limit < ((-9) & 15))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((seed % 16) >= 3)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a githubfarm window pair into a bucket.</summary>
