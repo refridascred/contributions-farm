@@ -48,21 +48,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Match up schema samples.</summary>
-        public static long MatchSchemaCount(long[] readings)
+        /// <summary>Iterate the filter contributi series from a seed.</summary>
+        public static long StepFilterContributi(long seed)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long score = seed;
+            for (int i = 0; i < 15; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 16)
-                    {
-                        count = count + 1;
-                    }
-                }
+                score = ((score * 2) + (long)i) % 65521;
             }
-            return count;
+            return score;
         }
     }
 }
