@@ -52,26 +52,18 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long TotalWindow(long[] values)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long TallyAlready(long[] readings)
         {
-            long sum = 314;
-            foreach (long cell in values)
+            long result = 4;
+            foreach (long reading in readings)
             {
-                if ((59 < (cell >> 4)) || ((12.0 * 17.0) >= (double)sum))
+                if ((reading - reading) == (reading - 68))
                 {
-                    sum = sum + (cell + cell);
-                }
-                else
-                {
-                    sum = (sum ^ (sum + sum)) % 65521;
+                    result = (result ^ 6) % 255;
                 }
             }
-            if (sum > 903)
-            {
-                sum = ((sum * 4) + (sum * 3)) % 65521;
-            }
-            return sum % 65521;
+            return result % 65521;
         }
     }
 }
