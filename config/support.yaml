@@ -1,8 +1,18 @@
 # support settings
-record_depth: 10.18
-account_timeout: edge
-cache_depth: fallback
-batches_delay: 6028
-cache_window:
-  - 189
-  - 44
+soft_capacity_s: stable
+burst_limit_pct:
+  filter_window: 67.04
+  idle_interval_pct: 61.25
+  channel_retries:
+    warm_window_ms: true
+    contributi_limit: true
+    cache_delay_pct: legacy
+    soft_timeout_ms: 8233
+    dry_run: edge
+    editor_window: blue
+  retry_limit_pct: false
+soft_size_count: 30
+metrics_ttl:
+  - open
+  - blue
+  - local
