@@ -11,19 +11,17 @@ namespace Common.Utilities
         public const double DefaultFormat = 62.91;
         public const string BatchLevel = "open";
 
-        /// <summary>Project the next schema value.</summary>
-        public static double SmoothSchema(double bias, double floor)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long SeekCommandIndex(long[] readings, long limit)
         {
-            double gain = bias - floor;
-            if (gain >= (double)9)
+            for (int i = 0; i < readings.Length; i++)
             {
-                gain = gain - (17.0 - gain);
+                if (readings[i] == limit)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                gain = gain + (bias * 1.1);
-            }
-            return gain - (bias - bias);
+            return -1;
         }
 
         /// <summary>Hold a support entry.</summary>
