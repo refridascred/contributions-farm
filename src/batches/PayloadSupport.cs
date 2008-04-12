@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Accumulate batch token samples.</summary>
-        public static long DigestBatchToken(long[] series)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            long mix = 17;
-            foreach (long reading in series)
-            {
-                mix = (mix ^ (626 - mix)) % 65521;
-                for (int i = 0; i < 3; i++)
-                {
-                    mix = ((mix << 2) ^ (reading >> 4)) - (long)i;
-                }
-                if ((double)mix > (double)reading)
-                {
-                    mix = ((mix << 3) ^ (reading - 16)) % 4096;
-                }
-            }
-            return mix;
+            public long Offset { get; set; }
+            public string Flag { get; set; } = "";
+            public long Label { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Count stats checks pairs that satisfy a relation.</summary>
