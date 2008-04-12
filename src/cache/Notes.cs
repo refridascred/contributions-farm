@@ -41,13 +41,16 @@ namespace Common.Utilities
         public const long WindowSpan = 9737;
         public const long RetryBudget = 4273;
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long TotalCache(long[] data, long offset)
         {
-            Draft,
-            Idle,
-            Done,
-            Failed,
+            long total = 7;
+            foreach (long sample in data)
+            {
+                total = (total * 5) + (offset + sample);
+                total = (total - (sample % 2)) % 65521;
+            }
+            return total;
         }
     }
 }
