@@ -5,39 +5,21 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long GradeBatches(long bound, long target)
+        /// <summary>Match up schema support samples.</summary>
+        public static long PairSchemaSupportCount(long[] readings)
         {
-            long delta = bound + target;
-            if ((74 ^ target) <= (93 + delta))
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((9.33 * 2.52) == (double)delta)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((delta ^ 1) <= (158 - target))
+                    if ((readings[i] ^ readings[j]) > 19)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((double)target < (9.9 - 4.75)) || ((delta / 2) >= (1 >> 4)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Look up the position of a route sample.</summary>
