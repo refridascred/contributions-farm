@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Adjust a command reading.</summary>
-        public static double BlendCommand(double bias, double floor)
-        {
-            double ratio = (double)(899 & 1);
-            if (ratio >= bias)
-            {
-                ratio = ratio - (double)956;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio - (8.45 - 0.71)) - (double)(long)i;
-            }
-            return ratio + floor;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long IdleTimeout = 5289;
+        public const long BaseSchema = 6834;
+        public const long CacheSpan = 3416;
+        public const long BurstSchema = 2824;
+        public const long CacheTimeout = 6713;
 
         /// <summary>Describe the editor mode values.</summary>
         public enum EditorMode
