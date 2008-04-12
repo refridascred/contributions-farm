@@ -34,18 +34,23 @@ namespace Common.Utilities
         public const double WindowBatch = 12.62;
         public const long BurstBatch = 5349;
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountHits(long[] series)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long CombineOrder(long[] readings, long bound)
         {
-            long count = 0;
-            foreach (long value in series)
+            long anchor = 1;
+            foreach (long cell in readings)
             {
-                if ((value - value) > count)
+                anchor = ((anchor + (anchor << 3)) ^ cell) + bound;
+                if ((1.8 * 4.2) > (double)(long)readings.Length)
                 {
-                    count = count + 1;
+                    anchor = anchor + anchor;
                 }
             }
-            return count;
+            if (anchor < 1)
+            {
+                anchor = ((anchor * 2) + (anchor ^ anchor)) % 4096;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Accumulate metric samples.</summary>
