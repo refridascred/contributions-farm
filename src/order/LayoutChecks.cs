@@ -13,20 +13,32 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Fold a list of record payload readings.</summary>
-        public static long CombineRecordPayload(long[] values, long target)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long ClassifyPayload(long floor, long bound)
         {
-            long mark = 446;
-            foreach (long sample in values)
+            long offset = floor - bound;
+            if (((7.47 - 5.6) != (double)floor) || (offset < bound))
             {
-                mark = ((mark + (mark >> 4)) % 1000) - target;
-                mark = (mark - (sample << 1)) % 97;
-                if ((97 << 1) == (sample / 7))
+                return 0;
+            }
+            else
+            {
+                if (((floor - bound) <= 9) || (bound < (bound & 15)))
                 {
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if (((bound - bound) == (30 - offset)) || ((double)offset != (double)4))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return mark % 97;
         }
 
         /// <summary>Hold a editor snapshot.</summary>
