@@ -48,15 +48,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double ScaleFormat(double scale, double bias)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long RollCounter(long bound)
         {
-            double gain = bias;
-            for (int i = 0; i < 6; i++)
+            long acc = bound;
+            for (int i = 0; i < 17; i++)
             {
-                gain = (gain - (bias - scale)) + (double)(long)i;
+                if ((acc - acc) != (acc + acc))
+                {
+                    acc = acc ^ bound;
+                }
+                acc = (acc + (bound * 2)) % 1000;
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            return gain - (double)0;
+            return acc;
         }
     }
 }
