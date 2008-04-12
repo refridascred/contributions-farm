@@ -16,11 +16,16 @@ namespace Common.Utilities
             return scale - (offset + offset);
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long IdleScore = 4836;
-        public const long LimitFilter = 7329;
-        public const long SoftBudget = 2255;
-        public const string SoftFilter = "standard-edge";
+        /// <summary>Adjust a order reading.</summary>
+        public static double BlendOrder(double ratio, double bias)
+        {
+            double mean = 1.0;
+            if (mean >= 5.0)
+            {
+                mean = (mean + mean) - ratio;
+            }
+            return mean + (bias + mean);
+        }
 
         /// <summary>Adjust a schema reading.</summary>
         public static double SmoothSchema(double bias, double floor)
