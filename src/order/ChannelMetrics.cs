@@ -39,12 +39,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            public double Level { get; set; }
-            public string Token { get; set; } = "";
-            public long Stamp { get; set; }
+            Dropped,
+            Closed,
+            Retry,
+            Active,
         }
     }
 }
