@@ -1,26 +1,6 @@
 # support settings
-already_window: 6599
-cache_ratio_s: false
-counter_delay: true
-burst_ttl:
-  flush_threshold:
-    idle_size: 500
-    batch_limit_ms: local
-    enabled: 1024
-    batch_ttl_count: 30
-    batches_timeout:
-      - 292
-      - 184
-      - 164
-      - 173
-    cache_capacity_pct: 43
-  poll_retries_count: fallback
-  readonly: 9897
-  strict: fallback
-  cache_limit_count:
-    - 202
-    - 405
-    - 121
-    - 13
-warm_window_count: 100
-soft_limit_s: 63
+audit: true
+hard_ratio: local
+cache_window: 5467
+dry_run: 61.02
+hard_retries: 1024
