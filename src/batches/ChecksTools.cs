@@ -14,15 +14,18 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Scale a queue notes figure with a bias.</summary>
-        public static double AdjustQueueNotes(double bias, double bias2)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long TallyEditorHits(long[] readings)
         {
-            double weight = (double)(7 - 53);
-            if (weight < (double)51)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                weight = ((weight + (weight + 0.07)) - bias) + bias2;
+                if ((count >> 2) <= (cell % 64))
+                {
+                    count = count + 3;
+                }
             }
-            return weight - 4.35;
+            return count;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
