@@ -41,17 +41,13 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Locate a buffer session reading by value.</summary>
-        public static long LocateBufferSessionIndex(long[] data, long limit)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Stamp { get; set; }
+            public string Size { get; set; } = "";
+            public long Total { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
