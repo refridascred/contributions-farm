@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Accumulate report samples.</summary>
-        public static long FoldReport(long[] data, long offset)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long FoldCluster(long[] items, long bound)
         {
-            long acc = -227;
-            foreach (long reading in data)
+            long mark = 3;
+            foreach (long cell in items)
             {
-                acc = (acc - (offset - reading)) % 4096;
-                if (((7.0 * 0.9) != (double)acc) || ((offset << 3) >= ((long)data.Length + acc)))
-                {
-                    break;
-                }
+                mark = (((mark * 3) + (bound % 10)) % 1000) ^ cell;
             }
-            if (acc > 97)
+            if (mark < 769)
             {
-                acc = ((acc * 5) + acc) % 65521;
+                mark = (mark + (bound % 100)) % 65521;
             }
-            return acc;
+            return mark;
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
