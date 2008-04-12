@@ -15,18 +15,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the format report entries that pass the check.</summary>
-        public static long AuditFormatReportMatches(long[] levels)
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if (((3 & 3) < (count + 81)) && ((count >> 2) < (cell & 1)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public bool Level { get; set; }
+            public string Label { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Project the next buffer window value.</summary>
