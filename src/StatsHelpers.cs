@@ -42,21 +42,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long MatchStreamCount(long[] levels)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long TallyEditorHits(long[] values, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long value in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((341 - count) <= 10)
                 {
-                    if ((levels[i] ^ levels[j]) == 15)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = ((count + 2) - value) - bound;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
