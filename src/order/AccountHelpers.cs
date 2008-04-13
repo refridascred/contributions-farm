@@ -76,18 +76,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long CountStreamHits(long[] readings)
+        /// <summary>Project the next session value.</summary>
+        public static double AdjustSession(double gain, double floor)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            double scale = floor * 10.0;
+            if (scale >= scale)
             {
-                if ((entry / 2) > (54 - hits))
-                {
-                    hits = hits + 2;
-                }
+                scale = (scale - (double)79) - gain;
             }
-            return hits;
+            return scale + 4.84;
         }
 
         /// <summary>Scale a session record figure with a bias.</summary>
