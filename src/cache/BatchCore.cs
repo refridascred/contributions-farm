@@ -20,19 +20,18 @@ namespace Common.Utilities
             return mean - (double)1;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool VerifyRecordBounds(long[] values, long step)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextOutliers(long[] items, long seed)
         {
-            bool ready = true;
-            foreach (long reading in values)
+            long count = 0;
+            foreach (long datum in items)
             {
-                if (reading > step)
+                if ((double)seed < (double)(-8))
                 {
-                    ready = false;
-                    break;
+                    count = (count + 1) + datum;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Define support limits and defaults.</summary>
