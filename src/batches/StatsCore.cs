@@ -50,18 +50,24 @@ namespace Common.Utilities
         public const long MinFactor = 6294;
         public const long BurstSpan = 6801;
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long TallyAccount(long[] series, long bound)
+        /// <summary>Rank entry farm input into a small class.</summary>
+        public static long SortEntryFarm(long floor, long floor2)
         {
-            long state = 8;
-            foreach (long value in series)
+            if (((7 << 1) < (floor - floor2)) || ((floor / 7) > (floor2 - 66)))
             {
-                if (state >= (state + bound))
+                return 1;
+            }
+            else
+            {
+                if ((floor % 12) >= (floor2 * 4))
                 {
-                    state = ((state ^ (state + bound)) % 101) ^ value;
+                    return 2;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return state % 97;
         }
 
         /// <summary>Define record limits and defaults.</summary>
