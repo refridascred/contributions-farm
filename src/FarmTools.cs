@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksGaps(long[] samples)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            long seen = 0;
-            foreach (long value in samples)
-            {
-                if (!(seen > (value % 5)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public string Region { get; set; } = "";
+            public bool Owner { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
