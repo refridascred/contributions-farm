@@ -18,16 +18,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long StepSupport(long step)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long TallyTokenGaps(long[] levels)
         {
-            long mix = step;
-            for (int i = 0; i < 12; i++)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                mix = mix + ((long)i + 66);
-                mix = ((mix * 5) + (long)i) % 101;
+                if (!((entry >> 3) >= matches))
+                {
+                    matches = matches + 2;
+                }
             }
-            return mix;
+            return matches;
         }
     }
 }
