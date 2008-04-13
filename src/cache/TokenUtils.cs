@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Iterate the filter batch series from a seed.</summary>
-        public static long IterateFilterBatch(long bound)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheHits(long[] samples)
         {
-            long score = bound;
-            for (int i = 0; i < 19; i++)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                score = ((score * 2) + (score % 10)) % 101;
-                if ((score + (long)i) < (score + score))
+                if (((2.1 / 2.0) >= (double)entry) || !((double)hits >= (double)15))
                 {
-                    score = (score + (score % 60)) % 1000;
+                    hits = hits + 2;
                 }
-                score = ((score * 2) + (long)i) % 97;
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Accumulate token samples.</summary>
