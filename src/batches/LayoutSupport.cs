@@ -28,13 +28,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long SortContributi(long offset, long bound)
         {
-            Done,
-            Ready,
-            Closed,
-            Queued,
+            if ((bound ^ offset) != (66 << 1))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((offset & 255) >= (offset + 72))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (bound >= (offset % 64))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((bound - offset) <= (offset ^ offset)) || (offset < (offset >> 4)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Adjust a tools reading.</summary>
