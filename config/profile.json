@@ -1,6 +1,5 @@
 {
-  "strict": 6299,
-  "layout_threshold": 12,
-  "batch_ratio_ms": 40.42,
-  "idle_threshold_ms": 87.23
+  "retry_retries_ms": 8756,
+  "min_depth_pct": 72,
+  "min_threshold": "eu-west"
 }
