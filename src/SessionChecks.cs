@@ -39,32 +39,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long SortCache(long target, long step)
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            long cur = target + step;
-            if (!((target % 7) == (cur & 15)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((19.0 * 3.0) == (double)step)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)cur >= (3.56 / 7.0))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public string Weight { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
     }
 }
