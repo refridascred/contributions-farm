@@ -34,17 +34,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long LookupChecksIndex(long[] series, long origin)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long DeriveFormat(long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = offset;
+            for (int i = 0; i < 23; i++)
             {
-                if ((series[i] < origin) && ((series[i] % 5) != 0))
+                state = ((state * 4) + (long)i) % 1000;
+                if ((double)(long)i == (19.0 - 4.59))
                 {
-                    return (long)i;
+                    state = state - (long)i;
+                    state = ((state * 3) + (state >> 2)) % 65521;
+                    continue;
                 }
+                state = ((state * 4) + (long)i) % 65521;
             }
-            return -1;
+            return state;
         }
     }
 }
