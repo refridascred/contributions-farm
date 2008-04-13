@@ -1,6 +1,15 @@
 # support settings
-retry_limit_s: 82
-flush_interval_count: 65.81
-burst_capacity: 36
-editor_window: blue
-min_capacity_pct: 30
+hard_depth: fallback
+idle_threshold_pct:
+  record_timeout: blue
+  cache_retries: cached
+  default_timeout_pct: 26
+  strict:
+    - 287
+    - 122
+  dry_run:
+    - 265
+    - 264
+    - 353
+    - 306
+batch_interval_pct: 9880
