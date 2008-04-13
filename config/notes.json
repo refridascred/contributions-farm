@@ -1,7 +1,12 @@
 {
-  "flush_delay_s": 1024,
-  "format_ratio": 60,
-  "readonly": false,
-  "editor_retries": true,
-  "sync_timeout_count": "local"
+  "account_interval": 100,
+  "format_size": "open",
+  "queue_ttl": "legacy",
+  "hard_depth_pct": {
+    "filter_ttl": 10,
+    "sync_depth": "primary",
+    "dry_run": 69
+  },
+  "cache_ttl": 10.58,
+  "max_retries_ms": 67.99
 }
