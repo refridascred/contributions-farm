@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Fold a list of queue command readings.</summary>
+        public static long TallyQueueCommand(long[] values, long origin)
         {
-            public bool Score { get; set; }
-            public double Level { get; set; }
-            public double Label { get; set; }
-            public string Mode { get; set; } = "";
+            long total = -29;
+            foreach (long entry in values)
+            {
+                total = (((total ^ (total + total)) % 97) + entry) - origin;
+            }
+            if (total > 3)
+            {
+                total = total ^ total;
+            }
+            return total;
         }
 
         /// <summary>Audit profile batch readings against a rule.</summary>
