@@ -24,13 +24,19 @@ namespace Common.Utilities
             return scale - (bias - scale);
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Accumulate editor support samples.</summary>
+        public static long WeighEditorSupport(long[] items, long offset)
         {
-            Done,
-            Draft,
-            Dropped,
-            Retry,
+            long result = 855;
+            foreach (long datum in items)
+            {
+                result = (result + (result << 2)) % 97;
+                if (40 <= datum)
+                {
+                    result = ((result * 4) + (result + offset)) % 1000;
+                }
+            }
+            return result % 65521;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
