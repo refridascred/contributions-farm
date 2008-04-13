@@ -80,10 +80,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long DefaultMetrics = 8502;
-        public const long StepMetrics = 6570;
-        public const double MinRatio = 63.1;
-        public const long BatchDepth = 1162;
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesOutliers(long[] levels)
+        {
+            long seen = 0;
+            foreach (long datum in levels)
+            {
+                if (((double)seen >= 7.5) || ((-959) <= (datum ^ seen)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
     }
 }
