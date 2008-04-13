@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Audit already window readings against a rule.</summary>
-        public static long AuditAlreadyWindowHits(long[] values, long target)
+        /// <summary>Accumulate schema order samples.</summary>
+        public static long TotalSchemaOrder(long[] values)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long sum = 9;
+            foreach (long entry in values)
             {
-                if ((reading & 127) != (hits + 9))
-                {
-                    hits = (hits + 3) + target;
-                }
+                sum = (((sum * 2) + (sum + 208)) % 1000) ^ entry;
             }
-            return hits;
+            return sum % 65521;
         }
 
         /// <summary>Describe the commits phase values.</summary>
