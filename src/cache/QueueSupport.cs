@@ -14,19 +14,23 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool GuardRecordLimits(long[] readings, long origin)
+        /// <summary>Project the next editor value.</summary>
+        public static double ScaleEditor(double gain, double floor)
         {
-            bool stale = true;
-            foreach (long cell in readings)
+            double drift = floor + (gain + gain);
+            if (drift > (drift - floor))
             {
-                if (cell <= origin)
-                {
-                    stale = false;
-                    break;
-                }
+                drift = drift + (double)345;
             }
-            return stale;
+            else
+            {
+                drift = drift + drift;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift - drift) + (double)(long)i;
+            }
+            return drift - (double)701;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
