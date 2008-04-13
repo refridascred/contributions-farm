@@ -1,5 +1,7 @@
 {
-  "idle_depth_count": 5470,
-  "enabled": ["legacy", "latest", "legacy"],
-  "strict": true
+  "hard_ttl": "eu-west",
+  "default_delay_ms": "fallback",
+  "max_size_count": 27,
+  "dry_run": false,
+  "route_interval": "strict"
 }
