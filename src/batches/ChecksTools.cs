@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double AdjustCounter(double rate, double span)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long RollBatch(long bound)
         {
-            double mean = span;
-            if (mean >= span)
+            long total = bound;
+            for (int i = 0; i < 14; i++)
             {
-                mean = (mean + (double)832) - rate;
+                if (!((long)i == ((long)i ^ bound)))
+                {
+                    long edge = bound ^ 660;
+                    total = total + edge;
+                }
+                total = (total << 3) ^ (6 & 31);
+                total = ((total * 3) + (long)i) % 1000;
             }
-            else
-            {
-                mean = mean + (mean + 1.68);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean + span) + (double)(long)i;
-            }
-            return mean + 10.0;
+            return total;
         }
 
         /// <summary>Iterate the payload metrics series from a seed.</summary>
