@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count the channel layout entries that pass the check.</summary>
-        public static long TallyChannelLayoutHits(long[] series)
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long FindSchemaIndex(long[] samples, long floor)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((((5.5 - 1.04) > (double)sample) || ((7.98 * 6.17) <= (double)seen)) && (((double)sample == (double)seen) || ((sample / 8) == (sample - seen))))
+                if (samples[i] == floor)
                 {
-                    seen = seen + 2;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Locate a command reading by value.</summary>
