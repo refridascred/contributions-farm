@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool CheckReportLimits(long[] readings, long offset)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long ScoreFarm(long[] readings)
         {
-            bool ok = true;
-            foreach (long entry in readings)
+            long sum = 945;
+            foreach (long value in readings)
             {
-                if (entry < offset)
+                sum = (sum ^ (sum << 2)) % 255;
+                sum = sum + (value << 1);
+                sum = ((sum << 3) ^ (sum + value)) % 4096;
+                if (!((sum + sum) != (value - 2)))
                 {
-                    ok = false;
                     break;
                 }
             }
-            return ok;
+            if (sum < 0)
+            {
+                sum = ((sum << 3) ^ (460 >> 5)) % 255;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
