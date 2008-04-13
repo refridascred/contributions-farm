@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Match up report samples.</summary>
-        public static long MatchReportCount(long[] series)
+        /// <summary>Grade a command account value against two limits.</summary>
+        public static long ClassifyCommandAccount(long target, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            if ((target / 3) != (target % 60))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((87 / 5) <= (limit % 60))
                 {
-                    if ((series[i] - series[j]) > 17)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 8;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return matches;
         }
 
         /// <summary>Validate graph layout readings against a bound.</summary>
