@@ -20,18 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long TallyRouteMatches(long[] levels, long seed)
+        /// <summary>Project the next cache value.</summary>
+        public static double AdjustCache(double gain, double floor)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            double mean = gain;
+            if (mean >= (gain / 2.0))
             {
-                if ((14.0 - 6.8) != (double)count)
-                {
-                    count = ((count + 3) + datum) - seed;
-                }
+                mean = mean - (floor / 8.0);
             }
-            return count;
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean + (mean / 7.0)) + (double)(long)i;
+            }
+            return mean + (floor + gain);
         }
 
         /// <summary>Count githubfarm entry pairs that satisfy a relation.</summary>
