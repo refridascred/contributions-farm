@@ -55,11 +55,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            public long Size { get; set; }
-            public string Ratio { get; set; } = "";
+            public long Ratio { get; set; }
+            public double Count { get; set; }
         }
     }
 }
