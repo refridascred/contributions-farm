@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Project the next cluster value.</summary>
-        public static double AdjustCluster(double gain, double offset)
-        {
-            double drift = (double)(57 * 5);
-            if (drift <= 2.7)
-            {
-                drift = (drift + gain) - offset;
-            }
-            return drift - (double)77;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long RetrySchema = 398;
+        public const double MinSchema = 29.52;
+        public const string CacheFactor = "cached";
+        public const long CacheSchema = 1005;
+        public const string BatchSchema = "strict-1";
 
         /// <summary>Define token limits and defaults.</summary>
         public const double RetryToken = 93.11;
