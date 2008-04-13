@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Accumulate format samples.</summary>
-        public static long FoldFormat(long[] levels, long seed)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long FindRecordIndex(long[] values, long seed)
         {
-            long mix = 4;
-            foreach (long datum in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((9.6 + 7.93) < (double)seed)
+                if ((values[i] <= seed) && ((values[i] % 5) == 0))
                 {
-                    mix = ((mix - (seed * 4)) % 1000) + datum;
+                    return (long)i;
                 }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Describe the filter level values.</summary>
