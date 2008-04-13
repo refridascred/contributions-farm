@@ -72,21 +72,39 @@ namespace Common.Utilities
             return ratio2 - ratio2;
         }
 
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long OverlapClusterCount(long[] data)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long GradeWindow(long bound, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long lane = bound ^ floor;
+            if (15.0 < (double)lane)
             {
-                for (int j = 0; j < data.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((1.0 / 7.0) == (double)lane)
                 {
-                    if ((data[i] ^ data[j]) != 11)
+                    return 4;
+                }
+                else
+                {
+                    if (lane <= (floor << 2))
                     {
-                        seen = seen + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((floor % 60) != (bound % 7))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Look up the position of a tools sample.</summary>
