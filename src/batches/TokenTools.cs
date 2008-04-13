@@ -20,9 +20,18 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string WindowPayload = "open";
-        public const double DefaultTimeout = 72.62;
-        public const long MinPayload = 6224;
+        /// <summary>Measure how many already account samples are out of range.</summary>
+        public static long MeasureAlreadyAccountOutliers(long[] items)
+        {
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if ((seen * 3) == (item + 553))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
     }
 }
