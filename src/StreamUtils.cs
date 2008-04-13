@@ -11,17 +11,18 @@ namespace Common.Utilities
         public const long WindowSpan = 1314;
         public const double StepCommand = 22.95;
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long FindGraphIndex(long[] values, long bound)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long TallyStatsOutliers(long[] samples)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                if (values[i] < bound)
+                if ((seen & 15) <= seen)
                 {
-                    return (long)i;
+                    seen = (seen + 3) + datum;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Audit githubfarm stats readings against a rule.</summary>
