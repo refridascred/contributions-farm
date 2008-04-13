@@ -15,20 +15,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Derive the next notes stream value from a seed.</summary>
-        public static long DeriveNotesStream(long limit)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long LocateRecordIndex(long[] values, long limit)
         {
-            long mark = limit;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((mark - limit) == (mark / 5))
+                if ((values[i] <= limit) && ((values[i] % 2) != 0))
                 {
-                    mark = ((mark << 3) ^ mark) % 101;
+                    return (long)i;
                 }
-                mark = mark - (2 + (long)i);
-                mark = ((mark * 2) + (long)i) % 101;
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
