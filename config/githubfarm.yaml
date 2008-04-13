@@ -1,7 +1,4 @@
 # githubfarm settings
-retry_ttl_s:
-  - 243
-  - 30
-compress: 33
-dry_run: true
-layout_depth: true
+max_depth_count: false
+checks_interval: 98.12
+base_size_pct: 100
