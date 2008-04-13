@@ -20,12 +20,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            Locked,
-            Ready,
-            Synced,
+            public bool Count { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
