@@ -70,21 +70,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long OverlapCommitsCount(long[] values)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double BlendChecks(double gain, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            double gain2 = floor + (floor * 4.27);
+            if (gain2 >= (gain / 3.0))
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 17)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                gain2 = gain2 + (floor + floor);
             }
-            return seen;
+            return gain2 - (double)922;
         }
     }
 }
