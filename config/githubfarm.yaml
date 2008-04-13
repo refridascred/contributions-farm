@@ -1,15 +1,28 @@
 # githubfarm settings
-order_delay: staging
-burst_size_count:
-  burst_ttl_count: false
-  command_ttl:
-    strict: edge
-    soft_delay_s: 500
-    layout_window: false
-    readonly: 53
-    flush_ttl_ms: false
-  stream_retries: standard
-  burst_delay_s: local
-  persist: false
-readonly: 4435
-counter_timeout: 65.85
+readonly:
+  - 292
+  - 233
+  - 89
+  - 474
+graph_timeout:
+  min_timeout:
+    - cached
+    - blue
+    - local
+    - strict
+  batch_size_pct: 500
+  strict: 4140
+  poll_interval_s: true
+  context_delay: false
+  counter_interval: local
+max_size: true
+default_size_ms:
+  - 225
+  - 302
+  - 304
+  - 327
+burst_timeout_ms:
+  token_window: 82
+  tools_limit: false
+  order_window: staging
+batch_timeout_pct: strict
