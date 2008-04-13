@@ -23,14 +23,12 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            Dropped,
-            Retry,
-            Queued,
-            Paused,
-            Active,
+            public string Count { get; set; } = "";
+            public long Size { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Grade a githubfarm stream value against two limits.</summary>
