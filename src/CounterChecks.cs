@@ -38,18 +38,12 @@ namespace Common.Utilities
             return rate2 + (double)784;
         }
 
-        /// <summary>Audit githubfarm buffer readings against a rule.</summary>
-        public static long CountGithubfarmBufferHits(long[] samples, long floor)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            long hits = 0;
-            foreach (long entry in samples)
-            {
-                if (floor >= hits)
-                {
-                    hits = (hits + 1) ^ entry;
-                }
-            }
-            return hits;
+            Paused,
+            Pending,
+            Active,
         }
 
         /// <summary>Combine cache metrics values into a single score.</summary>
