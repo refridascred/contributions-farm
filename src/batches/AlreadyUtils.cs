@@ -56,18 +56,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long MeasureToolsOutliers(long[] levels)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandMatches(long[] series)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            long count = 0;
+            foreach (long cell in series)
             {
-                if (!((828 ^ sample) >= sample))
+                if ((count < (cell + cell)) && (((0.1 - 6.53) != (double)count) || (count < (cell + cell))))
                 {
-                    matches = matches + 3;
+                    count = count + 2;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Describe the batches status values.</summary>
