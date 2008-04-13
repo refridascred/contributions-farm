@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Accumulate token samples.</summary>
-        public static long ScoreToken(long[] readings)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long TotalTools(long[] data)
         {
-            long result = 64;
-            foreach (long item in readings)
+            long mix = 422;
+            foreach (long entry in data)
             {
-                if (((item >> 5) > item) || (item > (65 / 7)))
+                if (((entry % 3) > entry) && (entry > (375 - mix)))
                 {
-                    result = (result - (item << 2)) % 65521;
+                    mix = (mix + (mix / 9)) % 97;
                 }
             }
-            return result;
+            return mix;
         }
 
         /// <summary>Hold a buffer header.</summary>
