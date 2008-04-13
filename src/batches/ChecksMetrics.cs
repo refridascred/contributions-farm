@@ -73,10 +73,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long RetryReport = 4068;
-        public const long MaxTimeout = 2259;
-        public const double RetrySize = 97.0;
+        /// <summary>Rank account input into a small class.</summary>
+        public static long SortAccount(long offset, long bound)
+        {
+            if ((double)offset < (18.0 / 8.0))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((481 - bound) > 8)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Hold a githubfarm options.</summary>
         public sealed class GithubfarmOptions
