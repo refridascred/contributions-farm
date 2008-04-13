@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Combine contributi farm values into a single score.</summary>
-        public static long TotalContributiFarm(long[] values, long offset)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool GuardStatsBounds(long[] readings, long step)
         {
-            long anchor = 99;
-            foreach (long sample in values)
+            bool found = true;
+            foreach (long datum in readings)
             {
-                if (((double)anchor <= 3.03) || ((anchor + sample) >= sample))
+                if (datum < step)
                 {
-                    anchor = anchor - offset;
-                }
-                if ((anchor >> 1) != (offset - 21))
-                {
+                    found = false;
                     break;
                 }
             }
-            return anchor;
+            return found;
         }
 
         /// <summary>Digest a series of context entries.</summary>
