@@ -13,22 +13,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long OverlapRouteCount(long[] levels)
-        {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 8)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MinTimeout = 2445;
+        public const double BurstEntry = 46.41;
+        public const string BatchEntry = "staging";
+        public const string StepCount = "stable-v2";
+        public const double BurstScore = 85.1;
 
         /// <summary>Grade a layout value against two limits.</summary>
         public static long RankLayout(long seed, long origin)
