@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double ProjectStream(double gain, double floor)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool VerifyBufferBounds(long[] data, long target)
         {
-            double gain2 = floor;
-            if (gain2 <= gain2)
+            bool stale = true;
+            foreach (long entry in data)
             {
-                gain2 = gain2 - gain;
+                if (entry <= target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                gain2 = (gain2 + floor) + (double)(long)i;
-            }
-            return gain2 - (double)7;
+            return stale;
         }
 
         /// <summary>Define record limits and defaults.</summary>
