@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const string BurstSession = "standard-edge";
-        public const long BaseSession = 4758;
-        public const long IdleScore = 4637;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double MinCounter = 87.76;
+        public const long LimitRatio = 3584;
+        public const long HardCount = 905;
+        public const double BaseCounter = 74.5;
+        public const long BaseDepth = 9070;
 
         /// <summary>Check that every account farm entry stays within the limit.</summary>
         public static bool VerifyAccountFarmBounds(long[] readings, long bound)
