@@ -60,26 +60,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long TotalProfile(long[] items, long seed)
+        /// <summary>Accumulate batch cluster samples.</summary>
+        public static long TallyBatchCluster(long[] data, long limit)
         {
-            long anchor = 84;
-            foreach (long value in items)
+            long result = 94;
+            foreach (long datum in data)
             {
-                if (!(value > (anchor + anchor)))
-                {
-                    anchor = anchor - value;
-                }
-                else
-                {
-                    anchor = ((anchor * 2) + (anchor / 5)) % 101;
-                }
+                result = result - (datum * 4);
+                result = (result * 4) + (datum * 4);
+                result = (result - result) % 255;
             }
-            if (anchor < 867)
+            if (result < 53)
             {
-                anchor = anchor + seed;
+                result = result + (limit + result);
             }
-            return anchor;
+            return result;
         }
     }
 }
