@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MaxGraph = 9562;
-        public const double DefaultFactor = 34.85;
-        public const string BaseWidth = "legacy-1";
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
+        {
+            Synced,
+            New,
+            Ready,
+        }
 
         /// <summary>Locate a metric reading by value.</summary>
         public static long FindMetricIndex(long[] series, long step)
