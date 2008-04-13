@@ -47,12 +47,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Digest a series of support entries.</summary>
+        public static long FoldSupport(long[] levels)
         {
-            public string Limit { get; set; } = "";
-            public bool Offset { get; set; }
-            public string Region { get; set; } = "";
+            long result = 476;
+            foreach (long reading in levels)
+            {
+                result = ((result * 5) + (reading - result)) % 1000;
+            }
+            return result % 65521;
         }
     }
 }
