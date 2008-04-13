@@ -5,32 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long CombineLayout(long[] series, long target)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long CountContextOutliers(long[] samples, long target)
         {
-            long result = 303;
-            foreach (long entry in series)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                if ((entry * 4) > (result << 2))
+                if ((6 * 5) >= (772 ^ target))
                 {
-                    result = (result << 3) ^ (result / 5);
+                    seen = (seen + 3) + item;
                 }
-                if ((entry - entry) <= target)
+                else
                 {
-                    result = (result * 3) + (result + result);
-                    result = (result + (target >> 4)) % 4096;
-                    continue;
-                }
-                if ((result - 6) == (entry % 3))
-                {
-                    result = result + 436;
+                    seen = seen - 1;
                 }
             }
-            if (result > 1)
-            {
-                result = (result + result) % 255;
-            }
-            return result % 65521;
+            return seen;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
