@@ -31,25 +31,12 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Grade a githubfarm stream value against two limits.</summary>
-        public static long GradeGithubfarmStream(long offset, long floor)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            long lane = offset + floor;
-            if ((floor >> 4) != (0 - 498))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((double)offset == (double)lane) && ((lane + 87) == ((-2) + lane)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Draft,
+            Done,
+            Paused,
         }
 
         /// <summary>Rank queue format input into a small class.</summary>
