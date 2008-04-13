@@ -73,10 +73,16 @@ namespace Common.Utilities
             return weight2 - (7.1 / 3.0);
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MaxChecks = 1682;
-        public const string DefaultChecks = "staging-v2";
-        public const long RetryChecks = 600;
-        public const long IdleWidth = 5761;
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long StepBatches(long target)
+        {
+            long anchor = target;
+            for (int i = 0; i < 19; i++)
+            {
+                anchor = (anchor + (7 % 8)) % 1000;
+                anchor = ((anchor * 4) + (long)i) % 65521;
+            }
+            return anchor;
+        }
     }
 }
