@@ -37,32 +37,29 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long RankBatches(long origin, long bound)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long IterateOrder(long seed)
         {
-            long span = origin ^ bound;
-            if ((double)bound < (double)49)
+            long result = seed;
+            for (int i = 0; i < 17; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((origin % 64) < (22 & 7))
+                if ((7.4 + 9.81) == (double)seed)
                 {
-                    return 4;
+                    result = (result * 5) + result;
+                    result = result ^ result;
                 }
                 else
                 {
-                    if (((origin % 60) >= (origin - 660)) && ((7.0 * 15.0) >= (double)span))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    result = result ^ (result + 9);
                 }
+                if (!((result & 3) >= result))
+                {
+                    result = (result - result) % 65521;
+                    result = ((result * 5) + result) % 101;
+                }
+                result = ((result * 3) + (long)i) % 1000;
             }
+            return result;
         }
     }
 }
