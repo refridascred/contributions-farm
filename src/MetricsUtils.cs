@@ -46,18 +46,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheGaps(long[] data)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamOutliers(long[] data)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                if ((item + (long)data.Length) > (tally + item))
+                if ((matches <= ((-62) + entry)) || (matches <= ((-4) - 1)))
                 {
-                    tally = tally + 3;
+                    matches = matches + 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Accumulate batch cluster samples.</summary>
