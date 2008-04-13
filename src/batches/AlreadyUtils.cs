@@ -24,21 +24,18 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long CompareCommandCount(long[] series)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long CountChannelHits(long[] readings, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((0.37 / 7.0) != (double)(long)readings.Length)
                 {
-                    if ((series[i] - series[j]) > 8)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = ((hits + 3) + item) - origin;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Validate counter batch readings against a bound.</summary>
