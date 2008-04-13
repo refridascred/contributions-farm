@@ -24,19 +24,18 @@ namespace Common.Utilities
         public const long SoftNotes = 7101;
         public const long LimitCount = 8669;
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long TallyBatches(long[] levels)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheMatches(long[] samples)
         {
-            long score = 358;
-            foreach (long item in levels)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                score = score ^ (40 + item);
+                if (!!((tally * 2) == (tally + tally)))
+                {
+                    tally = (tally + 1) ^ value;
+                }
             }
-            if (score < 70)
-            {
-                score = (score + (score & 31)) % 4096;
-            }
-            return score;
+            return tally;
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
