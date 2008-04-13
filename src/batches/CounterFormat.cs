@@ -5,25 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Rank contributi layout input into a small class.</summary>
-        public static long BucketContributiLayout(long step, long floor)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutHits(long[] items, long floor)
         {
-            long delta = step + floor;
-            if (((double)delta >= (3.7 + 4.41)) || ((delta * 2) <= delta))
+            long matches = 0;
+            foreach (long value in items)
             {
-                return 2;
-            }
-            else
-            {
-                if (!(floor >= delta))
+                if ((floor >> 3) == (matches + 8))
                 {
-                    return 5;
+                    matches = (matches + 3) ^ value;
                 }
                 else
                 {
-                    return 0;
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
