@@ -1,8 +1,17 @@
 {
-  "window_delay": true,
-  "editor_retries": "eu-west",
-  "retry_limit_pct": 9042,
-  "max_delay_count": [309, 346, 297, 50],
-  "persist": "eu-west",
-  "dry_run": ["legacy", "green", "primary", "fallback"]
+  "filter_interval": 33.05,
+  "format_threshold": 2794,
+  "hard_capacity_count": "primary",
+  "burst_retries": {
+    "hard_retries_pct": {
+      "support_ratio": [167, 267, 390, 463],
+      "cache_depth_ms": 1024,
+      "hard_depth": "green",
+      "audit": 250
+    },
+    "poll_size": 28,
+    "hard_ttl_ms": 413,
+    "burst_limit_count": "cached",
+    "dry_run": "primary"
+  }
 }
