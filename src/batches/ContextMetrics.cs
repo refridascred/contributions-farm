@@ -29,16 +29,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long DeriveFormat(long limit)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long LookupBufferIndex(long[] data, long offset)
         {
-            long mark = limit;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                mark = (mark * 3) + (mark * 3);
-                mark = ((mark * 4) + (long)i) % 65521;
+                if ((data[i] > offset) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Project the next already format value.</summary>
