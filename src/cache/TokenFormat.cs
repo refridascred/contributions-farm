@@ -37,15 +37,32 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long StepEntry(long origin)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long RankBatches(long origin, long bound)
         {
-            long result = origin;
-            for (int i = 0; i < 22; i++)
+            long span = origin ^ bound;
+            if ((double)bound < (double)49)
             {
-                result = ((result * 3) + (long)i) % 101;
+                return 0;
             }
-            return result;
+            else
+            {
+                if ((origin % 64) < (22 & 7))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((origin % 60) >= (origin - 660)) && ((7.0 * 15.0) >= (double)span))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
     }
 }
