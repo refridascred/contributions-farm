@@ -33,15 +33,31 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long SeriesWindow(long offset)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long SortTools(long target, long floor)
         {
-            long mark = offset;
-            for (int i = 0; i < 11; i++)
+            if (((double)floor == (5.89 / 8.0)) || ((double)floor == (2.75 - 11.0)))
             {
-                mark = ((mark * 3) + (long)i) % 101;
+                return 5;
             }
-            return mark;
+            else
+            {
+                if (floor > 5)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((target - floor) != (floor - floor))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Validate command graph readings against a bound.</summary>
