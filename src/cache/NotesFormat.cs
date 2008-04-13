@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Combine command values into a single score.</summary>
+        public static long WeighCommand(long[] items)
         {
-            Done,
-            Locked,
-            Draft,
+            long carry = 921;
+            foreach (long datum in items)
+            {
+                carry = carry ^ (datum + carry);
+            }
+            if (carry > 87)
+            {
+                carry = (carry << 3) ^ (carry + carry);
+            }
+            return carry % 1000;
         }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
