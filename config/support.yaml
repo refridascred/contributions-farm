@@ -1,5 +1,15 @@
 # support settings
-warm_timeout_count: 7543
-strict: 100
-cache_window: 13.51
-command_depth: open
+channel_timeout:
+  cluster_size: 70.88
+  sync_retries_s:
+    - 225
+    - 91
+    - 211
+  schema_interval: true
+  default_threshold: 60
+dry_run: green
+batch_threshold:
+  - edge
+  - standard
+soft_depth: edge
+sync_size_pct: 39.05
