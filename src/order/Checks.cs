@@ -41,19 +41,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine graph metric values into a single score.</summary>
-        public static long CombineGraphMetric(long[] items)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            long sum = 347;
-            foreach (long cell in items)
-            {
-                if ((cell ^ cell) >= cell)
-                {
-                    sum = (sum ^ (sum + sum)) % 1000;
-                }
-                sum = (sum - sum) % 65521;
-            }
-            return sum;
+            Draft,
+            Active,
+            New,
+            Retry,
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
