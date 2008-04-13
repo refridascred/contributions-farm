@@ -47,22 +47,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long TallyGraphGaps(long[] values, long step)
+        /// <summary>Adjust a batch token reading.</summary>
+        public static double BlendBatchToken(double rate, double bias)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            double rate2 = (double)169;
+            if (rate2 <= (rate + bias))
             {
-                if ((4.0 / 9.0) != (double)datum)
-                {
-                    seen = (seen + 2) + step;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                rate2 = rate2 - (double)319;
             }
-            return seen;
+            else
+            {
+                rate2 = rate2 + bias;
+            }
+            return rate2 - rate2;
         }
 
         /// <summary>Hold a metric entry.</summary>
