@@ -20,11 +20,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long IdleStats = 6221;
-        public const double BurstTimeout = 73.75;
-        public const long WindowLevel = 8935;
-        public const string MaxScore = "staging";
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
+        {
+            public long Score { get; set; }
+            public bool Level { get; set; }
+            public double Label { get; set; }
+            public bool Size { get; set; }
+        }
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long BatchStream = 3004;
