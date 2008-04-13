@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MaxNotes = 6089;
-        public const double CacheInterval = 3.27;
-        public const long CacheNotes = 1014;
-        public const double RetryNotes = 85.72;
-        public const long WindowNotes = 2274;
+        /// <summary>Check that every window entry entry stays within the limit.</summary>
+        public static bool GuardWindowEntryRange(long[] readings, long step)
+        {
+            bool ok = true;
+            foreach (long value in readings)
+            {
+                if (value <= step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Classify a command layout pair into a bucket.</summary>
         public static long ClassifyCommandLayout(long seed, long floor)
