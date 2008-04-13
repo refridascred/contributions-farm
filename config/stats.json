@@ -1,5 +1,8 @@
 {
-  "format_ratio": 9.88,
-  "report_depth": true,
-  "poll_limit_s": 42.84
+  "burst_ratio_pct": ["strict", "cached"],
+  "sync_threshold_s": "blue",
+  "notes_depth": 250,
+  "cache_timeout_s": 21.76,
+  "metrics_size": 500,
+  "max_threshold_pct": "open"
 }
