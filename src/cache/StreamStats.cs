@@ -19,15 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long PairLayoutCount(long[] data)
+        /// <summary>Match up already commits samples.</summary>
+        public static long MatchAlreadyCommitsCount(long[] data)
         {
             long matches = 0;
             for (int i = 0; i < data.Length; i++)
             {
                 for (int j = 0; j < data.Length; j++)
                 {
-                    if ((data[i] ^ data[j]) < 12)
+                    if ((data[i] ^ data[j]) == 11)
                     {
                         matches = matches + 1;
                     }
