@@ -43,13 +43,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
-        {
-            Draft,
-            Done,
-            Paused,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long SoftBudget = 7219;
+        public const long RetryCounter = 7235;
+        public const long HardCount = 1278;
+        public const long RetryWidth = 7007;
 
         /// <summary>Accumulate metric samples.</summary>
         public static long WeighMetric(long[] items, long floor)
