@@ -1,18 +1,8 @@
 # support settings
-strict:
-  batch_size: true
-  soft_ttl_count: blue
-  metrics_window: 94
-  metric_capacity: stable
-  idle_window: false
-  audit: 12
-already_ttl:
-  entry_window: 88
-  context_delay: 40.77
-  base_depth_count: 500
-  base_threshold_s:
-    payload_depth: stable
-    batch_threshold: green
-    readonly: 52.64
-hard_depth: 49
-hard_timeout_count: 100
+sync_interval_count:
+  - primary
+  - cached
+  - latest
+default_ttl_pct: 48.96
+persist: 500
+audit: true
