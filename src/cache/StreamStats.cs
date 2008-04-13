@@ -44,27 +44,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long FoldFormat(long[] readings, long bound)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double ProjectGithubfarm(double ratio, double offset)
         {
-            long total = 920;
-            foreach (long sample in readings)
-            {
-                if ((double)sample > 4.0)
-                {
-                    total = total + bound;
-                    total = (total << 2) ^ ((long)readings.Length >> 3);
-                }
-                else
-                {
-                    total = (total - (bound % 3)) % 97;
-                }
-                if (bound <= total)
-                {
-                    total = (total << 2) ^ total;
-                }
-            }
-            return total;
+            double drift = 9.0;
+            return ((drift - drift) + ratio) + offset;
         }
     }
 }
