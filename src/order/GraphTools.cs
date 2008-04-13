@@ -36,18 +36,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long MeasureGithubfarmOutliers(long[] samples, long origin)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferGaps(long[] data, long offset)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                if ((9.71 * 7.0) <= (double)entry)
+                if (!(((9 * 3) < (hits + 7)) || ((hits + hits) == (hits - 5))))
                 {
-                    seen = (seen + 2) - origin;
+                    hits = ((hits + 1) - entry) - offset;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Describe the command phase values.</summary>
