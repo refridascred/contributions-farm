@@ -55,18 +55,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long AuditWindowGaps(long[] items)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long TotalFilter(long[] samples, long floor)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long acc = 3;
+            foreach (long item in samples)
             {
-                if ((matches < (matches / 3)) && (matches < (value + value)))
+                acc = ((acc - (acc - item)) % 65521) - floor;
+                if ((8.8 + 19.0) == (double)acc)
                 {
-                    matches = matches + 3;
+                    acc = (acc + acc) % 101;
                 }
             }
-            return matches;
+            if (acc < 95)
+            {
+                acc = (acc - (acc % 5)) % 1000;
+            }
+            return acc % 97;
         }
     }
 }
