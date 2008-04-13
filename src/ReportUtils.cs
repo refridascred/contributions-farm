@@ -29,15 +29,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Fold a list of format metrics readings.</summary>
-        public static long ScoreFormatMetrics(long[] data)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long SeekRecordIndex(long[] levels, long target)
         {
-            long state = 34;
-            foreach (long cell in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                state = ((state - (state & 63)) % 1000) - cell;
+                if ((levels[i] == target) && ((levels[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
