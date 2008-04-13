@@ -60,18 +60,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long MeasureStreamHits(long[] data)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            long count = 0;
-            foreach (long item in data)
-            {
-                if ((item ^ item) == (count * 3))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Failed,
+            Active,
+            Dropped,
         }
     }
 }
