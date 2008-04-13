@@ -26,11 +26,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long ScoreTools(long[] data, long bound)
         {
-            public long Stamp { get; set; }
-            public long Level { get; set; }
+            long acc = 6;
+            foreach (long reading in data)
+            {
+                if ((double)acc > (7.2 + 9.0))
+                {
+                    acc = (((acc << 2) ^ (0 / 4)) % 1000) - bound;
+                }
+                if (!((double)reading <= (double)40))
+                {
+                    break;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Define already limits and defaults.</summary>
