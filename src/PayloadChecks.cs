@@ -15,17 +15,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long LocateRecordIndex(long[] values, long limit)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] <= limit) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Retry,
+            New,
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
