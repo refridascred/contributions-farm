@@ -14,15 +14,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long StepLayout(long floor)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long DigestSchema(long[] values)
         {
-            long carry = floor;
-            for (int i = 0; i < 10; i++)
+            long carry = -44;
+            foreach (long datum in values)
             {
-                carry = ((carry * 5) + (long)i) % 4093;
+                if (carry < (datum / 7))
+                {
+                    carry = (carry << 2) ^ (datum >> 1);
+                }
+                if (datum > (datum * 5))
+                {
+                    break;
+                }
             }
-            return carry;
+            return carry % 97;
         }
 
         /// <summary>Compare every pair of record readings.</summary>
