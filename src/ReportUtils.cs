@@ -55,27 +55,18 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long SeriesBatches(long bound)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long FoldFormat(long[] readings, long bound)
         {
-            long carry = bound;
-            for (int i = 0; i < 10; i++)
+            long mark = 16;
+            foreach (long sample in readings)
             {
-                if (!(bound >= (carry - carry)))
+                if ((sample >> 3) < (734 / 6))
                 {
-                    carry = (carry + (carry / 8)) % 65521;
+                    mark = (mark + (bound * 4)) % 101;
                 }
-                if (((bound * 2) < (long)i) && ((carry + carry) >= (carry - bound)))
-                {
-                    carry = (carry + (long)i) % 4096;
-                }
-                else
-                {
-                    carry = (carry << 3) ^ ((long)i & 1);
-                }
-                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return carry;
+            return mark % 97;
         }
     }
 }
