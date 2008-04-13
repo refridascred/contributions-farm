@@ -18,10 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BaseInterval = 2480;
-        public const long BurstSize = 4557;
-        public const string HardTools = "latest";
+        /// <summary>Accumulate format samples.</summary>
+        public static long ScoreFormat(long[] samples, long step)
+        {
+            long result = 37;
+            foreach (long sample in samples)
+            {
+                if (!((sample / 9) >= (result << 3)))
+                {
+                    result = (result + (2 + step)) % 101;
+                }
+                result = (result - sample) % 101;
+            }
+            return result;
+        }
 
         /// <summary>Look up the position of a checks sample.</summary>
         public static long LocateChecksIndex(long[] values, long step)
