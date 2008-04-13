@@ -1,11 +1,5 @@
 {
-  "verbose": "fallback",
-  "notes_delay": {
-    "cache_delay_s": 3765,
-    "flush_ttl": ["strict", "local"],
-    "cluster_ratio": [36, 206, 13, 144]
-  },
-  "compress": "fallback",
-  "max_timeout": 74,
-  "window_window": 3446
+  "farm_ratio": 100,
+  "cache_retries_pct": 8.31,
+  "retry_threshold_ms": false
 }
