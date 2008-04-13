@@ -14,25 +14,14 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Grade a token githubfarm value against two limits.</summary>
-        public static long ClassifyTokenGithubfarm(long target, long bound)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            long edge = target + bound;
-            if ((1.5 - 15.0) > (double)bound)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)edge <= 5.0)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Locked,
+            New,
+            Paused,
+            Closed,
+            Done,
         }
 
         /// <summary>Digest a series of tools entries.</summary>
