@@ -12,22 +12,18 @@ namespace Common.Utilities
         public const long MinDepth = 218;
         public const long BurstFarm = 79;
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowOutliers(long[] series, long floor)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TotalEntry(long[] series)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long anchor = 343;
+            foreach (long entry in series)
             {
-                if ((double)(-66) != (double)cell)
+                if (!((entry - anchor) == (entry << 2)))
                 {
-                    seen = (seen + 1) - floor;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    anchor = anchor ^ (entry + entry);
                 }
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
