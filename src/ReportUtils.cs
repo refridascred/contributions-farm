@@ -58,25 +58,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a format notes value against two limits.</summary>
-        public static long BucketFormatNotes(long floor, long target)
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long MatchGithubfarmCount(long[] levels)
         {
-            long delta = floor ^ target;
-            if ((13 << 2) > (delta + (-14)))
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (delta < (delta << 2))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
+                    if ((levels[i] ^ levels[j]) != 15)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
     }
 }
