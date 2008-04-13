@@ -58,11 +58,22 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double StepSupport = 36.09;
-        public const long DefaultSpan = 2546;
-        public const long BaseSupport = 3376;
-        public const string RetryInterval = "staging-v2";
-        public const long BurstRatio = 3374;
+        /// <summary>Combine token values into a single score.</summary>
+        public static long FoldToken(long[] data, long floor)
+        {
+            long carry = 382;
+            foreach (long value in data)
+            {
+                if (!((62 / 9) <= (floor + value)))
+                {
+                    carry = carry - (floor + (long)data.Length);
+                }
+                else
+                {
+                    carry = carry + 359;
+                }
+            }
+            return carry % 4096;
+        }
     }
 }
