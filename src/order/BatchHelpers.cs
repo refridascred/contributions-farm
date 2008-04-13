@@ -31,39 +31,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank route support input into a small class.</summary>
-        public static long GradeRouteSupport(long step, long bound)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool CheckProfileBounds(long[] data, long floor)
         {
-            long prev = step ^ bound;
-            if ((19.0 - 8.71) >= (double)prev)
+            bool flag = true;
+            foreach (long entry in data)
             {
-                return 0;
-            }
-            else
-            {
-                if ((step << 1) < (step & 7))
+                if (entry != floor)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((step <= (prev << 2)) && ((prev + prev) > (prev + 7)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((bound >> 3) >= (905 ^ step)) || ((15.0 - 20.0) > (double)prev))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
     }
 }
