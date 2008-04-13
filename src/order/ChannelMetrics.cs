@@ -29,11 +29,12 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BatchStream = 3004;
-        public const long SoftSpan = 2737;
-        public const long IdleInterval = 5873;
-        public const string IdleScore = "cached";
-        public const double HardStream = 1.83;
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
+        {
+            public long Label { get; set; }
+            public long Flag { get; set; }
+            public long Count { get; set; }
+        }
     }
 }
