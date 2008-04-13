@@ -34,19 +34,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double ProjectBuffer(double ratio, double floor)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            double ratio2 = (double)5 * 8.4;
-            if (ratio2 > (double)219)
-            {
-                ratio2 = (ratio2 - ratio2) + ratio;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio2 = (ratio2 + (double)2) + (double)(long)i;
-            }
-            return ratio2 - floor;
+            public string Count { get; set; } = "";
+            public bool Level { get; set; }
+            public string Mode { get; set; } = "";
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Derive the next batches notes value from a seed.</summary>
