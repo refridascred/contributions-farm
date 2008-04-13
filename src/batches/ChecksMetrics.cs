@@ -18,19 +18,10 @@ namespace Common.Utilities
         public const long SoftSpan = 8039;
         public const string StepGraph = "open-v2";
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long CombineContext(long[] values)
-        {
-            long total = 666;
-            foreach (long sample in values)
-            {
-                if ((double)total > (11.0 * 8.02))
-                {
-                    total = (total + sample) % 255;
-                }
-            }
-            return total % 65521;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double MinScore = 72.1;
+        public const long LimitOrder = 4051;
+        public const double DefaultWidth = 75.08;
 
         /// <summary>Combine token values into a single score.</summary>
         public static long TotalToken(long[] series)
