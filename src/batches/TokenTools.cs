@@ -16,12 +16,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double WindowFormat = 53.88;
-        public const long BaseFormat = 4477;
-        public const string MaxFormat = "standard";
-        public const string RetryFactor = "open";
-        public const long MinCount = 8747;
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
+        {
+            public double Offset { get; set; }
+            public long Owner { get; set; }
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const string WindowPayload = "open";
