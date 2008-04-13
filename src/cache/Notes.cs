@@ -37,11 +37,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BaseEntry = 5124;
-        public const long MinEntry = 3141;
-        public const long MaxEntry = 3495;
-        public const double RetryEntry = 55.8;
+        /// <summary>Adjust a cluster batch reading.</summary>
+        public static double SmoothClusterBatch(double scale, double offset)
+        {
+            double rate = (double)(1 ^ (-36));
+            for (int i = 0; i < 8; i++)
+            {
+                rate = ((rate + (double)(long)i) + scale) - offset;
+            }
+            return rate + (double)4;
+        }
 
         /// <summary>Describe the session phase values.</summary>
         public enum SessionPhase
