@@ -21,21 +21,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long MatchMetricsCount(long[] items)
+        /// <summary>Classify a batches farm pair into a bucket.</summary>
+        public static long SortBatchesFarm(long offset, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((offset <= (offset + target)) || ((target - 116) <= (target + target)))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((offset + offset) < (1 - target))
                 {
-                    if ((items[i] ^ items[j]) != 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 0;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return hits;
         }
 
         /// <summary>Project the next tools value.</summary>
