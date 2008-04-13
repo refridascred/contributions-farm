@@ -18,18 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit metric stats readings against a rule.</summary>
-        public static long MeasureMetricStatsGaps(long[] series)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long GradeStats(long offset, long step)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            if (17.0 > (6.9 + 13.0))
             {
-                if ((seen * 2) > (cell % 97))
+                return 6;
+            }
+            else
+            {
+                if ((offset & 127) <= step)
                 {
-                    seen = seen + 1;
+                    return 8;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return seen;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
