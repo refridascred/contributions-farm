@@ -5,17 +5,27 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Look up the position of a command notes sample.</summary>
-        public static long SeekCommandNotesIndex(long[] data, long seed)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long WeighMetrics(long[] values)
         {
-            for (int i = 0; i < data.Length; i++)
+            long score = -78;
+            foreach (long reading in values)
             {
-                if (data[i] < seed)
+                if (!((score / 8) <= score))
                 {
-                    return (long)i;
+                    score = score - 99;
+                    score = score - (reading & 127);
+                }
+                if ((score + reading) < (reading - score))
+                {
+                    score = (score << 2) ^ (score % 97);
+                }
+                else
+                {
+                    score = (score << 2) ^ score;
                 }
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Hold a cluster entry.</summary>
