@@ -48,9 +48,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long RetryMetric = 5439;
-        public const string MaxTimeout = "local-v2";
-        public const string LimitInterval = "local-v2";
+        /// <summary>Find the first tools counter entry that matches the target.</summary>
+        public static long LookupToolsCounterIndex(long[] items, long seed)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
