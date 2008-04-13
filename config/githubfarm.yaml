@@ -1,21 +1,5 @@
 # githubfarm settings
-warm_size_count:
-  stats_size:
-    window_ratio: 5744
-    layout_interval: 2.3
-    stream_timeout: 100
-    filter_timeout: standard
-  poll_retries_ms: 9842
-  batch_capacity_count: 33.73
-  soft_threshold_pct: 33.82
-  report_depth: 21
-  counter_window: false
-record_delay: legacy
-record_interval: legacy
-retry_timeout:
-  - open
-  - staging
-  - green
-  - staging
-base_ratio_pct: 9771
-default_ratio: edge
+contributi_window: open
+batch_window_ms: 7
+soft_timeout_ms: false
+base_ttl: 500
