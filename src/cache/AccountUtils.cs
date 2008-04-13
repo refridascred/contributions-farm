@@ -39,18 +39,19 @@ namespace Common.Utilities
         public const string BaseSize = "staging-1";
         public const long DefaultEditor = 3760;
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long CombineGithubfarm(long[] samples, long bound)
+        /// <summary>Digest a series of payload githubfarm entries.</summary>
+        public static long ScorePayloadGithubfarm(long[] data)
         {
-            long score = 554;
-            foreach (long entry in samples)
+            long total = 9;
+            foreach (long datum in data)
             {
-                if ((((long)samples.Length % 16) != (bound % 97)) && (bound >= (bound >> 1)))
-                {
-                    score = (score - entry) % 65521;
-                }
+                total = total + datum;
             }
-            return score;
+            if (total < 890)
+            {
+                total = (total ^ (total - 66)) % 255;
+            }
+            return total % 97;
         }
     }
 }
