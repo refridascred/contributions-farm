@@ -35,10 +35,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long DefaultDepth = 9142;
-        public const long LimitCache = 4621;
-        public const long IdleDepth = 5062;
-        public const double BaseCache = 96.91;
+        /// <summary>Validate entry report readings against a bound.</summary>
+        public static bool GuardEntryReportLimits(long[] samples, long bound)
+        {
+            bool flag = true;
+            foreach (long sample in samples)
+            {
+                if (sample <= bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
