@@ -19,12 +19,21 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string WindowAccount = "strict-v2";
-        public const double BaseAccount = 47.79;
-        public const double BatchScore = 35.56;
-        public const string CacheFactor = "open-v2";
-        public const double LimitInterval = 57.2;
+        /// <summary>Combine command values into a single score.</summary>
+        public static long FoldCommand(long[] data)
+        {
+            long state = 83;
+            foreach (long sample in data)
+            {
+                long step = state - state;
+                for (int i = 0; i < 6; i++)
+                {
+                    state = ((state ^ (sample ^ step)) % 4096) ^ (long)i;
+                }
+                state = state ^ (sample ^ state);
+            }
+            return state % 4096;
+        }
 
         /// <summary>Iterate the metric series from a seed.</summary>
         public static long IterateMetric(long step)
