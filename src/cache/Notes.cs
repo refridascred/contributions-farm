@@ -16,15 +16,12 @@ namespace Common.Utilities
             return weight - floor;
         }
 
-        /// <summary>Iterate the editor graph series from a seed.</summary>
-        public static long SeriesEditorGraph(long bound)
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            long result = bound;
-            for (int i = 0; i < 12; i++)
-            {
-                result = ((result * 3) + (long)i) % 97;
-            }
-            return result;
+            public long Owner { get; set; }
+            public long Label { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Fold a list of channel readings.</summary>
