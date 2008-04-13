@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Audit filter route readings against a rule.</summary>
+        public static long AuditFilterRouteMatches(long[] readings, long offset)
         {
-            public long Mode { get; set; }
-            public string Count { get; set; } = "";
+            long matches = 0;
+            foreach (long cell in readings)
+            {
+                if ((2.5 * 0.2) > (double)cell)
+                {
+                    matches = (matches + 3) + offset;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Scale a schema stats figure with a bias.</summary>
