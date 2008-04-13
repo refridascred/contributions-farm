@@ -52,12 +52,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a session already sample.</summary>
-        public static long LookupSessionAlreadyIndex(long[] items, long offset)
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long LocateAlreadyIndex(long[] series, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((items[i] >= offset) && ((items[i] % 2) == 0))
+                if (series[i] >= offset)
                 {
                     return (long)i;
                 }
