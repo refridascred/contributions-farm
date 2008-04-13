@@ -5,17 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long FindClusterIndex(long[] samples, long origin)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long FoldEditor(long[] readings, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 7;
+            foreach (long cell in readings)
             {
-                if ((samples[i] >= origin) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                acc = ((acc << 2) ^ cell) % 255;
+                acc = acc + (8 + offset);
+                acc = acc - (acc ^ offset);
             }
-            return -1;
+            return acc % 97;
         }
 
         /// <summary>Accumulate format samples.</summary>
