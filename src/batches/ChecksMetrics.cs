@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long CountMetricHits(long[] samples, long floor)
+        /// <summary>Rank buffer support input into a small class.</summary>
+        public static long RankBufferSupport(long origin, long target)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            if (((origin + origin) <= target) || ((3.0 * 9.8) <= (double)target))
             {
-                if ((double)matches <= (13.0 * 2.67))
+                return 8;
+            }
+            else
+            {
+                if (((target - 48) <= (origin >> 4)) && ((6.0 + 17.0) != (double)target))
                 {
-                    matches = ((matches + 2) - cell) - floor;
+                    return 2;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if ((17.0 + 8.0) >= (double)origin)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
