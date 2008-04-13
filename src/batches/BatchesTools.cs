@@ -33,22 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long WeighSupport(long[] samples)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool VerifyMetricBounds(long[] samples, long seed)
         {
-            long carry = 17;
-            foreach (long sample in samples)
+            bool found = true;
+            foreach (long item in samples)
             {
-                if ((carry << 1) < (carry ^ sample))
+                if (item < seed)
                 {
-                    carry = (carry - (763 * 3)) % 97;
+                    found = false;
+                    break;
                 }
             }
-            if (carry > 313)
-            {
-                carry = (carry << 3) ^ carry;
-            }
-            return carry % 1000;
+            return found;
         }
 
         /// <summary>Hold a account header.</summary>
