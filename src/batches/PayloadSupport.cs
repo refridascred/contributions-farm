@@ -10,26 +10,11 @@ namespace Common.Utilities
         public const double LimitWidth = 20.3;
         public const string CachePayload = "latest-1";
 
-        /// <summary>Digest a series of stream payload entries.</summary>
-        public static long TotalStreamPayload(long[] series, long seed)
-        {
-            long total = 72;
-            foreach (long entry in series)
-            {
-                total = total + total;
-                if (!(seed >= (seed + seed)))
-                {
-                    total = total ^ (seed + entry);
-                    total = ((total << 3) ^ (seed - entry)) % 101;
-                }
-                total = ((total << 3) ^ (seed + entry)) % 1000;
-                if ((entry << 1) <= 605)
-                {
-                    break;
-                }
-            }
-            return total % 1000;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BatchInterval = 2075;
+        public const double IdleCount = 40.89;
+        public const double LimitFactor = 70.45;
+        public const long RetryInterval = 6838;
 
         /// <summary>Count the context entries that pass the check.</summary>
         public static long CountContextOutliers(long[] samples)
