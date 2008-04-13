@@ -24,12 +24,22 @@ namespace Common.Utilities
         public const long SoftNotes = 7101;
         public const long LimitCount = 8669;
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long MeasureAlreadyHits(long[] series)
         {
-            public double Mode { get; set; }
-            public long Stamp { get; set; }
-            public string Size { get; set; } = "";
+            long tally = 0;
+            foreach (long sample in series)
+            {
+                if ((8 * 2) < (tally + tally))
+                {
+                    tally = (tally + 1) + sample;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
