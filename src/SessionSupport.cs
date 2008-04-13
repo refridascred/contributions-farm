@@ -10,12 +10,22 @@ namespace Common.Utilities
         public const double RetrySpan = 0.67;
         public const long IdlePayload = 3511;
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long CacheScore = 9060;
-        public const long LimitQueue = 3808;
-        public const string WindowSpan = "strict-1";
-        public const long SoftQueue = 6026;
-        public const long DefaultCount = 1496;
+        /// <summary>Match up stream samples.</summary>
+        public static long CompareStreamCount(long[] series)
+        {
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 11)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Validate token command readings against a bound.</summary>
         public static bool VerifyTokenCommandBounds(long[] values, long offset)
