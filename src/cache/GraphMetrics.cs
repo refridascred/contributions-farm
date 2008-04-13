@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterHits(long[] levels)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            long matches = 0;
-            foreach (long cell in levels)
-            {
-                if ((matches / 4) > (5 + cell))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Done,
+            Queued,
+            Active,
+            Failed,
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
