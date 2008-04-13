@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            public string Count { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            Stale,
+            Locked,
+            Failed,
         }
 
         /// <summary>Describe the already mode values.</summary>
