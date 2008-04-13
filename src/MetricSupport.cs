@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long IdleLevel = 8082;
-        public const long RetryToken = 7200;
-        public const long IdleToken = 2779;
-        public const double BatchToken = 83.49;
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long TallyTokenGaps(long[] series)
+        {
+            long hits = 0;
+            foreach (long item in series)
+            {
+                if (item < (hits >> 1))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Audit channel readings against a rule.</summary>
         public static long MeasureChannelOutliers(long[] levels)
