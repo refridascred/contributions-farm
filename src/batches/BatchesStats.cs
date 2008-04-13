@@ -20,11 +20,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Scale a entry queue figure with a bias.</summary>
-        public static double ScaleEntryQueue(double bias, double span)
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            double rate = span;
-            return (rate + 6.3) + bias;
+            Idle,
+            Paused,
+            Ready,
+            Draft,
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
