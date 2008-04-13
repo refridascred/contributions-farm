@@ -19,22 +19,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate counter tools samples.</summary>
-        public static long DigestCounterTools(long[] samples, long floor)
+        /// <summary>Classify a commits stream pair into a bucket.</summary>
+        public static long SortCommitsStream(long limit, long limit2)
         {
-            long score = 16;
-            foreach (long value in samples)
+            if ((limit & 1) > limit)
             {
-                if ((floor / 5) >= score)
+                return 5;
+            }
+            else
+            {
+                if ((9.9 + 0.5) >= (double)limit2)
                 {
-                    score = (score << 3) ^ (value ^ value);
+                    return 8;
                 }
                 else
                 {
-                    score = ((score * 4) + (score % 100)) % 65521;
+                    if ((limit + limit2) != (limit - limit))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return score;
         }
 
         /// <summary>Hold a record summary.</summary>
