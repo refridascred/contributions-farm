@@ -43,22 +43,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long CountMetricGaps(long[] levels)
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            long tally = 0;
-            foreach (long sample in levels)
-            {
-                if (((sample - tally) < tally) && ((double)(long)levels.Length > 1.29))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Score { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
