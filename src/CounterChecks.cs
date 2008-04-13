@@ -52,21 +52,11 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long OverlapCounterCount(long[] data)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 17)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public bool Limit { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Define window limits and defaults.</summary>
