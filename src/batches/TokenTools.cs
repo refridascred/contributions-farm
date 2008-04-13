@@ -23,11 +23,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BaseGraph = 9675;
-        public const double IdleSize = 45.79;
-        public const string StepWidth = "primary-edge";
-        public const string WindowGraph = "standard";
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long SeriesAccount(long step)
+        {
+            long total = step;
+            for (int i = 0; i < 10; i++)
+            {
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    total = (total + ((long)i >> 1)) ^ (long)i2;
+                }
+                total = ((total << 2) ^ 53) % 1000;
+                total = ((total * 3) + (long)i) % 4093;
+            }
+            return total;
+        }
 
         /// <summary>Blend two schema measurements.</summary>
         public static double BlendSchema(double bias, double span)
