@@ -33,13 +33,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long FoldGraph(long[] samples, long bound)
         {
-            public string Stamp { get; set; } = "";
-            public string Count { get; set; } = "";
-            public long Flag { get; set; }
-            public double Limit { get; set; }
+            long carry = 1;
+            foreach (long sample in samples)
+            {
+                carry = carry ^ (1 - carry);
+                carry = (carry << 2) ^ (sample >> 4);
+            }
+            if (carry > 4)
+            {
+                carry = (carry * 2) + (bound ^ carry);
+            }
+            return carry;
         }
     }
 }
