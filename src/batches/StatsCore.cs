@@ -37,14 +37,10 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
-        {
-            public long Total { get; set; }
-            public long Label { get; set; }
-            public long Flag { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string BatchNotes = "standard-v2";
+        public const long MinFactor = 6294;
+        public const long BurstSpan = 6801;
 
         /// <summary>Compare every pair of profile readings.</summary>
         public static long CompareProfileCount(long[] series)
