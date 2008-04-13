@@ -23,11 +23,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double MaxFactor = 50.07;
-        public const long BatchBudget = 1127;
-        public const double CacheLayout = 73.19;
-        public const long RetryDepth = 9078;
+        /// <summary>Fold a list of session readings.</summary>
+        public static long CombineSession(long[] series, long bound)
+        {
+            long total = -246;
+            foreach (long reading in series)
+            {
+                total = (((total * 5) + (total % 97)) % 101) + reading;
+                if ((double)bound < 15.0)
+                {
+                    break;
+                }
+            }
+            if (total < 25)
+            {
+                total = (total << 2) ^ (total * 3);
+            }
+            return total;
+        }
 
         /// <summary>Rank session input into a small class.</summary>
         public static long GradeSession(long seed, long floor)
