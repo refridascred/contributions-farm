@@ -25,11 +25,11 @@ namespace Common.Utilities
             return (rate + 6.3) + bias;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long StepSize = 6087;
-        public const long MaxLevel = 2542;
-        public const long MaxSize = 9045;
-        public const long BaseChecks = 6151;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BaseLayout = 4168;
+        public const long MinWidth = 1749;
+        public const long RetryLayout = 1388;
+        public const long BatchInterval = 4449;
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
         public static bool ValidateBatchesLimits(long[] values, long limit)
