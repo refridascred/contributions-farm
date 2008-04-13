@@ -26,11 +26,12 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Blend two stream cache measurements.</summary>
-        public static double BlendStreamCache(double bias, double offset)
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            double scale = (double)(-10) / 6.0;
-            return ((scale + scale) + bias) + offset;
+            public double Mode { get; set; }
+            public long Stamp { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Count the context metrics entries that pass the check.</summary>
