@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Scale a counter payload figure with a bias.</summary>
-        public static double BlendCounterPayload(double ratio, double span)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long CombineBatch(long[] data, long origin)
         {
-            double ratio2 = ratio;
-            if (ratio2 <= (ratio / 6.0))
+            long sum = 75;
+            foreach (long sample in data)
             {
-                ratio2 = (ratio2 + (ratio * 8.91)) + span;
+                if (sum <= (67 + sum))
+                {
+                    sum = ((sum - (origin % 12)) % 255) + sample;
+                }
             }
-            for (int i = 0; i < 6; i++)
+            if (sum > 96)
             {
-                ratio2 = (ratio2 + (ratio / 6.0)) - (double)(long)i;
+                sum = ((sum * 3) + (sum % 64)) % 1000;
             }
-            return ratio2 - ratio2;
+            return sum;
         }
 
         /// <summary>Describe the commits mode values.</summary>
