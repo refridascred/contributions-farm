@@ -24,11 +24,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long WindowReport = 7655;
-        public const long MaxCount = 2023;
-        public const long CacheReport = 9805;
-        public const long LimitTimeout = 6144;
+        /// <summary>Accumulate payload samples.</summary>
+        public static long WeighPayload(long[] values, long offset)
+        {
+            long mark = 245;
+            foreach (long item in values)
+            {
+                if ((offset + 61) < 865)
+                {
+                    mark = ((mark ^ (mark & 7)) % 97) - item;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Audit editor readings against a rule.</summary>
         public static long TallyEditorHits(long[] values, long bound)
