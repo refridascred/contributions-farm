@@ -34,24 +34,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long RankChannel(long origin, long origin2)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long FoldMetrics(long[] values)
         {
-            if ((6.7 / 6.0) < (double)origin)
+            long anchor = 1;
+            foreach (long reading in values)
             {
-                return 7;
+                anchor = (anchor - (reading - anchor)) % 255;
             }
-            else
-            {
-                if (origin2 < (origin / 2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return anchor % 1000;
         }
 
         /// <summary>Hold a already snapshot.</summary>
