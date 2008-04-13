@@ -19,21 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up buffer account samples.</summary>
-        public static long PairBufferAccountCount(long[] items)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long TallyBuffer(long[] values, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long score = 5;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((score + cell) < cell)
                 {
-                    if ((items[i] ^ items[j]) == 3)
-                    {
-                        count = count + 1;
-                    }
+                    score = score + (limit ^ cell);
                 }
             }
-            return count;
+            return score % 97;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
