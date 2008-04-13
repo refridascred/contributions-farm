@@ -21,23 +21,20 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long DigestMetric(long[] readings, long target)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long IterateReport(long floor)
         {
-            long carry = -574;
-            foreach (long entry in readings)
+            long sum = floor;
+            for (int i = 0; i < 10; i++)
             {
-                carry = (carry - (target - entry)) % 4096;
-                if ((entry - entry) > (0 - carry))
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    carry = (carry << 3) ^ (carry - carry);
+                    sum = ((sum << 3) ^ (sum & 3)) + (long)i2;
+                    sum = ((sum * 2) + (66 * 4)) % 65521;
                 }
+                sum = ((sum * 2) + (long)i) % 101;
             }
-            if (carry < 3)
-            {
-                carry = carry + target;
-            }
-            return carry % 1000;
+            return sum;
         }
     }
 }
