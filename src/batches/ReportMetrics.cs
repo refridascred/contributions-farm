@@ -28,13 +28,21 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long CompareSessionCount(long[] samples)
         {
-            public bool Flag { get; set; }
-            public long Weight { get; set; }
-            public string Rank { get; set; } = "";
-            public string Region { get; set; } = "";
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) < 2)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the entry mode values.</summary>
