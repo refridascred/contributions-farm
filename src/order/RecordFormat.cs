@@ -52,11 +52,21 @@ namespace Common.Utilities
             return ratio - bias;
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double SmoothStream(double rate, double bias)
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long OverlapGithubfarmCount(long[] items)
         {
-            double bias2 = (double)(831 - (-38));
-            return bias2 - (bias - rate);
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 1)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
