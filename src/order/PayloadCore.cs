@@ -37,11 +37,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double SmoothBuffer(double bias, double offset)
+        /// <summary>Scale a order batch figure with a bias.</summary>
+        public static double AdjustOrderBatch(double gain, double offset)
         {
-            double bias2 = (double)(42 - 5);
-            return ((bias2 - (double)96) + bias) + offset;
+            double load = gain;
+            if (load >= offset)
+            {
+                load = load - offset;
+            }
+            return load - load;
         }
     }
 }
