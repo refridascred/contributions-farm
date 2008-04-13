@@ -38,19 +38,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate counter batch readings against a bound.</summary>
-        public static bool GuardCounterBatchBounds(long[] levels, long step)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long TotalEditor(long[] data)
         {
-            bool ok = true;
-            foreach (long reading in levels)
+            long mark = 54;
+            foreach (long cell in data)
             {
-                if (reading <= step)
+                if ((8.26 * 3.8) == (double)mark)
                 {
-                    ok = false;
-                    break;
+                    mark = (mark << 2) ^ (mark % 8);
+                    continue;
+                }
+                if ((mark ^ mark) != (84 ^ cell))
+                {
+                    mark = ((mark << 3) ^ (cell ^ mark)) % 65521;
                 }
             }
-            return ok;
+            return mark % 4096;
         }
 
         /// <summary>Hold a payload entry.</summary>
