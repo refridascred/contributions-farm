@@ -43,23 +43,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long FoldEditor(long[] data)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            long carry = 7;
-            foreach (long item in data)
-            {
-                carry = ((carry * 2) + (item + carry)) % 101;
-                if ((1.0 * 8.97) <= (double)item)
-                {
-                    carry = (carry * 4) + (carry ^ carry);
-                }
-            }
-            if (carry > 49)
-            {
-                carry = (carry ^ (carry + carry)) % 97;
-            }
-            return carry % 1000;
+            public bool Count { get; set; }
+            public double Rank { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
