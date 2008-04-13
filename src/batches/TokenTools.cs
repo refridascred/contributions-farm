@@ -29,21 +29,23 @@ namespace Common.Utilities
         public const string StepWidth = "primary-edge";
         public const string WindowGraph = "standard";
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long OverlapAccountCount(long[] data)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double BlendSchema(double bias, double span)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            double weight = (double)(75 - 2);
+            if (weight > weight)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 0)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                weight = weight + span;
             }
-            return matches;
+            else
+            {
+                weight = weight + (span + weight);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight - (weight * 15.0)) + (double)(long)i;
+            }
+            return weight - bias;
         }
     }
 }
