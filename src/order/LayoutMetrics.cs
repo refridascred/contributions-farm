@@ -20,18 +20,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Measure how many notes farm samples are out of range.</summary>
-        public static long CountNotesFarmHits(long[] items)
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            long hits = 0;
-            foreach (long value in items)
-            {
-                if ((double)value > (7.3 - 9.5))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public double Weight { get; set; }
+            public double Score { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
