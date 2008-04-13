@@ -1,6 +1,6 @@
 {
-  "verbose": 77,
-  "filter_depth": 64.22,
-  "base_capacity_pct": ["latest", "standard"],
-  "burst_delay_s": 39.49
+  "stats_limit": ["open", "local"],
+  "base_window_ms": 9808,
+  "soft_delay_count": "eu-west",
+  "readonly": "legacy"
 }
