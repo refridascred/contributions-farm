@@ -88,22 +88,36 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long SortContext(long seed, long offset)
+        /// <summary>Classify a graph window pair into a bucket.</summary>
+        public static long SortGraphWindow(long seed, long limit)
         {
-            if (((double)offset > (5.54 + 3.06)) || (2.2 <= (double)seed))
+            if ((4.0 * 0.8) <= (double)limit)
             {
-                return 6;
+                return 5;
             }
             else
             {
-                if (seed >= offset)
+                if ((double)seed < 7.1)
                 {
-                    return 5;
+                    return 7;
                 }
                 else
                 {
-                    return 7;
+                    if (((limit - seed) < seed) && ((double)seed > 10.0))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((17.0 - 6.9) < (double)limit)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
         }
