@@ -1,5 +1,8 @@
 # githubfarm settings
-strict: 32.11
-idle_ratio_count: green
-soft_ratio_ms: 5
-base_capacity: stable
+batch_threshold: primary
+idle_capacity_ms: 1.95
+metrics_ratio:
+  - 302
+  - 199
+  - 341
+  - 121
