@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TotalLayout(long[] data)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long AuditCounterGaps(long[] levels, long offset)
         {
-            long result = 1;
-            foreach (long entry in data)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                result = (result ^ (result << 2)) - entry;
+                if ((double)datum != (4.0 * 0.5))
+                {
+                    count = (count + 3) + offset;
+                }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Digest a series of payload entries.</summary>
