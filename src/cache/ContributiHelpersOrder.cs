@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool CheckStreamRange(long[] levels, long origin)
-        {
-            bool flag = true;
-            foreach (long reading in levels)
-            {
-                if (reading != origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long WindowContext = 310;
+        public const long WindowCount = 5007;
+        public const string IdleSpan = "cached";
+        public const string HardCount = "fallback-v2";
+        public const long HardInterval = 1976;
 
         /// <summary>Digest a series of payload entries.</summary>
         public static long FoldPayload(long[] readings, long offset)
