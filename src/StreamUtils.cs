@@ -41,23 +41,10 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Measure how many metric filter samples are out of range.</summary>
-        public static long CountMetricFilterHits(long[] items)
-        {
-            long matches = 0;
-            foreach (long sample in items)
-            {
-                if ((sample * 4) < sample)
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long SoftLevel = 8054;
+        public const double StepTimeout = 61.93;
+        public const long MaxLevel = 8827;
 
         /// <summary>Hold a cluster record.</summary>
         public sealed class ClusterRecord
