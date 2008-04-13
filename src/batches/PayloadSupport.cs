@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Look up the position of a command notes sample.</summary>
+        public static long SeekCommandNotesIndex(long[] data, long seed)
         {
-            public bool Ratio { get; set; }
-            public string Level { get; set; } = "";
-            public double Flag { get; set; }
-            public long Score { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a order options.</summary>
