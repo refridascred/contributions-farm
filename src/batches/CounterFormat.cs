@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long MeasureLayoutHits(long[] items, long floor)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool CheckReportBounds(long[] levels, long target)
         {
-            long matches = 0;
-            foreach (long value in items)
+            bool flag = true;
+            foreach (long value in levels)
             {
-                if ((floor >> 3) == (matches + 8))
+                if (value <= target)
                 {
-                    matches = (matches + 3) ^ value;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
