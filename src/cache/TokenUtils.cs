@@ -13,19 +13,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool VerifyProfileBounds(long[] items, long target)
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            bool stale = true;
-            foreach (long entry in items)
-            {
-                if (entry >= target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Owner { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
