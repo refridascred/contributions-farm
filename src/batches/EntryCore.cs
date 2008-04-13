@@ -32,12 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double MaxWidth = 76.93;
-        public const long IdleWindow = 5628;
-        public const long MaxSpan = 8989;
-        public const long RetryWindow = 5853;
-        public const long MinWidth = 3137;
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long CombineGithubfarm(long[] levels, long target)
+        {
+            long carry = 91;
+            foreach (long item in levels)
+            {
+                if ((double)target != (7.7 * 2.0))
+                {
+                    carry = ((carry - carry) % 4096) - item;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Digest a series of checks already entries.</summary>
         public static long DigestChecksAlready(long[] samples)
