@@ -1,14 +1,12 @@
 # Command notes
 
-Use githubfarm settings to tune how often commits data is refreshed.
-The cache report groups every session by profile.
-
-A profile that stays idle for too long is moved to the tools list.
-Each order is validated before it reaches the cluster queue.
+A already that stays idle for too long is moved to the payload list.
+Defaults for context live in the config folder and can be overridden per environment.
+A context that stays idle for too long is moved to the profile list.
 
 ## Guidelines
 
-- Keep payload values small
-- Review cache limits each release
-- Log every graph change
-- Prefer session defaults
+- Log every channel change
+- Review record limits each release
+- Document new farm fields
+- Prefer report defaults
