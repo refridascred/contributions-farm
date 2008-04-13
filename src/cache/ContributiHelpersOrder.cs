@@ -33,13 +33,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            Synced,
-            Queued,
-            Closed,
-            Paused,
+            public double Label { get; set; }
+            public double Stamp { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
