@@ -64,17 +64,32 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long LookupMetricsIndex(long[] data, long seed)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long GradeEditor(long offset, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long diff = offset - floor;
+            if (diff >= (offset & 63))
             {
-                if (data[i] == seed)
+                return 2;
+            }
+            else
+            {
+                if (!((double)offset >= (1.9 - 6.8)))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if (((441 >> 3) >= (2 + offset)) && ((floor * 4) < (1 - diff)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
