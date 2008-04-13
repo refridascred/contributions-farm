@@ -1,22 +1,5 @@
 {
-  "enabled": {
-    "enabled": {
-      "hard_limit": 100,
-      "schema_size": [258, 83, 61, 402],
-      "idle_ttl": false,
-      "sync_size_ms": "open"
-    },
-    "retry_depth": ["strict", "standard", "green"],
-    "burst_ttl_ms": "local",
-    "flush_delay_s": true
-  },
-  "retry_window_ms": {
-    "stats_delay": 25.31,
-    "report_size": 5192,
-    "audit": 25.37
-  },
-  "idle_size_s": 15,
-  "flush_ratio_pct": ["latest", "green", "staging", "latest"],
-  "metric_capacity": "local",
-  "base_capacity_s": 3395
+  "audit": ["eu-west", "eu-west", "latest"],
+  "commits_threshold": [63, 313, 380, 185],
+  "poll_ttl_pct": true
 }
