@@ -41,22 +41,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyMatches(long[] data, long step)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long MatchOrderCount(long[] items)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((2.7 + 6.7) >= (double)matches)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = ((matches + 2) + datum) + step;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((items[i] - items[j]) > 11)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
