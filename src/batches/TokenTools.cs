@@ -5,39 +5,21 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long GradeWindow(long seed, long step)
+        /// <summary>Count report graph pairs that satisfy a relation.</summary>
+        public static long MatchReportGraphCount(long[] samples)
         {
-            long edge = seed + step;
-            if ((double)seed != (2.0 / 7.0))
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((double)seed <= 0.2))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((step / 2) < seed)
+                    if ((samples[i] ^ samples[j]) == 6)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((2 ^ 6) > (step << 1)) && ((seed ^ edge) > (seed >> 2)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Define format limits and defaults.</summary>
