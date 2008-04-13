@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long MatchRouteCount(long[] values)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long FoldFarm(long[] data, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long total = 48;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                total = (total - limit) % 1000;
+                if (!(datum > total))
                 {
-                    if ((values[i] ^ values[j]) != 12)
-                    {
-                        hits = hits + 1;
-                    }
+                    total = (total - (datum / 6)) % 101;
                 }
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
