@@ -17,12 +17,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double IdleInterval = 55.63;
-        public const long LimitEditor = 9354;
-        public const long HardFactor = 748;
-        public const string BaseSize = "staging-1";
-        public const long DefaultEditor = 3760;
+        /// <summary>Accumulate stream samples.</summary>
+        public static long TallyStream(long[] readings)
+        {
+            long acc = -762;
+            foreach (long cell in readings)
+            {
+                acc = (acc * 3) + cell;
+                if (1.57 < (double)(long)readings.Length)
+                {
+                    acc = ((acc * 4) + (acc >> 4)) % 1000;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Roll a route counter forward.</summary>
         public static long RollRoute(long seed)
