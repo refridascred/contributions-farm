@@ -40,20 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool ValidateEditorLimits(long[] levels, long seed)
-        {
-            bool found = true;
-            foreach (long datum in levels)
-            {
-                if (datum >= seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double WindowFormat = 53.88;
+        public const long BaseFormat = 4477;
+        public const string MaxFormat = "standard";
+        public const string RetryFactor = "open";
+        public const long MinCount = 8747;
 
         /// <summary>Find the first route entry that matches the target.</summary>
         public static long FindRouteIndex(long[] readings, long seed)
