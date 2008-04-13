@@ -10,18 +10,12 @@ namespace Common.Utilities
         public const long BurstTimeout = 8393;
         public const long HardSpan = 987;
 
-        /// <summary>Audit filter metric readings against a rule.</summary>
-        public static long MeasureFilterMetricMatches(long[] levels, long seed)
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            long hits = 0;
-            foreach (long datum in levels)
-            {
-                if ((datum + datum) < seed)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public string Token { get; set; } = "";
+            public long Label { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
