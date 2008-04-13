@@ -34,21 +34,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long PairLayoutCount(long[] values)
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 5)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public string Limit { get; set; } = "";
+            public bool Offset { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
