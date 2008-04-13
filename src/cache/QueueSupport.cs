@@ -20,18 +20,11 @@ namespace Common.Utilities
             return load - 3.0;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long AuditChannelMatches(long[] samples)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if (!((matches >> 4) > entry))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public bool Token { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Describe the token mode values.</summary>
