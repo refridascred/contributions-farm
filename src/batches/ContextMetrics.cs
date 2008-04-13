@@ -27,21 +27,17 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Match up command contributi samples.</summary>
-        public static long MatchCommandContributiCount(long[] series)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long SeekContextIndex(long[] items, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((items[i] > seed) && ((items[i] % 3) == 0))
                 {
-                    if ((series[i] ^ series[j]) != 19)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Describe the githubfarm mode values.</summary>
