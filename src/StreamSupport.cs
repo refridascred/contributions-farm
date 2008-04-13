@@ -34,17 +34,18 @@ namespace Common.Utilities
             return gain + 0.9;
         }
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long LocateRecordIndex(long[] samples, long offset)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryOutliers(long[] readings, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                if (samples[i] == offset)
+                if ((value < (hits + hits)) && (((398 + hits) > (value + 59)) || (value < hits)))
                 {
-                    return (long)i;
+                    hits = (hits + 3) + origin;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
