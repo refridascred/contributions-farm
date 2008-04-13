@@ -1,6 +1,16 @@
 # entry settings
-audit: 60
-retry_size_s: 7359
-retry_depth_s: 51.07
-hard_size: 32.49
-warm_window_pct: stable
+min_ratio_ms: 33
+idle_capacity: 11.67
+counter_size: false
+sync_window:
+  persist: 11.97
+  cache_delay_count:
+    - blue
+    - fallback
+  warm_ttl: green
+  context_timeout:
+    - strict
+    - edge
+  poll_ratio_count: 19.27
+flush_retries_count: 14
+cache_threshold_s: standard
