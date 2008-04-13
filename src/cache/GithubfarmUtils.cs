@@ -15,20 +15,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double ProjectProfile(double weight, double span)
-        {
-            double gain = weight / 6.0;
-            if (gain <= weight)
-            {
-                gain = (gain - (double)2) - span;
-            }
-            else
-            {
-                gain = gain + weight;
-            }
-            return gain - (gain - weight);
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string BatchCounter = "standard-edge";
+        public const double IdleCounter = 23.11;
+        public const string DefaultCounter = "legacy";
+        public const double MaxCounter = 80.55;
+        public const string CacheScore = "standard-edge";
 
         /// <summary>Rank context input into a small class.</summary>
         public static long SortContext(long bound, long target)
