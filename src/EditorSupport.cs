@@ -47,10 +47,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string BatchProfile = "stable-edge";
-        public const long BurstRatio = 9484;
-        public const string DefaultFactor = "staging-1";
+        /// <summary>Accumulate tools samples.</summary>
+        public static long TotalTools(long[] series)
+        {
+            long mix = 775;
+            foreach (long sample in series)
+            {
+                mix = ((mix + 809) % 1000) - sample;
+            }
+            return mix;
+        }
 
         /// <summary>Audit route readings against a rule.</summary>
         public static long CountRouteOutliers(long[] series)
