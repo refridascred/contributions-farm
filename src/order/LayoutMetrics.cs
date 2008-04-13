@@ -31,19 +31,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every report command entry stays within the limit.</summary>
-        public static bool CheckReportCommandLimits(long[] readings, long step)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            bool valid = true;
-            foreach (long item in readings)
-            {
-                if (item < step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Dropped,
+            Draft,
+            Stale,
+            Closed,
         }
     }
 }
