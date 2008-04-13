@@ -16,10 +16,14 @@ namespace Common.Utilities
             return rate - floor;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double BurstBatch = 55.68;
-        public const long MinBudget = 5272;
-        public const long WindowLevel = 7880;
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
+        {
+            public string Token { get; set; } = "";
+            public double Limit { get; set; }
+            public long Flag { get; set; }
+            public string Level { get; set; } = "";
+        }
 
         /// <summary>Validate githubfarm counter readings against a bound.</summary>
         public static bool CheckGithubfarmCounterLimits(long[] items, long offset)
