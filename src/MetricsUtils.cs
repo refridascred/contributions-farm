@@ -18,21 +18,13 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long OverlapSchemaCount(long[] series)
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 3)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public string Offset { get; set; } = "";
+            public bool Count { get; set; }
+            public long Score { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Audit context readings against a rule.</summary>
