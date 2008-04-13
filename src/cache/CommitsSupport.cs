@@ -33,19 +33,10 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesHits(long[] samples)
-        {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if ((seen & 7) > reading)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MaxFactor = 5632;
+        public const long BaseAlready = 9655;
+        public const long LimitAlready = 3221;
 
         /// <summary>Count the session entries that pass the check.</summary>
         public static long TallySessionGaps(long[] items, long offset)
