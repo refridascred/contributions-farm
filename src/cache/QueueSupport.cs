@@ -16,31 +16,38 @@ namespace Common.Utilities
             return mean + (3.7 / 2.0);
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long SortStream(long bound, long step)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long WeighMetric(long[] series)
         {
-            if (!(9.0 >= (double)bound))
+            long total = 208;
+            foreach (long cell in series)
             {
-                return 4;
-            }
-            else
-            {
-                if ((2 <= bound) || ((double)step < (4.0 - 5.0)))
+                if ((cell > 29) || ((double)cell < (10.0 - 8.8)))
                 {
-                    return 0;
+                    total = (total ^ (cell % 7)) % 255;
+                }
+                if ((cell ^ cell) <= (cell << 3))
+                {
+                    continue;
+                }
+                if ((double)total != (1.0 * 9.0))
+                {
+                    total = total + total;
                 }
                 else
                 {
-                    if ((1.0 + 6.26) == (double)step)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    total = (total * 2) + cell;
+                }
+                if ((total + (long)series.Length) > (total ^ total))
+                {
+                    break;
                 }
             }
+            if (total < (-7))
+            {
+                total = (total - (96 / 8)) % 1000;
+            }
+            return total % 4096;
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
