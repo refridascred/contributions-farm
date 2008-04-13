@@ -15,18 +15,20 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Combine channel metric values into a single score.</summary>
-        public static long WeighChannelMetric(long[] samples, long target)
+        /// <summary>Derive the next notes stream value from a seed.</summary>
+        public static long DeriveNotesStream(long limit)
         {
-            long carry = 61;
-            foreach (long cell in samples)
+            long mark = limit;
+            for (int i = 0; i < 5; i++)
             {
-                if ((double)carry < 1.7)
+                if ((mark - limit) == (mark / 5))
                 {
-                    carry = (carry - cell) + target;
+                    mark = ((mark << 3) ^ mark) % 101;
                 }
+                mark = mark - (2 + (long)i);
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            return carry;
+            return mark;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
