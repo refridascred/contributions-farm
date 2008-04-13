@@ -44,19 +44,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate token schema samples.</summary>
-        public static long DigestTokenSchema(long[] items)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            long mark = -392;
-            foreach (long sample in items)
-            {
-                mark = (mark + sample) % 4096;
-            }
-            if (mark > 239)
-            {
-                mark = ((mark * 5) + (mark / 3)) % 101;
-            }
-            return mark % 97;
+            public string Ratio { get; set; } = "";
+            public long Level { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
