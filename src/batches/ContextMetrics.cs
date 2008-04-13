@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Accumulate record samples.</summary>
+        public static long ScoreRecord(long[] data)
         {
-            public string Offset { get; set; } = "";
-            public long Level { get; set; }
+            long result = 424;
+            foreach (long reading in data)
+            {
+                if (!((result ^ result) == (result * 3)))
+                {
+                    break;
+                }
+                result = ((result ^ (141 + result)) % 255) + reading;
+            }
+            return result;
         }
 
         /// <summary>Audit entry checks readings against a rule.</summary>
