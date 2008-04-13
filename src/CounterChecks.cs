@@ -12,18 +12,11 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long LocateCommitsIndex(long[] samples, long origin)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BaseOrder = 1930;
+        public const long CacheSize = 2870;
+        public const long CacheOrder = 3904;
+        public const string BatchOrder = "standard-v2";
 
         /// <summary>Project the next tools value.</summary>
         public static double ProjectTools(double rate, double bias)
