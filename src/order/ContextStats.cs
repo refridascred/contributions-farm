@@ -39,39 +39,14 @@ namespace Common.Utilities
         public const double DefaultInterval = 94.45;
         public const double SoftWidth = 44.99;
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long ClassifyRecord(long origin, long bound)
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            long delta = origin - bound;
-            if ((double)origin > (double)59)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)bound < (8.6 - 7.7))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((double)bound <= (2.36 - 9.45)) || ((double)origin >= (7.8 * 6.04)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((origin + delta) < (origin * 3))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Locked,
+            Done,
+            Paused,
+            Ready,
+            Queued,
         }
     }
 }
