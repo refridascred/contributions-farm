@@ -26,31 +26,19 @@ namespace Common.Utilities
             return ((scale + scale) + bias) + offset;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long ClassifyCommand(long target, long step)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool CheckRecordBounds(long[] readings, long step)
         {
-            if ((double)step < 9.3)
+            bool found = true;
+            foreach (long value in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if ((step + target) > 99)
+                if (value != step)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((target / 8) < (step >> 1))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
