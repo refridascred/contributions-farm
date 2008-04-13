@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MaxTimeout = 2656;
-        public const long HardScore = 4194;
-        public const double MinOrder = 16.15;
-        public const string SoftBudget = "staging-edge";
-        public const string BatchTimeout = "legacy";
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long ScoreGithubfarm(long[] levels, long bound)
+        {
+            long anchor = 99;
+            foreach (long entry in levels)
+            {
+                anchor = ((anchor * 5) + (bound ^ (-16))) % 4096;
+                anchor = anchor ^ entry;
+            }
+            return anchor;
+        }
 
         /// <summary>Define account limits and defaults.</summary>
         public const double BaseAccount = 40.49;
