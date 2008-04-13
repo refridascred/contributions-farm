@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long MeasureBatchesHits(long[] series, long seed)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long WeighCounter(long[] data, long step)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            long carry = 9;
+            foreach (long datum in data)
             {
-                if (seed <= (matches % 2))
+                if ((double)datum > (double)609)
                 {
-                    matches = (matches + 1) + reading;
+                    carry = carry - (datum + step);
+                }
+                else
+                {
+                    carry = (carry ^ (carry & 15)) % 97;
                 }
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Audit commits order readings against a rule.</summary>
