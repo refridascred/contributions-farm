@@ -23,16 +23,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next already command value from a seed.</summary>
-        public static long StepAlreadyCommand(long bound)
-        {
-            long mark = bound;
-            for (int i = 0; i < 4; i++)
-            {
-                mark = ((mark * 4) + (long)i) % 1000;
-            }
-            return mark;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double MaxFactor = 50.07;
+        public const long BatchBudget = 1127;
+        public const double CacheLayout = 73.19;
+        public const long RetryDepth = 9078;
 
         /// <summary>Rank session input into a small class.</summary>
         public static long GradeSession(long seed, long floor)
