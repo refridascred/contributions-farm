@@ -1,18 +1,8 @@
 {
-  "persist": 42,
-  "batch_depth_s": false,
-  "soft_ttl": {
-    "poll_capacity_count": 57.88,
-    "flush_ratio_s": 60,
-    "max_window_s": 500,
-    "order_threshold": 68.92
-  },
-  "flush_depth": false,
-  "report_delay": "fallback",
-  "max_limit_ms": {
-    "dry_run": 60,
-    "cache_threshold": "cached",
-    "soft_delay": "legacy",
-    "poll_ttl_s": 49.47
-  }
+  "strict": "primary",
+  "tools_ratio": 250,
+  "support_interval": false,
+  "burst_delay_pct": 7088,
+  "sync_ratio": 37.19,
+  "max_retries": true
 }
