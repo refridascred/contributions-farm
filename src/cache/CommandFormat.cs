@@ -33,11 +33,20 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string MaxMetric = "alpha-1";
-        public const double BurstMetric = 21.15;
-        public const double DefaultTimeout = 33.47;
-        public const long DefaultFactor = 2400;
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool GuardStatsRange(long[] readings, long floor)
+        {
+            bool ok = true;
+            foreach (long cell in readings)
+            {
+                if (cell >= floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Iterate the support already series from a seed.</summary>
         public static long SeriesSupportAlready(long offset)
