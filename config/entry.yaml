@@ -1,37 +1,7 @@
 # entry settings
-strict:
-  graph_retries:
-    record_window: latest
-    session_interval: stable
-    compress:
-      - cached
-      - primary
-      - cached
-    readonly: 28.58
-    min_delay_s:
-      - green
-      - standard
-  cache_retries: legacy
-  batch_size_ms:
-    - cached
-    - green
-    - fallback
-    - latest
-  report_retries:
-    enabled: 250
-    session_retries:
-      - 405
-      - 304
-    audit:
-      - fallback
-      - stable
-    retry_window_s: true
-  soft_capacity: 18.39
-graph_depth: green
-schema_limit: false
-hard_delay:
-  - 369
-  - 9
-  - 71
-checks_retries: 12.29
-verbose: latest
+persist: open
+cache_delay: open
+enabled: 4.95
+metric_retries:
+  - strict
+  - open
