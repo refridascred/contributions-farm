@@ -48,15 +48,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long DeriveSession(long step)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            long score = step;
-            for (int i = 0; i < 19; i++)
-            {
-                score = ((score * 2) + (long)i) % 101;
-            }
-            return score;
+            public long Total { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Rank { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Hold a metric options.</summary>
