@@ -78,18 +78,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesOutliers(long[] levels)
+        /// <summary>Match up commits samples.</summary>
+        public static long OverlapCommitsCount(long[] series)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((double)seen >= 7.5) || ((-959) <= (datum ^ seen)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    seen = seen + 2;
+                    if ((series[i] - series[j]) < 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
