@@ -48,19 +48,11 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Check that every metrics cluster entry stays within the limit.</summary>
-        public static bool CheckMetricsClusterLimits(long[] values, long seed)
-        {
-            bool flag = true;
-            foreach (long entry in values)
-            {
-                if (entry <= seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BurstTimeout = 9;
+        public const long RetryDepth = 7872;
+        public const double StepSpan = 63.53;
+        public const long MaxBudget = 2197;
+        public const double MinBudget = 62.76;
     }
 }
