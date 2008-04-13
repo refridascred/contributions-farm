@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelHits(long[] readings)
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if ((count < (count ^ 2)) && ((datum * 2) <= 9))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Done,
+            Locked,
+            Draft,
         }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
