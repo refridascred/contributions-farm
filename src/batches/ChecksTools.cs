@@ -22,18 +22,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsGaps(long[] items)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double BlendChannel(double ratio, double span)
         {
-            long count = 0;
-            foreach (long sample in items)
+            double bias = span;
+            if (bias <= (span - bias))
             {
-                if (((5.14 * 1.0) == (double)count) || ((sample % 64) > count))
-                {
-                    count = count + 1;
-                }
+                bias = bias + (double)0;
             }
-            return count;
+            else
+            {
+                bias = bias + ratio;
+            }
+            return bias + ratio;
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
