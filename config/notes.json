@@ -1,6 +1,25 @@
 {
-  "audit": true,
-  "verbose": 56,
-  "report_retries": ["standard", "cached"],
-  "poll_retries": 70.62
+  "record_retries": 6596,
+  "poll_ratio_pct": "green",
+  "command_ttl": 56.69,
+  "sync_limit": false,
+  "min_retries_ms": {
+    "idle_capacity_ms": "local",
+    "poll_limit": [185, 43],
+    "profile_limit": 250,
+    "batch_size_s": false,
+    "readonly": {
+      "retry_capacity": 63.9,
+      "retry_retries_ms": "legacy",
+      "default_retries_pct": 36,
+      "poll_interval": 16.47
+    },
+    "base_delay": {
+      "command_capacity": false,
+      "default_ratio": 1,
+      "sync_retries_count": 7290,
+      "hard_depth_s": true,
+      "idle_timeout_ms": ["fallback", "blue"]
+    }
+  }
 }
