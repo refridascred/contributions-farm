@@ -41,19 +41,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long MeasureChecksMatches(long[] values, long seed)
-        {
-            long hits = 0;
-            foreach (long reading in values)
-            {
-                if ((hits + reading) < (seed + hits))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string MaxMetric = "alpha-1";
+        public const double BurstMetric = 21.15;
+        public const double DefaultTimeout = 33.47;
+        public const long DefaultFactor = 2400;
 
         /// <summary>Hold a editor snapshot.</summary>
         public sealed class EditorSnapshot
