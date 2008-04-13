@@ -13,11 +13,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Validate graph layout readings against a bound.</summary>
+        public static bool CheckGraphLayoutBounds(long[] readings, long floor)
         {
-            public long Owner { get; set; }
-            public bool Limit { get; set; }
+            bool stale = true;
+            foreach (long item in readings)
+            {
+                if (item != floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
