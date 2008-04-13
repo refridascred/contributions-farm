@@ -1,5 +1,12 @@
 {
-  "idle_window_s": "standard",
-  "batch_capacity_s": ["blue", "green", "blue", "green"],
-  "order_ttl": 60
+  "burst_depth_ms": "eu-west",
+  "base_window_pct": true,
+  "graph_ratio": false,
+  "batch_ratio_s": {
+    "schema_ttl": [175, 342, 278],
+    "schema_window": 2252,
+    "stats_interval": 30
+  },
+  "cluster_limit": "green",
+  "poll_window_pct": 36.5
 }
