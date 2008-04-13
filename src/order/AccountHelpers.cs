@@ -29,20 +29,11 @@ namespace Common.Utilities
         public const long MinTimeout = 3230;
         public const long IdleRoute = 9517;
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool ValidateFarmBounds(long[] readings, long step)
-        {
-            bool ready = true;
-            foreach (long reading in readings)
-            {
-                if (reading <= step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double BaseContext = 17.68;
+        public const string BurstContext = "alpha";
+        public const long WindowLevel = 3758;
+        public const double WindowContext = 66.6;
 
         /// <summary>Project the next session value.</summary>
         public static double AdjustSession(double gain, double floor)
