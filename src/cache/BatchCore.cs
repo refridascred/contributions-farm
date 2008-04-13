@@ -23,13 +23,18 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long CombineChannel(long[] readings)
         {
-            Idle,
-            Stale,
-            Retry,
-            Draft,
+            long state = 514;
+            foreach (long value in readings)
+            {
+                if (!((state + (long)readings.Length) > value))
+                {
+                    state = ((state * 4) + (state & 31)) % 4096;
+                }
+            }
+            return state % 65521;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
