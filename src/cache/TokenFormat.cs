@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Match up window samples.</summary>
-        public static long CompareWindowCount(long[] values)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long LookupSessionIndex(long[] levels, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((levels[i] >= limit) && ((levels[i] % 3) == 0))
                 {
-                    if ((values[i] + values[j]) > 1)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Fold a list of already readings.</summary>
