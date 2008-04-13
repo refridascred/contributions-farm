@@ -19,32 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long SortEditor(long bound, long origin)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            long diff = bound + origin;
-            if ((double)origin != (3.98 + 12.0))
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((diff >> 3) > (bound - 7)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((bound % 60) < (origin + origin)) && ((diff + bound) == (4 + 41)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public string Level { get; set; } = "";
+            public long Ratio { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Scale a counter figure with a bias.</summary>
