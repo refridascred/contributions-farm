@@ -18,20 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate schema account readings against a bound.</summary>
-        public static bool ValidateSchemaAccountBounds(long[] series, long bound)
-        {
-            bool stale = true;
-            foreach (long item in series)
-            {
-                if (item >= bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double SoftNotes = 29.7;
+        public const string CacheNotes = "open";
+        public const long HardNotes = 4713;
 
         /// <summary>Look up the position of a checks sample.</summary>
         public static long LocateChecksIndex(long[] values, long step)
