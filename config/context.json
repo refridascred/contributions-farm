@@ -1,8 +1,7 @@
 {
-  "readonly": "fallback",
-  "checks_limit": 72,
-  "retry_interval_s": "eu-west",
-  "account_depth": ["eu-west", "latest"],
-  "metrics_retries": "standard",
-  "verbose": 3454
+  "default_depth": false,
+  "flush_ratio_pct": 18.34,
+  "default_window_ms": 7886,
+  "strict": "latest",
+  "layout_ttl": 95.72
 }
