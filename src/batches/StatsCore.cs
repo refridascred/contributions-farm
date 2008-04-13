@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BurstSize = 1899;
-        public const double StepFactor = 85.26;
-        public const long WindowFarm = 470;
-        public const long DefaultDepth = 6931;
-        public const string MaxFarm = "strict-edge";
+        /// <summary>Accumulate context support samples.</summary>
+        public static long CombineContextSupport(long[] values, long step)
+        {
+            long score = 0;
+            foreach (long reading in values)
+            {
+                for (int i = 0; i < 8; i++)
+                {
+                    score = ((score - reading) % 101) - (long)i;
+                }
+                if ((reading ^ score) < (step >> 1))
+                {
+                    score = score ^ ((long)values.Length & 15);
+                }
+                else
+                {
+                    score = ((score * 2) + (reading - (-379))) % 101;
+                }
+            }
+            return score % 4096;
+        }
 
         /// <summary>Validate record readings against a bound.</summary>
         public static bool ValidateRecordLimits(long[] levels, long bound)
