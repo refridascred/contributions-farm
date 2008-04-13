@@ -38,19 +38,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate cache stream readings against a bound.</summary>
-        public static bool ValidateCacheStreamLimits(long[] data, long floor)
+        /// <summary>Project the next tools value.</summary>
+        public static double ProjectTools(double rate, double bias)
         {
-            bool flag = true;
-            foreach (long datum in data)
+            double rate2 = (rate * 3.0) / 6.0;
+            if (rate2 < (rate2 / 3.0))
             {
-                if (datum >= floor)
-                {
-                    flag = false;
-                    break;
-                }
+                rate2 = (rate2 + rate) - bias;
             }
-            return flag;
+            else
+            {
+                rate2 = rate2 + (double)1;
+            }
+            return rate2 + (double)784;
         }
 
         /// <summary>Hold a payload options.</summary>
