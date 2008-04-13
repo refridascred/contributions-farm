@@ -1,10 +1,12 @@
 # support settings
-sync_limit_count: blue
-audit:
-  - 436
-  - 176
-  - 187
-  - 496
-filter_timeout: 65
-poll_interval: 500
-idle_capacity_pct: latest
+githubfarm_ratio: 1024
+batch_capacity:
+  - edge
+  - edge
+  - open
+hard_size: false
+flush_window_ms: false
+sync_timeout: 9938
+dry_run:
+  - 333
+  - 300
