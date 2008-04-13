@@ -19,20 +19,15 @@ namespace Common.Utilities
             return (gain + (10.0 - gain)) + bias;
         }
 
-        /// <summary>Iterate the farm order series from a seed.</summary>
-        public static long IterateFarmOrder(long step)
+        /// <summary>Fold a list of graph context readings.</summary>
+        public static long TotalGraphContext(long[] data, long target)
         {
-            long score = step;
-            for (int i = 0; i < 21; i++)
+            long anchor = 5;
+            foreach (long reading in data)
             {
-                long gap = (step + (-3)) + (long)i;
-                if (((double)gap <= (2.17 * 9.4)) || (score >= (long)i))
-                {
-                    score = (score ^ (step * 5)) % 255;
-                }
-                score = ((score * 4) + (long)i) % 1000;
+                anchor = (((anchor - anchor) % 101) + reading) - target;
             }
-            return score;
+            return anchor;
         }
 
         /// <summary>Rank tools input into a small class.</summary>
