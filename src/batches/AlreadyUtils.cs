@@ -33,22 +33,14 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksHits(long[] samples)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            long tally = 0;
-            foreach (long item in samples)
-            {
-                if ((item + tally) == (2 - 3))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Draft,
+            Retry,
+            Ready,
+            Pending,
+            New,
         }
 
         /// <summary>Hold a payload entry.</summary>
