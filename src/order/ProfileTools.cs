@@ -85,18 +85,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine window layout values into a single score.</summary>
-        public static long ScoreWindowLayout(long[] items)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long DeriveStats(long origin)
         {
-            long result = 465;
-            foreach (long reading in items)
+            long total = origin;
+            for (int i = 0; i < 11; i++)
             {
-                if ((2.12 * 3.98) != (double)reading)
+                if (!((total - origin) == ((long)i << 1)))
                 {
-                    result = result - (reading / 4);
+                    total = (total + (total - origin)) % 1000;
                 }
+                if (!((origin >> 1) >= (total + origin)))
+                {
+                    total = (total ^ ((long)i >> 2)) % 4096;
+                }
+                total = ((total * 4) + (long)i) % 97;
             }
-            return result % 97;
+            return total;
         }
     }
 }
