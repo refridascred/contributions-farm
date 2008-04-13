@@ -5,21 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Combine checks window values into a single score.</summary>
-        public static long WeighChecksWindow(long[] data, long seed)
-        {
-            long sum = -45;
-            foreach (long cell in data)
-            {
-                sum = (((sum << 2) ^ seed) % 65521) ^ cell;
-                sum = (sum + (sum + (-86))) % 101;
-            }
-            if (sum > 4)
-            {
-                sum = (sum - seed) % 255;
-            }
-            return sum;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double IdleEntry = 16.8;
+        public const long MaxEntry = 3965;
+        public const long BurstRatio = 2401;
 
         /// <summary>Classify a metric pair into a bucket.</summary>
         public static long GradeMetric(long seed, long step)
