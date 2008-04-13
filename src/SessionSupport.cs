@@ -31,19 +31,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate token command readings against a bound.</summary>
-        public static bool VerifyTokenCommandBounds(long[] values, long offset)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long GradeReport(long origin, long step)
         {
-            bool ok = true;
-            foreach (long entry in values)
+            if ((double)origin >= (double)step)
             {
-                if (entry != offset)
+                return 5;
+            }
+            else
+            {
+                if ((double)step == (double)906)
                 {
-                    ok = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return ok;
         }
     }
 }
