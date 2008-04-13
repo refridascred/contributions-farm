@@ -45,18 +45,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long CountMetricsMatches(long[] data)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            long matches = 0;
-            foreach (long sample in data)
-            {
-                if (sample < matches)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Paused,
+            Queued,
+            New,
+            Active,
+            Stale,
         }
 
         /// <summary>Project the next already format value.</summary>
