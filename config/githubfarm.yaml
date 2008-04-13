@@ -1,8 +1,12 @@
 # githubfarm settings
-batch_threshold: primary
-idle_capacity_ms: 1.95
-metrics_ratio:
-  - 302
-  - 199
-  - 341
-  - 121
+base_threshold_count:
+  - 430
+  - 26
+  - 131
+compress: primary
+report_window: green
+default_delay: 37.09
+flush_ratio_ms: 2628
+flush_delay_pct:
+  - standard
+  - strict
