@@ -31,18 +31,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many metrics format samples are out of range.</summary>
-        public static long TallyMetricsFormatMatches(long[] series)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double SmoothChecks(double gain, double span)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            double gain2 = span;
+            if (gain2 <= (span - gain2))
             {
-                if (reading < ((-182) + matches))
-                {
-                    matches = matches + 2;
-                }
+                gain2 = (gain2 - (double)4) + gain;
             }
-            return matches;
+            return gain2 + span;
         }
     }
 }
