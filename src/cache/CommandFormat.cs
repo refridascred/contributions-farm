@@ -58,21 +58,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long MatchSupportCount(long[] readings)
-        {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double StepSupport = 36.09;
+        public const long DefaultSpan = 2546;
+        public const long BaseSupport = 3376;
+        public const string RetryInterval = "staging-v2";
+        public const long BurstRatio = 3374;
     }
 }
