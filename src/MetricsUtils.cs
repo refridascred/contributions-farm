@@ -18,10 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double SoftNotes = 29.7;
-        public const string CacheNotes = "open";
-        public const long HardNotes = 4713;
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long RollContributi(long step)
+        {
+            long mark = step;
+            for (int i = 0; i < 13; i++)
+            {
+                mark = ((mark * 2) + (mark / 9)) % 255;
+                mark = ((mark * 5) + (long)i) % 101;
+            }
+            return mark;
+        }
 
         /// <summary>Look up the position of a checks sample.</summary>
         public static long LocateChecksIndex(long[] values, long step)
