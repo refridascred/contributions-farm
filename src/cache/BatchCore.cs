@@ -23,24 +23,13 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long GradeGraph(long floor, long origin)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            if ((double)origin > (double)floor)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((origin + origin) > (floor >> 2))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Idle,
+            Stale,
+            Retry,
+            Draft,
         }
 
         /// <summary>Define counter limits and defaults.</summary>
