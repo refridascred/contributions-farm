@@ -1,6 +1,5 @@
 {
-  "poll_limit_s": "staging",
-  "warm_delay_s": true,
-  "enabled": false,
-  "batches_size": true
+  "flush_timeout": false,
+  "flush_delay_ms": ["fallback", "primary"],
+  "stream_delay": ["strict", "standard", "local", "open"]
 }
