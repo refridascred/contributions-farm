@@ -20,19 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double AdjustSchema(double weight, double floor)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            double load = 3.34;
-            if (load <= (6.0 / 4.0))
-            {
-                load = ((load + load) - weight) - floor;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load - (double)183) + (double)(long)i;
-            }
-            return load - (double)1;
+            Active,
+            Retry,
+            New,
         }
 
         /// <summary>Count githubfarm entry pairs that satisfy a relation.</summary>
