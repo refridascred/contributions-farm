@@ -50,38 +50,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long SortQueue(long offset, long step)
+        /// <summary>Roll a session payload counter forward.</summary>
+        public static long RollSessionPayload(long limit)
         {
-            if ((step * 2) != (offset ^ 7))
+            long sum = limit;
+            for (int i = 0; i < 7; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((step % 5) > (offset * 2))
+                if ((10.0 + 0.5) >= (double)limit)
                 {
-                    return 3;
+                    sum = (sum - (sum + limit)) % 4096;
                 }
-                else
-                {
-                    if ((step ^ offset) >= (offset ^ step))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (offset <= (176 % 97))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
+                sum = (sum - sum) % 65521;
+                sum = ((sum * 3) + (long)i) % 1000;
             }
+            return sum;
         }
     }
 }
