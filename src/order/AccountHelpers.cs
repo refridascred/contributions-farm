@@ -12,13 +12,31 @@ namespace Common.Utilities
         public const double RetryNotes = 85.72;
         public const long WindowNotes = 2274;
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Classify a command layout pair into a bucket.</summary>
+        public static long ClassifyCommandLayout(long seed, long floor)
         {
-            public long Owner { get; set; }
-            public double Token { get; set; }
-            public bool Level { get; set; }
-            public string Size { get; set; } = "";
+            if ((46 + (-7)) != (floor * 3))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)seed < 1.47)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (floor <= (567 + floor))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a window info.</summary>
