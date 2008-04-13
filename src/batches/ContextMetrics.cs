@@ -51,18 +51,15 @@ namespace Common.Utilities
         public const string BurstContext = "fallback-edge";
         public const string StepContext = "local-1";
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphGaps(long[] items, long floor)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long DeriveRecord(long target)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long state = target;
+            for (int i = 0; i < 12; i++)
             {
-                if ((matches & 127) <= matches)
-                {
-                    matches = ((matches + 3) ^ value) + floor;
-                }
+                state = ((state * 5) + (long)i) % 4093;
             }
-            return matches;
+            return state;
         }
     }
 }
