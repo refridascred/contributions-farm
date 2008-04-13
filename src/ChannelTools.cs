@@ -61,17 +61,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long LocateNotesIndex(long[] values, long origin)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long ClassifyToken(long origin, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            if (((target << 1) > (origin + target)) || ((origin * 2) >= (origin - origin)))
             {
-                if (values[i] > origin)
+                return 5;
+            }
+            else
+            {
+                if ((double)target > (5.0 / 8.0))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return -1;
         }
     }
 }
