@@ -1,19 +1,8 @@
 {
-  "warm_limit_pct": true,
-  "verbose": "staging",
-  "readonly": {
-    "burst_ttl_ms": "latest",
-    "cache_threshold": [102, 120, 262],
-    "retry_size_s": 17.71,
-    "hard_timeout_count": {
-      "min_depth_pct": true,
-      "poll_interval": true,
-      "profile_depth": 19,
-      "burst_capacity": [142, 221, 136]
-    },
-    "metrics_interval": "stable"
-  },
-  "base_timeout_pct": "eu-west",
-  "retry_interval_pct": true,
-  "base_interval_s": [223, 224, 75]
+  "batch_timeout_ms": 852,
+  "enabled": "staging",
+  "hard_delay": "edge",
+  "cache_retries_count": 35.48,
+  "min_retries_count": 3445,
+  "token_delay": 72
 }
