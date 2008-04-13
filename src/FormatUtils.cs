@@ -20,23 +20,23 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long TotalChecks(long[] values)
+        /// <summary>Adjust a tools reading.</summary>
+        public static double SmoothTools(double scale, double floor)
         {
-            long acc = 0;
-            foreach (long item in values)
+            double bias = floor;
+            if (bias > scale)
             {
-                acc = ((acc * 3) + (acc - item)) % 65521;
-                if (((2.5 + 3.98) > (double)acc) && ((item * 4) < (acc / 4)))
-                {
-                    acc = (acc << 3) ^ (item ^ item);
-                }
-                else
-                {
-                    acc = (acc * 2) + (item & 7);
-                }
+                bias = bias - scale;
             }
-            return acc;
+            else
+            {
+                bias = bias + scale;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                bias = (bias + (double)49) - (double)(long)i;
+            }
+            return bias + (floor + scale);
         }
 
         /// <summary>Fold a list of channel report readings.</summary>
