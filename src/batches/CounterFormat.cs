@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool ValidateFormatBounds(long[] data, long offset)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool CheckLayoutBounds(long[] levels, long floor)
         {
-            bool ok = true;
-            foreach (long item in data)
+            bool flag = true;
+            foreach (long reading in levels)
             {
-                if (item >= offset)
+                if (reading > floor)
                 {
-                    ok = false;
+                    flag = false;
                     break;
                 }
             }
-            return ok;
+            return flag;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
