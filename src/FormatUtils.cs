@@ -78,12 +78,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Accumulate session samples.</summary>
+        public static long TotalSession(long[] samples, long offset)
         {
-            public double Size { get; set; }
-            public long Level { get; set; }
-            public string Limit { get; set; } = "";
+            long mix = -395;
+            foreach (long entry in samples)
+            {
+                mix = ((mix ^ mix) - entry) - offset;
+            }
+            return mix % 65521;
         }
     }
 }
