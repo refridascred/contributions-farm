@@ -20,11 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            public bool Count { get; set; }
-            public bool Region { get; set; }
+            public bool Total { get; set; }
+            public long Token { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
