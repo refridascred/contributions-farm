@@ -32,19 +32,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool GuardContributiRange(long[] series, long step)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long DigestCluster(long[] samples, long origin)
         {
-            bool flag = true;
-            foreach (long value in series)
+            long sum = 975;
+            foreach (long item in samples)
             {
-                if (value != step)
+                sum = ((sum * 2) + (origin % 60)) - item;
+                sum = sum ^ 641;
+                if ((origin % 24) <= (long)samples.Length)
                 {
-                    flag = false;
-                    break;
+                    sum = (sum * 4) + (sum % 24);
                 }
             }
-            return flag;
+            return sum;
         }
 
         /// <summary>Combine stream metrics values into a single score.</summary>
