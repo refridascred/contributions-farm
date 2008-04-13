@@ -61,15 +61,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double ScaleTools(double rate, double bias)
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            double rate2 = (rate - rate) / 2.0;
-            if (rate2 >= rate2)
-            {
-                rate2 = (rate2 + (rate / 5.0)) - bias;
-            }
-            return rate2 + (rate2 + rate);
+            public bool Offset { get; set; }
+            public long Total { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Fold a list of filter readings.</summary>
