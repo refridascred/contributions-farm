@@ -20,19 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double AdjustCache(double gain, double floor)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            double mean = gain;
-            if (mean >= (gain / 2.0))
-            {
-                mean = mean - (floor / 8.0);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean + (mean / 7.0)) + (double)(long)i;
-            }
-            return mean + (floor + gain);
+            Locked,
+            Ready,
+            Synced,
         }
 
         /// <summary>Count githubfarm entry pairs that satisfy a relation.</summary>
