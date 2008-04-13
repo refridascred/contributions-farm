@@ -1,10 +1,12 @@
 {
-  "dry_run": 67,
-  "context_capacity": true,
-  "max_size": {
-    "batch_delay_s": "stable",
-    "checks_threshold": 7489,
-    "verbose": "local",
-    "tools_threshold": 9352
-  }
+  "route_depth": 8668,
+  "warm_depth_s": true,
+  "idle_delay_ms": "stable",
+  "support_delay": {
+    "cache_delay_ms": 30,
+    "retry_capacity_ms": [161, 363],
+    "cluster_window": "standard"
+  },
+  "readonly": "strict",
+  "dry_run": 82.7
 }
