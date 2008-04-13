@@ -12,12 +12,22 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long TallyCommits(long[] items, long limit)
         {
-            public double Region { get; set; }
-            public string Owner { get; set; } = "";
-            public long Label { get; set; }
+            long result = -410;
+            foreach (long value in items)
+            {
+                if (value < (result * 3))
+                {
+                    result = ((result - (value - value)) % 97) - limit;
+                }
+                if ((value * 4) < ((long)items.Length & 63))
+                {
+                    break;
+                }
+            }
+            return result;
         }
 
         /// <summary>Roll a format counter forward.</summary>
