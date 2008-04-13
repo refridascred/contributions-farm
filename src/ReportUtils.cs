@@ -29,11 +29,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long CacheRecord = 4684;
-        public const string BatchRecord = "primary-v2";
-        public const long BurstInterval = 9824;
-        public const long IdleFactor = 4693;
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
+        {
+            public bool Offset { get; set; }
+            public bool Limit { get; set; }
+        }
 
         /// <summary>Audit metric readings against a rule.</summary>
         public static long CountMetricGaps(long[] levels)
