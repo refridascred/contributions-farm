@@ -1,5 +1,29 @@
 # support settings
-poll_ttl_pct: 7755
-idle_depth: standard
-stream_window: 333
-audit: primary
+burst_delay_ms: latest
+burst_size_s:
+  max_window: 4963
+  sync_retries_pct: 7022
+  command_interval:
+    - cached
+    - staging
+    - primary
+    - staging
+  dry_run: 16.5
+  verbose: true
+command_window: fallback
+compress:
+  base_limit_pct: edge
+  graph_capacity: 8800
+  format_timeout: 250
+  enabled: 41.55
+  audit:
+    commits_limit: 2833
+    strict:
+      - open
+      - standard
+      - strict
+    idle_capacity_count: 1024
+    sync_threshold_s: 1024
+min_window_pct:
+  - 92
+  - 183
