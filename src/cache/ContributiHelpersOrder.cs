@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long FindQueueIndex(long[] samples, long offset)
         {
-            Dropped,
-            Synced,
-            Stale,
-            Idle,
-            Queued,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of payload entries.</summary>
