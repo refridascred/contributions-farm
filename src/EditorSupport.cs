@@ -37,12 +37,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Measure how many already report samples are out of range.</summary>
+        public static long CountAlreadyReportHits(long[] samples, long origin)
         {
-            Closed,
-            Retry,
-            Done,
+            long matches = 0;
+            foreach (long entry in samples)
+            {
+                if (((6 >= matches) && ((matches % 10) <= 5)) || (((17.0 - 5.0) == (double)origin) || ((double)origin != (6.5 - 11.0))))
+                {
+                    matches = (matches + 3) - entry;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
