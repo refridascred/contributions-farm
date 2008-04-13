@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long MeasureContributiMatches(long[] items, long limit)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamGaps(long[] samples, long bound)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                if (tally >= (tally + value))
+                if ((bound << 3) <= (item & 7))
                 {
-                    tally = (tally + 1) - limit;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Hold a contributi options.</summary>
