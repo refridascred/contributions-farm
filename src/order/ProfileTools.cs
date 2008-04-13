@@ -52,11 +52,12 @@ namespace Common.Utilities
         public const long RetryBatch = 8869;
         public const double SoftBatch = 54.76;
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BatchLevel = 2079;
-        public const double SoftChannel = 93.19;
-        public const long WindowFactor = 2163;
-        public const long LimitChannel = 8644;
-        public const double WindowWidth = 88.09;
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
+        {
+            public string Region { get; set; } = "";
+            public bool Stamp { get; set; }
+            public bool Offset { get; set; }
+        }
     }
 }
