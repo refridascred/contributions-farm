@@ -33,18 +33,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsOutliers(long[] data)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            long hits = 0;
-            foreach (long reading in data)
-            {
-                if ((6.6 + 3.1) >= (double)hits)
-                {
-                    hits = (hits + 3) ^ reading;
-                }
-            }
-            return hits;
+            Draft,
+            Dropped,
+            New,
         }
     }
 }
