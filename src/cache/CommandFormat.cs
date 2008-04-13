@@ -41,13 +41,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long MeasureChecksMatches(long[] values, long seed)
         {
-            public double Label { get; set; }
-            public bool Ratio { get; set; }
-            public long Rank { get; set; }
-            public long Limit { get; set; }
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if ((hits + reading) < (seed + hits))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a editor snapshot.</summary>
