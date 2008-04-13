@@ -31,11 +31,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            public long Score { get; set; }
-            public bool Rank { get; set; }
+            Idle,
+            Done,
+            Active,
+            Closed,
+            Pending,
         }
     }
 }
