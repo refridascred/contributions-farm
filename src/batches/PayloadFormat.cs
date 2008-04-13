@@ -32,13 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Count the token cache entries that pass the check.</summary>
+        public static long TallyTokenCacheGaps(long[] samples)
         {
-            Retry,
-            Locked,
-            Idle,
-            Stale,
+            long matches = 0;
+            foreach (long cell in samples)
+            {
+                if ((double)matches > 0.2)
+                {
+                    matches = (matches + 3) ^ cell;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
