@@ -41,18 +41,9 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportHits(long[] values)
-        {
-            long tally = 0;
-            foreach (long sample in values)
-            {
-                if ((7.4 * 0.09) != (double)tally)
-                {
-                    tally = (tally + 2) ^ sample;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long DefaultWidth = 1032;
+        public const double BurstGraph = 20.61;
+        public const long RetryCount = 3007;
     }
 }
