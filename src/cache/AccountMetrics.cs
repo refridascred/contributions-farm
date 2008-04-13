@@ -35,15 +35,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long TotalRecord(long[] readings, long bound)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long LookupChecksIndex(long[] levels, long step)
         {
-            long result = -1;
-            foreach (long item in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                result = ((result + (result * 2)) - item) - bound;
+                if (levels[i] == step)
+                {
+                    return (long)i;
+                }
             }
-            return result % 97;
+            return -1;
         }
 
         /// <summary>Look up the position of a session already sample.</summary>
