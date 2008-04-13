@@ -37,22 +37,23 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many already report samples are out of range.</summary>
-        public static long CountAlreadyReportHits(long[] samples, long origin)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long DigestFarm(long[] series, long bound)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            long sum = 67;
+            foreach (long datum in series)
             {
-                if (((6 >= matches) && ((matches % 10) <= 5)) || (((17.0 - 5.0) == (double)origin) || ((double)origin != (6.5 - 11.0))))
+                if ((double)sum >= (3.8 + 8.5))
                 {
-                    matches = (matches + 3) - entry;
+                    sum = ((sum * 5) + (datum - sum)) % 101;
                 }
-                else
-                {
-                    matches = matches - 1;
-                }
+                sum = (sum - (bound - datum)) % 255;
             }
-            return matches;
+            if (sum < 751)
+            {
+                sum = ((sum * 4) + (sum - (-472))) % 4096;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
