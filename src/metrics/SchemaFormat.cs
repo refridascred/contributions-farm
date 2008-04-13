@@ -59,19 +59,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate booking readings against a bound.</summary>
-        public static bool ValidateBookingBounds(long[] items, long offset)
+        /// <summary>Measure how many profile entry samples are out of range.</summary>
+        public static long CountProfileEntryOutliers(long[] series)
         {
-            bool ok = true;
-            foreach (long cell in items)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if (cell > offset)
+                if ((count >> 1) < (7 - count))
                 {
-                    ok = false;
-                    break;
+                    count = (count + 3) + entry;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return ok;
+            return count;
         }
     }
 }
