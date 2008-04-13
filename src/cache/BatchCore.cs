@@ -53,19 +53,13 @@ namespace Common.Utilities
         public const long HardCount = 1278;
         public const long RetryWidth = 7007;
 
-        /// <summary>Project the next payload value.</summary>
-        public static double BlendPayload(double ratio, double bias)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            double gain = (double)(93 / 4);
-            if (gain < (gain - bias))
-            {
-                gain = gain + ratio;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain - gain) + (double)(long)i;
-            }
-            return gain - (bias / 6.0);
+            Pending,
+            Dropped,
+            Retry,
+            Draft,
         }
     }
 }
