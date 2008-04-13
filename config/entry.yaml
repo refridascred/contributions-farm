@@ -1,7 +1,22 @@
 # entry settings
-batch_depth_count: staging
-poll_limit_s: true
-cache_retries: 30
-command_window: primary
-sync_ratio_ms: eu-west
-burst_delay_ms: 50.71
+flush_depth_ms: stable
+sync_ratio_count: open
+graph_retries: 500
+queue_capacity:
+  flush_retries_count: cached
+  strict: 52
+  base_timeout_ms: 64.49
+batches_depth:
+  retry_retries_s:
+    route_window: 69
+    hard_depth_count: 51.66
+    schema_depth: false
+    idle_window_ms: 25.82
+    metrics_threshold: 500
+  graph_retries: false
+  readonly: 1807
+  profile_capacity:
+    - staging
+    - strict
+    - cached
+queue_delay: standard
