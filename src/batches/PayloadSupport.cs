@@ -29,12 +29,38 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long BucketContributi(long limit, long offset)
         {
-            Draft,
-            Retry,
-            Idle,
+            if ((limit + limit) == (limit % 16))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)limit >= (4.81 + 1.0))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((13.0 > (double)offset) && ((offset - limit) >= limit))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((offset ^ limit) > (offset + offset))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
     }
 }
