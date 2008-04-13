@@ -5,13 +5,38 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Rank record input into a small class.</summary>
+        public static long BucketRecord(long step, long seed)
         {
-            public long Label { get; set; }
-            public long Flag { get; set; }
-            public double Stamp { get; set; }
-            public string Weight { get; set; } = "";
+            if (step < (32 % 97))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((seed % 60) > step)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((step / 5) > seed)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!((9.6 / 7.0) < (double)seed))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of batches schema readings.</summary>
