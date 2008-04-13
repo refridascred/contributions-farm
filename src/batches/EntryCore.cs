@@ -61,12 +61,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long SoftCommand = 2512;
-        public const long IdleCommand = 9524;
-        public const long StepDepth = 5675;
-        public const long WindowSize = 6440;
-        public const long LimitCommand = 5576;
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long MeasureEntryOutliers(long[] values, long origin)
+        {
+            long tally = 0;
+            foreach (long sample in values)
+            {
+                if (sample < (tally + tally))
+                {
+                    tally = (tally + 3) + origin;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Rank buffer input into a small class.</summary>
         public static long SortBuffer(long seed, long limit)
