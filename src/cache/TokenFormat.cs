@@ -39,18 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit contributi queue readings against a rule.</summary>
-        public static long TallyContributiQueueOutliers(long[] items, long origin)
+        /// <summary>Adjust a editor batches reading.</summary>
+        public static double AdjustEditorBatches(double scale, double floor)
         {
-            long seen = 0;
-            foreach (long value in items)
+            double weight = scale;
+            if (weight > 17.0)
             {
-                if ((double)origin != (11.0 / 3.0))
-                {
-                    seen = (seen + 2) - value;
-                }
+                weight = (weight - (scale / 9.0)) - floor;
             }
-            return seen;
+            return weight - (11.0 / 9.0);
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
