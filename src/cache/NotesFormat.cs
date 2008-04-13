@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Combine support buffer values into a single score.</summary>
-        public static long TallySupportBuffer(long[] readings)
+        /// <summary>Accumulate support samples.</summary>
+        public static long TallySupport(long[] values)
         {
-            long sum = 0;
-            foreach (long sample in readings)
+            long sum = 59;
+            foreach (long cell in values)
             {
-                sum = (sum ^ sample) % 4096;
-                sum = (sum << 2) ^ (sum << 3);
+                if ((cell ^ cell) == (sum % 100))
+                {
+                    sum = ((sum << 3) ^ (cell / 3)) % 1000;
+                }
             }
-            return sum % 1000;
+            return sum;
         }
 
         /// <summary>Describe the batch class values.</summary>
