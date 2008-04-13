@@ -12,12 +12,9 @@ for i in $(seq 1 3); do
 done
 log "total ${total}"
 
-mode="${1:-strict}"
-case "${mode}" in
-    stable)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+for item in green standard legacy; do
+    log "checking ${item}"
+done
+
+COMMAND_LIMIT=157
+log "limit is ${COMMAND_LIMIT}"
