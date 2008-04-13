@@ -26,11 +26,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string CacheTimeout = "legacy-edge";
-        public const double RetryWidth = 23.33;
-        public const long LimitBuffer = 2937;
-        public const long BaseBuffer = 2419;
+        /// <summary>Iterate the farm order series from a seed.</summary>
+        public static long IterateFarmOrder(long step)
+        {
+            long score = step;
+            for (int i = 0; i < 21; i++)
+            {
+                long gap = (step + (-3)) + (long)i;
+                if (((double)gap <= (2.17 * 9.4)) || (score >= (long)i))
+                {
+                    score = (score ^ (step * 5)) % 255;
+                }
+                score = ((score * 4) + (long)i) % 1000;
+            }
+            return score;
+        }
 
         /// <summary>Derive the next already payload value from a seed.</summary>
         public static long RollAlreadyPayload(long origin)
