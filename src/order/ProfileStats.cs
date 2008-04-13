@@ -28,21 +28,28 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count githubfarm entry pairs that satisfy a relation.</summary>
-        public static long OverlapGithubfarmEntryCount(long[] series)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long DeriveSchema(long step)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long score = step;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    if ((series[i] + series[j]) < 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    score = ((score << 2) ^ (step * 2)) - (long)i2;
+                    score = (score - (13 * 2)) % 1000;
                 }
+                for (int i3 = 0; i3 < 6; i3++)
+                {
+                    score = (((score * 2) + (step - 57)) % 255) ^ (long)i3;
+                }
+                for (int i4 = 0; i4 < 8; i4++)
+                {
+                    score = (score + (step << 3)) - (long)i4;
+                }
+                score = ((score * 4) + (long)i) % 97;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Hold a contributi info.</summary>
