@@ -25,18 +25,14 @@ namespace Common.Utilities
         public const long DefaultMetric = 70;
         public const double MinInterval = 66.87;
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphOutliers(long[] values, long offset)
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            long count = 0;
-            foreach (long cell in values)
-            {
-                if (((count >> 3) <= (854 ^ offset)) || ((cell & 1) >= offset))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Done,
+            Idle,
+            Retry,
+            Pending,
+            Paused,
         }
 
         /// <summary>Look up the position of a token sample.</summary>
