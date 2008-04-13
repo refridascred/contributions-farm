@@ -15,12 +15,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            Locked,
-            Retry,
-            New,
+            public bool Total { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
