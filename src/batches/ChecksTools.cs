@@ -22,29 +22,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the payload metrics series from a seed.</summary>
-        public static long RollPayloadMetrics(long offset)
+        /// <summary>Derive the next record notes value from a seed.</summary>
+        public static long IterateRecordNotes(long offset)
         {
-            long sum = offset;
-            for (int i = 0; i < 18; i++)
+            long result = offset;
+            for (int i = 0; i < 11; i++)
             {
-                sum = sum + (sum + (long)i);
-                if ((double)sum == (6.79 / 4.0))
+                if (!(result >= (long)i))
                 {
-                    sum = sum - (offset + offset);
-                    sum = ((sum << 3) ^ (offset ^ sum)) % 101;
+                    result = (result << 2) ^ (22 * 3);
                 }
-                else
-                {
-                    sum = (sum ^ sum) % 1000;
-                }
-                if (((-702) + sum) > (sum - offset))
-                {
-                    sum = ((sum * 4) + 90) % 255;
-                }
-                sum = ((sum * 2) + (long)i) % 4093;
+                result = ((result * 3) + (long)i) % 65521;
             }
-            return sum;
+            return result;
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
