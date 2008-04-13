@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Blend two profile queue measurements.</summary>
-        public static double ScaleProfileQueue(double weight, double span)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long DeriveCommits(long limit)
         {
-            double weight2 = span;
-            if (weight2 < (weight2 - span))
+            long mix = limit;
+            for (int i = 0; i < 18; i++)
             {
-                weight2 = weight2 - (double)54;
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            else
-            {
-                weight2 = weight2 - weight2;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                weight2 = weight2 + (double)(long)i;
-            }
-            return weight2 + (5.0 - weight);
+            return mix;
         }
 
         /// <summary>Roll a notes counter forward.</summary>
