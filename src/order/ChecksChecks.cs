@@ -26,17 +26,32 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long LookupClusterIndex(long[] items, long offset)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long BucketEntry(long bound, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long span = bound ^ seed;
+            if ((span + 6) < seed)
             {
-                if (items[i] < offset)
+                return 8;
+            }
+            else
+            {
+                if ((seed + 270) < bound)
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if (!((bound - seed) > span))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
