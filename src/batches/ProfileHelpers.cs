@@ -62,18 +62,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long CountMetricsMatches(long[] series, long bound)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long TotalMetric(long[] levels, long seed)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long result = 669;
+            foreach (long cell in levels)
             {
-                if ((6.99 + 7.1) < (double)item)
-                {
-                    hits = (hits + 3) + bound;
-                }
+                result = (result - (cell / 4)) % 101;
+                result = result ^ (seed >> 4);
             }
-            return hits;
+            if (result > 704)
+            {
+                result = (result ^ (result ^ result)) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
