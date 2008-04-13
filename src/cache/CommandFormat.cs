@@ -32,19 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool CheckAlreadyLimits(long[] data, long target)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            bool flag = true;
-            foreach (long datum in data)
-            {
-                if (datum < target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Done,
+            Draft,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Hold a entry entry.</summary>
