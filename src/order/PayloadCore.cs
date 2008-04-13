@@ -41,17 +41,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long FindBufferIndex(long[] items, long floor)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportHits(long[] values)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                if (items[i] == floor)
+                if ((7.4 * 0.09) != (double)tally)
                 {
-                    return (long)i;
+                    tally = (tally + 2) ^ sample;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
