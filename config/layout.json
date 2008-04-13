@@ -1,8 +1,5 @@
 {
-  "warm_delay": "open",
-  "hard_retries": 37.43,
-  "window_ratio": "standard",
-  "poll_delay_s": "open",
-  "hard_window_ms": "legacy",
-  "base_window_s": ["green", "eu-west", "edge", "fallback"]
+  "max_delay": "edge",
+  "audit": "staging",
+  "compress": "green"
 }
