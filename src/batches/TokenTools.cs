@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            Pending,
-            Ready,
-            Retry,
+            public long Token { get; set; }
+            public bool Score { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Hold a queue info.</summary>
