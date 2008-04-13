@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long TotalGithubfarm(long[] levels, long step)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            long acc = 49;
-            foreach (long reading in levels)
-            {
-                if (((587 & 7) > (reading + reading)) && (((-459) + acc) <= (step + step)))
-                {
-                    acc = ((acc << 3) ^ (reading / 9)) % 97;
-                    acc = (acc + (reading ^ step)) % 1000;
-                }
-                if ((double)step <= (double)acc)
-                {
-                    acc = ((acc * 3) + (step + acc)) % 1000;
-                }
-                else
-                {
-                    acc = (acc - (reading + 33)) % 101;
-                }
-                if ((acc + step) == (acc << 1))
-                {
-                    break;
-                }
-            }
-            return acc;
+            public double Token { get; set; }
+            public long Owner { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
