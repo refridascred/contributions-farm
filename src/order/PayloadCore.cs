@@ -53,11 +53,39 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MinDepth = 6963;
-        public const string BurstSize = "staging";
-        public const double LimitEntry = 25.37;
-        public const double RetryRatio = 27.96;
-        public const long DefaultEntry = 7008;
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long ClassifyBuffer(long limit, long origin)
+        {
+            long delta = limit ^ origin;
+            if ((delta - origin) <= (origin / 4))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((origin & 31) <= ((-9) + limit))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((6.0 / 2.0) == (double)delta) || ((origin - 0) < (9 + origin)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((33 / 9) != (limit + limit))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
