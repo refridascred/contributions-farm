@@ -34,14 +34,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
-        {
-            public string Level { get; set; } = "";
-            public long Mode { get; set; }
-            public long Token { get; set; }
-            public double Region { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long IdleDepth = 9234;
+        public const long RetryFactor = 3988;
+        public const long LimitBatch = 5263;
+        public const long HardSpan = 1689;
+        public const string SoftSpan = "primary-edge";
 
         /// <summary>Fold a list of profile readings.</summary>
         public static long DigestProfile(long[] samples, long offset)
