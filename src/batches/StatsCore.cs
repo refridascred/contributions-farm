@@ -53,25 +53,18 @@ namespace Common.Utilities
         public const long MinFactor = 6294;
         public const long BurstSpan = 6801;
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long SeriesSchema(long origin)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long CountMetricOutliers(long[] samples)
         {
-            long sum = origin;
-            for (int i = 0; i < 15; i++)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                if ((double)origin > (7.7 * 6.4))
+                if (!((8.87 + 7.1) < (double)tally) && (((sample ^ sample) == (tally & 3)) && ((0.97 * 9.0) >= (double)tally)))
                 {
-                    sum = sum + ((long)i + origin);
-                    sum = sum ^ ((long)i * 3);
-                    break;
+                    tally = tally + 2;
                 }
-                else
-                {
-                    sum = sum + (origin / 6);
-                }
-                sum = ((sum * 3) + (long)i) % 4093;
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Define record limits and defaults.</summary>
