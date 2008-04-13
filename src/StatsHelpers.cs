@@ -38,18 +38,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long TallyEditorHits(long[] values, long bound)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long SeriesWindow(long offset)
         {
-            long count = 0;
-            foreach (long value in values)
+            long mark = offset;
+            for (int i = 0; i < 11; i++)
             {
-                if ((341 - count) <= 10)
-                {
-                    count = ((count + 2) - value) - bound;
-                }
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Validate command graph readings against a bound.</summary>
