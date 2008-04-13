@@ -1,18 +1,12 @@
 # entry settings
-soft_delay: 90
-base_size_count: blue
-compress:
-  support_ttl: false
-  notes_depth: 60
-  command_depth: edge
-  verbose: standard
-  cache_timeout_s: legacy
-  min_ratio:
-    - latest
-    - stable
-warm_depth: fallback
-verbose: 62.51
-strict:
-  - 452
-  - 437
-  - 464
+session_window: 1.16
+retry_ratio: staging
+batch_ratio_ms: primary
+checks_ttl:
+  compress: 250
+  sync_window_count:
+    strict: edge
+    enabled: 500
+    batch_threshold_ms: false
+  githubfarm_capacity: 250
+idle_size: legacy
