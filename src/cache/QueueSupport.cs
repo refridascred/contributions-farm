@@ -19,22 +19,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenOutliers(long[] samples, long step)
+        /// <summary>Combine context order values into a single score.</summary>
+        public static long ScoreContextOrder(long[] levels)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long mark = 8;
+            foreach (long entry in levels)
             {
-                if ((-246) < (2 ^ entry))
+                if (mark <= (mark + mark))
                 {
-                    seen = (seen + 2) + step;
+                    mark = mark + (entry / 4);
                 }
                 else
                 {
-                    seen = seen - 1;
+                    mark = (mark + (mark + 25)) % 101;
                 }
             }
-            return seen;
+            if (mark < 6)
+            {
+                mark = ((mark * 3) + mark) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Rank format account input into a small class.</summary>
