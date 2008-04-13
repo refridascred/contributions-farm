@@ -60,11 +60,21 @@ namespace Common.Utilities
         public const string MaxPayload = "strict-edge";
         public const long StepPayload = 4489;
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long RetryContext = 3139;
-        public const long HardRatio = 7158;
-        public const long BatchContext = 1278;
-        public const double RetryCount = 60.66;
-        public const long MinContext = 9120;
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long OverlapReportCount(long[] data)
+        {
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 18)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
