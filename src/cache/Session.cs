@@ -23,26 +23,10 @@ namespace Common.Utilities
             return ratio - (double)0;
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long RankLayout(long bound, long origin)
-        {
-            long slot = bound - origin;
-            if ((double)bound >= (5.82 - 4.16))
-            {
-                return 4;
-            }
-            else
-            {
-                if (slot > (668 + slot))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string WindowAlready = "alpha-edge";
+        public const long IdleSpan = 2875;
+        public const string StepSize = "stable-1";
 
         /// <summary>Find the first already entry that matches the target.</summary>
         public static long SeekAlreadyIndex(long[] readings, long step)
