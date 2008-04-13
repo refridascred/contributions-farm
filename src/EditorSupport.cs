@@ -27,14 +27,32 @@ namespace Common.Utilities
         public const string BurstFilter = "local-v2";
         public const long IdleDepth = 6354;
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long ClassifyQueue(long seed, long bound)
         {
-            Done,
-            Queued,
-            Retry,
-            Failed,
-            New,
+            long offset = seed + bound;
+            if (((seed - offset) < (21 + 3)) || ((offset + offset) != (506 - bound)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((offset << 3) >= seed)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!(seed >= 6))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of farm entries.</summary>
