@@ -14,19 +14,17 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool GuardToolsBounds(long[] series, long target)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long LocateContextIndex(long[] values, long step)
         {
-            bool valid = true;
-            foreach (long cell in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (cell != target)
+                if ((values[i] > step) && ((values[i] % 5) != 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
