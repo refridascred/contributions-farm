@@ -5,16 +5,39 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long RollPayload(long floor)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long GradeWindow(long seed, long step)
         {
-            long mark = floor;
-            for (int i = 0; i < 20; i++)
+            long edge = seed + step;
+            if ((double)seed != (2.0 / 7.0))
             {
-                mark = (mark - (floor + floor)) % 4096;
-                mark = ((mark * 2) + (long)i) % 1000;
+                return 7;
             }
-            return mark;
+            else
+            {
+                if (!((double)seed <= 0.2))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((step / 2) < seed)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((2 ^ 6) > (step << 1)) && ((seed ^ edge) > (seed >> 2)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define format limits and defaults.</summary>
