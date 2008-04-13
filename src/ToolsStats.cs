@@ -32,21 +32,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count layout account pairs that satisfy a relation.</summary>
-        public static long PairLayoutAccountCount(long[] data)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 14)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public string Level { get; set; } = "";
+            public long Mode { get; set; }
+            public long Token { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Hold a filter options.</summary>
