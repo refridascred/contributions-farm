@@ -1,7 +1,9 @@
-id,count,state,score
-1,71.09,blue,31
-2,96,edge,open
-3,630,staging,staging
-4,11.64,373,19.45
-5,edge,32.97,72.61
-6,66.43,93.21,96.57
+id,level,rank,active
+1,86.83,892,47.81
+2,82.11,951,101
+3,40.12,593,568
+4,local,184,open
+5,611,627,green
+6,66.29,90.95,primary
+7,96.72,555,blue
+8,standard,412,536
