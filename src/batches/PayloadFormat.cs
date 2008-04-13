@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool VerifyRecordLimits(long[] items, long target)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long TallyChannelMatches(long[] data)
         {
-            bool flag = true;
-            foreach (long value in items)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                if (value > target)
+                if (matches > (matches + entry))
                 {
-                    flag = false;
-                    break;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Roll a notes counter forward.</summary>
