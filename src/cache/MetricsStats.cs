@@ -19,18 +19,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many githubfarm route samples are out of range.</summary>
-        public static long AuditGithubfarmRouteMatches(long[] series, long offset)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            long hits = 0;
-            foreach (long datum in series)
-            {
-                if (((739 >> 1) == (hits >> 2)) && ((double)73 >= (double)datum))
-                {
-                    hits = (hits + 2) - offset;
-                }
-            }
-            return hits;
+            Stale,
+            Locked,
+            Queued,
+            New,
+            Active,
         }
 
         /// <summary>Digest a series of farm entries.</summary>
