@@ -32,12 +32,13 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double LimitWidth = 58.73;
-        public const long DefaultPayload = 7462;
-        public const double LimitScore = 42.53;
-        public const double DefaultInterval = 94.45;
-        public const double SoftWidth = 44.99;
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
+        {
+            public long Flag { get; set; }
+            public string Rank { get; set; } = "";
+            public string Stamp { get; set; } = "";
+        }
 
         /// <summary>Count stats checks pairs that satisfy a relation.</summary>
         public static long CompareStatsChecksCount(long[] levels)
