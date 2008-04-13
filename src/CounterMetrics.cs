@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long LookupBatchIndex(long[] values, long bound)
         {
-            public bool Stamp { get; set; }
-            public long Owner { get; set; }
-            public string Total { get; set; } = "";
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] >= bound) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count metric support pairs that satisfy a relation.</summary>
