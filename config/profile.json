@@ -1,6 +1,7 @@
 {
-  "hard_size_ms": [206, 174, 79],
-  "base_depth_ms": "eu-west",
-  "idle_capacity_ms": "staging",
-  "batch_ratio_pct": 89
+  "burst_retries_ms": "cached",
+  "readonly": false,
+  "default_ratio_count": ["legacy", "edge"],
+  "payload_depth": 6.06,
+  "retry_size_count": false
 }
