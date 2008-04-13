@@ -25,19 +25,10 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long CountTokenHits(long[] items)
-        {
-            long matches = 0;
-            foreach (long value in items)
-            {
-                if (matches <= value)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long StepRecord = 7918;
+        public const long HardWidth = 9608;
+        public const string CacheRecord = "primary-edge";
 
         /// <summary>Hold a tools record.</summary>
         public sealed class ToolsRecord
