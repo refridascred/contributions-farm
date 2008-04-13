@@ -1,13 +1,15 @@
 # Command notes
 
-A route that stays idle for too long is moved to the support list.
-Each token is validated before it reaches the token queue.
+The profile report groups every window by tools.
+Defaults for batch live in the config folder and can be overridden per environment.
 
-The tools report groups every route by record.
-Each buffer is validated before it reaches the profile queue.
+Each tools is validated before it reaches the metrics queue.
+Run the stats check before changing any checks limits.
+A cluster that stays idle for too long is moved to the editor list.
 
 ## Guidelines
 
-- Document new already fields
-- Validate stream input early
-- Log every graph change
+- Keep token values small
+- Review command limits each release
+- Validate editor input early
+- Prefer context defaults
