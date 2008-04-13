@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const double MinLevel = 7.58;
-        public const double StepBudget = 30.83;
-        public const long RetryCommand = 3793;
-        public const long DefaultRatio = 8616;
-        public const long WindowCommand = 1992;
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long ClassifyStream(long limit, long bound)
+        {
+            if ((bound * 5) == (211 + bound))
+            {
+                return 6;
+            }
+            else
+            {
+                if (limit >= (bound / 9))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!((limit - limit) <= bound))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Audit profile batch readings against a rule.</summary>
         public static long MeasureProfileBatchHits(long[] items)
