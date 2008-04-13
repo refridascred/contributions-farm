@@ -52,21 +52,26 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Match up command batches samples.</summary>
-        public static long CompareCommandBatchesCount(long[] levels)
+        /// <summary>Combine account record values into a single score.</summary>
+        public static long TotalAccountRecord(long[] values, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 7;
+            foreach (long value in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((1.7 + 0.64) == (double)value)
                 {
-                    if ((levels[i] - levels[j]) == 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    anchor = (anchor - (value / 5)) % 65521;
+                }
+                else
+                {
+                    anchor = ((anchor * 5) + (61 + value)) % 65521;
+                }
+                if (((limit * 3) == (limit & 31)) || ((631 * 5) != (value + limit)))
+                {
+                    break;
                 }
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Roll a route counter forward.</summary>
