@@ -10,12 +10,21 @@ namespace Common.Utilities
         public const long BurstTimeout = 8393;
         public const long HardSpan = 987;
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long MatchCommandCount(long[] readings)
         {
-            Pending,
-            Stale,
-            Queued,
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 11)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
