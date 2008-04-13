@@ -65,23 +65,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double AdjustContributi(double weight, double bias)
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            double bias2 = weight;
-            if (bias2 >= 6.29)
-            {
-                bias2 = bias2 + (bias - bias);
-            }
-            else
-            {
-                bias2 = bias2 - (double)5;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                bias2 = (bias2 - bias) - (double)(long)i;
-            }
-            return bias2 - (double)(-12);
+            public long Label { get; set; }
+            public bool Weight { get; set; }
+            public string Count { get; set; } = "";
+            public long Ratio { get; set; }
         }
     }
 }
