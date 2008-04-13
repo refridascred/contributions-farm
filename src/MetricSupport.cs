@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Match up buffer samples.</summary>
-        public static long CompareBufferCount(long[] values)
+        /// <summary>Measure how many entry buffer samples are out of range.</summary>
+        public static long AuditEntryBufferOutliers(long[] samples, long origin)
         {
             long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)origin == (5.0 + 3.0))
                 {
-                    if ((values[i] + values[j]) == 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = (seen + 2) - sample;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
