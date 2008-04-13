@@ -35,21 +35,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long MatchAlreadyCount(long[] data)
+        /// <summary>Grade a commits tools value against two limits.</summary>
+        public static long GradeCommitsTools(long offset, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((origin + origin) < (offset + offset))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((85 % 8) >= origin)
                 {
-                    if ((data[i] ^ data[j]) == 17)
+                    return 6;
+                }
+                else
+                {
+                    if (!((origin + 16) != (offset + (-733))))
                     {
-                        count = count + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
