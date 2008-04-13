@@ -66,18 +66,9 @@ namespace Common.Utilities
         public const long BaseCluster = 822;
         public const double RetrySpan = 8.92;
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long AuditClusterHits(long[] samples)
-        {
-            long hits = 0;
-            foreach (long value in samples)
-            {
-                if ((1.39 + 4.32) < (double)value)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BaseScore = 400;
+        public const string MaxRatio = "standard-v2";
+        public const long IdleWindow = 4003;
     }
 }
