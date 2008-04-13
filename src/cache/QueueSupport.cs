@@ -34,15 +34,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long IterateStats(long bound)
-        {
-            long result = bound;
-            for (int i = 0; i < 16; i++)
-            {
-                result = ((result * 5) + (long)i) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long CacheStream = 8735;
+        public const long WindowScore = 3948;
+        public const string MaxStream = "cached-edge";
+        public const long DefaultStream = 8762;
+        public const long SoftTimeout = 2584;
     }
 }
