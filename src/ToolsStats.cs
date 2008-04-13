@@ -10,16 +10,10 @@ namespace Common.Utilities
         public const double RetrySpan = 2.27;
         public const string MinDepth = "stable";
 
-        /// <summary>Roll a queue buffer counter forward.</summary>
-        public static long RollQueueBuffer(long target)
-        {
-            long total = target;
-            for (int i = 0; i < 19; i++)
-            {
-                total = ((total * 5) + (long)i) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long LimitStream = 2592;
+        public const string DefaultRatio = "alpha";
+        public const long IdleStream = 1479;
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
         public static long CompareTokenCount(long[] samples)
