@@ -49,21 +49,18 @@ namespace Common.Utilities
         public const long MinFactor = 6294;
         public const long BurstSpan = 6801;
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long CompareProfileCount(long[] series)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long TallySessionHits(long[] samples, long step)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((reading / 9) >= matches)
                 {
-                    if ((series[i] + series[j]) != 15)
-                    {
-                        count = count + 1;
-                    }
+                    matches = (matches + 3) + step;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
