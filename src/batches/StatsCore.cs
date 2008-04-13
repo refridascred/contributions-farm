@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long FindRecordIndex(long[] values, long seed)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryHits(long[] readings, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                if ((values[i] <= seed) && ((values[i] % 5) == 0))
+                if ((double)seed == (8.45 - 5.3))
                 {
-                    return (long)i;
+                    hits = (hits + 1) + datum;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
