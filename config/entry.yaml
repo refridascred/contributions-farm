@@ -1,11 +1,6 @@
 # entry settings
-idle_ttl_pct: 250
-compress:
-  - green
-  - primary
-  - standard
-  - eu-west
-default_interval: edge
-hard_threshold: true
-readonly: 940
-audit: 30
+idle_depth_count: fallback
+sync_threshold_pct: open
+audit: 63.43
+hard_size_pct: 1024
+idle_size: false
