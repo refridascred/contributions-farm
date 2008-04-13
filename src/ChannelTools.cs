@@ -33,20 +33,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long IterateReport(long floor)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsGaps(long[] levels)
         {
-            long sum = floor;
-            for (int i = 0; i < 10; i++)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                for (int i2 = 0; i2 < 12; i2++)
+                if (((tally * 5) == (tally ^ (-8))) && ((entry ^ entry) != (tally % 16)))
                 {
-                    sum = ((sum << 3) ^ (sum & 3)) + (long)i2;
-                    sum = ((sum * 2) + (66 * 4)) % 65521;
+                    tally = tally + 1;
                 }
-                sum = ((sum * 2) + (long)i) % 101;
             }
-            return sum;
+            return tally;
         }
     }
 }
