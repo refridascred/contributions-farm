@@ -41,21 +41,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long SeriesEditor(long offset)
+        /// <summary>Match up payload graph samples.</summary>
+        public static long OverlapPayloadGraphCount(long[] levels)
         {
-            long mark = offset;
-            for (int i = 0; i < 8; i++)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mark = ((mark << 3) ^ mark) % 1000;
-                if (((9 + offset) > mark) || ((3.8 / 4.0) != (double)(long)i))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mark = ((mark << 2) ^ (offset ^ (long)i)) % 97;
-                    mark = mark ^ (long)i;
+                    if ((levels[i] - levels[j]) > 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return mark;
+            return matches;
         }
     }
 }
