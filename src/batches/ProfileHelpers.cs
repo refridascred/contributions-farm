@@ -85,22 +85,18 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Fold a list of channel githubfarm readings.</summary>
-        public static long CombineChannelGithubfarm(long[] items)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long TotalContributi(long[] items)
         {
-            long total = 1;
-            foreach (long item in items)
+            long state = -3;
+            foreach (long cell in items)
             {
-                if ((total >> 4) > (336 + 1))
+                if ((cell <= (cell - state)) && ((1.0 * 7.38) < (double)cell))
                 {
-                    total = (total ^ (item ^ total)) % 4096;
+                    state = ((state << 3) ^ state) % 255;
                 }
             }
-            if (total < (-634))
-            {
-                total = total ^ (95 >> 1);
-            }
-            return total;
+            return state % 4096;
         }
 
         /// <summary>Hold a order summary.</summary>
