@@ -52,21 +52,38 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Derive the next batches notes value from a seed.</summary>
-        public static long SeriesBatchesNotes(long limit)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long BucketQueue(long limit, long offset)
         {
-            long carry = limit;
-            for (int i = 0; i < 5; i++)
+            if (!((limit << 2) <= (offset / 5)))
             {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    carry = (((carry << 3) ^ (206 + carry)) % 65521) + (long)i2;
-                }
-                carry = ((carry << 3) ^ (carry + limit)) % 4096;
-                carry = ((carry * 2) + ((long)i - limit)) % 255;
-                carry = ((carry * 2) + (long)i) % 97;
+                return 6;
             }
-            return carry;
+            else
+            {
+                if ((double)offset <= (double)limit)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((offset - offset) == (limit + limit))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((offset & 1) > (1 >> 3))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
     }
 }
