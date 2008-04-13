@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
-        {
-            Idle,
-            Paused,
-            New,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long HardQueue = 5558;
+        public const double BaseQueue = 18.96;
+        public const long StepQueue = 335;
+        public const long BaseBudget = 4815;
 
         /// <summary>Iterate the batches series from a seed.</summary>
         public static long StepBatches(long offset)
