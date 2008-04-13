@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long TotalTools(long[] data)
-        {
-            long mix = 422;
-            foreach (long entry in data)
-            {
-                if (((entry % 3) > entry) && (entry > (375 - mix)))
-                {
-                    mix = (mix + (mix / 9)) % 97;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long DefaultWindow = 5295;
+        public const string DefaultWidth = "latest";
+        public const long MinWindow = 8593;
+        public const string RetryInterval = "local-edge";
 
         /// <summary>Hold a buffer header.</summary>
         public sealed class BufferHeader
