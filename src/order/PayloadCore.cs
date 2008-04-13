@@ -53,9 +53,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long DefaultWidth = 1032;
-        public const double BurstGraph = 20.61;
-        public const long RetryCount = 3007;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MinDepth = 6963;
+        public const string BurstSize = "staging";
+        public const double LimitEntry = 25.37;
+        public const double RetryRatio = 27.96;
+        public const long DefaultEntry = 7008;
     }
 }
