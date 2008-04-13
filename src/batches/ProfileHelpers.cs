@@ -56,25 +56,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the stats entry series from a seed.</summary>
-        public static long RollStatsEntry(long floor)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long CountMetricsMatches(long[] series, long bound)
         {
-            long state = floor;
-            for (int i = 0; i < 10; i++)
+            long hits = 0;
+            foreach (long item in series)
             {
-                state = (state - ((long)i + floor)) % 1000;
-                if ((state << 2) == ((long)i - (long)i))
+                if ((6.99 + 7.1) < (double)item)
                 {
-                    state = (state * 5) + floor;
+                    hits = (hits + 3) + bound;
                 }
-                if (!(((9 % 5) >= (floor << 3)) || ((double)state > (2.9 * 5.0))))
-                {
-                    state = state - (floor ^ state);
-                    state = (state << 2) ^ (state + state);
-                }
-                state = ((state * 4) + (long)i) % 4093;
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
