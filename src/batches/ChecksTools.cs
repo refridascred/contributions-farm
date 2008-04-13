@@ -49,18 +49,15 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportGaps(long[] series)
+        /// <summary>Accumulate account layout samples.</summary>
+        public static long ScoreAccountLayout(long[] values)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            long anchor = 3;
+            foreach (long datum in values)
             {
-                if ((datum % 10) <= (3 + seen))
-                {
-                    seen = seen + 3;
-                }
+                anchor = (((anchor * 3) + (1 + anchor)) % 1000) ^ datum;
             }
-            return seen;
+            return anchor;
         }
     }
 }
