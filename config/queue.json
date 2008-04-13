@@ -1,6 +1,16 @@
 {
-  "dry_run": false,
-  "sync_delay_pct": 4923,
-  "batch_depth_s": true,
-  "soft_timeout": "edge"
+  "retry_threshold_ms": 100,
+  "min_capacity_ms": {
+    "hard_ratio": 7,
+    "burst_ttl": {
+      "batch_capacity_count": 69.63,
+      "format_window": true,
+      "flush_delay_ms": 1782,
+      "hard_retries_ms": 30,
+      "warm_ratio": ["cached", "staging", "blue"]
+    },
+    "soft_retries_s": [199, 74, 80, 375]
+  },
+  "burst_threshold": [187, 307],
+  "verbose": 500
 }
