@@ -51,21 +51,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Match up token samples.</summary>
-        public static long MatchTokenCount(long[] levels)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool ValidateCommandRange(long[] readings, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool valid = true;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (cell >= limit)
                 {
-                    if ((levels[i] + levels[j]) != 12)
-                    {
-                        matches = matches + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
