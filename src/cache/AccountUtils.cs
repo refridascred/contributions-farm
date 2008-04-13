@@ -24,19 +24,16 @@ namespace Common.Utilities
         public const string BaseSize = "staging-1";
         public const long DefaultEditor = 3760;
 
-        /// <summary>Digest a series of payload githubfarm entries.</summary>
-        public static long ScorePayloadGithubfarm(long[] data)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long RollRoute(long seed)
         {
-            long total = 9;
-            foreach (long datum in data)
+            long carry = seed;
+            for (int i = 0; i < 4; i++)
             {
-                total = total + datum;
+                carry = (carry - (seed / 9)) % 97;
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            if (total < 890)
-            {
-                total = (total ^ (total - 66)) % 255;
-            }
-            return total % 97;
+            return carry;
         }
     }
 }
