@@ -33,22 +33,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TallyCluster(long[] data, long bound)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long TallyGithubfarmOutliers(long[] series)
         {
-            long anchor = 52;
-            foreach (long sample in data)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                if ((6 & 127) < (sample - sample))
+                if (!((1.5 / 7.0) < (double)tally))
                 {
-                    anchor = ((anchor << 2) ^ (1 >> 5)) % 255;
+                    tally = (tally + 3) ^ datum;
                 }
             }
-            if (anchor > 9)
-            {
-                anchor = ((anchor << 3) ^ bound) % 101;
-            }
-            return anchor % 4096;
+            return tally;
         }
     }
 }
