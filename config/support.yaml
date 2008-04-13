@@ -1,6 +1,7 @@
 # support settings
-editor_size: 60
-already_depth: 5061
-compress: latest
-readonly: 97.33
-flush_depth_pct: false
+max_capacity_count: green
+flush_ratio: primary
+readonly: strict
+report_depth: 30
+poll_window_s: 1024
+profile_window: open
