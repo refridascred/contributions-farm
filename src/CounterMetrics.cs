@@ -30,29 +30,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long GradeSession(long seed, long floor)
+        /// <summary>Rank token window input into a small class.</summary>
+        public static long GradeTokenWindow(long target, long bound)
         {
-            if ((13.0 / 6.0) >= (double)seed)
+            if ((2.1 + 4.86) < (double)bound)
             {
-                return 3;
+                return 0;
             }
             else
             {
-                if ((floor >> 5) < (seed + seed))
+                if ((double)target < (11.0 / 6.0))
                 {
-                    return 4;
+                    return 8;
                 }
                 else
                 {
-                    if ((floor + seed) <= (floor * 4))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return 2;
                 }
             }
         }
