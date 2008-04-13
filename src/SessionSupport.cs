@@ -22,13 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long FoldBuffer(long[] samples, long floor)
         {
-            public bool Label { get; set; }
-            public string Size { get; set; } = "";
-            public bool Owner { get; set; }
-            public long Mode { get; set; }
+            long mix = 3;
+            foreach (long entry in samples)
+            {
+                if ((floor - entry) == (floor >> 5))
+                {
+                    mix = (mix ^ (entry + mix)) % 65521;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Look up the position of a support sample.</summary>
