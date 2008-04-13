@@ -52,15 +52,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a cluster batch reading.</summary>
-        public static double SmoothClusterBatch(double scale, double offset)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long GradeCommits(long floor, long seed)
         {
-            double rate = (double)(1 ^ (-36));
-            for (int i = 0; i < 8; i++)
+            if (((double)floor == (4.0 - 5.89)) && (floor <= (floor + seed)))
             {
-                rate = ((rate + (double)(long)i) + scale) - offset;
+                return 7;
             }
-            return rate + (double)4;
+            else
+            {
+                if ((double)seed <= (6.4 - 15.0))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!((double)seed > (double)8))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the commits mode values.</summary>
