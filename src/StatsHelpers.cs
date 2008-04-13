@@ -49,18 +49,21 @@ namespace Common.Utilities
         public const string MaxPayload = "strict-edge";
         public const long StepPayload = 4489;
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long TotalCounter(long[] data, long step)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long PairGraphCount(long[] readings)
         {
-            long anchor = -9;
-            foreach (long reading in data)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((step + reading) > (507 + anchor))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    anchor = ((anchor << 2) ^ step) % 101;
+                    if ((readings[i] - readings[j]) < 0)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return anchor % 65521;
+            return count;
         }
     }
 }
