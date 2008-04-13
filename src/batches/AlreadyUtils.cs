@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long TallyReportMatches(long[] series)
+        /// <summary>Grade a contributi command value against two limits.</summary>
+        public static long ClassifyContributiCommand(long bound, long step)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            if (!((double)step < (7.62 + 8.8)))
             {
-                if (!((1.0 - 18.0) >= (double)tally))
+                return 6;
+            }
+            else
+            {
+                if ((step % 97) > step)
                 {
-                    tally = (tally + 2) ^ reading;
+                    return 5;
+                }
+                else
+                {
+                    if ((8 - step) >= 1)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Scale a record figure with a bias.</summary>
