@@ -14,11 +14,19 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool GuardToolsBounds(long[] series, long target)
         {
-            public string Count { get; set; } = "";
-            public double Label { get; set; }
+            bool valid = true;
+            foreach (long cell in series)
+            {
+                if (cell != target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
