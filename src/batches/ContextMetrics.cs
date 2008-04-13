@@ -12,22 +12,17 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long TallyCommits(long[] items, long limit)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long LocateChecksIndex(long[] values, long origin)
         {
-            long result = -410;
-            foreach (long value in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (value < (result * 3))
+                if ((values[i] >= origin) && ((values[i] % 2) == 0))
                 {
-                    result = ((result - (value - value)) % 97) - limit;
-                }
-                if ((value * 4) < ((long)items.Length & 63))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Roll a format counter forward.</summary>
