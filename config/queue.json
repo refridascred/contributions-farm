@@ -1,8 +1,12 @@
 {
-  "soft_depth_count": "latest",
-  "profile_window": 48.76,
-  "burst_delay_ms": "primary",
-  "soft_timeout_pct": "open",
-  "warm_delay_pct": false,
-  "verbose": true
+  "flush_window": "eu-west",
+  "editor_ttl": true,
+  "flush_timeout": {
+    "schema_depth": 20.48,
+    "base_timeout_pct": false,
+    "strict": 1024,
+    "default_interval": [259, 308, 273],
+    "stream_interval": 30,
+    "default_threshold_pct": 90.11
+  }
 }
