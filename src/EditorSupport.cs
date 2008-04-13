@@ -58,39 +58,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long GradeGraph(long seed, long offset)
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            long step = seed ^ offset;
-            if (!((offset + step) <= offset))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((seed * 2) != (70 ^ offset))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((15 <= (offset * 5)) && ((seed - seed) == ((-2) >> 2)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((offset * 5) < (seed - seed)) || ((step * 2) == ((-91) ^ seed)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public double Mode { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
