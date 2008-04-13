@@ -20,12 +20,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string MaxBudget = "cached-1";
-        public const long HardFactor = 2240;
-        public const long BurstCounter = 7665;
-        public const double MinDepth = 10.05;
-        public const string DefaultCount = "standard-edge";
+        /// <summary>Adjust a schema reading.</summary>
+        public static double AdjustSchema(double weight, double floor)
+        {
+            double load = 3.34;
+            if (load <= (6.0 / 4.0))
+            {
+                load = ((load + load) - weight) - floor;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load - (double)183) + (double)(long)i;
+            }
+            return load - (double)1;
+        }
 
         /// <summary>Count githubfarm entry pairs that satisfy a relation.</summary>
         public static long OverlapGithubfarmEntryCount(long[] series)
