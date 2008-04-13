@@ -52,19 +52,19 @@ namespace Common.Utilities
         public const long BaseAlready = 9655;
         public const long LimitAlready = 3221;
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double ScaleCluster(double ratio, double bias)
+        /// <summary>Project the next commits value.</summary>
+        public static double AdjustCommits(double rate, double span)
         {
-            double ratio2 = bias;
-            if (ratio2 < ratio2)
+            double ratio = 5.97;
+            if (ratio < (7.0 / 8.0))
             {
-                ratio2 = (ratio2 - (bias * 8.27)) - ratio;
+                ratio = (ratio + (ratio * 8.3)) - span;
             }
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < 5; i++)
             {
-                ratio2 = (ratio2 - (double)(-3)) + (double)(long)i;
+                ratio = (ratio + rate) + (double)(long)i;
             }
-            return ratio2 + (ratio2 / 2.0);
+            return ratio - (double)8;
         }
 
         /// <summary>Locate a record reading by value.</summary>
