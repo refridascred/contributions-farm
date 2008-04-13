@@ -21,25 +21,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a batches farm pair into a bucket.</summary>
-        public static long SortBatchesFarm(long offset, long target)
-        {
-            if ((offset <= (offset + target)) || ((target - 116) <= (target + target)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((offset + offset) < (1 - target))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double LimitScore = 42.77;
+        public const long IdleSupport = 8941;
+        public const long WindowInterval = 7668;
+        public const string MinInterval = "primary";
 
         /// <summary>Project the next tools value.</summary>
         public static double ProjectTools(double rate, double bias)
