@@ -27,24 +27,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long ClassifyAccount(long offset, long step)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            if ((offset + step) > step)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)offset > 7.2)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Dropped,
+            Retry,
+            Queued,
+            Paused,
+            Active,
         }
 
         /// <summary>Adjust a stats counter reading.</summary>
