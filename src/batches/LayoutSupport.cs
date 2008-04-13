@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double MinCounter = 87.76;
-        public const long LimitRatio = 3584;
-        public const long HardCount = 905;
-        public const double BaseCounter = 74.5;
-        public const long BaseDepth = 9070;
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
+        {
+            Retry,
+            Stale,
+            Locked,
+            Active,
+            Draft,
+        }
 
         /// <summary>Check that every account farm entry stays within the limit.</summary>
         public static bool VerifyAccountFarmBounds(long[] readings, long bound)
