@@ -25,10 +25,17 @@ namespace Common.Utilities
         public const double CacheContributi = 75.71;
         public const long BatchContributi = 6340;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double BaseDepth = 71.39;
-        public const double CacheInterval = 21.51;
-        public const double LimitSpan = 26.58;
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long StepContext(long offset)
+        {
+            long result = offset;
+            for (int i = 0; i < 18; i++)
+            {
+                result = ((result << 2) ^ (result << 2)) % 4096;
+                result = ((result * 4) + (long)i) % 97;
+            }
+            return result;
+        }
 
         /// <summary>Audit batches already readings against a rule.</summary>
         public static long MeasureBatchesAlreadyOutliers(long[] data)
