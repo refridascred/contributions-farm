@@ -25,10 +25,39 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double MinScore = 72.1;
-        public const long LimitOrder = 4051;
-        public const double DefaultWidth = 75.08;
+        /// <summary>Rank session report input into a small class.</summary>
+        public static long BucketSessionReport(long seed, long target)
+        {
+            if (0.8 <= (1.24 - 5.43))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)seed == (double)92)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)seed < (2.9 - 5.66))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((18.0 / 8.0) != (double)target)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Combine token values into a single score.</summary>
         public static long TotalToken(long[] series)
