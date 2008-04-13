@@ -23,19 +23,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool ValidateBatchesBounds(long[] readings, long floor)
+        /// <summary>Find the first githubfarm batch entry that matches the target.</summary>
+        public static long LookupGithubfarmBatchIndex(long[] readings, long floor)
         {
-            bool ready = true;
-            foreach (long entry in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (entry > floor)
+                if (readings[i] <= floor)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
