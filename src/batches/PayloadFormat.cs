@@ -32,15 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the token cache entries that pass the check.</summary>
-        public static long TallyTokenCacheGaps(long[] samples)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long TallySchemaOutliers(long[] readings)
         {
             long matches = 0;
-            foreach (long cell in samples)
+            foreach (long item in readings)
             {
-                if ((double)matches > 0.2)
+                if (1.1 < (double)item)
                 {
-                    matches = (matches + 3) ^ cell;
+                    matches = matches + 2;
                 }
             }
             return matches;
