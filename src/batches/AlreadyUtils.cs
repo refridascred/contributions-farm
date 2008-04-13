@@ -32,10 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long LimitSize = 2179;
-        public const long DefaultMetric = 4269;
-        public const long RetryCount = 6711;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MinBudget = 3252;
+        public const long BaseChannel = 4187;
+        public const double IdleChannel = 80.7;
+        public const string BaseRatio = "strict";
+        public const double BurstChannel = 90.39;
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
         public static long MatchPayloadCount(long[] items)
