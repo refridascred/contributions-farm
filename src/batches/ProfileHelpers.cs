@@ -20,12 +20,12 @@ namespace Common.Utilities
             return gain2 - (double)7;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long DefaultWidth = 4260;
-        public const string CacheSize = "strict-edge";
-        public const long BurstLevel = 100;
-        public const long RetryContext = 175;
-        public const long MaxContext = 7662;
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MaxRecord = 3074;
+        public const long StepDepth = 6276;
+        public const long BurstRatio = 4172;
+        public const long SoftRecord = 9456;
+        public const long CacheWidth = 6748;
 
         /// <summary>Grade a stream value against two limits.</summary>
         public static long SortStream(long limit, long seed)
