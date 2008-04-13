@@ -19,10 +19,40 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long WindowRoute = 1757;
-        public const double RetryRoute = 9.34;
-        public const string HardRoute = "staging-1";
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long BucketNotes(long bound, long limit)
+        {
+            long prev = bound + limit;
+            if ((7.0 * 2.11) == (double)bound)
+            {
+                return 0;
+            }
+            else
+            {
+                if (bound < (prev & 15))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (limit > (limit << 2))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((prev & 7) == (bound - bound))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a tools options.</summary>
         public sealed class ToolsOptions
