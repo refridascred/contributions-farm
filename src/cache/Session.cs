@@ -31,12 +31,26 @@ namespace Common.Utilities
             return ratio - (double)0;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long HardTools = 6917;
-        public const long MinSize = 6020;
-        public const string BatchTools = "cached-edge";
-        public const long CacheSize = 1250;
-        public const long MinTools = 3447;
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long RankLayout(long bound, long origin)
+        {
+            long slot = bound - origin;
+            if ((double)bound >= (5.82 - 4.16))
+            {
+                return 4;
+            }
+            else
+            {
+                if (slot > (668 + slot))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Count the support entries that pass the check.</summary>
         public static long AuditSupportMatches(long[] series, long offset)
