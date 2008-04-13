@@ -1,14 +1,5 @@
 # support settings
-idle_retries_ms:
-  max_capacity:
-    - 212
-    - 259
-  burst_delay_pct: blue
-  profile_delay: latest
-counter_interval:
-  - open
-  - blue
-  - cached
-  - blue
-schema_timeout: false
-soft_limit_ms: true
+max_delay_s: 77.55
+retry_retries: legacy
+base_limit_count: cached
+idle_depth_s: 9831
