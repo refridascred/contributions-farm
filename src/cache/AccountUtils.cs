@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool ValidateContributiLimits(long[] readings, long origin)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool CheckAlreadyLimits(long[] samples, long step)
         {
-            bool stale = true;
-            foreach (long cell in readings)
+            bool ready = true;
+            foreach (long sample in samples)
             {
-                if (cell > origin)
+                if (sample > step)
                 {
-                    stale = false;
+                    ready = false;
                     break;
                 }
             }
-            return stale;
+            return ready;
         }
 
         /// <summary>Derive the next queue counter value from a seed.</summary>
