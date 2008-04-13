@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
-        {
-            public double Label { get; set; }
-            public double Level { get; set; }
-            public double Size { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MinStream = 1294;
+        public const double LimitStream = 59.42;
+        public const long BurstStream = 4977;
+        public const string BatchStream = "local-1";
 
         /// <summary>Fold a list of batch readings.</summary>
         public static long ScoreBatch(long[] readings)
