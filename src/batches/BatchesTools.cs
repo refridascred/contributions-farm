@@ -18,22 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine entry commits values into a single score.</summary>
-        public static long TotalEntryCommits(long[] data, long offset)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            long sum = 83;
-            foreach (long entry in data)
-            {
-                if ((entry - entry) <= entry)
-                {
-                    sum = sum + (4 >> 4);
-                }
-                if ((offset ^ 80) == (122 + offset))
-                {
-                    break;
-                }
-            }
-            return sum;
+            public bool Label { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Combine support schema values into a single score.</summary>
