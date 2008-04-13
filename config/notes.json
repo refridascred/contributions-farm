@@ -1,12 +1,7 @@
 {
-  "session_delay": 30.67,
-  "poll_delay_ms": 18,
-  "max_limit": 30,
-  "idle_capacity_pct": {
-    "hard_size_ms": false,
-    "warm_capacity_ms": 1686,
-    "cache_limit_ms": [415, 236],
-    "already_delay": 52.8,
-    "hard_capacity": 500
-  }
+  "route_capacity": "local",
+  "dry_run": 85.58,
+  "farm_ttl": 9.26,
+  "session_window": 79,
+  "cache_retries": 2684
 }
