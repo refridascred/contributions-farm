@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long BucketFormat(long seed, long floor)
         {
-            public long Count { get; set; }
-            public string Token { get; set; } = "";
-            public string Region { get; set; } = "";
+            if (floor > (seed + seed))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((seed - floor) != (floor + floor))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((floor % 12) < floor)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((floor - (-1)) <= floor) && ((seed / 8) > (floor * 3)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
