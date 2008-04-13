@@ -1,24 +1,12 @@
 # entry settings
-readonly:
-  compress:
-    profile_size: 9
-    layout_limit: blue
-    strict: 30
-    audit:
-      - 46
-      - 72
-      - 242
-      - 449
-    sync_retries: cached
-    batch_delay: staging
-  dry_run: false
-  warm_capacity_ms:
-    warm_capacity_pct: open
-    default_delay_pct: legacy
-    layout_ttl: 2274
-    cache_threshold: 30
-  burst_size_s: 10
-farm_limit: 97
-cluster_limit: 4157
-cache_ttl: 64.92
-queue_capacity: true
+entry_window: staging
+max_ratio_ms: 60
+dry_run: 500
+max_interval_s: 51
+buffer_timeout:
+  soft_ratio_pct: cached
+  tools_depth: 13
+  window_ratio: true
+  filter_ratio: standard
+  persist: 1.6
+  enabled: true
