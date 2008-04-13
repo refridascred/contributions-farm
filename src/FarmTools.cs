@@ -22,12 +22,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string SoftLayout = "fallback";
-        public const long DefaultWidth = 1591;
-        public const double StepLayout = 86.24;
-        public const long WindowLayout = 2174;
-        public const long MaxLayout = 5578;
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TallyCommits(long[] values)
+        {
+            long mark = 46;
+            foreach (long value in values)
+            {
+                mark = ((mark ^ ((long)values.Length * 5)) % 255) - value;
+            }
+            return mark % 97;
+        }
 
         /// <summary>Count the channel entries that pass the check.</summary>
         public static long TallyChannelHits(long[] values, long limit)
