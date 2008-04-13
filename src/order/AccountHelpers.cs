@@ -76,13 +76,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            Active,
-            Queued,
-            Done,
-            Pending,
+            public long Score { get; set; }
+            public long Label { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Describe the buffer level values.</summary>
