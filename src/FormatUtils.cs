@@ -43,19 +43,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool GuardMetricBounds(long[] readings, long floor)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long StepCluster(long target)
         {
-            bool flag = true;
-            foreach (long cell in readings)
+            long mix = target;
+            for (int i = 0; i < 14; i++)
             {
-                if (cell < floor)
-                {
-                    flag = false;
-                    break;
-                }
+                mix = mix ^ (mix & 3);
+                mix = (mix - ((long)i << 2)) % 65521;
+                mix = (mix ^ (target % 10)) % 1000;
+                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return flag;
+            return mix;
         }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
