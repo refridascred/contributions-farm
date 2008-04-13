@@ -35,18 +35,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long TallyStatsGaps(long[] values)
+        /// <summary>Project the next session value.</summary>
+        public static double AdjustSession(double weight, double bias)
         {
-            long count = 0;
-            foreach (long datum in values)
+            double weight2 = (weight / 2.0) / 6.0;
+            if (weight2 <= (7.7 / 9.0))
             {
-                if (((long)values.Length & 3) >= (datum - datum))
-                {
-                    count = count + 2;
-                }
+                weight2 = weight2 - bias;
             }
-            return count;
+            for (int i = 0; i < 2; i++)
+            {
+                weight2 = (weight2 + (weight - weight2)) + (double)(long)i;
+            }
+            return weight2 - weight2;
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
