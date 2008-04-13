@@ -1,5 +1,5 @@
 {
-  "flush_timeout": false,
-  "flush_delay_ms": ["fallback", "primary"],
-  "stream_delay": ["strict", "standard", "local", "open"]
+  "poll_ttl_count": "eu-west",
+  "schema_delay": 23.21,
+  "enabled": ["eu-west", "staging", "edge"]
 }
