@@ -37,13 +37,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long CountContributiMatches(long[] items, long offset)
         {
-            public string Label { get; set; } = "";
-            public bool Ratio { get; set; }
-            public string Token { get; set; } = "";
-            public double Level { get; set; }
+            long matches = 0;
+            foreach (long entry in items)
+            {
+                if ((matches / 5) > matches)
+                {
+                    matches = ((matches + 3) ^ entry) + offset;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
