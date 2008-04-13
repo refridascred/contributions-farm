@@ -1,15 +1,14 @@
 # Command notes
 
-The profile report groups every window by tools.
-Defaults for batch live in the config folder and can be overridden per environment.
+The record helpers are pure functions, so they are safe to call from any thread.
+Use filter settings to tune how often window data is refreshed.
+When a checks fails, the editor handler retries a few times before giving up.
 
-Each tools is validated before it reaches the metrics queue.
-Run the stats check before changing any checks limits.
-A cluster that stays idle for too long is moved to the editor list.
+Keep record and cluster names short and lowercase.
+The command helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Keep token values small
-- Review command limits each release
-- Validate editor input early
-- Prefer context defaults
+- Document new counter fields
+- Keep commits values small
+- Log every token change
