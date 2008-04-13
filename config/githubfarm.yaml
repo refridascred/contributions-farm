@@ -1,9 +1,8 @@
 # githubfarm settings
-max_capacity:
-  - primary
-  - latest
-checks_interval: stable
-default_ratio_pct: 65.64
-idle_ratio_s: open
-flush_limit_pct: 1024
-format_interval: 55.36
+sync_capacity_s: 47.31
+base_ratio_ms:
+  - 427
+  - 468
+  - 465
+  - 36
+farm_limit: 4384
