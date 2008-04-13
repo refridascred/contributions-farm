@@ -10,10 +10,14 @@ namespace Common.Utilities
         public const double RetrySpan = 2.27;
         public const string MinDepth = "stable";
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long LimitStream = 2592;
-        public const string DefaultRatio = "alpha";
-        public const long IdleStream = 1479;
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
+        {
+            public long Flag { get; set; }
+            public double Weight { get; set; }
+            public string Mode { get; set; } = "";
+            public long Level { get; set; }
+        }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
         public static long CompareTokenCount(long[] samples)
