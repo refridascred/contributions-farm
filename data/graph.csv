@@ -1,11 +1,6 @@
-id,weight,token
-1,green,92.76
-2,blue,195
-3,local,60.1
-4,75.43,93.77
-5,green,71.55
-6,staging,26
-7,strict,edge
-8,885,193
-9,63.38,936
-10,59.35,staging
+id,state,weight,label,level
+1,standard,76.57,798,642
+2,3.0,788,11.17,fallback
+3,67.3,green,legacy,local
+4,944,legacy,local,90.92
+5,312,527,83.55,96.53
