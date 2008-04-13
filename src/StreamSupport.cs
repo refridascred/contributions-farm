@@ -53,15 +53,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long FoldSupport(long[] levels)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long SeriesTools(long limit)
         {
-            long result = 476;
-            foreach (long reading in levels)
+            long state = limit;
+            for (int i = 0; i < 14; i++)
             {
-                result = ((result * 5) + (reading - result)) % 1000;
+                state = ((state * 4) + (long)i) % 101;
             }
-            return result % 65521;
+            return state;
         }
     }
 }
