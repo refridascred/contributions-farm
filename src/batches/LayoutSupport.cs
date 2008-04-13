@@ -29,15 +29,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long FoldCommits(long[] values)
+        /// <summary>Audit entry account readings against a rule.</summary>
+        public static long TallyEntryAccountHits(long[] levels, long offset)
         {
-            long total = 1;
-            foreach (long cell in values)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                total = ((total + total) % 4096) ^ cell;
+                if ((3.0 - 9.0) == (double)entry)
+                {
+                    count = (count + 3) - offset;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Audit stream order readings against a rule.</summary>
