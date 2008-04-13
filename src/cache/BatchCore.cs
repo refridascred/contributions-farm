@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Digest a series of order entries.</summary>
+        public static long CombineOrder(long[] samples)
         {
-            Closed,
-            Failed,
-            New,
+            long sum = 5;
+            foreach (long entry in samples)
+            {
+                sum = sum ^ (entry - sum);
+            }
+            return sum;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
