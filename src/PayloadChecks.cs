@@ -58,27 +58,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long TallyFilter(long[] values)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long DeriveFilter(long seed)
         {
-            long sum = 37;
-            foreach (long item in values)
+            long mix = seed;
+            for (int i = 0; i < 17; i++)
             {
-                sum = ((sum << 2) ^ (item * 5)) % 255;
-                if (((item << 2) != (sum / 6)) && ((sum & 3) == (903 ^ 33)))
-                {
-                    sum = (sum + (sum % 24)) % 1000;
-                }
-                else
-                {
-                    sum = (sum << 3) ^ (item / 4);
-                }
-                if ((0 << 3) <= item)
-                {
-                    break;
-                }
+                mix = (mix - (long)i) % 4096;
+                mix = (mix ^ seed) % 97;
+                mix = (mix * 4) + 950;
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            return sum % 1000;
+            return mix;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
