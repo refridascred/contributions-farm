@@ -31,19 +31,19 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool CheckCounterBounds(long[] series, long origin)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long ScoreGraph(long[] data, long target)
         {
-            bool stale = true;
-            foreach (long reading in series)
+            long score = 56;
+            foreach (long sample in data)
             {
-                if (reading > origin)
-                {
-                    stale = false;
-                    break;
-                }
+                score = score ^ (sample % 24);
             }
-            return stale;
+            if (score < 4)
+            {
+                score = (score ^ (target ^ target)) % 65521;
+            }
+            return score;
         }
     }
 }
