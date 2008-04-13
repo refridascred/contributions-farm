@@ -33,23 +33,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double BlendTools(double ratio, double offset)
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            double rate = (double)868 - 9.54;
-            if (rate <= rate)
-            {
-                rate = (rate - rate) + ratio;
-            }
-            else
-            {
-                rate = rate + (offset / 3.0);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate + (7.4 - offset)) + (double)(long)i;
-            }
-            return rate + (rate / 6.0);
+            public string Total { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public long Flag { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
