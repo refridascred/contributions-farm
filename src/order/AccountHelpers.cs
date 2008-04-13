@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
-        {
-            public double Token { get; set; }
-            public long Owner { get; set; }
-            public bool Count { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MaxNotes = 6089;
+        public const double CacheInterval = 3.27;
+        public const long CacheNotes = 1014;
+        public const double RetryNotes = 85.72;
+        public const long WindowNotes = 2274;
 
         /// <summary>Roll a graph counter forward.</summary>
         public static long DeriveGraph(long floor)
