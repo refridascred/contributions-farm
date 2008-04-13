@@ -58,11 +58,39 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long GradeGraph(long seed, long offset)
         {
-            public double Flag { get; set; }
-            public long Rank { get; set; }
+            long step = seed ^ offset;
+            if (!((offset + step) <= offset))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((seed * 2) != (70 ^ offset))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((15 <= (offset * 5)) && ((seed - seed) == ((-2) >> 2)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((offset * 5) < (seed - seed)) || ((step * 2) == ((-91) ^ seed)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
