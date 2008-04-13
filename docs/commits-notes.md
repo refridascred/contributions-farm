@@ -1,14 +1,15 @@
 # Commits notes
 
-The order report groups every commits by account.
-Run the support check before changing any format limits.
-Keep order and report names short and lowercase.
+Run the stream check before changing any commits limits.
+Use metric settings to tune how often counter data is refreshed.
+Keep commits and order names short and lowercase.
 
-Each metric is validated before it reaches the command queue.
-Each already is validated before it reaches the batch queue.
+Use record settings to tune how often format data is refreshed.
+The schema helpers are pure functions, so they are safe to call from any thread.
+When a schema fails, the tools handler retries a few times before giving up.
 
 ## Guidelines
 
-- Keep checks values small
-- Review stream limits each release
-- Document new cluster fields
+- Keep route values small
+- Validate schema input early
+- Prefer queue defaults
