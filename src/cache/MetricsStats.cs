@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long CountBufferGaps(long[] values)
         {
-            Active,
-            Pending,
-            Idle,
+            long matches = 0;
+            foreach (long entry in values)
+            {
+                if (((double)entry != (3.7 - 1.0)) || (((-29) ^ entry) < entry))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
