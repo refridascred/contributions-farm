@@ -31,18 +31,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long LookupStatsIndex(long[] samples, long step)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long LimitGithubfarm = 5791;
+        public const string BaseTimeout = "staging-edge";
+        public const string BaseGithubfarm = "alpha-v2";
 
         /// <summary>Fold a list of schema readings.</summary>
         public static long ScoreSchema(long[] series)
