@@ -45,12 +45,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool CheckStreamBounds(long[] samples, long limit)
         {
-            Dropped,
-            Closed,
-            New,
+            bool ready = true;
+            foreach (long sample in samples)
+            {
+                if (sample < limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Hold a token options.</summary>
