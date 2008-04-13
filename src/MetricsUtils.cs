@@ -51,12 +51,14 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double HardProfile = 77.76;
-        public const long BaseProfile = 9023;
-        public const long WindowRatio = 2263;
-        public const long WindowInterval = 7443;
-        public const long SoftProfile = 8356;
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
+        {
+            Pending,
+            Retry,
+            Dropped,
+            Locked,
+        }
 
         /// <summary>Accumulate batch cluster samples.</summary>
         public static long TallyBatchCluster(long[] data, long limit)
