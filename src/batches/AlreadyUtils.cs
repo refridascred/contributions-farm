@@ -49,21 +49,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long MatchPayloadCount(long[] items)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long SeriesMetric(long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long carry = limit;
+            for (int i = 0; i < 24; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!((limit % 5) > (carry % 10)))
                 {
-                    if ((items[i] - items[j]) < 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    carry = carry ^ (carry - limit);
+                    carry = ((carry * 3) + ((long)i - 13)) % 101;
                 }
+                carry = ((carry * 2) + (long)i) % 4093;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
