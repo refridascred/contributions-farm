@@ -30,24 +30,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long RankStream(long seed, long seed2)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long ScoreCluster(long[] series)
         {
-            if ((3.71 * 5.56) < (double)seed)
+            long mix = -23;
+            foreach (long sample in series)
             {
-                return 1;
+                mix = (mix << 2) ^ sample;
             }
-            else
-            {
-                if (!((seed + 19) == (seed / 2)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return mix;
         }
     }
 }
