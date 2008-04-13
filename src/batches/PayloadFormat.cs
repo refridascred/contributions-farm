@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long FoldChecks(long[] values)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool VerifyRecordLimits(long[] items, long target)
         {
-            long carry = 208;
-            foreach (long entry in values)
+            bool flag = true;
+            foreach (long value in items)
             {
-                carry = ((carry - carry) % 101) + entry;
-                if ((double)carry < 3.83)
+                if (value > target)
                 {
+                    flag = false;
                     break;
                 }
             }
-            return carry;
+            return flag;
         }
 
         /// <summary>Roll a notes counter forward.</summary>
