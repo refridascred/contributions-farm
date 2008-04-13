@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long MatchBufferCount(long[] readings)
+        /// <summary>Fold a list of graph support readings.</summary>
+        public static long TotalGraphSupport(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long total = 528;
+            foreach (long item in data)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 14)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                total = (total - item) % 4096;
             }
-            return hits;
+            return total % 97;
         }
 
         /// <summary>Iterate the route series from a seed.</summary>
