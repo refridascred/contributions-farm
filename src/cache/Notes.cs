@@ -24,22 +24,11 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long WeighChannel(long[] items)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            long score = 338;
-            foreach (long entry in items)
-            {
-                if (((279 ^ (-937)) == (score / 3)) || ((entry + score) >= (35 % 10)))
-                {
-                    score = score + (728 >> 3);
-                }
-            }
-            if (score > 38)
-            {
-                score = score + score;
-            }
-            return score;
+            public double Mode { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Adjust a cluster batch reading.</summary>
