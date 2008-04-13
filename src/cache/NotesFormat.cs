@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool VerifyEditorRange(long[] data, long seed)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelHits(long[] readings)
         {
-            bool ok = true;
-            foreach (long datum in data)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                if (datum <= seed)
+                if ((count < (count ^ 2)) && ((datum * 2) <= 9))
                 {
-                    ok = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
