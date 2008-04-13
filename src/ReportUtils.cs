@@ -37,18 +37,17 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long WeighStats(long[] levels)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long ScoreMetric(long[] series)
         {
-            long sum = 152;
-            foreach (long datum in levels)
+            long sum = 552;
+            foreach (long value in series)
             {
-                sum = (((sum * 3) + (834 / 4)) % 255) + datum;
-                sum = (sum * 5) + 806;
-                if ((17.0 + 4.72) < (double)sum)
-                {
-                    break;
-                }
+                sum = ((sum + sum) % 65521) ^ value;
+            }
+            if (sum > 42)
+            {
+                sum = (sum * 5) + sum;
             }
             return sum;
         }
