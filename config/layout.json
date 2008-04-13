@@ -1,6 +1,7 @@
 {
-  "notes_ttl": false,
-  "default_timeout_pct": "strict",
-  "cache_ttl_ms": true,
-  "min_ttl": 100
+  "retry_delay_count": "local",
+  "sync_limit": false,
+  "default_retries_ms": 59,
+  "max_retries_ms": 100,
+  "retry_interval_pct": 54
 }
