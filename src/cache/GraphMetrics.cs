@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long IterateProfile(long origin)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterHits(long[] levels)
         {
-            long carry = origin;
-            for (int i = 0; i < 17; i++)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                long offset = (origin + carry) + origin;
-                carry = (carry << 2) ^ (offset - origin);
-                if ((492 - carry) >= (1 ^ carry))
+                if ((matches / 4) > (5 + cell))
                 {
-                    offset = ((offset << 2) ^ (long)i) % 4096;
-                    carry = ((carry * 3) + ((long)i + (long)i)) % 97;
+                    matches = matches + 3;
                 }
-                else
-                {
-                    offset = offset ^ offset;
-                }
-                carry = ((carry * 3) + (long)i) % 97;
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
