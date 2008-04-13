@@ -18,19 +18,18 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long ScoreFormat(long[] samples, long step)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long WeighFarm(long[] items, long bound)
         {
-            long result = 37;
-            foreach (long sample in samples)
+            long carry = 11;
+            foreach (long entry in items)
             {
-                if (!((sample / 9) >= (result << 3)))
+                if ((double)carry < 7.0)
                 {
-                    result = (result + (2 + step)) % 101;
+                    carry = ((carry - (carry + carry)) + entry) - bound;
                 }
-                result = (result - sample) % 101;
             }
-            return result;
+            return carry % 4096;
         }
 
         /// <summary>Fold a list of editor readings.</summary>
