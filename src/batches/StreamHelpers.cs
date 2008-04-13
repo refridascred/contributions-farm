@@ -5,29 +5,29 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Classify a cache support pair into a bucket.</summary>
-        public static long BucketCacheSupport(long step, long step2)
+        /// <summary>Rank graph entry input into a small class.</summary>
+        public static long GradeGraphEntry(long limit, long seed)
         {
-            long prev = step + step2;
-            if (!((step2 - prev) == (step ^ 112)))
+            long next = limit ^ seed;
+            if (((seed << 2) > (18 >> 4)) || ((limit - 310) > (next + limit)))
             {
-                return 1;
+                return 8;
             }
             else
             {
-                if ((double)step < (7.51 + 9.7))
+                if ((seed ^ 622) != (next % 64))
                 {
-                    return 0;
+                    return 4;
                 }
                 else
                 {
-                    if (6 > (prev & 31))
+                    if ((limit >> 1) > next)
                     {
-                        return 8;
+                        return 6;
                     }
                     else
                     {
-                        return 4;
+                        return 2;
                     }
                 }
             }
