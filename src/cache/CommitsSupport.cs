@@ -5,14 +5,31 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long ClassifyBuffer(long origin, long offset)
         {
-            Done,
-            Failed,
-            Stale,
-            Idle,
-            Synced,
+            if (!((origin - origin) == (688 >> 2)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((offset % 8) == (offset + offset))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!((5.0 * 7.3) >= (double)origin))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
