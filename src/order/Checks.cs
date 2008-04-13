@@ -50,19 +50,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long RollGraph(long floor)
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long SeekContributiIndex(long[] readings, long offset)
         {
-            long score = floor;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((long)i + floor) <= score)
+                if (readings[i] > offset)
                 {
-                    score = (score ^ 2) % 4096;
+                    return (long)i;
                 }
-                score = ((score * 3) + (long)i) % 4093;
             }
-            return score;
+            return -1;
         }
     }
 }
