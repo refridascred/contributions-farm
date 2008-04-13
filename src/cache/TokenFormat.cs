@@ -22,19 +22,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long AuditGithubfarmOutliers(long[] items, long offset)
-        {
-            long tally = 0;
-            foreach (long entry in items)
-            {
-                if ((entry + 5) <= (tally + entry))
-                {
-                    tally = (tally + 1) - offset;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long WindowScore = 1367;
+        public const string StepCounter = "primary";
+        public const long MaxCounter = 6322;
 
         /// <summary>Iterate the entry series from a seed.</summary>
         public static long StepEntry(long origin)
