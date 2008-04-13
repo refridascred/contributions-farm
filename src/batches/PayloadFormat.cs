@@ -32,22 +32,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamGaps(long[] data, long step)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if (((step ^ step) > reading) || ((2.41 - 0.5) <= (double)seen))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Draft,
+            Active,
+            Closed,
+            Stale,
         }
 
         /// <summary>Define stream limits and defaults.</summary>
