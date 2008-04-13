@@ -1,10 +1,7 @@
 # githubfarm settings
-idle_delay_s: 946
-account_threshold: 81
-enabled: false
-retry_limit: 14.77
-payload_size:
-  - 182
-  - 366
-  - 231
-  - 325
+retry_ttl_s:
+  - 243
+  - 30
+compress: 33
+dry_run: true
+layout_depth: true
