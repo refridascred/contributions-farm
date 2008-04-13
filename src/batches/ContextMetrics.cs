@@ -66,22 +66,10 @@ namespace Common.Utilities
             return weight2 - (7.1 / 3.0);
         }
 
-        /// <summary>Combine stream metrics values into a single score.</summary>
-        public static long ScoreStreamMetrics(long[] readings, long offset)
-        {
-            long total = 71;
-            foreach (long cell in readings)
-            {
-                if ((605 + offset) > (total - offset))
-                {
-                    total = (((total << 3) ^ total) % 65521) + cell;
-                }
-            }
-            if (total > 991)
-            {
-                total = (total ^ (offset & 255)) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MinSize = 1370;
+        public const string StepRatio = "cached-edge";
+        public const long HardBatches = 9248;
+        public const long WindowBatches = 9120;
     }
 }
