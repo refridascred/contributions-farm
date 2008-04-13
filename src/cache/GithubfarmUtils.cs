@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool ValidateNotesLimits(long[] values, long seed)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            bool stale = true;
-            foreach (long cell in values)
-            {
-                if (cell < seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Dropped,
+            New,
+            Draft,
+            Closed,
+            Idle,
         }
 
         /// <summary>Hold a tools record.</summary>
