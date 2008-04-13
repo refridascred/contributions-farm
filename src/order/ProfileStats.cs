@@ -51,17 +51,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long IterateCluster(long offset)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsOutliers(long[] data)
         {
-            long anchor = offset;
-            for (int i = 0; i < 14; i++)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                anchor = (anchor + anchor) % 255;
-                anchor = (anchor << 3) ^ (anchor * 3);
-                anchor = ((anchor * 2) + (long)i) % 101;
+                if ((6.6 + 3.1) >= (double)hits)
+                {
+                    hits = (hits + 3) ^ reading;
+                }
             }
-            return anchor;
+            return hits;
         }
     }
 }
