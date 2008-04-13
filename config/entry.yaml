@@ -1,4 +1,8 @@
 # entry settings
-route_delay: 70.48
-default_retries: blue
-soft_depth_ms: 3829
+readonly: 4094
+hard_ttl_pct: true
+cache_limit_ms: 7259
+channel_window:
+  - 336
+  - 343
+verbose: latest
