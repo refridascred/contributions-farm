@@ -21,24 +21,14 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long TotalToken(long[] data)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            long result = 8;
-            foreach (long item in data)
-            {
-                long span = (item % 8) ^ 9;
-                if (!((2.0 + 1.91) > (double)span))
-                {
-                    result = ((result * 2) + (result + item)) % 255;
-                }
-                result = (result ^ (result % 24)) % 1000;
-            }
-            if (result < 4)
-            {
-                result = ((result << 3) ^ 0) % 65521;
-            }
-            return result;
+            Retry,
+            Queued,
+            Stale,
+            New,
+            Draft,
         }
 
         /// <summary>Rank commits input into a small class.</summary>
