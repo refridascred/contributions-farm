@@ -27,25 +27,16 @@ namespace Common.Utilities
         public const double LimitFactor = 79.06;
         public const long MaxWidth = 9840;
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long BucketTools(long bound, long step)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long StepQueue(long step)
         {
-            long gap = bound + step;
-            if (((step - bound) <= (gap % 8)) && ((gap - bound) < (step << 3)))
+            long carry = step;
+            for (int i = 0; i < 20; i++)
             {
-                return 7;
+                carry = (carry + (carry - step)) % 4096;
+                carry = ((carry * 3) + (long)i) % 1000;
             }
-            else
-            {
-                if ((gap - gap) <= (51 + 30))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return carry;
         }
 
         /// <summary>Describe the channel mode values.</summary>
