@@ -47,13 +47,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long MeasureStreamHits(long[] data)
         {
-            Synced,
-            Closed,
-            Done,
-            Stale,
+            long count = 0;
+            foreach (long item in data)
+            {
+                if ((item ^ item) == (count * 3))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
     }
 }
