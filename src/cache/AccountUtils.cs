@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long CountFarmHits(long[] items)
         {
-            Failed,
-            Done,
-            New,
-            Paused,
-            Locked,
+            long hits = 0;
+            foreach (long sample in items)
+            {
+                if ((long)items.Length > (sample << 3))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
