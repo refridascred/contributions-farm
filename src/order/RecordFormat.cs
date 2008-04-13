@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Audit contributi order readings against a rule.</summary>
+        public static long AuditContributiOrderGaps(long[] data, long step)
         {
-            New,
-            Pending,
-            Paused,
-            Idle,
-            Dropped,
+            long matches = 0;
+            foreach (long entry in data)
+            {
+                if ((entry - step) > (step + step))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a stats record.</summary>
