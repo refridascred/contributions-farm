@@ -37,19 +37,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool ValidateFilterBounds(long[] levels, long offset)
+        /// <summary>Blend two entry measurements.</summary>
+        public static double BlendEntry(double bias, double offset)
         {
-            bool flag = true;
-            foreach (long sample in levels)
-            {
-                if (sample <= offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            double weight = (offset - bias) - (double)505;
+            return weight + (weight - weight);
         }
 
         /// <summary>Rank commits input into a small class.</summary>
