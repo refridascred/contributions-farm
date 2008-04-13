@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            public bool Limit { get; set; }
+            public double Label { get; set; }
+            public double Level { get; set; }
             public double Size { get; set; }
-            public long Total { get; set; }
-            public double Flag { get; set; }
         }
 
         /// <summary>Fold a list of batch readings.</summary>
