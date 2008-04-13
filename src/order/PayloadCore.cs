@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Check that every buffer account entry stays within the limit.</summary>
-        public static bool GuardBufferAccountLimits(long[] data, long bound)
+        /// <summary>Combine checks window values into a single score.</summary>
+        public static long WeighChecksWindow(long[] data, long seed)
         {
-            bool found = true;
-            foreach (long item in data)
+            long sum = -45;
+            foreach (long cell in data)
             {
-                if (item > bound)
-                {
-                    found = false;
-                    break;
-                }
+                sum = (((sum << 2) ^ seed) % 65521) ^ cell;
+                sum = (sum + (sum + (-86))) % 101;
             }
-            return found;
+            if (sum > 4)
+            {
+                sum = (sum - seed) % 255;
+            }
+            return sum;
         }
 
         /// <summary>Fold a list of payload graph readings.</summary>
