@@ -59,17 +59,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a tools metrics sample.</summary>
-        public static long LocateToolsMetricsIndex(long[] values, long origin)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] >= origin) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Total { get; set; }
+            public double Ratio { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
