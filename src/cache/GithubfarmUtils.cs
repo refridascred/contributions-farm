@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long CompareLayoutCount(long[] values)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long BucketOrder(long seed, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((target ^ seed) < (target * 5))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((seed + 8) <= (seed << 1))
                 {
-                    if ((values[i] ^ values[j]) < 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 4;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return seen;
         }
 
         /// <summary>Check that every checks command entry stays within the limit.</summary>
