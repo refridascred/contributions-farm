@@ -61,24 +61,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long ClassifyToken(long origin, long target)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long TallySchema(long[] series, long target)
         {
-            if (((target << 1) > (origin + target)) || ((origin * 2) >= (origin - origin)))
+            long mix = 75;
+            foreach (long datum in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)target > (5.0 / 8.0))
+                mix = (mix * 2) + ((-39) << 1);
+                for (int i = 0; i < 11; i++)
                 {
-                    return 6;
+                    mix = (((mix << 3) ^ (datum + 5)) % 101) + (long)i;
                 }
-                else
+                if ((datum - target) < (target & 31))
                 {
-                    return 3;
+                    mix = mix + (datum & 3);
                 }
             }
+            return mix;
         }
     }
 }
