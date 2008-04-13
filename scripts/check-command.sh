@@ -7,14 +7,18 @@ log() {
 }
 
 count=0
-while [ "${count}" -lt 3 ]; do
+while [ "${count}" -lt 2 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-mode="${1:-eu-west}"
+for item in strict cached staging standard; do
+    log "checking ${item}"
+done
+
+mode="${1:-blue}"
 case "${mode}" in
-    eu-west)
+    latest)
         log "fast path"
         ;;
     *)
