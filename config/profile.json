@@ -1,7 +1,16 @@
 {
-  "cache_threshold_ms": 1,
-  "cache_ttl_s": 64,
-  "persist": "strict",
-  "soft_retries": 91.2,
-  "soft_interval": true
+  "flush_threshold": 500,
+  "warm_limit": {
+    "poll_ratio": "standard",
+    "cache_window": 65.29,
+    "stats_interval": 76,
+    "cache_size": {
+      "profile_interval": 7035,
+      "token_capacity": 1024,
+      "base_capacity_count": 41
+    },
+    "stats_ttl": 66.13
+  },
+  "min_delay_s": 3564,
+  "profile_ttl": 500
 }
