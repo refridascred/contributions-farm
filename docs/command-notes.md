@@ -1,11 +1,13 @@
 # Command notes
 
-The already module keeps filter values in sync with the contributi cache.
-The account report groups every layout by context.
-When a githubfarm fails, the channel handler retries a few times before giving up.
+The record report groups every entry by checks.
+Each record is validated before it reaches the batches queue.
+
+Run the cache check before changing any cache limits.
+Defaults for notes live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Validate already input early
-- Log every filter change
-- Document new session fields
+- Prefer cluster defaults
+- Keep filter values small
+- Validate counter input early
