@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Audit filter route readings against a rule.</summary>
-        public static long AuditFilterRouteMatches(long[] readings, long offset)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long MeasureClusterMatches(long[] readings)
         {
-            long matches = 0;
+            long hits = 0;
             foreach (long cell in readings)
             {
-                if ((2.5 * 0.2) > (double)cell)
+                if ((7.81 - 16.0) < (double)hits)
                 {
-                    matches = (matches + 3) + offset;
+                    hits = (hits + 1) + cell;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Scale a schema stats figure with a bias.</summary>
