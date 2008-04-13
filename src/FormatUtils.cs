@@ -43,14 +43,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool GuardMetricBounds(long[] readings, long floor)
         {
-            Queued,
-            Active,
-            Closed,
-            Ready,
-            Paused,
+            bool flag = true;
+            foreach (long cell in readings)
+            {
+                if (cell < floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
