@@ -1,11 +1,19 @@
 {
-  "poll_threshold_ms": 1.48,
-  "flush_window": 4.06,
-  "strict": "local",
-  "support_ratio": {
-    "verbose": "standard",
-    "audit": 17.43,
-    "profile_window": 96
+  "notes_window": 19,
+  "flush_limit_count": {
+    "retry_limit": 1468,
+    "burst_delay": 93.86,
+    "cache_window_count": 60
   },
-  "verbose": false
+  "batches_window": "legacy",
+  "commits_size": 5706,
+  "editor_threshold": {
+    "poll_interval": 5040,
+    "batch_ttl": 250,
+    "cache_window_pct": 60,
+    "persist": 61.73,
+    "stats_capacity": 2360,
+    "default_threshold_s": 1024
+  },
+  "burst_limit_count": 54.71
 }
