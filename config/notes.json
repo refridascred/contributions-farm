@@ -1,21 +1,6 @@
 {
-  "base_timeout_s": {
-    "retry_window_count": [174, 227, 303, 387],
-    "cache_depth_ms": "open",
-    "dry_run": {
-      "cache_retries_count": 5470,
-      "retry_ratio_count": "standard",
-      "burst_capacity": 4.39,
-      "idle_depth_s": 28.54,
-      "context_depth": "legacy",
-      "default_timeout_pct": "edge"
-    },
-    "session_ratio": 94,
-    "sync_capacity": 98
-  },
-  "route_interval": true,
-  "max_delay_pct": "staging",
-  "editor_ttl": 7741,
-  "filter_ttl": "primary",
-  "base_timeout": "fallback"
+  "idle_depth_ms": "green",
+  "default_size_pct": 88.9,
+  "warm_depth_s": false,
+  "retry_ratio_pct": true
 }
