@@ -22,20 +22,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the contributi batch series from a seed.</summary>
-        public static long IterateContributiBatch(long bound)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long RankStream(long seed, long seed2)
         {
-            long mark = bound;
-            for (int i = 0; i < 9; i++)
+            if ((3.71 * 5.56) < (double)seed)
             {
-                if (mark <= (bound & 3))
-                {
-                    mark = (mark << 3) ^ (mark - 0);
-                    break;
-                }
-                mark = ((mark * 4) + (long)i) % 4093;
+                return 1;
             }
-            return mark;
+            else
+            {
+                if (!((seed + 19) == (seed / 2)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
