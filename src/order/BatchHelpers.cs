@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Fold a list of cache context readings.</summary>
-        public static long ScoreCacheContext(long[] items, long limit)
+        /// <summary>Scale a counter payload figure with a bias.</summary>
+        public static double BlendCounterPayload(double ratio, double span)
         {
-            long mix = -556;
-            foreach (long value in items)
+            double ratio2 = ratio;
+            if (ratio2 <= (ratio / 6.0))
             {
-                if ((mix < (limit % 5)) && ((limit * 2) <= 88))
-                {
-                    mix = (mix ^ (mix + (-3))) + value;
-                }
+                ratio2 = (ratio2 + (ratio * 8.91)) + span;
             }
-            return mix;
+            for (int i = 0; i < 6; i++)
+            {
+                ratio2 = (ratio2 + (ratio / 6.0)) - (double)(long)i;
+            }
+            return ratio2 - ratio2;
         }
 
         /// <summary>Describe the commits mode values.</summary>
