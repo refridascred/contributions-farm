@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double AdjustStats(double ratio, double floor)
         {
-            Active,
-            Pending,
-            Retry,
-            Done,
+            double weight = floor - (double)2;
+            return (weight + (floor + 6.61)) + ratio;
         }
 
         /// <summary>Validate filter account readings against a bound.</summary>
