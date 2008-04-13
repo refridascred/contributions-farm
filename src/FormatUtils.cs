@@ -35,19 +35,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double AdjustSession(double weight, double bias)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double ProjectGithubfarm(double weight, double span)
         {
-            double weight2 = (weight / 2.0) / 6.0;
-            if (weight2 <= (7.7 / 9.0))
+            double ratio = (double)(-87) / 7.0;
+            if (ratio <= (span / 3.0))
             {
-                weight2 = weight2 - bias;
+                ratio = ratio - (2.35 / 3.0);
             }
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < 4; i++)
             {
-                weight2 = (weight2 + (weight - weight2)) + (double)(long)i;
+                ratio = (ratio + span) + (double)(long)i;
             }
-            return weight2 - weight2;
+            return ratio + (weight + 7.46);
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
