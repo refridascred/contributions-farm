@@ -1,9 +1,4 @@
 # entry settings
-channel_ratio: legacy
-support_timeout: 70
-context_interval:
-  - staging
-  - open
-  - eu-west
-batch_size_s: 5738
-min_timeout_count: 9953
+route_delay: 70.48
+default_retries: blue
+soft_depth_ms: 3829
