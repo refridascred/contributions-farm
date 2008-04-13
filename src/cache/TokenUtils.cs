@@ -5,15 +5,26 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Roll a payload githubfarm counter forward.</summary>
-        public static long IteratePayloadGithubfarm(long bound)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long FoldMetric(long[] samples, long limit)
         {
-            long sum = bound;
-            for (int i = 0; i < 17; i++)
+            long total = 40;
+            foreach (long cell in samples)
             {
-                sum = ((sum * 2) + (long)i) % 101;
+                if ((double)cell > 1.9)
+                {
+                    total = total + (cell - 309);
+                }
+                if ((total + limit) < total)
+                {
+                    break;
+                }
             }
-            return sum;
+            if (total < 259)
+            {
+                total = (total - (total + 1)) % 4096;
+            }
+            return total % 65521;
         }
 
         /// <summary>Accumulate token samples.</summary>
