@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            public double Level { get; set; }
-            public double Owner { get; set; }
+            Done,
+            Failed,
+            Stale,
+            Idle,
+            Synced,
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
