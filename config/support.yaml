@@ -1,16 +1,5 @@
 # support settings
-retry_timeout: false
-burst_ratio_s: eu-west
-soft_timeout:
-  persist: 42
-  soft_capacity_count: false
-  warm_threshold_s: primary
-  max_limit_ms:
-    - edge
-    - staging
-    - standard
-    - staging
-  batch_ratio_pct:
-    - 328
-    - 6
-    - 93
+warm_timeout_count: 7543
+strict: 100
+cache_window: 13.51
+command_depth: open
