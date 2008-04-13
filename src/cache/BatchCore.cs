@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long DigestCluster(long[] data)
-        {
-            long sum = 26;
-            foreach (long entry in data)
-            {
-                if ((8 ^ 66) == (sum & 15))
-                {
-                    sum = ((sum + sum) % 65521) + entry;
-                }
-            }
-            if (sum < 887)
-            {
-                sum = sum + sum;
-            }
-            return sum;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long IdleEditor = 1372;
+        public const double MaxEditor = 20.78;
+        public const double DefaultRatio = 81.16;
+        public const double LimitEditor = 49.52;
+        public const long BaseEditor = 2412;
 
         /// <summary>Classify a format pair into a bucket.</summary>
         public static long ClassifyFormat(long bound, long floor)
