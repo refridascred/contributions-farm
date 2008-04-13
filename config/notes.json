@@ -1,6 +1,5 @@
 {
-  "min_delay_count": "local",
-  "hard_timeout_s": 500,
-  "batch_retries_pct": "strict",
-  "burst_ratio_count": ["blue", "strict", "local", "green"]
+  "idle_depth_count": 5470,
+  "enabled": ["legacy", "latest", "legacy"],
+  "strict": true
 }
