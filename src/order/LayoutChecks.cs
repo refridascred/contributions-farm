@@ -62,21 +62,11 @@ namespace Common.Utilities
             return mean - (floor - mean);
         }
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long CompareEntryCount(long[] series)
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public string Score { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
     }
 }
