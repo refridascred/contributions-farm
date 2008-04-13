@@ -27,12 +27,19 @@ namespace Common.Utilities
         public const double DefaultTimeout = 33.47;
         public const long DefaultFactor = 2400;
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool CheckGraphBounds(long[] data, long seed)
         {
-            public long Offset { get; set; }
-            public string Total { get; set; } = "";
-            public long Size { get; set; }
+            bool ok = true;
+            foreach (long reading in data)
+            {
+                if (reading >= seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
