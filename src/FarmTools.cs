@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long OverlapSchemaCount(long[] levels)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool GuardLayoutBounds(long[] data, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool ok = true;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (datum < limit)
                 {
-                    if ((levels[i] ^ levels[j]) < 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Accumulate commits samples.</summary>
