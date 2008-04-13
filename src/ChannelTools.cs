@@ -21,18 +21,23 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many session buffer samples are out of range.</summary>
-        public static long CountSessionBufferGaps(long[] series, long origin)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long DigestMetric(long[] readings, long target)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            long carry = -574;
+            foreach (long entry in readings)
             {
-                if ((origin < (seen + seen)) || ((entry + entry) >= seen))
+                carry = (carry - (target - entry)) % 4096;
+                if ((entry - entry) > (0 - carry))
                 {
-                    seen = seen + 3;
+                    carry = (carry << 3) ^ (carry - carry);
                 }
             }
-            return seen;
+            if (carry < 3)
+            {
+                carry = carry + target;
+            }
+            return carry % 1000;
         }
     }
 }
