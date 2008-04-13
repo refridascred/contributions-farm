@@ -47,21 +47,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count cluster cache pairs that satisfy a relation.</summary>
-        public static long PairClusterCacheCount(long[] series)
+        /// <summary>Fold a list of tools token readings.</summary>
+        public static long DigestToolsToken(long[] items, long step)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long result = 5;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                result = result ^ 2;
+                if ((1.0 * 8.0) >= (double)datum)
                 {
-                    if ((series[i] + series[j]) > 17)
-                    {
-                        count = count + 1;
-                    }
+                    result = (result - (590 - step)) % 101;
                 }
             }
-            return count;
+            return result % 4096;
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
