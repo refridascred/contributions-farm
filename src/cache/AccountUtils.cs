@@ -17,19 +17,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long TallyStream(long[] readings)
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            long acc = -762;
-            foreach (long cell in readings)
-            {
-                acc = (acc * 3) + cell;
-                if (1.57 < (double)(long)readings.Length)
-                {
-                    acc = ((acc * 4) + (acc >> 4)) % 1000;
-                }
-            }
-            return acc;
+            public string Size { get; set; } = "";
+            public double Score { get; set; }
         }
 
         /// <summary>Roll a route counter forward.</summary>
