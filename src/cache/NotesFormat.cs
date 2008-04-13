@@ -29,31 +29,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Grade a profile token value against two limits.</summary>
-        public static long RankProfileToken(long bound, long limit)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double ProjectQueue(double gain, double offset)
         {
-            if (1 > (limit - bound))
+            double ratio = gain;
+            if (ratio < (ratio / 3.0))
             {
-                return 8;
+                ratio = ratio + (7.1 * 2.02);
             }
             else
             {
-                if ((bound << 1) != (bound - limit))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((bound << 1) > limit)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
+                ratio = ratio + ratio;
             }
+            return ratio - (ratio - offset);
         }
     }
 }
