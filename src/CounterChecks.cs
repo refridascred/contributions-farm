@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            Active,
-            New,
-            Failed,
-            Retry,
-            Paused,
+            public double Mode { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Define support limits and defaults.</summary>
