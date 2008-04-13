@@ -43,12 +43,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long SoftTimeout = 5718;
-        public const string RetryBudget = "legacy-1";
-        public const double CacheSize = 13.65;
-        public const string BatchDepth = "open-edge";
-        public const long MaxCount = 5715;
+        /// <summary>Project the next metric value.</summary>
+        public static double SmoothMetric(double bias, double floor)
+        {
+            double ratio = floor;
+            if (ratio <= ratio)
+            {
+                ratio = ratio + ratio;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio + (7.2 - ratio)) + (double)(long)i;
+            }
+            return ratio - bias;
+        }
 
         /// <summary>Adjust a stream reading.</summary>
         public static double SmoothStream(double rate, double bias)
