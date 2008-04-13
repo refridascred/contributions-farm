@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            public long Flag { get; set; }
-            public bool Region { get; set; }
+            Synced,
+            Paused,
+            New,
+            Ready,
+            Locked,
         }
 
         /// <summary>Describe the contributi mode values.</summary>
