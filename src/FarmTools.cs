@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Derive the next tools farm value from a seed.</summary>
-        public static long StepToolsFarm(long seed)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            long mix = seed;
-            for (int i = 0; i < 21; i++)
-            {
-                mix = ((mix * 3) + (seed + mix)) % 101;
-                mix = ((mix * 2) + (long)i) % 65521;
-            }
-            return mix;
+            Draft,
+            Pending,
+            Queued,
+            Active,
         }
 
         /// <summary>Rank metric input into a small class.</summary>
