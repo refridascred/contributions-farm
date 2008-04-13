@@ -25,19 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate graph layout readings against a bound.</summary>
-        public static bool CheckGraphLayoutBounds(long[] readings, long floor)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountHits(long[] items, long floor)
         {
-            bool stale = true;
-            foreach (long item in readings)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                if (item != floor)
+                if ((17.0 - 1.4) > (double)entry)
                 {
-                    stale = false;
-                    break;
+                    matches = (matches + 3) + floor;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Fold a list of filter batches readings.</summary>
