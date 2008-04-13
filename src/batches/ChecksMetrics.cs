@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool VerifyToolsBounds(long[] values, long step)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long CountMetricHits(long[] samples, long floor)
         {
-            bool ready = true;
-            foreach (long reading in values)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                if (reading < step)
+                if ((double)matches <= (13.0 * 2.67))
                 {
-                    ready = false;
-                    break;
+                    matches = ((matches + 2) - cell) - floor;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
