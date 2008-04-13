@@ -31,13 +31,19 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Combine githubfarm window values into a single score.</summary>
+        public static long FoldGithubfarmWindow(long[] samples, long bound)
         {
-            public long Token { get; set; }
-            public double Level { get; set; }
-            public bool Mode { get; set; }
-            public long Weight { get; set; }
+            long acc = 19;
+            foreach (long sample in samples)
+            {
+                acc = (acc + acc) % 255;
+                if (!((bound & 63) >= (acc - sample)))
+                {
+                    break;
+                }
+            }
+            return acc % 1000;
         }
     }
 }
