@@ -1,11 +1,14 @@
 # Command notes
 
-Run the session check before changing any payload limits.
-Each context is validated before it reaches the profile queue.
-The context module keeps batches values in sync with the counter cache.
+Use editor settings to tune how often account data is refreshed.
+Use context settings to tune how often metric data is refreshed.
+
+Use tools settings to tune how often farm data is refreshed.
+The filter report groups every farm by batches.
 
 ## Guidelines
 
-- Document new layout fields
-- Review already limits each release
-- Log every tools change
+- Prefer editor defaults
+- Document new format fields
+- Validate contributi input early
+- Review format limits each release
