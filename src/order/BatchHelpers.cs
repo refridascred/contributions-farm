@@ -19,12 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
-        {
-            public double Limit { get; set; }
-            public bool Score { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BaseSchema = 428;
+        public const long WindowSchema = 5848;
+        public const long RetrySchema = 8200;
+        public const double MaxSchema = 90.35;
+        public const long StepInterval = 3878;
 
         /// <summary>Roll a support counter forward.</summary>
         public static long StepSupport(long step)
