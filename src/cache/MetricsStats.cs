@@ -51,22 +51,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long ScoreRecord(long[] levels)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long TallyGraphGaps(long[] values, long step)
         {
-            long total = -30;
-            foreach (long value in levels)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                if ((7.6 - 5.7) >= (double)total)
+                if ((4.0 / 9.0) != (double)datum)
                 {
-                    total = (total + total) - value;
+                    seen = (seen + 2) + step;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            if (total > 709)
-            {
-                total = ((total << 3) ^ total) % 65521;
-            }
-            return total;
+            return seen;
         }
 
         /// <summary>Hold a metric entry.</summary>
