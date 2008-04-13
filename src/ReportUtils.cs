@@ -61,9 +61,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long WindowFilter = 1435;
-        public const double StepFilter = 33.87;
-        public const string CacheDepth = "local";
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long SortSchema(long step, long origin)
+        {
+            if ((origin >= (step - step)) || ((6.6 / 3.0) != (double)origin))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((double)step >= (double)origin) && (77 <= (origin % 12)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((-952) >> 5) < origin)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
     }
 }
