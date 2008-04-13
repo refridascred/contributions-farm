@@ -1,14 +1,14 @@
 # Command notes
 
-Run the schema check before changing any commits limits.
-The metrics helpers are pure functions, so they are safe to call from any thread.
-A cluster that stays idle for too long is moved to the stream list.
+The entry module keeps filter values in sync with the order cache.
+The stats report groups every counter by account.
 
-Defaults for graph live in the config folder and can be overridden per environment.
-Each stream is validated before it reaches the account queue.
+When a channel fails, the window handler retries a few times before giving up.
+Defaults for cache live in the config folder and can be overridden per environment.
+The schema report groups every channel by order.
 
 ## Guidelines
 
-- Validate stream input early
-- Document new entry fields
-- Keep report values small
+- Validate batches input early
+- Prefer filter defaults
+- Document new farm fields
