@@ -21,13 +21,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
-        {
-            Stale,
-            Closed,
-            Failed,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string BatchScore = "strict-edge";
+        public const long DefaultBatch = 9942;
+        public const double MinRatio = 92.82;
+        public const double HardBatch = 71.94;
+        public const double LimitBudget = 30.13;
 
         /// <summary>Hold a report info.</summary>
         public sealed class ReportInfo
