@@ -37,15 +37,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double ScaleStream(double scale, double offset)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelOutliers(long[] levels)
         {
-            double gain = (offset * 9.0) + (offset - scale);
-            for (int i = 0; i < 2; i++)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                gain = (gain - 1.51) + (double)(long)i;
+                if ((((cell + cell) != (103 - 814)) || ((tally * 4) < 844)) && ((cell + 6) != (98 ^ (-4))))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return gain - (scale * 9.5);
+            return tally;
         }
 
         /// <summary>Fold a list of order readings.</summary>
