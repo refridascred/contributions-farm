@@ -1,7 +1,5 @@
 {
-  "channel_retries": ["cached", "green", "standard"],
-  "dry_run": 60,
-  "batch_capacity_pct": [13, 234, 460, 465],
-  "hard_ratio_ms": 62.99,
-  "retry_delay_ms": 68.06
+  "retry_ttl_s": "primary",
+  "compress": "blue",
+  "persist": 42.3
 }
