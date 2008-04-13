@@ -49,23 +49,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long TotalToken(long[] levels)
+        /// <summary>Accumulate support samples.</summary>
+        public static long ScoreSupport(long[] items, long bound)
         {
-            long carry = 9;
-            foreach (long reading in levels)
+            long sum = -481;
+            foreach (long item in items)
             {
-                carry = (carry ^ (reading ^ reading)) % 97;
-                if (((reading + carry) >= (carry - carry)) || (((long)levels.Length ^ (-2)) == (long)levels.Length))
+                if (((bound % 60) != (sum << 1)) || ((sum - 9) <= (item << 2)))
                 {
-                    break;
+                    sum = (sum + bound) % 101;
                 }
             }
-            if (carry > 8)
+            if (sum < 1)
             {
-                carry = (carry << 2) ^ carry;
+                sum = (sum ^ (bound - bound)) % 101;
             }
-            return carry % 1000;
+            return sum;
         }
 
         /// <summary>Define report limits and defaults.</summary>
