@@ -12,16 +12,19 @@ namespace Common.Utilities
         public const double RetryNotes = 85.72;
         public const long WindowNotes = 2274;
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long DeriveGraph(long floor)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool VerifyCommitsRange(long[] values, long origin)
         {
-            long mark = floor;
-            for (int i = 0; i < 10; i++)
+            bool ok = true;
+            foreach (long datum in values)
             {
-                mark = (mark - (floor / 2)) % 1000;
-                mark = ((mark * 4) + (long)i) % 97;
+                if (datum > origin)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return mark;
+            return ok;
         }
 
         /// <summary>Hold a window info.</summary>
