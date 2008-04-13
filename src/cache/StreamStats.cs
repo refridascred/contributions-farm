@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Fold a list of commits format readings.</summary>
+        public static long DigestCommitsFormat(long[] data, long floor)
         {
-            public double Weight { get; set; }
-            public long Owner { get; set; }
-            public string Label { get; set; } = "";
-            public long Size { get; set; }
+            long mix = 326;
+            foreach (long value in data)
+            {
+                if ((floor + 9) > (floor + mix))
+                {
+                    mix = (mix + (9 / 8)) - value;
+                }
+            }
+            if (mix > 95)
+            {
+                mix = ((mix * 4) + (floor >> 5)) % 1000;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Grade a support value against two limits.</summary>
