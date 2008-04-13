@@ -1,10 +1,5 @@
 # githubfarm settings
-tools_ttl:
-  - stable
-  - legacy
-  - latest
-  - blue
-audit: edge
-soft_timeout_s: green
-queue_limit: 1024
-base_size: 1024
+strict: 32.11
+idle_ratio_count: green
+soft_ratio_ms: 5
+base_capacity: stable
