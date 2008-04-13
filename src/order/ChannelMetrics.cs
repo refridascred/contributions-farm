@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool GuardChecksLimits(long[] items, long limit)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long MeasureAccountGaps(long[] data, long origin)
         {
-            bool found = true;
-            foreach (long item in items)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                if (item >= limit)
+                if ((origin - origin) == (matches * 4))
                 {
-                    found = false;
-                    break;
+                    matches = (matches + 1) + sample;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Hold a record entry.</summary>
