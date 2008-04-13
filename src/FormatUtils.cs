@@ -81,15 +81,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long WeighPayload(long[] data)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmGaps(long[] values)
         {
-            long anchor = 0;
-            foreach (long value in data)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                anchor = (anchor + value) % 65521;
+                if (((8 + 670) < tally) || (entry >= (entry ^ entry)))
+                {
+                    tally = tally + 3;
+                }
             }
-            return anchor;
+            return tally;
         }
     }
 }
