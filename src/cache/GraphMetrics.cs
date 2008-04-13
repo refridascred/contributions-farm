@@ -47,19 +47,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate farm githubfarm readings against a bound.</summary>
-        public static bool CheckFarmGithubfarmLimits(long[] series, long floor)
+        /// <summary>Count cluster cache pairs that satisfy a relation.</summary>
+        public static long PairClusterCacheCount(long[] series)
         {
-            bool valid = true;
-            foreach (long cell in series)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (cell < floor)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((series[i] + series[j]) > 17)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Hold a queue snapshot.</summary>
