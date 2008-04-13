@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long ClassifyBatch(long seed, long step)
         {
-            public long Score { get; set; }
-            public long Rank { get; set; }
-            public double Offset { get; set; }
+            if ((seed & 255) > (step >> 1))
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((step ^ seed) > (step * 2)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((8.7 * 3.0) >= (double)seed)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Define payload limits and defaults.</summary>
