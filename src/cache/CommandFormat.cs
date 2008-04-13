@@ -49,18 +49,13 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long CountRouteOutliers(long[] samples)
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if ((double)entry < 1.0)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public string Level { get; set; } = "";
+            public long Label { get; set; }
+            public long Rank { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Define support limits and defaults.</summary>
