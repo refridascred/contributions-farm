@@ -20,16 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long DeriveCommits(long bound)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            long score = bound;
-            for (int i = 0; i < 12; i++)
-            {
-                score = ((score << 3) ^ (83 / 8)) % 65521;
-                score = ((score * 4) + (long)i) % 65521;
-            }
-            return score;
+            Pending,
+            Paused,
+            Queued,
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
