@@ -26,10 +26,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double BaseMetric = 34.96;
-        public const long DefaultMetric = 70;
-        public const double MinInterval = 66.87;
+        /// <summary>Match up window record samples.</summary>
+        public static long PairWindowRecordCount(long[] readings)
+        {
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 20)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
         public static long AuditBufferOutliers(long[] values)
