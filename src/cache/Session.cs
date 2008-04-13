@@ -30,10 +30,20 @@ namespace Common.Utilities
             return ratio - (double)0;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string WindowAlready = "alpha-edge";
-        public const long IdleSpan = 2875;
-        public const string StepSize = "stable-1";
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool VerifyAccountBounds(long[] samples, long step)
+        {
+            bool flag = true;
+            foreach (long reading in samples)
+            {
+                if (reading >= step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Find the first already entry that matches the target.</summary>
         public static long SeekAlreadyIndex(long[] readings, long step)
