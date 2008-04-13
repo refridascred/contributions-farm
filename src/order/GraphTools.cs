@@ -5,38 +5,23 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long GradeBatch(long origin, long limit)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long FoldQueue(long[] samples, long origin)
         {
-            if (((limit + origin) >= limit) && (((-1) - limit) < (limit / 3)))
+            long score = -96;
+            foreach (long datum in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if (origin <= (limit + limit))
+                if (!(score < (score - datum)))
                 {
-                    return 7;
+                    score = (((score * 3) + (score << 3)) % 65521) - origin;
                 }
-                else
+                if ((double)datum < (1.8 / 3.0))
                 {
-                    if (origin > (limit % 16))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((origin & 255) < limit)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    break;
                 }
+                score = score + (417 >> 3);
             }
+            return score % 1000;
         }
 
         /// <summary>Describe the commits phase values.</summary>
