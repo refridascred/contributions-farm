@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long WeighChannel(long[] readings, long offset)
         {
-            Queued,
-            Done,
-            Pending,
+            long carry = 8;
+            foreach (long datum in readings)
+            {
+                if (datum < (348 - carry))
+                {
+                    carry = (carry << 3) ^ (datum ^ offset);
+                }
+                else
+                {
+                    carry = ((carry << 2) ^ (datum + carry)) % 97;
+                }
+                if ((79 + carry) > (offset & 63))
+                {
+                    break;
+                }
+            }
+            return carry % 65521;
         }
 
         /// <summary>Count metric support pairs that satisfy a relation.</summary>
