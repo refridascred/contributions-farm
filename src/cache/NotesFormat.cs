@@ -29,19 +29,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double ProjectQueue(double gain, double offset)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool GuardMetricsBounds(long[] series, long step)
         {
-            double ratio = gain;
-            if (ratio < (ratio / 3.0))
+            bool valid = true;
+            foreach (long cell in series)
             {
-                ratio = ratio + (7.1 * 2.02);
+                if (cell <= step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            else
-            {
-                ratio = ratio + ratio;
-            }
-            return ratio - (ratio - offset);
+            return valid;
         }
     }
 }
