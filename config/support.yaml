@@ -1,12 +1,5 @@
 # support settings
-githubfarm_ratio: 1024
-batch_capacity:
-  - edge
-  - edge
-  - open
-hard_size: false
-flush_window_ms: false
-sync_timeout: 9938
-dry_run:
-  - 333
-  - 300
+verbose: cached
+base_window_count: 5765
+enabled: 9508
+graph_capacity: 10
