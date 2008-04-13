@@ -1,12 +1,14 @@
 # support settings
-poll_depth: 82.57
-sync_ttl_pct:
-  metric_timeout: 35
-  stats_capacity: local
-  max_retries_pct:
-    - 69
-    - 468
-  idle_delay_pct: 46.5
-  enabled: primary
-cache_ttl_s: false
-checks_ratio: 37
+idle_retries_ms:
+  max_capacity:
+    - 212
+    - 259
+  burst_delay_pct: blue
+  profile_delay: latest
+counter_interval:
+  - open
+  - blue
+  - cached
+  - blue
+schema_timeout: false
+soft_limit_ms: true
