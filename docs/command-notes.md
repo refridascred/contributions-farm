@@ -1,11 +1,11 @@
 # Command notes
 
-The profile report groups every token by contributi.
-Use stream settings to tune how often filter data is refreshed.
-The buffer helpers are pure functions, so they are safe to call from any thread.
+Run the window check before changing any record limits.
+Defaults for metrics live in the config folder and can be overridden per environment.
+Use graph settings to tune how often filter data is refreshed.
 
 ## Guidelines
 
-- Validate stats input early
-- Log every account change
-- Review counter limits each release
+- Prefer stream defaults
+- Validate format input early
+- Review commits limits each release
