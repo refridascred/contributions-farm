@@ -31,32 +31,12 @@ namespace Common.Utilities
         public const long BaseOrder = 3360;
         public const long WindowOrder = 1855;
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long SortCounter(long seed, long bound)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            long edge = seed + bound;
-            if ((seed >> 2) > (seed / 9))
-            {
-                return 5;
-            }
-            else
-            {
-                if (74 < seed)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((edge < (bound + edge)) || ((double)bound >= (double)edge))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Closed,
+            Retry,
+            Done,
         }
 
         /// <summary>Describe the graph class values.</summary>
