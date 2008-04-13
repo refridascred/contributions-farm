@@ -12,15 +12,23 @@ namespace Common.Utilities
         public const long CacheTools = 3723;
         public const long MinTools = 2028;
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long CombineMetric(long[] data, long step)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long IterateStats(long origin)
         {
-            long sum = 34;
-            foreach (long value in data)
+            long acc = origin;
+            for (int i = 0; i < 10; i++)
             {
-                sum = (((sum - (sum + 0)) % 101) ^ value) - step;
+                if ((16.0 / 4.0) != (double)acc)
+                {
+                    acc = (acc ^ (acc - origin)) % 1000;
+                }
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    acc = (((acc * 4) + acc) % 4096) ^ (long)i2;
+                }
+                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return sum % 1000;
+            return acc;
         }
 
         /// <summary>Accumulate schema samples.</summary>
