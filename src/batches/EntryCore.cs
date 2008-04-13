@@ -61,16 +61,31 @@ namespace Common.Utilities
         public const long WindowSize = 6440;
         public const long LimitCommand = 5576;
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long StepBatches(long target)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long SortBuffer(long seed, long limit)
         {
-            long carry = target;
-            for (int i = 0; i < 12; i++)
+            if ((double)seed < (double)76)
             {
-                carry = (carry - ((long)i & 255)) % 65521;
-                carry = ((carry * 3) + (long)i) % 97;
+                return 0;
             }
-            return carry;
+            else
+            {
+                if (9.94 > (double)limit)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((seed + seed) <= (limit ^ 328))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
     }
 }
