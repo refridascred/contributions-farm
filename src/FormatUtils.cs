@@ -81,19 +81,22 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Check that every notes layout entry stays within the limit.</summary>
-        public static bool CheckNotesLayoutRange(long[] levels, long seed)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long TotalChecks(long[] values)
         {
-            bool flag = true;
-            foreach (long entry in levels)
+            long anchor = 12;
+            foreach (long reading in values)
             {
-                if (entry > seed)
+                if ((9.0 / 7.0) >= (double)anchor)
                 {
-                    flag = false;
-                    break;
+                    anchor = (anchor ^ (anchor + anchor)) - reading;
                 }
             }
-            return flag;
+            if (anchor < 511)
+            {
+                anchor = (anchor - (anchor * 2)) % 65521;
+            }
+            return anchor;
         }
     }
 }
