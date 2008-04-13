@@ -23,31 +23,12 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Grade a farm filter value against two limits.</summary>
-        public static long GradeFarmFilter(long target, long step)
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            if (target >= (step & 15))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((step << 1) != (step % 12))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (step > target)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public double Ratio { get; set; }
+            public string Total { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
