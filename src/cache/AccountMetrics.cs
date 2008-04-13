@@ -31,25 +31,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long GradeCommits(long origin, long step)
-        {
-            if ((double)step == (3.0 + 8.0))
-            {
-                return 5;
-            }
-            else
-            {
-                if (!((step - origin) < (65 - step)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MaxSpan = 3373;
+        public const long BaseSpan = 7767;
+        public const long BatchFactor = 1783;
+        public const double WindowFormat = 65.66;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const string StepLayout = "open";
