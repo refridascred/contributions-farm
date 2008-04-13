@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long AuditToolsOutliers(long[] readings)
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            long tally = 0;
-            foreach (long datum in readings)
-            {
-                if (((long)readings.Length / 7) < (tally % 7))
-                {
-                    tally = (tally + 2) + datum;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Owner { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Describe the notes status values.</summary>
