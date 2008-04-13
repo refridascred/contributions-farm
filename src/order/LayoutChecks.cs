@@ -65,19 +65,18 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool CheckQueueRange(long[] levels, long limit)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderMatches(long[] samples)
         {
-            bool flag = true;
-            foreach (long item in levels)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                if (item > limit)
+                if ((73 + entry) > (entry % 3))
                 {
-                    flag = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return flag;
+            return seen;
         }
     }
 }
