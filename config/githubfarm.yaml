@@ -1,10 +1,7 @@
 # githubfarm settings
-base_depth_s: cached
-retry_retries: eu-west
-idle_size_s: 60
-default_timeout: 7549
-batch_limit:
-  retry_retries_count: 2392
-  min_size: 99
-  sync_threshold_pct: 59
-flush_threshold_s: 2.22
+strict: standard
+stream_delay: 4654
+session_capacity: 100
+poll_capacity_pct: local
+window_capacity: false
+compress: 7564
