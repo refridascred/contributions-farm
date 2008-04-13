@@ -33,18 +33,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long TallyGithubfarmOutliers(long[] series)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool CheckEntryBounds(long[] readings, long limit)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            bool ready = true;
+            foreach (long cell in readings)
             {
-                if (!((1.5 / 7.0) < (double)tally))
+                if (cell <= limit)
                 {
-                    tally = (tally + 3) ^ datum;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
     }
 }
