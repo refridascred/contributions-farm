@@ -49,12 +49,13 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            public bool Token { get; set; }
-            public bool Region { get; set; }
-            public long Level { get; set; }
+            public long Token { get; set; }
+            public string Size { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public bool Mode { get; set; }
         }
 
         /// <summary>Combine token values into a single score.</summary>
