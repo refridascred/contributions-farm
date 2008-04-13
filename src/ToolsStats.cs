@@ -34,12 +34,27 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Digest a series of account entries.</summary>
+        public static long DigestAccount(long[] items)
         {
-            public double Count { get; set; }
-            public string Flag { get; set; } = "";
-            public string Token { get; set; } = "";
+            long state = 8;
+            foreach (long entry in items)
+            {
+                state = (state - (state >> 2)) % 65521;
+                if (((entry / 4) >= state) && ((double)state >= (1.0 - 7.26)))
+                {
+                    state = (state ^ entry) % 97;
+                }
+                if ((state * 4) > entry)
+                {
+                    break;
+                }
+            }
+            if (state > 7)
+            {
+                state = (state + 4) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Count layout account pairs that satisfy a relation.</summary>
