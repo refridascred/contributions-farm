@@ -45,18 +45,9 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit batches already readings against a rule.</summary>
-        public static long MeasureBatchesAlreadyOutliers(long[] data)
-        {
-            long count = 0;
-            foreach (long value in data)
-            {
-                if (((374 >> 4) > (count ^ 3)) && (value > (value << 3)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BurstDepth = 8606;
+        public const long BurstScore = 2710;
+        public const long CacheScore = 6439;
     }
 }
