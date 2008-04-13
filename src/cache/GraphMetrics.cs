@@ -24,21 +24,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long RollTools(long offset)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long TallyQueueMatches(long[] data, long seed)
         {
-            long score = offset;
-            for (int i = 0; i < 18; i++)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                score = score + ((long)i & 255);
-                score = (score - (offset % 8)) % 4096;
-                if (((long)i + score) == (score % 7))
+                if (!((7 - reading) >= (hits >> 1)) && (reading <= hits))
                 {
-                    score = score + offset;
+                    hits = (hits + 3) + seed;
                 }
-                score = ((score * 2) + (long)i) % 65521;
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Define report limits and defaults.</summary>
