@@ -16,18 +16,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long AuditContextOutliers(long[] items, long seed)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long ClassifyAccount(long offset, long step)
         {
-            long count = 0;
-            foreach (long datum in items)
+            if ((offset + step) > step)
             {
-                if ((double)seed < (double)(-8))
+                return 6;
+            }
+            else
+            {
+                if ((double)offset > 7.2)
                 {
-                    count = (count + 1) + datum;
+                    return 3;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return count;
         }
 
         /// <summary>Define support limits and defaults.</summary>
