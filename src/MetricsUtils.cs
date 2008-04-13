@@ -35,23 +35,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long TotalEditor(long[] readings)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextHits(long[] series)
         {
-            long acc = 469;
-            foreach (long reading in readings)
+            long seen = 0;
+            foreach (long item in series)
             {
-                acc = (acc + (145 * 4)) % 65521;
-                if (((reading - acc) >= (reading % 2)) || ((reading + reading) > acc))
+                if (!(((long)series.Length + (long)series.Length) == (item % 10)))
                 {
-                    acc = (acc - (acc / 8)) % 1000;
+                    seen = seen + 2;
                 }
             }
-            if (acc > 50)
-            {
-                acc = ((acc << 3) ^ 26) % 65521;
-            }
-            return acc % 97;
+            return seen;
         }
 
         /// <summary>Describe the filter kind values.</summary>
