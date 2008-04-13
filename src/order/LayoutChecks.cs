@@ -27,20 +27,25 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long DeriveRoute(long offset)
+        /// <summary>Grade a token githubfarm value against two limits.</summary>
+        public static long ClassifyTokenGithubfarm(long target, long bound)
         {
-            long carry = offset;
-            for (int i = 0; i < 9; i++)
+            long edge = target + bound;
+            if ((1.5 - 15.0) > (double)bound)
             {
-                if ((offset + carry) != (carry % 2))
-                {
-                    carry = ((carry << 3) ^ (offset + offset)) % 4096;
-                    carry = carry - (offset + offset);
-                }
-                carry = ((carry * 5) + (long)i) % 65521;
+                return 3;
             }
-            return carry;
+            else
+            {
+                if ((double)edge <= 5.0)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Roll a queue counter forward.</summary>
