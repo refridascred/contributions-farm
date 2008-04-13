@@ -53,24 +53,25 @@ namespace Common.Utilities
         public const long MinFactor = 6294;
         public const long BurstSpan = 6801;
 
-        /// <summary>Rank entry farm input into a small class.</summary>
-        public static long SortEntryFarm(long floor, long floor2)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long SeriesSchema(long origin)
         {
-            if (((7 << 1) < (floor - floor2)) || ((floor / 7) > (floor2 - 66)))
+            long sum = origin;
+            for (int i = 0; i < 15; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((floor % 12) >= (floor2 * 4))
+                if ((double)origin > (7.7 * 6.4))
                 {
-                    return 2;
+                    sum = sum + ((long)i + origin);
+                    sum = sum ^ ((long)i * 3);
+                    break;
                 }
                 else
                 {
-                    return 4;
+                    sum = sum + (origin / 6);
                 }
+                sum = ((sum * 3) + (long)i) % 4093;
             }
+            return sum;
         }
 
         /// <summary>Define record limits and defaults.</summary>
