@@ -42,11 +42,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double ScaleCommand(double rate, double span)
+        /// <summary>Project the next route commits value.</summary>
+        public static double SmoothRouteCommits(double weight, double offset)
         {
-            double weight = (double)5 - rate;
-            return (weight - (rate + rate)) + span;
+            double mean = offset;
+            if (mean < mean)
+            {
+                mean = mean + 5.62;
+            }
+            else
+            {
+                mean = mean - 8.2;
+            }
+            return mean + weight;
         }
 
         /// <summary>Hold a support summary.</summary>
