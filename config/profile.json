@@ -1,7 +1,7 @@
 {
-  "burst_retries_ms": "cached",
-  "readonly": false,
-  "default_ratio_count": ["legacy", "edge"],
-  "payload_depth": 6.06,
-  "retry_size_count": false
+  "cache_threshold_ms": 1,
+  "cache_ttl_s": 64,
+  "persist": "strict",
+  "soft_retries": 91.2,
+  "soft_interval": true
 }
