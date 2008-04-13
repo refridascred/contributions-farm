@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const string LimitCommand = "alpha";
-        public const long WindowCommand = 6989;
-        public const long WindowSpan = 1314;
-        public const double StepCommand = 22.95;
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long LocateSupportIndex(long[] items, long floor)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] == floor) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a tools stats.</summary>
         public sealed class ToolsStats
