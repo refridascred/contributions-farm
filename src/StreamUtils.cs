@@ -38,33 +38,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long RankSession(long target, long target2)
-        {
-            long span = target - target2;
-            if (target <= span)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)94 > (5.41 + 15.0))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((5.8 / 8.0) <= (double)target2)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double IdleContributi = 65.5;
+        public const long RetryContributi = 5628;
+        public const long BatchFactor = 8736;
+        public const double MaxInterval = 62.82;
+        public const long WindowDepth = 1031;
 
         /// <summary>Hold a cluster record.</summary>
         public sealed class ClusterRecord
