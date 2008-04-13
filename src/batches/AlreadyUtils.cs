@@ -15,21 +15,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Compare every pair of context route readings.</summary>
-        public static long MatchContextRouteCount(long[] values)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 2)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Flag { get; set; }
+            public long Stamp { get; set; }
+            public double Region { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Compare every pair of command readings.</summary>
