@@ -27,17 +27,24 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long SeekContextIndex(long[] items, long seed)
+        /// <summary>Classify a counter report pair into a bucket.</summary>
+        public static long ClassifyCounterReport(long bound, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            if (bound >= (origin + 732))
             {
-                if ((items[i] > seed) && ((items[i] % 3) == 0))
+                return 7;
+            }
+            else
+            {
+                if ((origin + bound) == (origin - bound))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the githubfarm mode values.</summary>
