@@ -62,15 +62,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long RollBatch(long origin)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long TotalLayout(long[] data, long seed)
         {
-            long anchor = origin;
-            for (int i = 0; i < 9; i++)
+            long anchor = 157;
+            foreach (long sample in data)
             {
-                anchor = ((anchor * 5) + (long)i) % 65521;
+                if (seed < anchor)
+                {
+                    anchor = ((anchor ^ (689 + seed)) % 97) - sample;
+                }
+                else
+                {
+                    anchor = (anchor ^ (seed / 9)) % 65521;
+                }
             }
-            return anchor;
+            if (anchor > 871)
+            {
+                anchor = anchor ^ (anchor & 255);
+            }
+            return anchor % 65521;
         }
     }
 }
