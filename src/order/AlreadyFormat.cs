@@ -32,24 +32,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long DeriveContributi(long limit)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long StepChecks(long limit)
         {
-            long result = limit;
-            for (int i = 0; i < 9; i++)
+            long mix = limit;
+            for (int i = 0; i < 16; i++)
             {
-                if (((limit << 1) == (result + result)) && (result < (result * 5)))
-                {
-                    result = ((result << 3) ^ (result - 91)) % 1000;
-                    continue;
-                }
-                else
-                {
-                    result = result ^ (limit - result);
-                }
-                result = ((result * 3) + (long)i) % 1000;
+                mix = mix + (mix << 3);
+                mix = mix ^ mix;
+                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return result;
+            return mix;
         }
 
         /// <summary>Combine account record values into a single score.</summary>
