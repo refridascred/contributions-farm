@@ -70,15 +70,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double SmoothBatch(double weight, double floor)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool VerifyCacheLimits(long[] series, long bound)
         {
-            double load = floor;
-            if (load < (0.7 - 6.0))
+            bool ready = true;
+            foreach (long datum in series)
             {
-                load = (load + 10.0) - weight;
+                if (datum != bound)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return load - (2.67 / 4.0);
+            return ready;
         }
 
         /// <summary>Combine window layout values into a single score.</summary>
