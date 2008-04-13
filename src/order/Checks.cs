@@ -62,14 +62,16 @@ namespace Common.Utilities
             return load + weight;
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Derive the next counter route value from a seed.</summary>
+        public static long IterateCounterRoute(long target)
         {
-            Active,
-            Stale,
-            Ready,
-            Paused,
-            Closed,
+            long acc = target;
+            for (int i = 0; i < 7; i++)
+            {
+                acc = (acc << 3) ^ (target << 1);
+                acc = ((acc * 3) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Match up graph samples.</summary>
