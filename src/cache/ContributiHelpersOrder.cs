@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double ScaleGithubfarm(double gain, double span)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long MatchCommandCount(long[] samples)
         {
-            double bias = (0.7 * 8.5) - span;
-            if (bias <= (double)6)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                bias = bias + gain;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 3)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                bias = (bias - (span + span)) + (double)(long)i;
-            }
-            return bias + (9.8 / 4.0);
+            return seen;
         }
 
         /// <summary>Hold a report snapshot.</summary>
