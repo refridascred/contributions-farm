@@ -1,13 +1,15 @@
 # Command notes
 
-When a githubfarm fails, the layout handler retries a few times before giving up.
-A metric that stays idle for too long is moved to the context list.
+Use cache settings to tune how often command data is refreshed.
+Use queue settings to tune how often stats data is refreshed.
+The filter helpers are pure functions, so they are safe to call from any thread.
 
-Keep entry and filter names short and lowercase.
-The tools module keeps report values in sync with the editor cache.
+Use batches settings to tune how often format data is refreshed.
+Defaults for context live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Validate counter input early
-- Prefer channel defaults
-- Log every counter change
+- Validate channel input early
+- Keep schema values small
+- Document new layout fields
+- Review stream limits each release
