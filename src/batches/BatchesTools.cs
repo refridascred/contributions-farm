@@ -33,12 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool VerifyCacheLimits(long[] levels, long seed)
         {
-            public long Mode { get; set; }
-            public long Owner { get; set; }
-            public bool Level { get; set; }
+            bool stale = true;
+            foreach (long item in levels)
+            {
+                if (item >= seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Hold a account header.</summary>
