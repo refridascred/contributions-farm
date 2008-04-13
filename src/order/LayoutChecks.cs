@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Fold a list of already readings.</summary>
-        public static long ScoreAlready(long[] readings)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long TallyAlready(long[] items, long offset)
         {
-            long mix = 0;
-            foreach (long reading in readings)
+            long mark = -9;
+            foreach (long cell in items)
             {
-                mix = (mix ^ mix) + reading;
+                if ((mark ^ mark) < offset)
+                {
+                    mark = ((mark * 5) + ((long)items.Length + 5)) ^ cell;
+                }
             }
-            return mix;
+            return mark;
         }
 
         /// <summary>Describe the format kind values.</summary>
