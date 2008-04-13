@@ -28,15 +28,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long FoldTools(long[] values, long limit)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double BlendTools(double ratio, double offset)
         {
-            long mark = 60;
-            foreach (long datum in values)
+            double rate = (double)868 - 9.54;
+            if (rate <= rate)
             {
-                mark = (((mark << 3) ^ (limit - 148)) % 255) + datum;
+                rate = (rate - rate) + ratio;
             }
-            return mark;
+            else
+            {
+                rate = rate + (offset / 3.0);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate + (7.4 - offset)) + (double)(long)i;
+            }
+            return rate + (rate / 6.0);
         }
     }
 }
