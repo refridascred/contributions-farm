@@ -24,10 +24,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MinScore = 6967;
-        public const long MinTimeout = 3230;
-        public const long IdleRoute = 9517;
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
+        {
+            public long Score { get; set; }
+            public bool Rank { get; set; }
+        }
 
         /// <summary>Validate context readings against a bound.</summary>
         public static bool VerifyContextBounds(long[] items, long limit)
