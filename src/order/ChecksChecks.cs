@@ -24,17 +24,12 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long SeriesBatch(long bound)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            long total = bound;
-            for (int i = 0; i < 10; i++)
-            {
-                total = total - ((-905) & 7);
-                total = (total + total) % 4096;
-                total = ((total * 3) + (long)i) % 4093;
-            }
-            return total;
+            public bool Mode { get; set; }
+            public bool Weight { get; set; }
+            public long Token { get; set; }
         }
     }
 }
