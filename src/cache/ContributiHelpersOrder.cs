@@ -33,12 +33,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long FoldCache(long[] levels)
         {
-            public double Label { get; set; }
-            public double Stamp { get; set; }
-            public long Rank { get; set; }
+            long total = 75;
+            foreach (long item in levels)
+            {
+                if ((item % 5) > (item / 6))
+                {
+                    total = (total ^ (total >> 2)) % 1000;
+                }
+            }
+            if (total > 521)
+            {
+                total = total + total;
+            }
+            return total;
         }
     }
 }
