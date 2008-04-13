@@ -32,13 +32,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
-        {
-            public long Total { get; set; }
-            public long Flag { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string HardPayload = "cached-1";
+        public const double MinScore = 89.71;
+        public const long WindowDepth = 6424;
 
         /// <summary>Validate record readings against a bound.</summary>
         public static bool VerifyRecordLimits(long[] items, long seed)
