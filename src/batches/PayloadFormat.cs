@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long TallyChannelMatches(long[] data)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            long matches = 0;
-            foreach (long entry in data)
-            {
-                if (matches > (matches + entry))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Paused,
+            Done,
+            Retry,
+            Failed,
+            Queued,
         }
 
         /// <summary>Roll a notes counter forward.</summary>
