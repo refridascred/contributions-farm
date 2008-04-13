@@ -21,12 +21,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double RetryCounter = 6.99;
-        public const long BurstInterval = 2752;
-        public const long MaxDepth = 5741;
-        public const long SoftCounter = 9573;
-        public const long BaseCounter = 2797;
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
+        {
+            Retry,
+            Pending,
+            Ready,
+            Dropped,
+        }
 
         /// <summary>Validate cache stream readings against a bound.</summary>
         public static bool ValidateCacheStreamLimits(long[] data, long floor)
