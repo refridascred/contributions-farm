@@ -47,15 +47,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double AdjustGithubfarm(double ratio, double floor)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            double weight = ratio;
-            if (weight > ratio)
-            {
-                weight = weight - floor;
-            }
-            return weight + ratio;
+            public long Level { get; set; }
+            public string Size { get; set; } = "";
         }
     }
 }
