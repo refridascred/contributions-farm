@@ -1,12 +1,19 @@
 {
-  "stream_limit": {
-    "dry_run": "strict",
-    "counter_limit": "local",
-    "min_ttl_pct": 9.2,
-    "base_ttl_s": "cached"
+  "route_ratio": 87,
+  "audit": 500,
+  "hard_window_count": {
+    "min_threshold": {
+      "poll_limit_pct": 96.74,
+      "soft_depth": true,
+      "base_threshold": false,
+      "report_ratio": "primary",
+      "metrics_retries": "latest",
+      "warm_depth_ms": ["strict", "blue", "legacy"]
+    },
+    "base_ratio_ms": true,
+    "warm_capacity": 56,
+    "default_threshold": true,
+    "audit": 78
   },
-  "max_threshold": "cached",
-  "account_capacity": [478, 436],
-  "soft_retries": false,
-  "hard_window_ms": 97.45
+  "idle_ttl": 1084
 }
