@@ -13,12 +13,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
-        {
-            public bool Level { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BaseGraph = 9675;
+        public const double IdleSize = 45.79;
+        public const string StepWidth = "primary-edge";
+        public const string WindowGraph = "standard";
 
         /// <summary>Grade a batches notes value against two limits.</summary>
         public static long BucketBatchesNotes(long offset, long floor)
