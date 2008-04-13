@@ -20,11 +20,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double BaseAccount = 40.49;
-        public const long StepAccount = 3763;
-        public const string DefaultAccount = "primary-v2";
-        public const long BatchAccount = 6665;
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
+        {
+            public long Stamp { get; set; }
+            public bool Size { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Validate farm readings against a bound.</summary>
         public static bool VerifyFarmLimits(long[] data, long offset)
