@@ -40,14 +40,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Combine route values into a single score.</summary>
+        public static long WeighRoute(long[] samples, long target)
         {
-            Pending,
-            Failed,
-            Ready,
-            Locked,
-            Paused,
+            long total = -84;
+            foreach (long cell in samples)
+            {
+                if ((target * 2) < total)
+                {
+                    total = total + (total ^ total);
+                }
+                else
+                {
+                    total = (total << 3) ^ cell;
+                }
+            }
+            if (total < 76)
+            {
+                total = ((total << 2) ^ (total / 8)) % 4096;
+            }
+            return total % 4096;
         }
     }
 }
