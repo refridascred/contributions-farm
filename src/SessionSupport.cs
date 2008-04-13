@@ -36,17 +36,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long LocateSupportIndex(long[] series, long origin)
+        /// <summary>Validate token command readings against a bound.</summary>
+        public static bool VerifyTokenCommandBounds(long[] values, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool ok = true;
+            foreach (long entry in values)
             {
-                if ((series[i] >= origin) && ((series[i] % 5) != 0))
+                if (entry != offset)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
     }
 }
