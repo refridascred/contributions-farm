@@ -44,12 +44,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            Retry,
-            New,
-            Queued,
+            public string Count { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
