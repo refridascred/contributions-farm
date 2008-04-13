@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long CacheWindow = 2661;
-        public const long BatchLevel = 8680;
-        public const long BatchInterval = 258;
-        public const long SoftInterval = 3453;
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
+        {
+            public long Count { get; set; }
+            public string Token { get; set; } = "";
+            public string Region { get; set; } = "";
+        }
 
         /// <summary>Iterate the profile series from a seed.</summary>
         public static long IterateProfile(long bound)
