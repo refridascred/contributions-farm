@@ -1,5 +1,12 @@
 # support settings
-verbose: cached
-base_window_count: 5765
-enabled: 9508
-graph_capacity: 10
+poll_depth: 82.57
+sync_ttl_pct:
+  metric_timeout: 35
+  stats_capacity: local
+  max_retries_pct:
+    - 69
+    - 468
+  idle_delay_pct: 46.5
+  enabled: primary
+cache_ttl_s: false
+checks_ratio: 37
