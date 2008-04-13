@@ -1,7 +1,6 @@
 # entry settings
-verbose:
-  soft_threshold: 43.99
-  max_timeout_pct: 5697
-  default_depth: 31
-channel_interval: 60
-readonly: 1780
+audit: 60
+retry_size_s: 7359
+retry_depth_s: 51.07
+hard_size: 32.49
+warm_window_pct: stable
