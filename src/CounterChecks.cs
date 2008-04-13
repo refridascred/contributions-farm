@@ -21,12 +21,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Combine cache stream values into a single score.</summary>
+        public static long WeighCacheStream(long[] data, long bound)
         {
-            public long Count { get; set; }
-            public long Stamp { get; set; }
-            public long Score { get; set; }
+            long acc = 92;
+            foreach (long entry in data)
+            {
+                if ((entry / 9) < (entry & 7))
+                {
+                    acc = acc ^ (406 ^ 61);
+                }
+                else
+                {
+                    acc = (acc << 2) ^ (bound & 1);
+                }
+            }
+            return acc;
         }
 
         /// <summary>Validate cache stream readings against a bound.</summary>
