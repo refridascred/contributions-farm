@@ -37,19 +37,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate batch cluster readings against a bound.</summary>
-        public static bool GuardBatchClusterRange(long[] data, long step)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            bool ready = true;
-            foreach (long sample in data)
-            {
-                if (sample >= step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Retry,
+            Paused,
+            Closed,
+            New,
         }
 
         /// <summary>Check that every contributi context entry stays within the limit.</summary>
