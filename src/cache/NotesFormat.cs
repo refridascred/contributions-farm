@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Accumulate support samples.</summary>
-        public static long TallySupport(long[] values)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            long sum = 59;
-            foreach (long cell in values)
-            {
-                if ((cell ^ cell) == (sum % 100))
-                {
-                    sum = ((sum << 3) ^ (cell / 3)) % 1000;
-                }
-            }
-            return sum;
+            New,
+            Locked,
+            Closed,
+            Done,
         }
 
         /// <summary>Describe the batch class values.</summary>
