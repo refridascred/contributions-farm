@@ -1,6 +1,10 @@
-id,token,rank
-1,39.15,84.55
-2,legacy,912
-3,1,latest
-4,309,318
-5,29.76,latest
+id,owner,label,state
+1,green,543,154
+2,79.36,133,901
+3,102,95.93,green
+4,366,512,54.08
+5,blue,653,637
+6,0.91,89.79,primary
+7,571,111,991
+8,28,71,cached
+9,559,legacy,standard
