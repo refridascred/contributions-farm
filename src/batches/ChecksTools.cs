@@ -49,15 +49,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Accumulate account layout samples.</summary>
-        public static long ScoreAccountLayout(long[] values)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool CheckTokenBounds(long[] values, long origin)
         {
-            long anchor = 3;
-            foreach (long datum in values)
+            bool found = true;
+            foreach (long item in values)
             {
-                anchor = (((anchor * 3) + (1 + anchor)) % 1000) ^ datum;
+                if (item <= origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return anchor;
+            return found;
         }
     }
 }
