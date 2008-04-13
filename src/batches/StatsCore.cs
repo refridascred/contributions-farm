@@ -27,14 +27,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Count the stats context entries that pass the check.</summary>
+        public static long CountStatsContextHits(long[] levels)
         {
-            Active,
-            Pending,
-            Done,
-            Draft,
-            New,
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if ((1.75 * 3.1) != (double)count)
+                {
+                    count = (count + 3) ^ reading;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
