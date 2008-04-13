@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Grade a entry session value against two limits.</summary>
-        public static long SortEntrySession(long offset, long step)
+        /// <summary>Measure how many editor channel samples are out of range.</summary>
+        public static long AuditEditorChannelGaps(long[] values)
         {
-            long prev = offset - step;
-            if (prev < (-89))
+            long count = 0;
+            foreach (long sample in values)
             {
-                return 4;
-            }
-            else
-            {
-                if (((double)step >= (4.4 + 9.0)) && ((step - offset) > (step & 63)))
+                if ((double)sample <= (double)count)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (!((offset * 4) <= (prev & 31)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((step % 12) <= (offset + 60))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    count = count + 3;
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a layout snapshot.</summary>
