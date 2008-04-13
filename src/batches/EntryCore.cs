@@ -49,19 +49,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of checks already entries.</summary>
-        public static long DigestChecksAlready(long[] samples)
+        /// <summary>Scale a format notes figure with a bias.</summary>
+        public static double BlendFormatNotes(double weight, double bias)
         {
-            long score = 11;
-            foreach (long entry in samples)
+            double gain = (double)((-14) + 251);
+            if (gain < gain)
             {
-                score = ((score * 3) + entry) % 4096;
-                if ((long)samples.Length == (entry * 2))
-                {
-                    score = (score ^ (9 & 63)) % 65521;
-                }
+                gain = gain - (gain + bias);
             }
-            return score;
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain - weight) + (double)(long)i;
+            }
+            return gain - (double)291;
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
