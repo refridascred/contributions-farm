@@ -44,11 +44,26 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Digest a series of format entries.</summary>
+        public static long TallyFormat(long[] items, long target)
         {
-            public long Region { get; set; }
-            public bool Weight { get; set; }
+            long mark = 3;
+            foreach (long entry in items)
+            {
+                if (!((entry & 127) != (1 + mark)))
+                {
+                    mark = (mark + (target ^ 8)) % 1000;
+                }
+                else
+                {
+                    mark = (mark << 3) ^ (target / 9);
+                }
+            }
+            if (mark < 1)
+            {
+                mark = (mark * 5) + (mark + target);
+            }
+            return mark % 65521;
         }
     }
 }
