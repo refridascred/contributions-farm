@@ -45,19 +45,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool CheckStreamBounds(long[] samples, long limit)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long IterateBuffer(long offset)
         {
-            bool ready = true;
-            foreach (long sample in samples)
+            long result = offset;
+            for (int i = 0; i < 7; i++)
             {
-                if (sample < limit)
-                {
-                    ready = false;
-                    break;
-                }
+                result = ((result * 4) + (long)i) % 65521;
             }
-            return ready;
+            return result;
         }
 
         /// <summary>Hold a token options.</summary>
