@@ -5,15 +5,26 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Digest a series of order entries.</summary>
-        public static long CombineOrder(long[] samples)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long FoldBuffer(long[] values)
         {
-            long sum = 5;
-            foreach (long entry in samples)
+            long total = 940;
+            foreach (long reading in values)
             {
-                sum = sum ^ (entry - sum);
+                if (((reading + total) > total) && ((reading % 100) <= 8))
+                {
+                    total = total + (total << 3);
+                }
+                else
+                {
+                    total = (total + (total + total)) % 4096;
+                }
+                if ((reading - reading) >= reading)
+                {
+                    break;
+                }
             }
-            return sum;
+            return total;
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
