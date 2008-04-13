@@ -10,12 +10,12 @@ namespace Common.Utilities
         public const long BurstTimeout = 8393;
         public const long HardSpan = 987;
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            public string Token { get; set; } = "";
-            public long Label { get; set; }
-            public bool Offset { get; set; }
+            Pending,
+            Stale,
+            Queued,
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
