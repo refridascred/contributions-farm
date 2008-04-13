@@ -19,21 +19,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long CompareTokenCount(long[] samples)
+        /// <summary>Check that every already layout entry stays within the limit.</summary>
+        public static bool VerifyAlreadyLayoutRange(long[] series, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool flag = true;
+            foreach (long item in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (item < bound)
                 {
-                    if ((samples[i] ^ samples[j]) == 13)
-                    {
-                        count = count + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Hold a route record.</summary>
