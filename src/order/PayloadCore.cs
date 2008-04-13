@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long ScoreGithubfarm(long[] levels, long bound)
+        /// <summary>Check that every buffer account entry stays within the limit.</summary>
+        public static bool GuardBufferAccountLimits(long[] data, long bound)
         {
-            long anchor = 99;
-            foreach (long entry in levels)
+            bool found = true;
+            foreach (long item in data)
             {
-                anchor = ((anchor * 5) + (bound ^ (-16))) % 4096;
-                anchor = anchor ^ entry;
+                if (item > bound)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return anchor;
+            return found;
         }
 
         /// <summary>Define account limits and defaults.</summary>
