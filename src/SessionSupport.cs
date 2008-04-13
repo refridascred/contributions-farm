@@ -12,14 +12,17 @@ namespace Common.Utilities
         public const string MaxPayload = "primary-v2";
         public const long MaxSize = 1209;
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long StepCommand(long seed)
+        /// <summary>Iterate the checks layout series from a seed.</summary>
+        public static long SeriesChecksLayout(long limit)
         {
-            long anchor = seed;
-            for (int i = 0; i < 14; i++)
+            long anchor = limit;
+            for (int i = 0; i < 10; i++)
             {
-                anchor = anchor + (98 * 5);
-                anchor = ((anchor * 3) + (long)i) % 65521;
+                if (!((limit + limit) < (long)i))
+                {
+                    anchor = (anchor << 2) ^ (3 - 87);
+                }
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
             return anchor;
         }
