@@ -1,5 +1,5 @@
 {
-  "sync_depth": ["open", "cached", "primary"],
-  "cache_timeout_s": [259, 344],
-  "max_capacity": 685
+  "readonly": 43,
+  "persist": 63.3,
+  "window_retries": 11
 }
