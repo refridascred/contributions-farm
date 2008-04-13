@@ -14,22 +14,24 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Count the commits already entries that pass the check.</summary>
-        public static long MeasureCommitsAlreadyHits(long[] items, long offset)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long GradeSupport(long seed, long origin)
         {
-            long count = 0;
-            foreach (long datum in items)
+            if (355 > (seed + seed))
             {
-                if (26 < (offset - (-947)))
+                return 0;
+            }
+            else
+            {
+                if (origin >= (6 ^ origin))
                 {
-                    count = (count + 3) + datum;
+                    return 5;
                 }
                 else
                 {
-                    count = count - 1;
+                    return 7;
                 }
             }
-            return count;
         }
 
         /// <summary>Project the next buffer value.</summary>
