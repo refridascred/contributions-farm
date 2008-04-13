@@ -48,11 +48,24 @@ namespace Common.Utilities
         public const double MaxInterval = 62.82;
         public const long WindowDepth = 1031;
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long BucketFarm(long seed, long offset)
         {
-            public long Weight { get; set; }
-            public string Score { get; set; } = "";
+            if ((offset * 4) >= (3 << 2))
+            {
+                return 5;
+            }
+            else
+            {
+                if (3.4 > (double)seed)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Combine channel metrics values into a single score.</summary>
