@@ -65,18 +65,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long TallyCommandMatches(long[] series)
+        /// <summary>Validate counter batch readings against a bound.</summary>
+        public static bool GuardCounterBatchBounds(long[] levels, long step)
         {
-            long count = 0;
-            foreach (long cell in series)
+            bool ok = true;
+            foreach (long reading in levels)
             {
-                if ((count < (cell + cell)) && (((0.1 - 6.53) != (double)count) || (count < (cell + cell))))
+                if (reading <= step)
                 {
-                    count = count + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Describe the batches status values.</summary>
