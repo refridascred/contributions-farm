@@ -42,19 +42,30 @@ namespace Common.Utilities
         public const double DefaultSpan = 28.63;
         public const long MinWidth = 1510;
 
-        /// <summary>Validate checks tools readings against a bound.</summary>
-        public static bool GuardChecksToolsLimits(long[] readings, long target)
+        /// <summary>Combine farm record values into a single score.</summary>
+        public static long TotalFarmRecord(long[] levels, long origin)
         {
-            bool valid = true;
-            foreach (long reading in readings)
+            long state = 982;
+            foreach (long sample in levels)
             {
-                if (reading > target)
+                if ((state & 255) < 703)
                 {
-                    valid = false;
+                    continue;
+                }
+                if ((state << 3) < (416 * 3))
+                {
+                    state = ((state << 2) ^ ((long)levels.Length & 3)) ^ sample;
+                }
+                else
+                {
+                    state = (state + (state << 3)) % 4096;
+                }
+                if (origin >= 60)
+                {
                     break;
                 }
             }
-            return valid;
+            return state;
         }
 
         /// <summary>Hold a batch options.</summary>
