@@ -35,19 +35,20 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double ProjectGithubfarm(double weight, double span)
+        /// <summary>Fold a list of channel report readings.</summary>
+        public static long WeighChannelReport(long[] levels)
         {
-            double ratio = (double)(-87) / 7.0;
-            if (ratio <= (span / 3.0))
+            long result = 0;
+            foreach (long sample in levels)
             {
-                ratio = ratio - (2.35 / 3.0);
+                result = (result * 2) + 563;
+                result = result - (sample + sample);
             }
-            for (int i = 0; i < 4; i++)
+            if (result < 853)
             {
-                ratio = (ratio + span) + (double)(long)i;
+                result = ((result << 2) ^ (result >> 3)) % 97;
             }
-            return ratio + (weight + 7.46);
+            return result;
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
