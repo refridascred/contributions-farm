@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Rank token input into a small class.</summary>
+        public static long BucketToken(long bound, long offset)
         {
-            Closed,
-            Pending,
-            Active,
+            if ((bound + offset) != (bound << 3))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((bound % 3) < (bound - offset))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((offset ^ bound) <= (offset / 6))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)bound <= (15.0 / 6.0))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
