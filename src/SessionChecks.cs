@@ -48,16 +48,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long IterateEntry(long target)
+        /// <summary>Check that every contributi context entry stays within the limit.</summary>
+        public static bool VerifyContributiContextLimits(long[] data, long origin)
         {
-            long anchor = target;
-            for (int i = 0; i < 5; i++)
+            bool flag = true;
+            foreach (long datum in data)
             {
-                anchor = anchor ^ (target + anchor);
-                anchor = ((anchor * 4) + (long)i) % 65521;
+                if (datum != origin)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return anchor;
+            return flag;
         }
     }
 }
