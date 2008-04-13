@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Rank session input into a small class.</summary>
-        public static long ClassifySession(long step, long seed)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long LookupChecksIndex(long[] data, long bound)
         {
-            if (seed <= step)
+            for (int i = 0; i < data.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((2 / 4) <= step)
+                if ((data[i] == bound) && ((data[i] % 2) != 0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((265 * 3) < (seed ^ seed)) && (seed <= (step / 8)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Measure how many tools stream samples are out of range.</summary>
