@@ -1,19 +1,6 @@
 {
-  "contributi_size": [109, 333, 387],
-  "burst_size": {
-    "min_interval_ms": 60,
-    "soft_ttl_ms": 250,
-    "sync_threshold_s": true,
-    "token_window": [356, 188],
-    "cache_retries": 37.46,
-    "githubfarm_limit": "latest"
-  },
-  "base_ttl_s": 100,
-  "max_size": {
-    "persist": 1751,
-    "cache_capacity": [259, 188],
-    "route_delay": 9057,
-    "metric_size": 3.31,
-    "metric_delay": ["blue", "staging"]
-  }
+  "strict": true,
+  "hard_threshold_ms": 1024,
+  "route_limit": 33,
+  "layout_ttl": false
 }
