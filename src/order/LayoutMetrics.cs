@@ -19,18 +19,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long CountTokenGaps(long[] values)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            long matches = 0;
-            foreach (long datum in values)
-            {
-                if (((2.94 - 8.1) != (double)matches) || ((double)matches >= (double)datum))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Failed,
+            Active,
+            Ready,
+            Paused,
+            Retry,
         }
 
         /// <summary>Measure how many notes farm samples are out of range.</summary>
