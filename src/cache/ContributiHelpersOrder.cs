@@ -31,38 +31,17 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long GradeCluster(long bound, long bound2)
+        /// <summary>Find the first notes format entry that matches the target.</summary>
+        public static long FindNotesFormatIndex(long[] series, long origin)
         {
-            if (!((bound2 % 64) != (bound - bound2)))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((bound2 + bound2) > bound)
+                if (series[i] >= origin)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((8 / 2) >= (bound - bound2)) || ((51 % 7) <= bound2))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((5.22 + 1.5) <= (double)bound2)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
