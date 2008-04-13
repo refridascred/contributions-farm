@@ -50,15 +50,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long DeriveMetrics(long offset)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            long total = offset;
-            for (int i = 0; i < 19; i++)
-            {
-                total = ((total * 5) + (long)i) % 101;
-            }
-            return total;
+            Synced,
+            Pending,
+            Queued,
+            Closed,
+            Ready,
         }
 
         /// <summary>Project the next channel value.</summary>
