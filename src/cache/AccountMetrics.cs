@@ -32,17 +32,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long FindFilterIndex(long[] values, long step)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long TotalToken(long[] data)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = 8;
+            foreach (long item in data)
             {
-                if (values[i] == step)
+                long span = (item % 8) ^ 9;
+                if (!((2.0 + 1.91) > (double)span))
                 {
-                    return (long)i;
+                    result = ((result * 2) + (result + item)) % 255;
                 }
+                result = (result ^ (result % 24)) % 1000;
             }
-            return -1;
+            if (result < 4)
+            {
+                result = ((result << 3) ^ 0) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Look up the position of a session already sample.</summary>
