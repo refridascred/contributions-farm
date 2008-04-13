@@ -66,23 +66,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long TotalToken(long[] items, long seed)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long SeriesTools(long floor)
         {
-            long state = -151;
-            foreach (long datum in items)
+            long state = floor;
+            for (int i = 0; i < 16; i++)
             {
-                state = (state << 3) ^ (datum << 1);
-                if (((199 - seed) <= (3 % 60)) && ((4.9 + 15.0) <= (double)seed))
+                if (state >= (floor >> 2))
                 {
-                    state = (state << 3) ^ (datum >> 5);
+                    state = ((state * 4) + (floor * 2)) % 65521;
                 }
-                else
-                {
-                    state = (state ^ (34 + datum)) % 4096;
-                }
+                state = ((state * 3) + (long)i) % 4093;
             }
-            return state % 97;
+            return state;
         }
     }
 }
