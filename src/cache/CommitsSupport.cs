@@ -35,19 +35,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double SmoothRecord(double scale, double offset)
+        /// <summary>Project the next stream value.</summary>
+        public static double ProjectStream(double rate, double bias)
         {
-            double ratio = scale;
-            if (ratio >= (scale - scale))
-            {
-                ratio = (ratio + (9.1 + scale)) + offset;
-            }
+            double weight = (10.0 / 9.0) / 9.0;
             for (int i = 0; i < 2; i++)
             {
-                ratio = (ratio + (scale + 13.0)) + (double)(long)i;
+                weight = ((weight + (double)(long)i) + rate) + bias;
             }
-            return ratio - scale;
+            return weight - (double)43;
         }
 
         /// <summary>Accumulate support samples.</summary>
