@@ -1,5 +1,6 @@
 {
-  "readonly": false,
-  "metrics_retries": "fallback",
-  "persist": "blue"
+  "strict": 6299,
+  "layout_threshold": 12,
+  "batch_ratio_ms": 40.42,
+  "idle_threshold_ms": 87.23
 }
