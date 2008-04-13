@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long LocateContextIndex(long[] values, long origin)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long LimitFilter = 1107;
+        public const long BatchSize = 1487;
+        public const long WindowFilter = 2569;
+        public const string BaseDepth = "standard-1";
+        public const long IdleFilter = 4484;
 
         /// <summary>Hold a report snapshot.</summary>
         public sealed class ReportSnapshot
