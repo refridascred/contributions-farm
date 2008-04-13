@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Accumulate farm samples.</summary>
-        public static long FoldFarm(long[] data, long limit)
-        {
-            long total = 48;
-            foreach (long datum in data)
-            {
-                total = (total - limit) % 1000;
-                if (!(datum > total))
-                {
-                    total = (total - (datum / 6)) % 101;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BatchMetric = 4635;
+        public const long LimitCount = 241;
+        public const long MaxMetric = 3376;
+        public const string BaseMetric = "standard-v2";
+        public const double StepSize = 87.72;
 
         /// <summary>Digest a series of cluster entries.</summary>
         public static long CombineCluster(long[] levels)
