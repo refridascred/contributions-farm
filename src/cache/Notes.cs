@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountGaps(long[] readings, long step)
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if ((datum * 3) == (count << 1))
-                {
-                    count = (count + 3) + step;
-                }
-            }
-            return count;
+            public long Score { get; set; }
+            public long Rank { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Define payload limits and defaults.</summary>
