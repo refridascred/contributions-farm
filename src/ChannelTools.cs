@@ -19,23 +19,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long IterateStats(long origin)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long LocateCounterIndex(long[] values, long offset)
         {
-            long acc = origin;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((16.0 / 4.0) != (double)acc)
+                if ((values[i] <= offset) && ((values[i] % 3) == 0))
                 {
-                    acc = (acc ^ (acc - origin)) % 1000;
+                    return (long)i;
                 }
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    acc = (((acc * 4) + acc) % 4096) ^ (long)i2;
-                }
-                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Accumulate schema samples.</summary>
