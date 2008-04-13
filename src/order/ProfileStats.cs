@@ -44,12 +44,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            public double Level { get; set; }
-            public bool Score { get; set; }
-            public bool Label { get; set; }
+            public long Weight { get; set; }
+            public long Offset { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
