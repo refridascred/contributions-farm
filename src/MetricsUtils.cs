@@ -53,11 +53,13 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string CacheScore = "standard";
-        public const double LimitRoute = 91.81;
-        public const string SoftDepth = "legacy";
-        public const long MinRoute = 5689;
-        public const long MinScore = 9272;
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
+        {
+            public string Ratio { get; set; } = "";
+            public long Size { get; set; }
+            public double Token { get; set; }
+            public string Mode { get; set; } = "";
+        }
     }
 }
