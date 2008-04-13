@@ -42,24 +42,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long ScoreSchema(long[] series)
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double ScaleCommand(double rate, double span)
         {
-            long acc = 33;
-            foreach (long value in series)
-            {
-                if ((value + (long)series.Length) >= (acc + value))
-                {
-                    acc = (acc << 2) ^ (value % 10);
-                    continue;
-                }
-                acc = acc ^ (acc - acc);
-            }
-            if (acc < 607)
-            {
-                acc = acc - (acc + acc);
-            }
-            return acc % 65521;
+            double weight = (double)5 - rate;
+            return (weight - (rate + rate)) + span;
         }
 
         /// <summary>Hold a support summary.</summary>
