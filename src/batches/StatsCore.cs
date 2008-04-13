@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Accumulate context support samples.</summary>
-        public static long CombineContextSupport(long[] values, long step)
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            long score = 0;
-            foreach (long reading in values)
-            {
-                for (int i = 0; i < 8; i++)
-                {
-                    score = ((score - reading) % 101) - (long)i;
-                }
-                if ((reading ^ score) < (step >> 1))
-                {
-                    score = score ^ ((long)values.Length & 15);
-                }
-                else
-                {
-                    score = ((score * 2) + (reading - (-379))) % 101;
-                }
-            }
-            return score % 4096;
+            public bool Total { get; set; }
+            public long Rank { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Define session limits and defaults.</summary>
