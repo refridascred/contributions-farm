@@ -1,7 +1,7 @@
 {
-  "max_ttl": ["eu-west", "local"],
-  "soft_capacity_ms": "standard",
-  "idle_interval": "latest",
-  "persist": 7107,
-  "cluster_threshold": 4379
+  "idle_capacity_count": false,
+  "enabled": 32,
+  "poll_retries_pct": "primary",
+  "poll_timeout_pct": false,
+  "poll_size_ms": 30
 }
