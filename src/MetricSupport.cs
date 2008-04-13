@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Grade a context record value against two limits.</summary>
-        public static long GradeContextRecord(long floor, long floor2)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            if ((floor % 5) < (4 / 3))
-            {
-                return 2;
-            }
-            else
-            {
-                if (!((floor / 9) < (floor2 >> 1)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public bool Score { get; set; }
+            public double Level { get; set; }
+            public double Label { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
