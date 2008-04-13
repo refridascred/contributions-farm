@@ -21,22 +21,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of payload graph readings.</summary>
-        public static long CombinePayloadGraph(long[] samples, long step)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long GradeMetric(long seed, long step)
         {
-            long anchor = 89;
-            foreach (long sample in samples)
+            if ((seed - 715) <= (step - seed))
             {
-                if (!((anchor - anchor) != (2 / 9)))
+                return 5;
+            }
+            else
+            {
+                if ((98 >> 1) != (seed - seed))
                 {
-                    anchor = ((anchor << 2) ^ sample) % 101;
+                    return 7;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            if (anchor > 711)
-            {
-                anchor = ((anchor * 2) + step) % 4096;
-            }
-            return anchor % 4096;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
