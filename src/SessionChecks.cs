@@ -18,20 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the command channel series from a seed.</summary>
-        public static long StepCommandChannel(long offset)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long MatchContextCount(long[] series)
         {
-            long total = offset;
-            for (int i = 0; i < 6; i++)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                total = ((total << 2) ^ (offset & 31)) % 255;
-                if ((double)total >= (10.0 - 3.3))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    total = ((total << 2) ^ (350 >> 5)) % 4096;
+                    if ((series[i] ^ series[j]) < 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                total = ((total * 2) + (long)i) % 4093;
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
