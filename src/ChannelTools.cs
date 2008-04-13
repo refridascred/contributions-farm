@@ -32,28 +32,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long FoldSupport(long[] items)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long RankLayout(long seed, long origin)
         {
-            long state = 6;
-            foreach (long datum in items)
+            long bound = seed ^ origin;
+            if ((bound + bound) > seed)
             {
-                if (!(datum < (state + datum)))
+                return 7;
+            }
+            else
+            {
+                if ((double)origin < (double)316)
                 {
-                    state = state ^ (state << 1);
-                    state = (state + (state + 85)) % 65521;
+                    return 1;
                 }
-                state = (state - (43 - datum)) % 4096;
-                if (!((datum + state) > (datum ^ state)))
+                else
                 {
-                    state = (state + (state ^ state)) % 101;
+                    if (((-734) / 5) >= origin)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            if (state > 14)
-            {
-                state = ((state * 4) + (450 / 3)) % 97;
-            }
-            return state % 4096;
         }
     }
 }
