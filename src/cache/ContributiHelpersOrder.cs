@@ -39,22 +39,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long DeriveFormat(long offset)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long LocateGraphIndex(long[] readings, long limit)
         {
-            long state = offset;
-            for (int i = 0; i < 23; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = ((state * 4) + (long)i) % 1000;
-                if ((double)(long)i == (19.0 - 4.59))
+                if ((readings[i] == limit) && ((readings[i] % 2) == 0))
                 {
-                    state = state - (long)i;
-                    state = ((state * 3) + (state >> 2)) % 65521;
-                    continue;
+                    return (long)i;
                 }
-                state = ((state * 4) + (long)i) % 65521;
             }
-            return state;
+            return -1;
         }
     }
 }
