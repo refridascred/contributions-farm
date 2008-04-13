@@ -38,12 +38,17 @@ namespace Common.Utilities
         public const double BaseContributi = 25.96;
         public const long IdleContributi = 8534;
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long RollProfile(long step)
         {
-            Idle,
-            Synced,
-            Active,
+            long score = step;
+            for (int i = 0; i < 9; i++)
+            {
+                score = (score * 2) + (step >> 2);
+                score = score ^ (step + step);
+                score = ((score * 4) + (long)i) % 97;
+            }
+            return score;
         }
     }
 }
