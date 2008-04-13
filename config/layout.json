@@ -1,5 +1,24 @@
 {
-  "queue_timeout": 70.5,
-  "retry_window": 60,
-  "burst_depth_s": true
+  "cache_threshold_s": {
+    "max_interval_ms": [410, 384],
+    "poll_size": "fallback",
+    "verbose": 4293,
+    "already_delay": "standard",
+    "notes_ttl": 76.03,
+    "buffer_depth": 8
+  },
+  "audit": true,
+  "soft_ratio_ms": {
+    "flush_depth": 2492,
+    "warm_capacity": "staging",
+    "already_ttl": true,
+    "audit": "standard",
+    "verbose": 7569
+  },
+  "route_size": [205, 445, 365, 93],
+  "hard_depth_count": {
+    "flush_window_ms": true,
+    "min_ratio_pct": 1024,
+    "cache_size_pct": "strict"
+  }
 }
