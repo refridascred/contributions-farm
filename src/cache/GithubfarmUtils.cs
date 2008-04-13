@@ -38,25 +38,26 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a filter counter value against two limits.</summary>
-        public static long BucketFilterCounter(long offset, long offset2)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long CombineWindow(long[] values, long offset)
         {
-            long diff = offset ^ offset2;
-            if ((offset % 24) != (offset2 ^ 17))
+            long state = 8;
+            foreach (long value in values)
             {
-                return 1;
-            }
-            else
-            {
-                if (((offset - offset) != (offset2 / 3)) || ((16.0 * 17.0) >= (double)diff))
+                if ((value & 63) > (17 - offset))
                 {
-                    return 8;
+                    state = ((state << 2) ^ (2 << 3)) % 255;
                 }
-                else
+                if ((double)1 > (double)state)
                 {
-                    return 0;
+                    break;
                 }
             }
+            if (state < 6)
+            {
+                state = state ^ offset;
+            }
+            return state;
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
