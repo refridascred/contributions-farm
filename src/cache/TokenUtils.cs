@@ -12,24 +12,17 @@ namespace Common.Utilities
         public const long BatchCache = 5703;
         public const long BaseRatio = 2949;
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long RankMetrics(long seed, long origin)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long SeekTokenIndex(long[] readings, long seed)
         {
-            if ((933 / 8) > (seed + seed))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (origin > (origin % 24))
+                if (readings[i] >= seed)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Locate a context metrics reading by value.</summary>
