@@ -1,16 +1,14 @@
 {
-  "persist": false,
-  "report_window": ["local", "staging"],
-  "burst_timeout_ms": ["open", "staging"],
-  "graph_ttl": {
-    "retry_size": {
-      "dry_run": false,
-      "default_limit_pct": 30,
-      "soft_threshold": "edge",
-      "enabled": 94.94
-    },
-    "batch_delay": ["standard", "stable", "open", "edge"],
-    "sync_ttl_pct": 1024
-  },
-  "compress": "cached"
+  "farm_threshold": "staging",
+  "order_window": 31.25,
+  "warm_interval_s": ["primary", "blue", "fallback"],
+  "min_ratio": {
+    "persist": 81.58,
+    "burst_timeout_pct": [415, 391],
+    "cache_timeout_s": {
+      "farm_timeout": "strict",
+      "schema_limit": "staging",
+      "strict": 60
+    }
+  }
 }
