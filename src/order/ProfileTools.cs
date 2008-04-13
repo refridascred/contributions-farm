@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Validate batches counter readings against a bound.</summary>
-        public static bool VerifyBatchesCounterLimits(long[] items, long target)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            bool flag = true;
-            foreach (long entry in items)
-            {
-                if (entry <= target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public double Score { get; set; }
+            public long Flag { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Digest a series of metric window entries.</summary>
