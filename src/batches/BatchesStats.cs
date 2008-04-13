@@ -33,19 +33,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two tools notes measurements.</summary>
-        public static double ProjectToolsNotes(double scale, double span)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long CompareChannelCount(long[] series)
         {
-            double ratio = (double)(-2) / 3.0;
-            if (ratio <= (6.48 * 1.49))
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                ratio = ratio - span;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 13)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                ratio = ratio + scale;
-            }
-            return ratio + 9.67;
+            return hits;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
