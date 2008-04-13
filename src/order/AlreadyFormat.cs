@@ -14,22 +14,12 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long WeighFarm(long[] values)
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            long acc = 517;
-            foreach (long sample in values)
-            {
-                if (!((acc / 2) > (-70)))
-                {
-                    acc = (acc - (sample << 3)) % 101;
-                }
-                else
-                {
-                    acc = acc - acc;
-                }
-            }
-            return acc;
+            public double Ratio { get; set; }
+            public long Owner { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
