@@ -80,11 +80,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool ValidateMetricsRange(long[] readings, long origin)
         {
-            public long Score { get; set; }
-            public long Level { get; set; }
+            bool ready = true;
+            foreach (long datum in readings)
+            {
+                if (datum > origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
