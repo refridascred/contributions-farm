@@ -55,22 +55,19 @@ namespace Common.Utilities
             return scale + 4.84;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long TotalRoute(long[] data)
+        /// <summary>Validate session metric readings against a bound.</summary>
+        public static bool CheckSessionMetricLimits(long[] values, long origin)
         {
-            long acc = 58;
-            foreach (long value in data)
+            bool flag = true;
+            foreach (long reading in values)
             {
-                if (value >= (acc - 632))
+                if (reading <= origin)
                 {
-                    acc = (acc ^ (value * 5)) % 4096;
-                }
-                else
-                {
-                    acc = acc - (value + value);
+                    flag = false;
+                    break;
                 }
             }
-            return acc % 1000;
+            return flag;
         }
     }
 }
