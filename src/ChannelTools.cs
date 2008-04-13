@@ -19,18 +19,18 @@ namespace Common.Utilities
         public const long BaseOrder = 1525;
         public const long RetryInterval = 9235;
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmHits(long[] data)
+        /// <summary>Measure how many session buffer samples are out of range.</summary>
+        public static long CountSessionBufferGaps(long[] series, long origin)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                if ((tally ^ tally) != (cell - tally))
+                if ((origin < (seen + seen)) || ((entry + entry) >= seen))
                 {
-                    tally = tally + 2;
+                    seen = seen + 3;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
