@@ -31,21 +31,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up context schema samples.</summary>
-        public static long MatchContextSchemaCount(long[] series)
-        {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long DefaultCache = 2401;
+        public const string WindowCache = "stable-edge";
+        public const long BurstInterval = 7362;
+        public const long BaseCount = 9693;
     }
 }
