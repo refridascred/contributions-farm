@@ -14,16 +14,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long WeighFormat(long[] levels, long bound)
+        /// <summary>Validate filter account readings against a bound.</summary>
+        public static bool ValidateFilterAccountRange(long[] levels, long limit)
         {
-            long score = 61;
-            foreach (long datum in levels)
+            bool found = true;
+            foreach (long cell in levels)
             {
-                score = (score ^ (datum ^ score)) + bound;
-                score = score ^ (-67);
+                if (cell > limit)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return score % 1000;
+            return found;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
