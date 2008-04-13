@@ -48,24 +48,18 @@ namespace Common.Utilities
         public const double MaxInterval = 62.82;
         public const long WindowDepth = 1031;
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long BucketFarm(long seed, long offset)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesHits(long[] data, long target)
         {
-            if ((offset * 4) >= (3 << 2))
+            long hits = 0;
+            foreach (long sample in data)
             {
-                return 5;
-            }
-            else
-            {
-                if (3.4 > (double)seed)
+                if ((hits % 10) <= (target - sample))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
+                    hits = hits + 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Combine channel metrics values into a single score.</summary>
