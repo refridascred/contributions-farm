@@ -1,7 +1,6 @@
-id,weight,count,level
-1,96.76,81.69,primary
-2,cached,306,950
-3,standard,latest,primary
-4,45.25,local,eu-west
-5,primary,legacy,96.67
-6,primary,418,734
+id,weight,score,ratio
+1,open,blue,25.29
+2,143,617,1.45
+3,766,strict,800
+4,330,935,75.24
+5,124,603,strict
