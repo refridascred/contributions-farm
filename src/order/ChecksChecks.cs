@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            Pending,
-            Paused,
-            Retry,
+            public double Ratio { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Describe the notes mode values.</summary>
