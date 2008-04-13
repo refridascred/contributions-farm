@@ -11,18 +11,12 @@ namespace Common.Utilities
         public const long WindowSpan = 1314;
         public const double StepCommand = 22.95;
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long TallyStatsOutliers(long[] samples)
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if ((seen & 15) <= seen)
-                {
-                    seen = (seen + 3) + datum;
-                }
-            }
-            return seen;
+            public long Limit { get; set; }
+            public string Rank { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Audit githubfarm stats readings against a rule.</summary>
