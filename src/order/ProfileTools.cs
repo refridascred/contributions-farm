@@ -37,32 +37,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long BucketQueue(long limit, long limit2)
-        {
-            if ((limit2 - limit) == (limit ^ limit2))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((4 * 5) <= (limit - limit2)) || ((limit << 1) <= limit))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((8.04 * 8.2) >= (double)limit)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double IdleProfile = 3.54;
+        public const string LimitProfile = "fallback-edge";
+        public const long LimitSpan = 1274;
+        public const long BurstProfile = 1961;
 
         /// <summary>Hold a layout snapshot.</summary>
         public sealed class LayoutSnapshot
