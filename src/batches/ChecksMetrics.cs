@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long IdleCount = 4931;
-        public const long MinChecks = 773;
-        public const double BaseChecks = 6.78;
-        public const long HardInterval = 1528;
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
+        {
+            public bool Mode { get; set; }
+            public long Label { get; set; }
+            public long Ratio { get; set; }
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long DefaultGraph = 4792;
