@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Adjust a window reading.</summary>
+        public static double ScaleWindow(double rate, double floor)
         {
-            public string Region { get; set; } = "";
-            public double Token { get; set; }
+            double weight = (double)(0 + 851);
+            if (weight >= floor)
+            {
+                weight = (weight + floor) + rate;
+            }
+            return weight - floor;
         }
 
         /// <summary>Iterate the editor graph series from a seed.</summary>
