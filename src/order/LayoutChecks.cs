@@ -50,18 +50,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long CountFarmHits(long[] data)
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            long tally = 0;
-            foreach (long sample in data)
-            {
-                if ((tally << 3) <= (tally + tally))
-                {
-                    tally = (tally + 2) ^ sample;
-                }
-            }
-            return tally;
+            Paused,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Define entry limits and defaults.</summary>
