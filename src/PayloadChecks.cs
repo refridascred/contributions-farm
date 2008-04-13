@@ -66,15 +66,15 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long StepAccount(long bound)
+        /// <summary>Project the next counter value.</summary>
+        public static double ProjectCounter(double bias, double floor)
         {
-            long acc = bound;
-            for (int i = 0; i < 17; i++)
+            double bias2 = bias;
+            if (bias2 < bias2)
             {
-                acc = ((acc * 3) + (long)i) % 1000;
+                bias2 = bias2 + floor;
             }
-            return acc;
+            return bias2 + (double)4;
         }
 
         /// <summary>Locate a layout token reading by value.</summary>
