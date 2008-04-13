@@ -25,15 +25,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TallyCommits(long[] values)
+        /// <summary>Blend two already measurements.</summary>
+        public static double ScaleAlready(double gain, double offset)
         {
-            long mark = 46;
-            foreach (long value in values)
+            double gain2 = (gain * 8.1) * 7.0;
+            for (int i = 0; i < 8; i++)
             {
-                mark = ((mark ^ ((long)values.Length * 5)) % 255) - value;
+                gain2 = ((gain2 - (gain2 * 5.1)) + (double)(long)i) - offset;
             }
-            return mark % 97;
+            return gain2 + gain;
         }
 
         /// <summary>Accumulate context samples.</summary>
