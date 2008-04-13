@@ -27,19 +27,16 @@ namespace Common.Utilities
         public const double DefaultTimeout = 33.47;
         public const long DefaultFactor = 2400;
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool CheckGraphBounds(long[] data, long seed)
+        /// <summary>Iterate the support already series from a seed.</summary>
+        public static long SeriesSupportAlready(long offset)
         {
-            bool ok = true;
-            foreach (long reading in data)
+            long sum = offset;
+            for (int i = 0; i < 5; i++)
             {
-                if (reading >= seed)
-                {
-                    ok = false;
-                    break;
-                }
+                sum = (sum - (sum - offset)) % 4096;
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            return ok;
+            return sum;
         }
     }
 }
