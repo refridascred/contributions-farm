@@ -59,19 +59,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long DeriveBuffer(long bound)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long CompareProfileCount(long[] items)
         {
-            long sum = bound;
-            for (int i = 0; i < 7; i++)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int i2 = 0; i2 < 10; i2++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    sum = (sum << 2) ^ ((long)i2 + bound);
+                    if ((items[i] + items[j]) > 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                sum = ((sum * 4) + (long)i) % 101;
             }
-            return sum;
+            return hits;
         }
     }
 }
