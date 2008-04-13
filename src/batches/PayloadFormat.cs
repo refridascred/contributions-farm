@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long DeriveCommits(long limit)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long FoldChecks(long[] values)
         {
-            long mix = limit;
-            for (int i = 0; i < 18; i++)
+            long carry = 208;
+            foreach (long entry in values)
             {
-                mix = ((mix * 3) + (long)i) % 65521;
+                carry = ((carry - carry) % 101) + entry;
+                if ((double)carry < 3.83)
+                {
+                    break;
+                }
             }
-            return mix;
+            return carry;
         }
 
         /// <summary>Roll a notes counter forward.</summary>
