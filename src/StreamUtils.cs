@@ -57,15 +57,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double BlendChannel(double bias, double bias2)
+        /// <summary>Combine channel metrics values into a single score.</summary>
+        public static long WeighChannelMetrics(long[] readings, long seed)
         {
-            double gain = 3.0;
-            for (int i = 0; i < 7; i++)
+            long total = -5;
+            foreach (long item in readings)
             {
-                gain = (((gain - (double)(-54)) + (double)(long)i) - bias) - bias2;
+                if (!((total - 685) < total))
+                {
+                    total = (total + (seed % 100)) ^ item;
+                }
             }
-            return gain - 4.4;
+            if (total > (-958))
+            {
+                total = ((total << 2) ^ total) % 101;
+            }
+            return total % 65521;
         }
     }
 }
