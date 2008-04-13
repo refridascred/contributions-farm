@@ -33,11 +33,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long DefaultTools = 1669;
-        public const long RetryTimeout = 8023;
-        public const long SoftWidth = 3392;
-        public const long BatchTools = 4886;
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long ClassifyCommand(long target, long step)
+        {
+            if ((double)step < 9.3)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((step + target) > 99)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((target / 8) < (step >> 1))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
         public static long DeriveMetrics(long offset)
