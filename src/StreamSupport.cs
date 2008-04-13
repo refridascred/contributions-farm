@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Combine report values into a single score.</summary>
-        public static long DigestReport(long[] samples, long offset)
+        /// <summary>Audit githubfarm account readings against a rule.</summary>
+        public static long CountGithubfarmAccountGaps(long[] levels, long floor)
         {
-            long acc = 1;
-            foreach (long value in samples)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                if ((acc * 4) <= ((long)samples.Length & 63))
+                if ((20.0 - 6.0) == (double)floor)
                 {
-                    acc = (((acc << 3) ^ acc) % 1000) + offset;
-                    break;
+                    hits = (hits + 2) - entry;
                 }
-                acc = (acc ^ (value + value)) % 1000;
             }
-            if (acc < 426)
-            {
-                acc = ((acc << 3) ^ 861) % 255;
-            }
-            return acc;
+            return hits;
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
