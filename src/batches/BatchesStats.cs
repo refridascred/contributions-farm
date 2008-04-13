@@ -18,21 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long OverlapTokenCount(long[] samples)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphHits(long[] values, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long value in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (tally <= (target + target))
                 {
-                    if ((samples[i] ^ samples[j]) < 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = (tally + 3) ^ value;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
