@@ -26,19 +26,21 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double BlendCounter(double weight, double offset)
+        /// <summary>Compare every pair of token graph readings.</summary>
+        public static long CompareTokenGraphCount(long[] levels)
         {
-            double load = (double)46 * 19.0;
-            if (load >= (double)9)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                load = load + (weight / 3.0);
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 12)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load - offset) + (double)(long)i;
-            }
-            return load + weight;
+            return tally;
         }
 
         /// <summary>Count the report schema entries that pass the check.</summary>
