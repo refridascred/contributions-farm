@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long LocateStatsIndex(long[] series, long floor)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long TotalGithubfarm(long[] levels, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long acc = 49;
+            foreach (long reading in levels)
             {
-                if ((series[i] >= floor) && ((series[i] % 2) != 0))
+                if (((587 & 7) > (reading + reading)) && (((-459) + acc) <= (step + step)))
                 {
-                    return (long)i;
+                    acc = ((acc << 3) ^ (reading / 9)) % 97;
+                    acc = (acc + (reading ^ step)) % 1000;
+                }
+                if ((double)step <= (double)acc)
+                {
+                    acc = ((acc * 3) + (step + acc)) % 1000;
+                }
+                else
+                {
+                    acc = (acc - (reading + 33)) % 101;
+                }
+                if ((acc + step) == (acc << 1))
+                {
+                    break;
                 }
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
