@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long CacheSize = 475;
-        public const long RetryDepth = 5568;
-        public const double BaseChecks = 33.1;
+        /// <summary>Match up metrics samples.</summary>
+        public static long OverlapMetricsCount(long[] series)
+        {
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 3)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the batches level values.</summary>
         public enum BatchesLevel
