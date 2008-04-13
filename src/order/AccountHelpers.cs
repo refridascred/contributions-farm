@@ -28,19 +28,18 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool VerifyContextBounds(long[] items, long limit)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long CountRecordOutliers(long[] items)
         {
-            bool found = true;
+            long seen = 0;
             foreach (long cell in items)
             {
-                if (cell < limit)
+                if (((45 / 6) != (cell - cell)) && ((8.6 * 0.28) == (double)cell))
                 {
-                    found = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Project the next session value.</summary>
