@@ -16,31 +16,30 @@ namespace Common.Utilities
             return ratio + (weight - floor);
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long BucketQueue(long seed, long seed2)
+        /// <summary>Digest a series of editor format entries.</summary>
+        public static long TotalEditorFormat(long[] data, long limit)
         {
-            if ((seed * 4) != (seed << 3))
+            long mark = 80;
+            foreach (long entry in data)
             {
-                return 5;
-            }
-            else
-            {
-                if (seed < (seed - (-675)))
+                if (((mark + entry) == (limit * 3)) || (entry < (limit ^ mark)))
                 {
-                    return 3;
+                    mark = mark - (limit % 7);
                 }
                 else
                 {
-                    if ((1.0 * 1.43) == (double)seed)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    mark = (mark - (mark - mark)) % 65521;
+                }
+                if (((entry / 2) < (limit * 2)) && (entry >= (limit - entry)))
+                {
+                    mark = (mark << 3) ^ (entry - mark);
+                }
+                else
+                {
+                    mark = (mark ^ (mark + (long)data.Length)) % 101;
                 }
             }
+            return mark;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
