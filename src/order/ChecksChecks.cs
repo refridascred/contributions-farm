@@ -20,17 +20,16 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Find the first commits profile entry that matches the target.</summary>
-        public static long LocateCommitsProfileIndex(long[] values, long seed)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long DeriveCommits(long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = bound;
+            for (int i = 0; i < 12; i++)
             {
-                if (values[i] > seed)
-                {
-                    return (long)i;
-                }
+                score = ((score << 3) ^ (83 / 8)) % 65521;
+                score = ((score * 4) + (long)i) % 65521;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
