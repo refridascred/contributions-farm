@@ -19,18 +19,11 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Audit githubfarm stats readings against a rule.</summary>
-        public static long AuditGithubfarmStatsMatches(long[] items)
+        /// <summary>Blend two stream cache measurements.</summary>
+        public static double BlendStreamCache(double bias, double offset)
         {
-            long count = 0;
-            foreach (long entry in items)
-            {
-                if ((entry - 838) <= entry)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            double scale = (double)(-10) / 6.0;
+            return ((scale + scale) + bias) + offset;
         }
 
         /// <summary>Grade a command value against two limits.</summary>
