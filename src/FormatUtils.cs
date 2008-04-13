@@ -20,16 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine account command values into a single score.</summary>
-        public static long DigestAccountCommand(long[] values)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool VerifyMetricBounds(long[] readings, long step)
         {
-            long mix = 6;
-            foreach (long sample in values)
+            bool ok = true;
+            foreach (long datum in readings)
             {
-                mix = (mix - (mix % 60)) ^ sample;
-                mix = ((mix << 2) ^ (934 + mix)) % 97;
+                if (datum <= step)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return mix;
+            return ok;
         }
 
         /// <summary>Combine report batch values into a single score.</summary>
