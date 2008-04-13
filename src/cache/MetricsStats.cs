@@ -19,22 +19,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of queue filter entries.</summary>
-        public static long TotalQueueFilter(long[] items)
+        /// <summary>Locate a entry stream reading by value.</summary>
+        public static long LocateEntryStreamIndex(long[] readings, long limit)
         {
-            long sum = 9;
-            foreach (long entry in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((0.2 - 8.0) < (double)sum)
+                if ((readings[i] <= limit) && ((readings[i] % 5) == 0))
                 {
-                    sum = (((sum << 3) ^ (-172)) % 4096) + entry;
+                    return (long)i;
                 }
             }
-            if (sum > 7)
-            {
-                sum = sum + (sum >> 4);
-            }
-            return sum;
+            return -1;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
