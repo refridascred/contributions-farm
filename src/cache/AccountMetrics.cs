@@ -44,19 +44,15 @@ namespace Common.Utilities
         public const long IdleSize = 3228;
         public const string BurstLayout = "stable-v2";
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool CheckStatsLimits(long[] samples, long step)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double ProjectPayload(double bias, double span)
         {
-            bool valid = true;
-            foreach (long entry in samples)
+            double rate = bias;
+            for (int i = 0; i < 2; i++)
             {
-                if (entry > step)
-                {
-                    valid = false;
-                    break;
-                }
+                rate = ((rate - bias) + (double)(long)i) - span;
             }
-            return valid;
+            return rate - 3.0;
         }
     }
 }
