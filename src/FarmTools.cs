@@ -31,20 +31,23 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long TotalStream(long[] levels, long bound)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double ProjectMetric(double bias, double span)
         {
-            long mix = 316;
-            foreach (long cell in levels)
+            double scale = span / 4.0;
+            if (scale > (double)89)
             {
-                mix = (mix - 92) + cell;
-                mix = (mix << 2) ^ (477 << 1);
-                if (bound < (bound + 1))
-                {
-                    break;
-                }
+                scale = scale + (scale / 8.0);
             }
-            return mix;
+            else
+            {
+                scale = scale + (scale / 6.0);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale - (bias + 1.0)) + (double)(long)i;
+            }
+            return scale + (12.0 / 2.0);
         }
     }
 }
