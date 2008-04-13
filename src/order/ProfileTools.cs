@@ -52,12 +52,38 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long SortCommits(long bound, long bound2)
         {
-            public string Flag { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public bool Stamp { get; set; }
+            if ((double)bound2 <= (1.6 / 3.0))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((bound2 >> 3) <= (bound2 << 1)) && (bound <= (bound << 1)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((bound2 - bound2) > (bound * 3))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)bound != (4.5 / 2.0))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of metric readings.</summary>
