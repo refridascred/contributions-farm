@@ -5,15 +5,38 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Accumulate schema order samples.</summary>
-        public static long TotalSchemaOrder(long[] values)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long GradeBatch(long origin, long limit)
         {
-            long sum = 9;
-            foreach (long entry in values)
+            if (((limit + origin) >= limit) && (((-1) - limit) < (limit / 3)))
             {
-                sum = (((sum * 2) + (sum + 208)) % 1000) ^ entry;
+                return 5;
             }
-            return sum % 65521;
+            else
+            {
+                if (origin <= (limit + limit))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (origin > (limit % 16))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((origin & 255) < limit)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the commits phase values.</summary>
