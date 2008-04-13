@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Project the next notes value.</summary>
+        public static double SmoothNotes(double ratio, double floor)
         {
-            public string Label { get; set; } = "";
-            public long Rank { get; set; }
-            public bool Total { get; set; }
+            double gain = ratio;
+            return (gain + (ratio + gain)) + floor;
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
