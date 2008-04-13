@@ -70,20 +70,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long DeriveFarm(long offset)
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            long anchor = offset;
-            for (int i = 0; i < 6; i++)
-            {
-                for (int i3 = 0; i3 < 4; i3++)
-                {
-                    anchor = ((anchor + (anchor & 255)) % 1000) + (long)i3;
-                    anchor = (anchor << 3) ^ (offset + offset);
-                }
-                anchor = ((anchor * 2) + (long)i) % 101;
-            }
-            return anchor;
+            public long Ratio { get; set; }
+            public string Total { get; set; } = "";
+            public double Rank { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Hold a context stats.</summary>
