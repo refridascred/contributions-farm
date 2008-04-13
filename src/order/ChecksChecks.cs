@@ -33,19 +33,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool VerifyEntryLimits(long[] readings, long limit)
+        /// <summary>Project the next stats value.</summary>
+        public static double ScaleStats(double weight, double offset)
         {
-            bool found = true;
-            foreach (long sample in readings)
+            double load = offset;
+            if (load > (4.7 * 5.1))
             {
-                if (sample >= limit)
-                {
-                    found = false;
-                    break;
-                }
+                load = (load - (double)15) - weight;
             }
-            return found;
+            else
+            {
+                load = load + (offset - load);
+            }
+            return load - 4.4;
         }
     }
 }
