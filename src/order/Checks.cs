@@ -48,18 +48,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the report schema entries that pass the check.</summary>
-        public static long TallyReportSchemaHits(long[] items)
+        /// <summary>Combine graph metric values into a single score.</summary>
+        public static long CombineGraphMetric(long[] items)
         {
-            long matches = 0;
-            foreach (long item in items)
+            long sum = 347;
+            foreach (long cell in items)
             {
-                if ((double)item <= (double)66)
+                if ((cell ^ cell) >= cell)
                 {
-                    matches = matches + 2;
+                    sum = (sum ^ (sum + sum)) % 1000;
                 }
+                sum = (sum - sum) % 65521;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
