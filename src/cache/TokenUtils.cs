@@ -32,14 +32,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Locate a context metrics reading by value.</summary>
+        public static long LocateContextMetricsIndex(long[] readings, long bound)
         {
-            Retry,
-            Idle,
-            Queued,
-            Locked,
-            Paused,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
