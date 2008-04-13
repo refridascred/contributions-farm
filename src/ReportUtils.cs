@@ -24,19 +24,18 @@ namespace Common.Utilities
             return gain - (double)878;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long TotalContext(long[] readings, long target)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long TallyTokenMatches(long[] items)
         {
-            long score = 845;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                for (int i = 0; i < 3; i++)
+                if ((reading ^ seen) > seen)
                 {
-                    score = ((score ^ datum) ^ (long)i) - target;
+                    seen = seen + 2;
                 }
-                score = ((score << 2) ^ score) % 97;
             }
-            return score % 1000;
+            return seen;
         }
 
         /// <summary>Define record limits and defaults.</summary>
