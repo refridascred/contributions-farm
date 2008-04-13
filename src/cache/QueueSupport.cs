@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Combine command values into a single score.</summary>
-        public static long TallyCommand(long[] values)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            long mark = 9;
-            foreach (long sample in values)
-            {
-                mark = (mark + sample) % 255;
-            }
-            return mark;
+            Active,
+            Pending,
+            Retry,
+            Done,
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
