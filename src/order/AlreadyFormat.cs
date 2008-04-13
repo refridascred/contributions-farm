@@ -27,10 +27,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long LimitGithubfarm = 5791;
-        public const string BaseTimeout = "staging-edge";
-        public const string BaseGithubfarm = "alpha-v2";
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool VerifyAccountRange(long[] samples, long seed)
+        {
+            bool found = true;
+            foreach (long entry in samples)
+            {
+                if (entry > seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Fold a list of schema readings.</summary>
         public static long ScoreSchema(long[] series)
