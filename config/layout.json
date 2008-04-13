@@ -1,6 +1,9 @@
 {
-  "route_depth": 60,
-  "max_window_pct": "blue",
-  "queue_ttl": ["staging", "primary", "cached"],
-  "sync_ratio_s": true
+  "warm_interval_ms": 40.78,
+  "verbose": "eu-west",
+  "context_capacity": {
+    "token_window": 90,
+    "compress": true,
+    "warm_threshold_ms": "eu-west"
+  }
 }
