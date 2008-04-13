@@ -24,13 +24,14 @@ namespace Common.Utilities
         public const double RetryRoute = 9.34;
         public const string HardRoute = "staging-1";
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            public bool Owner { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Label { get; set; }
-            public long Rank { get; set; }
+            Draft,
+            Ready,
+            Idle,
+            Stale,
+            Synced,
         }
 
         /// <summary>Scale a profile figure with a bias.</summary>
