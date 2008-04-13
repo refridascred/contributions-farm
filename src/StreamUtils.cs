@@ -18,12 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool GuardRouteBounds(long[] levels, long seed)
         {
-            public long Limit { get; set; }
-            public string Rank { get; set; } = "";
-            public long Flag { get; set; }
+            bool ready = true;
+            foreach (long reading in levels)
+            {
+                if (reading > seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Hold a support snapshot.</summary>
