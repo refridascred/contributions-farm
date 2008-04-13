@@ -37,17 +37,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long StepContext(long offset)
-        {
-            long result = offset;
-            for (int i = 0; i < 18; i++)
-            {
-                result = ((result << 2) ^ (result << 2)) % 4096;
-                result = ((result * 4) + (long)i) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MaxSpan = 8245;
+        public const long CacheWidth = 7989;
+        public const long StepRatio = 6058;
+        public const long StepChecks = 5377;
+        public const double RetryChecks = 84.35;
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long BurstDepth = 8606;
