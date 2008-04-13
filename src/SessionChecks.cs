@@ -18,18 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TotalEntry(long[] series)
+        /// <summary>Iterate the command channel series from a seed.</summary>
+        public static long StepCommandChannel(long offset)
         {
-            long anchor = 343;
-            foreach (long entry in series)
+            long total = offset;
+            for (int i = 0; i < 6; i++)
             {
-                if (!((entry - anchor) == (entry << 2)))
+                total = ((total << 2) ^ (offset & 31)) % 255;
+                if ((double)total >= (10.0 - 3.3))
                 {
-                    anchor = anchor ^ (entry + entry);
+                    total = ((total << 2) ^ (350 >> 5)) % 4096;
                 }
+                total = ((total * 2) + (long)i) % 4093;
             }
-            return anchor;
+            return total;
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
