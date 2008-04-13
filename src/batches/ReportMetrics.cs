@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Blend two schema measurements.</summary>
+        public static double ScaleSchema(double weight, double offset)
         {
-            public string Total { get; set; } = "";
-            public bool Ratio { get; set; }
-            public string Flag { get; set; } = "";
-            public double Token { get; set; }
+            double load = offset;
+            if (load > offset)
+            {
+                load = load + (weight / 6.0);
+            }
+            else
+            {
+                load = load + (load - offset);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                load = load + (double)(long)i;
+            }
+            return load + load;
         }
 
         /// <summary>Digest a series of already entries.</summary>
