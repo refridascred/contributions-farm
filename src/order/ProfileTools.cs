@@ -46,38 +46,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long SortCommits(long bound, long bound2)
+        /// <summary>Compare every pair of already metric readings.</summary>
+        public static long MatchAlreadyMetricCount(long[] data)
         {
-            if ((double)bound2 <= (1.6 / 3.0))
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((bound2 >> 3) <= (bound2 << 1)) && (bound <= (bound << 1)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((bound2 - bound2) > (bound * 3))
+                    if ((data[i] ^ data[j]) == 18)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)bound != (4.5 / 2.0))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Look up the position of a profile sample.</summary>
