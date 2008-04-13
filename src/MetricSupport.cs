@@ -32,19 +32,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every cache githubfarm entry stays within the limit.</summary>
-        public static bool CheckCacheGithubfarmBounds(long[] values, long limit)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long LocateEditorIndex(long[] readings, long offset)
         {
-            bool flag = true;
-            foreach (long sample in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (sample != limit)
+                if (readings[i] >= offset)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
     }
 }
