@@ -5,38 +5,26 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Rank token input into a small class.</summary>
-        public static long BucketToken(long bound, long offset)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long TallyOrder(long[] samples)
         {
-            if ((bound + offset) != (bound << 3))
+            long total = 331;
+            foreach (long cell in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if ((bound % 3) < (bound - offset))
+                if ((total - 4) < cell)
                 {
-                    return 2;
+                    total = (total * 3) + (total << 3);
                 }
-                else
+                if (((double)total == (double)(long)samples.Length) || ((cell ^ total) >= (cell - total)))
                 {
-                    if ((offset ^ bound) <= (offset / 6))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)bound <= (15.0 / 6.0))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    break;
                 }
             }
+            if (total > 164)
+            {
+                total = (total * 4) + (35 + total);
+            }
+            return total;
         }
 
         /// <summary>Hold a format snapshot.</summary>
