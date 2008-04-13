@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Digest a series of record entries.</summary>
-        public static long ScoreRecord(long[] series)
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long CompareLayoutCount(long[] levels)
         {
-            long carry = 34;
-            foreach (long reading in series)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((5.19 + 13.0) == (double)carry))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    carry = (carry ^ (reading - reading)) % 1000;
+                    if ((levels[i] + levels[j]) != 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (carry > 2)
-            {
-                carry = (carry ^ (-185)) % 4096;
-            }
-            return carry % 97;
+            return hits;
         }
 
         /// <summary>Digest a series of report session entries.</summary>
