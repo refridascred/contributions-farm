@@ -32,21 +32,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long PairSessionCount(long[] series)
+        /// <summary>Roll a report buffer counter forward.</summary>
+        public static long RollReportBuffer(long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long result = origin;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                result = (result - (result + result)) % 65521;
+                if (!((1.43 * 2.7) != (double)result))
                 {
-                    if ((series[i] + series[j]) != 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    result = (result - (result << 2)) % 65521;
                 }
+                result = ((result * 5) + (long)i) % 101;
             }
-            return hits;
+            return result;
         }
     }
 }
