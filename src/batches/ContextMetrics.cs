@@ -46,10 +46,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long IdleContext = 8738;
-        public const string BurstContext = "fallback-edge";
-        public const string StepContext = "local-1";
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesOutliers(long[] levels, long limit)
+        {
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if (16.0 <= (double)tally)
+                {
+                    tally = ((tally + 2) ^ sample) + limit;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Derive the next record value from a seed.</summary>
         public static long DeriveRecord(long target)
