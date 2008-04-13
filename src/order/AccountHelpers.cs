@@ -29,11 +29,20 @@ namespace Common.Utilities
         public const long MinTimeout = 3230;
         public const long IdleRoute = 9517;
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double BaseContext = 17.68;
-        public const string BurstContext = "alpha";
-        public const long WindowLevel = 3758;
-        public const double WindowContext = 66.6;
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool VerifyContextBounds(long[] items, long limit)
+        {
+            bool found = true;
+            foreach (long cell in items)
+            {
+                if (cell < limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Project the next session value.</summary>
         public static double AdjustSession(double gain, double floor)
