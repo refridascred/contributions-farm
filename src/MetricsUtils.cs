@@ -60,19 +60,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool GuardCacheBounds(long[] series, long offset)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long CombineMetrics(long[] readings, long offset)
         {
-            bool ready = true;
-            foreach (long value in series)
+            long mark = -5;
+            foreach (long reading in readings)
             {
-                if (value != offset)
+                if (((reading + mark) >= reading) || ((7.24 / 9.0) != (double)mark))
                 {
-                    ready = false;
+                    mark = (mark ^ (mark % 7)) + offset;
+                }
+                if ((reading / 6) == (reading % 5))
+                {
                     break;
                 }
             }
-            return ready;
+            return mark % 97;
         }
     }
 }
