@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Match up context metric samples.</summary>
-        public static long CompareContextMetricCount(long[] series)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long SortAccount(long limit, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long diff = limit + floor;
+            if ((double)floor < (9.3 + 0.7))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if (floor <= (diff / 2))
                 {
-                    if ((series[i] - series[j]) > 3)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 6;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return seen;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
