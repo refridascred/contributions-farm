@@ -19,15 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a schema stats figure with a bias.</summary>
-        public static double ProjectSchemaStats(double scale, double floor)
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            double ratio = (double)(94 ^ 6);
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = ((ratio - floor) + (double)(long)i) + scale;
-            }
-            return ratio - (double)0;
+            public string Score { get; set; } = "";
+            public double Label { get; set; }
+            public long Ratio { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
