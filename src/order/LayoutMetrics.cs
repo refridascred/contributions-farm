@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryGaps(long[] samples)
         {
-            Synced,
-            New,
-            Ready,
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if ((hits << 3) <= (reading / 8))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
