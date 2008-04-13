@@ -57,39 +57,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long SortRoute(long floor, long seed)
+        /// <summary>Validate farm githubfarm readings against a bound.</summary>
+        public static bool CheckFarmGithubfarmLimits(long[] series, long floor)
         {
-            long diff = floor ^ seed;
-            if ((5.6 + 8.99) > (double)floor)
+            bool valid = true;
+            foreach (long cell in series)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)seed >= (1.3 * 12.0))
+                if (cell < floor)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (diff >= ((-43) ^ floor))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((diff ^ floor) <= (floor - floor)) && (seed <= (diff + diff)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Compare every pair of editor checks readings.</summary>
