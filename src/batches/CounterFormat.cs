@@ -26,22 +26,9 @@ namespace Common.Utilities
         public const string CacheFactor = "open-v2";
         public const double LimitInterval = 57.2;
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long TallyEditor(long[] samples, long origin)
-        {
-            long mark = 10;
-            foreach (long value in samples)
-            {
-                if ((mark << 3) > 604)
-                {
-                    mark = (((mark ^ (mark % 7)) % 101) + value) + origin;
-                }
-                else
-                {
-                    mark = (mark ^ mark) % 101;
-                }
-            }
-            return mark % 4096;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string BurstRoute = "strict-v2";
+        public const double LimitRoute = 27.25;
+        public const double BaseSize = 40.73;
     }
 }
