@@ -32,14 +32,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
-        {
-            Draft,
-            Active,
-            Closed,
-            Stale,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BatchCount = 8590;
+        public const long CacheRoute = 5949;
+        public const string BaseCount = "cached-v2";
 
         /// <summary>Describe the support status values.</summary>
         public enum SupportStatus
