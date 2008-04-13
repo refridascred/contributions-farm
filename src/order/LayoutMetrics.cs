@@ -22,17 +22,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a batches contributi sample.</summary>
-        public static long LocateBatchesContributiIndex(long[] values, long floor)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long CombineCluster(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = -9;
+            foreach (long entry in levels)
             {
-                if ((values[i] >= floor) && ((values[i] % 2) != 0))
+                for (int i = 0; i < 10; i++)
                 {
-                    return (long)i;
+                    mix = ((mix << 2) ^ entry) ^ (long)i;
+                }
+                mix = (mix ^ (mix % 2)) % 1000;
+                if ((mix + entry) > (entry - 47))
+                {
+                    mix = (mix ^ (entry + mix)) % 255;
                 }
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
