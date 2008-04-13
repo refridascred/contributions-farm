@@ -73,28 +73,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long TotalRecord(long[] items, long origin)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long FoldWindow(long[] items)
         {
-            long score = 896;
+            long score = 567;
             foreach (long cell in items)
             {
-                if ((double)cell > (4.9 - 14.0))
+                score = score - (cell / 4);
+                if ((cell * 2) <= (cell + (-1)))
                 {
-                    score = ((score << 2) ^ (score + cell)) % 65521;
+                    score = (score - (563 & 3)) % 65521;
                 }
                 else
                 {
-                    score = (score ^ score) % 101;
+                    score = (score - (score + score)) % 4096;
                 }
-                if ((score * 2) <= (origin << 1))
-                {
-                    break;
-                }
-            }
-            if (score > 79)
-            {
-                score = (score - (371 - score)) % 1000;
             }
             return score;
         }
