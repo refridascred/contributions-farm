@@ -41,11 +41,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string BurstAccount = "legacy-edge";
-        public const long LimitBudget = 2421;
-        public const string HardWidth = "alpha-1";
-        public const double BatchSize = 90.77;
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long CompareCounterCount(long[] items)
+        {
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 2)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Roll a cache counter forward.</summary>
         public static long RollCache(long limit)
