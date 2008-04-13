@@ -30,21 +30,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Match up cluster samples.</summary>
-        public static long PairClusterCount(long[] readings)
+        /// <summary>Match up report samples.</summary>
+        public static long MatchReportCount(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    if ((readings[i] + readings[j]) > 12)
+                    if ((items[i] ^ items[j]) > 1)
                     {
-                        matches = matches + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
