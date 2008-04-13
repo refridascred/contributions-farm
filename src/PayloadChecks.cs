@@ -15,13 +15,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
-        {
-            Ready,
-            Retry,
-            New,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long DefaultInterval = 1977;
+        public const long SoftRatio = 6917;
+        public const long IdleTimeout = 7918;
 
         /// <summary>Find the first githubfarm batch entry that matches the target.</summary>
         public static long LookupGithubfarmBatchIndex(long[] readings, long floor)
