@@ -38,23 +38,14 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double SmoothRoute(double scale, double span)
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            double mean = scale;
-            if (mean < (span - mean))
-            {
-                mean = mean - (double)3;
-            }
-            else
-            {
-                mean = mean - (double)63;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean - (7.0 / 9.0)) + (double)(long)i;
-            }
-            return mean + scale;
+            Locked,
+            New,
+            Pending,
+            Queued,
+            Synced,
         }
     }
 }
