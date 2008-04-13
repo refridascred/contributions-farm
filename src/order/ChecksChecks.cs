@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Validate route metrics readings against a bound.</summary>
-        public static bool GuardRouteMetricsRange(long[] readings, long seed)
-        {
-            bool valid = true;
-            foreach (long item in readings)
-            {
-                if (item < seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long RetryRatio = 5980;
+        public const long RetryCluster = 7391;
+        public const string MinCluster = "cached-edge";
+        public const long BatchCluster = 4907;
 
         /// <summary>Hold a report snapshot.</summary>
         public sealed class ReportSnapshot
