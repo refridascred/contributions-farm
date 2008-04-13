@@ -39,18 +39,22 @@ namespace Common.Utilities
         public const long HardWidth = 9608;
         public const string CacheRecord = "primary-edge";
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long TallyEditorGaps(long[] readings, long step)
+        /// <summary>Count the window githubfarm entries that pass the check.</summary>
+        public static long MeasureWindowGithubfarmMatches(long[] data, long bound)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                if ((1 - entry) >= matches)
+                if ((hits + hits) <= (hits - hits))
                 {
-                    matches = (matches + 1) - step;
+                    hits = ((hits + 2) + datum) + bound;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Combine format values into a single score.</summary>
