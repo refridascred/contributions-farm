@@ -16,23 +16,21 @@ namespace Common.Utilities
             return weight - floor;
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double AdjustSchema(double scale, double floor)
+        /// <summary>Match up schema samples.</summary>
+        public static long OverlapSchemaCount(long[] values)
         {
-            double ratio = 1.78;
-            if (ratio <= ratio)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                ratio = ((ratio + (ratio + 16.0)) + scale) - floor;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) > 11)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                ratio = ratio + (double)85;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio + ratio) + (double)(long)i;
-            }
-            return ratio - (double)8;
+            return hits;
         }
 
         /// <summary>Scale a order figure with a bias.</summary>
