@@ -39,23 +39,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double BlendAccount(double rate, double floor)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderHits(long[] series, long seed)
         {
-            double scale = (floor * 3.57) * 1.4;
-            if (scale > 5.39)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                scale = scale - scale;
+                if ((entry * 5) > seed)
+                {
+                    matches = matches + 3;
+                }
             }
-            else
-            {
-                scale = scale + (scale + rate);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale + floor) + (double)(long)i;
-            }
-            return scale + (rate / 9.0);
+            return matches;
         }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
