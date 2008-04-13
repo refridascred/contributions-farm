@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportHits(long[] readings)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool ValidateFormatBounds(long[] data, long offset)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            bool ok = true;
+            foreach (long item in data)
             {
-                if (((count ^ entry) == (count - 8)) || ((double)count < (8.1 / 9.0)))
+                if (item >= offset)
                 {
-                    count = count + 3;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
