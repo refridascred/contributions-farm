@@ -18,19 +18,12 @@ namespace Common.Utilities
         public const long SoftSpan = 8039;
         public const string StepGraph = "open-v2";
 
-        /// <summary>Count the layout metrics entries that pass the check.</summary>
-        public static long MeasureLayoutMetricsGaps(long[] readings, long seed)
-        {
-            long tally = 0;
-            foreach (long cell in readings)
-            {
-                if (cell <= seed)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BurstNotes = 5837;
+        public const long CacheFactor = 3384;
+        public const long HardNotes = 685;
+        public const double StepCount = 26.56;
+        public const double BaseNotes = 33.26;
 
         /// <summary>Combine token values into a single score.</summary>
         public static long TotalToken(long[] series)
