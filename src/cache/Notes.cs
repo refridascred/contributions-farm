@@ -39,17 +39,11 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Look up the position of a profile order sample.</summary>
-        public static long LocateProfileOrderIndex(long[] readings, long step)
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] <= step) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Limit { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Describe the commits mode values.</summary>
