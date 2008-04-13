@@ -29,10 +29,10 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string BurstLevel = "open-edge";
-        public const long IdleContributi = 3876;
-        public const long MinWidth = 7731;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long DefaultStats = 6124;
+        public const string LimitStats = "staging-1";
+        public const long SoftStats = 6044;
 
         /// <summary>Describe the report status values.</summary>
         public enum ReportStatus
