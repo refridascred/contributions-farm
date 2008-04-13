@@ -83,18 +83,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long ScoreMetric(long[] data, long origin)
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long SeekProfileIndex(long[] series, long floor)
         {
-            long sum = 58;
-            foreach (long cell in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((5.18 / 2.0) <= (double)origin)
+                if ((series[i] <= floor) && ((series[i] % 3) == 0))
                 {
-                    sum = ((sum + sum) % 65521) ^ cell;
+                    return (long)i;
                 }
             }
-            return sum % 97;
+            return -1;
         }
     }
 }
