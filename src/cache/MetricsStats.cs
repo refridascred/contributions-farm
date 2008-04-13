@@ -34,22 +34,16 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelOutliers(long[] levels)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long RollCommits(long floor)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            long result = floor;
+            for (int i = 0; i < 20; i++)
             {
-                if ((((cell + cell) != (103 - 814)) || ((tally * 4) < 844)) && ((cell + 6) != (98 ^ (-4))))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                result = (result ^ (result + floor)) % 1000;
+                result = ((result * 5) + (long)i) % 1000;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Fold a list of order readings.</summary>
