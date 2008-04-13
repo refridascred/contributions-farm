@@ -1,7 +1,9 @@
 {
-  "idle_threshold_pct": "eu-west",
-  "compress": 9227,
-  "githubfarm_retries": "open",
-  "default_limit_count": true,
-  "layout_timeout": 250
+  "poll_threshold_count": true,
+  "sync_depth_count": 47.59,
+  "max_interval": {
+    "persist": ["open", "cached", "edge", "eu-west"],
+    "verbose": true,
+    "retry_delay": 31
+  }
 }
