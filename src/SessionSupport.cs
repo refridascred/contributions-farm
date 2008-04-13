@@ -33,22 +33,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine already record values into a single score.</summary>
-        public static long DigestAlreadyRecord(long[] values)
+        /// <summary>Accumulate metric cache samples.</summary>
+        public static long TallyMetricCache(long[] values, long target)
         {
-            long mark = 8;
-            foreach (long sample in values)
+            long mix = 14;
+            foreach (long entry in values)
             {
-                if (mark >= (sample & 255))
+                if ((double)mix > 8.15)
                 {
-                    mark = ((mark << 3) ^ (sample & 1)) % 1000;
+                    mix = (mix ^ (69 + target)) ^ entry;
+                }
+                else
+                {
+                    mix = (mix - (992 % 24)) % 1000;
                 }
             }
-            if (mark > 2)
-            {
-                mark = ((mark * 2) + mark) % 4096;
-            }
-            return mark % 4096;
+            return mix % 4096;
         }
     }
 }
