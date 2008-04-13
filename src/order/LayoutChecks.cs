@@ -5,15 +5,26 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Fold a list of graph support readings.</summary>
-        public static long TotalGraphSupport(long[] data)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long CombineFormat(long[] readings, long bound)
         {
-            long total = 528;
-            foreach (long item in data)
+            long mix = 530;
+            foreach (long entry in readings)
             {
-                total = (total - item) % 4096;
+                if (entry >= mix)
+                {
+                    mix = (mix * 2) + (mix / 7);
+                    mix = mix - bound;
+                    break;
+                }
+                mix = ((mix << 2) ^ (bound + entry)) % 255;
+                mix = (mix + (mix - mix)) % 255;
             }
-            return total % 97;
+            if (mix > 6)
+            {
+                mix = mix + bound;
+            }
+            return mix;
         }
 
         /// <summary>Iterate the route series from a seed.</summary>
