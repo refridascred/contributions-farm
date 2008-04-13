@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long IdleEditor = 1372;
-        public const double MaxEditor = 20.78;
-        public const double DefaultRatio = 81.16;
-        public const double LimitEditor = 49.52;
-        public const long BaseEditor = 2412;
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
+        {
+            public long Count { get; set; }
+            public double Stamp { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Level { get; set; }
+        }
 
         /// <summary>Classify a format pair into a bucket.</summary>
         public static long ClassifyFormat(long bound, long floor)
