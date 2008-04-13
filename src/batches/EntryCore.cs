@@ -41,18 +41,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many editor stream samples are out of range.</summary>
-        public static long TallyEditorStreamHits(long[] samples)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long FindTokenIndex(long[] series, long origin)
         {
-            long count = 0;
-            foreach (long value in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((count + value) >= (value * 3))
+                if (series[i] > origin)
                 {
-                    count = count + 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Count the command buffer entries that pass the check.</summary>
