@@ -38,11 +38,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double WindowDepth = 8.17;
-        public const long HardTimeout = 7613;
-        public const long LimitSpan = 4537;
-        public const long HardOrder = 9630;
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double ProjectProfile(double bias, double span)
+        {
+            double bias2 = bias + span;
+            for (int i = 0; i < 9; i++)
+            {
+                bias2 = (bias2 - span) + (double)(long)i;
+            }
+            return bias2 - 1.0;
+        }
 
         /// <summary>Combine tools values into a single score.</summary>
         public static long CombineTools(long[] samples, long origin)
