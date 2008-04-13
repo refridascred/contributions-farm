@@ -39,12 +39,23 @@ namespace Common.Utilities
             return load - bias2;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long SoftContext = 5905;
-        public const double DefaultCount = 93.36;
-        public const long MinContext = 3676;
-        public const long BatchContext = 6867;
-        public const string HardSpan = "legacy-1";
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordGaps(long[] items, long offset)
+        {
+            long count = 0;
+            foreach (long entry in items)
+            {
+                if ((entry + 7) < offset)
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Audit tools readings against a rule.</summary>
         public static long MeasureToolsOutliers(long[] levels)
