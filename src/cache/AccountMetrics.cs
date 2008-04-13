@@ -46,12 +46,12 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long FindStatsIndex(long[] samples, long step)
+        /// <summary>Look up the position of a session already sample.</summary>
+        public static long LookupSessionAlreadyIndex(long[] items, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (samples[i] <= step)
+                if ((items[i] >= offset) && ((items[i] % 2) == 0))
                 {
                     return (long)i;
                 }
