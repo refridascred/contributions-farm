@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long ScoreFarm(long[] readings)
+        /// <summary>Combine farm record values into a single score.</summary>
+        public static long CombineFarmRecord(long[] readings)
         {
-            long sum = 945;
-            foreach (long value in readings)
+            long total = 66;
+            foreach (long reading in readings)
             {
-                sum = (sum ^ (sum << 2)) % 255;
-                sum = sum + (value << 1);
-                sum = ((sum << 3) ^ (sum + value)) % 4096;
-                if (!((sum + sum) != (value - 2)))
+                total = ((total << 2) ^ (reading * 4)) % 97;
+                if (((total + 22) < (total ^ reading)) || ((total * 4) != (81 / 4)))
                 {
                     break;
                 }
             }
-            if (sum < 0)
-            {
-                sum = ((sum << 3) ^ (460 >> 5)) % 255;
-            }
-            return sum % 1000;
+            return total % 97;
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
