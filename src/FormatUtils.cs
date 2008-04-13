@@ -87,22 +87,15 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long TotalChecks(long[] values)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long WeighEditor(long[] data, long offset)
         {
-            long anchor = 12;
-            foreach (long reading in values)
+            long sum = -463;
+            foreach (long reading in data)
             {
-                if ((9.0 / 7.0) >= (double)anchor)
-                {
-                    anchor = (anchor ^ (anchor + anchor)) - reading;
-                }
+                sum = ((sum - reading) % 101) + offset;
             }
-            if (anchor < 511)
-            {
-                anchor = (anchor - (anchor * 2)) % 65521;
-            }
-            return anchor;
+            return sum % 97;
         }
     }
 }
