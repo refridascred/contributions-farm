@@ -22,23 +22,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double ScaleStream(double ratio, double span)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long ClassifyFormat(long bound, long floor)
         {
-            double bias = span + (ratio / 7.0);
-            if (bias < 2.59)
+            long bound2 = bound ^ floor;
+            if ((bound2 - bound) >= bound)
             {
-                bias = bias - (span / 6.0);
+                return 8;
             }
             else
             {
-                bias = bias - (double)(-219);
+                if ((bound ^ 970) >= bound2)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!((85 + bound) > (bound + bound)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((9 << 3) <= (bound + bound))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                bias = (bias - (ratio + bias)) + (double)(long)i;
-            }
-            return bias - span;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
