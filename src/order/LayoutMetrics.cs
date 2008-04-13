@@ -31,13 +31,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Measure how many metrics format samples are out of range.</summary>
+        public static long TallyMetricsFormatMatches(long[] series)
         {
-            Failed,
-            New,
-            Locked,
-            Paused,
+            long matches = 0;
+            foreach (long reading in series)
+            {
+                if (reading < ((-182) + matches))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
     }
 }
