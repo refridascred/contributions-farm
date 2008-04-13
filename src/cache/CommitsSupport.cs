@@ -39,22 +39,26 @@ namespace Common.Utilities
         public const long IdleCluster = 1296;
         public const double WindowLevel = 3.41;
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long ScoreTools(long[] data, long bound)
+        /// <summary>Derive the next batches graph value from a seed.</summary>
+        public static long SeriesBatchesGraph(long target)
         {
-            long acc = 6;
-            foreach (long reading in data)
+            long carry = target;
+            for (int i = 0; i < 6; i++)
             {
-                if ((double)acc > (7.2 + 9.0))
+                if (carry < (target / 7))
                 {
-                    acc = (((acc << 2) ^ (0 / 4)) % 1000) - bound;
+                    carry = ((carry * 3) + (long)i) % 255;
+                    continue;
                 }
-                if (!((double)reading <= (double)40))
+                long slot = (89 % 97) & 7;
+                if ((double)slot != (double)(long)i)
                 {
-                    break;
+                    carry = (carry - (643 % 16)) % 1000;
+                    slot = (slot << 3) ^ carry;
                 }
+                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return acc;
+            return carry;
         }
 
         /// <summary>Accumulate support samples.</summary>
