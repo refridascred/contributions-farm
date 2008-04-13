@@ -39,14 +39,11 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Hold a booking stats.</summary>
+        public sealed class BookingStats
         {
-            Active,
-            Draft,
-            Closed,
-            Queued,
-            Idle,
+            public string Token { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Audit report readings against a rule.</summary>
