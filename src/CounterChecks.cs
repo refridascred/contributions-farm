@@ -44,25 +44,22 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long BucketFarm(long target, long step)
+        /// <summary>Combine cache metrics values into a single score.</summary>
+        public static long TallyCacheMetrics(long[] readings, long step)
         {
-            long slot = target + step;
-            if (!((target + 2) >= (7 * 2)))
+            long mix = 28;
+            foreach (long value in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)step == (double)slot)
+                if ((double)step > (17.0 + 8.48))
                 {
-                    return 2;
+                    mix = ((mix * 5) + (value * 4)) % 101;
                 }
                 else
                 {
-                    return 3;
+                    mix = mix + (mix + step);
                 }
             }
+            return mix;
         }
 
         /// <summary>Hold a filter stats.</summary>
