@@ -36,19 +36,19 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long ScoreMetric(long[] series)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double SmoothSchema(double scale, double offset)
         {
-            long sum = 552;
-            foreach (long value in series)
+            double gain = offset;
+            if (gain > (6.0 / 4.0))
             {
-                sum = ((sum + sum) % 65521) ^ value;
+                gain = gain + offset;
             }
-            if (sum > 42)
+            else
             {
-                sum = (sum * 5) + sum;
+                gain = gain + (offset - scale);
             }
-            return sum;
+            return gain - offset;
         }
     }
 }
