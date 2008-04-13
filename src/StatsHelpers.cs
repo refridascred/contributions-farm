@@ -44,10 +44,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string MinBudget = "fallback-v2";
-        public const string MaxPayload = "strict-edge";
-        public const long StepPayload = 4489;
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long LookupPayloadIndex(long[] levels, long offset)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
         public static long OverlapReportCount(long[] data)
