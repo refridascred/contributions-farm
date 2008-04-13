@@ -37,12 +37,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long MatchLayoutCount(long[] data)
         {
-            Closed,
-            Locked,
-            Paused,
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 7)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
