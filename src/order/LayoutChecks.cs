@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double ProjectAlready(double weight, double offset)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long MatchBufferCount(long[] readings)
         {
-            double load = 7.0;
-            if (load > weight)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                load = (load - (weight - load)) - offset;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 14)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return load + 11.0;
+            return hits;
         }
 
         /// <summary>Define report limits and defaults.</summary>
