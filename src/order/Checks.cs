@@ -11,17 +11,12 @@ namespace Common.Utilities
         public const long StepQueue = 335;
         public const long BaseBudget = 4815;
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long StepBatches(long offset)
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            long state = offset;
-            for (int i = 0; i < 5; i++)
-            {
-                state = state - (offset & 15);
-                state = state + state;
-                state = ((state * 4) + (long)i) % 4093;
-            }
-            return state;
+            Retry,
+            Done,
+            Failed,
         }
 
         /// <summary>Compare every pair of token graph readings.</summary>
