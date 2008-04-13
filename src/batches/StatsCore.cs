@@ -78,14 +78,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long LocateEditorIndex(long[] readings, long limit)
         {
-            Idle,
-            Queued,
-            Failed,
-            Synced,
-            Active,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
