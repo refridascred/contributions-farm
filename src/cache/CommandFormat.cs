@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Scale a entry support figure with a bias.</summary>
-        public static double ScaleEntrySupport(double gain, double bias)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long FindBatchIndex(long[] samples, long seed)
         {
-            double scale = gain / 4.0;
-            if (scale < 8.7)
+            for (int i = 0; i < samples.Length; i++)
             {
-                scale = scale - (double)86;
+                if (samples[i] > seed)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                scale = scale - (gain - bias);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale + (bias * 8.0)) - (double)(long)i;
-            }
-            return scale - (bias - scale);
+            return -1;
         }
 
         /// <summary>Roll a metric counter forward.</summary>
