@@ -73,19 +73,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long SeriesTools(long floor)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool GuardRecordRange(long[] samples, long bound)
         {
-            long state = floor;
-            for (int i = 0; i < 16; i++)
+            bool found = true;
+            foreach (long reading in samples)
             {
-                if (state >= (floor >> 2))
+                if (reading != bound)
                 {
-                    state = ((state * 4) + (floor * 2)) % 65521;
+                    found = false;
+                    break;
                 }
-                state = ((state * 3) + (long)i) % 4093;
             }
-            return state;
+            return found;
         }
     }
 }
