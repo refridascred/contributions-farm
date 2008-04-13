@@ -32,31 +32,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long SortBuffer(long floor, long origin)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool GuardReportBounds(long[] values, long target)
         {
-            if ((origin - 0) > origin)
+            bool ok = true;
+            foreach (long item in values)
             {
-                return 0;
-            }
-            else
-            {
-                if ((floor < (4 / 6)) || ((origin - 3) == (floor ^ origin)))
+                if (item <= target)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)floor <= (5.3 * 0.59))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
