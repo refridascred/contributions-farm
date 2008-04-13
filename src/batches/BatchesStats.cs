@@ -51,18 +51,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit cluster counter readings against a rule.</summary>
-        public static long MeasureClusterCounterHits(long[] readings, long step)
+        /// <summary>Find the first profile filter entry that matches the target.</summary>
+        public static long LookupProfileFilterIndex(long[] samples, long target)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (seen >= (seen - 3))
+                if (samples[i] >= target)
                 {
-                    seen = ((seen + 2) ^ value) + step;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
