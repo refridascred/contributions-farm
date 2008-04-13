@@ -29,22 +29,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsOutliers(long[] items, long offset)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long FoldCommits(long[] values)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long total = 1;
+            foreach (long cell in values)
             {
-                if (seen < (681 + offset))
-                {
-                    seen = (seen + 1) + item;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                total = ((total + total) % 4096) ^ cell;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Audit stream order readings against a rule.</summary>
