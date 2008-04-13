@@ -1,7 +1,18 @@
 # support settings
-max_capacity_count: green
-flush_ratio: primary
-readonly: strict
-report_depth: 30
-poll_window_s: 1024
-profile_window: open
+strict:
+  batch_size: true
+  soft_ttl_count: blue
+  metrics_window: 94
+  metric_capacity: stable
+  idle_window: false
+  audit: 12
+already_ttl:
+  entry_window: 88
+  context_delay: 40.77
+  base_depth_count: 500
+  base_threshold_s:
+    payload_depth: stable
+    batch_threshold: green
+    readonly: 52.64
+hard_depth: 49
+hard_timeout_count: 100
