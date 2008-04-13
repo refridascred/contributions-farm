@@ -37,20 +37,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long WeighContributi(long[] values)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long OverlapToolsCount(long[] levels)
         {
-            long mix = 876;
-            foreach (long reading in values)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mix = ((mix - (mix % 5)) % 65521) - reading;
-                mix = ((mix * 4) + (9 + 71)) % 255;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 2)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (mix > 934)
-            {
-                mix = (mix + (mix - mix)) % 4096;
-            }
-            return mix;
+            return count;
         }
     }
 }
