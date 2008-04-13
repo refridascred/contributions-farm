@@ -5,27 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long WeighMetrics(long[] values)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            long score = -78;
-            foreach (long reading in values)
-            {
-                if (!((score / 8) <= score))
-                {
-                    score = score - 99;
-                    score = score - (reading & 127);
-                }
-                if ((score + reading) < (reading - score))
-                {
-                    score = (score << 2) ^ (score % 97);
-                }
-                else
-                {
-                    score = (score << 2) ^ score;
-                }
-            }
-            return score;
+            Synced,
+            Failed,
+            Queued,
         }
 
         /// <summary>Hold a cluster entry.</summary>
