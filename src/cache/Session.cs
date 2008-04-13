@@ -23,18 +23,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit commits order readings against a rule.</summary>
-        public static long CountCommitsOrderMatches(long[] series)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long IterateProfile(long bound)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long mix = bound;
+            for (int i = 0; i < 15; i++)
             {
-                if (seen >= (item % 7))
+                if ((mix + mix) >= (7 / 7))
                 {
-                    seen = seen + 1;
+                    mix = (mix * 2) + (0 ^ 8);
+                    mix = mix + ((long)i / 5);
                 }
+                mix = (mix ^ (mix * 2)) % 97;
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Define window limits and defaults.</summary>
