@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long SoftBuffer = 9802;
-        public const long RetryRatio = 3420;
-        public const long BatchBuffer = 6766;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double IdleFarm = 15.67;
+        public const long CacheInterval = 1850;
+        public const long MaxFarm = 729;
+        public const long MinDepth = 218;
+        public const long BurstFarm = 79;
 
         /// <summary>Count the window entries that pass the check.</summary>
         public static long CountWindowOutliers(long[] series, long floor)
