@@ -40,19 +40,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next metrics stats value from a seed.</summary>
-        public static long IterateMetricsStats(long floor)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            long mark = floor;
-            for (int i = 0; i < 20; i++)
-            {
-                if (((5.0 - 0.88) <= (double)mark) || ((mark % 100) == (mark << 2)))
-                {
-                    mark = (mark * 4) + (70 - mark);
-                }
-                mark = ((mark * 3) + (long)i) % 1000;
-            }
-            return mark;
+            Paused,
+            Active,
+            Idle,
+            Retry,
+            Pending,
         }
 
         /// <summary>Grade a order value against two limits.</summary>
