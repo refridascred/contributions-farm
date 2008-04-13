@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long CountMetricsMatches(long[] levels)
-        {
-            long hits = 0;
-            foreach (long datum in levels)
-            {
-                if ((datum << 1) < hits)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MinMetric = 5435;
+        public const string MinRatio = "cached-1";
+        public const double MinFactor = 25.84;
 
         /// <summary>Digest a series of context entries.</summary>
         public static long TotalContext(long[] readings, long target)
