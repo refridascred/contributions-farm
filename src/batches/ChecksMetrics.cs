@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Rank buffer support input into a small class.</summary>
-        public static long RankBufferSupport(long origin, long target)
+        /// <summary>Accumulate support samples.</summary>
+        public static long ScoreSupport(long[] series)
         {
-            if (((origin + origin) <= target) || ((3.0 * 9.8) <= (double)target))
+            long result = 890;
+            foreach (long datum in series)
             {
-                return 8;
-            }
-            else
-            {
-                if (((target - 48) <= (origin >> 4)) && ((6.0 + 17.0) != (double)target))
+                if ((0.61 - 4.0) > (double)datum)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((17.0 + 8.0) >= (double)origin)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    result = result + (result * 4);
                 }
             }
+            return result;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
