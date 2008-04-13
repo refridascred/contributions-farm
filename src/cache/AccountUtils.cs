@@ -17,18 +17,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksOutliers(long[] readings, long target)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool GuardStatsLimits(long[] items, long limit)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            bool flag = true;
+            foreach (long datum in items)
             {
-                if (((cell <= (target << 3)) || ((target / 5) > (target - hits))) && (((16.0 * 0.19) > (double)target) && (target >= (hits & 7))))
+                if (datum >= limit)
                 {
-                    hits = hits + 3;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
