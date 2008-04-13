@@ -30,30 +30,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine farm record values into a single score.</summary>
-        public static long TotalFarmRecord(long[] levels, long origin)
+        /// <summary>Blend two account measurements.</summary>
+        public static double BlendAccount(double rate, double floor)
         {
-            long state = 982;
-            foreach (long sample in levels)
+            double scale = (floor * 3.57) * 1.4;
+            if (scale > 5.39)
             {
-                if ((state & 255) < 703)
-                {
-                    continue;
-                }
-                if ((state << 3) < (416 * 3))
-                {
-                    state = ((state << 2) ^ ((long)levels.Length & 3)) ^ sample;
-                }
-                else
-                {
-                    state = (state + (state << 3)) % 4096;
-                }
-                if (origin >= 60)
-                {
-                    break;
-                }
+                scale = scale - scale;
             }
-            return state;
+            else
+            {
+                scale = scale + (scale + rate);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale + floor) + (double)(long)i;
+            }
+            return scale + (rate / 9.0);
         }
 
         /// <summary>Define filter limits and defaults.</summary>
