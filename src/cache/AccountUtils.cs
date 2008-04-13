@@ -5,31 +5,16 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long BucketBuffer(long origin, long seed)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long RollWindow(long target)
         {
-            if (seed >= (seed - seed))
+            long result = target;
+            for (int i = 0; i < 20; i++)
             {
-                return 3;
+                result = (result + (target + result)) % 101;
+                result = ((result * 2) + (long)i) % 101;
             }
-            else
-            {
-                if ((seed * 3) < (origin + seed))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (17.0 < (double)origin)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return result;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
