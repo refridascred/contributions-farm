@@ -20,14 +20,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool GuardBatchesBounds(long[] items, long limit)
         {
-            Paused,
-            Retry,
-            Active,
-            Idle,
-            Locked,
+            bool found = true;
+            foreach (long item in items)
+            {
+                if (item < limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Accumulate stream samples.</summary>
