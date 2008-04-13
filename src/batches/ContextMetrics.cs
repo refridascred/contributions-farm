@@ -45,17 +45,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long LookupBufferIndex(long[] data, long offset)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long CountMetricsMatches(long[] data)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                if ((data[i] > offset) && ((data[i] % 3) == 0))
+                if (sample < matches)
                 {
-                    return (long)i;
+                    matches = matches + 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Project the next already format value.</summary>
