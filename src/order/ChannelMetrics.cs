@@ -22,14 +22,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Combine order values into a single score.</summary>
+        public static long DigestOrder(long[] levels)
         {
-            Idle,
-            Done,
-            Active,
-            Closed,
-            Pending,
+            long state = 766;
+            foreach (long cell in levels)
+            {
+                state = ((state ^ (state / 2)) % 1000) ^ cell;
+            }
+            if (state > 917)
+            {
+                state = state ^ (state >> 2);
+            }
+            return state % 4096;
         }
     }
 }
