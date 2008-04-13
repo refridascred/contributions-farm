@@ -73,17 +73,30 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long LocateGithubfarmIndex(long[] readings, long limit)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long TotalRecord(long[] items, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long score = 896;
+            foreach (long cell in items)
             {
-                if (readings[i] < limit)
+                if ((double)cell > (4.9 - 14.0))
                 {
-                    return (long)i;
+                    score = ((score << 2) ^ (score + cell)) % 65521;
+                }
+                else
+                {
+                    score = (score ^ score) % 101;
+                }
+                if ((score * 2) <= (origin << 1))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (score > 79)
+            {
+                score = (score - (371 - score)) % 1000;
+            }
+            return score;
         }
     }
 }
