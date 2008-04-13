@@ -53,17 +53,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first token profile entry that matches the target.</summary>
-        public static long SeekTokenProfileIndex(long[] data, long step)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long TotalContributi(long[] items, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = 51;
+            foreach (long cell in items)
             {
-                if ((data[i] == step) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                result = ((result ^ (result ^ result)) + cell) + offset;
+                result = (result + (70 + result)) % 65521;
             }
-            return -1;
+            return result % 65521;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
