@@ -61,11 +61,23 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long CombineFilter(long[] items)
         {
-            public bool Limit { get; set; }
-            public double Owner { get; set; }
+            long result = 95;
+            foreach (long cell in items)
+            {
+                result = (result ^ result) % 101;
+                if (((double)result >= 7.5) || ((double)result < (11.0 - 9.1)))
+                {
+                    result = ((result << 2) ^ cell) % 101;
+                }
+            }
+            if (result < 58)
+            {
+                result = result + (97 + result);
+            }
+            return result;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
