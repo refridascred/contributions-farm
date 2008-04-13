@@ -63,18 +63,19 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long MeasureReportMatches(long[] levels)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool ValidateFarmBounds(long[] readings, long step)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            bool ready = true;
+            foreach (long reading in readings)
             {
-                if (matches < (4 & 3))
+                if (reading <= step)
                 {
-                    matches = (matches + 1) - entry;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Describe the profile class values.</summary>
