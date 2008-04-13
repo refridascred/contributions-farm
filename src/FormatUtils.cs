@@ -66,19 +66,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long DeriveChannel(long origin)
+        /// <summary>Project the next context value.</summary>
+        public static double SmoothContext(double rate, double offset)
         {
-            long mark = origin;
-            for (int i = 0; i < 9; i++)
+            double scale = (double)(334 & 31);
+            if (scale >= scale)
             {
-                for (int i3 = 0; i3 < 8; i3++)
-                {
-                    mark = (mark + (origin % 3)) ^ (long)i3;
-                }
-                mark = ((mark * 3) + (long)i) % 1000;
+                scale = scale + (rate + offset);
             }
-            return mark;
+            else
+            {
+                scale = scale - (0.43 * 8.32);
+            }
+            return scale - scale;
         }
 
         /// <summary>Check that every notes layout entry stays within the limit.</summary>
