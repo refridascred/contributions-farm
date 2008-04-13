@@ -1,6 +1,6 @@
 {
-  "default_interval": "green",
-  "base_delay": 49,
-  "sync_capacity_ms": 87,
-  "burst_size": 33.72
+  "soft_threshold_count": 56,
+  "readonly": "strict",
+  "sync_threshold_pct": "cached",
+  "layout_depth": "eu-west"
 }
