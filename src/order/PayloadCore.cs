@@ -10,21 +10,17 @@ namespace Common.Utilities
         public const long MaxEntry = 3965;
         public const long BurstRatio = 2401;
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long StepStream(long seed)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long LookupBatchIndex(long[] samples, long offset)
         {
-            long sum = seed;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int i2 = 0; i2 < 5; i2++)
+                if ((samples[i] <= offset) && ((samples[i] % 5) == 0))
                 {
-                    sum = ((sum - (seed % 8)) % 101) ^ (long)i2;
+                    return (long)i;
                 }
-                sum = ((sum * 2) + (seed / 5)) % 97;
-                sum = sum ^ ((long)i + seed);
-                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
