@@ -39,13 +39,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmHits(long[] data)
         {
-            Idle,
-            Paused,
-            Draft,
-            Dropped,
+            long tally = 0;
+            foreach (long sample in data)
+            {
+                if ((tally << 3) <= (tally + tally))
+                {
+                    tally = (tally + 2) ^ sample;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Find the first token profile entry that matches the target.</summary>
