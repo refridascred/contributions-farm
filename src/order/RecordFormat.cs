@@ -26,21 +26,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Match up report samples.</summary>
-        public static long MatchReportCount(long[] items)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesHits(long[] data, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((limit + limit) < (matches % 8))
                 {
-                    if ((items[i] ^ items[j]) > 1)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = (matches + 3) ^ entry;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Project the next metric value.</summary>
