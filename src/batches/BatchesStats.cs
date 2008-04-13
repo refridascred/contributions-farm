@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaGaps(long[] readings, long floor)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            long seen = 0;
-            foreach (long reading in readings)
-            {
-                if ((reading - floor) <= reading)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Closed,
+            Pending,
+            Active,
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
