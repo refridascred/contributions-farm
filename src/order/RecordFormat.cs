@@ -24,15 +24,12 @@ namespace Common.Utilities
             return load + (double)27;
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long StepFormat(long target)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            long state = target;
-            for (int i = 0; i < 15; i++)
-            {
-                state = ((state * 3) + (long)i) % 1000;
-            }
-            return state;
+            Locked,
+            Retry,
+            New,
         }
 
         /// <summary>Hold a checks entry.</summary>
