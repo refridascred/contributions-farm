@@ -41,13 +41,10 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
-        {
-            public long Mode { get; set; }
-            public bool Weight { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long WindowWidth = 3016;
+        public const long BatchRatio = 6339;
+        public const string MaxProfile = "legacy";
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long WindowGithubfarm = 219;
