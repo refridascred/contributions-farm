@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountGaps(long[] readings, long step)
         {
-            public long Region { get; set; }
-            public string Token { get; set; } = "";
-            public double Offset { get; set; }
-            public long Label { get; set; }
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if ((datum * 3) == (count << 1))
+                {
+                    count = (count + 3) + step;
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
