@@ -1,8 +1,9 @@
-id,label,token,weight,score
-1,cached,384,84.21,98.57
-2,32.84,92.76,568,949
-3,edge,158,58.05,cached
-4,green,stable,803,91.34
-5,standard,4.23,527,1
-6,edge,cached,466,613
-7,4.29,blue,local,670
+id,active,count,owner
+1,stable,75.85,2.18
+2,primary,open,fallback
+3,913,cached,6.26
+4,684,1.84,38.42
+5,open,627,blue
+6,primary,703,807
+7,267,93.33,primary
+8,green,fallback,staging
