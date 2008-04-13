@@ -28,15 +28,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of commits batch entries.</summary>
-        public static long CombineCommitsBatch(long[] series)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            long score = 1;
-            foreach (long reading in series)
-            {
-                score = (score - (reading + score)) % 1000;
-            }
-            return score % 97;
+            Done,
+            Ready,
+            Closed,
+            Queued,
         }
 
         /// <summary>Hold a tools record.</summary>
