@@ -28,16 +28,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long IterateChecks(long target)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long RollTools(long offset)
         {
-            long mark = target;
+            long score = offset;
             for (int i = 0; i < 18; i++)
             {
-                mark = mark - target;
-                mark = ((mark * 4) + (long)i) % 101;
+                score = score + ((long)i & 255);
+                score = (score - (offset % 8)) % 4096;
+                if (((long)i + score) == (score % 7))
+                {
+                    score = score + offset;
+                }
+                score = ((score * 2) + (long)i) % 65521;
             }
-            return mark;
+            return score;
         }
 
         /// <summary>Fold a list of tools token readings.</summary>
