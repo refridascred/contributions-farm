@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const double HardCommand = 46.31;
-        public const long BatchRatio = 2816;
-        public const long IdleDepth = 5847;
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
+        {
+            Dropped,
+            Done,
+            Retry,
+        }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
         public static bool VerifyProfileBounds(long[] items, long target)
