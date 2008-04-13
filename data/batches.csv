@@ -1,6 +1,10 @@
-id,count
-1,74
-2,green
-3,97.88
-4,255
-5,stable
+id,ratio,region,weight
+1,33,fallback,80
+2,83.76,711,402
+3,287,529,55
+4,892,269,512
+5,986,838,434
+6,edge,83.36,134
+7,standard,primary,602
+8,strict,40.34,green
+9,39.08,35.64,895
