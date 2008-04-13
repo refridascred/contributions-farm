@@ -39,31 +39,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank notes route input into a small class.</summary>
-        public static long BucketNotesRoute(long step, long origin)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool CheckProfileRange(long[] readings, long seed)
         {
-            if ((step >> 4) != (origin << 3))
+            bool ok = true;
+            foreach (long sample in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if ((step - origin) <= origin)
+                if (sample <= seed)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((step / 4) < step) || ((19.0 + 12.0) >= (double)origin))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Adjust a tools reading.</summary>
