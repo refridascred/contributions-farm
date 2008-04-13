@@ -54,15 +54,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double ScaleOrder(double bias, double bias2)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool VerifyLayoutBounds(long[] data, long origin)
         {
-            double drift = (double)(68 & 1);
-            for (int i = 0; i < 7; i++)
+            bool ok = true;
+            foreach (long reading in data)
             {
-                drift = (drift + bias2) + (double)(long)i;
+                if (reading >= origin)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return drift + (drift - bias);
+            return ok;
         }
     }
 }
