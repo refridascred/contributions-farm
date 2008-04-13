@@ -1,5 +1,5 @@
 {
-  "channel_threshold": true,
-  "stream_timeout": "blue",
-  "batches_limit": 35.11
+  "sync_threshold": true,
+  "cache_window": "green",
+  "min_delay_s": 500
 }
