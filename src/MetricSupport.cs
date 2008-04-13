@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long FoldCache(long[] series)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long LookupCounterIndex(long[] data, long origin)
         {
-            long mix = 8;
-            foreach (long reading in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((mix % 10) < (reading + 513))
+                if ((data[i] == origin) && ((data[i] % 3) == 0))
                 {
-                    mix = ((mix << 2) ^ (reading - mix)) % 1000;
-                }
-                if ((mix - 70) < mix)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return mix % 1000;
+            return -1;
         }
 
         /// <summary>Audit profile batch readings against a rule.</summary>
