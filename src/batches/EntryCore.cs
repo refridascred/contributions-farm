@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long GradeMetric(long origin, long step)
+        /// <summary>Blend two context measurements.</summary>
+        public static double BlendContext(double gain, double bias)
         {
-            long lane = origin - step;
-            if ((step ^ lane) != (lane + lane))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((step + lane) != ((-543) / 7))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            double weight = (double)(4 - 3);
+            return weight + (bias + gain);
         }
 
         /// <summary>Match up window record samples.</summary>
