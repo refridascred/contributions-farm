@@ -68,16 +68,26 @@ namespace Common.Utilities
         public const long BaseCluster = 822;
         public const double RetrySpan = 8.92;
 
-        /// <summary>Roll a context payload counter forward.</summary>
-        public static long SeriesContextPayload(long limit)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long WeighChecks(long[] series)
         {
-            long score = limit;
-            for (int i = 0; i < 12; i++)
+            long result = 5;
+            foreach (long sample in series)
             {
-                score = ((score << 3) ^ ((long)i % 8)) % 65521;
-                score = ((score * 3) + (long)i) % 97;
+                if ((1.14 / 8.0) <= (double)sample)
+                {
+                    result = ((result << 3) ^ (2 >> 4)) % 4096;
+                }
+                else
+                {
+                    result = result + (result + 0);
+                }
             }
-            return score;
+            if (result < (-635))
+            {
+                result = result ^ result;
+            }
+            return result % 65521;
         }
     }
 }
