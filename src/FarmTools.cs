@@ -13,12 +13,19 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double IdleCluster = 28.07;
-        public const long HardSize = 545;
-        public const long BatchCluster = 4108;
-        public const long HardCluster = 7376;
-        public const long HardWidth = 8330;
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long MeasurePayloadOutliers(long[] items, long origin)
+        {
+            long hits = 0;
+            foreach (long cell in items)
+            {
+                if (((double)origin < (9.24 / 5.0)) && ((origin >> 3) > (hits >> 5)))
+                {
+                    hits = (hits + 2) + cell;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long DefaultDepth = 9142;
