@@ -40,18 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long MeasureRecordOutliers(long[] samples, long floor)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool ValidateEditorLimits(long[] levels, long seed)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            bool found = true;
+            foreach (long datum in levels)
             {
-                if ((double)matches >= (double)762)
+                if (datum >= seed)
                 {
-                    matches = ((matches + 2) ^ reading) - floor;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
