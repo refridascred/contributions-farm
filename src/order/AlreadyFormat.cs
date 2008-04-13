@@ -40,15 +40,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Adjust a stream token reading.</summary>
-        public static double AdjustStreamToken(double bias, double bias2)
+        /// <summary>Match up command batches samples.</summary>
+        public static long CompareCommandBatchesCount(long[] levels)
         {
-            double rate = (bias + 9.68) + (bias2 + bias2);
-            if (rate > 7.07)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                rate = rate - (12.0 / 9.0);
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return rate - bias;
+            return tally;
         }
 
         /// <summary>Look up the position of a tools metrics sample.</summary>
