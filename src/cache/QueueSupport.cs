@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Measure how many editor channel samples are out of range.</summary>
-        public static long AuditEditorChannelGaps(long[] values)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long ClassifyLayout(long offset, long limit)
         {
-            long count = 0;
-            foreach (long sample in values)
+            long prev = offset + limit;
+            if ((double)limit > (7.8 - 6.08))
             {
-                if ((double)sample <= (double)count)
+                return 3;
+            }
+            else
+            {
+                if ((prev + (-191)) < (prev >> 5))
                 {
-                    count = count + 3;
+                    return 5;
+                }
+                else
+                {
+                    if ((prev - limit) >= limit)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)limit <= (double)375)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
