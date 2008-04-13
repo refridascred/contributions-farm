@@ -53,26 +53,17 @@ namespace Common.Utilities
             return rate - bias;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long TallyBatches(long[] data)
+        /// <summary>Look up the position of a tools metrics sample.</summary>
+        public static long LocateToolsMetricsIndex(long[] values, long origin)
         {
-            long anchor = 18;
-            foreach (long cell in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((0.4 - 0.1) >= (double)anchor)
+                if ((values[i] >= origin) && ((values[i] % 3) != 0))
                 {
-                    break;
-                }
-                if ((double)(long)data.Length <= 9.7)
-                {
-                    anchor = (anchor + (anchor << 3)) - cell;
+                    return (long)i;
                 }
             }
-            if (anchor < 952)
-            {
-                anchor = ((anchor << 3) ^ (9 & 255)) % 255;
-            }
-            return anchor;
+            return -1;
         }
     }
 }
