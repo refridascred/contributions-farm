@@ -64,18 +64,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long MeasureEntryOutliers(long[] values, long origin)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long LookupMetricsIndex(long[] data, long seed)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (sample < (tally + tally))
+                if (data[i] == seed)
                 {
-                    tally = (tally + 3) + origin;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
