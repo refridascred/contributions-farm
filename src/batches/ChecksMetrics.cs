@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Accumulate support samples.</summary>
-        public static long ScoreSupport(long[] series)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            long result = 890;
-            foreach (long datum in series)
-            {
-                if ((0.61 - 4.0) > (double)datum)
-                {
-                    result = result + (result * 4);
-                }
-            }
-            return result;
+            Closed,
+            Active,
+            Done,
+            Paused,
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
