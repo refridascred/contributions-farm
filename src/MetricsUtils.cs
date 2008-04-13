@@ -33,22 +33,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of filter batches readings.</summary>
-        public static long WeighFilterBatches(long[] samples)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long LocateChecksIndex(long[] values, long step)
         {
-            long carry = -503;
-            foreach (long item in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((carry - 6) > (carry + 806))
+                if (values[i] <= step)
                 {
-                    carry = ((carry - 950) % 4096) - item;
-                }
-                if (6.4 > (double)carry)
-                {
-                    carry = ((carry * 3) + 3) % 4096;
+                    return (long)i;
                 }
             }
-            return carry % 1000;
+            return -1;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
