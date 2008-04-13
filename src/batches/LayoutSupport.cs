@@ -18,12 +18,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long AuditMetricsOutliers(long[] data, long limit)
         {
-            public long Offset { get; set; }
-            public long Total { get; set; }
-            public long Weight { get; set; }
+            long tally = 0;
+            foreach (long value in data)
+            {
+                if (!((8.2 / 9.0) == (double)tally))
+                {
+                    tally = ((tally + 2) + value) + limit;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a tools record.</summary>
