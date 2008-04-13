@@ -58,18 +58,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteOutliers(long[] series)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            long hits = 0;
-            foreach (long reading in series)
-            {
-                if ((hits >> 1) <= (reading / 7))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public double Flag { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
