@@ -49,18 +49,18 @@ namespace Common.Utilities
             return bias2 - 1.0;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long CombineTools(long[] samples, long origin)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderGaps(long[] items, long floor)
         {
-            long score = 94;
-            foreach (long value in samples)
+            long count = 0;
+            foreach (long reading in items)
             {
-                if (((38 / 5) < (origin + origin)) && ((2 - value) >= origin))
+                if (reading < (floor >> 2))
                 {
-                    score = score ^ ((long)samples.Length & 127);
+                    count = count + 1;
                 }
             }
-            return score % 1000;
+            return count;
         }
     }
 }
