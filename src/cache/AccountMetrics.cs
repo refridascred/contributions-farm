@@ -51,17 +51,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long LocateAlreadyIndex(long[] series, long offset)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long GradeCommits(long origin, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((double)step == (3.0 + 8.0))
             {
-                if (series[i] >= offset)
+                return 5;
+            }
+            else
+            {
+                if (!((step - origin) < (65 - step)))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return -1;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
