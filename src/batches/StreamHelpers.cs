@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Fold a list of session readings.</summary>
+        public static long WeighSession(long[] levels)
         {
-            Stale,
-            Locked,
-            Failed,
+            long sum = 74;
+            foreach (long sample in levels)
+            {
+                for (int i = 0; i < 7; i++)
+                {
+                    sum = ((sum ^ (sample % 8)) % 255) + (long)i;
+                }
+                sum = (sum + (sum * 2)) % 97;
+            }
+            if (sum < 63)
+            {
+                sum = (sum - 68) % 101;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Describe the already mode values.</summary>
