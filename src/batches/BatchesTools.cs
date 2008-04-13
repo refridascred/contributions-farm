@@ -41,20 +41,13 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long WeighSchema(long[] data, long target)
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            long mark = 48;
-            foreach (long reading in data)
-            {
-                mark = (((mark << 2) ^ 195) % 101) ^ reading;
-                mark = (mark << 2) ^ (target >> 4);
-                if (3.6 > (double)mark)
-                {
-                    mark = ((mark << 2) ^ (956 + 8)) % 101;
-                }
-            }
-            return mark;
+            public string Label { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public string Size { get; set; } = "";
+            public bool Region { get; set; }
         }
     }
 }
