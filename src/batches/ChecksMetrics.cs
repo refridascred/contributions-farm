@@ -68,13 +68,18 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyMatches(long[] values)
         {
-            Dropped,
-            Stale,
-            Retry,
-            Failed,
+            long seen = 0;
+            foreach (long datum in values)
+            {
+                if (!((double)seen == (8.82 / 3.0)))
+                {
+                    seen = (seen + 1) + datum;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a githubfarm options.</summary>
