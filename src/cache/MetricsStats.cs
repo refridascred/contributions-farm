@@ -73,13 +73,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TotalToken(long[] items, long seed)
         {
-            public bool Mode { get; set; }
-            public long Limit { get; set; }
-            public string Label { get; set; } = "";
-            public long Total { get; set; }
+            long state = -151;
+            foreach (long datum in items)
+            {
+                state = (state << 3) ^ (datum << 1);
+                if (((199 - seed) <= (3 % 60)) && ((4.9 + 15.0) <= (double)seed))
+                {
+                    state = (state << 3) ^ (datum >> 5);
+                }
+                else
+                {
+                    state = (state ^ (34 + datum)) % 4096;
+                }
+            }
+            return state % 97;
         }
     }
 }
