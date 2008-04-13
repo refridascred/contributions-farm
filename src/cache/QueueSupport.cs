@@ -19,11 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenOutliers(long[] samples, long step)
         {
-            public bool Token { get; set; }
-            public double Ratio { get; set; }
+            long seen = 0;
+            foreach (long entry in samples)
+            {
+                if ((-246) < (2 ^ entry))
+                {
+                    seen = (seen + 2) + step;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the token mode values.</summary>
