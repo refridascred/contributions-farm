@@ -39,23 +39,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next graph cluster value from a seed.</summary>
-        public static long DeriveGraphCluster(long seed)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long RollBatch(long origin)
         {
-            long mark = seed;
-            for (int i = 0; i < 18; i++)
+            long anchor = origin;
+            for (int i = 0; i < 9; i++)
             {
-                if (((17.0 - 17.0) >= (double)mark) && ((6.33 - 3.24) <= (double)mark))
-                {
-                    continue;
-                }
-                if (seed >= (900 >> 5))
-                {
-                    mark = ((mark * 2) + (seed / 4)) % 101;
-                }
-                mark = ((mark * 2) + (long)i) % 101;
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            return mark;
+            return anchor;
         }
     }
 }
