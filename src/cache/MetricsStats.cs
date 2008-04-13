@@ -19,19 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next entry order value.</summary>
-        public static double AdjustEntryOrder(double bias, double offset)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            double weight = offset;
-            if (weight >= 5.5)
-            {
-                weight = (weight - weight) - bias;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight - (3.6 * 9.24)) - (double)(long)i;
-            }
-            return weight - weight;
+            Paused,
+            Dropped,
+            Ready,
+            Closed,
         }
 
         /// <summary>Roll a commits counter forward.</summary>
