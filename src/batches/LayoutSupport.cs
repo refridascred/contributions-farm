@@ -10,22 +10,21 @@ namespace Common.Utilities
         public const long BaseSession = 4758;
         public const long IdleScore = 4637;
 
-        /// <summary>Count the entry githubfarm entries that pass the check.</summary>
-        public static long MeasureEntryGithubfarmMatches(long[] samples)
+        /// <summary>Count channel context pairs that satisfy a relation.</summary>
+        public static long PairChannelContextCount(long[] data)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((seen <= item) || (((double)item <= (4.01 / 8.0)) || ((double)item == (8.87 - 6.6))))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((data[i] - data[j]) == 1)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
