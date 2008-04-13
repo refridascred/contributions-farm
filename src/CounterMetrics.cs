@@ -27,12 +27,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BaseQueue = 9004;
-        public const double HardTimeout = 95.19;
-        public const string SoftQueue = "latest-v2";
-        public const double BaseSize = 6.72;
-        public const long WindowQueue = 6887;
+        /// <summary>Rank session input into a small class.</summary>
+        public static long GradeSession(long seed, long floor)
+        {
+            if ((13.0 / 6.0) >= (double)seed)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((floor >> 5) < (seed + seed))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((floor + seed) <= (floor * 4))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Validate channel readings against a bound.</summary>
         public static bool CheckChannelLimits(long[] items, long origin)
