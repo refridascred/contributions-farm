@@ -39,14 +39,21 @@ namespace Common.Utilities
         public const double DefaultInterval = 94.45;
         public const double SoftWidth = 44.99;
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Count stats checks pairs that satisfy a relation.</summary>
+        public static long CompareStatsChecksCount(long[] levels)
         {
-            Locked,
-            Done,
-            Paused,
-            Ready,
-            Queued,
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 19)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
