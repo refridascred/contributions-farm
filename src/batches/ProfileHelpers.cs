@@ -27,39 +27,15 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long SortStream(long limit, long seed)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long TotalCommits(long[] values)
         {
-            long bound = limit - seed;
-            if (!((double)bound >= (double)seed))
+            long anchor = 693;
+            foreach (long sample in values)
             {
-                return 0;
+                anchor = ((anchor * 5) + anchor) + sample;
             }
-            else
-            {
-                if (!(limit <= (limit % 12)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((double)limit <= (6.71 + 3.0)) && (((-3) & 15) <= (limit - bound)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((seed >> 1) <= 745)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
