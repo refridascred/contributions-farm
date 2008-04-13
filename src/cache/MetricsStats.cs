@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
-        {
-            Locked,
-            Retry,
-            Idle,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long HardInterval = 1389;
+        public const long IdleCount = 482;
+        public const double SoftCache = 70.3;
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
         public static bool ValidateStreamLimits(long[] series, long target)
