@@ -86,15 +86,18 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long WeighEditor(long[] data, long offset)
+        /// <summary>Audit record channel readings against a rule.</summary>
+        public static long MeasureRecordChannelHits(long[] levels)
         {
-            long sum = -463;
-            foreach (long reading in data)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                sum = ((sum - reading) % 101) + offset;
+                if ((value % 7) > tally)
+                {
+                    tally = tally + 1;
+                }
             }
-            return sum % 97;
+            return tally;
         }
     }
 }
