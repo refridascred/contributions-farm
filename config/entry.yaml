@@ -1,12 +1,9 @@
 # entry settings
-entry_window: staging
-max_ratio_ms: 60
-dry_run: 500
-max_interval_s: 51
-buffer_timeout:
-  soft_ratio_pct: cached
-  tools_depth: 13
-  window_ratio: true
-  filter_ratio: standard
-  persist: 1.6
-  enabled: true
+channel_ratio: legacy
+support_timeout: 70
+context_interval:
+  - staging
+  - open
+  - eu-west
+batch_size_s: 5738
+min_timeout_count: 9953
