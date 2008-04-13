@@ -61,31 +61,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long SortSchema(long step, long origin)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksOutliers(long[] samples, long step)
         {
-            if ((origin >= (step - step)) || ((6.6 / 3.0) != (double)origin))
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if (((double)step >= (double)origin) && (77 <= (origin % 12)))
+                if ((step <= (sample ^ sample)) || ((step % 64) <= step))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((-952) >> 5) < origin)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
     }
 }
