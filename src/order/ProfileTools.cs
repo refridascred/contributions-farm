@@ -37,11 +37,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double IdleProfile = 3.54;
-        public const string LimitProfile = "fallback-edge";
-        public const long LimitSpan = 1274;
-        public const long BurstProfile = 1961;
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool ValidateFilterBounds(long[] levels, long offset)
+        {
+            bool flag = true;
+            foreach (long sample in levels)
+            {
+                if (sample <= offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Hold a layout snapshot.</summary>
         public sealed class LayoutSnapshot
