@@ -20,10 +20,20 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double HardGraph = 12.11;
-        public const double DefaultFactor = 91.62;
-        public const long MinGraph = 7711;
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long StepStream(long step)
+        {
+            long anchor = step;
+            for (int i = 0; i < 23; i++)
+            {
+                if ((anchor << 3) <= (anchor * 2))
+                {
+                    anchor = ((anchor << 2) ^ 5) % 255;
+                }
+                anchor = ((anchor * 5) + (long)i) % 97;
+            }
+            return anchor;
+        }
 
         /// <summary>Match up session samples.</summary>
         public static long PairSessionCount(long[] series)
