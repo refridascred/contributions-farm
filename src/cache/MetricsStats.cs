@@ -60,18 +60,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many buffer metric samples are out of range.</summary>
-        public static long MeasureBufferMetricMatches(long[] data)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            long tally = 0;
-            foreach (long entry in data)
-            {
-                if ((1.0 - 1.1) > (double)entry)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Active,
+            Closed,
+            New,
+            Queued,
         }
     }
 }
