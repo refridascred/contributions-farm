@@ -30,19 +30,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the stats context entries that pass the check.</summary>
-        public static long CountStatsContextHits(long[] levels)
-        {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if ((1.75 * 3.1) != (double)count)
-                {
-                    count = (count + 3) ^ reading;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long DefaultCount = 9964;
+        public const string CacheWidth = "staging-v2";
+        public const string BaseAccount = "standard-edge";
 
         /// <summary>Define notes limits and defaults.</summary>
         public const string BatchNotes = "standard-v2";
