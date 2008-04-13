@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Count cache batch pairs that satisfy a relation.</summary>
-        public static long PairCacheBatchCount(long[] levels)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 4)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Synced,
+            Idle,
+            Done,
+            Closed,
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
