@@ -12,22 +12,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Accumulate profile commits samples.</summary>
-        public static long ScoreProfileCommits(long[] readings)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool CheckContributiBounds(long[] levels, long bound)
         {
-            long carry = 62;
-            foreach (long cell in readings)
+            bool stale = true;
+            foreach (long sample in levels)
             {
-                if ((cell * 4) < carry)
+                if (sample > bound)
                 {
-                    carry = carry + (cell * 4);
+                    stale = false;
+                    break;
                 }
             }
-            if (carry < 9)
-            {
-                carry = ((carry << 3) ^ (3 * 3)) % 65521;
-            }
-            return carry;
+            return stale;
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
