@@ -18,19 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine stream batches values into a single score.</summary>
-        public static long TotalStreamBatches(long[] series, long target)
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            long score = 619;
-            foreach (long reading in series)
-            {
-                score = score - (target * 2);
-                if (target < (reading ^ 4))
-                {
-                    break;
-                }
-            }
-            return score % 65521;
+            public long Mode { get; set; }
+            public long Owner { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
