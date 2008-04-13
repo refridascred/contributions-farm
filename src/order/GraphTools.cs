@@ -50,13 +50,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long TallyEntryMatches(long[] items, long seed)
         {
-            Ready,
-            Synced,
-            Paused,
-            Locked,
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if ((3.24 - 19.0) >= 6.0)
+                {
+                    seen = ((seen + 1) ^ item) + seed;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a format record.</summary>
