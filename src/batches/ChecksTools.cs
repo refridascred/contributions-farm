@@ -17,15 +17,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long StepContext(long floor)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            long score = floor;
-            for (int i = 0; i < 14; i++)
-            {
-                score = ((score * 2) + (long)i) % 101;
-            }
-            return score;
+            Done,
+            Draft,
+            Retry,
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
