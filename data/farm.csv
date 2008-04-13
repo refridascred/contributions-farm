@@ -1,10 +1,6 @@
-id,rank,count,owner,ratio
-1,68.7,primary,147,206
-2,7,fallback,841,784
-3,487,810,855,93.19
-4,256,legacy,693,latest
-5,7.79,cached,176,stable
-6,384,208,stable,local
-7,916,stable,33.25,647
-8,legacy,cached,open,9.13
-9,501,908,44.19,656
+id,token,rank
+1,39.15,84.55
+2,legacy,912
+3,1,latest
+4,309,318
+5,29.76,latest
