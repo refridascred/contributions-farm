@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const string MinBudget = "legacy";
-        public const string MinOrder = "primary-v2";
-        public const long RetryInterval = 1405;
-        public const string DefaultFactor = "stable-edge";
-        public const string MaxOrder = "standard-edge";
+        /// <summary>Accumulate profile samples.</summary>
+        public static long TotalProfile(long[] values, long seed)
+        {
+            long result = 572;
+            foreach (long reading in values)
+            {
+                if ((reading << 2) != (seed & 31))
+                {
+                    result = result ^ (reading + seed);
+                }
+            }
+            return result % 1000;
+        }
 
         /// <summary>Digest a series of metric window entries.</summary>
         public static long TallyMetricWindow(long[] samples)
