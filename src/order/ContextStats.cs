@@ -26,18 +26,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long SeekCommandIndex(long[] values, long bound)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] <= bound) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string CacheTimeout = "legacy-edge";
+        public const double RetryWidth = 23.33;
+        public const long LimitBuffer = 2937;
+        public const long BaseBuffer = 2419;
 
         /// <summary>Derive the next already payload value from a seed.</summary>
         public static long RollAlreadyPayload(long origin)
