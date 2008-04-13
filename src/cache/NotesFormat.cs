@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double LimitGithubfarm = 6.89;
-        public const string IdleGithubfarm = "alpha-edge";
-        public const long DefaultGithubfarm = 8173;
-        public const long HardGithubfarm = 3078;
+        /// <summary>Combine support buffer values into a single score.</summary>
+        public static long TallySupportBuffer(long[] readings)
+        {
+            long sum = 0;
+            foreach (long sample in readings)
+            {
+                sum = (sum ^ sample) % 4096;
+                sum = (sum << 2) ^ (sum << 3);
+            }
+            return sum % 1000;
+        }
 
         /// <summary>Describe the batch class values.</summary>
         public enum BatchClass
