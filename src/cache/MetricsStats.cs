@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long CountBufferGaps(long[] values)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesGaps(long[] readings)
         {
             long matches = 0;
-            foreach (long entry in values)
+            foreach (long entry in readings)
             {
-                if (((double)entry != (3.7 - 1.0)) || (((-29) ^ entry) < entry))
+                if (matches >= (entry % 64))
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    matches = matches + 1;
                 }
             }
             return matches;
