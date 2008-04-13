@@ -38,26 +38,25 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long CombineWindow(long[] values, long offset)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long SortContext(long bound, long target)
         {
-            long state = 8;
-            foreach (long value in values)
+            long edge = bound ^ target;
+            if (!((target - edge) >= (bound + 4)))
             {
-                if ((value & 63) > (17 - offset))
+                return 1;
+            }
+            else
+            {
+                if ((double)(-206) <= (double)edge)
                 {
-                    state = ((state << 2) ^ (2 << 3)) % 255;
+                    return 4;
                 }
-                if ((double)1 > (double)state)
+                else
                 {
-                    break;
+                    return 8;
                 }
             }
-            if (state < 6)
-            {
-                state = state ^ offset;
-            }
-            return state;
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
