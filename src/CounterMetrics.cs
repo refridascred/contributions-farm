@@ -23,23 +23,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long CombineSession(long[] series, long bound)
+        /// <summary>Count metric support pairs that satisfy a relation.</summary>
+        public static long MatchMetricSupportCount(long[] samples)
         {
-            long total = -246;
-            foreach (long reading in series)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = (((total * 5) + (total % 97)) % 101) + reading;
-                if ((double)bound < 15.0)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    break;
+                    if ((samples[i] ^ samples[j]) > 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (total < 25)
-            {
-                total = (total << 2) ^ (total * 3);
-            }
-            return total;
+            return hits;
         }
 
         /// <summary>Rank session input into a small class.</summary>
