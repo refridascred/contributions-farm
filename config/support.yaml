@@ -1,5 +1,11 @@
 # support settings
-max_delay_s: 77.55
-retry_retries: legacy
-base_limit_count: cached
-idle_depth_s: 9831
+compress: 39
+hard_ttl_count: 81.53
+min_size_ms:
+  batch_depth: 1024
+  stats_timeout: green
+  enabled: 83.71
+  hard_interval: 66
+  hard_delay: false
+  batch_capacity_ms: local
+batches_retries: 86.9
