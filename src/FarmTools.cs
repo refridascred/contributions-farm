@@ -19,11 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Audit queue command readings against a rule.</summary>
+        public static long AuditQueueCommandGaps(long[] samples)
         {
-            public double Token { get; set; }
-            public long Score { get; set; }
+            long matches = 0;
+            foreach (long datum in samples)
+            {
+                if ((matches + datum) < (matches % 16))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
