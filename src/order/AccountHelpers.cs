@@ -32,24 +32,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long GradeStats(long offset, long step)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterMatches(long[] samples)
         {
-            if (17.0 > (6.9 + 13.0))
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if ((offset & 127) <= step)
+                if (!(((3.8 - 1.5) > (double)seen) && ((reading - 4) > (seen & 7))))
                 {
-                    return 8;
+                    seen = seen + 2;
                 }
                 else
                 {
-                    return 7;
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
