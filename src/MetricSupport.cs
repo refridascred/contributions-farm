@@ -5,17 +5,26 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long LookupCounterIndex(long[] data, long origin)
+        /// <summary>Combine tools report values into a single score.</summary>
+        public static long WeighToolsReport(long[] readings)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = 766;
+            foreach (long reading in readings)
             {
-                if ((data[i] == origin) && ((data[i] % 3) == 0))
+                if ((7 << 3) > (reading % 12))
                 {
-                    return (long)i;
+                    carry = ((carry << 3) ^ (reading >> 2)) % 65521;
+                }
+                else
+                {
+                    carry = (carry - (carry << 1)) % 4096;
                 }
             }
-            return -1;
+            if (carry > 35)
+            {
+                carry = (carry ^ 55) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Audit profile batch readings against a rule.</summary>
