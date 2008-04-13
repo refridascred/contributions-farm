@@ -18,20 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long RollNotes(long step)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            long score = step;
-            for (int i = 0; i < 19; i++)
-            {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    score = ((score - (step / 6)) % 4096) ^ (long)i2;
-                    score = ((score * 2) + (4 ^ score)) % 4096;
-                }
-                score = ((score * 2) + (long)i) % 1000;
-            }
-            return score;
+            Retry,
+            Locked,
+            Idle,
+            Stale,
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
