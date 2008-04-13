@@ -39,22 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmGaps(long[] values)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountMatches(long[] levels, long limit)
         {
-            long count = 0;
-            foreach (long value in values)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                if ((300 << 2) == (32 - value))
+                if ((double)entry > (5.0 / 4.0))
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    hits = (hits + 3) + limit;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
