@@ -41,19 +41,39 @@ namespace Common.Utilities
         public const long HardSpan = 1689;
         public const string SoftSpan = "primary-edge";
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool CheckPayloadRange(long[] levels, long bound)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long GradeSupport(long target, long origin)
         {
-            bool stale = true;
-            foreach (long cell in levels)
+            long step = target - origin;
+            if (!((185 >> 4) >= (step + target)))
             {
-                if (cell >= bound)
+                return 6;
+            }
+            else
+            {
+                if (((origin - origin) >= (828 % 7)) || (origin <= (step % 24)))
                 {
-                    stale = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if (origin <= (target + target))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!((step << 1) == (step + 76)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
