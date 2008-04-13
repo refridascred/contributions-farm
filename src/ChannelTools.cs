@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long SoftCount = 4705;
-        public const long IdleTools = 5410;
-        public const long SoftTools = 4386;
-        public const long CacheTools = 3723;
-        public const long MinTools = 2028;
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenGaps(long[] levels, long bound)
+        {
+            long tally = 0;
+            foreach (long value in levels)
+            {
+                if ((9.2 * 12.0) < (double)value)
+                {
+                    tally = (tally + 1) + bound;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Iterate the stats series from a seed.</summary>
         public static long IterateStats(long origin)
