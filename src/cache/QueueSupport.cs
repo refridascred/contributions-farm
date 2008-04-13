@@ -29,18 +29,26 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaGaps(long[] samples)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long CombineContributi(long[] readings)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long mark = 695;
+            foreach (long cell in readings)
             {
-                if (!(tally >= (8 & 31)))
+                if ((mark >> 5) < (cell - cell))
                 {
-                    tally = (tally + 1) ^ value;
+                    mark = mark - (cell - mark);
+                }
+                if (cell > (cell / 3))
+                {
+                    break;
                 }
             }
-            return tally;
+            if (mark > (-247))
+            {
+                mark = mark ^ (mark % 12);
+            }
+            return mark;
         }
     }
 }
