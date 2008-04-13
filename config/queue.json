@@ -1,12 +1,6 @@
 {
-  "flush_retries_ms": 7.62,
-  "context_capacity": false,
-  "hard_ratio_s": 23,
-  "notes_size": {
-    "tools_depth": 250,
-    "max_delay_ms": 22,
-    "warm_size_count": ["strict", "cached", "fallback", "edge"],
-    "audit": 100
-  },
-  "retry_depth_ms": false
+  "cache_interval_pct": "staging",
+  "warm_ratio_count": true,
+  "poll_limit": false,
+  "base_window_s": "legacy"
 }
