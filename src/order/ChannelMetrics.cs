@@ -26,17 +26,11 @@ namespace Common.Utilities
         public const long WindowLevel = 8935;
         public const string MaxScore = "staging";
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long FindPayloadIndex(long[] samples, long offset)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BatchStream = 3004;
+        public const long SoftSpan = 2737;
+        public const long IdleInterval = 5873;
+        public const string IdleScore = "cached";
+        public const double HardStream = 1.83;
     }
 }
