@@ -1,16 +1,6 @@
 # entry settings
-min_ratio_ms: 33
-idle_capacity: 11.67
-counter_size: false
-sync_window:
-  persist: 11.97
-  cache_delay_count:
-    - blue
-    - fallback
-  warm_ttl: green
-  context_timeout:
-    - strict
-    - edge
-  poll_ratio_count: 19.27
-flush_retries_count: 14
-cache_threshold_s: standard
+token_window: 54
+profile_capacity: false
+readonly: primary
+audit: primary
+poll_depth: eu-west
