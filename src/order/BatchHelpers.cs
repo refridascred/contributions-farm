@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long CombineBatch(long[] data, long origin)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamMatches(long[] samples)
         {
-            long sum = 75;
-            foreach (long sample in data)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                if (sum <= (67 + sum))
+                if ((double)reading < (double)hits)
                 {
-                    sum = ((sum - (origin % 12)) % 255) + sample;
+                    hits = hits + 1;
                 }
             }
-            if (sum > 96)
-            {
-                sum = ((sum * 3) + (sum % 64)) % 1000;
-            }
-            return sum;
+            return hits;
         }
 
         /// <summary>Grade a window value against two limits.</summary>
