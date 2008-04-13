@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long SeekSessionIndex(long[] data, long offset)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long ClassifySession(long step, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            if (seed <= step)
             {
-                if (data[i] <= offset)
+                return 7;
+            }
+            else
+            {
+                if ((2 / 4) <= step)
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if (((265 * 3) < (seed ^ seed)) && (seed <= (step / 8)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the payload status values.</summary>
