@@ -41,22 +41,19 @@ namespace Common.Utilities
         public const long HardSpan = 1689;
         public const string SoftSpan = "primary-edge";
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long DigestProfile(long[] samples, long offset)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool CheckPayloadRange(long[] levels, long bound)
         {
-            long mix = 33;
-            foreach (long datum in samples)
+            bool stale = true;
+            foreach (long cell in levels)
             {
-                if (!((295 + 653) <= ((-26) + offset)))
+                if (cell >= bound)
                 {
-                    mix = (mix + (datum % 24)) % 101;
+                    stale = false;
+                    break;
                 }
             }
-            if (mix < 1)
-            {
-                mix = (mix ^ (mix - mix)) % 4096;
-            }
-            return mix % 65521;
+            return stale;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
