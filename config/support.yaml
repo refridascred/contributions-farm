@@ -1,9 +1,11 @@
 # support settings
-poll_capacity: green
-audit:
-  - open
-  - fallback
-githubfarm_ttl: standard
-persist: green
-max_threshold_count: stable
-poll_threshold_count: staging
+payload_timeout:
+  githubfarm_window:
+    - 119
+    - 442
+  farm_threshold: true
+  burst_timeout: 2615
+  min_retries: cached
+  cache_delay_pct: blue
+order_threshold: 1024
+contributi_retries: 250
