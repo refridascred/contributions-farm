@@ -57,32 +57,30 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long RankCounter(long target, long offset)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long DigestContext(long[] readings, long target)
         {
-            long lane = target + offset;
-            if ((97 + offset) <= offset)
+            long state = 9;
+            foreach (long reading in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if ((lane << 3) >= (lane + target))
+                if (!((state <= (target - reading)) && ((reading * 3) >= (reading - state))))
                 {
-                    return 2;
+                    state = (state << 3) ^ (target + reading);
+                }
+                if (reading > target)
+                {
+                    state = (state + (state + target)) % 65521;
                 }
                 else
                 {
-                    if (((18.0 - 6.4) > (double)offset) && ((double)offset <= (double)lane))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    state = (state + target) % 101;
                 }
             }
+            if (state < 98)
+            {
+                state = ((state << 3) ^ (6 + target)) % 65521;
+            }
+            return state;
         }
     }
 }
