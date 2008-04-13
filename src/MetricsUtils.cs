@@ -18,13 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long RollBuffer(long limit)
         {
-            Locked,
-            Closed,
-            Synced,
-            Paused,
+            long acc = limit;
+            for (int i = 0; i < 22; i++)
+            {
+                acc = (acc ^ (limit >> 2)) % 4096;
+                acc = (acc - ((long)i / 3)) % 1000;
+                acc = ((acc * 4) + (limit >> 2)) % 4096;
+                acc = ((acc * 3) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Fold a list of filter batches readings.</summary>
