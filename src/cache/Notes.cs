@@ -14,14 +14,22 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long AuditWindowOutliers(long[] data, long limit)
         {
-            Stale,
-            Retry,
-            Dropped,
-            Pending,
-            Locked,
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if ((9 ^ datum) >= datum)
+                {
+                    tally = (tally + 3) - limit;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Scale a order figure with a bias.</summary>
