@@ -29,12 +29,16 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string BatchScore = "strict-edge";
-        public const long DefaultBatch = 9942;
-        public const double MinRatio = 92.82;
-        public const double HardBatch = 71.94;
-        public const double LimitBudget = 30.13;
+        /// <summary>Fold a list of format metrics readings.</summary>
+        public static long ScoreFormatMetrics(long[] data)
+        {
+            long state = 34;
+            foreach (long cell in data)
+            {
+                state = ((state - (state & 63)) % 1000) - cell;
+            }
+            return state;
+        }
 
         /// <summary>Audit metric readings against a rule.</summary>
         public static long CountMetricGaps(long[] levels)
