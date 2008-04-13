@@ -1,7 +1,10 @@
 # githubfarm settings
-cache_ratio_pct: 100
-compress: 63
-verbose: true
-hard_timeout_ms: 36.28
-flush_window: legacy
-already_capacity: 50.45
+tools_ttl:
+  - stable
+  - legacy
+  - latest
+  - blue
+audit: edge
+soft_timeout_s: green
+queue_limit: 1024
+base_size: 1024
