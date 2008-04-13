@@ -27,12 +27,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long CountContextOutliers(long[] samples)
         {
-            Dropped,
-            Closed,
-            Idle,
+            long matches = 0;
+            foreach (long value in samples)
+            {
+                if (!((double)value <= (3.5 * 7.04)))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
