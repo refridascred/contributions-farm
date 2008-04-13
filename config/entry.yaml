@@ -1,14 +1,9 @@
 # entry settings
-filter_limit:
-  - standard
-  - fallback
-  - primary
-  - green
-poll_interval_ms: eu-west
-warm_limit_s: 70.02
-default_delay_s: 18
-min_ratio_s:
-  - standard
-  - staging
-  - fallback
-enabled: false
+batch_delay_ms:
+  - 357
+  - 239
+default_ratio_ms: eu-west
+cluster_threshold: fallback
+sync_threshold: 98
+poll_window_pct: 3273
+cache_window_pct: 30
