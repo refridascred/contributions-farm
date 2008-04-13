@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Report checks helpers.</summary>
     public static class ReportChecks
     {
-        /// <summary>Project the next stats value.</summary>
-        public static double SmoothStats(double ratio, double span)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadHits(long[] values, long origin)
         {
-            double scale = 9.58;
-            if (scale >= scale)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                scale = (scale - 2.0) + ratio;
+                if (((datum + origin) == (datum % 2)) || !((double)datum >= (5.03 + 17.0)))
+                {
+                    seen = seen + 3;
+                }
             }
-            else
-            {
-                scale = scale + span;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale + (13.0 * 7.0)) + (double)(long)i;
-            }
-            return scale + (double)26;
+            return seen;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
