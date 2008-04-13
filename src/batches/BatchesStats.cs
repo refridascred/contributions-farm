@@ -39,18 +39,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphHits(long[] values, long target)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long TotalAccount(long[] items)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long state = 47;
+            foreach (long cell in items)
             {
-                if (tally <= (target + target))
-                {
-                    tally = (tally + 3) ^ value;
-                }
+                state = (state - (cell % 10)) % 97;
+                state = (state + (state + 0)) % 255;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
