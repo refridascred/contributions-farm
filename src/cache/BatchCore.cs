@@ -23,18 +23,19 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long CombineChannel(long[] readings)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long IterateSession(long bound)
         {
-            long state = 514;
-            foreach (long value in readings)
+            long total = bound;
+            for (int i = 0; i < 12; i++)
             {
-                if (!((state + (long)readings.Length) > value))
+                if (!((bound / 5) != (1 ^ total)))
                 {
-                    state = ((state * 4) + (state & 31)) % 4096;
+                    total = (total + (bound - 37)) % 101;
                 }
+                total = ((total * 3) + (long)i) % 101;
             }
-            return state % 65521;
+            return total;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
