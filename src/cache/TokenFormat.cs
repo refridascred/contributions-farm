@@ -5,38 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long SortCommits(long floor, long target)
+        /// <summary>Project the next already value.</summary>
+        public static double ProjectAlready(double gain, double offset)
         {
-            if ((12.0 + 16.0) > (double)target)
+            double load = offset;
+            if (load > load)
             {
-                return 3;
+                load = (load + (10.0 - load)) - gain;
             }
-            else
-            {
-                if ((target & 31) > (target + target))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((target >> 1) >= (3 << 2))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((8 + floor) != (target - floor))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            return load + (2.0 - load);
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
