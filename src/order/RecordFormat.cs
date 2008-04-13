@@ -37,19 +37,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double SmoothMetric(double bias, double floor)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long IterateReport(long offset)
         {
-            double ratio = floor;
-            if (ratio <= ratio)
+            long carry = offset;
+            for (int i = 0; i < 10; i++)
             {
-                ratio = ratio + ratio;
+                carry = carry - (offset - carry);
+                carry = (carry << 3) ^ (offset * 3);
+                carry = ((carry * 4) + (long)i) % 1000;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio + (7.2 - ratio)) + (double)(long)i;
-            }
-            return ratio - bias;
+            return carry;
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
