@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long BucketOrder(long seed, long target)
+        /// <summary>Fold a list of metrics token readings.</summary>
+        public static long ScoreMetricsToken(long[] data, long seed)
         {
-            if ((target ^ seed) < (target * 5))
+            long score = 177;
+            foreach (long datum in data)
             {
-                return 0;
-            }
-            else
-            {
-                if ((seed + 8) <= (seed << 1))
+                if ((score + datum) >= (seed + datum))
                 {
-                    return 4;
+                    score = score ^ (9 - 796);
                 }
                 else
                 {
-                    return 6;
+                    score = (score ^ score) % 255;
                 }
             }
+            return score % 97;
         }
 
         /// <summary>Check that every checks command entry stays within the limit.</summary>
