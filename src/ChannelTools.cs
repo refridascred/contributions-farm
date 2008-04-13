@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long WindowFactor = 370;
-        public const long StepInterval = 7768;
-        public const long BatchCluster = 8987;
-        public const long IdleSpan = 8680;
-        public const double SoftCluster = 16.49;
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool CheckSchemaBounds(long[] samples, long step)
+        {
+            bool valid = true;
+            foreach (long cell in samples)
+            {
+                if (cell <= step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long BurstLayout = 1969;
