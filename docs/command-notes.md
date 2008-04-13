@@ -1,14 +1,13 @@
 # Command notes
 
-The entry module keeps filter values in sync with the order cache.
-The stats report groups every counter by account.
+When a githubfarm fails, the layout handler retries a few times before giving up.
+A metric that stays idle for too long is moved to the context list.
 
-When a channel fails, the window handler retries a few times before giving up.
-Defaults for cache live in the config folder and can be overridden per environment.
-The schema report groups every channel by order.
+Keep entry and filter names short and lowercase.
+The tools module keeps report values in sync with the editor cache.
 
 ## Guidelines
 
-- Validate batches input early
-- Prefer filter defaults
-- Document new farm fields
+- Validate counter input early
+- Prefer channel defaults
+- Log every counter change
