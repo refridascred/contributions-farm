@@ -73,19 +73,19 @@ namespace Common.Utilities
             return bias2 - 1.0;
         }
 
-        /// <summary>Validate order metric readings against a bound.</summary>
-        public static bool ValidateOrderMetricRange(long[] samples, long bound)
+        /// <summary>Validate route graph readings against a bound.</summary>
+        public static bool ValidateRouteGraphRange(long[] series, long offset)
         {
-            bool stale = true;
-            foreach (long cell in samples)
+            bool valid = true;
+            foreach (long sample in series)
             {
-                if (cell != bound)
+                if (sample <= offset)
                 {
-                    stale = false;
+                    valid = false;
                     break;
                 }
             }
-            return stale;
+            return valid;
         }
     }
 }
