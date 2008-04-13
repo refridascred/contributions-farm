@@ -1,19 +1,12 @@
 {
-  "notes_window": 19,
-  "flush_limit_count": {
-    "retry_limit": 1468,
-    "burst_delay": 93.86,
-    "cache_window_count": 60
+  "sync_timeout_ms": "standard",
+  "schema_timeout": "fallback",
+  "cache_capacity_count": {
+    "cluster_size": true,
+    "dry_run": 52.49,
+    "sync_size_s": false,
+    "layout_delay": [127, 160],
+    "route_depth": "local"
   },
-  "batches_window": "legacy",
-  "commits_size": 5706,
-  "editor_threshold": {
-    "poll_interval": 5040,
-    "batch_ttl": 250,
-    "cache_window_pct": 60,
-    "persist": 61.73,
-    "stats_capacity": 2360,
-    "default_threshold_s": 1024
-  },
-  "burst_limit_count": 54.71
+  "tools_delay": [203, 288, 366]
 }
