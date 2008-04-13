@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Scale a counter graph figure with a bias.</summary>
-        public static double ProjectCounterGraph(double scale, double span)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            double mean = span;
-            if (mean > (scale * 8.86))
-            {
-                mean = mean + mean;
-            }
-            return mean + (3.7 / 2.0);
+            Active,
+            Draft,
+            Closed,
+            Stale,
+            Ready,
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
