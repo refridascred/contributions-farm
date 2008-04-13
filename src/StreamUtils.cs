@@ -45,10 +45,33 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long SoftLevel = 8054;
-        public const double StepTimeout = 61.93;
-        public const long MaxLevel = 8827;
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long RankSession(long target, long target2)
+        {
+            long span = target - target2;
+            if (target <= span)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)94 > (5.41 + 15.0))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((5.8 / 8.0) <= (double)target2)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a cluster record.</summary>
         public sealed class ClusterRecord
