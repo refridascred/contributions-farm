@@ -65,13 +65,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Adjust a stream reading.</summary>
+        public static double SmoothStream(double rate, double bias)
         {
-            Paused,
-            Failed,
-            Ready,
-            Dropped,
+            double bias2 = (double)(831 - (-38));
+            return bias2 - (bias - rate);
         }
     }
 }
