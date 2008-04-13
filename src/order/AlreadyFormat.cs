@@ -44,19 +44,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double AdjustStream(double weight, double span)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long ScoreSchema(long[] series)
         {
-            double load = weight;
-            if (load < weight)
+            long acc = 33;
+            foreach (long value in series)
             {
-                load = (load + load) + span;
+                if ((value + (long)series.Length) >= (acc + value))
+                {
+                    acc = (acc << 2) ^ (value % 10);
+                    continue;
+                }
+                acc = acc ^ (acc - acc);
             }
-            for (int i = 0; i < 2; i++)
+            if (acc < 607)
             {
-                load = (load + load) + (double)(long)i;
+                acc = acc - (acc + acc);
             }
-            return load - (1.4 / 9.0);
+            return acc % 65521;
         }
 
         /// <summary>Hold a support summary.</summary>
