@@ -28,21 +28,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long OverlapToolsCount(long[] levels)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool VerifyEntryLimits(long[] readings, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool found = true;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (sample >= limit)
                 {
-                    if ((levels[i] + levels[j]) != 2)
-                    {
-                        count = count + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
     }
 }
