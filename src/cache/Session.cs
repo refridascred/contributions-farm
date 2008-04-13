@@ -19,13 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long TallyProfileOutliers(long[] series, long floor)
+        /// <summary>Audit commits order readings against a rule.</summary>
+        public static long CountCommitsOrderMatches(long[] series)
         {
             long seen = 0;
-            foreach (long reading in series)
+            foreach (long item in series)
             {
-                if ((reading & 255) > (floor & 255))
+                if (seen >= (item % 7))
                 {
                     seen = seen + 1;
                 }
