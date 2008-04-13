@@ -33,11 +33,32 @@ namespace Common.Utilities
             return drift - (bias + drift);
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long RetryLevel = 256;
-        public const long WindowQueue = 5435;
-        public const double MaxQueue = 58.75;
-        public const double SoftQueue = 18.19;
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long BucketQueue(long limit, long limit2)
+        {
+            if ((limit2 - limit) == (limit ^ limit2))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((4 * 5) <= (limit - limit2)) || ((limit << 1) <= limit))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((8.04 * 8.2) >= (double)limit)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a layout snapshot.</summary>
         public sealed class LayoutSnapshot
