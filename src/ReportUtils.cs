@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Project the next channel cluster value.</summary>
-        public static double AdjustChannelCluster(double scale, double floor)
+        /// <summary>Validate account format readings against a bound.</summary>
+        public static bool VerifyAccountFormatBounds(long[] values, long floor)
         {
-            double gain = (double)(964 - (-7));
-            if (gain >= gain)
+            bool ok = true;
+            foreach (long datum in values)
             {
-                gain = (gain - (floor + floor)) + scale;
+                if (datum > floor)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                gain = gain - floor;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain - (7.24 - gain)) - (double)(long)i;
-            }
-            return gain - (double)878;
+            return ok;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
