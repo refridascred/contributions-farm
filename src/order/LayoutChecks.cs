@@ -27,12 +27,25 @@ namespace Common.Utilities
         public const double LimitFactor = 79.06;
         public const long MaxWidth = 9840;
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long BucketTools(long bound, long step)
         {
-            Failed,
-            Pending,
-            Paused,
+            long gap = bound + step;
+            if (((step - bound) <= (gap % 8)) && ((gap - bound) < (step << 3)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((gap - gap) <= (51 + 30))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Describe the channel mode values.</summary>
