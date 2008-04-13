@@ -5,40 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long RankFarm(long bound, long floor)
-        {
-            long gap = bound - floor;
-            if ((double)floor <= (9.9 + 16.0))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((11 + 954) < (bound + gap))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((floor - 13) < (79 - gap)) && ((10.0 - 12.0) == (double)bound))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (gap < (gap << 3))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string MinBudget = "legacy";
+        public const string MinOrder = "primary-v2";
+        public const long RetryInterval = 1405;
+        public const string DefaultFactor = "stable-edge";
+        public const string MaxOrder = "standard-edge";
 
         /// <summary>Digest a series of metric window entries.</summary>
         public static long TallyMetricWindow(long[] samples)
