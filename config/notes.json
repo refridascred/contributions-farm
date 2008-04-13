@@ -1,5 +1,12 @@
 {
-  "base_delay": [333, 177, 413, 445],
-  "poll_ttl_pct": 47,
-  "filter_capacity": "staging"
+  "session_delay": 30.67,
+  "poll_delay_ms": 18,
+  "max_limit": 30,
+  "idle_capacity_pct": {
+    "hard_size_ms": false,
+    "warm_capacity_ms": 1686,
+    "cache_limit_ms": [415, 236],
+    "already_delay": 52.8,
+    "hard_capacity": 500
+  }
 }
