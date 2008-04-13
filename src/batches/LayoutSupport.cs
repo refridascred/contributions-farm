@@ -10,12 +10,22 @@ namespace Common.Utilities
         public const long BaseSession = 4758;
         public const long IdleScore = 4637;
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Count the entry githubfarm entries that pass the check.</summary>
+        public static long MeasureEntryGithubfarmMatches(long[] samples)
         {
-            Failed,
-            Done,
-            Closed,
+            long seen = 0;
+            foreach (long item in samples)
+            {
+                if ((seen <= item) || (((double)item <= (4.01 / 8.0)) || ((double)item == (8.87 - 6.6))))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
