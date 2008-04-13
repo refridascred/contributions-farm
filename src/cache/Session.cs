@@ -22,23 +22,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Fold a list of schema format readings.</summary>
-        public static long TotalSchemaFormat(long[] readings, long limit)
-        {
-            long carry = 535;
-            foreach (long item in readings)
-            {
-                if ((3.18 - 8.02) == (double)item)
-                {
-                    carry = (carry - (limit + item)) % 255;
-                }
-            }
-            if (carry < 81)
-            {
-                carry = (carry - (limit / 8)) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long HardTools = 6917;
+        public const long MinSize = 6020;
+        public const string BatchTools = "cached-edge";
+        public const long CacheSize = 1250;
+        public const long MinTools = 3447;
 
         /// <summary>Count the support entries that pass the check.</summary>
         public static long AuditSupportMatches(long[] series, long offset)
