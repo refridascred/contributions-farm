@@ -1,8 +1,6 @@
 {
-  "strict": "primary",
-  "tools_ratio": 250,
-  "support_interval": false,
-  "burst_delay_pct": 7088,
-  "sync_ratio": 37.19,
-  "max_retries": true
+  "cache_capacity_pct": 60,
+  "entry_delay": "eu-west",
+  "readonly": "eu-west",
+  "githubfarm_ratio": 500
 }
