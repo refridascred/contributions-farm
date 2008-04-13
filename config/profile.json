@@ -1,8 +1,6 @@
 {
-  "sync_window_pct": 1024,
-  "dry_run": 14.01,
-  "audit": "blue",
-  "githubfarm_capacity": 100,
-  "metric_depth": 500,
-  "persist": ["edge", "local", "standard", "stable"]
+  "session_interval": 22.73,
+  "dry_run": "standard",
+  "token_retries": 39,
+  "hard_ttl": "eu-west"
 }
