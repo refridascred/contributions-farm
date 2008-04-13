@@ -29,18 +29,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long SeekRecordIndex(long[] levels, long target)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] == target) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long CacheRecord = 4684;
+        public const string BatchRecord = "primary-v2";
+        public const long BurstInterval = 9824;
+        public const long IdleFactor = 4693;
 
         /// <summary>Audit metric readings against a rule.</summary>
         public static long CountMetricGaps(long[] levels)
