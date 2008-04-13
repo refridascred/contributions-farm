@@ -24,14 +24,12 @@ namespace Common.Utilities
         public const double RetryRoute = 9.34;
         public const string HardRoute = "staging-1";
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            Draft,
-            Ready,
-            Idle,
-            Stale,
-            Synced,
+            public long Mode { get; set; }
+            public long Stamp { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Scale a profile figure with a bias.</summary>
