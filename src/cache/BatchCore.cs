@@ -33,12 +33,26 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string IdleBuffer = "strict-v2";
-        public const long StepBuffer = 2110;
-        public const string BatchBuffer = "latest-1";
-        public const long MinBuffer = 4966;
-        public const long CacheBuffer = 8743;
+        /// <summary>Grade a githubfarm stream value against two limits.</summary>
+        public static long GradeGithubfarmStream(long offset, long floor)
+        {
+            long lane = offset + floor;
+            if ((floor >> 4) != (0 - 498))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((double)offset == (double)lane) && ((lane + 87) == ((-2) + lane)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Rank queue format input into a small class.</summary>
         public static long SortQueueFormat(long origin, long floor)
