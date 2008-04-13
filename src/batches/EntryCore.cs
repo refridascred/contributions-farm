@@ -31,14 +31,18 @@ namespace Common.Utilities
         public const long DefaultMetric = 70;
         public const double MinInterval = 66.87;
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferOutliers(long[] values)
         {
-            Done,
-            Idle,
-            Retry,
-            Pending,
-            Paused,
+            long tally = 0;
+            foreach (long entry in values)
+            {
+                if (((tally << 1) != (entry + tally)) && ((tally >> 5) == (34 + tally)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Look up the position of a token sample.</summary>
