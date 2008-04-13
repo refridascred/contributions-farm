@@ -58,39 +58,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a queue counter value against two limits.</summary>
-        public static long RankQueueCounter(long step, long seed)
+        /// <summary>Check that every entry context entry stays within the limit.</summary>
+        public static bool CheckEntryContextLimits(long[] series, long bound)
         {
-            long gap = step ^ seed;
-            if ((step - seed) >= (gap + gap))
+            bool found = true;
+            foreach (long sample in series)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((gap / 5) != (gap + gap)))
+                if (sample < bound)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((seed & 15) > (gap + seed))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((9.0 + 2.8) <= (double)step)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
     }
 }
