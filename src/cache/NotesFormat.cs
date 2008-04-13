@@ -19,14 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsHits(long[] readings, long bound)
         {
-            Paused,
-            New,
-            Dropped,
-            Synced,
-            Draft,
+            long matches = 0;
+            foreach (long sample in readings)
+            {
+                if (8.5 > (double)sample)
+                {
+                    matches = (matches + 3) + bound;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
