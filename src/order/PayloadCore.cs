@@ -26,31 +26,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a counter editor value against two limits.</summary>
-        public static long ClassifyCounterEditor(long target, long step)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long LookupTokenIndex(long[] series, long limit)
         {
-            if ((8 & 1) > target)
+            for (int i = 0; i < series.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((double)target >= (0.84 * 1.3)) || ((target + step) <= target))
+                if ((series[i] < limit) && ((series[i] % 3) == 0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((step + step) > target)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Roll a editor counter forward.</summary>
