@@ -12,9 +12,5 @@ for i in $(seq 1 8); do
 done
 log "total ${total}"
 
-BUFFER_LIMIT=140
+BUFFER_LIMIT=75
 log "limit is ${BUFFER_LIMIT}"
-
-for item in staging eu-west strict; do
-    log "checking ${item}"
-done
