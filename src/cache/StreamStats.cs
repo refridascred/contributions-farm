@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long RetrySession = 9569;
-        public const double IdleSession = 28.65;
-        public const long DefaultInterval = 2801;
-        public const long WindowSession = 7185;
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
+        {
+            Dropped,
+            Paused,
+            Done,
+            Ready,
+            Locked,
+        }
 
         /// <summary>Match up already commits samples.</summary>
         public static long MatchAlreadyCommitsCount(long[] data)
