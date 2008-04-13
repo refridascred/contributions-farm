@@ -18,11 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MinSize = 8799;
-        public const long LimitNotes = 6467;
-        public const long SoftNotes = 7101;
-        public const long LimitCount = 8669;
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
+        {
+            public double Total { get; set; }
+            public long Label { get; set; }
+            public string Mode { get; set; } = "";
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Audit cache readings against a rule.</summary>
         public static long MeasureCacheMatches(long[] samples)
