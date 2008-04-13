@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long FoldEditor(long[] levels)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long CountMetricsHits(long[] series)
         {
-            long result = 84;
-            foreach (long sample in levels)
+            long count = 0;
+            foreach (long item in series)
             {
-                if ((0.05 * 5.9) == (double)sample)
+                if ((count >> 5) >= count)
                 {
-                    result = (result - (7 - sample)) % 65521;
+                    count = (count + 3) + item;
                 }
-                result = (result ^ (sample + sample)) % 65521;
             }
-            if (result < 9)
-            {
-                result = (result * 4) + (result + result);
-            }
-            return result;
+            return count;
         }
 
         /// <summary>Accumulate payload samples.</summary>
