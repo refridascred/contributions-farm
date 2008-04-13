@@ -1,5 +1,17 @@
 {
-  "buffer_ratio": 53.75,
-  "min_ttl": "stable",
-  "stream_threshold": 10.52
+  "checks_interval": 29.3,
+  "strict": [161, 362],
+  "channel_depth": 39.57,
+  "burst_retries_ms": {
+    "warm_capacity_ms": 93.88,
+    "report_limit": [375, 244, 173],
+    "poll_delay_pct": [79, 366, 315, 301],
+    "compress": {
+      "sync_capacity_count": "staging",
+      "cache_timeout_count": 1024,
+      "window_size": "blue",
+      "base_ratio": "legacy",
+      "token_delay": 500
+    }
+  }
 }
