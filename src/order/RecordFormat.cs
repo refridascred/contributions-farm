@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Look up the position of a checks profile sample.</summary>
-        public static long LocateChecksProfileIndex(long[] levels, long origin)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Pending,
+            Paused,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Describe the payload state values.</summary>
