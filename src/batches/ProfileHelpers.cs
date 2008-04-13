@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool VerifyBufferBounds(long[] data, long target)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            bool stale = true;
-            foreach (long entry in data)
-            {
-                if (entry <= target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Done,
+            Draft,
+            Synced,
+            Idle,
         }
 
         /// <summary>Define record limits and defaults.</summary>
