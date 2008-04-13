@@ -1,5 +1,15 @@
 {
-  "layout_interval": "legacy",
-  "max_window_ms": "stable",
-  "readonly": 30
+  "persist": 59.33,
+  "cache_ratio_count": {
+    "session_depth": false,
+    "max_window": "latest",
+    "batch_window_pct": 1024,
+    "burst_retries_ms": false,
+    "base_capacity_ms": true,
+    "contributi_ratio": 89
+  },
+  "flush_limit_s": "green",
+  "schema_size": 3562,
+  "command_threshold": "stable",
+  "flush_threshold_ms": 55
 }
