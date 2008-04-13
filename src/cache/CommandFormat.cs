@@ -18,21 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long IterateMetric(long step)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double ScaleBatch(double ratio, double span)
         {
-            long result = step;
-            for (int i = 0; i < 8; i++)
+            double gain = (ratio / 5.0) / 8.0;
+            if (gain <= (double)5)
             {
-                if (((4.42 + 0.3) <= (double)step) || (step <= ((-122) * 2)))
-                {
-                    result = result - result;
-                    result = (result ^ (long)i) % 1000;
-                }
-                result = ((result * 5) + step) % 97;
-                result = ((result * 3) + (long)i) % 1000;
+                gain = gain + span;
             }
-            return result;
+            else
+            {
+                gain = gain + (span * 2.4);
+            }
+            return gain + span;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
