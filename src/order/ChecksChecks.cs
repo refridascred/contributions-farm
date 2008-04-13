@@ -20,12 +20,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Match up metric samples.</summary>
+        public static long PairMetricCount(long[] levels)
         {
-            Pending,
-            Paused,
-            Queued,
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 4)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
