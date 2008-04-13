@@ -36,19 +36,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferGaps(long[] data, long offset)
-        {
-            long hits = 0;
-            foreach (long entry in data)
-            {
-                if (!(((9 * 3) < (hits + 7)) || ((hits + hits) == (hits - 5))))
-                {
-                    hits = ((hits + 1) - entry) - offset;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double CacheBatch = 18.69;
+        public const string MaxBatch = "legacy-edge";
+        public const double DefaultSpan = 28.63;
+        public const long MinWidth = 1510;
 
         /// <summary>Audit entry readings against a rule.</summary>
         public static long TallyEntryMatches(long[] items, long seed)
