@@ -36,18 +36,13 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long MeasureProfileHits(long[] data, long step)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            long matches = 0;
-            foreach (long value in data)
-            {
-                if ((3.0 + 1.9) > (double)matches)
-                {
-                    matches = ((matches + 3) + value) - step;
-                }
-            }
-            return matches;
+            Synced,
+            Queued,
+            Closed,
+            Paused,
         }
     }
 }
