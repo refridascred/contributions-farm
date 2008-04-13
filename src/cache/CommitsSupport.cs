@@ -75,10 +75,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double DefaultCount = 54.11;
-        public const long HardTimeout = 9326;
-        public const long HardAlready = 479;
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
+        {
+            Queued,
+            Active,
+            Stale,
+        }
 
         /// <summary>Combine batches values into a single score.</summary>
         public static long DigestBatches(long[] levels)
