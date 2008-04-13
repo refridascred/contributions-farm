@@ -40,22 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit profile batch readings against a rule.</summary>
-        public static long MeasureProfileBatchHits(long[] items)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelOutliers(long[] levels)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if (!((double)hits <= 4.9) && ((6.1 / 3.0) <= (double)cell))
+                if ((double)sample > 11.0)
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    seen = seen + 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Hold a route options.</summary>
