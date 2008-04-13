@@ -37,18 +37,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelGaps(long[] data, long seed)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            long tally = 0;
-            foreach (long item in data)
-            {
-                if ((seed - item) > (tally + item))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Closed,
+            Locked,
+            Paused,
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
