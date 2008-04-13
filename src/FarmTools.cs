@@ -31,22 +31,13 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long TallyChannelHits(long[] values, long limit)
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            long count = 0;
-            foreach (long item in values)
-            {
-                if (((limit + 4) <= count) && ((count % 5) != (item / 8)))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Token { get; set; }
+            public double Level { get; set; }
+            public bool Mode { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
