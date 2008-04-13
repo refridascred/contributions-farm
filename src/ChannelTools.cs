@@ -32,26 +32,28 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long TallyEditor(long[] data)
+        /// <summary>Accumulate support samples.</summary>
+        public static long FoldSupport(long[] items)
         {
-            long mix = -33;
-            foreach (long datum in data)
+            long state = 6;
+            foreach (long datum in items)
             {
-                if (((mix + mix) < datum) || (mix <= (987 + datum)))
+                if (!(datum < (state + datum)))
                 {
-                    mix = (mix ^ (mix - mix)) % 97;
+                    state = state ^ (state << 1);
+                    state = (state + (state + 85)) % 65521;
                 }
-                if ((mix >> 4) < (mix / 2))
+                state = (state - (43 - datum)) % 4096;
+                if (!((datum + state) > (datum ^ state)))
                 {
-                    break;
+                    state = (state + (state ^ state)) % 101;
                 }
             }
-            if (mix > 223)
+            if (state > 14)
             {
-                mix = (mix - (mix >> 4)) % 65521;
+                state = ((state * 4) + (450 / 3)) % 97;
             }
-            return mix;
+            return state % 4096;
         }
     }
 }
