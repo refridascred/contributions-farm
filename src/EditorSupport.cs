@@ -56,11 +56,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
+            public long Score { get; set; }
             public long Level { get; set; }
-            public string Size { get; set; } = "";
         }
     }
 }
