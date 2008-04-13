@@ -15,31 +15,14 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long RankBatch(long step, long limit)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            if ((7.2 / 7.0) == (double)limit)
-            {
-                return 3;
-            }
-            else
-            {
-                if (((double)step == (6.5 / 5.0)) || (97 <= (limit - step)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!(0 >= (step + 407)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Stale,
+            Retry,
+            Done,
+            Paused,
+            Failed,
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
