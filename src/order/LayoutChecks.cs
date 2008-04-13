@@ -22,21 +22,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long PairBatchesCount(long[] items)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long DeriveRoute(long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long carry = offset;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((offset + carry) != (carry % 2))
                 {
-                    if ((items[i] - items[j]) < 1)
-                    {
-                        seen = seen + 1;
-                    }
+                    carry = ((carry << 3) ^ (offset + offset)) % 4096;
+                    carry = carry - (offset + offset);
                 }
+                carry = ((carry * 5) + (long)i) % 65521;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Roll a queue counter forward.</summary>
