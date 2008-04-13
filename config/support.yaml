@@ -1,7 +1,5 @@
 # support settings
-order_retries: 4
-retry_limit: 29.53
-base_depth_ms: open
-default_size_count: 8687
-verbose: 6382
-cache_size_ms: 73
+poll_window_pct: false
+warm_ratio_pct: 47.76
+batch_size_ms: 9534
+burst_window: fallback
