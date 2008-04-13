@@ -34,27 +34,15 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long DigestAccount(long[] items)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long DigestGraph(long[] readings, long step)
         {
-            long state = 8;
-            foreach (long entry in items)
+            long total = 65;
+            foreach (long item in readings)
             {
-                state = (state - (state >> 2)) % 65521;
-                if (((entry / 4) >= state) && ((double)state >= (1.0 - 7.26)))
-                {
-                    state = (state ^ entry) % 97;
-                }
-                if ((state * 4) > entry)
-                {
-                    break;
-                }
+                total = (((total + 594) % 101) + item) + step;
             }
-            if (state > 7)
-            {
-                state = (state + 4) % 65521;
-            }
-            return state;
+            return total;
         }
 
         /// <summary>Count layout account pairs that satisfy a relation.</summary>
