@@ -36,22 +36,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandMatches(long[] items)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long StepEntry(long origin)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long result = origin;
+            for (int i = 0; i < 22; i++)
             {
-                if (datum < (datum / 6))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                result = ((result * 3) + (long)i) % 101;
             }
-            return tally;
+            return result;
         }
     }
 }
