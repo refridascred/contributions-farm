@@ -1,12 +1,8 @@
 {
-  "route_depth": 8668,
-  "warm_depth_s": true,
-  "idle_delay_ms": "stable",
-  "support_delay": {
-    "cache_delay_ms": 30,
-    "retry_capacity_ms": [161, 363],
-    "cluster_window": "standard"
-  },
-  "readonly": "strict",
-  "dry_run": 82.7
+  "support_depth": "standard",
+  "soft_retries_s": 83.47,
+  "sync_ttl_count": 7565,
+  "max_window_s": "primary",
+  "max_limit_count": 77,
+  "graph_depth": 7551
 }
