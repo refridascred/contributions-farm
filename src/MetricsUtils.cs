@@ -52,14 +52,12 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
-        {
-            Paused,
-            Retry,
-            Ready,
-            Synced,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double HardProfile = 77.76;
+        public const long BaseProfile = 9023;
+        public const long WindowRatio = 2263;
+        public const long WindowInterval = 7443;
+        public const long SoftProfile = 8356;
 
         /// <summary>Accumulate batch cluster samples.</summary>
         public static long TallyBatchCluster(long[] data, long limit)
