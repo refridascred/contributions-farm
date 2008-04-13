@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long IterateQueue(long seed)
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long MatchFilterCount(long[] samples)
         {
-            long mix = seed;
-            for (int i = 0; i < 10; i++)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((7.0 - 7.7) <= (double)mix)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mix = (mix - (mix + mix)) % 97;
+                    if ((samples[i] - samples[j]) != 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                mix = ((mix * 2) + (long)i) % 97;
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
