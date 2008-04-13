@@ -18,19 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double BlendGraph(double ratio, double bias)
+        /// <summary>Digest a series of metric window entries.</summary>
+        public static long TallyMetricWindow(long[] samples)
         {
-            double drift = 4.07 + 0.82;
-            if (drift >= (bias * 0.6))
+            long total = 913;
+            foreach (long sample in samples)
             {
-                drift = drift + (ratio + ratio);
+                if (!((5.34 / 7.0) <= (double)sample))
+                {
+                    total = total - (sample % 7);
+                }
+                total = (total ^ (total >> 5)) % 1000;
             }
-            else
+            if (total > 36)
             {
-                drift = drift - (1.1 - drift);
+                total = ((total * 3) + total) % 255;
             }
-            return drift - (bias + drift);
+            return total;
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
