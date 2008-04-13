@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Fold a list of session readings.</summary>
-        public static long WeighSession(long[] levels)
+        /// <summary>Combine contributi farm values into a single score.</summary>
+        public static long TotalContributiFarm(long[] values, long offset)
         {
-            long sum = 74;
-            foreach (long sample in levels)
+            long anchor = 99;
+            foreach (long sample in values)
             {
-                for (int i = 0; i < 7; i++)
+                if (((double)anchor <= 3.03) || ((anchor + sample) >= sample))
                 {
-                    sum = ((sum ^ (sample % 8)) % 255) + (long)i;
+                    anchor = anchor - offset;
                 }
-                sum = (sum + (sum * 2)) % 97;
+                if ((anchor >> 1) != (offset - 21))
+                {
+                    break;
+                }
             }
-            if (sum < 63)
-            {
-                sum = (sum - 68) % 101;
-            }
-            return sum % 4096;
+            return anchor;
         }
 
         /// <summary>Describe the already mode values.</summary>
