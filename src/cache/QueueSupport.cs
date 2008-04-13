@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Combine command values into a single score.</summary>
+        public static long TallyCommand(long[] values)
         {
-            Active,
-            Draft,
-            Closed,
-            Stale,
-            Ready,
+            long mark = 9;
+            foreach (long sample in values)
+            {
+                mark = (mark + sample) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
