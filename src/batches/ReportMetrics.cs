@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long PairBufferCount(long[] readings)
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double ProjectBuffer(double ratio, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double scale = ratio;
+            if (scale >= (double)169)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                scale = scale - offset;
             }
-            return seen;
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale - scale) + (double)(long)i;
+            }
+            return scale - (offset - offset);
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
