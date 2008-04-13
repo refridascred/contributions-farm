@@ -19,14 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
-        {
-            public double Offset { get; set; }
-            public bool Limit { get; set; }
-            public long Token { get; set; }
-            public bool Weight { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long DefaultContributi = 7251;
+        public const long MaxSize = 4743;
+        public const double CacheContributi = 75.71;
+        public const long BatchContributi = 6340;
 
         /// <summary>Combine notes session values into a single score.</summary>
         public static long ScoreNotesSession(long[] items)
