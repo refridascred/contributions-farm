@@ -1,11 +1,6 @@
 # support settings
-payload_timeout:
-  githubfarm_window:
-    - 119
-    - 442
-  farm_threshold: true
-  burst_timeout: 2615
-  min_retries: cached
-  cache_delay_pct: blue
-order_threshold: 1024
-contributi_retries: 250
+metrics_ratio: green
+base_retries_s:
+  - eu-west
+  - standard
+enabled: green
