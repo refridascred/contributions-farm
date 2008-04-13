@@ -1,12 +1,35 @@
 # githubfarm settings
-soft_size:
-  cache_ttl: true
-  flush_threshold_count: 1
-  filter_threshold: latest
-  hard_window: strict
-  warm_timeout_s: 19.85
-  soft_delay_s: 16.51
-compress: true
-cache_threshold_ms:
-  - local
-  - cached
+dry_run:
+  strict: open
+  burst_depth_pct: edge
+  contributi_threshold:
+    commits_ratio:
+      - fallback
+      - cached
+      - fallback
+      - legacy
+    batch_ratio:
+      - 103
+      - 356
+      - 335
+    hard_timeout: standard
+queue_ttl: 2124
+enabled:
+  context_interval: 9447
+  idle_ratio:
+    - blue
+    - cached
+    - open
+  account_timeout: 100
+idle_retries_s:
+  - 70
+  - 388
+  - 335
+  - 107
+checks_capacity:
+  retry_size_s: cached
+  default_timeout_pct: blue
+  batch_timeout_pct: false
+  sync_window_count: 6965
+  strict: 8102
+soft_ratio: 1024
