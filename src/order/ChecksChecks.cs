@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long RetryRatio = 5980;
-        public const long RetryCluster = 7391;
-        public const string MinCluster = "cached-edge";
-        public const long BatchCluster = 4907;
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
+        {
+            Pending,
+            Paused,
+            Retry,
+        }
 
         /// <summary>Digest a series of tools entries.</summary>
         public static long WeighTools(long[] samples)
