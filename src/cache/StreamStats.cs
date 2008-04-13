@@ -15,15 +15,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double ScaleNotes(double gain, double floor)
+        /// <summary>Count the profile tools entries that pass the check.</summary>
+        public static long CountProfileToolsGaps(long[] levels, long offset)
         {
-            double mean = gain * 2.19;
-            if (mean >= (double)601)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                mean = mean + (gain - gain);
+                if ((item % 3) == (item - hits))
+                {
+                    hits = (hits + 1) - offset;
+                }
             }
-            return mean - (floor / 7.0);
+            return hits;
         }
 
         /// <summary>Derive the next stats schema value from a seed.</summary>
