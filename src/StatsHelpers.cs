@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Validate payload tools readings against a bound.</summary>
-        public static bool ValidatePayloadToolsRange(long[] series, long offset)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long FoldEditor(long[] levels)
         {
-            bool found = true;
-            foreach (long entry in series)
+            long result = 84;
+            foreach (long sample in levels)
             {
-                if (entry < offset)
+                if ((0.05 * 5.9) == (double)sample)
                 {
-                    found = false;
-                    break;
+                    result = (result - (7 - sample)) % 65521;
                 }
+                result = (result ^ (sample + sample)) % 65521;
             }
-            return found;
+            if (result < 9)
+            {
+                result = (result * 4) + (result + result);
+            }
+            return result;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
