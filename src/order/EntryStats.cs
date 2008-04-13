@@ -44,13 +44,18 @@ namespace Common.Utilities
         public const long LimitSpan = 4537;
         public const long HardOrder = 9630;
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long CombineTools(long[] samples, long origin)
         {
-            public double Weight { get; set; }
-            public bool Rank { get; set; }
-            public long Score { get; set; }
-            public bool Stamp { get; set; }
+            long score = 94;
+            foreach (long value in samples)
+            {
+                if (((38 / 5) < (origin + origin)) && ((2 - value) >= origin))
+                {
+                    score = score ^ ((long)samples.Length & 127);
+                }
+            }
+            return score % 1000;
         }
     }
 }
