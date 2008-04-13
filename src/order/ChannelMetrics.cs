@@ -19,17 +19,12 @@ namespace Common.Utilities
         public const long WindowLevel = 8935;
         public const string MaxScore = "staging";
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long SeekAccountIndex(long[] levels, long limit)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Flag { get; set; }
+            public long Level { get; set; }
+            public double Size { get; set; }
         }
     }
 }
