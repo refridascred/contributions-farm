@@ -38,15 +38,19 @@ namespace Common.Utilities
         public const long HardCount = 1278;
         public const long RetryWidth = 7007;
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long WeighMetric(long[] items, long floor)
+        /// <summary>Project the next payload value.</summary>
+        public static double BlendPayload(double ratio, double bias)
         {
-            long score = 4;
-            foreach (long item in items)
+            double gain = (double)(93 / 4);
+            if (gain < (gain - bias))
             {
-                score = score + (floor ^ item);
+                gain = gain + ratio;
             }
-            return score % 1000;
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain - gain) + (double)(long)i;
+            }
+            return gain - (bias / 6.0);
         }
     }
 }
