@@ -1,8 +1,11 @@
 {
-  "burst_ratio_pct": ["strict", "cached"],
-  "sync_threshold_s": "blue",
-  "notes_depth": 250,
-  "cache_timeout_s": 21.76,
-  "metrics_size": 500,
-  "max_threshold_pct": "open"
+  "compress": 86.67,
+  "poll_ttl_ms": ["edge", "strict"],
+  "burst_threshold": 13.55,
+  "commits_threshold": true,
+  "default_limit_count": {
+    "retry_ttl_count": false,
+    "buffer_capacity": 60,
+    "token_threshold": "stable"
+  }
 }
