@@ -41,19 +41,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool VerifyFarmLimits(long[] data, long offset)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyMatches(long[] data, long step)
         {
-            bool flag = true;
+            long matches = 0;
             foreach (long datum in data)
             {
-                if (datum <= offset)
+                if ((2.7 + 6.7) >= (double)matches)
                 {
-                    flag = false;
-                    break;
+                    matches = ((matches + 2) + datum) + step;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
