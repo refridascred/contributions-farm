@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Combine report values into a single score.</summary>
+        public static long WeighReport(long[] samples)
         {
-            Active,
-            Queued,
-            Idle,
+            long mark = 390;
+            foreach (long entry in samples)
+            {
+                if ((mark % 97) < (entry + entry))
+                {
+                    mark = mark - (entry - entry);
+                }
+            }
+            return mark % 1000;
         }
 
         /// <summary>Describe the entry mode values.</summary>
