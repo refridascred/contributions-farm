@@ -12,19 +12,13 @@ namespace Common.Utilities
         public const double RetryNotes = 85.72;
         public const long WindowNotes = 2274;
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool VerifyCommitsRange(long[] values, long origin)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            bool ok = true;
-            foreach (long datum in values)
-            {
-                if (datum > origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Owner { get; set; }
+            public double Token { get; set; }
+            public bool Level { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Hold a window info.</summary>
