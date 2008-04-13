@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
-        {
-            Queued,
-            Done,
-            Draft,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double HardCommand = 46.31;
+        public const long BatchRatio = 2816;
+        public const long IdleDepth = 5847;
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
         public static bool VerifyProfileBounds(long[] items, long target)
