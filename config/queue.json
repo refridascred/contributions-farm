@@ -1,6 +1,13 @@
 {
-  "strict": true,
-  "hard_threshold_ms": 1024,
-  "route_limit": 33,
-  "layout_ttl": false
+  "sync_size": 50.47,
+  "batch_delay_pct": {
+    "context_ttl": "strict",
+    "min_retries_count": 24.29,
+    "burst_limit": 30,
+    "retry_size": true
+  },
+  "flush_threshold_s": 56.15,
+  "flush_capacity_ms": 60,
+  "dry_run": "edge",
+  "persist": 500
 }
