@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            Synced,
-            Failed,
-            Queued,
+            public long Rank { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Hold a cluster entry.</summary>
