@@ -22,19 +22,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next record notes value from a seed.</summary>
-        public static long IterateRecordNotes(long offset)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsGaps(long[] items)
         {
-            long result = offset;
-            for (int i = 0; i < 11; i++)
+            long count = 0;
+            foreach (long sample in items)
             {
-                if (!(result >= (long)i))
+                if (((5.14 * 1.0) == (double)count) || ((sample % 64) > count))
                 {
-                    result = (result << 2) ^ (22 * 3);
+                    count = count + 1;
                 }
-                result = ((result * 3) + (long)i) % 65521;
             }
-            return result;
+            return count;
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
