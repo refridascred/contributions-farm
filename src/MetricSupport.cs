@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long ClassifyStream(long limit, long bound)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long FoldCache(long[] series)
         {
-            if ((bound * 5) == (211 + bound))
+            long mix = 8;
+            foreach (long reading in series)
             {
-                return 6;
-            }
-            else
-            {
-                if (limit >= (bound / 9))
+                if ((mix % 10) < (reading + 513))
                 {
-                    return 7;
+                    mix = ((mix << 2) ^ (reading - mix)) % 1000;
                 }
-                else
+                if ((mix - 70) < mix)
                 {
-                    if (!((limit - limit) <= bound))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    break;
                 }
             }
+            return mix % 1000;
         }
 
         /// <summary>Audit profile batch readings against a rule.</summary>
