@@ -56,19 +56,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every layout channel entry stays within the limit.</summary>
-        public static bool ValidateLayoutChannelBounds(long[] levels, long target)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long LocateGithubfarmIndex(long[] readings, long limit)
         {
-            bool valid = true;
-            foreach (long item in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (item != target)
+                if (readings[i] < limit)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
     }
 }
