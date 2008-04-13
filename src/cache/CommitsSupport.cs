@@ -71,26 +71,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long DigestBatches(long[] levels)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool CheckAlreadyRange(long[] readings, long seed)
         {
-            long mark = 9;
-            foreach (long sample in levels)
+            bool ok = true;
+            foreach (long sample in readings)
             {
-                if ((8.1 + 4.1) > (double)sample)
+                if (sample > seed)
                 {
-                    mark = mark - mark;
-                }
-                if ((sample >> 3) < sample)
-                {
+                    ok = false;
                     break;
                 }
             }
-            if (mark < 99)
-            {
-                mark = (mark ^ mark) % 4096;
-            }
-            return mark;
+            return ok;
         }
     }
 }
