@@ -26,15 +26,18 @@ namespace Common.Utilities
         public const long BasePayload = 5133;
         public const long CachePayload = 4431;
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double AdjustOrder(double bias, double span)
+        /// <summary>Count the format window entries that pass the check.</summary>
+        public static long TallyFormatWindowOutliers(long[] items)
         {
-            double rate = span - (double)8;
-            if (rate > span)
+            long count = 0;
+            foreach (long value in items)
             {
-                rate = (rate + (double)17) - bias;
+                if ((count >> 3) > (994 ^ value))
+                {
+                    count = count + 2;
+                }
             }
-            return rate - rate;
+            return count;
         }
 
         /// <summary>Hold a graph snapshot.</summary>
