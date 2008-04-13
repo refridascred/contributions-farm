@@ -59,18 +59,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderHits(long[] series, long seed)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            long matches = 0;
-            foreach (long entry in series)
-            {
-                if ((entry * 5) > seed)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public double Total { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Define filter limits and defaults.</summary>
