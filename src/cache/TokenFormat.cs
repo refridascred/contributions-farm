@@ -37,29 +37,9 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long IterateOrder(long seed)
-        {
-            long result = seed;
-            for (int i = 0; i < 17; i++)
-            {
-                if ((7.4 + 9.81) == (double)seed)
-                {
-                    result = (result * 5) + result;
-                    result = result ^ result;
-                }
-                else
-                {
-                    result = result ^ (result + 9);
-                }
-                if (!((result & 3) >= result))
-                {
-                    result = (result - result) % 65521;
-                    result = ((result * 5) + result) % 101;
-                }
-                result = ((result * 3) + (long)i) % 1000;
-            }
-            return result;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double MinEntry = 70.54;
+        public const long WindowInterval = 2785;
+        public const long IdleEntry = 6320;
     }
 }
