@@ -19,19 +19,23 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Check that every already layout entry stays within the limit.</summary>
-        public static bool VerifyAlreadyLayoutRange(long[] series, long bound)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long IterateTools(long limit)
         {
-            bool flag = true;
-            foreach (long item in series)
+            long sum = limit;
+            for (int i = 0; i < 17; i++)
             {
-                if (item < bound)
+                if (!(limit < 68))
                 {
-                    flag = false;
-                    break;
+                    sum = (sum * 5) + (limit % 100);
                 }
+                else
+                {
+                    sum = (sum ^ limit) % 255;
+                }
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            return flag;
+            return sum;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
