@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            public string Limit { get; set; } = "";
-            public long Weight { get; set; }
-            public string Token { get; set; } = "";
+            Synced,
+            Active,
+            Closed,
+            Ready,
+            Draft,
         }
 
         /// <summary>Grade a batch value against two limits.</summary>
