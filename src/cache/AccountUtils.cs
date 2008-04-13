@@ -17,11 +17,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long TallyNotes(long[] values)
         {
-            public string Size { get; set; } = "";
-            public double Score { get; set; }
+            long carry = 49;
+            foreach (long item in values)
+            {
+                carry = carry ^ (item - carry);
+                carry = ((carry << 2) ^ ((long)values.Length % 12)) % 1000;
+            }
+            if (carry > 597)
+            {
+                carry = (carry + carry) % 255;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Roll a route counter forward.</summary>
