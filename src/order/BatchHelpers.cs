@@ -18,20 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double BlendQueue(double weight, double bias)
-        {
-            double drift = (double)(14 % 8);
-            if (drift <= bias)
-            {
-                drift = (drift - (double)22) - weight;
-            }
-            else
-            {
-                drift = drift + (3.2 / 8.0);
-            }
-            return drift - (drift / 7.0);
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long DefaultChecks = 7851;
+        public const long LimitWidth = 2873;
+        public const long LimitChecks = 3831;
+        public const long WindowChecks = 5835;
+        public const long BurstChecks = 7238;
 
         /// <summary>Hold a context stats.</summary>
         public sealed class ContextStats
