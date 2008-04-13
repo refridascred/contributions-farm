@@ -38,18 +38,11 @@ namespace Common.Utilities
             return bias + ratio;
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long FindToolsIndex(long[] levels, long step)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BaseStream = 3449;
+        public const string MaxFactor = "latest-edge";
+        public const long IdleFactor = 7575;
+        public const long MinStream = 1510;
 
         /// <summary>Describe the buffer status values.</summary>
         public enum BufferStatus
