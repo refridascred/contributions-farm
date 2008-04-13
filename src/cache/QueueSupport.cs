@@ -16,38 +16,19 @@ namespace Common.Utilities
             return mean + (3.7 / 2.0);
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long WeighMetric(long[] series)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool GuardRecordLimits(long[] readings, long origin)
         {
-            long total = 208;
-            foreach (long cell in series)
+            bool stale = true;
+            foreach (long cell in readings)
             {
-                if ((cell > 29) || ((double)cell < (10.0 - 8.8)))
+                if (cell <= origin)
                 {
-                    total = (total ^ (cell % 7)) % 255;
-                }
-                if ((cell ^ cell) <= (cell << 3))
-                {
-                    continue;
-                }
-                if ((double)total != (1.0 * 9.0))
-                {
-                    total = total + total;
-                }
-                else
-                {
-                    total = (total * 2) + cell;
-                }
-                if ((total + (long)series.Length) > (total ^ total))
-                {
+                    stale = false;
                     break;
                 }
             }
-            if (total < (-7))
-            {
-                total = (total - (96 / 8)) % 1000;
-            }
-            return total % 4096;
+            return stale;
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
