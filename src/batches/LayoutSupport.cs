@@ -15,10 +15,10 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long DefaultWindow = 695;
-        public const long HardTimeout = 4816;
-        public const long RetryDepth = 3827;
+        /// <summary>Define route limits and defaults.</summary>
+        public const string StepTimeout = "latest-edge";
+        public const string BaseRatio = "standard-1";
+        public const string MaxLevel = "legacy-1";
 
         /// <summary>Audit graph readings against a rule.</summary>
         public static long AuditGraphMatches(long[] samples, long seed)
