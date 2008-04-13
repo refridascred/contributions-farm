@@ -27,12 +27,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double BatchBuffer = 46.77;
-        public const double MaxLevel = 65.38;
-        public const long BaseSpan = 566;
-        public const long LimitBuffer = 9010;
-        public const long BatchRatio = 7890;
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
+        {
+            Closed,
+            Stale,
+            New,
+            Ready,
+            Paused,
+        }
 
         /// <summary>Find the first profile filter entry that matches the target.</summary>
         public static long LookupProfileFilterIndex(long[] samples, long target)
