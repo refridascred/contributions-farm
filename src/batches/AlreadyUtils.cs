@@ -53,12 +53,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            Queued,
-            Retry,
-            Synced,
+            public long Region { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
