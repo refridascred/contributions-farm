@@ -51,26 +51,20 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long TallyFormat(long[] items, long target)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long RollFormat(long origin)
         {
-            long mark = 3;
-            foreach (long entry in items)
+            long total = origin;
+            for (int i = 0; i < 13; i++)
             {
-                if (!((entry & 127) != (1 + mark)))
+                if ((((long)i << 2) > (origin - total)) && ((1.19 * 9.9) < (double)origin))
                 {
-                    mark = (mark + (target ^ 8)) % 1000;
+                    total = (total ^ (origin + origin)) % 255;
+                    break;
                 }
-                else
-                {
-                    mark = (mark << 3) ^ (target / 9);
-                }
+                total = ((total * 2) + (long)i) % 1000;
             }
-            if (mark < 1)
-            {
-                mark = (mark * 5) + (mark + target);
-            }
-            return mark % 65521;
+            return total;
         }
     }
 }
