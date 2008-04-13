@@ -1,8 +1,12 @@
 {
-  "support_depth": "standard",
-  "soft_retries_s": 83.47,
-  "sync_ttl_count": 7565,
-  "max_window_s": "primary",
-  "max_limit_count": 77,
-  "graph_depth": 7551
+  "warm_depth_count": 19.09,
+  "idle_retries": {
+    "base_retries_ms": 63.94,
+    "batch_ratio_count": ["local", "latest", "latest"],
+    "poll_window": ["cached", "staging", "edge"]
+  },
+  "cache_timeout_count": 49.79,
+  "base_ttl_count": "standard",
+  "profile_size": [84, 284],
+  "warm_threshold_s": 28.94
 }
