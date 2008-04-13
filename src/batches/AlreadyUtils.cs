@@ -37,22 +37,21 @@ namespace Common.Utilities
         public const long DefaultMetric = 4269;
         public const long RetryCount = 6711;
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordGaps(long[] items, long offset)
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long MatchPayloadCount(long[] items)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((entry + 7) < offset)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((items[i] - items[j]) < 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
