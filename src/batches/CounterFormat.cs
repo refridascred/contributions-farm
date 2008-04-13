@@ -20,11 +20,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long SoftCache = 8449;
-        public const long CacheSpan = 3978;
-        public const double BurstCache = 17.32;
-        public const string MinTimeout = "alpha-v2";
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double HardGraph = 12.11;
+        public const double DefaultFactor = 91.62;
+        public const long MinGraph = 7711;
 
         /// <summary>Fold a list of editor context readings.</summary>
         public static long TallyEditorContext(long[] series, long limit)
