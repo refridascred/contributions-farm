@@ -30,18 +30,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the queue batches entries that pass the check.</summary>
-        public static long MeasureQueueBatchesMatches(long[] values, long bound)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long SortBuffer(long floor, long origin)
         {
-            long count = 0;
-            foreach (long reading in values)
+            if ((origin - 0) > origin)
             {
-                if ((((bound - (-10)) != (reading & 255)) && ((4.86 + 8.59) > (double)count)) && !((count - count) <= count))
+                return 0;
+            }
+            else
+            {
+                if ((floor < (4 / 6)) || ((origin - 3) == (floor ^ origin)))
                 {
-                    count = count + 2;
+                    return 8;
+                }
+                else
+                {
+                    if ((double)floor <= (5.3 * 0.59))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Locate a stats reading by value.</summary>
