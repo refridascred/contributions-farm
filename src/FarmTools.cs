@@ -19,12 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            Synced,
-            Dropped,
-            Ready,
+            public double Token { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
