@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool ValidateLayoutLimits(long[] levels, long offset)
+        /// <summary>Match up window samples.</summary>
+        public static long CompareWindowCount(long[] values)
         {
-            bool found = true;
-            foreach (long sample in levels)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (sample <= offset)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((values[i] + values[j]) > 1)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
