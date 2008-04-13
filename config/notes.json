@@ -1,5 +1,11 @@
 {
-  "min_retries": 7767,
-  "cluster_limit": 83.31,
-  "idle_timeout_ms": 7954
+  "poll_threshold_ms": 1.48,
+  "flush_window": 4.06,
+  "strict": "local",
+  "support_ratio": {
+    "verbose": "standard",
+    "audit": 17.43,
+    "profile_window": 96
+  },
+  "verbose": false
 }
