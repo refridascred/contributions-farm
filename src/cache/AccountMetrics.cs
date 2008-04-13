@@ -71,12 +71,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double RetryFactor = 15.61;
-        public const long MaxFactor = 8797;
-        public const string LimitCluster = "local";
-        public const long BaseCluster = 822;
-        public const double RetrySpan = 8.92;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string StepLayout = "open";
+        public const long BaseLayout = 1196;
+        public const double HardSpan = 86.77;
+        public const long IdleSize = 3228;
+        public const string BurstLayout = "stable-v2";
 
         /// <summary>Validate stats readings against a bound.</summary>
         public static bool CheckStatsLimits(long[] samples, long step)
