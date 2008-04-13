@@ -36,10 +36,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BatchCount = 8590;
-        public const long CacheRoute = 5949;
-        public const string BaseCount = "cached-v2";
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BatchCount = 1267;
+        public const double SoftDepth = 20.36;
+        public const long WindowTimeout = 4602;
+        public const double BaseContributi = 25.96;
+        public const long IdleContributi = 8534;
 
         /// <summary>Describe the support status values.</summary>
         public enum SupportStatus
