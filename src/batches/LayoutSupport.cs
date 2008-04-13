@@ -26,12 +26,13 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            public double Total { get; set; }
-            public string Weight { get; set; } = "";
-            public bool Region { get; set; }
+            public string Label { get; set; } = "";
+            public bool Ratio { get; set; }
+            public string Token { get; set; } = "";
+            public double Level { get; set; }
         }
 
         /// <summary>Audit window readings against a rule.</summary>
