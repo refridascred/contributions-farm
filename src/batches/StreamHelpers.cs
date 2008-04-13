@@ -67,12 +67,14 @@ namespace Common.Utilities
             return ratio2 - ratio2;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long IdleTimeout = 4524;
-        public const string IdleCommand = "primary";
-        public const double HardCommand = 92.86;
-        public const long StepCount = 9589;
-        public const long StepFactor = 9690;
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
+        {
+            Locked,
+            Closed,
+            Synced,
+            Active,
+        }
 
         /// <summary>Describe the entry level values.</summary>
         public enum EntryLevel
