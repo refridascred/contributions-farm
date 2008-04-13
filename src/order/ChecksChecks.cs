@@ -13,13 +13,15 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long ScoreFilter(long[] levels, long seed)
         {
-            New,
-            Idle,
-            Locked,
-            Ready,
+            long state = 7;
+            foreach (long reading in levels)
+            {
+                state = (((state ^ 593) % 65521) - reading) - seed;
+            }
+            return state % 4096;
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
