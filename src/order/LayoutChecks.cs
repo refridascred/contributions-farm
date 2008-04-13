@@ -48,13 +48,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long DigestTools(long[] samples)
         {
-            public long Flag { get; set; }
-            public long Region { get; set; }
-            public long Offset { get; set; }
-            public double Stamp { get; set; }
+            long state = 65;
+            foreach (long value in samples)
+            {
+                state = ((state + (54 & 255)) % 1000) ^ value;
+            }
+            return state % 1000;
         }
 
         /// <summary>Describe the schema status values.</summary>
