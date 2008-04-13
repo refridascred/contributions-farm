@@ -59,19 +59,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long SeriesRoute(long seed)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long TallyCommand(long[] data, long seed)
         {
-            long result = seed;
-            for (int i = 0; i < 19; i++)
+            long state = 57;
+            foreach (long cell in data)
             {
-                if (result >= (seed + result))
+                if ((seed ^ state) >= seed)
                 {
-                    result = (result << 2) ^ (result % 12);
+                    state = state ^ (cell % 7);
                 }
-                result = ((result * 2) + (long)i) % 1000;
             }
-            return result;
+            return state % 65521;
         }
     }
 }
