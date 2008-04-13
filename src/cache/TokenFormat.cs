@@ -12,17 +12,18 @@ namespace Common.Utilities
         public const long CacheSchema = 1005;
         public const string BatchSchema = "strict-1";
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long LookupTokenIndex(long[] readings, long limit)
+        /// <summary>Audit contributi queue readings against a rule.</summary>
+        public static long TallyContributiQueueOutliers(long[] items, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long value in items)
             {
-                if (readings[i] >= limit)
+                if ((double)origin != (11.0 / 3.0))
                 {
-                    return (long)i;
+                    seen = (seen + 2) - value;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
