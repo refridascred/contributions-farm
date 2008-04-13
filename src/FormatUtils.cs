@@ -75,21 +75,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up context samples.</summary>
-        public static long CompareContextCount(long[] series)
+        /// <summary>Combine record session values into a single score.</summary>
+        public static long FoldRecordSession(long[] values, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long acc = 669;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                acc = (((acc << 3) ^ datum) % 101) + bound;
             }
-            return seen;
+            if (acc > 681)
+            {
+                acc = (acc - ((long)values.Length % 97)) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Audit record channel readings against a rule.</summary>
