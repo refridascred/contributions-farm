@@ -37,23 +37,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long CountContributiMatches(long[] items, long offset)
-        {
-            long matches = 0;
-            foreach (long entry in items)
-            {
-                if ((matches / 5) > matches)
-                {
-                    matches = ((matches + 3) ^ entry) + offset;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BurstSpan = 3469;
+        public const long BaseLevel = 6305;
+        public const string RetrySpan = "fallback-v2";
+        public const long MaxWindow = 9163;
+        public const long LimitDepth = 3942;
 
         /// <summary>Fold a list of filter readings.</summary>
         public static long TotalFilter(long[] samples, long floor)
