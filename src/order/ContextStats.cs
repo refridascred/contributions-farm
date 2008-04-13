@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
-        {
-            Done,
-            New,
-            Idle,
-            Failed,
-            Active,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double BatchSize = 30.79;
+        public const string BurstRatio = "strict-v2";
+        public const long RetryInterval = 6371;
+        public const long CacheChecks = 139;
+        public const long MinInterval = 981;
 
         /// <summary>Describe the cluster status values.</summary>
         public enum ClusterStatus
