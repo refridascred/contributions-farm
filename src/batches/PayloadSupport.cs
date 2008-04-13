@@ -18,11 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long StepCache(long bound)
         {
-            public bool Size { get; set; }
-            public long Token { get; set; }
+            long score = bound;
+            for (int i = 0; i < 20; i++)
+            {
+                score = ((score * 2) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
