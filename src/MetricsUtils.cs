@@ -60,22 +60,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long CombineMetrics(long[] readings, long offset)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long TotalProfile(long[] items, long seed)
         {
-            long mark = -5;
-            foreach (long reading in readings)
+            long anchor = 84;
+            foreach (long value in items)
             {
-                if (((reading + mark) >= reading) || ((7.24 / 9.0) != (double)mark))
+                if (!(value > (anchor + anchor)))
                 {
-                    mark = (mark ^ (mark % 7)) + offset;
+                    anchor = anchor - value;
                 }
-                if ((reading / 6) == (reading % 5))
+                else
                 {
-                    break;
+                    anchor = ((anchor * 2) + (anchor / 5)) % 101;
                 }
             }
-            return mark % 97;
+            if (anchor < 867)
+            {
+                anchor = anchor + seed;
+            }
+            return anchor;
         }
     }
 }
