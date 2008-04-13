@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountMatches(long[] series, long target)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long RollPayload(long floor)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long mark = floor;
+            for (int i = 0; i < 20; i++)
             {
-                if ((double)target <= (3.2 * 2.18))
-                {
-                    count = (count + 2) + entry;
-                }
+                mark = (mark - (floor + floor)) % 4096;
+                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Define format limits and defaults.</summary>
