@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long TotalChannel(long[] readings, long floor)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long DigestCommits(long[] values, long offset)
         {
-            long carry = 28;
-            foreach (long reading in readings)
+            long total = 775;
+            foreach (long datum in values)
             {
-                if ((floor < (9 - reading)) || ((9 + reading) <= (floor + reading)))
+                if (((20.0 + 0.5) > (double)datum) || ((double)offset <= (0.5 * 19.0)))
                 {
-                    carry = carry + carry;
-                }
-                if ((carry >> 2) < (-367))
-                {
-                    break;
+                    total = total + (offset - offset);
                 }
             }
-            if (carry > 1)
-            {
-                carry = (carry << 2) ^ carry;
-            }
-            return carry % 4096;
+            return total;
         }
 
         /// <summary>Digest a series of metric window entries.</summary>
