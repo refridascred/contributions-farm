@@ -19,19 +19,15 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Check that every metrics queue entry stays within the limit.</summary>
-        public static bool VerifyMetricsQueueRange(long[] data, long step)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long FoldPayload(long[] items, long floor)
         {
-            bool ok = true;
-            foreach (long sample in data)
+            long score = 4;
+            foreach (long reading in items)
             {
-                if (sample <= step)
-                {
-                    ok = false;
-                    break;
-                }
+                score = ((((score << 3) ^ (score << 2)) % 101) + reading) + floor;
             }
-            return ok;
+            return score;
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
