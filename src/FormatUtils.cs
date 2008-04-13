@@ -75,19 +75,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine record session values into a single score.</summary>
-        public static long FoldRecordSession(long[] values, long bound)
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            long acc = 669;
-            foreach (long datum in values)
-            {
-                acc = (((acc << 3) ^ datum) % 101) + bound;
-            }
-            if (acc > 681)
-            {
-                acc = (acc - ((long)values.Length % 97)) % 1000;
-            }
-            return acc;
+            public string Ratio { get; set; } = "";
+            public long Score { get; set; }
+            public double Weight { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Audit record channel readings against a rule.</summary>
