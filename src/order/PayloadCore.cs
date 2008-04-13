@@ -55,14 +55,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double SmoothBuffer(double bias, double offset)
         {
-            Active,
-            Paused,
-            Queued,
-            Pending,
-            Synced,
+            double bias2 = (double)(42 - 5);
+            return ((bias2 - (double)96) + bias) + offset;
         }
     }
 }
