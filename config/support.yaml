@@ -1,4 +1,16 @@
 # support settings
-poll_timeout: true
-sync_depth_count: false
-default_threshold_pct: staging
+retry_timeout: false
+burst_ratio_s: eu-west
+soft_timeout:
+  persist: 42
+  soft_capacity_count: false
+  warm_threshold_s: primary
+  max_limit_ms:
+    - edge
+    - staging
+    - standard
+    - staging
+  batch_ratio_pct:
+    - 328
+    - 6
+    - 93
