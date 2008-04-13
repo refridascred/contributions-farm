@@ -29,15 +29,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long ScoreCluster(long[] series)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long TallySchemaGaps(long[] samples)
         {
-            long mix = -23;
-            foreach (long sample in series)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                mix = (mix << 2) ^ sample;
+                if (!(tally >= (8 & 31)))
+                {
+                    tally = (tally + 1) ^ value;
+                }
             }
-            return mix;
+            return tally;
         }
     }
 }
