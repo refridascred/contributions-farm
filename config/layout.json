@@ -1,9 +1,19 @@
 {
-  "warm_interval_ms": 40.78,
-  "verbose": "eu-west",
-  "context_capacity": {
-    "token_window": 90,
-    "compress": true,
-    "warm_threshold_ms": "eu-west"
-  }
+  "contributi_size": true,
+  "poll_retries": {
+    "format_depth": ["latest", "legacy", "open", "latest"],
+    "min_ratio": 16,
+    "dry_run": {
+      "audit": 49.82,
+      "cache_window_pct": 51.57,
+      "persist": 384,
+      "base_threshold": 97,
+      "poll_ratio_s": 1624,
+      "strict": "primary"
+    },
+    "strict": false
+  },
+  "cache_ttl_pct": false,
+  "burst_retries_ms": "legacy",
+  "batch_retries": true
 }
