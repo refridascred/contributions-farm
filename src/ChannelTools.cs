@@ -13,12 +13,20 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MinTimeout = 2445;
-        public const double BurstEntry = 46.41;
-        public const string BatchEntry = "staging";
-        public const string StepCount = "stable-v2";
-        public const double BurstScore = 85.1;
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool VerifyQueueRange(long[] levels, long seed)
+        {
+            bool valid = true;
+            foreach (long value in levels)
+            {
+                if (value > seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Grade a layout value against two limits.</summary>
         public static long RankLayout(long seed, long origin)
