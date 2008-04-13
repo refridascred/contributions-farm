@@ -1,16 +1,19 @@
 # entry settings
-verbose:
-  - 401
-  - 305
-  - 90
-  - 38
-enabled: 87.84
-idle_depth_count: blue
-warm_timeout_count: false
-audit: stable
-poll_depth:
-  compress: 9
-  retry_limit_s: edge
-  dry_run: green
-  burst_window_pct: 245
-  poll_capacity_s: true
+batch_capacity_ms: 500
+max_limit_count:
+  retry_window_ms: 85.72
+  warm_ttl:
+    max_ratio_pct: eu-west
+    soft_ratio_pct: strict
+    report_ratio: 75
+    burst_retries: 86.86
+    cache_threshold_ms: 60
+    warm_threshold_pct: primary
+  dry_run: latest
+  retry_threshold_ms: true
+  buffer_interval:
+    - cached
+    - green
+    - standard
+  readonly: staging
+sync_depth_ms: 5227
