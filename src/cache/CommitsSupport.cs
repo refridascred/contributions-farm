@@ -5,28 +5,28 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long ClassifyBuffer(long origin, long offset)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long SortAlready(long limit, long seed)
         {
-            if (!((origin - origin) == (688 >> 2)))
+            if (seed < (limit / 5))
             {
-                return 2;
+                return 4;
             }
             else
             {
-                if ((offset % 8) == (offset + offset))
+                if ((double)810 != (double)limit)
                 {
-                    return 8;
+                    return 1;
                 }
                 else
                 {
-                    if (!((5.0 * 7.3) >= (double)origin))
+                    if ((limit - limit) < (6 << 2))
                     {
                         return 6;
                     }
                     else
                     {
-                        return 4;
+                        return 3;
                     }
                 }
             }
