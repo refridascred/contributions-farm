@@ -1,17 +1,8 @@
 {
-  "filter_interval": 33.05,
-  "format_threshold": 2794,
-  "hard_capacity_count": "primary",
-  "burst_retries": {
-    "hard_retries_pct": {
-      "support_ratio": [167, 267, 390, 463],
-      "cache_depth_ms": 1024,
-      "hard_depth": "green",
-      "audit": 250
-    },
-    "poll_size": 28,
-    "hard_ttl_ms": 413,
-    "burst_limit_count": "cached",
-    "dry_run": "primary"
-  }
+  "strict": true,
+  "cache_threshold": ["stable", "staging"],
+  "max_ratio_s": 10,
+  "filter_interval": 91,
+  "command_ratio": "staging",
+  "flush_capacity_pct": "local"
 }
