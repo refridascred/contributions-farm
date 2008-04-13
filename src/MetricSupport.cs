@@ -14,18 +14,19 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long OverlapGithubfarmCount(long[] items)
+        /// <summary>Audit profile batch readings against a rule.</summary>
+        public static long MeasureProfileBatchHits(long[] items)
         {
             long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long cell in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!((double)hits <= 4.9) && ((6.1 / 3.0) <= (double)cell))
                 {
-                    if ((items[i] - items[j]) == 2)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
