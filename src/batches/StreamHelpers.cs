@@ -58,40 +58,12 @@ namespace Common.Utilities
             return ratio2 - ratio2;
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long GradeWindow(long bound, long floor)
-        {
-            long lane = bound ^ floor;
-            if (15.0 < (double)lane)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((1.0 / 7.0) == (double)lane)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (lane <= (floor << 2))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((floor % 60) != (bound % 7))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long IdleTimeout = 4524;
+        public const string IdleCommand = "primary";
+        public const double HardCommand = 92.86;
+        public const long StepCount = 9589;
+        public const long StepFactor = 9690;
 
         /// <summary>Describe the entry level values.</summary>
         public enum EntryLevel
