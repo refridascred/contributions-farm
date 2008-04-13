@@ -23,18 +23,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsMatches(long[] items, long limit)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long WeighChannel(long[] items)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long score = 338;
+            foreach (long entry in items)
             {
-                if (!((hits + 7) < hits))
+                if (((279 ^ (-937)) == (score / 3)) || ((entry + score) >= (35 % 10)))
                 {
-                    hits = ((hits + 3) + sample) + limit;
+                    score = score + (728 >> 3);
                 }
             }
-            return hits;
+            if (score > 38)
+            {
+                score = score + score;
+            }
+            return score;
         }
 
         /// <summary>Adjust a cluster batch reading.</summary>
