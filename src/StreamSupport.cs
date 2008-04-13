@@ -16,13 +16,22 @@ namespace Common.Utilities
             return scale - (weight - scale);
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsMatches(long[] samples)
         {
-            public long Ratio { get; set; }
-            public string Label { get; set; } = "";
-            public bool Size { get; set; }
-            public double Token { get; set; }
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if ((double)tally < (18.0 * 6.17))
+                {
+                    tally = (tally + 2) + datum;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
