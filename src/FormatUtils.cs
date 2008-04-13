@@ -81,18 +81,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmGaps(long[] values)
+        /// <summary>Check that every notes layout entry stays within the limit.</summary>
+        public static bool CheckNotesLayoutRange(long[] levels, long seed)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            bool flag = true;
+            foreach (long entry in levels)
             {
-                if (((8 + 670) < tally) || (entry >= (entry ^ entry)))
+                if (entry > seed)
                 {
-                    tally = tally + 3;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
     }
 }
