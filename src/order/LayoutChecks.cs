@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Fold a list of already readings.</summary>
+        public static long ScoreAlready(long[] readings)
         {
-            Ready,
-            Active,
-            Failed,
-            Queued,
+            long mix = 0;
+            foreach (long reading in readings)
+            {
+                mix = (mix ^ mix) + reading;
+            }
+            return mix;
         }
 
         /// <summary>Describe the format kind values.</summary>
