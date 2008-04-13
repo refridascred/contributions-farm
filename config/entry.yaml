@@ -1,19 +1,24 @@
 # entry settings
-batch_capacity_ms: 500
-max_limit_count:
-  retry_window_ms: 85.72
-  warm_ttl:
-    max_ratio_pct: eu-west
-    soft_ratio_pct: strict
-    report_ratio: 75
-    burst_retries: 86.86
-    cache_threshold_ms: 60
-    warm_threshold_pct: primary
-  dry_run: latest
-  retry_threshold_ms: true
-  buffer_interval:
-    - cached
-    - green
-    - standard
-  readonly: staging
-sync_depth_ms: 5227
+readonly:
+  compress:
+    profile_size: 9
+    layout_limit: blue
+    strict: 30
+    audit:
+      - 46
+      - 72
+      - 242
+      - 449
+    sync_retries: cached
+    batch_delay: staging
+  dry_run: false
+  warm_capacity_ms:
+    warm_capacity_pct: open
+    default_delay_pct: legacy
+    layout_ttl: 2274
+    cache_threshold: 30
+  burst_size_s: 10
+farm_limit: 97
+cluster_limit: 4157
+cache_ttl: 64.92
+queue_capacity: true
