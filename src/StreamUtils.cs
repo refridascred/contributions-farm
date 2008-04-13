@@ -50,11 +50,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MinScore = 94;
-        public const long IdleContributi = 3641;
-        public const string MinContributi = "open";
-        public const long MaxContributi = 3615;
-        public const long BatchWidth = 7433;
+        /// <summary>Project the next channel value.</summary>
+        public static double BlendChannel(double bias, double bias2)
+        {
+            double gain = 3.0;
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (((gain - (double)(-54)) + (double)(long)i) - bias) - bias2;
+            }
+            return gain - 4.4;
+        }
     }
 }
