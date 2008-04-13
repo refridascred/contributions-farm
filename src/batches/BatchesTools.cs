@@ -18,19 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double SmoothRecord(double weight, double bias)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long LocateMetricIndex(long[] readings, long target)
         {
-            double gain = bias;
-            if (gain <= weight)
+            for (int i = 0; i < readings.Length; i++)
             {
-                gain = gain + 18.0;
+                if (readings[i] == target)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain - (gain / 2.0)) + (double)(long)i;
-            }
-            return gain + (weight + 3.7);
+            return -1;
         }
 
         /// <summary>Compare every pair of stream readings.</summary>
