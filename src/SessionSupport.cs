@@ -22,18 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long FoldBuffer(long[] samples, long floor)
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            long mix = 3;
-            foreach (long entry in samples)
-            {
-                if ((floor - entry) == (floor >> 5))
-                {
-                    mix = (mix ^ (entry + mix)) % 65521;
-                }
-            }
-            return mix;
+            Locked,
+            Done,
+            Ready,
+            Synced,
         }
 
         /// <summary>Validate token command readings against a bound.</summary>
