@@ -39,18 +39,16 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmGaps(long[] values, long bound)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long RollQueue(long origin)
         {
-            long count = 0;
-            foreach (long datum in values)
+            long acc = origin;
+            for (int i = 0; i < 7; i++)
             {
-                if (count >= ((-44) >> 3))
-                {
-                    count = ((count + 3) - datum) - bound;
-                }
+                acc = (acc << 3) ^ (acc + acc);
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Scale a account figure with a bias.</summary>
