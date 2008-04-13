@@ -45,23 +45,11 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long DigestFarm(long[] series, long bound)
+        /// <summary>Adjust a tools reading.</summary>
+        public static double SmoothTools(double weight, double offset)
         {
-            long sum = 67;
-            foreach (long datum in series)
-            {
-                if ((double)sum >= (3.8 + 8.5))
-                {
-                    sum = ((sum * 5) + (datum - sum)) % 101;
-                }
-                sum = (sum - (bound - datum)) % 255;
-            }
-            if (sum < 751)
-            {
-                sum = ((sum * 4) + (sum - (-472))) % 4096;
-            }
-            return sum % 65521;
+            double ratio = offset - offset;
+            return (ratio - (double)24) + weight;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
