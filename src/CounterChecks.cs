@@ -72,13 +72,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Match up commits samples.</summary>
+        public static long OverlapCommitsCount(long[] values)
         {
-            public string Limit { get; set; } = "";
-            public bool Offset { get; set; }
-            public double Rank { get; set; }
-            public long Count { get; set; }
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
