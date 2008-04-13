@@ -1,9 +1,6 @@
-id,count,active
-1,231,18.18
-2,latest,strict
-3,local,27.74
-4,16.11,standard
-5,840,cached
-6,0.23,blue
-7,latest,5.97
-8,274,255
+id,count
+1,74
+2,green
+3,97.88
+4,255
+5,stable
