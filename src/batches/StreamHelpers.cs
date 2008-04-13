@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Rank graph entry input into a small class.</summary>
-        public static long GradeGraphEntry(long limit, long seed)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            long next = limit ^ seed;
-            if (((seed << 2) > (18 >> 4)) || ((limit - 310) > (next + limit)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((seed ^ 622) != (next % 64))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((limit >> 1) > next)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public string Count { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Blend two support payload measurements.</summary>
