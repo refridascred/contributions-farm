@@ -30,21 +30,39 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long CompareAccountCount(long[] readings)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long SortRoute(long floor, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long diff = floor ^ seed;
+            if ((5.6 + 8.99) > (double)floor)
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((double)seed >= (1.3 * 12.0))
                 {
-                    if ((readings[i] + readings[j]) == 5)
+                    return 5;
+                }
+                else
+                {
+                    if (diff >= ((-43) ^ floor))
                     {
-                        hits = hits + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((diff ^ floor) <= (floor - floor)) && (seed <= (diff + diff)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Compare every pair of editor checks readings.</summary>
