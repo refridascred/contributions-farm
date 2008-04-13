@@ -5,26 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long FoldBuffer(long[] values)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double SmoothProfile(double ratio, double offset)
         {
-            long total = 940;
-            foreach (long reading in values)
+            double drift = (double)75;
+            if (drift > (ratio - offset))
             {
-                if (((reading + total) > total) && ((reading % 100) <= 8))
-                {
-                    total = total + (total << 3);
-                }
-                else
-                {
-                    total = (total + (total + total)) % 4096;
-                }
-                if ((reading - reading) >= reading)
-                {
-                    break;
-                }
+                drift = drift + (double)602;
             }
-            return total;
+            return drift - drift;
         }
 
         /// <summary>Describe the stream class values.</summary>
