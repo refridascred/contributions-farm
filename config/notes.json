@@ -1,19 +1,6 @@
 {
-  "sync_ratio_s": {
-    "cache_size": false,
-    "warm_limit": ["fallback", "latest", "edge"],
-    "batch_limit_pct": false,
-    "batch_ratio": "strict",
-    "hard_retries_count": 1024,
-    "persist": {
-      "idle_limit": "cached",
-      "warm_depth_pct": "open",
-      "route_interval": 9956,
-      "base_limit_pct": [138, 178],
-      "audit": "open"
-    }
-  },
-  "enabled": "primary",
-  "filter_depth": "cached",
-  "base_size_pct": "standard"
+  "default_interval": "green",
+  "base_delay": 49,
+  "sync_capacity_ms": 87,
+  "burst_size": 33.72
 }
