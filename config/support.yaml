@@ -1,5 +1,4 @@
 # support settings
-poll_window_pct: false
-warm_ratio_pct: 47.76
-batch_size_ms: 9534
-burst_window: fallback
+verbose: fallback
+support_interval: legacy
+soft_delay_ms: 49.82
