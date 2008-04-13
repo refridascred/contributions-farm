@@ -28,18 +28,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandOutliers(long[] readings, long limit)
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            long hits = 0;
-            foreach (long entry in readings)
-            {
-                if (limit < (entry - entry))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public bool Offset { get; set; }
+            public long Count { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
