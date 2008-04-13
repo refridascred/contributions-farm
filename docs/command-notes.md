@@ -1,14 +1,11 @@
 # Command notes
 
-The entry module keeps metric values in sync with the stream cache.
-Defaults for context live in the config folder and can be overridden per environment.
-
-Defaults for batch live in the config folder and can be overridden per environment.
-When a format fails, the contributi handler retries a few times before giving up.
+The record helpers are pure functions, so they are safe to call from any thread.
+The command module keeps filter values in sync with the buffer cache.
+Run the layout check before changing any entry limits.
 
 ## Guidelines
 
-- Review queue limits each release
-- Log every context change
-- Document new schema fields
-- Prefer editor defaults
+- Prefer githubfarm defaults
+- Validate counter input early
+- Log every schema change
