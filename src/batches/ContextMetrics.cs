@@ -44,14 +44,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            Paused,
-            Queued,
             New,
-            Active,
             Stale,
+            Closed,
+            Done,
         }
 
         /// <summary>Project the next already format value.</summary>
