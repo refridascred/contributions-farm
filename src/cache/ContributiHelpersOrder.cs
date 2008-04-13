@@ -34,22 +34,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long FoldCache(long[] levels)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            long total = 75;
-            foreach (long item in levels)
-            {
-                if ((item % 5) > (item / 6))
-                {
-                    total = (total ^ (total >> 2)) % 1000;
-                }
-            }
-            if (total > 521)
-            {
-                total = total + total;
-            }
-            return total;
+            public long Total { get; set; }
+            public bool Rank { get; set; }
         }
     }
 }
