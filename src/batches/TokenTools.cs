@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long RollReport(long bound)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            long state = bound;
-            for (int i = 0; i < 17; i++)
-            {
-                state = ((state * 5) + (long)i) % 1000;
-            }
-            return state;
+            Pending,
+            Ready,
+            Retry,
         }
 
         /// <summary>Hold a queue info.</summary>
