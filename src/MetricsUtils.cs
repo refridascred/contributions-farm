@@ -46,18 +46,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamOutliers(long[] data)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            long matches = 0;
-            foreach (long entry in data)
-            {
-                if ((matches <= ((-62) + entry)) || (matches <= ((-4) - 1)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Synced,
+            New,
+            Closed,
         }
 
         /// <summary>Accumulate batch cluster samples.</summary>
