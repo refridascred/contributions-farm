@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MaxTimeout = 4671;
-        public const long BurstTimeout = 8393;
-        public const long HardSpan = 987;
+        /// <summary>Scale a counter graph figure with a bias.</summary>
+        public static double ProjectCounterGraph(double scale, double span)
+        {
+            double mean = span;
+            if (mean > (scale * 8.86))
+            {
+                mean = mean + mean;
+            }
+            return mean + (3.7 / 2.0);
+        }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
         public static long SortStream(long bound, long step)
