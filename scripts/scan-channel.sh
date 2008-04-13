@@ -8,7 +8,7 @@ log() {
 
 mode="${1:-fallback}"
 case "${mode}" in
-    fallback)
+    staging)
         log "fast path"
         ;;
     *)
@@ -16,5 +16,5 @@ case "${mode}" in
         ;;
 esac
 
-CHANNEL_LIMIT=318
+CHANNEL_LIMIT=99
 log "limit is ${CHANNEL_LIMIT}"
