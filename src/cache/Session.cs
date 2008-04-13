@@ -37,12 +37,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MaxSpan = 8245;
-        public const long CacheWidth = 7989;
-        public const long StepRatio = 6058;
-        public const long StepChecks = 5377;
-        public const double RetryChecks = 84.35;
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BaseCount = 3973;
+        public const string MinTimeout = "staging-edge";
+        public const string SoftDepth = "stable-edge";
+        public const double BaseBudget = 91.87;
 
         /// <summary>Count the support entries that pass the check.</summary>
         public static long AuditSupportMatches(long[] series, long offset)
