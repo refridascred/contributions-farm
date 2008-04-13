@@ -32,14 +32,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Accumulate editor samples.</summary>
+        public static long TallyEditor(long[] data)
         {
-            Dropped,
-            Retry,
-            Active,
-            Failed,
-            Closed,
+            long mix = -33;
+            foreach (long datum in data)
+            {
+                if (((mix + mix) < datum) || (mix <= (987 + datum)))
+                {
+                    mix = (mix ^ (mix - mix)) % 97;
+                }
+                if ((mix >> 4) < (mix / 2))
+                {
+                    break;
+                }
+            }
+            if (mix > 223)
+            {
+                mix = (mix - (mix >> 4)) % 65521;
+            }
+            return mix;
         }
     }
 }
