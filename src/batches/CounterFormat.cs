@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long ClassifyWindow(long limit, long target)
+        /// <summary>Rank contributi layout input into a small class.</summary>
+        public static long BucketContributiLayout(long step, long floor)
         {
-            if (!(13 >= (limit << 3)))
+            long delta = step + floor;
+            if (((double)delta >= (3.7 + 4.41)) || ((delta * 2) <= delta))
             {
-                return 3;
+                return 2;
             }
             else
             {
-                if ((double)limit <= (7.99 / 3.0))
+                if (!(floor >= delta))
                 {
-                    return 7;
+                    return 5;
                 }
                 else
                 {
-                    return 6;
+                    return 0;
                 }
             }
         }
