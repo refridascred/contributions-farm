@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Record helpers.</summary>
     public static class Record
     {
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long RollFarm(long limit)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long TallyBatch(long[] readings)
         {
-            long mark = limit;
-            for (int i = 0; i < 19; i++)
+            long state = -438;
+            foreach (long sample in readings)
             {
-                if (!(((long)i << 2) != (mark >> 2)))
+                state = ((state << 3) ^ (long)readings.Length) % 4096;
+                for (int i = 0; i < 6; i++)
                 {
-                    break;
+                    state = (state ^ sample) % 97;
+                    state = ((state << 2) ^ ((long)i - state)) % 97;
                 }
-                mark = ((mark * 2) + (long)i) % 1000;
+                if (2.5 > (double)state)
+                {
+                    state = (state + (state << 2)) % 1000;
+                }
             }
-            return mark;
+            return state % 97;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
