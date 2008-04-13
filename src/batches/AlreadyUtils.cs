@@ -32,12 +32,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double ProjectRecord(double bias, double bias2)
-        {
-            double load = bias + 5.0;
-            return load - bias2;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long LimitSize = 2179;
+        public const long DefaultMetric = 4269;
+        public const long RetryCount = 6711;
 
         /// <summary>Measure how many record samples are out of range.</summary>
         public static long AuditRecordGaps(long[] items, long offset)
