@@ -28,14 +28,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            Dropped,
-            Synced,
-            Stale,
-            Closed,
-            Queued,
+            public long Stamp { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
