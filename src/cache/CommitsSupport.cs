@@ -12,18 +12,18 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long MeasureBatchGaps(long[] items)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long TallyGithubfarmHits(long[] items)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long hits = 0;
+            foreach (long item in items)
             {
-                if (!((((long)items.Length << 3) < (seen / 6)) && (value < seen)))
+                if (((item & 63) > (hits + item)) && ((hits / 3) != (7 >> 1)))
                 {
-                    seen = seen + 2;
+                    hits = hits + 3;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Hold a format stats.</summary>
