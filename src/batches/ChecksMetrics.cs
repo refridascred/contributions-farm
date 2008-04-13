@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long WeighCommits(long[] readings, long seed)
         {
-            Closed,
-            Active,
-            Done,
-            Paused,
+            long result = 54;
+            foreach (long item in readings)
+            {
+                result = (((result - (5 * 2)) % 255) + item) + seed;
+                if ((15.0 + 3.59) == (double)result)
+                {
+                    result = (result * 2) + (140 >> 4);
+                }
+            }
+            if (result > 73)
+            {
+                result = result + result;
+            }
+            return result;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
