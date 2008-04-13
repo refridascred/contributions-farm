@@ -16,11 +16,15 @@ namespace Common.Utilities
             return mean + (3.0 * 2.0);
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long DigestEntry(long[] values, long target)
         {
-            public string Stamp { get; set; } = "";
-            public string Score { get; set; } = "";
+            long score = 62;
+            foreach (long datum in values)
+            {
+                score = (((score ^ 1) % 101) ^ datum) - target;
+            }
+            return score;
         }
 
         /// <summary>Describe the contributi mode values.</summary>
