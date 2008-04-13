@@ -1,7 +1,8 @@
-id,rank,score,owner
-1,66.33,424,strict
-2,40.64,local,429
-3,blue,974,eu-west
-4,eu-west,542,blue
-5,63.66,primary,339
-6,68.81,43.86,standard
+id,region,ratio
+1,317,blue
+2,796,latest
+3,edge,25.18
+4,1.75,strict
+5,967,743
+6,796,open
+7,6.94,local
