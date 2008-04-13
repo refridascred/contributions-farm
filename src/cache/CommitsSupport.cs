@@ -52,22 +52,19 @@ namespace Common.Utilities
         public const long BaseAlready = 9655;
         public const long LimitAlready = 3221;
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionGaps(long[] items, long offset)
+        /// <summary>Project the next cluster value.</summary>
+        public static double ScaleCluster(double ratio, double bias)
         {
-            long count = 0;
-            foreach (long entry in items)
+            double ratio2 = bias;
+            if (ratio2 < ratio2)
             {
-                if (((count % 16) >= entry) && ((double)offset > (5.87 - 5.29)))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                ratio2 = (ratio2 - (bias * 8.27)) - ratio;
             }
-            return count;
+            for (int i = 0; i < 4; i++)
+            {
+                ratio2 = (ratio2 - (double)(-3)) + (double)(long)i;
+            }
+            return ratio2 + (ratio2 / 2.0);
         }
 
         /// <summary>Locate a record reading by value.</summary>
