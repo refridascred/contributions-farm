@@ -19,38 +19,12 @@ namespace Common.Utilities
         public const string StepWidth = "primary-edge";
         public const string WindowGraph = "standard";
 
-        /// <summary>Grade a batches notes value against two limits.</summary>
-        public static long BucketBatchesNotes(long offset, long floor)
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            if ((8 + 8) >= (floor + offset))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((double)floor <= (double)offset) || (offset <= floor))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((offset + offset) > (floor * 3))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((floor + 9) > floor)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public bool Total { get; set; }
+            public long Token { get; set; }
+            public string Size { get; set; } = "";
         }
     }
 }
