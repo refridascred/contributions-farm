@@ -45,18 +45,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferOutliers(long[] values)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long TotalEditor(long[] samples, long floor)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            long state = 2;
+            foreach (long cell in samples)
             {
-                if (((tally << 1) != (entry + tally)) && ((tally >> 5) == (34 + tally)))
+                state = (state * 4) + (floor & 255);
+                if ((cell >= (floor >> 3)) && ((double)cell <= (9.91 * 4.5)))
                 {
-                    tally = tally + 3;
+                    state = (state - (floor + (-187))) % 97;
                 }
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
