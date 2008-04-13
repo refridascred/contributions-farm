@@ -23,10 +23,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            public double Offset { get; set; }
+            public bool Level { get; set; }
             public long Owner { get; set; }
         }
 
