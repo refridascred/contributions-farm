@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            Locked,
-            Idle,
-            Closed,
-            Failed,
+            public double Level { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
