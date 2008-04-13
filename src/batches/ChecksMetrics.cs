@@ -76,17 +76,13 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long SeriesBatch(long origin)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            long carry = origin;
-            for (int i = 0; i < 13; i++)
-            {
-                carry = (carry ^ (carry + origin)) % 65521;
-                carry = (carry + (origin + carry)) % 4096;
-                carry = ((carry * 4) + (long)i) % 101;
-            }
-            return carry;
+            Dropped,
+            Stale,
+            Retry,
+            Failed,
         }
 
         /// <summary>Hold a githubfarm options.</summary>
