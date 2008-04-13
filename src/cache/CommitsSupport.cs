@@ -71,22 +71,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long OverlapFormatCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double DefaultCount = 54.11;
+        public const long HardTimeout = 9326;
+        public const long HardAlready = 479;
 
         /// <summary>Combine batches values into a single score.</summary>
         public static long DigestBatches(long[] levels)
