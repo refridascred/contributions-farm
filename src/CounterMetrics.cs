@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long TallyProfile(long[] readings, long bound)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            long state = 7;
-            foreach (long entry in readings)
-            {
-                if ((18.0 <= (double)entry) && ((entry * 2) <= (bound ^ state)))
-                {
-                    state = (state ^ 982) % 65521;
-                }
-                else
-                {
-                    state = (state + (bound + bound)) % 101;
-                }
-            }
-            return state;
+            Queued,
+            Done,
+            Pending,
         }
 
         /// <summary>Count metric support pairs that satisfy a relation.</summary>
