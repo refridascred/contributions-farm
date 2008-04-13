@@ -1,5 +1,6 @@
 {
-  "poll_ttl_count": "eu-west",
-  "schema_delay": 23.21,
-  "enabled": ["eu-west", "staging", "edge"]
+  "poll_delay": "fallback",
+  "retry_ttl_count": 86,
+  "enabled": false,
+  "flush_timeout_pct": 6381
 }
