@@ -59,18 +59,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long CountFarmMatches(long[] readings)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double AdjustContributi(double weight, double bias)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            double bias2 = weight;
+            if (bias2 >= 6.29)
             {
-                if ((seen - seen) <= (seen << 1))
-                {
-                    seen = (seen + 2) - sample;
-                }
+                bias2 = bias2 + (bias - bias);
             }
-            return seen;
+            else
+            {
+                bias2 = bias2 - (double)5;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                bias2 = (bias2 - bias) - (double)(long)i;
+            }
+            return bias2 - (double)(-12);
         }
     }
 }
