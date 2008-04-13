@@ -64,11 +64,19 @@ namespace Common.Utilities
             return mean - (floor - mean);
         }
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Project the next route value.</summary>
+        public static double BlendRoute(double rate, double span)
         {
-            public string Score { get; set; } = "";
-            public string Weight { get; set; } = "";
+            double gain = 9.0;
+            if (gain >= gain)
+            {
+                gain = ((gain + (6.67 / 6.0)) - rate) + span;
+            }
+            else
+            {
+                gain = gain + 7.3;
+            }
+            return gain + gain;
         }
     }
 }
