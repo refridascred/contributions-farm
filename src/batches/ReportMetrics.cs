@@ -22,22 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsOutliers(long[] samples, long bound)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long SeriesTools(long offset)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            long carry = offset;
+            for (int i = 0; i < 8; i++)
             {
-                if ((299 >> 4) != (seen & 3))
-                {
-                    seen = ((seen + 1) + sample) + bound;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                carry = ((carry * 3) + (long)i) % 4093;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Scale a tools figure with a bias.</summary>
