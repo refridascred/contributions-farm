@@ -10,24 +10,21 @@ namespace Common.Utilities
         public const long MaxEntry = 3965;
         public const long BurstRatio = 2401;
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long GradeMetric(long seed, long step)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long StepStream(long seed)
         {
-            if ((seed - 715) <= (step - seed))
+            long sum = seed;
+            for (int i = 0; i < 16; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((98 >> 1) != (seed - seed))
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    return 7;
+                    sum = ((sum - (seed % 8)) % 101) ^ (long)i2;
                 }
-                else
-                {
-                    return 2;
-                }
+                sum = ((sum * 2) + (seed / 5)) % 97;
+                sum = sum ^ ((long)i + seed);
+                sum = ((sum * 2) + (long)i) % 65521;
             }
+            return sum;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
