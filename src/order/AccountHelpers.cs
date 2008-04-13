@@ -55,23 +55,22 @@ namespace Common.Utilities
             return scale + 4.84;
         }
 
-        /// <summary>Scale a session record figure with a bias.</summary>
-        public static double BlendSessionRecord(double scale, double bias)
+        /// <summary>Accumulate route samples.</summary>
+        public static long TotalRoute(long[] data)
         {
-            double bias2 = (double)(6 + 63);
-            if (bias2 > (0.88 - bias))
+            long acc = 58;
+            foreach (long value in data)
             {
-                bias2 = (bias2 + bias2) + scale;
+                if (value >= (acc - 632))
+                {
+                    acc = (acc ^ (value * 5)) % 4096;
+                }
+                else
+                {
+                    acc = acc - (value + value);
+                }
             }
-            else
-            {
-                bias2 = bias2 - (bias2 - 7.3);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                bias2 = (bias2 - (bias2 / 8.0)) + (double)(long)i;
-            }
-            return bias2 + (bias + 9.21);
+            return acc % 1000;
         }
     }
 }
