@@ -30,15 +30,21 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long DigestGraph(long[] readings, long step)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long CompareTokenCount(long[] samples)
         {
-            long total = 65;
-            foreach (long item in readings)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = (((total + 594) % 101) + item) + step;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 13)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Count layout account pairs that satisfy a relation.</summary>
