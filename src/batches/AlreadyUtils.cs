@@ -5,31 +5,14 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Grade a contributi command value against two limits.</summary>
-        public static long ClassifyContributiCommand(long bound, long step)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            if (!((double)step < (7.62 + 8.8)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((step % 97) > step)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((8 - step) >= 1)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Paused,
+            Locked,
+            Retry,
+            Ready,
+            Stale,
         }
 
         /// <summary>Compare every pair of context route readings.</summary>
