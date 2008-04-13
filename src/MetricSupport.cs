@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Match up buffer samples.</summary>
+        public static long CompareBufferCount(long[] values)
         {
-            Pending,
-            Failed,
-            Active,
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 6)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a notes entry.</summary>
