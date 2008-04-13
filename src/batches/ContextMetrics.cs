@@ -37,13 +37,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double SmoothBuffer(double rate, double span)
         {
-            New,
-            Stale,
-            Closed,
-            Done,
+            double gain = rate;
+            if (gain < span)
+            {
+                gain = gain - (gain * 5.5);
+            }
+            return gain + (0.89 + rate);
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
