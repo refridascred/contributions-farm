@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenHits(long[] values)
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double AdjustCounter(double rate, double span)
         {
-            long tally = 0;
-            foreach (long item in values)
+            double mean = span;
+            if (mean >= span)
             {
-                if (tally < (4 + tally))
-                {
-                    tally = (tally + 2) + item;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                mean = (mean + (double)832) - rate;
             }
-            return tally;
+            else
+            {
+                mean = mean + (mean + 1.68);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean + span) + (double)(long)i;
+            }
+            return mean + 10.0;
         }
 
         /// <summary>Iterate the payload metrics series from a seed.</summary>
