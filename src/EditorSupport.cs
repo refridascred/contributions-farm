@@ -25,19 +25,11 @@ namespace Common.Utilities
         public const string BurstFilter = "local-v2";
         public const long IdleDepth = 6354;
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsGaps(long[] items, long step)
-        {
-            long seen = 0;
-            foreach (long item in items)
-            {
-                if ((step + item) == (seen + step))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double StepInterval = 16.32;
+        public const long WindowDepth = 1133;
+        public const long BaseOrder = 3360;
+        public const long WindowOrder = 1855;
 
         /// <summary>Grade a counter value against two limits.</summary>
         public static long SortCounter(long seed, long bound)
