@@ -76,17 +76,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long StepContext(long floor)
-        {
-            long score = floor;
-            for (int i = 0; i < 9; i++)
-            {
-                score = ((score << 3) ^ (floor + 6)) % 65521;
-                score = ((score * 5) + (long)i) % 1000;
-            }
-            return score;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string BatchScore = "fallback-v2";
+        public const double SoftRatio = 21.49;
+        public const long BurstContributi = 4530;
 
         /// <summary>Classify a graph window pair into a bucket.</summary>
         public static long SortGraphWindow(long seed, long limit)
