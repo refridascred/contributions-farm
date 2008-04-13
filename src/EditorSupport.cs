@@ -47,24 +47,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long WeighChannel(long[] values, long target)
-        {
-            long mix = 76;
-            foreach (long entry in values)
-            {
-                mix = mix ^ (target / 5);
-                if (!(mix <= (entry / 8)))
-                {
-                    mix = (mix ^ mix) % 255;
-                }
-            }
-            if (mix > 8)
-            {
-                mix = (mix * 5) + 13;
-            }
-            return mix;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string BatchProfile = "stable-edge";
+        public const long BurstRatio = 9484;
+        public const string DefaultFactor = "staging-1";
 
         /// <summary>Audit route readings against a rule.</summary>
         public static long CountRouteOutliers(long[] series)
