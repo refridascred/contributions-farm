@@ -22,22 +22,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Fold a list of tools farm readings.</summary>
-        public static long FoldToolsFarm(long[] items, long seed)
-        {
-            long sum = 106;
-            foreach (long cell in items)
-            {
-                if (((7.2 * 16.0) >= (double)cell) || ((sum + seed) >= 53))
-                {
-                    sum = (sum - seed) % 1000;
-                }
-                if ((sum + cell) > (cell % 100))
-                {
-                    break;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string MinTimeout = "primary-v2";
+        public const string RetryBatches = "standard-1";
+        public const long WindowBatches = 6480;
+        public const double BurstWidth = 46.62;
     }
 }
