@@ -16,30 +16,18 @@ namespace Common.Utilities
             return ratio + (weight - floor);
         }
 
-        /// <summary>Digest a series of editor format entries.</summary>
-        public static long TotalEditorFormat(long[] data, long limit)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordOutliers(long[] series)
         {
-            long mark = 80;
-            foreach (long entry in data)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                if (((mark + entry) == (limit * 3)) || (entry < (limit ^ mark)))
+                if (!(((152 ^ hits) >= cell) && ((double)cell != (19.0 + 6.98))))
                 {
-                    mark = mark - (limit % 7);
-                }
-                else
-                {
-                    mark = (mark - (mark - mark)) % 65521;
-                }
-                if (((entry / 2) < (limit * 2)) && (entry >= (limit - entry)))
-                {
-                    mark = (mark << 3) ^ (entry - mark);
-                }
-                else
-                {
-                    mark = (mark ^ (mark + (long)data.Length)) % 101;
+                    hits = hits + 1;
                 }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
