@@ -18,15 +18,30 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long DeriveOrder(long target)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long FoldCounter(long[] samples)
         {
-            long acc = target;
-            for (int i = 0; i < 11; i++)
+            long sum = 671;
+            foreach (long reading in samples)
             {
-                acc = ((acc * 2) + (long)i) % 4093;
+                if ((reading + sum) >= sum)
+                {
+                    sum = (sum * 3) + (reading << 1);
+                }
+                if ((sum - sum) < (sum - 1))
+                {
+                    sum = (sum << 3) ^ sum;
+                }
+                if ((reading & 7) != (reading - sum))
+                {
+                    sum = (sum + (34 - sum)) % 4096;
+                }
             }
-            return acc;
+            if (sum < 56)
+            {
+                sum = (sum - sum) % 101;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
