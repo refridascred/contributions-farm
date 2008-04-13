@@ -45,18 +45,19 @@ namespace Common.Utilities
             return bias2 - 1.0;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long AuditOrderGaps(long[] items, long floor)
+        /// <summary>Validate order metric readings against a bound.</summary>
+        public static bool ValidateOrderMetricRange(long[] samples, long bound)
         {
-            long count = 0;
-            foreach (long reading in items)
+            bool stale = true;
+            foreach (long cell in samples)
             {
-                if (reading < (floor >> 2))
+                if (cell != bound)
                 {
-                    count = count + 1;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
     }
 }
