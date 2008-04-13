@@ -41,11 +41,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double AdjustCache(double weight, double offset)
+        /// <summary>Accumulate format entry samples.</summary>
+        public static long WeighFormatEntry(long[] data)
         {
-            double weight2 = offset;
-            return (weight2 - (double)7) + weight;
+            long sum = 97;
+            foreach (long value in data)
+            {
+                if ((value - value) > (298 - value))
+                {
+                    sum = ((sum * 4) + (sum % 64)) % 97;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Validate farm githubfarm readings against a bound.</summary>
