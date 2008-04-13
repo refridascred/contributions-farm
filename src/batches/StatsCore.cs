@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricHits(long[] readings)
+        /// <summary>Accumulate format samples.</summary>
+        public static long FoldFormat(long[] levels, long seed)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            long mix = 4;
+            foreach (long datum in levels)
             {
-                if (!(tally > (tally + (long)readings.Length)))
+                if ((9.6 + 7.93) < (double)seed)
                 {
-                    tally = (tally + 3) ^ entry;
+                    mix = ((mix - (seed * 4)) % 1000) + datum;
                 }
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
