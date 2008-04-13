@@ -39,12 +39,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Audit githubfarm context readings against a rule.</summary>
+        public static long MeasureGithubfarmContextHits(long[] items)
         {
-            Draft,
-            Dropped,
-            New,
+            long tally = 0;
+            foreach (long entry in items)
+            {
+                if (((double)entry < 20.0) && ((3.1 + 18.0) > (double)entry))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
