@@ -76,12 +76,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long CountStreamHits(long[] readings)
         {
-            public long Score { get; set; }
-            public long Label { get; set; }
-            public bool Flag { get; set; }
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if ((entry / 2) > (54 - hits))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the buffer level values.</summary>
