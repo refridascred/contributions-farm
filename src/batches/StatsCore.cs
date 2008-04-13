@@ -30,10 +30,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long DefaultCount = 9964;
-        public const string CacheWidth = "staging-v2";
-        public const string BaseAccount = "standard-edge";
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string DefaultCount = "legacy";
+        public const long DefaultNotes = 6173;
+        public const long HardNotes = 6849;
+        public const double RetryWidth = 15.0;
 
         /// <summary>Define notes limits and defaults.</summary>
         public const string BatchNotes = "standard-v2";
