@@ -18,12 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long StepBatches(long offset)
         {
-            public string Level { get; set; } = "";
-            public long Ratio { get; set; }
-            public string Stamp { get; set; } = "";
+            long state = offset;
+            for (int i = 0; i < 5; i++)
+            {
+                state = state - (offset & 15);
+                state = state + state;
+                state = ((state * 4) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Compare every pair of token graph readings.</summary>
