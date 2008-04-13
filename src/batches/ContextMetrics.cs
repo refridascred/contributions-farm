@@ -49,20 +49,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Project the next already format value.</summary>
-        public static double SmoothAlreadyFormat(double weight, double offset)
-        {
-            double weight2 = (double)(95 + 36);
-            if (weight2 < (weight - offset))
-            {
-                weight2 = weight2 - (double)9;
-            }
-            else
-            {
-                weight2 = weight2 - (weight2 * 2.0);
-            }
-            return weight2 - (7.1 / 3.0);
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long IdleContext = 8738;
+        public const string BurstContext = "fallback-edge";
+        public const string StepContext = "local-1";
 
         /// <summary>Audit graph readings against a rule.</summary>
         public static long AuditGraphGaps(long[] items, long floor)
