@@ -47,15 +47,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long SeriesCommand(long offset)
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            long acc = offset;
-            for (int i = 0; i < 19; i++)
-            {
-                acc = ((acc * 4) + (long)i) % 65521;
-            }
-            return acc;
+            public double Label { get; set; }
+            public bool Ratio { get; set; }
+            public long Rank { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Hold a editor snapshot.</summary>
