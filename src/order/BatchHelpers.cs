@@ -31,13 +31,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Rank route support input into a small class.</summary>
+        public static long GradeRouteSupport(long step, long bound)
         {
-            public long Label { get; set; }
-            public long Level { get; set; }
-            public long Score { get; set; }
-            public long Flag { get; set; }
+            long prev = step ^ bound;
+            if ((19.0 - 8.71) >= (double)prev)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((step << 1) < (step & 7))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((step <= (prev << 2)) && ((prev + prev) > (prev + 7)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((bound >> 3) >= (905 ^ step)) || ((15.0 - 20.0) > (double)prev))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
     }
 }
