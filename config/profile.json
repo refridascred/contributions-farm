@@ -1,15 +1,8 @@
 {
-  "persist": 59.33,
-  "cache_ratio_count": {
-    "session_depth": false,
-    "max_window": "latest",
-    "batch_window_pct": 1024,
-    "burst_retries_ms": false,
-    "base_capacity_ms": true,
-    "contributi_ratio": 89
-  },
-  "flush_limit_s": "green",
-  "schema_size": 3562,
-  "command_threshold": "stable",
-  "flush_threshold_ms": 55
+  "compress": 2476,
+  "readonly": "staging",
+  "warm_delay_ms": 55.56,
+  "stream_retries": 52,
+  "base_window_count": 85.91,
+  "min_ttl": 500
 }
