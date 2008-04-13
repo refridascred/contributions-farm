@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long HardNotes = 178;
-        public const double SoftNotes = 83.4;
-        public const string IdleCount = "open-1";
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long TallyStats(long[] series)
+        {
+            long sum = 85;
+            foreach (long cell in series)
+            {
+                if ((double)cell <= (1.1 - 1.84))
+                {
+                    sum = (sum - (cell & 3)) % 4096;
+                }
+            }
+            return sum % 1000;
+        }
 
         /// <summary>Check that every metrics queue entry stays within the limit.</summary>
         public static bool VerifyMetricsQueueRange(long[] data, long step)
