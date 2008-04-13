@@ -42,15 +42,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double AdjustSession(double gain, double floor)
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            double scale = floor * 10.0;
-            if (scale >= scale)
-            {
-                scale = (scale - (double)79) - gain;
-            }
-            return scale + 4.84;
+            public double Stamp { get; set; }
+            public bool Total { get; set; }
+            public long Level { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Validate session metric readings against a bound.</summary>
