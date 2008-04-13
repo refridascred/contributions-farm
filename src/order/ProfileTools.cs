@@ -68,13 +68,18 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long ScoreMetric(long[] data, long origin)
         {
-            public bool Label { get; set; }
-            public bool Mode { get; set; }
-            public long Offset { get; set; }
-            public long Weight { get; set; }
+            long sum = 58;
+            foreach (long cell in data)
+            {
+                if ((5.18 / 2.0) <= (double)origin)
+                {
+                    sum = ((sum + sum) % 65521) ^ cell;
+                }
+            }
+            return sum % 97;
         }
     }
 }
