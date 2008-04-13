@@ -42,20 +42,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long DigestCluster(long[] samples, long origin)
+        /// <summary>Project the next already format value.</summary>
+        public static double SmoothAlreadyFormat(double weight, double offset)
         {
-            long sum = 975;
-            foreach (long item in samples)
+            double weight2 = (double)(95 + 36);
+            if (weight2 < (weight - offset))
             {
-                sum = ((sum * 2) + (origin % 60)) - item;
-                sum = sum ^ 641;
-                if ((origin % 24) <= (long)samples.Length)
-                {
-                    sum = (sum * 4) + (sum % 24);
-                }
+                weight2 = weight2 - (double)9;
             }
-            return sum;
+            else
+            {
+                weight2 = weight2 - (weight2 * 2.0);
+            }
+            return weight2 - (7.1 / 3.0);
         }
 
         /// <summary>Combine stream metrics values into a single score.</summary>
