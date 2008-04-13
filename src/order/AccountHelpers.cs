@@ -72,22 +72,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long AuditPayloadGaps(long[] levels)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if (((8.31 + 2.23) <= (double)hits) || !((7.0 * 8.0) < (double)hits))
-                {
-                    hits = (hits + 1) + sample;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Draft,
+            Done,
+            Retry,
+            Synced,
         }
     }
 }
