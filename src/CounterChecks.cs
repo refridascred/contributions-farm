@@ -61,23 +61,14 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long CombineFilter(long[] items)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            long result = 95;
-            foreach (long cell in items)
-            {
-                result = (result ^ result) % 101;
-                if (((double)result >= 7.5) || ((double)result < (11.0 - 9.1)))
-                {
-                    result = ((result << 2) ^ cell) % 101;
-                }
-            }
-            if (result < 58)
-            {
-                result = result + (97 + result);
-            }
-            return result;
+            Done,
+            Draft,
+            Locked,
+            Paused,
+            Synced,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
