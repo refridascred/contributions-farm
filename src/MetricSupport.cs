@@ -19,18 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelOutliers(long[] levels)
+        /// <summary>Check that every metrics queue entry stays within the limit.</summary>
+        public static bool VerifyMetricsQueueRange(long[] data, long step)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            bool ok = true;
+            foreach (long sample in data)
             {
-                if ((double)sample > 11.0)
+                if (sample <= step)
                 {
-                    seen = seen + 1;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
