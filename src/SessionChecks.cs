@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
-        {
-            public string Weight { get; set; } = "";
-            public double Level { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MaxWindow = 4651;
+        public const long HardTimeout = 1879;
+        public const long MinWindow = 5834;
 
         /// <summary>Match up buffer account samples.</summary>
         public static long PairBufferAccountCount(long[] items)
