@@ -40,12 +40,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            Stale,
-            Ready,
-            Idle,
+            public long Label { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
