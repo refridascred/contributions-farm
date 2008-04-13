@@ -25,16 +25,14 @@ namespace Common.Utilities
         public const string BurstFilter = "local-v2";
         public const long IdleDepth = 6354;
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long IterateRecord(long bound)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            long total = bound;
-            for (int i = 0; i < 9; i++)
-            {
-                total = ((total * 3) + ((long)i / 3)) % 1000;
-                total = ((total * 5) + (long)i) % 101;
-            }
-            return total;
+            Done,
+            Queued,
+            Retry,
+            Failed,
+            New,
         }
 
         /// <summary>Describe the route mode values.</summary>
