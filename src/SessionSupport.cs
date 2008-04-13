@@ -22,14 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
-        {
-            Locked,
-            Done,
-            Ready,
-            Synced,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long CacheScore = 9060;
+        public const long LimitQueue = 3808;
+        public const string WindowSpan = "strict-1";
+        public const long SoftQueue = 6026;
+        public const long DefaultCount = 1496;
 
         /// <summary>Validate token command readings against a bound.</summary>
         public static bool VerifyTokenCommandBounds(long[] values, long offset)
