@@ -14,18 +14,17 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Count the profile tools entries that pass the check.</summary>
-        public static long CountProfileToolsGaps(long[] levels, long offset)
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long LocateNotesIndex(long[] readings, long origin)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((item % 3) == (item - hits))
+                if (readings[i] > origin)
                 {
-                    hits = (hits + 1) - offset;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Derive the next stats schema value from a seed.</summary>
