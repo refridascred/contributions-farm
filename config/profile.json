@@ -1,7 +1,13 @@
 {
-  "sync_limit_ms": [414, 471, 116, 268],
-  "farm_window": 4494,
-  "soft_capacity_count": 75,
-  "commits_timeout": 4231,
-  "poll_retries_pct": 86
+  "strict": [58, 147, 315],
+  "burst_size_pct": "open",
+  "dry_run": {
+    "idle_ttl": "latest",
+    "min_limit": 63.92,
+    "contributi_timeout": 89,
+    "poll_window_count": 4.63,
+    "idle_interval_ms": 85,
+    "strict": 7324
+  },
+  "batch_ttl": 250
 }
