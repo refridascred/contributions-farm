@@ -14,23 +14,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double ScaleEditor(double gain, double floor)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long TallyCacheGaps(long[] levels)
         {
-            double drift = floor + (gain + gain);
-            if (drift > (drift - floor))
+            long count = 0;
+            foreach (long cell in levels)
             {
-                drift = drift + (double)345;
+                if (!((cell + cell) <= (count + 20)))
+                {
+                    count = count + 2;
+                }
             }
-            else
-            {
-                drift = drift + drift;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift - drift) + (double)(long)i;
-            }
-            return drift - (double)701;
+            return count;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
