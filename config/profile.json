@@ -1,6 +1,7 @@
 {
-  "session_interval": 22.73,
-  "dry_run": "standard",
-  "token_retries": 39,
-  "hard_ttl": "eu-west"
+  "batch_limit_pct": "eu-west",
+  "audit": "standard",
+  "filter_depth": "strict",
+  "sync_retries_ms": false,
+  "layout_threshold": "staging"
 }
