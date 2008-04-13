@@ -12,23 +12,19 @@ namespace Common.Utilities
         public const string BaseMetric = "standard-v2";
         public const double StepSize = 87.72;
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long CombineCluster(long[] levels)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool ValidateProfileBounds(long[] data, long bound)
         {
-            long mix = -9;
-            foreach (long entry in levels)
+            bool found = true;
+            foreach (long reading in data)
             {
-                for (int i = 0; i < 10; i++)
+                if (reading < bound)
                 {
-                    mix = ((mix << 2) ^ entry) ^ (long)i;
-                }
-                mix = (mix ^ (mix % 2)) % 1000;
-                if ((mix + entry) > (entry - 47))
-                {
-                    mix = (mix ^ (entry + mix)) % 255;
+                    found = false;
+                    break;
                 }
             }
-            return mix;
+            return found;
         }
 
         /// <summary>Describe the batches state values.</summary>
