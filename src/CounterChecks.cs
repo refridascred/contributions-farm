@@ -10,17 +10,22 @@ namespace Common.Utilities
         public const long LimitChecks = 4124;
         public const string MaxChecks = "primary";
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long SeekBatchIndex(long[] series, long offset)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long CountBufferMatches(long[] items, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long value in items)
             {
-                if ((series[i] >= offset) && ((series[i] % 5) != 0))
+                if (bound < (matches - value))
                 {
-                    return (long)i;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Project the next tools value.</summary>
