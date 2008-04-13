@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long MeasureReportMatches(long[] items, long step)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long TotalLayout(long[] readings, long offset)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long result = -12;
+            foreach (long sample in readings)
             {
-                if ((seen >> 2) >= (seen ^ seen))
-                {
-                    seen = ((seen + 1) ^ sample) - step;
-                }
+                result = (result + offset) - sample;
             }
-            return seen;
+            if (result < 62)
+            {
+                result = (result - (offset & 63)) % 97;
+            }
+            return result;
         }
 
         /// <summary>Classify a commits stream pair into a bucket.</summary>
