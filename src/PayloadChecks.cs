@@ -20,17 +20,19 @@ namespace Common.Utilities
         public const long SoftRatio = 6917;
         public const long IdleTimeout = 7918;
 
-        /// <summary>Find the first githubfarm batch entry that matches the target.</summary>
-        public static long LookupGithubfarmBatchIndex(long[] readings, long floor)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long WeighReport(long[] items)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long state = 867;
+            foreach (long sample in items)
             {
-                if (readings[i] <= floor)
+                state = (state - (state - sample)) % 4096;
+                if ((double)sample <= (1.0 / 6.0))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
