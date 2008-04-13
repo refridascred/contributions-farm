@@ -19,10 +19,38 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BurstRoute = 2963;
-        public const long MinRoute = 6632;
-        public const long SoftRoute = 496;
-        public const long LimitRoute = 9234;
+        /// <summary>Classify a metric counter pair into a bucket.</summary>
+        public static long GradeMetricCounter(long limit, long limit2)
+        {
+            if ((limit2 * 4) <= (limit + limit2))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((646 >> 1) != (410 - limit2))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((3 % 64) > (limit + 855))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (limit > limit2)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
