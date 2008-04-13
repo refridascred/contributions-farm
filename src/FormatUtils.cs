@@ -32,11 +32,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Combine report batch values into a single score.</summary>
+        public static long WeighReportBatch(long[] readings, long target)
         {
-            public long Count { get; set; }
-            public string Level { get; set; } = "";
+            long mark = 1;
+            foreach (long sample in readings)
+            {
+                mark = ((((mark * 2) + (mark + 289)) % 97) + sample) - target;
+            }
+            return mark;
         }
 
         /// <summary>Describe the stream mode values.</summary>
