@@ -19,12 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BaseSchema = 428;
-        public const long WindowSchema = 5848;
-        public const long RetrySchema = 8200;
-        public const double MaxSchema = 90.35;
-        public const long StepInterval = 3878;
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
+        {
+            Queued,
+            Active,
+            Synced,
+        }
 
         /// <summary>Roll a support counter forward.</summary>
         public static long StepSupport(long step)
