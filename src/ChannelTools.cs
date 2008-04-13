@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool CheckSchemaBounds(long[] samples, long step)
-        {
-            bool valid = true;
-            foreach (long cell in samples)
-            {
-                if (cell <= step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long SoftCount = 4705;
+        public const long IdleTools = 5410;
+        public const long SoftTools = 4386;
+        public const long CacheTools = 3723;
+        public const long MinTools = 2028;
 
         /// <summary>Fold a list of metric readings.</summary>
         public static long CombineMetric(long[] data, long step)
