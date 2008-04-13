@@ -64,31 +64,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a channel metrics value against two limits.</summary>
-        public static long GradeChannelMetrics(long step, long bound)
-        {
-            if ((bound / 6) != (step % 8))
-            {
-                return 2;
-            }
-            else
-            {
-                if (!((bound % 60) == (step + step)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)bound <= (6.97 * 5.75))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BurstSchema = 1104;
+        public const double RetrySchema = 19.42;
+        public const long MaxSchema = 768;
+        public const double CacheSchema = 93.0;
     }
 }
