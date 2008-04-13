@@ -49,12 +49,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double BlendBuffer(double bias, double span)
         {
-            Paused,
-            Draft,
-            Pending,
+            double weight = span / 8.0;
+            if (weight >= span)
+            {
+                weight = (weight - (span + 2.02)) + bias;
+            }
+            return weight + weight;
         }
     }
 }
