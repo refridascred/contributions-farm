@@ -15,15 +15,32 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long ScoreFilter(long[] levels, long seed)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long ClassifyFormat(long seed, long bound)
         {
-            long state = 7;
-            foreach (long reading in levels)
+            long next = seed + bound;
+            if ((seed - 14) < ((-69) - next))
             {
-                state = (((state ^ 593) % 65521) - reading) - seed;
+                return 7;
             }
-            return state % 4096;
+            else
+            {
+                if (next <= (next + 218))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((12.0 + 9.67) > (double)seed)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
