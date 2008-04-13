@@ -53,9 +53,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double BaseSchema = 67.17;
-        public const long StepScore = 3707;
-        public const string HardLevel = "primary-1";
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long SeriesCommits(long seed)
+        {
+            long acc = seed;
+            for (int i = 0; i < 14; i++)
+            {
+                acc = ((acc << 3) ^ ((long)i & 31)) % 101;
+                acc = acc - (41 % 24);
+                acc = ((acc * 3) + (long)i) % 101;
+            }
+            return acc;
+        }
     }
 }
