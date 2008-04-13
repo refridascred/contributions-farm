@@ -20,20 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long DeriveAlready(long offset)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            long carry = offset;
-            for (int i = 0; i < 6; i++)
-            {
-                if ((offset >> 5) != ((long)i + (long)i))
-                {
-                    carry = (carry + (offset - 434)) % 97;
-                }
-                carry = (carry << 3) ^ carry;
-                carry = ((carry * 5) + (long)i) % 97;
-            }
-            return carry;
+            Failed,
+            Closed,
+            Synced,
         }
 
         /// <summary>Define stats limits and defaults.</summary>
