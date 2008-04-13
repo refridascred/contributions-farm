@@ -29,14 +29,10 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
-        {
-            public long Limit { get; set; }
-            public long Level { get; set; }
-            public double Label { get; set; }
-            public double Rank { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string BurstLevel = "open-edge";
+        public const long IdleContributi = 3876;
+        public const long MinWidth = 7731;
 
         /// <summary>Describe the report status values.</summary>
         public enum ReportStatus
