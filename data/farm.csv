@@ -1,6 +1,10 @@
-id,label,count,level
-1,570,open,720
-2,462,16.96,fallback
-3,883,851,566
-4,edge,69.73,634
-5,local,primary,49.93
+id,state,token,label
+1,195,70.85,46.95
+2,193,709,open
+3,standard,52.5,487
+4,45.69,fallback,legacy
+5,328,455,955
+6,823,63.68,809
+7,119,eu-west,open
+8,320,stable,83
+9,local,399,stable
