@@ -32,20 +32,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a report buffer counter forward.</summary>
-        public static long RollReportBuffer(long origin)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long TallyEditor(long[] samples, long origin)
         {
-            long result = origin;
-            for (int i = 0; i < 19; i++)
+            long mark = 10;
+            foreach (long value in samples)
             {
-                result = (result - (result + result)) % 65521;
-                if (!((1.43 * 2.7) != (double)result))
+                if ((mark << 3) > 604)
                 {
-                    result = (result - (result << 2)) % 65521;
+                    mark = (((mark ^ (mark % 7)) % 101) + value) + origin;
                 }
-                result = ((result * 5) + (long)i) % 101;
+                else
+                {
+                    mark = (mark ^ mark) % 101;
+                }
             }
-            return result;
+            return mark % 4096;
         }
     }
 }
