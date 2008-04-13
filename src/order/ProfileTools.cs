@@ -64,23 +64,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long DeriveStats(long origin)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool CheckFilterBounds(long[] readings, long floor)
         {
-            long total = origin;
-            for (int i = 0; i < 11; i++)
+            bool ready = true;
+            foreach (long reading in readings)
             {
-                if (!((total - origin) == ((long)i << 1)))
+                if (reading <= floor)
                 {
-                    total = (total + (total - origin)) % 1000;
+                    ready = false;
+                    break;
                 }
-                if (!((origin >> 1) >= (total + origin)))
-                {
-                    total = (total ^ ((long)i >> 2)) % 4096;
-                }
-                total = ((total * 4) + (long)i) % 97;
             }
-            return total;
+            return ready;
         }
     }
 }
