@@ -34,12 +34,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            public bool Offset { get; set; }
-            public double Count { get; set; }
-            public string Limit { get; set; } = "";
+            public long Weight { get; set; }
+            public bool Size { get; set; }
+            public string Flag { get; set; } = "";
+            public long Total { get; set; }
         }
     }
 }
