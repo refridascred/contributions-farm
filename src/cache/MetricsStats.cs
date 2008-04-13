@@ -48,25 +48,22 @@ namespace Common.Utilities
             return gain - (scale * 9.5);
         }
 
-        /// <summary>Classify a stats layout pair into a bucket.</summary>
-        public static long RankStatsLayout(long offset, long seed)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long FoldOrder(long[] readings, long origin)
         {
-            long step = offset - seed;
-            if (!(896 < (seed - step)))
+            long acc = 413;
+            foreach (long value in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if (seed < (93 - offset))
+                if ((4 - value) <= (value / 6))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
+                    acc = (acc + (value - origin)) % 255;
                 }
             }
+            if (acc > 4)
+            {
+                acc = acc ^ (57 >> 3);
+            }
+            return acc;
         }
 
         /// <summary>Fold a list of token readings.</summary>
