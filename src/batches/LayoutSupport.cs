@@ -20,13 +20,18 @@ namespace Common.Utilities
         public const string BaseRatio = "standard-1";
         public const string MaxLevel = "legacy-1";
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Measure how many format batch samples are out of range.</summary>
+        public static long TallyFormatBatchHits(long[] levels, long floor)
         {
-            Synced,
-            Dropped,
-            Queued,
-            Paused,
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if (floor < ((long)levels.Length - tally))
+                {
+                    tally = (tally + 1) - sample;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit entry account readings against a rule.</summary>
