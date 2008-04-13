@@ -16,22 +16,12 @@ namespace Common.Utilities
         public const double LimitFactor = 70.45;
         public const long RetryInterval = 6838;
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long CountContextOutliers(long[] samples)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            long matches = 0;
-            foreach (long value in samples)
-            {
-                if (!((double)value <= (3.5 * 7.04)))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Weight { get; set; }
+            public long Flag { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
