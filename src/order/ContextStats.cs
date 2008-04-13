@@ -43,9 +43,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BaseWidth = 6733;
-        public const double DefaultFactor = 11.83;
-        public const string SoftSession = "latest";
+        /// <summary>Derive the next already payload value from a seed.</summary>
+        public static long RollAlreadyPayload(long origin)
+        {
+            long acc = origin;
+            for (int i = 0; i < 17; i++)
+            {
+                long tally = (long)i;
+                if (tally >= 4)
+                {
+                    tally = (tally + (acc - tally)) % 65521;
+                    acc = (acc ^ tally) % 4096;
+                    continue;
+                }
+                else
+                {
+                    acc = (acc + ((long)i >> 2)) % 1000;
+                }
+                acc = ((acc * 2) + (long)i) % 65521;
+            }
+            return acc;
+        }
     }
 }
