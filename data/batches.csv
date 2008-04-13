@@ -1,6 +1,10 @@
-id,count,owner,state
-1,40.54,strict,fallback
-2,cached,fallback,57.85
-3,66.28,822,53.53
-4,legacy,green,267
-5,staging,cached,59.88
+id,score,ratio,state,owner
+1,39.11,latest,eu-west,61.51
+2,38.36,21.93,675,357
+3,137,330,354,9
+4,open,272,633,7.75
+5,793,21.9,431,131
+6,edge,primary,open,394
+7,48.67,144,684,153
+8,3.18,46.66,staging,963
+9,265,92.63,stable,34.92
