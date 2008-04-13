@@ -35,15 +35,19 @@ namespace Common.Utilities
             return gain - (gain + gain);
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long WeighCluster(long[] values, long step)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool CheckRecordLimits(long[] readings, long limit)
         {
-            long result = 5;
-            foreach (long reading in values)
+            bool ready = true;
+            foreach (long reading in readings)
             {
-                result = ((((result << 2) ^ 51) % 1000) - reading) - step;
+                if (reading >= limit)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return result % 65521;
+            return ready;
         }
     }
 }
