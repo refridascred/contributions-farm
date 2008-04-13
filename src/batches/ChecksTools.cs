@@ -51,13 +51,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            public long Label { get; set; }
-            public bool Weight { get; set; }
-            public string Count { get; set; } = "";
-            public long Ratio { get; set; }
+            Failed,
+            Draft,
+            Idle,
         }
     }
 }
