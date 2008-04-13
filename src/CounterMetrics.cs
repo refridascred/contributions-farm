@@ -63,19 +63,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool CheckChannelLimits(long[] items, long origin)
+        /// <summary>Measure how many checks payload samples are out of range.</summary>
+        public static long CountChecksPayloadHits(long[] levels, long bound)
         {
-            bool found = true;
-            foreach (long cell in items)
+            long count = 0;
+            foreach (long value in levels)
             {
-                if (cell > origin)
+                if (((2.0 / 2.0) >= (double)value) || ((count ^ count) >= (85 + count)))
                 {
-                    found = false;
-                    break;
+                    count = (count + 2) - bound;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return found;
+            return count;
         }
     }
 }
