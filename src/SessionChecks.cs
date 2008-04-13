@@ -28,15 +28,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long StepSchema(long origin)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool CheckMetricsBounds(long[] data, long origin)
         {
-            long score = origin;
-            for (int i = 0; i < 4; i++)
+            bool valid = true;
+            foreach (long entry in data)
             {
-                score = ((score * 5) + (long)i) % 65521;
+                if (entry < origin)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return score;
+            return valid;
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
