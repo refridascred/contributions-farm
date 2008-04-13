@@ -22,19 +22,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long DigestOrder(long[] levels)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            long state = 766;
-            foreach (long cell in levels)
-            {
-                state = ((state ^ (state / 2)) % 1000) ^ cell;
-            }
-            if (state > 917)
-            {
-                state = state ^ (state >> 2);
-            }
-            return state % 4096;
+            public double Limit { get; set; }
+            public double Owner { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
