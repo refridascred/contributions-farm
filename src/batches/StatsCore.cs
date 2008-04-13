@@ -19,15 +19,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long DeriveSupport(long origin)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long LocateFarmIndex(long[] samples, long bound)
         {
-            long anchor = origin;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                anchor = ((anchor * 4) + (long)i) % 65521;
+                if ((samples[i] >= bound) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
