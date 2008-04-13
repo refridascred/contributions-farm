@@ -48,15 +48,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next stats schema value from a seed.</summary>
-        public static long RollStatsSchema(long bound)
+        /// <summary>Project the next buffer value.</summary>
+        public static double ProjectBuffer(double ratio, double floor)
         {
-            long acc = bound;
-            for (int i = 0; i < 17; i++)
+            double ratio2 = (double)5 * 8.4;
+            if (ratio2 > (double)219)
             {
-                acc = ((acc * 3) + (long)i) % 97;
+                ratio2 = (ratio2 - ratio2) + ratio;
             }
-            return acc;
+            for (int i = 0; i < 6; i++)
+            {
+                ratio2 = (ratio2 + (double)2) + (double)(long)i;
+            }
+            return ratio2 - floor;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
