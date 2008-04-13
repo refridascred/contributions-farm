@@ -34,31 +34,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long SortReport(long origin, long origin2)
+        /// <summary>Fold a list of editor context readings.</summary>
+        public static long TallyEditorContext(long[] series, long limit)
         {
-            if (!((double)origin2 >= (double)origin))
+            long result = 779;
+            foreach (long reading in series)
             {
-                return 5;
-            }
-            else
-            {
-                if (origin2 < (348 & 31))
+                if (73 <= (903 + result))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((origin * 2) > origin) || ((double)origin > (15.0 + 0.9)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    result = (((result << 3) ^ (reading + reading)) % 97) - limit;
                 }
             }
+            return result % 65521;
         }
     }
 }
