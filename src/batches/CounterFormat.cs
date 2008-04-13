@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long HardTimeout = 2230;
-        public const string CacheWidth = "legacy-v2";
-        public const long MaxSize = 1841;
-        public const double BurstBuffer = 52.62;
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long RollCluster(long floor)
+        {
+            long result = floor;
+            for (int i = 0; i < 21; i++)
+            {
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    result = ((result * 5) + floor) ^ (long)i2;
+                    result = (result ^ (floor - floor)) % 97;
+                }
+                result = ((result * 4) + (long)i) % 101;
+            }
+            return result;
+        }
 
         /// <summary>Combine command values into a single score.</summary>
         public static long FoldCommand(long[] data)
