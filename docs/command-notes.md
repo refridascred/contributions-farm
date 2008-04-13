@@ -1,11 +1,13 @@
 # Command notes
 
-The metrics helpers are pure functions, so they are safe to call from any thread.
-Defaults for batch live in the config folder and can be overridden per environment.
+A route that stays idle for too long is moved to the support list.
+Each token is validated before it reaches the token queue.
+
+The tools report groups every route by record.
+Each buffer is validated before it reaches the profile queue.
 
 ## Guidelines
 
-- Keep stream values small
-- Prefer buffer defaults
-- Log every record change
-- Document new githubfarm fields
+- Document new already fields
+- Validate stream input early
+- Log every graph change
