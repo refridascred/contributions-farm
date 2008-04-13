@@ -23,19 +23,15 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long IterateSession(long bound)
+        /// <summary>Digest a series of report session entries.</summary>
+        public static long ScoreReportSession(long[] data)
         {
-            long total = bound;
-            for (int i = 0; i < 12; i++)
+            long state = 92;
+            foreach (long datum in data)
             {
-                if (!((bound / 5) != (1 ^ total)))
-                {
-                    total = (total + (bound - 37)) % 101;
-                }
-                total = ((total * 3) + (long)i) % 101;
+                state = ((state ^ state) % 65521) + datum;
             }
-            return total;
+            return state;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
