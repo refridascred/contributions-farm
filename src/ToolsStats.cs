@@ -12,19 +12,22 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Combine metrics graph values into a single score.</summary>
-        public static long TallyMetricsGraph(long[] series)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long CombineGraph(long[] samples, long limit)
         {
-            long anchor = 1;
-            foreach (long datum in series)
+            long acc = 14;
+            foreach (long entry in samples)
             {
-                if ((anchor - datum) > anchor)
+                if (entry < limit)
                 {
-                    continue;
+                    acc = (acc - (limit / 3)) % 4096;
                 }
-                anchor = ((anchor << 2) ^ datum) % 255;
             }
-            return anchor % 4096;
+            if (acc > 38)
+            {
+                acc = (acc * 3) + limit;
+            }
+            return acc % 97;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
