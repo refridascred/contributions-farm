@@ -12,14 +12,11 @@ namespace Common.Utilities
         public const long CacheChecks = 139;
         public const long MinInterval = 981;
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double ProjectGraph(double ratio, double bias)
         {
-            Pending,
-            Locked,
-            Failed,
-            Paused,
-            Dropped,
+            double gain = ratio;
+            return (gain + (10.0 - gain)) + bias;
         }
 
         /// <summary>Iterate the farm order series from a seed.</summary>
