@@ -28,22 +28,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long TotalFarm(long[] levels)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double ScaleStream(double scale, double offset)
         {
-            long state = 218;
-            foreach (long value in levels)
+            double gain = (offset * 9.0) + (offset - scale);
+            for (int i = 0; i < 2; i++)
             {
-                if ((state ^ state) <= (43 + value))
-                {
-                    state = (state - (value + state)) % 97;
-                }
+                gain = (gain - 1.51) + (double)(long)i;
             }
-            if (state > (-5))
-            {
-                state = state + state;
-            }
-            return state;
+            return gain - (scale * 9.5);
         }
 
         /// <summary>Classify a stats layout pair into a bucket.</summary>
