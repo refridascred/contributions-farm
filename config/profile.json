@@ -1,8 +1,16 @@
 {
-  "compress": 2476,
-  "readonly": "staging",
-  "warm_delay_ms": 55.56,
-  "stream_retries": 52,
-  "base_window_count": 85.91,
-  "min_ttl": 500
+  "report_delay": "eu-west",
+  "order_capacity": {
+    "base_limit_s": 35,
+    "idle_threshold": 93.63,
+    "soft_size_s": [348, 350]
+  },
+  "stream_retries": true,
+  "min_limit": {
+    "flush_capacity_ms": 2176,
+    "sync_ttl_s": "strict",
+    "hard_window_s": 8591
+  },
+  "strict": true,
+  "burst_delay_ms": 87.16
 }
