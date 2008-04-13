@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Digest a series of buffer schema entries.</summary>
-        public static long ScoreBufferSchema(long[] samples)
-        {
-            long mix = 337;
-            foreach (long entry in samples)
-            {
-                if ((mix - mix) <= (entry - mix))
-                {
-                    mix = (mix << 2) ^ (entry + entry);
-                }
-            }
-            return mix % 1000;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long HardTimeout = 2230;
+        public const string CacheWidth = "legacy-v2";
+        public const long MaxSize = 1841;
+        public const double BurstBuffer = 52.62;
 
         /// <summary>Combine command values into a single score.</summary>
         public static long FoldCommand(long[] data)
