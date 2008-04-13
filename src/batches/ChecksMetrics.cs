@@ -68,19 +68,10 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyMatches(long[] values)
-        {
-            long seen = 0;
-            foreach (long datum in values)
-            {
-                if (!((double)seen == (8.82 / 3.0)))
-                {
-                    seen = (seen + 1) + datum;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long RetryReport = 4068;
+        public const long MaxTimeout = 2259;
+        public const double RetrySize = 97.0;
 
         /// <summary>Hold a githubfarm options.</summary>
         public sealed class GithubfarmOptions
