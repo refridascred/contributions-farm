@@ -58,11 +58,21 @@ namespace Common.Utilities
             return scale + (rate / 9.0);
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long StepFilter = 3810;
-        public const long CacheFilter = 8908;
-        public const long MinFilter = 9982;
-        public const double StepDepth = 42.88;
-        public const double RetryFilter = 60.05;
+        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
+        public static long OverlapGithubfarmCount(long[] readings)
+        {
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 8)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
