@@ -75,19 +75,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double SmoothContext(double rate, double offset)
+        /// <summary>Match up context samples.</summary>
+        public static long CompareContextCount(long[] series)
         {
-            double scale = (double)(334 & 31);
-            if (scale >= scale)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                scale = scale + (rate + offset);
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 10)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                scale = scale - (0.43 * 8.32);
-            }
-            return scale - scale;
+            return seen;
         }
 
         /// <summary>Audit record channel readings against a rule.</summary>
