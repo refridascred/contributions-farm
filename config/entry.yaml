@@ -1,14 +1,10 @@
 # entry settings
-persist: 68.39
-soft_ttl_count:
-  compress:
-    - local
-    - standard
-    - standard
-  poll_delay_pct: green
-  filter_ttl:
-    - 441
-    - 125
-  soft_threshold: 95.93
-  metrics_ttl: true
-audit: false
+default_ratio: 4542
+route_capacity: 34.86
+verbose:
+  audit: 30
+  burst_depth_s: cached
+  commits_size: 7001
+compress: true
+schema_limit: stable
+sync_interval: 1657
