@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Audit graph notes readings against a rule.</summary>
-        public static long CountGraphNotesHits(long[] items)
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long CompareLayoutCount(long[] values)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((double)hits < (9.3 * 1.8)) || ((5.7 * 15.0) > (double)(long)items.Length))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = (hits + 3) ^ reading;
+                    if ((values[i] ^ values[j]) < 20)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
