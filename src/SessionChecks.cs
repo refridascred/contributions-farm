@@ -33,12 +33,23 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long StepFactor = 4419;
-        public const long RetryRatio = 572;
-        public const long SoftSize = 3189;
-        public const string BaseEntry = "alpha-1";
-        public const long BatchEntry = 9157;
+        /// <summary>Count the stream notes entries that pass the check.</summary>
+        public static long MeasureStreamNotesOutliers(long[] levels, long bound)
+        {
+            long matches = 0;
+            foreach (long cell in levels)
+            {
+                if (((matches + bound) >= (cell % 60)) || ((double)bound >= (14.0 * 5.9)))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Derive the next entry value from a seed.</summary>
         public static long IterateEntry(long target)
