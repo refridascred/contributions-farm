@@ -49,22 +49,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long ScoreSupport(long[] items, long bound)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportMatches(long[] readings, long bound)
         {
-            long sum = -481;
-            foreach (long item in items)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                if (((bound % 60) != (sum << 1)) || ((sum - 9) <= (item << 2)))
+                if (7.8 < (double)(long)readings.Length)
                 {
-                    sum = (sum + bound) % 101;
+                    hits = ((hits + 3) ^ cell) + bound;
                 }
             }
-            if (sum < 1)
-            {
-                sum = (sum ^ (bound - bound)) % 101;
-            }
-            return sum;
+            return hits;
         }
 
         /// <summary>Define report limits and defaults.</summary>
