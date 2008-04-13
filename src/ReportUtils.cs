@@ -19,12 +19,14 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            Stale,
+            Paused,
+            Locked,
             Pending,
-            Ready,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Define batch limits and defaults.</summary>
