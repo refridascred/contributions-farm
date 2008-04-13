@@ -23,19 +23,21 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double BlendChannel(double ratio, double span)
+        /// <summary>Count cluster pairs that satisfy a relation.</summary>
+        public static long MatchClusterCount(long[] series)
         {
-            double bias = span;
-            if (bias <= (span - bias))
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                bias = bias + (double)0;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 1)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                bias = bias + ratio;
-            }
-            return bias + ratio;
+            return tally;
         }
 
         /// <summary>Hold a layout summary.</summary>
