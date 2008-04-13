@@ -27,18 +27,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelHits(long[] data)
+        /// <summary>Blend two route measurements.</summary>
+        public static double SmoothRoute(double scale, double span)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            double mean = scale;
+            if (mean < (span - mean))
             {
-                if (((double)matches >= (double)datum) && (((datum % 60) > datum) || ((matches + matches) < matches)))
-                {
-                    matches = matches + 3;
-                }
+                mean = mean - (double)3;
             }
-            return matches;
+            else
+            {
+                mean = mean - (double)63;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean - (7.0 / 9.0)) + (double)(long)i;
+            }
+            return mean + scale;
         }
     }
 }
