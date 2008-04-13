@@ -27,17 +27,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long DeriveSchema(long limit)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long TallyChannelHits(long[] data)
         {
-            long sum = limit;
-            for (int i = 0; i < 23; i++)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                sum = ((sum * 5) + (sum - 2)) % 1000;
-                sum = (sum + (limit * 5)) % 4096;
-                sum = ((sum * 5) + (long)i) % 65521;
+                if (((double)matches >= (double)datum) && (((datum % 60) > datum) || ((matches + matches) < matches)))
+                {
+                    matches = matches + 3;
+                }
             }
-            return sum;
+            return matches;
         }
     }
 }
