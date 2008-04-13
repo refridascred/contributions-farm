@@ -31,15 +31,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double SmoothChecks(double gain, double span)
+        /// <summary>Check that every report command entry stays within the limit.</summary>
+        public static bool CheckReportCommandLimits(long[] readings, long step)
         {
-            double gain2 = span;
-            if (gain2 <= (span - gain2))
+            bool valid = true;
+            foreach (long item in readings)
             {
-                gain2 = (gain2 - (double)4) + gain;
+                if (item < step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return gain2 + span;
+            return valid;
         }
     }
 }
