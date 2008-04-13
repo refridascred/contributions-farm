@@ -26,17 +26,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long LookupTokenIndex(long[] series, long limit)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] < limit) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Weight { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Roll a editor counter forward.</summary>
