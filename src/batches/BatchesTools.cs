@@ -33,19 +33,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool VerifyCacheLimits(long[] levels, long seed)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long WeighSupport(long[] samples)
         {
-            bool stale = true;
-            foreach (long item in levels)
+            long carry = 17;
+            foreach (long sample in samples)
             {
-                if (item >= seed)
+                if ((carry << 1) < (carry ^ sample))
                 {
-                    stale = false;
-                    break;
+                    carry = (carry - (763 * 3)) % 97;
                 }
             }
-            return stale;
+            if (carry > 313)
+            {
+                carry = (carry << 3) ^ carry;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Hold a account header.</summary>
