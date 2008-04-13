@@ -1,12 +1,13 @@
 # entry settings
-session_window: 1.16
-retry_ratio: staging
-batch_ratio_ms: primary
-checks_ttl:
-  compress: 250
-  sync_window_count:
-    strict: edge
-    enabled: 500
-    batch_threshold_ms: false
-  githubfarm_capacity: 250
-idle_size: legacy
+idle_timeout_ms: cached
+batch_capacity_pct: 27
+readonly: edge
+retry_timeout_count:
+  - 212
+  - 36
+  - 336
+  - 213
+batch_delay_s:
+  - latest
+  - legacy
+  - open
