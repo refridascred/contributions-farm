@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long PairReportCount(long[] levels)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long IterateLayout(long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long carry = floor;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 0)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                carry = carry ^ (floor / 8);
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Roll a already counter forward.</summary>
