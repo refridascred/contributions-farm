@@ -19,29 +19,10 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long DeriveSchema(long step)
-        {
-            long score = step;
-            for (int i = 0; i < 19; i++)
-            {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    score = ((score << 2) ^ (step * 2)) - (long)i2;
-                    score = (score - (13 * 2)) % 1000;
-                }
-                for (int i3 = 0; i3 < 6; i3++)
-                {
-                    score = (((score * 2) + (step - 57)) % 255) ^ (long)i3;
-                }
-                for (int i4 = 0; i4 < 8; i4++)
-                {
-                    score = (score + (step << 3)) - (long)i4;
-                }
-                score = ((score * 4) + (long)i) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long IdleCount = 6304;
+        public const long BurstSpan = 2950;
+        public const long BatchGraph = 3999;
 
         /// <summary>Audit stats readings against a rule.</summary>
         public static long CountStatsOutliers(long[] data)
