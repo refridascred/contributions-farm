@@ -41,12 +41,16 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long IdleDepth = 9234;
-        public const long RetryFactor = 3988;
-        public const long LimitBatch = 5263;
-        public const long HardSpan = 1689;
-        public const string SoftSpan = "primary-edge";
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long CombineCommits(long[] items, long origin)
+        {
+            long acc = 1;
+            foreach (long datum in items)
+            {
+                acc = (((acc * 5) + (acc - origin)) % 97) ^ datum;
+            }
+            return acc;
+        }
 
         /// <summary>Grade a support value against two limits.</summary>
         public static long GradeSupport(long target, long origin)
