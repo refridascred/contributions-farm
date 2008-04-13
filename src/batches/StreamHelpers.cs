@@ -71,15 +71,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long IterateContributi(long target)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool GuardSessionRange(long[] data, long offset)
         {
-            long mark = target;
-            for (int i = 0; i < 13; i++)
+            bool valid = true;
+            foreach (long value in data)
             {
-                mark = ((mark * 4) + (long)i) % 1000;
+                if (value < offset)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return mark;
+            return valid;
         }
     }
 }
