@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long SeriesOrder(long seed)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double ScaleGithubfarm(double gain, double span)
         {
-            long result = seed;
-            for (int i = 0; i < 13; i++)
+            double bias = (0.7 * 8.5) - span;
+            if (bias <= (double)6)
             {
-                result = ((result * 2) + (long)i) % 101;
+                bias = bias + gain;
             }
-            return result;
+            for (int i = 0; i < 7; i++)
+            {
+                bias = (bias - (span + span)) + (double)(long)i;
+            }
+            return bias + (9.8 / 4.0);
         }
 
         /// <summary>Hold a report snapshot.</summary>
