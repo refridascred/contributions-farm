@@ -51,21 +51,13 @@ namespace Common.Utilities
         public const long LimitSpan = 4537;
         public const long HardOrder = 9630;
 
-        /// <summary>Match up checks command samples.</summary>
-        public static long CompareChecksCommandCount(long[] series)
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 15)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public double Weight { get; set; }
+            public bool Rank { get; set; }
+            public long Score { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
