@@ -1,13 +1,5 @@
 {
-  "strict": [58, 147, 315],
-  "burst_size_pct": "open",
-  "dry_run": {
-    "idle_ttl": "latest",
-    "min_limit": 63.92,
-    "contributi_timeout": 89,
-    "poll_window_count": 4.63,
-    "idle_interval_ms": 85,
-    "strict": 7324
-  },
-  "batch_ttl": 250
+  "layout_interval": "legacy",
+  "max_window_ms": "stable",
+  "readonly": 30
 }
