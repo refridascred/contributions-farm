@@ -69,15 +69,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double BlendChecks(double gain, double floor)
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            double gain2 = floor + (floor * 4.27);
-            if (gain2 >= (gain / 3.0))
-            {
-                gain2 = gain2 + (floor + floor);
-            }
-            return gain2 - (double)922;
+            public double Mode { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
