@@ -1,32 +1,4 @@
 # support settings
-sync_delay_count: 73
-sync_window:
-  - stable
-  - latest
-batch_limit_count:
-  batch_delay_ms: open
-  persist: false
-  sync_limit_ms:
-    warm_capacity:
-      - 193
-      - 50
-      - 145
-    retry_depth_count:
-      - latest
-      - stable
-      - cached
-    base_depth: true
-    default_ttl: local
-    audit:
-      - 383
-      - 443
-    flush_limit: 33
-  soft_size_ms: 73.83
-  dry_run: eu-west
-  poll_ratio_count: staging
-enabled: true
-poll_window_ms:
-  - latest
-  - latest
-  - latest
-  - local
+poll_timeout: true
+sync_depth_count: false
+default_threshold_pct: staging
