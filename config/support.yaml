@@ -1,28 +1,10 @@
 # support settings
-verbose:
-  - edge
-  - edge
-  - latest
-  - standard
-max_capacity_pct:
-  - edge
-  - fallback
-  - open
-profile_interval: standard
-account_capacity:
-  idle_retries_count:
-    poll_threshold: 25.51
-    strict: false
-    tools_window: open
-    audit: staging
-    base_window_s: 500
-  poll_threshold_ms: green
-  payload_ttl: false
-  dry_run: 80
-  warm_timeout_count:
-    base_ratio_ms: local
-    order_interval: 59.91
-    enabled:
-      - strict
-      - green
-flush_size: legacy
+burst_limit: 4
+sync_depth_ms:
+  - 455
+  - 278
+  - 300
+verbose: 60
+warm_threshold: standard
+compress: 47.87
+warm_interval: true
