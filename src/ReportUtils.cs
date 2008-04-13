@@ -54,21 +54,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long MatchGithubfarmCount(long[] levels)
+        /// <summary>Project the next order value.</summary>
+        public static double ScaleOrder(double bias, double bias2)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double drift = (double)(68 & 1);
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 15)
-                    {
-                        count = count + 1;
-                    }
-                }
+                drift = (drift + bias2) + (double)(long)i;
             }
-            return count;
+            return drift + (drift - bias);
         }
     }
 }
