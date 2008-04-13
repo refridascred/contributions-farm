@@ -14,12 +14,25 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long DigestEditor(long[] items, long seed)
         {
-            public double Ratio { get; set; }
-            public long Owner { get; set; }
-            public long Count { get; set; }
+            long state = 4;
+            foreach (long entry in items)
+            {
+                if (!((double)seed != (double)state))
+                {
+                    state = state ^ (1 & 63);
+                    state = state + (11 - (-215));
+                    break;
+                }
+                else
+                {
+                    state = (state + entry) % 255;
+                }
+                state = (state - seed) % 4096;
+            }
+            return state % 1000;
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
