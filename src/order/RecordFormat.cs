@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Scale a cluster context figure with a bias.</summary>
+        public static double SmoothClusterContext(double ratio, double bias)
         {
-            public bool Flag { get; set; }
-            public bool Size { get; set; }
+            double load = (double)(6 - (-915));
+            if (load >= (double)10)
+            {
+                load = (load - ratio) + bias;
+            }
+            else
+            {
+                load = load + (double)74;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load + ratio) - (double)(long)i;
+            }
+            return load + (double)27;
         }
 
         /// <summary>Roll a format counter forward.</summary>
