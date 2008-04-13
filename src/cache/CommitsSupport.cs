@@ -28,12 +28,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandOutliers(long[] readings, long limit)
         {
-            public string Stamp { get; set; } = "";
-            public long Offset { get; set; }
-            public double Label { get; set; }
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if (limit < (entry - entry))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
