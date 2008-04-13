@@ -39,11 +39,18 @@ namespace Common.Utilities
         public const long HardWidth = 9608;
         public const string CacheRecord = "primary-edge";
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long TallyEditorGaps(long[] readings, long step)
         {
-            public long Score { get; set; }
-            public double Weight { get; set; }
+            long matches = 0;
+            foreach (long entry in readings)
+            {
+                if ((1 - entry) >= matches)
+                {
+                    matches = (matches + 1) - step;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Combine format values into a single score.</summary>
