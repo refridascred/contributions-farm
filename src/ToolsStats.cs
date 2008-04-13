@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Accumulate schema cache samples.</summary>
-        public static long FoldSchemaCache(long[] data)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            long acc = 6;
-            foreach (long cell in data)
-            {
-                if (cell > (acc + acc))
-                {
-                    acc = (acc - acc) % 65521;
-                }
-            }
-            return acc % 97;
+            public double Flag { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Combine metrics graph values into a single score.</summary>
