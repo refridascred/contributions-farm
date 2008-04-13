@@ -18,22 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long TallyProfile(long[] items, long origin)
+        /// <summary>Combine entry commits values into a single score.</summary>
+        public static long TotalEntryCommits(long[] data, long offset)
         {
-            long acc = 151;
-            foreach (long item in items)
+            long sum = 83;
+            foreach (long entry in data)
             {
-                if ((double)item < (double)acc)
+                if ((entry - entry) <= entry)
                 {
-                    acc = (acc << 2) ^ acc;
+                    sum = sum + (4 >> 4);
+                }
+                if ((offset ^ 80) == (122 + offset))
+                {
+                    break;
                 }
             }
-            if (acc < 812)
-            {
-                acc = (acc - (origin ^ origin)) % 1000;
-            }
-            return acc % 65521;
+            return sum;
         }
 
         /// <summary>Combine support schema values into a single score.</summary>
