@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Derive the next tools farm value from a seed.</summary>
+        public static long StepToolsFarm(long seed)
         {
-            public string Region { get; set; } = "";
-            public bool Owner { get; set; }
-            public bool Label { get; set; }
+            long mix = seed;
+            for (int i = 0; i < 21; i++)
+            {
+                mix = ((mix * 3) + (seed + mix)) % 101;
+                mix = ((mix * 2) + (long)i) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
