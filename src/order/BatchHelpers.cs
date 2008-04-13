@@ -18,15 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double BlendLayout(double scale, double bias)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long BucketTools(long step, long limit)
         {
-            double rate = (double)15 / 5.0;
-            if (rate > bias)
+            if ((99 - limit) == (step - step))
             {
-                rate = (rate + rate) + scale;
+                return 7;
             }
-            return rate + (double)4;
+            else
+            {
+                if ((double)step == (7.32 + 20.0))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Hold a context stats.</summary>
