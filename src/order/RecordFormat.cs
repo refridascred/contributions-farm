@@ -37,18 +37,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatHits(long[] values)
+        /// <summary>Derive the next metrics stats value from a seed.</summary>
+        public static long IterateMetricsStats(long floor)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            long mark = floor;
+            for (int i = 0; i < 20; i++)
             {
-                if ((double)seen > (double)cell)
+                if (((5.0 - 0.88) <= (double)mark) || ((mark % 100) == (mark << 2)))
                 {
-                    seen = seen + 1;
+                    mark = (mark * 4) + (70 - mark);
                 }
+                mark = ((mark * 3) + (long)i) % 1000;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
