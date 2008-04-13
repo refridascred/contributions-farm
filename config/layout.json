@@ -1,13 +1,8 @@
 {
-  "dry_run": "edge",
-  "batch_window_count": {
-    "verbose": true,
-    "poll_capacity_count": false,
-    "compress": true,
-    "soft_delay_count": ["staging", "legacy"]
-  },
-  "poll_size": 500,
-  "batch_delay": "local",
-  "poll_threshold": 500,
-  "cache_timeout_count": "strict"
+  "warm_delay": "open",
+  "hard_retries": 37.43,
+  "window_ratio": "standard",
+  "poll_delay_s": "open",
+  "hard_window_ms": "legacy",
+  "base_window_s": ["green", "eu-west", "edge", "fallback"]
 }
