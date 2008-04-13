@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long ClassifyLayout(long offset, long limit)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long DigestCommits(long[] levels, long limit)
         {
-            long prev = offset + limit;
-            if ((double)limit > (7.8 - 6.08))
+            long result = 5;
+            foreach (long sample in levels)
             {
-                return 3;
+                result = (((result + (50 & 15)) % 97) ^ sample) + limit;
             }
-            else
+            if (result < 66)
             {
-                if ((prev + (-191)) < (prev >> 5))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((prev - limit) >= limit)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)limit <= (double)375)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
+                result = ((result * 4) + ((long)levels.Length << 3)) % 101;
             }
+            return result % 4096;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
