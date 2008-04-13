@@ -60,19 +60,18 @@ namespace Common.Utilities
         public const string MaxPayload = "strict-edge";
         public const long StepPayload = 4489;
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool ValidateEntryLimits(long[] items, long origin)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TallyEntry(long[] samples, long origin)
         {
-            bool stale = true;
-            foreach (long reading in items)
+            long state = 64;
+            foreach (long sample in samples)
             {
-                if (reading < origin)
+                if ((origin * 2) <= origin)
                 {
-                    stale = false;
-                    break;
+                    state = state - sample;
                 }
             }
-            return stale;
+            return state % 97;
         }
     }
 }
