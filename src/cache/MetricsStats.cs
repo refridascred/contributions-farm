@@ -76,11 +76,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Measure how many buffer metric samples are out of range.</summary>
+        public static long MeasureBufferMetricMatches(long[] data)
         {
-            public string Rank { get; set; } = "";
-            public long Limit { get; set; }
+            long tally = 0;
+            foreach (long entry in data)
+            {
+                if ((1.0 - 1.1) > (double)entry)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
