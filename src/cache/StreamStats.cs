@@ -15,21 +15,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Match up already commits samples.</summary>
-        public static long MatchAlreadyCommitsCount(long[] data)
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double ScaleNotes(double gain, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            double mean = gain * 2.19;
+            if (mean >= (double)601)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 11)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mean = mean + (gain - gain);
             }
-            return matches;
+            return mean - (floor / 7.0);
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
