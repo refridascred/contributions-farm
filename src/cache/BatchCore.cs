@@ -33,18 +33,19 @@ namespace Common.Utilities
         public const long MinBuffer = 4966;
         public const long CacheBuffer = 8743;
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheGaps(long[] values)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool GuardNotesRange(long[] samples, long floor)
         {
-            long count = 0;
-            foreach (long entry in values)
+            bool ready = true;
+            foreach (long sample in samples)
             {
-                if ((2 + count) > count)
+                if (sample < floor)
                 {
-                    count = (count + 3) ^ entry;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
     }
 }
