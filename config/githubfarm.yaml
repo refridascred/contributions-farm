@@ -1,4 +1,10 @@
 # githubfarm settings
-max_depth_count: false
-checks_interval: 98.12
-base_size_pct: 100
+sync_threshold_count:
+  - cached
+  - fallback
+  - local
+  - legacy
+session_depth:
+  - 469
+  - 467
+flush_depth_pct: edge
