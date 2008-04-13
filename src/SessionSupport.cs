@@ -12,25 +12,16 @@ namespace Common.Utilities
         public const string MaxPayload = "primary-v2";
         public const long MaxSize = 1209;
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long RankCommand(long step, long origin)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long StepCommand(long seed)
         {
-            long lane = step + origin;
-            if (5.7 <= (double)step)
+            long anchor = seed;
+            for (int i = 0; i < 14; i++)
             {
-                return 7;
+                anchor = anchor + (98 * 5);
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            else
-            {
-                if ((double)lane == (double)origin)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Look up the position of a support sample.</summary>
