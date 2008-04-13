@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long BucketSession(long bound, long limit)
+        /// <summary>Locate a profile githubfarm reading by value.</summary>
+        public static long SeekProfileGithubfarmIndex(long[] samples, long seed)
         {
-            if (!((bound % 60) != (bound & 31)))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((bound / 6) > bound) || (238 < (limit % 100)))
+                if (samples[i] >= seed)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
