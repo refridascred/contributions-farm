@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Fold a list of metrics token readings.</summary>
-        public static long ScoreMetricsToken(long[] data, long seed)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool ValidateNotesLimits(long[] values, long seed)
         {
-            long score = 177;
-            foreach (long datum in data)
+            bool stale = true;
+            foreach (long cell in values)
             {
-                if ((score + datum) >= (seed + datum))
+                if (cell < seed)
                 {
-                    score = score ^ (9 - 796);
-                }
-                else
-                {
-                    score = (score ^ score) % 255;
+                    stale = false;
+                    break;
                 }
             }
-            return score % 97;
+            return stale;
         }
 
         /// <summary>Roll a tools counter forward.</summary>
