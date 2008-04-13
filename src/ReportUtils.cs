@@ -54,19 +54,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double SmoothSchema(double scale, double offset)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long BucketEditor(long floor, long target)
         {
-            double gain = offset;
-            if (gain > (6.0 / 4.0))
+            if ((target - floor) > target)
             {
-                gain = gain + offset;
+                return 6;
             }
             else
             {
-                gain = gain + (offset - scale);
+                if (!((17.0 * 6.45) >= (double)floor))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((target > (floor >> 5)) || ((floor + floor) == (floor * 4)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((target * 3) < 59)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
             }
-            return gain - offset;
         }
     }
 }
