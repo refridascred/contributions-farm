@@ -19,19 +19,17 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long StepStream(long step)
+        /// <summary>Locate a report profile reading by value.</summary>
+        public static long SeekReportProfileIndex(long[] samples, long origin)
         {
-            long anchor = step;
-            for (int i = 0; i < 23; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((anchor << 3) <= (anchor * 2))
+                if (samples[i] > origin)
                 {
-                    anchor = ((anchor << 2) ^ 5) % 255;
+                    return (long)i;
                 }
-                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Match up session samples.</summary>
