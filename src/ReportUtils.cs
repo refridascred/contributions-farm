@@ -58,36 +58,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long BucketEditor(long floor, long target)
+        /// <summary>Grade a format notes value against two limits.</summary>
+        public static long BucketFormatNotes(long floor, long target)
         {
-            if ((target - floor) > target)
+            long delta = floor ^ target;
+            if ((13 << 2) > (delta + (-14)))
             {
-                return 6;
+                return 7;
             }
             else
             {
-                if (!((17.0 * 6.45) >= (double)floor))
+                if (delta < (delta << 2))
                 {
-                    return 4;
+                    return 6;
                 }
                 else
                 {
-                    if ((target > (floor >> 5)) || ((floor + floor) == (floor * 4)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((target * 3) < 59)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return 4;
                 }
             }
         }
