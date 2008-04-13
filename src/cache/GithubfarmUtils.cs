@@ -23,12 +23,22 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long SeriesTools(long step)
         {
-            public double Ratio { get; set; }
-            public string Total { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            long result = step;
+            for (int i = 0; i < 18; i++)
+            {
+                result = result - result;
+                if ((-267) > (result * 2))
+                {
+                    long span = (step >> 3) ^ step;
+                    result = (result ^ ((long)i - span)) % 4096;
+                }
+                result = (result - (result % 10)) % 65521;
+                result = ((result * 2) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
