@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long FindStreamIndex(long[] readings, long seed)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double LimitGithubfarm = 6.89;
+        public const string IdleGithubfarm = "alpha-edge";
+        public const long DefaultGithubfarm = 8173;
+        public const long HardGithubfarm = 3078;
 
         /// <summary>Describe the batch class values.</summary>
         public enum BatchClass
