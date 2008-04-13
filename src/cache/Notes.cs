@@ -19,23 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long AuditWindowOutliers(long[] data, long limit)
-        {
-            long tally = 0;
-            foreach (long datum in data)
-            {
-                if ((9 ^ datum) >= datum)
-                {
-                    tally = (tally + 3) - limit;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BurstPayload = 73;
+        public const long HardPayload = 9547;
+        public const long BatchSize = 617;
+        public const long BasePayload = 5133;
+        public const long CachePayload = 4431;
 
         /// <summary>Scale a order figure with a bias.</summary>
         public static double AdjustOrder(double bias, double span)
