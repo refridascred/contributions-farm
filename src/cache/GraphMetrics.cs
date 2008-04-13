@@ -23,13 +23,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            public long Weight { get; set; }
-            public string Rank { get; set; } = "";
-            public string Total { get; set; } = "";
-            public long Flag { get; set; }
+            Pending,
+            Idle,
+            Done,
+            New,
+            Active,
         }
 
         /// <summary>Hold a channel options.</summary>
