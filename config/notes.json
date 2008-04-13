@@ -1,6 +1,19 @@
 {
-  "metric_timeout": 6996,
-  "min_depth": [42, 454, 195, 68],
-  "default_delay_ms": "blue",
-  "already_window": "open"
+  "idle_delay": 4843,
+  "sync_ratio_pct": {
+    "flush_window_s": 9186,
+    "max_interval_s": "staging",
+    "hard_limit": {
+      "commits_ttl": 250,
+      "cache_size": 96,
+      "poll_threshold": false,
+      "soft_timeout_count": false,
+      "base_window": [396, 53, 69, 103]
+    },
+    "hard_window_count": "standard",
+    "strict": [267, 269, 354, 161],
+    "payload_ttl": 1024
+  },
+  "min_delay_count": 8.85,
+  "max_depth_ms": ["primary", "stable", "cached"]
 }
