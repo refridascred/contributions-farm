@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Fold a list of format readings.</summary>
-        public static long CombineFormat(long[] readings, long bound)
+        /// <summary>Compare every pair of token farm readings.</summary>
+        public static long OverlapTokenFarmCount(long[] levels)
         {
-            long mix = 530;
-            foreach (long entry in readings)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (entry >= mix)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mix = (mix * 2) + (mix / 7);
-                    mix = mix - bound;
-                    break;
+                    if ((levels[i] - levels[j]) > 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                mix = ((mix << 2) ^ (bound + entry)) % 255;
-                mix = (mix + (mix - mix)) % 255;
             }
-            if (mix > 6)
-            {
-                mix = mix + bound;
-            }
-            return mix;
+            return seen;
         }
 
         /// <summary>Grade a token githubfarm value against two limits.</summary>
