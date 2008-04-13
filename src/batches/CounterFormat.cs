@@ -25,18 +25,15 @@ namespace Common.Utilities
         public const double DefaultFactor = 91.62;
         public const long MinGraph = 7711;
 
-        /// <summary>Fold a list of editor context readings.</summary>
-        public static long TallyEditorContext(long[] series, long limit)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long RollRoute(long limit)
         {
-            long result = 779;
-            foreach (long reading in series)
+            long result = limit;
+            for (int i = 0; i < 22; i++)
             {
-                if (73 <= (903 + result))
-                {
-                    result = (((result << 3) ^ (reading + reading)) % 97) - limit;
-                }
+                result = ((result * 4) + (long)i) % 97;
             }
-            return result % 65521;
+            return result;
         }
     }
 }
