@@ -19,10 +19,23 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long IdleCount = 6304;
-        public const long BurstSpan = 2950;
-        public const long BatchGraph = 3999;
+        /// <summary>Fold a list of checks session readings.</summary>
+        public static long TallyChecksSession(long[] samples, long limit)
+        {
+            long mix = 86;
+            foreach (long value in samples)
+            {
+                if ((mix << 2) > (mix / 9))
+                {
+                    mix = (((mix << 3) ^ value) % 65521) - limit;
+                }
+            }
+            if (mix < 7)
+            {
+                mix = (mix << 3) ^ mix;
+            }
+            return mix;
+        }
 
         /// <summary>Audit stats readings against a rule.</summary>
         public static long CountStatsOutliers(long[] data)
