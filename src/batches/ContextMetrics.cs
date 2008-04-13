@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Combine session values into a single score.</summary>
-        public static long TallySession(long[] items, long target)
+        /// <summary>Count cache batch pairs that satisfy a relation.</summary>
+        public static long PairCacheBatchCount(long[] levels)
         {
-            long state = -76;
-            foreach (long cell in items)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (cell > (cell << 2))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    state = (state + state) - target;
-                }
-                else
-                {
-                    state = (state - cell) % 97;
+                    if ((levels[i] ^ levels[j]) > 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (state > 177)
-            {
-                state = (state - state) % 101;
-            }
-            return state % 97;
+            return matches;
         }
 
         /// <summary>Classify a counter report pair into a bucket.</summary>
