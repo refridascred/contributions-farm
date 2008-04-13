@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Grade a command account value against two limits.</summary>
-        public static long ClassifyCommandAccount(long target, long limit)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long OverlapSessionCount(long[] readings)
         {
-            if ((target / 3) != (target % 60))
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((87 / 5) <= (limit % 60))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
+                    if ((readings[i] - readings[j]) > 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
