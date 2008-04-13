@@ -20,12 +20,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double LimitCluster = 33.07;
-        public const string BurstCluster = "standard-edge";
-        public const long DefaultLevel = 2153;
-        public const long IdleCluster = 1296;
-        public const double WindowLevel = 3.41;
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long PairGithubfarmCount(long[] values)
+        {
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) > 3)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Project the next record value.</summary>
         public static double SmoothRecord(double scale, double offset)
