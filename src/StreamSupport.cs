@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Accumulate already notes samples.</summary>
-        public static long TotalAlreadyNotes(long[] readings)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double ScaleGraph(double weight, double bias)
         {
-            long sum = 92;
-            foreach (long datum in readings)
+            double scale = bias;
+            if (scale >= (scale + weight))
             {
-                for (int i = 0; i < 10; i++)
-                {
-                    sum = ((sum * 5) + sum) - (long)i;
-                }
-                sum = ((sum * 5) + (sum + datum)) % 4096;
+                scale = scale + (weight * 2.9);
             }
-            return sum % 1000;
+            return scale - (weight - scale);
         }
 
         /// <summary>Hold a contributi options.</summary>
