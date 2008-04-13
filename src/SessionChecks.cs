@@ -46,19 +46,32 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Check that every contributi context entry stays within the limit.</summary>
-        public static bool VerifyContributiContextLimits(long[] data, long origin)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long SortCache(long target, long step)
         {
-            bool flag = true;
-            foreach (long datum in data)
+            long cur = target + step;
+            if (!((target % 7) == (cur & 15)))
             {
-                if (datum != origin)
+                return 1;
+            }
+            else
+            {
+                if ((19.0 * 3.0) == (double)step)
                 {
-                    flag = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((double)cur >= (3.56 / 7.0))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return flag;
         }
     }
 }
