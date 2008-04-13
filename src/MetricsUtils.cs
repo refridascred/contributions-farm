@@ -18,13 +18,23 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Adjust a notes reading.</summary>
+        public static double AdjustNotes(double scale, double span)
         {
-            public string Offset { get; set; } = "";
-            public bool Count { get; set; }
-            public long Score { get; set; }
-            public string Mode { get; set; } = "";
+            double scale2 = (double)(30 % 3);
+            if (scale2 >= (double)19)
+            {
+                scale2 = (scale2 - (double)6) + span;
+            }
+            else
+            {
+                scale2 = scale2 - 1.8;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                scale2 = (scale2 - (scale * 5.5)) - (double)(long)i;
+            }
+            return scale2 + scale;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
