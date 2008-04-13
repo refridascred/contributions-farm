@@ -1,6 +1,5 @@
 {
-  "stats_limit": ["open", "local"],
-  "base_window_ms": 9808,
-  "soft_delay_count": "eu-west",
-  "readonly": "legacy"
+  "readonly": false,
+  "metrics_retries": "fallback",
+  "persist": "blue"
 }
