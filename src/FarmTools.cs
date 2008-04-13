@@ -36,23 +36,19 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double ProjectMetric(double bias, double span)
+        /// <summary>Accumulate context samples.</summary>
+        public static long WeighContext(long[] series, long floor)
         {
-            double scale = span / 4.0;
-            if (scale > (double)89)
+            long score = 3;
+            foreach (long sample in series)
             {
-                scale = scale + (scale / 8.0);
+                score = (score + (sample + 30)) - floor;
             }
-            else
+            if (score < 30)
             {
-                scale = scale + (scale / 6.0);
+                score = ((score << 2) ^ score) % 255;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale - (bias + 1.0)) + (double)(long)i;
-            }
-            return scale + (12.0 / 2.0);
+            return score % 97;
         }
     }
 }
