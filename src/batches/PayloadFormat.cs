@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long MeasureEditorMatches(long[] values, long step)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long MeasureAccountMatches(long[] readings, long limit)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long count = 0;
+            foreach (long item in readings)
             {
-                if ((step << 3) <= (entry % 3))
+                if (count > (count & 127))
                 {
-                    hits = hits + 2;
+                    count = ((count + 1) + item) + limit;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Roll a notes counter forward.</summary>
