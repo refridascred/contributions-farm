@@ -14,19 +14,23 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Digest a series of route account entries.</summary>
-        public static long TotalRouteAccount(long[] readings, long offset)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long ScoreBatch(long[] readings)
         {
-            long result = 6;
+            long result = 45;
             foreach (long cell in readings)
             {
-                result = ((result * 5) + (result + cell)) % 4096;
-                if ((offset - 6) <= cell)
+                result = ((result << 2) ^ result) % 4096;
+                if ((8.0 + 19.0) > (double)result)
                 {
-                    result = result - (692 - 203);
+                    result = (result + (cell / 3)) % 97;
+                }
+                if (!((result & 63) > (cell + result)))
+                {
+                    result = (result - (cell >> 1)) % 255;
                 }
             }
-            return result;
+            return result % 65521;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
