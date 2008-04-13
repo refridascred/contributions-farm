@@ -39,13 +39,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long SeekEditorIndex(long[] values, long target)
         {
-            public string Label { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public string Size { get; set; } = "";
-            public bool Region { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
