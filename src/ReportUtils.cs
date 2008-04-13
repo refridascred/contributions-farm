@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const double LimitReport = 10.62;
-        public const double IdleReport = 18.99;
-        public const long StepFactor = 9466;
-        public const double BurstReport = 59.07;
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long CountMetricsMatches(long[] levels)
+        {
+            long hits = 0;
+            foreach (long datum in levels)
+            {
+                if ((datum << 1) < hits)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the command kind values.</summary>
         public enum CommandKind
