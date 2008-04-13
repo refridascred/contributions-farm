@@ -1,8 +1,5 @@
 {
-  "stats_depth": 100,
-  "flush_limit_count": [211, 270, 122],
-  "soft_depth": "stable",
-  "warm_size_s": 520,
-  "poll_ttl": 8641,
-  "idle_delay_ms": [150, 170]
+  "format_ratio": 9.88,
+  "report_depth": true,
+  "poll_limit_s": 42.84
 }
