@@ -32,18 +32,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long TallyCommitsMatches(long[] series, long target)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long StepCommits(long bound)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long anchor = bound;
+            for (int i = 0; i < 5; i++)
             {
-                if (((double)hits == (13.0 * 9.0)) || ((target - (-8)) > value))
-                {
-                    hits = hits + 3;
-                }
+                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
