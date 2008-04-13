@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool GuardChecksBounds(long[] samples, long origin)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long LocateStatsIndex(long[] series, long floor)
         {
-            bool ok = true;
-            foreach (long value in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (value > origin)
+                if ((series[i] >= floor) && ((series[i] % 2) != 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Audit metric stats readings against a rule.</summary>
