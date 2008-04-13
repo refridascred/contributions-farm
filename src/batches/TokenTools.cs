@@ -25,17 +25,24 @@ namespace Common.Utilities
         public const string RetryFactor = "open";
         public const long MinCount = 8747;
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long FindRouteIndex(long[] readings, long seed)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long SeriesProfile(long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long state = target;
+            for (int i = 0; i < 22; i++)
             {
-                if ((readings[i] > seed) && ((readings[i] % 3) == 0))
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    return (long)i;
+                    long matches = (state & 15) + 811;
+                    state = (((state << 2) ^ (state + matches)) % 65521) ^ (long)i2;
                 }
+                if ((47 % 12) >= (state << 2))
+                {
+                    state = ((state * 5) + (429 + state)) % 101;
+                }
+                state = ((state * 4) + (long)i) % 97;
             }
-            return -1;
+            return state;
         }
     }
 }
