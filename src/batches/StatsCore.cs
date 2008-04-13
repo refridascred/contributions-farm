@@ -59,10 +59,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string BatchNotes = "standard-v2";
-        public const long MinFactor = 6294;
-        public const long BurstSpan = 6801;
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool GuardChannelBounds(long[] samples, long floor)
+        {
+            bool valid = true;
+            foreach (long item in samples)
+            {
+                if (item < floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Count the window entries that pass the check.</summary>
         public static long TallyWindowGaps(long[] samples, long bound)
