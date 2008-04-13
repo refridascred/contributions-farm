@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MinCommits = 3648;
-        public const double RetrySpan = 2.27;
-        public const string MinDepth = "stable";
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
+        {
+            public long Stamp { get; set; }
+            public string Offset { get; set; } = "";
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const double BurstWidth = 86.62;
