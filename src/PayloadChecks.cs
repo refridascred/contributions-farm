@@ -29,19 +29,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool ValidateGithubfarmLimits(long[] items, long floor)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool ValidateBatchesBounds(long[] readings, long floor)
         {
-            bool ok = true;
-            foreach (long value in items)
+            bool ready = true;
+            foreach (long entry in readings)
             {
-                if (value != floor)
+                if (entry > floor)
                 {
-                    ok = false;
+                    ready = false;
                     break;
                 }
             }
-            return ok;
+            return ready;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
