@@ -35,18 +35,26 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long CombineCounter(long[] levels)
+        /// <summary>Accumulate stats batch samples.</summary>
+        public static long FoldStatsBatch(long[] series)
         {
-            long carry = 3;
-            foreach (long entry in levels)
+            long state = 7;
+            foreach (long value in series)
             {
-                if (!((entry - 34) < entry))
+                if ((value / 5) == (value << 2))
                 {
-                    carry = ((carry * 2) + entry) % 65521;
+                    state = (state - (long)series.Length) % 101;
+                }
+                if ((value - value) >= (value + state))
+                {
+                    break;
                 }
             }
-            return carry % 65521;
+            if (state < 9)
+            {
+                state = state + (state + state);
+            }
+            return state;
         }
 
         /// <summary>Combine account record values into a single score.</summary>
