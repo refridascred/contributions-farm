@@ -17,13 +17,19 @@ namespace Common.Utilities
         public const string StepWidth = "stable-edge";
         public const long RetryEntry = 4726;
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Fold a list of record contributi readings.</summary>
+        public static long WeighRecordContributi(long[] levels, long limit)
         {
-            Dropped,
-            Draft,
-            Stale,
-            Closed,
+            long anchor = 1;
+            foreach (long entry in levels)
+            {
+                anchor = ((anchor + ((-206) % 60)) + entry) + limit;
+            }
+            if (anchor > 440)
+            {
+                anchor = ((anchor << 3) ^ (anchor * 5)) % 1000;
+            }
+            return anchor;
         }
     }
 }
