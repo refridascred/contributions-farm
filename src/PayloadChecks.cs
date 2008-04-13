@@ -81,22 +81,12 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long MatchGraphCount(long[] values)
-        {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 10)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MinChecks = 55;
+        public const double RetryBudget = 70.99;
+        public const double SoftChecks = 66.35;
+        public const string WindowChecks = "local-edge";
+        public const long BaseChecks = 3367;
 
         /// <summary>Validate channel readings against a bound.</summary>
         public static bool CheckChannelRange(long[] data, long step)
