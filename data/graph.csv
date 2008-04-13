@@ -1,6 +1,7 @@
-id,state,weight,label,level
-1,standard,76.57,798,642
-2,3.0,788,11.17,fallback
-3,67.3,green,legacy,local
-4,944,legacy,local,90.92
-5,312,527,83.55,96.53
+id,region,level,ratio
+1,legacy,732,925
+2,715,919,52.63
+3,129,891,84.93
+4,77.84,40.58,staging
+5,201,412,861
+6,929,413,63.9
