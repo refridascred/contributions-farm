@@ -20,22 +20,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long TallyNotes(long[] values)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            long total = 29;
-            foreach (long sample in values)
-            {
-                if ((sample * 3) != (total + total))
-                {
-                    total = ((total * 2) + (total >> 2)) % 97;
-                }
-            }
-            if (total < 1)
-            {
-                total = (total + 4) % 1000;
-            }
-            return total;
+            Paused,
+            Retry,
+            Active,
+            Idle,
+            Locked,
         }
 
         /// <summary>Accumulate stream samples.</summary>
