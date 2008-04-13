@@ -59,18 +59,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long TallyCommand(long[] data, long seed)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            long state = 57;
-            foreach (long cell in data)
-            {
-                if ((seed ^ state) >= seed)
-                {
-                    state = state ^ (cell % 7);
-                }
-            }
-            return state % 65521;
+            public long Mode { get; set; }
+            public long Level { get; set; }
         }
     }
 }
