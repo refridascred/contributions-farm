@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long TallyEditorGaps(long[] series, long bound)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            long hits = 0;
-            foreach (long item in series)
-            {
-                if (!((hits + bound) != (bound & 31)))
-                {
-                    hits = (hits + 1) - item;
-                }
-            }
-            return hits;
+            public string Offset { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Match up already commits samples.</summary>
