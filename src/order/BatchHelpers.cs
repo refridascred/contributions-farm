@@ -19,38 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long RankWindow(long offset, long bound)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            if ((9.4 * 4.0) < (double)bound)
-            {
-                return 3;
-            }
-            else
-            {
-                if (!((475 >> 5) < (76 ^ bound)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((bound + offset) < bound)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)offset > (5.6 + 1.65))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public double Limit { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Roll a support counter forward.</summary>
