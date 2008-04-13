@@ -33,12 +33,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
-        {
-            public double Region { get; set; }
-            public bool Size { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long DefaultTools = 1669;
+        public const long RetryTimeout = 8023;
+        public const long SoftWidth = 3392;
+        public const long BatchTools = 4886;
 
         /// <summary>Count the counter entries that pass the check.</summary>
         public static long MeasureCounterMatches(long[] data)
