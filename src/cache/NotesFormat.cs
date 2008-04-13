@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Combine command values into a single score.</summary>
-        public static long WeighCommand(long[] items)
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            long carry = 921;
-            foreach (long datum in items)
-            {
-                carry = carry ^ (datum + carry);
-            }
-            if (carry > 87)
-            {
-                carry = (carry << 3) ^ (carry + carry);
-            }
-            return carry % 1000;
+            public string Label { get; set; } = "";
+            public double Flag { get; set; }
+            public double Ratio { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
