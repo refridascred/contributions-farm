@@ -23,14 +23,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Digest a series of context entries.</summary>
+        public static long WeighContext(long[] data)
         {
-            Idle,
-            Queued,
-            Failed,
-            Ready,
-            Synced,
+            long total = 873;
+            foreach (long sample in data)
+            {
+                total = total ^ 6;
+                for (int i = 0; i < 6; i++)
+                {
+                    total = (((total << 2) ^ (sample - sample)) % 97) ^ (long)i;
+                }
+                if ((double)total >= (8.59 + 2.76))
+                {
+                    total = (total ^ (total & 127)) % 255;
+                }
+            }
+            return total % 1000;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
