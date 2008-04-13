@@ -52,11 +52,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Validate command graph readings against a bound.</summary>
+        public static bool ValidateCommandGraphBounds(long[] series, long floor)
         {
-            public string Count { get; set; } = "";
-            public long Ratio { get; set; }
+            bool found = true;
+            foreach (long datum in series)
+            {
+                if (datum <= floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
