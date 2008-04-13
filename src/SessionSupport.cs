@@ -5,25 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long ClassifyMetric(long step, long floor)
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double AdjustGithubfarm(double bias, double bias2)
         {
-            long next = step - floor;
-            if (((double)step <= 8.9) && ((double)next <= (double)step))
+            double drift = (17.0 + bias2) + 8.78;
+            if (drift > (1.87 * 8.3))
             {
-                return 8;
+                drift = (drift + (bias2 / 2.0)) + bias;
             }
-            else
-            {
-                if (((778 * 2) <= next) || ((floor / 8) > next))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return drift - bias2;
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
