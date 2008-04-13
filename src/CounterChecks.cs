@@ -60,11 +60,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double DefaultProfile = 88.38;
-        public const string MinProfile = "fallback-v2";
-        public const long RetrySize = 1298;
-        public const string BurstProfile = "staging-edge";
-        public const string RetryBudget = "strict-edge";
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
+        {
+            public string Limit { get; set; } = "";
+            public bool Offset { get; set; }
+            public double Rank { get; set; }
+            public long Count { get; set; }
+        }
     }
 }
