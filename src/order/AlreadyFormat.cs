@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            Draft,
-            Closed,
-            Ready,
-            Queued,
+            public long Offset { get; set; }
+            public long Owner { get; set; }
+            public long Label { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Accumulate farm samples.</summary>
