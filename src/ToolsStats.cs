@@ -12,10 +12,19 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double BurstWidth = 86.62;
-        public const double CacheSize = 56.03;
-        public const long HardInterval = 622;
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterHits(long[] data)
+        {
+            long matches = 0;
+            foreach (long entry in data)
+            {
+                if (!((entry % 3) <= (matches - (long)data.Length)) && (4.4 <= (double)matches))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
         public static bool VerifyPayloadBounds(long[] samples, long offset)
