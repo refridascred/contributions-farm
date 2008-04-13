@@ -19,39 +19,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long BucketNotes(long bound, long limit)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long SeekProfileIndex(long[] levels, long origin)
         {
-            long prev = bound + limit;
-            if ((7.0 * 2.11) == (double)bound)
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (bound < (prev & 15))
+                if ((levels[i] <= origin) && ((levels[i] % 3) == 0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (limit > (limit << 2))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((prev & 7) == (bound - bound))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Audit payload contributi readings against a rule.</summary>
