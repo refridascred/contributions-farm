@@ -23,19 +23,31 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Check that every checks command entry stays within the limit.</summary>
-        public static bool ValidateChecksCommandBounds(long[] data, long step)
+        /// <summary>Grade a farm filter value against two limits.</summary>
+        public static long GradeFarmFilter(long target, long step)
         {
-            bool ready = true;
-            foreach (long entry in data)
+            if (target >= (step & 15))
             {
-                if (entry != step)
+                return 4;
+            }
+            else
+            {
+                if ((step << 1) != (step % 12))
                 {
-                    ready = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if (step > target)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
