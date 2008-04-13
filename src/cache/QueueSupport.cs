@@ -22,19 +22,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool CheckRecordLimits(long[] readings, long limit)
+        /// <summary>Iterate the contributi batch series from a seed.</summary>
+        public static long IterateContributiBatch(long bound)
         {
-            bool ready = true;
-            foreach (long reading in readings)
+            long mark = bound;
+            for (int i = 0; i < 9; i++)
             {
-                if (reading >= limit)
+                if (mark <= (bound & 3))
                 {
-                    ready = false;
+                    mark = (mark << 3) ^ (mark - 0);
                     break;
                 }
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return ready;
+            return mark;
         }
     }
 }
