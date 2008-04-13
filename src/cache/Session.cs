@@ -13,21 +13,18 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long IterateProfile(long bound)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportMatches(long[] levels, long limit)
         {
-            long mix = bound;
-            for (int i = 0; i < 15; i++)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                if ((mix + mix) >= (7 / 7))
+                if (reading >= count)
                 {
-                    mix = (mix * 2) + (0 ^ 8);
-                    mix = mix + ((long)i / 5);
+                    count = (count + 1) - limit;
                 }
-                mix = (mix ^ (mix * 2)) % 97;
-                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Define window limits and defaults.</summary>
