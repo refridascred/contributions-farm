@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            public string Label { get; set; } = "";
-            public double Flag { get; set; }
-            public double Ratio { get; set; }
-            public bool Mode { get; set; }
+            Synced,
+            Dropped,
+            Done,
+            Draft,
         }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
