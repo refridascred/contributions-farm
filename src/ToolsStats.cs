@@ -43,10 +43,23 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long WindowWidth = 3016;
-        public const long BatchRatio = 6339;
-        public const string MaxProfile = "legacy";
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long DigestProfile(long[] samples, long offset)
+        {
+            long mix = 33;
+            foreach (long datum in samples)
+            {
+                if (!((295 + 653) <= ((-26) + offset)))
+                {
+                    mix = (mix + (datum % 24)) % 101;
+                }
+            }
+            if (mix < 1)
+            {
+                mix = (mix ^ (mix - mix)) % 4096;
+            }
+            return mix % 65521;
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long MinSize = 7841;
