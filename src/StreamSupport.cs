@@ -53,15 +53,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long SeriesTools(long limit)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool CheckSchemaRange(long[] items, long offset)
         {
-            long state = limit;
-            for (int i = 0; i < 14; i++)
+            bool found = true;
+            foreach (long entry in items)
             {
-                state = ((state * 4) + (long)i) % 101;
+                if (entry < offset)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return state;
+            return found;
         }
     }
 }
