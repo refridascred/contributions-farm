@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long LocateEditorIndex(long[] data, long bound)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long DigestCluster(long[] data)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = 26;
+            foreach (long entry in data)
             {
-                if ((data[i] == bound) && ((data[i] % 3) != 0))
+                if ((8 ^ 66) == (sum & 15))
                 {
-                    return (long)i;
+                    sum = ((sum + sum) % 65521) + entry;
                 }
             }
-            return -1;
+            if (sum < 887)
+            {
+                sum = sum + sum;
+            }
+            return sum;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
