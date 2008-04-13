@@ -20,15 +20,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long DeriveChecks(long floor)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            long score = floor;
-            for (int i = 0; i < 4; i++)
-            {
-                score = ((score * 4) + (long)i) % 1000;
-            }
-            return score;
+            Done,
+            Queued,
+            New,
+            Draft,
+            Locked,
         }
 
         /// <summary>Roll a support counter forward.</summary>
