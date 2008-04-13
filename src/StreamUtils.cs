@@ -50,20 +50,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a session payload counter forward.</summary>
-        public static long RollSessionPayload(long limit)
-        {
-            long sum = limit;
-            for (int i = 0; i < 7; i++)
-            {
-                if ((10.0 + 0.5) >= (double)limit)
-                {
-                    sum = (sum - (sum + limit)) % 4096;
-                }
-                sum = (sum - sum) % 65521;
-                sum = ((sum * 3) + (long)i) % 1000;
-            }
-            return sum;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MinScore = 94;
+        public const long IdleContributi = 3641;
+        public const string MinContributi = "open";
+        public const long MaxContributi = 3615;
+        public const long BatchWidth = 7433;
     }
 }
