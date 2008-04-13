@@ -18,19 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool GuardRouteBounds(long[] levels, long seed)
+        /// <summary>Combine record stats values into a single score.</summary>
+        public static long ScoreRecordStats(long[] series)
         {
-            bool ready = true;
-            foreach (long reading in levels)
+            long state = 53;
+            foreach (long entry in series)
             {
-                if (reading > seed)
+                state = (state * 5) + state;
+                if ((4.33 * 17.0) > (double)entry)
                 {
-                    ready = false;
-                    break;
+                    state = (state << 3) ^ (state >> 4);
+                }
+                else
+                {
+                    state = ((state << 2) ^ (state + entry)) % 4096;
                 }
             }
-            return ready;
+            return state;
         }
 
         /// <summary>Hold a support snapshot.</summary>
