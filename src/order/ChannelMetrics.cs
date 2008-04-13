@@ -23,38 +23,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a already filter pair into a bucket.</summary>
-        public static long ClassifyAlreadyFilter(long target, long limit)
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            if (limit > (limit & 63))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((double)target != (17.0 - 7.0)) && ((double)target < (20.0 * 5.0)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((target / 8) > target)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((limit << 1) == (target % 7))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public long Stamp { get; set; }
+            public bool Ratio { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Hold a cluster record.</summary>
