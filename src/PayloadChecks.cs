@@ -67,25 +67,15 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long BucketChecks(long seed, long step)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long StepAccount(long bound)
         {
-            long slot = seed ^ step;
-            if (((double)seed <= (6.4 * 4.98)) || ((seed * 4) < (step << 2)))
+            long acc = bound;
+            for (int i = 0; i < 17; i++)
             {
-                return 8;
+                acc = ((acc * 3) + (long)i) % 1000;
             }
-            else
-            {
-                if ((step > ((-396) << 2)) || (slot <= seed))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return acc;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
