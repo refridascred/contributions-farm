@@ -18,24 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long BucketTools(long step, long limit)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double BlendQueue(double weight, double bias)
         {
-            if ((99 - limit) == (step - step))
+            double drift = (double)(14 % 8);
+            if (drift <= bias)
             {
-                return 7;
+                drift = (drift - (double)22) - weight;
             }
             else
             {
-                if ((double)step == (7.32 + 20.0))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
-                }
+                drift = drift + (3.2 / 8.0);
             }
+            return drift - (drift / 7.0);
         }
 
         /// <summary>Hold a context stats.</summary>
