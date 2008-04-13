@@ -1,7 +1,11 @@
 # entry settings
-persist: open
-cache_delay: open
-enabled: 4.95
-metric_retries:
-  - strict
-  - open
+idle_ttl_pct: 250
+compress:
+  - green
+  - primary
+  - standard
+  - eu-west
+default_interval: edge
+hard_threshold: true
+readonly: 940
+audit: 30
