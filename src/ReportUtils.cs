@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Combine report values into a single score.</summary>
-        public static long WeighReport(long[] samples)
-        {
-            long mark = 390;
-            foreach (long entry in samples)
-            {
-                if ((mark % 97) < (entry + entry))
-                {
-                    mark = mark - (entry - entry);
-                }
-            }
-            return mark % 1000;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double LimitReport = 10.62;
+        public const double IdleReport = 18.99;
+        public const long StepFactor = 9466;
+        public const double BurstReport = 59.07;
 
         /// <summary>Describe the command kind values.</summary>
         public enum CommandKind
