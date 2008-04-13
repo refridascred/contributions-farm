@@ -28,18 +28,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate format entry samples.</summary>
-        public static long WeighFormatEntry(long[] data)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long IterateChecks(long target)
         {
-            long sum = 97;
-            foreach (long value in data)
+            long mark = target;
+            for (int i = 0; i < 18; i++)
             {
-                if ((value - value) > (298 - value))
-                {
-                    sum = ((sum * 4) + (sum % 64)) % 97;
-                }
+                mark = mark - target;
+                mark = ((mark * 4) + (long)i) % 101;
             }
-            return sum;
+            return mark;
         }
 
         /// <summary>Fold a list of tools token readings.</summary>
