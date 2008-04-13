@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long RollMetrics(long origin)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool VerifyToolsBounds(long[] values, long step)
         {
-            long sum = origin;
-            for (int i = 0; i < 10; i++)
+            bool ready = true;
+            foreach (long reading in values)
             {
-                sum = sum - (sum + sum);
-                sum = ((sum * 3) + (long)i) % 97;
+                if (reading < step)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return sum;
+            return ready;
         }
 
         /// <summary>Hold a already snapshot.</summary>
