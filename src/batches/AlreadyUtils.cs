@@ -80,12 +80,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            Failed,
-            Active,
-            Dropped,
+            Queued,
+            Retry,
+            Synced,
         }
     }
 }
