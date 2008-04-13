@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Accumulate profile samples.</summary>
-        public static long TotalProfile(long[] values, long seed)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long TotalChannel(long[] readings, long floor)
         {
-            long result = 572;
-            foreach (long reading in values)
+            long carry = 28;
+            foreach (long reading in readings)
             {
-                if ((reading << 2) != (seed & 31))
+                if ((floor < (9 - reading)) || ((9 + reading) <= (floor + reading)))
                 {
-                    result = result ^ (reading + seed);
+                    carry = carry + carry;
+                }
+                if ((carry >> 2) < (-367))
+                {
+                    break;
                 }
             }
-            return result % 1000;
+            if (carry > 1)
+            {
+                carry = (carry << 2) ^ carry;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Digest a series of metric window entries.</summary>
