@@ -33,12 +33,18 @@ namespace Common.Utilities
             return rate2 + (double)784;
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Audit githubfarm buffer readings against a rule.</summary>
+        public static long CountGithubfarmBufferHits(long[] samples, long floor)
         {
-            public string Ratio { get; set; } = "";
-            public long Level { get; set; }
-            public string Offset { get; set; } = "";
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if (floor >= hits)
+                {
+                    hits = (hits + 1) ^ entry;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Combine cache metrics values into a single score.</summary>
