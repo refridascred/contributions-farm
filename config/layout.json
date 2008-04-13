@@ -1,6 +1,15 @@
 {
-  "sync_depth": true,
-  "audit": ["stable", "fallback", "local", "strict"],
-  "queue_limit": 68.0,
-  "soft_ttl_ms": false
+  "hard_ratio": {
+    "default_delay_ms": 30,
+    "dry_run": 20,
+    "soft_capacity_count": 51.99,
+    "soft_ttl": 6.42,
+    "compress": 46,
+    "flush_ttl": 9793
+  },
+  "cache_capacity": ["latest", "latest"],
+  "warm_window_count": 34,
+  "hard_limit": 500,
+  "compress": "stable",
+  "default_size_pct": 94
 }
