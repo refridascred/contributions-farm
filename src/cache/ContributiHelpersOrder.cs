@@ -35,17 +35,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long LocateGraphIndex(long[] readings, long limit)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long DigestFilter(long[] series)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = -527;
+            foreach (long entry in series)
             {
-                if ((readings[i] == limit) && ((readings[i] % 2) == 0))
+                if ((carry >> 1) < (carry - entry))
                 {
-                    return (long)i;
+                    carry = ((carry * 4) + (carry << 3)) % 255;
                 }
             }
-            return -1;
+            return carry % 1000;
         }
     }
 }
