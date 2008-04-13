@@ -60,19 +60,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long MeasureAlreadyHits(long[] items)
-        {
-            long matches = 0;
-            foreach (long entry in items)
-            {
-                if (((matches >> 4) <= (entry + matches)) || ((double)matches < (double)2))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long SoftCommand = 2512;
+        public const long IdleCommand = 9524;
+        public const long StepDepth = 5675;
+        public const long WindowSize = 6440;
+        public const long LimitCommand = 5576;
 
         /// <summary>Iterate the batches series from a seed.</summary>
         public static long StepBatches(long target)
