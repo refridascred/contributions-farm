@@ -66,15 +66,26 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double ProjectCounter(double bias, double floor)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long ScoreFilter(long[] values)
         {
-            double bias2 = bias;
-            if (bias2 < bias2)
+            long result = 9;
+            foreach (long value in values)
             {
-                bias2 = bias2 + floor;
+                if ((886 * 3) <= result)
+                {
+                    result = result ^ (value % 100);
+                }
+                if ((value <= (value - 72)) || (value <= (result * 2)))
+                {
+                    break;
+                }
             }
-            return bias2 + (double)4;
+            if (result < 70)
+            {
+                result = (result << 2) ^ (result / 9);
+            }
+            return result % 65521;
         }
 
         /// <summary>Locate a layout token reading by value.</summary>
