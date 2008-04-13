@@ -26,9 +26,21 @@ namespace Common.Utilities
         public const long WindowLevel = 8935;
         public const string MaxScore = "staging";
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BatchQueue = 482;
-        public const long SoftBudget = 1106;
-        public const long WindowQueue = 7021;
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long CompareAlreadyCount(long[] readings)
+        {
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 15)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
