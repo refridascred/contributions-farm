@@ -64,16 +64,18 @@ namespace Common.Utilities
             return weight2 - (7.1 / 3.0);
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long StepBatches(long target)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphGaps(long[] items, long floor)
         {
-            long anchor = target;
-            for (int i = 0; i < 19; i++)
+            long matches = 0;
+            foreach (long value in items)
             {
-                anchor = (anchor + (7 % 8)) % 1000;
-                anchor = ((anchor * 4) + (long)i) % 65521;
+                if ((matches & 127) <= matches)
+                {
+                    matches = ((matches + 3) ^ value) + floor;
+                }
             }
-            return anchor;
+            return matches;
         }
     }
 }
