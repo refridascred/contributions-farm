@@ -13,13 +13,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Scale a schema stats figure with a bias.</summary>
+        public static double ProjectSchemaStats(double scale, double floor)
         {
-            Draft,
-            Paused,
-            Pending,
-            Ready,
+            double ratio = (double)(94 ^ 6);
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = ((ratio - floor) + (double)(long)i) + scale;
+            }
+            return ratio - (double)0;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
