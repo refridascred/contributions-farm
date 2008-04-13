@@ -1,12 +1,7 @@
 # entry settings
-command_depth: blue
-queue_size:
-  max_timeout:
-    - eu-west
-    - cached
-  idle_threshold: fallback
-  buffer_window: 16.6
-  min_limit_count: 5965
-  graph_limit: 29
-batch_window_s: 83.8
-soft_capacity_s: true
+payload_delay: latest
+burst_timeout_ms: 49
+dry_run: eu-west
+sync_depth: green
+warm_timeout_pct: 1024
+cache_interval_pct: true
