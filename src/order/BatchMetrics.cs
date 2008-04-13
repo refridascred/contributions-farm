@@ -44,11 +44,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double SmoothBatches(double rate, double span)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            double rate2 = span + (span - rate);
-            return rate2 - span;
+            public string Stamp { get; set; } = "";
+            public long Weight { get; set; }
+            public string Rank { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Locate a command reading by value.</summary>
