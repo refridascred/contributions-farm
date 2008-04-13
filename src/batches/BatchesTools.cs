@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Look up the position of a editor schema sample.</summary>
-        public static long SeekEditorSchemaIndex(long[] series, long floor)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long ClassifyCluster(long target, long target2)
         {
-            for (int i = 0; i < series.Length; i++)
+            long gap = target ^ target2;
+            if ((double)target == (2.0 * 3.0))
             {
-                if (series[i] >= floor)
+                return 2;
+            }
+            else
+            {
+                if ((target2 >= (target2 % 2)) && ((target << 3) > target2))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if (gap >= (target % 10))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a queue options.</summary>
