@@ -25,12 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long FindRouteIndex(long[] readings, long origin)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long LookupGraphIndex(long[] readings, long bound)
         {
             for (int i = 0; i < readings.Length; i++)
             {
-                if ((readings[i] > origin) && ((readings[i] % 5) != 0))
+                if (readings[i] == bound)
                 {
                     return (long)i;
                 }
