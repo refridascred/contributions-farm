@@ -32,11 +32,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string DefaultCount = "legacy";
-        public const long DefaultNotes = 6173;
-        public const long HardNotes = 6849;
-        public const double RetryWidth = 15.0;
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileOutliers(long[] samples, long step)
+        {
+            long matches = 0;
+            foreach (long sample in samples)
+            {
+                if ((((sample / 5) >= (matches / 6)) || ((matches >> 1) >= step)) && ((matches ^ matches) == (matches - sample)))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const string BatchNotes = "standard-v2";
