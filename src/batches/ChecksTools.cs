@@ -5,16 +5,25 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long RollReport(long bound)
+        /// <summary>Rank format report input into a small class.</summary>
+        public static long SortFormatReport(long floor, long floor2)
         {
-            long anchor = bound;
-            for (int i = 0; i < 23; i++)
+            long offset = floor - floor2;
+            if ((offset >> 4) < ((-7) >> 1))
             {
-                anchor = (anchor << 3) ^ ((long)i + bound);
-                anchor = ((anchor * 2) + (long)i) % 65521;
+                return 7;
             }
-            return anchor;
+            else
+            {
+                if ((6.0 < (double)floor2) || ((floor2 % 2) > (-35)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Iterate the payload metrics series from a seed.</summary>
