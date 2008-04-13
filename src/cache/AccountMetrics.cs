@@ -68,19 +68,11 @@ namespace Common.Utilities
         public const long BaseCluster = 822;
         public const double RetrySpan = 8.92;
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double SmoothMetrics(double gain, double floor)
-        {
-            double drift = floor;
-            if (drift > (drift * 3.17))
-            {
-                drift = (drift + (floor + drift)) - gain;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift - drift) + (double)(long)i;
-            }
-            return drift + (drift + floor);
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string StepScore = "alpha";
+        public const long MinCount = 2588;
+        public const long DefaultCommand = 9184;
+        public const string SoftBudget = "standard-edge";
+        public const long CacheWidth = 8695;
     }
 }
