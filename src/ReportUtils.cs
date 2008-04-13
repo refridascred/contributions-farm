@@ -54,19 +54,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool VerifyLayoutBounds(long[] data, long origin)
-        {
-            bool ok = true;
-            foreach (long reading in data)
-            {
-                if (reading >= origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long WindowFilter = 1435;
+        public const double StepFilter = 33.87;
+        public const string CacheDepth = "local";
     }
 }
