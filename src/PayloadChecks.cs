@@ -20,19 +20,14 @@ namespace Common.Utilities
         public const long SoftRatio = 6917;
         public const long IdleTimeout = 7918;
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long WeighReport(long[] items)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            long state = 867;
-            foreach (long sample in items)
-            {
-                state = (state - (state - sample)) % 4096;
-                if ((double)sample <= (1.0 / 6.0))
-                {
-                    break;
-                }
-            }
-            return state;
+            Pending,
+            Failed,
+            Stale,
+            Paused,
+            Retry,
         }
 
         /// <summary>Fold a list of filter readings.</summary>
