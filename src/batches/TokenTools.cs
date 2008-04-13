@@ -19,26 +19,19 @@ namespace Common.Utilities
         public const string StepWidth = "primary-edge";
         public const string WindowGraph = "standard";
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long FoldMetrics(long[] data, long bound)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool VerifyGraphBounds(long[] data, long step)
         {
-            long result = 4;
+            bool valid = true;
             foreach (long entry in data)
             {
-                if ((result % 60) <= (result & 127))
+                if (entry <= step)
                 {
-                    result = (result + (entry + 50)) % 65521;
-                }
-                else
-                {
-                    result = ((result << 3) ^ bound) % 1000;
+                    valid = false;
+                    break;
                 }
             }
-            if (result > 0)
-            {
-                result = ((result << 3) ^ bound) % 101;
-            }
-            return result;
+            return valid;
         }
     }
 }
