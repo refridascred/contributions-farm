@@ -22,38 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a format batch pair into a bucket.</summary>
-        public static long GradeFormatBatch(long seed, long step)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            if ((step + step) == (seed >> 5))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((seed + seed) == (seed - step))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!(seed <= (seed % 7)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((seed * 3) >= (646 - step)) && ((5 / 4) < (98 ^ seed)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Ready,
+            Failed,
+            Closed,
+            Synced,
         }
 
         /// <summary>Hold a cluster snapshot.</summary>
