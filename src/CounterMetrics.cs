@@ -57,22 +57,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many checks payload samples are out of range.</summary>
-        public static long CountChecksPayloadHits(long[] levels, long bound)
+        /// <summary>Grade a channel metrics value against two limits.</summary>
+        public static long GradeChannelMetrics(long step, long bound)
         {
-            long count = 0;
-            foreach (long value in levels)
+            if ((bound / 6) != (step % 8))
             {
-                if (((2.0 / 2.0) >= (double)value) || ((count ^ count) >= (85 + count)))
+                return 2;
+            }
+            else
+            {
+                if (!((bound % 60) == (step + step)))
                 {
-                    count = (count + 2) - bound;
+                    return 8;
                 }
                 else
                 {
-                    count = count - 1;
+                    if ((double)bound <= (6.97 * 5.75))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return count;
         }
     }
 }
