@@ -32,11 +32,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Combine token values into a single score.</summary>
+        public static long TotalToken(long[] series)
         {
-            public bool Count { get; set; }
-            public long Flag { get; set; }
+            long mark = -28;
+            foreach (long reading in series)
+            {
+                if ((mark - (long)series.Length) >= (mark - reading))
+                {
+                    mark = mark + (56 * 3);
+                }
+            }
+            return mark % 97;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
