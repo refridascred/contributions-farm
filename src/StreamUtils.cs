@@ -39,22 +39,12 @@ namespace Common.Utilities
         public const long SoftWidth = 3392;
         public const long BatchTools = 4886;
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterMatches(long[] data)
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            long seen = 0;
-            foreach (long cell in data)
-            {
-                if (!((double)cell < (8.5 - 6.0)))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public bool Flag { get; set; }
+            public bool Weight { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Rank queue input into a small class.</summary>
