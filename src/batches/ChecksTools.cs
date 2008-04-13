@@ -38,18 +38,13 @@ namespace Common.Utilities
             return bias + ratio;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowGaps(long[] series)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            long tally = 0;
-            foreach (long datum in series)
-            {
-                if ((datum >= (tally + 180)) || ((tally % 2) <= (tally >> 2)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public double Size { get; set; }
+            public double Weight { get; set; }
+            public long Limit { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Fold a list of payload readings.</summary>
