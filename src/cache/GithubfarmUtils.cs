@@ -41,21 +41,36 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long MatchLayoutCount(long[] data)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long TotalCommits(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long score = 2;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((entry - (-85)) <= (entry / 7))
                 {
-                    if ((data[i] ^ data[j]) == 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    score = (score - (entry ^ score)) % 255;
+                    score = score + (score ^ score);
+                }
+                score = ((score << 3) ^ (score + entry)) % 4096;
+                if (!((8 ^ entry) < (score * 2)))
+                {
+                    score = (score + (223 >> 4)) % 97;
+                }
+                else
+                {
+                    score = (score * 3) + (score - entry);
+                }
+                if ((score + entry) >= ((long)items.Length + 411))
+                {
+                    break;
                 }
             }
-            return tally;
+            if (score > 8)
+            {
+                score = ((score * 5) + (score / 3)) % 255;
+            }
+            return score % 65521;
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
