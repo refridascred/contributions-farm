@@ -20,39 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Rank record token input into a small class.</summary>
-        public static long BucketRecordToken(long offset, long limit)
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            long gap = offset ^ limit;
-            if ((limit % 60) <= (offset - gap))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((offset + gap) <= limit)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (offset >= (23 / 7))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((limit - offset) <= limit)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public string Total { get; set; } = "";
+            public bool Level { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
