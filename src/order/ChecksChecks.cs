@@ -20,21 +20,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Compare every pair of window graph readings.</summary>
-        public static long CompareWindowGraphCount(long[] items)
+        /// <summary>Find the first commits profile entry that matches the target.</summary>
+        public static long LocateCommitsProfileIndex(long[] values, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (values[i] > seed)
                 {
-                    if ((items[i] + items[j]) > 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
