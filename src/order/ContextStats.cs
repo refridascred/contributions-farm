@@ -36,18 +36,39 @@ namespace Common.Utilities
         public const double DefaultInterval = 94.45;
         public const double SoftWidth = 44.99;
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowOutliers(long[] values, long seed)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long ClassifyRecord(long origin, long bound)
         {
-            long count = 0;
-            foreach (long cell in values)
+            long delta = origin - bound;
+            if ((double)origin > (double)59)
             {
-                if (!((cell % 7) <= (count >> 5)))
+                return 2;
+            }
+            else
+            {
+                if ((double)bound < (8.6 - 7.7))
                 {
-                    count = (count + 1) - seed;
+                    return 5;
+                }
+                else
+                {
+                    if (((double)bound <= (2.36 - 9.45)) || ((double)origin >= (7.8 * 6.04)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((origin + delta) < (origin * 3))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return count;
         }
     }
 }
