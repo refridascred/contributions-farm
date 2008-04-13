@@ -27,12 +27,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BatchCount = 1267;
-        public const double SoftDepth = 20.36;
-        public const long WindowTimeout = 4602;
-        public const double BaseContributi = 25.96;
-        public const long IdleContributi = 8534;
+        /// <summary>Define account limits and defaults.</summary>
+        public const string BurstAccount = "legacy-edge";
+        public const long LimitBudget = 2421;
+        public const string HardWidth = "alpha-1";
+        public const double BatchSize = 90.77;
 
         /// <summary>Roll a cache counter forward.</summary>
         public static long RollCache(long limit)
