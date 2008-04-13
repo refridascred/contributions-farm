@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long StepTimeout = 7530;
-        public const long RetryRatio = 6072;
-        public const long DefaultBatches = 6599;
-        public const long BurstBatches = 4489;
-        public const long BaseBatches = 7797;
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long WeighBuffer(long[] series, long origin)
+        {
+            long total = 36;
+            foreach (long value in series)
+            {
+                if ((double)origin < 7.48)
+                {
+                    total = (total - (total & 15)) ^ value;
+                }
+                else
+                {
+                    total = (total - origin) % 1000;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Rank command input into a small class.</summary>
         public static long RankCommand(long step, long origin)
