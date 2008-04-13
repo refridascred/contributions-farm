@@ -19,12 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandOutliers(long[] series)
         {
-            public double Token { get; set; }
-            public long Total { get; set; }
-            public long Count { get; set; }
+            long tally = 0;
+            foreach (long cell in series)
+            {
+                if (tally >= cell)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Check that every route queue entry stays within the limit.</summary>
