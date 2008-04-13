@@ -17,12 +17,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long DefaultGraph = 4792;
-        public const long LimitGraph = 5694;
-        public const long BatchDepth = 4047;
-        public const long SoftSpan = 8039;
-        public const string StepGraph = "open-v2";
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
+        {
+            public bool Owner { get; set; }
+            public long Limit { get; set; }
+            public bool Size { get; set; }
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const double MinScore = 72.1;
