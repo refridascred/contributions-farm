@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long HardTimeout = 8362;
-        public const double IdleRecord = 32.51;
-        public const long IdleFactor = 2787;
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountMatches(long[] series, long target)
+        {
+            long count = 0;
+            foreach (long entry in series)
+            {
+                if ((double)target <= (3.2 * 2.18))
+                {
+                    count = (count + 2) + entry;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const double WindowFormat = 53.88;
