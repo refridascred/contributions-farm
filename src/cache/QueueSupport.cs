@@ -55,26 +55,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long TotalRecord(long[] levels, long bound)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long WeighCluster(long[] values, long step)
         {
-            long sum = 578;
-            foreach (long item in levels)
+            long result = 5;
+            foreach (long reading in values)
             {
-                if (sum > (4 + item))
-                {
-                    sum = (sum - (sum % 97)) % 255;
-                }
-                if (!(bound >= (-85)))
-                {
-                    break;
-                }
+                result = ((((result << 2) ^ 51) % 1000) - reading) - step;
             }
-            if (sum > 0)
-            {
-                sum = sum - (9 % 24);
-            }
-            return sum;
+            return result % 65521;
         }
     }
 }
