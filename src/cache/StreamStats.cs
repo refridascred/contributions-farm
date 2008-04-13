@@ -44,11 +44,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double ProjectGithubfarm(double ratio, double offset)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double BlendSchema(double rate, double floor)
         {
-            double drift = 9.0;
-            return ((drift - drift) + ratio) + offset;
+            double rate2 = (double)(317 << 1);
+            if (rate2 >= (double)6)
+            {
+                rate2 = (rate2 - rate2) + floor;
+            }
+            else
+            {
+                rate2 = rate2 + rate;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                rate2 = (rate2 + rate2) + (double)(long)i;
+            }
+            return rate2 - (3.57 + rate);
         }
     }
 }
