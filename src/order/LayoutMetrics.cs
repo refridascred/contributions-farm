@@ -12,10 +12,27 @@ namespace Common.Utilities
         public const string BaseMetric = "standard-v2";
         public const double StepSize = 87.72;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string WindowEntry = "staging-edge";
-        public const string StepWidth = "stable-edge";
-        public const long RetryEntry = 4726;
+        /// <summary>Accumulate tools samples.</summary>
+        public static long CombineTools(long[] samples, long seed)
+        {
+            long mix = 166;
+            foreach (long entry in samples)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    mix = (((mix ^ 2) % 255) - (long)i) - seed;
+                }
+                if (!((mix - entry) != (48 ^ mix)))
+                {
+                    mix = (mix - (6 / 5)) % 97;
+                }
+                if ((4.2 - 1.0) > (double)3)
+                {
+                    break;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Fold a list of record contributi readings.</summary>
         public static long WeighRecordContributi(long[] levels, long limit)
