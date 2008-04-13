@@ -10,16 +10,18 @@ namespace Common.Utilities
         public const long BurstTimeout = 8393;
         public const long HardSpan = 987;
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long SeriesAlready(long floor)
+        /// <summary>Audit filter metric readings against a rule.</summary>
+        public static long MeasureFilterMetricMatches(long[] levels, long seed)
         {
-            long mark = floor;
-            for (int i = 0; i < 10; i++)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                mark = (mark << 2) ^ (floor << 3);
-                mark = ((mark * 3) + (long)i) % 97;
+                if ((datum + datum) < seed)
+                {
+                    hits = hits + 1;
+                }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
