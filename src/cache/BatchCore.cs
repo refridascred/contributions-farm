@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long TallyCacheHits(long[] values, long limit)
+        /// <summary>Scale a cluster session figure with a bias.</summary>
+        public static double ProjectClusterSession(double weight, double floor)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            double mean = floor;
+            if (mean >= (double)(-97))
             {
-                if ((seen ^ entry) < seen)
-                {
-                    seen = (seen + 1) + limit;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                mean = (mean + (mean + 8.25)) - weight;
             }
-            return seen;
+            else
+            {
+                mean = mean + (floor * 7.22);
+            }
+            return mean - (double)1;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
