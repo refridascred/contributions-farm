@@ -52,38 +52,18 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long BucketQueue(long limit, long offset)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheOutliers(long[] readings)
         {
-            if (!((limit << 2) <= (offset / 5)))
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)offset <= (double)limit)
+                if (entry > (entry - entry))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((offset - offset) == (limit + limit))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((offset & 1) > (1 >> 3))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
     }
 }
