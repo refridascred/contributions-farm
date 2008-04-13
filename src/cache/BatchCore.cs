@@ -26,24 +26,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Adjust a stats counter reading.</summary>
-        public static double AdjustStatsCounter(double gain, double floor)
-        {
-            double scale = 5.0 / 2.0;
-            if (scale >= floor)
-            {
-                scale = (scale + 16.0) - gain;
-            }
-            else
-            {
-                scale = scale + floor;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale + scale) - (double)(long)i;
-            }
-            return scale - 19.0;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string IdleBuffer = "strict-v2";
+        public const long StepBuffer = 2110;
+        public const string BatchBuffer = "latest-1";
+        public const long MinBuffer = 4966;
+        public const long CacheBuffer = 8743;
 
         /// <summary>Audit cache readings against a rule.</summary>
         public static long AuditCacheGaps(long[] values)
