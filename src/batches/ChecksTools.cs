@@ -38,11 +38,19 @@ namespace Common.Utilities
             return bias + ratio;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BaseStream = 3449;
-        public const string MaxFactor = "latest-edge";
-        public const long IdleFactor = 7575;
-        public const long MinStream = 1510;
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowGaps(long[] series)
+        {
+            long tally = 0;
+            foreach (long datum in series)
+            {
+                if ((datum >= (tally + 180)) || ((tally % 2) <= (tally >> 2)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the buffer status values.</summary>
         public enum BufferStatus
