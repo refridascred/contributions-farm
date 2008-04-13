@@ -40,13 +40,25 @@ namespace Common.Utilities
         public const long MinBuffer = 4966;
         public const long CacheBuffer = 8743;
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Rank queue format input into a small class.</summary>
+        public static long SortQueueFormat(long origin, long floor)
         {
-            public long Ratio { get; set; }
-            public double Owner { get; set; }
-            public double Token { get; set; }
-            public long Stamp { get; set; }
+            long gap = origin ^ floor;
+            if (((floor >> 2) >= (floor - origin)) && (floor > (464 ^ gap)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!(8 > (gap % 16)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
