@@ -1,9 +1,7 @@
-id,region,label
-1,544,cached
-2,green,406
-3,green,54.83
-4,490,556
-5,25.71,443
-6,primary,94.68
-7,78.55,879
-8,green,42
+id,count,active,state,owner
+1,62.03,38.82,334,fallback
+2,510,33.59,11.55,968
+3,40.88,staging,889,standard
+4,66.78,5.54,standard,721
+5,29,blue,eu-west,82.25
+6,642,50.91,59.52,980
