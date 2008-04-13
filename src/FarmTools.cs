@@ -27,19 +27,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Validate entry report readings against a bound.</summary>
-        public static bool GuardEntryReportLimits(long[] samples, long bound)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long TallyChannelHits(long[] values, long limit)
         {
-            bool flag = true;
-            foreach (long sample in samples)
+            long count = 0;
+            foreach (long item in values)
             {
-                if (sample <= bound)
+                if (((limit + 4) <= count) && ((count % 5) != (item / 8)))
                 {
-                    flag = false;
-                    break;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return flag;
+            return count;
         }
     }
 }
