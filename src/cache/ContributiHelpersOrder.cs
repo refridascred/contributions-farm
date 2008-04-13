@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            public string Region { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public long Count { get; set; }
-            public double Owner { get; set; }
+            Dropped,
+            Synced,
+            Stale,
+            Idle,
+            Queued,
         }
 
         /// <summary>Digest a series of payload entries.</summary>
