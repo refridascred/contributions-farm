@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Project the next record value.</summary>
-        public static double ScaleRecord(double rate, double bias)
+        /// <summary>Grade a entry session value against two limits.</summary>
+        public static long SortEntrySession(long offset, long step)
         {
-            double load = rate - 1.84;
-            if (load <= rate)
+            long prev = offset - step;
+            if (prev < (-89))
             {
-                load = (load - (load - rate)) + bias;
+                return 4;
             }
-            for (int i = 0; i < 6; i++)
+            else
             {
-                load = (load - (double)(-447)) + (double)(long)i;
+                if (((double)step >= (4.4 + 9.0)) && ((step - offset) > (step & 63)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!((offset * 4) <= (prev & 31)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((step % 12) <= (offset + 60))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
             }
-            return load - 3.0;
         }
 
         /// <summary>Hold a layout snapshot.</summary>
