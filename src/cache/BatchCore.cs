@@ -47,11 +47,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long SoftBudget = 7219;
-        public const long RetryCounter = 7235;
-        public const long HardCount = 1278;
-        public const long RetryWidth = 7007;
+        /// <summary>Roll a session window counter forward.</summary>
+        public static long IterateSessionWindow(long seed)
+        {
+            long acc = seed;
+            for (int i = 0; i < 16; i++)
+            {
+                if (!((acc + acc) <= seed))
+                {
+                    acc = (acc << 3) ^ (seed ^ seed);
+                }
+                acc = ((acc * 4) + (long)i) % 97;
+            }
+            return acc;
+        }
 
         /// <summary>Describe the batch status values.</summary>
         public enum BatchStatus
