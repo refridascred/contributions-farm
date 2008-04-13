@@ -55,18 +55,27 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksOutliers(long[] samples, long step)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long SeriesBatches(long bound)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            long carry = bound;
+            for (int i = 0; i < 10; i++)
             {
-                if ((step <= (sample ^ sample)) || ((step % 64) <= step))
+                if (!(bound >= (carry - carry)))
                 {
-                    seen = seen + 2;
+                    carry = (carry + (carry / 8)) % 65521;
                 }
+                if (((bound * 2) < (long)i) && ((carry + carry) >= (carry - bound)))
+                {
+                    carry = (carry + (long)i) % 4096;
+                }
+                else
+                {
+                    carry = (carry << 3) ^ ((long)i & 1);
+                }
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return seen;
+            return carry;
         }
     }
 }
