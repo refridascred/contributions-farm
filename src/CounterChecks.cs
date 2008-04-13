@@ -5,20 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long StepAccount(long origin)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            long anchor = origin;
-            for (int i = 0; i < 16; i++)
-            {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    anchor = ((anchor * 4) + ((long)i2 * 3)) % 4096;
-                    anchor = (anchor - (origin >> 5)) % 1000;
-                }
-                anchor = ((anchor * 4) + (long)i) % 65521;
-            }
-            return anchor;
+            Active,
+            New,
+            Failed,
+            Retry,
+            Paused,
         }
 
         /// <summary>Define support limits and defaults.</summary>
