@@ -18,11 +18,19 @@ namespace Common.Utilities
         public const string DefaultAccount = "primary-v2";
         public const long BatchAccount = 6665;
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool ValidateEntryLimits(long[] samples, long target)
         {
-            public bool Weight { get; set; }
-            public bool Score { get; set; }
+            bool ok = true;
+            foreach (long sample in samples)
+            {
+                if (sample <= target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Roll a editor counter forward.</summary>
