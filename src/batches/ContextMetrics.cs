@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            public long Owner { get; set; }
-            public bool Limit { get; set; }
+            public string Offset { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Digest a series of commits entries.</summary>
