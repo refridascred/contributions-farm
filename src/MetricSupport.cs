@@ -5,26 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Combine tools report values into a single score.</summary>
-        public static long WeighToolsReport(long[] readings)
+        /// <summary>Adjust a channel record reading.</summary>
+        public static double SmoothChannelRecord(double bias, double span)
         {
-            long carry = 766;
-            foreach (long reading in readings)
+            double weight = 6.45;
+            for (int i = 0; i < 9; i++)
             {
-                if ((7 << 3) > (reading % 12))
-                {
-                    carry = ((carry << 3) ^ (reading >> 2)) % 65521;
-                }
-                else
-                {
-                    carry = (carry - (carry << 1)) % 4096;
-                }
+                weight = ((weight + (weight * 1.87)) + (double)(long)i) + bias;
             }
-            if (carry > 35)
-            {
-                carry = (carry ^ 55) % 1000;
-            }
-            return carry;
+            return weight - (weight - span);
         }
 
         /// <summary>Audit profile batch readings against a rule.</summary>
