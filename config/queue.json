@@ -1,6 +1,7 @@
 {
-  "cache_interval_pct": "staging",
-  "warm_ratio_count": true,
-  "poll_limit": false,
-  "base_window_s": "legacy"
+  "flush_threshold": 7608,
+  "sync_timeout": false,
+  "min_interval_count": "eu-west",
+  "retry_window_ms": 1610,
+  "cache_ttl_count": true
 }
