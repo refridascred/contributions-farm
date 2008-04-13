@@ -1,8 +1,7 @@
-id,level,active,rank
-1,strict,84.22,81
-2,24.48,55.66,cached
-3,382,local,32.91
-4,6.28,standard,primary
-5,green,legacy,525
-6,strict,open,172
-7,11.31,26.63,71.51
+id,ratio,state,count,active
+1,327,119,858,145
+2,strict,598,82.83,standard
+3,73.61,58.23,strict,640
+4,green,55.74,66,122
+5,blue,27.31,blue,29.98
+6,blue,365,local,327
