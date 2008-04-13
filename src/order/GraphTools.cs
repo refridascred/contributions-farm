@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Match up cluster samples.</summary>
-        public static long CompareClusterCount(long[] data)
-        {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 9)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string BatchTools = "fallback-edge";
+        public const long BatchCount = 8355;
+        public const string SoftWidth = "legacy-v2";
 
         /// <summary>Describe the commits phase values.</summary>
         public enum CommitsPhase
