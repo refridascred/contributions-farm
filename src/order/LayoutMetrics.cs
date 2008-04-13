@@ -34,15 +34,31 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long TotalToken(long[] samples)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long ClassifyRecord(long seed, long offset)
         {
-            long mark = 75;
-            foreach (long sample in samples)
+            if ((seed < (seed ^ offset)) && (seed >= (offset + seed)))
             {
-                mark = mark - sample;
+                return 8;
             }
-            return mark;
+            else
+            {
+                if ((3.26 * 0.4) >= (double)offset)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((offset >> 3) <= offset)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
