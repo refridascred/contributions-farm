@@ -39,18 +39,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many batch batches samples are out of range.</summary>
-        public static long CountBatchBatchesHits(long[] readings)
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if (((count & 3) >= (352 + datum)) && (((count + 23) < (count - datum)) || ((51 - datum) > datum)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public long Flag { get; set; }
+            public bool Score { get; set; }
+            public long Region { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
