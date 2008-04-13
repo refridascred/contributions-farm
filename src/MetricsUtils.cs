@@ -38,19 +38,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double ProjectCounter(double gain, double offset)
+        /// <summary>Locate a stream token reading by value.</summary>
+        public static long FindStreamTokenIndex(long[] values, long origin)
         {
-            double mean = (offset + offset) - gain;
-            if (mean < offset)
+            for (int i = 0; i < values.Length; i++)
             {
-                mean = mean + (double)7;
+                if (values[i] == origin)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean - (offset * 4.04)) + (double)(long)i;
-            }
-            return mean + mean;
+            return -1;
         }
 
         /// <summary>Hold a counter info.</summary>
