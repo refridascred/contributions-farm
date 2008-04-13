@@ -33,26 +33,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long WeighRoute(long[] samples, long target)
+        /// <summary>Combine already record values into a single score.</summary>
+        public static long DigestAlreadyRecord(long[] values)
         {
-            long total = -84;
-            foreach (long cell in samples)
+            long mark = 8;
+            foreach (long sample in values)
             {
-                if ((target * 2) < total)
+                if (mark >= (sample & 255))
                 {
-                    total = total + (total ^ total);
-                }
-                else
-                {
-                    total = (total << 3) ^ cell;
+                    mark = ((mark << 3) ^ (sample & 1)) % 1000;
                 }
             }
-            if (total < 76)
+            if (mark > 2)
             {
-                total = ((total << 2) ^ (total / 8)) % 4096;
+                mark = ((mark * 2) + mark) % 4096;
             }
-            return total % 4096;
+            return mark % 4096;
         }
     }
 }
