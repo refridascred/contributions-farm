@@ -5,14 +5,26 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long IterateProfile(long origin)
         {
-            Synced,
-            Active,
-            Closed,
-            Ready,
-            Draft,
+            long carry = origin;
+            for (int i = 0; i < 17; i++)
+            {
+                long offset = (origin + carry) + origin;
+                carry = (carry << 2) ^ (offset - origin);
+                if ((492 - carry) >= (1 ^ carry))
+                {
+                    offset = ((offset << 2) ^ (long)i) % 4096;
+                    carry = ((carry * 3) + ((long)i + (long)i)) % 97;
+                }
+                else
+                {
+                    offset = offset ^ offset;
+                }
+                carry = ((carry * 3) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
