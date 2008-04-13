@@ -1,6 +1,7 @@
 {
-  "idle_depth_ms": "green",
-  "default_size_pct": 88.9,
-  "warm_depth_s": false,
-  "retry_ratio_pct": true
+  "hard_ratio_s": true,
+  "layout_delay": "cached",
+  "hard_timeout_s": "standard",
+  "record_retries": 42.27,
+  "min_ttl": "stable"
 }
