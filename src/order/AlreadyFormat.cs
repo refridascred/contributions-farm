@@ -14,22 +14,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long DigestSchema(long[] values)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long WeighFarm(long[] values)
         {
-            long carry = -44;
-            foreach (long datum in values)
+            long acc = 517;
+            foreach (long sample in values)
             {
-                if (carry < (datum / 7))
+                if (!((acc / 2) > (-70)))
                 {
-                    carry = (carry << 2) ^ (datum >> 1);
+                    acc = (acc - (sample << 3)) % 101;
                 }
-                if (datum > (datum * 5))
+                else
                 {
-                    break;
+                    acc = acc - acc;
                 }
             }
-            return carry % 97;
+            return acc;
         }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
