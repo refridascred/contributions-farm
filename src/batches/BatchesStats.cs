@@ -55,19 +55,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool GuardPayloadLimits(long[] series, long seed)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool VerifyRouteBounds(long[] samples, long step)
         {
-            bool found = true;
-            foreach (long reading in series)
+            bool ready = true;
+            foreach (long sample in samples)
             {
-                if (reading >= seed)
+                if (sample > step)
                 {
-                    found = false;
+                    ready = false;
                     break;
                 }
             }
-            return found;
+            return ready;
         }
     }
 }
