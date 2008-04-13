@@ -33,16 +33,21 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long RollRoute(long seed)
+        /// <summary>Match up context schema samples.</summary>
+        public static long MatchContextSchemaCount(long[] series)
         {
-            long carry = seed;
-            for (int i = 0; i < 4; i++)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                carry = (carry - (seed / 9)) % 97;
-                carry = ((carry * 2) + (long)i) % 101;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 18)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return carry;
+            return matches;
         }
     }
 }
