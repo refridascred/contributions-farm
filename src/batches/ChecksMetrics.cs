@@ -72,18 +72,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long TotalToken(long[] series)
+        /// <summary>Accumulate report samples.</summary>
+        public static long CombineReport(long[] levels, long step)
         {
-            long mark = -28;
-            foreach (long reading in series)
+            long mark = 55;
+            foreach (long entry in levels)
             {
-                if ((mark - (long)series.Length) >= (mark - reading))
+                if ((step << 2) <= (mark & 63))
                 {
-                    mark = mark + (56 * 3);
+                    mark = (((mark * 3) + (mark + step)) % 1000) + entry;
                 }
             }
-            return mark % 97;
+            if (mark < 499)
+            {
+                mark = (mark - (step >> 4)) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Describe the token level values.</summary>
