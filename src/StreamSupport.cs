@@ -5,22 +5,38 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamGaps(long[] samples, long bound)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long GradeSchema(long offset, long floor)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            if (!((offset % 8) < (offset - offset)))
             {
-                if ((bound << 3) <= (item & 7))
+                return 8;
+            }
+            else
+            {
+                if (offset >= floor)
                 {
-                    hits = hits + 3;
+                    return 2;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if ((floor + floor) > (offset / 7))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)offset >= (1.9 - 19.0))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a contributi options.</summary>
