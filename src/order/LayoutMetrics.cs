@@ -33,13 +33,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Measure how many notes farm samples are out of range.</summary>
+        public static long CountNotesFarmHits(long[] items)
         {
-            Retry,
-            Locked,
-            Closed,
-            Paused,
+            long hits = 0;
+            foreach (long value in items)
+            {
+                if ((double)value > (7.3 - 9.5))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
     }
 }
