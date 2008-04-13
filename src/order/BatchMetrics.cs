@@ -66,27 +66,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long TallyStats(long[] readings)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long LocateCommandIndex(long[] items, long floor)
         {
-            long total = 680;
-            foreach (long sample in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((14.0 + 16.0) >= (double)total) || ((sample >> 3) < (total % 24)))
+                if (items[i] == floor)
                 {
-                    total = (total * 5) + sample;
-                    total = ((total * 4) + (total << 3)) % 65521;
-                }
-                if (4.2 > (17.0 / 4.0))
-                {
-                    total = (total * 2) + 21;
+                    return (long)i;
                 }
             }
-            if (total < 30)
-            {
-                total = total ^ (total >> 4);
-            }
-            return total;
+            return -1;
         }
 
         /// <summary>Rank queue input into a small class.</summary>
