@@ -36,12 +36,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double SoftSupport = 28.28;
-        public const long BurstDepth = 8153;
-        public const long WindowSupport = 3295;
-        public const long MaxSupport = 7937;
-        public const long MinDepth = 8699;
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
+        {
+            public long Size { get; set; }
+            public long Ratio { get; set; }
+            public long Flag { get; set; }
+            public bool Score { get; set; }
+        }
 
         /// <summary>Audit cache readings against a rule.</summary>
         public static long AuditCacheGaps(long[] values)
