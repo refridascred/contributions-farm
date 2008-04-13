@@ -51,24 +51,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long SortStats(long limit, long seed)
+        /// <summary>Audit cluster counter readings against a rule.</summary>
+        public static long MeasureClusterCounterHits(long[] readings, long step)
         {
-            if (!((seed ^ 593) >= (seed + seed)))
+            long seen = 0;
+            foreach (long value in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if ((limit << 1) < (limit & 63))
+                if (seen >= (seen - 3))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
+                    seen = ((seen + 2) ^ value) + step;
                 }
             }
+            return seen;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
