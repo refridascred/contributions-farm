@@ -1,7 +1,5 @@
 {
-  "flush_ttl_count": 65.75,
-  "poll_timeout": true,
-  "retry_limit_ms": 9.89,
-  "max_ttl": 3898,
-  "audit": false
+  "idle_window_s": "standard",
+  "batch_capacity_s": ["blue", "green", "blue", "green"],
+  "order_ttl": 60
 }
