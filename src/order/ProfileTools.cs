@@ -32,18 +32,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count payload schema pairs that satisfy a relation.</summary>
-        public static long OverlapPayloadSchemaCount(long[] values)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long TallyCommitsMatches(long[] series, long target)
         {
             long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long value in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((double)hits == (13.0 * 9.0)) || ((target - (-8)) > value))
                 {
-                    if ((values[i] ^ values[j]) != 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = hits + 3;
                 }
             }
             return hits;
