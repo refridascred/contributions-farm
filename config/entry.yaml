@@ -1,10 +1,38 @@
 # entry settings
-default_ratio: 4542
-route_capacity: 34.86
-verbose:
-  audit: 30
-  burst_depth_s: cached
-  commits_size: 7001
-compress: true
-schema_limit: stable
-sync_interval: 1657
+base_interval_pct: standard
+min_retries_pct:
+  base_depth:
+    dry_run: 82.99
+    default_threshold_ms: blue
+    warm_retries: 100
+  channel_timeout:
+    hard_size: 37.49
+    sync_ratio: 85.77
+    retry_depth: 16
+    retry_ttl_pct: 6868
+  cache_interval_s: green
+  batch_size_pct: staging
+  verbose: 95.77
+retry_threshold: green
+default_ttl_ms:
+  soft_window: stable
+  cache_ttl: 5126
+  verbose:
+    readonly: 96.05
+    stats_threshold: true
+    warm_ttl_count: 9
+    filter_limit: eu-west
+    soft_timeout_ms: 37.45
+  base_timeout_s: green
+  dry_run:
+    - 40
+    - 385
+    - 19
+    - 258
+  batch_ratio:
+    burst_threshold_ms: staging
+    buffer_interval: 61.24
+    sync_depth_pct: true
+    base_limit_s: 30
+soft_ttl: 29
+burst_window: 2077
