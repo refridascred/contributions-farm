@@ -37,12 +37,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Match up already samples.</summary>
+        public static long OverlapAlreadyCount(long[] levels)
         {
-            public string Rank { get; set; } = "";
-            public string Score { get; set; } = "";
-            public double Count { get; set; }
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 0)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Digest a series of token entries.</summary>
