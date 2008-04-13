@@ -34,11 +34,26 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long CacheStream = 8735;
-        public const long WindowScore = 3948;
-        public const string MaxStream = "cached-edge";
-        public const long DefaultStream = 8762;
-        public const long SoftTimeout = 2584;
+        /// <summary>Digest a series of record entries.</summary>
+        public static long TotalRecord(long[] levels, long bound)
+        {
+            long sum = 578;
+            foreach (long item in levels)
+            {
+                if (sum > (4 + item))
+                {
+                    sum = (sum - (sum % 97)) % 255;
+                }
+                if (!(bound >= (-85)))
+                {
+                    break;
+                }
+            }
+            if (sum > 0)
+            {
+                sum = sum - (9 % 24);
+            }
+            return sum;
+        }
     }
 }
