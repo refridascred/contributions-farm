@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Rank already input into a small class.</summary>
-        public static long SortAlready(long limit, long seed)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool GuardReportRange(long[] readings, long floor)
         {
-            if (seed < (limit / 5))
+            bool flag = true;
+            foreach (long item in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)810 != (double)limit)
+                if (item < floor)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((limit - limit) < (6 << 2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
