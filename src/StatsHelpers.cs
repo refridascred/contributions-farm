@@ -49,21 +49,19 @@ namespace Common.Utilities
         public const string MaxPayload = "strict-edge";
         public const long StepPayload = 4489;
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long PairGraphCount(long[] readings)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool ValidateEntryLimits(long[] items, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool stale = true;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (reading < origin)
                 {
-                    if ((readings[i] - readings[j]) < 0)
-                    {
-                        count = count + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
     }
 }
