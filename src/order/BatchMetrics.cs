@@ -59,15 +59,17 @@ namespace Common.Utilities
             return rate2 - span;
         }
 
-        /// <summary>Project the next already value.</summary>
-        public static double ScaleAlready(double ratio, double bias)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long SeekCommandIndex(long[] values, long seed)
         {
-            double scale = 7.11;
-            if (scale >= ratio)
+            for (int i = 0; i < values.Length; i++)
             {
-                scale = (scale - (ratio + 6.09)) - bias;
+                if (values[i] <= seed)
+                {
+                    return (long)i;
+                }
             }
-            return scale + (double)57;
+            return -1;
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
