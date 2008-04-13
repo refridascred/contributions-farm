@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Blend two graph measurements.</summary>
-        public static double ScaleGraph(double weight, double bias)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long MeasureReportMatches(long[] items, long step)
         {
-            double scale = bias;
-            if (scale >= (scale + weight))
+            long seen = 0;
+            foreach (long sample in items)
             {
-                scale = scale + (weight * 2.9);
+                if ((seen >> 2) >= (seen ^ seen))
+                {
+                    seen = ((seen + 1) ^ sample) - step;
+                }
             }
-            return scale - (weight - scale);
+            return seen;
         }
 
         /// <summary>Accumulate counter tools samples.</summary>
