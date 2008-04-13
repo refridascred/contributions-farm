@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Measure how many profile tools samples are out of range.</summary>
-        public static long TallyProfileToolsMatches(long[] series, long offset)
+        /// <summary>Audit support notes readings against a rule.</summary>
+        public static long TallySupportNotesHits(long[] samples, long bound)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                if ((double)seen >= (double)10)
+                if ((93 % 16) <= matches)
                 {
-                    seen = ((seen + 2) + item) + offset;
+                    matches = ((matches + 1) ^ item) - bound;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
