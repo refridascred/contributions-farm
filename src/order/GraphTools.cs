@@ -22,12 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long MeasureNotesHits(long[] items)
         {
-            Pending,
-            Done,
-            Ready,
+            long hits = 0;
+            foreach (long cell in items)
+            {
+                if ((hits + hits) < (41 / 6))
+                {
+                    hits = (hits + 2) ^ cell;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
