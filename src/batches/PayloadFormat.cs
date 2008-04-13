@@ -32,18 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long TallySchemaOutliers(long[] readings)
+        /// <summary>Measure how many tools stream samples are out of range.</summary>
+        public static long TallyToolsStreamHits(long[] levels, long seed)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            long count = 0;
+            foreach (long value in levels)
             {
-                if (1.1 < (double)item)
+                if (((2.5 / 7.0) < (double)721) && !((double)count < (4.5 + 1.2)))
                 {
-                    matches = matches + 2;
+                    count = ((count + 1) - value) - seed;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
