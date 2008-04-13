@@ -14,17 +14,14 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long LocateNotesIndex(long[] readings, long origin)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            New,
+            Queued,
+            Retry,
+            Pending,
         }
 
         /// <summary>Derive the next stats schema value from a seed.</summary>
