@@ -34,18 +34,18 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Count the context metrics entries that pass the check.</summary>
-        public static long AuditContextMetricsGaps(long[] items, long bound)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowOutliers(long[] readings, long seed)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                if (seen > (bound >> 3))
+                if (!((item + item) < (hits + hits)))
                 {
-                    seen = (seen + 2) + datum;
+                    hits = (hits + 3) - seed;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Describe the notes level values.</summary>
