@@ -44,21 +44,22 @@ namespace Common.Utilities
         public const long WindowMetric = 1776;
         public const long RetryMetric = 7581;
 
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long OverlapStreamCount(long[] levels)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterMatches(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!((double)cell < (8.5 - 6.0)))
                 {
-                    if ((levels[i] ^ levels[j]) < 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Rank queue input into a small class.</summary>
