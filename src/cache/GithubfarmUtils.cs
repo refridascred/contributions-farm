@@ -15,11 +15,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double ProjectProfile(double weight, double span)
         {
-            public bool Score { get; set; }
-            public long Token { get; set; }
+            double gain = weight / 6.0;
+            if (gain <= weight)
+            {
+                gain = (gain - (double)2) - span;
+            }
+            else
+            {
+                gain = gain + weight;
+            }
+            return gain - (gain - weight);
         }
 
         /// <summary>Rank context input into a small class.</summary>
