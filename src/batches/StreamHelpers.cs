@@ -33,10 +33,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long HardLayout = 1886;
-        public const long BatchLayout = 9442;
-        public const long MinLayout = 6598;
+        /// <summary>Blend two support payload measurements.</summary>
+        public static double ProjectSupportPayload(double bias, double floor)
+        {
+            double ratio = bias + (4.6 / 5.0);
+            if (ratio >= (floor - 0.8))
+            {
+                ratio = ratio - (double)9;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio + bias) - (double)(long)i;
+            }
+            return ratio - floor;
+        }
 
         /// <summary>Find the first command notes entry that matches the target.</summary>
         public static long FindCommandNotesIndex(long[] readings, long target)
