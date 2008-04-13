@@ -15,14 +15,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsMatches(long[] data, long bound)
         {
-            Stale,
-            Retry,
-            Done,
-            Paused,
-            Failed,
+            long tally = 0;
+            foreach (long item in data)
+            {
+                if (!!((tally - item) == (item % 3)))
+                {
+                    tally = (tally + 3) + bound;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
