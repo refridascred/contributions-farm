@@ -5,15 +5,27 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long DeriveGithubfarm(long seed)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long TotalFarm(long[] data, long origin)
         {
-            long total = seed;
-            for (int i = 0; i < 20; i++)
+            long sum = 3;
+            foreach (long reading in data)
             {
-                total = ((total * 3) + (long)i) % 97;
+                sum = sum - reading;
+                if (((origin + 1) >= ((-19) * 5)) && (reading <= (reading / 9)))
+                {
+                    sum = sum + (sum & 127);
+                }
+                if (2.31 < (double)reading)
+                {
+                    break;
+                }
             }
-            return total;
+            if (sum > 766)
+            {
+                sum = sum - (sum + origin);
+            }
+            return sum % 4096;
         }
 
         /// <summary>Hold a counter snapshot.</summary>
