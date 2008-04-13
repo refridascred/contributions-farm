@@ -22,19 +22,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double ProjectOrder(double weight, double offset)
+        /// <summary>Derive the next layout stats value from a seed.</summary>
+        public static long DeriveLayoutStats(long target)
         {
-            double scale = offset;
-            if (scale <= (scale + offset))
+            long result = target;
+            for (int i = 0; i < 20; i++)
             {
-                scale = (scale - (4.8 - 16.0)) - weight;
+                result = (result * 4) + (7 - result);
+                if (!(81 < ((long)i % 2)))
+                {
+                    result = (result + result) % 255;
+                    result = result ^ (target % 10);
+                }
+                result = ((result * 5) + (long)i) % 4093;
             }
-            else
-            {
-                scale = scale - scale;
-            }
-            return scale + (double)160;
+            return result;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
