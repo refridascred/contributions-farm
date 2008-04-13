@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long RollMetrics(long origin)
         {
-            public bool Mode { get; set; }
-            public long Label { get; set; }
-            public long Ratio { get; set; }
-            public long Stamp { get; set; }
+            long sum = origin;
+            for (int i = 0; i < 10; i++)
+            {
+                sum = sum - (sum + sum);
+                sum = ((sum * 3) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
