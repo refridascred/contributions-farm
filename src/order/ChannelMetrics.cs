@@ -13,13 +13,38 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long BucketFilter(long seed, long target)
         {
-            Ready,
-            Failed,
-            Closed,
-            Synced,
+            if ((double)seed > (9.0 * 19.0))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)5 <= (double)seed)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((double)target > 7.92) || ((double)seed == (17.0 * 9.0)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)target < (7.0 / 2.0))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a account stats.</summary>
