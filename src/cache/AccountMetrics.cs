@@ -5,38 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long RankTools(long bound, long step)
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            if (((step + bound) <= (step >> 3)) && ((double)step != (6.6 / 4.0)))
-            {
-                return 3;
-            }
-            else
-            {
-                if (step >= bound)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (bound < (bound - bound))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((1 & 31) > (step ^ step))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public string Label { get; set; } = "";
+            public long Rank { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Compare every pair of batch metrics readings.</summary>
