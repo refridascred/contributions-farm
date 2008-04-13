@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Audit githubfarm account readings against a rule.</summary>
-        public static long CountGithubfarmAccountGaps(long[] levels, long floor)
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            long hits = 0;
-            foreach (long entry in levels)
-            {
-                if ((20.0 - 6.0) == (double)floor)
-                {
-                    hits = (hits + 2) - entry;
-                }
-            }
-            return hits;
+            public long Size { get; set; }
+            public long Token { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Scale a cache figure with a bias.</summary>
