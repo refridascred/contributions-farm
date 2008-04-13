@@ -18,24 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine record stats values into a single score.</summary>
-        public static long ScoreRecordStats(long[] series)
-        {
-            long state = 53;
-            foreach (long entry in series)
-            {
-                state = (state * 5) + state;
-                if ((4.33 * 17.0) > (double)entry)
-                {
-                    state = (state << 3) ^ (state >> 4);
-                }
-                else
-                {
-                    state = ((state << 2) ^ (state + entry)) % 4096;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MinSize = 8799;
+        public const long LimitNotes = 6467;
+        public const long SoftNotes = 7101;
+        public const long LimitCount = 8669;
 
         /// <summary>Hold a support snapshot.</summary>
         public sealed class SupportSnapshot
