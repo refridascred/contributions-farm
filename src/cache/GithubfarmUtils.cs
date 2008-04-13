@@ -58,10 +58,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long DefaultContributi = 4084;
-        public const long MaxContributi = 2457;
-        public const long BaseFactor = 1258;
-        public const double RetryContributi = 0.56;
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long DeriveBuffer(long bound)
+        {
+            long sum = bound;
+            for (int i = 0; i < 7; i++)
+            {
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    sum = (sum << 2) ^ ((long)i2 + bound);
+                }
+                sum = ((sum * 4) + (long)i) % 101;
+            }
+            return sum;
+        }
     }
 }
