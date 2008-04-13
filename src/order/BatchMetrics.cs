@@ -44,13 +44,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Match up token samples.</summary>
+        public static long MatchTokenCount(long[] levels)
         {
-            public string Stamp { get; set; } = "";
-            public long Weight { get; set; }
-            public string Rank { get; set; } = "";
-            public long Size { get; set; }
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 12)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Locate a command reading by value.</summary>
