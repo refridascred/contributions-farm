@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Project the next already value.</summary>
-        public static double ProjectAlready(double gain, double offset)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long RollOrder(long limit)
         {
-            double load = offset;
-            if (load > load)
+            long sum = limit;
+            for (int i = 0; i < 23; i++)
             {
-                load = (load + (10.0 - load)) - gain;
+                if (((long)i - sum) > (limit >> 4))
+                {
+                    sum = (sum - limit) % 97;
+                }
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return load + (2.0 - load);
+            return sum;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
