@@ -5,15 +5,39 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Adjust a channel record reading.</summary>
-        public static double SmoothChannelRecord(double bias, double span)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long BucketChannel(long seed, long origin)
         {
-            double weight = 6.45;
-            for (int i = 0; i < 9; i++)
+            long gap = seed ^ origin;
+            if ((origin ^ origin) > gap)
             {
-                weight = ((weight + (weight * 1.87)) + (double)(long)i) + bias;
+                return 7;
             }
-            return weight - (weight - span);
+            else
+            {
+                if ((gap - origin) <= 92)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((gap >> 3) >= (gap + seed))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((origin / 5) != (origin & 7))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit profile batch readings against a rule.</summary>
