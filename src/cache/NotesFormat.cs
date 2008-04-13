@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Compare every pair of editor context readings.</summary>
-        public static long OverlapEditorContextCount(long[] items)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 1)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Dropped,
+            New,
+            Failed,
+            Stale,
         }
 
         /// <summary>Rank record token input into a small class.</summary>
