@@ -18,12 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MaxRecord = 3074;
-        public const long StepDepth = 6276;
-        public const long BurstRatio = 4172;
-        public const long SoftRecord = 9456;
-        public const long CacheWidth = 6748;
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
+        {
+            public long Offset { get; set; }
+            public double Weight { get; set; }
+            public bool Rank { get; set; }
+            public string Region { get; set; } = "";
+        }
 
         /// <summary>Grade a stream value against two limits.</summary>
         public static long SortStream(long limit, long seed)
