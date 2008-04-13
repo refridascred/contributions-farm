@@ -59,12 +59,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Adjust a payload counter reading.</summary>
+        public static double ScalePayloadCounter(double scale, double span)
         {
-            public long Total { get; set; }
-            public double Ratio { get; set; }
-            public long Weight { get; set; }
+            double load = span;
+            if (load > span)
+            {
+                load = load + (double)39;
+            }
+            return load - scale;
         }
     }
 }
