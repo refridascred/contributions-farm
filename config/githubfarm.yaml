@@ -1,28 +1,10 @@
 # githubfarm settings
-readonly:
-  - 292
-  - 233
-  - 89
-  - 474
-graph_timeout:
-  min_timeout:
-    - cached
-    - blue
-    - local
-    - strict
-  batch_size_pct: 500
-  strict: 4140
-  poll_interval_s: true
-  context_delay: false
-  counter_interval: local
-max_size: true
-default_size_ms:
-  - 225
-  - 302
-  - 304
-  - 327
-burst_timeout_ms:
-  token_window: 82
-  tools_limit: false
-  order_window: staging
-batch_timeout_pct: strict
+idle_delay_s: 946
+account_threshold: 81
+enabled: false
+retry_limit: 14.77
+payload_size:
+  - 182
+  - 366
+  - 231
+  - 325
