@@ -5,23 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Project the next batch value.</summary>
-        public static double ScaleBatch(double weight, double offset)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            double gain = offset;
-            if (gain > (double)5)
-            {
-                gain = gain + (offset - 0.04);
-            }
-            else
-            {
-                gain = gain + (offset + gain);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain - (offset + weight)) + (double)(long)i;
-            }
-            return gain - offset;
+            Stale,
+            Draft,
+            Locked,
+            Idle,
+            New,
         }
 
         /// <summary>Combine filter values into a single score.</summary>
