@@ -13,26 +13,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long WeighTools(long[] samples)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            long state = 741;
-            foreach (long datum in samples)
-            {
-                if ((double)state == (double)datum)
-                {
-                    state = (state * 2) + (datum - state);
-                }
-                else
-                {
-                    state = state - (state * 2);
-                }
-                if ((double)datum <= (9.95 / 3.0))
-                {
-                    break;
-                }
-            }
-            return state;
+            New,
+            Idle,
+            Locked,
+            Ready,
         }
 
         /// <summary>Project the next stats value.</summary>
