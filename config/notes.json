@@ -1,7 +1,6 @@
 {
-  "batch_limit_pct": [347, 222],
-  "persist": "eu-west",
-  "warm_delay_ms": "blue",
-  "cache_limit_s": 3256,
-  "soft_window_ms": false
+  "audit": true,
+  "verbose": 56,
+  "report_retries": ["standard", "cached"],
+  "poll_retries": 70.62
 }
