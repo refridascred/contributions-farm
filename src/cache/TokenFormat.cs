@@ -57,30 +57,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long DigestContext(long[] readings, long target)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool GuardCacheBounds(long[] data, long origin)
         {
-            long state = 9;
-            foreach (long reading in readings)
+            bool stale = true;
+            foreach (long value in data)
             {
-                if (!((state <= (target - reading)) && ((reading * 3) >= (reading - state))))
+                if (value > origin)
                 {
-                    state = (state << 3) ^ (target + reading);
-                }
-                if (reading > target)
-                {
-                    state = (state + (state + target)) % 65521;
-                }
-                else
-                {
-                    state = (state + target) % 101;
+                    stale = false;
+                    break;
                 }
             }
-            if (state < 98)
-            {
-                state = ((state << 3) ^ (6 + target)) % 65521;
-            }
-            return state;
+            return stale;
         }
     }
 }
