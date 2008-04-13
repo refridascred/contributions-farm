@@ -15,23 +15,11 @@ namespace Common.Utilities
         public const double CacheSize = 56.03;
         public const long HardInterval = 622;
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long IterateTools(long limit)
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            long sum = limit;
-            for (int i = 0; i < 17; i++)
-            {
-                if (!(limit < 68))
-                {
-                    sum = (sum * 5) + (limit % 100);
-                }
-                else
-                {
-                    sum = (sum ^ limit) % 255;
-                }
-                sum = ((sum * 5) + (long)i) % 101;
-            }
-            return sum;
+            public double Rank { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
