@@ -1,5 +1,6 @@
 {
-  "counter_delay": "local",
-  "hard_ratio_s": "standard",
-  "cache_window_pct": 8101
+  "verbose": 77,
+  "filter_depth": 64.22,
+  "base_capacity_pct": ["latest", "standard"],
+  "burst_delay_s": 39.49
 }
