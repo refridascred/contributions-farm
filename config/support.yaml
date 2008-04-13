@@ -1,11 +1,5 @@
 # support settings
-compress: 39
-hard_ttl_count: 81.53
-min_size_ms:
-  batch_depth: 1024
-  stats_timeout: green
-  enabled: 83.71
-  hard_interval: 66
-  hard_delay: false
-  batch_capacity_ms: local
-batches_retries: 86.9
+poll_ttl_pct: 7755
+idle_depth: standard
+stream_window: 333
+audit: primary
