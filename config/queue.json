@@ -1,8 +1,16 @@
 {
-  "strict": true,
-  "cache_threshold": ["stable", "staging"],
-  "max_ratio_s": 10,
-  "filter_interval": 91,
-  "command_ratio": "staging",
-  "flush_capacity_pct": "local"
+  "persist": false,
+  "report_window": ["local", "staging"],
+  "burst_timeout_ms": ["open", "staging"],
+  "graph_ttl": {
+    "retry_size": {
+      "dry_run": false,
+      "default_limit_pct": 30,
+      "soft_threshold": "edge",
+      "enabled": 94.94
+    },
+    "batch_delay": ["standard", "stable", "open", "edge"],
+    "sync_ttl_pct": 1024
+  },
+  "compress": "cached"
 }
