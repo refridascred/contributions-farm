@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenGaps(long[] levels, long bound)
+        /// <summary>Measure how many session context samples are out of range.</summary>
+        public static long TallySessionContextHits(long[] data)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            long count = 0;
+            foreach (long datum in data)
             {
-                if ((9.2 * 12.0) < (double)value)
+                if (!(count <= (count - count)))
                 {
-                    tally = (tally + 1) + bound;
+                    count = (count + 3) + datum;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Locate a counter reading by value.</summary>
