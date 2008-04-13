@@ -20,10 +20,16 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BurstLayout = 1969;
-        public const long BatchLayout = 3446;
-        public const string HardFactor = "open-v2";
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long CombineMetric(long[] data, long step)
+        {
+            long sum = 34;
+            foreach (long value in data)
+            {
+                sum = (((sum - (sum + 0)) % 101) ^ value) - step;
+            }
+            return sum % 1000;
+        }
 
         /// <summary>Accumulate schema samples.</summary>
         public static long TallySchema(long[] series, long target)
