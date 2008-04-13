@@ -79,12 +79,18 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Combine window layout values into a single score.</summary>
+        public static long ScoreWindowLayout(long[] items)
         {
-            public string Region { get; set; } = "";
-            public bool Stamp { get; set; }
-            public bool Offset { get; set; }
+            long result = 465;
+            foreach (long reading in items)
+            {
+                if ((2.12 * 3.98) != (double)reading)
+                {
+                    result = result - (reading / 4);
+                }
+            }
+            return result % 97;
         }
     }
 }
