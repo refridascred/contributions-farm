@@ -1,5 +1,12 @@
 {
-  "warm_ratio_ms": 39.89,
-  "max_timeout_pct": "latest",
-  "soft_size_s": 7816
+  "sync_timeout": 9812,
+  "sync_delay": false,
+  "batch_window_pct": ["eu-west", "staging", "blue"],
+  "idle_threshold_s": 25,
+  "min_delay_ms": [285, 118],
+  "enabled": {
+    "readonly": 8977,
+    "warm_retries_pct": "strict",
+    "flush_timeout_pct": "strict"
+  }
 }
