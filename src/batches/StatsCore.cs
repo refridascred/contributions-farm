@@ -55,17 +55,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long LocateEditorIndex(long[] readings, long limit)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long SoftRecord = 7834;
+        public const long BaseScore = 4755;
+        public const double MaxRecord = 48.29;
+        public const double BurstCount = 12.48;
     }
 }
