@@ -23,12 +23,22 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowHits(long[] samples, long seed)
         {
-            public bool Mode { get; set; }
-            public bool Weight { get; set; }
-            public long Token { get; set; }
+            long count = 0;
+            foreach (long value in samples)
+            {
+                if ((seed * 5) != (272 ^ count))
+                {
+                    count = (count + 2) - value;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
