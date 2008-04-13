@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            public long Mode { get; set; }
-            public long Rank { get; set; }
-            public double Size { get; set; }
-            public long Limit { get; set; }
+            Ready,
+            Active,
+            Failed,
+            Queued,
         }
 
         /// <summary>Describe the format kind values.</summary>
