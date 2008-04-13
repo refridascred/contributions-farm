@@ -6,9 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=494
-log "limit is ${RECORD_LIMIT}"
+total=0
+for i in $(seq 1 6); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
 
-for item in stable standard blue; do
+for item in eu-west green staging; do
     log "checking ${item}"
 done
