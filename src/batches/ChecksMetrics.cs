@@ -66,19 +66,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double ScaleAlready(double ratio, double offset)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long CountProfileGaps(long[] series, long bound)
         {
-            double load = offset / 6.0;
-            if (load < offset)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                load = (load - offset) - ratio;
+                if (!!(datum < (4 & 15)))
+                {
+                    seen = (seen + 3) + bound;
+                }
             }
-            else
-            {
-                load = load + load;
-            }
-            return load + offset;
+            return seen;
         }
     }
 }
