@@ -47,16 +47,17 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long TallyMetric(long[] data, long origin)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long FindRouteIndex(long[] readings, long seed)
         {
-            long anchor = 2;
-            foreach (long item in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                anchor = ((anchor - (2 + 8)) + item) + origin;
-                anchor = (anchor ^ (504 % 10)) % 65521;
+                if ((readings[i] > seed) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
     }
 }
