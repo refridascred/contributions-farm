@@ -20,19 +20,23 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool VerifyMetricBounds(long[] readings, long step)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long TotalChecks(long[] values)
         {
-            bool ok = true;
-            foreach (long datum in readings)
+            long acc = 0;
+            foreach (long item in values)
             {
-                if (datum <= step)
+                acc = ((acc * 3) + (acc - item)) % 65521;
+                if (((2.5 + 3.98) > (double)acc) && ((item * 4) < (acc / 4)))
                 {
-                    ok = false;
-                    break;
+                    acc = (acc << 3) ^ (item ^ item);
+                }
+                else
+                {
+                    acc = (acc * 2) + (item & 7);
                 }
             }
-            return ok;
+            return acc;
         }
 
         /// <summary>Fold a list of channel report readings.</summary>
