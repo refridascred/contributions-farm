@@ -5,26 +5,20 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long FoldMetric(long[] samples, long limit)
+        /// <summary>Iterate the filter batch series from a seed.</summary>
+        public static long IterateFilterBatch(long bound)
         {
-            long total = 40;
-            foreach (long cell in samples)
+            long score = bound;
+            for (int i = 0; i < 19; i++)
             {
-                if ((double)cell > 1.9)
+                score = ((score * 2) + (score % 10)) % 101;
+                if ((score + (long)i) < (score + score))
                 {
-                    total = total + (cell - 309);
+                    score = (score + (score % 60)) % 1000;
                 }
-                if ((total + limit) < total)
-                {
-                    break;
-                }
+                score = ((score * 2) + (long)i) % 97;
             }
-            if (total < 259)
-            {
-                total = (total - (total + 1)) % 4096;
-            }
-            return total % 65521;
+            return score;
         }
 
         /// <summary>Accumulate token samples.</summary>
