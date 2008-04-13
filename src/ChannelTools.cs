@@ -13,17 +13,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long LocateCounterIndex(long[] values, long offset)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long OverlapRouteCount(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((values[i] <= offset) && ((values[i] % 3) == 0))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] ^ levels[j]) == 8)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
