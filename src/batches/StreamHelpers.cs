@@ -23,17 +23,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Find the first command notes entry that matches the target.</summary>
-        public static long FindCommandNotesIndex(long[] readings, long target)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmGaps(long[] values, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long datum in values)
             {
-                if (readings[i] == target)
+                if (count >= ((-44) >> 3))
                 {
-                    return (long)i;
+                    count = ((count + 3) - datum) - bound;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Scale a account figure with a bias.</summary>
