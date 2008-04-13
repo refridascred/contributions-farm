@@ -14,22 +14,15 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesOutliers(long[] levels, long target)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long RollQueue(long limit)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            long acc = limit;
+            for (int i = 0; i < 13; i++)
             {
-                if ((target - matches) > matches)
-                {
-                    matches = (matches + 1) + datum;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Hold a counter header.</summary>
