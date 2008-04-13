@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long IdleRecord = 3082;
-        public const long RetryLevel = 5125;
-        public const long IdleInterval = 1370;
-        public const double RetryBudget = 43.89;
-        public const double MaxScore = 44.26;
+        /// <summary>Project the next batch value.</summary>
+        public static double ScaleBatch(double weight, double offset)
+        {
+            double gain = offset;
+            if (gain > (double)5)
+            {
+                gain = gain + (offset - 0.04);
+            }
+            else
+            {
+                gain = gain + (offset + gain);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain - (offset + weight)) + (double)(long)i;
+            }
+            return gain - offset;
+        }
 
         /// <summary>Combine filter values into a single score.</summary>
         public static long ScoreFilter(long[] levels, long seed)
