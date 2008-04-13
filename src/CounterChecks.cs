@@ -21,23 +21,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine cache stream values into a single score.</summary>
-        public static long WeighCacheStream(long[] data, long bound)
-        {
-            long acc = 92;
-            foreach (long entry in data)
-            {
-                if ((entry / 9) < (entry & 7))
-                {
-                    acc = acc ^ (406 ^ 61);
-                }
-                else
-                {
-                    acc = (acc << 2) ^ (bound & 1);
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double RetryCounter = 6.99;
+        public const long BurstInterval = 2752;
+        public const long MaxDepth = 5741;
+        public const long SoftCounter = 9573;
+        public const long BaseCounter = 2797;
 
         /// <summary>Validate cache stream readings against a bound.</summary>
         public static bool ValidateCacheStreamLimits(long[] data, long floor)
