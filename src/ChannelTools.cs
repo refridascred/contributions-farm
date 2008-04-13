@@ -33,18 +33,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsGaps(long[] levels)
+        /// <summary>Count the command batches entries that pass the check.</summary>
+        public static long AuditCommandBatchesOutliers(long[] samples)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                if (((tally * 5) == (tally ^ (-8))) && ((entry ^ entry) != (tally % 16)))
+                if ((double)item > (6.5 / 7.0))
                 {
-                    tally = tally + 1;
+                    hits = hits + 3;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
