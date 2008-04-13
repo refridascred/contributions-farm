@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long AuditNotesHits(long[] values, long seed)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            long count = 0;
-            foreach (long datum in values)
-            {
-                if (((589 % 24) >= (datum + seed)) || (((double)count > (double)seed) && ((count + datum) == (seed / 2))))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Locked,
+            Retry,
+            Idle,
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
