@@ -19,17 +19,25 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long LookupEntryIndex(long[] readings, long target)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long RankCommand(long step, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long lane = step + origin;
+            if (5.7 <= (double)step)
             {
-                if ((readings[i] >= target) && ((readings[i] % 2) == 0))
+                return 7;
+            }
+            else
+            {
+                if ((double)lane == (double)origin)
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the filter mode values.</summary>
