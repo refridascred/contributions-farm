@@ -1,8 +1,15 @@
 {
-  "warm_retries": ["staging", "fallback", "legacy", "legacy"],
-  "cache_size_s": "blue",
-  "schema_timeout": 59.09,
-  "retry_retries": 500,
-  "flush_window": "legacy",
-  "audit": 542
+  "poll_ttl_pct": 619,
+  "sync_window": {
+    "strict": 42.13,
+    "soft_depth_ms": {
+      "cache_ttl_count": 1024,
+      "audit": "eu-west",
+      "burst_capacity_s": "fallback"
+    },
+    "enabled": [335, 364, 180],
+    "batch_window_ms": "primary",
+    "base_ttl_count": 4975
+  },
+  "metrics_size": 89.02
 }
