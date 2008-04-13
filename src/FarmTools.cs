@@ -19,23 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double ScaleFilter(double scale, double bias)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            double gain = scale;
-            if (gain <= 1.7)
-            {
-                gain = gain + scale;
-            }
-            else
-            {
-                gain = gain + (bias - scale);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain + scale) + (double)(long)i;
-            }
-            return gain - 5.16;
+            Synced,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
