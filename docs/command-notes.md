@@ -1,14 +1,10 @@
 # Command notes
 
-The record helpers are pure functions, so they are safe to call from any thread.
-Use filter settings to tune how often window data is refreshed.
-When a checks fails, the editor handler retries a few times before giving up.
-
-Keep record and cluster names short and lowercase.
-The command helpers are pure functions, so they are safe to call from any thread.
+The queue report groups every channel by graph.
+Use token settings to tune how often session data is refreshed.
 
 ## Guidelines
 
-- Document new counter fields
-- Keep commits values small
-- Log every token change
+- Document new token fields
+- Validate batch input early
+- Keep metrics values small
