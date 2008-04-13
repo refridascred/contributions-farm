@@ -30,12 +30,17 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Locate a command reading by value.</summary>
+        public static long SeekCommandIndex(long[] values, long bound)
         {
-            public long Flag { get; set; }
-            public string Rank { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] <= bound) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count stats checks pairs that satisfy a relation.</summary>
