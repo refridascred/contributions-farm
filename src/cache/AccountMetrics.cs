@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Rank record input into a small class.</summary>
-        public static long BucketRecord(long step, long seed)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long LocateChecksIndex(long[] readings, long bound)
         {
-            if (step < (32 % 97))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((seed % 60) > step)
+                if (readings[i] > bound)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((step / 5) > seed)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!((9.6 / 7.0) < (double)seed))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Compare every pair of batch metrics readings.</summary>
