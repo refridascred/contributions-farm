@@ -46,12 +46,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
+            Paused,
+            Retry,
+            Ready,
             Synced,
-            New,
-            Closed,
         }
 
         /// <summary>Accumulate batch cluster samples.</summary>
