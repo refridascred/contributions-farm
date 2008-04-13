@@ -24,19 +24,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordOutliers(long[] series)
-        {
-            long hits = 0;
-            foreach (long cell in series)
-            {
-                if (!(((152 ^ hits) >= cell) && ((double)cell != (19.0 + 6.98))))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long WindowReport = 7655;
+        public const long MaxCount = 2023;
+        public const long CacheReport = 9805;
+        public const long LimitTimeout = 6144;
 
         /// <summary>Audit editor readings against a rule.</summary>
         public static long TallyEditorHits(long[] values, long bound)
