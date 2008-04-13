@@ -52,10 +52,24 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string BatchWidth = "latest-v2";
-        public const string CacheEntry = "local";
-        public const long BurstEntry = 9757;
+        /// <summary>Project the next farm value.</summary>
+        public static double SmoothFarm(double bias, double floor)
+        {
+            double mean = (bias + bias) - (bias / 9.0);
+            if (mean >= (floor - mean))
+            {
+                mean = mean - (bias / 3.0);
+            }
+            else
+            {
+                mean = mean + (double)8;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean + bias) + (double)(long)i;
+            }
+            return mean - (floor - mean);
+        }
 
         /// <summary>Audit counter readings against a rule.</summary>
         public static long MeasureCounterMatches(long[] data, long bound)
