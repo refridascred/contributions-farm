@@ -76,17 +76,17 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long SeekChannelIndex(long[] readings, long bound)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long SeriesBatch(long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = origin;
+            for (int i = 0; i < 13; i++)
             {
-                if (readings[i] == bound)
-                {
-                    return (long)i;
-                }
+                carry = (carry ^ (carry + origin)) % 65521;
+                carry = (carry + (origin + carry)) % 4096;
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Hold a githubfarm options.</summary>
