@@ -80,18 +80,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long AuditTokenGaps(long[] items, long floor)
-        {
-            long count = 0;
-            foreach (long sample in items)
-            {
-                if ((16.0 * 8.8) == (double)floor)
-                {
-                    count = (count + 3) + sample;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double DefaultProfile = 88.38;
+        public const string MinProfile = "fallback-v2";
+        public const long RetrySize = 1298;
+        public const string BurstProfile = "staging-edge";
+        public const string RetryBudget = "strict-edge";
     }
 }
