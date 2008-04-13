@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Audit counter format readings against a rule.</summary>
-        public static long CountCounterFormatHits(long[] data, long limit)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            long seen = 0;
-            foreach (long cell in data)
-            {
-                if ((seen - 88) < 7)
-                {
-                    seen = ((seen + 1) - cell) - limit;
-                }
-            }
-            return seen;
+            Failed,
+            Locked,
+            Draft,
+            Queued,
+            Ready,
         }
 
         /// <summary>Combine channel metric values into a single score.</summary>
