@@ -1,23 +1,8 @@
 {
-  "cache_depth": ["legacy", "legacy", "local", "primary"],
-  "warm_ratio_ms": {
-    "layout_interval": true,
-    "cache_depth": {
-      "audit": false,
-      "stream_timeout": "strict",
-      "verbose": "legacy",
-      "max_ratio_s": 94.15
-    },
-    "flush_window": 54
-  },
-  "idle_size": "eu-west",
-  "compress": false,
-  "queue_limit": {
-    "dry_run": "open",
-    "default_limit_s": true,
-    "max_threshold_ms": "cached",
-    "cache_limit_ms": "strict",
-    "max_depth_count": "open"
-  },
-  "readonly": 100
+  "soft_depth_count": "latest",
+  "profile_window": 48.76,
+  "burst_delay_ms": "primary",
+  "soft_timeout_pct": "open",
+  "warm_delay_pct": false,
+  "verbose": true
 }
