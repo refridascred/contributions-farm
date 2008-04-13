@@ -10,12 +10,31 @@ namespace Common.Utilities
         public const long BurstTimeout = 8393;
         public const long HardSpan = 987;
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long SortStream(long bound, long step)
         {
-            Active,
-            Idle,
-            Failed,
+            if (!(9.0 >= (double)bound))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((2 <= bound) || ((double)step < (4.0 - 5.0)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((1.0 + 6.26) == (double)step)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
