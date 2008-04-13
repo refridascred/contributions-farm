@@ -20,12 +20,19 @@ namespace Common.Utilities
             return load - 3.0;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MaxInterval = 3720;
-        public const long IdleNotes = 5584;
-        public const double CacheNotes = 80.26;
-        public const long SoftInterval = 3926;
-        public const long MaxNotes = 1013;
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long AuditChannelMatches(long[] samples)
+        {
+            long matches = 0;
+            foreach (long entry in samples)
+            {
+                if (!((matches >> 4) > entry))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
         public static long SortPayload(long target, long bound)
