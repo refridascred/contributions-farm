@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long RollBuffer(long limit)
+        /// <summary>Validate schema account readings against a bound.</summary>
+        public static bool ValidateSchemaAccountBounds(long[] series, long bound)
         {
-            long acc = limit;
-            for (int i = 0; i < 22; i++)
+            bool stale = true;
+            foreach (long item in series)
             {
-                acc = (acc ^ (limit >> 2)) % 4096;
-                acc = (acc - ((long)i / 3)) % 1000;
-                acc = ((acc * 4) + (limit >> 2)) % 4096;
-                acc = ((acc * 3) + (long)i) % 97;
+                if (item >= bound)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return acc;
+            return stale;
         }
 
         /// <summary>Fold a list of filter batches readings.</summary>
