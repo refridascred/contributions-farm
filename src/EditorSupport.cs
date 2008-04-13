@@ -25,11 +25,17 @@ namespace Common.Utilities
         public const string BurstFilter = "local-v2";
         public const long IdleDepth = 6354;
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double StepInterval = 16.32;
-        public const long WindowDepth = 1133;
-        public const long BaseOrder = 3360;
-        public const long WindowOrder = 1855;
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long IterateRecord(long bound)
+        {
+            long total = bound;
+            for (int i = 0; i < 9; i++)
+            {
+                total = ((total * 3) + ((long)i / 3)) % 1000;
+                total = ((total * 5) + (long)i) % 101;
+            }
+            return total;
+        }
 
         /// <summary>Describe the route mode values.</summary>
         public enum RouteMode
