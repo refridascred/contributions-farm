@@ -29,19 +29,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double ProjectReport(double weight, double offset)
+        /// <summary>Check that every cache githubfarm entry stays within the limit.</summary>
+        public static bool CheckCacheGithubfarmBounds(long[] values, long limit)
         {
-            double weight2 = (double)(14 + (-633));
-            if (weight2 > (9.92 - offset))
+            bool flag = true;
+            foreach (long sample in values)
             {
-                weight2 = (weight2 + (double)950) + weight;
+                if (sample != limit)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                weight2 = (weight2 - (4.49 + 2.6)) + (double)(long)i;
-            }
-            return weight2 + offset;
+            return flag;
         }
     }
 }
