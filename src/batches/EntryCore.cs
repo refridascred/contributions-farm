@@ -32,18 +32,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long CombineGithubfarm(long[] levels, long target)
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long MatchPayloadCount(long[] series)
         {
-            long carry = 91;
-            foreach (long item in levels)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)target != (7.7 * 2.0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    carry = ((carry - carry) % 4096) - item;
+                    if ((series[i] ^ series[j]) != 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Digest a series of checks already entries.</summary>
