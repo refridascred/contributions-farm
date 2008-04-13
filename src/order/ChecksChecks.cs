@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            public double Ratio { get; set; }
-            public double Region { get; set; }
+            public long Size { get; set; }
+            public long Count { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Describe the notes mode values.</summary>
