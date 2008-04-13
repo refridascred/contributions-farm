@@ -27,15 +27,25 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double AdjustRecord(double rate, double bias)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long BucketAlready(long target, long step)
         {
-            double ratio = rate / 6.0;
-            if (ratio >= (rate - 8.2))
+            long edge = target + step;
+            if ((17 + edge) <= (edge + 234))
             {
-                ratio = ratio + (bias * 19.0);
+                return 4;
             }
-            return ratio + rate;
+            else
+            {
+                if (edge <= (step % 8))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
