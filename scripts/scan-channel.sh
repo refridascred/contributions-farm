@@ -6,12 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=462
-log "limit is ${CHANNEL_LIMIT}"
-
-for item in strict fallback legacy stable; do
-    log "checking ${item}"
-done
+mode="${1:-open}"
+case "${mode}" in
+    cached)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
 count=0
 while [ "${count}" -lt 8 ]; do
