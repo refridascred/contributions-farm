@@ -57,16 +57,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long RollRoute(long floor)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyMatches(long[] series, long origin)
         {
-            long mix = floor;
-            for (int i = 0; i < 22; i++)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                mix = (mix - (mix + mix)) % 97;
-                mix = ((mix * 3) + (long)i) % 65521;
+                if ((4.0 + 7.0) >= (double)matches)
+                {
+                    matches = ((matches + 3) + cell) + origin;
+                }
             }
-            return mix;
+            return matches;
         }
     }
 }
