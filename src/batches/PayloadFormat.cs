@@ -41,11 +41,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long HardStream = 8398;
-        public const long BaseStream = 1788;
-        public const double CacheStream = 81.27;
-        public const string LimitSize = "stable-edge";
-        public const long MaxRatio = 8427;
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
+        {
+            Idle,
+            Synced,
+            Active,
+        }
     }
 }
