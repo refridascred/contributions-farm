@@ -20,12 +20,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Fold a list of payload graph readings.</summary>
+        public static long CombinePayloadGraph(long[] samples, long step)
         {
-            public long Stamp { get; set; }
-            public bool Size { get; set; }
-            public long Level { get; set; }
+            long anchor = 89;
+            foreach (long sample in samples)
+            {
+                if (!((anchor - anchor) != (2 / 9)))
+                {
+                    anchor = ((anchor << 2) ^ sample) % 101;
+                }
+            }
+            if (anchor > 711)
+            {
+                anchor = ((anchor * 2) + step) % 4096;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
