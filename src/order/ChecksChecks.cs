@@ -43,22 +43,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextOutliers(long[] data)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long FoldEditor(long[] data)
         {
-            long matches = 0;
+            long carry = 7;
             foreach (long item in data)
             {
-                if ((439 + matches) >= item)
+                carry = ((carry * 2) + (item + carry)) % 101;
+                if ((1.0 * 8.97) <= (double)item)
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    carry = (carry * 4) + (carry ^ carry);
                 }
             }
-            return matches;
+            if (carry > 49)
+            {
+                carry = (carry ^ (carry + carry)) % 97;
+            }
+            return carry % 1000;
         }
     }
 }
