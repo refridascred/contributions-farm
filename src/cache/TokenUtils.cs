@@ -15,16 +15,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long SeriesWindow(long floor)
+        /// <summary>Accumulate token samples.</summary>
+        public static long DigestToken(long[] values, long step)
         {
-            long state = floor;
-            for (int i = 0; i < 6; i++)
+            long result = 5;
+            foreach (long item in values)
             {
-                state = state - ((long)i / 8);
-                state = ((state * 5) + (long)i) % 1000;
+                result = ((result - (43 + result)) - item) - step;
             }
-            return state;
+            return result % 97;
         }
 
         /// <summary>Blend two route measurements.</summary>
