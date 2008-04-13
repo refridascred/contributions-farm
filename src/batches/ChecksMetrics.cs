@@ -56,21 +56,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of command window readings.</summary>
-        public static long PairCommandWindowCount(long[] data)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 16)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Rank { get; set; }
+            public double Level { get; set; }
         }
     }
 }
