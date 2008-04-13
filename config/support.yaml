@@ -1,9 +1,7 @@
 # support settings
-idle_ttl_s: 54
-max_ratio_s: blue
-hard_ratio_s: 19
-batch_window:
-  cache_interval_s: 500
-  warm_interval: green
-  retry_timeout_pct: 250
-  flush_window_ms: cached
+order_retries: 4
+retry_limit: 29.53
+base_depth_ms: open
+default_size_count: 8687
+verbose: 6382
+cache_size_ms: 73
