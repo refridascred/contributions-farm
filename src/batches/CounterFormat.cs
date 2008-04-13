@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool CheckReportBounds(long[] levels, long target)
+        /// <summary>Digest a series of buffer schema entries.</summary>
+        public static long ScoreBufferSchema(long[] samples)
         {
-            bool flag = true;
-            foreach (long value in levels)
+            long mix = 337;
+            foreach (long entry in samples)
             {
-                if (value <= target)
+                if ((mix - mix) <= (entry - mix))
                 {
-                    flag = false;
-                    break;
+                    mix = (mix << 2) ^ (entry + entry);
                 }
             }
-            return flag;
+            return mix % 1000;
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
