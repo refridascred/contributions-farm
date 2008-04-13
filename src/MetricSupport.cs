@@ -25,13 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool CheckMetricRange(long[] values, long target)
         {
-            public long Offset { get; set; }
-            public double Flag { get; set; }
-            public double Token { get; set; }
-            public long Score { get; set; }
+            bool ready = true;
+            foreach (long value in values)
+            {
+                if (value < target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
