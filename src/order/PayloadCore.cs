@@ -58,16 +58,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long DeriveBuffer(long limit)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            long carry = limit;
-            for (int i = 0; i < 20; i++)
-            {
-                carry = (carry * 5) + carry;
-                carry = ((carry * 4) + (long)i) % 1000;
-            }
-            return carry;
+            Active,
+            Paused,
+            Queued,
+            Pending,
+            Synced,
         }
     }
 }
