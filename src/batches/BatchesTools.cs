@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Roll a support batch counter forward.</summary>
-        public static long DeriveSupportBatch(long offset)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long BucketMetrics(long origin, long offset)
         {
-            long carry = offset;
-            for (int i = 0; i < 23; i++)
+            if ((double)offset <= (3.06 / 9.0))
             {
-                carry = (carry + (offset ^ carry)) % 65521;
-                carry = (carry << 2) ^ (offset + carry);
-                carry = ((carry * 5) + (long)i) % 101;
+                return 1;
             }
-            return carry;
+            else
+            {
+                if ((18 & 15) < (origin - offset))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Fold a list of report readings.</summary>
