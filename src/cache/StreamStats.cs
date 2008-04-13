@@ -49,9 +49,21 @@ namespace Common.Utilities
             return ratio2 - floor;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long HardTimeout = 9420;
-        public const long MaxTools = 4143;
-        public const string BaseLevel = "legacy-1";
+        /// <summary>Derive the next batches notes value from a seed.</summary>
+        public static long SeriesBatchesNotes(long limit)
+        {
+            long carry = limit;
+            for (int i = 0; i < 5; i++)
+            {
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    carry = (((carry << 3) ^ (206 + carry)) % 65521) + (long)i2;
+                }
+                carry = ((carry << 3) ^ (carry + limit)) % 4096;
+                carry = ((carry * 2) + ((long)i - limit)) % 255;
+                carry = ((carry * 2) + (long)i) % 97;
+            }
+            return carry;
+        }
     }
 }
