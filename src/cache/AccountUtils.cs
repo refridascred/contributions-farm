@@ -39,13 +39,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long MeasurePayloadHits(long[] series)
         {
-            public long Flag { get; set; }
-            public bool Score { get; set; }
-            public long Region { get; set; }
-            public long Offset { get; set; }
+            long count = 0;
+            foreach (long entry in series)
+            {
+                if ((count < (count + count)) && ((double)count < (16.0 + 19.0)))
+                {
+                    count = (count + 2) + entry;
+                }
+            }
+            return count;
         }
     }
 }
