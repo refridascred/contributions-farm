@@ -22,24 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a counter report pair into a bucket.</summary>
-        public static long ClassifyCounterReport(long bound, long origin)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool VerifyCounterRange(long[] readings, long offset)
         {
-            if (bound >= (origin + 732))
+            bool found = true;
+            foreach (long sample in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if ((origin + bound) == (origin - bound))
+                if (sample <= offset)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Describe the githubfarm mode values.</summary>
