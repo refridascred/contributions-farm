@@ -44,23 +44,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double BlendSchema(double rate, double floor)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long SeekStatsIndex(long[] data, long seed)
         {
-            double rate2 = (double)(317 << 1);
-            if (rate2 >= (double)6)
+            for (int i = 0; i < data.Length; i++)
             {
-                rate2 = (rate2 - rate2) + floor;
+                if (data[i] <= seed)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                rate2 = rate2 + rate;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                rate2 = (rate2 + rate2) + (double)(long)i;
-            }
-            return rate2 - (3.57 + rate);
+            return -1;
         }
     }
 }
