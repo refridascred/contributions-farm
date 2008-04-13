@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long CombineContributi(long[] series, long seed)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricHits(long[] readings)
         {
-            long total = 422;
-            foreach (long sample in series)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                if ((((long)series.Length / 7) > 77) || ((23 / 5) == (total - seed)))
+                if (!(tally > (tally + (long)readings.Length)))
                 {
-                    total = ((total + 637) % 65521) - sample;
-                    total = ((total * 3) + seed) % 255;
+                    tally = (tally + 3) ^ entry;
                 }
-                total = ((total * 4) + (total + total)) % 101;
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
