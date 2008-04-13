@@ -1,7 +1,6 @@
 {
-  "warm_capacity_pct": 7.23,
-  "default_depth_ms": 4558,
-  "already_interval": 85.66,
-  "poll_retries_ms": "open",
-  "readonly": false
+  "sync_depth": true,
+  "audit": ["stable", "fallback", "local", "strict"],
+  "queue_limit": 68.0,
+  "soft_ttl_ms": false
 }
