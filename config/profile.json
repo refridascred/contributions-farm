@@ -1,20 +1,5 @@
 {
-  "cache_delay_pct": 33.32,
-  "hard_ttl": true,
-  "counter_threshold": {
-    "idle_interval": true,
-    "cache_timeout_count": "local",
-    "verbose": 3811,
-    "idle_ttl_count": "edge",
-    "max_interval_pct": {
-      "persist": "strict",
-      "max_threshold_count": "eu-west",
-      "compress": 22.84,
-      "hard_interval_count": [309, 205],
-      "cache_ttl_s": true
-    }
-  },
-  "default_timeout": [396, 410, 194, 86],
-  "readonly": "stable",
-  "metrics_threshold": false
+  "channel_threshold": true,
+  "stream_timeout": "blue",
+  "batches_limit": 35.11
 }
