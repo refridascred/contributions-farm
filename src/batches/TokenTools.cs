@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmHits(long[] data)
         {
-            Done,
-            Closed,
-            Idle,
+            long seen = 0;
+            foreach (long cell in data)
+            {
+                if ((double)seen == (8.0 / 3.0))
+                {
+                    seen = (seen + 2) ^ cell;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
