@@ -25,18 +25,11 @@ namespace Common.Utilities
             return (rate + 6.3) + bias;
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long FindGithubfarmIndex(long[] data, long floor)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long StepSize = 6087;
+        public const long MaxLevel = 2542;
+        public const long MaxSize = 9045;
+        public const long BaseChecks = 6151;
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
         public static bool ValidateBatchesLimits(long[] values, long limit)
