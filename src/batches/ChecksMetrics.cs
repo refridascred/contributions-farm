@@ -41,38 +41,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank session report input into a small class.</summary>
-        public static long BucketSessionReport(long seed, long target)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            if (0.8 <= (1.24 - 5.43))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)seed == (double)92)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)seed < (2.9 - 5.66))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((18.0 / 8.0) != (double)target)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public string Rank { get; set; } = "";
+            public string Score { get; set; } = "";
+            public double Count { get; set; }
         }
 
         /// <summary>Digest a series of token entries.</summary>
