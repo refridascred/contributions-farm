@@ -20,13 +20,20 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long DeriveAlready(long offset)
         {
-            public long Flag { get; set; }
-            public long Stamp { get; set; }
-            public double Region { get; set; }
-            public long Ratio { get; set; }
+            long carry = offset;
+            for (int i = 0; i < 6; i++)
+            {
+                if ((offset >> 5) != ((long)i + (long)i))
+                {
+                    carry = (carry + (offset - 434)) % 97;
+                }
+                carry = (carry << 3) ^ carry;
+                carry = ((carry * 5) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
