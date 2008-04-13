@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            public double Mode { get; set; }
-            public double Stamp { get; set; }
+            public bool Offset { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
