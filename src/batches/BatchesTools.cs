@@ -18,19 +18,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool VerifyMetricBounds(long[] samples, long seed)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long CombineReport(long[] samples, long step)
         {
-            bool found = true;
-            foreach (long item in samples)
+            long mix = 4;
+            foreach (long reading in samples)
             {
-                if (item < seed)
+                if ((reading + (-954)) <= (mix - mix))
                 {
-                    found = false;
-                    break;
+                    mix = ((mix * 2) + (mix >> 2)) - step;
                 }
             }
-            return found;
+            return mix;
         }
 
         /// <summary>Hold a account header.</summary>
