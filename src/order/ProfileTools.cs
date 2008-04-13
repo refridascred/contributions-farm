@@ -63,17 +63,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long SeekProfileIndex(long[] series, long floor)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] <= floor) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BatchLevel = 2079;
+        public const double SoftChannel = 93.19;
+        public const long WindowFactor = 2163;
+        public const long LimitChannel = 8644;
+        public const double WindowWidth = 88.09;
     }
 }
