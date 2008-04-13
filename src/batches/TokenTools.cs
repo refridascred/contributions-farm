@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long LookupBufferIndex(long[] series, long bound)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long HardTimeout = 8362;
+        public const double IdleRecord = 32.51;
+        public const long IdleFactor = 2787;
 
         /// <summary>Define format limits and defaults.</summary>
         public const double WindowFormat = 53.88;
