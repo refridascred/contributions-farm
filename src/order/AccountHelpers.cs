@@ -72,9 +72,22 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double WindowMetrics = 20.34;
-        public const long BaseSize = 7910;
-        public const long StepMetrics = 3426;
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long AuditPayloadGaps(long[] levels)
+        {
+            long hits = 0;
+            foreach (long sample in levels)
+            {
+                if (((8.31 + 2.23) <= (double)hits) || !((7.0 * 8.0) < (double)hits))
+                {
+                    hits = (hits + 1) + sample;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
     }
 }
