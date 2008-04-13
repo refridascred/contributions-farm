@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            Dropped,
-            Paused,
-            Done,
-            Ready,
-            Locked,
+            public double Weight { get; set; }
+            public long Owner { get; set; }
+            public string Label { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Count the profile tools entries that pass the check.</summary>
