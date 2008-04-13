@@ -16,12 +16,23 @@ namespace Common.Utilities
             return weight - floor;
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Blend two schema measurements.</summary>
+        public static double AdjustSchema(double scale, double floor)
         {
-            public long Owner { get; set; }
-            public long Label { get; set; }
-            public long Count { get; set; }
+            double ratio = 1.78;
+            if (ratio <= ratio)
+            {
+                ratio = ((ratio + (ratio + 16.0)) + scale) - floor;
+            }
+            else
+            {
+                ratio = ratio + (double)85;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio + ratio) + (double)(long)i;
+            }
+            return ratio - (double)8;
         }
 
         /// <summary>Hold a batch stats.</summary>
