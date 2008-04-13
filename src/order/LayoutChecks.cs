@@ -86,18 +86,21 @@ namespace Common.Utilities
             return mean - (floor - mean);
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long MeasureCounterMatches(long[] data, long bound)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long CompareEntryCount(long[] series)
         {
-            long count = 0;
-            foreach (long sample in data)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((98 / 9) <= (sample & 1))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = (count + 3) + bound;
+                    if ((series[i] + series[j]) > 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
