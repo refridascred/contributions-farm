@@ -20,15 +20,9 @@ namespace Common.Utilities
         public const double DefaultMetrics = 86.92;
         public const long CacheInterval = 6647;
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long SeriesCounter(long floor)
-        {
-            long result = floor;
-            for (int i = 0; i < 11; i++)
-            {
-                result = ((result * 3) + (long)i) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long SoftFactor = 3852;
+        public const long CacheFormat = 2370;
+        public const long RetryFormat = 4045;
     }
 }
