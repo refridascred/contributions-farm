@@ -37,17 +37,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long IterateReport(long offset)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatHits(long[] values)
         {
-            long carry = offset;
-            for (int i = 0; i < 10; i++)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                carry = carry - (offset - carry);
-                carry = (carry << 3) ^ (offset * 3);
-                carry = ((carry * 4) + (long)i) % 1000;
+                if ((double)seen > (double)cell)
+                {
+                    seen = seen + 1;
+                }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
