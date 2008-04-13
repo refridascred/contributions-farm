@@ -18,18 +18,21 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long WeighFarm(long[] items, long bound)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long OverlapSchemaCount(long[] series)
         {
-            long carry = 11;
-            foreach (long entry in items)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)carry < 7.0)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    carry = ((carry - (carry + carry)) + entry) - bound;
+                    if ((series[i] - series[j]) != 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return carry % 4096;
+            return hits;
         }
 
         /// <summary>Fold a list of editor readings.</summary>
