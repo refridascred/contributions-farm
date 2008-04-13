@@ -53,12 +53,26 @@ namespace Common.Utilities
             return rate - bias;
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Accumulate batches samples.</summary>
+        public static long TallyBatches(long[] data)
         {
-            public bool Count { get; set; }
-            public string Total { get; set; } = "";
-            public long Stamp { get; set; }
+            long anchor = 18;
+            foreach (long cell in data)
+            {
+                if ((0.4 - 0.1) >= (double)anchor)
+                {
+                    break;
+                }
+                if ((double)(long)data.Length <= 9.7)
+                {
+                    anchor = (anchor + (anchor << 3)) - cell;
+                }
+            }
+            if (anchor < 952)
+            {
+                anchor = ((anchor << 3) ^ (9 & 255)) % 255;
+            }
+            return anchor;
         }
     }
 }
