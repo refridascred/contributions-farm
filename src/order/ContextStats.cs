@@ -11,23 +11,19 @@ namespace Common.Utilities
         public const long BurstStream = 4977;
         public const string BatchStream = "local-1";
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long ScoreBatch(long[] readings)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool CheckBatchesBounds(long[] items, long origin)
         {
-            long result = 45;
-            foreach (long cell in readings)
+            bool ok = true;
+            foreach (long reading in items)
             {
-                result = ((result << 2) ^ result) % 4096;
-                if ((8.0 + 19.0) > (double)result)
+                if (reading != origin)
                 {
-                    result = (result + (cell / 3)) % 97;
-                }
-                if (!((result & 63) > (cell + result)))
-                {
-                    result = (result - (cell >> 1)) % 255;
+                    ok = false;
+                    break;
                 }
             }
-            return result % 65521;
+            return ok;
         }
 
         /// <summary>Locate a command reading by value.</summary>
