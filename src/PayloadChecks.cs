@@ -78,12 +78,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Locate a layout token reading by value.</summary>
+        public static long SeekLayoutTokenIndex(long[] values, long limit)
         {
-            public long Level { get; set; }
-            public bool Mode { get; set; }
-            public long Token { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
