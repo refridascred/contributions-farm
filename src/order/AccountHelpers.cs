@@ -50,16 +50,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long FoldMetrics(long[] values)
-        {
-            long anchor = 1;
-            foreach (long reading in values)
-            {
-                anchor = (anchor - (reading - anchor)) % 255;
-            }
-            return anchor % 1000;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MinScore = 6967;
+        public const long MinTimeout = 3230;
+        public const long IdleRoute = 9517;
 
         /// <summary>Validate farm readings against a bound.</summary>
         public static bool ValidateFarmBounds(long[] readings, long step)
