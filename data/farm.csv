@@ -1,10 +1,6 @@
-id,owner,label,state
-1,green,543,154
-2,79.36,133,901
-3,102,95.93,green
-4,366,512,54.08
-5,blue,653,637
-6,0.91,89.79,primary
-7,571,111,991
-8,28,71,cached
-9,559,legacy,standard
+id,label,count,level
+1,570,open,720
+2,462,16.96,fallback
+3,883,851,566
+4,edge,69.73,634
+5,local,primary,49.93
