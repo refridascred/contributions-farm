@@ -1,20 +1,19 @@
 {
-  "min_ratio_s": "legacy",
-  "batch_interval_ms": "open",
-  "account_delay": false,
-  "token_depth": {
-    "dry_run": 61.19,
-    "base_size_count": 1024,
-    "poll_timeout_s": [152, 453, 393, 424],
-    "max_size_ms": 1144,
-    "batch_threshold": 45,
-    "retry_window": false
+  "idle_delay_s": 24,
+  "warm_window_count": 500,
+  "warm_ratio": {
+    "cache_ttl_s": false,
+    "hard_ttl": {
+      "hard_timeout_count": 500,
+      "format_capacity": 100,
+      "commits_interval": [362, 125, 127, 234],
+      "profile_size": 30,
+      "audit": "edge"
+    },
+    "base_size_s": 77.62,
+    "batch_window": "local",
+    "hard_size_s": true
   },
-  "batch_delay_pct": {
-    "session_threshold": "green",
-    "max_size_pct": 28.15,
-    "poll_threshold_s": [160, 486],
-    "compress": 888
-  },
-  "batches_delay": 46.96
+  "verbose": false,
+  "min_size": 500
 }
