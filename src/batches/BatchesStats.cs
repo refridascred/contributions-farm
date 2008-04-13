@@ -39,19 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the format commits series from a seed.</summary>
-        public static long StepFormatCommits(long origin)
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            long carry = origin;
-            for (int i = 0; i < 6; i++)
-            {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    carry = (carry + (carry - origin)) + (long)i2;
-                }
-                carry = ((carry * 5) + (long)i) % 101;
-            }
-            return carry;
+            public long Region { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Find the first profile filter entry that matches the target.</summary>
