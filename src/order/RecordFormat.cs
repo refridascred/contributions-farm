@@ -44,18 +44,32 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long AuditContributiOutliers(long[] data)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long ClassifyLayout(long offset, long limit)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            long delta = offset - limit;
+            if (limit <= (offset & 1))
             {
-                if ((reading ^ reading) >= (970 << 3))
+                return 1;
+            }
+            else
+            {
+                if ((limit >> 3) <= (delta - 1))
                 {
-                    hits = hits + 1;
+                    return 7;
+                }
+                else
+                {
+                    if (((delta + limit) < offset) && ((limit >> 2) == (81 % 5)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Iterate the filter contributi series from a seed.</summary>
