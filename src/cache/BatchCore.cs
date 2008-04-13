@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Adjust a profile reading.</summary>
-        public static double SmoothProfile(double ratio, double offset)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long TotalBatches(long[] values)
         {
-            double drift = (double)75;
-            if (drift > (ratio - offset))
+            long score = 6;
+            foreach (long item in values)
             {
-                drift = drift + (double)602;
+                if (((double)item == (13.0 / 8.0)) && ((score / 3) < (item + score)))
+                {
+                    score = (score * 4) + score;
+                }
+                else
+                {
+                    score = (score - (8 << 1)) % 101;
+                }
             }
-            return drift - drift;
+            return score;
         }
 
         /// <summary>Describe the stream class values.</summary>
