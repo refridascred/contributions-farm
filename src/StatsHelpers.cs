@@ -16,19 +16,22 @@ namespace Common.Utilities
             return ratio + (weight - floor);
         }
 
-        /// <summary>Validate route profile readings against a bound.</summary>
-        public static bool ValidateRouteProfileBounds(long[] readings, long limit)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterOutliers(long[] series, long limit)
         {
-            bool valid = true;
-            foreach (long item in readings)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                if (item > limit)
+                if (tally > 70)
                 {
-                    valid = false;
-                    break;
+                    tally = ((tally + 3) ^ cell) + limit;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
