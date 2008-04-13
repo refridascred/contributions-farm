@@ -1,7 +1,5 @@
 {
-  "context_interval": 250,
-  "compress": "eu-west",
-  "context_threshold": false,
-  "strict": "local",
-  "enabled": false
+  "counter_delay": "local",
+  "hard_ratio_s": "standard",
+  "cache_window_pct": 8101
 }
