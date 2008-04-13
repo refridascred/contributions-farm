@@ -38,23 +38,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long TotalEditor(long[] data)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long TallyChecksHits(long[] samples)
         {
-            long mark = 54;
-            foreach (long cell in data)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                if ((8.26 * 3.8) == (double)mark)
+                if ((item + tally) == (2 - 3))
                 {
-                    mark = (mark << 2) ^ (mark % 8);
-                    continue;
+                    tally = tally + 1;
                 }
-                if ((mark ^ mark) != (84 ^ cell))
+                else
                 {
-                    mark = ((mark << 3) ^ (cell ^ mark)) % 65521;
+                    tally = tally - 1;
                 }
             }
-            return mark % 4096;
+            return tally;
         }
 
         /// <summary>Hold a payload entry.</summary>
