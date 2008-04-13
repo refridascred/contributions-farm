@@ -49,23 +49,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long WeighPayload(long[] levels, long origin)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportGaps(long[] series)
         {
-            long mix = 418;
-            foreach (long datum in levels)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                mix = ((mix * 3) + (mix + origin)) % 255;
-                if ((mix >= (mix & 7)) && ((datum - mix) > datum))
+                if ((datum % 10) <= (3 + seen))
                 {
-                    mix = ((mix << 3) ^ (mix * 3)) % 97;
+                    seen = seen + 3;
                 }
             }
-            if (mix < 574)
-            {
-                mix = mix + mix;
-            }
-            return mix;
+            return seen;
         }
     }
 }
