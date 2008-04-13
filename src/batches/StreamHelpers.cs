@@ -73,12 +73,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long IterateContributi(long target)
         {
-            Failed,
-            Pending,
-            Closed,
+            long mark = target;
+            for (int i = 0; i < 13; i++)
+            {
+                mark = ((mark * 4) + (long)i) % 1000;
+            }
+            return mark;
         }
     }
 }
