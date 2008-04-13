@@ -12,11 +12,14 @@ namespace Common.Utilities
         public const long CacheChecks = 139;
         public const long MinInterval = 981;
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double ProjectGraph(double ratio, double bias)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            double gain = ratio;
-            return (gain + (10.0 - gain)) + bias;
+            Stale,
+            New,
+            Locked,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Fold a list of graph context readings.</summary>
