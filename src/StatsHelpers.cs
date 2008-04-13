@@ -16,22 +16,31 @@ namespace Common.Utilities
             return ratio + (weight - floor);
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterOutliers(long[] series, long limit)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long BucketQueue(long seed, long seed2)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            if ((seed * 4) != (seed << 3))
             {
-                if (tally > 70)
+                return 5;
+            }
+            else
+            {
+                if (seed < (seed - (-675)))
                 {
-                    tally = ((tally + 3) ^ cell) + limit;
+                    return 3;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if ((1.0 * 1.43) == (double)seed)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
