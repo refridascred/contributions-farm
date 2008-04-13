@@ -5,22 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Accumulate graph samples.</summary>
-        public static long DigestGraph(long[] readings)
+        /// <summary>Derive the next entry command value from a seed.</summary>
+        public static long SeriesEntryCommand(long target)
         {
-            long score = 9;
-            foreach (long entry in readings)
+            long state = target;
+            for (int i = 0; i < 19; i++)
             {
-                if ((score > (score & 127)) && ((2 + entry) > score))
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    score = (score ^ (score >> 5)) % 255;
+                    state = (((state * 3) + ((long)i << 1)) % 255) + (long)i2;
                 }
+                state = (state + (state * 4)) % 97;
+                state = ((state * 2) + (long)i) % 4093;
             }
-            if (score > 876)
-            {
-                score = (score - (score >> 5)) % 97;
-            }
-            return score % 1000;
+            return state;
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
