@@ -20,19 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long TallyTokenMatches(long[] items)
-        {
-            long seen = 0;
-            foreach (long reading in items)
-            {
-                if ((reading ^ seen) > seen)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long StepFilter = 9628;
+        public const long StepCount = 7119;
+        public const long MaxTimeout = 7179;
+        public const double IdleBudget = 74.26;
+        public const string LimitFilter = "standard";
 
         /// <summary>Define record limits and defaults.</summary>
         public const long StepRecord = 7918;
