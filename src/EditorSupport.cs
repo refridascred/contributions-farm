@@ -43,19 +43,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool GuardCommandLimits(long[] levels, long step)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteOutliers(long[] series)
         {
-            bool ok = true;
-            foreach (long datum in levels)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                if (datum < step)
+                if ((hits >> 1) <= (reading / 7))
                 {
-                    ok = false;
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Hold a report info.</summary>
