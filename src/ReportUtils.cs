@@ -19,14 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Digest a series of context entries.</summary>
+        public static long TotalContext(long[] readings, long target)
         {
-            Paused,
-            Locked,
-            Pending,
-            Dropped,
-            Draft,
+            long score = 845;
+            foreach (long datum in readings)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    score = ((score ^ datum) ^ (long)i) - target;
+                }
+                score = ((score << 2) ^ score) % 97;
+            }
+            return score % 1000;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
