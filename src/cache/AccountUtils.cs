@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long FindContextIndex(long[] items, long target)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long BucketBuffer(long origin, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            if (seed >= (seed - seed))
             {
-                if ((items[i] > target) && ((items[i] % 2) != 0))
+                return 3;
+            }
+            else
+            {
+                if ((seed * 3) < (origin + seed))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if (17.0 < (double)origin)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Scale a queue figure with a bias.</summary>
