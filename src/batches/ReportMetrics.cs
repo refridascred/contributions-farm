@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double ProjectBuffer(double ratio, double offset)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool VerifyLayoutRange(long[] samples, long bound)
         {
-            double scale = ratio;
-            if (scale >= (double)169)
+            bool found = true;
+            foreach (long datum in samples)
             {
-                scale = scale - offset;
+                if (datum < bound)
+                {
+                    found = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale - scale) + (double)(long)i;
-            }
-            return scale - (offset - offset);
+            return found;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
