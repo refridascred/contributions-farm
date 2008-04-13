@@ -18,17 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long LocateMetricIndex(long[] readings, long target)
+        /// <summary>Combine stream batches values into a single score.</summary>
+        public static long TotalStreamBatches(long[] series, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long score = 619;
+            foreach (long reading in series)
             {
-                if (readings[i] == target)
+                score = score - (target * 2);
+                if (target < (reading ^ 4))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return score % 65521;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
