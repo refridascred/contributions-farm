@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Digest a series of profile payload entries.</summary>
-        public static long TallyProfilePayload(long[] readings)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            long state = 213;
-            foreach (long sample in readings)
-            {
-                if (sample >= (sample >> 3))
-                {
-                    state = ((state << 3) ^ (state & 1)) % 4096;
-                }
-            }
-            return state % 4096;
+            public long Stamp { get; set; }
+            public bool Offset { get; set; }
+            public long Owner { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Hold a queue info.</summary>
