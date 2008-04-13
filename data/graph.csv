@@ -1,8 +1,9 @@
-id,region,ratio
-1,317,blue
-2,796,latest
-3,edge,25.18
-4,1.75,strict
-5,967,743
-6,796,open
-7,6.94,local
+id,region,label
+1,544,cached
+2,green,406
+3,green,54.83
+4,490,556
+5,25.71,443
+6,primary,94.68
+7,78.55,879
+8,green,42
