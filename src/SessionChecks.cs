@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double IdleFarm = 15.67;
-        public const long CacheInterval = 1850;
-        public const long MaxFarm = 729;
-        public const long MinDepth = 218;
-        public const long BurstFarm = 79;
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long SeekBufferIndex(long[] levels, long offset)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Digest a series of entry entries.</summary>
         public static long TotalEntry(long[] series)
