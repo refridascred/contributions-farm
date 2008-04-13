@@ -30,18 +30,10 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Measure how many already account samples are out of range.</summary>
-        public static long MeasureAlreadyAccountOutliers(long[] items)
-        {
-            long seen = 0;
-            foreach (long item in items)
-            {
-                if ((seen * 3) == (item + 553))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long RetryRatio = 1391;
+        public const string LimitSchema = "cached-edge";
+        public const long BaseSchema = 7946;
+        public const long BurstDepth = 887;
     }
 }
