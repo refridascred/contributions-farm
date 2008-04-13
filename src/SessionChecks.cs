@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MaxWindow = 4651;
-        public const long HardTimeout = 1879;
-        public const long MinWindow = 5834;
+        /// <summary>Measure how many profile tools samples are out of range.</summary>
+        public static long TallyProfileToolsMatches(long[] series, long offset)
+        {
+            long seen = 0;
+            foreach (long item in series)
+            {
+                if ((double)seen >= (double)10)
+                {
+                    seen = ((seen + 2) + item) + offset;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Match up buffer account samples.</summary>
         public static long PairBufferAccountCount(long[] items)
