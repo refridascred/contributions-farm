@@ -34,18 +34,22 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowOutliers(long[] readings, long seed)
+        /// <summary>Measure how many metric filter samples are out of range.</summary>
+        public static long CountMetricFilterHits(long[] items)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if (!((item + item) < (hits + hits)))
+                if ((sample * 4) < sample)
                 {
-                    hits = (hits + 3) - seed;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Describe the notes level values.</summary>
