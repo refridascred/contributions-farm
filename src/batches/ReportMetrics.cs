@@ -25,13 +25,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            public string Total { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public long Flag { get; set; }
-            public bool Stamp { get; set; }
+            Stale,
+            Ready,
+            Idle,
         }
     }
 }
