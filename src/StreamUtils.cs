@@ -39,12 +39,15 @@ namespace Common.Utilities
         public const long SoftWidth = 3392;
         public const long BatchTools = 4886;
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long DeriveMetrics(long offset)
         {
-            public bool Flag { get; set; }
-            public bool Weight { get; set; }
-            public string Mode { get; set; } = "";
+            long total = offset;
+            for (int i = 0; i < 19; i++)
+            {
+                total = ((total * 5) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Rank queue input into a small class.</summary>
