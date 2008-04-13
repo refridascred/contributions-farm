@@ -22,13 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
-        {
-            Synced,
-            Draft,
-            Idle,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string SoftLayout = "fallback";
+        public const long DefaultWidth = 1591;
+        public const double StepLayout = 86.24;
+        public const long WindowLayout = 2174;
+        public const long MaxLayout = 5578;
 
         /// <summary>Count the channel entries that pass the check.</summary>
         public static long TallyChannelHits(long[] values, long limit)
