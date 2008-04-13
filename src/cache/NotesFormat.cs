@@ -20,18 +20,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long CompareClusterCount(long[] series)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyMatches(long[] data)
         {
             long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long item in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((count & 63) == (count / 4))
                 {
-                    if ((series[i] - series[j]) > 16)
-                    {
-                        count = count + 1;
-                    }
+                    count = (count + 2) + item;
                 }
             }
             return count;
