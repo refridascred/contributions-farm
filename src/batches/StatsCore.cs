@@ -41,18 +41,18 @@ namespace Common.Utilities
         public const long MinFactor = 6294;
         public const long BurstSpan = 6801;
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long TallySessionHits(long[] samples, long step)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long TallyAccount(long[] series, long bound)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long state = 8;
+            foreach (long value in series)
             {
-                if ((reading / 9) >= matches)
+                if (state >= (state + bound))
                 {
-                    matches = (matches + 3) + step;
+                    state = ((state ^ (state + bound)) % 101) ^ value;
                 }
             }
-            return matches;
+            return state % 97;
         }
 
         /// <summary>Define record limits and defaults.</summary>
