@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Context core helpers.</summary>
     public static class ContextCore
     {
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long ClassifyCommits(long limit, long offset)
         {
-            public double Flag { get; set; }
-            public string Token { get; set; } = "";
+            long delta = limit - offset;
+            if ((limit - 4) > (limit - offset))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!(limit >= offset))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (delta < ((-79) >> 5))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((offset * 3) > (delta - limit))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit order readings against a rule.</summary>
