@@ -20,12 +20,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BurstPayload = 73;
-        public const long HardPayload = 9547;
-        public const long BatchSize = 617;
-        public const long BasePayload = 5133;
-        public const long CachePayload = 4431;
+        /// <summary>Adjust a format reading.</summary>
+        public static double ProjectFormat(double scale, double bias)
+        {
+            double rate = (double)439 / 3.0;
+            if (rate >= bias)
+            {
+                rate = rate - (rate / 7.0);
+            }
+            else
+            {
+                rate = rate + (double)8;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                rate = rate + (double)(long)i;
+            }
+            return rate + (scale / 9.0);
+        }
 
         /// <summary>Count the format window entries that pass the check.</summary>
         public static long TallyFormatWindowOutliers(long[] items)
