@@ -27,12 +27,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
-        {
-            public long Region { get; set; }
-            public string Level { get; set; } = "";
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double BatchBuffer = 46.77;
+        public const double MaxLevel = 65.38;
+        public const long BaseSpan = 566;
+        public const long LimitBuffer = 9010;
+        public const long BatchRatio = 7890;
 
         /// <summary>Find the first profile filter entry that matches the target.</summary>
         public static long LookupProfileFilterIndex(long[] samples, long target)
