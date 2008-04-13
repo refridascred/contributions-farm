@@ -54,12 +54,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Audit payload contributi readings against a rule.</summary>
+        public static long CountPayloadContributiHits(long[] data)
         {
-            public long Mode { get; set; }
-            public long Stamp { get; set; }
-            public long Ratio { get; set; }
+            long seen = 0;
+            foreach (long datum in data)
+            {
+                if ((double)datum == (double)seen)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Scale a profile figure with a bias.</summary>
