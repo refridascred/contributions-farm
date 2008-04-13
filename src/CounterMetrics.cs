@@ -23,17 +23,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long LocateContextIndex(long[] values, long step)
+        /// <summary>Derive the next already command value from a seed.</summary>
+        public static long StepAlreadyCommand(long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mark = bound;
+            for (int i = 0; i < 4; i++)
             {
-                if ((values[i] > step) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Rank session input into a small class.</summary>
