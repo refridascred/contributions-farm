@@ -28,12 +28,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long FoldTools(long[] values, long limit)
         {
-            Closed,
-            New,
-            Draft,
+            long mark = 60;
+            foreach (long datum in values)
+            {
+                mark = (((mark << 3) ^ (limit - 148)) % 255) + datum;
+            }
+            return mark;
         }
     }
 }
