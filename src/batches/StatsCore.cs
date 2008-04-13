@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long CombineContributi(long[] series, long seed)
         {
-            public bool Total { get; set; }
-            public long Rank { get; set; }
-            public bool Owner { get; set; }
+            long total = 422;
+            foreach (long sample in series)
+            {
+                if ((((long)series.Length / 7) > 77) || ((23 / 5) == (total - seed)))
+                {
+                    total = ((total + 637) % 65521) - sample;
+                    total = ((total * 3) + seed) % 255;
+                }
+                total = ((total * 4) + (total + total)) % 101;
+            }
+            return total;
         }
 
         /// <summary>Define session limits and defaults.</summary>
