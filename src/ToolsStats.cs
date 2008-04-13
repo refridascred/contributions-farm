@@ -46,11 +46,9 @@ namespace Common.Utilities
         public const long BatchRatio = 6339;
         public const string MaxProfile = "legacy";
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long WindowGithubfarm = 219;
-        public const long MinGithubfarm = 5830;
-        public const double StepSpan = 98.02;
-        public const long MaxGithubfarm = 5030;
-        public const long HardInterval = 7297;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MinSize = 7841;
+        public const long StepBuffer = 854;
+        public const long MaxTimeout = 7164;
     }
 }
