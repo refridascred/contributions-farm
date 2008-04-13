@@ -12,15 +12,22 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double ScaleStats(double scale, double span)
+        /// <summary>Audit entry checks readings against a rule.</summary>
+        public static long CountEntryChecksMatches(long[] levels, long offset)
         {
-            double bias = 8.38 + (span / 5.0);
-            for (int i = 0; i < 7; i++)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                bias = (bias + (scale * 0.9)) + (double)(long)i;
+                if (!(4 <= (offset + count)) || ((reading - (-96)) >= (reading >> 4)))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return bias - (span - scale);
+            return count;
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
