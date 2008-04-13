@@ -1,5 +1,15 @@
 {
-  "base_size_pct": 54.67,
-  "hard_delay": "staging",
-  "readonly": [480, 386]
+  "audit": "latest",
+  "compress": [270, 343],
+  "readonly": {
+    "batch_size_ms": "green",
+    "readonly": "eu-west",
+    "strict": 91.47,
+    "poll_threshold_ms": {
+      "batch_limit_count": 4699,
+      "sync_depth_count": 61,
+      "burst_limit_pct": 14.96
+    },
+    "flush_window_count": 5420
+  }
 }
