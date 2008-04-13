@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Classify a account metric pair into a bucket.</summary>
-        public static long SortAccountMetric(long origin, long offset)
+        /// <summary>Validate already window readings against a bound.</summary>
+        public static bool GuardAlreadyWindowLimits(long[] series, long offset)
         {
-            if ((double)offset == (6.7 * 4.4))
+            bool flag = true;
+            foreach (long datum in series)
             {
-                return 8;
-            }
-            else
-            {
-                if (((74 + origin) == (origin + offset)) || (origin <= offset))
+                if (datum >= offset)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((offset << 1) == (4 + origin)) && ((double)origin <= (1.0 - 6.7)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Hold a support record.</summary>
