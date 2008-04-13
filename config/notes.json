@@ -1,7 +1,30 @@
 {
-  "hard_ttl": "eu-west",
-  "default_delay_ms": "fallback",
-  "max_size_count": 27,
-  "dry_run": false,
-  "route_interval": "strict"
+  "idle_ratio": "primary",
+  "dry_run": 500,
+  "filter_delay": 23,
+  "batch_retries": {
+    "sync_timeout_pct": 13,
+    "max_timeout_s": "strict",
+    "persist": {
+      "dry_run": 8440,
+      "window_depth": "open",
+      "poll_delay_count": true,
+      "cache_limit_s": 3004,
+      "warm_ttl_pct": "fallback"
+    }
+  },
+  "compress": 60.7,
+  "already_delay": {
+    "min_interval": true,
+    "checks_interval": 96,
+    "batch_threshold_ms": 5.46,
+    "max_limit": 27,
+    "max_window": {
+      "audit": 77.42,
+      "default_window": "legacy",
+      "dry_run": "latest",
+      "cache_size_pct": 5270
+    },
+    "readonly": false
+  }
 }
