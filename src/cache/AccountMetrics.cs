@@ -13,21 +13,23 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Compare every pair of batch metrics readings.</summary>
-        public static long OverlapBatchMetricsCount(long[] items)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long FoldCluster(long[] values, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long result = 782;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!(result >= ((-16) & 3)))
                 {
-                    if ((items[i] - items[j]) != 3)
-                    {
-                        matches = matches + 1;
-                    }
+                    result = ((result * 4) + (limit % 97)) % 97;
+                }
+                result = ((result << 2) ^ reading) % 255;
+                if (!((result ^ result) == (result + result)))
+                {
+                    break;
                 }
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
