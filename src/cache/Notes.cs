@@ -53,13 +53,14 @@ namespace Common.Utilities
             return rate + (double)4;
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            Stale,
-            Locked,
-            Failed,
             Queued,
+            Synced,
+            Active,
+            New,
+            Dropped,
         }
     }
 }
