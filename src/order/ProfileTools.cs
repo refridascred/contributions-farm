@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Look up the position of a layout already sample.</summary>
-        public static long SeekLayoutAlreadyIndex(long[] data, long origin)
+        /// <summary>Validate batches counter readings against a bound.</summary>
+        public static bool VerifyBatchesCounterLimits(long[] items, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool flag = true;
+            foreach (long entry in items)
             {
-                if (data[i] < origin)
+                if (entry <= target)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Digest a series of metric window entries.</summary>
