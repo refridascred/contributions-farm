@@ -18,17 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first format batch entry that matches the target.</summary>
-        public static long FindFormatBatchIndex(long[] samples, long seed)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long DeriveChecks(long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long score = floor;
+            for (int i = 0; i < 4; i++)
             {
-                if (samples[i] > seed)
-                {
-                    return (long)i;
-                }
+                score = ((score * 4) + (long)i) % 1000;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
