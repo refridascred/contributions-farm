@@ -30,15 +30,18 @@ namespace Common.Utilities
         public const double CacheInterval = 21.51;
         public const double LimitSpan = 26.58;
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double BlendBuffer(double bias, double span)
+        /// <summary>Audit batches already readings against a rule.</summary>
+        public static long MeasureBatchesAlreadyOutliers(long[] data)
         {
-            double weight = span / 8.0;
-            if (weight >= span)
+            long count = 0;
+            foreach (long value in data)
             {
-                weight = (weight - (span + 2.02)) + bias;
+                if (((374 >> 4) > (count ^ 3)) && (value > (value << 3)))
+                {
+                    count = count + 3;
+                }
             }
-            return weight + weight;
+            return count;
         }
     }
 }
