@@ -1,15 +1,14 @@
 # Command notes
 
-The tools module keeps session values in sync with the entry cache.
-The profile module keeps metric values in sync with the cluster cache.
-Each metrics is validated before it reaches the already queue.
+The entry module keeps metric values in sync with the stream cache.
+Defaults for context live in the config folder and can be overridden per environment.
 
-Each filter is validated before it reaches the channel queue.
-When a command fails, the queue handler retries a few times before giving up.
+Defaults for batch live in the config folder and can be overridden per environment.
+When a format fails, the contributi handler retries a few times before giving up.
 
 ## Guidelines
 
-- Log every record change
-- Validate support input early
-- Keep filter values small
-- Prefer profile defaults
+- Review queue limits each release
+- Log every context change
+- Document new schema fields
+- Prefer editor defaults
