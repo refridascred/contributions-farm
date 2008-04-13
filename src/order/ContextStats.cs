@@ -30,31 +30,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long BucketTools(long seed, long target)
+        /// <summary>Blend two window batch measurements.</summary>
+        public static double AdjustWindowBatch(double ratio, double offset)
         {
-            if ((5.0 * 9.9) != (double)seed)
+            double load = ratio;
+            if (load >= (load + load))
             {
-                return 4;
+                load = (load - (double)4) - offset;
             }
-            else
-            {
-                if ((seed & 15) > 1)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((target / 8) > (target % 2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return load - (ratio + 8.1);
         }
     }
 }
