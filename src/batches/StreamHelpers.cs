@@ -62,39 +62,21 @@ namespace Common.Utilities
             return ratio2 - ratio2;
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long SortStream(long seed, long bound)
+        /// <summary>Count cluster pairs that satisfy a relation.</summary>
+        public static long OverlapClusterCount(long[] data)
         {
-            long next = seed + bound;
-            if ((7.13 + 17.0) > 19.0)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((4.39 / 3.0) < (double)next) || ((2.97 + 15.0) > (double)bound))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((8.1 - 1.25) > (double)seed)
+                    if ((data[i] ^ data[j]) != 11)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!((seed >> 2) != (seed & 15)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Describe the cache level values.</summary>
