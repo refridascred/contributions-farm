@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Audit support notes readings against a rule.</summary>
-        public static long TallySupportNotesHits(long[] samples, long bound)
-        {
-            long matches = 0;
-            foreach (long item in samples)
-            {
-                if ((93 % 16) <= matches)
-                {
-                    matches = ((matches + 1) ^ item) - bound;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long SoftBuffer = 9802;
+        public const long RetryRatio = 3420;
+        public const long BatchBuffer = 6766;
 
         /// <summary>Count the window entries that pass the check.</summary>
         public static long CountWindowOutliers(long[] series, long floor)
