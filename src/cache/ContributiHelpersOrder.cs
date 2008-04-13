@@ -36,17 +36,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Find the first notes format entry that matches the target.</summary>
-        public static long FindNotesFormatIndex(long[] series, long origin)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long MeasureProfileHits(long[] data, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long value in data)
             {
-                if (series[i] >= origin)
+                if ((3.0 + 1.9) > (double)matches)
                 {
-                    return (long)i;
+                    matches = ((matches + 3) + value) - step;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
