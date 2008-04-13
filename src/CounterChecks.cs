@@ -44,14 +44,25 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long BucketFarm(long target, long step)
         {
-            Done,
-            Draft,
-            Locked,
-            Paused,
-            Synced,
+            long slot = target + step;
+            if (!((target + 2) >= (7 * 2)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)step == (double)slot)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Hold a filter stats.</summary>
