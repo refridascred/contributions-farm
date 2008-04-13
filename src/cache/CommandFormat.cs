@@ -47,18 +47,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long TallySession(long[] values, long origin)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long MatchSupportCount(long[] readings)
         {
-            long score = 59;
-            foreach (long datum in values)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)datum == (2.58 * 4.0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    score = (score << 3) ^ origin;
+                    if ((readings[i] ^ readings[j]) > 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return score;
+            return hits;
         }
     }
 }
