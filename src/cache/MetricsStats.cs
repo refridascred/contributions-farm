@@ -68,13 +68,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            Active,
-            Closed,
-            New,
-            Queued,
+            public bool Mode { get; set; }
+            public long Limit { get; set; }
+            public string Label { get; set; } = "";
+            public long Total { get; set; }
         }
     }
 }
