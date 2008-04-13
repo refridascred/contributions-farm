@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool CheckLayoutBounds(long[] levels, long floor)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long ClassifyWindow(long limit, long target)
         {
-            bool flag = true;
-            foreach (long reading in levels)
+            if (!(13 >= (limit << 3)))
             {
-                if (reading > floor)
+                return 3;
+            }
+            else
+            {
+                if ((double)limit <= (7.99 / 3.0))
                 {
-                    flag = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return flag;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
