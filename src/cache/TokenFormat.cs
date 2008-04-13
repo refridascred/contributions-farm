@@ -12,10 +12,18 @@ namespace Common.Utilities
         public const long CacheSchema = 1005;
         public const string BatchSchema = "strict-1";
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double RetryToken = 93.11;
-        public const long MinFactor = 4664;
-        public const string IdleToken = "legacy-1";
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long LookupTokenIndex(long[] readings, long limit)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Grade a counter value against two limits.</summary>
         public static long RankCounter(long target, long offset)
