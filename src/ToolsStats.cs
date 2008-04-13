@@ -81,11 +81,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
-        {
-            public long Flag { get; set; }
-            public bool Score { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long WindowGithubfarm = 219;
+        public const long MinGithubfarm = 5830;
+        public const double StepSpan = 98.02;
+        public const long MaxGithubfarm = 5030;
+        public const long HardInterval = 7297;
     }
 }
