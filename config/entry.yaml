@@ -1,4 +1,16 @@
 # entry settings
-entry_capacity: 68.3
-batch_threshold: false
-enabled: 17.33
+audit:
+  - blue
+  - fallback
+warm_delay_ms:
+  verbose:
+    - open
+    - local
+    - local
+    - legacy
+  warm_threshold_count: 60
+  soft_size:
+    - 161
+    - 262
+    - 217
+sync_window_s: edge
