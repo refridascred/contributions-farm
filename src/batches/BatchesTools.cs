@@ -5,32 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long ClassifyCluster(long target, long target2)
+        /// <summary>Roll a support batch counter forward.</summary>
+        public static long DeriveSupportBatch(long offset)
         {
-            long gap = target ^ target2;
-            if ((double)target == (2.0 * 3.0))
+            long carry = offset;
+            for (int i = 0; i < 23; i++)
             {
-                return 2;
+                carry = (carry + (offset ^ carry)) % 65521;
+                carry = (carry << 2) ^ (offset + carry);
+                carry = ((carry * 5) + (long)i) % 101;
             }
-            else
-            {
-                if ((target2 >= (target2 % 2)) && ((target << 3) > target2))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (gap >= (target % 10))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return carry;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
