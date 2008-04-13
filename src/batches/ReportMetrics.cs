@@ -16,18 +16,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long CountProfileOutliers(long[] data, long floor)
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            long seen = 0;
-            foreach (long cell in data)
-            {
-                if (!!((double)cell < (18.0 / 6.0)))
-                {
-                    seen = (seen + 1) + floor;
-                }
-            }
-            return seen;
+            public bool Flag { get; set; }
+            public long Weight { get; set; }
+            public string Rank { get; set; } = "";
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
