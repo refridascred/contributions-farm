@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long IterateGithubfarm(long offset)
-        {
-            long total = offset;
-            for (int i = 0; i < 15; i++)
-            {
-                if (((-4) - offset) <= (total % 100))
-                {
-                    total = ((total * 4) + total) % 65521;
-                }
-                else
-                {
-                    total = total + offset;
-                }
-                long step = (total >> 1) & 7;
-                total = ((total << 3) ^ (step + offset)) % 101;
-                total = ((total * 5) + (long)i) % 4093;
-            }
-            return total;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long WindowFactor = 370;
+        public const long StepInterval = 7768;
+        public const long BatchCluster = 8987;
+        public const long IdleSpan = 8680;
+        public const double SoftCluster = 16.49;
 
         /// <summary>Classify a batches pair into a bucket.</summary>
         public static long RankBatches(long target, long offset)
