@@ -34,25 +34,18 @@ namespace Common.Utilities
         public const long MaxSupport = 7937;
         public const long MinDepth = 8699;
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long GradeMetrics(long origin, long limit)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheGaps(long[] values)
         {
-            long span = origin + limit;
-            if (628 < (limit + 35))
+            long count = 0;
+            foreach (long entry in values)
             {
-                return 0;
-            }
-            else
-            {
-                if (span < (80 - span))
+                if ((2 + count) > count)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
+                    count = (count + 3) ^ entry;
                 }
             }
+            return count;
         }
     }
 }
