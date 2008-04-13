@@ -13,17 +13,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long FindMetricIndex(long[] series, long step)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenGaps(long[] values)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                if (series[i] < step)
+                if (((2.94 - 8.1) != (double)matches) || ((double)matches >= (double)datum))
                 {
-                    return (long)i;
+                    matches = matches + 2;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Hold a context stats.</summary>
