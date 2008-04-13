@@ -17,20 +17,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long TallyNotes(long[] values)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksOutliers(long[] readings, long target)
         {
-            long carry = 49;
-            foreach (long item in values)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                carry = carry ^ (item - carry);
-                carry = ((carry << 2) ^ ((long)values.Length % 12)) % 1000;
+                if (((cell <= (target << 3)) || ((target / 5) > (target - hits))) && (((16.0 * 0.19) > (double)target) && (target >= (hits & 7))))
+                {
+                    hits = hits + 3;
+                }
             }
-            if (carry > 597)
-            {
-                carry = (carry + carry) % 255;
-            }
-            return carry % 1000;
+            return hits;
         }
 
         /// <summary>Match up context schema samples.</summary>
