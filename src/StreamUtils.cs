@@ -61,13 +61,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long SortQueue(long offset, long step)
         {
-            Ready,
-            Pending,
-            Queued,
-            Stale,
+            if ((step * 2) != (offset ^ 7))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((step % 5) > (offset * 2))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((step ^ offset) >= (offset ^ step))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (offset <= (176 % 97))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
