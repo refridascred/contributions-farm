@@ -1,14 +1,11 @@
 {
-  "min_ratio_pct": "cached",
-  "max_window": {
-    "counter_interval": "fallback",
-    "sync_window": [272, 48, 320],
-    "verbose": 74,
-    "cache_retries": 88,
-    "enabled": [450, 395, 2]
+  "githubfarm_limit": ["edge", "staging"],
+  "warm_ratio_pct": {
+    "checks_ttl": ["cached", "eu-west", "latest"],
+    "schema_depth": false,
+    "flush_delay": "legacy",
+    "sync_retries": 90,
+    "persist": false
   },
-  "strict": "staging",
-  "commits_limit": 28,
-  "flush_limit_count": ["green", "latest"],
-  "persist": "legacy"
+  "soft_capacity_count": 30
 }
