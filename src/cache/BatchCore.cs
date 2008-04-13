@@ -47,13 +47,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Adjust a stats counter reading.</summary>
+        public static double AdjustStatsCounter(double gain, double floor)
         {
-            public long Size { get; set; }
-            public long Ratio { get; set; }
-            public long Flag { get; set; }
-            public bool Score { get; set; }
+            double scale = 5.0 / 2.0;
+            if (scale >= floor)
+            {
+                scale = (scale + 16.0) - gain;
+            }
+            else
+            {
+                scale = scale + floor;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale + scale) - (double)(long)i;
+            }
+            return scale - 19.0;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
