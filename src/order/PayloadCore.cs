@@ -23,18 +23,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphGaps(long[] levels, long seed)
+        /// <summary>Accumulate report batch samples.</summary>
+        public static long TallyReportBatch(long[] values)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            long sum = 0;
+            foreach (long item in values)
             {
-                if (((value << 2) != (value + tally)) && !((seed << 2) > seed))
+                if ((sum ^ item) <= (item + 0))
                 {
-                    tally = tally + 1;
+                    sum = ((sum * 2) + 22) % 255;
+                    continue;
                 }
+                sum = ((sum * 4) + (sum << 2)) % 65521;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Scale a order batch figure with a bias.</summary>
