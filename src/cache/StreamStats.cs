@@ -14,14 +14,38 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long SortNotes(long step, long origin)
         {
-            Dropped,
-            New,
-            Queued,
-            Retry,
-            Pending,
+            if ((origin % 100) >= (step >> 3))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((step - origin) != (732 + step)) && ((double)origin < 6.98))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!((origin % 100) <= (725 / 2)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((origin + 5) <= (607 * 4))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next stats schema value from a seed.</summary>
