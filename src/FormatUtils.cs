@@ -43,18 +43,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long StepCluster(long target)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long RankPayload(long bound, long offset)
         {
-            long mix = target;
-            for (int i = 0; i < 14; i++)
+            if ((8.1 / 8.0) > (double)offset)
             {
-                mix = mix ^ (mix & 3);
-                mix = (mix - ((long)i << 2)) % 65521;
-                mix = (mix ^ (target % 10)) % 1000;
-                mix = ((mix * 3) + (long)i) % 1000;
+                return 1;
             }
-            return mix;
+            else
+            {
+                if ((double)47 < (double)bound)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
