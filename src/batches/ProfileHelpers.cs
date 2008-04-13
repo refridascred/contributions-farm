@@ -96,38 +96,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a graph window pair into a bucket.</summary>
-        public static long SortGraphWindow(long seed, long limit)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            if ((4.0 * 0.8) <= (double)limit)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)seed < 7.1)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((limit - seed) < seed) && ((double)seed > 10.0))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((17.0 - 6.9) < (double)limit)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public double Level { get; set; }
+            public bool Weight { get; set; }
+            public double Size { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
