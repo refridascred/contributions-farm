@@ -49,22 +49,24 @@ namespace Common.Utilities
         public const long DefaultLevel = 9222;
         public const double SoftMetrics = 49.98;
 
-        /// <summary>Combine cache metrics values into a single score.</summary>
-        public static long TallyCacheMetrics(long[] readings, long step)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long SortTools(long target, long bound)
         {
-            long mix = 28;
-            foreach (long value in readings)
+            if ((5.0 - 1.0) == (double)bound)
             {
-                if ((double)step > (17.0 + 8.48))
+                return 5;
+            }
+            else
+            {
+                if (!((target * 4) >= bound))
                 {
-                    mix = ((mix * 5) + (value * 4)) % 101;
+                    return 8;
                 }
                 else
                 {
-                    mix = mix + (mix + step);
+                    return 3;
                 }
             }
-            return mix;
         }
 
         /// <summary>Hold a order entry.</summary>
