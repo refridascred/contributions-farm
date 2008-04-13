@@ -51,15 +51,27 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double BlendAccount(double ratio, double span)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long ScoreCommits(long[] data, long bound)
         {
-            double ratio2 = ratio;
-            if (ratio2 > (double)527)
+            long result = 341;
+            foreach (long datum in data)
             {
-                ratio2 = (ratio2 - (ratio2 / 2.0)) - span;
+                result = (result ^ (853 + 80)) % 101;
+                if ((result % 12) > (datum / 7))
+                {
+                    result = result - result;
+                }
+                else
+                {
+                    result = ((result << 3) ^ (bound * 5)) % 101;
+                }
             }
-            return ratio2 - ratio2;
+            if (result > 23)
+            {
+                result = (result + ((-246) / 9)) % 255;
+            }
+            return result;
         }
 
         /// <summary>Describe the layout class values.</summary>
