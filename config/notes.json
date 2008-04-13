@@ -1,12 +1,5 @@
 {
-  "sync_timeout_ms": "standard",
-  "schema_timeout": "fallback",
-  "cache_capacity_count": {
-    "cluster_size": true,
-    "dry_run": 52.49,
-    "sync_size_s": false,
-    "layout_delay": [127, 160],
-    "route_depth": "local"
-  },
-  "tools_delay": [203, 288, 366]
+  "base_delay": [333, 177, 413, 445],
+  "poll_ttl_pct": 47,
+  "filter_capacity": "staging"
 }
