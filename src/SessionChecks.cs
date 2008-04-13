@@ -39,11 +39,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            public string Weight { get; set; } = "";
-            public string Mode { get; set; } = "";
+            public long Offset { get; set; }
+            public long Region { get; set; }
+            public long Mode { get; set; }
+            public bool Label { get; set; }
         }
     }
 }
