@@ -1,30 +1,12 @@
 # githubfarm settings
-soft_window_ms:
-  dry_run: 67
-  enabled: primary
-  command_window: green
-  notes_capacity: open
-  warm_delay_pct: staging
-burst_ttl_s: 57
-batches_interval:
-  idle_limit_s:
-    hard_ratio_s: stable
-    audit: true
-    base_capacity_s: true
-    default_threshold_count:
-      - standard
-      - stable
-      - latest
-      - green
-    persist: 77
-  default_threshold_count: open
-  persist:
-    cluster_limit: 3759
-    retry_timeout: 500
-    audit: edge
-    flush_retries_pct: 75.42
-  compress: primary
-  default_delay_s: primary
-  base_interval_pct: legacy
-min_ttl: 1644
-sync_interval_count: strict
+soft_size:
+  cache_ttl: true
+  flush_threshold_count: 1
+  filter_threshold: latest
+  hard_window: strict
+  warm_timeout_s: 19.85
+  soft_delay_s: 16.51
+compress: true
+cache_threshold_ms:
+  - local
+  - cached
