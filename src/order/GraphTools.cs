@@ -53,17 +53,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long SeriesCommits(long seed)
-        {
-            long acc = seed;
-            for (int i = 0; i < 14; i++)
-            {
-                acc = ((acc << 3) ^ ((long)i & 31)) % 101;
-                acc = acc - (41 % 24);
-                acc = ((acc * 3) + (long)i) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long WindowFilter = 6589;
+        public const string SoftCount = "strict-1";
+        public const long SoftFilter = 2740;
+        public const double WindowFactor = 52.56;
+        public const long BatchSpan = 867;
     }
 }
