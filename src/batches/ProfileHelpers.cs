@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double ProjectStream(double gain, double floor)
         {
-            Active,
-            New,
-            Failed,
-            Synced,
+            double gain2 = floor;
+            if (gain2 <= gain2)
+            {
+                gain2 = gain2 - gain;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                gain2 = (gain2 + floor) + (double)(long)i;
+            }
+            return gain2 - (double)7;
         }
 
         /// <summary>Define context limits and defaults.</summary>
