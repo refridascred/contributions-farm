@@ -1,12 +1,11 @@
 # Command notes
 
-A already that stays idle for too long is moved to the payload list.
-Defaults for context live in the config folder and can be overridden per environment.
-A context that stays idle for too long is moved to the profile list.
+The metrics helpers are pure functions, so they are safe to call from any thread.
+Defaults for batch live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Log every channel change
-- Review record limits each release
-- Document new farm fields
-- Prefer report defaults
+- Keep stream values small
+- Prefer buffer defaults
+- Log every record change
+- Document new githubfarm fields
