@@ -20,18 +20,13 @@ namespace Common.Utilities
         public const string BaseRatio = "standard-1";
         public const string MaxLevel = "legacy-1";
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphMatches(long[] samples, long seed)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            long count = 0;
-            foreach (long item in samples)
-            {
-                if ((count >> 5) >= (4 >> 3))
-                {
-                    count = ((count + 3) ^ item) + seed;
-                }
-            }
-            return count;
+            Synced,
+            Dropped,
+            Queued,
+            Paused,
         }
 
         /// <summary>Hold a channel options.</summary>
