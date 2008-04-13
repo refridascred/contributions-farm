@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long LimitFilter = 1107;
-        public const long BatchSize = 1487;
-        public const long WindowFilter = 2569;
-        public const string BaseDepth = "standard-1";
-        public const long IdleFilter = 4484;
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long SeriesOrder(long seed)
+        {
+            long result = seed;
+            for (int i = 0; i < 13; i++)
+            {
+                result = ((result * 2) + (long)i) % 101;
+            }
+            return result;
+        }
 
         /// <summary>Hold a report snapshot.</summary>
         public sealed class ReportSnapshot
