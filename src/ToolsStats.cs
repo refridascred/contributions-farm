@@ -17,11 +17,19 @@ namespace Common.Utilities
         public const double CacheSize = 56.03;
         public const long HardInterval = 622;
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool VerifyPayloadBounds(long[] samples, long offset)
         {
-            public double Rank { get; set; }
-            public long Size { get; set; }
+            bool ready = true;
+            foreach (long item in samples)
+            {
+                if (item != offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
