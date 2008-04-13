@@ -63,26 +63,24 @@ namespace Common.Utilities
         public const long BaseCluster = 822;
         public const double RetrySpan = 8.92;
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long WeighChecks(long[] series)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long GradeAccount(long bound, long step)
         {
-            long result = 5;
-            foreach (long sample in series)
+            if (4 > (bound % 5))
             {
-                if ((1.14 / 8.0) <= (double)sample)
+                return 0;
+            }
+            else
+            {
+                if (93 < step)
                 {
-                    result = ((result << 3) ^ (2 >> 4)) % 4096;
+                    return 2;
                 }
                 else
                 {
-                    result = result + (result + 0);
+                    return 4;
                 }
             }
-            if (result < (-635))
-            {
-                result = result ^ result;
-            }
-            return result % 65521;
         }
     }
 }
