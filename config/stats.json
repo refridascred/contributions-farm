@@ -1,5 +1,5 @@
 {
-  "farm_ratio": 100,
-  "cache_retries_pct": 8.31,
-  "retry_threshold_ms": false
+  "session_depth": 2660,
+  "window_retries": 18,
+  "graph_interval": [171, 247, 325, 225]
 }
