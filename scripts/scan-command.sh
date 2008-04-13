@@ -6,19 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-green}"
-case "${mode}" in
-    latest)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+count=0
+while [ "${count}" -lt 7 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
 
-for item in open stable legacy; do
+for item in eu-west blue open; do
     log "checking ${item}"
 done
-
-COMMAND_LIMIT=101
-log "limit is ${COMMAND_LIMIT}"
