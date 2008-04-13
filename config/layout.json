@@ -1,6 +1,7 @@
 {
-  "editor_capacity": true,
-  "soft_capacity_s": true,
-  "persist": "staging",
-  "max_window_ms": 487
+  "persist": true,
+  "buffer_interval": "eu-west",
+  "hard_ttl_pct": 250,
+  "default_threshold_s": false,
+  "strict": false
 }
