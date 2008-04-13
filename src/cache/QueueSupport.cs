@@ -14,12 +14,16 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Combine format values into a single score.</summary>
+        public static long WeighFormat(long[] levels, long bound)
         {
-            Draft,
-            Synced,
-            Idle,
+            long score = 61;
+            foreach (long datum in levels)
+            {
+                score = (score ^ (datum ^ score)) + bound;
+                score = score ^ (-67);
+            }
+            return score % 1000;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
