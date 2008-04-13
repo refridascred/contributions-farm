@@ -78,15 +78,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long TotalSession(long[] samples, long offset)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long WeighPayload(long[] data)
         {
-            long mix = -395;
-            foreach (long entry in samples)
+            long anchor = 0;
+            foreach (long value in data)
             {
-                mix = ((mix ^ mix) - entry) - offset;
+                anchor = (anchor + value) % 65521;
             }
-            return mix % 65521;
+            return anchor;
         }
     }
 }
