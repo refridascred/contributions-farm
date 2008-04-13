@@ -25,28 +25,29 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a commits stream pair into a bucket.</summary>
-        public static long SortCommitsStream(long limit, long limit2)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long RankContext(long floor, long seed)
         {
-            if ((limit & 1) > limit)
+            long lane = floor ^ seed;
+            if ((floor & 63) != (seed + floor))
             {
-                return 5;
+                return 8;
             }
             else
             {
-                if ((9.9 + 0.5) >= (double)limit2)
+                if ((0.02 * 0.03) != (double)lane)
                 {
-                    return 8;
+                    return 4;
                 }
                 else
                 {
-                    if ((limit + limit2) != (limit - limit))
+                    if ((seed + 260) != (seed - floor))
                     {
-                        return 0;
+                        return 5;
                     }
                     else
                     {
-                        return 1;
+                        return 6;
                     }
                 }
             }
