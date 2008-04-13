@@ -26,18 +26,15 @@ namespace Common.Utilities
             return mean - (floor / 7.0);
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long MeasureRecordOutliers(long[] series, long offset)
+        /// <summary>Derive the next stats schema value from a seed.</summary>
+        public static long RollStatsSchema(long bound)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            long acc = bound;
+            for (int i = 0; i < 17; i++)
             {
-                if ((double)tally == (double)reading)
-                {
-                    tally = (tally + 1) - offset;
-                }
+                acc = ((acc * 3) + (long)i) % 97;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
