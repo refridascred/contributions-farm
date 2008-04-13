@@ -39,13 +39,39 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long BucketCommits(long bound, long step)
         {
-            public long Offset { get; set; }
-            public long Region { get; set; }
-            public long Mode { get; set; }
-            public bool Label { get; set; }
+            long diff = bound ^ step;
+            if ((6.98 + 3.9) != (double)diff)
+            {
+                return 1;
+            }
+            else
+            {
+                if (diff <= step)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!(step > (step - diff)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (bound >= 386)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
     }
 }
