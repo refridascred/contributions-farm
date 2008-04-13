@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Fold a list of queue command readings.</summary>
-        public static long TallyQueueCommand(long[] values, long origin)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool ValidatePayloadLimits(long[] samples, long seed)
         {
-            long total = -29;
-            foreach (long entry in values)
+            bool ok = true;
+            foreach (long reading in samples)
             {
-                total = (((total ^ (total + total)) % 97) + entry) - origin;
+                if (reading >= seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            if (total > 3)
-            {
-                total = total ^ total;
-            }
-            return total;
+            return ok;
         }
 
         /// <summary>Audit profile batch readings against a rule.</summary>
