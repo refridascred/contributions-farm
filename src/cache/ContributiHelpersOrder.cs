@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenGaps(long[] readings)
         {
-            Paused,
-            New,
-            Idle,
-            Pending,
-            Dropped,
+            long seen = 0;
+            foreach (long sample in readings)
+            {
+                if (((1.8 / 9.0) > (double)sample) || ((seen ^ 468) < sample))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Digest a series of payload entries.</summary>
