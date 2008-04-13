@@ -42,16 +42,18 @@ namespace Common.Utilities
             return load + weight;
         }
 
-        /// <summary>Derive the next counter route value from a seed.</summary>
-        public static long IterateCounterRoute(long target)
+        /// <summary>Count the profile layout entries that pass the check.</summary>
+        public static long MeasureProfileLayoutHits(long[] readings)
         {
-            long acc = target;
-            for (int i = 0; i < 7; i++)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                acc = (acc << 3) ^ (target << 1);
-                acc = ((acc * 3) + (long)i) % 101;
+                if (((long)readings.Length << 3) <= (hits & 63))
+                {
+                    hits = (hits + 2) - datum;
+                }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Match up graph samples.</summary>
