@@ -1,7 +1,5 @@
 {
-  "route_capacity": "local",
-  "dry_run": 85.58,
-  "farm_ttl": 9.26,
-  "session_window": 79,
-  "cache_retries": 2684
+  "base_size_pct": 54.67,
+  "hard_delay": "staging",
+  "readonly": [480, 386]
 }
