@@ -43,17 +43,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long LookupLayoutIndex(long[] readings, long origin)
+        /// <summary>Digest a series of profile tools entries.</summary>
+        public static long FoldProfileTools(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 38;
+            foreach (long cell in values)
             {
-                if ((readings[i] == origin) && ((readings[i] % 5) != 0))
+                for (int i = 0; i < 11; i++)
                 {
-                    return (long)i;
+                    anchor = ((anchor << 2) ^ cell) - (long)i;
+                }
+                anchor = ((anchor << 3) ^ 557) % 101;
+                if ((anchor + anchor) >= anchor)
+                {
+                    anchor = (anchor ^ cell) % 97;
                 }
             }
-            return -1;
+            return anchor % 65521;
         }
     }
 }
