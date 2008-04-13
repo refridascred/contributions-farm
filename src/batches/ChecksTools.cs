@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long RollBatch(long bound)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long FindProfileIndex(long[] readings, long step)
         {
-            long total = bound;
-            for (int i = 0; i < 14; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((long)i == ((long)i ^ bound)))
+                if (readings[i] == step)
                 {
-                    long edge = bound ^ 660;
-                    total = total + edge;
+                    return (long)i;
                 }
-                total = (total << 3) ^ (6 & 31);
-                total = ((total * 3) + (long)i) % 1000;
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Blend two channel measurements.</summary>
