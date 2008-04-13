@@ -23,22 +23,17 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowHits(long[] samples, long seed)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long LookupClusterIndex(long[] items, long offset)
         {
-            long count = 0;
-            foreach (long value in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((seed * 5) != (272 ^ count))
+                if (items[i] < offset)
                 {
-                    count = (count + 2) - value;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
