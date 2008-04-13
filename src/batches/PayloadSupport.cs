@@ -16,15 +16,25 @@ namespace Common.Utilities
             return mean + (3.0 * 2.0);
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long DigestEntry(long[] values, long target)
+        /// <summary>Digest a series of stream payload entries.</summary>
+        public static long TotalStreamPayload(long[] series, long seed)
         {
-            long score = 62;
-            foreach (long datum in values)
+            long total = 72;
+            foreach (long entry in series)
             {
-                score = (((score ^ 1) % 101) ^ datum) - target;
+                total = total + total;
+                if (!(seed >= (seed + seed)))
+                {
+                    total = total ^ (seed + entry);
+                    total = ((total << 3) ^ (seed - entry)) % 101;
+                }
+                total = ((total << 3) ^ (seed + entry)) % 1000;
+                if ((entry << 1) <= 605)
+                {
+                    break;
+                }
             }
-            return score;
+            return total % 1000;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
