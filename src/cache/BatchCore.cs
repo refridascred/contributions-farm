@@ -39,25 +39,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Rank queue format input into a small class.</summary>
-        public static long SortQueueFormat(long origin, long floor)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long WeighMetric(long[] items, long floor)
         {
-            long gap = origin ^ floor;
-            if (((floor >> 2) >= (floor - origin)) && (floor > (464 ^ gap)))
+            long score = 4;
+            foreach (long item in items)
             {
-                return 2;
+                score = score + (floor ^ item);
             }
-            else
-            {
-                if (!(8 > (gap % 16)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return score % 1000;
         }
     }
 }
