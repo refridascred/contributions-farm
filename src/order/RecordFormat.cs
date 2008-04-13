@@ -55,21 +55,32 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long OverlapGithubfarmCount(long[] items)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long SortOrder(long seed, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long delta = seed + step;
+            if ((seed > (step + step)) && ((6.2 - 0.8) != (double)delta))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((5.67 < (double)seed) && ((delta % 64) <= (delta - delta)))
                 {
-                    if ((items[i] ^ items[j]) == 1)
+                    return 8;
+                }
+                else
+                {
+                    if ((2.09 < (double)delta) || ((seed & 31) >= (step ^ step)))
                     {
-                        matches = matches + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
                     }
                 }
             }
-            return matches;
         }
     }
 }
