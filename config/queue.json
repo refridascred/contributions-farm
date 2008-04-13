@@ -1,14 +1,13 @@
 {
-  "farm_threshold": "staging",
-  "order_window": 31.25,
-  "warm_interval_s": ["primary", "blue", "fallback"],
-  "min_ratio": {
-    "persist": 81.58,
-    "burst_timeout_pct": [415, 391],
-    "cache_timeout_s": {
-      "farm_timeout": "strict",
-      "schema_limit": "staging",
-      "strict": 60
-    }
-  }
+  "readonly": "latest",
+  "compress": 55,
+  "hard_delay": {
+    "tools_interval": ["latest", "fallback", "cached", "local"],
+    "checks_retries": 7244,
+    "verbose": 2,
+    "format_delay": 59.51,
+    "strict": 30,
+    "channel_delay": "eu-west"
+  },
+  "stats_interval": "primary"
 }
