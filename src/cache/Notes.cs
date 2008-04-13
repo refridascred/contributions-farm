@@ -14,21 +14,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Match up schema samples.</summary>
-        public static long OverlapSchemaCount(long[] values)
+        /// <summary>Audit token counter readings against a rule.</summary>
+        public static long AuditTokenCounterOutliers(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((39 - cell) < (tally - cell)) && ((((-559) + cell) <= (cell + cell)) || ((tally - tally) > (cell % 97))))
                 {
-                    if ((values[i] + values[j]) > 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = tally + 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Scale a order figure with a bias.</summary>
