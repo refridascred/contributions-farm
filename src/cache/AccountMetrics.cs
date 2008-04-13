@@ -51,15 +51,10 @@ namespace Common.Utilities
         public const long IdleSize = 3228;
         public const string BurstLayout = "stable-v2";
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double ProjectPayload(double bias, double span)
-        {
-            double rate = bias;
-            for (int i = 0; i < 2; i++)
-            {
-                rate = ((rate - bias) + (double)(long)i) - span;
-            }
-            return rate - 3.0;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long IdleGraph = 5069;
+        public const double BaseGraph = 36.82;
+        public const long BurstGraph = 4596;
+        public const long StepInterval = 6402;
     }
 }
