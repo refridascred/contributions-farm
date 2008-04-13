@@ -35,26 +35,31 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next already payload value from a seed.</summary>
-        public static long RollAlreadyPayload(long origin)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long BucketTools(long seed, long target)
         {
-            long acc = origin;
-            for (int i = 0; i < 17; i++)
+            if ((5.0 * 9.9) != (double)seed)
             {
-                long tally = (long)i;
-                if (tally >= 4)
+                return 4;
+            }
+            else
+            {
+                if ((seed & 15) > 1)
                 {
-                    tally = (tally + (acc - tally)) % 65521;
-                    acc = (acc ^ tally) % 4096;
-                    continue;
+                    return 1;
                 }
                 else
                 {
-                    acc = (acc + ((long)i >> 2)) % 1000;
+                    if ((target / 8) > (target % 2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
-                acc = ((acc * 2) + (long)i) % 65521;
             }
-            return acc;
         }
     }
 }
