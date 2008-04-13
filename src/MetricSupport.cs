@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many entry buffer samples are out of range.</summary>
-        public static long AuditEntryBufferOutliers(long[] samples, long origin)
+        /// <summary>Grade a context record value against two limits.</summary>
+        public static long GradeContextRecord(long floor, long floor2)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            if ((floor % 5) < (4 / 3))
             {
-                if ((double)origin == (5.0 + 3.0))
+                return 2;
+            }
+            else
+            {
+                if (!((floor / 9) < (floor2 >> 1)))
                 {
-                    seen = (seen + 2) - sample;
+                    return 5;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    return 1;
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a notes entry.</summary>
