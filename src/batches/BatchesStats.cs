@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool GuardGraphLimits(long[] levels, long target)
+        /// <summary>Find the first format githubfarm entry that matches the target.</summary>
+        public static long LookupFormatGithubfarmIndex(long[] values, long step)
         {
-            bool found = true;
-            foreach (long sample in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (sample > target)
+                if (values[i] >= step)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
