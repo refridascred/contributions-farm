@@ -40,19 +40,13 @@ namespace Common.Utilities
         public const long MinBuffer = 4966;
         public const long CacheBuffer = 8743;
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool GuardNotesRange(long[] samples, long floor)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            bool ready = true;
-            foreach (long sample in samples)
-            {
-                if (sample < floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Ratio { get; set; }
+            public double Owner { get; set; }
+            public double Token { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
