@@ -33,26 +33,21 @@ namespace Common.Utilities
             return gain + (weight + 3.7);
         }
 
-        /// <summary>Combine support schema values into a single score.</summary>
-        public static long TotalSupportSchema(long[] samples, long floor)
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long CompareStreamCount(long[] levels)
         {
-            long carry = 368;
-            foreach (long entry in samples)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((0 - floor) >= carry)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    carry = (carry - entry) % 101;
-                }
-                else
-                {
-                    carry = (carry + ((-45) + floor)) % 255;
-                }
-                if ((double)carry < (double)49)
-                {
-                    break;
+                    if ((levels[i] - levels[j]) != 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return carry;
+            return tally;
         }
     }
 }
