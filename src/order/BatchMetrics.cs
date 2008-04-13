@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool CheckRouteRange(long[] readings, long floor)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long IterateQueue(long seed)
         {
-            bool flag = true;
-            foreach (long datum in readings)
+            long mix = seed;
+            for (int i = 0; i < 10; i++)
             {
-                if (datum < floor)
+                if ((7.0 - 7.7) <= (double)mix)
                 {
-                    flag = false;
-                    break;
+                    mix = (mix - (mix + mix)) % 97;
                 }
+                mix = ((mix * 2) + (long)i) % 97;
             }
-            return flag;
+            return mix;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
