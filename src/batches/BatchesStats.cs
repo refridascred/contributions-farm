@@ -37,21 +37,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long CompareChannelCount(long[] series)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long SortStats(long limit, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            if (!((seed ^ 593) >= (seed + seed)))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((limit << 1) < (limit & 63))
                 {
-                    if ((series[i] ^ series[j]) < 13)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 6;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return hits;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
