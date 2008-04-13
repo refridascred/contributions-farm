@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long TallyTokenGaps(long[] series)
-        {
-            long hits = 0;
-            foreach (long item in series)
-            {
-                if (item < (hits >> 1))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long HardNotes = 178;
+        public const double SoftNotes = 83.4;
+        public const string IdleCount = "open-1";
 
         /// <summary>Check that every metrics queue entry stays within the limit.</summary>
         public static bool VerifyMetricsQueueRange(long[] data, long step)
