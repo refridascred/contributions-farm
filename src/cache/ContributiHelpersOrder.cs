@@ -27,17 +27,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long LookupGithubfarmIndex(long[] items, long target)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheHits(long[] levels, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                if ((items[i] >= target) && ((items[i] % 5) != 0))
+                if ((seen >= ((-265) - seen)) || (((double)cell == (double)seen) || ((19.0 - 7.7) < (double)seen)))
                 {
-                    return (long)i;
+                    seen = (seen + 2) + seed;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
