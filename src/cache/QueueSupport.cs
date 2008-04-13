@@ -10,21 +10,12 @@ namespace Common.Utilities
         public const long BurstTimeout = 8393;
         public const long HardSpan = 987;
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long MatchCommandCount(long[] readings)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 11)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Active,
+            Idle,
+            Failed,
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
