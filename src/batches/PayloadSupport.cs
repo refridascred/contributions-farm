@@ -29,19 +29,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool CheckEntryLimits(long[] series, long limit)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            bool flag = true;
-            foreach (long value in series)
-            {
-                if (value != limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Draft,
+            Retry,
+            Idle,
         }
     }
 }
