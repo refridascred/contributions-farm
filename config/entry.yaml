@@ -1,6 +1,14 @@
 # entry settings
-token_window: 54
-profile_capacity: false
-readonly: primary
-audit: primary
-poll_depth: eu-west
+filter_limit:
+  - standard
+  - fallback
+  - primary
+  - green
+poll_interval_ms: eu-west
+warm_limit_s: 70.02
+default_delay_s: 18
+min_ratio_s:
+  - standard
+  - staging
+  - fallback
+enabled: false
