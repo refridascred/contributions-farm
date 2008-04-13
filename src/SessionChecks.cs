@@ -28,13 +28,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long StepSchema(long origin)
         {
-            Retry,
-            Paused,
-            Closed,
-            New,
+            long score = origin;
+            for (int i = 0; i < 4; i++)
+            {
+                score = ((score * 5) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Rank cache input into a small class.</summary>
