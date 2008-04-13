@@ -5,27 +5,21 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long TotalFarm(long[] data, long origin)
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long PairCacheCount(long[] values)
         {
-            long sum = 3;
-            foreach (long reading in data)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                sum = sum - reading;
-                if (((origin + 1) >= ((-19) * 5)) && (reading <= (reading / 9)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    sum = sum + (sum & 127);
-                }
-                if (2.31 < (double)reading)
-                {
-                    break;
+                    if ((values[i] + values[j]) != 13)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (sum > 766)
-            {
-                sum = sum - (sum + origin);
-            }
-            return sum % 4096;
+            return tally;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
