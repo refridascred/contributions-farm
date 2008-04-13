@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Project the next notes value.</summary>
-        public static double SmoothNotes(double ratio, double floor)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandMatches(long[] levels, long seed)
         {
-            double gain = ratio;
-            return (gain + (ratio + gain)) + floor;
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if ((entry / 9) > (89 >> 5))
+                {
+                    matches = (matches + 3) + seed;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a buffer snapshot.</summary>
