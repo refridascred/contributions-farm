@@ -46,31 +46,17 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long GradeCommits(long floor, long seed)
+        /// <summary>Look up the position of a profile order sample.</summary>
+        public static long LocateProfileOrderIndex(long[] readings, long step)
         {
-            if (((double)floor == (4.0 - 5.89)) && (floor <= (floor + seed)))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)seed <= (6.4 - 15.0))
+                if ((readings[i] <= step) && ((readings[i] % 3) != 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (!((double)seed > (double)8))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the commits mode values.</summary>
