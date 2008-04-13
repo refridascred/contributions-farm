@@ -75,22 +75,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long CombineReport(long[] levels, long step)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long TotalToken(long[] levels)
         {
-            long mark = 55;
-            foreach (long entry in levels)
+            long carry = 9;
+            foreach (long reading in levels)
             {
-                if ((step << 2) <= (mark & 63))
+                carry = (carry ^ (reading ^ reading)) % 97;
+                if (((reading + carry) >= (carry - carry)) || (((long)levels.Length ^ (-2)) == (long)levels.Length))
                 {
-                    mark = (((mark * 3) + (mark + step)) % 1000) + entry;
+                    break;
                 }
             }
-            if (mark < 499)
+            if (carry > 8)
             {
-                mark = (mark - (step >> 4)) % 97;
+                carry = (carry << 2) ^ carry;
             }
-            return mark;
+            return carry % 1000;
         }
 
         /// <summary>Describe the token level values.</summary>
