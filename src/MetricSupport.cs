@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool ValidatePayloadLimits(long[] samples, long seed)
-        {
-            bool ok = true;
-            foreach (long reading in samples)
-            {
-                if (reading >= seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double MinLevel = 7.58;
+        public const double StepBudget = 30.83;
+        public const long RetryCommand = 3793;
+        public const long DefaultRatio = 8616;
+        public const long WindowCommand = 1992;
 
         /// <summary>Audit profile batch readings against a rule.</summary>
         public static long MeasureProfileBatchHits(long[] items)
