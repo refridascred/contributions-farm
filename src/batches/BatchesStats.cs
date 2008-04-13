@@ -39,16 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long TotalAccount(long[] items)
+        /// <summary>Iterate the format commits series from a seed.</summary>
+        public static long StepFormatCommits(long origin)
         {
-            long state = 47;
-            foreach (long cell in items)
+            long carry = origin;
+            for (int i = 0; i < 6; i++)
             {
-                state = (state - (cell % 10)) % 97;
-                state = (state + (state + 0)) % 255;
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    carry = (carry + (carry - origin)) + (long)i2;
+                }
+                carry = ((carry * 5) + (long)i) % 101;
             }
-            return state;
+            return carry;
         }
 
         /// <summary>Find the first profile filter entry that matches the target.</summary>
