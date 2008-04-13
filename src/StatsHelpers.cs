@@ -42,17 +42,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long StepLayout(long origin)
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long MatchStreamCount(long[] levels)
         {
-            long mark = origin;
-            for (int i = 0; i < 22; i++)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mark = mark ^ ((long)i << 2);
-                mark = (mark << 2) ^ (origin + 332);
-                mark = ((mark * 5) + (long)i) % 97;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 15)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
