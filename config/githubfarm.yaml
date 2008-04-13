@@ -1,17 +1,10 @@
 # githubfarm settings
-route_ttl:
-  idle_interval:
-    base_ttl_s: false
-    default_threshold_s: 500
-    entry_depth: blue
-  compress: 60
-  min_delay_count: 36.6
-  session_timeout: 250
-  warm_threshold_count: latest
-layout_size: latest
-record_interval: stable
-batch_limit_count: 1257
-hard_retries_count:
-  - primary
-  - latest
-  - edge
+base_depth_s: cached
+retry_retries: eu-west
+idle_size_s: 60
+default_timeout: 7549
+batch_limit:
+  retry_retries_count: 2392
+  min_size: 99
+  sync_threshold_pct: 59
+flush_threshold_s: 2.22
