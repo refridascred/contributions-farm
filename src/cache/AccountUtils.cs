@@ -30,10 +30,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long DefaultCache = 2401;
-        public const string WindowCache = "stable-edge";
-        public const long BurstInterval = 7362;
-        public const long BaseCount = 9693;
+        /// <summary>Project the next report value.</summary>
+        public static double ScaleReport(double rate, double offset)
+        {
+            double bias = offset;
+            return (bias - (double)8) + rate;
+        }
     }
 }
