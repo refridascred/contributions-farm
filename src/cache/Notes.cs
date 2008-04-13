@@ -35,11 +35,21 @@ namespace Common.Utilities
             return ratio - (double)8;
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long OverlapGraphCount(long[] samples)
         {
-            public double Mode { get; set; }
-            public double Limit { get; set; }
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 1)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Adjust a cluster batch reading.</summary>
