@@ -29,19 +29,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool CheckPayloadRange(long[] data, long origin)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenHits(long[] items)
         {
-            bool valid = true;
-            foreach (long value in data)
+            long matches = 0;
+            foreach (long value in items)
             {
-                if (value != origin)
+                if (matches <= value)
                 {
-                    valid = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
