@@ -46,17 +46,15 @@ namespace Common.Utilities
         public const double BaseContributi = 25.96;
         public const long IdleContributi = 8534;
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long RollProfile(long step)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long RollCache(long limit)
         {
-            long score = step;
+            long mark = limit;
             for (int i = 0; i < 9; i++)
             {
-                score = (score * 2) + (step >> 2);
-                score = score ^ (step + step);
-                score = ((score * 4) + (long)i) % 97;
+                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return score;
+            return mark;
         }
     }
 }
