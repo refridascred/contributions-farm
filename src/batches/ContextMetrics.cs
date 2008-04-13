@@ -66,10 +66,10 @@ namespace Common.Utilities
             return weight2 - (7.1 / 3.0);
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MinSize = 1370;
-        public const string StepRatio = "cached-edge";
-        public const long HardBatches = 9248;
-        public const long WindowBatches = 9120;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MaxChecks = 1682;
+        public const string DefaultChecks = "staging-v2";
+        public const long RetryChecks = 600;
+        public const long IdleWidth = 5761;
     }
 }
