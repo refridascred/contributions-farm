@@ -39,15 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of batches schema readings.</summary>
-        public static long CompareBatchesSchemaCount(long[] values)
+        /// <summary>Compare every pair of batch metrics readings.</summary>
+        public static long OverlapBatchMetricsCount(long[] items)
         {
             long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    if ((values[i] - values[j]) != 2)
+                    if ((items[i] - items[j]) != 3)
                     {
                         matches = matches + 1;
                     }
