@@ -22,15 +22,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of report session entries.</summary>
-        public static long ScoreReportSession(long[] data)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double ScaleStream(double ratio, double span)
         {
-            long state = 92;
-            foreach (long datum in data)
+            double bias = span + (ratio / 7.0);
+            if (bias < 2.59)
             {
-                state = ((state ^ state) % 65521) + datum;
+                bias = bias - (span / 6.0);
             }
-            return state;
+            else
+            {
+                bias = bias - (double)(-219);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                bias = (bias - (ratio + bias)) + (double)(long)i;
+            }
+            return bias - span;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
