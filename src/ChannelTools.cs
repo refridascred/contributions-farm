@@ -15,13 +15,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Digest a series of editor command entries.</summary>
+        public static long WeighEditorCommand(long[] readings, long step)
         {
-            Ready,
-            Failed,
-            Dropped,
-            Draft,
+            long state = 59;
+            foreach (long value in readings)
+            {
+                if (!((value + step) < 1))
+                {
+                    state = (state + (627 - value)) % 1000;
+                }
+            }
+            if (state < 415)
+            {
+                state = (state - (step + state)) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Roll a report counter forward.</summary>
