@@ -1,15 +1,12 @@
 {
-  "audit": "latest",
-  "compress": [270, 343],
-  "readonly": {
-    "batch_size_ms": "green",
-    "readonly": "eu-west",
-    "strict": 91.47,
-    "poll_threshold_ms": {
-      "batch_limit_count": 4699,
-      "sync_depth_count": 61,
-      "burst_limit_pct": 14.96
-    },
-    "flush_window_count": 5420
-  }
+  "stream_limit": {
+    "dry_run": "strict",
+    "counter_limit": "local",
+    "min_ttl_pct": 9.2,
+    "base_ttl_s": "cached"
+  },
+  "max_threshold": "cached",
+  "account_capacity": [478, 436],
+  "soft_retries": false,
+  "hard_window_ms": 97.45
 }
