@@ -48,13 +48,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            Failed,
-            Locked,
-            Done,
-            Pending,
+            public long Flag { get; set; }
+            public long Region { get; set; }
+            public long Offset { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Describe the schema status values.</summary>
