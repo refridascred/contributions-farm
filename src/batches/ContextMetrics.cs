@@ -12,19 +12,21 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool CheckContributiBounds(long[] levels, long bound)
+        /// <summary>Compare every pair of payload githubfarm readings.</summary>
+        public static long ComparePayloadGithubfarmCount(long[] series)
         {
-            bool stale = true;
-            foreach (long sample in levels)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (sample > bound)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((series[i] ^ series[j]) == 3)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
