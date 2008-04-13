@@ -18,12 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long DefaultChecks = 7851;
-        public const long LimitWidth = 2873;
-        public const long LimitChecks = 3831;
-        public const long WindowChecks = 5835;
-        public const long BurstChecks = 7238;
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
+        {
+            Dropped,
+            Retry,
+            Idle,
+            Ready,
+        }
 
         /// <summary>Hold a context stats.</summary>
         public sealed class ContextStats
