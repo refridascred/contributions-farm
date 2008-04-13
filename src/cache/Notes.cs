@@ -35,21 +35,15 @@ namespace Common.Utilities
             return ratio - (double)8;
         }
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long OverlapGraphCount(long[] samples)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double AdjustOrder(double bias, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double rate = span - (double)8;
+            if (rate > span)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 1)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                rate = (rate + (double)17) - bias;
             }
-            return seen;
+            return rate - rate;
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
