@@ -14,15 +14,30 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long RollQueue(long limit)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long DigestAlready(long[] items)
         {
-            long acc = limit;
-            for (int i = 0; i < 13; i++)
+            long mix = 1;
+            foreach (long cell in items)
             {
-                acc = ((acc * 4) + (long)i) % 101;
+                if ((double)mix <= (double)6)
+                {
+                    mix = (mix + (cell - cell)) % 101;
+                }
+                if (mix < (8 + cell))
+                {
+                    mix = mix - (long)items.Length;
+                }
+                else
+                {
+                    mix = mix ^ (44 ^ mix);
+                }
+                if ((mix * 2) < (cell - mix))
+                {
+                    mix = ((mix << 2) ^ (long)items.Length) % 101;
+                }
             }
-            return acc;
+            return mix;
         }
 
         /// <summary>Describe the channel phase values.</summary>
