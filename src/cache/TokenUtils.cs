@@ -22,18 +22,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountHits(long[] items, long floor)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long SeriesWindow(long floor)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            long state = floor;
+            for (int i = 0; i < 6; i++)
             {
-                if ((17.0 - 1.4) > (double)entry)
-                {
-                    matches = (matches + 3) + floor;
-                }
+                state = state - ((long)i / 8);
+                state = ((state * 5) + (long)i) % 1000;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
