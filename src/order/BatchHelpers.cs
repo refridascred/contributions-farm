@@ -31,14 +31,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            Stale,
-            New,
-            Idle,
-            Dropped,
-            Retry,
+            public double Total { get; set; }
+            public bool Token { get; set; }
+            public bool Owner { get; set; }
+            public long Count { get; set; }
         }
     }
 }
