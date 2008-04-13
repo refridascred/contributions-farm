@@ -12,21 +12,22 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long OverlapGithubfarmCount(long[] items)
+        /// <summary>Accumulate profile commits samples.</summary>
+        public static long ScoreProfileCommits(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long carry = 62;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((cell * 4) < carry)
                 {
-                    if ((items[i] + items[j]) != 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    carry = carry + (cell * 4);
                 }
             }
-            return tally;
+            if (carry < 9)
+            {
+                carry = ((carry << 3) ^ (3 * 3)) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
