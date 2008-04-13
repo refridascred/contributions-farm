@@ -19,18 +19,12 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Locate a report profile reading by value.</summary>
-        public static long SeekReportProfileIndex(long[] samples, long origin)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string WindowAccount = "strict-v2";
+        public const double BaseAccount = 47.79;
+        public const double BatchScore = 35.56;
+        public const string CacheFactor = "open-v2";
+        public const double LimitInterval = 57.2;
 
         /// <summary>Accumulate editor samples.</summary>
         public static long TallyEditor(long[] samples, long origin)
