@@ -1,19 +1,5 @@
 {
-  "idle_delay_s": 24,
-  "warm_window_count": 500,
-  "warm_ratio": {
-    "cache_ttl_s": false,
-    "hard_ttl": {
-      "hard_timeout_count": 500,
-      "format_capacity": 100,
-      "commits_interval": [362, 125, 127, 234],
-      "profile_size": 30,
-      "audit": "edge"
-    },
-    "base_size_s": 77.62,
-    "batch_window": "local",
-    "hard_size_s": true
-  },
-  "verbose": false,
-  "min_size": 500
+  "min_retries": 7767,
+  "cluster_limit": 83.31,
+  "idle_timeout_ms": 7954
 }
