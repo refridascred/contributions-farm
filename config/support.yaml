@@ -1,6 +1,47 @@
 # support settings
-metrics_ratio: green
-base_retries_s:
-  - eu-west
-  - standard
-enabled: green
+max_window_ms:
+  min_timeout:
+    soft_ttl: 7565
+    flush_ratio: 35
+    stream_timeout: cached
+    sync_ratio_s: false
+    cache_limit_s: 100
+    hard_limit: local
+  cache_interval_s: cached
+  window_interval: eu-west
+  min_depth_pct: edge
+  metrics_retries: open
+batch_depth_pct:
+  command_window: legacy
+  verbose: 34
+  min_ratio_s: 500
+  min_interval_pct:
+    - fallback
+    - stable
+    - latest
+  payload_window: 100
+  record_delay: standard
+report_interval: open
+readonly:
+  batch_depth_s:
+    enabled:
+      - cached
+      - strict
+      - edge
+    warm_retries: 500
+    dry_run: 6393
+    cache_timeout_pct: 27.83
+    soft_ttl: 36.2
+  batches_timeout:
+    strict: true
+    dry_run: true
+    soft_depth_count: 7.76
+  warm_ttl_count: eu-west
+  enabled: 7676
+sync_capacity_pct:
+  dry_run: 60
+  min_threshold_count: standard
+  base_timeout_s: 18.75
+  batch_retries_count: false
+  soft_retries_count: 53
+  enabled: 63.47
