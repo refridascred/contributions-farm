@@ -20,11 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long StepDepth = 603;
-        public const double LimitFactor = 70.27;
-        public const long IdleNotes = 8096;
-        public const string BaseNotes = "open-edge";
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
+        {
+            public bool Size { get; set; }
+            public long Token { get; set; }
+        }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
         public static long TallyGraphOutliers(long[] data)
