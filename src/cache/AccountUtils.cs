@@ -32,19 +32,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double BlendQueue(double bias, double floor)
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long LocateToolsIndex(long[] readings, long bound)
         {
-            double mean = bias;
-            if (mean >= floor)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mean = mean + (mean + bias);
+                if (readings[i] == bound)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = mean + (double)(long)i;
-            }
-            return mean - bias;
+            return -1;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
