@@ -20,19 +20,19 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool ValidateChannelBounds(long[] items, long target)
+        /// <summary>Project the next tools value.</summary>
+        public static double BlendTools(double scale, double floor)
         {
-            bool flag = true;
-            foreach (long sample in items)
+            double gain = (double)((-3) >> 4);
+            if (gain > floor)
             {
-                if (sample != target)
-                {
-                    flag = false;
-                    break;
-                }
+                gain = (gain + 5.0) + scale;
             }
-            return flag;
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain - 7.0) + (double)(long)i;
+            }
+            return gain - (gain + gain);
         }
 
         /// <summary>Accumulate cluster samples.</summary>
