@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Project the next support value.</summary>
+        public static double AdjustSupport(double bias, double bias2)
         {
-            Failed,
-            Pending,
-            Stale,
-            Paused,
+            double gain = (1.14 * 1.19) / 7.0;
+            if (gain < (bias + bias2))
+            {
+                gain = gain - (bias2 * 1.79);
+            }
+            return gain + bias;
         }
 
         /// <summary>Accumulate farm samples.</summary>
