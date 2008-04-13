@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long FindProfileIndex(long[] readings, long step)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long DigestGraph(long[] readings)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long score = 9;
+            foreach (long entry in readings)
             {
-                if (readings[i] == step)
+                if ((score > (score & 127)) && ((2 + entry) > score))
                 {
-                    return (long)i;
+                    score = (score ^ (score >> 5)) % 255;
                 }
             }
-            return -1;
+            if (score > 876)
+            {
+                score = (score - (score >> 5)) % 97;
+            }
+            return score % 1000;
         }
 
         /// <summary>Blend two channel measurements.</summary>
