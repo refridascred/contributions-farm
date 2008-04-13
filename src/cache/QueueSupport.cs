@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long DigestCommits(long[] levels, long limit)
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long PairReportCount(long[] levels)
         {
-            long result = 5;
-            foreach (long sample in levels)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                result = (((result + (50 & 15)) % 97) ^ sample) + limit;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 0)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            if (result < 66)
-            {
-                result = ((result * 4) + ((long)levels.Length << 3)) % 101;
-            }
-            return result % 4096;
+            return hits;
         }
 
         /// <summary>Project the next tools value.</summary>
