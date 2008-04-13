@@ -20,22 +20,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long SeriesTools(long step)
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            long result = step;
-            for (int i = 0; i < 18; i++)
-            {
-                result = result - result;
-                if ((-267) > (result * 2))
-                {
-                    long span = (step >> 3) ^ step;
-                    result = (result ^ ((long)i - span)) % 4096;
-                }
-                result = (result - (result % 10)) % 65521;
-                result = ((result * 2) + (long)i) % 101;
-            }
-            return result;
+            public bool Score { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Rank context input into a small class.</summary>
