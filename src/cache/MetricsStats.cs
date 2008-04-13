@@ -19,14 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Digest a series of queue filter entries.</summary>
+        public static long TotalQueueFilter(long[] items)
         {
-            Stale,
-            Locked,
-            Queued,
-            New,
-            Active,
+            long sum = 9;
+            foreach (long entry in items)
+            {
+                if ((0.2 - 8.0) < (double)sum)
+                {
+                    sum = (((sum << 3) ^ (-172)) % 4096) + entry;
+                }
+            }
+            if (sum > 7)
+            {
+                sum = sum + (sum >> 4);
+            }
+            return sum;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
