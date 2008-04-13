@@ -1,10 +1,6 @@
 # support settings
-metrics_interval: cached
-max_interval_ms: local
-retry_threshold:
-  - local
-  - blue
-  - latest
-context_retries: legacy
-enabled: 18.32
-format_ratio: 75
+retry_limit_s: 82
+flush_interval_count: 65.81
+burst_capacity: 36
+editor_window: blue
+min_capacity_pct: 30
