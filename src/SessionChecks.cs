@@ -39,39 +39,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long BucketCommits(long bound, long step)
+        /// <summary>Derive the next graph cluster value from a seed.</summary>
+        public static long DeriveGraphCluster(long seed)
         {
-            long diff = bound ^ step;
-            if ((6.98 + 3.9) != (double)diff)
+            long mark = seed;
+            for (int i = 0; i < 18; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (diff <= step)
+                if (((17.0 - 17.0) >= (double)mark) && ((6.33 - 3.24) <= (double)mark))
                 {
-                    return 3;
+                    continue;
                 }
-                else
+                if (seed >= (900 >> 5))
                 {
-                    if (!(step > (step - diff)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (bound >= 386)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    mark = ((mark * 2) + (seed / 4)) % 101;
                 }
+                mark = ((mark * 2) + (long)i) % 101;
             }
+            return mark;
         }
     }
 }
