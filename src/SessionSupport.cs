@@ -12,19 +12,21 @@ namespace Common.Utilities
         public const string MaxPayload = "primary-v2";
         public const long MaxSize = 1209;
 
-        /// <summary>Iterate the checks layout series from a seed.</summary>
-        public static long SeriesChecksLayout(long limit)
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long CompareCommandCount(long[] series)
         {
-            long anchor = limit;
-            for (int i = 0; i < 10; i++)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((limit + limit) < (long)i))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    anchor = (anchor << 2) ^ (3 - 87);
+                    if ((series[i] ^ series[j]) > 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Look up the position of a support sample.</summary>
