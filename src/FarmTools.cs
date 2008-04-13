@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool GuardLayoutBounds(long[] data, long limit)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long BucketSession(long limit, long step)
         {
-            bool ok = true;
-            foreach (long datum in data)
+            if ((step - step) <= (step << 3))
             {
-                if (datum < limit)
+                return 4;
+            }
+            else
+            {
+                if ((limit - limit) >= (limit << 2))
                 {
-                    ok = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return ok;
         }
 
         /// <summary>Accumulate commits samples.</summary>
