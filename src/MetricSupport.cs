@@ -34,17 +34,38 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Find the first tools payload entry that matches the target.</summary>
-        public static long FindToolsPayloadIndex(long[] samples, long seed)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long SortStats(long floor, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((limit - 8) < (507 - floor))
             {
-                if (samples[i] >= seed)
+                return 2;
+            }
+            else
+            {
+                if ((24 / 3) < (floor & 3))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if (floor > (1 & 255))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((double)floor != (double)limit) || ((9.56 + 5.24) != (double)limit))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
