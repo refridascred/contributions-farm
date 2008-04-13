@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Measure how many metrics format samples are out of range.</summary>
-        public static long CountMetricsFormatHits(long[] data, long target)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long OverlapSchemaCount(long[] levels)
         {
             long hits = 0;
-            foreach (long datum in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((datum + 41) <= (2 % 7))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = (hits + 1) - target;
+                    if ((levels[i] ^ levels[j]) < 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
