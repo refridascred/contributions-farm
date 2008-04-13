@@ -1,12 +1,14 @@
 {
-  "retry_capacity_pct": 9,
-  "dry_run": 8205,
-  "max_size": "strict",
-  "cache_size_pct": {
-    "persist": 8896,
-    "dry_run": [201, 151, 143, 27],
-    "compress": 4.99,
-    "retry_window": 5592
+  "min_ratio_pct": "cached",
+  "max_window": {
+    "counter_interval": "fallback",
+    "sync_window": [272, 48, 320],
+    "verbose": 74,
+    "cache_retries": 88,
+    "enabled": [450, 395, 2]
   },
-  "min_delay_ms": "cached"
+  "strict": "staging",
+  "commits_limit": 28,
+  "flush_limit_count": ["green", "latest"],
+  "persist": "legacy"
 }
