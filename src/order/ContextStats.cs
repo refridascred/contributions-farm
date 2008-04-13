@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long MinStream = 1294;
-        public const double LimitStream = 59.42;
-        public const long BurstStream = 4977;
-        public const string BatchStream = "local-1";
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
+        {
+            Done,
+            New,
+            Idle,
+            Failed,
+            Active,
+        }
 
         /// <summary>Describe the cluster status values.</summary>
         public enum ClusterStatus
