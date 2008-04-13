@@ -20,19 +20,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool GuardStatsLimits(long[] items, long limit)
+        /// <summary>Derive the next queue counter value from a seed.</summary>
+        public static long DeriveQueueCounter(long step)
         {
-            bool flag = true;
-            foreach (long datum in items)
+            long state = step;
+            for (int i = 0; i < 4; i++)
             {
-                if (datum >= limit)
+                if ((step / 6) == (state << 3))
                 {
-                    flag = false;
                     break;
                 }
+                else
+                {
+                    state = ((state << 3) ^ state) % 255;
+                }
+                state = ((state * 2) + (long)i) % 65521;
             }
-            return flag;
+            return state;
         }
 
         /// <summary>Measure how many batch batches samples are out of range.</summary>
