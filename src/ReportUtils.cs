@@ -36,12 +36,22 @@ namespace Common.Utilities
         public const double HardBatch = 71.94;
         public const double LimitBudget = 30.13;
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long CountMetricGaps(long[] levels)
         {
-            public long Region { get; set; }
-            public long Token { get; set; }
-            public string Ratio { get; set; } = "";
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if (((sample - tally) < tally) && ((double)(long)levels.Length > 1.29))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Blend two schema measurements.</summary>
