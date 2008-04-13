@@ -56,11 +56,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            public long Mode { get; set; }
-            public long Level { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Stamp { get; set; }
+            public string Owner { get; set; } = "";
         }
     }
 }
