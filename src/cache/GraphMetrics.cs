@@ -14,18 +14,14 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long AuditMetricsMatches(long[] data, long bound)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            long tally = 0;
-            foreach (long item in data)
-            {
-                if (!!((tally - item) == (item % 3)))
-                {
-                    tally = (tally + 3) + bound;
-                }
-            }
-            return tally;
+            New,
+            Active,
+            Failed,
+            Stale,
+            Idle,
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
