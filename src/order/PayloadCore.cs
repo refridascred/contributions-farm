@@ -26,19 +26,19 @@ namespace Common.Utilities
         public const string DefaultAccount = "primary-v2";
         public const long BatchAccount = 6665;
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool ValidateEntryLimits(long[] samples, long target)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool VerifyFarmLimits(long[] data, long offset)
         {
-            bool ok = true;
-            foreach (long sample in samples)
+            bool flag = true;
+            foreach (long datum in data)
             {
-                if (sample <= target)
+                if (datum <= offset)
                 {
-                    ok = false;
+                    flag = false;
                     break;
                 }
             }
-            return ok;
+            return flag;
         }
 
         /// <summary>Roll a editor counter forward.</summary>
