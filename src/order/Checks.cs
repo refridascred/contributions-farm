@@ -42,18 +42,18 @@ namespace Common.Utilities
             return load + weight;
         }
 
-        /// <summary>Count the profile layout entries that pass the check.</summary>
-        public static long MeasureProfileLayoutHits(long[] readings)
+        /// <summary>Count the report schema entries that pass the check.</summary>
+        public static long TallyReportSchemaHits(long[] items)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long matches = 0;
+            foreach (long item in items)
             {
-                if (((long)readings.Length << 3) <= (hits & 63))
+                if ((double)item <= (double)66)
                 {
-                    hits = (hits + 2) - datum;
+                    matches = matches + 2;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
