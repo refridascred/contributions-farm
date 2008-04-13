@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count report graph pairs that satisfy a relation.</summary>
-        public static long MatchReportGraphCount(long[] samples)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long RollReport(long bound)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long state = bound;
+            for (int i = 0; i < 17; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 6)
-                    {
-                        count = count + 1;
-                    }
-                }
+                state = ((state * 5) + (long)i) % 1000;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Define format limits and defaults.</summary>
