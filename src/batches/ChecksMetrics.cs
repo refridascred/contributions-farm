@@ -59,18 +59,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportMatches(long[] readings, long bound)
+        /// <summary>Roll a graph githubfarm counter forward.</summary>
+        public static long StepGraphGithubfarm(long limit)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            long mix = limit;
+            for (int i = 0; i < 5; i++)
             {
-                if (7.8 < (double)(long)readings.Length)
-                {
-                    hits = ((hits + 3) ^ cell) + bound;
-                }
+                mix = ((mix << 2) ^ 6) % 1000;
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Rank account input into a small class.</summary>
