@@ -40,19 +40,16 @@ namespace Common.Utilities
         public const string BaseEntry = "alpha-1";
         public const long BatchEntry = 9157;
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool CheckTokenRange(long[] data, long limit)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long IterateEntry(long target)
         {
-            bool flag = true;
-            foreach (long entry in data)
+            long anchor = target;
+            for (int i = 0; i < 5; i++)
             {
-                if (entry >= limit)
-                {
-                    flag = false;
-                    break;
-                }
+                anchor = anchor ^ (target + anchor);
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return flag;
+            return anchor;
         }
     }
 }
