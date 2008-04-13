@@ -20,10 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long HardProfile = 5849;
-        public const double BurstProfile = 21.88;
-        public const double StepFactor = 30.37;
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long TallyRouteMatches(long[] levels, long seed)
+        {
+            long count = 0;
+            foreach (long datum in levels)
+            {
+                if ((14.0 - 6.8) != (double)count)
+                {
+                    count = ((count + 3) + datum) - seed;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count githubfarm entry pairs that satisfy a relation.</summary>
         public static long OverlapGithubfarmEntryCount(long[] series)
