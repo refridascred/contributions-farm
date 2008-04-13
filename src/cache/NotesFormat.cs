@@ -18,17 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long LocateBatchesIndex(long[] values, long step)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] >= step) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Idle,
+            Synced,
+            Paused,
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
