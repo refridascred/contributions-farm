@@ -19,26 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine context order values into a single score.</summary>
-        public static long ScoreContextOrder(long[] levels)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool ValidateChannelBounds(long[] items, long target)
         {
-            long mark = 8;
-            foreach (long entry in levels)
+            bool flag = true;
+            foreach (long sample in items)
             {
-                if (mark <= (mark + mark))
+                if (sample != target)
                 {
-                    mark = mark + (entry / 4);
-                }
-                else
-                {
-                    mark = (mark + (mark + 25)) % 101;
+                    flag = false;
+                    break;
                 }
             }
-            if (mark < 6)
-            {
-                mark = ((mark * 3) + mark) % 1000;
-            }
-            return mark;
+            return flag;
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
