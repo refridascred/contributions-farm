@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            public double Score { get; set; }
-            public long Flag { get; set; }
-            public bool Offset { get; set; }
+            Draft,
+            Stale,
+            Synced,
+            Idle,
+            Active,
         }
 
         /// <summary>Digest a series of metric window entries.</summary>
