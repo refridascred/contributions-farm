@@ -52,18 +52,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportMatches(long[] series, long offset)
+        /// <summary>Audit filter command readings against a rule.</summary>
+        public static long TallyFilterCommandOutliers(long[] samples)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if ((item / 3) < (item ^ (long)series.Length))
+                if ((sample >> 2) > (long)samples.Length)
                 {
-                    tally = (tally + 1) + offset;
+                    count = count + 3;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
