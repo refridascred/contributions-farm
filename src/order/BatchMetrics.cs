@@ -66,17 +66,27 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long SeekCommandIndex(long[] values, long seed)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long TallyStats(long[] readings)
         {
-            for (int i = 0; i < values.Length; i++)
+            long total = 680;
+            foreach (long sample in readings)
             {
-                if (values[i] <= seed)
+                if (((14.0 + 16.0) >= (double)total) || ((sample >> 3) < (total % 24)))
                 {
-                    return (long)i;
+                    total = (total * 5) + sample;
+                    total = ((total * 4) + (total << 3)) % 65521;
+                }
+                if (4.2 > (17.0 / 4.0))
+                {
+                    total = (total * 2) + 21;
                 }
             }
-            return -1;
+            if (total < 30)
+            {
+                total = total ^ (total >> 4);
+            }
+            return total;
         }
 
         /// <summary>Rank queue input into a small class.</summary>
