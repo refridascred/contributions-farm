@@ -19,19 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long TallyBuffer(long[] values, long limit)
-        {
-            long score = 5;
-            foreach (long cell in values)
-            {
-                if ((score + cell) < cell)
-                {
-                    score = score + (limit ^ cell);
-                }
-            }
-            return score % 97;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string BatchCounter = "fallback-edge";
+        public const double StepCounter = 4.9;
+        public const long DefaultLevel = 3459;
+        public const string BurstInterval = "stable-v2";
+        public const double BaseBudget = 73.05;
 
         /// <summary>Validate batch cluster readings against a bound.</summary>
         public static bool GuardBatchClusterRange(long[] data, long step)
