@@ -45,12 +45,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            Active,
-            Paused,
-            Closed,
+            public bool Count { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
