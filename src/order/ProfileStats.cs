@@ -19,22 +19,13 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Fold a list of checks session readings.</summary>
-        public static long TallyChecksSession(long[] samples, long limit)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            long mix = 86;
-            foreach (long value in samples)
-            {
-                if ((mix << 2) > (mix / 9))
-                {
-                    mix = (((mix << 3) ^ value) % 65521) - limit;
-                }
-            }
-            if (mix < 7)
-            {
-                mix = (mix << 3) ^ mix;
-            }
-            return mix;
+            Queued,
+            Retry,
+            Ready,
+            Pending,
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
