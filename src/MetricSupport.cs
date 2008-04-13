@@ -22,18 +22,12 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Audit profile cache readings against a rule.</summary>
-        public static long MeasureProfileCacheOutliers(long[] readings)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            long seen = 0;
-            foreach (long value in readings)
-            {
-                if (!((value + seen) > (seen - (-85))))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Draft,
+            New,
+            Dropped,
         }
     }
 }
