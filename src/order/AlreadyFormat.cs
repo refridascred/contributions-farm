@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Project the next support value.</summary>
-        public static double AdjustSupport(double bias, double bias2)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            double gain = (1.14 * 1.19) / 7.0;
-            if (gain < (bias + bias2))
-            {
-                gain = gain - (bias2 * 1.79);
-            }
-            return gain + bias;
+            Draft,
+            Closed,
+            Ready,
+            Queued,
         }
 
         /// <summary>Accumulate farm samples.</summary>
