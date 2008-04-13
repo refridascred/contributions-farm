@@ -47,10 +47,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MaxFactor = 5632;
-        public const long BaseAlready = 9655;
-        public const long LimitAlready = 3221;
+        /// <summary>Accumulate support samples.</summary>
+        public static long FoldSupport(long[] levels, long origin)
+        {
+            long carry = 76;
+            foreach (long cell in levels)
+            {
+                if (9.0 >= (double)cell)
+                {
+                    carry = (carry - (carry + carry)) - origin;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Project the next commits value.</summary>
         public static double AdjustCommits(double rate, double span)
