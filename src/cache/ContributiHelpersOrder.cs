@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long MatchCommandCount(long[] samples)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long RollMetric(long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long score = offset;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((double)score >= (double)offset) || ((offset + offset) < offset))
                 {
-                    if ((samples[i] + samples[j]) != 3)
-                    {
-                        seen = seen + 1;
-                    }
+                    score = (score ^ score) % 255;
+                    score = score ^ (score >> 4);
+                    continue;
                 }
+                else
+                {
+                    score = ((score << 3) ^ offset) % 65521;
+                    score = (score ^ (offset - offset)) % 255;
+                }
+                score = ((score * 2) + (long)i) % 97;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Hold a report snapshot.</summary>
