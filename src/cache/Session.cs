@@ -5,38 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long BucketFormat(long seed, long floor)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            if (floor > (seed + seed))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((seed - floor) != (floor + floor))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((floor % 12) < floor)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((floor - (-1)) <= floor) && ((seed / 8) > (floor * 3)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Done,
+            Ready,
+            Active,
         }
 
         /// <summary>Describe the notes kind values.</summary>
