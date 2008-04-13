@@ -29,19 +29,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool GuardFilterBounds(long[] data, long limit)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double AdjustCache(double weight, double offset)
         {
-            bool stale = true;
-            foreach (long entry in data)
-            {
-                if (entry > limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            double weight2 = offset;
+            return (weight2 - (double)7) + weight;
         }
 
         /// <summary>Validate farm githubfarm readings against a bound.</summary>
