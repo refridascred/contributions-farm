@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long WindowTimeout = 7575;
-        public const string MaxWidth = "cached-edge";
-        public const string SoftBudget = "primary-v2";
-        public const long BatchCache = 5703;
-        public const long BaseRatio = 2949;
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
+        {
+            Queued,
+            Done,
+            Draft,
+        }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
         public static bool VerifyProfileBounds(long[] items, long target)
