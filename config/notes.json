@@ -1,7 +1,6 @@
 {
-  "hard_ratio_s": true,
-  "layout_delay": "cached",
-  "hard_timeout_s": "standard",
-  "record_retries": 42.27,
-  "min_ttl": "stable"
+  "metric_timeout": 6996,
+  "min_depth": [42, 454, 195, 68],
+  "default_delay_ms": "blue",
+  "already_window": "open"
 }
