@@ -18,12 +18,19 @@ namespace Common.Utilities
         public const long SoftSpan = 8039;
         public const string StepGraph = "open-v2";
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BurstNotes = 5837;
-        public const long CacheFactor = 3384;
-        public const long HardNotes = 685;
-        public const double StepCount = 26.56;
-        public const double BaseNotes = 33.26;
+        /// <summary>Fold a list of context readings.</summary>
+        public static long CombineContext(long[] values)
+        {
+            long total = 666;
+            foreach (long sample in values)
+            {
+                if ((double)total > (11.0 * 8.02))
+                {
+                    total = (total + sample) % 255;
+                }
+            }
+            return total % 65521;
+        }
 
         /// <summary>Combine token values into a single score.</summary>
         public static long TotalToken(long[] series)
