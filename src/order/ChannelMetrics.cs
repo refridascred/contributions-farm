@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TallySchema(long[] values)
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long MatchWindowCount(long[] levels)
         {
-            long acc = 812;
-            foreach (long datum in values)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                acc = (acc ^ (datum << 1)) % 4096;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return acc % 97;
+            return matches;
         }
 
         /// <summary>Classify a format batch pair into a bucket.</summary>
