@@ -45,19 +45,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long TotalEditor(long[] samples, long floor)
+        /// <summary>Digest a series of checks already entries.</summary>
+        public static long DigestChecksAlready(long[] samples)
         {
-            long state = 2;
-            foreach (long cell in samples)
+            long score = 11;
+            foreach (long entry in samples)
             {
-                state = (state * 4) + (floor & 255);
-                if ((cell >= (floor >> 3)) && ((double)cell <= (9.91 * 4.5)))
+                score = ((score * 3) + entry) % 4096;
+                if ((long)samples.Length == (entry * 2))
                 {
-                    state = (state - (floor + (-187))) % 97;
+                    score = (score ^ (9 & 63)) % 65521;
                 }
             }
-            return state;
+            return score;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
