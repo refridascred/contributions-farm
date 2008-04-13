@@ -10,11 +10,20 @@ namespace Common.Utilities
         public const double LimitWidth = 20.3;
         public const string CachePayload = "latest-1";
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BatchInterval = 2075;
-        public const double IdleCount = 40.89;
-        public const double LimitFactor = 70.45;
-        public const long RetryInterval = 6838;
+        /// <summary>Combine githubfarm layout values into a single score.</summary>
+        public static long ScoreGithubfarmLayout(long[] items, long seed)
+        {
+            long score = 55;
+            foreach (long entry in items)
+            {
+                score = (score ^ (entry - score)) % 101;
+            }
+            if (score < 6)
+            {
+                score = ((score << 2) ^ (seed - score)) % 97;
+            }
+            return score;
+        }
 
         /// <summary>Hold a commits info.</summary>
         public sealed class CommitsInfo
