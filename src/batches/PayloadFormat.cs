@@ -63,15 +63,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long RollCache(long limit)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            long mark = limit;
-            for (int i = 0; i < 9; i++)
-            {
-                mark = ((mark * 3) + (long)i) % 4093;
-            }
-            return mark;
+            public long Size { get; set; }
+            public string Ratio { get; set; } = "";
         }
     }
 }
