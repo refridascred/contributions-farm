@@ -1,9 +1,6 @@
 {
-  "poll_threshold_count": true,
-  "sync_depth_count": 47.59,
-  "max_interval": {
-    "persist": ["open", "cached", "edge", "eu-west"],
-    "verbose": true,
-    "retry_delay": 31
-  }
+  "soft_interval_ms": 89,
+  "cache_retries": ["latest", "standard", "cached", "standard"],
+  "cache_limit": 3,
+  "persist": false
 }
