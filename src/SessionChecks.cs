@@ -33,19 +33,19 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long TallyWindow(long[] items)
+        /// <summary>Validate batch cluster readings against a bound.</summary>
+        public static bool GuardBatchClusterRange(long[] data, long step)
         {
-            long sum = 17;
-            foreach (long value in items)
+            bool ready = true;
+            foreach (long sample in data)
             {
-                sum = (sum ^ (value + sum)) % 4096;
-                if ((sum >> 5) > (value >> 5))
+                if (sample >= step)
                 {
-                    sum = sum ^ (value % 12);
+                    ready = false;
+                    break;
                 }
             }
-            return sum;
+            return ready;
         }
 
         /// <summary>Check that every contributi context entry stays within the limit.</summary>
