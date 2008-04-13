@@ -27,22 +27,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileOutliers(long[] samples, long step)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            long matches = 0;
-            foreach (long sample in samples)
-            {
-                if ((((sample / 5) >= (matches / 6)) || ((matches >> 1) >= step)) && ((matches ^ matches) == (matches - sample)))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Idle,
+            Done,
+            Draft,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
