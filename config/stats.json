@@ -1,12 +1,6 @@
 {
-  "min_size": 1459,
-  "max_limit": 83.57,
-  "githubfarm_retries": true,
-  "audit": {
-    "enabled": "primary",
-    "compress": "strict",
-    "retry_timeout": 60,
-    "buffer_timeout": 80,
-    "contributi_depth": ["local", "staging"]
-  }
+  "audit": false,
+  "batch_timeout": "cached",
+  "schema_limit": ["blue", "blue"],
+  "readonly": [388, 63, 218]
 }
