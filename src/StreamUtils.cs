@@ -59,14 +59,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            Synced,
-            Pending,
-            Queued,
-            Closed,
-            Ready,
+            public long Weight { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Combine channel metrics values into a single score.</summary>
