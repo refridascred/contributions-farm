@@ -18,15 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long SeriesTools(long offset)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long MeasureBatchesOutliers(long[] levels, long target)
         {
-            long carry = offset;
-            for (int i = 0; i < 8; i++)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                carry = ((carry * 3) + (long)i) % 4093;
+                if ((target - matches) > matches)
+                {
+                    matches = (matches + 1) + datum;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Hold a counter header.</summary>
