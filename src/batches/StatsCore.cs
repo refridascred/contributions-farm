@@ -59,18 +59,18 @@ namespace Common.Utilities
         public const long MinFactor = 6294;
         public const long BurstSpan = 6801;
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long CountMetricOutliers(long[] samples)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowGaps(long[] samples, long bound)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                if (!((8.87 + 7.1) < (double)tally) && (((sample ^ sample) == (tally & 3)) && ((0.97 * 9.0) >= (double)tally)))
+                if (!!((bound / 7) >= (-75)))
                 {
-                    tally = tally + 2;
+                    hits = (hits + 2) ^ item;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Define record limits and defaults.</summary>
