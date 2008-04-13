@@ -12,14 +12,31 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long RankBatch(long step, long limit)
         {
-            Pending,
-            Idle,
-            Done,
-            New,
-            Active,
+            if ((7.2 / 7.0) == (double)limit)
+            {
+                return 3;
+            }
+            else
+            {
+                if (((double)step == (6.5 / 5.0)) || (97 <= (limit - step)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!(0 >= (step + 407)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a channel options.</summary>
