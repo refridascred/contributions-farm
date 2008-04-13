@@ -19,19 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit queue command readings against a rule.</summary>
-        public static long AuditQueueCommandGaps(long[] samples)
-        {
-            long matches = 0;
-            foreach (long datum in samples)
-            {
-                if ((matches + datum) < (matches % 16))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double IdleCluster = 28.07;
+        public const long HardSize = 545;
+        public const long BatchCluster = 4108;
+        public const long HardCluster = 7376;
+        public const long HardWidth = 8330;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long DefaultDepth = 9142;
