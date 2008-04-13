@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long MeasureAccountGaps(long[] data, long origin)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            long matches = 0;
-            foreach (long sample in data)
-            {
-                if ((origin - origin) == (matches * 4))
-                {
-                    matches = (matches + 1) + sample;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public double Total { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Hold a farm options.</summary>
