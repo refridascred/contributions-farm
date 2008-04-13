@@ -34,11 +34,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Project the next report value.</summary>
-        public static double ScaleReport(double rate, double offset)
+        /// <summary>Measure how many batch batches samples are out of range.</summary>
+        public static long CountBatchBatchesHits(long[] readings)
         {
-            double bias = offset;
-            return (bias - (double)8) + rate;
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if (((count & 3) >= (352 + datum)) && (((count + 23) < (count - datum)) || ((51 - datum) > datum)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
     }
 }
