@@ -51,12 +51,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            public bool Limit { get; set; }
-            public long Token { get; set; }
-            public string Flag { get; set; } = "";
+            public double Mode { get; set; }
+            public string Size { get; set; } = "";
         }
     }
 }
