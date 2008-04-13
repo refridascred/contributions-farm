@@ -30,18 +30,38 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long TallyBufferMatches(long[] values)
+        /// <summary>Grade a batches notes value against two limits.</summary>
+        public static long BucketBatchesNotes(long offset, long floor)
         {
-            long hits = 0;
-            foreach (long value in values)
+            if ((8 + 8) >= (floor + offset))
             {
-                if ((double)hits >= (double)value)
+                return 1;
+            }
+            else
+            {
+                if (((double)floor <= (double)offset) || (offset <= floor))
                 {
-                    hits = hits + 2;
+                    return 6;
+                }
+                else
+                {
+                    if ((offset + offset) > (floor * 3))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((floor + 9) > floor)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return hits;
         }
     }
 }
