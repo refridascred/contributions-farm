@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            public string Region { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            public long Mode { get; set; }
+            public long Rank { get; set; }
+            public double Size { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Grade a token githubfarm value against two limits.</summary>
