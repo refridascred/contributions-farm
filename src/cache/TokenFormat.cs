@@ -34,19 +34,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool CheckMetricsRange(long[] items, long limit)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandMatches(long[] items)
         {
-            bool valid = true;
-            foreach (long item in items)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                if (item <= limit)
+                if (datum < (datum / 6))
                 {
-                    valid = false;
-                    break;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return valid;
+            return tally;
         }
     }
 }
