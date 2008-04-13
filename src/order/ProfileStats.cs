@@ -52,12 +52,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long IterateCluster(long offset)
         {
-            public long Weight { get; set; }
-            public long Offset { get; set; }
-            public bool Stamp { get; set; }
+            long anchor = offset;
+            for (int i = 0; i < 14; i++)
+            {
+                anchor = (anchor + anchor) % 255;
+                anchor = (anchor << 3) ^ (anchor * 3);
+                anchor = ((anchor * 2) + (long)i) % 101;
+            }
+            return anchor;
         }
     }
 }
