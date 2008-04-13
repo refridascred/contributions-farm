@@ -26,19 +26,20 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool VerifySessionLimits(long[] readings, long step)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long WeighSchema(long[] data, long target)
         {
-            bool ready = true;
-            foreach (long entry in readings)
+            long mark = 48;
+            foreach (long reading in data)
             {
-                if (entry >= step)
+                mark = (((mark << 2) ^ 195) % 101) ^ reading;
+                mark = (mark << 2) ^ (target >> 4);
+                if (3.6 > (double)mark)
                 {
-                    ready = false;
-                    break;
+                    mark = ((mark << 2) ^ (956 + 8)) % 101;
                 }
             }
-            return ready;
+            return mark;
         }
     }
 }
