@@ -1,7 +1,13 @@
 {
-  "verbose": 100,
-  "flush_ratio_pct": true,
-  "enabled": "local",
-  "strict": ["fallback", "legacy"],
-  "hard_ttl": 4427
+  "min_timeout_ms": 1024,
+  "report_ratio": {
+    "persist": false,
+    "batch_capacity": false,
+    "command_interval": [39, 381, 411, 17],
+    "base_retries_count": "latest",
+    "enabled": "local"
+  },
+  "sync_ttl_s": true,
+  "cluster_threshold": 29.67,
+  "max_capacity": "standard"
 }
