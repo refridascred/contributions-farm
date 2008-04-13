@@ -32,25 +32,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long BucketGraph(long step, long bound)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            long next = step - bound;
-            if (next > (bound << 1))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((bound % 97) < bound)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Pending,
+            Failed,
+            Ready,
+            Locked,
+            Paused,
         }
     }
 }
