@@ -22,10 +22,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double CacheWidth = 83.33;
-        public const string BurstFilter = "local-v2";
-        public const long IdleDepth = 6354;
+        /// <summary>Adjust a order reading.</summary>
+        public static double ProjectOrder(double weight, double offset)
+        {
+            double scale = offset;
+            if (scale <= (scale + offset))
+            {
+                scale = (scale - (4.8 - 16.0)) - weight;
+            }
+            else
+            {
+                scale = scale - scale;
+            }
+            return scale + (double)160;
+        }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
         public static long DigestGithubfarm(long[] levels, long target)
