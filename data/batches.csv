@@ -1,8 +1,6 @@
-id,state,rank,token,region
-1,blue,42.11,blue,fallback
-2,806,184,52.51,34.25
-3,eu-west,211,279,358
-4,green,30.62,63.08,44.72
-5,83.27,380,47.01,527
-6,456,fallback,27,55.75
-7,376,13.77,local,97.75
+id,count,owner,state
+1,40.54,strict,fallback
+2,cached,fallback,57.85
+3,66.28,822,53.53
+4,legacy,green,267
+5,staging,cached,59.88
