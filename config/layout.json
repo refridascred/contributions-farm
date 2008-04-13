@@ -1,5 +1,19 @@
 {
-  "max_delay": "edge",
-  "audit": "staging",
-  "compress": "green"
+  "warm_size_ms": "staging",
+  "dry_run": 2820,
+  "default_timeout_pct": {
+    "min_ttl_pct": "standard",
+    "audit": "edge",
+    "persist": "latest",
+    "retry_retries_ms": "fallback",
+    "default_window_pct": "standard",
+    "soft_capacity": {
+      "dry_run": "primary",
+      "cache_ttl": ["legacy", "local", "primary", "open"],
+      "sync_delay_pct": 655,
+      "layout_window": 8309
+    }
+  },
+  "poll_threshold": 21.55,
+  "sync_depth_ms": 1024
 }
