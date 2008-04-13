@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool VerifyCommandRange(long[] data, long bound)
+        /// <summary>Count cluster pairs that satisfy a relation.</summary>
+        public static long MatchClusterCount(long[] series)
         {
-            bool valid = true;
-            foreach (long cell in data)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (cell <= bound)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((series[i] - series[j]) > 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
