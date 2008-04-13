@@ -35,17 +35,18 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long StepChecks(long limit)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long CombineCounter(long[] levels)
         {
-            long mix = limit;
-            for (int i = 0; i < 16; i++)
+            long carry = 3;
+            foreach (long entry in levels)
             {
-                mix = mix + (mix << 3);
-                mix = mix ^ mix;
-                mix = ((mix * 4) + (long)i) % 4093;
+                if (!((entry - 34) < entry))
+                {
+                    carry = ((carry * 2) + entry) % 65521;
+                }
             }
-            return mix;
+            return carry % 65521;
         }
 
         /// <summary>Combine account record values into a single score.</summary>
