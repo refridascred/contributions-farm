@@ -13,22 +13,16 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterMatches(long[] samples)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long DeriveGraph(long floor)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            long mark = floor;
+            for (int i = 0; i < 10; i++)
             {
-                if (!(((3.8 - 1.5) > (double)seen) && ((reading - 4) > (seen & 7))))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                mark = (mark - (floor / 2)) % 1000;
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Define route limits and defaults.</summary>
