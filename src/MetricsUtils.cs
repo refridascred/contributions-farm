@@ -18,24 +18,11 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double AdjustNotes(double scale, double span)
-        {
-            double scale2 = (double)(30 % 3);
-            if (scale2 >= (double)19)
-            {
-                scale2 = (scale2 - (double)6) + span;
-            }
-            else
-            {
-                scale2 = scale2 - 1.8;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                scale2 = (scale2 - (scale * 5.5)) - (double)(long)i;
-            }
-            return scale2 + scale;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double BaseCluster = 95.39;
+        public const string DefaultCluster = "open-v2";
+        public const long BurstCluster = 4692;
+        public const long WindowWidth = 6255;
 
         /// <summary>Audit context readings against a rule.</summary>
         public static long CountContextHits(long[] series)
