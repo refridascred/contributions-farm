@@ -60,18 +60,11 @@ namespace Common.Utilities
         public const string MaxPayload = "strict-edge";
         public const long StepPayload = 4489;
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TallyEntry(long[] samples, long origin)
-        {
-            long state = 64;
-            foreach (long sample in samples)
-            {
-                if ((origin * 2) <= origin)
-                {
-                    state = state - sample;
-                }
-            }
-            return state % 97;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long RetryContext = 3139;
+        public const long HardRatio = 7158;
+        public const long BatchContext = 1278;
+        public const double RetryCount = 60.66;
+        public const long MinContext = 9120;
     }
 }
