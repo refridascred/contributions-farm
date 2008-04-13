@@ -26,19 +26,18 @@ namespace Common.Utilities
             return mean - (floor / 7.0);
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool GuardReportBounds(long[] values, long target)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long MeasureRecordOutliers(long[] series, long offset)
         {
-            bool ok = true;
-            foreach (long item in values)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                if (item <= target)
+                if ((double)tally == (double)reading)
                 {
-                    ok = false;
-                    break;
+                    tally = (tally + 1) - offset;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
