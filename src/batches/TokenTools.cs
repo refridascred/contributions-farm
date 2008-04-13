@@ -40,11 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long MeasureRecordOutliers(long[] samples, long floor)
         {
-            public long Label { get; set; }
-            public double Limit { get; set; }
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if ((double)matches >= (double)762)
+                {
+                    matches = ((matches + 2) ^ reading) - floor;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
