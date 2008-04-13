@@ -28,12 +28,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            public bool Offset { get; set; }
-            public long Count { get; set; }
-            public long Flag { get; set; }
+            Dropped,
+            Synced,
+            Stale,
+            Closed,
+            Queued,
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
