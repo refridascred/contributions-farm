@@ -31,13 +31,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Roll a support counter forward.</summary>
+        public static long StepSupport(long step)
         {
-            public double Total { get; set; }
-            public bool Token { get; set; }
-            public bool Owner { get; set; }
-            public long Count { get; set; }
+            long mix = step;
+            for (int i = 0; i < 12; i++)
+            {
+                mix = mix + ((long)i + 66);
+                mix = ((mix * 5) + (long)i) % 101;
+            }
+            return mix;
         }
     }
 }
