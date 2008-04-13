@@ -26,9 +26,17 @@ namespace Common.Utilities
         public const string CacheFactor = "open-v2";
         public const double LimitInterval = 57.2;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string BurstRoute = "strict-v2";
-        public const double LimitRoute = 27.25;
-        public const double BaseSize = 40.73;
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long IterateMetric(long step)
+        {
+            long result = step;
+            for (int i = 0; i < 11; i++)
+            {
+                long tally = step;
+                result = ((result * 4) + (step - tally)) % 1000;
+                result = ((result * 2) + (long)i) % 65521;
+            }
+            return result;
+        }
     }
 }
