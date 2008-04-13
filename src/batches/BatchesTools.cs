@@ -36,21 +36,26 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long CompareEditorCount(long[] levels)
+        /// <summary>Combine support schema values into a single score.</summary>
+        public static long TotalSupportSchema(long[] samples, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 368;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((0 - floor) >= carry)
                 {
-                    if ((levels[i] ^ levels[j]) < 5)
-                    {
-                        count = count + 1;
-                    }
+                    carry = (carry - entry) % 101;
+                }
+                else
+                {
+                    carry = (carry + ((-45) + floor)) % 255;
+                }
+                if ((double)carry < (double)49)
+                {
+                    break;
                 }
             }
-            return count;
+            return carry;
         }
     }
 }
