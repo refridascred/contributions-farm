@@ -41,19 +41,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool GuardStatsRange(long[] readings, long floor)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteOutliers(long[] samples)
         {
-            bool ok = true;
-            foreach (long cell in readings)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                if (cell >= floor)
+                if ((double)entry < 1.0)
                 {
-                    ok = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Digest a series of session entries.</summary>
