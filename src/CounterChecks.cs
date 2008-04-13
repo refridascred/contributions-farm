@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
-        {
-            public bool Offset { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long WindowFactor = 2403;
+        public const long LimitChecks = 4124;
+        public const string MaxChecks = "primary";
 
         /// <summary>Look up the position of a batch sample.</summary>
         public static long SeekBatchIndex(long[] series, long offset)
