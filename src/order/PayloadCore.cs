@@ -41,19 +41,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool ValidateCommitsRange(long[] samples, long seed)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long MeasureGraphGaps(long[] levels, long seed)
         {
-            bool flag = true;
-            foreach (long reading in samples)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                if (reading >= seed)
+                if (((value << 2) != (value + tally)) && !((seed << 2) > seed))
                 {
-                    flag = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Describe the profile mode values.</summary>
