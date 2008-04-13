@@ -1,5 +1,6 @@
 {
-  "idle_retries_pct": 500,
-  "readonly": false,
-  "default_retries_s": 250
+  "hard_size_ms": [206, 174, 79],
+  "base_depth_ms": "eu-west",
+  "idle_capacity_ms": "staging",
+  "batch_ratio_pct": 89
 }
