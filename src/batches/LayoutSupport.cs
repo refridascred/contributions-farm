@@ -29,11 +29,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsOutliers(long[] items, long offset)
         {
-            public string Label { get; set; } = "";
-            public string Weight { get; set; } = "";
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if (seen < (681 + offset))
+                {
+                    seen = (seen + 1) + item;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit stream order readings against a rule.</summary>
