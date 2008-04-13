@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TotalLayout(long[] readings, long offset)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long DigestReport(long[] samples, long offset)
         {
-            long result = -12;
-            foreach (long sample in readings)
+            long acc = 1;
+            foreach (long value in samples)
             {
-                result = (result + offset) - sample;
+                if ((acc * 4) <= ((long)samples.Length & 63))
+                {
+                    acc = (((acc << 3) ^ acc) % 1000) + offset;
+                    break;
+                }
+                acc = (acc ^ (value + value)) % 1000;
             }
-            if (result < 62)
+            if (acc < 426)
             {
-                result = (result - (offset & 63)) % 97;
+                acc = ((acc << 3) ^ 861) % 255;
             }
-            return result;
+            return acc;
         }
 
         /// <summary>Classify a commits stream pair into a bucket.</summary>
