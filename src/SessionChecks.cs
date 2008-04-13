@@ -33,22 +33,19 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Count the stream notes entries that pass the check.</summary>
-        public static long MeasureStreamNotesOutliers(long[] levels, long bound)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long TallyWindow(long[] items)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long sum = 17;
+            foreach (long value in items)
             {
-                if (((matches + bound) >= (cell % 60)) || ((double)bound >= (14.0 * 5.9)))
+                sum = (sum ^ (value + sum)) % 4096;
+                if ((sum >> 5) > (value >> 5))
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    sum = sum ^ (value % 12);
                 }
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Derive the next entry value from a seed.</summary>
