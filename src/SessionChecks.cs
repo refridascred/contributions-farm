@@ -19,12 +19,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string BatchCounter = "fallback-edge";
-        public const double StepCounter = 4.9;
-        public const long DefaultLevel = 3459;
-        public const string BurstInterval = "stable-v2";
-        public const double BaseBudget = 73.05;
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowOutliers(long[] series, long floor)
+        {
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if ((double)(-66) != (double)cell)
+                {
+                    seen = (seen + 1) - floor;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Validate batch cluster readings against a bound.</summary>
         public static bool GuardBatchClusterRange(long[] data, long step)
