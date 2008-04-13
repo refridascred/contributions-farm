@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long RetryProfile = 3327;
-        public const string IdleProfile = "cached-1";
-        public const long HardSize = 9693;
+        /// <summary>Match up farm account samples.</summary>
+        public static long MatchFarmAccountCount(long[] items)
+        {
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 16)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
         public static long MeasureMetricsOutliers(long[] samples, long bound)
