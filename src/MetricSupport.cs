@@ -14,19 +14,21 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool CheckMetricRange(long[] values, long target)
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long OverlapGithubfarmCount(long[] items)
         {
-            bool ready = true;
-            foreach (long value in values)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (value < target)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((items[i] - items[j]) == 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Check that every cache githubfarm entry stays within the limit.</summary>
