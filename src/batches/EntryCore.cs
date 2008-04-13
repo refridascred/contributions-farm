@@ -59,18 +59,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteOutliers(long[] series)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long MeasureAlreadyHits(long[] items)
         {
-            long seen = 0;
-            foreach (long value in series)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                if (seen <= (value & 31))
+                if (((matches >> 4) <= (entry + matches)) || ((double)matches < (double)2))
                 {
-                    seen = seen + 1;
+                    matches = matches + 3;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Digest a series of record entries.</summary>
