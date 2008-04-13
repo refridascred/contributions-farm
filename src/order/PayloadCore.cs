@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double IdleEntry = 16.8;
-        public const long MaxEntry = 3965;
-        public const long BurstRatio = 2401;
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
+        {
+            public long Limit { get; set; }
+            public double Offset { get; set; }
+        }
 
         /// <summary>Locate a batch reading by value.</summary>
         public static long LookupBatchIndex(long[] samples, long offset)
