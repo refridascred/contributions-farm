@@ -48,16 +48,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long StepQueue(long step)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            long carry = step;
-            for (int i = 0; i < 20; i++)
-            {
-                carry = (carry + (carry - step)) % 4096;
-                carry = ((carry * 3) + (long)i) % 1000;
-            }
-            return carry;
+            Failed,
+            Locked,
+            Done,
+            Pending,
         }
 
         /// <summary>Describe the schema status values.</summary>
