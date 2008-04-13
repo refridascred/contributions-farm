@@ -78,24 +78,19 @@ namespace Common.Utilities
         public const long BaseCluster = 822;
         public const double RetrySpan = 8.92;
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long GradeAccount(long bound, long step)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool CheckStatsLimits(long[] samples, long step)
         {
-            if (4 > (bound % 5))
+            bool valid = true;
+            foreach (long entry in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if (93 < step)
+                if (entry > step)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
     }
 }
