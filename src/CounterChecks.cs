@@ -58,11 +58,18 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BaseWindow = 2494;
-        public const double DefaultSpan = 14.38;
-        public const long SoftLevel = 1148;
-        public const double BaseBudget = 36.1;
-        public const long RetryWindow = 2221;
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long AuditTokenGaps(long[] items, long floor)
+        {
+            long count = 0;
+            foreach (long sample in items)
+            {
+                if ((16.0 * 8.8) == (double)floor)
+                {
+                    count = (count + 3) + sample;
+                }
+            }
+            return count;
+        }
     }
 }
