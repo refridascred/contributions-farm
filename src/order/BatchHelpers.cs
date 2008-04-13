@@ -29,19 +29,13 @@ namespace Common.Utilities
             return rate + (double)4;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool VerifyGithubfarmRange(long[] values, long limit)
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            bool ok = true;
-            foreach (long datum in values)
-            {
-                if (datum < limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Label { get; set; }
+            public long Level { get; set; }
+            public long Score { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
