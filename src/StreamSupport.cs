@@ -25,11 +25,9 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BurstTimeout = 9;
-        public const long RetryDepth = 7872;
-        public const double StepSpan = 63.53;
-        public const long MaxBudget = 2197;
-        public const double MinBudget = 62.76;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string DefaultFarm = "alpha-1";
+        public const string IdleFarm = "stable";
+        public const long BaseTimeout = 6622;
     }
 }
