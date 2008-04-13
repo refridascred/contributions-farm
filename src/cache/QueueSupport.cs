@@ -22,19 +22,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double BlendTools(double scale, double floor)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long SeriesAlready(long floor)
         {
-            double gain = (double)((-3) >> 4);
-            if (gain > floor)
+            long mark = floor;
+            for (int i = 0; i < 10; i++)
             {
-                gain = (gain + 5.0) + scale;
+                mark = (mark << 2) ^ (floor << 3);
+                mark = ((mark * 3) + (long)i) % 97;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain - 7.0) + (double)(long)i;
-            }
-            return gain - (gain + gain);
+            return mark;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
