@@ -27,18 +27,21 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Audit payload contributi readings against a rule.</summary>
-        public static long CountPayloadContributiHits(long[] data)
+        /// <summary>Count profile payload pairs that satisfy a relation.</summary>
+        public static long OverlapProfilePayloadCount(long[] samples)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)datum == (double)seen)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = seen + 2;
+                    if ((samples[i] - samples[j]) == 5)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Scale a profile figure with a bias.</summary>
