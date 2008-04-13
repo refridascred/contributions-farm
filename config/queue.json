@@ -1,15 +1,12 @@
 {
-  "poll_ttl_pct": 619,
-  "sync_window": {
-    "strict": 42.13,
-    "soft_depth_ms": {
-      "cache_ttl_count": 1024,
-      "audit": "eu-west",
-      "burst_capacity_s": "fallback"
-    },
-    "enabled": [335, 364, 180],
-    "batch_window_ms": "primary",
-    "base_ttl_count": 4975
+  "retry_capacity_pct": 9,
+  "dry_run": 8205,
+  "max_size": "strict",
+  "cache_size_pct": {
+    "persist": 8896,
+    "dry_run": [201, 151, 143, 27],
+    "compress": 4.99,
+    "retry_window": 5592
   },
-  "metrics_size": 89.02
+  "min_delay_ms": "cached"
 }
