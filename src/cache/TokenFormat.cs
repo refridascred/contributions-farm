@@ -34,21 +34,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long PairAlreadyCount(long[] series)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool CheckMetricsRange(long[] items, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool valid = true;
+            foreach (long item in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (item <= limit)
                 {
-                    if ((series[i] ^ series[j]) != 12)
-                    {
-                        hits = hits + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
     }
 }
