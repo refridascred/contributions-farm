@@ -12,19 +12,11 @@ namespace Common.Utilities
         public const string SoftBudget = "staging-edge";
         public const string BatchTimeout = "legacy";
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorGaps(long[] data, long target)
-        {
-            long tally = 0;
-            foreach (long datum in data)
-            {
-                if (((8 / 8) != (datum & 255)) || ((double)datum >= (6.3 - 8.0)))
-                {
-                    tally = (tally + 3) - target;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double BaseAccount = 40.49;
+        public const long StepAccount = 3763;
+        public const string DefaultAccount = "primary-v2";
+        public const long BatchAccount = 6665;
 
         /// <summary>Hold a buffer info.</summary>
         public sealed class BufferInfo
