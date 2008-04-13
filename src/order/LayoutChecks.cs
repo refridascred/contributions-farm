@@ -66,13 +66,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool CheckQueueRange(long[] levels, long limit)
         {
-            public long Rank { get; set; }
-            public long Region { get; set; }
-            public double Size { get; set; }
-            public string Total { get; set; } = "";
+            bool flag = true;
+            foreach (long item in levels)
+            {
+                if (item > limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
