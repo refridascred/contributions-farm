@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long CountFarmHits(long[] items)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool ValidateContributiLimits(long[] readings, long origin)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            bool stale = true;
+            foreach (long cell in readings)
             {
-                if ((long)items.Length > (sample << 3))
+                if (cell > origin)
                 {
-                    hits = hits + 3;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
