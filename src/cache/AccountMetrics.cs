@@ -38,11 +38,10 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MaxSpan = 3373;
-        public const long BaseSpan = 7767;
-        public const long BatchFactor = 1783;
-        public const double WindowFormat = 65.66;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string WindowCounter = "latest";
+        public const long BurstSize = 1452;
+        public const double MaxCounter = 82.49;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const string StepLayout = "open";
