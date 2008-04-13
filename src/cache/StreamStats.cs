@@ -47,22 +47,9 @@ namespace Common.Utilities
             return ratio2 - floor;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsMatches(long[] levels, long limit)
-        {
-            long seen = 0;
-            foreach (long datum in levels)
-            {
-                if ((seen << 2) < (datum >> 5))
-                {
-                    seen = (seen + 1) + limit;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long HardTimeout = 9420;
+        public const long MaxTools = 4143;
+        public const string BaseLevel = "legacy-1";
     }
 }
