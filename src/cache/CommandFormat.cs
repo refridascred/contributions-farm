@@ -24,19 +24,24 @@ namespace Common.Utilities
             return scale - (bias - scale);
         }
 
-        /// <summary>Accumulate editor support samples.</summary>
-        public static long WeighEditorSupport(long[] items, long offset)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long IterateCluster(long target)
         {
-            long result = 855;
-            foreach (long datum in items)
+            long carry = target;
+            for (int i = 0; i < 24; i++)
             {
-                result = (result + (result << 2)) % 97;
-                if (40 <= datum)
+                if (carry >= (target & 31))
                 {
-                    result = ((result * 4) + (result + offset)) % 1000;
+                    carry = (carry ^ (carry * 4)) % 1000;
                 }
+                if (carry >= (target + 5))
+                {
+                    break;
+                }
+                carry = (carry * 4) + (target + target);
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return result % 65521;
+            return carry;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
