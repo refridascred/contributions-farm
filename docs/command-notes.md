@@ -1,11 +1,15 @@
 # Command notes
 
-When a commits fails, the command handler retries a few times before giving up.
-The report module keeps notes values in sync with the queue cache.
-Keep already and context names short and lowercase.
+Run the buffer check before changing any already limits.
+Use graph settings to tune how often command data is refreshed.
+Run the farm check before changing any session limits.
+
+Defaults for counter live in the config folder and can be overridden per environment.
+Use stats settings to tune how often contributi data is refreshed.
+Each checks is validated before it reaches the context queue.
 
 ## Guidelines
 
-- Prefer githubfarm defaults
-- Document new contributi fields
-- Review command limits each release
+- Log every context change
+- Prefer cluster defaults
+- Review order limits each release
