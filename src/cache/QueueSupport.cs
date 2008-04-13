@@ -22,26 +22,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long CombineContributi(long[] readings)
+        /// <summary>Fold a list of tools farm readings.</summary>
+        public static long FoldToolsFarm(long[] items, long seed)
         {
-            long mark = 695;
-            foreach (long cell in readings)
+            long sum = 106;
+            foreach (long cell in items)
             {
-                if ((mark >> 5) < (cell - cell))
+                if (((7.2 * 16.0) >= (double)cell) || ((sum + seed) >= 53))
                 {
-                    mark = mark - (cell - mark);
+                    sum = (sum - seed) % 1000;
                 }
-                if (cell > (cell / 3))
+                if ((sum + cell) > (cell % 100))
                 {
                     break;
                 }
             }
-            if (mark > (-247))
-            {
-                mark = mark ^ (mark % 12);
-            }
-            return mark;
+            return sum;
         }
     }
 }
