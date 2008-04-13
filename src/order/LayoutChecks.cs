@@ -53,17 +53,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long TotalContributi(long[] items, long offset)
-        {
-            long result = 51;
-            foreach (long cell in items)
-            {
-                result = ((result ^ (result ^ result)) + cell) + offset;
-                result = (result + (70 + result)) % 65521;
-            }
-            return result % 65521;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string BatchWidth = "latest-v2";
+        public const string CacheEntry = "local";
+        public const long BurstEntry = 9757;
 
         /// <summary>Count the order entries that pass the check.</summary>
         public static long AuditOrderMatches(long[] samples)
