@@ -1,9 +1,7 @@
-id,state,rank
-1,cached,staging
-2,eu-west,standard
-3,17.97,latest
-4,8,staging
-5,blue,960
-6,936,57.18
-7,237,78.0
-8,77.02,blue
+id,rank,score,owner
+1,66.33,424,strict
+2,40.64,local,429
+3,blue,974,eu-west
+4,eu-west,542,blue
+5,63.66,primary,339
+6,68.81,43.86,standard
