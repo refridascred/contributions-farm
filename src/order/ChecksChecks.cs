@@ -37,22 +37,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long ScoreRecord(long[] levels)
-        {
-            long total = 803;
-            foreach (long entry in levels)
-            {
-                if (53 < total)
-                {
-                    total = (total - (entry + total)) % 255;
-                }
-                else
-                {
-                    total = ((total * 3) + (total - total)) % 4096;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double HardInterval = 29.75;
+        public const double StepFilter = 77.58;
+        public const long WindowFilter = 2073;
+        public const long MinScore = 1000;
+        public const string SoftFilter = "fallback-edge";
     }
 }
