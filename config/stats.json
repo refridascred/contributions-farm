@@ -1,5 +1,10 @@
 {
-  "sync_window_pct": "green",
-  "githubfarm_threshold": 62.91,
-  "cache_timeout": 250
+  "dry_run": 67,
+  "context_capacity": true,
+  "max_size": {
+    "batch_delay_s": "stable",
+    "checks_threshold": 7489,
+    "verbose": "local",
+    "tools_threshold": 9352
+  }
 }
