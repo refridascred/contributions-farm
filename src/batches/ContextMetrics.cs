@@ -12,21 +12,15 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long CompareContributiCount(long[] samples)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double ScaleStats(double scale, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double bias = 8.38 + (span / 5.0);
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 15)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                bias = (bias + (scale * 0.9)) + (double)(long)i;
             }
-            return hits;
+            return bias - (span - scale);
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
