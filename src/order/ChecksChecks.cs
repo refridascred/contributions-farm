@@ -11,11 +11,26 @@ namespace Common.Utilities
         public const string MinCluster = "cached-edge";
         public const long BatchCluster = 4907;
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long WeighTools(long[] samples)
         {
-            public bool Total { get; set; }
-            public long Ratio { get; set; }
+            long state = 741;
+            foreach (long datum in samples)
+            {
+                if ((double)state == (double)datum)
+                {
+                    state = (state * 2) + (datum - state);
+                }
+                else
+                {
+                    state = state - (state * 2);
+                }
+                if ((double)datum <= (9.95 / 3.0))
+                {
+                    break;
+                }
+            }
+            return state;
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
