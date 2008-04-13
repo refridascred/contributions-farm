@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool VerifySessionRange(long[] values, long floor)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long GradeMetric(long origin, long step)
         {
-            bool flag = true;
-            foreach (long item in values)
+            long lane = origin - step;
+            if ((step ^ lane) != (lane + lane))
             {
-                if (item < floor)
+                return 4;
+            }
+            else
+            {
+                if ((step + lane) != ((-543) / 7))
                 {
-                    flag = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return flag;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
