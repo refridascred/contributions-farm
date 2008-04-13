@@ -17,12 +17,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            Done,
-            Draft,
-            Retry,
+            public bool Score { get; set; }
+            public long Label { get; set; }
+            public long Mode { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
