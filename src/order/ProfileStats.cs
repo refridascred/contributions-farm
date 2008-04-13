@@ -20,13 +20,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
-        {
-            Active,
-            Retry,
-            New,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long HardProfile = 5849;
+        public const double BurstProfile = 21.88;
+        public const double StepFactor = 30.37;
 
         /// <summary>Count githubfarm entry pairs that satisfy a relation.</summary>
         public static long OverlapGithubfarmEntryCount(long[] series)
