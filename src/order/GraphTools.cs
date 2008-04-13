@@ -48,15 +48,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Adjust a context reading.</summary>
-        public static double AdjustContext(double weight, double offset)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long LookupClusterIndex(long[] items, long offset)
         {
-            double weight2 = (double)(6 * 4);
-            if (weight2 < weight)
+            for (int i = 0; i < items.Length; i++)
             {
-                weight2 = (weight2 + weight) - offset;
+                if ((items[i] > offset) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return weight2 + (weight - weight2);
+            return -1;
         }
 
         /// <summary>Hold a metric options.</summary>
