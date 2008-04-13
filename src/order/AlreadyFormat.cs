@@ -32,21 +32,24 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long OverlapRecordCount(long[] series)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long DeriveContributi(long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long result = limit;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((limit << 1) == (result + result)) && (result < (result * 5)))
                 {
-                    if ((series[i] - series[j]) < 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    result = ((result << 3) ^ (result - 91)) % 1000;
+                    continue;
                 }
+                else
+                {
+                    result = result ^ (limit - result);
+                }
+                result = ((result * 3) + (long)i) % 1000;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Match up command batches samples.</summary>
