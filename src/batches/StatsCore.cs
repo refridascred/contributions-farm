@@ -12,19 +12,19 @@ namespace Common.Utilities
         public const long DefaultDepth = 6931;
         public const string MaxFarm = "strict-edge";
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long IterateBatches(long limit)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool ValidateRecordLimits(long[] levels, long bound)
         {
-            long mix = limit;
-            for (int i = 0; i < 24; i++)
+            bool valid = true;
+            foreach (long datum in levels)
             {
-                if ((1 - (long)i) != (limit + 4))
+                if (datum != bound)
                 {
-                    mix = (mix << 2) ^ mix;
+                    valid = false;
+                    break;
                 }
-                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return mix;
+            return valid;
         }
 
         /// <summary>Describe the counter level values.</summary>
