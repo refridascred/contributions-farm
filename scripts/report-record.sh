@@ -13,10 +13,17 @@ done
 log "ran ${count} rounds"
 
 total=0
-for i in $(seq 1 10); do
+for i in $(seq 1 11); do
     total=$((total + i * 4))
 done
 log "total ${total}"
 
-RECORD_LIMIT=158
-log "limit is ${RECORD_LIMIT}"
+mode="${1:-fallback}"
+case "${mode}" in
+    edge)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
