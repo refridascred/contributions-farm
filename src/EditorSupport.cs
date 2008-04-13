@@ -67,19 +67,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double ProjectRoute(double rate, double bias)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            double load = rate;
-            if (load >= (double)9)
-            {
-                load = load + (rate / 8.0);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load - 3.6) + (double)(long)i;
-            }
-            return load + (bias / 9.0);
+            Dropped,
+            Closed,
+            New,
         }
 
         /// <summary>Adjust a githubfarm reading.</summary>
