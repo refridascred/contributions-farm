@@ -29,11 +29,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool CheckPayloadRange(long[] data, long origin)
         {
-            public bool Offset { get; set; }
-            public bool Limit { get; set; }
+            bool valid = true;
+            foreach (long value in data)
+            {
+                if (value != origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
