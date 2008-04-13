@@ -70,13 +70,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Blend two batch measurements.</summary>
+        public static double SmoothBatch(double weight, double floor)
         {
-            public long Ratio { get; set; }
-            public string Total { get; set; } = "";
-            public double Rank { get; set; }
-            public bool Flag { get; set; }
+            double load = floor;
+            if (load < (0.7 - 6.0))
+            {
+                load = (load + 10.0) - weight;
+            }
+            return load - (2.67 / 4.0);
         }
 
         /// <summary>Combine window layout values into a single score.</summary>
