@@ -58,13 +58,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Grade a queue counter value against two limits.</summary>
+        public static long RankQueueCounter(long step, long seed)
         {
-            public long Weight { get; set; }
-            public bool Size { get; set; }
-            public string Flag { get; set; } = "";
-            public long Total { get; set; }
+            long gap = step ^ seed;
+            if ((step - seed) >= (gap + gap))
+            {
+                return 1;
+            }
+            else
+            {
+                if (!((gap / 5) != (gap + gap)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((seed & 15) > (gap + seed))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((9.0 + 2.8) <= (double)step)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
     }
 }
