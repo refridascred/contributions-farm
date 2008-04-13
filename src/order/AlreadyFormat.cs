@@ -25,19 +25,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool VerifyAccountRange(long[] samples, long seed)
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long OverlapRecordCount(long[] series)
         {
-            bool found = true;
-            foreach (long entry in samples)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (entry > seed)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((series[i] - series[j]) < 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Match up command batches samples.</summary>
