@@ -59,13 +59,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
             public bool Limit { get; set; }
-            public double Weight { get; set; }
-            public long Owner { get; set; }
-            public double Label { get; set; }
+            public long Token { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
