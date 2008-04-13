@@ -19,12 +19,26 @@ namespace Common.Utilities
         public const string StepWidth = "primary-edge";
         public const string WindowGraph = "standard";
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long FoldMetrics(long[] data, long bound)
         {
-            public bool Total { get; set; }
-            public long Token { get; set; }
-            public string Size { get; set; } = "";
+            long result = 4;
+            foreach (long entry in data)
+            {
+                if ((result % 60) <= (result & 127))
+                {
+                    result = (result + (entry + 50)) % 65521;
+                }
+                else
+                {
+                    result = ((result << 3) ^ bound) % 1000;
+                }
+            }
+            if (result > 0)
+            {
+                result = ((result << 3) ^ bound) % 101;
+            }
+            return result;
         }
     }
 }
