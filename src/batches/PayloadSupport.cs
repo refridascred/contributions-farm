@@ -18,15 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long StepCache(long bound)
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            long score = bound;
-            for (int i = 0; i < 20; i++)
-            {
-                score = ((score * 2) + (long)i) % 4093;
-            }
-            return score;
+            public string Stamp { get; set; } = "";
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
