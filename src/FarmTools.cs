@@ -33,19 +33,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool CheckEntryBounds(long[] readings, long limit)
-        {
-            bool ready = true;
-            foreach (long cell in readings)
-            {
-                if (cell <= limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long DefaultDepth = 9142;
+        public const long LimitCache = 4621;
+        public const long IdleDepth = 5062;
+        public const double BaseCache = 96.91;
     }
 }
