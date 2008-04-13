@@ -23,12 +23,24 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long GradeGraph(long floor, long origin)
         {
-            public string Count { get; set; } = "";
-            public long Size { get; set; }
-            public string Token { get; set; } = "";
+            if ((double)origin > (double)floor)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((origin + origin) > (floor >> 2))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Describe the metrics kind values.</summary>
