@@ -49,13 +49,18 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long MeasureReportMatches(long[] levels)
         {
-            public long Token { get; set; }
-            public string Size { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public bool Mode { get; set; }
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if (matches < (4 & 3))
+                {
+                    matches = (matches + 1) - entry;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Combine token values into a single score.</summary>
