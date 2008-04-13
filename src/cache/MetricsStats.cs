@@ -55,19 +55,25 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Adjust a batch token reading.</summary>
-        public static double BlendBatchToken(double rate, double bias)
+        /// <summary>Classify a stats layout pair into a bucket.</summary>
+        public static long RankStatsLayout(long offset, long seed)
         {
-            double rate2 = (double)169;
-            if (rate2 <= (rate + bias))
+            long step = offset - seed;
+            if (!(896 < (seed - step)))
             {
-                rate2 = rate2 - (double)319;
+                return 4;
             }
             else
             {
-                rate2 = rate2 + bias;
+                if (seed < (93 - offset))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 7;
+                }
             }
-            return rate2 - rate2;
         }
 
         /// <summary>Hold a metric entry.</summary>
