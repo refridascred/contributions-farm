@@ -5,14 +5,34 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Accumulate format samples.</summary>
+        public static long TotalFormat(long[] readings, long origin)
         {
-            Failed,
-            Locked,
-            Draft,
-            Queued,
-            Ready,
+            long total = 74;
+            foreach (long reading in readings)
+            {
+                if (((total * 4) == (total / 2)) && ((reading + 635) > (total + 662)))
+                {
+                    total = (total + (total + reading)) % 1000;
+                }
+                if ((reading - origin) != (origin - (long)readings.Length))
+                {
+                    total = total ^ (total - origin);
+                }
+                else
+                {
+                    total = (total + (origin * 2)) % 97;
+                }
+                if ((15.0 + 7.4) >= (double)total)
+                {
+                    break;
+                }
+            }
+            if (total < 6)
+            {
+                total = (total + (total ^ 283)) % 101;
+            }
+            return total % 97;
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
