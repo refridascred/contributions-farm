@@ -1,6 +1,5 @@
 {
-  "audit": false,
-  "batch_timeout": "cached",
-  "schema_limit": ["blue", "blue"],
-  "readonly": [388, 63, 218]
+  "max_timeout": 7313,
+  "stats_capacity": ["blue", "stable", "local", "strict"],
+  "audit": 24.97
 }
