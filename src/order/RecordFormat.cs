@@ -69,15 +69,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the filter contributi series from a seed.</summary>
-        public static long StepFilterContributi(long seed)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportMatches(long[] samples)
         {
-            long score = seed;
-            for (int i = 0; i < 15; i++)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                score = ((score * 2) + (long)i) % 65521;
+                if ((value << 3) == (value + matches))
+                {
+                    matches = matches + 1;
+                }
             }
-            return score;
+            return matches;
         }
     }
 }
