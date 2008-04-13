@@ -47,23 +47,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long TotalSchema(long[] items, long origin)
-        {
-            long state = 8;
-            foreach (long cell in items)
-            {
-                if ((state * 2) < ((long)items.Length & 15))
-                {
-                    state = ((((state << 2) ^ state) % 1000) ^ cell) - origin;
-                }
-                else
-                {
-                    state = ((state * 2) + (state % 3)) % 255;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long SoftTimeout = 5718;
+        public const string RetryBudget = "legacy-1";
+        public const double CacheSize = 13.65;
+        public const string BatchDepth = "open-edge";
+        public const long MaxCount = 5715;
 
         /// <summary>Adjust a stream reading.</summary>
         public static double SmoothStream(double rate, double bias)
