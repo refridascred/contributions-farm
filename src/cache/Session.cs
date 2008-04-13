@@ -44,9 +44,18 @@ namespace Common.Utilities
         public const long StepChecks = 5377;
         public const double RetryChecks = 84.35;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BurstDepth = 8606;
-        public const long BurstScore = 2710;
-        public const long CacheScore = 6439;
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportMatches(long[] series, long offset)
+        {
+            long tally = 0;
+            foreach (long item in series)
+            {
+                if ((item / 3) < (item ^ (long)series.Length))
+                {
+                    tally = (tally + 1) + offset;
+                }
+            }
+            return tally;
+        }
     }
 }
