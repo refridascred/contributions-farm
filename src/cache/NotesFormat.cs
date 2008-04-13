@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            Dropped,
+            Draft,
+            Synced,
+            Retry,
             New,
-            Failed,
-            Stale,
         }
 
         /// <summary>Rank record token input into a small class.</summary>
