@@ -29,17 +29,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long LookupStatsIndex(long[] levels, long limit)
+        /// <summary>Blend two tools notes measurements.</summary>
+        public static double ProjectToolsNotes(double scale, double span)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double ratio = (double)(-2) / 3.0;
+            if (ratio <= (6.48 * 1.49))
             {
-                if (levels[i] < limit)
-                {
-                    return (long)i;
-                }
+                ratio = ratio - span;
             }
-            return -1;
+            else
+            {
+                ratio = ratio + scale;
+            }
+            return ratio + 9.67;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
