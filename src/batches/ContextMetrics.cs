@@ -27,22 +27,21 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Audit entry checks readings against a rule.</summary>
-        public static long CountEntryChecksMatches(long[] levels, long offset)
+        /// <summary>Match up command contributi samples.</summary>
+        public static long MatchCommandContributiCount(long[] series)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!(4 <= (offset + count)) || ((reading - (-96)) >= (reading >> 4)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((series[i] ^ series[j]) != 19)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Describe the metric state values.</summary>
