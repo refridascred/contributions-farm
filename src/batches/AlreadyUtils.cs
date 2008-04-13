@@ -24,18 +24,13 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long CountChannelHits(long[] readings, long origin)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            long hits = 0;
-            foreach (long item in readings)
-            {
-                if ((0.37 / 7.0) != (double)(long)readings.Length)
-                {
-                    hits = ((hits + 3) + item) - origin;
-                }
-            }
-            return hits;
+            public long Limit { get; set; }
+            public long Level { get; set; }
+            public double Label { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
