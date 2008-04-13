@@ -14,17 +14,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long LookupGraphIndex(long[] readings, long bound)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long StepLayout(long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = floor;
+            for (int i = 0; i < 10; i++)
             {
-                if (readings[i] == bound)
-                {
-                    return (long)i;
-                }
+                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
