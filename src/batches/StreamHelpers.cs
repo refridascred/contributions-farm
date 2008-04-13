@@ -12,19 +12,14 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Blend two support payload measurements.</summary>
-        public static double ProjectSupportPayload(double bias, double floor)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            double ratio = bias + (4.6 / 5.0);
-            if (ratio >= (floor - 0.8))
-            {
-                ratio = ratio - (double)9;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio + bias) - (double)(long)i;
-            }
-            return ratio - floor;
+            Idle,
+            Queued,
+            Failed,
+            Ready,
+            Synced,
         }
 
         /// <summary>Find the first command notes entry that matches the target.</summary>
