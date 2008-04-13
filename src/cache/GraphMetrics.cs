@@ -41,20 +41,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of tools token readings.</summary>
-        public static long DigestToolsToken(long[] items, long step)
-        {
-            long result = 5;
-            foreach (long datum in items)
-            {
-                result = result ^ 2;
-                if ((1.0 * 8.0) >= (double)datum)
-                {
-                    result = (result - (590 - step)) % 101;
-                }
-            }
-            return result % 4096;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BaseWidth = 9263;
+        public const double RetryReport = 31.1;
+        public const long LimitSize = 5533;
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
         public static long PairAccountCount(long[] series)
