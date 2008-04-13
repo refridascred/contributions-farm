@@ -44,15 +44,27 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double AdjustEntry(double bias, double floor)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long TallyFilter(long[] values)
         {
-            double gain = floor * 6.0;
-            for (int i = 0; i < 5; i++)
+            long sum = 37;
+            foreach (long item in values)
             {
-                gain = ((gain - floor) + (double)(long)i) + bias;
+                sum = ((sum << 2) ^ (item * 5)) % 255;
+                if (((item << 2) != (sum / 6)) && ((sum & 3) == (903 ^ 33)))
+                {
+                    sum = (sum + (sum % 24)) % 1000;
+                }
+                else
+                {
+                    sum = (sum << 3) ^ (item / 4);
+                }
+                if ((0 << 3) <= item)
+                {
+                    break;
+                }
             }
-            return gain + floor;
+            return sum % 1000;
         }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
