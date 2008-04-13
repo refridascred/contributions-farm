@@ -1,8 +1,15 @@
 {
-  "warm_ratio_s": true,
-  "commits_size": ["primary", "staging", "cached", "primary"],
-  "farm_interval": 3979,
-  "persist": 6015,
-  "warm_threshold_pct": 20.8,
-  "strict": 17
+  "poll_ttl": "standard",
+  "report_ttl": {
+    "batches_timeout": 39.15,
+    "min_capacity_count": {
+      "idle_threshold_ms": "staging",
+      "enabled": true,
+      "flush_depth_s": false,
+      "batch_capacity_ms": 8355
+    },
+    "order_ttl": 60,
+    "strict": 69
+  },
+  "verbose": "standard"
 }
