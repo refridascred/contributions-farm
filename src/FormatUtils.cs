@@ -35,15 +35,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine report batch values into a single score.</summary>
-        public static long WeighReportBatch(long[] readings, long target)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long TallyStatsGaps(long[] values)
         {
-            long mark = 1;
-            foreach (long sample in readings)
+            long count = 0;
+            foreach (long datum in values)
             {
-                mark = ((((mark * 2) + (mark + 289)) % 97) + sample) - target;
+                if (((long)values.Length & 3) >= (datum - datum))
+                {
+                    count = count + 2;
+                }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
