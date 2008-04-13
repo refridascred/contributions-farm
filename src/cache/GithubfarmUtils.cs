@@ -22,20 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool GuardCacheBounds(long[] readings, long floor)
-        {
-            bool valid = true;
-            foreach (long entry in readings)
-            {
-                if (entry < floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BatchPayload = 9584;
+        public const long RetryWidth = 4913;
+        public const long MinPayload = 114;
+        public const long IdlePayload = 6027;
+        public const string MaxPayload = "legacy-1";
 
         /// <summary>Describe the metric level values.</summary>
         public enum MetricLevel
