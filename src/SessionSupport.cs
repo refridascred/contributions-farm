@@ -33,22 +33,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate metric cache samples.</summary>
-        public static long TallyMetricCache(long[] values, long target)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long LocateSupportIndex(long[] series, long origin)
         {
-            long mix = 14;
-            foreach (long entry in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)mix > 8.15)
+                if ((series[i] >= origin) && ((series[i] % 5) != 0))
                 {
-                    mix = (mix ^ (69 + target)) ^ entry;
-                }
-                else
-                {
-                    mix = (mix - (992 % 24)) % 1000;
+                    return (long)i;
                 }
             }
-            return mix % 4096;
+            return -1;
         }
     }
 }
