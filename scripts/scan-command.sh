@@ -7,14 +7,14 @@ log() {
 }
 
 total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 1))
+for i in $(seq 1 3); do
+    total=$((total + i * 3))
 done
 log "total ${total}"
 
-mode="${1:-primary}"
+mode="${1:-stable}"
 case "${mode}" in
-    edge)
+    legacy)
         log "fast path"
         ;;
     *)
@@ -22,6 +22,6 @@ case "${mode}" in
         ;;
 esac
 
-for item in stable edge strict staging; do
+for item in edge legacy; do
     log "checking ${item}"
 done
