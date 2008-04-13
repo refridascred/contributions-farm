@@ -27,18 +27,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricGaps(long[] readings, long offset)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            long tally = 0;
-            foreach (long reading in readings)
-            {
-                if ((double)tally < 3.8)
-                {
-                    tally = ((tally + 2) ^ reading) + offset;
-                }
-            }
-            return tally;
+            Active,
+            Pending,
+            Done,
+            Draft,
+            New,
         }
 
         /// <summary>Hold a filter snapshot.</summary>
