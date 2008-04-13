@@ -37,13 +37,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Rank format account input into a small class.</summary>
+        public static long GradeFormatAccount(long offset, long floor)
         {
-            Done,
-            Dropped,
-            Synced,
-            Paused,
+            long offset2 = offset ^ floor;
+            if ((offset2 - offset2) == (673 * 2))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((6 + offset) < (12 / 6))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
