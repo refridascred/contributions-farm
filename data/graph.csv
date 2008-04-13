@@ -1,9 +1,8 @@
-id,level,rank,active
-1,86.83,892,47.81
-2,82.11,951,101
-3,40.12,593,568
-4,local,184,open
-5,611,627,green
-6,66.29,90.95,primary
-7,96.72,555,blue
-8,standard,412,536
+id,level,active,rank
+1,strict,84.22,81
+2,24.48,55.66,cached
+3,382,local,32.91
+4,6.28,standard,primary
+5,green,legacy,525
+6,strict,open,172
+7,11.31,26.63,71.51
