@@ -24,18 +24,13 @@ namespace Common.Utilities
         public const double RetryRoute = 9.34;
         public const string HardRoute = "staging-1";
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long CountSessionHits(long[] data, long seed)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            long hits = 0;
-            foreach (long item in data)
-            {
-                if (((long)data.Length % 60) != (item + seed))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public bool Owner { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Label { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Scale a profile figure with a bias.</summary>
