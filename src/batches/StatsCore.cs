@@ -18,13 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long IterateStream(long offset)
         {
-            Closed,
-            Done,
-            Retry,
-            Active,
+            long mark = offset;
+            for (int i = 0; i < 6; i++)
+            {
+                if (((offset - mark) > mark) || (((long)i - offset) > (offset >> 3)))
+                {
+                    mark = ((mark << 3) ^ (offset & 63)) % 101;
+                }
+                mark = ((mark * 4) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
