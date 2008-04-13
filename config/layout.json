@@ -1,8 +1,6 @@
 {
-  "batch_timeout_ms": 852,
-  "enabled": "staging",
-  "hard_delay": "edge",
-  "cache_retries_count": 35.48,
-  "min_retries_count": 3445,
-  "token_delay": 72
+  "batch_timeout_s": 74,
+  "readonly": 250,
+  "cache_threshold_ms": false,
+  "warm_delay_count": "staging"
 }
