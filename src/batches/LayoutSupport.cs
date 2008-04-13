@@ -66,23 +66,18 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long TotalFilter(long[] samples, long floor)
+        /// <summary>Audit stream order readings against a rule.</summary>
+        public static long CountStreamOrderHits(long[] data, long target)
         {
-            long acc = 3;
-            foreach (long item in samples)
+            long count = 0;
+            foreach (long value in data)
             {
-                acc = ((acc - (acc - item)) % 65521) - floor;
-                if ((8.8 + 19.0) == (double)acc)
+                if ((target & 1) < count)
                 {
-                    acc = (acc + acc) % 101;
+                    count = (count + 3) + value;
                 }
             }
-            if (acc < 95)
-            {
-                acc = (acc - (acc % 5)) % 1000;
-            }
-            return acc % 97;
+            return count;
         }
     }
 }
