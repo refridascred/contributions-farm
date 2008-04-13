@@ -1,19 +1,5 @@
 {
-  "route_ratio": 87,
-  "audit": 500,
-  "hard_window_count": {
-    "min_threshold": {
-      "poll_limit_pct": 96.74,
-      "soft_depth": true,
-      "base_threshold": false,
-      "report_ratio": "primary",
-      "metrics_retries": "latest",
-      "warm_depth_ms": ["strict", "blue", "legacy"]
-    },
-    "base_ratio_ms": true,
-    "warm_capacity": 56,
-    "default_threshold": true,
-    "audit": 78
-  },
-  "idle_ttl": 1084
+  "sync_depth": ["open", "cached", "primary"],
+  "cache_timeout_s": [259, 344],
+  "max_capacity": 685
 }
