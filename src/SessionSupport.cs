@@ -31,24 +31,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long GradeReport(long origin, long step)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            if ((double)origin >= (double)step)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)step == (double)906)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Failed,
+            Draft,
+            Done,
+            Idle,
         }
     }
 }
