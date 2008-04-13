@@ -6,15 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-open}"
+for item in local open legacy latest; do
+    log "checking ${item}"
+done
+
+BUFFER_LIMIT=132
+log "limit is ${BUFFER_LIMIT}"
+
+mode="${1:-latest}"
 case "${mode}" in
-    strict)
+    eu-west)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-BUFFER_LIMIT=235
-log "limit is ${BUFFER_LIMIT}"
