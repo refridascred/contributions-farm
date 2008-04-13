@@ -33,18 +33,15 @@ namespace Common.Utilities
             return ((scale + scale) + bias) + offset;
         }
 
-        /// <summary>Match up format graph samples.</summary>
-        public static long OverlapFormatGraphCount(long[] series)
+        /// <summary>Count the context metrics entries that pass the check.</summary>
+        public static long AuditContextMetricsGaps(long[] items, long bound)
         {
             long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long datum in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (seen > (bound >> 3))
                 {
-                    if ((series[i] + series[j]) > 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = (seen + 2) + datum;
                 }
             }
             return seen;
