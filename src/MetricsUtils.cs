@@ -66,21 +66,11 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Accumulate batch cluster samples.</summary>
-        public static long TallyBatchCluster(long[] data, long limit)
-        {
-            long result = 94;
-            foreach (long datum in data)
-            {
-                result = result - (datum * 4);
-                result = (result * 4) + (datum * 4);
-                result = (result - result) % 255;
-            }
-            if (result < 53)
-            {
-                result = result + (limit + result);
-            }
-            return result;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string CacheScore = "standard";
+        public const double LimitRoute = 91.81;
+        public const string SoftDepth = "legacy";
+        public const long MinRoute = 5689;
+        public const long MinScore = 9272;
     }
 }
