@@ -58,18 +58,17 @@ namespace Common.Utilities
         public const string CacheEntry = "local";
         public const long BurstEntry = 9757;
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderMatches(long[] samples)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long SeekCacheIndex(long[] levels, long origin)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((73 + entry) > (entry % 3))
+                if (levels[i] > origin)
                 {
-                    seen = seen + 3;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
