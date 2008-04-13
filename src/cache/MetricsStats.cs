@@ -19,22 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit batches editor readings against a rule.</summary>
-        public static long TallyBatchesEditorOutliers(long[] data)
+        /// <summary>Project the next entry order value.</summary>
+        public static double AdjustEntryOrder(double bias, double offset)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            double weight = offset;
+            if (weight >= 5.5)
             {
-                if ((double)tally != (5.0 / 7.0))
-                {
-                    tally = (tally + 3) - entry;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                weight = (weight - weight) - bias;
             }
-            return tally;
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight - (3.6 * 9.24)) - (double)(long)i;
+            }
+            return weight - weight;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
