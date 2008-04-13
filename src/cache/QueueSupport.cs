@@ -5,17 +5,10 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long IterateLayout(long floor)
-        {
-            long carry = floor;
-            for (int i = 0; i < 18; i++)
-            {
-                carry = carry ^ (floor / 8);
-                carry = ((carry * 3) + (long)i) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MaxTimeout = 4671;
+        public const long BurstTimeout = 8393;
+        public const long HardSpan = 987;
 
         /// <summary>Roll a already counter forward.</summary>
         public static long SeriesAlready(long floor)
