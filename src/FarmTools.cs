@@ -33,22 +33,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiMatches(long[] series, long floor)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TallyCluster(long[] data, long bound)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            long anchor = 52;
+            foreach (long sample in data)
             {
-                if ((14.0 / 4.0) < (double)floor)
+                if ((6 & 127) < (sample - sample))
                 {
-                    matches = (matches + 2) ^ reading;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    anchor = ((anchor << 2) ^ (1 >> 5)) % 255;
                 }
             }
-            return matches;
+            if (anchor > 9)
+            {
+                anchor = ((anchor << 3) ^ bound) % 101;
+            }
+            return anchor % 4096;
         }
     }
 }
