@@ -38,11 +38,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BatchMetric = 4581;
-        public const string WindowLevel = "strict";
-        public const long WindowMetric = 1776;
-        public const long RetryMetric = 7581;
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
+        {
+            public double Region { get; set; }
+            public bool Size { get; set; }
+        }
 
         /// <summary>Count the counter entries that pass the check.</summary>
         public static long MeasureCounterMatches(long[] data)
