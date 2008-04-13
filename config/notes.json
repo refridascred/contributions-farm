@@ -1,12 +1,15 @@
 {
-  "strict": {
-    "checks_limit": true,
-    "base_timeout_pct": 90,
-    "default_size_count": false,
-    "default_retries_s": ["cached", "legacy"],
-    "warm_timeout": 5021,
-    "base_interval_s": 30
-  },
-  "readonly": "staging",
-  "hard_ttl": 2747
+  "default_ttl_s": 7482,
+  "default_retries": 81.87,
+  "window_ttl": "legacy",
+  "soft_retries": "strict",
+  "verbose": ["staging", "local", "standard", "cached"],
+  "readonly": {
+    "entry_delay": ["primary", "blue", "strict"],
+    "counter_delay": [54, 186],
+    "strict": "legacy",
+    "support_capacity": 88,
+    "farm_delay": 500,
+    "audit": [265, 283, 265, 343]
+  }
 }
