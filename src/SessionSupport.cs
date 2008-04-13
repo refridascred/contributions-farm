@@ -10,21 +10,25 @@ namespace Common.Utilities
         public const double RetrySpan = 0.67;
         public const long IdlePayload = 3511;
 
-        /// <summary>Match up stream samples.</summary>
-        public static long CompareStreamCount(long[] series)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long ClassifyFormat(long target, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long lane = target ^ origin;
+            if (!((double)origin != (16.0 + 6.0)))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((lane % 8) <= (origin + lane))
                 {
-                    if ((series[i] + series[j]) == 11)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 3;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return tally;
         }
 
         /// <summary>Validate token command readings against a bound.</summary>
