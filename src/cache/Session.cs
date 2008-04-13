@@ -19,14 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool CheckReportLimits(long[] items, long floor)
         {
-            Failed,
-            Pending,
-            Dropped,
-            Retry,
-            Active,
+            bool ready = true;
+            foreach (long value in items)
+            {
+                if (value <= floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Combine notes session values into a single score.</summary>
