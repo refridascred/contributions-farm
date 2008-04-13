@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long GradeSchema(long offset, long floor)
+        /// <summary>Accumulate already notes samples.</summary>
+        public static long TotalAlreadyNotes(long[] readings)
         {
-            if (!((offset % 8) < (offset - offset)))
+            long sum = 92;
+            foreach (long datum in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if (offset >= floor)
+                for (int i = 0; i < 10; i++)
                 {
-                    return 2;
+                    sum = ((sum * 5) + sum) - (long)i;
                 }
-                else
-                {
-                    if ((floor + floor) > (offset / 7))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)offset >= (1.9 - 19.0))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
+                sum = ((sum * 5) + (sum + datum)) % 4096;
             }
+            return sum % 1000;
         }
 
         /// <summary>Hold a contributi options.</summary>
