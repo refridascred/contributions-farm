@@ -78,21 +78,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long OverlapCommitsCount(long[] series)
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 3)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Level { get; set; }
+            public bool Mode { get; set; }
+            public long Token { get; set; }
         }
     }
 }
