@@ -1,5 +1,6 @@
 {
-  "session_depth": 2660,
-  "window_retries": 18,
-  "graph_interval": [171, 247, 325, 225]
+  "min_threshold": [400, 34, 355],
+  "default_capacity_s": 6,
+  "burst_window_s": 62.18,
+  "cache_ttl_s": 30
 }
