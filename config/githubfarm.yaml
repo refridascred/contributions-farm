@@ -1,16 +1,7 @@
 # githubfarm settings
-max_capacity_count: 100
-flush_ratio_count: 60
-filter_size: 85
-poll_window_ms: staging
-batches_capacity:
-  entry_timeout: green
-  max_ratio_count: 57.37
-  channel_ttl: edge
-  cache_interval_count: 89
-  cache_timeout_ms: 1024
-  dry_run:
-    - blue
-    - latest
-    - stable
-    - primary
+cache_ratio_pct: 100
+compress: 63
+verbose: true
+hard_timeout_ms: 36.28
+flush_window: legacy
+already_capacity: 50.45
