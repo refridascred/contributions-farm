@@ -1,12 +1,15 @@
 -- Create the layout_items table.
 CREATE TABLE IF NOT EXISTS layout_items (
     id INTEGER PRIMARY KEY,
+    owner TEXT NOT NULL,
+    ratio REAL,
     weight REAL,
-    level INTEGER,
-    count INTEGER NOT NULL DEFAULT 0
+    count INTEGER NOT NULL DEFAULT 0,
+    created_at TIMESTAMP
 );
 
-CREATE INDEX IF NOT EXISTS idx_layout_items_level ON layout_items (level);
+CREATE INDEX IF NOT EXISTS idx_layout_items_ratio ON layout_items (ratio);
 
-INSERT INTO layout_items (weight, level, count) VALUES (40.62, 62, 87);
-INSERT INTO layout_items (weight, level, count) VALUES (77.36, 12, 89);
+INSERT INTO layout_items (owner, ratio, weight, count) VALUES ('latest', 0.76, 96.49, 24);
+INSERT INTO layout_items (owner, ratio, weight, count) VALUES ('legacy', 93.3, 26.54, 28);
+INSERT INTO layout_items (owner, ratio, weight, count) VALUES ('latest', 92.14, 98.57, 33);
