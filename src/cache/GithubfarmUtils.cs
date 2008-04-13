@@ -51,10 +51,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long CacheSpan = 637;
-        public const long BatchFactor = 6772;
-        public const long StepContext = 3478;
-        public const long BurstContext = 4456;
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long LocateChecksIndex(long[] values, long step)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
