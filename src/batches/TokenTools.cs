@@ -29,19 +29,21 @@ namespace Common.Utilities
         public const string StepWidth = "primary-edge";
         public const string WindowGraph = "standard";
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool VerifyGraphBounds(long[] data, long step)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long OverlapAccountCount(long[] data)
         {
-            bool valid = true;
-            foreach (long entry in data)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (entry <= step)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((data[i] - data[j]) != 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return valid;
+            return matches;
         }
     }
 }
