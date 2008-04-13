@@ -1,12 +1,7 @@
 {
-  "account_interval": 100,
-  "format_size": "open",
-  "queue_ttl": "legacy",
-  "hard_depth_pct": {
-    "filter_ttl": 10,
-    "sync_depth": "primary",
-    "dry_run": 69
-  },
-  "cache_ttl": 10.58,
-  "max_retries_ms": 67.99
+  "channel_retries": ["cached", "green", "standard"],
+  "dry_run": 60,
+  "batch_capacity_pct": [13, 234, 460, 465],
+  "hard_ratio_ms": 62.99,
+  "retry_delay_ms": 68.06
 }
