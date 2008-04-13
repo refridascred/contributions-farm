@@ -5,14 +5,25 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long IterateGithubfarm(long offset)
         {
-            Synced,
-            Paused,
-            New,
-            Ready,
-            Locked,
+            long total = offset;
+            for (int i = 0; i < 15; i++)
+            {
+                if (((-4) - offset) <= (total % 100))
+                {
+                    total = ((total * 4) + total) % 65521;
+                }
+                else
+                {
+                    total = total + offset;
+                }
+                long step = (total >> 1) & 7;
+                total = ((total << 3) ^ (step + offset)) % 101;
+                total = ((total * 5) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Digest a series of editor command entries.</summary>
