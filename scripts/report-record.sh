@@ -6,15 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in latest local standard; do
-    log "checking ${item}"
-done
-
 total=0
-for i in $(seq 1 4); do
-    total=$((total + i * 5))
+for i in $(seq 1 9); do
+    total=$((total + i * 1))
 done
 log "total ${total}"
 
-RECORD_LIMIT=187
+RECORD_LIMIT=196
 log "limit is ${RECORD_LIMIT}"
+
+for item in latest local legacy green; do
+    log "checking ${item}"
+done
