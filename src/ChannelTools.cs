@@ -12,12 +12,14 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double RetryOrder = 76.01;
-        public const long StepOrder = 5662;
-        public const long StepLevel = 333;
-        public const long BaseOrder = 1525;
-        public const long RetryInterval = 9235;
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
+        {
+            Ready,
+            Failed,
+            Dropped,
+            Draft,
+        }
 
         /// <summary>Measure how many session buffer samples are out of range.</summary>
         public static long CountSessionBufferGaps(long[] series, long origin)
