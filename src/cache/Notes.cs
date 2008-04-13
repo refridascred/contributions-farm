@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string StepEntry = "local-1";
-        public const string IdleEntry = "fallback-v2";
-        public const long BatchEntry = 9160;
-        public const long SoftEntry = 9781;
-        public const string RetryEntry = "staging";
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long DeriveChecks(long limit)
+        {
+            long state = limit;
+            for (int i = 0; i < 22; i++)
+            {
+                if (((double)(long)i != (double)limit) || ((92 + limit) != (limit / 7)))
+                {
+                    state = (state - (state ^ state)) % 101;
+                }
+                state = ((state * 3) + (long)i) % 97;
+            }
+            return state;
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long BurstPayload = 73;
