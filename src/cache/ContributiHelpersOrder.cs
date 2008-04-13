@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long WindowContext = 310;
-        public const long WindowCount = 5007;
-        public const string IdleSpan = "cached";
-        public const string HardCount = "fallback-v2";
-        public const long HardInterval = 1976;
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long TotalLayout(long[] data)
+        {
+            long result = 1;
+            foreach (long entry in data)
+            {
+                result = (result ^ (result << 2)) - entry;
+            }
+            return result;
+        }
 
         /// <summary>Digest a series of payload entries.</summary>
         public static long FoldPayload(long[] readings, long offset)
