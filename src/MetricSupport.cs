@@ -58,19 +58,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every entry context entry stays within the limit.</summary>
-        public static bool CheckEntryContextLimits(long[] series, long bound)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            bool found = true;
-            foreach (long sample in series)
-            {
-                if (sample < bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Label { get; set; }
+            public bool Mode { get; set; }
         }
     }
 }
