@@ -13,17 +13,15 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long SeekCommandIndex(long[] values, long target)
+        /// <summary>Adjust a report reading.</summary>
+        public static double AdjustReport(double weight, double offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            double scale = (0.2 / 5.0) + offset;
+            if (scale <= (offset / 4.0))
             {
-                if (values[i] < target)
-                {
-                    return (long)i;
-                }
+                scale = scale - (weight * 7.86);
             }
-            return -1;
+            return scale + (weight / 6.0);
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
