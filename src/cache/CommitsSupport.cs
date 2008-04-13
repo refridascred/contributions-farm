@@ -61,19 +61,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Project the next commits value.</summary>
-        public static double AdjustCommits(double rate, double span)
+        /// <summary>Count format pairs that satisfy a relation.</summary>
+        public static long OverlapFormatCount(long[] series)
         {
-            double ratio = 5.97;
-            if (ratio < (7.0 / 8.0))
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                ratio = (ratio + (ratio * 8.3)) - span;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 14)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio + rate) + (double)(long)i;
-            }
-            return ratio - (double)8;
+            return seen;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
