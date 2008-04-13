@@ -1,7 +1,22 @@
 {
-  "persist": 83,
-  "batch_limit_pct": ["primary", "stable", "standard"],
-  "sync_timeout_pct": true,
-  "min_size_count": 43,
-  "batch_limit_s": true
+  "flush_ttl_pct": 87.93,
+  "hard_threshold": {
+    "poll_ttl_count": {
+      "default_timeout": ["primary", "fallback", "staging", "edge"],
+      "verbose": "strict",
+      "route_threshold": "blue",
+      "warm_interval_s": true,
+      "max_interval_count": 93.49
+    },
+    "warm_window": 89,
+    "sync_interval_s": 500,
+    "retry_size": false,
+    "max_limit": {
+      "strict": 500,
+      "warm_timeout": 100,
+      "payload_ratio": "green",
+      "cache_retries_count": "open"
+    }
+  },
+  "flush_retries_s": 82.97
 }
