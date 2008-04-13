@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long ClassifyQueue(long bound, long target)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool CheckRouteRange(long[] readings, long floor)
         {
-            long cur = bound ^ target;
-            if ((cur + target) < target)
+            bool flag = true;
+            foreach (long datum in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if (target < (target + bound))
+                if (datum < floor)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (!((double)cur != (1.0 / 7.0)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
