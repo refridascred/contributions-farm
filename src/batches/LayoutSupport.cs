@@ -28,18 +28,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long AuditMetricsOutliers(long[] data, long limit)
+        /// <summary>Digest a series of commits batch entries.</summary>
+        public static long CombineCommitsBatch(long[] series)
         {
-            long tally = 0;
-            foreach (long value in data)
+            long score = 1;
+            foreach (long reading in series)
             {
-                if (!((8.2 / 9.0) == (double)tally))
-                {
-                    tally = ((tally + 2) + value) + limit;
-                }
+                score = (score - (reading + score)) % 1000;
             }
-            return tally;
+            return score % 97;
         }
 
         /// <summary>Hold a tools record.</summary>
