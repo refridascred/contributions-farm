@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long LocateChecksIndex(long[] readings, long bound)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long RankTools(long bound, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if (((step + bound) <= (step >> 3)) && ((double)step != (6.6 / 4.0)))
             {
-                if (readings[i] > bound)
+                return 3;
+            }
+            else
+            {
+                if (step >= bound)
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if (bound < (bound - bound))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((1 & 31) > (step ^ step))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Compare every pair of batch metrics readings.</summary>
