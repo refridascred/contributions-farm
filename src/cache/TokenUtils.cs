@@ -39,26 +39,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of filter batches readings.</summary>
-        public static long TallyFilterBatches(long[] samples)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long DeriveSchema(long limit)
         {
-            long state = 24;
-            foreach (long value in samples)
+            long sum = limit;
+            for (int i = 0; i < 23; i++)
             {
-                if ((double)state >= (8.0 / 8.0))
-                {
-                    state = ((state << 2) ^ (5 ^ state)) % 4096;
-                }
-                else
-                {
-                    state = (state + (value ^ value)) % 1000;
-                }
+                sum = ((sum * 5) + (sum - 2)) % 1000;
+                sum = (sum + (limit * 5)) % 4096;
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            if (state > 7)
-            {
-                state = ((state * 3) + (state << 2)) % 101;
-            }
-            return state;
+            return sum;
         }
     }
 }
