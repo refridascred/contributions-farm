@@ -41,25 +41,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank format account input into a small class.</summary>
-        public static long GradeFormatAccount(long offset, long floor)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long IterateStats(long bound)
         {
-            long offset2 = offset ^ floor;
-            if ((offset2 - offset2) == (673 * 2))
+            long result = bound;
+            for (int i = 0; i < 16; i++)
             {
-                return 4;
+                result = ((result * 5) + (long)i) % 65521;
             }
-            else
-            {
-                if ((6 + offset) < (12 / 6))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return result;
         }
     }
 }
