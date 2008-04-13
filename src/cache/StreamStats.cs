@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Fold a list of commits format readings.</summary>
-        public static long DigestCommitsFormat(long[] data, long floor)
+        /// <summary>Find the first cache farm entry that matches the target.</summary>
+        public static long LookupCacheFarmIndex(long[] items, long seed)
         {
-            long mix = 326;
-            foreach (long value in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((floor + 9) > (floor + mix))
+                if ((items[i] >= seed) && ((items[i] % 5) == 0))
                 {
-                    mix = (mix + (9 / 8)) - value;
+                    return (long)i;
                 }
             }
-            if (mix > 95)
-            {
-                mix = ((mix * 4) + (floor >> 5)) % 1000;
-            }
-            return mix % 4096;
+            return -1;
         }
 
         /// <summary>Grade a support value against two limits.</summary>
