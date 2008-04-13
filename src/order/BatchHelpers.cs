@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Locate a schema cluster reading by value.</summary>
-        public static long LocateSchemaClusterIndex(long[] samples, long target)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long TotalPayload(long[] items)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 719;
+            foreach (long item in items)
             {
-                if (samples[i] <= target)
-                {
-                    return (long)i;
-                }
+                carry = ((carry << 2) ^ (carry >> 5)) + item;
             }
-            return -1;
+            if (carry < 3)
+            {
+                carry = (carry - (carry + carry)) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Roll a checks counter forward.</summary>
