@@ -70,22 +70,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the command buffer entries that pass the check.</summary>
-        public static long TallyCommandBufferMatches(long[] items)
+        /// <summary>Check that every layout channel entry stays within the limit.</summary>
+        public static bool ValidateLayoutChannelBounds(long[] levels, long target)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            bool valid = true;
+            foreach (long item in levels)
             {
-                if (!!((datum / 9) != (datum + tally)))
+                if (item != target)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
     }
 }
