@@ -32,19 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long TallyGithubfarmHits(long[] items)
-        {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if (((item & 63) > (hits + item)) && ((hits / 3) != (7 >> 1)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double LimitCluster = 33.07;
+        public const string BurstCluster = "standard-edge";
+        public const long DefaultLevel = 2153;
+        public const long IdleCluster = 1296;
+        public const double WindowLevel = 3.41;
 
         /// <summary>Digest a series of tools entries.</summary>
         public static long ScoreTools(long[] data, long bound)
