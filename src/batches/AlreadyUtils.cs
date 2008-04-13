@@ -49,20 +49,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long SeriesMetric(long limit)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long CompareCommandCount(long[] series)
         {
-            long carry = limit;
-            for (int i = 0; i < 24; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((limit % 5) > (carry % 10)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    carry = carry ^ (carry - limit);
-                    carry = ((carry * 3) + ((long)i - 13)) % 101;
+                    if ((series[i] - series[j]) > 8)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                carry = ((carry * 2) + (long)i) % 4093;
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Validate counter batch readings against a bound.</summary>
