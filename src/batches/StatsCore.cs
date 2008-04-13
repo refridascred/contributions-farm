@@ -78,19 +78,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long TallyAccount(long[] samples, long step)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            long state = 0;
-            foreach (long cell in samples)
-            {
-                state = ((state - (cell >> 2)) % 65521) - step;
-            }
-            if (state < 412)
-            {
-                state = (state + 30) % 97;
-            }
-            return state % 4096;
+            Idle,
+            Queued,
+            Failed,
+            Synced,
+            Active,
         }
     }
 }
