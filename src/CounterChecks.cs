@@ -12,11 +12,18 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double LimitScore = 42.77;
-        public const long IdleSupport = 8941;
-        public const long WindowInterval = 7668;
-        public const string MinInterval = "primary";
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long LocateCommitsIndex(long[] samples, long origin)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Project the next tools value.</summary>
         public static double ProjectTools(double rate, double bias)
