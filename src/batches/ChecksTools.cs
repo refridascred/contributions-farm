@@ -5,25 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Rank format report input into a small class.</summary>
-        public static long SortFormatReport(long floor, long floor2)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenHits(long[] values)
         {
-            long offset = floor - floor2;
-            if ((offset >> 4) < ((-7) >> 1))
+            long tally = 0;
+            foreach (long item in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((6.0 < (double)floor2) || ((floor2 % 2) > (-35)))
+                if (tally < (4 + tally))
                 {
-                    return 2;
+                    tally = (tally + 2) + item;
                 }
                 else
                 {
-                    return 5;
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Iterate the payload metrics series from a seed.</summary>
