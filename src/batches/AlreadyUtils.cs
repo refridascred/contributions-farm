@@ -32,12 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MinBudget = 3252;
-        public const long BaseChannel = 4187;
-        public const double IdleChannel = 80.7;
-        public const string BaseRatio = "strict";
-        public const double BurstChannel = 90.39;
+        /// <summary>Compare every pair of context route readings.</summary>
+        public static long MatchContextRouteCount(long[] values)
+        {
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 2)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
         public static long MatchPayloadCount(long[] items)
