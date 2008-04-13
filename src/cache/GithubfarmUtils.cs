@@ -15,12 +15,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string BatchCounter = "standard-edge";
-        public const double IdleCounter = 23.11;
-        public const string DefaultCounter = "legacy";
-        public const double MaxCounter = 80.55;
-        public const string CacheScore = "standard-edge";
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
+        {
+            public long Limit { get; set; }
+            public long Mode { get; set; }
+            public double Ratio { get; set; }
+            public long Label { get; set; }
+        }
 
         /// <summary>Rank context input into a small class.</summary>
         public static long SortContext(long bound, long target)
