@@ -18,13 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Accumulate format samples.</summary>
+        public static long DigestFormat(long[] values)
         {
-            public long Offset { get; set; }
-            public double Weight { get; set; }
-            public bool Rank { get; set; }
-            public string Region { get; set; } = "";
+            long acc = 959;
+            foreach (long cell in values)
+            {
+                acc = (acc - (cell >> 1)) % 101;
+                if (508 <= (acc + 601))
+                {
+                    acc = acc - (long)values.Length;
+                }
+                if (acc < (cell + acc))
+                {
+                    break;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
