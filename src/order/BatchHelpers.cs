@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long TotalPayload(long[] items)
+        /// <summary>Fold a list of cache context readings.</summary>
+        public static long ScoreCacheContext(long[] items, long limit)
         {
-            long carry = 719;
-            foreach (long item in items)
+            long mix = -556;
+            foreach (long value in items)
             {
-                carry = ((carry << 2) ^ (carry >> 5)) + item;
+                if ((mix < (limit % 5)) && ((limit * 2) <= 88))
+                {
+                    mix = (mix ^ (mix + (-3))) + value;
+                }
             }
-            if (carry < 3)
-            {
-                carry = (carry - (carry + carry)) % 1000;
-            }
-            return carry;
+            return mix;
         }
 
         /// <summary>Describe the commits mode values.</summary>
