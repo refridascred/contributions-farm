@@ -21,13 +21,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            Idle,
-            Active,
-            Ready,
-            Locked,
+            public long Count { get; set; }
+            public long Stamp { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Validate cache stream readings against a bound.</summary>
