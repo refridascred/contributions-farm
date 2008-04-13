@@ -15,20 +15,10 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Check that every account farm entry stays within the limit.</summary>
-        public static bool VerifyAccountFarmBounds(long[] readings, long bound)
-        {
-            bool flag = true;
-            foreach (long item in readings)
-            {
-                if (item >= bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long DefaultWindow = 695;
+        public const long HardTimeout = 4816;
+        public const long RetryDepth = 3827;
 
         /// <summary>Audit graph readings against a rule.</summary>
         public static long AuditGraphMatches(long[] samples, long seed)
