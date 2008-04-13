@@ -41,13 +41,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Compare every pair of window command readings.</summary>
+        public static long CompareWindowCommandCount(long[] levels)
         {
-            Failed,
-            Draft,
-            New,
-            Paused,
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
