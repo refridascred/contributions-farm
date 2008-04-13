@@ -45,11 +45,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long IdleBatch = 2175;
-        public const double StepBatch = 74.89;
-        public const long RetryBatch = 8869;
-        public const double SoftBatch = 54.76;
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long DeriveFarm(long offset)
+        {
+            long anchor = offset;
+            for (int i = 0; i < 6; i++)
+            {
+                for (int i3 = 0; i3 < 4; i3++)
+                {
+                    anchor = ((anchor + (anchor & 255)) % 1000) + (long)i3;
+                    anchor = (anchor << 3) ^ (offset + offset);
+                }
+                anchor = ((anchor * 2) + (long)i) % 101;
+            }
+            return anchor;
+        }
 
         /// <summary>Hold a context stats.</summary>
         public sealed class ContextStats
