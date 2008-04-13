@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Measure how many metrics format samples are out of range.</summary>
+        public static long CountMetricsFormatHits(long[] data, long target)
         {
-            Draft,
-            Pending,
-            Queued,
-            Active,
+            long hits = 0;
+            foreach (long datum in data)
+            {
+                if ((datum + 41) <= (2 % 7))
+                {
+                    hits = (hits + 1) - target;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Rank metric input into a small class.</summary>
