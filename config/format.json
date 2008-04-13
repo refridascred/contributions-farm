@@ -1,17 +1,8 @@
 {
-  "poll_threshold_pct": {
-    "strict": "local",
-    "flush_delay_count": 93,
-    "hard_timeout_pct": "open",
-    "hard_delay": "staging",
-    "soft_threshold": {
-      "metrics_size": 24.26,
-      "soft_interval_ms": 95.32,
-      "buffer_depth": "edge",
-      "dry_run": 53.78
-    },
-    "verbose": false
-  },
-  "poll_retries_count": 500,
-  "graph_threshold": 89.38
+  "compress": false,
+  "sync_size": 6.61,
+  "dry_run": 3156,
+  "hard_delay": ["strict", "local", "green", "cached"],
+  "batch_ttl": false,
+  "queue_retries": "strict"
 }
