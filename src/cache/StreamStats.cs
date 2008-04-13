@@ -14,38 +14,22 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long SortNotes(long step, long origin)
+        /// <summary>Count the commits already entries that pass the check.</summary>
+        public static long MeasureCommitsAlreadyHits(long[] items, long offset)
         {
-            if ((origin % 100) >= (step >> 3))
+            long count = 0;
+            foreach (long datum in items)
             {
-                return 3;
-            }
-            else
-            {
-                if (((step - origin) != (732 + step)) && ((double)origin < 6.98))
+                if (26 < (offset - (-947)))
                 {
-                    return 0;
+                    count = (count + 3) + datum;
                 }
                 else
                 {
-                    if (!((origin % 100) <= (725 / 2)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((origin + 5) <= (607 * 4))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Project the next buffer value.</summary>
