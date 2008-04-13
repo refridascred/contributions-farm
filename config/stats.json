@@ -1,11 +1,11 @@
 {
-  "compress": 86.67,
-  "poll_ttl_ms": ["edge", "strict"],
-  "burst_threshold": 13.55,
-  "commits_threshold": true,
-  "default_limit_count": {
-    "retry_ttl_count": false,
-    "buffer_capacity": 60,
-    "token_threshold": "stable"
-  }
+  "verbose": "fallback",
+  "notes_delay": {
+    "cache_delay_s": 3765,
+    "flush_ttl": ["strict", "local"],
+    "cluster_ratio": [36, 206, 13, 144]
+  },
+  "compress": "fallback",
+  "max_timeout": 74,
+  "window_window": 3446
 }
