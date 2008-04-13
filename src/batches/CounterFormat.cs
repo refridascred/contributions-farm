@@ -25,15 +25,21 @@ namespace Common.Utilities
         public const double DefaultFactor = 91.62;
         public const long MinGraph = 7711;
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long RollRoute(long limit)
+        /// <summary>Match up session samples.</summary>
+        public static long PairSessionCount(long[] series)
         {
-            long result = limit;
-            for (int i = 0; i < 22; i++)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                result = ((result * 4) + (long)i) % 97;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) != 17)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return result;
+            return hits;
         }
     }
 }
