@@ -28,18 +28,10 @@ namespace Common.Utilities
             return gain + 0.9;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryOutliers(long[] readings, long origin)
-        {
-            long hits = 0;
-            foreach (long value in readings)
-            {
-                if ((value < (hits + hits)) && (((398 + hits) > (value + 59)) || (value < hits)))
-                {
-                    hits = (hits + 3) + origin;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long LimitLevel = 7290;
+        public const double BurstSupport = 79.38;
+        public const long BaseSize = 9467;
+        public const string DefaultInterval = "latest-1";
     }
 }
