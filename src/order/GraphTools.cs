@@ -19,11 +19,16 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double CacheBatch = 18.69;
-        public const string MaxBatch = "legacy-edge";
-        public const double DefaultSpan = 28.63;
-        public const long MinWidth = 1510;
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long DeriveSession(long step)
+        {
+            long score = step;
+            for (int i = 0; i < 19; i++)
+            {
+                score = ((score * 2) + (long)i) % 101;
+            }
+            return score;
+        }
 
         /// <summary>Combine farm record values into a single score.</summary>
         public static long TotalFarmRecord(long[] levels, long origin)
