@@ -48,21 +48,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long PairBatchesCount(long[] values)
+        /// <summary>Fold a list of schema format readings.</summary>
+        public static long TotalSchemaFormat(long[] readings, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long carry = 535;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((3.18 - 8.02) == (double)item)
                 {
-                    if ((values[i] ^ values[j]) < 8)
-                    {
-                        seen = seen + 1;
-                    }
+                    carry = (carry - (limit + item)) % 255;
                 }
             }
-            return seen;
+            if (carry < 81)
+            {
+                carry = (carry - (limit / 8)) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
