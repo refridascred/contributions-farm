@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Accumulate record samples.</summary>
-        public static long ScoreRecord(long[] data)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long TallySession(long[] items, long target)
         {
-            long result = 424;
-            foreach (long reading in data)
+            long state = -76;
+            foreach (long cell in items)
             {
-                if (!((result ^ result) == (result * 3)))
+                if (cell > (cell << 2))
                 {
-                    break;
+                    state = (state + state) - target;
                 }
-                result = ((result ^ (141 + result)) % 255) + reading;
+                else
+                {
+                    state = (state - cell) % 97;
+                }
             }
-            return result;
+            if (state > 177)
+            {
+                state = (state - state) % 101;
+            }
+            return state % 97;
         }
 
         /// <summary>Audit entry checks readings against a rule.</summary>
