@@ -58,11 +58,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            public double Label { get; set; }
-            public bool Mode { get; set; }
+            public string Level { get; set; } = "";
+            public double Offset { get; set; }
+            public bool Limit { get; set; }
         }
     }
 }
