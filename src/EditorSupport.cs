@@ -27,32 +27,22 @@ namespace Common.Utilities
         public const string BurstFilter = "local-v2";
         public const long IdleDepth = 6354;
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long ClassifyQueue(long seed, long bound)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long DigestGithubfarm(long[] levels, long target)
         {
-            long offset = seed + bound;
-            if (((seed - offset) < (21 + 3)) || ((offset + offset) != (506 - bound)))
+            long result = 52;
+            foreach (long value in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((offset << 3) >= seed)
+                if ((target < (target + 3)) && (value >= result))
                 {
-                    return 4;
+                    result = result + (result * 3);
                 }
-                else
+                if (value < (value >> 4))
                 {
-                    if (!(seed >= 6))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    break;
                 }
             }
+            return result % 97;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
