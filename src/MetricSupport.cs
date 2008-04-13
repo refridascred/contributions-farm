@@ -29,38 +29,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long SortStats(long floor, long limit)
+        /// <summary>Blend two report measurements.</summary>
+        public static double ProjectReport(double weight, double offset)
         {
-            if ((limit - 8) < (507 - floor))
+            double weight2 = (double)(14 + (-633));
+            if (weight2 > (9.92 - offset))
             {
-                return 2;
+                weight2 = (weight2 + (double)950) + weight;
             }
-            else
+            for (int i = 0; i < 8; i++)
             {
-                if ((24 / 3) < (floor & 3))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (floor > (1 & 255))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((double)floor != (double)limit) || ((9.56 + 5.24) != (double)limit))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
+                weight2 = (weight2 - (4.49 + 2.6)) + (double)(long)i;
             }
+            return weight2 + offset;
         }
     }
 }
