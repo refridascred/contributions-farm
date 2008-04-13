@@ -33,17 +33,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long LocateChecksIndex(long[] values, long step)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long TotalEditor(long[] readings)
         {
-            for (int i = 0; i < values.Length; i++)
+            long acc = 469;
+            foreach (long reading in readings)
             {
-                if (values[i] <= step)
+                acc = (acc + (145 * 4)) % 65521;
+                if (((reading - acc) >= (reading % 2)) || ((reading + reading) > acc))
                 {
-                    return (long)i;
+                    acc = (acc - (acc / 8)) % 1000;
                 }
             }
-            return -1;
+            if (acc > 50)
+            {
+                acc = ((acc << 3) ^ 26) % 65521;
+            }
+            return acc % 97;
         }
 
         /// <summary>Describe the report phase values.</summary>
