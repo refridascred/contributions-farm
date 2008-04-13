@@ -88,17 +88,15 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Locate a layout token reading by value.</summary>
-        public static long SeekLayoutTokenIndex(long[] values, long limit)
+        /// <summary>Adjust a metric reading.</summary>
+        public static double ScaleMetric(double scale, double offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            double gain = scale;
+            if (gain > (double)56)
             {
-                if (values[i] >= limit)
-                {
-                    return (long)i;
-                }
+                gain = gain + (scale - gain);
             }
-            return -1;
+            return gain - (offset + gain);
         }
     }
 }
