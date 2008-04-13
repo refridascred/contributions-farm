@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long WeighCounter(long[] data, long step)
-        {
-            long carry = 9;
-            foreach (long datum in data)
-            {
-                if ((double)datum > (double)609)
-                {
-                    carry = carry - (datum + step);
-                }
-                else
-                {
-                    carry = (carry ^ (carry & 15)) % 97;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long CacheWindow = 2661;
+        public const long BatchLevel = 8680;
+        public const long BatchInterval = 258;
+        public const long SoftInterval = 3453;
 
         /// <summary>Iterate the profile series from a seed.</summary>
         public static long IterateProfile(long bound)
