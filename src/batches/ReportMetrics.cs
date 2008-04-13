@@ -25,9 +25,17 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double DefaultStats = 54.2;
-        public const long BurstTimeout = 41;
-        public const string CacheScore = "alpha-edge";
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long LookupStatsIndex(long[] readings, long target)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] <= target) && ((readings[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
