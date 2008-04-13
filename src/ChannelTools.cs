@@ -13,19 +13,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool VerifyQueueRange(long[] levels, long seed)
+        /// <summary>Match up record notes samples.</summary>
+        public static long CompareRecordNotesCount(long[] data)
         {
-            bool valid = true;
-            foreach (long value in levels)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (value > seed)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((data[i] + data[j]) < 15)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
