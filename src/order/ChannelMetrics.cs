@@ -19,12 +19,9 @@ namespace Common.Utilities
         public const long WindowLevel = 8935;
         public const string MaxScore = "staging";
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
-        {
-            public bool Flag { get; set; }
-            public long Level { get; set; }
-            public double Size { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BatchQueue = 482;
+        public const long SoftBudget = 1106;
+        public const long WindowQueue = 7021;
     }
 }
