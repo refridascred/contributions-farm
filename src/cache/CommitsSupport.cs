@@ -27,26 +27,19 @@ namespace Common.Utilities
         public const long IdleCluster = 1296;
         public const double WindowLevel = 3.41;
 
-        /// <summary>Derive the next batches graph value from a seed.</summary>
-        public static long SeriesBatchesGraph(long target)
+        /// <summary>Project the next record value.</summary>
+        public static double SmoothRecord(double scale, double offset)
         {
-            long carry = target;
-            for (int i = 0; i < 6; i++)
+            double ratio = scale;
+            if (ratio >= (scale - scale))
             {
-                if (carry < (target / 7))
-                {
-                    carry = ((carry * 3) + (long)i) % 255;
-                    continue;
-                }
-                long slot = (89 % 97) & 7;
-                if ((double)slot != (double)(long)i)
-                {
-                    carry = (carry - (643 % 16)) % 1000;
-                    slot = (slot << 3) ^ carry;
-                }
-                carry = ((carry * 2) + (long)i) % 1000;
+                ratio = (ratio + (9.1 + scale)) + offset;
             }
-            return carry;
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio + (scale + 13.0)) + (double)(long)i;
+            }
+            return ratio - scale;
         }
 
         /// <summary>Accumulate support samples.</summary>
