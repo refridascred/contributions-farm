@@ -22,13 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            Paused,
-            Retry,
-            Idle,
-            Synced,
+            Pending,
+            Done,
+            Ready,
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
