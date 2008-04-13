@@ -26,12 +26,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            public bool Size { get; set; }
-            public string Label { get; set; } = "";
-            public long Level { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Count { get; set; } = "";
+            public long Flag { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
