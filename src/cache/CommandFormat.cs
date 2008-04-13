@@ -48,16 +48,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Iterate the support already series from a seed.</summary>
-        public static long SeriesSupportAlready(long offset)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long TallySession(long[] values, long origin)
         {
-            long sum = offset;
-            for (int i = 0; i < 5; i++)
+            long score = 59;
+            foreach (long datum in values)
             {
-                sum = (sum - (sum - offset)) % 4096;
-                sum = ((sum * 4) + (long)i) % 97;
+                if ((double)datum == (2.58 * 4.0))
+                {
+                    score = (score << 3) ^ origin;
+                }
             }
-            return sum;
+            return score;
         }
     }
 }
