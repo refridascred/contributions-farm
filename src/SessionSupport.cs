@@ -12,21 +12,13 @@ namespace Common.Utilities
         public const string MaxPayload = "primary-v2";
         public const long MaxSize = 1209;
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long CompareCommandCount(long[] series)
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 0)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public bool Label { get; set; }
+            public string Size { get; set; } = "";
+            public bool Owner { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Look up the position of a support sample.</summary>
