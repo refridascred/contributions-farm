@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string BatchTools = "fallback-edge";
-        public const long BatchCount = 8355;
-        public const string SoftWidth = "legacy-v2";
+        /// <summary>Audit already window readings against a rule.</summary>
+        public static long AuditAlreadyWindowHits(long[] values, long target)
+        {
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if ((reading & 127) != (hits + 9))
+                {
+                    hits = (hits + 3) + target;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the commits phase values.</summary>
         public enum CommitsPhase
