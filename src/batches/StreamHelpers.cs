@@ -74,18 +74,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit graph contributi readings against a rule.</summary>
-        public static long CountGraphContributiMatches(long[] data)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long GradeStats(long target, long limit)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            if ((limit < 55) && ((limit << 2) <= target))
             {
-                if ((double)matches < (14.0 * 14.0))
+                return 0;
+            }
+            else
+            {
+                if ((limit % 7) >= (target >> 1))
                 {
-                    matches = (matches + 2) - sample;
+                    return 6;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return matches;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
