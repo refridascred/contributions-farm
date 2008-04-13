@@ -44,18 +44,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the command batches entries that pass the check.</summary>
-        public static long AuditCommandBatchesOutliers(long[] samples)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long LocateNotesIndex(long[] values, long origin)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)item > (6.5 / 7.0))
+                if (values[i] > origin)
                 {
-                    hits = hits + 3;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
