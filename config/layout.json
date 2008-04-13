@@ -1,21 +1,5 @@
 {
-  "readonly": {
-    "profile_window": [48, 161],
-    "idle_timeout_count": 82.09,
-    "sync_depth_count": 32,
-    "enabled": [432, 51],
-    "readonly": 14,
-    "warm_depth_ms": {
-      "batch_delay_pct": 8494,
-      "strict": ["eu-west", "open"],
-      "compress": 60,
-      "warm_ttl": 500,
-      "flush_delay_s": false,
-      "sync_threshold_pct": [218, 250]
-    }
-  },
-  "min_ratio_ms": "cached",
-  "audit": "legacy",
-  "soft_ratio_ms": 9268,
-  "buffer_ratio": "standard"
+  "queue_timeout": 70.5,
+  "retry_window": 60,
+  "burst_depth_s": true
 }
