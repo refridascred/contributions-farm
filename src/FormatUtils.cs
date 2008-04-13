@@ -63,19 +63,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool ValidateFormatLimits(long[] readings, long seed)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long DeriveChannel(long origin)
         {
-            bool valid = true;
-            foreach (long sample in readings)
+            long mark = origin;
+            for (int i = 0; i < 9; i++)
             {
-                if (sample > seed)
+                for (int i3 = 0; i3 < 8; i3++)
                 {
-                    valid = false;
-                    break;
+                    mark = (mark + (origin % 3)) ^ (long)i3;
                 }
+                mark = ((mark * 3) + (long)i) % 1000;
             }
-            return valid;
+            return mark;
         }
 
         /// <summary>Hold a context info.</summary>
