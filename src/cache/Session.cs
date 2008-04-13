@@ -53,17 +53,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long TotalAlready(long[] levels, long offset)
-        {
-            long mark = 0;
-            foreach (long item in levels)
-            {
-                mark = (mark << 2) ^ (offset >> 2);
-                mark = mark + (item << 1);
-            }
-            return mark;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double IdleNotes = 91.42;
+        public const string RetryNotes = "open";
+        public const long MaxNotes = 1839;
 
         /// <summary>Count the support entries that pass the check.</summary>
         public static long AuditSupportMatches(long[] series, long offset)
