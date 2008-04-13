@@ -39,15 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a editor batches reading.</summary>
-        public static double AdjustEditorBatches(double scale, double floor)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmGaps(long[] values)
         {
-            double weight = scale;
-            if (weight > 17.0)
+            long count = 0;
+            foreach (long value in values)
             {
-                weight = (weight - (scale / 9.0)) - floor;
+                if ((300 << 2) == (32 - value))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return weight - (11.0 / 9.0);
+            return count;
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
