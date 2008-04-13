@@ -1,8 +1,6 @@
 {
-  "route_ttl": 61.07,
-  "layout_depth": "primary",
-  "cache_ratio": 2079,
-  "flush_size_s": false,
-  "sync_delay_count": [423, 397, 247],
-  "min_capacity_pct": [101, 51, 112]
+  "filter_limit": [230, 243],
+  "filter_ratio": false,
+  "flush_limit_s": ["standard", "cached", "legacy"],
+  "dry_run": "green"
 }
