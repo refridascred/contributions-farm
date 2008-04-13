@@ -11,19 +11,14 @@ namespace Common.Utilities
         public const long BurstStream = 4977;
         public const string BatchStream = "local-1";
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool CheckBatchesBounds(long[] items, long origin)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            bool ok = true;
-            foreach (long reading in items)
-            {
-                if (reading != origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Pending,
+            Locked,
+            Failed,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Iterate the farm order series from a seed.</summary>
