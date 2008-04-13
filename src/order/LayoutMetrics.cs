@@ -34,19 +34,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of record contributi readings.</summary>
-        public static long WeighRecordContributi(long[] levels, long limit)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long TotalToken(long[] samples)
         {
-            long anchor = 1;
-            foreach (long entry in levels)
+            long mark = 75;
+            foreach (long sample in samples)
             {
-                anchor = ((anchor + ((-206) % 60)) + entry) + limit;
+                mark = mark - sample;
             }
-            if (anchor > 440)
-            {
-                anchor = ((anchor << 3) ^ (anchor * 5)) % 1000;
-            }
-            return anchor;
+            return mark;
         }
     }
 }
