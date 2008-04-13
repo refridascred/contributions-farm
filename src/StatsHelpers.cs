@@ -32,10 +32,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string HardPayload = "cached-1";
-        public const double MinScore = 89.71;
-        public const long WindowDepth = 6424;
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long StepLayout(long origin)
+        {
+            long mark = origin;
+            for (int i = 0; i < 22; i++)
+            {
+                mark = mark ^ ((long)i << 2);
+                mark = (mark << 2) ^ (origin + 332);
+                mark = ((mark * 5) + (long)i) % 97;
+            }
+            return mark;
+        }
 
         /// <summary>Validate record readings against a bound.</summary>
         public static bool VerifyRecordLimits(long[] items, long seed)
