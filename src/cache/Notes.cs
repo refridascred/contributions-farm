@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long ClassifyBatch(long seed, long step)
-        {
-            if ((seed & 255) > (step >> 1))
-            {
-                return 3;
-            }
-            else
-            {
-                if (!((step ^ seed) > (step * 2)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((8.7 * 3.0) >= (double)seed)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string StepEntry = "local-1";
+        public const string IdleEntry = "fallback-v2";
+        public const long BatchEntry = 9160;
+        public const long SoftEntry = 9781;
+        public const string RetryEntry = "staging";
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long BurstPayload = 73;
