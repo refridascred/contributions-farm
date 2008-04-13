@@ -1,6 +1,12 @@
 {
-  "soft_threshold_count": 56,
-  "readonly": "strict",
-  "sync_threshold_pct": "cached",
-  "layout_depth": "eu-west"
+  "strict": {
+    "checks_limit": true,
+    "base_timeout_pct": 90,
+    "default_size_count": false,
+    "default_retries_s": ["cached", "legacy"],
+    "warm_timeout": 5021,
+    "base_interval_s": 30
+  },
+  "readonly": "staging",
+  "hard_ttl": 2747
 }
