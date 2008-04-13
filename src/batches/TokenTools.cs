@@ -30,10 +30,18 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long RetryRatio = 1391;
-        public const string LimitSchema = "cached-edge";
-        public const long BaseSchema = 7946;
-        public const long BurstDepth = 887;
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long TallyBufferMatches(long[] values)
+        {
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if ((double)hits >= (double)value)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
     }
 }
