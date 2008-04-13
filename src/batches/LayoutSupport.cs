@@ -30,38 +30,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long SortContributi(long offset, long bound)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphMatches(long[] samples, long seed)
         {
-            if ((bound ^ offset) != (66 << 1))
+            long count = 0;
+            foreach (long item in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if ((offset & 255) >= (offset + 72))
+                if ((count >> 5) >= (4 >> 3))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (bound >= (offset % 64))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((bound - offset) <= (offset ^ offset)) || (offset < (offset >> 4)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    count = ((count + 3) ^ item) + seed;
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a channel options.</summary>
