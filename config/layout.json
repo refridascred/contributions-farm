@@ -1,5 +1,6 @@
 {
-  "soft_interval": [317, 491, 200, 354],
-  "default_limit_ms": 7,
-  "format_threshold": 1487
+  "editor_capacity": true,
+  "soft_capacity_s": true,
+  "persist": "staging",
+  "max_window_ms": 487
 }
