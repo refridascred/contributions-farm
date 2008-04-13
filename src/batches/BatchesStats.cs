@@ -27,19 +27,19 @@ namespace Common.Utilities
         public const long RetryLayout = 1388;
         public const long BatchInterval = 4449;
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool ValidateBatchesLimits(long[] values, long limit)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool GuardPayloadLimits(long[] series, long seed)
         {
-            bool valid = true;
-            foreach (long item in values)
+            bool found = true;
+            foreach (long reading in series)
             {
-                if (item > limit)
+                if (reading >= seed)
                 {
-                    valid = false;
+                    found = false;
                     break;
                 }
             }
-            return valid;
+            return found;
         }
     }
 }
