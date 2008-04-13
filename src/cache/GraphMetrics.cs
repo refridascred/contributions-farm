@@ -39,12 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool GuardFilterBounds(long[] data, long limit)
         {
-            public double Mode { get; set; }
-            public string Region { get; set; } = "";
-            public long Level { get; set; }
+            bool stale = true;
+            foreach (long entry in data)
+            {
+                if (entry > limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Grade a route value against two limits.</summary>
