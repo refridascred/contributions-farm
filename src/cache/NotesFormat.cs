@@ -18,17 +18,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long SeekCommandIndex(long[] levels, long limit)
+        /// <summary>Rank record token input into a small class.</summary>
+        public static long BucketRecordToken(long offset, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long gap = offset ^ limit;
+            if ((limit % 60) <= (offset - gap))
             {
-                if ((levels[i] <= limit) && ((levels[i] % 3) == 0))
+                return 7;
+            }
+            else
+            {
+                if ((offset + gap) <= limit)
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if (offset >= (23 / 7))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((limit - offset) <= limit)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
