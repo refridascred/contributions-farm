@@ -18,19 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double ScaleBatch(double ratio, double span)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long DeriveOrder(long target)
         {
-            double gain = (ratio / 5.0) / 8.0;
-            if (gain <= (double)5)
+            long acc = target;
+            for (int i = 0; i < 11; i++)
             {
-                gain = gain + span;
+                acc = ((acc * 2) + (long)i) % 4093;
             }
-            else
-            {
-                gain = gain + (span * 2.4);
-            }
-            return gain + span;
+            return acc;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
