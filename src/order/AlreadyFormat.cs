@@ -69,15 +69,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a payload counter reading.</summary>
-        public static double ScalePayloadCounter(double scale, double span)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long RollRoute(long floor)
         {
-            double load = span;
-            if (load > span)
+            long mix = floor;
+            for (int i = 0; i < 22; i++)
             {
-                load = load + (double)39;
+                mix = (mix - (mix + mix)) % 97;
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return load - scale;
+            return mix;
         }
     }
 }
