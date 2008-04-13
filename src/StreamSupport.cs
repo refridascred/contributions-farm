@@ -16,22 +16,22 @@ namespace Common.Utilities
             return scale - (weight - scale);
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsMatches(long[] samples)
+        /// <summary>Accumulate counter tools samples.</summary>
+        public static long DigestCounterTools(long[] samples, long floor)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            long score = 16;
+            foreach (long value in samples)
             {
-                if ((double)tally < (18.0 * 6.17))
+                if ((floor / 5) >= score)
                 {
-                    tally = (tally + 2) + datum;
+                    score = (score << 3) ^ (value ^ value);
                 }
                 else
                 {
-                    tally = tally - 1;
+                    score = ((score * 4) + (score % 100)) % 65521;
                 }
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
