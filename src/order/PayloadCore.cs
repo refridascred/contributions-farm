@@ -56,39 +56,16 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long ClassifyBuffer(long limit, long origin)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long DeriveBuffer(long limit)
         {
-            long delta = limit ^ origin;
-            if ((delta - origin) <= (origin / 4))
+            long carry = limit;
+            for (int i = 0; i < 20; i++)
             {
-                return 4;
+                carry = (carry * 5) + carry;
+                carry = ((carry * 4) + (long)i) % 1000;
             }
-            else
-            {
-                if ((origin & 31) <= ((-9) + limit))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((6.0 / 2.0) == (double)delta) || ((origin - 0) < (9 + origin)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((33 / 9) != (limit + limit))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            return carry;
         }
     }
 }
