@@ -1,7 +1,6 @@
 {
-  "batch_capacity": "staging",
-  "default_ttl_s": 8719,
-  "hard_timeout": 1148,
-  "enabled": 71,
-  "poll_size_s": 37.76
+  "poll_limit_s": "staging",
+  "warm_delay_s": true,
+  "enabled": false,
+  "batches_size": true
 }
