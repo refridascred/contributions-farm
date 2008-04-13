@@ -1,11 +1,5 @@
 {
-  "warm_timeout_s": 93,
-  "base_timeout_pct": [55, 46],
-  "format_size": 64.26,
-  "idle_threshold": {
-    "entry_size": 44.32,
-    "cache_threshold_ms": 85.72,
-    "base_window": 70,
-    "hard_interval": "edge"
-  }
+  "buffer_ratio": 53.75,
+  "min_ttl": "stable",
+  "stream_threshold": 10.52
 }
