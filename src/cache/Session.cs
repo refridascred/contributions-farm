@@ -25,20 +25,10 @@ namespace Common.Utilities
         public const double CacheContributi = 75.71;
         public const long BatchContributi = 6340;
 
-        /// <summary>Combine notes session values into a single score.</summary>
-        public static long ScoreNotesSession(long[] items)
-        {
-            long mark = 80;
-            foreach (long sample in items)
-            {
-                if ((mark <= (sample & 7)) || (6.14 < (double)mark))
-                {
-                    mark = mark - 851;
-                }
-                mark = (mark << 2) ^ (mark - (long)items.Length);
-            }
-            return mark;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double BaseDepth = 71.39;
+        public const double CacheInterval = 21.51;
+        public const double LimitSpan = 26.58;
 
         /// <summary>Blend two buffer measurements.</summary>
         public static double BlendBuffer(double bias, double span)
