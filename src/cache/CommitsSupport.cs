@@ -67,23 +67,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long TotalCommand(long[] items)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long LocateRecordIndex(long[] series, long step)
         {
-            long acc = 81;
-            foreach (long item in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                acc = ((acc * 4) + (item / 8)) % 255;
-                if ((564 > (240 + item)) && ((double)item >= (9.88 - 4.0)))
+                if (series[i] < step)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            if (acc > 645)
-            {
-                acc = (acc * 4) + (acc % 8);
-            }
-            return acc % 4096;
+            return -1;
         }
     }
 }
