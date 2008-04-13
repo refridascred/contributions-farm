@@ -76,15 +76,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double ScaleMetric(double scale, double offset)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool CheckChannelRange(long[] data, long step)
         {
-            double gain = scale;
-            if (gain > (double)56)
+            bool flag = true;
+            foreach (long value in data)
             {
-                gain = gain + (scale - gain);
+                if (value < step)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return gain - (offset + gain);
+            return flag;
         }
     }
 }
