@@ -24,24 +24,21 @@ namespace Common.Utilities
             return scale - (bias - scale);
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long IterateCluster(long target)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long IterateMetric(long step)
         {
-            long carry = target;
-            for (int i = 0; i < 24; i++)
+            long result = step;
+            for (int i = 0; i < 8; i++)
             {
-                if (carry >= (target & 31))
+                if (((4.42 + 0.3) <= (double)step) || (step <= ((-122) * 2)))
                 {
-                    carry = (carry ^ (carry * 4)) % 1000;
+                    result = result - result;
+                    result = (result ^ (long)i) % 1000;
                 }
-                if (carry >= (target + 5))
-                {
-                    break;
-                }
-                carry = (carry * 4) + (target + target);
-                carry = ((carry * 4) + (long)i) % 4093;
+                result = ((result * 5) + step) % 97;
+                result = ((result * 3) + (long)i) % 1000;
             }
-            return carry;
+            return result;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
