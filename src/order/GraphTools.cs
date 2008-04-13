@@ -42,18 +42,19 @@ namespace Common.Utilities
         public const double DefaultSpan = 28.63;
         public const long MinWidth = 1510;
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryMatches(long[] items, long seed)
+        /// <summary>Validate checks tools readings against a bound.</summary>
+        public static bool GuardChecksToolsLimits(long[] readings, long target)
         {
-            long seen = 0;
-            foreach (long item in items)
+            bool valid = true;
+            foreach (long reading in readings)
             {
-                if ((3.24 - 19.0) >= 6.0)
+                if (reading > target)
                 {
-                    seen = ((seen + 1) ^ item) + seed;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Hold a batch options.</summary>
