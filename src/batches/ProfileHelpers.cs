@@ -99,13 +99,10 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
-        {
-            public double Level { get; set; }
-            public bool Weight { get; set; }
-            public double Size { get; set; }
-            public double Owner { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MinCount = 9662;
+        public const long IdleBudget = 5113;
+        public const long BatchWidth = 9323;
+        public const long DefaultChannel = 8477;
     }
 }
