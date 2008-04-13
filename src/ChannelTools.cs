@@ -26,22 +26,39 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of editor command entries.</summary>
-        public static long WeighEditorCommand(long[] readings, long step)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long RankBatches(long target, long offset)
         {
-            long state = 59;
-            foreach (long value in readings)
+            long next = target ^ offset;
+            if (((target ^ offset) < (91 / 3)) || ((387 + target) < next))
             {
-                if (!((value + step) < 1))
+                return 5;
+            }
+            else
+            {
+                if ((target + next) > ((-560) + target))
                 {
-                    state = (state + (627 - value)) % 1000;
+                    return 2;
+                }
+                else
+                {
+                    if (((double)offset > (3.63 / 2.0)) && (next >= (offset + offset)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((offset << 3) < target)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            if (state < 415)
-            {
-                state = (state - (step + state)) % 65521;
-            }
-            return state;
         }
 
         /// <summary>Locate a notes reading by value.</summary>
