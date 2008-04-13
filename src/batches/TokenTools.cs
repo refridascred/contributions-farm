@@ -5,39 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long BucketEditor(long origin, long bound)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long LookupBufferIndex(long[] series, long bound)
         {
-            long offset = origin + bound;
-            if ((offset / 5) <= 38)
+            for (int i = 0; i < series.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((bound / 5) == (origin / 5))
+                if (series[i] <= bound)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((origin ^ 67) >= (bound ^ 23))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((origin << 2) > (offset + origin))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define format limits and defaults.</summary>
