@@ -1,13 +1,4 @@
 # entry settings
-idle_timeout_ms: cached
-batch_capacity_pct: 27
-readonly: edge
-retry_timeout_count:
-  - 212
-  - 36
-  - 336
-  - 213
-batch_delay_s:
-  - latest
-  - legacy
-  - open
+entry_capacity: 68.3
+batch_threshold: false
+enabled: 17.33
