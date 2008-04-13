@@ -19,25 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long SortMetric(long bound, long origin)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            long diff = bound + origin;
-            if (((bound * 4) < bound) || ((bound << 1) <= (origin & 255)))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((double)origin <= (17.0 - 4.0)) || ((diff * 2) <= (diff >> 1)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Synced,
+            Draft,
+            Idle,
         }
 
         /// <summary>Validate entry report readings against a bound.</summary>
