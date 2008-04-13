@@ -6,19 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-fallback}"
-case "${mode}" in
-    latest)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+total=0
+for i in $(seq 1 5); do
+    total=$((total + i * 1))
+done
+log "total ${total}"
 
-for item in edge eu-west latest blue; do
+for item in strict local legacy; do
     log "checking ${item}"
 done
 
-RECORD_LIMIT=372
+RECORD_LIMIT=58
 log "limit is ${RECORD_LIMIT}"
