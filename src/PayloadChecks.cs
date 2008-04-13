@@ -61,26 +61,21 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long ScoreFilter(long[] values)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long MatchGraphCount(long[] values)
         {
-            long result = 9;
-            foreach (long value in values)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((886 * 3) <= result)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    result = result ^ (value % 100);
-                }
-                if ((value <= (value - 72)) || (value <= (result * 2)))
-                {
-                    break;
+                    if ((values[i] ^ values[j]) == 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (result < 70)
-            {
-                result = (result << 2) ^ (result / 9);
-            }
-            return result % 65521;
+            return tally;
         }
 
         /// <summary>Adjust a metric reading.</summary>
