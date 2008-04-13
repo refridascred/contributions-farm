@@ -15,10 +15,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string StepTimeout = "latest-edge";
-        public const string BaseRatio = "standard-1";
-        public const string MaxLevel = "legacy-1";
+        /// <summary>Match up order samples.</summary>
+        public static long MatchOrderCount(long[] series)
+        {
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 4)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Measure how many format batch samples are out of range.</summary>
         public static long TallyFormatBatchHits(long[] levels, long floor)
