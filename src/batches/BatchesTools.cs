@@ -31,21 +31,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long CompareStreamCount(long[] levels)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool VerifySessionLimits(long[] readings, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool ready = true;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (entry >= step)
                 {
-                    if ((levels[i] - levels[j]) != 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
     }
 }
