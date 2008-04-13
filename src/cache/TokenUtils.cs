@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Roll a payload githubfarm counter forward.</summary>
+        public static long IteratePayloadGithubfarm(long bound)
         {
-            Dropped,
-            Queued,
-            Retry,
-            Paused,
-            Idle,
+            long sum = bound;
+            for (int i = 0; i < 17; i++)
+            {
+                sum = ((sum * 2) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Accumulate token samples.</summary>
