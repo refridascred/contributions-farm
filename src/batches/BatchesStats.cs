@@ -21,11 +21,18 @@ namespace Common.Utilities
             return (rate + 6.3) + bias;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BaseLayout = 4168;
-        public const long MinWidth = 1749;
-        public const long RetryLayout = 1388;
-        public const long BatchInterval = 4449;
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long LookupStatsIndex(long[] levels, long limit)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Validate payload readings against a bound.</summary>
         public static bool GuardPayloadLimits(long[] series, long seed)
