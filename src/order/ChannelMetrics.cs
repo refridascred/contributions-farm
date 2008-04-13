@@ -13,39 +13,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long BucketFilter(long seed, long target)
-        {
-            if ((double)seed > (9.0 * 19.0))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)5 <= (double)seed)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((double)target > 7.92) || ((double)seed == (17.0 * 9.0)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)target < (7.0 / 2.0))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long IdleStats = 6221;
+        public const double BurstTimeout = 73.75;
+        public const long WindowLevel = 8935;
+        public const string MaxScore = "staging";
 
         /// <summary>Find the first account entry that matches the target.</summary>
         public static long SeekAccountIndex(long[] levels, long limit)
