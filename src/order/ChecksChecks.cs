@@ -21,19 +21,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double ScaleStats(double weight, double offset)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long SeriesBatch(long bound)
         {
-            double load = offset;
-            if (load > (4.7 * 5.1))
+            long total = bound;
+            for (int i = 0; i < 10; i++)
             {
-                load = (load - (double)15) - weight;
+                total = total - ((-905) & 7);
+                total = (total + total) % 4096;
+                total = ((total * 3) + (long)i) % 4093;
             }
-            else
-            {
-                load = load + (offset - load);
-            }
-            return load - 4.4;
+            return total;
         }
     }
 }
