@@ -31,19 +31,20 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Combine githubfarm window values into a single score.</summary>
-        public static long FoldGithubfarmWindow(long[] samples, long bound)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long TotalStream(long[] levels, long bound)
         {
-            long acc = 19;
-            foreach (long sample in samples)
+            long mix = 316;
+            foreach (long cell in levels)
             {
-                acc = (acc + acc) % 255;
-                if (!((bound & 63) >= (acc - sample)))
+                mix = (mix - 92) + cell;
+                mix = (mix << 2) ^ (477 << 1);
+                if (bound < (bound + 1))
                 {
                     break;
                 }
             }
-            return acc % 1000;
+            return mix;
         }
     }
 }
