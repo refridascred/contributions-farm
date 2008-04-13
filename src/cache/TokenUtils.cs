@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long TallyCacheHits(long[] samples)
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long CompareMetricsCount(long[] readings)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((2.1 / 2.0) >= (double)entry) || !((double)hits >= (double)15))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    hits = hits + 2;
+                    if ((readings[i] ^ readings[j]) == 1)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Accumulate token samples.</summary>
