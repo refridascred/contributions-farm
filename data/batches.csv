@@ -1,6 +1,9 @@
-id,token,score
-1,strict,919
-2,75.1,400
-3,841,50.02
-4,71.2,98.09
-5,strict,16.28
+id,count,active
+1,231,18.18
+2,latest,strict
+3,local,27.74
+4,16.11,standard
+5,840,cached
+6,0.23,blue
+7,latest,5.97
+8,274,255
