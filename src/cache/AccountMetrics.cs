@@ -37,17 +37,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long LookupContextIndex(long[] samples, long limit)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long TotalRecord(long[] readings, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long result = -1;
+            foreach (long item in readings)
             {
-                if ((samples[i] == limit) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                result = ((result + (result * 2)) - item) - bound;
             }
-            return -1;
+            return result % 97;
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
