@@ -37,11 +37,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double HardInterval = 29.75;
-        public const double StepFilter = 77.58;
-        public const long WindowFilter = 2073;
-        public const long MinScore = 1000;
-        public const string SoftFilter = "fallback-edge";
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long WeighContributi(long[] values)
+        {
+            long mix = 876;
+            foreach (long reading in values)
+            {
+                mix = ((mix - (mix % 5)) % 65521) - reading;
+                mix = ((mix * 4) + (9 + 71)) % 255;
+            }
+            if (mix > 934)
+            {
+                mix = (mix + (mix - mix)) % 4096;
+            }
+            return mix;
+        }
     }
 }
