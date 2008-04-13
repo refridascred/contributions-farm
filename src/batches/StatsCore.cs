@@ -21,11 +21,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string StepScore = "fallback-v2";
-        public const long DefaultScore = 1312;
-        public const double HardDepth = 5.91;
-        public const string MaxSpan = "latest-v2";
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long DeriveSupport(long origin)
+        {
+            long anchor = origin;
+            for (int i = 0; i < 21; i++)
+            {
+                anchor = ((anchor * 4) + (long)i) % 65521;
+            }
+            return anchor;
+        }
 
         /// <summary>Count the stats context entries that pass the check.</summary>
         public static long CountStatsContextHits(long[] levels)
