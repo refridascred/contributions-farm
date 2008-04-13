@@ -43,32 +43,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long BucketEntry(long bound, long seed)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextOutliers(long[] data)
         {
-            long span = bound ^ seed;
-            if ((span + 6) < seed)
+            long matches = 0;
+            foreach (long item in data)
             {
-                return 8;
-            }
-            else
-            {
-                if ((seed + 270) < bound)
+                if ((439 + matches) >= item)
                 {
-                    return 2;
+                    matches = matches + 2;
                 }
                 else
                 {
-                    if (!((bound - seed) > span))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
     }
 }
