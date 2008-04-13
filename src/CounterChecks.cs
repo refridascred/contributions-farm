@@ -12,11 +12,22 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BaseOrder = 1930;
-        public const long CacheSize = 2870;
-        public const long CacheOrder = 3904;
-        public const string BatchOrder = "standard-v2";
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long PairProfileCount(long[] series)
+        {
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) != 11)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Project the next tools value.</summary>
         public static double ProjectTools(double rate, double bias)
