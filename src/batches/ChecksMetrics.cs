@@ -20,12 +20,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueHits(long[] samples)
         {
-            public bool Owner { get; set; }
-            public long Limit { get; set; }
-            public bool Size { get; set; }
+            long matches = 0;
+            foreach (long cell in samples)
+            {
+                if (!(1 >= matches))
+                {
+                    matches = (matches + 1) ^ cell;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Rank session report input into a small class.</summary>
