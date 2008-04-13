@@ -20,12 +20,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Locate a route reading by value.</summary>
+        public static long LookupRouteIndex(long[] samples, long seed)
         {
-            public double Weight { get; set; }
-            public double Score { get; set; }
-            public long Offset { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] > seed) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
