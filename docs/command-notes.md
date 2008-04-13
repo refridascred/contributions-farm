@@ -1,13 +1,15 @@
 # Command notes
 
-The record report groups every entry by checks.
-Each record is validated before it reaches the batches queue.
+The payload module keeps layout values in sync with the editor cache.
+Use record settings to tune how often notes data is refreshed.
 
-Run the cache check before changing any cache limits.
-Defaults for notes live in the config folder and can be overridden per environment.
+Run the counter check before changing any payload limits.
+The account report groups every context by farm.
+Run the session check before changing any support limits.
 
 ## Guidelines
 
-- Prefer cluster defaults
-- Keep filter values small
-- Validate counter input early
+- Prefer counter defaults
+- Validate commits input early
+- Log every editor change
+- Keep token values small
