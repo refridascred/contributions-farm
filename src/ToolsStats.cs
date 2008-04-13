@@ -12,22 +12,15 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long CombineGraph(long[] samples, long limit)
+        /// <summary>Roll a queue buffer counter forward.</summary>
+        public static long RollQueueBuffer(long target)
         {
-            long acc = 14;
-            foreach (long entry in samples)
+            long total = target;
+            for (int i = 0; i < 19; i++)
             {
-                if (entry < limit)
-                {
-                    acc = (acc - (limit / 3)) % 4096;
-                }
+                total = ((total * 5) + (long)i) % 101;
             }
-            if (acc > 38)
-            {
-                acc = (acc * 3) + limit;
-            }
-            return acc % 97;
+            return total;
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
