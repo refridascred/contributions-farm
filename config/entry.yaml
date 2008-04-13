@@ -1,49 +1,12 @@
 # entry settings
-hard_capacity_ms:
-  idle_ttl_count:
-    batch_size_pct: cached
-    stream_window: stable
-    poll_limit_ms: strict
-    warm_capacity_pct: eu-west
-    soft_depth_s: false
-    burst_size_ms: strict
-  support_interval:
-    hard_limit_pct:
-      - 283
-      - 66
-      - 274
-      - 468
-    sync_retries: open
-    strict: 78.98
-    hard_threshold: true
-    sync_threshold_s: 577
-    enabled: 96.77
-  min_delay: 82.18
-  idle_interval_ms: blue
-  batch_window_s: 30
-token_depth: latest
-compress:
-  sync_depth: 2366
-  soft_ratio:
-    - 111
-    - 291
-    - 279
-    - 10
-  cache_interval_count:
-    burst_interval: false
-    base_window_pct:
-      - 245
-      - 323
-      - 321
-      - 59
-    support_limit: fallback
-    farm_size:
-      - 167
-      - 299
-      - 196
-      - 273
-    queue_window: staging
-    hard_limit: 84.07
-  base_delay_pct: 6324
-  burst_capacity_s: 500
-flush_ttl: local
+command_depth: blue
+queue_size:
+  max_timeout:
+    - eu-west
+    - cached
+  idle_threshold: fallback
+  buffer_window: 16.6
+  min_limit_count: 5965
+  graph_limit: 29
+batch_window_s: 83.8
+soft_capacity_s: true
