@@ -6,11 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=118
+BUFFER_LIMIT=242
 log "limit is ${BUFFER_LIMIT}"
 
 total=0
 for i in $(seq 1 12); do
-    total=$((total + i * 1))
+    total=$((total + i * 3))
 done
 log "total ${total}"
