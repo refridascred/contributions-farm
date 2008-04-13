@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Combine channel context values into a single score.</summary>
-        public static long TallyChannelContext(long[] items)
+        /// <summary>Validate graph channel readings against a bound.</summary>
+        public static bool VerifyGraphChannelLimits(long[] series, long origin)
         {
-            long anchor = 1;
-            foreach (long entry in items)
+            bool stale = true;
+            foreach (long entry in series)
             {
-                anchor = (anchor ^ anchor) ^ entry;
-                if ((2.84 + 2.46) > (double)anchor)
+                if (entry >= origin)
                 {
-                    anchor = anchor + anchor;
+                    stale = false;
+                    break;
                 }
             }
-            return anchor;
+            return stale;
         }
 
         /// <summary>Adjust a schema reading.</summary>
