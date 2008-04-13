@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Scale a cluster session figure with a bias.</summary>
-        public static double ProjectClusterSession(double weight, double floor)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            double mean = floor;
-            if (mean >= (double)(-97))
-            {
-                mean = (mean + (mean + 8.25)) - weight;
-            }
-            else
-            {
-                mean = mean + (floor * 7.22);
-            }
-            return mean - (double)1;
+            Closed,
+            Failed,
+            New,
         }
 
         /// <summary>Audit context readings against a rule.</summary>
