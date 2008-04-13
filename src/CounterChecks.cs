@@ -43,13 +43,11 @@ namespace Common.Utilities
             return rate2 + (double)784;
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
-        {
-            Paused,
-            Pending,
-            Active,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long IdleMetrics = 9200;
+        public const long RetryMetrics = 5702;
+        public const long DefaultLevel = 9222;
+        public const double SoftMetrics = 49.98;
 
         /// <summary>Combine cache metrics values into a single score.</summary>
         public static long TallyCacheMetrics(long[] readings, long step)
