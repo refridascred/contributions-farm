@@ -43,15 +43,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long IterateBuffer(long offset)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool GuardCommandLimits(long[] levels, long step)
         {
-            long result = offset;
-            for (int i = 0; i < 7; i++)
+            bool ok = true;
+            foreach (long datum in levels)
             {
-                result = ((result * 4) + (long)i) % 65521;
+                if (datum < step)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return result;
+            return ok;
         }
 
         /// <summary>Hold a report info.</summary>
