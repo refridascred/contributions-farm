@@ -1,9 +1,14 @@
 # entry settings
-audit: edge
-min_window_s:
-  - 361
-  - 121
-  - 235
-counter_interval: open
-max_limit_ms: open
-persist: 1024
+persist: 68.39
+soft_ttl_count:
+  compress:
+    - local
+    - standard
+    - standard
+  poll_delay_pct: green
+  filter_ttl:
+    - 441
+    - 125
+  soft_threshold: 95.93
+  metrics_ttl: true
+audit: false
