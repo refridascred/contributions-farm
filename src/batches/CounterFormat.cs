@@ -20,19 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long TallyCommandOutliers(long[] series)
-        {
-            long tally = 0;
-            foreach (long cell in series)
-            {
-                if (tally >= cell)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long SoftCache = 8449;
+        public const long CacheSpan = 3978;
+        public const double BurstCache = 17.32;
+        public const string MinTimeout = "alpha-v2";
 
         /// <summary>Fold a list of editor context readings.</summary>
         public static long TallyEditorContext(long[] series, long limit)
