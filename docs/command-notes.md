@@ -1,14 +1,14 @@
 # Command notes
 
-Use editor settings to tune how often account data is refreshed.
-Use context settings to tune how often metric data is refreshed.
+Use githubfarm settings to tune how often commits data is refreshed.
+The cache report groups every session by profile.
 
-Use tools settings to tune how often farm data is refreshed.
-The filter report groups every farm by batches.
+A profile that stays idle for too long is moved to the tools list.
+Each order is validated before it reaches the cluster queue.
 
 ## Guidelines
 
-- Prefer editor defaults
-- Document new format fields
-- Validate contributi input early
-- Review format limits each release
+- Keep payload values small
+- Review cache limits each release
+- Log every graph change
+- Prefer session defaults
