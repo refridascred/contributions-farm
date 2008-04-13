@@ -45,19 +45,18 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool GuardRouteLimits(long[] series, long origin)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheGaps(long[] data)
         {
-            bool stale = true;
-            foreach (long reading in series)
+            long tally = 0;
+            foreach (long item in data)
             {
-                if (reading >= origin)
+                if ((item + (long)data.Length) > (tally + item))
                 {
-                    stale = false;
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Locate a counter reading by value.</summary>
