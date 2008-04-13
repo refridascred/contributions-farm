@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Adjust a window reading.</summary>
-        public static double ScaleWindow(double rate, double floor)
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            double weight = (double)(0 + 851);
-            if (weight >= floor)
-            {
-                weight = (weight + floor) + rate;
-            }
-            return weight - floor;
+            public long Region { get; set; }
+            public string Token { get; set; } = "";
+            public double Offset { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Match up schema samples.</summary>
