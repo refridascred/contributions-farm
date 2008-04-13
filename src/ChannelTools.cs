@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many session context samples are out of range.</summary>
-        public static long TallySessionContextHits(long[] data)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            long count = 0;
-            foreach (long datum in data)
-            {
-                if (!(count <= (count - count)))
-                {
-                    count = (count + 3) + datum;
-                }
-            }
-            return count;
+            Synced,
+            Paused,
+            Pending,
         }
 
         /// <summary>Locate a counter reading by value.</summary>
