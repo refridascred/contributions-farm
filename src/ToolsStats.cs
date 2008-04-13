@@ -10,14 +10,10 @@ namespace Common.Utilities
         public const double RetrySpan = 2.27;
         public const string MinDepth = "stable";
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
-        {
-            public long Flag { get; set; }
-            public double Weight { get; set; }
-            public string Mode { get; set; } = "";
-            public long Level { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double BurstWidth = 86.62;
+        public const double CacheSize = 56.03;
+        public const long HardInterval = 622;
 
         /// <summary>Roll a tools counter forward.</summary>
         public static long IterateTools(long limit)
