@@ -19,13 +19,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            public long Stamp { get; set; }
-            public bool Level { get; set; }
-            public long Offset { get; set; }
-            public string Ratio { get; set; } = "";
+            public string Token { get; set; } = "";
+            public bool Total { get; set; }
+            public long Owner { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Audit payload contributi readings against a rule.</summary>
