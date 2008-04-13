@@ -1,7 +1,5 @@
 {
-  "batch_limit_pct": "eu-west",
-  "audit": "standard",
-  "filter_depth": "strict",
-  "sync_retries_ms": false,
-  "layout_threshold": "staging"
+  "idle_retries_pct": 500,
+  "readonly": false,
+  "default_retries_s": 250
 }
