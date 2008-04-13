@@ -1,11 +1,14 @@
 # Command notes
 
-Keep farm and batches names short and lowercase.
-A payload that stays idle for too long is moved to the stats list.
-Run the counter check before changing any schema limits.
+Keep already and batches names short and lowercase.
+Use context settings to tune how often metric data is refreshed.
+
+Run the context check before changing any batches limits.
+Run the metric check before changing any profile limits.
+Run the channel check before changing any editor limits.
 
 ## Guidelines
 
-- Document new context fields
-- Review stream limits each release
-- Log every account change
+- Prefer farm defaults
+- Log every cache change
+- Keep token values small
