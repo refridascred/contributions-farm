@@ -5,14 +5,39 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long RankFarm(long bound, long floor)
         {
-            Draft,
-            Stale,
-            Synced,
-            Idle,
-            Active,
+            long gap = bound - floor;
+            if ((double)floor <= (9.9 + 16.0))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((11 + 954) < (bound + gap))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((floor - 13) < (79 - gap)) && ((10.0 - 12.0) == (double)bound))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (gap < (gap << 3))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of metric window entries.</summary>
