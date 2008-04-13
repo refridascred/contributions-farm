@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool VerifyLayoutRange(long[] samples, long bound)
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            bool found = true;
-            foreach (long datum in samples)
-            {
-                if (datum < bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public string Total { get; set; } = "";
+            public bool Ratio { get; set; }
+            public string Flag { get; set; } = "";
+            public double Token { get; set; }
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
