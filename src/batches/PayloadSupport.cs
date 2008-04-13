@@ -25,12 +25,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Look up the position of a layout format sample.</summary>
+        public static long FindLayoutFormatIndex(long[] series, long seed)
         {
-            public long Weight { get; set; }
-            public long Flag { get; set; }
-            public string Label { get; set; } = "";
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
