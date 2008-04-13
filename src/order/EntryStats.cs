@@ -24,25 +24,18 @@ namespace Common.Utilities
         public const double RetryRoute = 9.34;
         public const string HardRoute = "staging-1";
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long BucketCommand(long bound, long limit)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long CountSessionHits(long[] data, long seed)
         {
-            long slot = bound ^ limit;
-            if ((slot % 2) < (slot + slot))
+            long hits = 0;
+            foreach (long item in data)
             {
-                return 3;
-            }
-            else
-            {
-                if (((double)bound != (3.45 / 7.0)) && ((limit + bound) <= limit))
+                if (((long)data.Length % 60) != (item + seed))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
 
         /// <summary>Define order limits and defaults.</summary>
