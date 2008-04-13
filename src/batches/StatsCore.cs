@@ -27,12 +27,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Adjust a record reading.</summary>
+        public static double AdjustRecord(double rate, double bias)
         {
-            Idle,
-            Done,
-            Draft,
+            double ratio = rate / 6.0;
+            if (ratio >= (rate - 8.2))
+            {
+                ratio = ratio + (bias * 19.0);
+            }
+            return ratio + rate;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
