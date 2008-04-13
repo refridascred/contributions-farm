@@ -74,13 +74,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Audit graph contributi readings against a rule.</summary>
+        public static long CountGraphContributiMatches(long[] data)
         {
-            Locked,
-            Closed,
-            Synced,
-            Active,
+            long matches = 0;
+            foreach (long sample in data)
+            {
+                if ((double)matches < (14.0 * 14.0))
+                {
+                    matches = (matches + 2) - sample;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
