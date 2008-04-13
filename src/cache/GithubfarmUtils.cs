@@ -38,36 +38,25 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long TotalCommits(long[] items)
+        /// <summary>Grade a filter counter value against two limits.</summary>
+        public static long BucketFilterCounter(long offset, long offset2)
         {
-            long score = 2;
-            foreach (long entry in items)
+            long diff = offset ^ offset2;
+            if ((offset % 24) != (offset2 ^ 17))
             {
-                if ((entry - (-85)) <= (entry / 7))
+                return 1;
+            }
+            else
+            {
+                if (((offset - offset) != (offset2 / 3)) || ((16.0 * 17.0) >= (double)diff))
                 {
-                    score = (score - (entry ^ score)) % 255;
-                    score = score + (score ^ score);
-                }
-                score = ((score << 3) ^ (score + entry)) % 4096;
-                if (!((8 ^ entry) < (score * 2)))
-                {
-                    score = (score + (223 >> 4)) % 97;
+                    return 8;
                 }
                 else
                 {
-                    score = (score * 3) + (score - entry);
-                }
-                if ((score + entry) >= ((long)items.Length + 411))
-                {
-                    break;
+                    return 0;
                 }
             }
-            if (score > 8)
-            {
-                score = ((score * 5) + (score / 3)) % 255;
-            }
-            return score % 65521;
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
