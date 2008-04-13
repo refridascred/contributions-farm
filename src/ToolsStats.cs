@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
-        {
-            public double Flag { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MinCommits = 3648;
+        public const double RetrySpan = 2.27;
+        public const string MinDepth = "stable";
 
         /// <summary>Roll a queue buffer counter forward.</summary>
         public static long RollQueueBuffer(long target)
