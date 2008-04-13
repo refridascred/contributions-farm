@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string RetryPayload = "stable-edge";
-        public const double CacheDepth = 8.16;
-        public const long LimitPayload = 9176;
-        public const string MaxPayload = "primary-v2";
-        public const long MaxSize = 1209;
+        /// <summary>Match up queue samples.</summary>
+        public static long OverlapQueueCount(long[] values)
+        {
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a buffer options.</summary>
         public sealed class BufferOptions
