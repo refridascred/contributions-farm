@@ -1,4 +1,10 @@
 # support settings
-verbose: fallback
-support_interval: legacy
-soft_delay_ms: 49.82
+metrics_interval: cached
+max_interval_ms: local
+retry_threshold:
+  - local
+  - blue
+  - latest
+context_retries: legacy
+enabled: 18.32
+format_ratio: 75
