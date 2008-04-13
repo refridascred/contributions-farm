@@ -57,17 +57,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long LocateCounterIndex(long[] samples, long origin)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool GuardCacheBounds(long[] series, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool ready = true;
+            foreach (long value in series)
             {
-                if (samples[i] == origin)
+                if (value != offset)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
     }
 }
