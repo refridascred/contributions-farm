@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Scale a cluster context figure with a bias.</summary>
-        public static double SmoothClusterContext(double ratio, double bias)
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            double load = (double)(6 - (-915));
-            if (load >= (double)10)
-            {
-                load = (load - ratio) + bias;
-            }
-            else
-            {
-                load = load + (double)74;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load + ratio) - (double)(long)i;
-            }
-            return load + (double)27;
+            public bool Rank { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Describe the payload state values.</summary>
