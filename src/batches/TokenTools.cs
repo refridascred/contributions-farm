@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportOutliers(long[] readings)
         {
-            public long Token { get; set; }
-            public bool Score { get; set; }
-            public double Total { get; set; }
+            long matches = 0;
+            foreach (long entry in readings)
+            {
+                if ((entry >> 4) == (matches + entry))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a queue info.</summary>
