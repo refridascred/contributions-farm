@@ -62,20 +62,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long TotalMetric(long[] levels, long seed)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long DigestFilter(long[] values)
         {
-            long result = 669;
-            foreach (long cell in levels)
+            long acc = 39;
+            foreach (long sample in values)
             {
-                result = (result - (cell / 4)) % 101;
-                result = result ^ (seed >> 4);
+                acc = (acc + (acc + (long)values.Length)) % 97;
+                for (int i = 0; i < 7; i++)
+                {
+                    acc = ((acc ^ (acc % 2)) % 4096) ^ (long)i;
+                }
+                if ((double)sample != (3.3 + 20.0))
+                {
+                    acc = ((acc << 2) ^ sample) % 255;
+                }
             }
-            if (result > 704)
+            if (acc > 22)
             {
-                result = (result ^ (result ^ result)) % 1000;
+                acc = (acc ^ acc) % 65521;
             }
-            return result;
+            return acc % 1000;
         }
 
         /// <summary>Fold a list of channel githubfarm readings.</summary>
