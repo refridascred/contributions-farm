@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long WeighBuffer(long[] series, long origin)
-        {
-            long total = 36;
-            foreach (long value in series)
-            {
-                if ((double)origin < 7.48)
-                {
-                    total = (total - (total & 15)) ^ value;
-                }
-                else
-                {
-                    total = (total - origin) % 1000;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string RetryPayload = "stable-edge";
+        public const double CacheDepth = 8.16;
+        public const long LimitPayload = 9176;
+        public const string MaxPayload = "primary-v2";
+        public const long MaxSize = 1209;
 
         /// <summary>Rank command input into a small class.</summary>
         public static long RankCommand(long step, long origin)
