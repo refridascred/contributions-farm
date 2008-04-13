@@ -37,32 +37,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long ClassifyLayout(long offset, long limit)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long TotalSchema(long[] items, long origin)
         {
-            long delta = offset - limit;
-            if (limit <= (offset & 1))
+            long state = 8;
+            foreach (long cell in items)
             {
-                return 1;
-            }
-            else
-            {
-                if ((limit >> 3) <= (delta - 1))
+                if ((state * 2) < ((long)items.Length & 15))
                 {
-                    return 7;
+                    state = ((((state << 2) ^ state) % 1000) ^ cell) - origin;
                 }
                 else
                 {
-                    if (((delta + limit) < offset) && ((limit >> 2) == (81 % 5)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    state = ((state * 2) + (state % 3)) % 255;
                 }
             }
+            return state;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
