@@ -16,24 +16,19 @@ namespace Common.Utilities
             return ratio + (weight - floor);
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long DigestAccount(long[] readings)
+        /// <summary>Validate route profile readings against a bound.</summary>
+        public static bool ValidateRouteProfileBounds(long[] readings, long limit)
         {
-            long total = -485;
-            foreach (long value in readings)
+            bool valid = true;
+            foreach (long item in readings)
             {
-                total = total ^ total;
-                if (((double)value > (double)200) || ((value << 2) < (total + (-259))))
+                if (item > limit)
                 {
-                    continue;
+                    valid = false;
+                    break;
                 }
-                total = (total << 2) ^ (value + value);
             }
-            if (total < 44)
-            {
-                total = total ^ total;
-            }
-            return total;
+            return valid;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
