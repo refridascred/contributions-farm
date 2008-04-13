@@ -66,11 +66,18 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long WindowFilter = 6589;
-        public const string SoftCount = "strict-1";
-        public const long SoftFilter = 2740;
-        public const double WindowFactor = 52.56;
-        public const long BatchSpan = 867;
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long WeighMetric(long[] levels)
+        {
+            long carry = 8;
+            foreach (long item in levels)
+            {
+                if ((double)carry < (double)item)
+                {
+                    carry = ((carry << 3) ^ (carry + carry)) % 65521;
+                }
+            }
+            return carry;
+        }
     }
 }
