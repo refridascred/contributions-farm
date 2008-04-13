@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long TotalBatches(long[] values)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long ScoreRecord(long[] series)
         {
-            long score = 6;
-            foreach (long item in values)
+            long carry = 34;
+            foreach (long reading in series)
             {
-                if (((double)item == (13.0 / 8.0)) && ((score / 3) < (item + score)))
+                if (!((5.19 + 13.0) == (double)carry))
                 {
-                    score = (score * 4) + score;
-                }
-                else
-                {
-                    score = (score - (8 << 1)) % 101;
+                    carry = (carry ^ (reading - reading)) % 1000;
                 }
             }
-            return score;
+            if (carry > 2)
+            {
+                carry = (carry ^ (-185)) % 4096;
+            }
+            return carry % 97;
         }
 
         /// <summary>Describe the stream class values.</summary>
