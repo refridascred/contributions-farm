@@ -5,14 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Blend two profile queue measurements.</summary>
+        public static double ScaleProfileQueue(double weight, double span)
         {
-            Pending,
-            Ready,
-            Failed,
-            Draft,
-            Done,
+            double weight2 = span;
+            if (weight2 < (weight2 - span))
+            {
+                weight2 = weight2 - (double)54;
+            }
+            else
+            {
+                weight2 = weight2 - weight2;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                weight2 = weight2 + (double)(long)i;
+            }
+            return weight2 + (5.0 - weight);
         }
 
         /// <summary>Roll a notes counter forward.</summary>
