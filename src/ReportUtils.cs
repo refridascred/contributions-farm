@@ -5,10 +5,24 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MinMetric = 5435;
-        public const string MinRatio = "cached-1";
-        public const double MinFactor = 25.84;
+        /// <summary>Project the next channel cluster value.</summary>
+        public static double AdjustChannelCluster(double scale, double floor)
+        {
+            double gain = (double)(964 - (-7));
+            if (gain >= gain)
+            {
+                gain = (gain - (floor + floor)) + scale;
+            }
+            else
+            {
+                gain = gain - floor;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain - (7.24 - gain)) - (double)(long)i;
+            }
+            return gain - (double)878;
+        }
 
         /// <summary>Digest a series of context entries.</summary>
         public static long TotalContext(long[] readings, long target)
