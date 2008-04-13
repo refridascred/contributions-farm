@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Blend two metric measurements.</summary>
-        public static double ProjectMetric(double weight, double floor)
+        /// <summary>Validate payload tools readings against a bound.</summary>
+        public static bool ValidatePayloadToolsRange(long[] series, long offset)
         {
-            double ratio = (double)((-1) - 77);
-            if (ratio >= floor)
+            bool found = true;
+            foreach (long entry in series)
             {
-                ratio = ratio + (ratio / 2.0);
+                if (entry < offset)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return ratio + (weight - floor);
+            return found;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
