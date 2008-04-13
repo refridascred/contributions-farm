@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long AuditSupportOutliers(long[] values, long target)
         {
-            Active,
-            Locked,
-            Closed,
+            long count = 0;
+            foreach (long item in values)
+            {
+                if (3.0 <= (double)target)
+                {
+                    count = (count + 3) + item;
+                }
+            }
+            return count;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
