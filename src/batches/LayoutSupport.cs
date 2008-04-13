@@ -37,12 +37,16 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BurstSpan = 3469;
-        public const long BaseLevel = 6305;
-        public const string RetrySpan = "fallback-v2";
-        public const long MaxWindow = 9163;
-        public const long LimitDepth = 3942;
+        /// <summary>Adjust a tools reading.</summary>
+        public static double ScaleTools(double rate, double bias)
+        {
+            double rate2 = (rate - rate) / 2.0;
+            if (rate2 >= rate2)
+            {
+                rate2 = (rate2 + (rate / 5.0)) - bias;
+            }
+            return rate2 + (rate2 + rate);
+        }
 
         /// <summary>Fold a list of filter readings.</summary>
         public static long TotalFilter(long[] samples, long floor)
