@@ -22,14 +22,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Look up the position of a batches contributi sample.</summary>
+        public static long LocateBatchesContributiIndex(long[] values, long floor)
         {
-            Failed,
-            Active,
-            Ready,
-            Paused,
-            Retry,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] >= floor) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
