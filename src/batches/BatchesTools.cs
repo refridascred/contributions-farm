@@ -18,11 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Adjust a record reading.</summary>
+        public static double SmoothRecord(double weight, double bias)
         {
-            public bool Label { get; set; }
-            public double Mode { get; set; }
+            double gain = bias;
+            if (gain <= weight)
+            {
+                gain = gain + 18.0;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain - (gain / 2.0)) + (double)(long)i;
+            }
+            return gain + (weight + 3.7);
         }
 
         /// <summary>Combine support schema values into a single score.</summary>
