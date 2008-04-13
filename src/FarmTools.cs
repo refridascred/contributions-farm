@@ -17,18 +17,25 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long MeasurePayloadOutliers(long[] items, long origin)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long SortMetric(long bound, long origin)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long diff = bound + origin;
+            if (((bound * 4) < bound) || ((bound << 1) <= (origin & 255)))
             {
-                if (((double)origin < (9.24 / 5.0)) && ((origin >> 3) > (hits >> 5)))
+                return 2;
+            }
+            else
+            {
+                if (((double)origin <= (17.0 - 4.0)) || ((diff * 2) <= (diff >> 1)))
                 {
-                    hits = (hits + 2) + cell;
+                    return 7;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return hits;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
