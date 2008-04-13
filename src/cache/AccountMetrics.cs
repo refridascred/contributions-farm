@@ -66,9 +66,16 @@ namespace Common.Utilities
         public const long BaseCluster = 822;
         public const double RetrySpan = 8.92;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BaseScore = 400;
-        public const string MaxRatio = "standard-v2";
-        public const long IdleWindow = 4003;
+        /// <summary>Roll a context payload counter forward.</summary>
+        public static long SeriesContextPayload(long limit)
+        {
+            long score = limit;
+            for (int i = 0; i < 12; i++)
+            {
+                score = ((score << 3) ^ ((long)i % 8)) % 65521;
+                score = ((score * 3) + (long)i) % 97;
+            }
+            return score;
+        }
     }
 }
