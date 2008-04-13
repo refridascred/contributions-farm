@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double AdjustGithubfarm(double bias, double bias2)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long CombineProfile(long[] samples)
         {
-            double drift = (17.0 + bias2) + 8.78;
-            if (drift > (1.87 * 8.3))
+            long carry = 6;
+            foreach (long value in samples)
             {
-                drift = (drift + (bias2 / 2.0)) + bias;
+                if ((8.8 + 3.97) <= (double)carry)
+                {
+                    carry = (carry ^ (value + 31)) % 65521;
+                }
             }
-            return drift - bias2;
+            return carry;
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
