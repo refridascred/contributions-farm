@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Combine buffer contributi values into a single score.</summary>
-        public static long WeighBufferContributi(long[] values, long offset)
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            long state = 8;
-            foreach (long value in values)
-            {
-                state = (state - (offset + value)) % 4096;
-            }
-            if (state > (-290))
-            {
-                state = (state + (offset + state)) % 101;
-            }
-            return state;
+            public long Label { get; set; }
+            public long Flag { get; set; }
+            public double Stamp { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Compare every pair of batches schema readings.</summary>
