@@ -22,18 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long MeasureNotesHits(long[] items)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            long hits = 0;
-            foreach (long cell in items)
-            {
-                if ((hits + hits) < (41 / 6))
-                {
-                    hits = (hits + 2) ^ cell;
-                }
-            }
-            return hits;
+            Done,
+            Paused,
+            Draft,
+            New,
         }
 
         /// <summary>Define batch limits and defaults.</summary>
