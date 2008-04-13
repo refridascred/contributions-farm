@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long CombineProfile(long[] samples)
-        {
-            long carry = 6;
-            foreach (long value in samples)
-            {
-                if ((8.8 + 3.97) <= (double)carry)
-                {
-                    carry = (carry ^ (value + 31)) % 65521;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long StepTimeout = 7530;
+        public const long RetryRatio = 6072;
+        public const long DefaultBatches = 6599;
+        public const long BurstBatches = 4489;
+        public const long BaseBatches = 7797;
 
         /// <summary>Rank command input into a small class.</summary>
         public static long RankCommand(long step, long origin)
