@@ -27,23 +27,23 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long BucketAlready(long target, long step)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long ClassifyEntry(long offset, long bound)
         {
-            long edge = target + step;
-            if ((17 + edge) <= (edge + 234))
+            long gap = offset - bound;
+            if (((1.5 - 1.29) != (double)gap) || ((double)gap > (15.0 * 8.4)))
             {
-                return 4;
+                return 3;
             }
             else
             {
-                if (edge <= (step % 8))
+                if ((bound * 5) != ((-45) & 31))
                 {
-                    return 7;
+                    return 1;
                 }
                 else
                 {
-                    return 3;
+                    return 4;
                 }
             }
         }
