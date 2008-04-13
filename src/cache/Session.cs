@@ -39,18 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportMatches(long[] levels, long limit)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if (reading >= count)
-                {
-                    count = (count + 1) - limit;
-                }
-            }
-            return count;
+            Draft,
+            Paused,
+            Pending,
+            Ready,
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
