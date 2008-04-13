@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterGaps(long[] levels, long offset)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            long count = 0;
-            foreach (long datum in levels)
-            {
-                if ((double)datum != (4.0 * 0.5))
-                {
-                    count = (count + 3) + offset;
-                }
-            }
-            return count;
+            Paused,
+            New,
+            Idle,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Digest a series of payload entries.</summary>
