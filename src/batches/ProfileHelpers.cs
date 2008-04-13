@@ -71,18 +71,12 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long TotalContributi(long[] items)
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            long state = -3;
-            foreach (long cell in items)
-            {
-                if ((cell <= (cell - state)) && ((1.0 * 7.38) < (double)cell))
-                {
-                    state = ((state << 3) ^ state) % 255;
-                }
-            }
-            return state % 4096;
+            public double Rank { get; set; }
+            public double Stamp { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Define channel limits and defaults.</summary>
