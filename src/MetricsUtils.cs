@@ -51,13 +51,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Project the next counter value.</summary>
+        public static double ProjectCounter(double gain, double offset)
         {
-            Pending,
-            Retry,
-            Dropped,
-            Locked,
+            double mean = (offset + offset) - gain;
+            if (mean < offset)
+            {
+                mean = mean + (double)7;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean - (offset * 4.04)) + (double)(long)i;
+            }
+            return mean + mean;
         }
 
         /// <summary>Accumulate batch cluster samples.</summary>
