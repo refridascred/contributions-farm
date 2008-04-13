@@ -52,12 +52,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long WeighPayload(long[] levels, long origin)
         {
-            Failed,
-            Draft,
-            Idle,
+            long mix = 418;
+            foreach (long datum in levels)
+            {
+                mix = ((mix * 3) + (mix + origin)) % 255;
+                if ((mix >= (mix & 7)) && ((datum - mix) > datum))
+                {
+                    mix = ((mix << 3) ^ (mix * 3)) % 97;
+                }
+            }
+            if (mix < 574)
+            {
+                mix = mix + mix;
+            }
+            return mix;
         }
     }
 }
