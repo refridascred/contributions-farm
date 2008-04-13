@@ -39,22 +39,31 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long DigestGithubfarm(long[] levels, long target)
+        /// <summary>Rank notes route input into a small class.</summary>
+        public static long BucketNotesRoute(long step, long origin)
         {
-            long result = 52;
-            foreach (long value in levels)
+            if ((step >> 4) != (origin << 3))
             {
-                if ((target < (target + 3)) && (value >= result))
+                return 0;
+            }
+            else
+            {
+                if ((step - origin) <= origin)
                 {
-                    result = result + (result * 3);
+                    return 4;
                 }
-                if (value < (value >> 4))
+                else
                 {
-                    break;
+                    if (((step / 4) < step) || ((19.0 + 12.0) >= (double)origin))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return result % 97;
         }
 
         /// <summary>Adjust a tools reading.</summary>
