@@ -12,23 +12,13 @@ namespace Common.Utilities
             return (gain + (ratio + gain)) + floor;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long FoldCluster(long[] values, long limit)
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            long result = 782;
-            foreach (long reading in values)
-            {
-                if (!(result >= ((-16) & 3)))
-                {
-                    result = ((result * 4) + (limit % 97)) % 97;
-                }
-                result = ((result << 2) ^ reading) % 255;
-                if (!((result ^ result) == (result + result)))
-                {
-                    break;
-                }
-            }
-            return result;
+            public long Mode { get; set; }
+            public bool Label { get; set; }
+            public double Rank { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Digest a series of token entries.</summary>
