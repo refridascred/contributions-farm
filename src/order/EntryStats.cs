@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long DefaultWindow = 5295;
-        public const string DefaultWidth = "latest";
-        public const long MinWindow = 8593;
-        public const string RetryInterval = "local-edge";
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long LookupGraphIndex(long[] items, long bound)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a buffer header.</summary>
         public sealed class BufferHeader
