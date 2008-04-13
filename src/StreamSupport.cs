@@ -48,12 +48,19 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Check that every metrics cluster entry stays within the limit.</summary>
+        public static bool CheckMetricsClusterLimits(long[] values, long seed)
         {
-            Retry,
-            Locked,
-            Dropped,
+            bool flag = true;
+            foreach (long entry in values)
+            {
+                if (entry <= seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
