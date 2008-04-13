@@ -1,6 +1,5 @@
 {
-  "min_threshold": [400, 34, 355],
-  "default_capacity_s": 6,
-  "burst_window_s": 62.18,
-  "cache_ttl_s": 30
+  "sync_window_pct": "green",
+  "githubfarm_threshold": 62.91,
+  "cache_timeout": 250
 }
