@@ -51,18 +51,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long AuditMetricsOutliers(long[] samples)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long TallyStream(long[] items, long origin)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long result = 4;
+            foreach (long item in items)
             {
-                if (matches >= (long)samples.Length)
+                if ((13.0 / 9.0) > (double)item)
                 {
-                    matches = (matches + 3) + item;
+                    result = ((result * 2) + origin) % 101;
                 }
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Adjust a batches reading.</summary>
