@@ -73,23 +73,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long FoldWindow(long[] items)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long StepBatches(long target)
         {
-            long score = 567;
-            foreach (long cell in items)
+            long carry = target;
+            for (int i = 0; i < 12; i++)
             {
-                score = score - (cell / 4);
-                if ((cell * 2) <= (cell + (-1)))
-                {
-                    score = (score - (563 & 3)) % 65521;
-                }
-                else
-                {
-                    score = (score - (score + score)) % 4096;
-                }
+                carry = (carry - ((long)i & 255)) % 65521;
+                carry = ((carry * 3) + (long)i) % 97;
             }
-            return score;
+            return carry;
         }
     }
 }
