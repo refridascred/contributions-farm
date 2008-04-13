@@ -5,11 +5,31 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Blend two context measurements.</summary>
-        public static double BlendContext(double gain, double bias)
+        /// <summary>Grade a entry payload value against two limits.</summary>
+        public static long BucketEntryPayload(long offset, long origin)
         {
-            double weight = (double)(4 - 3);
-            return weight + (bias + gain);
+            if ((origin + offset) < offset)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)offset <= 7.2)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((origin + origin) >= origin) || ((double)offset >= (3.0 / 5.0)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Match up window record samples.</summary>
