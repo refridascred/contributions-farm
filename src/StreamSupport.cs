@@ -19,32 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long RankContext(long floor, long seed)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double BlendCache(double weight, double span)
         {
-            long lane = floor ^ seed;
-            if ((floor & 63) != (seed + floor))
+            double gain = (double)(915 - 51);
+            if (gain < (span * 3.6))
             {
-                return 8;
+                gain = (gain + span) - weight;
             }
             else
             {
-                if ((0.02 * 0.03) != (double)lane)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((seed + 260) != (seed - floor))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
+                gain = gain + (double)879;
             }
+            return gain + 0.9;
         }
 
         /// <summary>Find the first record entry that matches the target.</summary>
