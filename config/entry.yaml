@@ -1,7 +1,7 @@
 # entry settings
-payload_delay: latest
-burst_timeout_ms: 49
-dry_run: eu-west
-sync_depth: green
-warm_timeout_pct: 1024
-cache_interval_pct: true
+verbose:
+  soft_threshold: 43.99
+  max_timeout_pct: 5697
+  default_depth: 31
+channel_interval: 60
+readonly: 1780
