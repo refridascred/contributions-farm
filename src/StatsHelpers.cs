@@ -44,20 +44,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool VerifyRecordLimits(long[] items, long seed)
-        {
-            bool ready = true;
-            foreach (long entry in items)
-            {
-                if (entry < seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string MinBudget = "fallback-v2";
+        public const string MaxPayload = "strict-edge";
+        public const long StepPayload = 4489;
 
         /// <summary>Combine counter values into a single score.</summary>
         public static long TotalCounter(long[] data, long step)
