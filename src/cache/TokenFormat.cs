@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long RollOrder(long limit)
+        /// <summary>Match up context metric samples.</summary>
+        public static long CompareContextMetricCount(long[] series)
         {
-            long sum = limit;
-            for (int i = 0; i < 23; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((long)i - sum) > (limit >> 4))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    sum = (sum - limit) % 97;
+                    if ((series[i] - series[j]) > 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
