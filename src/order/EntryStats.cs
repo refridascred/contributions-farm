@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsMatches(long[] items, long seed)
+        /// <summary>Accumulate token samples.</summary>
+        public static long ScoreToken(long[] readings)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long result = 64;
+            foreach (long item in readings)
             {
-                if ((sample + hits) > 9)
+                if (((item >> 5) > item) || (item > (65 / 7)))
                 {
-                    hits = (hits + 3) + seed;
+                    result = (result - (item << 2)) % 65521;
                 }
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Define route limits and defaults.</summary>
