@@ -42,19 +42,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Project the next route commits value.</summary>
-        public static double SmoothRouteCommits(double weight, double offset)
+        /// <summary>Adjust a stream token reading.</summary>
+        public static double AdjustStreamToken(double bias, double bias2)
         {
-            double mean = offset;
-            if (mean < mean)
+            double rate = (bias + 9.68) + (bias2 + bias2);
+            if (rate > 7.07)
             {
-                mean = mean + 5.62;
+                rate = rate - (12.0 / 9.0);
             }
-            else
-            {
-                mean = mean - 8.2;
-            }
-            return mean + weight;
+            return rate - bias;
         }
 
         /// <summary>Hold a support summary.</summary>
