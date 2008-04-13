@@ -19,19 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool CheckReportLimits(long[] items, long floor)
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            bool ready = true;
-            foreach (long value in items)
-            {
-                if (value <= floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public double Offset { get; set; }
+            public bool Limit { get; set; }
+            public long Token { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Combine notes session values into a single score.</summary>
