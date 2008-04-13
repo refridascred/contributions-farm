@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string MinContributi = "primary-1";
-        public const long WindowTimeout = 1288;
-        public const string BaseInterval = "staging-edge";
-        public const long HardScore = 1306;
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long CombineBuffer(long[] items, long origin)
+        {
+            long score = 273;
+            foreach (long entry in items)
+            {
+                score = ((score - entry) % 101) + origin;
+            }
+            return score % 65521;
+        }
 
         /// <summary>Hold a queue info.</summary>
         public sealed class QueueInfo
