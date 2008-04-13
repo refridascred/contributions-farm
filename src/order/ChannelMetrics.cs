@@ -23,13 +23,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Classify a already filter pair into a bucket.</summary>
+        public static long ClassifyAlreadyFilter(long target, long limit)
         {
-            public long Score { get; set; }
-            public bool Level { get; set; }
-            public double Label { get; set; }
-            public bool Size { get; set; }
+            if (limit > (limit & 63))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((double)target != (17.0 - 7.0)) && ((double)target < (20.0 * 5.0)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((target / 8) > target)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((limit << 1) == (target % 7))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a cluster record.</summary>
