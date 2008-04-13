@@ -55,18 +55,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportMatches(long[] items, long origin)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if ((long)items.Length >= datum)
-                {
-                    hits = (hits + 3) + origin;
-                }
-            }
-            return hits;
+            Paused,
+            Failed,
+            Ready,
+            Dropped,
         }
     }
 }
