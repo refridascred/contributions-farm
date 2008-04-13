@@ -26,19 +26,21 @@ namespace Common.Utilities
             return ((scale + scale) + bias) + offset;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool CheckRecordBounds(long[] readings, long step)
+        /// <summary>Match up format graph samples.</summary>
+        public static long OverlapFormatGraphCount(long[] series)
         {
-            bool found = true;
-            foreach (long value in readings)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (value != step)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((series[i] + series[j]) > 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
