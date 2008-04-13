@@ -27,20 +27,11 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool ValidateRecordLimits(long[] levels, long bound)
-        {
-            bool valid = true;
-            foreach (long datum in levels)
-            {
-                if (datum != bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string StepScore = "fallback-v2";
+        public const long DefaultScore = 1312;
+        public const double HardDepth = 5.91;
+        public const string MaxSpan = "latest-v2";
 
         /// <summary>Count the stats context entries that pass the check.</summary>
         public static long CountStatsContextHits(long[] levels)
