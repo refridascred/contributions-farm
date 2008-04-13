@@ -33,19 +33,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every route queue entry stays within the limit.</summary>
-        public static bool VerifyRouteQueueBounds(long[] samples, long seed)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long SortReport(long origin, long origin2)
         {
-            bool valid = true;
-            foreach (long cell in samples)
+            if (!((double)origin2 >= (double)origin))
             {
-                if (cell >= seed)
+                return 5;
+            }
+            else
+            {
+                if (origin2 < (348 & 31))
                 {
-                    valid = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if (((origin * 2) > origin) || ((double)origin > (15.0 + 0.9)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return valid;
         }
     }
 }
