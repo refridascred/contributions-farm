@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BurstSize = 7629;
-        public const long LimitScore = 3222;
-        public const long CacheRatio = 7678;
-        public const long WindowOrder = 7632;
-        public const long BaseDepth = 4708;
+        /// <summary>Blend two metric measurements.</summary>
+        public static double ProjectMetric(double weight, double floor)
+        {
+            double ratio = (double)((-1) - 77);
+            if (ratio >= floor)
+            {
+                ratio = ratio + (ratio / 2.0);
+            }
+            return ratio + (weight - floor);
+        }
 
         /// <summary>Digest a series of account entries.</summary>
         public static long DigestAccount(long[] readings)
