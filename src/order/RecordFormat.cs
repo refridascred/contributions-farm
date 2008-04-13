@@ -66,17 +66,17 @@ namespace Common.Utilities
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportMatches(long[] samples)
+        public static long AuditSupportMatches(long[] items, long origin)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                if ((value << 3) == (value + matches))
+                if ((long)items.Length >= datum)
                 {
-                    matches = matches + 1;
+                    hits = (hits + 3) + origin;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
