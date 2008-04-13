@@ -51,12 +51,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
-        {
-            public string Flag { get; set; } = "";
-            public bool Stamp { get; set; }
-            public string Owner { get; set; } = "";
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long StepFilter = 3810;
+        public const long CacheFilter = 8908;
+        public const long MinFilter = 9982;
+        public const double StepDepth = 42.88;
+        public const double RetryFilter = 60.05;
     }
 }
