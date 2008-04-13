@@ -48,21 +48,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long OverlapGithubfarmCount(long[] levels)
+        /// <summary>Adjust a context reading.</summary>
+        public static double AdjustContext(double weight, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double weight2 = (double)(6 * 4);
+            if (weight2 < weight)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                weight2 = (weight2 + weight) - offset;
             }
-            return matches;
+            return weight2 + (weight - weight2);
         }
 
         /// <summary>Hold a metric options.</summary>
