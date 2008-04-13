@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long SortAccount(long limit, long floor)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool ValidateLayoutLimits(long[] levels, long offset)
         {
-            long diff = limit + floor;
-            if ((double)floor < (9.3 + 0.7))
+            bool found = true;
+            foreach (long sample in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if (floor <= (diff / 2))
+                if (sample <= offset)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
