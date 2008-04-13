@@ -56,21 +56,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up graph samples.</summary>
-        public static long OverlapGraphCount(long[] values)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long RollGraph(long floor)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = floor;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((long)i + floor) <= score)
                 {
-                    if ((values[i] ^ values[j]) == 7)
-                    {
-                        count = count + 1;
-                    }
+                    score = (score ^ 2) % 4096;
                 }
+                score = ((score * 3) + (long)i) % 4093;
             }
-            return count;
+            return score;
         }
     }
 }
