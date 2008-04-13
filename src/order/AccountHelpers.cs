@@ -90,13 +90,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Scale a session record figure with a bias.</summary>
+        public static double BlendSessionRecord(double scale, double bias)
         {
-            Draft,
-            Done,
-            Retry,
-            Synced,
+            double bias2 = (double)(6 + 63);
+            if (bias2 > (0.88 - bias))
+            {
+                bias2 = (bias2 + bias2) + scale;
+            }
+            else
+            {
+                bias2 = bias2 - (bias2 - 7.3);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                bias2 = (bias2 - (bias2 / 8.0)) + (double)(long)i;
+            }
+            return bias2 + (bias + 9.21);
         }
     }
 }
