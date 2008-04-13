@@ -47,11 +47,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double SmoothTools(double weight, double offset)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long WeighChannel(long[] values, long target)
         {
-            double ratio = offset - offset;
-            return (ratio - (double)24) + weight;
+            long mix = 76;
+            foreach (long entry in values)
+            {
+                mix = mix ^ (target / 5);
+                if (!(mix <= (entry / 8)))
+                {
+                    mix = (mix ^ mix) % 255;
+                }
+            }
+            if (mix > 8)
+            {
+                mix = (mix * 5) + 13;
+            }
+            return mix;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
