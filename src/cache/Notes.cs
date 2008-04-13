@@ -50,14 +50,22 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long TallySessionHits(long[] readings)
         {
-            Queued,
-            Synced,
-            Active,
-            New,
-            Dropped,
+            long tally = 0;
+            foreach (long item in readings)
+            {
+                if ((item + (-2)) != (tally + item))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
