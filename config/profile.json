@@ -1,13 +1,7 @@
 {
-  "readonly": "open",
-  "window_depth": 69,
-  "batch_ttl": {
-    "poll_ratio": true,
-    "retry_capacity": "legacy",
-    "githubfarm_interval": 96.12,
-    "compress": "strict",
-    "base_interval_pct": true
-  },
-  "default_threshold": "cached",
-  "strict": 505
+  "sync_limit_ms": [414, 471, 116, 268],
+  "farm_window": 4494,
+  "soft_capacity_count": 75,
+  "commits_timeout": 4231,
+  "poll_retries_pct": 86
 }
