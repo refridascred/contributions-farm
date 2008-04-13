@@ -12,17 +12,19 @@ namespace Common.Utilities
         public const long BatchCache = 5703;
         public const long BaseRatio = 2949;
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long SeekTokenIndex(long[] readings, long seed)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool VerifyProfileBounds(long[] items, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool stale = true;
+            foreach (long entry in items)
             {
-                if (readings[i] >= seed)
+                if (entry >= target)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Locate a context metrics reading by value.</summary>
