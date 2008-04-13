@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long DigestCommits(long[] values, long offset)
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            long total = 775;
-            foreach (long datum in values)
-            {
-                if (((20.0 + 0.5) > (double)datum) || ((double)offset <= (0.5 * 19.0)))
-                {
-                    total = total + (offset - offset);
-                }
-            }
-            return total;
+            public string Label { get; set; } = "";
+            public double Token { get; set; }
+            public bool Stamp { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Digest a series of metric window entries.</summary>
