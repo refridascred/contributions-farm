@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            public long Owner { get; set; }
-            public long Offset { get; set; }
+            public string Limit { get; set; } = "";
+            public long Weight { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Grade a batch value against two limits.</summary>
