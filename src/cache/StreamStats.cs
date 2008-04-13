@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
-        {
-            public string Offset { get; set; } = "";
-            public long Stamp { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long RetrySession = 9569;
+        public const double IdleSession = 28.65;
+        public const long DefaultInterval = 2801;
+        public const long WindowSession = 7185;
 
         /// <summary>Match up already commits samples.</summary>
         public static long MatchAlreadyCommitsCount(long[] data)
