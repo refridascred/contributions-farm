@@ -33,13 +33,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            public bool Stamp { get; set; }
-            public string Mode { get; set; } = "";
-            public double Ratio { get; set; }
-            public string Offset { get; set; } = "";
+            public bool Mode { get; set; }
+            public long Ratio { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
