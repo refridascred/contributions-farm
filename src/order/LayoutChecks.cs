@@ -55,19 +55,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool GuardLayoutBounds(long[] data, long step)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long LookupLayoutIndex(long[] series, long origin)
         {
-            bool flag = true;
-            foreach (long entry in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (entry >= step)
+                if (series[i] <= origin)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Describe the farm level values.</summary>
