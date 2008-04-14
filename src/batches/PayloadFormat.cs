@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Locate a report reading by value.</summary>
+        public static long FindReportIndex(long[] samples, long offset)
         {
-            public bool Region { get; set; }
-            public double Mode { get; set; }
-            public long Rank { get; set; }
-            public bool Limit { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
