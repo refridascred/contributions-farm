@@ -34,19 +34,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Adjust a cluster counter reading.</summary>
-        public static double ProjectClusterCounter(double weight, double span)
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            double drift = weight;
-            if (drift <= (weight + span))
-            {
-                drift = drift + (span + weight);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift + drift) - (double)(long)i;
-            }
-            return drift + drift;
+            public long Count { get; set; }
+            public long Total { get; set; }
         }
     }
 }
