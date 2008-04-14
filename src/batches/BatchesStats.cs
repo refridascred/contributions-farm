@@ -32,24 +32,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long RankGraph(long bound, long bound2)
+        /// <summary>Match up format batch samples.</summary>
+        public static long MatchFormatBatchCount(long[] levels)
         {
-            if ((double)bound < 5.2)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((bound * 3) > bound2)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
+                    if ((levels[i] ^ levels[j]) != 0)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
