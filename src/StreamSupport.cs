@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long StepDepth = 830;
-        public const long StepWidth = 8880;
-        public const double SoftTimeout = 9.99;
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long CountMetricHits(long[] items, long target)
+        {
+            long matches = 0;
+            foreach (long sample in items)
+            {
+                if ((double)sample > (double)target)
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Classify a batch entry pair into a bucket.</summary>
         public static long BucketBatchEntry(long limit, long seed)
