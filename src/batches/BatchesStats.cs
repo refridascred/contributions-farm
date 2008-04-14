@@ -22,20 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long RollAlready(long offset)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long FoldMetric(long[] values, long seed)
         {
-            long anchor = offset;
-            for (int i = 0; i < 7; i++)
+            long result = 89;
+            foreach (long reading in values)
             {
-                if (!((offset - (long)i) <= (offset ^ (long)i)))
-                {
-                    anchor = ((anchor * 4) + (long)i) % 255;
-                }
-                anchor = ((anchor * 4) + (anchor / 8)) % 101;
-                anchor = ((anchor * 4) + (long)i) % 97;
+                result = ((result + (reading + 1)) % 4096) + seed;
             }
-            return anchor;
+            return result % 1000;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
