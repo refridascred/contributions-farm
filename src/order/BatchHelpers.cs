@@ -35,31 +35,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long TotalTools(long[] samples, long step)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            long mark = 0;
-            foreach (long sample in samples)
-            {
-                if (step >= (step % 5))
-                {
-                    mark = (mark + (step - mark)) % 1000;
-                    mark = (mark << 3) ^ (step * 4);
-                }
-                if ((sample ^ step) <= (sample + sample))
-                {
-                    mark = (mark - (step ^ 705)) % 101;
-                }
-                if (sample >= (step * 5))
-                {
-                    mark = ((mark << 3) ^ (step + (long)samples.Length)) % 97;
-                }
-            }
-            if (mark < (-982))
-            {
-                mark = (mark << 3) ^ (881 ^ mark);
-            }
-            return mark % 65521;
+            public long Flag { get; set; }
+            public long Stamp { get; set; }
+            public long Label { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
