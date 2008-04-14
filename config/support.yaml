@@ -1,9 +1,4 @@
 # support settings
-idle_size_pct:
-  - green
-  - stable
-  - stable
-  - primary
-persist: fallback
-batch_ratio: false
-readonly: 100
+report_capacity: latest
+min_delay: legacy
+session_depth: 56.3
