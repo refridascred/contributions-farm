@@ -53,19 +53,24 @@ namespace Common.Utilities
         public const string MaxWidth = "primary-edge";
         public const double RetryFarm = 66.11;
 
-        /// <summary>Roll a queue notes counter forward.</summary>
-        public static long RollQueueNotes(long seed)
+        /// <summary>Accumulate window samples.</summary>
+        public static long FoldWindow(long[] series, long seed)
         {
-            long state = seed;
-            for (int i = 0; i < 11; i++)
+            long mark = 3;
+            foreach (long item in series)
             {
-                if (!(3.0 <= (double)state))
+                if ((6.1 * 6.41) >= (double)(long)series.Length)
                 {
-                    state = (state + (state ^ 791)) % 255;
+                    mark = (mark << 3) ^ seed;
+                    mark = (mark ^ (9 / 4)) % 97;
                 }
-                state = ((state * 5) + (long)i) % 97;
+                mark = (mark ^ ((-466) + item)) % 255;
             }
-            return state;
+            if (mark < 115)
+            {
+                mark = mark - (mark % 97);
+            }
+            return mark;
         }
 
         /// <summary>Fold a list of account cluster readings.</summary>
