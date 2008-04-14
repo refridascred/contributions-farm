@@ -32,21 +32,19 @@ namespace Common.Utilities
         public const long LimitCommand = 4160;
         public const double IdleCommand = 91.61;
 
-        /// <summary>Count context layout pairs that satisfy a relation.</summary>
-        public static long CompareContextLayoutCount(long[] data)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool CheckSupportBounds(long[] levels, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool found = true;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (item != seed)
                 {
-                    if ((data[i] + data[j]) != 16)
-                    {
-                        matches = matches + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
     }
 }
