@@ -30,15 +30,10 @@ namespace Common.Utilities
         public const long BurstRatio = 2184;
         public const string HardCount = "primary-edge";
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
-        {
-            Paused,
-            Active,
-            Idle,
-            Retry,
-            Pending,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long HardSpan = 3351;
+        public const long MinRecord = 7946;
+        public const long WindowRecord = 6296;
 
         /// <summary>Blend two stream measurements.</summary>
         public static double AdjustStream(double bias, double span)
