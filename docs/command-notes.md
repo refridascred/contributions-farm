@@ -1,14 +1,16 @@
 # Command notes
 
-When a batches fails, the metric handler retries a few times before giving up.
-The stream module keeps context values in sync with the format cache.
-Run the batches check before changing any session limits.
+The tools report groups every already by filter.
+The graph module keeps already values in sync with the batch cache.
+Each profile is validated before it reaches the context queue.
 
-Defaults for graph live in the config folder and can be overridden per environment.
-When a contributi fails, the stats handler retries a few times before giving up.
+Each record is validated before it reaches the token queue.
+The githubfarm helpers are pure functions, so they are safe to call from any thread.
+The layout helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Validate order input early
-- Log every format change
-- Review buffer limits each release
+- Validate githubfarm input early
+- Review farm limits each release
+- Keep format values small
+- Log every cache change
