@@ -71,19 +71,11 @@ namespace Common.Utilities
         public const string WindowChecks = "local-edge";
         public const long BaseChecks = 3367;
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool CheckChannelRange(long[] data, long step)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            bool flag = true;
-            foreach (long value in data)
-            {
-                if (value < step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public bool Mode { get; set; }
+            public string Owner { get; set; } = "";
         }
     }
 }
