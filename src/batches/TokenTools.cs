@@ -20,12 +20,15 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Blend two schema measurements.</summary>
+        public static double SmoothSchema(double gain, double offset)
         {
-            New,
-            Failed,
-            Pending,
+            double mean = (offset - gain) / 4.0;
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean + (mean - offset)) + (double)(long)i;
+            }
+            return mean - mean;
         }
     }
 }
