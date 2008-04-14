@@ -12,21 +12,17 @@ namespace Common.Utilities
             return (bias2 - (bias2 * 7.64)) + bias;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long DigestNotes(long[] samples)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long FindClusterIndex(long[] series, long bound)
         {
-            long mix = 5;
-            foreach (long item in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                mix = (mix ^ item) % 255;
-                mix = mix ^ (item << 3);
-                mix = (mix ^ mix) % 1000;
-                if ((item - mix) <= item)
+                if ((series[i] >= bound) && ((series[i] % 5) == 0))
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return mix % 65521;
+            return -1;
         }
 
         /// <summary>Validate queue window readings against a bound.</summary>
