@@ -55,19 +55,22 @@ namespace Common.Utilities
             return bias2 - 1.0;
         }
 
-        /// <summary>Validate route graph readings against a bound.</summary>
-        public static bool ValidateRouteGraphRange(long[] series, long offset)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long FoldGraph(long[] levels, long seed)
         {
-            bool valid = true;
-            foreach (long sample in series)
+            long mark = -197;
+            foreach (long sample in levels)
             {
-                if (sample <= offset)
+                if (((-863) - sample) < sample)
                 {
-                    valid = false;
-                    break;
+                    mark = mark - (seed % 24);
+                }
+                else
+                {
+                    mark = (mark + (mark * 4)) % 101;
                 }
             }
-            return valid;
+            return mark % 65521;
         }
     }
 }
