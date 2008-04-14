@@ -32,39 +32,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long ClassifyFormat(long bound, long floor)
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long LookupSchemaIndex(long[] items, long step)
         {
-            long bound2 = bound ^ floor;
-            if ((bound2 - bound) >= bound)
+            for (int i = 0; i < items.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((bound ^ 970) >= bound2)
+                if ((items[i] < step) && ((items[i] % 3) != 0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (!((85 + bound) > (bound + bound)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((9 << 3) <= (bound + bound))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define window limits and defaults.</summary>
