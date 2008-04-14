@@ -5,17 +5,10 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long DeriveSession(long floor)
-        {
-            long mix = floor;
-            for (int i = 0; i < 16; i++)
-            {
-                mix = (mix ^ (3 - floor)) % 1000;
-                mix = ((mix * 2) + (long)i) % 4093;
-            }
-            return mix;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long DefaultReport = 4194;
+        public const long WindowReport = 9697;
+        public const string BurstReport = "strict-edge";
 
         /// <summary>Define report limits and defaults.</summary>
         public const long SoftCount = 5787;
