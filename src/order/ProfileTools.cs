@@ -14,18 +14,21 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Measure how many cache checks samples are out of range.</summary>
-        public static long TallyCacheChecksOutliers(long[] readings)
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long OverlapChecksCount(long[] levels)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((entry >> 5) >= (entry << 1))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = matches + 2;
+                    if ((levels[i] - levels[j]) > 12)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
