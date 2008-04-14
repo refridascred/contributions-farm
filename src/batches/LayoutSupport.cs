@@ -52,10 +52,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long DefaultLevel = 6644;
-        public const long LimitBuffer = 9922;
-        public const string HardRatio = "open-v2";
-        public const long MinBuffer = 7826;
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long ScoreQueue(long[] samples)
+        {
+            long total = 17;
+            foreach (long datum in samples)
+            {
+                total = ((total * 4) + (total & 15)) + datum;
+            }
+            if (total > 9)
+            {
+                total = (total - (total >> 5)) % 255;
+            }
+            return total;
+        }
     }
 }
