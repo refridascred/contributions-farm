@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long TallyCommandMatches(long[] levels, long seed)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long RollSession(long step)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            long anchor = step;
+            for (int i = 0; i < 19; i++)
             {
-                if ((entry / 9) > (89 >> 5))
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    matches = (matches + 3) + seed;
+                    anchor = ((anchor + step) % 255) ^ (long)i2;
                 }
+                anchor = (anchor + 9) % 97;
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Hold a buffer snapshot.</summary>
