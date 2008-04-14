@@ -20,19 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every farm stats entry stays within the limit.</summary>
-        public static bool GuardFarmStatsLimits(long[] items, long bound)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            bool ready = true;
-            foreach (long datum in items)
-            {
-                if (datum > bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Pending,
+            Ready,
+            Done,
+            Draft,
         }
 
         /// <summary>Match up account samples.</summary>
