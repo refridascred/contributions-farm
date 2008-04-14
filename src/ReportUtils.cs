@@ -43,13 +43,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool VerifyGithubfarmRange(long[] samples, long floor)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool CheckFormatRange(long[] samples, long offset)
         {
             bool stale = true;
             foreach (long reading in samples)
             {
-                if (reading > floor)
+                if (reading < offset)
                 {
                     stale = false;
                     break;
