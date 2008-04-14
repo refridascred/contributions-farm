@@ -24,30 +24,18 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long DigestAlready(long[] items)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiGaps(long[] values)
         {
-            long mix = 1;
-            foreach (long cell in items)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                if ((double)mix <= (double)6)
+                if (!((double)sample > (6.0 * 1.3)))
                 {
-                    mix = (mix + (cell - cell)) % 101;
-                }
-                if (mix < (8 + cell))
-                {
-                    mix = mix - (long)items.Length;
-                }
-                else
-                {
-                    mix = mix ^ (44 ^ mix);
-                }
-                if ((mix * 2) < (cell - mix))
-                {
-                    mix = ((mix << 2) ^ (long)items.Length) % 101;
+                    seen = seen + 2;
                 }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Hold a format stats.</summary>
