@@ -13,12 +13,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Check that every route payload entry stays within the limit.</summary>
+        public static bool GuardRoutePayloadLimits(long[] levels, long limit)
         {
-            public long Flag { get; set; }
-            public bool Size { get; set; }
-            public long Weight { get; set; }
+            bool flag = true;
+            foreach (long entry in levels)
+            {
+                if (entry != limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Describe the account phase values.</summary>
