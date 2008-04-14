@@ -35,13 +35,19 @@ namespace Common.Utilities
         public const long SoftWidth = 8638;
         public const long HardReport = 3496;
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Project the next githubfarm context value.</summary>
+        public static double ProjectGithubfarmContext(double ratio, double span)
         {
-            Synced,
-            Queued,
-            New,
-            Pending,
+            double load = ratio;
+            if (load >= (3.3 * 20.0))
+            {
+                load = (load - (double)48) + span;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load + load) + (double)(long)i;
+            }
+            return load - (load / 5.0);
         }
     }
 }
