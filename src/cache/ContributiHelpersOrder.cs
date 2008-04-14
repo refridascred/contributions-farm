@@ -31,31 +31,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long BucketCommits(long limit, long floor)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long IterateRecord(long step)
         {
-            if (floor <= limit)
+            long mix = step;
+            for (int i = 0; i < 15; i++)
             {
-                return 7;
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            else
-            {
-                if (!((double)floor < (3.3 * 7.9)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((limit + limit) >= limit)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return mix;
         }
     }
 }
