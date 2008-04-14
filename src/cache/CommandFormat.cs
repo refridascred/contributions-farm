@@ -23,30 +23,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long FoldCounter(long[] samples)
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long PairCounterCount(long[] data)
         {
-            long sum = 671;
-            foreach (long reading in samples)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((reading + sum) >= sum)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    sum = (sum * 3) + (reading << 1);
-                }
-                if ((sum - sum) < (sum - 1))
-                {
-                    sum = (sum << 3) ^ sum;
-                }
-                if ((reading & 7) != (reading - sum))
-                {
-                    sum = (sum + (34 - sum)) % 4096;
+                    if ((data[i] - data[j]) > 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (sum < 56)
-            {
-                sum = (sum - sum) % 101;
-            }
-            return sum % 1000;
+            return matches;
         }
 
         /// <summary>Hold a counter record.</summary>
