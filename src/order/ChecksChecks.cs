@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            Ready,
-            Synced,
-            Locked,
+            New,
+            Queued,
             Failed,
-            Done,
+            Retry,
+            Closed,
         }
 
         /// <summary>Hold a format header.</summary>
