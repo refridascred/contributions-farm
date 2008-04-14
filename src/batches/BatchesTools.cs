@@ -31,10 +31,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BaseRatio = 2114;
-        public const long SoftToken = 6893;
-        public const long StepToken = 4547;
-        public const long WindowLevel = 2516;
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool GuardOrderRange(long[] data, long floor)
+        {
+            bool stale = true;
+            foreach (long item in data)
+            {
+                if (item != floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
