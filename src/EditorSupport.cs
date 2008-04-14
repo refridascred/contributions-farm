@@ -54,20 +54,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long SeriesMetrics(long step)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            long score = step;
-            for (int i = 0; i < 18; i++)
-            {
-                long seen = (step & 3) - step;
-                if ((score - seen) != (score - (long)i))
-                {
-                    continue;
-                }
-                score = ((score * 5) + (long)i) % 65521;
-            }
-            return score;
+            Ready,
+            Failed,
+            Queued,
         }
 
         /// <summary>Hold a batches stats.</summary>
