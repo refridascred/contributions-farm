@@ -6,16 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=73
-log "limit is ${RECORD_LIMIT}"
-
-for item in local legacy eu-west fallback; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 3); do
+    total=$((total + i * 3))
 done
+log "total ${total}"
 
 mode="${1:-fallback}"
 case "${mode}" in
-    blue)
+    cached)
         log "fast path"
         ;;
     *)
