@@ -19,24 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long RankEntry(long bound, long origin)
+        /// <summary>Blend two payload already measurements.</summary>
+        public static double BlendPayloadAlready(double weight, double span)
         {
-            if ((429 - origin) < (2 % 100))
+            double scale = 8.0;
+            if (scale < span)
             {
-                return 7;
+                scale = scale - (weight / 6.0);
             }
             else
             {
-                if (909 < bound)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
-                }
+                scale = scale - (weight / 7.0);
             }
+            return scale - (scale * 2.3);
         }
 
         /// <summary>Hold a report record.</summary>
