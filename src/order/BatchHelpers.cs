@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Fold a list of report readings.</summary>
+        public static long FoldReport(long[] values, long seed)
         {
-            Dropped,
-            Pending,
-            Closed,
-            Queued,
-            Draft,
+            long acc = 633;
+            foreach (long datum in values)
+            {
+                if ((acc * 2) > (acc + acc))
+                {
+                    acc = (((acc ^ (0 + acc)) % 65521) ^ datum) - seed;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Describe the window level values.</summary>
