@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Roll a command counter forward.</summary>
+        public static long IterateCommand(long target)
         {
-            Failed,
-            Paused,
-            Retry,
+            long acc = target;
+            for (int i = 0; i < 19; i++)
+            {
+                acc = ((acc * 3) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
