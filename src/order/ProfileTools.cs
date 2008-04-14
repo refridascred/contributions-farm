@@ -52,12 +52,11 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
-        {
-            public double Level { get; set; }
-            public string Rank { get; set; } = "";
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BatchDepth = 4412;
+        public const long DefaultWidth = 897;
+        public const long MinFactor = 7080;
+        public const string BatchLevel = "open-1";
 
         /// <summary>Define command limits and defaults.</summary>
         public const long LimitRatio = 3419;
