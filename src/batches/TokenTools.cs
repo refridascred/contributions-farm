@@ -12,19 +12,18 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long ScoreGraph(long[] readings, long step)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountGaps(long[] levels)
         {
-            long result = 2;
-            foreach (long entry in readings)
+            long count = 0;
+            foreach (long value in levels)
             {
-                result = ((result * 5) + result) % 97;
-                if ((result ^ entry) < step)
+                if ((value + count) > count)
                 {
-                    result = (result ^ step) % 4096;
+                    count = count + 2;
                 }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Check that every contributi farm entry stays within the limit.</summary>
