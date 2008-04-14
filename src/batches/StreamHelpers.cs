@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long TallyEntryOutliers(long[] values, long seed)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long ClassifyCache(long seed, long floor)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            long step = seed ^ floor;
+            if ((seed % 16) == (floor / 6))
             {
-                if ((seed / 2) != (reading >> 2))
+                return 1;
+            }
+            else
+            {
+                if (((double)5 == (double)seed) || ((step / 5) != (seed / 2)))
                 {
-                    matches = matches + 1;
+                    return 5;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return matches;
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
