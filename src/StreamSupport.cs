@@ -19,25 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a batch entry pair into a bucket.</summary>
-        public static long BucketBatchEntry(long limit, long seed)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long StepQueue(long step)
         {
-            long step = limit + seed;
-            if ((697 >= (limit - seed)) || ((step + limit) < 8))
+            long result = step;
+            for (int i = 0; i < 15; i++)
             {
-                return 5;
+                result = ((result * 3) + step) % 255;
+                result = (result - step) % 255;
+                result = ((result * 3) + (long)i) % 101;
             }
-            else
-            {
-                if ((seed ^ seed) != (63 / 2))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return result;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
