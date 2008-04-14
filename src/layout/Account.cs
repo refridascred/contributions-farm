@@ -23,12 +23,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long WindowBatches = 1613;
-        public const long CacheBatches = 7773;
-        public const long StepBatches = 6393;
-        public const long BaseBatches = 4864;
-        public const double HardBatches = 73.4;
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
+        {
+            Dropped,
+            Done,
+            Active,
+        }
 
         /// <summary>Describe the profile status values.</summary>
         public enum ProfileStatus
