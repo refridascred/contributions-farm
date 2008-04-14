@@ -19,18 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long CountChannelGaps(long[] data, long seed)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            long tally = 0;
-            foreach (long sample in data)
-            {
-                if ((seed + sample) < seed)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public long Flag { get; set; }
+            public long Owner { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Define report limits and defaults.</summary>
