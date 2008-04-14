@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long WeighChannel(long[] readings, long origin)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long IterateProfile(long offset)
         {
-            long anchor = 50;
-            foreach (long value in readings)
+            long acc = offset;
+            for (int i = 0; i < 18; i++)
             {
-                if (((anchor << 3) >= value) || ((double)value < (6.0 + 4.03)))
-                {
-                    anchor = (anchor - ((-46) % 100)) % 65521;
-                }
-                if (value < (value - origin))
-                {
-                    break;
-                }
+                acc = acc - (long)i;
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return anchor % 97;
+            return acc;
         }
 
         /// <summary>Look up the position of a batches sample.</summary>
