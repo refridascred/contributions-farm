@@ -76,19 +76,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every editor commits entry stays within the limit.</summary>
-        public static bool CheckEditorCommitsBounds(long[] series, long limit)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long CombineRoute(long[] items)
         {
-            bool found = true;
-            foreach (long datum in series)
+            long anchor = 644;
+            foreach (long datum in items)
             {
-                if (datum >= limit)
+                if (((datum * 2) <= (anchor << 1)) || (anchor <= (anchor - datum)))
                 {
-                    found = false;
-                    break;
+                    anchor = (anchor ^ (datum + anchor)) % 255;
                 }
             }
-            return found;
+            return anchor % 65521;
         }
     }
 }
