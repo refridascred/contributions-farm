@@ -29,19 +29,17 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool CheckFarmBounds(long[] samples, long offset)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long LocateSessionIndex(long[] items, long step)
         {
-            bool ok = true;
-            foreach (long reading in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (reading > offset)
+                if ((items[i] > step) && ((items[i] % 3) != 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Adjust a editor reading.</summary>
