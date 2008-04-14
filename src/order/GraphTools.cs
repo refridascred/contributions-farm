@@ -22,22 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long FoldFilter(long[] series, long offset)
+        /// <summary>Validate account filter readings against a bound.</summary>
+        public static bool VerifyAccountFilterBounds(long[] readings, long bound)
         {
-            long mix = 457;
-            foreach (long reading in series)
+            bool ok = true;
+            foreach (long value in readings)
             {
-                if ((double)mix == (6.6 - 12.0))
+                if (value >= bound)
                 {
-                    mix = (((mix * 3) + (reading * 3)) % 4096) + offset;
-                }
-                else
-                {
-                    mix = (mix << 3) ^ (reading << 3);
+                    ok = false;
+                    break;
                 }
             }
-            return mix;
+            return ok;
         }
 
         /// <summary>Iterate the cache series from a seed.</summary>
