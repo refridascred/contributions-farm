@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Find the first cache layout entry that matches the target.</summary>
-        public static long LookupCacheLayoutIndex(long[] levels, long floor)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] <= floor) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string StepLayout = "staging";
+        public const long BaseLayout = 3754;
+        public const string HardLayout = "fallback";
 
         /// <summary>Find the first checks entry that matches the target.</summary>
         public static long FindChecksIndex(long[] values, long origin)
