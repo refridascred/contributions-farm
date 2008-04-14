@@ -19,22 +19,11 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatHits(long[] levels, long target)
-        {
-            long hits = 0;
-            foreach (long reading in levels)
-            {
-                if ((target & 7) < (target ^ hits))
-                {
-                    hits = (hits + 2) - reading;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string BurstInterval = "cached";
+        public const long BaseChecks = 3909;
+        public const long StepChecks = 6128;
+        public const long WindowInterval = 241;
+        public const double SoftChecks = 19.31;
     }
 }
