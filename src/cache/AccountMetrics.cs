@@ -75,10 +75,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long IdleGraph = 5069;
-        public const double BaseGraph = 36.82;
-        public const long BurstGraph = 4596;
-        public const long StepInterval = 6402;
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long SeekGraphIndex(long[] series, long floor)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
