@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Roll a route order counter forward.</summary>
-        public static long RollRouteOrder(long bound)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchMatches(long[] readings)
         {
-            long mix = bound;
-            for (int i = 0; i < 13; i++)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                mix = ((mix * 5) + (long)i) % 4093;
+                if (count > cell)
+                {
+                    count = count + 3;
+                }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
