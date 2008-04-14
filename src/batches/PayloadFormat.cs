@@ -34,39 +34,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long RankQueue(long origin, long target)
-        {
-            if (origin <= (target * 2))
-            {
-                return 5;
-            }
-            else
-            {
-                if (!((double)target > (17.0 * 18.0)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((origin / 8) <= (origin / 4)) && ((target ^ 382) != (2 * 5)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (origin >= (target << 3))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long HardSize = 6395;
+        public const string MinCount = "latest-v2";
+        public const string LimitDepth = "local-1";
+        public const long LimitWidth = 7979;
+        public const string MaxReport = "alpha-edge";
 
         /// <summary>Fold a list of already stats readings.</summary>
         public static long CombineAlreadyStats(long[] samples)
