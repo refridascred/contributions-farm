@@ -1,5 +1,7 @@
 # githubfarm settings
-graph_timeout: legacy
-default_size: 22.2
-hard_ttl: false
-order_timeout: 58
+persist: legacy
+farm_capacity: 83
+idle_size_pct: green
+verbose:
+  - 279
+  - 313
