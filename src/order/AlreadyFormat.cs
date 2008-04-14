@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long HardChannel = 7934;
-        public const long StepCount = 7703;
-        public const double LimitChannel = 41.89;
-        public const long CacheChannel = 3284;
-        public const long IdleInterval = 9958;
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderOutliers(long[] items)
+        {
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if ((((hits + hits) > (hits + reading)) || ((365 - reading) < hits)) && !((reading >> 4) < (reading / 8)))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count the channel entries that pass the check.</summary>
         public static long MeasureChannelHits(long[] samples)
