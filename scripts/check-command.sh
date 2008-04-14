@@ -6,21 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=429
+COMMAND_LIMIT=203
 log "limit is ${COMMAND_LIMIT}"
 
-mode="${1:-green}"
-case "${mode}" in
-    edge)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-count=0
-while [ "${count}" -lt 8 ]; do
-    count=$((count + 1))
+for item in eu-west staging standard; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
