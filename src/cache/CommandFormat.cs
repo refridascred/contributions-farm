@@ -31,23 +31,12 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportOutliers(long[] values)
-        {
-            long matches = 0;
-            foreach (long datum in values)
-            {
-                if ((double)datum > 9.44)
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string CacheScore = "primary-edge";
+        public const double IdleFactor = 20.12;
+        public const double MaxRatio = 8.59;
+        public const double MinDepth = 40.5;
+        public const string DefaultFactor = "local-1";
 
         /// <summary>Locate a metric reading by value.</summary>
         public static long LocateMetricIndex(long[] items, long origin)
