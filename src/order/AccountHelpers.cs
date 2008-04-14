@@ -12,22 +12,21 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long WeighNotes(long[] data)
+        /// <summary>Match up token samples.</summary>
+        public static long CompareTokenCount(long[] levels)
         {
-            long acc = 7;
-            foreach (long item in data)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (acc < (item + item))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    acc = ((acc * 3) + (acc / 2)) % 97;
+                    if ((levels[i] + levels[j]) == 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (acc < 0)
-            {
-                acc = ((acc * 5) + (acc * 5)) % 65521;
-            }
-            return acc;
+            return matches;
         }
 
         /// <summary>Hold a window info.</summary>
