@@ -1,9 +1,7 @@
-id,token,level
-1,primary,62.91
-2,167,fallback
-3,999,978
-4,latest,standard
-5,latest,54.11
-6,94.77,blue
-7,364,19.78
-8,cached,116
+id,region,label
+1,168,746
+2,cached,41.0
+3,green,338
+4,fallback,446
+5,180,296
+6,edge,708
