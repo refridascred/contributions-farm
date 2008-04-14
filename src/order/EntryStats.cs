@@ -16,15 +16,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long WeighAlready(long[] series, long origin)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheGaps(long[] samples)
         {
-            long state = 92;
-            foreach (long item in series)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                state = ((state * 2) + (origin + 1)) ^ item;
+                if (!!(9 < entry))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return state % 65521;
+            return hits;
         }
 
         /// <summary>Describe the metric state values.</summary>
