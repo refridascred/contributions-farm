@@ -18,21 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long MatchClusterCount(long[] series)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long CountContextMatches(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (entry <= ((long)series.Length + matches))
                 {
-                    if ((series[i] + series[j]) == 1)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = matches + 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Hold a layout summary.</summary>
