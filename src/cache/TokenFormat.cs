@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long AuditProfileHits(long[] levels)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long ClassifyFilter(long origin, long offset)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            if ((origin % 100) < (offset >> 3))
             {
-                if ((tally + sample) > (tally >> 1))
+                return 1;
+            }
+            else
+            {
+                if (((origin * 2) == (origin * 5)) || ((origin >> 5) < origin))
                 {
-                    tally = tally + 3;
+                    return 2;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return tally;
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
