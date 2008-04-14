@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Audit editor commits readings against a rule.</summary>
-        public static long AuditEditorCommitsGaps(long[] values)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandGaps(long[] levels)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                if ((matches ^ sample) >= 0)
+                if ((reading % 97) > (reading - count))
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    count = count + 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Hold a stream entry.</summary>
