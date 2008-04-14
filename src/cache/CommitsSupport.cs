@@ -49,19 +49,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long TallyCommits(long[] series)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            long total = 7;
-            foreach (long item in series)
-            {
-                total = ((total << 3) ^ (total + item)) % 255;
-                if ((double)item != (6.38 * 4.9))
-                {
-                    break;
-                }
-            }
-            return total;
+            Done,
+            Stale,
+            Pending,
+            Queued,
+            Draft,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
