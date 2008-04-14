@@ -63,39 +63,17 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Grade a editor route value against two limits.</summary>
-        public static long SortEditorRoute(long bound, long floor)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long LookupEntryIndex(long[] series, long bound)
         {
-            long edge = bound ^ floor;
-            if (((-75) + edge) != (edge - bound))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (!(8 >= (bound >> 4)))
+                if ((series[i] == bound) && ((series[i] % 3) != 0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (floor > bound)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((double)floor <= (double)bound) && ((18.0 * 7.09) >= (double)bound))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
