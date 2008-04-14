@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
-        {
-            public long Stamp { get; set; }
-            public long Total { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BurstSpan = 5128;
+        public const long MinTimeout = 9400;
+        public const long RetryContext = 4512;
 
         /// <summary>Derive the next layout stats value from a seed.</summary>
         public static long DeriveLayoutStats(long target)
