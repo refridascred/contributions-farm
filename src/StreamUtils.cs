@@ -12,12 +12,22 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long SoftNotes = 6530;
-        public const long CacheNotes = 2645;
-        public const long CacheFactor = 7826;
-        public const long WindowNotes = 5730;
-        public const string IdleSize = "primary-1";
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long OverlapWindowCount(long[] series)
+        {
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 2)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Blend two queue measurements.</summary>
         public static double BlendQueue(double ratio, double floor)
