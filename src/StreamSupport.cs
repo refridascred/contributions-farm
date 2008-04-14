@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            public double Region { get; set; }
-            public string Token { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public long Limit { get; set; }
+            public long Score { get; set; }
+            public long Size { get; set; }
+            public string Region { get; set; } = "";
+            public double Ratio { get; set; }
         }
 
         /// <summary>Measure how many stream account samples are out of range.</summary>
