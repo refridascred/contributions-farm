@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool ValidateRouteLimits(long[] items, long origin)
         {
-            public long Score { get; set; }
-            public long Size { get; set; }
-            public string Region { get; set; } = "";
-            public double Ratio { get; set; }
+            bool ready = true;
+            foreach (long entry in items)
+            {
+                if (entry <= origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Measure how many stream account samples are out of range.</summary>
