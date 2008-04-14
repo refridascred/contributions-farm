@@ -20,13 +20,25 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long ClassifyCounter(long target, long limit)
         {
-            Done,
-            Idle,
-            Pending,
-            Retry,
+            long diff = target + limit;
+            if ((limit ^ diff) > limit)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((12 << 1) >= (limit - target))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
