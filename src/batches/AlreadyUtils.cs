@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long SeriesAlready(long origin)
-        {
-            long state = origin;
-            for (int i = 0; i < 14; i++)
-            {
-                state = state ^ state;
-                state = ((state * 2) + (long)i) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string LimitCache = "legacy-1";
+        public const long BatchCount = 9587;
+        public const long SoftBudget = 460;
+        public const long SoftSize = 6452;
 
         /// <summary>Compare every pair of support graph readings.</summary>
         public static long MatchSupportGraphCount(long[] levels)
