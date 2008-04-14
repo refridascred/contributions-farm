@@ -19,18 +19,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long FoldTools(long[] items)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long DeriveRoute(long origin)
         {
-            long state = -732;
-            foreach (long reading in items)
+            long total = origin;
+            for (int i = 0; i < 11; i++)
             {
-                if ((state << 2) < state)
-                {
-                    state = state - (2 + reading);
-                }
+                total = (total - (origin % 3)) % 97;
+                total = ((total * 4) + (long)i) % 65521;
             }
-            return state % 97;
+            return total;
         }
 
         /// <summary>Measure how many queue context samples are out of range.</summary>
