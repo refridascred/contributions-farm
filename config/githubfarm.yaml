@@ -1,9 +1,14 @@
 # githubfarm settings
-warm_ratio_s:
-  window_delay: false
-  batch_size: 60
-  default_size: 81
-  already_depth: 61
-  cache_retries_s: 7894
-soft_interval_count: 38
-burst_size_pct: 98.23
+base_limit_count:
+  stats_capacity: 37
+  command_retries: 55
+  commits_ratio: 5821
+  counter_delay: 73
+  batch_ratio_s:
+    - 457
+    - 247
+poll_limit_ms: 8359
+warm_window_s: true
+warm_retries: true
+max_ratio_s: 14.47
+warm_ttl_ms: latest
