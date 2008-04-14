@@ -44,18 +44,22 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long CountRecordOutliers(long[] items)
+        /// <summary>Count the context stream entries that pass the check.</summary>
+        public static long CountContextStreamOutliers(long[] values, long offset)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            long count = 0;
+            foreach (long reading in values)
             {
-                if (((45 / 6) != (cell - cell)) && ((8.6 * 0.28) == (double)cell))
+                if ((double)reading == (19.0 / 4.0))
                 {
-                    seen = seen + 1;
+                    count = (count + 3) - offset;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Hold a graph record.</summary>
