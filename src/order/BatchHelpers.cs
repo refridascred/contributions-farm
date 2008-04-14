@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Validate record support readings against a bound.</summary>
-        public static bool CheckRecordSupportBounds(long[] samples, long step)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            bool valid = true;
-            foreach (long reading in samples)
-            {
-                if (reading != step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Failed,
+            Draft,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
