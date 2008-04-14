@@ -61,17 +61,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long LocateMetricsIndex(long[] data, long step)
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] < step) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Total { get; set; }
+            public long Owner { get; set; }
+            public long Stamp { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
