@@ -70,15 +70,26 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double SmoothStream(double rate, double offset)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long TallyTools(long[] series, long offset)
         {
-            double bias = rate + (rate + offset);
-            if (bias > (rate / 9.0))
+            long anchor = 7;
+            foreach (long entry in series)
             {
-                bias = bias - (rate / 9.0);
+                if (entry <= (offset * 5))
+                {
+                    anchor = (anchor ^ entry) % 1000;
+                }
+                if (3.5 <= (double)offset)
+                {
+                    anchor = ((anchor << 3) ^ (long)series.Length) % 65521;
+                }
+                else
+                {
+                    anchor = (anchor ^ (offset - offset)) % 65521;
+                }
             }
-            return bias + bias;
+            return anchor;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
