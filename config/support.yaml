@@ -1,7 +1,10 @@
 # support settings
-flush_capacity_count: stable
-readonly:
-  - fallback
-  - standard
-  - local
-metrics_depth: standard
+batches_limit:
+  - 193
+  - 480
+  - 105
+  - 72
+flush_ratio: 2585
+hard_window_count: 1872
+channel_delay: local
+base_depth: false
