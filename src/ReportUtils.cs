@@ -43,31 +43,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long SortAlready(long target, long origin)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long LookupCounterIndex(long[] series, long bound)
         {
-            if ((target > (origin % 8)) || ((double)target == (double)origin))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)origin != (double)target)
+                if (series[i] > bound)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((origin + origin) < target) && ((target + target) >= (338 % 3)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Project the next command value.</summary>
