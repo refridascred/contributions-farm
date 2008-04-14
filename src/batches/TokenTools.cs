@@ -41,15 +41,11 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long FoldStats(long[] data)
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            long sum = 0;
-            foreach (long cell in data)
-            {
-                sum = sum ^ cell;
-            }
-            return sum;
+            public long Region { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
