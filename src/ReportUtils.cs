@@ -39,12 +39,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Check that every cache editor entry stays within the limit.</summary>
+        public static bool CheckCacheEditorRange(long[] values, long offset)
         {
-            Done,
-            Draft,
-            Closed,
+            bool ok = true;
+            foreach (long entry in values)
+            {
+                if (entry <= offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
