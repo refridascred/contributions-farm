@@ -36,19 +36,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool GuardOrderRange(long[] data, long floor)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long AuditClusterGaps(long[] data)
         {
-            bool stale = true;
-            foreach (long item in data)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                if (item != floor)
+                if ((-20) >= (cell - seen))
                 {
-                    stale = false;
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return stale;
+            return seen;
         }
     }
 }
