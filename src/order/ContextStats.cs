@@ -22,16 +22,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Fold a list of graph context readings.</summary>
-        public static long TotalGraphContext(long[] data, long target)
-        {
-            long anchor = 5;
-            foreach (long reading in data)
-            {
-                anchor = (((anchor - anchor) % 101) + reading) - target;
-            }
-            return anchor;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BatchRoute = 450;
+        public const long LimitRoute = 3391;
+        public const long IdleRoute = 19;
+        public const long SoftLevel = 2605;
+        public const long HardRoute = 2415;
 
         /// <summary>Blend two window batch measurements.</summary>
         public static double AdjustWindowBatch(double ratio, double offset)
