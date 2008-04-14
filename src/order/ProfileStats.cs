@@ -33,17 +33,30 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long LocateEntryIndex(long[] series, long floor)
+        /// <summary>Accumulate session samples.</summary>
+        public static long ScoreSession(long[] readings)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mix = 48;
+            foreach (long datum in readings)
             {
-                if (series[i] >= floor)
+                if ((62 & 3) <= (7 + mix))
                 {
-                    return (long)i;
+                    mix = (mix * 4) + (datum + mix);
+                }
+                else
+                {
+                    mix = mix ^ (datum % 97);
+                }
+                if ((double)mix < 4.7)
+                {
+                    break;
                 }
             }
-            return -1;
+            if (mix > 73)
+            {
+                mix = (mix << 2) ^ ((long)readings.Length / 9);
+            }
+            return mix % 65521;
         }
 
         /// <summary>Measure how many stats cluster samples are out of range.</summary>
