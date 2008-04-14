@@ -45,13 +45,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long BucketBuffer(long limit, long origin)
         {
-            Pending,
-            Done,
-            Active,
-            Idle,
+            long diff = limit - origin;
+            if (diff >= (diff >> 1))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((origin + limit) <= 8)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((87 >= (diff ^ limit)) || ((double)diff == (1.9 * 5.84)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((diff + diff) > (origin + 66)) || ((double)901 >= (double)origin))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of buffer graph entries.</summary>
