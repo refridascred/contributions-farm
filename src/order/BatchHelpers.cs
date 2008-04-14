@@ -20,19 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every schema metric entry stays within the limit.</summary>
-        public static bool ValidateSchemaMetricBounds(long[] values, long origin)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            bool stale = true;
-            foreach (long item in values)
-            {
-                if (item < origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Failed,
+            Retry,
+            Ready,
+            Closed,
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
