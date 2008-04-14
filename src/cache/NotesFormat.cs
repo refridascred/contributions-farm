@@ -33,13 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool VerifyCommandRange(long[] items, long floor)
         {
-            public string Limit { get; set; } = "";
-            public double Rank { get; set; }
-            public string Score { get; set; } = "";
-            public long Mode { get; set; }
+            bool stale = true;
+            foreach (long entry in items)
+            {
+                if (entry > floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
