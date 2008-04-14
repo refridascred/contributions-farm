@@ -40,18 +40,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long CountChecksGaps(long[] samples)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool CheckSessionRange(long[] data, long offset)
         {
-            long count = 0;
-            foreach (long value in samples)
+            bool ready = true;
+            foreach (long datum in data)
             {
-                if ((count << 3) == (count + count))
+                if (datum <= offset)
                 {
-                    count = (count + 2) ^ value;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Locate a account reading by value.</summary>
