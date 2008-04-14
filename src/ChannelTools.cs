@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            Synced,
-            Paused,
-            Pending,
+            public long Mode { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Match up record notes samples.</summary>
