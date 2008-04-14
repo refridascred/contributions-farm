@@ -23,11 +23,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            public long Level { get; set; }
-            public double Mode { get; set; }
+            Synced,
+            Pending,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Describe the batch kind values.</summary>
