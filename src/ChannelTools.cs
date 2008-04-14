@@ -29,10 +29,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MaxWidth = 9910;
-        public const long CacheSpan = 4087;
-        public const long BaseFactor = 9479;
-        public const long CacheCommits = 655;
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
+        {
+            Idle,
+            Queued,
+            Active,
+            Closed,
+        }
     }
 }
