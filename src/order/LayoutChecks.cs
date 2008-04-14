@@ -41,18 +41,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long FoldOrder(long[] series)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterHits(long[] levels, long target)
         {
-            long mix = 143;
-            foreach (long datum in series)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                if (((double)73 <= (double)mix) && ((datum << 2) != (datum ^ 60)))
+                if (896 >= (entry % 8))
                 {
-                    mix = (mix * 2) + datum;
+                    matches = (matches + 3) - target;
                 }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
