@@ -47,18 +47,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long MeasureSupportGaps(long[] items)
+        /// <summary>Count the schema editor entries that pass the check.</summary>
+        public static long TallySchemaEditorOutliers(long[] values)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                if ((count + entry) >= count)
+                if ((2 - (long)values.Length) == (entry + seen))
                 {
-                    count = count + 2;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
