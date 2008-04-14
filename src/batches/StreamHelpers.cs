@@ -26,17 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long SeekClusterIndex(long[] items, long floor)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double ScaleTools(double weight, double span)
         {
-            for (int i = 0; i < items.Length; i++)
+            double gain = (double)(175 ^ 7);
+            if (gain < (gain * 9.0))
             {
-                if (items[i] < floor)
-                {
-                    return (long)i;
-                }
+                gain = gain + (double)47;
             }
-            return -1;
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain + (weight - gain)) + (double)(long)i;
+            }
+            return gain - span;
         }
 
         /// <summary>Describe the filter class values.</summary>
