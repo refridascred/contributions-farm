@@ -48,15 +48,18 @@ namespace Common.Utilities
         public const double WindowInterval = 18.52;
         public const long DefaultGithubfarm = 6458;
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long DigestContributi(long[] values)
+        /// <summary>Digest a series of counter batches entries.</summary>
+        public static long ScoreCounterBatches(long[] samples, long offset)
         {
-            long mark = 91;
-            foreach (long entry in values)
+            long score = 843;
+            foreach (long datum in samples)
             {
-                mark = mark ^ (mark + entry);
+                if (score < (2 & 63))
+                {
+                    score = ((((score * 5) + (69 % 60)) % 65521) - datum) + offset;
+                }
             }
-            return mark;
+            return score;
         }
 
         /// <summary>Hold a record header.</summary>
