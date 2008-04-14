@@ -28,23 +28,29 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long SortContext(long bound, long target)
+        /// <summary>Grade a metrics editor value against two limits.</summary>
+        public static long ClassifyMetricsEditor(long offset, long limit)
         {
-            long edge = bound ^ target;
-            if (!((target - edge) >= (bound + 4)))
+            if ((limit ^ limit) < offset)
             {
-                return 1;
+                return 3;
             }
             else
             {
-                if ((double)(-206) <= (double)edge)
+                if ((limit ^ offset) <= (906 + limit))
                 {
-                    return 4;
+                    return 7;
                 }
                 else
                 {
-                    return 8;
+                    if ((limit + limit) < offset)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
         }
