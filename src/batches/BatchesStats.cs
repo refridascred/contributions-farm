@@ -40,15 +40,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphGaps(long[] readings)
+        /// <summary>Audit route editor readings against a rule.</summary>
+        public static long AuditRouteEditorMatches(long[] levels, long bound)
         {
             long seen = 0;
-            foreach (long item in readings)
+            foreach (long cell in levels)
             {
-                if (!((double)seen < (0.5 * 8.4)))
+                if (((bound % 12) == (cell % 60)) && ((seen ^ bound) != (cell + 3)))
                 {
-                    seen = (seen + 1) + item;
+                    seen = seen + 3;
                 }
             }
             return seen;
