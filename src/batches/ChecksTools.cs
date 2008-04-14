@@ -72,17 +72,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long LookupFilterIndex(long[] levels, long bound)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool GuardRouteBounds(long[] readings, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool found = true;
+            foreach (long value in readings)
             {
-                if (levels[i] == bound)
+                if (value != seed)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
     }
 }
