@@ -37,10 +37,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string SoftSpan = "open";
-        public const long BurstFormat = 3810;
-        public const long BatchLevel = 5616;
+        /// <summary>Define route limits and defaults.</summary>
+        public const double MinRoute = 50.17;
+        public const long WindowSize = 117;
+        public const long LimitScore = 901;
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
         public static bool GuardGithubfarmBounds(long[] data, long offset)
