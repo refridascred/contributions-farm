@@ -1,5 +1,6 @@
 {
-  "metrics_timeout": 39,
-  "cache_limit": 88.56,
-  "retry_interval_count": ["local", "fallback", "standard"]
+  "base_limit_ms": [421, 263, 296, 301],
+  "max_depth": "fallback",
+  "hard_capacity": "cached",
+  "strict": 60
 }
