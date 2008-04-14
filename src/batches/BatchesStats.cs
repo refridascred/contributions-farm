@@ -15,13 +15,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long LookupEditorIndex(long[] data, long step)
         {
-            public double Region { get; set; }
-            public string Rank { get; set; } = "";
-            public long Ratio { get; set; }
-            public double Score { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] > step) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
