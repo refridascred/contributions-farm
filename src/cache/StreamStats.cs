@@ -14,11 +14,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Locate a metric counter reading by value.</summary>
+        public static long FindMetricCounterIndex(long[] levels, long floor)
         {
-            public double Level { get; set; }
-            public bool Mode { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
