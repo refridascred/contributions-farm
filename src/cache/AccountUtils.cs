@@ -20,12 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            public long Flag { get; set; }
-            public double Token { get; set; }
-            public bool Level { get; set; }
+            public bool Owner { get; set; }
+            public bool Offset { get; set; }
+            public long Label { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Roll a tools counter forward.</summary>
