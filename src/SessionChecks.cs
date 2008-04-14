@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long SeekBufferIndex(long[] levels, long offset)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string StepCount = "latest-v2";
+        public const long MinSpan = 4034;
+        public const string MinFactor = "cached-edge";
+        public const string BaseBuffer = "alpha";
+        public const double LimitBuffer = 1.56;
 
         /// <summary>Match up token samples.</summary>
         public static long MatchTokenCount(long[] levels)
