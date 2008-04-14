@@ -35,15 +35,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long SeriesTools(long limit)
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            long total = limit;
-            for (int i = 0; i < 4; i++)
-            {
-                total = ((total * 4) + (long)i) % 101;
-            }
-            return total;
+            public string Region { get; set; } = "";
+            public double Mode { get; set; }
+            public long Count { get; set; }
+            public double Weight { get; set; }
         }
     }
 }
