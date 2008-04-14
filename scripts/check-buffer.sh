@@ -6,19 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in standard fallback local; do
-    log "checking ${item}"
-done
-
-BUFFER_LIMIT=391
-log "limit is ${BUFFER_LIMIT}"
-
-mode="${1:-open}"
+mode="${1:-stable}"
 case "${mode}" in
-    cached)
+    strict)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+count=0
+while [ "${count}" -lt 2 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
