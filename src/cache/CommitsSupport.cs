@@ -56,24 +56,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long FoldWindow(long[] series, long seed)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long SeriesRoute(long origin)
         {
-            long mark = 3;
-            foreach (long item in series)
+            long sum = origin;
+            for (int i = 0; i < 4; i++)
             {
-                if ((6.1 * 6.41) >= (double)(long)series.Length)
-                {
-                    mark = (mark << 3) ^ seed;
-                    mark = (mark ^ (9 / 4)) % 97;
-                }
-                mark = (mark ^ ((-466) + item)) % 255;
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            if (mark < 115)
-            {
-                mark = mark - (mark % 97);
-            }
-            return mark;
+            return sum;
         }
 
         /// <summary>Fold a list of account cluster readings.</summary>
