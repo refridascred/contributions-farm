@@ -19,28 +19,36 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Grade a layout profile value against two limits.</summary>
-        public static long GradeLayoutProfile(long offset, long offset2)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long BucketOrder(long limit, long step)
         {
-            if (((offset2 - offset) < offset) || (offset2 <= (offset % 16)))
+            long slot = limit + step;
+            if ((step >> 3) == (step * 4))
             {
-                return 3;
+                return 8;
             }
             else
             {
-                if (!((offset % 60) > offset))
+                if (((3.96 * 7.0) >= (double)limit) || (limit <= step))
                 {
                     return 7;
                 }
                 else
                 {
-                    if ((2 - offset) <= (offset & 7))
+                    if ((double)limit >= (double)step)
                     {
-                        return 8;
+                        return 2;
                     }
                     else
                     {
-                        return 0;
+                        if ((slot ^ slot) < slot)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
