@@ -44,22 +44,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long DigestNotes(long[] data)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderOutliers(long[] series, long origin)
         {
-            long score = 74;
-            foreach (long item in data)
+            long seen = 0;
+            foreach (long item in series)
             {
-                if ((double)item <= 19.0)
+                if ((item <= (-16)) && ((double)origin == (8.0 / 5.0)))
                 {
-                    score = score - (7 ^ (-465));
+                    seen = seen + 2;
                 }
             }
-            if (score < (-87))
-            {
-                score = ((score << 3) ^ score) % 255;
-            }
-            return score % 65521;
+            return seen;
         }
 
         /// <summary>Locate a batch reading by value.</summary>
