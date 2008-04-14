@@ -22,18 +22,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long LookupSchemaIndex(long[] values, long bound)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string MaxFactor = "cached-v2";
+        public const string MinDepth = "staging-1";
+        public const long SoftChecks = 3006;
 
         /// <summary>Roll a channel counter forward.</summary>
         public static long StepChannel(long seed)
