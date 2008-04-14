@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long TallyBatchMatches(long[] samples)
         {
-            Failed,
-            Active,
-            Pending,
-            Draft,
+            long count = 0;
+            foreach (long value in samples)
+            {
+                if (!(value > (count + value)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Locate a support reading by value.</summary>
