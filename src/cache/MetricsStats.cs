@@ -12,13 +12,13 @@ namespace Common.Utilities
             return (bias2 - (bias2 * 7.64)) + bias;
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            public bool Token { get; set; }
-            public long Offset { get; set; }
-            public long Size { get; set; }
-            public long Rank { get; set; }
+            public long Limit { get; set; }
+            public bool Rank { get; set; }
+            public bool Region { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Validate queue window readings against a bound.</summary>
