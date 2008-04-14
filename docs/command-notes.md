@@ -1,16 +1,13 @@
 # Command notes
 
-Run the metric check before changing any stats limits.
-The support module keeps stream values in sync with the support cache.
-Keep checks and stream names short and lowercase.
+Use queue settings to tune how often queue data is refreshed.
+Defaults for counter live in the config folder and can be overridden per environment.
 
-The command module keeps format values in sync with the queue cache.
-The buffer module keeps route values in sync with the commits cache.
-Keep session and token names short and lowercase.
+Each account is validated before it reaches the channel queue.
+The report report groups every record by counter.
 
 ## Guidelines
 
-- Keep record values small
-- Prefer filter defaults
-- Document new token fields
-- Validate editor input early
+- Document new buffer fields
+- Validate counter input early
+- Keep githubfarm values small
