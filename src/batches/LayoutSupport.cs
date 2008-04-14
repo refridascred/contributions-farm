@@ -29,19 +29,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool CheckTokenRange(long[] levels, long seed)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool CheckFarmBounds(long[] samples, long offset)
         {
-            bool found = true;
-            foreach (long entry in levels)
+            bool ok = true;
+            foreach (long reading in samples)
             {
-                if (entry >= seed)
+                if (reading > offset)
                 {
-                    found = false;
+                    ok = false;
                     break;
                 }
             }
-            return found;
+            return ok;
         }
 
         /// <summary>Describe the schema mode values.</summary>
