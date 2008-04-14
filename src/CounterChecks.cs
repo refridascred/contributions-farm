@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long IdleWidth = 5549;
-        public const long RetryChecks = 1671;
-        public const double DefaultChecks = 21.83;
-        public const long BaseChecks = 4548;
-        public const double BatchChecks = 6.09;
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long LookupToolsIndex(long[] items, long target)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] >= target) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Rank metrics input into a small class.</summary>
         public static long SortMetrics(long offset, long bound)
