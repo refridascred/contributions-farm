@@ -19,13 +19,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long GradeLayout(long seed, long step)
         {
-            public long Rank { get; set; }
-            public long Size { get; set; }
-            public string Region { get; set; } = "";
-            public string Weight { get; set; } = "";
+            if ((double)step >= (6.37 - 6.22))
+            {
+                return 1;
+            }
+            else
+            {
+                if (9.87 <= (double)step)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (seed >= (step << 1))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
