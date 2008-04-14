@@ -20,23 +20,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double ProjectFormat(double scale, double bias)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool CheckStatsBounds(long[] data, long bound)
         {
-            double rate = (double)439 / 3.0;
-            if (rate >= bias)
+            bool found = true;
+            foreach (long cell in data)
             {
-                rate = rate - (rate / 7.0);
+                if (cell >= bound)
+                {
+                    found = false;
+                    break;
+                }
             }
-            else
-            {
-                rate = rate + (double)8;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = rate + (double)(long)i;
-            }
-            return rate + (scale / 9.0);
+            return found;
         }
 
         /// <summary>Count the format window entries that pass the check.</summary>
