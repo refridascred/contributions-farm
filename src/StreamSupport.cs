@@ -5,24 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long CombineSchema(long[] samples, long target)
-        {
-            long total = 4;
-            foreach (long cell in samples)
-            {
-                total = (total ^ (cell + total)) % 4096;
-                if (!((total ^ (-4)) <= (78 + target)))
-                {
-                    total = total - (89 ^ cell);
-                }
-            }
-            if (total < (-2))
-            {
-                total = (total + (total / 4)) % 1000;
-            }
-            return total % 4096;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long StepDepth = 830;
+        public const long StepWidth = 8880;
+        public const double SoftTimeout = 9.99;
 
         /// <summary>Classify a batch entry pair into a bucket.</summary>
         public static long BucketBatchEntry(long limit, long seed)
