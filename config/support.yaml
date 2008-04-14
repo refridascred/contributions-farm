@@ -1,8 +1,13 @@
 # support settings
-profile_limit:
+flush_capacity: green
+cache_size:
+  - cached
   - staging
-  - latest
-  - eu-west
-warm_delay: 64.5
-flush_limit_s: 38
-poll_ratio: fallback
+  - staging
+  - fallback
+route_timeout: blue
+idle_depth_ms: true
+payload_depth:
+  - 264
+  - 91
+  - 216
