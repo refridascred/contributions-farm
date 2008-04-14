@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool GuardStatsBounds(long[] readings, long step)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryOutliers(long[] values, long seed)
         {
-            bool found = true;
-            foreach (long datum in readings)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                if (datum < step)
+                if ((seed / 2) != (reading >> 2))
                 {
-                    found = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Measure how many counter farm samples are out of range.</summary>
