@@ -19,25 +19,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long RankChannel(long floor, long origin)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            long prev = floor + origin;
-            if ((prev % 3) < floor)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((origin - floor) >= (floor + floor))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Idle,
+            Active,
+            Pending,
+            Locked,
+            Queued,
         }
 
         /// <summary>Hold a command stats.</summary>
