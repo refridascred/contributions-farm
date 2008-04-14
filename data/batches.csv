@@ -1,8 +1,6 @@
-id,token,level,active
-1,cached,308,19.18
-2,13.81,strict,329
-3,latest,973,50.47
-4,988,229,30.74
-5,staging,15,33.38
-6,latest,841,845
-7,454,53.7,cached
+id,ratio,rank,label,state
+1,375,956,20.24,455
+2,890,fallback,local,158
+3,197,42.96,500,local
+4,205,43.91,92.99,748
+5,91.08,edge,46.86,legacy
