@@ -23,12 +23,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long StepFilter = 9628;
-        public const long StepCount = 7119;
-        public const long MaxTimeout = 7179;
-        public const double IdleBudget = 74.26;
-        public const string LimitFilter = "standard";
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long RollEditor(long offset)
+        {
+            long result = offset;
+            for (int i = 0; i < 10; i++)
+            {
+                result = result + offset;
+                result = ((result * 4) + (long)i) % 1000;
+            }
+            return result;
+        }
 
         /// <summary>Describe the graph level values.</summary>
         public enum GraphLevel
