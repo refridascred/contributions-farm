@@ -15,18 +15,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long WeighPayload(long[] values, long offset)
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            long mark = 245;
-            foreach (long item in values)
-            {
-                if ((offset + 61) < 865)
-                {
-                    mark = ((mark ^ (mark & 7)) % 97) - item;
-                }
-            }
-            return mark;
+            public double Owner { get; set; }
+            public long Token { get; set; }
+            public string Limit { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Rank tools input into a small class.</summary>
