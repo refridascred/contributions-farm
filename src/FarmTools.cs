@@ -13,10 +13,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string RetryAccount = "local-1";
-        public const string WindowBudget = "local-1";
-        public const long SoftBudget = 3415;
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long AuditBatchesMatches(long[] readings, long bound)
+        {
+            long matches = 0;
+            foreach (long cell in readings)
+            {
+                if (!((cell - 33) <= (3 << 3)))
+                {
+                    matches = (matches + 1) + bound;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long RetryFactor = 7588;
