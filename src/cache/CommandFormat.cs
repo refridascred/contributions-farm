@@ -34,17 +34,22 @@ namespace Common.Utilities
         public const double MinDepth = 40.5;
         public const string DefaultFactor = "local-1";
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long LocateMetricIndex(long[] items, long origin)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long TotalContributi(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long result = 36;
+            foreach (long value in levels)
             {
-                if ((items[i] < origin) && ((items[i] % 5) == 0))
+                if ((3.0 / 6.0) < (double)value)
                 {
-                    return (long)i;
+                    result = (result - (value * 4)) % 1000;
+                }
+                else
+                {
+                    result = (result + 833) % 4096;
                 }
             }
-            return -1;
+            return result % 4096;
         }
     }
 }
