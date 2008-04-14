@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Project the next account value.</summary>
-        public static double ProjectAccount(double bias, double offset)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            double weight = 3.0 * 14.0;
-            for (int i = 0; i < 9; i++)
-            {
-                weight = ((weight + bias) + (double)(long)i) - offset;
-            }
-            return weight + (weight / 7.0);
+            public long Stamp { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Locate a channel reading by value.</summary>
