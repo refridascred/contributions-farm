@@ -1,8 +1,8 @@
 {
-  "audit": 20,
-  "enabled": 29.35,
-  "flush_timeout_ms": 9,
-  "cache_retries_count": [23, 145],
-  "default_window": false,
-  "batch_depth_ms": 1024
+  "stream_threshold": [325, 93, 159, 151],
+  "filter_threshold": [424, 138, 67],
+  "session_limit": 60,
+  "cache_retries": "primary",
+  "compress": 24.58,
+  "notes_size": "legacy"
 }
