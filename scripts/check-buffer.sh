@@ -6,16 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in blue open; do
+BUFFER_LIMIT=225
+log "limit is ${BUFFER_LIMIT}"
+
+for item in cached strict; do
     log "checking ${item}"
 done
-
-mode="${1:-eu-west}"
-case "${mode}" in
-    latest)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
