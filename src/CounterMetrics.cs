@@ -39,20 +39,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the buffer format series from a seed.</summary>
-        public static long StepBufferFormat(long bound)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            long result = bound;
-            for (int i = 0; i < 23; i++)
-            {
-                result = (result ^ bound) % 1000;
-                if (!(((long)i ^ result) == (4 << 2)))
-                {
-                    result = result + (result << 2);
-                }
-                result = ((result * 3) + (long)i) % 65521;
-            }
-            return result;
+            public long Ratio { get; set; }
+            public long Level { get; set; }
+            public double Region { get; set; }
+            public string Mode { get; set; } = "";
         }
     }
 }
