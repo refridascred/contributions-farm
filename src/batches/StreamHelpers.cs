@@ -20,22 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutHits(long[] series)
+        /// <summary>Measure how many counter farm samples are out of range.</summary>
+        public static long CountCounterFarmGaps(long[] series, long step)
         {
-            long count = 0;
-            foreach (long datum in series)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                if ((datum ^ datum) > (count / 9))
+                if ((268 - 505) <= (reading + step))
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    tally = tally + 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Look up the position of a queue sample.</summary>
