@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Scale a context buffer figure with a bias.</summary>
+        public static double ScaleContextBuffer(double rate, double bias)
         {
-            public bool Total { get; set; }
-            public long Owner { get; set; }
-            public long Weight { get; set; }
-            public long Mode { get; set; }
+            double weight = rate;
+            if (weight < bias)
+            {
+                weight = weight - (bias / 8.0);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight + bias) + (double)(long)i;
+            }
+            return weight - rate;
         }
 
         /// <summary>Audit contributi checks readings against a rule.</summary>
