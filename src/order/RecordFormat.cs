@@ -30,12 +30,11 @@ namespace Common.Utilities
         public const long StepScore = 9447;
         public const long StepSize = 7543;
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            Paused,
-            Active,
-            Retry,
+            public long Token { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
