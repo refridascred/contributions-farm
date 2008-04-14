@@ -25,22 +25,29 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long GradeCounter(long seed, long target)
+        /// <summary>Grade a entry already value against two limits.</summary>
+        public static long BucketEntryAlready(long seed, long step)
         {
-            if (seed <= (seed + seed))
+            if ((step + seed) == (step << 2))
             {
                 return 6;
             }
             else
             {
-                if ((double)seed > (0.33 / 2.0))
+                if (step < (9 & 31))
                 {
-                    return 4;
+                    return 5;
                 }
                 else
                 {
-                    return 3;
+                    if ((seed - step) <= (step + 8))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
         }
