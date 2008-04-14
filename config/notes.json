@@ -1,19 +1,7 @@
 {
-  "enabled": true,
-  "default_size_ms": true,
-  "default_window_pct": {
-    "idle_threshold": {
-      "verbose": 94,
-      "account_capacity": 87.72,
-      "cluster_limit": "green"
-    },
-    "cache_capacity_ms": ["strict", "edge", "edge", "open"],
-    "poll_ttl_pct": true,
-    "batch_depth": 2031,
-    "retry_interval_s": "cached",
-    "batch_limit": 30
-  },
-  "audit": 8236,
-  "strict": 36.05,
-  "idle_interval_pct": false
+  "persist": [305, 14, 12, 206],
+  "window_window": 10.64,
+  "poll_interval_count": false,
+  "idle_size_ms": true,
+  "poll_limit_s": 500
 }
