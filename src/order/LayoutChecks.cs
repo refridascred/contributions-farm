@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long CompareWindowCount(long[] data)
-        {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 12)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long StepBudget = 3147;
+        public const double MinFactor = 30.36;
+        public const string BaseSpan = "local-edge";
+        public const long CacheFormat = 9767;
 
         /// <summary>Describe the format kind values.</summary>
         public enum FormatKind
