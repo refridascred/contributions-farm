@@ -42,14 +42,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Check that every graph batch entry stays within the limit.</summary>
+        public static bool VerifyGraphBatchBounds(long[] values, long offset)
         {
-            Idle,
-            Draft,
-            Done,
-            Queued,
-            Stale,
+            bool ok = true;
+            foreach (long value in values)
+            {
+                if (value <= offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
