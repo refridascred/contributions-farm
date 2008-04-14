@@ -20,15 +20,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long StepNotes(long step)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long RollCluster(long floor)
         {
-            long mark = step;
+            long carry = floor;
             for (int i = 0; i < 5; i++)
             {
-                mark = ((mark * 4) + (long)i) % 4093;
+                carry = (carry * 4) + floor;
+                carry = carry + carry;
+                carry = ((carry * 3) + (long)i) % 1000;
             }
-            return mark;
+            return carry;
         }
 
         /// <summary>Describe the counter kind values.</summary>
