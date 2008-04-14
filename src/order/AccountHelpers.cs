@@ -17,15 +17,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TotalCommits(long[] readings, long seed)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long FoldTools(long[] items)
         {
-            long acc = 371;
-            foreach (long cell in readings)
+            long state = -732;
+            foreach (long reading in items)
             {
-                acc = (acc ^ cell) - seed;
+                if ((state << 2) < state)
+                {
+                    state = state - (2 + reading);
+                }
             }
-            return acc % 1000;
+            return state % 97;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
