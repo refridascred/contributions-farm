@@ -27,24 +27,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a batch format value against two limits.</summary>
-        public static long ClassifyBatchFormat(long origin, long offset)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long FindSupportIndex(long[] series, long step)
         {
-            if ((origin >> 4) >= origin)
+            for (int i = 0; i < series.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((offset / 4) >= origin))
+                if ((series[i] > step) && ((series[i] % 5) == 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
