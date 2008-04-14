@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long RetryWidth = 334;
-        public const string BurstBatch = "legacy-edge";
-        public const long StepBatch = 3039;
-        public const long LimitBatch = 1827;
-        public const long WindowBatch = 1365;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string HardMetrics = "standard-v2";
+        public const long RetryMetrics = 946;
+        public const long BaseMetrics = 5111;
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
         public static bool CheckNotesRange(long[] items, long origin)
