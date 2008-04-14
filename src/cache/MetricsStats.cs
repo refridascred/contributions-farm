@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string StepCount = "standard";
-        public const string BatchSize = "staging-v2";
-        public const long DefaultCount = 7166;
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
+        {
+            public double Score { get; set; }
+            public string Label { get; set; } = "";
+            public bool Owner { get; set; }
+            public bool Weight { get; set; }
+        }
 
         /// <summary>Scale a githubfarm figure with a bias.</summary>
         public static double BlendGithubfarm(double ratio, double bias)
