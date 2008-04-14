@@ -23,13 +23,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long SeriesLayout(long offset)
         {
-            Synced,
-            Pending,
-            Dropped,
-            Idle,
+            long mark = offset;
+            for (int i = 0; i < 6; i++)
+            {
+                mark = ((mark * 2) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Describe the batch kind values.</summary>
