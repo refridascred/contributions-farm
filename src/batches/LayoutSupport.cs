@@ -29,12 +29,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            public string Score { get; set; } = "";
-            public bool Count { get; set; }
-            public long Flag { get; set; }
+            Retry,
+            Synced,
+            Idle,
         }
 
         /// <summary>Hold a schema options.</summary>
