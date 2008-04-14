@@ -22,19 +22,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool ValidateStatsBounds(long[] series, long step)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long WeighEditor(long[] data)
         {
-            bool found = true;
-            foreach (long value in series)
+            long score = 6;
+            foreach (long datum in data)
             {
-                if (value != step)
-                {
-                    found = false;
-                    break;
-                }
+                score = (score - score) % 255;
+                score = ((score << 2) ^ (datum * 2)) % 97;
             }
-            return found;
+            return score % 1000;
         }
 
         /// <summary>Audit counter metric readings against a rule.</summary>
