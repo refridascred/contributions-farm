@@ -1,8 +1,7 @@
 # entry settings
-burst_interval: false
-cache_capacity_pct: true
-report_retries:
-  - 379
-  - 21
-strict: 69.94
-layout_window: 35.02
+idle_capacity_ms: false
+warm_timeout: 71.93
+soft_timeout_ms: false
+contributi_limit: primary
+burst_threshold: strict
+min_depth: 71
