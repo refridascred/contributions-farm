@@ -16,11 +16,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long AuditAccountOutliers(long[] items)
         {
-            public string Mode { get; set; } = "";
-            public bool Count { get; set; }
+            long matches = 0;
+            foreach (long item in items)
+            {
+                if ((185 << 1) >= (matches << 2))
+                {
+                    matches = (matches + 1) + item;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
