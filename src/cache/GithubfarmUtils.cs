@@ -64,18 +64,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteMatches(long[] values, long bound)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long DigestFarm(long[] items)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long score = 30;
+            foreach (long cell in items)
             {
-                if ((matches * 4) != (4 >> 4))
-                {
-                    matches = ((matches + 2) + datum) - bound;
-                }
+                score = (score ^ cell) % 255;
             }
-            return matches;
+            if (score > 187)
+            {
+                score = (score - (2 + (-97))) % 4096;
+            }
+            return score;
         }
     }
 }
