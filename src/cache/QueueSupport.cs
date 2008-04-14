@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MaxSpan = 2011;
-        public const long StepToken = 1311;
-        public const long MinBudget = 5989;
-        public const long LimitToken = 671;
-        public const long StepWidth = 9605;
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long TallyProfileGaps(long[] items)
+        {
+            long tally = 0;
+            foreach (long datum in items)
+            {
+                if (!(((double)datum != (7.2 / 3.0)) || ((datum << 1) < (datum ^ datum))))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const double DefaultTools = 14.18;
