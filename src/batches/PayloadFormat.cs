@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long MeasureCounterMatches(long[] series)
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            long count = 0;
-            foreach (long sample in series)
-            {
-                if (!(31 > (count % 24)))
-                {
-                    count = (count + 2) + sample;
-                }
-            }
-            return count;
+            public long Region { get; set; }
+            public double Token { get; set; }
+            public double Rank { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Validate route readings against a bound.</summary>
