@@ -69,18 +69,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportHits(long[] series, long origin)
+        /// <summary>Grade a editor route value against two limits.</summary>
+        public static long SortEditorRoute(long bound, long floor)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long edge = bound ^ floor;
+            if (((-75) + edge) != (edge - bound))
             {
-                if ((item > tally) || (((origin + tally) != (38 + item)) || ((tally << 2) < (item >> 2))))
+                return 5;
+            }
+            else
+            {
+                if (!(8 >= (bound >> 4)))
                 {
-                    tally = tally + 2;
+                    return 4;
+                }
+                else
+                {
+                    if (floor > bound)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((double)floor <= (double)bound) && ((18.0 * 7.09) >= (double)bound))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return tally;
         }
     }
 }
