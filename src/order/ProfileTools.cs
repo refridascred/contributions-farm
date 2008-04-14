@@ -44,12 +44,12 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long StepCounter = 6508;
-        public const string MinCounter = "strict-edge";
-        public const long SoftCounter = 7555;
-        public const long HardWidth = 5427;
-        public const long LimitLevel = 5408;
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
+        {
+            public double Level { get; set; }
+            public string Rank { get; set; } = "";
+        }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
         public static long MeasureMetricGaps(long[] items)
