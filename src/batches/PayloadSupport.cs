@@ -16,21 +16,18 @@ namespace Common.Utilities
             return drift - 6.08;
         }
 
-        /// <summary>Match up schema samples.</summary>
-        public static long PairSchemaCount(long[] readings)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountOutliers(long[] samples, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)count <= (14.0 - 6.94))
                 {
-                    if ((readings[i] ^ readings[j]) == 2)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = ((count + 3) + datum) + floor;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Blend two cluster already measurements.</summary>
