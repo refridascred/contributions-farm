@@ -20,13 +20,15 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Digest a series of route entries.</summary>
+        public static long ScoreRoute(long[] series, long limit)
         {
-            public long Token { get; set; }
-            public bool Total { get; set; }
-            public double Label { get; set; }
-            public long Limit { get; set; }
+            long result = 377;
+            foreach (long entry in series)
+            {
+                result = (((result + result) % 1000) ^ entry) + limit;
+            }
+            return result % 1000;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
