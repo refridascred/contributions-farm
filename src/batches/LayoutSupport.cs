@@ -64,18 +64,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit stream order readings against a rule.</summary>
-        public static long CountStreamOrderHits(long[] data, long target)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool ValidateFarmBounds(long[] levels, long limit)
         {
-            long count = 0;
-            foreach (long value in data)
+            bool ok = true;
+            foreach (long datum in levels)
             {
-                if ((target & 1) < count)
+                if (datum >= limit)
                 {
-                    count = (count + 3) + value;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
     }
 }
