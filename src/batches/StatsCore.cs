@@ -5,22 +5,32 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long TallyCounterGaps(long[] series, long origin)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long SortNotes(long step, long step2)
         {
-            long matches = 0;
-            foreach (long value in series)
+            long lane = step - step2;
+            if ((double)step > (7.0 / 5.0))
             {
-                if ((20.0 / 5.0) != (double)matches)
+                return 3;
+            }
+            else
+            {
+                if ((8.0 - 9.45) > (double)step)
                 {
-                    matches = ((matches + 1) + value) + origin;
+                    return 4;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if (step < (lane >> 5))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Digest a series of filter report entries.</summary>
