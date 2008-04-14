@@ -1,8 +1,8 @@
 {
-  "order_threshold": false,
-  "stream_retries": 82,
-  "dry_run": 54,
-  "buffer_retries": "strict",
-  "strict": false,
-  "sync_depth_count": true
+  "audit": 20,
+  "enabled": 29.35,
+  "flush_timeout_ms": 9,
+  "cache_retries_count": [23, 145],
+  "default_window": false,
+  "batch_depth_ms": 1024
 }
