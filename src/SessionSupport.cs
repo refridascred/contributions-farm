@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool VerifySupportBounds(long[] samples, long seed)
         {
-            public bool Size { get; set; }
-            public bool Region { get; set; }
-            public bool Level { get; set; }
-            public long Ratio { get; set; }
+            bool flag = true;
+            foreach (long reading in samples)
+            {
+                if (reading >= seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Describe the record class values.</summary>
