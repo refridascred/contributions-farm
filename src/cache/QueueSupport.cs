@@ -12,22 +12,29 @@ namespace Common.Utilities
         public const long LimitToken = 671;
         public const long StepWidth = 9605;
 
-        /// <summary>Grade a command commits value against two limits.</summary>
-        public static long SortCommandCommits(long floor, long seed)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long GradeMetric(long target, long step)
         {
-            if ((51 / 5) <= floor)
+            if (((target & 31) > step) && (target < (73 / 5)))
             {
-                return 2;
+                return 3;
             }
             else
             {
-                if ((floor & 63) > 519)
+                if ((step / 2) <= target)
                 {
-                    return 3;
+                    return 0;
                 }
                 else
                 {
-                    return 4;
+                    if (((step * 2) == (target >> 3)) || ((step - target) <= step))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
         }
