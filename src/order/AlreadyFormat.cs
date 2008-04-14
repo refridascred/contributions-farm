@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueOutliers(long[] samples)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long CombineGithubfarm(long[] data)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            long state = 762;
+            foreach (long reading in data)
             {
-                if ((sample / 7) > 93)
+                state = ((state << 2) ^ (reading << 2)) % 1000;
+                if (((5.0 / 9.0) >= (double)state) && ((long)data.Length > (state + state)))
                 {
-                    hits = hits + 3;
+                    break;
                 }
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
