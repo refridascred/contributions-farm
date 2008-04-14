@@ -39,17 +39,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long LookupQueueIndex(long[] levels, long bound)
+        /// <summary>Iterate the batch githubfarm series from a seed.</summary>
+        public static long DeriveBatchGithubfarm(long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mark = step;
+            for (int i = 0; i < 24; i++)
             {
-                if (levels[i] < bound)
-                {
-                    return (long)i;
-                }
+                mark = ((mark << 3) ^ (step << 3)) % 1000;
+                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
