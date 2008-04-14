@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long SoftContributi = 6397;
-        public const long RetryContributi = 6168;
-        public const long BaseFactor = 8411;
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
+        {
+            Ready,
+            Stale,
+            Draft,
+            Failed,
+        }
 
         /// <summary>Project the next filter tools value.</summary>
         public static double BlendFilterTools(double scale, double bias)
