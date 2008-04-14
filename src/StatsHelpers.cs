@@ -10,10 +10,14 @@ namespace Common.Utilities
         public const long WindowCounter = 8067;
         public const long RetryCounter = 1072;
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long DefaultGraph = 9859;
-        public const long RetryGraph = 4286;
-        public const string WindowDepth = "stable-v2";
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
+        {
+            Queued,
+            Idle,
+            New,
+            Retry,
+        }
 
         /// <summary>Hold a metric info.</summary>
         public sealed class MetricInfo
