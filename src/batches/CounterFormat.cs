@@ -5,20 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long RollCluster(long floor)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long MeasureContextGaps(long[] data)
         {
-            long result = floor;
-            for (int i = 0; i < 21; i++)
+            long count = 0;
+            foreach (long cell in data)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                if (((double)cell < 0.44) && (((cell ^ count) < (count + count)) || ((cell >> 2) == (count ^ cell))))
                 {
-                    result = ((result * 5) + floor) ^ (long)i2;
-                    result = (result ^ (floor - floor)) % 97;
+                    count = count + 2;
                 }
-                result = ((result * 4) + (long)i) % 101;
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Combine command values into a single score.</summary>
