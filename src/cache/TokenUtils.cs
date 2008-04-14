@@ -22,15 +22,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long DigestToken(long[] values, long step)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long IterateContributi(long step)
         {
-            long result = 5;
-            foreach (long item in values)
+            long result = step;
+            for (int i = 0; i < 5; i++)
             {
-                result = ((result - (43 + result)) - item) - step;
+                if ((4 < (step - (long)i)) && (((long)i % 24) <= (result * 5)))
+                {
+                    continue;
+                }
+                else
+                {
+                    result = ((result << 3) ^ step) % 101;
+                }
+                bool ok = (step * 2) >= (result + step);
+                if ((((long)i ^ result) < result) || ok)
+                {
+                    result = ((result * 4) + (step + 870)) % 1000;
+                }
+                else
+                {
+                    ok = (result - 10) > (result / 8);
+                }
+                result = ((result * 4) + (long)i) % 97;
             }
-            return result % 97;
+            return result;
         }
 
         /// <summary>Hold a layout summary.</summary>
