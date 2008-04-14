@@ -18,17 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the order graph series from a seed.</summary>
-        public static long StepOrderGraph(long seed)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool CheckNotesRange(long[] items, long origin)
         {
-            long mix = seed;
-            for (int i = 0; i < 22; i++)
+            bool ready = true;
+            foreach (long value in items)
             {
-                mix = (mix - (mix + seed)) % 97;
-                mix = (mix * 3) + (mix * 4);
-                mix = ((mix * 5) + (long)i) % 101;
+                if (value <= origin)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return mix;
+            return ready;
         }
 
         /// <summary>Digest a series of token entries.</summary>
