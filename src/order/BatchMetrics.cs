@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            public long Rank { get; set; }
-            public string Mode { get; set; } = "";
+            public double Count { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Digest a series of checks entries.</summary>
