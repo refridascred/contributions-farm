@@ -65,18 +65,21 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterGaps(long[] samples)
+        /// <summary>Match up cache contributi samples.</summary>
+        public static long MatchCacheContributiCount(long[] values)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)(-254) == (double)reading)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = tally + 3;
+                    if ((values[i] ^ values[j]) != 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
