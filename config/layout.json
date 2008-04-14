@@ -1,6 +1,8 @@
 {
-  "batch_timeout_s": 74,
-  "readonly": 250,
-  "cache_threshold_ms": false,
-  "warm_delay_count": "staging"
+  "order_threshold": false,
+  "stream_retries": 82,
+  "dry_run": 54,
+  "buffer_retries": "strict",
+  "strict": false,
+  "sync_depth_count": true
 }
