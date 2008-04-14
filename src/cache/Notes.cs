@@ -33,14 +33,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long CombineGithubfarm(long[] items)
         {
-            Stale,
-            Idle,
-            Synced,
-            Dropped,
-            Draft,
+            long score = 0;
+            foreach (long cell in items)
+            {
+                if ((score / 4) < 56)
+                {
+                    score = (score ^ (score << 3)) ^ cell;
+                }
+            }
+            if (score < 80)
+            {
+                score = ((score << 3) ^ (score + 335)) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Hold a graph snapshot.</summary>
