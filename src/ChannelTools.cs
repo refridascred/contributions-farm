@@ -29,19 +29,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long FoldRoute(long[] items, long origin)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            long score = 271;
-            foreach (long value in items)
-            {
-                score = ((score + (571 / 7)) % 4096) - value;
-            }
-            if (score < (-96))
-            {
-                score = (score ^ (origin + score)) % 97;
-            }
-            return score;
+            public bool Size { get; set; }
+            public long Mode { get; set; }
+            public long Total { get; set; }
         }
     }
 }
