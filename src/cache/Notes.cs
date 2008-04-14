@@ -55,17 +55,18 @@ namespace Common.Utilities
             return (weight - (gain + weight)) + span;
         }
 
-        /// <summary>Locate a account farm reading by value.</summary>
-        public static long SeekAccountFarmIndex(long[] data, long seed)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderHits(long[] levels, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                if (data[i] == seed)
+                if (248 <= tally)
                 {
-                    return (long)i;
+                    tally = ((tally + 1) ^ datum) + limit;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
