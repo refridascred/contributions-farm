@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const double DefaultReport = 90.08;
-        public const long StepReport = 8135;
-        public const long CacheReport = 2258;
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long AuditStatsOutliers(long[] data, long target)
+        {
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if (!((target & 127) >= target))
+                {
+                    count = (count + 1) + reading;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Grade a cache value against two limits.</summary>
         public static long GradeCache(long step, long offset)
