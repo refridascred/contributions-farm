@@ -31,14 +31,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
-        {
-            Retry,
-            Queued,
-            Done,
-            Closed,
-            Idle,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string CacheMetrics = "latest";
+        public const long LimitMetrics = 2957;
+        public const long DefaultTimeout = 4114;
+        public const long BaseTimeout = 1774;
     }
 }
