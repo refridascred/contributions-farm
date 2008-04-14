@@ -31,31 +31,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a entry already value against two limits.</summary>
-        public static long BucketEntryAlready(long seed, long step)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long LookupEntryIndex(long[] data, long step)
         {
-            if ((step + seed) == (step << 2))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (step < (9 & 31))
+                if (data[i] > step)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((seed - step) <= (step + 8))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
