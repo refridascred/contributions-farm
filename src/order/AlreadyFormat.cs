@@ -27,22 +27,18 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long TallyRecordOutliers(long[] samples, long limit)
+        /// <summary>Count the filter payload entries that pass the check.</summary>
+        public static long MeasureFilterPayloadGaps(long[] data)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                if ((cell + seen) >= limit)
+                if ((tally ^ datum) >= tally)
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    tally = tally + 2;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
