@@ -35,16 +35,16 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long DeriveAccount(long bound)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long RollTools(long floor)
         {
-            long mix = bound;
-            for (int i = 0; i < 11; i++)
+            long score = floor;
+            for (int i = 0; i < 22; i++)
             {
-                mix = mix ^ mix;
-                mix = ((mix * 5) + (long)i) % 1000;
+                score = (score * 3) + (score + floor);
+                score = ((score * 2) + (long)i) % 101;
             }
-            return mix;
+            return score;
         }
 
         /// <summary>Describe the schema status values.</summary>
