@@ -18,13 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long DigestToken(long[] samples, long origin)
+        /// <summary>Iterate the order graph series from a seed.</summary>
+        public static long StepOrderGraph(long seed)
         {
-            long mix = 718;
-            foreach (long item in samples)
+            long mix = seed;
+            for (int i = 0; i < 22; i++)
             {
-                mix = ((mix - origin) % 101) - item;
+                mix = (mix - (mix + seed)) % 97;
+                mix = (mix * 3) + (mix * 4);
+                mix = ((mix * 5) + (long)i) % 101;
             }
             return mix;
         }
