@@ -28,17 +28,25 @@ namespace Common.Utilities
         public const long BatchCommand = 567;
         public const double SoftCommand = 11.49;
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long IterateMetric(long step)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long ClassifyCache(long seed, long limit)
         {
-            long result = step;
-            for (int i = 0; i < 11; i++)
+            long lane = seed + limit;
+            if (!((limit - limit) == (limit + lane)))
             {
-                long tally = step;
-                result = ((result * 4) + (step - tally)) % 1000;
-                result = ((result * 2) + (long)i) % 65521;
+                return 5;
             }
-            return result;
+            else
+            {
+                if ((seed + 1) <= (436 + limit))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
