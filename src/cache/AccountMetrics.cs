@@ -65,12 +65,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string StepLayout = "open";
-        public const long BaseLayout = 1196;
-        public const double HardSpan = 86.77;
-        public const long IdleSize = 3228;
-        public const string BurstLayout = "stable-v2";
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long SeekCacheIndex(long[] samples, long target)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long IdleGraph = 5069;
