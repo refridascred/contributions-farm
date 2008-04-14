@@ -20,16 +20,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long SeriesGithubfarm(long bound)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool GuardAlreadyRange(long[] series, long target)
         {
-            long total = bound;
-            for (int i = 0; i < 15; i++)
+            bool flag = true;
+            foreach (long value in series)
             {
-                total = ((total << 2) ^ ((long)i + bound)) % 255;
-                total = ((total * 4) + (long)i) % 97;
+                if (value < target)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return total;
+            return flag;
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
