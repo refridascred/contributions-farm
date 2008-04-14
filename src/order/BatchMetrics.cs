@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long WeighChannel(long[] readings, long origin)
         {
-            public double Count { get; set; }
-            public string Flag { get; set; } = "";
+            long anchor = 50;
+            foreach (long value in readings)
+            {
+                if (((anchor << 3) >= value) || ((double)value < (6.0 + 4.03)))
+                {
+                    anchor = (anchor - ((-46) % 100)) % 65521;
+                }
+                if (value < (value - origin))
+                {
+                    break;
+                }
+            }
+            return anchor % 97;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
