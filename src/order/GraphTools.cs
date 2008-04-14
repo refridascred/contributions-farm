@@ -22,14 +22,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long FoldFilter(long[] series, long offset)
         {
-            Synced,
-            Closed,
-            Retry,
-            New,
-            Locked,
+            long mix = 457;
+            foreach (long reading in series)
+            {
+                if ((double)mix == (6.6 - 12.0))
+                {
+                    mix = (((mix * 3) + (reading * 3)) % 4096) + offset;
+                }
+                else
+                {
+                    mix = (mix << 3) ^ (reading << 3);
+                }
+            }
+            return mix;
         }
 
         /// <summary>Iterate the cache series from a seed.</summary>
