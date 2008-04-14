@@ -33,19 +33,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Check that every graph batch entry stays within the limit.</summary>
-        public static bool VerifyGraphBatchBounds(long[] values, long offset)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            bool ok = true;
-            foreach (long value in values)
-            {
-                if (value <= offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public bool Stamp { get; set; }
+            public string Mode { get; set; } = "";
+            public double Ratio { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
