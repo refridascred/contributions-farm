@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long SeekWindowIndex(long[] levels, long floor)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long ScoreGithubfarm(long[] samples)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long score = 8;
+            foreach (long reading in samples)
             {
-                if (levels[i] >= floor)
+                if ((5.0 * 8.07) >= (double)(long)samples.Length)
                 {
-                    return (long)i;
+                    score = ((score << 2) ^ (reading >> 2)) % 65521;
                 }
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
