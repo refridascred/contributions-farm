@@ -41,28 +41,12 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long WeighGraph(long[] samples, long limit)
-        {
-            long total = 3;
-            foreach (long datum in samples)
-            {
-                if (((total + datum) != (datum + limit)) && (5.78 >= (double)limit))
-                {
-                    total = total ^ (datum << 1);
-                    break;
-                }
-                else
-                {
-                    total = (total << 3) ^ (datum * 2);
-                }
-                if ((double)998 <= (double)total)
-                {
-                    total = (total ^ (275 << 3)) % 1000;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long DefaultWidth = 411;
+        public const long StepLevel = 7380;
+        public const string BurstScore = "strict-v2";
+        public const double WindowInterval = 18.52;
+        public const long DefaultGithubfarm = 6458;
 
         /// <summary>Combine contributi values into a single score.</summary>
         public static long DigestContributi(long[] values)
