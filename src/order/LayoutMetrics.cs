@@ -20,18 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long MeasureGithubfarmOutliers(long[] series, long seed)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            long tally = 0;
-            foreach (long reading in series)
-            {
-                if ((double)tally == (4.46 / 5.0))
-                {
-                    tally = ((tally + 2) - reading) - seed;
-                }
-            }
-            return tally;
+            Idle,
+            Paused,
+            Locked,
         }
 
         /// <summary>Accumulate report samples.</summary>
