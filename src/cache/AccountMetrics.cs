@@ -84,21 +84,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long MatchBufferCount(long[] values)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long SeekFilterIndex(long[] series, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((series[i] >= target) && ((series[i] % 2) == 0))
                 {
-                    if ((values[i] - values[j]) == 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
