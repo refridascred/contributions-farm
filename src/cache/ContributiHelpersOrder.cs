@@ -33,18 +33,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long DigestFilter(long[] series)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long SeekContextIndex(long[] levels, long bound)
         {
-            long carry = -527;
-            foreach (long entry in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((carry >> 1) < (carry - entry))
+                if (levels[i] == bound)
                 {
-                    carry = ((carry * 4) + (carry << 3)) % 255;
+                    return (long)i;
                 }
             }
-            return carry % 1000;
+            return -1;
         }
     }
 }
