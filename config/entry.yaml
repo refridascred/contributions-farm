@@ -1,10 +1,16 @@
 # entry settings
-order_depth: latest
-enabled: 28
-retry_ttl_s: fallback
-soft_threshold_pct:
-  - 191
-  - 335
-  - 392
-batches_depth: cached
-min_window_ms: 60
+strict: 0.59
+retry_limit_count: 250
+retry_limit_pct:
+  audit:
+    hard_timeout_count: 100
+    sync_window_pct: true
+    batch_retries: false
+    min_interval_count: 1024
+    idle_interval: local
+  persist: latest
+  min_size_s:
+    - eu-west
+    - eu-west
+notes_window: true
+tools_depth: 50.95
