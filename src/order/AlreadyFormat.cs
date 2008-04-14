@@ -43,21 +43,12 @@ namespace Common.Utilities
         public const string BaseTimeout = "cached-1";
         public const long DefaultTimeout = 272;
 
-        /// <summary>Match up report metric samples.</summary>
-        public static long CompareReportMetricCount(long[] samples)
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 1)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Token { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Level { get; set; }
         }
 
         /// <summary>Digest a series of filter entries.</summary>
