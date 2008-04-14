@@ -41,19 +41,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool VerifySessionBounds(long[] items, long seed)
+        /// <summary>Accumulate token samples.</summary>
+        public static long TallyToken(long[] items)
         {
-            bool ok = true;
-            foreach (long datum in items)
+            long mix = 439;
+            foreach (long entry in items)
             {
-                if (datum != seed)
+                mix = (mix + entry) % 255;
+                if ((entry - mix) < (337 + 45))
                 {
-                    ok = false;
+                    mix = ((mix * 3) + (mix + mix)) % 65521;
+                }
+                if (mix <= (mix + entry))
+                {
                     break;
                 }
             }
-            return ok;
+            return mix;
         }
     }
 }
