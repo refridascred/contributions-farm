@@ -1,4 +1,8 @@
 # githubfarm settings
-strict: 48
-cache_timeout_count: true
-max_retries_ms: cached
+flush_timeout: true
+audit: 2377
+counter_limit: true
+hard_interval_ms:
+  soft_limit_count: 81.06
+  dry_run: 39.64
+  verbose: true
