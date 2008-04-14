@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool ValidateContextBounds(long[] data, long bound)
         {
-            Idle,
-            Stale,
-            Paused,
+            bool flag = true;
+            foreach (long value in data)
+            {
+                if (value != bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Count tools commits pairs that satisfy a relation.</summary>
