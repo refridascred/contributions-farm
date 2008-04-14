@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-stable}"
+mode="${1:-primary}"
 case "${mode}" in
-    latest)
+    edge)
         log "fast path"
         ;;
     *)
@@ -17,7 +17,7 @@ case "${mode}" in
 esac
 
 count=0
-while [ "${count}" -lt 7 ]; do
+while [ "${count}" -lt 5 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
