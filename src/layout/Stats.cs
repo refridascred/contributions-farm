@@ -32,17 +32,20 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long LocateEntryIndex(long[] readings, long bound)
+        /// <summary>Iterate the account cache series from a seed.</summary>
+        public static long RollAccountCache(long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long total = offset;
+            for (int i = 0; i < 7; i++)
             {
-                if ((readings[i] >= bound) && ((readings[i] % 5) == 0))
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    return (long)i;
+                    total = ((total << 2) ^ (31 - offset)) ^ (long)i2;
+                    total = total + total;
                 }
+                total = ((total * 2) + (long)i) % 4093;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Describe the format state values.</summary>
