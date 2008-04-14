@@ -51,9 +51,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long LimitSpan = 7961;
-        public const long WindowSize = 7111;
-        public const long BatchStream = 5467;
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
+        {
+            Locked,
+            Failed,
+            Stale,
+            New,
+            Draft,
+        }
     }
 }
