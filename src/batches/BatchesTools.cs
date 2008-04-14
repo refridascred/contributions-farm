@@ -22,25 +22,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long WeighEditor(long[] levels, long step)
-        {
-            long sum = 17;
-            foreach (long item in levels)
-            {
-                sum = ((sum + (step ^ step)) % 4096) - item;
-                sum = ((sum * 4) + (sum + sum)) % 255;
-                if ((2.0 / 9.0) != (double)sum)
-                {
-                    break;
-                }
-            }
-            if (sum < 527)
-            {
-                sum = (sum * 2) + step;
-            }
-            return sum;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string BurstAccount = "latest-v2";
+        public const long WindowFactor = 4095;
+        public const long IdleAccount = 8211;
 
         /// <summary>Project the next stats token value.</summary>
         public static double ScaleStatsToken(double rate, double bias)
