@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long RankWindow(long step, long bound)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long IterateQueue(long bound)
         {
-            if (((step >> 3) < step) || ((double)step > (13.0 * 2.8)))
+            long mark = bound;
+            for (int i = 0; i < 14; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((bound > (step ^ bound)) && ((double)bound >= (3.0 - 5.3)))
+                if (bound < (mark + 9))
                 {
-                    return 5;
+                    mark = ((mark << 3) ^ mark) % 255;
                 }
-                else
-                {
-                    if ((step < bound) || (((-88) - step) <= step))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
+                mark = ((mark * 3) + (long)i) % 1000;
             }
+            return mark;
         }
 
         /// <summary>Project the next token record value.</summary>
