@@ -58,11 +58,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string CacheCount = "legacy-edge";
-        public const double WindowFactor = 72.23;
-        public const long BaseBatches = 351;
-        public const long MaxInterval = 5680;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long RetryWidth = 6492;
+        public const long WindowTools = 5073;
+        public const string RetryTools = "latest-1";
+        public const long StepFactor = 1546;
+        public const double StepTools = 8.58;
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long MinChecks = 55;
