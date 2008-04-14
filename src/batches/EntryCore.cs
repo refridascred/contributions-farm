@@ -29,26 +29,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long CombineCluster(long[] items)
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            long sum = 219;
-            foreach (long datum in items)
-            {
-                if (652 <= (datum - datum))
-                {
-                    sum = (sum ^ (sum << 3)) % 101;
-                }
-                if ((sum <= (sum / 8)) && ((51 >> 5) >= (datum + sum)))
-                {
-                    sum = ((sum << 2) ^ (datum % 24)) % 255;
-                }
-            }
-            if (sum > 811)
-            {
-                sum = (sum * 3) + (sum % 7);
-            }
-            return sum;
+            public string Count { get; set; } = "";
+            public string Score { get; set; } = "";
+            public bool Mode { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Define route limits and defaults.</summary>
