@@ -1,7 +1,4 @@
 # githubfarm settings
-poll_interval_pct:
-  readonly: false
-  editor_window: 5005
-  contributi_delay: 3618
-batch_threshold: edge
-verbose: green
+checks_interval: 3.24
+cache_timeout_s: 30
+dry_run: false
