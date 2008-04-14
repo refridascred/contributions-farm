@@ -35,9 +35,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long RetryScore = 5724;
-        public const double DefaultCluster = 32.17;
-        public const long IdleRatio = 3193;
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
+        {
+            Queued,
+            Closed,
+            New,
+        }
     }
 }
