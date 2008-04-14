@@ -71,11 +71,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long LimitLevel = 4594;
-        public const string HardLevel = "staging";
-        public const long MaxCount = 9698;
-        public const long StepSpan = 5515;
-        public const long BaseDepth = 3213;
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool VerifyRouteRange(long[] series, long offset)
+        {
+            bool flag = true;
+            foreach (long cell in series)
+            {
+                if (cell < offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
