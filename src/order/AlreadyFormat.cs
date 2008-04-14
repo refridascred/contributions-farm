@@ -51,26 +51,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine account record values into a single score.</summary>
-        public static long TotalAccountRecord(long[] values, long limit)
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            long anchor = 7;
-            foreach (long value in values)
-            {
-                if ((1.7 + 0.64) == (double)value)
-                {
-                    anchor = (anchor - (value / 5)) % 65521;
-                }
-                else
-                {
-                    anchor = ((anchor * 5) + (61 + value)) % 65521;
-                }
-                if (((limit * 3) == (limit & 31)) || ((631 * 5) != (value + limit)))
-                {
-                    break;
-                }
-            }
-            return anchor;
+            public double Region { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Describe the batch level values.</summary>
