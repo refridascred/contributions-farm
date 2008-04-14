@@ -24,23 +24,18 @@ namespace Common.Utilities
         public const long LimitSize = 6469;
         public const string LimitProfile = "alpha-1";
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double BlendLayout(double weight, double bias)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long MeasureStreamHits(long[] items, long bound)
         {
-            double weight2 = (double)(808 - 659);
-            if (weight2 < weight2)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                weight2 = ((weight2 + (double)7) - weight) - bias;
+                if ((0 % 7) > (tally - cell))
+                {
+                    tally = (tally + 2) - bound;
+                }
             }
-            else
-            {
-                weight2 = weight2 + weight2;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                weight2 = (weight2 + (4.48 * 7.4)) + (double)(long)i;
-            }
-            return weight2 - (9.69 * 7.86);
+            return tally;
         }
     }
 }
