@@ -35,19 +35,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool GuardNotesRange(long[] data, long floor)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            bool stale = true;
-            foreach (long cell in data)
-            {
-                if (cell < floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Retry,
+            Pending,
+            Draft,
+            Closed,
+            Synced,
         }
     }
 }
