@@ -29,18 +29,24 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long CountMetricsOutliers(long[] data)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long GradeCounter(long seed, long target)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            if (seed <= (seed + seed))
             {
-                if ((seen / 3) != (entry + entry))
+                return 6;
+            }
+            else
+            {
+                if ((double)seed > (0.33 / 2.0))
                 {
-                    seen = seen + 3;
+                    return 4;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return seen;
         }
     }
 }
