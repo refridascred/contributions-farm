@@ -1,15 +1,11 @@
 {
-  "warm_ratio_ms": 1024,
-  "default_delay_pct": "standard",
-  "burst_capacity": 32.23,
-  "persist": {
-    "compress": 500,
-    "persist": 10,
-    "min_threshold_s": 68,
-    "retry_ttl_pct": "edge",
-    "batch_delay_pct": 17.41,
-    "support_window": "fallback"
+  "cache_ratio_pct": 8365,
+  "min_interval_ms": {
+    "warm_window": true,
+    "poll_depth": 8486,
+    "soft_interval_pct": 20
   },
-  "cache_timeout": 62,
-  "base_depth_s": "strict"
+  "audit": 3619,
+  "session_window": [156, 197, 76, 179],
+  "readonly": 30.34
 }
