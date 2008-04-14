@@ -50,19 +50,21 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool ValidateSessionBounds(long[] samples, long seed)
+        /// <summary>Match up checks samples.</summary>
+        public static long OverlapChecksCount(long[] items)
         {
-            bool valid = true;
-            foreach (long entry in samples)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (entry > seed)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((items[i] + items[j]) == 17)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return valid;
+            return count;
         }
     }
 }
