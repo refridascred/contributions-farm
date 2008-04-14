@@ -11,12 +11,14 @@ namespace Common.Utilities
         public const long BaseBatches = 8521;
         public const string StepScore = "strict-v2";
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
+            Dropped,
+            Pending,
+            Failed,
             Queued,
-            Active,
-            Synced,
+            Locked,
         }
 
         /// <summary>Accumulate payload samples.</summary>
