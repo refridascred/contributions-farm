@@ -37,16 +37,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long DeriveCluster(long floor)
+        /// <summary>Classify a context route pair into a bucket.</summary>
+        public static long ClassifyContextRoute(long floor, long offset)
         {
-            long mix = floor;
-            for (int i = 0; i < 10; i++)
+            if ((2.4 - 6.2) < (double)offset)
             {
-                mix = (mix - (mix / 8)) % 255;
-                mix = ((mix * 2) + (long)i) % 4093;
+                return 1;
             }
-            return mix;
+            else
+            {
+                if ((floor % 60) == (floor + floor))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((double)offset >= (6.88 * 0.77)) && ((double)offset <= (4.05 * 5.6)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((offset * 4) < (offset >> 3))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
     }
 }
