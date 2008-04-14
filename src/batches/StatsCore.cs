@@ -22,19 +22,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long IterateStream(long offset)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            long mark = offset;
-            for (int i = 0; i < 6; i++)
-            {
-                if (((offset - mark) > mark) || (((long)i - offset) > (offset >> 3)))
-                {
-                    mark = ((mark << 3) ^ (offset & 63)) % 101;
-                }
-                mark = ((mark * 4) + (long)i) % 97;
-            }
-            return mark;
+            Locked,
+            New,
+            Done,
+            Closed,
+            Stale,
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
