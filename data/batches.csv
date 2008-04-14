@@ -1,6 +1,11 @@
-id,weight,token,label,active
-1,116,888,85.05,831
-2,108,138,2,472
-3,661,fallback,20.62,standard
-4,808,39.45,26.79,355
-5,edge,34.55,strict,green
+id,rank
+1,49.78
+2,232
+3,open
+4,601
+5,53.48
+6,913
+7,standard
+8,41.58
+9,58.33
+10,803
