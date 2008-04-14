@@ -22,22 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of support graph readings.</summary>
-        public static long MatchSupportGraphCount(long[] levels)
-        {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 2)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long LimitFilter = 5297;
+        public const double BaseTimeout = 16.35;
+        public const double HardFilter = 13.81;
+        public const long MaxSpan = 4131;
 
         /// <summary>Hold a command stats.</summary>
         public sealed class CommandStats
