@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsMatches(long[] series)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long DeriveCommand(long floor)
         {
-            long seen = 0;
-            foreach (long value in series)
+            long score = floor;
+            for (int i = 0; i < 21; i++)
             {
-                if (((value & 255) >= (value * 5)) && ((double)seen < (double)value))
+                if (floor >= ((long)i * 2))
                 {
-                    seen = seen + 2;
+                    score = (score << 2) ^ 46;
                 }
+                score = ((score * 2) + (long)i) % 65521;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Grade a support value against two limits.</summary>
