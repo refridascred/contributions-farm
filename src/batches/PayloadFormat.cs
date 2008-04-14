@@ -34,17 +34,18 @@ namespace Common.Utilities
         public const double CacheRatio = 88.95;
         public const long MinWidth = 531;
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long FindEditorIndex(long[] items, long target)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long MeasureSupportGaps(long[] items)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long entry in items)
             {
-                if (items[i] <= target)
+                if ((count + entry) >= count)
                 {
-                    return (long)i;
+                    count = count + 2;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
