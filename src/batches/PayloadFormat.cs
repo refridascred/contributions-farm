@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordOutliers(long[] items)
         {
-            Queued,
-            Done,
-            Active,
-            Paused,
+            long hits = 0;
+            foreach (long sample in items)
+            {
+                if (hits > (hits << 3))
+                {
+                    hits = (hits + 3) ^ sample;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
