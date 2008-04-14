@@ -39,16 +39,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the batch githubfarm series from a seed.</summary>
-        public static long DeriveBatchGithubfarm(long step)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            long mark = step;
-            for (int i = 0; i < 24; i++)
-            {
-                mark = ((mark << 3) ^ (step << 3)) % 1000;
-                mark = ((mark * 5) + (long)i) % 4093;
-            }
-            return mark;
+            Failed,
+            Dropped,
+            Pending,
+            Locked,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
