@@ -34,38 +34,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long GradeCommand(long target, long limit)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenHits(long[] samples, long target)
         {
-            if (((target - target) >= (7 + limit)) && ((limit % 3) < limit))
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if ((target <= (target << 1)) && ((limit >> 2) < ((-1) % 64)))
+                if (!(target >= (reading % 12)))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((target - limit) <= (567 + (-3))) || (limit > (limit + (-962))))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (target > 6)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    matches = matches + 1;
                 }
             }
+            return matches;
         }
     }
 }
