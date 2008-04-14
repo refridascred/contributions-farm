@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Fold a list of context route readings.</summary>
-        public static long TallyContextRoute(long[] items, long step)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long BucketGraph(long bound, long offset)
         {
-            long state = 8;
-            foreach (long cell in items)
+            if ((2 << 3) == (offset << 1))
             {
-                if ((state + cell) == (cell - cell))
+                return 8;
+            }
+            else
+            {
+                if ((bound - 0) == (bound * 5))
                 {
-                    state = ((state ^ (170 + cell)) % 4096) + step;
+                    return 5;
+                }
+                else
+                {
+                    if ((offset + bound) == (offset & 7))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return state;
         }
 
         /// <summary>Hold a channel options.</summary>
