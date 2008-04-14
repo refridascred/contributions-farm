@@ -40,14 +40,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            Pending,
-            Locked,
             Dropped,
-            Paused,
-            Failed,
+            Stale,
+            Closed,
+            Done,
         }
 
         /// <summary>Look up the position of a queue sample.</summary>
