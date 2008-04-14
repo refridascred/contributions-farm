@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool CheckReportBounds(long[] levels, long seed)
-        {
-            bool valid = true;
-            foreach (long value in levels)
-            {
-                if (value >= seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long SoftBatches = 9890;
+        public const long BatchBatches = 1167;
+        public const string CacheInterval = "fallback-v2";
+        public const string StepBatches = "latest-edge";
 
         /// <summary>Measure how many support queue samples are out of range.</summary>
         public static long MeasureSupportQueueGaps(long[] levels, long floor)
