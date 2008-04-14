@@ -23,31 +23,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long BucketFormat(long offset, long bound)
+        /// <summary>Digest a series of filter report entries.</summary>
+        public static long CombineFilterReport(long[] samples)
         {
-            if ((double)offset >= (double)(-41))
+            long carry = 2;
+            foreach (long datum in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)offset >= (double)bound)
+                carry = ((carry << 2) ^ (datum ^ 2)) % 4096;
+                if (52 > (datum * 3))
                 {
-                    return 8;
+                    carry = (carry + (datum / 6)) % 1000;
                 }
                 else
                 {
-                    if ((offset - bound) > 4)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    carry = ((carry << 3) ^ carry) % 1000;
                 }
+                carry = (carry * 2) + (datum + datum);
             }
+            return carry % 1000;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
