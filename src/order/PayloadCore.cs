@@ -5,25 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long SortFarm(long step, long limit)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long TallyFormatHits(long[] samples)
         {
-            long span = step ^ limit;
-            if (((step * 5) > (679 ^ span)) && ((7.94 + 7.6) < (5.0 / 6.0)))
+            long count = 0;
+            foreach (long cell in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if (step <= (span - limit))
+                if ((count >= (3 % 5)) || ((4.83 - 3.96) <= (double)cell))
                 {
-                    return 1;
+                    count = count + 2;
                 }
                 else
                 {
-                    return 3;
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Audit contributi checks readings against a rule.</summary>
