@@ -19,15 +19,18 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long FoldPayload(long[] items, long floor)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long TallyCounterOutliers(long[] series)
         {
-            long score = 4;
-            foreach (long reading in items)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                score = ((((score << 3) ^ (score << 2)) % 101) + reading) + floor;
+                if (((double)matches < (double)entry) || (matches >= (matches + matches)))
+                {
+                    matches = matches + 3;
+                }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
