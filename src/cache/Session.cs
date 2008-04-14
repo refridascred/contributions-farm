@@ -38,24 +38,12 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long CombineReport(long[] levels, long origin)
-        {
-            long state = 395;
-            foreach (long datum in levels)
-            {
-                state = ((state ^ (state & 15)) % 97) - origin;
-                if (datum <= (state + 5))
-                {
-                    break;
-                }
-            }
-            if (state < 680)
-            {
-                state = (state * 5) + state;
-            }
-            return state;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BurstInterval = 5059;
+        public const string CacheWidth = "staging-edge";
+        public const double BurstSchema = 69.63;
+        public const long SoftScore = 7349;
+        public const string StepSchema = "cached-1";
 
         /// <summary>Hold a graph stats.</summary>
         public sealed class GraphStats
