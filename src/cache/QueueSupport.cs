@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Project the next account value.</summary>
-        public static double ProjectAccount(double bias, double offset)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long TallyContributiHits(long[] items, long floor)
         {
-            double gain = (offset * 3.1) + (8.74 * 4.0);
-            if (gain < (double)1)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                gain = gain - bias;
+                if ((floor + cell) <= hits)
+                {
+                    hits = hits + 2;
+                }
             }
-            return gain + gain;
+            return hits;
         }
 
         /// <summary>Blend two record measurements.</summary>
