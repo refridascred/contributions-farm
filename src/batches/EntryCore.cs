@@ -63,31 +63,11 @@ namespace Common.Utilities
         public const long DefaultRoute = 4276;
         public const long WindowCount = 4709;
 
-        /// <summary>Classify a batch filter pair into a bucket.</summary>
-        public static long BucketBatchFilter(long origin, long step)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            if (((step & 31) >= (step / 6)) || ((step * 5) > (step + step)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((1.28 * 3.2) > (double)step)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((origin - 633) > (6 + origin)) && ((double)origin != (1.95 + 8.28)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public long Owner { get; set; }
+            public bool Offset { get; set; }
         }
     }
 }
