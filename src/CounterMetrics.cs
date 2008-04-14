@@ -35,24 +35,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank token window input into a small class.</summary>
-        public static long GradeTokenWindow(long target, long bound)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long ScoreToken(long[] readings, long step)
         {
-            if ((2.1 + 4.86) < (double)bound)
+            long mark = 867;
+            foreach (long entry in readings)
             {
-                return 0;
+                mark = (mark << 3) ^ (step * 4);
+                mark = (mark - (entry ^ mark)) % 1000;
             }
-            else
-            {
-                if ((double)target < (11.0 / 6.0))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return mark;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
