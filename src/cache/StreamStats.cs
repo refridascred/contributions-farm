@@ -28,18 +28,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterOutliers(long[] samples)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderHits(long[] samples, long seed)
         {
-            long matches = 0;
+            long hits = 0;
             foreach (long reading in samples)
             {
-                if (2.9 > (double)(long)samples.Length)
+                if ((((reading * 4) > hits) && (((long)samples.Length & 31) == (hits ^ hits))) && ((seed ^ seed) >= seed))
                 {
-                    matches = (matches + 2) ^ reading;
+                    hits = hits + 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
