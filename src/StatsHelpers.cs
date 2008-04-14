@@ -15,11 +15,25 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BatchRatio = 5070;
-        public const string StepDepth = "alpha-v2";
-        public const long BatchSession = 6448;
-        public const double DefaultBudget = 8.02;
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long ClassifyTools(long offset, long step)
+        {
+            if (!(step < (offset & 127)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)step < (7.0 / 4.0))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Hold a metric info.</summary>
         public sealed class MetricInfo
