@@ -35,13 +35,38 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long ClassifyLayout(long target, long limit)
         {
-            Done,
-            Closed,
-            Stale,
-            Failed,
+            if (target <= (7 << 2))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((limit << 3) <= (limit - 14))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!(limit < (target - target)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (2.0 >= (double)target)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
