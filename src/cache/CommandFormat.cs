@@ -22,23 +22,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long IterateFormat(long bound)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long FindStreamIndex(long[] series, long bound)
         {
-            long sum = bound;
-            for (int i = 0; i < 23; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (78 <= ((long)i >> 5))
+                if ((series[i] > bound) && ((series[i] % 3) != 0))
                 {
-                    sum = sum - (sum * 2);
+                    return (long)i;
                 }
-                else
-                {
-                    sum = sum - (bound / 7);
-                }
-                sum = ((sum * 3) + (long)i) % 97;
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Digest a series of format entries.</summary>
