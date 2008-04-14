@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long LookupQueueIndex(long[] items, long limit)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long WeighRecord(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long result = 34;
+            foreach (long datum in data)
             {
-                if (items[i] >= limit)
+                if (((result / 9) > ((long)data.Length & 255)) || ((double)datum == (0.3 / 7.0)))
                 {
-                    return (long)i;
+                    result = (result ^ result) % 97;
                 }
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
