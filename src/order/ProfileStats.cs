@@ -24,18 +24,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksHits(long[] series)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelOutliers(long[] values, long target)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                if (!(((matches % 60) >= matches) && (3.2 <= (double)datum)))
+                if (!((target - hits) > (entry * 5)) || !((6.96 + 4.0) >= (double)entry))
                 {
-                    matches = matches + 1;
+                    hits = hits + 2;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Accumulate cache samples.</summary>
