@@ -35,18 +35,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long AuditChannelHits(long[] readings, long limit)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool VerifyFarmBounds(long[] samples, long step)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            bool valid = true;
+            foreach (long reading in samples)
             {
-                if (((0 / 8) < (cell % 64)) && ((double)cell >= (double)77))
+                if (reading <= step)
                 {
-                    hits = (hits + 3) + limit;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
     }
 }
