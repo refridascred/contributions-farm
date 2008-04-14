@@ -35,17 +35,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Locate a filter support reading by value.</summary>
-        public static long LocateFilterSupportIndex(long[] samples, long floor)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BatchScore = 1378;
+        public const double HardCommand = 91.9;
+        public const long BurstWidth = 5691;
+        public const long RetryCommand = 2324;
     }
 }
