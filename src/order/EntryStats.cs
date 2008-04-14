@@ -34,21 +34,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long OverlapBatchesCount(long[] values)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordGaps(long[] series, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (8 <= (target + count))
                 {
-                    if ((values[i] - values[j]) != 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = (count + 3) ^ datum;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
