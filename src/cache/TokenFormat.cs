@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Adjust a stats reading.</summary>
-        public static double BlendStats(double weight, double floor)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenMatches(long[] data, long step)
         {
-            double rate = weight;
-            if (rate < (floor - 0.23))
+            long seen = 0;
+            foreach (long datum in data)
             {
-                rate = rate - weight;
+                if (!!(9.3 >= (double)step))
+                {
+                    seen = (seen + 2) + datum;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return rate - (weight + floor);
+            return seen;
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
