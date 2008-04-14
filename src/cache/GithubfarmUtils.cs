@@ -39,39 +39,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long GradeBatch(long floor, long origin)
-        {
-            if (floor > (origin + origin))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)floor <= (double)8)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((origin > (floor >> 5)) && ((floor - origin) != (floor - 6)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((origin >= floor) || ((origin & 7) != (floor + origin)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string IdleWidth = "fallback-v2";
+        public const string BurstCommand = "latest-1";
+        public const long BaseCommand = 4083;
+        public const long LimitCommand = 4160;
+        public const double IdleCommand = 91.61;
 
         /// <summary>Hold a format header.</summary>
         public sealed class FormatHeader
