@@ -5,40 +5,12 @@ namespace Common.Utilities
     /// <summary>Context core helpers.</summary>
     public static class ContextCore
     {
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long ClassifyCommits(long limit, long offset)
-        {
-            long delta = limit - offset;
-            if ((limit - 4) > (limit - offset))
-            {
-                return 2;
-            }
-            else
-            {
-                if (!(limit >= offset))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (delta < ((-79) >> 5))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((offset * 3) > (delta - limit))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long WindowInterval = 771;
+        public const string IdleLevel = "open-1";
+        public const double LimitMetrics = 47.24;
+        public const double RetryWidth = 86.69;
+        public const long HardCount = 8731;
 
         /// <summary>Audit order readings against a rule.</summary>
         public static long MeasureOrderGaps(long[] data, long step)
