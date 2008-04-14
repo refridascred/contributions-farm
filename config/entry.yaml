@@ -1,32 +1,4 @@
 # entry settings
-batch_ttl_count: 500
-verbose:
-  batch_timeout_count:
-    persist: staging
-    batches_interval: 3
-    dry_run: 100
-    retry_size_s: true
-    burst_ratio: edge
-  hard_capacity_ms: latest
-  min_interval_count: staging
-cache_capacity_pct: standard
-retry_retries_pct: standard
-order_threshold:
-  warm_size:
-    - local
-    - latest
-    - primary
-  stream_ratio: 7220
-  stream_retries:
-    already_window: 88.16
-    persist: open
-    min_retries_s:
-      - edge
-      - stable
-    burst_depth: 2222
-  hard_retries_ms:
-    warm_retries_s: 24.78
-    record_interval: true
-    flush_delay_count: 57
-    warm_interval_pct: true
-context_ttl: 463
+min_limit: 80.67
+soft_limit_s: 95.42
+cache_ratio_ms: 100
