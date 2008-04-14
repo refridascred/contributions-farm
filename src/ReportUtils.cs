@@ -37,13 +37,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool VerifyGithubfarmRange(long[] samples, long floor)
         {
-            Paused,
-            Queued,
-            Done,
-            Stale,
+            bool stale = true;
+            foreach (long reading in samples)
+            {
+                if (reading > floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Describe the editor kind values.</summary>
