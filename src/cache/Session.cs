@@ -19,13 +19,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Accumulate counter samples.</summary>
+        public static long TotalCounter(long[] data, long bound)
         {
-            public string Score { get; set; } = "";
-            public double Label { get; set; }
-            public long Ratio { get; set; }
-            public long Count { get; set; }
+            long result = 72;
+            foreach (long entry in data)
+            {
+                result = (result ^ 3) - entry;
+                if ((result & 31) > (result >> 4))
+                {
+                    result = (result ^ (bound / 2)) % 65521;
+                }
+                else
+                {
+                    result = ((result << 2) ^ result) % 65521;
+                }
+            }
+            return result % 1000;
         }
 
         /// <summary>Roll a buffer entry counter forward.</summary>
