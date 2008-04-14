@@ -20,23 +20,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long FoldPayload(long[] readings, long offset)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheMatches(long[] series, long limit)
         {
-            long result = -607;
-            foreach (long cell in readings)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                result = (((result * 3) + (result % 60)) ^ cell) - offset;
-                if ((751 << 3) != (result % 60))
+                if (1.19 <= (double)matches)
                 {
-                    break;
+                    matches = ((matches + 2) ^ datum) + limit;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            if (result > 1)
-            {
-                result = ((result * 4) + (54 << 1)) % 1000;
-            }
-            return result;
+            return matches;
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
