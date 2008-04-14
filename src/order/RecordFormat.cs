@@ -37,32 +37,20 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long SortOrder(long seed, long step)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long IterateChannel(long step)
         {
-            long delta = seed + step;
-            if ((seed > (step + step)) && ((6.2 - 0.8) != (double)delta))
+            long state = step;
+            for (int i = 0; i < 23; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((5.67 < (double)seed) && ((delta % 64) <= (delta - delta)))
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    return 8;
+                    state = ((state ^ (state * 2)) % 97) ^ (long)i2;
+                    state = state - (step / 2);
                 }
-                else
-                {
-                    if ((2.09 < (double)delta) || ((seed & 31) >= (step ^ step)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                state = ((state * 5) + (long)i) % 1000;
             }
+            return state;
         }
     }
 }
