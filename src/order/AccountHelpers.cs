@@ -39,14 +39,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
-        {
-            Draft,
-            Failed,
-            Ready,
-            Queued,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long SoftSession = 3243;
+        public const long DefaultSession = 2038;
+        public const long StepSession = 5012;
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
         public static long BucketBuffer(long limit, long origin)
