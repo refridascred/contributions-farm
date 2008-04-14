@@ -21,20 +21,26 @@ namespace Common.Utilities
             return (weight + (floor / 8.0)) + bias;
         }
 
-        /// <summary>Accumulate report batch samples.</summary>
-        public static long TallyReportBatch(long[] values)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long TallyAlready(long[] items)
         {
-            long sum = 0;
-            foreach (long item in values)
+            long carry = 1;
+            foreach (long entry in items)
             {
-                if ((sum ^ item) <= (item + 0))
+                if (((entry << 2) > entry) && (8.7 <= (8.05 - 8.8)))
                 {
-                    sum = ((sum * 2) + 22) % 255;
-                    continue;
+                    carry = carry ^ entry;
                 }
-                sum = ((sum * 4) + (sum << 2)) % 65521;
+                else
+                {
+                    carry = carry + (entry & 127);
+                }
             }
-            return sum;
+            if (carry < 139)
+            {
+                carry = (carry << 2) ^ carry;
+            }
+            return carry;
         }
 
         /// <summary>Scale a order batch figure with a bias.</summary>
