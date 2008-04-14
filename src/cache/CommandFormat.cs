@@ -37,12 +37,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string CacheScore = "primary-edge";
-        public const double IdleFactor = 20.12;
-        public const double MaxRatio = 8.59;
-        public const double MinDepth = 40.5;
-        public const string DefaultFactor = "local-1";
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BatchDepth = 8610;
+        public const long LimitPayload = 5572;
+        public const long IdlePayload = 1668;
 
         /// <summary>Fold a list of contributi readings.</summary>
         public static long TotalContributi(long[] levels)
