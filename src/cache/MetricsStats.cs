@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool CheckBatchRange(long[] series, long step)
-        {
-            bool found = true;
-            foreach (long entry in series)
-            {
-                if (entry != step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string StepCount = "standard";
+        public const string BatchSize = "staging-v2";
+        public const long DefaultCount = 7166;
 
         /// <summary>Look up the position of a cluster sample.</summary>
         public static long FindClusterIndex(long[] series, long bound)
