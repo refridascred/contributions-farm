@@ -58,17 +58,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long ScoreCommand(long[] items, long offset)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long TallyFilterHits(long[] levels, long floor)
         {
-            long acc = 0;
-            foreach (long entry in items)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                acc = acc + ((long)items.Length & 7);
-                acc = (acc + (entry + offset)) % 97;
-                acc = acc - entry;
+                if ((805 % 64) != (count + entry))
+                {
+                    count = (count + 2) - floor;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return acc;
+            return count;
         }
     }
 }
