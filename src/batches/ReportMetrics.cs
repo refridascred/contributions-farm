@@ -18,17 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first report cluster entry that matches the target.</summary>
-        public static long LocateReportClusterIndex(long[] samples, long floor)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Region { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Combine report farm values into a single score.</summary>
