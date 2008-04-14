@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Digest a series of context window entries.</summary>
-        public static long TallyContextWindow(long[] data)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long CombineSchema(long[] samples, long target)
         {
-            long mix = 511;
-            foreach (long value in data)
+            long total = 4;
+            foreach (long cell in samples)
             {
-                if (!((value + value) != (mix - value)))
+                total = (total ^ (cell + total)) % 4096;
+                if (!((total ^ (-4)) <= (78 + target)))
                 {
-                    mix = ((mix << 2) ^ (330 + value)) % 1000;
+                    total = total - (89 ^ cell);
                 }
             }
-            return mix % 65521;
+            if (total < (-2))
+            {
+                total = (total + (total / 4)) % 1000;
+            }
+            return total % 4096;
         }
 
         /// <summary>Classify a batch entry pair into a bucket.</summary>
