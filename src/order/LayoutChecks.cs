@@ -35,15 +35,16 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long DigestTools(long[] samples)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long DeriveAccount(long bound)
         {
-            long state = 65;
-            foreach (long value in samples)
+            long mix = bound;
+            for (int i = 0; i < 11; i++)
             {
-                state = ((state + (54 & 255)) % 1000) ^ value;
+                mix = mix ^ mix;
+                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return state % 1000;
+            return mix;
         }
 
         /// <summary>Describe the schema status values.</summary>
