@@ -40,19 +40,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long TallyToken(long[] series, long origin)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TallySchema(long[] readings, long bound)
         {
-            long mix = 6;
-            foreach (long sample in series)
+            long carry = 978;
+            foreach (long reading in readings)
             {
-                mix = ((mix ^ (mix + sample)) % 1000) - origin;
+                carry = (((carry << 3) ^ (bound & 127)) % 1000) + reading;
             }
-            if (mix < 22)
+            if (carry < 63)
             {
-                mix = (mix * 4) + mix;
+                carry = carry ^ (carry - carry);
             }
-            return mix;
+            return carry % 65521;
         }
     }
 }
