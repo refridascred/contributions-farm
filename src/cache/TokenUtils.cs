@@ -50,12 +50,11 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Project the next window value.</summary>
+        public static double ProjectWindow(double weight, double floor)
         {
-            public long Label { get; set; }
-            public bool Token { get; set; }
-            public bool Count { get; set; }
+            double bias = 14.0 / 8.0;
+            return ((bias + (bias * 1.36)) + weight) + floor;
         }
     }
 }
