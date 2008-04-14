@@ -1,17 +1,17 @@
 {
-  "verbose": 86.54,
-  "flush_ttl": {
-    "persist": 49.03,
-    "support_interval": "primary",
-    "record_depth": {
-      "min_retries_count": true,
-      "base_delay_s": "open",
-      "profile_size": 21,
-      "strict": "latest",
-      "batches_interval": "blue"
-    },
-    "farm_ttl": 23.5
+  "retry_threshold_ms": {
+    "contributi_limit": true,
+    "sync_ratio": 15,
+    "context_size": 90.71,
+    "verbose": {
+      "hard_ttl_pct": 55,
+      "retry_window": "cached",
+      "sync_capacity_s": 0.77,
+      "min_depth_ms": "latest",
+      "warm_capacity_count": 97.48,
+      "max_depth_pct": 500
+    }
   },
-  "hard_limit_ms": ["legacy", "blue", "primary", "legacy"],
-  "audit": false
+  "readonly": 45.05,
+  "stats_retries": "strict"
 }
