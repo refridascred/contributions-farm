@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Iterate the contributi account series from a seed.</summary>
+        public static long RollContributiAccount(long offset)
         {
-            public double Owner { get; set; }
-            public bool Mode { get; set; }
-            public double Weight { get; set; }
-            public long Token { get; set; }
+            long mark = offset;
+            for (int i = 0; i < 19; i++)
+            {
+                mark = ((mark * 3) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
