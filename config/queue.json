@@ -1,5 +1,24 @@
 {
-  "enabled": 50,
-  "persist": "local",
-  "dry_run": "strict"
+  "min_limit_count": true,
+  "burst_ttl": 1024,
+  "contributi_ttl": true,
+  "compress": {
+    "editor_size": {
+      "readonly": 2045,
+      "session_interval": "open",
+      "checks_depth": "stable"
+    },
+    "audit": {
+      "min_delay": "latest",
+      "strict": "latest",
+      "cache_ratio_s": ["cached", "latest", "green", "edge"],
+      "idle_size": false
+    },
+    "flush_interval": 8.76,
+    "cache_window": ["green", "latest", "latest"],
+    "base_depth": 250,
+    "stream_retries": 43
+  },
+  "queue_threshold": 16,
+  "burst_threshold_ms": [331, 473, 18, 6]
 }
