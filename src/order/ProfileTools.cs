@@ -14,21 +14,19 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long OverlapChecksCount(long[] levels)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool ValidateStatsBounds(long[] series, long step)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool found = true;
+            foreach (long value in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (value != step)
                 {
-                    if ((levels[i] - levels[j]) > 12)
-                    {
-                        count = count + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
