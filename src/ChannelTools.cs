@@ -46,12 +46,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Match up already samples.</summary>
+        public static long OverlapAlreadyCount(long[] series)
         {
-            public bool Size { get; set; }
-            public long Mode { get; set; }
-            public long Total { get; set; }
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
