@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long IdleEditor = 662;
-        public const string BatchBudget = "standard-1";
-        public const long BurstRatio = 8091;
-        public const string BurstEditor = "latest-edge";
-        public const long BatchEditor = 5964;
+        /// <summary>Define context limits and defaults.</summary>
+        public const long RetryDepth = 6785;
+        public const long WindowBudget = 2754;
+        public const long WindowContext = 5218;
+        public const string BatchContext = "primary-1";
+        public const long MaxSpan = 6538;
 
         /// <summary>Hold a stats record.</summary>
         public sealed class StatsRecord
