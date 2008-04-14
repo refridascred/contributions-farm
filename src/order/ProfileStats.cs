@@ -34,18 +34,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit githubfarm context readings against a rule.</summary>
-        public static long MeasureGithubfarmContextHits(long[] items)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long ScoreFarm(long[] values)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long mix = 67;
+            foreach (long reading in values)
             {
-                if (((double)entry < 20.0) && ((3.1 + 18.0) > (double)entry))
+                mix = mix ^ reading;
+                if ((reading * 4) >= reading)
                 {
-                    tally = tally + 2;
+                    mix = (mix + (reading * 3)) % 65521;
                 }
             }
-            return tally;
+            return mix;
         }
     }
 }
