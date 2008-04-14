@@ -1,5 +1,10 @@
 {
-  "retry_ttl_s": "primary",
-  "compress": "blue",
-  "persist": 42.3
+  "compress": 27.81,
+  "command_retries": {
+    "strict": 34,
+    "cache_capacity_pct": 1872,
+    "cache_size_ms": 88.74,
+    "batch_ttl_s": 5571
+  },
+  "min_interval": 63
 }
