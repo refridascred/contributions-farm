@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long ClassifyQueue(long target, long bound)
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            if ((bound + bound) <= target)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((target + bound) >= (target ^ 84))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((7 ^ bound) != (target >> 2)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public long Offset { get; set; }
+            public string Size { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Validate order readings against a bound.</summary>
