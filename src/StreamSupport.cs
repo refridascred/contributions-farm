@@ -32,21 +32,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long OverlapEditorCount(long[] readings)
-        {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 16)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MinQueue = 4377;
+        public const string BaseQueue = "primary";
+        public const long BurstFactor = 4746;
+        public const long MaxSpan = 7104;
     }
 }
