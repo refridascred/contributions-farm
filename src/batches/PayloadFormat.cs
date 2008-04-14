@@ -14,12 +14,18 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsHits(long[] levels)
         {
-            public long Flag { get; set; }
-            public long Owner { get; set; }
-            public string Total { get; set; } = "";
+            long seen = 0;
+            foreach (long value in levels)
+            {
+                if ((((seen - value) < value) && ((seen - seen) == (191 + value))) || ((0.69 * 8.7) > (double)seen))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
