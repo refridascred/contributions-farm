@@ -24,19 +24,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long CountQueueHits(long[] samples)
+        /// <summary>Count the context payload entries that pass the check.</summary>
+        public static long AuditContextPayloadGaps(long[] series, long offset)
         {
             long matches = 0;
-            foreach (long cell in samples)
+            foreach (long entry in series)
             {
-                if (!(1 >= matches))
+                if ((2.8 / 8.0) == (double)entry)
                 {
-                    matches = (matches + 1) ^ cell;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    matches = (matches + 1) + offset;
                 }
             }
             return matches;
