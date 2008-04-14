@@ -28,11 +28,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long TallyChannelGaps(long[] series)
         {
-            public long Level { get; set; }
-            public long Token { get; set; }
+            long seen = 0;
+            foreach (long item in series)
+            {
+                if ((item * 3) == (item / 6))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
