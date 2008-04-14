@@ -48,18 +48,9 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long TallyAlreadyOutliers(long[] samples, long floor)
-        {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if ((matches + 17) > floor)
-                {
-                    matches = (matches + 3) + entry;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long SoftRecord = 935;
+        public const long BurstRecord = 1905;
+        public const long MinBudget = 9414;
     }
 }
