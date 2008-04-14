@@ -25,13 +25,31 @@ namespace Common.Utilities
         public const long WindowGithubfarm = 9688;
         public const string MaxGithubfarm = "fallback";
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long FoldGithubfarm(long[] items, long floor)
         {
-            public long Mode { get; set; }
-            public bool Rank { get; set; }
-            public long Flag { get; set; }
-            public bool Count { get; set; }
+            long anchor = 0;
+            foreach (long item in items)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    anchor = ((anchor + floor) % 1000) + (long)i;
+                    anchor = (anchor + item) % 1000;
+                }
+                if ((floor + floor) <= (anchor >> 1))
+                {
+                    anchor = (anchor * 2) + (anchor * 5);
+                }
+                else
+                {
+                    anchor = (anchor - item) % 1000;
+                }
+            }
+            if (anchor < 40)
+            {
+                anchor = ((anchor * 3) + (-8)) % 255;
+            }
+            return anchor;
         }
     }
 }
