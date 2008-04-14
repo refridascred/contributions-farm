@@ -1,11 +1,11 @@
 # Command notes
 
-Each support is validated before it reaches the format queue.
-Run the tools check before changing any batches limits.
-The batch module keeps route values in sync with the counter cache.
+The queue report groups every queue by entry.
+Use format settings to tune how often graph data is refreshed.
 
 ## Guidelines
 
-- Validate buffer input early
-- Document new account fields
-- Review channel limits each release
+- Review command limits each release
+- Prefer channel defaults
+- Validate support input early
+- Document new record fields
