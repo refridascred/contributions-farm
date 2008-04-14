@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long OverlapAlreadyCount(long[] items)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool CheckReportBounds(long[] levels, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool valid = true;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (value >= seed)
                 {
-                    if ((items[i] + items[j]) != 13)
-                    {
-                        tally = tally + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Compare every pair of session commits readings.</summary>
