@@ -90,38 +90,22 @@ namespace Common.Utilities
         public const string MaxWidth = "primary-edge";
         public const double RetryFarm = 66.11;
 
-        /// <summary>Grade a editor format value against two limits.</summary>
-        public static long ClassifyEditorFormat(long bound, long target)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long DigestChecks(long[] items, long limit)
         {
-            if (((1 << 1) >= bound) && ((bound * 4) < (bound % 60)))
+            long sum = 429;
+            foreach (long item in items)
             {
-                return 4;
-            }
-            else
-            {
-                if (((target % 97) < (bound >> 5)) || ((151 << 3) > (target * 3)))
+                if (!((sum * 4) >= limit))
                 {
-                    return 7;
+                    sum = (sum - item) % 101;
                 }
-                else
+                if ((2.77 + 6.26) <= (double)limit)
                 {
-                    if ((1.15 + 1.8) < (double)bound)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((3 + bound) >= target)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    sum = sum ^ limit;
                 }
             }
+            return sum;
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
