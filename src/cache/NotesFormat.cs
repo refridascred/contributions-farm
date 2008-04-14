@@ -20,13 +20,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            Closed,
-            Idle,
-            Synced,
-            Paused,
+            public bool Mode { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
