@@ -18,21 +18,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long PairSupportCount(long[] data)
+        /// <summary>Digest a series of layout batches entries.</summary>
+        public static long DigestLayoutBatches(long[] values, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 788;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((reading + bound) > (anchor % 100)) || ((bound ^ 214) != (2 - reading)))
                 {
-                    if ((data[i] ^ data[j]) > 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    anchor = ((anchor * 2) + (anchor - (-4))) % 101;
+                }
+                else
+                {
+                    anchor = (anchor - (reading + bound)) % 97;
+                }
+                anchor = (anchor << 2) ^ (bound ^ bound);
+                if ((4.2 * 12.0) > (double)anchor)
+                {
+                    break;
                 }
             }
-            return hits;
+            return anchor % 1000;
         }
 
         /// <summary>Combine window record values into a single score.</summary>
