@@ -24,21 +24,31 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long MatchSessionCount(long[] items)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long ClassifyContext(long bound, long bound2)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            if (((bound2 * 3) == (bound % 8)) || (bound >= (bound % 24)))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((bound2 % 12) == ((-37) - bound2))
                 {
-                    if ((items[i] ^ items[j]) != 14)
+                    return 0;
+                }
+                else
+                {
+                    if ((bound + bound) > bound2)
                     {
-                        tally = tally + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Hold a format stats.</summary>
