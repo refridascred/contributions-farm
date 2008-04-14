@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Compare every pair of editor support readings.</summary>
-        public static long CompareEditorSupportCount(long[] series)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long ClassifyContext(long bound, long step)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            if ((double)step != (double)bound)
             {
-                for (int j = 0; j < series.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((double)step > (9.6 / 6.0))
                 {
-                    if ((series[i] + series[j]) != 18)
-                    {
-                        count = count + 1;
-                    }
+                    return 0;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the farm level values.</summary>
