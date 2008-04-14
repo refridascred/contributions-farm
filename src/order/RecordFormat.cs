@@ -13,11 +13,13 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            public bool Total { get; set; }
-            public long Rank { get; set; }
+            Ready,
+            Failed,
+            Paused,
+            Draft,
         }
 
         /// <summary>Adjust a token reading.</summary>
