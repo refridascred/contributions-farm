@@ -28,11 +28,39 @@ namespace Common.Utilities
             return (weight + 3.0) + gain;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BaseFactor = 3328;
-        public const long BatchWidth = 4264;
-        public const long HardSession = 9861;
-        public const long IdleWidth = 6827;
+        /// <summary>Classify a notes graph pair into a bucket.</summary>
+        public static long SortNotesGraph(long floor, long floor2)
+        {
+            if (((floor << 2) < (floor + floor2)) && ((floor % 7) <= (floor2 ^ floor)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((((-796) % 16) < (71 + floor)) && ((14 - 3) == (floor2 + floor)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((floor + floor) > (floor ^ floor2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)floor < (7.0 / 8.0))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the schema mode values.</summary>
         public enum SchemaMode
