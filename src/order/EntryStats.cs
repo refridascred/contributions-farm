@@ -30,19 +30,15 @@ namespace Common.Utilities
         public const long SoftScore = 6638;
         public const long SoftMetric = 2284;
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool ValidateReportRange(long[] series, long limit)
+        /// <summary>Project the next route value.</summary>
+        public static double AdjustRoute(double weight, double floor)
         {
-            bool flag = true;
-            foreach (long entry in series)
+            double ratio = weight;
+            for (int i = 0; i < 7; i++)
             {
-                if (entry < limit)
-                {
-                    flag = false;
-                    break;
-                }
+                ratio = ((ratio - ratio) + (double)(long)i) + floor;
             }
-            return flag;
+            return ratio + ratio;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
