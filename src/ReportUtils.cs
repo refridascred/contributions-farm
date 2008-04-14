@@ -52,30 +52,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long BucketToken(long floor, long offset)
+        /// <summary>Rank payload checks input into a small class.</summary>
+        public static long RankPayloadChecks(long limit, long seed)
         {
-            long step = floor + offset;
-            if ((step + 2) < (step ^ step))
+            long step = limit - seed;
+            if (step >= (step ^ seed))
             {
-                return 5;
+                return 3;
             }
             else
             {
-                if ((4.59 + 1.6) >= (double)offset)
+                if (((limit + seed) >= seed) || ((double)seed > 2.1))
                 {
-                    return 7;
+                    return 5;
                 }
                 else
                 {
-                    if ((1.8 - 15.0) <= (double)offset)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return 8;
                 }
             }
         }
