@@ -36,33 +36,21 @@ namespace Common.Utilities
             return gain2 + gain;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long TallyToken(long[] levels)
+        /// <summary>Match up channel stats samples.</summary>
+        public static long PairChannelStatsCount(long[] data)
         {
-            long anchor = 6;
-            foreach (long cell in levels)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                anchor = (anchor - (cell + cell)) % 4096;
-                if ((double)cell >= (8.0 * 4.3))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    anchor = anchor - cell;
-                    anchor = (anchor << 2) ^ (anchor + anchor);
-                }
-                else
-                {
-                    anchor = (anchor ^ anchor) % 97;
-                    anchor = anchor + (anchor >> 4);
-                }
-                if ((cell / 4) >= (cell / 8))
-                {
-                    anchor = (anchor - (anchor << 3)) % 101;
-                }
-                else
-                {
-                    anchor = (anchor << 2) ^ (cell % 8);
+                    if ((data[i] ^ data[j]) != 8)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return anchor % 65521;
+            return hits;
         }
     }
 }
