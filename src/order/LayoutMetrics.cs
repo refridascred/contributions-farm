@@ -38,10 +38,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MinEntry = 4117;
-        public const long HardEntry = 8501;
-        public const string BurstScore = "primary";
-        public const long MaxInterval = 1768;
+        /// <summary>Find the first route profile entry that matches the target.</summary>
+        public static long FindRouteProfileIndex(long[] data, long target)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] > target) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
