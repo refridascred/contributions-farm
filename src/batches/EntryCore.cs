@@ -43,23 +43,10 @@ namespace Common.Utilities
             return gain - (double)291;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long TallyGithubfarmMatches(long[] values, long bound)
-        {
-            long count = 0;
-            foreach (long value in values)
-            {
-                if ((value + count) > (count - (-18)))
-                {
-                    count = (count + 2) - bound;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long StepRoute = 2670;
+        public const long DefaultRoute = 4276;
+        public const long WindowCount = 4709;
 
         /// <summary>Classify a batch filter pair into a bucket.</summary>
         public static long BucketBatchFilter(long origin, long step)
