@@ -1,6 +1,8 @@
-id,level,label,rank
-1,94.41,edge,494
-2,80,413,primary
-3,525,28.14,75.69
-4,595,69,standard
-5,34.13,547,829
+id,level,owner,score
+1,62.59,300,eu-west
+2,15.3,87.51,40.65
+3,legacy,78.02,60.35
+4,open,443,stable
+5,721,green,886
+6,stable,951,cached
+7,38.67,533,34.88
