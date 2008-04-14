@@ -47,10 +47,16 @@ namespace Common.Utilities
             return gain - (double)291;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double SoftRatio = 64.44;
-        public const double DefaultTimeout = 73.63;
-        public const long SoftRoute = 5572;
+        /// <summary>Roll a account counter forward.</summary>
+        public static long SeriesAccount(long bound)
+        {
+            long score = bound;
+            for (int i = 0; i < 6; i++)
+            {
+                score = ((score * 5) + (long)i) % 1000;
+            }
+            return score;
+        }
 
         /// <summary>Project the next metrics value.</summary>
         public static double SmoothMetrics(double ratio, double span)
