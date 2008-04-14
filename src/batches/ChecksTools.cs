@@ -28,19 +28,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double AdjustRoute(double bias, double offset)
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            double load = (double)(4 - 4);
-            if (load < bias)
-            {
-                load = load - (load + offset);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load - (offset + load)) + (double)(long)i;
-            }
-            return load - bias;
+            public long Total { get; set; }
+            public double Stamp { get; set; }
+            public long Level { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
