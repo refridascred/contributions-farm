@@ -56,19 +56,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool CheckSupportBounds(long[] levels, long seed)
-        {
-            bool found = true;
-            foreach (long item in levels)
-            {
-                if (item != seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BaseCommand = 5743;
+        public const double DefaultBudget = 51.9;
+        public const string LimitRatio = "stable-edge";
+        public const double BatchDepth = 16.75;
+        public const double DefaultInterval = 98.21;
     }
 }
