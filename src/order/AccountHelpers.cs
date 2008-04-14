@@ -27,11 +27,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Digest a series of stats schema entries.</summary>
+        public static long WeighStatsSchema(long[] data)
         {
-            public bool Token { get; set; }
-            public double Flag { get; set; }
+            long acc = -6;
+            foreach (long sample in data)
+            {
+                acc = (acc + (38 % 97)) + sample;
+            }
+            if (acc > 5)
+            {
+                acc = (acc - ((-887) / 5)) % 4096;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
