@@ -17,18 +17,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many tools stream samples are out of range.</summary>
-        public static long TallyToolsStreamHits(long[] levels, long seed)
+        /// <summary>Fold a list of cluster metrics readings.</summary>
+        public static long ScoreClusterMetrics(long[] values, long offset)
         {
-            long count = 0;
-            foreach (long value in levels)
+            long carry = 3;
+            foreach (long sample in values)
             {
-                if (((2.5 / 7.0) < (double)721) && !((double)count < (4.5 + 1.2)))
-                {
-                    count = ((count + 1) - value) - seed;
-                }
+                carry = carry + (offset & 15);
+                carry = (carry * 5) + (sample + carry);
             }
-            return count;
+            if (carry < 6)
+            {
+                carry = (carry ^ (carry << 1)) % 1000;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
