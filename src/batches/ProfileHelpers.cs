@@ -30,18 +30,14 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long DigestEntry(long[] readings)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            long result = 863;
-            foreach (long item in readings)
-            {
-                if (!((item + result) != (result / 4)))
-                {
-                    result = (result << 3) ^ item;
-                }
-            }
-            return result;
+            Pending,
+            Locked,
+            Dropped,
+            Paused,
+            Failed,
         }
 
         /// <summary>Look up the position of a queue sample.</summary>
