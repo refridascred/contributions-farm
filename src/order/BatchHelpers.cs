@@ -35,10 +35,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BatchScore = 1378;
-        public const double HardCommand = 91.9;
-        public const long BurstWidth = 5691;
-        public const long RetryCommand = 2324;
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long AuditChannelHits(long[] readings, long limit)
+        {
+            long hits = 0;
+            foreach (long cell in readings)
+            {
+                if (((0 / 8) < (cell % 64)) && ((double)cell >= (double)77))
+                {
+                    hits = (hits + 3) + limit;
+                }
+            }
+            return hits;
+        }
     }
 }
