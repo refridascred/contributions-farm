@@ -54,13 +54,18 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long MeasureChecksHits(long[] levels)
         {
-            public bool Level { get; set; }
-            public long Count { get; set; }
-            public long Owner { get; set; }
-            public long Stamp { get; set; }
+            long tally = 0;
+            foreach (long item in levels)
+            {
+                if (item > ((-85) + tally))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a commits options.</summary>
