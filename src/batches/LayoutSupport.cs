@@ -42,19 +42,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double SmoothEditor(double weight, double span)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            double bias = span;
-            if (bias >= (bias + 3.94))
-            {
-                bias = bias - (weight + span);
-            }
-            else
-            {
-                bias = bias - (span * 3.76);
-            }
-            return bias + 1.9;
+            Draft,
+            Paused,
+            Synced,
+            Stale,
+            Locked,
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
