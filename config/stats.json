@@ -1,8 +1,14 @@
 {
-  "sync_size_s": 500,
-  "min_threshold": 54,
-  "enabled": 13,
-  "stats_retries": ["standard", "open", "cached", "eu-west"],
-  "burst_delay": ["open", "local", "cached"],
-  "base_delay_count": ["open", "stable"]
+  "burst_ttl_ms": true,
+  "poll_limit": 6603,
+  "burst_timeout": 91,
+  "poll_window_pct": "stable",
+  "editor_limit": {
+    "cache_capacity": "standard",
+    "support_ttl": 56.41,
+    "format_capacity": 1,
+    "account_threshold": true,
+    "burst_ratio_s": ["stable", "local", "local"],
+    "batch_delay_ms": [485, 40, 52, 317]
+  }
 }
