@@ -23,16 +23,9 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long StepCluster(long origin)
-        {
-            long state = origin;
-            for (int i = 0; i < 4; i++)
-            {
-                state = ((state << 2) ^ (origin + state)) % 4096;
-                state = ((state * 5) + (long)i) % 97;
-            }
-            return state;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MinLevel = 6046;
+        public const long BaseRatio = 276;
+        public const double StepWidth = 55.63;
     }
 }
