@@ -2,12 +2,12 @@
 CREATE TABLE IF NOT EXISTS stats_logs (
     id INTEGER PRIMARY KEY,
     label TEXT,
-    owner TEXT NOT NULL,
-    rank INTEGER,
+    created_at TIMESTAMP,
+    region TEXT,
+    active INTEGER NOT NULL DEFAULT 1,
     state TEXT NOT NULL DEFAULT 'new'
 );
 
-CREATE INDEX IF NOT EXISTS idx_stats_logs_owner ON stats_logs (owner);
+CREATE INDEX IF NOT EXISTS idx_stats_logs_label ON stats_logs (label);
 
-INSERT INTO stats_logs (label, owner, rank, state) VALUES ('staging', 'cached', 18, 'strict');
-INSERT INTO stats_logs (label, owner, rank, state) VALUES ('eu-west', 'stable', 35, 'fallback');
+INSERT INTO stats_logs (label, region, active, state) VALUES ('legacy', 'eu-west', 74, 'stable');
