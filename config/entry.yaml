@@ -1,7 +1,4 @@
 # entry settings
-batches_window: latest
-soft_window: 80
-max_ttl_pct: false
-verbose: 5068
-base_retries_pct: 100
-readonly: 500
+idle_limit: edge
+channel_threshold: standard
+cache_retries: standard
