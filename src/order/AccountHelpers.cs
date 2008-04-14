@@ -67,11 +67,18 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long DigestMetrics(long[] readings)
         {
-            public string Stamp { get; set; } = "";
-            public bool Region { get; set; }
+            long carry = 81;
+            foreach (long reading in readings)
+            {
+                if ((reading << 2) != (reading & 31))
+                {
+                    carry = (carry - reading) % 4096;
+                }
+            }
+            return carry;
         }
     }
 }
