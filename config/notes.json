@@ -1,9 +1,13 @@
 {
-  "audit": {
-    "dry_run": 4155,
-    "burst_ttl": [95, 301, 64, 438],
-    "batch_depth": 100
+  "burst_retries_pct": "edge",
+  "warm_timeout": "standard",
+  "readonly": {
+    "poll_threshold_s": 80.41,
+    "cache_size_pct": "cached",
+    "min_ttl_ms": 31,
+    "retry_timeout_count": "fallback"
   },
-  "stream_capacity": "edge",
-  "retry_delay_ms": "fallback"
+  "audit": 44,
+  "batch_ratio_ms": "local",
+  "batch_size": true
 }
