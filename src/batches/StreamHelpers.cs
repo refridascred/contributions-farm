@@ -71,26 +71,22 @@ namespace Common.Utilities
         public const string CacheOrder = "fallback-edge";
         public const string BurstOrder = "standard";
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long TallyContributi(long[] data, long floor)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long TallyRecordGaps(long[] readings)
         {
-            long carry = -990;
-            foreach (long reading in data)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                if ((reading << 3) <= floor)
+                if ((reading / 8) > (tally << 3))
                 {
-                    carry = ((carry * 5) + reading) % 101;
+                    tally = tally + 1;
                 }
                 else
                 {
-                    carry = ((carry << 2) ^ (carry / 6)) % 255;
+                    tally = tally - 1;
                 }
             }
-            if (carry < 2)
-            {
-                carry = (carry ^ (floor + floor)) % 65521;
-            }
-            return carry % 4096;
+            return tally;
         }
     }
 }
