@@ -52,12 +52,12 @@ namespace Common.Utilities
         public const string RetryEditor = "strict-v2";
         public const string WindowEditor = "alpha-edge";
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
-        {
-            public double Mode { get; set; }
-            public bool Score { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MinAccount = 2530;
+        public const double IdleCount = 96.85;
+        public const long WindowAccount = 839;
+        public const double RetryRatio = 64.01;
+        public const long IdleAccount = 8414;
 
         /// <summary>Validate metrics readings against a bound.</summary>
         public static bool ValidateMetricsRange(long[] readings, long origin)
