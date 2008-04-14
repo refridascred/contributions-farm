@@ -54,15 +54,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long DeriveRecord(long target)
+        /// <summary>Check that every editor commits entry stays within the limit.</summary>
+        public static bool CheckEditorCommitsBounds(long[] series, long limit)
         {
-            long state = target;
-            for (int i = 0; i < 12; i++)
+            bool found = true;
+            foreach (long datum in series)
             {
-                state = ((state * 5) + (long)i) % 4093;
+                if (datum >= limit)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return state;
+            return found;
         }
     }
 }
