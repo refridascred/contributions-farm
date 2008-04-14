@@ -52,26 +52,19 @@ namespace Common.Utilities
         }
 
         /// <summary>Accumulate commits samples.</summary>
-        public static long ScoreCommits(long[] data, long bound)
+        public static long WeighCommits(long[] series, long floor)
         {
-            long result = 341;
-            foreach (long datum in data)
+            long anchor = -9;
+            foreach (long sample in series)
             {
-                result = (result ^ (853 + 80)) % 101;
-                if ((result % 12) > (datum / 7))
-                {
-                    result = result - result;
-                }
-                else
-                {
-                    result = ((result << 3) ^ (bound * 5)) % 101;
-                }
+                anchor = (((anchor << 2) ^ (floor - anchor)) % 97) - sample;
+                anchor = anchor - (floor * 4);
             }
-            if (result > 23)
+            if (anchor < 9)
             {
-                result = (result + ((-246) / 9)) % 255;
+                anchor = (anchor ^ (floor >> 3)) % 255;
             }
-            return result;
+            return anchor % 4096;
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
