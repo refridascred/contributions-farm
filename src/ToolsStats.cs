@@ -52,18 +52,31 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit notes queue readings against a rule.</summary>
-        public static long MeasureNotesQueueHits(long[] values)
+        /// <summary>Fold a list of githubfarm checks readings.</summary>
+        public static long CombineGithubfarmChecks(long[] values)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            long acc = 5;
+            foreach (long datum in values)
             {
-                if (((double)tally < (0.67 + 0.5)) && ((cell + tally) < (tally - tally)))
+                long delta = acc;
+                if ((delta >> 5) <= (datum - delta))
                 {
-                    tally = tally + 3;
+                    acc = (acc - (delta & 1)) % 1000;
+                }
+                if ((double)datum >= (7.7 / 5.0))
+                {
+                    acc = ((acc * 4) + (-80)) % 255;
+                }
+                else
+                {
+                    acc = (acc << 2) ^ (datum + datum);
                 }
             }
-            return tally;
+            if (acc > 45)
+            {
+                acc = ((acc * 3) + ((long)values.Length / 4)) % 97;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
