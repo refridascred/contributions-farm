@@ -86,17 +86,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long StepFilter(long floor)
-        {
-            long carry = floor;
-            for (int i = 0; i < 15; i++)
-            {
-                carry = carry - (floor + floor);
-                carry = ((carry << 3) ^ (144 ^ floor)) % 101;
-                carry = ((carry * 5) + (long)i) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long IdleCache = 146;
+        public const long WindowCache = 3614;
+        public const string BaseBudget = "local-1";
+        public const long LimitCache = 284;
+        public const long StepCache = 6620;
     }
 }
