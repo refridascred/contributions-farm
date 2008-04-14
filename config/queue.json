@@ -1,6 +1,14 @@
 {
-  "readonly": 7738,
-  "batch_depth": 96.29,
-  "audit": 95.67,
-  "retry_ratio_ms": "primary"
+  "window_window": {
+    "cache_depth_ms": [70, 133, 405],
+    "strict": [181, 54, 300, 226],
+    "audit": 54,
+    "base_ratio_ms": true,
+    "idle_size_ms": ["legacy", "stable", "green"],
+    "flush_window_ms": "latest"
+  },
+  "entry_delay": 2367,
+  "default_retries_count": 16.21,
+  "sync_ratio": 90,
+  "retry_limit_s": 9.63
 }
