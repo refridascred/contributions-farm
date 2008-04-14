@@ -52,14 +52,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Audit notes queue readings against a rule.</summary>
+        public static long MeasureNotesQueueHits(long[] values)
         {
-            Ready,
-            Queued,
-            Closed,
-            New,
-            Done,
+            long tally = 0;
+            foreach (long cell in values)
+            {
+                if (((double)tally < (0.67 + 0.5)) && ((cell + tally) < (tally - tally)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the payload class values.</summary>
