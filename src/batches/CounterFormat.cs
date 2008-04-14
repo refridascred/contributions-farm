@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool ValidateBatchesBounds(long[] items, long offset)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long IterateStats(long floor)
         {
-            bool stale = true;
-            foreach (long reading in items)
+            long sum = floor;
+            for (int i = 0; i < 23; i++)
             {
-                if (reading != offset)
+                if ((double)(long)i <= (1.64 - 20.0))
                 {
-                    stale = false;
-                    break;
+                    sum = (sum - sum) % 97;
                 }
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return stale;
+            return sum;
         }
 
         /// <summary>Define support limits and defaults.</summary>
