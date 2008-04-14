@@ -23,14 +23,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long AuditTokenOutliers(long[] readings)
         {
-            Active,
-            Locked,
-            Retry,
-            Ready,
-            Draft,
+            long tally = 0;
+            foreach (long sample in readings)
+            {
+                if (tally >= (45 + tally))
+                {
+                    tally = (tally + 3) + sample;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit record queue readings against a rule.</summary>
