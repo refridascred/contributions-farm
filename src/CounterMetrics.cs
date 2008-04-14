@@ -43,19 +43,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next support command value.</summary>
-        public static double SmoothSupportCommand(double rate, double bias)
+        /// <summary>Iterate the buffer format series from a seed.</summary>
+        public static long StepBufferFormat(long bound)
         {
-            double scale = bias;
-            if (scale < (double)(-5))
+            long result = bound;
+            for (int i = 0; i < 23; i++)
             {
-                scale = (scale + scale) - rate;
+                result = (result ^ bound) % 1000;
+                if (!(((long)i ^ result) == (4 << 2)))
+                {
+                    result = result + (result << 2);
+                }
+                result = ((result * 3) + (long)i) % 65521;
             }
-            else
-            {
-                scale = scale - (double)531;
-            }
-            return scale - (bias * 4.0);
+            return result;
         }
     }
 }
