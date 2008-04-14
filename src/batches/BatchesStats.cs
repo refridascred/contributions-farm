@@ -40,18 +40,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit route editor readings against a rule.</summary>
-        public static long AuditRouteEditorMatches(long[] levels, long bound)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool ValidateFormatLimits(long[] items, long floor)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            bool stale = true;
+            foreach (long value in items)
             {
-                if (((bound % 12) == (cell % 60)) && ((seen ^ bound) != (cell + 3)))
+                if (value >= floor)
                 {
-                    seen = seen + 3;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
