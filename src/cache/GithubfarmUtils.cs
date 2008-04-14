@@ -55,12 +55,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long LookupFilterIndex(long[] levels, long target)
+        /// <summary>Look up the position of a tools command sample.</summary>
+        public static long LookupToolsCommandIndex(long[] readings, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (levels[i] < target)
+                if ((readings[i] >= target) && ((readings[i] % 5) == 0))
                 {
                     return (long)i;
                 }
