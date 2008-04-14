@@ -46,22 +46,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of queue stream entries.</summary>
-        public static long CombineQueueStream(long[] data, long offset)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            long score = 1;
-            foreach (long entry in data)
-            {
-                if ((double)offset != (8.0 + 7.17))
-                {
-                    score = ((score ^ (score - score)) % 255) + entry;
-                }
-                else
-                {
-                    score = ((score << 2) ^ offset) % 4096;
-                }
-            }
-            return score;
+            Retry,
+            Queued,
+            Done,
+            Closed,
+            Idle,
         }
     }
 }
