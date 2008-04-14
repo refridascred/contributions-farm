@@ -1,11 +1,17 @@
 {
-  "default_interval": {
-    "batch_limit_pct": "eu-west",
-    "base_delay": ["eu-west", "cached", "stable"],
-    "profile_delay": 100
-  },
-  "audit": 959,
-  "dry_run": 6664,
-  "counter_ratio": "edge",
-  "flush_ratio_ms": "staging"
+  "max_threshold": "staging",
+  "flush_threshold_s": "cached",
+  "batch_capacity": true,
+  "warm_limit_s": {
+    "warm_interval": "primary",
+    "idle_limit_count": {
+      "hard_depth_count": 1024,
+      "readonly": 51.88,
+      "max_retries_ms": true,
+      "poll_ratio": "standard",
+      "batch_retries_s": "primary"
+    },
+    "cache_threshold_count": ["cached", "fallback", "green", "open"],
+    "dry_run": "standard"
+  }
 }
