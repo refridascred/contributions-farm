@@ -5,29 +5,29 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long RankMetrics(long bound, long limit)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long BucketQueue(long origin, long step)
         {
-            long diff = bound + limit;
-            if ((4.71 - 8.4) < (double)limit)
+            long lane = origin ^ step;
+            if (((double)lane >= (double)origin) || ((step & 7) <= (step & 15)))
             {
-                return 6;
+                return 8;
             }
             else
             {
-                if ((0 + 822) <= (diff + diff))
+                if ((double)origin < (4.0 + 1.2))
                 {
-                    return 8;
+                    return 7;
                 }
                 else
                 {
-                    if ((6.14 + 9.38) > (double)bound)
+                    if ((origin % 7) <= 23)
                     {
                         return 5;
                     }
                     else
                     {
-                        return 0;
+                        return 3;
                     }
                 }
             }
