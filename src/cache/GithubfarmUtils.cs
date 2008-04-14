@@ -38,15 +38,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Scale a token route figure with a bias.</summary>
-        public static double ProjectTokenRoute(double ratio, double span)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            double gain = 8.9;
-            for (int i = 0; i < 9; i++)
-            {
-                gain = ((gain - ratio) - (double)(long)i) + span;
-            }
-            return gain + (double)0;
+            Stale,
+            Idle,
+            Ready,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Validate support readings against a bound.</summary>
