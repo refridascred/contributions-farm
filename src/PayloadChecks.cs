@@ -35,17 +35,19 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long LocateEditorIndex(long[] readings, long limit)
+        /// <summary>Check that every queue schema entry stays within the limit.</summary>
+        public static bool ValidateQueueSchemaLimits(long[] items, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool flag = true;
+            foreach (long reading in items)
             {
-                if (readings[i] <= limit)
+                if (reading > floor)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Describe the profile mode values.</summary>
