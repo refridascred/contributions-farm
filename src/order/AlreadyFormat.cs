@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long CombineGithubfarm(long[] data)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long CountSupportHits(long[] readings)
         {
-            long state = 762;
-            foreach (long reading in data)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                state = ((state << 2) ^ (reading << 2)) % 1000;
-                if (((5.0 / 9.0) >= (double)state) && ((long)data.Length > (state + state)))
+                if (matches >= (matches % 16))
                 {
-                    break;
+                    matches = (matches + 1) + datum;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
