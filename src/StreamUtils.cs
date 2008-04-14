@@ -65,13 +65,11 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
-        {
-            public string Score { get; set; } = "";
-            public bool Level { get; set; }
-            public string Weight { get; set; } = "";
-            public bool Total { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long LimitCount = 5760;
+        public const double SoftTimeout = 49.64;
+        public const string BurstFormat = "fallback";
+        public const long CacheBudget = 3304;
+        public const long LimitFormat = 4423;
     }
 }
