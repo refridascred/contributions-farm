@@ -1,10 +1,5 @@
 # githubfarm settings
-base_window_s: staging
-base_size_pct: 33
-idle_depth_s: 100
-strict:
-  - 89
-  - 395
-  - 433
-hard_depth_ms: eu-west
-readonly: false
+soft_depth_pct: standard
+farm_delay: 39
+filter_timeout: 53
+flush_threshold: 24
