@@ -104,18 +104,12 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Measure how many stream graph samples are out of range.</summary>
-        public static long TallyStreamGraphMatches(long[] items)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            long matches = 0;
-            foreach (long entry in items)
-            {
-                if ((matches % 3) == (matches - entry))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Draft,
+            Synced,
+            Paused,
         }
     }
 }
