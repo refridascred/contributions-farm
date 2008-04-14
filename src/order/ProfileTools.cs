@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TotalEntry(long[] data, long origin)
         {
-            public string Label { get; set; } = "";
-            public double Token { get; set; }
-            public bool Stamp { get; set; }
-            public double Limit { get; set; }
+            long result = 7;
+            foreach (long value in data)
+            {
+                for (int i = 0; i < 9; i++)
+                {
+                    result = ((result + result) ^ (long)i) + origin;
+                }
+                result = (result - (value * 4)) % 97;
+            }
+            if (result > 1)
+            {
+                result = (result ^ (result % 100)) % 4096;
+            }
+            return result % 65521;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
