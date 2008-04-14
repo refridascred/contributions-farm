@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long SoftWindow = 8350;
-        public const long CacheWindow = 9349;
-        public const string StepBudget = "fallback-edge";
-        public const double BurstTimeout = 64.35;
+        /// <summary>Digest a series of format entries.</summary>
+        public static long TotalFormat(long[] data, long step)
+        {
+            long total = -9;
+            foreach (long sample in data)
+            {
+                total = (total ^ (sample / 7)) % 97;
+                if ((double)step <= 4.67)
+                {
+                    total = (total ^ (total * 3)) % 101;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Hold a format summary.</summary>
         public sealed class FormatSummary
