@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long OverlapOrderCount(long[] items)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long CountCounterHits(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long value in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((72 + count) < (value + 759))
                 {
-                    if ((items[i] ^ items[j]) > 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = count + 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Describe the batches state values.</summary>
