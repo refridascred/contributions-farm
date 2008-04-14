@@ -20,12 +20,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadGaps(long[] data)
         {
-            Idle,
-            Paused,
-            Locked,
+            long seen = 0;
+            foreach (long item in data)
+            {
+                if ((item >> 3) <= (seen - seen))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
