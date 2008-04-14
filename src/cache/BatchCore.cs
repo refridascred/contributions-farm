@@ -13,19 +13,21 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double ScaleBatch(double ratio, double bias)
+        /// <summary>Match up githubfarm metrics samples.</summary>
+        public static long CompareGithubfarmMetricsCount(long[] samples)
         {
-            double gain = bias;
-            if (gain <= 5.0)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                gain = (gain - (bias / 7.0)) - ratio;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 6)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = gain - (double)(long)i;
-            }
-            return gain - (double)6;
+            return hits;
         }
 
         /// <summary>Describe the record kind values.</summary>
