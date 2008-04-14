@@ -1,7 +1,26 @@
 # githubfarm settings
-persist: legacy
-farm_capacity: 83
-idle_size_pct: green
-verbose:
-  - 279
-  - 313
+base_limit:
+  already_ratio: 98
+  notes_ratio:
+    - 74
+    - 79
+  hard_threshold:
+    persist: primary
+    audit: false
+    buffer_ratio: 5932
+    counter_window: 3695
+poll_ttl_count:
+  soft_retries_ms: 31
+  audit:
+    dry_run: strict
+    audit: primary
+    hard_threshold_ms: stable
+    soft_ttl: staging
+    metrics_retries: green
+    idle_window_s: blue
+  counter_retries: 1024
+  githubfarm_retries: 1024
+  context_size: stable
+window_ratio: 87.01
+persist: local
+soft_ttl: strict
