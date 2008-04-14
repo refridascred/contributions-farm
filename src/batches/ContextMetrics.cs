@@ -54,17 +54,39 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Look up the position of a farm profile sample.</summary>
-        public static long SeekFarmProfileIndex(long[] levels, long seed)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long RankSession(long floor, long floor2)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long bound = floor ^ floor2;
+            if ((floor2 + floor) == (44 & 15))
             {
-                if (levels[i] > seed)
+                return 5;
+            }
+            else
+            {
+                if ((bound / 4) > (bound - 487))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if ((floor + bound) > (bound ^ floor2))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((bound % 8) >= bound)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
