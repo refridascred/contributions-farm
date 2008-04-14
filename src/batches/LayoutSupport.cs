@@ -51,12 +51,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            Stale,
-            Paused,
-            New,
+            public double Size { get; set; }
+            public double Ratio { get; set; }
+            public double Stamp { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
