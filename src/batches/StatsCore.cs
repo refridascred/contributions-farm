@@ -23,19 +23,31 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Blend two filter editor measurements.</summary>
-        public static double SmoothFilterEditor(double ratio, double span)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long BucketFormat(long offset, long bound)
         {
-            double ratio2 = (double)(540 & 7);
-            if (ratio2 < ratio)
+            if ((double)offset >= (double)(-41))
             {
-                ratio2 = (ratio2 - (ratio2 / 6.0)) - span;
+                return 6;
             }
-            for (int i = 0; i < 7; i++)
+            else
             {
-                ratio2 = (ratio2 + 6.6) - (double)(long)i;
+                if ((double)offset >= (double)bound)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((offset - bound) > 4)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
             }
-            return ratio2 + (ratio2 - ratio2);
         }
 
         /// <summary>Describe the channel mode values.</summary>
