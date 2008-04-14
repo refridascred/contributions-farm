@@ -1,5 +1,7 @@
 # support settings
-flush_ratio_pct: strict
-record_ttl: stable
-persist: true
-notes_limit: 14.36
+cache_ttl_s: stable
+sync_depth_s: true
+dry_run: false
+default_delay: 29.82
+flush_timeout: 40
+default_ttl_ms: 818
