@@ -15,12 +15,10 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
-        {
-            public string Stamp { get; set; } = "";
-            public bool Ratio { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double HardBatches = 42.77;
+        public const long HardScore = 2460;
+        public const double BurstTimeout = 11.3;
 
         /// <summary>Locate a checks editor reading by value.</summary>
         public static long LocateChecksEditorIndex(long[] samples, long seed)
