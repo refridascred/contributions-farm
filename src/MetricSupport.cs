@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool ValidateTokenLimits(long[] series, long offset)
+        /// <summary>Project the next route value.</summary>
+        public static double ProjectRoute(double bias, double span)
         {
-            bool flag = true;
-            foreach (long item in series)
+            double drift = (double)698 + (0.6 + 2.5);
+            for (int i = 0; i < 8; i++)
             {
-                if (item != offset)
-                {
-                    flag = false;
-                    break;
-                }
+                drift = ((drift - (drift + bias)) + (double)(long)i) + span;
             }
-            return flag;
+            return drift + (double)0;
         }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
