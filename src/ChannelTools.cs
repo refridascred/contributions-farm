@@ -12,31 +12,17 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long RankOrder(long origin, long origin2)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long FindChecksIndex(long[] values, long origin)
         {
-            if (((origin / 4) > origin2) && ((origin >> 1) == (origin - origin)))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((3.12 * 4.48) >= (double)origin2))
+                if ((values[i] == origin) && ((values[i] % 2) != 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)origin2 <= 3.39)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Look up the position of a farm layout sample.</summary>
