@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long WindowCount = 8399;
-        public const long WindowCounter = 8067;
-        public const long RetryCounter = 1072;
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
+        {
+            public string Size { get; set; } = "";
+            public double Weight { get; set; }
+            public string Total { get; set; } = "";
+            public bool Mode { get; set; }
+        }
 
         /// <summary>Describe the context state values.</summary>
         public enum ContextState
