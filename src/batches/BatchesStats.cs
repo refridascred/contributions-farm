@@ -43,19 +43,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double ScaleSession(double weight, double bias)
+        /// <summary>Roll a buffer batches counter forward.</summary>
+        public static long StepBufferBatches(long seed)
         {
-            double ratio = (weight + weight) - 8.9;
-            if (ratio <= (weight + 7.45))
+            long score = seed;
+            for (int i = 0; i < 24; i++)
             {
-                ratio = (ratio + (ratio + ratio)) - bias;
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    score = ((score - (score + score)) % 97) + (long)i2;
+                }
+                score = (score - (seed % 7)) % 101;
+                score = ((score * 4) + (long)i) % 101;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (ratio + (double)43) + (double)(long)i;
-            }
-            return ratio + 5.56;
+            return score;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
