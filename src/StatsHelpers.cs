@@ -28,19 +28,17 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Validate command graph readings against a bound.</summary>
-        public static bool ValidateCommandGraphBounds(long[] series, long floor)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long LocateAccountIndex(long[] values, long limit)
         {
-            bool found = true;
-            foreach (long datum in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (datum <= floor)
+                if (values[i] <= limit)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
