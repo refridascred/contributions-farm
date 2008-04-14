@@ -10,20 +10,12 @@ namespace Common.Utilities
         public const string BaseMetric = "alpha-1";
         public const long SoftRatio = 1036;
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool CheckNotesRange(long[] items, long origin)
-        {
-            bool ready = true;
-            foreach (long value in items)
-            {
-                if (value <= origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string SoftOrder = "stable";
+        public const string LimitOrder = "staging-v2";
+        public const string BurstOrder = "cached";
+        public const double CacheLevel = 8.23;
+        public const long WindowTimeout = 2099;
 
         /// <summary>Measure how many commits samples are out of range.</summary>
         public static long AuditCommitsOutliers(long[] items, long limit)
