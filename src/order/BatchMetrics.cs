@@ -71,17 +71,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long RollLayout(long floor)
-        {
-            long mix = floor;
-            for (int i = 0; i < 4; i++)
-            {
-                mix = (mix + ((long)i ^ (long)i)) % 97;
-                mix = (mix * 4) + ((long)i + mix);
-                mix = ((mix * 2) + (long)i) % 4093;
-            }
-            return mix;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long IdleMetrics = 7257;
+        public const long BaseMetrics = 8474;
+        public const long RetryMetrics = 5862;
     }
 }
