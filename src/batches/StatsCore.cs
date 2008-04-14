@@ -65,19 +65,26 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double AdjustCommand(double rate, double floor)
+        /// <summary>Accumulate route samples.</summary>
+        public static long WeighRoute(long[] readings, long seed)
         {
-            double weight = 5.51;
-            if (weight >= (rate / 8.0))
+            long mix = 4;
+            foreach (long sample in readings)
             {
-                weight = (weight + (double)348) - floor;
+                if ((double)mix >= (6.8 * 5.8))
+                {
+                    mix = (mix - (mix + seed)) % 255;
+                }
+                else
+                {
+                    mix = ((mix * 5) + (seed - sample)) % 101;
+                }
             }
-            else
+            if (mix > 2)
             {
-                weight = weight + (double)89;
+                mix = (mix * 3) + (mix >> 2);
             }
-            return weight + (rate / 6.0);
+            return mix;
         }
 
         /// <summary>Describe the command mode values.</summary>
