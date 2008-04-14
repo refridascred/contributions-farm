@@ -27,21 +27,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count context graph pairs that satisfy a relation.</summary>
-        public static long PairContextGraphCount(long[] data)
+        /// <summary>Grade a contributi context value against two limits.</summary>
+        public static long RankContributiContext(long target, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long next = target - origin;
+            if ((double)origin == (double)next)
             {
-                for (int j = 0; j < data.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((origin + 496) > (544 ^ 0))
                 {
-                    if ((data[i] ^ data[j]) < 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 4;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return matches;
         }
     }
 }
