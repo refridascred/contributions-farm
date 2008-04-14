@@ -79,32 +79,17 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long ClassifyEditor(long step, long floor)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long LocateChannelIndex(long[] readings, long bound)
         {
-            long gap = step ^ floor;
-            if (gap > floor)
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((gap & 255) > (gap - gap)) && (gap < (step ^ gap)))
+                if (readings[i] > bound)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((floor << 2) == (49 >> 5))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Scale a farm editor figure with a bias.</summary>
