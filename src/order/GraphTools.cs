@@ -5,23 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long FoldQueue(long[] samples, long origin)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            long score = -96;
-            foreach (long datum in samples)
-            {
-                if (!(score < (score - datum)))
-                {
-                    score = (((score * 3) + (score << 3)) % 65521) - origin;
-                }
-                if ((double)datum < (1.8 / 3.0))
-                {
-                    break;
-                }
-                score = score + (417 >> 3);
-            }
-            return score % 1000;
+            Failed,
+            New,
+            Closed,
+            Paused,
+            Pending,
         }
 
         /// <summary>Describe the commits phase values.</summary>
