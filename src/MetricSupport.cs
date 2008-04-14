@@ -32,21 +32,9 @@ namespace Common.Utilities
         public const long IdleFarm = 2815;
         public const double StepCount = 28.97;
 
-        /// <summary>Match up cluster samples.</summary>
-        public static long MatchClusterCount(long[] series)
-        {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 1)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MinRecord = 9184;
+        public const string WindowRecord = "alpha-1";
+        public const string BaseRecord = "staging-edge";
     }
 }
