@@ -33,14 +33,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            Done,
-            Stale,
-            Ready,
-            Locked,
-            Dropped,
+            public long Region { get; set; }
+            public string Count { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
