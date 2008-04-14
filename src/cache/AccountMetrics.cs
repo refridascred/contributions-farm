@@ -41,17 +41,15 @@ namespace Common.Utilities
             return mean + (4.7 - mean);
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long LocateRouteIndex(long[] items, long limit)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long IterateGraph(long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = origin;
+            for (int i = 0; i < 17; i++)
             {
-                if ((items[i] >= limit) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Count record tools pairs that satisfy a relation.</summary>
