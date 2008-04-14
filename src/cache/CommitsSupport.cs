@@ -49,15 +49,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double ProjectStream(double rate, double bias)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long GradeStats(long bound, long bound2)
         {
-            double weight = (10.0 / 9.0) / 9.0;
-            for (int i = 0; i < 2; i++)
+            if ((-22) >= bound2)
             {
-                weight = ((weight + (double)(long)i) + rate) + bias;
+                return 0;
             }
-            return weight - (double)43;
+            else
+            {
+                if ((double)bound2 == (6.15 * 8.6))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((double)bound < (7.5 + 20.0)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((80 & 1) <= (bound + bound))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define farm limits and defaults.</summary>
