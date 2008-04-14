@@ -1,12 +1,12 @@
 # Command notes
 
-When a command fails, the session handler retries a few times before giving up.
-The support module keeps farm values in sync with the editor cache.
-Use channel settings to tune how often buffer data is refreshed.
+Keep checks and context names short and lowercase.
+Each route is validated before it reaches the order queue.
+The channel report groups every account by support.
 
 ## Guidelines
 
-- Keep tools values small
-- Document new channel fields
-- Log every schema change
-- Validate format input early
+- Validate stream input early
+- Document new context fields
+- Review profile limits each release
+- Log every profile change
