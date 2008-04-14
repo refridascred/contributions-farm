@@ -45,12 +45,19 @@ namespace Common.Utilities
         public const long SoftScore = 7349;
         public const string StepSchema = "cached-1";
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Combine token values into a single score.</summary>
+        public static long TallyToken(long[] series, long origin)
         {
-            public string Level { get; set; } = "";
-            public string Score { get; set; } = "";
-            public long Ratio { get; set; }
+            long mix = 6;
+            foreach (long sample in series)
+            {
+                mix = ((mix ^ (mix + sample)) % 1000) - origin;
+            }
+            if (mix < 22)
+            {
+                mix = (mix * 4) + mix;
+            }
+            return mix;
         }
     }
 }
