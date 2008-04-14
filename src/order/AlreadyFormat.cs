@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long AuditOrderOutliers(long[] items)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueOutliers(long[] samples)
         {
             long hits = 0;
-            foreach (long reading in items)
+            foreach (long sample in samples)
             {
-                if ((((hits + hits) > (hits + reading)) || ((365 - reading) < hits)) && !((reading >> 4) < (reading / 8)))
+                if ((sample / 7) > 93)
                 {
                     hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
                 }
             }
             return hits;
