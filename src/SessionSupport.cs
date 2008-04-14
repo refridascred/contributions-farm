@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long SortCounter(long limit, long origin)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long ScoreCommand(long[] levels, long limit)
         {
-            if ((double)origin >= (double)3)
+            long mark = 52;
+            foreach (long item in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if (((origin ^ 6) > origin) && ((limit - limit) != (5 >> 2)))
+                if ((5 & 127) >= limit)
                 {
-                    return 2;
+                    mark = ((mark - (mark << 1)) % 1000) ^ item;
                 }
                 else
                 {
-                    if ((1 + origin) < origin)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    mark = (mark << 2) ^ (limit / 3);
                 }
             }
+            return mark % 97;
         }
 
         /// <summary>Describe the record class values.</summary>
