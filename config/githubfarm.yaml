@@ -1,4 +1,4 @@
 # githubfarm settings
-checks_interval: 3.24
-cache_timeout_s: 30
-dry_run: false
+base_size: 1024
+strict: 1024
+cache_threshold_count: true
