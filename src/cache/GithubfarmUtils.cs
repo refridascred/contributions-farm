@@ -31,21 +31,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long CompareCommitsCount(long[] levels)
+        /// <summary>Scale a token route figure with a bias.</summary>
+        public static double ProjectTokenRoute(double ratio, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double gain = 8.9;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 0)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                gain = ((gain - ratio) - (double)(long)i) + span;
             }
-            return hits;
+            return gain + (double)0;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
