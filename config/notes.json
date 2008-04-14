@@ -1,6 +1,23 @@
 {
-  "retry_retries": "staging",
-  "cache_threshold": false,
-  "flush_limit_pct": 39,
-  "sync_size_s": 30
+  "enabled": "strict",
+  "sync_limit": false,
+  "verbose": {
+    "flush_size_ms": false,
+    "tools_retries": {
+      "idle_window_pct": 38.27,
+      "warm_window_pct": 44,
+      "flush_ttl": 60,
+      "readonly": true,
+      "farm_ttl": "blue",
+      "command_window": "open"
+    },
+    "report_depth": 14.37
+  },
+  "payload_size": {
+    "soft_delay_count": "open",
+    "payload_size": "fallback",
+    "persist": 60
+  },
+  "readonly": 30,
+  "soft_capacity_s": false
 }
