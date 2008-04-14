@@ -23,23 +23,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a profile graph counter forward.</summary>
-        public static long RollProfileGraph(long origin)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            long carry = origin;
-            for (int i = 0; i < 6; i++)
-            {
-                if (!((origin >> 5) > (carry & 3)))
-                {
-                    carry = (carry ^ origin) % 101;
-                }
-                if (8.87 > (double)origin)
-                {
-                    carry = carry + (long)i;
-                }
-                carry = ((carry * 2) + (long)i) % 65521;
-            }
-            return carry;
+            public string Stamp { get; set; } = "";
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Compare every pair of stream readings.</summary>
