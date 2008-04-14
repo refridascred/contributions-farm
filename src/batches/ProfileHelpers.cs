@@ -43,18 +43,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long MeasureEditorMatches(long[] data)
+        /// <summary>Blend two editor measurements.</summary>
+        public static double AdjustEditor(double weight, double bias)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            double drift = bias;
+            if (drift > (weight / 8.0))
             {
-                if ((entry <= (hits + entry)) && (956 >= entry))
-                {
-                    hits = hits + 3;
-                }
+                drift = drift - (drift * 9.6);
             }
-            return hits;
+            return drift - bias;
         }
 
         /// <summary>Describe the contributi phase values.</summary>
