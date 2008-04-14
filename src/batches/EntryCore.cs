@@ -33,13 +33,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long CombineCluster(long[] items)
         {
-            public string Stamp { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public long Limit { get; set; }
-            public double Region { get; set; }
+            long sum = 219;
+            foreach (long datum in items)
+            {
+                if (652 <= (datum - datum))
+                {
+                    sum = (sum ^ (sum << 3)) % 101;
+                }
+                if ((sum <= (sum / 8)) && ((51 >> 5) >= (datum + sum)))
+                {
+                    sum = ((sum << 2) ^ (datum % 24)) % 255;
+                }
+            }
+            if (sum > 811)
+            {
+                sum = (sum * 3) + (sum % 7);
+            }
+            return sum;
         }
 
         /// <summary>Define route limits and defaults.</summary>
