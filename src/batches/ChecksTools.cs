@@ -35,19 +35,11 @@ namespace Common.Utilities
         public const long SoftWidth = 8638;
         public const long HardReport = 3496;
 
-        /// <summary>Project the next githubfarm context value.</summary>
-        public static double ProjectGithubfarmContext(double ratio, double span)
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            double load = ratio;
-            if (load >= (3.3 * 20.0))
-            {
-                load = (load - (double)48) + span;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load + load) + (double)(long)i;
-            }
-            return load - (load / 5.0);
+            public string Stamp { get; set; } = "";
+            public long Size { get; set; }
         }
     }
 }
