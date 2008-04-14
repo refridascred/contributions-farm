@@ -69,12 +69,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            Queued,
-            Closed,
-            New,
+            Ready,
+            Dropped,
+            Active,
+            Done,
+            Paused,
         }
     }
 }
