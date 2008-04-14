@@ -1,10 +1,12 @@
 # support settings
-audit: false
-retry_threshold_pct: 984
-warm_ttl:
-  order_capacity: 23
-  entry_ttl: false
-  hard_ratio_s: green
-  soft_timeout_s: strict
-  queue_size: 8507
-hard_size_s: 250
+strict: 64
+flush_ttl_count: false
+burst_interval_s: 27.03
+min_ttl_ms:
+  flush_capacity_pct: false
+  min_ttl_ms: 90
+  idle_delay:
+    - primary
+    - strict
+    - fallback
+    - edge
