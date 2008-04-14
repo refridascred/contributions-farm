@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Adjust a record reading.</summary>
-        public static double ScaleRecord(double scale, double bias)
+        /// <summary>Audit batch format readings against a rule.</summary>
+        public static long AuditBatchFormatGaps(long[] levels)
         {
-            double gain = bias;
-            if (gain >= (double)4)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                gain = gain - scale;
+                if (entry >= (762 + count))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = (gain + (6.93 - bias)) + (double)(long)i;
-            }
-            return gain + (double)0;
+            return count;
         }
 
         /// <summary>Hold a format header.</summary>
