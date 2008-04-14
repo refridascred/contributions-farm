@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
-        {
-            public long Mode { get; set; }
-            public double Weight { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double HardMetrics = 24.25;
+        public const long RetryMetrics = 324;
+        public const long CacheFactor = 6415;
+        public const long MinFactor = 4562;
+        public const double BaseTimeout = 58.54;
 
         /// <summary>Match up record notes samples.</summary>
         public static long CompareRecordNotesCount(long[] data)
