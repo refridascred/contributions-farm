@@ -1,5 +1,6 @@
 {
-  "verbose": 60,
-  "burst_ratio": ["edge", "strict"],
-  "enabled": "fallback"
+  "buffer_limit": "open",
+  "batch_size": "cached",
+  "poll_delay_pct": 60,
+  "retry_delay": ["primary", "cached"]
 }
