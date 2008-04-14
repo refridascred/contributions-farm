@@ -1,5 +1,6 @@
 {
-  "compress": "local",
-  "support_timeout": 7510,
-  "idle_interval": "primary"
+  "min_window_count": 11,
+  "min_timeout_ms": 1453,
+  "context_delay": 3245,
+  "min_window_ms": [356, 53, 436]
 }
