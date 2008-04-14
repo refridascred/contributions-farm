@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Adjust a session reading.</summary>
+        public static double ProjectSession(double bias, double floor)
         {
-            public double Label { get; set; }
-            public long Level { get; set; }
+            double weight = floor * 8.0;
+            if (weight <= (bias / 8.0))
+            {
+                weight = weight - floor;
+            }
+            else
+            {
+                weight = weight + weight;
+            }
+            return weight + (double)963;
         }
 
         /// <summary>Hold a stream entry.</summary>
