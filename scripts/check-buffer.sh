@@ -6,19 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in local open legacy latest; do
+for item in strict standard edge; do
     log "checking ${item}"
 done
 
-BUFFER_LIMIT=132
+BUFFER_LIMIT=246
 log "limit is ${BUFFER_LIMIT}"
 
-mode="${1:-latest}"
-case "${mode}" in
-    eu-west)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+count=0
+while [ "${count}" -lt 3 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
