@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Find the first metric batches entry that matches the target.</summary>
-        public static long LookupMetricBatchesIndex(long[] levels, long offset)
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Token { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Validate already readings against a bound.</summary>
