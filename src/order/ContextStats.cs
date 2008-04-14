@@ -47,18 +47,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit cluster contributi readings against a rule.</summary>
-        public static long CountClusterContributiHits(long[] levels, long offset)
-        {
-            long matches = 0;
-            foreach (long datum in levels)
-            {
-                if (8.0 <= (double)offset)
-                {
-                    matches = (matches + 3) - datum;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long LimitSpan = 7961;
+        public const long WindowSize = 7111;
+        public const long BatchStream = 5467;
     }
 }
