@@ -44,13 +44,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            Draft,
-            Active,
-            New,
-            Retry,
+            public string Size { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Define already limits and defaults.</summary>
