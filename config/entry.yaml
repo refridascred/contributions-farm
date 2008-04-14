@@ -1,5 +1,13 @@
 # entry settings
-default_window_pct: standard
-max_ttl_ms: false
-max_ttl: 55.23
-batch_ratio: green
+max_delay: staging
+enabled:
+  flush_depth_count: standard
+  min_timeout_count: latest
+  compress: 6786
+  soft_limit_ms: 13
+  batch_ttl: 55
+  channel_window: 30
+stream_interval: 9772
+dry_run: strict
+default_size_s: strict
+contributi_interval: legacy
