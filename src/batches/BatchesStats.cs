@@ -37,40 +37,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long RankBatches(long target, long offset)
-        {
-            long prev = target ^ offset;
-            if ((prev % 7) == (offset % 64))
-            {
-                return 1;
-            }
-            else
-            {
-                if (!((double)prev != (3.8 / 7.0)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)offset == (double)target)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((target / 3) >= offset)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string CacheSize = "fallback-edge";
+        public const string BatchSession = "primary";
+        public const long LimitSession = 795;
 
         /// <summary>Check that every route entry stays within the limit.</summary>
         public static bool VerifyRouteBounds(long[] samples, long step)
