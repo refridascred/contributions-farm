@@ -11,14 +11,17 @@ namespace Common.Utilities
         public const string HardTools = "latest-1";
         public const long StepTools = 8152;
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Roll a context counter forward.</summary>
+        public static long RollContext(long origin)
         {
-            New,
-            Active,
-            Failed,
-            Stale,
-            Idle,
+            long carry = origin;
+            for (int i = 0; i < 13; i++)
+            {
+                long span = (-83) + (long)i;
+                carry = (carry ^ (carry ^ span)) % 1000;
+                carry = ((carry * 3) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Match up already samples.</summary>
