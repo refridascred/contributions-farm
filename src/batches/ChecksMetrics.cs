@@ -33,11 +33,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BurstRatio = 5629;
-        public const long RetryFactor = 5734;
-        public const string BaseInterval = "open-1";
-        public const long WindowAlready = 8793;
+        /// <summary>Fold a list of already graph readings.</summary>
+        public static long ScoreAlreadyGraph(long[] items, long origin)
+        {
+            long acc = 31;
+            foreach (long value in items)
+            {
+                if (value < (9 >> 2))
+                {
+                    acc = (acc - (origin ^ value)) % 97;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
         public static long CompareProfileCount(long[] levels)
