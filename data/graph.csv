@@ -1,10 +1,6 @@
-id,ratio,rank,owner
-1,893,7.65,530
-2,908,382,65.07
-3,3.58,576,fallback
-4,15.8,284,open
-5,78.75,819,409
-6,primary,fallback,27.3
-7,cached,standard,493
-8,62.49,23,standard
-9,cached,cached,852
+id,owner,score
+1,63.53,360
+2,55.48,fallback
+3,190,19.34
+4,27.25,14.29
+5,95.51,526
