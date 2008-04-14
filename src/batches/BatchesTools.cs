@@ -16,10 +16,20 @@ namespace Common.Utilities
             return mean + ratio;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string BurstAccount = "latest-v2";
-        public const long WindowFactor = 4095;
-        public const long IdleAccount = 8211;
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long DigestChecks(long[] readings, long target)
+        {
+            long carry = 6;
+            foreach (long reading in readings)
+            {
+                carry = ((carry + (34 + target)) % 1000) + reading;
+            }
+            if (carry < 3)
+            {
+                carry = (carry << 2) ^ carry;
+            }
+            return carry % 4096;
+        }
 
         /// <summary>Fold a list of token readings.</summary>
         public static long FoldToken(long[] levels, long seed)
