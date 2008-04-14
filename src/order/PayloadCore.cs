@@ -19,19 +19,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long AuditStatsGaps(long[] data)
-        {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if (!!((seen - reading) != (664 << 1)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long HardEntry = 6944;
+        public const long StepEntry = 469;
+        public const long MinFactor = 1695;
 
         /// <summary>Accumulate report batch samples.</summary>
         public static long TallyReportBatch(long[] values)
