@@ -1,9 +1,8 @@
 # support settings
-base_ratio_pct: 4985
-queue_ratio:
-  - stable
-  - green
+profile_limit:
+  - staging
+  - latest
   - eu-west
-min_timeout_s: 9936
-flush_size_s: local
-max_ttl_s: 27.05
+warm_delay: 64.5
+flush_limit_s: 38
+poll_ratio: fallback
