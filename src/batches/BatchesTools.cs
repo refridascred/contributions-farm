@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long ClassifyMetric(long limit, long limit2)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileMatches(long[] data, long origin)
         {
-            if ((limit - 24) != (limit & 1))
+            long tally = 0;
+            foreach (long datum in data)
             {
-                return 8;
-            }
-            else
-            {
-                if ((-826) < limit2)
+                if ((tally - origin) != (long)data.Length)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (limit > (limit2 & 127))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)992 > (double)limit)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    tally = (tally + 2) + datum;
                 }
             }
+            return tally;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
