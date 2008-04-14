@@ -33,14 +33,12 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            Locked,
-            New,
-            Pending,
-            Queued,
-            Synced,
+            public long Label { get; set; }
+            public bool Token { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
