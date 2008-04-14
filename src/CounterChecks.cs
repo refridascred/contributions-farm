@@ -69,11 +69,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionMatches(long[] series)
         {
-            public double Mode { get; set; }
-            public long Limit { get; set; }
+            long hits = 0;
+            foreach (long cell in series)
+            {
+                if ((hits + cell) >= 744)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
     }
 }
