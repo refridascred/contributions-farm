@@ -6,19 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 3))
-done
-log "total ${total}"
+CHANNEL_LIMIT=318
+log "limit is ${CHANNEL_LIMIT}"
 
-for item in primary latest open cached; do
+for item in stable staging; do
     log "checking ${item}"
 done
 
-mode="${1:-open}"
+mode="${1:-strict}"
 case "${mode}" in
-    stable)
+    blue)
         log "fast path"
         ;;
     *)
