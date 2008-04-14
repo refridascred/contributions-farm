@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long SeriesSchema(long origin)
+        /// <summary>Match up contributi checks samples.</summary>
+        public static long OverlapContributiChecksCount(long[] data)
         {
-            long mark = origin;
-            for (int i = 0; i < 23; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mark = ((mark * 5) + (long)i) % 101;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 11)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
