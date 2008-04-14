@@ -12,12 +12,12 @@ namespace Common.Utilities
         public const long LimitToken = 671;
         public const long StepWidth = 9605;
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
-        {
-            public long Score { get; set; }
-            public bool Level { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double DefaultTools = 14.18;
+        public const long WindowTools = 752;
+        public const long IdleScore = 542;
+        public const double RetryTools = 68.51;
+        public const long DefaultDepth = 8582;
 
         /// <summary>Define checks limits and defaults.</summary>
         public const string BurstInterval = "cached";
