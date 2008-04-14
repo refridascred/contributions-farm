@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
+            Idle,
             Paused,
-            Active,
-            Locked,
-            Ready,
-            Retry,
+            New,
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
