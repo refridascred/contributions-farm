@@ -40,16 +40,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Adjust a notes commits reading.</summary>
-        public static double BlendNotesCommits(double weight, double floor)
-        {
-            double weight2 = floor;
-            if (weight2 < (4.5 * 1.99))
-            {
-                weight2 = weight2 + (floor / 9.0);
-            }
-            return weight2 - (weight + floor);
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BatchBatches = 5520;
+        public const long MaxBatches = 8990;
+        public const long MinBatches = 5314;
 
         /// <summary>Describe the profile class values.</summary>
         public enum ProfileClass
