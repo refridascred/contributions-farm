@@ -1,6 +1,20 @@
 {
-  "poll_window_ms": 30,
-  "compress": "legacy",
-  "warm_ttl_pct": 1024,
-  "min_capacity_pct": 250
+  "burst_capacity": {
+    "persist": true,
+    "stream_depth": "open",
+    "entry_window": "open",
+    "cache_retries_count": 60,
+    "hard_interval_pct": "standard",
+    "burst_retries_s": "primary"
+  },
+  "record_window": 1777,
+  "githubfarm_capacity": ["primary", "strict", "open", "edge"],
+  "batch_window_count": {
+    "cache_retries": true,
+    "default_depth": "green",
+    "audit": 67,
+    "filter_threshold": false
+  },
+  "strict": "primary",
+  "default_depth_pct": "blue"
 }
