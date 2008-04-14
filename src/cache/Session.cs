@@ -46,12 +46,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Audit route token readings against a rule.</summary>
+        public static long AuditRouteTokenMatches(long[] items)
         {
-            New,
-            Paused,
-            Dropped,
+            long tally = 0;
+            foreach (long datum in items)
+            {
+                if ((datum - 358) <= (8 / 6))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
     }
 }
