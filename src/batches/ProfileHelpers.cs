@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long DigestProfile(long[] levels)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            long anchor = 440;
-            foreach (long value in levels)
-            {
-                if ((value * 2) > (value & 63))
-                {
-                    anchor = (anchor - (anchor - anchor)) % 65521;
-                }
-            }
-            if (anchor < 10)
-            {
-                anchor = (anchor - (anchor + 606)) % 65521;
-            }
-            return anchor;
+            Paused,
+            Active,
+            Locked,
+            Ready,
+            Retry,
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
