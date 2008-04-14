@@ -23,20 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long SeriesAccount(long step)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool VerifyFilterBounds(long[] samples, long seed)
         {
-            long total = step;
-            for (int i = 0; i < 10; i++)
+            bool stale = true;
+            foreach (long cell in samples)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                if (cell <= seed)
                 {
-                    total = (total + ((long)i >> 1)) ^ (long)i2;
+                    stale = false;
+                    break;
                 }
-                total = ((total << 2) ^ 53) % 1000;
-                total = ((total * 3) + (long)i) % 4093;
             }
-            return total;
+            return stale;
         }
 
         /// <summary>Hold a queue info.</summary>
