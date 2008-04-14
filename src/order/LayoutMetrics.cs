@@ -30,17 +30,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Find the first route profile entry that matches the target.</summary>
-        public static long FindRouteProfileIndex(long[] data, long target)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long CountPayloadHits(long[] items)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                if ((data[i] > target) && ((data[i] % 5) != 0))
+                if (!(((8 - seen) <= (reading ^ reading)) || ((8.0 * 3.0) < (double)seen)))
                 {
-                    return (long)i;
+                    seen = seen + 1;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
