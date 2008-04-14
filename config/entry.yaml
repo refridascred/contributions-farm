@@ -1,5 +1,4 @@
 # entry settings
-poll_interval: 70
-max_timeout_s: 89
-strict: 64
-cache_interval: false
+max_window_count: 77
+burst_timeout: green
+order_ttl: latest
