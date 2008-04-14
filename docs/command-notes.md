@@ -1,11 +1,15 @@
 # Command notes
 
-The record helpers are pure functions, so they are safe to call from any thread.
-The command module keeps filter values in sync with the buffer cache.
-Run the layout check before changing any entry limits.
+Use schema settings to tune how often session data is refreshed.
+Keep editor and order names short and lowercase.
+
+When a token fails, the cache handler retries a few times before giving up.
+A stats that stays idle for too long is moved to the context list.
+The window report groups every window by payload.
 
 ## Guidelines
 
-- Prefer githubfarm defaults
-- Validate counter input early
-- Log every schema change
+- Validate buffer input early
+- Keep window values small
+- Review cache limits each release
+- Log every filter change
