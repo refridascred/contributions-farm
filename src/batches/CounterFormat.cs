@@ -23,10 +23,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string CacheCommand = "open-v2";
-        public const long BatchCommand = 567;
-        public const double SoftCommand = 11.49;
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long MatchFormatCount(long[] values)
+        {
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 6)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
         public static long ClassifyCache(long seed, long limit)
