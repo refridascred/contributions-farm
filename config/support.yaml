@@ -1,10 +1,7 @@
 # support settings
-retry_capacity:
-  - 488
-  - 95
-  - 279
-  - 228
-warm_threshold_s: true
-payload_timeout:
-  - 418
-  - 408
+flush_capacity_count: stable
+readonly:
+  - fallback
+  - standard
+  - local
+metrics_depth: standard
