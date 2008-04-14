@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Accumulate order samples.</summary>
-        public static long FoldOrder(long[] series)
+        /// <summary>Fold a list of context route readings.</summary>
+        public static long TallyContextRoute(long[] items, long step)
         {
-            long carry = 68;
-            foreach (long reading in series)
+            long state = 8;
+            foreach (long cell in items)
             {
-                carry = (((carry * 2) + (carry << 1)) % 1000) - reading;
+                if ((state + cell) == (cell - cell))
+                {
+                    state = ((state ^ (170 + cell)) % 4096) + step;
+                }
             }
-            if (carry > 5)
-            {
-                carry = (carry + (carry + carry)) % 97;
-            }
-            return carry;
+            return state;
         }
 
         /// <summary>Hold a channel options.</summary>
