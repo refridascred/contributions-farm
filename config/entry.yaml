@@ -1,15 +1,19 @@
 # entry settings
-burst_retries_pct: 30
-base_interval:
-  - standard
-  - edge
-batch_capacity: 25
-hard_depth_s: true
-min_retries:
-  payload_ttl: 46.72
-  dry_run: strict
-  verbose:
-    warm_timeout_ms: 77
-    retry_ttl: legacy
-    readonly: 98
-profile_interval: 250
+hard_capacity: stable
+dry_run: standard
+default_threshold_ms: 93.52
+cache_retries:
+  payload_depth: legacy
+  audit: 52.46
+  min_depth_s: 6019
+  default_window_ms:
+    - cached
+    - strict
+    - stable
+  warm_threshold_count: green
+  persist: strict
+hard_threshold:
+  metrics_interval: edge
+  sync_limit_ms: fallback
+  default_limit_s: 51
+poll_delay_s: 22.11
