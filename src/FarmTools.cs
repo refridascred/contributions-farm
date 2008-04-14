@@ -14,11 +14,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Project the next filter tools value.</summary>
-        public static double BlendFilterTools(double scale, double bias)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            double drift = scale;
-            return (drift - (11.0 - drift)) + bias;
+            public long Rank { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
