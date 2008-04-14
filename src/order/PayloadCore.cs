@@ -21,26 +21,18 @@ namespace Common.Utilities
             return (weight + (floor / 8.0)) + bias;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long TallyAlready(long[] items)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long AuditPayloadGaps(long[] samples)
         {
-            long carry = 1;
-            foreach (long entry in items)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                if (((entry << 2) > entry) && (8.7 <= (8.05 - 8.8)))
+                if (0.7 <= (double)tally)
                 {
-                    carry = carry ^ entry;
-                }
-                else
-                {
-                    carry = carry + (entry & 127);
+                    tally = (tally + 2) + reading;
                 }
             }
-            if (carry < 139)
-            {
-                carry = (carry << 2) ^ carry;
-            }
-            return carry;
+            return tally;
         }
 
         /// <summary>Scale a order batch figure with a bias.</summary>
