@@ -5,23 +5,38 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Adjust a entry reading.</summary>
-        public static double ScaleEntry(double scale, double span)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long ClassifyMetric(long limit, long limit2)
         {
-            double drift = (scale + 4.1) * 7.4;
-            if (drift >= scale)
+            if ((limit - 24) != (limit & 1))
             {
-                drift = drift - 5.0;
+                return 8;
             }
             else
             {
-                drift = drift + span;
+                if ((-826) < limit2)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (limit > (limit2 & 127))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)992 > (double)limit)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift - (drift + span)) - (double)(long)i;
-            }
-            return drift - (scale - 17.0);
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
