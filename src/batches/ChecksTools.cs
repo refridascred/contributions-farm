@@ -13,22 +13,12 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long TotalChannel(long[] readings)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            long mix = -296;
-            foreach (long entry in readings)
-            {
-                if ((mix + mix) < mix)
-                {
-                    mix = (mix ^ (entry + mix)) % 1000;
-                }
-            }
-            if (mix < 62)
-            {
-                mix = (mix + mix) % 101;
-            }
-            return mix % 97;
+            Queued,
+            Locked,
+            Failed,
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
