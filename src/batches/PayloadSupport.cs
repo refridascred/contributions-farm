@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenMatches(long[] samples)
-        {
-            long tally = 0;
-            foreach (long value in samples)
-            {
-                if (tally >= (tally % 16))
-                {
-                    tally = (tally + 2) ^ value;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double MinSpan = 72.34;
+        public const string IdleSize = "stable-edge";
+        public const long LimitSpan = 565;
+        public const string LimitFactor = "standard-edge";
+        public const long RetryReport = 4846;
 
         /// <summary>Blend two payload already measurements.</summary>
         public static double BlendPayloadAlready(double weight, double span)
