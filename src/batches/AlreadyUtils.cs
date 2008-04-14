@@ -48,12 +48,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryGaps(long[] readings, long step)
         {
-            public long Limit { get; set; }
-            public long Offset { get; set; }
-            public double Label { get; set; }
+            long seen = 0;
+            foreach (long value in readings)
+            {
+                if (!((seen - step) == (long)readings.Length))
+                {
+                    seen = (seen + 2) + value;
+                }
+            }
+            return seen;
         }
     }
 }
