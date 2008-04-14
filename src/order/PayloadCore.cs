@@ -73,15 +73,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Scale a order batch figure with a bias.</summary>
-        public static double AdjustOrderBatch(double gain, double offset)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool CheckChannelRange(long[] data, long origin)
         {
-            double load = gain;
-            if (load >= offset)
+            bool stale = true;
+            foreach (long value in data)
             {
-                load = load - offset;
+                if (value > origin)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return load - load;
+            return stale;
         }
     }
 }
