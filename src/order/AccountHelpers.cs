@@ -74,18 +74,18 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long DigestMetrics(long[] readings)
+        /// <summary>Measure how many stream graph samples are out of range.</summary>
+        public static long TallyStreamGraphMatches(long[] items)
         {
-            long carry = 81;
-            foreach (long reading in readings)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                if ((reading << 2) != (reading & 31))
+                if ((matches % 3) == (matches - entry))
                 {
-                    carry = (carry - reading) % 4096;
+                    matches = matches + 2;
                 }
             }
-            return carry;
+            return matches;
         }
     }
 }
