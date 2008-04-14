@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long SoftCluster = 376;
-        public const long StepCluster = 3719;
-        public const long BatchCount = 1506;
-        public const double SoftBudget = 26.52;
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long OverlapStatsCount(long[] data)
+        {
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 8)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Compare every pair of window githubfarm readings.</summary>
         public static long MatchWindowGithubfarmCount(long[] data)
