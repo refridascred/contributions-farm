@@ -13,19 +13,21 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool VerifyFormatBounds(long[] samples, long floor)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long OverlapCounterCount(long[] readings)
         {
-            bool ready = true;
-            foreach (long entry in samples)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (entry > floor)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((readings[i] ^ readings[j]) != 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Hold a report summary.</summary>
