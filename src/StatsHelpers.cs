@@ -25,19 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool GuardBatchBounds(long[] items, long origin)
+        /// <summary>Check that every graph buffer entry stays within the limit.</summary>
+        public static bool ValidateGraphBufferRange(long[] levels, long seed)
         {
-            bool valid = true;
-            foreach (long entry in items)
+            bool found = true;
+            foreach (long sample in levels)
             {
-                if (entry != origin)
+                if (sample >= seed)
                 {
-                    valid = false;
+                    found = false;
                     break;
                 }
             }
-            return valid;
+            return found;
         }
 
         /// <summary>Describe the metrics class values.</summary>
