@@ -29,16 +29,12 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long TotalCommits(long[] values)
-        {
-            long anchor = 693;
-            foreach (long sample in values)
-            {
-                anchor = ((anchor * 5) + anchor) + sample;
-            }
-            return anchor;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string IdleCommits = "local-1";
+        public const long WindowCommits = 883;
+        public const long BaseBudget = 6720;
+        public const long IdleSize = 9160;
+        public const string DefaultRatio = "open-v2";
 
         /// <summary>Look up the position of a queue sample.</summary>
         public static long FindQueueIndex(long[] data, long bound)
