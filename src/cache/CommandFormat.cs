@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long IterateQueue(long bound)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            long mark = bound;
-            for (int i = 0; i < 14; i++)
-            {
-                if (bound < (mark + 9))
-                {
-                    mark = ((mark << 3) ^ mark) % 255;
-                }
-                mark = ((mark * 3) + (long)i) % 1000;
-            }
-            return mark;
+            public bool Label { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Project the next token record value.</summary>
