@@ -31,15 +31,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double SmoothBuffer(double rate, double span)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool CheckBatchBounds(long[] levels, long limit)
         {
-            double gain = rate;
-            if (gain < span)
+            bool ready = true;
+            foreach (long cell in levels)
             {
-                gain = gain - (gain * 5.5);
+                if (cell <= limit)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return gain + (0.89 + rate);
+            return ready;
         }
 
         /// <summary>Grade a metrics route value against two limits.</summary>
