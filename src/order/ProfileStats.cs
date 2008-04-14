@@ -38,19 +38,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long ScoreFarm(long[] values)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long ScoreCache(long[] levels, long offset)
         {
-            long mix = 67;
-            foreach (long reading in values)
+            long sum = -3;
+            foreach (long datum in levels)
             {
-                mix = mix ^ reading;
-                if ((reading * 4) >= reading)
+                if ((sum / 8) == (sum * 3))
                 {
-                    mix = (mix + (reading * 3)) % 65521;
+                    sum = sum - datum;
                 }
             }
-            return mix;
+            if (sum < 5)
+            {
+                sum = (sum << 2) ^ (offset >> 5);
+            }
+            return sum;
         }
     }
 }
