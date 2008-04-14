@@ -52,31 +52,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a cache buffer value against two limits.</summary>
-        public static long RankCacheBuffer(long bound, long origin)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryOutliers(long[] data, long step)
         {
-            if ((2.73 + 13.0) >= (1.7 + 7.0))
+            long hits = 0;
+            foreach (long sample in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((bound & 7) <= (549 + bound))
+                if (((double)step > (double)sample) || ((16 << 2) >= (step + hits)))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((origin + origin) >= (origin & 7))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
     }
 }
