@@ -22,22 +22,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadMatches(long[] levels, long limit)
+        /// <summary>Compare every pair of window githubfarm readings.</summary>
+        public static long MatchWindowGithubfarmCount(long[] data)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((limit / 2) < (count + 30))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = (count + 1) + item;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((data[i] ^ data[j]) < 16)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
