@@ -5,11 +5,27 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BurstSpan = 7170;
-        public const long BurstSupport = 8463;
-        public const double SoftSupport = 48.15;
-        public const string DefaultSupport = "latest-1";
+        /// <summary>Digest a series of checks channel entries.</summary>
+        public static long DigestChecksChannel(long[] data)
+        {
+            long mix = 26;
+            foreach (long sample in data)
+            {
+                if (6.64 >= (double)mix)
+                {
+                    mix = (mix + (sample - sample)) % 255;
+                }
+                else
+                {
+                    mix = mix + (sample - sample);
+                }
+            }
+            if (mix > 170)
+            {
+                mix = (mix - 41) % 1000;
+            }
+            return mix;
+        }
 
         /// <summary>Grade a batch format value against two limits.</summary>
         public static long ClassifyBatchFormat(long origin, long offset)
