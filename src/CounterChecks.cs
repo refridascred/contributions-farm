@@ -69,11 +69,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long SeriesGithubfarm(long seed)
         {
-            public string Size { get; set; } = "";
-            public long Level { get; set; }
+            long score = seed;
+            for (int i = 0; i < 20; i++)
+            {
+                score = ((score * 5) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
