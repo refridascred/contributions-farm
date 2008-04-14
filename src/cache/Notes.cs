@@ -48,19 +48,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool ValidateRecordRange(long[] values, long offset)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long SeekTokenIndex(long[] items, long floor)
         {
-            bool ok = true;
-            foreach (long item in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (item < offset)
+                if (items[i] <= floor)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
