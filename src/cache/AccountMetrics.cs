@@ -58,21 +58,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count record tools pairs that satisfy a relation.</summary>
-        public static long CompareRecordToolsCount(long[] series)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Paused,
+            Pending,
+            Failed,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Iterate the session support series from a seed.</summary>
