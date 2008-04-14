@@ -20,23 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Derive the next queue counter value from a seed.</summary>
-        public static long DeriveQueueCounter(long step)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsGaps(long[] readings, long bound)
         {
-            long state = step;
-            for (int i = 0; i < 4; i++)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                if ((step / 6) == (state << 3))
+                if ((sample + 86) <= (tally + bound))
                 {
-                    break;
+                    tally = tally + 1;
                 }
-                else
-                {
-                    state = ((state << 3) ^ state) % 255;
-                }
-                state = ((state * 2) + (long)i) % 65521;
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
