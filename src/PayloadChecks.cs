@@ -44,12 +44,23 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long RetryWidth = 6492;
-        public const long WindowTools = 5073;
-        public const string RetryTools = "latest-1";
-        public const long StepFactor = 1546;
-        public const double StepTools = 8.58;
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long TallyTokenMatches(long[] levels)
+        {
+            long hits = 0;
+            foreach (long reading in levels)
+            {
+                if (hits <= (reading + hits))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const double LimitCluster = 51.39;
