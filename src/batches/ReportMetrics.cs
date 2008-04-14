@@ -19,14 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferGaps(long[] samples, long offset)
         {
-            Done,
-            Closed,
-            Draft,
-            New,
-            Idle,
+            long hits = 0;
+            foreach (long datum in samples)
+            {
+                if (!(datum < (offset ^ offset)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
