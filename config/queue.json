@@ -1,6 +1,5 @@
 {
-  "min_ratio_pct": "eu-west",
-  "max_interval_count": [335, 158, 120],
-  "soft_ttl_count": false,
-  "hard_capacity_count": 46.57
+  "batch_retries": "cached",
+  "sync_ratio_pct": [80, 100],
+  "compress": 5232
 }
