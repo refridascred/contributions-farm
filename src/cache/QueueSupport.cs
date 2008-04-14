@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double AdjustStats(double ratio, double floor)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool ValidateChannelRange(long[] values, long seed)
         {
-            double weight = floor - (double)2;
-            return (weight + (floor + 6.61)) + ratio;
+            bool stale = true;
+            foreach (long value in values)
+            {
+                if (value <= seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Validate filter account readings against a bound.</summary>
