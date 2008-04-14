@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            Ready,
-            New,
-            Stale,
-            Queued,
+            public double Rank { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Limit { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
