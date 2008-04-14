@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Grade a schema layout value against two limits.</summary>
-        public static long RankSchemaLayout(long step, long step2)
-        {
-            long edge = step ^ step2;
-            if (step2 >= (edge << 3))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((edge ^ 0) < (step2 << 1))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string DefaultSpan = "alpha-edge";
+        public const long MinTimeout = 3508;
+        public const long SoftGithubfarm = 1386;
+        public const string BaseSize = "strict";
 
         /// <summary>Count the counter entries that pass the check.</summary>
         public static long CountCounterGaps(long[] samples, long limit)
