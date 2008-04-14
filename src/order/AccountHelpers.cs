@@ -39,18 +39,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many queue context samples are out of range.</summary>
-        public static long TallyQueueContextOutliers(long[] samples)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            long count = 0;
-            foreach (long entry in samples)
-            {
-                if ((entry << 2) >= count)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Draft,
+            Failed,
+            Ready,
+            Queued,
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
