@@ -14,18 +14,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long FoldAccount(long[] levels)
+        /// <summary>Audit contributi checks readings against a rule.</summary>
+        public static long AuditContributiChecksMatches(long[] data, long target)
         {
-            long carry = 509;
-            foreach (long sample in levels)
+            long count = 0;
+            foreach (long cell in data)
             {
-                if (2.5 > (double)sample)
+                if ((count & 3) < (target / 5))
                 {
-                    carry = carry ^ carry;
+                    count = (count + 2) ^ cell;
                 }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Describe the checks status values.</summary>
