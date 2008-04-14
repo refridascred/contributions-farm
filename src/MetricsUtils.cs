@@ -61,18 +61,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyOutliers(long[] readings)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long WeighEditor(long[] data, long offset)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            long mix = 587;
+            foreach (long value in data)
             {
-                if ((double)value >= (5.1 * 17.0))
+                if ((offset >> 5) >= (value * 2))
                 {
-                    matches = matches + 3;
+                    mix = (mix + offset) % 4096;
                 }
             }
-            return matches;
+            if (mix > 269)
+            {
+                mix = ((mix * 5) + (mix >> 2)) % 65521;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Accumulate token samples.</summary>
