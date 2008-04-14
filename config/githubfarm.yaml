@@ -1,22 +1,20 @@
 # githubfarm settings
-verbose:
-  cache_retries: 6589
-  strict:
-    burst_retries_s: strict
-    dry_run: primary
-    route_capacity: 1241
-    queue_window: primary
-    cluster_ttl:
-      - 427
-      - 291
-      - 277
-      - 155
-  poll_delay_pct: primary
-  persist: 500
-retry_limit_count: 500
-base_window_ms: 3198
-context_ratio: eu-west
-counter_interval:
-  - standard
-  - local
-  - edge
+poll_window_s: cached
+base_timeout_s:
+  - fallback
+  - blue
+  - stable
+min_timeout_count: fallback
+flush_limit:
+  dry_run: latest
+  warm_timeout_pct: latest
+  idle_size_ms:
+    soft_timeout_ms: 35
+    tools_delay: 6.64
+    verbose: 53
+  buffer_ratio:
+    audit: 9
+    contributi_threshold: fallback
+    max_ratio_pct: 2685
+max_ratio_ms: 59.26
+tools_depth: false
