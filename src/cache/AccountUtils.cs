@@ -20,12 +20,20 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double RetryBuffer = 6.01;
-        public const long HardRatio = 4593;
-        public const string BatchBuffer = "strict-v2";
-        public const long HardInterval = 9000;
-        public const long WindowRatio = 9485;
+        /// <summary>Check that every farm stats entry stays within the limit.</summary>
+        public static bool GuardFarmStatsLimits(long[] items, long bound)
+        {
+            bool ready = true;
+            foreach (long datum in items)
+            {
+                if (datum > bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Match up account samples.</summary>
         public static long CompareAccountCount(long[] levels)
