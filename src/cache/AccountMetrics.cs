@@ -30,11 +30,32 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long RetryTimeout = 3350;
-        public const long RetryDepth = 45;
-        public const double CacheCount = 12.52;
-        public const double BaseDepth = 45.52;
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long GradeCommits(long offset, long origin)
+        {
+            if (((80 ^ (-592)) >= (offset + origin)) && (origin >= (offset - (-83))))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((3.67 + 6.2) == (double)offset)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (7.8 < (double)origin)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
 
         /// <summary>Combine route values into a single score.</summary>
         public static long ScoreRoute(long[] data)
