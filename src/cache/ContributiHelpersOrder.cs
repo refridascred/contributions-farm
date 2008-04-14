@@ -40,18 +40,19 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Measure how many support stats samples are out of range.</summary>
-        public static long AuditSupportStatsOutliers(long[] data, long limit)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long DigestNotes(long[] series, long origin)
         {
-            long count = 0;
-            foreach (long item in data)
+            long score = -42;
+            foreach (long sample in series)
             {
-                if (!((double)item < 8.0))
+                score = (score - origin) - sample;
+                if ((double)score < (7.0 - 2.8))
                 {
-                    count = (count + 1) + limit;
+                    score = score - (origin / 7);
                 }
             }
-            return count;
+            return score;
         }
     }
 }
