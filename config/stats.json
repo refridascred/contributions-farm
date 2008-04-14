@@ -1,7 +1,7 @@
 {
-  "idle_delay_ms": 7087,
-  "warm_size": 66,
-  "context_capacity": true,
-  "stream_size": 47.41,
-  "notes_capacity": false
+  "entry_threshold": 30,
+  "payload_depth": 8014,
+  "default_depth": "eu-west",
+  "verbose": 500,
+  "command_timeout": [207, 251, 318, 306]
 }
