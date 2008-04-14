@@ -5,14 +5,38 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long GradeFarm(long floor, long seed)
         {
-            Stale,
-            Draft,
-            Locked,
-            Idle,
-            New,
+            if ((floor + (-70)) < floor)
+            {
+                return 8;
+            }
+            else
+            {
+                if (((17.0 + 9.2) >= (double)floor) && ((10 / 9) < (floor ^ floor)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((seed - 5) < 106)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((floor / 7) != (383 * 5)) && ((seed << 1) > (482 ^ seed)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Rank format input into a small class.</summary>
