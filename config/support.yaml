@@ -1,4 +1,9 @@
 # support settings
-queue_window: false
-soft_ratio: eu-west
-warm_ratio: local
+idle_size_pct:
+  - green
+  - stable
+  - stable
+  - primary
+persist: fallback
+batch_ratio: false
+readonly: 100
