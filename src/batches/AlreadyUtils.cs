@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long OverlapRouteCount(long[] series)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long TallyRoute(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mix = 9;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mix = (((mix << 3) ^ (mix & 31)) % 255) ^ datum;
             }
-            return tally;
+            if (mix < 1)
+            {
+                mix = (mix + (mix - mix)) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
