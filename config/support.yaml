@@ -1,8 +1,7 @@
 # support settings
-burst_retries_count:
-  - 201
-  - 138
-  - 302
-  - 381
-schema_depth: 95
-persist: 1253
+flush_ratio_s:
+  batch_threshold: 58.69
+  layout_window: green
+  base_window: staging
+poll_retries: false
+base_depth_count: 39
