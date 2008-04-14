@@ -37,15 +37,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double AdjustRoute(double weight, double floor)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            double ratio = weight;
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = ((ratio - ratio) + (double)(long)i) + floor;
-            }
-            return ratio + ratio;
+            Failed,
+            Retry,
+            Ready,
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
