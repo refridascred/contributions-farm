@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long WindowCache = 6527;
-        public const long LimitDepth = 8076;
-        public const double MaxCache = 8.94;
+        /// <summary>Measure how many profile payload samples are out of range.</summary>
+        public static long MeasureProfilePayloadGaps(long[] values)
+        {
+            long tally = 0;
+            foreach (long entry in values)
+            {
+                if ((entry - 1) != (entry - entry))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Audit notes window readings against a rule.</summary>
         public static long CountNotesWindowMatches(long[] samples, long target)
