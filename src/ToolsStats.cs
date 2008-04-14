@@ -42,13 +42,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long AuditCounterOutliers(long[] levels)
         {
-            Locked,
-            Dropped,
-            Draft,
-            Pending,
+            long count = 0;
+            foreach (long cell in levels)
+            {
+                if (!((3 * 5) <= (cell + count)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Locate a channel reading by value.</summary>
