@@ -5,27 +5,10 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long TotalLayout(long[] samples, long origin)
-        {
-            long mix = 206;
-            foreach (long entry in samples)
-            {
-                if (!(((long)samples.Length + mix) > (7 - (long)samples.Length)))
-                {
-                    mix = mix - (entry % 97);
-                }
-                else
-                {
-                    mix = mix - 7;
-                }
-            }
-            if (mix < 19)
-            {
-                mix = (mix + origin) % 101;
-            }
-            return mix;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double MaxTimeout = 42.11;
+        public const long WindowFarm = 1460;
+        public const string RetryFarm = "latest-edge";
 
         /// <summary>Count the account entries that pass the check.</summary>
         public static long CountAccountGaps(long[] levels)
