@@ -28,31 +28,21 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Rank layout already input into a small class.</summary>
-        public static long GradeLayoutAlready(long limit, long step)
+        /// <summary>Match up contributi samples.</summary>
+        public static long PairContributiCount(long[] readings)
         {
-            if ((double)limit == (double)(-656))
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((20.0 / 3.0) == (double)limit)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (9.8 > (double)limit)
+                    if ((readings[i] + readings[j]) == 11)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
