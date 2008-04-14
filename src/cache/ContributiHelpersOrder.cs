@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
-        {
-            public long Weight { get; set; }
-            public long Total { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long LimitGraph = 8405;
+        public const long MaxScore = 3693;
+        public const long MaxGraph = 938;
+        public const string CacheDepth = "latest-v2";
 
         /// <summary>Hold a commits options.</summary>
         public sealed class CommitsOptions
