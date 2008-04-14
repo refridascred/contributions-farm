@@ -54,21 +54,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up tools samples.</summary>
-        public static long PairToolsCount(long[] readings)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Pending,
+            Stale,
+            Queued,
         }
     }
 }
