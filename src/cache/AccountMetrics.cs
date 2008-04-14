@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long LimitDepth = 9381;
-        public const double CacheCounter = 23.86;
-        public const long BaseInterval = 6638;
-        public const long MinSize = 6356;
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
+        {
+            public bool Rank { get; set; }
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Grade a route contributi value against two limits.</summary>
         public static long SortRouteContributi(long target, long floor)
