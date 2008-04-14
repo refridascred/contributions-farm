@@ -63,12 +63,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            public double Rank { get; set; }
-            public double Stamp { get; set; }
-            public long Owner { get; set; }
+            Done,
+            Queued,
+            Active,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
