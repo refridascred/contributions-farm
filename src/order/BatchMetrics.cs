@@ -38,18 +38,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long TallyStream(long[] items, long origin)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long RollRecord(long bound)
         {
-            long result = 4;
-            foreach (long item in items)
+            long anchor = bound;
+            for (int i = 0; i < 9; i++)
             {
-                if ((13.0 / 9.0) > (double)item)
-                {
-                    result = ((result * 2) + origin) % 101;
-                }
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return result;
+            return anchor;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
