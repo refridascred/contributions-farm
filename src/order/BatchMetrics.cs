@@ -87,39 +87,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank channel commits input into a small class.</summary>
-        public static long BucketChannelCommits(long limit, long offset)
+        /// <summary>Audit notes cache readings against a rule.</summary>
+        public static long CountNotesCacheHits(long[] series)
         {
-            long edge = limit + offset;
-            if (edge <= (edge << 1))
+            long tally = 0;
+            foreach (long entry in series)
             {
-                return 3;
-            }
-            else
-            {
-                if (((double)limit > (double)edge) && ((8.1 + 5.04) > (double)limit))
+                if ((double)entry != (7.75 - 9.0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (limit >= (offset ^ edge))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)limit > (2.5 - 19.0))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the profile phase values.</summary>
