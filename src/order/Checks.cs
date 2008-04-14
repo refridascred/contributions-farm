@@ -20,13 +20,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long SeriesGithubfarm(long bound)
         {
-            Failed,
-            Closed,
-            Retry,
-            Active,
+            long total = bound;
+            for (int i = 0; i < 15; i++)
+            {
+                total = ((total << 2) ^ ((long)i + bound)) % 255;
+                total = ((total * 4) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
