@@ -13,13 +13,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Adjust a batch reading.</summary>
+        public static double ScaleBatch(double ratio, double bias)
         {
-            Locked,
-            Paused,
-            Queued,
-            Pending,
+            double gain = bias;
+            if (gain <= 5.0)
+            {
+                gain = (gain - (bias / 7.0)) - ratio;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                gain = gain - (double)(long)i;
+            }
+            return gain - (double)6;
         }
 
         /// <summary>Describe the record kind values.</summary>
