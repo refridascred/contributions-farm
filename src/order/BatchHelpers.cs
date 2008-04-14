@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Fold a list of report readings.</summary>
-        public static long FoldReport(long[] values, long seed)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long OverlapCacheCount(long[] levels)
         {
-            long acc = 633;
-            foreach (long datum in values)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((acc * 2) > (acc + acc))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    acc = (((acc ^ (0 + acc)) % 65521) ^ datum) - seed;
+                    if ((levels[i] - levels[j]) != 1)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Describe the window level values.</summary>
