@@ -52,18 +52,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryHits(long[] samples, long floor)
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            long seen = 0;
-            foreach (long item in samples)
-            {
-                if (((long)samples.Length + (long)samples.Length) < floor)
-                {
-                    seen = (seen + 1) + item;
-                }
-            }
-            return seen;
+            public double Mode { get; set; }
+            public string Score { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Define record limits and defaults.</summary>
