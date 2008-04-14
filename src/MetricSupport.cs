@@ -5,24 +5,25 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long ClassifyRoute(long step, long bound)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long IterateMetrics(long offset)
         {
-            if ((step & 1) <= bound)
+            long sum = offset;
+            for (int i = 0; i < 4; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((bound / 6) <= (1 << 1))
+                if ((double)(-86) != (double)sum)
                 {
-                    return 1;
+                    sum = (sum + offset) % 1000;
+                    break;
                 }
-                else
+                sum = sum - (sum / 5);
+                if ((long)i > (offset & 31))
                 {
-                    return 0;
+                    sum = ((sum << 2) ^ (874 + sum)) % 97;
                 }
+                sum = ((sum * 2) + (long)i) % 97;
             }
+            return sum;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
