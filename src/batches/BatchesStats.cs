@@ -50,19 +50,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool ValidateFormatLimits(long[] items, long floor)
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            bool stale = true;
-            foreach (long value in items)
-            {
-                if (value >= floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Owner { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Hold a format header.</summary>
