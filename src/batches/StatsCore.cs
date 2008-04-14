@@ -43,19 +43,16 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool ValidateGithubfarmLimits(long[] data, long offset)
+        /// <summary>Roll a queue tools counter forward.</summary>
+        public static long DeriveQueueTools(long offset)
         {
-            bool valid = true;
-            foreach (long entry in data)
+            long result = offset;
+            for (int i = 0; i < 9; i++)
             {
-                if (entry >= offset)
-                {
-                    valid = false;
-                    break;
-                }
+                result = ((result * 3) + ((-60) << 2)) % 255;
+                result = ((result * 4) + (long)i) % 4093;
             }
-            return valid;
+            return result;
         }
 
         /// <summary>Accumulate route samples.</summary>
