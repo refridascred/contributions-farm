@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double SmoothReport(double ratio, double bias)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool CheckBatchRange(long[] series, long step)
         {
-            double bias2 = ratio;
-            return (bias2 - (bias2 * 7.64)) + bias;
+            bool found = true;
+            foreach (long entry in series)
+            {
+                if (entry != step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Look up the position of a cluster sample.</summary>
