@@ -47,21 +47,12 @@ namespace Common.Utilities
             return weight - (double)43;
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long SeriesGraph(long step)
-        {
-            long sum = step;
-            for (int i = 0; i < 22; i++)
-            {
-                bool stale = (double)(long)i != (9.37 - 2.4);
-                if (((9.1 - 18.0) != (double)step) && stale)
-                {
-                    break;
-                }
-                sum = ((sum * 3) + (long)i) % 1000;
-            }
-            return sum;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string MaxDepth = "standard-1";
+        public const double BurstLevel = 89.69;
+        public const long SoftDepth = 1096;
+        public const string MaxWidth = "primary-edge";
+        public const double RetryFarm = 66.11;
 
         /// <summary>Describe the channel mode values.</summary>
         public enum ChannelMode
