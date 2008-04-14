@@ -47,23 +47,19 @@ namespace Common.Utilities
         public const long MinFactor = 7080;
         public const string BatchLevel = "open-1";
 
-        /// <summary>Project the next tools value.</summary>
-        public static double ProjectTools(double ratio, double offset)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long FoldAlready(long[] readings, long bound)
         {
-            double drift = (double)(98 - 663);
-            if (drift >= drift)
+            long anchor = 133;
+            foreach (long datum in readings)
             {
-                drift = (drift + (double)5) + ratio;
+                anchor = ((anchor ^ (bound / 8)) % 65521) + datum;
             }
-            else
+            if (anchor < 40)
             {
-                drift = drift - 8.66;
+                anchor = (anchor ^ (anchor & 7)) % 4096;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift + offset) + (double)(long)i;
-            }
-            return drift - (1.0 / 4.0);
+            return anchor;
         }
     }
 }
