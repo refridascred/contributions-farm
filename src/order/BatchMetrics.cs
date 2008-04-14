@@ -22,19 +22,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool GuardBatchesBounds(long[] items, long limit)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long RollChecks(long seed)
         {
-            bool found = true;
-            foreach (long item in items)
+            long total = seed;
+            for (int i = 0; i < 8; i++)
             {
-                if (item < limit)
+                total = total + total;
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    found = false;
-                    break;
+                    total = ((total ^ (total ^ total)) % 1000) - (long)i2;
                 }
+                total = ((total * 2) + (long)i) % 101;
             }
-            return found;
+            return total;
         }
 
         /// <summary>Accumulate stream samples.</summary>
