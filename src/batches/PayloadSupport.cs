@@ -5,24 +5,31 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long CombineBuffer(long[] readings, long target)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long SortWindow(long seed, long origin)
         {
-            long mix = 310;
-            foreach (long datum in readings)
+            if (1 >= (seed % 5))
             {
-                mix = (mix + (datum - target)) % 101;
-                mix = mix + ((-55) / 5);
-                if ((57 / 3) >= target)
+                return 5;
+            }
+            else
+            {
+                if ((seed << 2) < 99)
                 {
-                    mix = (mix - (target >> 3)) % 97;
+                    return 2;
                 }
                 else
                 {
-                    mix = (mix ^ target) % 255;
+                    if (((-91) + origin) >= (seed + origin))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return mix % 1000;
         }
 
         /// <summary>Project the next command value.</summary>
