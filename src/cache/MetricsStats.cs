@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesGaps(long[] readings)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double SmoothReport(double ratio, double bias)
         {
-            long matches = 0;
-            foreach (long entry in readings)
-            {
-                if (matches >= (entry % 64))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            double bias2 = ratio;
+            return (bias2 - (bias2 * 7.64)) + bias;
         }
 
         /// <summary>Blend two already measurements.</summary>
