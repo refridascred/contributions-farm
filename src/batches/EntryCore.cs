@@ -20,14 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            Draft,
-            Active,
-            Locked,
-            Pending,
-            Stale,
+            Idle,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Scale a format notes figure with a bias.</summary>
