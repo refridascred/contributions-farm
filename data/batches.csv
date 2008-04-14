@@ -1,9 +1,8 @@
-id,active,rank,ratio
-1,primary,eu-west,1.11
-2,906,blue,415
-3,80.05,primary,519
-4,32.08,standard,7.78
-5,strict,eu-west,green
-6,464,215,edge
-7,767,15.88,751
-8,standard,46.74,58.77
+id,rank,weight,active,count
+1,12,356,latest,600
+2,49.33,57.56,248,staging
+3,470,442,791,10.26
+4,772,437,220,primary
+5,primary,fallback,51.74,940
+6,181,stable,768,primary
+7,strict,local,eu-west,36
