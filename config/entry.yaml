@@ -1,12 +1,12 @@
 # entry settings
-flush_capacity: blue
-compress:
-  soft_capacity_count: 57.12
-  enabled: strict
-  max_timeout_count: 4231
-  hard_threshold_pct: 8388
-layout_interval: 9317
-enabled:
-  - 411
-  - 336
-batch_depth_s: 9631
+cache_ratio_count: true
+hard_window: false
+burst_window:
+  poll_limit_pct: false
+  flush_timeout_s: edge
+  checks_window:
+    - green
+    - staging
+    - open
+soft_threshold_pct: 4644
+farm_capacity: blue
