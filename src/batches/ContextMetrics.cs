@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
-        {
-            Synced,
-            Idle,
-            Done,
-            Closed,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BurstSpan = 7170;
+        public const long BurstSupport = 8463;
+        public const double SoftSupport = 48.15;
+        public const string DefaultSupport = "latest-1";
 
         /// <summary>Describe the githubfarm state values.</summary>
         public enum GithubfarmState
