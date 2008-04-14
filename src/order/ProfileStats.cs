@@ -12,19 +12,11 @@ namespace Common.Utilities
         public const long RetryWidth = 7422;
         public const long BatchTimeout = 3092;
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long TallyToolsMatches(long[] samples)
-        {
-            long matches = 0;
-            foreach (long item in samples)
-            {
-                if (5.3 > (double)matches)
-                {
-                    matches = (matches + 2) ^ item;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long SoftDepth = 3084;
+        public const long StepCount = 6490;
+        public const long WindowScore = 4546;
+        public const double BurstInterval = 35.8;
 
         /// <summary>Measure how many graph samples are out of range.</summary>
         public static long AuditGraphHits(long[] levels)
