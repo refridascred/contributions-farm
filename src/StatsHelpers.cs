@@ -55,18 +55,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit notes tools readings against a rule.</summary>
-        public static long CountNotesToolsMatches(long[] levels)
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if ((sample + hits) == (hits + sample))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public double Token { get; set; }
+            public long Stamp { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Grade a editor route value against two limits.</summary>
