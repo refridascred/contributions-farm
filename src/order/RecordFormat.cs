@@ -20,18 +20,11 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesHits(long[] data, long limit)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            long matches = 0;
-            foreach (long entry in data)
-            {
-                if ((limit + limit) < (matches % 8))
-                {
-                    matches = (matches + 3) ^ entry;
-                }
-            }
-            return matches;
+            public long Stamp { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Describe the record kind values.</summary>
