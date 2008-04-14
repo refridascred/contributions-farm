@@ -33,22 +33,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long TotalEntry(long[] data, long seed)
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long PairOrderCount(long[] data)
         {
-            long anchor = 347;
-            foreach (long datum in data)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((8.6 < (double)seed) && ((16.0 * 2.29) != (double)anchor))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    anchor = (anchor - (seed << 2)) + datum;
+                    if ((data[i] + data[j]) != 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (anchor < 8)
-            {
-                anchor = ((anchor * 3) + seed) % 4096;
-            }
-            return anchor % 97;
+            return seen;
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
