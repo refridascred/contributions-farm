@@ -43,12 +43,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long MatchBufferCount(long[] readings)
         {
-            public bool Count { get; set; }
-            public double Rank { get; set; }
-            public long Stamp { get; set; }
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 14)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
