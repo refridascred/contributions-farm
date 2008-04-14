@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long FoldMetric(long[] series)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long ClassifyQueue(long target, long seed)
         {
-            long anchor = -868;
-            foreach (long reading in series)
+            if ((seed % 60) > (889 ^ seed))
             {
-                anchor = (anchor * 2) + (reading - anchor);
-                if (!((anchor << 3) < (anchor - anchor)))
+                return 3;
+            }
+            else
+            {
+                if ((seed > (target - seed)) || ((target % 2) <= (target + seed)))
                 {
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if ((target >> 3) < target)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return anchor % 65521;
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
