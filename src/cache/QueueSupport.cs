@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long TallyProfileGaps(long[] items)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            long tally = 0;
-            foreach (long datum in items)
-            {
-                if (!(((double)datum != (7.2 / 3.0)) || ((datum << 1) < (datum ^ datum))))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            New,
+            Failed,
+            Synced,
+            Ready,
+            Retry,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
