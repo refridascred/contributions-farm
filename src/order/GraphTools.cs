@@ -22,10 +22,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string MaxFactor = "cached-v2";
-        public const string MinDepth = "staging-1";
-        public const long SoftChecks = 3006;
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmMatches(long[] levels)
+        {
+            long matches = 0;
+            foreach (long datum in levels)
+            {
+                if ((matches ^ matches) >= (69 * 2))
+                {
+                    matches = (matches + 3) ^ datum;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Roll a channel counter forward.</summary>
         public static long StepChannel(long seed)
