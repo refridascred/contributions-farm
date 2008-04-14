@@ -50,10 +50,20 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string WindowCounter = "latest";
-        public const long BurstSize = 1452;
-        public const double MaxCounter = 82.49;
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool VerifyCacheRange(long[] values, long seed)
+        {
+            bool found = true;
+            foreach (long item in values)
+            {
+                if (item > seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const string StepLayout = "open";
