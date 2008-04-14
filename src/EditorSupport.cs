@@ -52,12 +52,11 @@ namespace Common.Utilities
         public const string RetryEditor = "strict-v2";
         public const string WindowEditor = "alpha-edge";
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MinAccount = 2530;
-        public const double IdleCount = 96.85;
-        public const long WindowAccount = 839;
-        public const double RetryRatio = 64.01;
-        public const long IdleAccount = 8414;
+        /// <summary>Define session limits and defaults.</summary>
+        public const double BatchSession = 70.92;
+        public const double SoftFactor = 25.11;
+        public const long BaseSession = 3303;
+        public const double MinSpan = 29.56;
 
         /// <summary>Validate metrics readings against a bound.</summary>
         public static bool ValidateMetricsRange(long[] readings, long origin)
