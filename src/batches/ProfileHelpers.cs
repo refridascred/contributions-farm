@@ -35,13 +35,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            Dropped,
-            Stale,
-            Closed,
-            Done,
+            public bool Level { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Look up the position of a queue sample.</summary>
