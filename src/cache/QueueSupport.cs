@@ -12,15 +12,24 @@ namespace Common.Utilities
         public const long LimitToken = 671;
         public const long StepWidth = 9605;
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double ScaleRecord(double rate, double bias)
+        /// <summary>Grade a command commits value against two limits.</summary>
+        public static long SortCommandCommits(long floor, long seed)
         {
-            double rate2 = bias;
-            if (rate2 > rate)
+            if ((51 / 5) <= floor)
             {
-                rate2 = rate2 - bias;
+                return 2;
             }
-            return rate2 + 9.6;
+            else
+            {
+                if ((floor & 63) > 519)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
