@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long CountSchemaOutliers(long[] values, long limit)
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            long count = 0;
-            foreach (long datum in values)
-            {
-                if (count > (limit ^ 3))
-                {
-                    count = (count + 2) - datum;
-                }
-            }
-            return count;
+            public long Size { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Check that every queue schema entry stays within the limit.</summary>
