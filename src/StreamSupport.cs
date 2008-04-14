@@ -17,19 +17,31 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool GuardChannelLimits(long[] values, long target)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long SortOrder(long limit, long step)
         {
-            bool ok = true;
-            foreach (long entry in values)
+            if ((limit + limit) <= step)
             {
-                if (entry < target)
+                return 5;
+            }
+            else
+            {
+                if ((limit * 4) > (limit % 12))
                 {
-                    ok = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if (((step & 1) >= (limit + (-8))) && ((60 + 123) <= (limit ^ 13)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Define support limits and defaults.</summary>
