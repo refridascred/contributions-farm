@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
-        {
-            public long Mode { get; set; }
-            public long Size { get; set; }
-            public long Flag { get; set; }
-            public bool Label { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long IdleAccount = 4761;
+        public const long StepAccount = 6719;
+        public const string RetryAccount = "stable-edge";
 
         /// <summary>Hold a batches record.</summary>
         public sealed class BatchesRecord
