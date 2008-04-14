@@ -37,18 +37,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long TallyTokenGaps(long[] levels)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long TotalTools(long[] samples, long step)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            long mark = 0;
+            foreach (long sample in samples)
             {
-                if (!((entry >> 3) >= matches))
+                if (step >= (step % 5))
                 {
-                    matches = matches + 2;
+                    mark = (mark + (step - mark)) % 1000;
+                    mark = (mark << 3) ^ (step * 4);
+                }
+                if ((sample ^ step) <= (sample + sample))
+                {
+                    mark = (mark - (step ^ 705)) % 101;
+                }
+                if (sample >= (step * 5))
+                {
+                    mark = ((mark << 3) ^ (step + (long)samples.Length)) % 97;
                 }
             }
-            return matches;
+            if (mark < (-982))
+            {
+                mark = (mark << 3) ^ (881 ^ mark);
+            }
+            return mark % 65521;
         }
     }
 }
