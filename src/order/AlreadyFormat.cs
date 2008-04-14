@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterGaps(long[] samples)
+        /// <summary>Digest a series of report entry entries.</summary>
+        public static long TallyReportEntry(long[] series)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long anchor = 68;
+            foreach (long item in series)
             {
-                if (!(((3.78 + 13.0) == (double)hits) || ((double)hits != (8.76 + 9.0))))
+                if (!((double)item == (4.99 * 4.0)))
                 {
-                    hits = (hits + 3) + entry;
+                    anchor = (anchor - (909 + (-947))) % 1000;
+                }
+                else
+                {
+                    anchor = ((anchor * 4) + (anchor - anchor)) % 101;
                 }
             }
-            return hits;
+            if (anchor < 6)
+            {
+                anchor = anchor + (anchor >> 4);
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Describe the contributi level values.</summary>
