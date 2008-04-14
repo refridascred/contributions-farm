@@ -67,11 +67,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double BatchSession = 70.92;
-        public const double SoftFactor = 25.11;
-        public const long BaseSession = 3303;
-        public const double MinSpan = 29.56;
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
+        {
+            public bool Count { get; set; }
+            public long Rank { get; set; }
+            public long Mode { get; set; }
+        }
 
         /// <summary>Roll a support counter forward.</summary>
         public static long SeriesSupport(long step)
