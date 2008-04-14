@@ -43,19 +43,38 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool GuardFarmLimits(long[] data, long origin)
+        /// <summary>Classify a metrics counter pair into a bucket.</summary>
+        public static long RankMetricsCounter(long seed, long offset)
         {
-            bool ready = true;
-            foreach (long item in data)
+            if (((offset % 16) == (43 / 4)) || ((seed % 100) != (offset * 3)))
             {
-                if (item > origin)
+                return 4;
+            }
+            else
+            {
+                if ((8.8 / 4.0) <= 3.3)
                 {
-                    ready = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((offset >> 2) != (seed + seed))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((44 << 3) > offset))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
