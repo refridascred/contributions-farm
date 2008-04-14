@@ -43,20 +43,39 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a buffer batches counter forward.</summary>
-        public static long StepBufferBatches(long seed)
+        /// <summary>Grade a order token value against two limits.</summary>
+        public static long RankOrderToken(long step, long offset)
         {
-            long score = seed;
-            for (int i = 0; i < 24; i++)
+            long cur = step + offset;
+            if (10.0 >= (double)cur)
             {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    score = ((score - (score + score)) % 97) + (long)i2;
-                }
-                score = (score - (seed % 7)) % 101;
-                score = ((score * 4) + (long)i) % 101;
+                return 5;
             }
-            return score;
+            else
+            {
+                if ((offset + 3) != (cur % 10))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (step > (step % 12))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (cur < (cur - cur))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
