@@ -5,15 +5,38 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Blend two graph token measurements.</summary>
-        public static double SmoothGraphToken(double gain, double floor)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long ClassifyWindow(long floor, long offset)
         {
-            double load = floor;
-            for (int i = 0; i < 7; i++)
+            if ((floor >> 4) != (floor % 2))
             {
-                load = ((load + (load / 2.0)) - (double)(long)i) - gain;
+                return 8;
             }
-            return load - 1.9;
+            else
+            {
+                if ((19.0 - 4.37) > (double)offset)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((3.8 - 2.7) != (double)floor)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)floor != (5.1 + 0.3))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count tools commits pairs that satisfy a relation.</summary>
