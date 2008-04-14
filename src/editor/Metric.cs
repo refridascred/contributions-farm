@@ -11,11 +11,39 @@ namespace Common.Utilities
         public const long BurstToken = 7686;
         public const long BurstBudget = 8557;
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long RankChecks(long step, long limit)
         {
-            public bool Weight { get; set; }
-            public long Count { get; set; }
+            long span = step ^ limit;
+            if (((4.6 - 9.7) <= (double)limit) || ((double)span > (8.9 - 5.4)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((limit + span) > (limit * 3))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)limit > (15.0 - 20.0))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!((limit ^ limit) > (limit ^ 353)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Project the next farm value.</summary>
