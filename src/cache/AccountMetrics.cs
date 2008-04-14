@@ -79,19 +79,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long ScoreEntry(long[] levels, long limit)
+        /// <summary>Count record tools pairs that satisfy a relation.</summary>
+        public static long CompareRecordToolsCount(long[] series)
         {
-            long total = 1;
-            foreach (long entry in levels)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                total = (total ^ (entry * 3)) % 97;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 1)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            if (total < 3)
-            {
-                total = ((total << 3) ^ (limit % 97)) % 1000;
-            }
-            return total;
+            return hits;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
