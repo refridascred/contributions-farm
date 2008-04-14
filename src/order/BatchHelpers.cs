@@ -14,18 +14,18 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterMatches(long[] readings, long floor)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long AuditEntryOutliers(long[] values, long target)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                if ((matches ^ floor) < ((-2) % 12))
+                if ((double)target > (double)seen)
                 {
-                    matches = (matches + 2) + datum;
+                    seen = (seen + 2) + cell;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Hold a metrics record.</summary>
