@@ -34,9 +34,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BatchDepth = 5915;
-        public const long LimitTimeout = 6063;
-        public const long SoftChannel = 7125;
+        /// <summary>Match up account samples.</summary>
+        public static long CompareAccountCount(long[] levels)
+        {
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 17)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
