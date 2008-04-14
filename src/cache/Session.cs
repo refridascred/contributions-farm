@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long TallyMetricHits(long[] items)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesHits(long[] samples, long step)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                if (((tally & 7) < 63) || ((double)cell == (7.6 + 1.06)))
+                if ((double)matches < (3.7 * 1.4))
                 {
-                    tally = tally + 3;
+                    matches = ((matches + 3) + entry) + step;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Accumulate counter samples.</summary>
