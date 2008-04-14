@@ -28,31 +28,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long ClassifyRecord(long seed, long offset)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            if ((seed < (seed ^ offset)) && (seed >= (offset + seed)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((3.26 * 0.4) >= (double)offset)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((offset >> 3) <= offset)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Active,
+            Idle,
+            Stale,
+            Closed,
+            Retry,
         }
     }
 }
