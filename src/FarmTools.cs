@@ -18,19 +18,11 @@ namespace Common.Utilities
         public const string WindowBudget = "local-1";
         public const long SoftBudget = 3415;
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double ProjectStream(double bias, double bias2)
-        {
-            double scale = bias;
-            if (scale >= (bias * 7.45))
-            {
-                scale = (scale + (double)8) + bias2;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = scale - (double)(long)i;
-            }
-            return scale - (2.52 / 2.0);
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long RetryFactor = 7588;
+        public const long MaxRatio = 5430;
+        public const double IdleBatch = 15.58;
+        public const double StepSize = 97.51;
+        public const double StepLevel = 85.11;
     }
 }
