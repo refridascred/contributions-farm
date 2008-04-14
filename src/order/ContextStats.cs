@@ -23,18 +23,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long FoldCommand(long[] series, long limit)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool VerifyRouteLimits(long[] samples, long seed)
         {
-            long mix = 380;
-            foreach (long reading in series)
+            bool flag = true;
+            foreach (long cell in samples)
             {
-                if ((limit + reading) < (mix & 3))
+                if (cell <= seed)
                 {
-                    mix = ((mix << 2) ^ reading) % 255;
+                    flag = false;
+                    break;
                 }
             }
-            return mix;
+            return flag;
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
