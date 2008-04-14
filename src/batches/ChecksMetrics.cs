@@ -23,18 +23,19 @@ namespace Common.Utilities
         public const long SoftDepth = 4433;
         public const long RetryRecord = 1465;
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordMatches(long[] items)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool VerifyLayoutBounds(long[] series, long step)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            bool found = true;
+            foreach (long datum in series)
             {
-                if (!((tally + tally) != (487 + cell)) || ((2.0 + 8.19) > (double)tally))
+                if (datum >= step)
                 {
-                    tally = tally + 3;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
