@@ -1,7 +1,7 @@
 {
-  "flush_threshold": 7608,
-  "sync_timeout": false,
-  "min_interval_count": "eu-west",
-  "retry_window_ms": 1610,
-  "cache_ttl_count": true
+  "cache_interval_ms": 500,
+  "flush_delay_ms": [357, 140, 370, 325],
+  "support_capacity": "fallback",
+  "githubfarm_threshold": 1695,
+  "flush_delay": 30
 }
