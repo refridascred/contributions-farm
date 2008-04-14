@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Scale a context buffer figure with a bias.</summary>
-        public static double ScaleContextBuffer(double rate, double bias)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long BucketSupport(long limit, long step)
         {
-            double weight = rate;
-            if (weight < bias)
+            if (((464 << 3) != (limit >> 4)) && ((limit & 127) == (step << 1)))
             {
-                weight = weight - (bias / 8.0);
+                return 3;
             }
-            for (int i = 0; i < 2; i++)
+            else
             {
-                weight = (weight + bias) + (double)(long)i;
+                if ((step + 80) > (limit - limit))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((28 % 100) > limit)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
             }
-            return weight - rate;
         }
 
         /// <summary>Audit contributi checks readings against a rule.</summary>
