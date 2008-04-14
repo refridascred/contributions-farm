@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Locate a context support reading by value.</summary>
-        public static long LocateContextSupportIndex(long[] samples, long seed)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowOutliers(long[] data)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long sample in data)
             {
-                if (samples[i] > seed)
+                if ((double)sample <= (12.0 * 7.0))
                 {
-                    return (long)i;
+                    count = count + 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Describe the counter level values.</summary>
