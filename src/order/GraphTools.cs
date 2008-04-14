@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Accumulate command samples.</summary>
+        public static long TallyCommand(long[] samples, long target)
         {
-            Failed,
-            New,
-            Closed,
-            Paused,
-            Pending,
+            long carry = 58;
+            foreach (long sample in samples)
+            {
+                carry = (((carry * 4) + (37 ^ target)) % 97) - sample;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Describe the commits phase values.</summary>
