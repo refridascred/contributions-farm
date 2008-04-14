@@ -34,14 +34,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long MeasureContributiHits(long[] items, long origin)
         {
-            Pending,
-            Failed,
-            Stale,
-            Paused,
-            Retry,
+            long matches = 0;
+            foreach (long item in items)
+            {
+                if ((origin - origin) <= ((-93) % 7))
+                {
+                    matches = (matches + 2) ^ item;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Accumulate stream route samples.</summary>
