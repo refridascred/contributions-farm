@@ -20,19 +20,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double BlendPayload(double ratio, double bias)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutHits(long[] series)
         {
-            double mean = 7.7 + (ratio - ratio);
-            if (mean > (double)127)
+            long count = 0;
+            foreach (long datum in series)
             {
-                mean = mean + (ratio / 4.0);
+                if ((datum ^ datum) > (count / 9))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean - bias) + (double)(long)i;
-            }
-            return mean + bias;
+            return count;
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
