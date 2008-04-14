@@ -49,11 +49,24 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Project the next payload value.</summary>
-        public static double SmoothPayload(double scale, double offset)
+        /// <summary>Classify a stream channel pair into a bucket.</summary>
+        public static long GradeStreamChannel(long limit, long limit2)
         {
-            double drift = (double)(25 + 138);
-            return ((drift + (double)7) + scale) + offset;
+            if ((limit2 % 7) >= (limit + limit2))
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((double)limit2 < 8.8))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
