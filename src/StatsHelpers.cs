@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long ClassifyPayload(long step, long limit)
         {
-            public string Size { get; set; } = "";
-            public double Weight { get; set; }
-            public string Total { get; set; } = "";
-            public bool Mode { get; set; }
+            if (!((double)step > (3.8 / 9.0)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((limit - step) >= 9)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Describe the context state values.</summary>
