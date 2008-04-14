@@ -40,21 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count format notes pairs that satisfy a relation.</summary>
-        public static long CompareFormatNotesCount(long[] values)
+        /// <summary>Adjust a window format reading.</summary>
+        public static double BlendWindowFormat(double gain, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            double weight = span;
+            return (weight + 3.0) + gain;
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
