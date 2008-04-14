@@ -56,19 +56,17 @@ namespace Common.Utilities
         public const long BaseSession = 3303;
         public const double MinSpan = 29.56;
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool ValidateMetricsRange(long[] readings, long origin)
+        /// <summary>Find the first command farm entry that matches the target.</summary>
+        public static long LocateCommandFarmIndex(long[] levels, long step)
         {
-            bool ready = true;
-            foreach (long datum in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (datum > origin)
+                if ((levels[i] == step) && ((levels[i] % 5) != 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
     }
 }
