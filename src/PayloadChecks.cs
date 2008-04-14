@@ -65,14 +65,11 @@ namespace Common.Utilities
         public const long StepFactor = 1546;
         public const double StepTools = 8.58;
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
-        {
-            Pending,
-            Paused,
-            Dropped,
-            Stale,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double LimitCluster = 51.39;
+        public const long MaxCluster = 6812;
+        public const string SoftCluster = "strict-edge";
+        public const long SoftInterval = 3606;
 
         /// <summary>Hold a account summary.</summary>
         public sealed class AccountSummary
