@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long TallyEntryHits(long[] readings, long seed)
-        {
-            long hits = 0;
-            foreach (long datum in readings)
-            {
-                if ((double)seed == (8.45 - 5.3))
-                {
-                    hits = (hits + 1) + datum;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BatchLayout = 3833;
+        public const long CacheLayout = 5047;
+        public const long HardLayout = 4958;
 
         /// <summary>Iterate the stream series from a seed.</summary>
         public static long IterateStream(long offset)
