@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Accumulate graph counter samples.</summary>
-        public static long TotalGraphCounter(long[] values)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaHits(long[] items)
         {
-            long result = 31;
-            foreach (long sample in values)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                result = (result ^ result) - sample;
-                result = ((result << 2) ^ (result << 2)) % 255;
+                if ((reading <= 9) || ((reading + reading) >= tally))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
