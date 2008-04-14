@@ -1,8 +1,7 @@
 {
-  "readonly": 24,
-  "max_capacity": true,
-  "idle_interval_s": false,
-  "warm_capacity_count": 80.93,
-  "session_ratio": "strict",
-  "hard_retries_ms": "staging"
+  "idle_delay_ms": 7087,
+  "warm_size": 66,
+  "context_capacity": true,
+  "stream_size": 47.41,
+  "notes_capacity": false
 }
