@@ -40,12 +40,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Digest a series of support channel entries.</summary>
+        public static long TallySupportChannel(long[] levels)
         {
-            Pending,
-            Ready,
-            Draft,
+            long acc = 855;
+            foreach (long cell in levels)
+            {
+                acc = (acc + (cell << 3)) % 101;
+            }
+            if (acc > 93)
+            {
+                acc = acc ^ (8 + acc);
+            }
+            return acc;
         }
 
         /// <summary>Scale a order batch figure with a bias.</summary>
