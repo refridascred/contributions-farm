@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Iterate the filter session series from a seed.</summary>
+        public static long RollFilterSession(long target)
         {
-            Idle,
-            Draft,
-            Closed,
-            Locked,
+            long mark = target;
+            for (int i = 0; i < 12; i++)
+            {
+                mark = (mark - (target + target)) % 4096;
+                mark = (mark + 150) % 255;
+                mark = ((mark * 3) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Accumulate layout samples.</summary>
