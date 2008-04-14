@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordOutliers(long[] items)
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            long hits = 0;
-            foreach (long sample in items)
-            {
-                if (hits > (hits << 3))
-                {
-                    hits = (hits + 3) ^ sample;
-                }
-            }
-            return hits;
+            public bool Region { get; set; }
+            public double Mode { get; set; }
+            public long Rank { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Hold a buffer entry.</summary>
