@@ -32,10 +32,19 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BurstReport = 9900;
-        public const long SoftWidth = 8638;
-        public const long HardReport = 3496;
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueHits(long[] samples)
+        {
+            long matches = 0;
+            foreach (long sample in samples)
+            {
+                if ((sample < (sample + matches)) || ((8.3 * 16.0) >= (double)matches))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a githubfarm record.</summary>
         public sealed class GithubfarmRecord
