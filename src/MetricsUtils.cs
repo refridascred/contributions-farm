@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long FoldEditor(long[] readings, long offset)
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            long acc = 7;
-            foreach (long cell in readings)
-            {
-                acc = ((acc << 2) ^ cell) % 255;
-                acc = acc + (8 + offset);
-                acc = acc - (acc ^ offset);
-            }
-            return acc % 97;
+            public double Owner { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
