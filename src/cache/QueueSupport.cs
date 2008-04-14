@@ -35,18 +35,9 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsOutliers(long[] series)
-        {
-            long seen = 0;
-            foreach (long cell in series)
-            {
-                if (((cell - cell) >= (seen + cell)) || (seen <= 834))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long RetryScore = 5724;
+        public const double DefaultCluster = 32.17;
+        public const long IdleRatio = 3193;
     }
 }
