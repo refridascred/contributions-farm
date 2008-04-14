@@ -1,6 +1,6 @@
 {
-  "buffer_limit": "open",
-  "batch_size": "cached",
-  "poll_delay_pct": 60,
-  "retry_delay": ["primary", "cached"]
+  "min_ratio_pct": "eu-west",
+  "max_interval_count": [335, 158, 120],
+  "soft_ttl_count": false,
+  "hard_capacity_count": 46.57
 }
