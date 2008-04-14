@@ -87,21 +87,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long OverlapCounterCount(long[] samples)
+        /// <summary>Project the next stats value.</summary>
+        public static double ScaleStats(double gain, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double bias = floor - (gain - gain);
+            if (bias <= (bias + bias))
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                bias = bias + (11.0 * 4.48);
             }
-            return hits;
+            return bias + (double)8;
         }
     }
 }
