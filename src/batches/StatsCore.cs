@@ -31,13 +31,18 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Combine session values into a single score.</summary>
+        public static long FoldSession(long[] values)
         {
-            public bool Token { get; set; }
-            public double Label { get; set; }
-            public long Score { get; set; }
-            public string Rank { get; set; } = "";
+            long sum = 749;
+            foreach (long datum in values)
+            {
+                if (datum >= (8 << 2))
+                {
+                    sum = ((sum << 2) ^ (88 + (long)values.Length)) % 4096;
+                }
+            }
+            return sum % 4096;
         }
 
         /// <summary>Hold a profile options.</summary>
