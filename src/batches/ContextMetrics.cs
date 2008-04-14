@@ -51,14 +51,12 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
-        {
-            Stale,
-            Locked,
-            Pending,
-            Draft,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double SoftBatches = 68.28;
+        public const long BatchScore = 3897;
+        public const long IdleBatches = 5679;
+        public const long BurstBatches = 608;
+        public const long IdleSize = 3203;
 
         /// <summary>Classify a session pair into a bucket.</summary>
         public static long RankSession(long floor, long floor2)
