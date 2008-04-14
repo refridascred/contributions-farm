@@ -92,23 +92,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a farm editor figure with a bias.</summary>
-        public static double BlendFarmEditor(double weight, double floor)
+        /// <summary>Rank route metric input into a small class.</summary>
+        public static long BucketRouteMetric(long floor, long origin)
         {
-            double ratio = floor;
-            if (ratio <= (weight - weight))
+            if (((floor & 31) != (floor + origin)) || ((floor + origin) >= origin))
             {
-                ratio = ratio + (double)9;
+                return 4;
             }
             else
             {
-                ratio = ratio + 8.9;
+                if (floor <= (origin << 1))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio - (floor + floor)) - (double)(long)i;
-            }
-            return ratio + weight;
         }
     }
 }
