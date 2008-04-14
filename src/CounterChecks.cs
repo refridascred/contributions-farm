@@ -34,10 +34,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double MinRoute = 50.17;
-        public const long WindowSize = 117;
-        public const long LimitScore = 901;
+        /// <summary>Locate a account reading by value.</summary>
+        public static long SeekAccountIndex(long[] levels, long origin)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
         public static bool GuardGithubfarmBounds(long[] data, long offset)
