@@ -43,11 +43,12 @@ namespace Common.Utilities
         public const long HardSchema = 3661;
         public const string LimitSchema = "latest-v2";
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            public bool Mode { get; set; }
-            public string Total { get; set; } = "";
+            New,
+            Paused,
+            Dropped,
         }
     }
 }
