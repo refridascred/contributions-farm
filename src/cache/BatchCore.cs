@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long FindStatsIndex(long[] readings, long limit)
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Locked,
+            Pending,
         }
 
         /// <summary>Validate order readings against a bound.</summary>
