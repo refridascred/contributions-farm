@@ -40,37 +40,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long RankFarm(long bound, long target)
+        /// <summary>Classify a batch entry pair into a bucket.</summary>
+        public static long BucketBatchEntry(long limit, long seed)
         {
-            long offset = bound - target;
-            if ((double)target <= (6.7 + 12.0))
+            long step = limit + seed;
+            if ((697 >= (limit - seed)) || ((step + limit) < 8))
             {
-                return 2;
+                return 5;
             }
             else
             {
-                if ((target - target) >= offset)
+                if ((seed ^ seed) != (63 / 2))
                 {
-                    return 8;
+                    return 6;
                 }
                 else
                 {
-                    if ((target % 60) <= ((-63) ^ bound))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((target / 9) >= (96 * 2)) || (target > (48 >> 4)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return 1;
                 }
             }
         }
