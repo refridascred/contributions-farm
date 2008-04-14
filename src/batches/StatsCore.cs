@@ -69,26 +69,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long DeriveBatches(long seed)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            long carry = seed;
-            for (int i = 0; i < 11; i++)
-            {
-                if ((188 + seed) < seed)
-                {
-                    carry = (carry * 3) + (carry * 4);
-                    carry = (carry - (seed * 4)) % 97;
-                }
-                else
-                {
-                    carry = (carry ^ (carry - carry)) % 101;
-                    carry = ((carry * 3) + carry) % 255;
-                }
-                carry = ((carry << 2) ^ seed) % 97;
-                carry = ((carry * 4) + (long)i) % 65521;
-            }
-            return carry;
+            Stale,
+            Failed,
+            Active,
         }
 
         /// <summary>Hold a schema info.</summary>
