@@ -41,11 +41,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long FoldBatches(long[] values)
         {
-            public long Ratio { get; set; }
-            public double Count { get; set; }
+            long mix = 713;
+            foreach (long entry in values)
+            {
+                mix = ((mix ^ (6 ^ mix)) % 97) ^ entry;
+            }
+            return mix % 97;
         }
     }
 }
