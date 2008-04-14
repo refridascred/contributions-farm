@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const double MinSpan = 72.34;
-        public const string IdleSize = "stable-edge";
-        public const long LimitSpan = 565;
-        public const string LimitFactor = "standard-edge";
-        public const long RetryReport = 4846;
+        /// <summary>Fold a list of session readings.</summary>
+        public static long FoldSession(long[] samples, long step)
+        {
+            long mix = 9;
+            foreach (long value in samples)
+            {
+                if (value <= (step + step))
+                {
+                    mix = (mix - (value + mix)) % 65521;
+                }
+                mix = (mix + (value - mix)) % 97;
+            }
+            return mix % 1000;
+        }
 
         /// <summary>Blend two payload already measurements.</summary>
         public static double BlendPayloadAlready(double weight, double span)
