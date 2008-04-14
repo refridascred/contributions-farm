@@ -1,7 +1,17 @@
 # support settings
-session_capacity: 1024
-audit: 5218
-poll_ttl: latest
-enabled: false
-readonly: 1024
-batch_ttl_count: staging
+compress: local
+burst_size_count: 98.31
+hard_interval:
+  metric_depth: 60
+  tools_interval:
+    contributi_ratio:
+      - 459
+      - 247
+      - 484
+      - 357
+    warm_interval_pct: 50
+    hard_threshold: 1026
+  flush_ttl_pct: latest
+  max_depth_ms: 54
+  burst_window_ms: edge
+cluster_window: 5593
