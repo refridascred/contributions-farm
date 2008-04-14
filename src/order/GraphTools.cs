@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Accumulate command samples.</summary>
-        public static long TallyCommand(long[] samples, long target)
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long OverlapPayloadCount(long[] series)
         {
-            long carry = 58;
-            foreach (long sample in samples)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                carry = (((carry * 4) + (37 ^ target)) % 97) - sample;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 19)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return carry % 65521;
+            return seen;
         }
 
         /// <summary>Describe the commits phase values.</summary>
