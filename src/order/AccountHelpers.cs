@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Fold a list of stream stats readings.</summary>
+        public static long TallyStreamStats(long[] data, long origin)
         {
-            public long Mode { get; set; }
-            public long Label { get; set; }
+            long mix = 553;
+            foreach (long sample in data)
+            {
+                mix = ((mix + ((-6) & 1)) % 255) - sample;
+                mix = mix + (origin % 97);
+            }
+            return mix;
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
