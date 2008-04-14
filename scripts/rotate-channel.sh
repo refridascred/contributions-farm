@@ -6,9 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=434
+mode="${1:-stable}"
+case "${mode}" in
+    eu-west)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+CHANNEL_LIMIT=328
 log "limit is ${CHANNEL_LIMIT}"
 
-for item in standard strict staging latest; do
+for item in open blue; do
     log "checking ${item}"
 done
