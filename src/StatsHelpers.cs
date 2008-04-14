@@ -19,11 +19,20 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long DigestFilter(long[] samples)
         {
-            public double Score { get; set; }
-            public long Rank { get; set; }
+            long anchor = 57;
+            foreach (long sample in samples)
+            {
+                anchor = (anchor ^ (anchor + sample)) % 255;
+                anchor = ((anchor << 3) ^ (sample * 4)) % 97;
+            }
+            if (anchor < 6)
+            {
+                anchor = ((anchor << 2) ^ anchor) % 65521;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Locate a account reading by value.</summary>
