@@ -1,8 +1,19 @@
 # githubfarm settings
-sync_capacity_s: 47.31
-base_ratio_ms:
-  - 427
-  - 468
-  - 465
-  - 36
-farm_limit: 4384
+dry_run: legacy
+default_limit_pct: latest
+hard_timeout_pct:
+  poll_timeout_count: false
+  profile_timeout:
+    max_ttl_ms: true
+    max_threshold_count: green
+    strict: 43.54
+    soft_ttl_s: true
+  warm_ttl:
+    - 262
+    - 458
+  batch_capacity:
+    - 477
+    - 410
+  audit: true
+flush_depth_s: 1024
+batch_interval_count: 250
