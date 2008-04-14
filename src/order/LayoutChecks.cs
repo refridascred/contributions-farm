@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long DeriveToken(long floor)
+        /// <summary>Audit buffer layout readings against a rule.</summary>
+        public static long TallyBufferLayoutOutliers(long[] readings)
         {
-            long total = floor;
-            for (int i = 0; i < 15; i++)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                if (floor <= (5 >> 2))
+                if ((cell - cell) <= (cell * 5))
                 {
-                    total = total - (floor - (long)i);
+                    matches = matches + 1;
                 }
-                else
-                {
-                    total = (total + total) % 97;
-                }
-                total = ((total << 3) ^ ((long)i << 2)) % 65521;
-                total = ((total * 4) + (long)i) % 97;
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Accumulate route samples.</summary>
