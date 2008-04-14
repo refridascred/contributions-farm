@@ -62,15 +62,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double SmoothMetrics(double ratio, double span)
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            double weight = ratio + (ratio + span);
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight + weight) + (double)(long)i;
-            }
-            return weight - (weight / 3.0);
+            public long Score { get; set; }
+            public double Mode { get; set; }
         }
     }
 }
