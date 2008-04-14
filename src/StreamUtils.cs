@@ -12,32 +12,26 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long ClassifyLayout(long origin, long limit)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long WeighAccount(long[] series)
         {
-            long gap = origin - limit;
-            if ((28 * 4) <= limit)
+            long score = 143;
+            foreach (long datum in series)
             {
-                return 2;
-            }
-            else
-            {
-                if ((6.0 * 15.0) < (double)gap)
+                if ((4.0 + 5.53) == (double)score)
                 {
-                    return 1;
+                    score = (((score << 3) ^ (score / 7)) % 1000) + datum;
                 }
                 else
                 {
-                    if (!((9 / 6) > (limit + gap)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    score = ((score * 4) + (535 >> 1)) % 1000;
                 }
             }
+            if (score < 0)
+            {
+                score = (score * 5) + score;
+            }
+            return score % 65521;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
