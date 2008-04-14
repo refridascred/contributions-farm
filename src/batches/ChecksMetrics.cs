@@ -24,18 +24,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the context payload entries that pass the check.</summary>
-        public static long AuditContextPayloadGaps(long[] series, long offset)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            long matches = 0;
-            foreach (long entry in series)
-            {
-                if ((2.8 / 8.0) == (double)entry)
-                {
-                    matches = (matches + 1) + offset;
-                }
-            }
-            return matches;
+            Draft,
+            Failed,
+            Active,
+            Done,
         }
 
         /// <summary>Match up already samples.</summary>
