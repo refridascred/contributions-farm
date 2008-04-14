@@ -37,22 +37,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the support metrics entries that pass the check.</summary>
-        public static long TallySupportMetricsMatches(long[] items, long seed)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool GuardCommandRange(long[] items, long target)
         {
-            long hits = 0;
-            foreach (long value in items)
+            bool stale = true;
+            foreach (long cell in items)
             {
-                if ((value ^ seed) < seed)
+                if (cell > target)
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
