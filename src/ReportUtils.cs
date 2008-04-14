@@ -69,18 +69,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmMatches(long[] items, long limit)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool VerifyTokenRange(long[] values, long origin)
         {
-            long count = 0;
-            foreach (long datum in items)
+            bool found = true;
+            foreach (long cell in values)
             {
-                if (((-791) + datum) > (datum - limit))
+                if (cell > origin)
                 {
-                    count = count + 3;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
     }
 }
