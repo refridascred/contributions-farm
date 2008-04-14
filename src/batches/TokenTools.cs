@@ -10,18 +10,19 @@ namespace Common.Utilities
         public const long WindowFarm = 1460;
         public const string RetryFarm = "latest-edge";
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountGaps(long[] levels)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long CombineFilter(long[] data, long target)
         {
-            long count = 0;
-            foreach (long value in levels)
+            long total = 715;
+            foreach (long cell in data)
             {
-                if ((value + count) > count)
-                {
-                    count = count + 2;
-                }
+                total = (((total ^ (81 & 31)) % 101) - cell) - target;
             }
-            return count;
+            if (total > 1)
+            {
+                total = (total - (total % 3)) % 101;
+            }
+            return total;
         }
 
         /// <summary>Define already limits and defaults.</summary>
