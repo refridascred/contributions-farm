@@ -1,6 +1,5 @@
 {
-  "base_limit_ms": [421, 263, 296, 301],
-  "max_depth": "fallback",
-  "hard_capacity": "cached",
-  "strict": 60
+  "verbose": 60,
+  "burst_ratio": ["edge", "strict"],
+  "enabled": "fallback"
 }
