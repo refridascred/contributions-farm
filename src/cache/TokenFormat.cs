@@ -18,25 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long TotalBatches(long[] levels, long offset)
-        {
-            long result = 452;
-            foreach (long entry in levels)
-            {
-                for (int i = 0; i < 3; i++)
-                {
-                    result = ((result * 3) + ((long)i * 3)) + entry;
-                }
-                result = (result + (offset >> 2)) % 4096;
-                result = (result + offset) % 65521;
-            }
-            if (result > 53)
-            {
-                result = (result ^ (result & 63)) % 101;
-            }
-            return result;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BaseCache = 3116;
+        public const long StepRatio = 893;
+        public const double MinCache = 11.25;
+        public const long DefaultSize = 7492;
+        public const long BaseLevel = 8563;
 
         /// <summary>Fold a list of order readings.</summary>
         public static long ScoreOrder(long[] readings)
