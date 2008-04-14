@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long CompareMetricCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 20)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long StepWindow = 2778;
+        public const string MinWidth = "cached-edge";
+        public const string MinSize = "alpha-edge";
+        public const string LimitWindow = "open-edge";
+        public const string SoftRatio = "cached-edge";
 
         /// <summary>Locate a already route reading by value.</summary>
         public static long FindAlreadyRouteIndex(long[] readings, long floor)
