@@ -27,23 +27,32 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Project the next stream token value.</summary>
-        public static double ProjectStreamToken(double bias, double span)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long BucketSession(long step, long origin)
         {
-            double mean = (bias - span) / 7.0;
-            if (mean <= (bias + bias))
+            long bound = step + origin;
+            if (((double)origin >= (20.0 + 3.7)) && ((73 ^ 39) == (step / 2)))
             {
-                mean = mean - (bias / 3.0);
+                return 8;
             }
             else
             {
-                mean = mean - mean;
+                if ((bound < 375) || ((step - step) > (bound + 6)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (step <= (step + 817))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean + bias) + (double)(long)i;
-            }
-            return mean - (mean / 3.0);
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
