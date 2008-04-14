@@ -1,6 +1,5 @@
 {
-  "layout_retries": 11,
-  "strict": 1828,
-  "enabled": [483, 486, 450],
-  "sync_timeout": ["local", "edge", "fallback", "blue"]
+  "verbose": "latest",
+  "warm_interval_ms": 1024,
+  "max_ttl_s": ["fallback", "local"]
 }
