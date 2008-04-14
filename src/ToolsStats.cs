@@ -41,11 +41,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double ProjectStream(double bias, double offset)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            double ratio = (double)(-4) - bias;
-            return (ratio - (double)741) + offset;
+            public long Level { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Grade a support value against two limits.</summary>
