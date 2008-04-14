@@ -62,17 +62,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long LocateContributiIndex(long[] levels, long bound)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long ScoreEntry(long[] levels, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long total = 1;
+            foreach (long entry in levels)
             {
-                if ((levels[i] > bound) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                total = (total ^ (entry * 3)) % 97;
             }
-            return -1;
+            if (total < 3)
+            {
+                total = ((total << 3) ^ (limit % 97)) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
