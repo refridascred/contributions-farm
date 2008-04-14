@@ -20,19 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long CountToolsGaps(long[] readings, long bound)
-        {
-            long tally = 0;
-            foreach (long sample in readings)
-            {
-                if ((sample + 86) <= (tally + bound))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MaxBatch = 8688;
+        public const long RetryBatch = 1571;
+        public const long HardBatch = 3501;
+        public const string BurstBatch = "legacy";
 
         /// <summary>Match up account samples.</summary>
         public static long CompareAccountCount(long[] levels)
