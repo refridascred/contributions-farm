@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long TotalLayout(long[] samples, long origin)
         {
-            public long Limit { get; set; }
-            public bool Stamp { get; set; }
+            long mix = 206;
+            foreach (long entry in samples)
+            {
+                if (!(((long)samples.Length + mix) > (7 - (long)samples.Length)))
+                {
+                    mix = mix - (entry % 97);
+                }
+                else
+                {
+                    mix = mix - 7;
+                }
+            }
+            if (mix < 19)
+            {
+                mix = (mix + origin) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
