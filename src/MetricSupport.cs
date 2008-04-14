@@ -54,9 +54,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double BatchDepth = 81.18;
-        public const long HardBatch = 5790;
-        public const string StepBatch = "primary-edge";
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
+        {
+            public long Rank { get; set; }
+            public string Size { get; set; } = "";
+            public double Region { get; set; }
+            public double Weight { get; set; }
+        }
     }
 }
