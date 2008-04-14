@@ -14,17 +14,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long StepQueue(long step)
+        /// <summary>Measure how many stream account samples are out of range.</summary>
+        public static long TallyStreamAccountOutliers(long[] values, long target)
         {
-            long result = step;
-            for (int i = 0; i < 15; i++)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                result = ((result * 3) + step) % 255;
-                result = (result - step) % 255;
-                result = ((result * 3) + (long)i) % 101;
+                if ((seen / 7) == (entry + entry))
+                {
+                    seen = (seen + 3) - target;
+                }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
