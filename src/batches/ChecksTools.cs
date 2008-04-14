@@ -43,13 +43,12 @@ namespace Common.Utilities
             return load - bias;
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
             public long Flag { get; set; }
-            public long Limit { get; set; }
-            public bool Region { get; set; }
-            public long Token { get; set; }
+            public double Owner { get; set; }
+            public long Size { get; set; }
         }
     }
 }
