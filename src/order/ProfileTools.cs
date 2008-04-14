@@ -34,12 +34,19 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string IdleStats = "stable-1";
-        public const string MaxStats = "open-edge";
-        public const string WindowStats = "legacy";
-        public const string HardBudget = "local-v2";
-        public const string WindowScore = "fallback-1";
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyGaps(long[] values)
+        {
+            long count = 0;
+            foreach (long value in values)
+            {
+                if (!((value >= (value ^ 6)) || ((2.6 - 6.4) >= (double)count)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const long BatchDepth = 4412;
