@@ -32,12 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            Queued,
-            Active,
-            Synced,
+            public long Rank { get; set; }
+            public string Level { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Audit token readings against a rule.</summary>
