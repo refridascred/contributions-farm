@@ -43,18 +43,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterGaps(long[] readings)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            long matches = 0;
-            foreach (long reading in readings)
-            {
-                if (48 < matches)
-                {
-                    matches = (matches + 2) + reading;
-                }
-            }
-            return matches;
+            Draft,
+            Dropped,
+            Stale,
         }
     }
 }
