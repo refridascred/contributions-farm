@@ -41,18 +41,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterHits(long[] levels, long target)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            long matches = 0;
-            foreach (long entry in levels)
-            {
-                if (896 >= (entry % 8))
-                {
-                    matches = (matches + 3) - target;
-                }
-            }
-            return matches;
+            Ready,
+            Done,
+            Queued,
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
