@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Check that every githubfarm contributi entry stays within the limit.</summary>
-        public static bool VerifyGithubfarmContributiLimits(long[] items, long step)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            bool flag = true;
-            foreach (long datum in items)
-            {
-                if (datum != step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Mode { get; set; }
+            public long Size { get; set; }
+            public long Flag { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Hold a batches record.</summary>
