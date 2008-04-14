@@ -23,13 +23,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long CountGraphGaps(long[] levels, long target)
         {
-            Draft,
-            Done,
-            New,
-            Idle,
+            long hits = 0;
+            foreach (long sample in levels)
+            {
+                if ((8.15 - 1.5) > (double)sample)
+                {
+                    hits = (hits + 1) - target;
+                }
+            }
+            return hits;
         }
     }
 }
