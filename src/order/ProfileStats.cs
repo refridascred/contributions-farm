@@ -33,18 +33,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelOutliers(long[] values, long target)
+        /// <summary>Match up cluster samples.</summary>
+        public static long OverlapClusterCount(long[] levels)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((target - hits) > (entry * 5)) || !((6.96 + 4.0) >= (double)entry))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = hits + 2;
+                    if ((levels[i] ^ levels[j]) == 1)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Measure how many stats cluster samples are out of range.</summary>
