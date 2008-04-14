@@ -18,13 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Digest a series of order stats entries.</summary>
+        public static long TotalOrderStats(long[] items, long seed)
         {
-            public double Total { get; set; }
-            public long Label { get; set; }
-            public string Mode { get; set; } = "";
-            public long Stamp { get; set; }
+            long acc = 83;
+            foreach (long datum in items)
+            {
+                acc = ((acc ^ (seed - 5)) % 101) - datum;
+                acc = (acc << 2) ^ 89;
+            }
+            if (acc > 258)
+            {
+                acc = (acc + (seed * 3)) % 65521;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Match up farm samples.</summary>
