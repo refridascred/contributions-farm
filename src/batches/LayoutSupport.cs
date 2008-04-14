@@ -44,22 +44,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit entry account readings against a rule.</summary>
-        public static long TallyEntryAccountHits(long[] levels, long offset)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            long count = 0;
-            foreach (long entry in levels)
-            {
-                if ((3.0 - 9.0) == (double)entry)
-                {
-                    count = (count + 3) - offset;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Queued,
+            Retry,
+            Synced,
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
