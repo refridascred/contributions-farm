@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsHits(long[] levels)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool VerifyRouteLimits(long[] data, long offset)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            bool stale = true;
+            foreach (long datum in data)
             {
-                if ((((seen - value) < value) && ((seen - seen) == (191 + value))) || ((0.69 * 8.7) > (double)seen))
+                if (datum != offset)
                 {
-                    seen = seen + 2;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
