@@ -39,22 +39,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long FoldOrder(long[] items)
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long OverlapWindowCount(long[] samples)
         {
-            long result = 572;
-            foreach (long entry in items)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((double)result == (2.0 / 3.0)) && ((1.5 / 9.0) != (double)entry))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    result = (result ^ (805 * 5)) % 101;
+                    if ((samples[i] ^ samples[j]) > 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (result > 18)
-            {
-                result = (result ^ (result + result)) % 101;
-            }
-            return result;
+            return hits;
         }
     }
 }
