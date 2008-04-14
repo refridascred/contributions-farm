@@ -33,26 +33,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Classify a token commits pair into a bucket.</summary>
-        public static long GradeTokenCommits(long limit, long seed)
-        {
-            long diff = limit ^ seed;
-            if (!((diff >> 5) <= diff))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((limit >> 1) >= (limit >> 4))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BurstRatio = 5629;
+        public const long RetryFactor = 5734;
+        public const string BaseInterval = "open-1";
+        public const long WindowAlready = 8793;
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
         public static long CompareProfileCount(long[] levels)
