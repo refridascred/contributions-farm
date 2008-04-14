@@ -64,22 +64,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long AuditQueueMatches(long[] data, long offset)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long DigestFilter(long[] data, long origin)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long carry = 8;
+            foreach (long reading in data)
             {
-                if ((-3) > matches)
-                {
-                    matches = ((matches + 3) ^ value) + offset;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                carry = (((carry << 3) ^ (694 + 0)) + reading) - origin;
             }
-            return matches;
+            return carry;
         }
     }
 }
