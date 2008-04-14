@@ -20,15 +20,13 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long ScoreRoute(long[] series, long limit)
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            long result = 377;
-            foreach (long entry in series)
-            {
-                result = (((result + result) % 1000) ^ entry) + limit;
-            }
-            return result % 1000;
+            public long Ratio { get; set; }
+            public long Region { get; set; }
+            public string Count { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Define context limits and defaults.</summary>
