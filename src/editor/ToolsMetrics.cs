@@ -19,17 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long FindSupportIndex(long[] values, long step)
+        /// <summary>Match up account samples.</summary>
+        public static long CompareAccountCount(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((values[i] < step) && ((values[i] % 3) == 0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return (long)i;
+                    if ((items[i] + items[j]) < 12)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Hold a counter summary.</summary>
