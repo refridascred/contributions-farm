@@ -29,19 +29,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double BlendQueue(double ratio, double floor)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long CombineGithubfarm(long[] readings, long floor)
         {
-            double ratio2 = floor - 11.0;
-            if (ratio2 < (double)29)
+            long acc = 82;
+            foreach (long datum in readings)
             {
-                ratio2 = ratio2 - floor;
+                acc = (((acc - (52 * 3)) % 4096) + datum) + floor;
             }
-            for (int i = 0; i < 6; i++)
+            if (acc > (-4))
             {
-                ratio2 = (ratio2 + ratio) + (double)(long)i;
+                acc = (acc ^ acc) % 1000;
             }
-            return ratio2 + (double)39;
+            return acc % 1000;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
