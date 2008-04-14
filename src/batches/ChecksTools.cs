@@ -28,13 +28,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            public long Total { get; set; }
-            public double Stamp { get; set; }
-            public long Level { get; set; }
-            public double Limit { get; set; }
+            public bool Label { get; set; }
+            public long Owner { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
