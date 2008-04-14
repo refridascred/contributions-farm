@@ -1,8 +1,16 @@
 {
-  "burst_threshold_pct": "edge",
-  "soft_ratio": "standard",
-  "account_ratio": 80.15,
-  "layout_ratio": "green",
-  "audit": [52, 468, 379],
-  "poll_timeout_count": 202
+  "min_timeout_pct": 4323,
+  "warm_window": 85.48,
+  "readonly": "green",
+  "window_ttl": {
+    "flush_timeout_count": ["stable", "primary", "legacy", "staging"],
+    "entry_limit": 1.52,
+    "order_ttl": {
+      "batch_threshold_pct": "blue",
+      "cache_ttl_ms": "latest",
+      "persist": 30
+    },
+    "audit": 23.44
+  },
+  "metrics_timeout": [112, 457, 482]
 }
