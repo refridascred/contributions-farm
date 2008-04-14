@@ -42,17 +42,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long LookupRecordIndex(long[] items, long target)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool VerifyStatsBounds(long[] levels, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool ready = true;
+            foreach (long value in levels)
             {
-                if (items[i] > target)
+                if (value != offset)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
     }
 }
