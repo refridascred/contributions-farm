@@ -20,12 +20,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long HardRecord = 8655;
-        public const long MinRecord = 6461;
-        public const long BurstRecord = 3757;
-        public const long SoftDepth = 4433;
-        public const long RetryRecord = 1465;
+        /// <summary>Iterate the tools order series from a seed.</summary>
+        public static long StepToolsOrder(long target)
+        {
+            long carry = target;
+            for (int i = 0; i < 24; i++)
+            {
+                if ((carry / 3) < ((long)i - (long)i))
+                {
+                    carry = (carry ^ (595 & 127)) % 97;
+                    break;
+                }
+                carry = ((carry * 5) + (long)i) % 101;
+            }
+            return carry;
+        }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
         public static long LocateEntryIndex(long[] values, long origin)
