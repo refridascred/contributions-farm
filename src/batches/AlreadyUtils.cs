@@ -38,14 +38,31 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Rank window input into a small class.</summary>
+        public static long BucketWindow(long limit, long step)
         {
-            Draft,
-            Retry,
-            Ready,
-            Pending,
-            New,
+            if ((double)step < (3.4 * 4.95))
+            {
+                return 0;
+            }
+            else
+            {
+                if (!(step >= (limit ^ step)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)step >= 6.3)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
