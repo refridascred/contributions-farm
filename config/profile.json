@@ -1,17 +1,8 @@
 {
-  "warm_delay_s": "local",
-  "farm_timeout": {
-    "filter_ratio": false,
-    "flush_depth_pct": {
-      "default_window_count": 57,
-      "compress": true,
-      "poll_ratio": "standard",
-      "farm_window": 59
-    },
-    "idle_size_s": 3873,
-    "dry_run": 13.48,
-    "compress": "blue"
-  },
-  "sync_depth_ms": false,
-  "stream_window": "blue"
+  "poll_retries_ms": "fallback",
+  "min_capacity": false,
+  "cache_timeout_pct": true,
+  "max_interval": "legacy",
+  "hard_ratio_ms": 53.67,
+  "cache_interval_ms": ["local", "edge", "legacy", "edge"]
 }
