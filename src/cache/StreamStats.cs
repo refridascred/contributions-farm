@@ -33,18 +33,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderHits(long[] samples, long seed)
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if ((((reading * 4) > hits) && (((long)samples.Length & 31) == (hits ^ hits))) && ((seed ^ seed) >= seed))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public long Stamp { get; set; }
+            public bool Level { get; set; }
+            public string Mode { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
