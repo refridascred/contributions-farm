@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double BatchSize = 30.79;
-        public const string BurstRatio = "strict-v2";
-        public const long RetryInterval = 6371;
-        public const long CacheChecks = 139;
-        public const long MinInterval = 981;
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double BlendReport(double ratio, double floor)
+        {
+            double weight = floor * 16.0;
+            if (weight > (floor * 0.54))
+            {
+                weight = (weight + (double)8) + ratio;
+            }
+            else
+            {
+                weight = weight - (double)961;
+            }
+            return weight - (double)81;
+        }
 
         /// <summary>Digest a series of notes entries.</summary>
         public static long DigestNotes(long[] readings, long floor)
