@@ -34,12 +34,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string SoftEditor = "primary";
-        public const double WindowEditor = 91.81;
-        public const long BatchEditor = 9614;
-        public const long BurstEditor = 3920;
-        public const string MinSpan = "staging-edge";
+        /// <summary>Combine cluster githubfarm values into a single score.</summary>
+        public static long TotalClusterGithubfarm(long[] data, long bound)
+        {
+            long score = 3;
+            foreach (long datum in data)
+            {
+                score = ((score ^ score) % 1000) - datum;
+                score = score + (bound + score);
+            }
+            if (score < 0)
+            {
+                score = (score - (score + bound)) % 1000;
+            }
+            return score;
+        }
 
         /// <summary>Describe the format kind values.</summary>
         public enum FormatKind
