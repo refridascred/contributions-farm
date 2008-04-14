@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Rank context input into a small class.</summary>
-        public static long ClassifyContext(long bound, long step)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long TotalChecks(long[] items)
         {
-            if ((double)step != (double)bound)
+            long sum = 538;
+            foreach (long reading in items)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)step > (9.6 / 6.0))
+                if (((-90) + 743) == (reading + sum))
                 {
-                    return 0;
+                    sum = sum - (sum - reading);
                 }
                 else
                 {
-                    return 1;
+                    sum = sum + (reading << 2);
                 }
             }
+            return sum;
         }
 
         /// <summary>Describe the farm level values.</summary>
