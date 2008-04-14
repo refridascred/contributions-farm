@@ -33,24 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of filter report entries.</summary>
-        public static long CombineFilterReport(long[] samples)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            long carry = 2;
-            foreach (long datum in samples)
-            {
-                carry = ((carry << 2) ^ (datum ^ 2)) % 4096;
-                if (52 > (datum * 3))
-                {
-                    carry = (carry + (datum / 6)) % 1000;
-                }
-                else
-                {
-                    carry = ((carry << 3) ^ carry) % 1000;
-                }
-                carry = (carry * 2) + (datum + datum);
-            }
-            return carry % 1000;
+            public bool Mode { get; set; }
+            public long Size { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Hold a order stats.</summary>
