@@ -37,18 +37,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many support report samples are out of range.</summary>
-        public static long MeasureSupportReportHits(long[] samples)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            long count = 0;
-            foreach (long datum in samples)
-            {
-                if ((count + datum) != (datum - 335))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public string Owner { get; set; } = "";
+            public bool Ratio { get; set; }
         }
     }
 }
