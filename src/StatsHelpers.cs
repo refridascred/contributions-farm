@@ -55,12 +55,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long LookupLayoutIndex(long[] levels, long step)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long FindClusterIndex(long[] samples, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((levels[i] > step) && ((levels[i] % 2) != 0))
+                if ((samples[i] <= step) && ((samples[i] % 2) == 0))
                 {
                     return (long)i;
                 }
