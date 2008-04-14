@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long LookupGraphIndex(long[] items, long bound)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long IterateSchema(long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = offset;
+            for (int i = 0; i < 9; i++)
             {
-                if (items[i] == bound)
-                {
-                    return (long)i;
-                }
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Hold a buffer header.</summary>
