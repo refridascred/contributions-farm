@@ -12,24 +12,10 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long SeriesCluster(long target)
-        {
-            long score = target;
-            for (int i = 0; i < 10; i++)
-            {
-                if ((double)target != (9.76 * 8.4))
-                {
-                    score = (score ^ target) % 4096;
-                }
-                if ((8.0 / 8.0) <= (double)target)
-                {
-                    score = (score << 2) ^ (score & 31);
-                }
-                score = ((score * 5) + (long)i) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double SoftSupport = 80.78;
+        public const string RetrySupport = "fallback-1";
+        public const long DefaultSupport = 4619;
 
         /// <summary>Validate record readings against a bound.</summary>
         public static bool CheckRecordRange(long[] samples, long step)
