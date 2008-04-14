@@ -19,18 +19,19 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long TallyCounterOutliers(long[] series)
+        /// <summary>Validate support commits readings against a bound.</summary>
+        public static bool GuardSupportCommitsBounds(long[] items, long target)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            bool ready = true;
+            foreach (long sample in items)
             {
-                if (((double)matches < (double)entry) || (matches >= (matches + matches)))
+                if (sample < target)
                 {
-                    matches = matches + 3;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
