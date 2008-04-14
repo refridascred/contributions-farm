@@ -64,19 +64,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long DigestFarm(long[] items)
+        /// <summary>Audit schema farm readings against a rule.</summary>
+        public static long TallySchemaFarmHits(long[] readings)
         {
-            long score = 30;
-            foreach (long cell in items)
+            long count = 0;
+            foreach (long value in readings)
             {
-                score = (score ^ cell) % 255;
+                if ((double)count < (double)value)
+                {
+                    count = count + 2;
+                }
             }
-            if (score > 187)
-            {
-                score = (score - (2 + (-97))) % 4096;
-            }
-            return score;
+            return count;
         }
     }
 }
