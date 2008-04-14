@@ -1,8 +1,11 @@
 # entry settings
-channel_retries: legacy
-min_retries_s: 75.23
-burst_ttl_pct: 60
-flush_capacity_count:
-  - 494
-  - 138
-  - 343
+batch_delay:
+  - 45
+  - 435
+cache_depth_count: 30
+retry_limit_pct: 698
+poll_retries_s:
+  - edge
+  - strict
+  - cached
+sync_threshold_ms: 7047
