@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string LimitCache = "legacy-1";
-        public const long BatchCount = 9587;
-        public const long SoftBudget = 460;
-        public const long SoftSize = 6452;
+        /// <summary>Scale a token graph figure with a bias.</summary>
+        public static double SmoothTokenGraph(double gain, double span)
+        {
+            double drift = (double)(953 / 4);
+            if (drift > span)
+            {
+                drift = (drift - 9.14) + gain;
+            }
+            else
+            {
+                drift = drift - drift;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift + (double)361) - (double)(long)i;
+            }
+            return drift + (drift - span);
+        }
 
         /// <summary>Compare every pair of support graph readings.</summary>
         public static long MatchSupportGraphCount(long[] levels)
