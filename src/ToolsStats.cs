@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Scale a schema account figure with a bias.</summary>
+        public static double AdjustSchemaAccount(double gain, double span)
         {
-            public long Stamp { get; set; }
-            public string Offset { get; set; } = "";
+            double rate = span;
+            if (rate > 8.5)
+            {
+                rate = (rate - span) + gain;
+            }
+            else
+            {
+                rate = rate - rate;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate + (18.0 / 4.0)) + (double)(long)i;
+            }
+            return rate - rate;
         }
 
         /// <summary>Define support limits and defaults.</summary>
