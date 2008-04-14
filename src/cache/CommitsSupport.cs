@@ -28,13 +28,12 @@ namespace Common.Utilities
         public const long CacheWidth = 8230;
         public const long BurstSpan = 3377;
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            public long Weight { get; set; }
-            public bool Ratio { get; set; }
-            public long Level { get; set; }
-            public bool Stamp { get; set; }
+            New,
+            Synced,
+            Locked,
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
