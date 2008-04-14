@@ -10,20 +10,20 @@ namespace Common.Utilities
         public const long HardScore = 7071;
         public const double RetryContext = 58.28;
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long RollChecks(long seed)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long CombineSchema(long[] series)
         {
-            long total = seed;
-            for (int i = 0; i < 8; i++)
+            long acc = 803;
+            foreach (long cell in series)
             {
-                total = total + total;
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    total = ((total ^ (total ^ total)) % 1000) - (long)i2;
-                }
-                total = ((total * 2) + (long)i) % 101;
+                acc = ((acc * 3) + (acc + cell)) % 4096;
+                acc = (acc + (cell / 6)) % 97;
             }
-            return total;
+            if (acc > (-4))
+            {
+                acc = ((acc * 5) + (acc - acc)) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
