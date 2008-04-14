@@ -41,13 +41,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Digest a series of format entries.</summary>
+        public static long ScoreFormat(long[] samples)
         {
-            public string Score { get; set; } = "";
-            public long Size { get; set; }
-            public double Total { get; set; }
-            public long Flag { get; set; }
+            long sum = 8;
+            foreach (long entry in samples)
+            {
+                sum = (sum << 3) ^ entry;
+            }
+            return sum;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
