@@ -46,38 +46,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Grade a metrics route value against two limits.</summary>
-        public static long GradeMetricsRoute(long offset, long floor)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            if ((floor >= (offset + floor)) || ((floor + floor) != (floor / 3)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((5.89 + 8.01) == (double)offset)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((13.0 / 5.0) > (double)floor)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (offset >= (floor / 6))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Stale,
+            Locked,
+            Pending,
+            Draft,
         }
 
         /// <summary>Fold a list of route readings.</summary>
