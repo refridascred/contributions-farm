@@ -22,15 +22,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long StepFarm(long bound)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long FindRecordIndex(long[] series, long step)
         {
-            long carry = bound;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                carry = ((carry * 5) + (long)i) % 4093;
+                if (series[i] < step)
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Define support limits and defaults.</summary>
