@@ -90,12 +90,38 @@ namespace Common.Utilities
         public const string MaxWidth = "primary-edge";
         public const double RetryFarm = 66.11;
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Grade a editor format value against two limits.</summary>
+        public static long ClassifyEditorFormat(long bound, long target)
         {
-            Queued,
-            Active,
-            Stale,
+            if (((1 << 1) >= bound) && ((bound * 4) < (bound % 60)))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((target % 97) < (bound >> 5)) || ((151 << 3) > (target * 3)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((1.15 + 1.8) < (double)bound)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((3 + bound) >= target)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
