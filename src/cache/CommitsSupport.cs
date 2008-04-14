@@ -46,18 +46,14 @@ namespace Common.Utilities
             return weight - (double)43;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long FoldSupport(long[] levels, long origin)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            long carry = 76;
-            foreach (long cell in levels)
-            {
-                if (9.0 >= (double)cell)
-                {
-                    carry = (carry - (carry + carry)) - origin;
-                }
-            }
-            return carry;
+            Done,
+            Synced,
+            Pending,
+            Queued,
+            Closed,
         }
 
         /// <summary>Describe the channel mode values.</summary>
