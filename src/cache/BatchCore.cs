@@ -38,13 +38,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double SmoothToken(double rate, double span)
         {
-            Pending,
-            Dropped,
-            Retry,
-            Draft,
+            double drift = rate;
+            if (drift <= (drift + 7.4))
+            {
+                drift = drift + (drift + drift);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift + span) + (double)(long)i;
+            }
+            return drift - 4.3;
         }
     }
 }
