@@ -5,10 +5,27 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long SoftLevel = 9185;
-        public const long HardScore = 7071;
-        public const double RetryContext = 58.28;
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long FoldMetrics(long[] levels, long target)
+        {
+            long anchor = 0;
+            foreach (long entry in levels)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    anchor = (((((anchor << 3) ^ ((-280) & 63)) % 4096) ^ (long)i) ^ entry) + target;
+                }
+                if ((3.17 * 0.68) >= (double)anchor)
+                {
+                    anchor = (anchor + (130 >> 2)) % 101;
+                }
+                else
+                {
+                    anchor = anchor - (anchor << 2);
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Digest a series of schema entries.</summary>
         public static long CombineSchema(long[] series)
