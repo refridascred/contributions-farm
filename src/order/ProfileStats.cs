@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Fold a list of context readings.</summary>
-        public static long WeighContext(long[] values)
-        {
-            long total = 7;
-            foreach (long value in values)
-            {
-                total = total - (1 + value);
-            }
-            return total;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long CacheTimeout = 1229;
+        public const long BaseWidth = 3332;
+        public const double DefaultToken = 96.03;
+        public const string MinToken = "strict-edge";
 
         /// <summary>Measure how many tools samples are out of range.</summary>
         public static long TallyToolsHits(long[] data)
