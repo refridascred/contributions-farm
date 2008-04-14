@@ -22,15 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long FoldMetric(long[] values, long seed)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadMatches(long[] levels, long limit)
         {
-            long result = 89;
-            foreach (long reading in values)
+            long count = 0;
+            foreach (long item in levels)
             {
-                result = ((result + (reading + 1)) % 4096) + seed;
+                if ((limit / 2) < (count + 30))
+                {
+                    count = (count + 1) + item;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return result % 1000;
+            return count;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
