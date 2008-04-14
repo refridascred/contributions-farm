@@ -32,13 +32,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long TallyAlreadyHits(long[] series, long step)
         {
-            public double Size { get; set; }
-            public double Weight { get; set; }
-            public long Limit { get; set; }
-            public long Mode { get; set; }
+            long count = 0;
+            foreach (long entry in series)
+            {
+                if (!((step + 873) == (4 - step)) && !((double)count != (double)40))
+                {
+                    count = (count + 1) + entry;
+                }
+            }
+            return count;
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
