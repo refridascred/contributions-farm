@@ -12,31 +12,11 @@ namespace Common.Utilities
         public const long LimitToken = 671;
         public const long StepWidth = 9605;
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long GradeMetric(long target, long step)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            if (((target & 31) > step) && (target < (73 / 5)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((step / 2) <= target)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((step * 2) == (target >> 3)) || ((step - target) <= step))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public long Score { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
