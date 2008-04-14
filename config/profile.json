@@ -1,10 +1,32 @@
 {
-  "dry_run": "blue",
-  "graph_capacity": 76.68,
-  "filter_interval": {
-    "default_size_count": 1024,
-    "support_depth": true,
-    "dry_run": "fallback",
-    "route_window": 35.32
+  "strict": 46.43,
+  "readonly": {
+    "idle_capacity": {
+      "cache_threshold": true,
+      "warm_limit_ms": false,
+      "soft_size": 83,
+      "retry_threshold_s": ["primary", "blue", "green"],
+      "default_window_s": 46
+    },
+    "soft_delay_ms": 9334,
+    "record_size": "local",
+    "max_retries_s": true,
+    "burst_ratio_s": 4.3,
+    "audit": 60
+  },
+  "audit": 7668,
+  "poll_depth": 6138,
+  "record_threshold": {
+    "sync_interval_s": true,
+    "audit": [380, 450],
+    "burst_window_s": 43.58,
+    "warm_delay_pct": false,
+    "soft_ratio_count": {
+      "verbose": [321, 349],
+      "poll_depth_pct": 100,
+      "dry_run": "legacy",
+      "audit": false,
+      "filter_interval": true
+    }
   }
 }
