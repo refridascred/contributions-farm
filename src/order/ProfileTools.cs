@@ -61,22 +61,10 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricGaps(long[] items)
-        {
-            long tally = 0;
-            foreach (long datum in items)
-            {
-                if ((datum ^ datum) > tally)
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long LimitRatio = 3419;
+        public const double StepRatio = 36.14;
+        public const string BatchCommand = "fallback";
+        public const long MinInterval = 8500;
     }
 }
