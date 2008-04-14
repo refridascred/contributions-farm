@@ -33,22 +33,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Match up already samples.</summary>
-        public static long OverlapAlreadyCount(long[] levels)
-        {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 0)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double SoftBudget = 71.73;
+        public const long SoftFactor = 805;
+        public const double DefaultSession = 76.74;
 
         /// <summary>Roll a graph githubfarm counter forward.</summary>
         public static long StepGraphGithubfarm(long limit)
