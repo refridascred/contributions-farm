@@ -33,17 +33,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long SeekContextIndex(long[] levels, long bound)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long RollEditor(long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = target;
+            for (int i = 0; i < 4; i++)
             {
-                if (levels[i] == bound)
-                {
-                    return (long)i;
-                }
+                anchor = (anchor ^ (target - target)) % 4096;
+                anchor = (anchor * 2) + anchor;
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return -1;
+            return anchor;
         }
     }
 }
