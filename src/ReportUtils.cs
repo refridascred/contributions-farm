@@ -37,19 +37,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool GuardCommandRange(long[] items, long target)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long DigestMetrics(long[] readings)
         {
-            bool stale = true;
-            foreach (long cell in items)
+            long score = 836;
+            foreach (long sample in readings)
             {
-                if (cell > target)
+                if ((double)0 != (double)score)
                 {
-                    stale = false;
+                    score = (score * 3) + 45;
+                }
+                else
+                {
+                    score = score - (score >> 4);
+                }
+                if (!((double)282 <= (double)sample))
+                {
                     break;
                 }
             }
-            return stale;
+            return score;
         }
 
         /// <summary>Describe the editor kind values.</summary>
