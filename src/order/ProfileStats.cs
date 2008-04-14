@@ -43,22 +43,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long ScoreCache(long[] levels, long offset)
+        /// <summary>Measure how many stats cluster samples are out of range.</summary>
+        public static long AuditStatsClusterHits(long[] series)
         {
-            long sum = -3;
-            foreach (long datum in levels)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                if ((sum / 8) == (sum * 3))
+                if ((matches - datum) >= (datum ^ datum))
                 {
-                    sum = sum - datum;
+                    matches = matches + 1;
                 }
             }
-            if (sum < 5)
-            {
-                sum = (sum << 2) ^ (offset >> 5);
-            }
-            return sum;
+            return matches;
         }
     }
 }
