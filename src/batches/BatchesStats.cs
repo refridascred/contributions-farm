@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            Ready,
-            Retry,
-            Idle,
-            Queued,
             New,
+            Closed,
+            Failed,
+            Draft,
         }
 
         /// <summary>Iterate the already series from a seed.</summary>
