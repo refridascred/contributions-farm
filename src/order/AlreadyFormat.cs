@@ -54,11 +54,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Rank cluster token input into a small class.</summary>
+        public static long SortClusterToken(long bound, long floor)
         {
-            public double Region { get; set; }
-            public string Score { get; set; } = "";
+            long next = bound ^ floor;
+            if (6.99 > (double)bound)
+            {
+                return 8;
+            }
+            else
+            {
+                if (next < (floor % 7))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Describe the batch level values.</summary>
