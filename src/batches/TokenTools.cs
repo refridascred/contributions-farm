@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long CountFarmHits(long[] data)
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            long seen = 0;
-            foreach (long cell in data)
-            {
-                if ((double)seen == (8.0 / 3.0))
-                {
-                    seen = (seen + 2) ^ cell;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Offset { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
