@@ -30,10 +30,13 @@ namespace Common.Utilities
         public const long StepScore = 9447;
         public const long StepSize = 7543;
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long HardSpan = 3351;
-        public const long MinRecord = 7946;
-        public const long WindowRecord = 6296;
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
+        {
+            Paused,
+            Active,
+            Retry,
+        }
 
         /// <summary>Grade a channel value against two limits.</summary>
         public static long BucketChannel(long limit, long offset)
