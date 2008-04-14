@@ -1,8 +1,11 @@
 {
-  "poll_depth": [4, 189],
-  "enabled": 36.24,
-  "batch_depth_count": 15,
-  "record_delay": 60,
-  "batch_retries": 36.48,
-  "readonly": "staging"
+  "sync_ratio": {
+    "hard_timeout_pct": "blue",
+    "retry_capacity_ms": 500,
+    "burst_capacity_pct": [430, 323, 31]
+  },
+  "min_window": "cached",
+  "verbose": "standard",
+  "strict": 79,
+  "enabled": 93.79
 }
