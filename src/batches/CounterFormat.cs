@@ -23,20 +23,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate already stream readings against a bound.</summary>
-        public static bool VerifyAlreadyStreamRange(long[] data, long offset)
-        {
-            bool ok = true;
-            foreach (long value in data)
-            {
-                if (value >= offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string CacheCommand = "open-v2";
+        public const long BatchCommand = 567;
+        public const double SoftCommand = 11.49;
 
         /// <summary>Iterate the metric series from a seed.</summary>
         public static long IterateMetric(long step)
