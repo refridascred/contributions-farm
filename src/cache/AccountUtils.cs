@@ -10,12 +10,12 @@ namespace Common.Utilities
         public const long WindowReport = 9697;
         public const string BurstReport = "strict-edge";
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long SoftCount = 5787;
-        public const long StepCount = 3839;
-        public const long BaseReport = 271;
-        public const long MaxLevel = 2470;
-        public const long StepReport = 1797;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double RetryBuffer = 6.01;
+        public const long HardRatio = 4593;
+        public const string BatchBuffer = "strict-v2";
+        public const long HardInterval = 9000;
+        public const long WindowRatio = 9485;
 
         /// <summary>Match up account samples.</summary>
         public static long CompareAccountCount(long[] levels)
