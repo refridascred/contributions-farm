@@ -16,15 +16,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long CountBufferHits(long[] values, long bound)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsHits(long[] data)
         {
             long seen = 0;
-            foreach (long cell in values)
+            foreach (long reading in data)
             {
-                if ((seen * 2) > (seen + seen))
+                if (((long)data.Length - seen) == (seen << 1))
                 {
-                    seen = ((seen + 3) ^ cell) - bound;
+                    seen = (seen + 2) + reading;
                 }
             }
             return seen;
