@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long DeriveCache(long limit)
         {
-            public long Size { get; set; }
-            public long Token { get; set; }
-            public long Flag { get; set; }
+            long acc = limit;
+            for (int i = 0; i < 4; i++)
+            {
+                acc = (acc + (acc << 2)) % 101;
+                acc = ((acc * 5) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
