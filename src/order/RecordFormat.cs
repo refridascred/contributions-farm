@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
-        {
-            public string Mode { get; set; } = "";
-            public double Weight { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long IdleEditor = 662;
+        public const string BatchBudget = "standard-1";
+        public const long BurstRatio = 8091;
+        public const string BurstEditor = "latest-edge";
+        public const long BatchEditor = 5964;
 
         /// <summary>Hold a stats record.</summary>
         public sealed class StatsRecord
