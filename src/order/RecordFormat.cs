@@ -37,20 +37,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long IterateChannel(long step)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterGaps(long[] readings)
         {
-            long state = step;
-            for (int i = 0; i < 23; i++)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                for (int i2 = 0; i2 < 6; i2++)
+                if (48 < matches)
                 {
-                    state = ((state ^ (state * 2)) % 97) ^ (long)i2;
-                    state = state - (step / 2);
+                    matches = (matches + 2) + reading;
                 }
-                state = ((state * 5) + (long)i) % 1000;
             }
-            return state;
+            return matches;
         }
     }
 }
