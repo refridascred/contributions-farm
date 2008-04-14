@@ -41,12 +41,13 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            public bool Mode { get; set; }
-            public long Ratio { get; set; }
-            public string Label { get; set; } = "";
+            New,
+            Active,
+            Ready,
+            Pending,
         }
     }
 }
