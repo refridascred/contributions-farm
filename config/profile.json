@@ -1,13 +1,7 @@
 {
-  "retry_limit": {
-    "audit": "fallback",
-    "sync_window_s": true,
-    "verbose": [15, 102],
-    "account_retries": "strict",
-    "schema_ttl": 28.01
-  },
-  "entry_delay": "cached",
-  "layout_interval": 7902,
-  "githubfarm_window": 73,
-  "default_size_pct": 47.89
+  "dry_run": 250,
+  "burst_size_pct": "blue",
+  "default_size_count": ["fallback", "legacy"],
+  "order_ttl": 27.62,
+  "hard_window": 250
 }
