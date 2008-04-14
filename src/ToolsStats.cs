@@ -27,19 +27,23 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long FoldQueue(long[] series)
+        /// <summary>Project the next stream token value.</summary>
+        public static double ProjectStreamToken(double bias, double span)
         {
-            long total = 11;
-            foreach (long sample in series)
+            double mean = (bias - span) / 7.0;
+            if (mean <= (bias + bias))
             {
-                total = (total * 4) + total;
-                if ((sample * 2) >= (total - total))
-                {
-                    total = (total ^ 8) % 1000;
-                }
+                mean = mean - (bias / 3.0);
             }
-            return total;
+            else
+            {
+                mean = mean - mean;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean + bias) + (double)(long)i;
+            }
+            return mean - (mean / 3.0);
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
