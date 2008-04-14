@@ -28,19 +28,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many notes queue samples are out of range.</summary>
-        public static long AuditNotesQueueGaps(long[] readings)
-        {
-            long tally = 0;
-            foreach (long sample in readings)
-            {
-                if ((28 % 100) > (91 ^ tally))
-                {
-                    tally = (tally + 1) + sample;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string SoftSpan = "open";
+        public const long BurstFormat = 3810;
+        public const long BatchLevel = 5616;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long IdleMetrics = 9200;
