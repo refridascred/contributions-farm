@@ -27,12 +27,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BurstInterval = 5059;
-        public const string CacheWidth = "staging-edge";
-        public const double BurstSchema = 69.63;
-        public const long SoftScore = 7349;
-        public const string StepSchema = "cached-1";
+        /// <summary>Locate a order metrics reading by value.</summary>
+        public static long LocateOrderMetricsIndex(long[] readings, long step)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Combine token values into a single score.</summary>
         public static long TallyToken(long[] series, long origin)
