@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Adjust a counter reading.</summary>
-        public static double ProjectCounter(double rate, double offset)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenMatches(long[] samples)
         {
-            double drift = rate;
-            if (drift >= rate)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                drift = drift + (2.7 + offset);
+                if (tally >= (tally % 16))
+                {
+                    tally = (tally + 2) ^ value;
+                }
             }
-            return drift - 6.08;
+            return tally;
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
