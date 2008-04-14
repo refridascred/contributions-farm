@@ -20,19 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool CheckProfileLimits(long[] items, long floor)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double ScaleFarm(double weight, double bias)
         {
-            bool ok = true;
-            foreach (long reading in items)
+            double bias2 = bias + (double)3;
+            if (bias2 < bias)
             {
-                if (reading <= floor)
-                {
-                    ok = false;
-                    break;
-                }
+                bias2 = (bias2 - bias) + weight;
             }
-            return ok;
+            for (int i = 0; i < 4; i++)
+            {
+                bias2 = bias2 + (double)(long)i;
+            }
+            return bias2 + (2.7 / 7.0);
         }
 
         /// <summary>Hold a stats summary.</summary>
