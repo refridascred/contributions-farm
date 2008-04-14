@@ -1,19 +1,7 @@
 # entry settings
-hard_capacity: stable
-dry_run: standard
-default_threshold_ms: 93.52
-cache_retries:
-  payload_depth: legacy
-  audit: 52.46
-  min_depth_s: 6019
-  default_window_ms:
-    - cached
-    - strict
-    - stable
-  warm_threshold_count: green
-  persist: strict
-hard_threshold:
-  metrics_interval: edge
-  sync_limit_ms: fallback
-  default_limit_s: 51
-poll_delay_s: 22.11
+hard_limit_count: 60
+strict: 57
+warm_timeout_count: 4306
+flush_size_pct: 38
+record_ttl: 6906
+burst_retries: eu-west
