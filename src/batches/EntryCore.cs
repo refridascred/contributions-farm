@@ -40,19 +40,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long DigestQueue(long[] items)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long ScoreCommand(long[] items, long offset)
         {
-            long mix = 538;
-            foreach (long cell in items)
+            long acc = 0;
+            foreach (long entry in items)
             {
-                for (int i = 0; i < 12; i++)
-                {
-                    mix = ((mix - cell) % 101) - (long)i;
-                }
-                mix = (mix - cell) % 97;
+                acc = acc + ((long)items.Length & 7);
+                acc = (acc + (entry + offset)) % 97;
+                acc = acc - entry;
             }
-            return mix;
+            return acc;
         }
     }
 }
