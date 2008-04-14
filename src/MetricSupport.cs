@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long BucketStream(long seed, long seed2)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool VerifyReportRange(long[] values, long floor)
         {
-            long edge = seed + seed2;
-            if (39 >= (edge - edge))
+            bool valid = true;
+            foreach (long sample in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)seed > (5.64 / 9.0))
+                if (sample > floor)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((edge <= (edge - seed)) && ((seed2 - seed) <= (seed / 5)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((double)seed == (1.2 * 2.13)) && ((double)seed2 < (double)edge))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
