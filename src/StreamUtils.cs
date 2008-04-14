@@ -51,21 +51,27 @@ namespace Common.Utilities
         public const double MaxInterval = 62.82;
         public const long WindowDepth = 1031;
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long CompareBufferCount(long[] readings)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long FoldBatch(long[] items, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 8;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                mix = (mix ^ (cell % 60)) % 97;
+                if (((double)cell < (4.76 * 3.0)) && ((cell + step) >= step))
                 {
-                    if ((readings[i] ^ readings[j]) < 10)
-                    {
-                        seen = seen + 1;
-                    }
+                    mix = mix ^ (cell >> 2);
+                }
+                if ((mix + (-83)) > (352 / 3))
+                {
+                    break;
                 }
             }
-            return seen;
+            if (mix > (-2))
+            {
+                mix = mix + (mix - step);
+            }
+            return mix;
         }
 
         /// <summary>Combine channel metrics values into a single score.</summary>
