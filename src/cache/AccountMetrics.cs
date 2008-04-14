@@ -69,17 +69,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long SeekFilterIndex(long[] series, long target)
+        /// <summary>Iterate the session support series from a seed.</summary>
+        public static long RollSessionSupport(long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long acc = seed;
+            for (int i = 0; i < 7; i++)
             {
-                if ((series[i] >= target) && ((series[i] % 2) == 0))
+                acc = acc + ((long)i << 1);
+                if ((((long)i + 4) >= seed) && (((long)i - acc) > 9))
                 {
-                    return (long)i;
+                    acc = (acc ^ (acc >> 1)) % 101;
+                    acc = (acc ^ (acc >> 2)) % 101;
                 }
+                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return -1;
+            return acc;
         }
     }
 }
