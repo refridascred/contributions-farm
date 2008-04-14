@@ -1,5 +1,4 @@
 # support settings
-session_interval: 89.59
-min_capacity_count: true
-warm_capacity: 10
-max_limit_ms: 74.46
+already_capacity: stable
+min_retries_count: green
+dry_run: 60
