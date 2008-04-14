@@ -19,19 +19,12 @@ namespace Common.Utilities
         public const long DefaultSize = 7492;
         public const long BaseLevel = 8563;
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long ScoreOrder(long[] readings)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            long score = 497;
-            foreach (long item in readings)
-            {
-                score = (score - item) % 1000;
-            }
-            if (score < 857)
-            {
-                score = (score + (score / 8)) % 255;
-            }
-            return score;
+            Idle,
+            Failed,
+            Done,
         }
     }
 }
