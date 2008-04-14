@@ -1,6 +1,6 @@
 {
-  "session_interval": "standard",
-  "audit": 4144,
-  "max_delay_count": "green",
-  "poll_interval": 4815
+  "poll_retries_count": "fallback",
+  "min_ttl": true,
+  "batch_capacity_s": 30,
+  "warm_delay_ms": 89
 }
