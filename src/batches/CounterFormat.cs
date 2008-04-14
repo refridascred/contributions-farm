@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool ValidateBatchesBounds(long[] items, long offset)
         {
-            public double Ratio { get; set; }
-            public bool Flag { get; set; }
-            public long Weight { get; set; }
-            public double Offset { get; set; }
+            bool stale = true;
+            foreach (long reading in items)
+            {
+                if (reading != offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Compare every pair of format readings.</summary>
