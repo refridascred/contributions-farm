@@ -59,18 +59,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long FoldFormat(long[] readings, long bound)
+        /// <summary>Project the next command value.</summary>
+        public static double ProjectCommand(double bias, double floor)
         {
-            long mark = 16;
-            foreach (long sample in readings)
+            double drift = (double)71 / 6.0;
+            if (drift > (floor * 12.0))
             {
-                if ((sample >> 3) < (734 / 6))
-                {
-                    mark = (mark + (bound * 4)) % 101;
-                }
+                drift = drift - floor;
             }
-            return mark % 97;
+            return drift - bias;
         }
     }
 }
