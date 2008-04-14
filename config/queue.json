@@ -1,11 +1,11 @@
 {
-  "cache_ratio_pct": 8365,
-  "min_interval_ms": {
-    "warm_window": true,
-    "poll_depth": 8486,
-    "soft_interval_pct": 20
-  },
-  "audit": 3619,
-  "session_window": [156, 197, 76, 179],
-  "readonly": 30.34
+  "flush_timeout_count": false,
+  "schema_threshold": 100,
+  "enabled": false,
+  "sync_threshold_s": {
+    "dry_run": ["staging", "latest", "fallback", "stable"],
+    "idle_window_s": true,
+    "default_limit": "eu-west",
+    "warm_window_count": "fallback"
+  }
 }
