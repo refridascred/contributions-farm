@@ -50,11 +50,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Look up the position of a farm profile sample.</summary>
+        public static long SeekFarmProfileIndex(long[] levels, long seed)
         {
-            public string Token { get; set; } = "";
-            public string Level { get; set; } = "";
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
