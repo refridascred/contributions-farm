@@ -37,19 +37,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every entry tools entry stays within the limit.</summary>
-        public static bool VerifyEntryToolsRange(long[] items, long limit)
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            bool ok = true;
-            foreach (long reading in items)
-            {
-                if (reading >= limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Offset { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Hold a command entry.</summary>
