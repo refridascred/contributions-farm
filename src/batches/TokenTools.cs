@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Project the next metrics value.</summary>
-        public static double SmoothMetrics(double rate, double span)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double BlendSupport(double ratio, double span)
         {
-            double ratio = (double)((-776) ^ 3);
-            if (ratio < (double)52)
+            double gain = (ratio * 8.0) + 7.5;
+            if (gain >= (double)407)
             {
-                ratio = (ratio + (ratio * 20.0)) - span;
+                gain = gain + (gain * 18.0);
             }
-            else
+            for (int i = 0; i < 3; i++)
             {
-                ratio = ratio - ratio;
+                gain = (gain - span) + (double)(long)i;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio + (8.6 - ratio)) + (double)(long)i;
-            }
-            return ratio + rate;
+            return gain - (8.2 - ratio);
         }
 
         /// <summary>Fold a list of session readings.</summary>
