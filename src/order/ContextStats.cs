@@ -51,14 +51,18 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long CountGithubfarmHits(long[] data)
         {
-            Locked,
-            Failed,
-            Stale,
-            New,
-            Draft,
+            long tally = 0;
+            foreach (long entry in data)
+            {
+                if (!((long)data.Length <= (tally & 127)))
+                {
+                    tally = (tally + 2) ^ entry;
+                }
+            }
+            return tally;
         }
     }
 }
