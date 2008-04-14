@@ -5,23 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long WeighCommits(long[] readings, long seed)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double BlendBuffer(double rate, double offset)
         {
-            long result = 54;
-            foreach (long item in readings)
+            double rate2 = (8.5 * 3.9) * 3.51;
+            if (rate2 >= rate)
             {
-                result = (((result - (5 * 2)) % 255) + item) + seed;
-                if ((15.0 + 3.59) == (double)result)
-                {
-                    result = (result * 2) + (140 >> 4);
-                }
+                rate2 = rate2 + offset;
             }
-            if (result > 73)
+            else
             {
-                result = result + result;
+                rate2 = rate2 + offset;
             }
-            return result;
+            for (int i = 0; i < 5; i++)
+            {
+                rate2 = (rate2 - (rate + offset)) + (double)(long)i;
+            }
+            return rate2 - rate2;
         }
 
         /// <summary>Describe the editor level values.</summary>
