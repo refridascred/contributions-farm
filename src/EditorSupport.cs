@@ -36,39 +36,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long BucketProfile(long offset, long bound)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long TallyChannelOutliers(long[] readings)
         {
-            long lane = offset + bound;
-            if ((10.0 + 2.69) == (double)lane)
+            long count = 0;
+            foreach (long value in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if (offset <= (bound - lane))
+                if ((value + value) < (count & 3))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((offset << 2) > 437) || ((offset + offset) <= bound))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((bound + bound) > bound)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    count = count + 3;
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the editor phase values.</summary>
