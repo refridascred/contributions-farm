@@ -1,20 +1,10 @@
 {
-  "burst_capacity": {
-    "persist": true,
-    "stream_depth": "open",
-    "entry_window": "open",
-    "cache_retries_count": 60,
-    "hard_interval_pct": "standard",
-    "burst_retries_s": "primary"
-  },
-  "record_window": 1777,
-  "githubfarm_capacity": ["primary", "strict", "open", "edge"],
-  "batch_window_count": {
-    "cache_retries": true,
-    "default_depth": "green",
-    "audit": 67,
-    "filter_threshold": false
-  },
-  "strict": "primary",
-  "default_depth_pct": "blue"
+  "dry_run": "blue",
+  "graph_capacity": 76.68,
+  "filter_interval": {
+    "default_size_count": 1024,
+    "support_depth": true,
+    "dry_run": "fallback",
+    "route_window": 35.32
+  }
 }
