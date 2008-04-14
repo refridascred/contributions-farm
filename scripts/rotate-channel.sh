@@ -6,19 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in legacy eu-west strict; do
+CHANNEL_LIMIT=434
+log "limit is ${CHANNEL_LIMIT}"
+
+for item in standard strict staging latest; do
     log "checking ${item}"
 done
-
-mode="${1:-primary}"
-case "${mode}" in
-    latest)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-CHANNEL_LIMIT=190
-log "limit is ${CHANNEL_LIMIT}"
