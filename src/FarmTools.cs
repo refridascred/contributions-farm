@@ -5,25 +5,10 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long BucketSession(long limit, long step)
-        {
-            if ((step - step) <= (step << 3))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((limit - limit) >= (limit << 2))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long SoftContributi = 6397;
+        public const long RetryContributi = 6168;
+        public const long BaseFactor = 8411;
 
         /// <summary>Accumulate stats samples.</summary>
         public static long ScoreStats(long[] samples, long offset)
