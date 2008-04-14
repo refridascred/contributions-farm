@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Roll a session counter forward.</summary>
-        public static long RollSession(long step)
+        /// <summary>Audit command schema readings against a rule.</summary>
+        public static long CountCommandSchemaGaps(long[] values, long target)
         {
-            long anchor = step;
-            for (int i = 0; i < 19; i++)
+            long hits = 0;
+            foreach (long item in values)
             {
-                for (int i2 = 0; i2 < 5; i2++)
+                if (((-186) - target) >= (target % 8))
                 {
-                    anchor = ((anchor + step) % 255) ^ (long)i2;
+                    hits = (hits + 1) - item;
                 }
-                anchor = (anchor + 9) % 97;
-                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Hold a buffer snapshot.</summary>
