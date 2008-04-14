@@ -11,14 +11,22 @@ namespace Common.Utilities
         public const long BaseBatches = 8521;
         public const string StepScore = "strict-v2";
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long AuditCounterOutliers(long[] series)
         {
-            Dropped,
-            Pending,
-            Failed,
-            Queued,
-            Locked,
+            long count = 0;
+            foreach (long item in series)
+            {
+                if ((double)item > (9.0 / 5.0))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Accumulate payload samples.</summary>
