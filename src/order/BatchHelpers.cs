@@ -14,18 +14,23 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long AuditClusterGaps(long[] data, long bound)
+        /// <summary>Project the next record window value.</summary>
+        public static double BlendRecordWindow(double bias, double floor)
         {
-            long count = 0;
-            foreach (long datum in data)
+            double ratio = floor;
+            if (ratio < (floor / 7.0))
             {
-                if ((count ^ count) >= (bound * 5))
-                {
-                    count = (count + 3) + datum;
-                }
+                ratio = ratio - (bias * 7.64);
             }
-            return count;
+            else
+            {
+                ratio = ratio - (double)6;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio - floor) - (double)(long)i;
+            }
+            return ratio - bias;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
