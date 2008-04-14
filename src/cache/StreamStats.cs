@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheGaps(long[] samples)
         {
-            public double Owner { get; set; }
-            public long Score { get; set; }
+            long matches = 0;
+            foreach (long cell in samples)
+            {
+                if ((cell % 12) == (matches & 63))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
