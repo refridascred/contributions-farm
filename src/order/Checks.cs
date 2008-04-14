@@ -20,14 +20,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool CheckProfileBounds(long[] levels, long limit)
         {
-            Failed,
-            Paused,
-            Retry,
-            Active,
-            Draft,
+            bool ok = true;
+            foreach (long sample in levels)
+            {
+                if (sample < limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
