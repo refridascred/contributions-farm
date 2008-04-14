@@ -37,19 +37,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long DeriveCache(long target)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long StepChannel(long seed)
         {
-            long mark = target;
-            for (int i = 0; i < 14; i++)
+            long state = seed;
+            for (int i = 0; i < 16; i++)
             {
-                if ((mark + target) == ((long)i << 2))
+                if ((4.56 < (double)seed) || ((double)state == (4.0 / 8.0)))
                 {
-                    mark = (mark * 5) + (mark - 84);
+                    state = state ^ state;
                 }
-                mark = ((mark * 2) + (long)i) % 101;
+                state = ((state * 2) + (long)i) % 101;
             }
-            return mark;
+            return state;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
