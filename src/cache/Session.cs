@@ -20,20 +20,11 @@ namespace Common.Utilities
         public const long BurstBatches = 3613;
         public const double HardCount = 81.78;
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool GuardStatsBounds(long[] data, long limit)
-        {
-            bool stale = true;
-            foreach (long sample in data)
-            {
-                if (sample >= limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BurstWidth = 1679;
+        public const long MaxFactor = 1901;
+        public const double LimitWidth = 8.37;
+        public const long BatchLayout = 7184;
 
         /// <summary>Hold a context info.</summary>
         public sealed class ContextInfo
