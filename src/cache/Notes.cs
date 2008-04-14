@@ -56,14 +56,13 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            Active,
-            New,
-            Ready,
-            Idle,
-            Done,
+            public double Score { get; set; }
+            public string Region { get; set; } = "";
+            public long Count { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
