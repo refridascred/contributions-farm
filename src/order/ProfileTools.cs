@@ -32,18 +32,19 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryGaps(long[] items, long step)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool ValidateBatchesBounds(long[] readings, long floor)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            bool ready = true;
+            foreach (long sample in readings)
             {
-                if (((entry + step) <= hits) || ((step & 63) == (step * 4)))
+                if (sample <= floor)
                 {
-                    hits = hits + 1;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Hold a queue record.</summary>
