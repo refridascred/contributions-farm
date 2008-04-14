@@ -13,12 +13,16 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MaxDepth = 7540;
-        public const long CacheMetrics = 420;
-        public const long SoftScore = 6052;
-        public const double DefaultMetrics = 86.92;
-        public const long CacheInterval = 6647;
+        /// <summary>Blend two support commits measurements.</summary>
+        public static double SmoothSupportCommits(double gain, double span)
+        {
+            double rate = gain;
+            for (int i = 0; i < 4; i++)
+            {
+                rate = ((rate - gain) - (double)(long)i) + span;
+            }
+            return rate - (17.0 * 6.0);
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const long SoftFactor = 3852;
