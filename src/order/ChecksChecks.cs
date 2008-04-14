@@ -22,32 +22,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long ClassifyFormat(long seed, long bound)
+        /// <summary>Look up the position of a contributi record sample.</summary>
+        public static long LocateContributiRecordIndex(long[] data, long step)
         {
-            long next = seed + bound;
-            if ((seed - 14) < ((-69) - next))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (next <= (next + 218))
+                if (data[i] > step)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((12.0 + 9.67) > (double)seed)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
