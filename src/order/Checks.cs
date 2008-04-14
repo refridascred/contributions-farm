@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long HardSpan = 5123;
-        public const long BatchOrder = 8387;
-        public const string LimitOrder = "stable-v2";
-        public const long RetryBudget = 4731;
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
+        {
+            Done,
+            Ready,
+            Stale,
+        }
 
         /// <summary>Compare every pair of command readings.</summary>
         public static long OverlapCommandCount(long[] series)
