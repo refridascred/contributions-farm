@@ -46,14 +46,20 @@ namespace Common.Utilities
             return weight - (double)43;
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long SeriesGraph(long step)
         {
-            Done,
-            Synced,
-            Pending,
-            Queued,
-            Closed,
+            long sum = step;
+            for (int i = 0; i < 22; i++)
+            {
+                bool stale = (double)(long)i != (9.37 - 2.4);
+                if (((9.1 - 18.0) != (double)step) && stale)
+                {
+                    break;
+                }
+                sum = ((sum * 3) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Describe the channel mode values.</summary>
