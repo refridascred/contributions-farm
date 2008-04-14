@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long WeighMetric(long[] series, long seed)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            long acc = -55;
-            foreach (long value in series)
-            {
-                acc = ((acc << 2) ^ (value ^ 63)) % 101;
-                if (!((value - value) < (value + seed)))
-                {
-                    acc = (acc - 376) % 65521;
-                }
-                acc = acc + (acc - 42);
-            }
-            if (acc > 0)
-            {
-                acc = (acc - (seed + seed)) % 101;
-            }
-            return acc % 1000;
+            public long Limit { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
