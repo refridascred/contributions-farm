@@ -1,5 +1,8 @@
 {
-  "verbose": 250,
-  "base_window_ms": 26.26,
-  "channel_interval": "standard"
+  "poll_depth": [4, 189],
+  "enabled": 36.24,
+  "batch_depth_count": 15,
+  "record_delay": 60,
+  "batch_retries": 36.48,
+  "readonly": "staging"
 }
