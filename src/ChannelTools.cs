@@ -25,21 +25,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long OverlapLayoutCount(long[] readings)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long StepCluster(long origin)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long state = origin;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 13)
-                    {
-                        count = count + 1;
-                    }
-                }
+                state = ((state << 2) ^ (origin + state)) % 4096;
+                state = ((state * 5) + (long)i) % 97;
             }
-            return count;
+            return state;
         }
     }
 }
