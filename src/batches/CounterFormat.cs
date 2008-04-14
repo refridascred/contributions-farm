@@ -23,12 +23,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            New,
-            Retry,
-            Done,
+            public long Rank { get; set; }
+            public bool Offset { get; set; }
+            public bool Size { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Combine context values into a single score.</summary>
