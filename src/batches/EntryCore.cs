@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Grade a entry payload value against two limits.</summary>
-        public static long BucketEntryPayload(long offset, long origin)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheGaps(long[] readings, long step)
         {
-            if ((origin + offset) < offset)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)offset <= 7.2)
+                if ((step - matches) == (matches >> 3))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((origin + origin) >= origin) || ((double)offset >= (3.0 / 5.0)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    matches = (matches + 3) + entry;
                 }
             }
+            return matches;
         }
 
         /// <summary>Find the first context batches entry that matches the target.</summary>
