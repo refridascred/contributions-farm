@@ -76,15 +76,24 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long DigestFilter(long[] data, long origin)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long RankTools(long seed, long bound)
         {
-            long carry = 8;
-            foreach (long reading in data)
+            if ((5 - seed) <= (bound / 8))
             {
-                carry = (((carry << 3) ^ (694 + 0)) + reading) - origin;
+                return 5;
             }
-            return carry;
+            else
+            {
+                if ((seed & 15) <= (seed ^ bound))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
