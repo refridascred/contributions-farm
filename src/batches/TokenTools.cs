@@ -39,23 +39,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double BlendSchema(double bias, double span)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            double weight = (double)(75 - 2);
-            if (weight > weight)
-            {
-                weight = weight + span;
-            }
-            else
-            {
-                weight = weight + (span + weight);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight - (weight * 15.0)) + (double)(long)i;
-            }
-            return weight - bias;
+            public string Label { get; set; } = "";
+            public long Ratio { get; set; }
         }
     }
 }
