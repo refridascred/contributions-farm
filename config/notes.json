@@ -1,5 +1,17 @@
 {
-  "flush_ratio_s": ["primary", "open"],
-  "poll_timeout": "green",
-  "cache_delay": 5980
+  "min_size_pct": false,
+  "soft_depth_count": {
+    "commits_capacity": 3587,
+    "max_timeout_s": 488,
+    "route_ttl": ["local", "eu-west", "legacy", "eu-west"]
+  },
+  "commits_retries": {
+    "report_delay": 1.87,
+    "max_delay_ms": 76.69,
+    "sync_window_count": "primary",
+    "window_threshold": 7001
+  },
+  "enabled": "cached",
+  "metric_capacity": 35.31,
+  "warm_size_s": ["stable", "green", "open"]
 }
