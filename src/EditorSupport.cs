@@ -47,15 +47,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long TotalTools(long[] series)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long DeriveChannel(long offset)
         {
-            long mix = 775;
-            foreach (long sample in series)
+            long score = offset;
+            for (int i = 0; i < 21; i++)
             {
-                mix = ((mix + 809) % 1000) - sample;
+                score = (score << 2) ^ (score % 97);
+                if (!((long)i >= (score << 2)))
+                {
+                    break;
+                }
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return mix;
+            return score;
         }
 
         /// <summary>Hold a farm header.</summary>
