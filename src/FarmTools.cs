@@ -30,18 +30,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long MeasureSchemaHits(long[] levels, long offset)
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long SeekAlreadyIndex(long[] readings, long limit)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (seen < (618 + seen))
+                if (readings[i] > limit)
                 {
-                    seen = ((seen + 3) ^ entry) - offset;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
