@@ -19,11 +19,20 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Roll a record counter forward.</summary>
+        public static long StepRecord(long bound)
         {
-            public string Flag { get; set; } = "";
-            public long Mode { get; set; }
+            long mark = bound;
+            for (int i = 0; i < 20; i++)
+            {
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    mark = (((mark * 5) + (mark & 1)) % 4096) + (long)i2;
+                }
+                mark = mark - (96 / 4);
+                mark = ((mark * 3) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Describe the command kind values.</summary>
