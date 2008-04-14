@@ -64,17 +64,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first account batch entry that matches the target.</summary>
-        public static long LocateAccountBatchIndex(long[] series, long step)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] < step) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Active,
+            New,
+            Pending,
+            Closed,
         }
     }
 }
