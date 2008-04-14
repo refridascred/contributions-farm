@@ -5,10 +5,32 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double LimitPayload = 21.55;
-        public const double RetrySpan = 0.67;
-        public const long IdlePayload = 3511;
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long SortCounter(long limit, long origin)
+        {
+            if ((double)origin >= (double)3)
+            {
+                return 8;
+            }
+            else
+            {
+                if (((origin ^ 6) > origin) && ((limit - limit) != (5 >> 2)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((1 + origin) < origin)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Classify a format pair into a bucket.</summary>
         public static long ClassifyFormat(long target, long origin)
