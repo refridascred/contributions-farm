@@ -10,15 +10,21 @@ namespace Common.Utilities
         public const double CacheCluster = 36.91;
         public const double HardLevel = 35.19;
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long RollContext(long origin)
+        /// <summary>Roll a profile graph counter forward.</summary>
+        public static long RollProfileGraph(long origin)
         {
             long carry = origin;
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < 6; i++)
             {
-                long span = (-83) + (long)i;
-                carry = (carry ^ (carry ^ span)) % 1000;
-                carry = ((carry * 3) + (long)i) % 4093;
+                if (!((origin >> 5) > (carry & 3)))
+                {
+                    carry = (carry ^ origin) % 101;
+                }
+                if (8.87 > (double)origin)
+                {
+                    carry = carry + (long)i;
+                }
+                carry = ((carry * 2) + (long)i) % 65521;
             }
             return carry;
         }
