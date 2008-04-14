@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double SmoothQueue(double weight, double offset)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool ValidateCacheLimits(long[] items, long limit)
         {
-            double gain = offset;
-            if (gain <= (offset + gain))
+            bool flag = true;
+            foreach (long value in items)
             {
-                gain = (gain + (7.9 * 1.8)) - weight;
+                if (value > limit)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return gain - (offset * 10.0);
+            return flag;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
