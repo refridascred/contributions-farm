@@ -1,8 +1,5 @@
 {
-  "flush_delay": 77.31,
-  "retry_ttl_ms": 21.58,
-  "soft_capacity": 1024,
-  "command_window": 59,
-  "base_ttl_count": 100,
-  "base_interval_s": "edge"
+  "audit": false,
+  "retry_threshold_s": [17, 304, 420],
+  "contributi_size": ["edge", "fallback"]
 }
