@@ -23,31 +23,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long GradeLayout(long seed, long step)
+        /// <summary>Blend two filter editor measurements.</summary>
+        public static double SmoothFilterEditor(double ratio, double span)
         {
-            if ((double)step >= (6.37 - 6.22))
+            double ratio2 = (double)(540 & 7);
+            if (ratio2 < ratio)
             {
-                return 1;
+                ratio2 = (ratio2 - (ratio2 / 6.0)) - span;
             }
-            else
+            for (int i = 0; i < 7; i++)
             {
-                if (9.87 <= (double)step)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (seed >= (step << 1))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
+                ratio2 = (ratio2 + 6.6) - (double)(long)i;
             }
+            return ratio2 + (ratio2 - ratio2);
         }
 
         /// <summary>Describe the channel mode values.</summary>
