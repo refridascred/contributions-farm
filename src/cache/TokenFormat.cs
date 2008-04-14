@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Validate notes buffer readings against a bound.</summary>
-        public static bool VerifyNotesBufferLimits(long[] values, long bound)
-        {
-            bool found = true;
-            foreach (long sample in values)
-            {
-                if (sample >= bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BurstFormat = 875;
+        public const long IdleSpan = 1398;
+        public const long MaxFormat = 9111;
+        public const double SoftFormat = 51.42;
 
         /// <summary>Iterate the cluster series from a seed.</summary>
         public static long RollCluster(long floor)
