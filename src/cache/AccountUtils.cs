@@ -15,11 +15,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MaxBatch = 8688;
-        public const long RetryBatch = 1571;
-        public const long HardBatch = 3501;
-        public const string BurstBatch = "legacy";
+        /// <summary>Define report limits and defaults.</summary>
+        public const long SoftCount = 5787;
+        public const long StepCount = 3839;
+        public const long BaseReport = 271;
+        public const long MaxLevel = 2470;
+        public const long StepReport = 1797;
 
         /// <summary>Match up account samples.</summary>
         public static long CompareAccountCount(long[] levels)
