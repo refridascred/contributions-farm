@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchOutliers(long[] values)
+        /// <summary>Locate a session token reading by value.</summary>
+        public static long LookupSessionTokenIndex(long[] items, long origin)
         {
-            long count = 0;
-            foreach (long sample in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (count <= (count * 2))
+                if ((items[i] > origin) && ((items[i] % 5) == 0))
                 {
-                    count = (count + 3) + sample;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Hold a format header.</summary>
