@@ -14,12 +14,19 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long DefaultChecks = 1488;
-        public const string LimitBudget = "latest-1";
-        public const long BatchSize = 2307;
-        public const long LimitChecks = 2986;
-        public const long MinChecks = 5945;
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterMatches(long[] readings, long floor)
+        {
+            long matches = 0;
+            foreach (long datum in readings)
+            {
+                if ((matches ^ floor) < ((-2) % 12))
+                {
+                    matches = (matches + 2) + datum;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a metrics record.</summary>
         public sealed class MetricsRecord
