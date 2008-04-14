@@ -47,19 +47,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate profile tools readings against a bound.</summary>
-        public static bool GuardProfileToolsLimits(long[] series, long origin)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountHits(long[] levels)
         {
-            bool stale = true;
-            foreach (long item in series)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                if (item != origin)
+                if ((seen - cell) >= (seen ^ seen))
                 {
-                    stale = false;
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return stale;
+            return seen;
         }
     }
 }
