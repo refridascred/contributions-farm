@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MinAlready = 3702;
-        public const long BaseAlready = 7684;
-        public const string BurstAlready = "cached-v2";
-        public const string StepSpan = "alpha-v2";
+        /// <summary>Combine already values into a single score.</summary>
+        public static long WeighAlready(long[] levels, long offset)
+        {
+            long mix = 653;
+            foreach (long reading in levels)
+            {
+                mix = (mix - (reading + 9)) % 255;
+                if (((double)offset != (4.68 * 5.1)) || (mix >= (673 + offset)))
+                {
+                    mix = (mix + (mix << 3)) % 4096;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Measure how many route account samples are out of range.</summary>
         public static long CountRouteAccountOutliers(long[] items)
