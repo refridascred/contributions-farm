@@ -32,18 +32,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many format batch samples are out of range.</summary>
-        public static long TallyFormatBatchHits(long[] levels, long floor)
+        /// <summary>Check that every buffer commits entry stays within the limit.</summary>
+        public static bool VerifyBufferCommitsBounds(long[] data, long bound)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            bool flag = true;
+            foreach (long item in data)
             {
-                if (floor < ((long)levels.Length - tally))
+                if (item <= bound)
                 {
-                    tally = (tally + 1) - sample;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Audit entry account readings against a rule.</summary>
