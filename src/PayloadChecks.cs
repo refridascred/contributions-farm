@@ -51,11 +51,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double LimitCluster = 51.39;
-        public const long MaxCluster = 6812;
-        public const string SoftCluster = "strict-edge";
-        public const long SoftInterval = 3606;
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long LocateBatchIndex(long[] values, long bound)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
         public static long MeasureGithubfarmOutliers(long[] values)
