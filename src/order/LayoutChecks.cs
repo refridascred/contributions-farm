@@ -25,14 +25,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long SeriesNotes(long target)
         {
-            Locked,
-            New,
-            Paused,
-            Closed,
-            Done,
+            long result = target;
+            for (int i = 0; i < 6; i++)
+            {
+                bool found = ((-48) + (long)i) > ((long)i >> 3);
+                if (found)
+                {
+                    break;
+                }
+                result = ((result * 2) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
