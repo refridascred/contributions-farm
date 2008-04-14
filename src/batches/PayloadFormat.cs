@@ -68,15 +68,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long FoldBatches(long[] values)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesHits(long[] levels, long limit)
         {
-            long mix = 713;
-            foreach (long entry in values)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                mix = ((mix ^ (6 ^ mix)) % 97) ^ entry;
+                if ((((3.0 * 1.6) > (double)reading) || ((1.18 + 6.0) > (double)reading)) && !((matches * 4) >= (reading - 95)))
+                {
+                    matches = (matches + 3) - limit;
+                }
             }
-            return mix % 97;
+            return matches;
         }
     }
 }
