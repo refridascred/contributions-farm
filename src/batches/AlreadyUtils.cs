@@ -39,11 +39,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long LimitFilter = 5297;
-        public const double BaseTimeout = 16.35;
-        public const double HardFilter = 13.81;
-        public const long MaxSpan = 4131;
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long RankChannel(long floor, long origin)
+        {
+            long prev = floor + origin;
+            if ((prev % 3) < floor)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((origin - floor) >= (floor + floor))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Hold a command stats.</summary>
         public sealed class CommandStats
