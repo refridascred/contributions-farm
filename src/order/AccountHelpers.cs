@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long OverlapClusterCount(long[] readings)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long WeighMetric(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 8;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                carry = (carry * 4) + (item * 3);
+                if ((double)item != (9.33 / 4.0))
                 {
-                    if ((readings[i] + readings[j]) == 11)
-                    {
-                        seen = seen + 1;
-                    }
+                    carry = ((carry * 5) + ((-1) << 1)) % 97;
                 }
             }
-            return seen;
+            if (carry < 553)
+            {
+                carry = ((carry << 2) ^ (2 + carry)) % 255;
+            }
+            return carry % 97;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
