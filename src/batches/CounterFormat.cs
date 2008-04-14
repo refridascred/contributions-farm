@@ -20,22 +20,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long MatchFormatCount(long[] values)
-        {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 6)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long DefaultSize = 8248;
+        public const long MinDepth = 886;
+        public const long DefaultDepth = 2120;
+        public const double RetryLevel = 66.27;
 
         /// <summary>Grade a session value against two limits.</summary>
         public static long ClassifySession(long floor, long target)
