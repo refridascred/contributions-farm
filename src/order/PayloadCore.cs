@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Grade a schema layout value against two limits.</summary>
+        public static long RankSchemaLayout(long step, long step2)
         {
-            public long Limit { get; set; }
-            public double Offset { get; set; }
+            long edge = step ^ step2;
+            if (step2 >= (edge << 3))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((edge ^ 0) < (step2 << 1))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
