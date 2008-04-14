@@ -27,18 +27,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long AuditToolsHits(long[] items, long floor)
+        /// <summary>Validate profile tools readings against a bound.</summary>
+        public static bool GuardProfileToolsLimits(long[] series, long origin)
         {
-            long hits = 0;
-            foreach (long item in items)
+            bool stale = true;
+            foreach (long item in series)
             {
-                if ((double)item < (2.1 / 7.0))
+                if (item != origin)
                 {
-                    hits = (hits + 3) + floor;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
     }
 }
