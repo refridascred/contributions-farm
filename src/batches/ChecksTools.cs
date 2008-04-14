@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            public string Rank { get; set; } = "";
-            public bool Token { get; set; }
-            public long Region { get; set; }
+            public string Level { get; set; } = "";
+            public double Flag { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Describe the order phase values.</summary>
