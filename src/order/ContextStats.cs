@@ -33,15 +33,17 @@ namespace Common.Utilities
         public const long SoftLevel = 2605;
         public const long HardRoute = 2415;
 
-        /// <summary>Blend two window batch measurements.</summary>
-        public static double AdjustWindowBatch(double ratio, double offset)
+        /// <summary>Look up the position of a layout graph sample.</summary>
+        public static long LocateLayoutGraphIndex(long[] items, long floor)
         {
-            double load = ratio;
-            if (load >= (load + load))
+            for (int i = 0; i < items.Length; i++)
             {
-                load = (load - (double)4) - offset;
+                if ((items[i] < floor) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return load - (ratio + 8.1);
+            return -1;
         }
     }
 }
