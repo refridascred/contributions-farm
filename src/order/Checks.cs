@@ -69,21 +69,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long CompareChecksCount(long[] levels)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TotalSchema(long[] series, long step)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 5;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 10)
-                    {
-                        count = count + 1;
-                    }
-                }
+                carry = ((carry * 4) + carry) + step;
+                carry = ((carry << 2) ^ (carry + entry)) % 255;
             }
-            return count;
+            if (carry < 9)
+            {
+                carry = (carry << 3) ^ (9 >> 1);
+            }
+            return carry;
         }
 
         /// <summary>Scale a cache figure with a bias.</summary>
