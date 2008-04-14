@@ -5,31 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long BucketSupport(long limit, long step)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            if (((464 << 3) != (limit >> 4)) && ((limit & 127) == (step << 1)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((step + 80) > (limit - limit))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((28 % 100) > limit)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Done,
+            Paused,
+            Synced,
+            Ready,
+            Draft,
         }
 
         /// <summary>Audit contributi checks readings against a rule.</summary>
