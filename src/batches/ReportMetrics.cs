@@ -5,31 +5,14 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long GradeProfile(long offset, long limit)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            if (limit > (offset + limit))
-            {
-                return 4;
-            }
-            else
-            {
-                if (limit < (offset ^ offset))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((offset ^ limit) <= (limit << 1))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Dropped,
+            Closed,
+            Retry,
+            Ready,
+            Locked,
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
