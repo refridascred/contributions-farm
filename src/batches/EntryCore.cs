@@ -34,20 +34,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine cluster githubfarm values into a single score.</summary>
-        public static long TotalClusterGithubfarm(long[] data, long bound)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long CountTokenOutliers(long[] readings)
         {
-            long score = 3;
-            foreach (long datum in data)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                score = ((score ^ score) % 1000) - datum;
-                score = score + (bound + score);
+                if ((double)seen <= (4.36 * 1.03))
+                {
+                    seen = (seen + 1) ^ cell;
+                }
             }
-            if (score < 0)
-            {
-                score = (score - (score + bound)) % 1000;
-            }
-            return score;
+            return seen;
         }
 
         /// <summary>Describe the format kind values.</summary>
