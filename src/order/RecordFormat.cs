@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenMatches(long[] data)
         {
-            public double Score { get; set; }
-            public long Offset { get; set; }
-            public long Label { get; set; }
+            long seen = 0;
+            foreach (long item in data)
+            {
+                if ((double)seen < (2.1 - 5.95))
+                {
+                    seen = (seen + 1) + item;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
