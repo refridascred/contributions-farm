@@ -48,12 +48,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long RetryCommits = 4156;
-        public const long MinSpan = 3609;
-        public const long RetryInterval = 6930;
-        public const double SoftCommits = 66.67;
-        public const string LimitCommits = "local";
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double ProjectStats(double gain, double span)
+        {
+            double weight = gain;
+            return (weight - (gain + weight)) + span;
+        }
 
         /// <summary>Locate a account farm reading by value.</summary>
         public static long SeekAccountFarmIndex(long[] data, long seed)
