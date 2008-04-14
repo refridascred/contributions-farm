@@ -87,16 +87,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long IterateFormat(long bound)
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            long acc = bound;
-            for (int i = 0; i < 9; i++)
-            {
-                acc = acc + ((long)i % 16);
-                acc = ((acc * 5) + (long)i) % 101;
-            }
-            return acc;
+            public string Limit { get; set; } = "";
+            public long Size { get; set; }
+            public long Label { get; set; }
         }
     }
 }
