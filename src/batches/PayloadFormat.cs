@@ -19,24 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long ClassifyChannel(long step, long seed)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long CountChannelGaps(long[] data, long seed)
         {
-            if ((5.13 + 12.0) == (double)seed)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)9 > (double)step)
+                if ((seed + sample) < seed)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define report limits and defaults.</summary>
