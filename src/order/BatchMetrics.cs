@@ -39,13 +39,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Accumulate graph samples.</summary>
+        public static long CombineGraph(long[] samples, long limit)
         {
-            public long Flag { get; set; }
-            public double Owner { get; set; }
-            public double Offset { get; set; }
-            public bool Rank { get; set; }
+            long carry = 25;
+            foreach (long entry in samples)
+            {
+                carry = (carry + entry) % 1000;
+            }
+            if (carry > 45)
+            {
+                carry = carry + limit;
+            }
+            return carry % 97;
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
