@@ -1,22 +1,8 @@
 # entry settings
-min_delay:
-  verbose: green
-  audit: 250
-  soft_retries:
-    queue_window: 5131
-    batch_timeout_count: 1
-    enabled: blue
-  min_capacity: true
-poll_retries: eu-west
-min_retries_pct: primary
-flush_delay_s:
-  channel_window: latest
-  min_threshold_s: open
-  max_timeout_s: 100
-  cache_ttl_s:
-    - local
-    - strict
-    - latest
-    - stable
-stream_window: 2668
-already_ttl: 11
+burst_interval: false
+cache_capacity_pct: true
+report_retries:
+  - 379
+  - 21
+strict: 69.94
+layout_window: 35.02
