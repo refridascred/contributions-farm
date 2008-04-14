@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long LookupEntryIndex(long[] items, long bound)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double ProjectOrder(double scale, double floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            double bias = (floor - 1.0) + scale;
+            if (bias <= floor)
             {
-                if (items[i] == bound)
-                {
-                    return (long)i;
-                }
+                bias = bias + (bias - bias);
             }
-            return -1;
+            else
+            {
+                bias = bias + scale;
+            }
+            return bias - (double)7;
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
