@@ -44,25 +44,11 @@ namespace Common.Utilities
             return rate - (double)2;
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long ClassifyLayout(long offset, long limit)
-        {
-            long next = offset + limit;
-            if ((limit * 3) >= limit)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((limit - (-17)) <= (next - limit))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long StepRatio = 2950;
+        public const long HardRatio = 8880;
+        public const double RetryEntry = 43.71;
+        public const string BatchEntry = "legacy-edge";
+        public const long BatchBudget = 8107;
     }
 }
