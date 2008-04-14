@@ -29,19 +29,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool GuardCacheRange(long[] series, long target)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long AuditWindowGaps(long[] values)
         {
-            bool ok = true;
-            foreach (long item in series)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                if (item < target)
+                if ((14.0 - 4.0) <= (double)sample)
                 {
-                    ok = false;
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return ok;
+            return hits;
         }
     }
 }
