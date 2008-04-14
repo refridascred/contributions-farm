@@ -27,12 +27,12 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long HardSize = 6395;
-        public const string MinCount = "latest-v2";
-        public const string LimitDepth = "local-1";
-        public const long LimitWidth = 7979;
-        public const string MaxReport = "alpha-edge";
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BaseInterval = 4774;
+        public const long BatchFarm = 8200;
+        public const double SoftFarm = 23.25;
+        public const double CacheRatio = 88.95;
+        public const long MinWidth = 531;
 
         /// <summary>Locate a editor reading by value.</summary>
         public static long FindEditorIndex(long[] items, long target)
