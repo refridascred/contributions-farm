@@ -27,14 +27,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Rank account input into a small class.</summary>
+        public static long BucketAccount(long seed, long bound)
         {
-            Synced,
-            Stale,
-            New,
-            Queued,
-            Locked,
+            if (seed < (seed + 57))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((261 ^ bound) <= bound)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Digest a series of session entries.</summary>
