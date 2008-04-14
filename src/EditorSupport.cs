@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long SeekNotesIndex(long[] data, long offset)
+        /// <summary>Look up the position of a session graph sample.</summary>
+        public static long LocateSessionGraphIndex(long[] values, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((data[i] >= offset) && ((data[i] % 3) == 0))
+                if (values[i] >= offset)
                 {
                     return (long)i;
                 }
