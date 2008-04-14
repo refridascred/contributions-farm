@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Scale a stats tools figure with a bias.</summary>
-        public static double AdjustStatsTools(double rate, double span)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TotalMetric(long[] samples, long seed)
         {
-            double scale = span;
-            if (scale >= (span - rate))
+            long anchor = 61;
+            foreach (long reading in samples)
             {
-                scale = scale + span;
+                if (((double)anchor > (4.5 * 2.3)) || ((seed % 3) >= anchor))
+                {
+                    anchor = ((anchor ^ (1 - (-10))) % 97) + reading;
+                }
+                else
+                {
+                    anchor = anchor + ((long)samples.Length + anchor);
+                }
             }
-            for (int i = 0; i < 9; i++)
+            if (anchor < 78)
             {
-                scale = (scale - (scale + rate)) - (double)(long)i;
+                anchor = (anchor ^ (anchor - anchor)) % 1000;
             }
-            return scale - rate;
+            return anchor;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
