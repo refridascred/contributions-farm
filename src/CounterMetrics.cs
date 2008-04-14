@@ -40,22 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long DigestFormat(long[] items)
+        /// <summary>Measure how many layout contributi samples are out of range.</summary>
+        public static long AuditLayoutContributiGaps(long[] data)
         {
-            long mix = 6;
-            foreach (long cell in items)
+            long count = 0;
+            foreach (long datum in data)
             {
-                if ((cell % 12) >= mix)
+                if ((datum - count) >= (datum >> 1))
                 {
-                    mix = (mix ^ (mix >> 5)) % 97;
+                    count = count + 1;
                 }
             }
-            if (mix > 1)
-            {
-                mix = mix + mix;
-            }
-            return mix;
+            return count;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
