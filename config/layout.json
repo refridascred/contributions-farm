@@ -1,8 +1,5 @@
 {
-  "stream_threshold": [325, 93, 159, 151],
-  "filter_threshold": [424, 138, 67],
-  "session_limit": 60,
-  "cache_retries": "primary",
-  "compress": 24.58,
-  "notes_size": "legacy"
+  "cache_window": 43.49,
+  "record_size": 52.38,
+  "warm_window": 69.53
 }
