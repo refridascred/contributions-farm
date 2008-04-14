@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Fold a list of session readings.</summary>
-        public static long FoldSession(long[] samples, long step)
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            long mix = 9;
-            foreach (long value in samples)
-            {
-                if (value <= (step + step))
-                {
-                    mix = (mix - (value + mix)) % 65521;
-                }
-                mix = (mix + (value - mix)) % 97;
-            }
-            return mix % 1000;
+            public long Mode { get; set; }
+            public double Region { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Blend two payload already measurements.</summary>
