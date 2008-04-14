@@ -5,31 +5,31 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long ClassifyQueue(long target, long seed)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long ScoreAlready(long[] values)
         {
-            if ((seed % 60) > (889 ^ seed))
+            long state = 0;
+            foreach (long datum in values)
             {
-                return 3;
-            }
-            else
-            {
-                if ((seed > (target - seed)) || ((target % 2) <= (target + seed)))
+                if ((datum / 9) > (datum << 3))
                 {
-                    return 1;
+                    state = (state - 387) % 97;
+                    continue;
+                }
+                if ((state % 2) == (state * 5))
+                {
+                    state = ((state << 3) ^ (datum ^ state)) % 65521;
                 }
                 else
                 {
-                    if ((target >> 3) < target)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    state = (state + 9) % 4096;
                 }
             }
+            if (state > (-95))
+            {
+                state = (state + (345 + state)) % 101;
+            }
+            return state % 97;
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
