@@ -1,9 +1,8 @@
-id,score,level,count
-1,legacy,974,staging
-2,local,173,primary
-3,strict,786,primary
-4,62,27.01,fallback
-5,39.32,13.65,latest
-6,green,314,700
-7,77.78,876,474
-8,89.78,green,813
+id,label,state
+1,975,local
+2,73.68,59.35
+3,53.37,legacy
+4,local,331
+5,eu-west,91.31
+6,63,946
+7,406,edge
