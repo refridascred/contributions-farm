@@ -1,16 +1,10 @@
 # support settings
-format_size: fallback
-enabled: 9.39
-readonly:
-  flush_timeout_count:
-    flush_depth: false
-    soft_size_ms: stable
-    githubfarm_threshold:
-      - 235
-      - 266
-    base_capacity_s: fallback
-    poll_window: 88.62
-    batch_limit_s: 12.07
-  strict: legacy
-  cache_interval: 250
-strict: green
+retry_capacity:
+  - 488
+  - 95
+  - 279
+  - 228
+warm_threshold_s: true
+payload_timeout:
+  - 418
+  - 408
