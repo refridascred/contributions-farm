@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Roll a format counter forward.</summary>
-        public static long DeriveFormat(long step)
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            long mark = step;
-            for (int i = 0; i < 4; i++)
-            {
-                long lane = (step << 1) + (step - mark);
-                if (((-144) & 63) < (lane ^ step))
-                {
-                    lane = ((lane << 3) ^ (mark ^ mark)) % 4096;
-                }
-                mark = ((mark * 5) + (long)i) % 101;
-            }
-            return mark;
+            public double Level { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Roll a entry token counter forward.</summary>
