@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Digest a series of context entries.</summary>
-        public static long WeighContext(long[] series, long seed)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            long mix = 879;
-            foreach (long item in series)
-            {
-                mix = (((mix * 5) + (864 + seed)) % 4096) ^ item;
-            }
-            return mix;
+            Done,
+            Draft,
+            Queued,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
