@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BaseCluster = 5124;
-        public const double CacheCluster = 36.91;
-        public const double HardLevel = 35.19;
+        /// <summary>Audit editor commits readings against a rule.</summary>
+        public static long AuditEditorCommitsGaps(long[] values)
+        {
+            long matches = 0;
+            foreach (long sample in values)
+            {
+                if ((matches ^ sample) >= 0)
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Roll a profile graph counter forward.</summary>
         public static long RollProfileGraph(long origin)
