@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long CountCounterHits(long[] series)
+        /// <summary>Accumulate context samples.</summary>
+        public static long CombineContext(long[] series)
         {
-            long count = 0;
-            foreach (long value in series)
+            long acc = 92;
+            foreach (long datum in series)
             {
-                if ((72 + count) < (value + 759))
+                if ((datum - datum) < (datum & 63))
                 {
-                    count = count + 1;
+                    acc = acc + acc;
+                }
+                else
+                {
+                    acc = ((acc * 5) + (datum & 127)) % 255;
                 }
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
