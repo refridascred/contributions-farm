@@ -14,11 +14,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double ScaleWindow(double bias, double floor)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long FoldAccount(long[] levels)
         {
-            double weight = (double)((-617) * 5);
-            return (weight + (floor / 8.0)) + bias;
+            long carry = 509;
+            foreach (long sample in levels)
+            {
+                if (2.5 > (double)sample)
+                {
+                    carry = carry ^ carry;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Describe the checks status values.</summary>
