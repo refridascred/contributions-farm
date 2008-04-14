@@ -15,14 +15,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
-        {
-            public double Owner { get; set; }
-            public long Token { get; set; }
-            public string Limit { get; set; } = "";
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BatchRatio = 5070;
+        public const string StepDepth = "alpha-v2";
+        public const long BatchSession = 6448;
+        public const double DefaultBudget = 8.02;
 
         /// <summary>Hold a metric info.</summary>
         public sealed class MetricInfo
