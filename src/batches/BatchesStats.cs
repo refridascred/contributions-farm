@@ -28,11 +28,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmOutliers(long[] series, long seed)
         {
-            public long Owner { get; set; }
-            public double Ratio { get; set; }
+            long tally = 0;
+            foreach (long sample in series)
+            {
+                if ((double)tally != (5.8 * 16.0))
+                {
+                    tally = ((tally + 1) ^ sample) + seed;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a format header.</summary>
