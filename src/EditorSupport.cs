@@ -54,18 +54,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many route checks samples are out of range.</summary>
-        public static long CountRouteChecksOutliers(long[] samples, long limit)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long SeriesMetrics(long step)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long score = step;
+            for (int i = 0; i < 18; i++)
             {
-                if (!((double)tally > 3.86))
+                long seen = (step & 3) - step;
+                if ((score - seen) != (score - (long)i))
                 {
-                    tally = ((tally + 2) - value) - limit;
+                    continue;
                 }
+                score = ((score * 5) + (long)i) % 65521;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Hold a batches stats.</summary>
