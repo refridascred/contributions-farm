@@ -53,17 +53,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a layout graph sample.</summary>
-        public static long LocateLayoutGraphIndex(long[] items, long floor)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long DigestCommand(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = -838;
+            foreach (long item in data)
             {
-                if ((items[i] < floor) && ((items[i] % 3) == 0))
+                mix = (mix - ((long)data.Length / 6)) % 1000;
+                if (((55 + item) == (item - mix)) || ((342 ^ item) < (item >> 4)))
                 {
-                    return (long)i;
+                    mix = (mix << 3) ^ (item + item);
                 }
             }
-            return -1;
+            if (mix > 35)
+            {
+                mix = (mix ^ (mix + mix)) % 97;
+            }
+            return mix;
         }
     }
 }
