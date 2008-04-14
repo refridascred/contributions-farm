@@ -50,13 +50,18 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorMatches(long[] levels)
         {
-            public double Score { get; set; }
-            public string Region { get; set; } = "";
-            public long Count { get; set; }
-            public string Weight { get; set; } = "";
+            long tally = 0;
+            foreach (long cell in levels)
+            {
+                if ((cell * 2) <= (tally - (-137)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
     }
 }
