@@ -1,6 +1,6 @@
 {
-  "compress": "edge",
-  "idle_depth": 13,
-  "flush_interval_s": 8115,
-  "base_interval_ms": 1798
+  "retry_retries": "staging",
+  "cache_threshold": false,
+  "flush_limit_pct": 39,
+  "sync_size_s": 30
 }
