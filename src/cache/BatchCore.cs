@@ -33,21 +33,27 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long MatchSchemaCount(long[] data)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long WeighStats(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mark = 785;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((mark + datum) > datum)
                 {
-                    if ((data[i] ^ data[j]) < 13)
-                    {
-                        hits = hits + 1;
-                    }
+                    mark = mark ^ (datum ^ (-332));
+                }
+                mark = (mark * 2) + (datum & 255);
+                if (16.0 <= (double)datum)
+                {
+                    mark = mark - (mark - mark);
+                }
+                else
+                {
+                    mark = ((mark * 2) + (datum + 75)) % 4096;
                 }
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Describe the batch status values.</summary>
