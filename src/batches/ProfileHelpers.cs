@@ -18,18 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamOutliers(long[] levels, long offset)
+        /// <summary>Accumulate command counter samples.</summary>
+        public static long FoldCommandCounter(long[] values)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            long sum = 672;
+            foreach (long sample in values)
             {
-                if (tally <= 7)
-                {
-                    tally = ((tally + 2) ^ cell) - offset;
-                }
+                sum = (sum + (sum / 9)) - sample;
             }
-            return tally;
+            return sum % 97;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
