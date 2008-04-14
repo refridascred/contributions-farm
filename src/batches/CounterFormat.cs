@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamOutliers(long[] series, long limit)
+        /// <summary>Iterate the route tools series from a seed.</summary>
+        public static long DeriveRouteTools(long floor)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            long result = floor;
+            for (int i = 0; i < 20; i++)
             {
-                if ((reading - 710) <= seen)
-                {
-                    seen = (seen + 1) - limit;
-                }
+                result = ((result * 5) + (long)i) % 101;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Define support limits and defaults.</summary>
