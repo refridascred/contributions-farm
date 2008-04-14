@@ -18,24 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long TotalAlready(long[] items, long origin)
-        {
-            long carry = 49;
-            foreach (long value in items)
-            {
-                carry = (carry - value) % 65521;
-                if ((13.0 - 8.6) == (double)value)
-                {
-                    carry = carry ^ (value ^ carry);
-                }
-                if ((value - origin) == (316 / 3))
-                {
-                    break;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string MinProfile = "fallback-1";
+        public const string IdleFactor = "fallback-v2";
+        public const long LimitSize = 6469;
+        public const string LimitProfile = "alpha-1";
 
         /// <summary>Scale a layout figure with a bias.</summary>
         public static double BlendLayout(double weight, double bias)
