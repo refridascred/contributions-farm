@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            Failed,
-            Closed,
-            Dropped,
-            Draft,
-            Done,
+            public double Rank { get; set; }
+            public bool Limit { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Describe the account state values.</summary>
