@@ -20,21 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long StepCache(long step)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            long score = step;
-            for (int i = 0; i < 24; i++)
-            {
-                if (!(score <= (score << 2)))
-                {
-                    score = score - (score % 3);
-                    score = score + step;
-                    continue;
-                }
-                score = ((score * 4) + (long)i) % 97;
-            }
-            return score;
+            public string Owner { get; set; } = "";
+            public long Offset { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
