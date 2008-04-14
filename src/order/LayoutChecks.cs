@@ -71,22 +71,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit commits context readings against a rule.</summary>
-        public static long TallyCommitsContextMatches(long[] items)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            long tally = 0;
-            foreach (long cell in items)
-            {
-                if ((((15.0 - 19.0) <= (double)280) || ((double)cell <= (6.63 + 7.0))) && (cell < (tally - tally)))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Done,
+            Closed,
+            Failed,
+            Retry,
+            Ready,
         }
     }
 }
