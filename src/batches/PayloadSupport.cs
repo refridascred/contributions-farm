@@ -16,32 +16,21 @@ namespace Common.Utilities
             return drift - 6.08;
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long GradeCache(long step, long offset)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long StepChannel(long floor)
         {
-            long cur = step ^ offset;
-            if ((offset + cur) == ((-641) + 8))
+            long mark = floor;
+            for (int i = 0; i < 13; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((offset - 5) >= 9)
+                mark = ((mark << 3) ^ (mark << 2)) % 255;
+                if ((long)i != (floor * 5))
                 {
-                    return 0;
+                    mark = mark ^ (0 + mark);
+                    break;
                 }
-                else
-                {
-                    if (((offset + 4) >= step) && ((312 * 2) > (step ^ cur)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
+                mark = ((mark * 5) + (long)i) % 65521;
             }
+            return mark;
         }
 
         /// <summary>Accumulate cluster editor samples.</summary>
