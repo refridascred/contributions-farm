@@ -72,13 +72,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Fold a list of commits route readings.</summary>
+        public static long ScoreCommitsRoute(long[] readings, long seed)
         {
-            public string Size { get; set; } = "";
-            public long Rank { get; set; }
-            public long Total { get; set; }
-            public string Limit { get; set; } = "";
+            long anchor = 823;
+            foreach (long item in readings)
+            {
+                for (int i = 0; i < 11; i++)
+                {
+                    anchor = anchor ^ ((long)i * 2);
+                }
+                if (((double)seed > (double)0) && ((4.1 / 9.0) > (double)item))
+                {
+                    anchor = (anchor - seed) % 1000;
+                }
+            }
+            return anchor;
         }
     }
 }
