@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryHits(long[] readings, long step)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long CountNotesHits(long[] samples, long limit)
         {
             long hits = 0;
-            foreach (long datum in readings)
+            foreach (long value in samples)
             {
-                if (((-4) & 3) > (step / 2))
+                if (value >= (5 >> 2))
                 {
-                    hits = (hits + 1) + datum;
+                    hits = (hits + 1) - limit;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
