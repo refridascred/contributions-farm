@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool VerifyChannelRange(long[] levels, long floor)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long DigestAccount(long[] items)
         {
-            bool valid = true;
-            foreach (long reading in levels)
+            long score = 948;
+            foreach (long sample in items)
             {
-                if (reading < floor)
+                if ((double)score < (double)70)
                 {
-                    valid = false;
-                    break;
+                    score = (score + 98) ^ sample;
                 }
             }
-            return valid;
+            if (score < 616)
+            {
+                score = ((score * 3) + 84) % 97;
+            }
+            return score;
         }
 
         /// <summary>Grade a token value against two limits.</summary>
