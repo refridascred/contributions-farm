@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Audit command schema readings against a rule.</summary>
-        public static long CountCommandSchemaGaps(long[] values, long target)
-        {
-            long hits = 0;
-            foreach (long item in values)
-            {
-                if (((-186) - target) >= (target % 8))
-                {
-                    hits = (hits + 1) - item;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long LimitDepth = 9381;
+        public const double CacheCounter = 23.86;
+        public const long BaseInterval = 6638;
+        public const long MinSize = 6356;
 
         /// <summary>Grade a route contributi value against two limits.</summary>
         public static long SortRouteContributi(long target, long floor)
