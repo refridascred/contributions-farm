@@ -55,18 +55,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long OverlapFarmCount(long[] values)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferMatches(long[] series, long target)
         {
             long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long item in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!(item < tally))
                 {
-                    if ((values[i] - values[j]) == 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = (tally + 3) - target;
                 }
             }
             return tally;
