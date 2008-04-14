@@ -11,22 +11,22 @@ namespace Common.Utilities
         public const long BaseBatches = 8521;
         public const string StepScore = "strict-v2";
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterOutliers(long[] series)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsGaps(long[] data)
         {
-            long count = 0;
-            foreach (long item in series)
+            long seen = 0;
+            foreach (long item in data)
             {
-                if ((double)item > (9.0 / 5.0))
+                if (!!((item * 2) > (398 >> 3)))
                 {
-                    count = count + 1;
+                    seen = seen + 2;
                 }
                 else
                 {
-                    count = count - 1;
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Accumulate payload samples.</summary>
