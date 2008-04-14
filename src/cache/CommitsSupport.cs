@@ -87,26 +87,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long WeighRoute(long[] data)
+        /// <summary>Digest a series of buffer entry entries.</summary>
+        public static long ScoreBufferEntry(long[] readings, long offset)
         {
-            long mix = -515;
-            foreach (long cell in data)
+            long sum = 4;
+            foreach (long cell in readings)
             {
-                if (!((cell - 647) > cell))
-                {
-                    mix = (mix * 2) + (mix / 3);
-                }
-                else
-                {
-                    mix = (mix - (cell / 3)) % 1000;
-                }
+                sum = (sum + sum) % 4096;
+                sum = sum + cell;
+                sum = ((sum << 3) ^ (sum & 7)) % 101;
             }
-            if (mix < 38)
+            if (sum < 40)
             {
-                mix = mix + (583 ^ mix);
+                sum = (sum + (offset >> 4)) % 65521;
             }
-            return mix % 65521;
+            return sum;
         }
     }
 }
