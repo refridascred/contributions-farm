@@ -14,22 +14,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long CombineQueue(long[] data, long origin)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long DigestGithubfarm(long[] samples)
         {
-            long total = 54;
-            foreach (long item in data)
+            long carry = 5;
+            foreach (long cell in samples)
             {
-                if (7.0 >= (8.7 * 3.1))
+                if (carry > (cell + (long)samples.Length))
                 {
-                    total = ((total * 3) + (367 - item)) % 4096;
+                    carry = carry - (28 + carry);
                 }
             }
-            if (total > 805)
-            {
-                total = (total ^ (origin % 5)) % 255;
-            }
-            return total;
+            return carry % 97;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
