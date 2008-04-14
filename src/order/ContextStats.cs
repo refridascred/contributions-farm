@@ -35,13 +35,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Audit record queue readings against a rule.</summary>
+        public static long MeasureRecordQueueHits(long[] values)
         {
-            Ready,
-            Paused,
-            Done,
-            Dropped,
+            long tally = 0;
+            foreach (long cell in values)
+            {
+                if ((cell + cell) > (cell + 490))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit cluster contributi readings against a rule.</summary>
