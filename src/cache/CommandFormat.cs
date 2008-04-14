@@ -46,26 +46,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long TotalPayload(long[] series)
+        /// <summary>Measure how many support report samples are out of range.</summary>
+        public static long MeasureSupportReportHits(long[] samples)
         {
-            long mark = 253;
-            foreach (long item in series)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                if (((-91) << 3) < item)
+                if ((count + datum) != (datum - 335))
                 {
-                    mark = (mark + mark) % 101;
-                }
-                if (mark < (76 / 3))
-                {
-                    break;
+                    count = count + 1;
                 }
             }
-            if (mark > 679)
-            {
-                mark = mark - (mark + mark);
-            }
-            return mark % 65521;
+            return count;
         }
     }
 }
