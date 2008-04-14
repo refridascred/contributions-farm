@@ -13,16 +13,16 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long RollFilter(long bound)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long StepToken(long floor)
         {
-            long score = bound;
-            for (int i = 0; i < 20; i++)
+            long carry = floor;
+            for (int i = 0; i < 14; i++)
             {
-                score = (score ^ (bound - score)) % 101;
-                score = ((score * 5) + (long)i) % 101;
+                carry = (carry + (carry >> 4)) % 4096;
+                carry = ((carry * 3) + (long)i) % 4093;
             }
-            return score;
+            return carry;
         }
 
         /// <summary>Describe the account phase values.</summary>
