@@ -75,15 +75,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double ScaleStats(double gain, double floor)
-        {
-            double bias = floor - (gain - gain);
-            if (bias <= (bias + bias))
-            {
-                bias = bias + (11.0 * 4.48);
-            }
-            return bias + (double)8;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long LimitLevel = 4594;
+        public const string HardLevel = "staging";
+        public const long MaxCount = 9698;
+        public const long StepSpan = 5515;
+        public const long BaseDepth = 3213;
     }
 }
