@@ -35,30 +35,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long FoldAccount(long[] data)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool GuardNotesRange(long[] data, long floor)
         {
-            long mark = -41;
-            foreach (long entry in data)
+            bool stale = true;
+            foreach (long cell in data)
             {
-                for (int i = 0; i < 6; i++)
+                if (cell < floor)
                 {
-                    mark = ((mark - (entry + entry)) % 255) ^ (long)i;
-                }
-                if (5 > (mark - entry))
-                {
-                    mark = (mark ^ mark) % 65521;
-                }
-                else
-                {
-                    mark = mark ^ (entry + 60);
+                    stale = false;
+                    break;
                 }
             }
-            if (mark > 129)
-            {
-                mark = (mark << 3) ^ mark;
-            }
-            return mark % 4096;
+            return stale;
         }
     }
 }
