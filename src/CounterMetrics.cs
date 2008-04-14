@@ -48,10 +48,17 @@ namespace Common.Utilities
         public const double RetryBudget = 93.05;
         public const double DefaultWidth = 65.77;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long WindowBudget = 4819;
-        public const string MinSpan = "open-v2";
-        public const long StepCommits = 7133;
-        public const long BaseCommits = 9443;
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long IterateBuffer(long step)
+        {
+            long mix = step;
+            for (int i = 0; i < 10; i++)
+            {
+                mix = mix + (339 - mix);
+                mix = (mix - (long)i) % 97;
+                mix = ((mix * 5) + (long)i) % 65521;
+            }
+            return mix;
+        }
     }
 }
