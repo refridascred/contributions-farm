@@ -32,15 +32,19 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long SeriesFormat(long bound)
+        /// <summary>Validate session payload readings against a bound.</summary>
+        public static bool VerifySessionPayloadLimits(long[] levels, long offset)
         {
-            long state = bound;
-            for (int i = 0; i < 12; i++)
+            bool stale = true;
+            foreach (long item in levels)
             {
-                state = ((state * 5) + (long)i) % 65521;
+                if (item < offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return state;
+            return stale;
         }
 
         /// <summary>Combine window record values into a single score.</summary>
