@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BatchMetric = 4635;
-        public const long LimitCount = 241;
-        public const long MaxMetric = 3376;
-        public const string BaseMetric = "standard-v2";
-        public const double StepSize = 87.72;
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool CheckWindowLimits(long[] samples, long offset)
+        {
+            bool found = true;
+            foreach (long item in samples)
+            {
+                if (item >= offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Digest a series of channel entries.</summary>
         public static long CombineChannel(long[] series)
