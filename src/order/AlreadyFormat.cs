@@ -28,17 +28,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long SeekClusterIndex(long[] items, long offset)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long TallyMetricMatches(long[] items)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long item in items)
             {
-                if ((items[i] >= offset) && ((items[i] % 2) != 0))
+                if (!(((item * 3) < count) && ((item + count) <= (count ^ count))))
                 {
-                    return (long)i;
+                    count = count + 2;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Rank cluster token input into a small class.</summary>
