@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long CountOrderOutliers(long[] levels, long step)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            long hits = 0;
-            foreach (long entry in levels)
-            {
-                if (!((entry * 4) >= (814 + hits)) || (((entry + hits) == (hits << 3)) || (step < (hits + hits))))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public double Limit { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Hold a token header.</summary>
