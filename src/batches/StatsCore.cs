@@ -38,25 +38,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long ClassifyEntry(long offset, long bound)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long StepOrder(long bound)
         {
-            long gap = offset - bound;
-            if (((1.5 - 1.29) != (double)gap) || ((double)gap > (15.0 * 8.4)))
+            long acc = bound;
+            for (int i = 0; i < 9; i++)
             {
-                return 3;
+                acc = ((acc * 2) + 49) % 255;
+                acc = ((acc * 4) + (long)i) % 1000;
             }
-            else
-            {
-                if ((bound * 5) != ((-45) & 31))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return acc;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
