@@ -53,22 +53,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of account cluster readings.</summary>
-        public static long WeighAccountCluster(long[] levels)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long ClassifyTools(long bound, long target)
         {
-            long score = 9;
-            foreach (long entry in levels)
+            if (!(target <= (bound % 12)))
             {
-                if (!((entry << 1) < (67 * 5)))
+                return 2;
+            }
+            else
+            {
+                if (((target >> 4) < (39 * 5)) || ((8.0 - 9.4) > (double)bound))
                 {
-                    score = (score << 3) ^ (entry + entry);
+                    return 1;
                 }
                 else
                 {
-                    score = (score * 3) + entry;
+                    return 7;
                 }
             }
-            return score;
         }
     }
 }
