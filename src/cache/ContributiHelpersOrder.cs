@@ -26,18 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long TallyPayload(long[] values)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long TallyFarmMatches(long[] items, long offset)
         {
-            long sum = -3;
-            foreach (long item in values)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                if ((sum * 5) == (item & 3))
+                if ((7.21 * 0.59) >= (double)entry)
                 {
-                    sum = (sum + sum) % 4096;
+                    matches = (matches + 3) + offset;
                 }
             }
-            return sum % 65521;
+            return matches;
         }
 
         /// <summary>Accumulate notes samples.</summary>
