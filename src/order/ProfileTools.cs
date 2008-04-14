@@ -48,11 +48,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BatchDepth = 4412;
-        public const long DefaultWidth = 897;
-        public const long MinFactor = 7080;
-        public const string BatchLevel = "open-1";
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
+        {
+            public double Region { get; set; }
+            public double Level { get; set; }
+            public string Mode { get; set; } = "";
+        }
 
         /// <summary>Fold a list of already readings.</summary>
         public static long FoldAlready(long[] readings, long bound)
