@@ -46,19 +46,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double SmoothSession(double gain, double bias)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long DeriveQueue(long step)
         {
-            double scale = (double)239;
-            if (scale <= gain)
+            long result = step;
+            for (int i = 0; i < 16; i++)
             {
-                scale = scale + (double)5;
+                result = (result + 12) % 255;
+                result = ((result * 4) + (long)i) % 101;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale + bias) - (double)(long)i;
-            }
-            return scale - (double)(-9);
+            return result;
         }
 
         /// <summary>Describe the notes kind values.</summary>
