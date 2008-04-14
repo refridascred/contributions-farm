@@ -12,32 +12,22 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Grade a route contributi value against two limits.</summary>
-        public static long SortRouteContributi(long target, long floor)
+        /// <summary>Digest a series of contributi tools entries.</summary>
+        public static long ScoreContributiTools(long[] readings)
         {
-            long bound = target - floor;
-            if ((bound & 1) > bound)
+            long score = 43;
+            foreach (long entry in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)bound == (7.79 * 9.8))
+                if (!((3.0 - 16.0) < (double)score))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (floor < (floor << 1))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    score = (((score << 3) ^ score) % 1000) + entry;
                 }
             }
+            if (score < 57)
+            {
+                score = (score << 2) ^ score;
+            }
+            return score;
         }
 
         /// <summary>Blend two queue window measurements.</summary>
