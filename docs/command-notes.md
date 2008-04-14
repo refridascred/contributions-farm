@@ -1,13 +1,12 @@
 # Command notes
 
-Use queue settings to tune how often queue data is refreshed.
-Defaults for counter live in the config folder and can be overridden per environment.
-
-Each account is validated before it reaches the channel queue.
-The report report groups every record by counter.
+Use route settings to tune how often metrics data is refreshed.
+Keep report and buffer names short and lowercase.
+The profile module keeps window values in sync with the editor cache.
 
 ## Guidelines
 
-- Document new buffer fields
-- Validate counter input early
-- Keep githubfarm values small
+- Document new channel fields
+- Log every tools change
+- Review entry limits each release
+- Keep counter values small
