@@ -1,10 +1,4 @@
 # support settings
-warm_timeout_pct: local
-audit: 5984
-record_depth: 4955
-persist: 7
-metrics_interval:
-  - 111
-  - 371
-  - 497
-  - 281
+audit: 60
+max_ttl_count: 55
+soft_delay_pct: 60
