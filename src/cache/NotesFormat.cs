@@ -27,25 +27,17 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long GradeFilter(long step, long floor)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long FindStatsIndex(long[] items, long step)
         {
-            long delta = step + floor;
-            if (!((step ^ delta) <= (floor >> 1)))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (229 > (26 - floor))
+                if (items[i] == step)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
