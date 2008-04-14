@@ -1,21 +1,28 @@
 # entry settings
-warm_limit_count: 60
-entry_interval:
-  contributi_ratio: 79
-  idle_ttl_ms:
-    - fallback
+idle_delay_count:
+  commits_window: false
+  idle_size_pct: true
+  cache_window:
+    - 495
+    - 289
+    - 351
+  checks_threshold: open
+  verbose:
     - latest
-    - edge
-  soft_size_s: 245
-  support_retries: 2244
-  default_interval_pct: open
-flush_limit_s: true
-batch_retries:
-  - 213
-  - 297
-  - 183
-  - 395
-batch_interval_ms:
-  - standard
-  - latest
-account_depth: 8636
+    - primary
+    - fallback
+    - green
+  stats_limit:
+    - strict
+    - latest
+compress:
+  readonly: standard
+  warm_limit: 4550
+  audit: false
+  min_depth: 4
+  burst_window_s: 1935
+  burst_capacity_count: primary
+cache_threshold_s: latest
+poll_limit_pct: standard
+warm_timeout_s: 6686
+channel_depth: 66
