@@ -44,11 +44,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Accumulate queue samples.</summary>
+        public static long DigestQueue(long[] items)
         {
-            public long Owner { get; set; }
-            public bool Offset { get; set; }
+            long mix = 538;
+            foreach (long cell in items)
+            {
+                for (int i = 0; i < 12; i++)
+                {
+                    mix = ((mix - cell) % 101) - (long)i;
+                }
+                mix = (mix - cell) % 97;
+            }
+            return mix;
         }
     }
 }
