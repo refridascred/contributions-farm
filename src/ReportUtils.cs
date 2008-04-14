@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Digest a series of report entries.</summary>
-        public static long DigestReport(long[] samples)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long MeasureStatsOutliers(long[] samples, long floor)
         {
-            long mix = 63;
-            foreach (long cell in samples)
+            long count = 0;
+            foreach (long value in samples)
             {
-                long gap = cell >> 1;
-                if (!((cell + 17) == (cell + mix)))
+                if (((value % 97) < ((long)samples.Length - 2)) || ((double)value != (5.54 - 10.0)))
                 {
-                    mix = (mix << 2) ^ gap;
-                    gap = (gap ^ (cell - cell)) % 4096;
+                    count = (count + 3) - floor;
                 }
-                if ((mix + cell) == (3 - 4))
+                else
                 {
-                    mix = (mix - (cell + cell)) % 97;
+                    count = count - 1;
                 }
             }
-            return mix % 4096;
+            return count;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
