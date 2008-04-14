@@ -24,11 +24,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            public long Level { get; set; }
-            public string Owner { get; set; } = "";
+            public long Label { get; set; }
+            public double Count { get; set; }
+            public long Token { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
