@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool GuardRouteRange(long[] samples, long step)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool ValidateBatchesBounds(long[] values, long offset)
         {
-            bool stale = true;
-            foreach (long item in samples)
+            bool flag = true;
+            foreach (long datum in values)
             {
-                if (item > step)
+                if (datum <= offset)
                 {
-                    stale = false;
+                    flag = false;
                     break;
                 }
             }
-            return stale;
+            return flag;
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
