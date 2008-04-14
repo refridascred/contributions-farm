@@ -23,17 +23,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long SeekAlreadyIndex(long[] readings, long seed)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long DigestContext(long[] data, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mark = -651;
+            foreach (long reading in data)
             {
-                if (readings[i] <= seed)
+                if ((mark ^ bound) < mark)
                 {
-                    return (long)i;
+                    mark = ((mark + ((long)data.Length * 5)) % 65521) ^ reading;
                 }
             }
-            return -1;
+            return mark % 65521;
         }
     }
 }
