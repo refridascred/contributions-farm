@@ -54,21 +54,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long CompareCommitsCount(long[] items)
+        /// <summary>Combine metrics checks values into a single score.</summary>
+        public static long FoldMetricsChecks(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long total = 61;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                total = (total << 2) ^ (total ^ datum);
+                if (((datum >> 2) >= (datum << 1)) || ((total + 54) <= total))
                 {
-                    if ((items[i] - items[j]) < 18)
-                    {
-                        count = count + 1;
-                    }
+                    break;
                 }
             }
-            return count;
+            return total;
         }
 
         /// <summary>Define order limits and defaults.</summary>
