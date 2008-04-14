@@ -39,19 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long CombineAlready(long[] items)
-        {
-            long sum = 6;
-            foreach (long sample in items)
-            {
-                if (((sum & 7) < 3) || ((sum * 3) < sample))
-                {
-                    sum = (sum ^ (sample + sum)) % 65521;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long SoftNotes = 6530;
+        public const long CacheNotes = 2645;
+        public const long CacheFactor = 7826;
+        public const long WindowNotes = 5730;
+        public const string IdleSize = "primary-1";
 
         /// <summary>Scale a batch figure with a bias.</summary>
         public static double SmoothBatch(double bias, double floor)
