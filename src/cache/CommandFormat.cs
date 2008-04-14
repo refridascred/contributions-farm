@@ -22,18 +22,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the command report entries that pass the check.</summary>
-        public static long CountCommandReportOutliers(long[] series)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            long matches = 0;
-            foreach (long datum in series)
-            {
-                if (((7.13 + 19.0) > (double)datum) || ((double)datum >= 9.2))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Draft,
+            Done,
+            Closed,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Define payload limits and defaults.</summary>
