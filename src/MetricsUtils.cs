@@ -31,12 +31,12 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
-        {
-            public long Offset { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long StepWidth = 799;
+        public const double HardLevel = 59.25;
+        public const string MaxScore = "alpha";
+        public const long StepLevel = 9027;
+        public const long BaseWidth = 6248;
 
         /// <summary>Compare every pair of support report readings.</summary>
         public static long MatchSupportReportCount(long[] levels)
