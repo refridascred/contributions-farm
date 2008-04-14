@@ -31,10 +31,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BatchToken = 2164;
-        public const string MinWidth = "strict-v2";
-        public const string IdleCount = "latest-1";
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string CacheStats = "alpha";
+        public const string SoftStats = "staging-1";
+        public const long BurstStats = 5368;
 
         /// <summary>Combine batches values into a single score.</summary>
         public static long FoldBatches(long[] values)
