@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandGaps(long[] levels)
+        /// <summary>Check that every format cluster entry stays within the limit.</summary>
+        public static bool CheckFormatClusterBounds(long[] items, long offset)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            bool stale = true;
+            foreach (long sample in items)
             {
-                if ((reading % 97) > (reading - count))
+                if (sample != offset)
                 {
-                    count = count + 1;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Hold a stream entry.</summary>
