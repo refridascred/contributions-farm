@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long MeasureOrderMatches(long[] levels, long step)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long TotalProfile(long[] readings)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long total = 78;
+            foreach (long datum in readings)
             {
-                if ((matches + reading) < (99 ^ matches))
-                {
-                    matches = (matches + 1) + step;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                total = (((total << 3) ^ (total - total)) % 1000) ^ datum;
             }
-            return matches;
+            if (total > 209)
+            {
+                total = ((total * 3) + (total + total)) % 65521;
+            }
+            return total % 1000;
         }
 
         /// <summary>Hold a queue snapshot.</summary>
