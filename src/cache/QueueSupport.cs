@@ -13,12 +13,20 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double DefaultTools = 14.18;
-        public const long WindowTools = 752;
-        public const long IdleScore = 542;
-        public const double RetryTools = 68.51;
-        public const long DefaultDepth = 8582;
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool VerifyFormatBounds(long[] samples, long floor)
+        {
+            bool ready = true;
+            foreach (long entry in samples)
+            {
+                if (entry > floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Hold a report summary.</summary>
         public sealed class ReportSummary
