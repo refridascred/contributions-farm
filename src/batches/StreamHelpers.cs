@@ -38,16 +38,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long RollQueue(long origin)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long MatchAccountCount(long[] values)
         {
-            long acc = origin;
-            for (int i = 0; i < 7; i++)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                acc = (acc << 3) ^ (acc + acc);
-                acc = ((acc * 4) + (long)i) % 101;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 15)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Accumulate commits samples.</summary>
