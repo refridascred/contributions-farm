@@ -1,4 +1,8 @@
 # support settings
-already_capacity: stable
-min_retries_count: green
-dry_run: 60
+burst_retries_count:
+  - 201
+  - 138
+  - 302
+  - 381
+schema_depth: 95
+persist: 1253
