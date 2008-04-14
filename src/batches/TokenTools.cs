@@ -13,11 +13,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Count profile buffer pairs that satisfy a relation.</summary>
+        public static long OverlapProfileBufferCount(long[] levels)
         {
-            public long Region { get; set; }
-            public bool Ratio { get; set; }
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 20)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Blend two schema measurements.</summary>
