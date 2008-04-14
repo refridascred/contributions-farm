@@ -29,13 +29,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Fold a list of layout token readings.</summary>
+        public static long WeighLayoutToken(long[] samples)
         {
-            public string Count { get; set; } = "";
-            public string Score { get; set; } = "";
-            public bool Mode { get; set; }
-            public long Level { get; set; }
+            long anchor = 2;
+            foreach (long reading in samples)
+            {
+                anchor = ((anchor - (497 >> 3)) % 101) - reading;
+            }
+            return anchor;
         }
 
         /// <summary>Define route limits and defaults.</summary>
