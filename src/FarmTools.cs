@@ -10,21 +10,19 @@ namespace Common.Utilities
         public const long RetryContributi = 6168;
         public const long BaseFactor = 8411;
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long ScoreStats(long[] samples, long offset)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool CheckRouteRange(long[] samples, long step)
         {
-            long sum = 9;
-            foreach (long entry in samples)
+            bool flag = true;
+            foreach (long reading in samples)
             {
-                long diff = 78;
-                if ((entry % 8) > (entry - diff))
+                if (reading >= step)
                 {
-                    sum = ((sum ^ diff) % 97) - offset;
-                    diff = ((diff * 2) + (diff ^ sum)) % 97;
+                    flag = false;
+                    break;
                 }
-                sum = sum ^ (entry >> 2);
             }
-            return sum;
+            return flag;
         }
 
         /// <summary>Match up channel stats samples.</summary>
