@@ -37,19 +37,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool CheckRecordRange(long[] samples, long step)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long FoldQueue(long[] series)
         {
-            bool valid = true;
-            foreach (long datum in samples)
+            long total = 11;
+            foreach (long sample in series)
             {
-                if (datum <= step)
+                total = (total * 4) + total;
+                if ((sample * 2) >= (total - total))
                 {
-                    valid = false;
-                    break;
+                    total = (total ^ 8) % 1000;
                 }
             }
-            return valid;
+            return total;
         }
 
         /// <summary>Audit notes queue readings against a rule.</summary>
