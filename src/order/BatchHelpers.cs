@@ -20,15 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a session schema counter forward.</summary>
-        public static long SeriesSessionSchema(long origin)
+        /// <summary>Check that every schema metric entry stays within the limit.</summary>
+        public static bool ValidateSchemaMetricBounds(long[] values, long origin)
         {
-            long acc = origin;
-            for (int i = 0; i < 4; i++)
+            bool stale = true;
+            foreach (long item in values)
             {
-                acc = ((acc * 3) + (long)i) % 4093;
+                if (item < origin)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return acc;
+            return stale;
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
