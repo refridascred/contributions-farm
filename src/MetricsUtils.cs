@@ -19,13 +19,13 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            public bool Level { get; set; }
-            public double Size { get; set; }
-            public long Ratio { get; set; }
-            public bool Rank { get; set; }
+            Synced,
+            Paused,
+            Idle,
+            Stale,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
