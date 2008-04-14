@@ -39,18 +39,32 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelGaps(long[] items)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long RankContributi(long limit, long seed)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long diff = limit - seed;
+            if ((double)limit >= (15.0 / 8.0))
             {
-                if (((double)count == (8.0 - 2.31)) || ((20.0 * 7.0) <= (double)count))
+                return 2;
+            }
+            else
+            {
+                if (((double)limit <= (20.0 / 4.0)) && ((limit + seed) <= (diff / 7)))
                 {
-                    count = (count + 2) + sample;
+                    return 7;
+                }
+                else
+                {
+                    if ((double)seed > (double)1)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return count;
         }
     }
 }
