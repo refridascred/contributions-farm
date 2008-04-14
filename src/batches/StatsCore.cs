@@ -62,26 +62,13 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long WeighRoute(long[] readings, long seed)
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            long mix = 4;
-            foreach (long sample in readings)
-            {
-                if ((double)mix >= (6.8 * 5.8))
-                {
-                    mix = (mix - (mix + seed)) % 255;
-                }
-                else
-                {
-                    mix = ((mix * 5) + (seed - sample)) % 101;
-                }
-            }
-            if (mix > 2)
-            {
-                mix = (mix * 3) + (mix >> 2);
-            }
-            return mix;
+            public long Weight { get; set; }
+            public bool Region { get; set; }
+            public double Size { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Hold a command info.</summary>
