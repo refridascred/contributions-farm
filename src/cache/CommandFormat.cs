@@ -32,13 +32,22 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportOutliers(long[] values)
         {
-            public string Level { get; set; } = "";
-            public long Label { get; set; }
-            public long Rank { get; set; }
-            public long Owner { get; set; }
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if ((double)datum > 9.44)
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Locate a metric reading by value.</summary>
