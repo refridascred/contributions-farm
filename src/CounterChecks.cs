@@ -28,19 +28,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double ProjectTools(double rate, double bias)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            double rate2 = (rate * 3.0) / 6.0;
-            if (rate2 < (rate2 / 3.0))
-            {
-                rate2 = (rate2 + rate) - bias;
-            }
-            else
-            {
-                rate2 = rate2 + (double)1;
-            }
-            return rate2 + (double)784;
+            public long Level { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
