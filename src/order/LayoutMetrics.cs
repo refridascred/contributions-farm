@@ -12,26 +12,20 @@ namespace Common.Utilities
         public const string BaseMetric = "standard-v2";
         public const double StepSize = 87.72;
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long CombineTools(long[] samples, long seed)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long CombineChannel(long[] series)
         {
-            long mix = 166;
-            foreach (long entry in samples)
+            long sum = 876;
+            foreach (long reading in series)
             {
-                for (int i = 0; i < 4; i++)
+                bool flag = (69 < (4 + reading)) || ((sum % 8) <= sum);
+                if (flag)
                 {
-                    mix = (((mix ^ 2) % 255) - (long)i) - seed;
+                    flag = !((3.0 * 5.4) <= (double)reading);
                 }
-                if (!((mix - entry) != (48 ^ mix)))
-                {
-                    mix = (mix - (6 / 5)) % 97;
-                }
-                if ((4.2 - 1.0) > (double)3)
-                {
-                    break;
-                }
+                sum = (sum + reading) % 101;
             }
-            return mix;
+            return sum;
         }
 
         /// <summary>Rank record input into a small class.</summary>
