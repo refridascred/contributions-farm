@@ -19,38 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long GradeRoute(long offset, long seed)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long SeekClusterIndex(long[] items, long floor)
         {
-            if (!((double)offset == (7.8 / 9.0)))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (!(offset < (offset % 8)))
+                if (items[i] < floor)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (!(offset < 331))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((offset >> 1) == (seed + offset))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Look up the position of a queue sample.</summary>
