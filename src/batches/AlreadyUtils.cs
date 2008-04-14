@@ -34,31 +34,17 @@ namespace Common.Utilities
         public const string HardRatio = "legacy";
         public const long LimitSize = 3307;
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long BucketWindow(long limit, long step)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long SeekContributiIndex(long[] data, long target)
         {
-            if ((double)step < (3.4 * 4.95))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (!(step >= (limit ^ step)))
+                if ((data[i] >= target) && ((data[i] % 2) == 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)step >= 6.3)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
