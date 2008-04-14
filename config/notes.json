@@ -1,7 +1,19 @@
 {
-  "persist": [305, 14, 12, 206],
-  "window_window": 10.64,
-  "poll_interval_count": false,
-  "idle_size_ms": true,
-  "poll_limit_s": 500
+  "poll_retries_ms": "open",
+  "layout_retries": 39.26,
+  "default_limit_pct": 60,
+  "burst_size": [276, 478, 233, 424],
+  "profile_limit": true,
+  "enabled": {
+    "stream_timeout": "staging",
+    "cache_threshold_ms": ["blue", "strict", "latest", "cached"],
+    "strict": {
+      "default_ttl_ms": 13.02,
+      "warm_ratio_pct": "stable",
+      "sync_threshold_ms": true,
+      "stats_timeout": 6.66,
+      "flush_retries": 77.17,
+      "sync_interval": 5878
+    }
+  }
 }
