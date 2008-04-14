@@ -53,10 +53,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long StepTools = 8622;
-        public const long DefaultTools = 8247;
-        public const long HardRatio = 6285;
+        /// <summary>Define order limits and defaults.</summary>
+        public const string BurstOrder = "local-v2";
+        public const long DefaultOrder = 9979;
+        public const long MaxInterval = 8911;
 
         /// <summary>Locate a filter reading by value.</summary>
         public static long LocateFilterIndex(long[] readings, long bound)
