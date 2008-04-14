@@ -39,12 +39,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long CacheBudget = 3523;
-        public const long SoftCluster = 8346;
-        public const string WindowWidth = "alpha-edge";
-        public const long RetryBudget = 6529;
-        public const long HardCluster = 9981;
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool GuardSessionLimits(long[] series, long offset)
+        {
+            bool stale = true;
+            foreach (long datum in series)
+            {
+                if (datum > offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Locate a editor reading by value.</summary>
         public static long SeekEditorIndex(long[] values, long target)
