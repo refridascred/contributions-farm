@@ -40,22 +40,17 @@ namespace Common.Utilities
         public const long LimitWidth = 7979;
         public const string MaxReport = "alpha-edge";
 
-        /// <summary>Fold a list of already stats readings.</summary>
-        public static long CombineAlreadyStats(long[] samples)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long FindEditorIndex(long[] items, long target)
         {
-            long carry = 64;
-            foreach (long value in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((value / 7) >= ((-9) * 5))
+                if (items[i] <= target)
                 {
-                    carry = (carry + (value + value)) % 4096;
+                    return (long)i;
                 }
             }
-            if (carry > 45)
-            {
-                carry = carry - 7;
-            }
-            return carry;
+            return -1;
         }
     }
 }
