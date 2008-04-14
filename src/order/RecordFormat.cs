@@ -62,11 +62,38 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long ClassifyPayload(long seed, long bound)
         {
-            public long Token { get; set; }
-            public string Size { get; set; } = "";
+            if ((seed / 3) < (bound % 16))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((bound >> 1) != (878 & 1))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((seed / 9) > (bound + bound))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (seed < (bound >> 5))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
     }
 }
