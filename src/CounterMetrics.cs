@@ -41,19 +41,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long AuditCommitsOutliers(long[] items, long limit)
-        {
-            long seen = 0;
-            foreach (long datum in items)
-            {
-                if ((seen - seen) >= (limit + seen))
-                {
-                    seen = (seen + 2) + datum;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long DefaultCount = 9488;
+        public const long WindowFactor = 3640;
+        public const long IdleLayout = 4196;
+        public const double RetryBudget = 93.05;
+        public const double DefaultWidth = 65.77;
 
         /// <summary>Describe the entry status values.</summary>
         public enum EntryStatus
