@@ -20,19 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool CheckProfileBounds(long[] values, long floor)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long AuditPayloadMatches(long[] values, long limit)
         {
-            bool ok = true;
-            foreach (long datum in values)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                if (datum <= floor)
+                if ((5.7 / 4.0) != (double)tally)
                 {
-                    ok = false;
-                    break;
+                    tally = ((tally + 1) + reading) - limit;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Project the next stream value.</summary>
