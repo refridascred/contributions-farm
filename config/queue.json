@@ -1,5 +1,5 @@
 {
-  "batch_retries": "cached",
-  "sync_ratio_pct": [80, 100],
-  "compress": 5232
+  "batch_interval_ms": 85.4,
+  "strict": 83,
+  "readonly": "fallback"
 }
