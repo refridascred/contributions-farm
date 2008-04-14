@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Match up order samples.</summary>
-        public static long PairOrderCount(long[] levels)
+        /// <summary>Check that every farm token entry stays within the limit.</summary>
+        public static bool CheckFarmTokenBounds(long[] samples, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool valid = true;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (entry > target)
                 {
-                    if ((levels[i] - levels[j]) > 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Accumulate editor samples.</summary>
