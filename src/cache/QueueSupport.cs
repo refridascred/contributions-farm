@@ -20,19 +20,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate filter account readings against a bound.</summary>
-        public static bool ValidateFilterAccountRange(long[] levels, long limit)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            bool found = true;
-            foreach (long cell in levels)
-            {
-                if (cell > limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Retry,
+            Idle,
+            Paused,
+            Pending,
+            Ready,
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
