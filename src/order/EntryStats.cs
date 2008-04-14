@@ -27,10 +27,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long IdleMetric = 519;
-        public const long SoftScore = 6638;
-        public const long SoftMetric = 2284;
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
+        {
+            Stale,
+            Idle,
+            Draft,
+            Done,
+            Pending,
+        }
 
         /// <summary>Project the next route value.</summary>
         public static double AdjustRoute(double weight, double floor)
