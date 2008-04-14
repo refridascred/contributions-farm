@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string StepLayout = "staging";
-        public const long BaseLayout = 3754;
-        public const string HardLayout = "fallback";
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BaseLevel = 1060;
+        public const long BurstStream = 21;
+        public const long LimitFactor = 6815;
+        public const string IdleStream = "cached-1";
+        public const long StepBudget = 2237;
 
         /// <summary>Find the first checks entry that matches the target.</summary>
         public static long FindChecksIndex(long[] values, long origin)
