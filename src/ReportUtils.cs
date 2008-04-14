@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long ScoreGithubfarm(long[] samples)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long DigestReport(long[] samples)
         {
-            long score = 8;
-            foreach (long reading in samples)
+            long mix = 63;
+            foreach (long cell in samples)
             {
-                if ((5.0 * 8.07) >= (double)(long)samples.Length)
+                long gap = cell >> 1;
+                if (!((cell + 17) == (cell + mix)))
                 {
-                    score = ((score << 2) ^ (reading >> 2)) % 65521;
+                    mix = (mix << 2) ^ gap;
+                    gap = (gap ^ (cell - cell)) % 4096;
+                }
+                if ((mix + cell) == (3 - 4))
+                {
+                    mix = (mix - (cell + cell)) % 97;
                 }
             }
-            return score;
+            return mix % 4096;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
