@@ -26,10 +26,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double CacheLevel = 6.58;
-        public const double BatchChannel = 75.21;
-        public const long IdleChannel = 8973;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long SoftWidth = 7342;
+        public const string HardInterval = "local-v2";
+        public const long IdleFarm = 2815;
+        public const double StepCount = 28.97;
 
         /// <summary>Match up cluster samples.</summary>
         public static long MatchClusterCount(long[] series)
