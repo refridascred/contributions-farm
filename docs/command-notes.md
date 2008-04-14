@@ -1,14 +1,11 @@
 # Command notes
 
-Each cluster is validated before it reaches the record queue.
-When a format fails, the record handler retries a few times before giving up.
-
-Each format is validated before it reaches the report queue.
-Each notes is validated before it reaches the batches queue.
+Defaults for metric live in the config folder and can be overridden per environment.
+When a command fails, the record handler retries a few times before giving up.
+The already helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Review report limits each release
-- Prefer channel defaults
-- Keep githubfarm values small
-- Validate already input early
+- Prefer route defaults
+- Validate command input early
+- Review notes limits each release
