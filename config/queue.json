@@ -1,7 +1,6 @@
 {
-  "cache_interval_ms": 500,
-  "flush_delay_ms": [357, 140, 370, 325],
-  "support_capacity": "fallback",
-  "githubfarm_threshold": 1695,
-  "flush_delay": 30
+  "poll_retries_count": 9131,
+  "poll_interval_ms": false,
+  "metrics_ratio": 1024,
+  "persist": "fallback"
 }
