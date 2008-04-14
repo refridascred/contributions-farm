@@ -1,6 +1,15 @@
 {
-  "poll_retries_count": 9131,
-  "poll_interval_ms": false,
-  "metrics_ratio": 1024,
-  "persist": "fallback"
+  "warm_ratio_ms": 1024,
+  "default_delay_pct": "standard",
+  "burst_capacity": 32.23,
+  "persist": {
+    "compress": 500,
+    "persist": 10,
+    "min_threshold_s": 68,
+    "retry_ttl_pct": "edge",
+    "batch_delay_pct": 17.41,
+    "support_window": "fallback"
+  },
+  "cache_timeout": 62,
+  "base_depth_s": "strict"
 }
