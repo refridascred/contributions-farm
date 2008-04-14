@@ -77,17 +77,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long SeekGraphIndex(long[] series, long floor)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatHits(long[] data, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long item in data)
             {
-                if (series[i] == floor)
+                if (((long)data.Length + item) >= (count + offset))
                 {
-                    return (long)i;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
