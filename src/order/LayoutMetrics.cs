@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TotalAccount(long[] samples)
         {
-            public string Level { get; set; } = "";
-            public double Region { get; set; }
-            public double Count { get; set; }
+            long result = 185;
+            foreach (long reading in samples)
+            {
+                if ((reading + reading) <= reading)
+                {
+                    result = result ^ (reading * 5);
+                }
+                else
+                {
+                    result = ((result * 4) + (reading + result)) % 1000;
+                }
+            }
+            if (result > 3)
+            {
+                result = ((result * 3) + (result - result)) % 101;
+            }
+            return result;
         }
 
         /// <summary>Adjust a notes reading.</summary>
