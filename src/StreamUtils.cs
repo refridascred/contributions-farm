@@ -44,12 +44,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double IdleContributi = 65.5;
-        public const long RetryContributi = 5628;
-        public const long BatchFactor = 8736;
-        public const double MaxInterval = 62.82;
-        public const long WindowDepth = 1031;
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long TallyRouteMatches(long[] items)
+        {
+            long tally = 0;
+            foreach (long item in items)
+            {
+                if (((2.66 * 14.0) >= (double)tally) && ((double)49 != (double)item))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a context header.</summary>
         public sealed class ContextHeader
