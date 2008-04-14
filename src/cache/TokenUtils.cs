@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long GradeChannel(long limit, long floor)
-        {
-            if (floor <= (limit + limit))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((double)limit >= 11.0) && ((floor + floor) < floor))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((limit + floor) == (floor % 2))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long WindowBudget = 854;
+        public const long SoftWidth = 166;
+        public const long BaseBatches = 8521;
+        public const string StepScore = "strict-v2";
 
         /// <summary>Describe the metric class values.</summary>
         public enum MetricClass
