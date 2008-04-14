@@ -28,10 +28,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BaseBudget = 28;
-        public const long WindowSpan = 4259;
-        public const string MaxStats = "standard-v2";
-        public const long BurstStats = 855;
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
+        {
+            Retry,
+            New,
+            Queued,
+        }
     }
 }
