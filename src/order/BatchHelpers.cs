@@ -20,19 +20,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double ScaleFarm(double weight, double bias)
+        /// <summary>Project the next already report value.</summary>
+        public static double BlendAlreadyReport(double weight, double floor)
         {
-            double bias2 = bias + (double)3;
-            if (bias2 < bias)
+            double load = weight;
+            if (load < (floor - floor))
             {
-                bias2 = (bias2 - bias) + weight;
+                load = load + floor;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                bias2 = bias2 + (double)(long)i;
-            }
-            return bias2 + (2.7 / 7.0);
+            return load + weight;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
