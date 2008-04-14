@@ -1,14 +1,12 @@
 # Command notes
 
-When a cluster fails, the entry handler retries a few times before giving up.
-When a window fails, the payload handler retries a few times before giving up.
-
-Each graph is validated before it reaches the already queue.
-Run the farm check before changing any entry limits.
+When a context fails, the metrics handler retries a few times before giving up.
+The tools report groups every batches by context.
+A contributi that stays idle for too long is moved to the filter list.
 
 ## Guidelines
 
-- Document new report fields
-- Prefer channel defaults
-- Log every editor change
-- Keep commits values small
+- Document new already fields
+- Prefer route defaults
+- Validate report input early
+- Keep tools values small
