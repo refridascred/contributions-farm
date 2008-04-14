@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long MatchCommandCount(long[] readings)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long WeighContext(long[] series, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 879;
+            foreach (long item in series)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 0)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mix = (((mix * 5) + (864 + seed)) % 4096) ^ item;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Locate a record reading by value.</summary>
