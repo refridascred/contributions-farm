@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long RankToken(long bound, long limit)
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long MatchChecksCount(long[] samples)
         {
-            if ((double)bound > (double)3)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((bound >= (limit % 60)) || ((bound << 2) < limit))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((9.26 * 0.5) >= (double)limit)
+                    if ((samples[i] + samples[j]) == 11)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((limit ^ 317) != (269 >> 1))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Roll a entry token counter forward.</summary>
