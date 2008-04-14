@@ -83,39 +83,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long GradeSchema(long limit, long step)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long PairFormatCount(long[] values)
         {
-            long span = limit ^ step;
-            if ((limit / 9) <= span)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (((limit - step) > (span / 4)) && ((span & 63) < (75 / 7)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (limit >= (limit - span))
+                    if ((values[i] - values[j]) < 12)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((span - span) > step)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a commits options.</summary>
