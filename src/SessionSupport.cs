@@ -22,26 +22,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long WeighRoute(long[] samples)
+        /// <summary>Accumulate buffer window samples.</summary>
+        public static long CombineBufferWindow(long[] values, long seed)
         {
-            long carry = 9;
-            foreach (long reading in samples)
+            long total = 229;
+            foreach (long value in values)
             {
-                if ((double)reading != (double)carry)
+                if ((value - value) > (long)values.Length)
                 {
-                    carry = carry - reading;
+                    total = total ^ 49;
                 }
-                else
-                {
-                    carry = (carry << 3) ^ (carry << 2);
-                }
+                total = total + (seed + total);
             }
-            if (carry < 64)
+            if (total > 0)
             {
-                carry = (carry * 3) + (carry >> 4);
+                total = (total - (3 >> 1)) % 4096;
             }
-            return carry % 4096;
+            return total % 97;
         }
 
         /// <summary>Hold a filter info.</summary>
