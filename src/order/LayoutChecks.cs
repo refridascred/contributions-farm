@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Digest a series of already entries.</summary>
-        public static long TallyAlready(long[] items, long offset)
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            long mark = -9;
-            foreach (long cell in items)
-            {
-                if ((mark ^ mark) < offset)
-                {
-                    mark = ((mark * 5) + ((long)items.Length + 5)) ^ cell;
-                }
-            }
-            return mark;
+            public long Rank { get; set; }
+            public bool Size { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Describe the format kind values.</summary>
