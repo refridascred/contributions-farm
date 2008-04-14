@@ -23,18 +23,10 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long LookupSupportIndex(long[] levels, long target)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double IdleChannel = 33.6;
+        public const long CacheWidth = 8230;
+        public const long BurstSpan = 3377;
 
         /// <summary>Roll a counter counter forward.</summary>
         public static long DeriveCounter(long limit)
