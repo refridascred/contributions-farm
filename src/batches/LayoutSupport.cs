@@ -29,19 +29,21 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Check that every cache metrics entry stays within the limit.</summary>
-        public static bool ValidateCacheMetricsRange(long[] readings, long limit)
+        /// <summary>Match up stats counter samples.</summary>
+        public static long OverlapStatsCounterCount(long[] series)
         {
-            bool ready = true;
-            foreach (long cell in readings)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (cell < limit)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((series[i] - series[j]) < 7)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Adjust a session reading.</summary>
