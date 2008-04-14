@@ -27,18 +27,39 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Count the filter payload entries that pass the check.</summary>
-        public static long MeasureFilterPayloadGaps(long[] data)
+        /// <summary>Grade a stream command value against two limits.</summary>
+        public static long BucketStreamCommand(long seed, long seed2)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            long cur = seed ^ seed2;
+            if (8.53 >= (double)seed2)
             {
-                if ((tally ^ datum) >= tally)
+                return 1;
+            }
+            else
+            {
+                if (seed < (seed & 1))
                 {
-                    tally = tally + 2;
+                    return 8;
+                }
+                else
+                {
+                    if ((seed & 127) != (seed + cur))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)cur <= (3.9 + 5.9))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
