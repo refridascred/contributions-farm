@@ -22,14 +22,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Compare every pair of session commits readings.</summary>
+        public static long OverlapSessionCommitsCount(long[] readings)
         {
-            Locked,
-            Stale,
-            Closed,
-            Failed,
-            Synced,
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 5)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Rank batch input into a small class.</summary>
