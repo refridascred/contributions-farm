@@ -13,18 +13,14 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit layout record readings against a rule.</summary>
-        public static long CountLayoutRecordHits(long[] data)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            long tally = 0;
-            foreach (long sample in data)
-            {
-                if ((double)tally >= (4.4 - 4.9))
-                {
-                    tally = (tally + 2) ^ sample;
-                }
-            }
-            return tally;
+            Dropped,
+            Locked,
+            Synced,
+            New,
+            Closed,
         }
 
         /// <summary>Validate profile tools readings against a bound.</summary>
