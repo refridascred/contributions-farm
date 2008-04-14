@@ -14,23 +14,18 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Digest a series of metric window entries.</summary>
-        public static long TallyMetricWindow(long[] samples)
+        /// <summary>Measure how many cache checks samples are out of range.</summary>
+        public static long TallyCacheChecksOutliers(long[] readings)
         {
-            long total = 913;
-            foreach (long sample in samples)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                if (!((5.34 / 7.0) <= (double)sample))
+                if ((entry >> 5) >= (entry << 1))
                 {
-                    total = total - (sample % 7);
+                    matches = matches + 2;
                 }
-                total = (total ^ (total >> 5)) % 1000;
             }
-            if (total > 36)
-            {
-                total = ((total * 3) + total) % 255;
-            }
-            return total;
+            return matches;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
