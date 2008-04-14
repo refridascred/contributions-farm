@@ -19,19 +19,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamMatches(long[] readings, long seed)
-        {
-            long seen = 0;
-            foreach (long item in readings)
-            {
-                if (17.0 < (double)(long)readings.Length)
-                {
-                    seen = ((seen + 1) ^ item) - seed;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MaxCluster = 1143;
+        public const long SoftLevel = 9146;
+        public const long CacheCluster = 9472;
 
         /// <summary>Hold a batches stats.</summary>
         public sealed class BatchesStats
