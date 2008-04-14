@@ -43,25 +43,21 @@ namespace Common.Utilities
         public const string BaseTimeout = "cached-1";
         public const long DefaultTimeout = 272;
 
-        /// <summary>Rank cluster token input into a small class.</summary>
-        public static long SortClusterToken(long bound, long floor)
+        /// <summary>Match up report metric samples.</summary>
+        public static long CompareReportMetricCount(long[] samples)
         {
-            long next = bound ^ floor;
-            if (6.99 > (double)bound)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (next < (floor % 7))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
+                    if ((samples[i] ^ samples[j]) != 1)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
