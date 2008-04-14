@@ -32,18 +32,18 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyGaps(long[] values)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryGaps(long[] items, long step)
         {
-            long count = 0;
-            foreach (long value in values)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                if (!((value >= (value ^ 6)) || ((2.6 - 6.4) >= (double)count)))
+                if (((entry + step) <= hits) || ((step & 63) == (step * 4)))
                 {
-                    count = count + 1;
+                    hits = hits + 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Hold a queue record.</summary>
