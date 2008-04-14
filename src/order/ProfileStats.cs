@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long CombineBuffer(long[] items, long origin)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long WeighContext(long[] values)
         {
-            long score = 273;
-            foreach (long entry in items)
+            long total = 7;
+            foreach (long value in values)
             {
-                score = ((score - entry) % 101) + origin;
+                total = total - (1 + value);
             }
-            return score % 65521;
+            return total;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
