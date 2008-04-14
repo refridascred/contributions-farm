@@ -43,11 +43,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            public long Level { get; set; }
-            public string Offset { get; set; } = "";
+            Ready,
+            Queued,
+            Closed,
+            New,
+            Done,
         }
 
         /// <summary>Describe the payload class values.</summary>
