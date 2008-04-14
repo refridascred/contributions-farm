@@ -1,25 +1,9 @@
 # githubfarm settings
-profile_size: 89
-graph_window: 100
-metrics_depth: 5
-sync_delay:
-  flush_size_pct: 100
-  min_ratio: 48.92
-  verbose: 22.33
-  default_window_pct:
-    idle_ratio: 73.98
-    profile_capacity:
-      - staging
-      - stable
-      - fallback
-      - open
-    hard_limit: 30
-    dry_run:
-      - 117
-      - 465
-      - 442
-      - 441
-    warm_window: false
-    hard_interval_count: 41.61
-  batches_capacity: primary
-counter_limit: true
+warm_ratio_s:
+  window_delay: false
+  batch_size: 60
+  default_size: 81
+  already_depth: 61
+  cache_retries_s: 7894
+soft_interval_count: 38
+burst_size_pct: 98.23
