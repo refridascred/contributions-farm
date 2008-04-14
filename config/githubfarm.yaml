@@ -1,6 +1,24 @@
 # githubfarm settings
-filter_timeout: standard
-flush_window_count: staging
-hard_limit_pct: 4742
-compress: 1290
-entry_interval: 57
+verbose: true
+report_limit:
+  batch_retries_ms: 5076
+  soft_capacity: 9545
+  entry_threshold:
+    hard_delay_count: 12.05
+    idle_limit_count: false
+    max_limit_count: false
+    soft_capacity:
+      - latest
+      - staging
+  retry_depth_ms: true
+  report_timeout: 54.57
+tools_delay: 18
+soft_capacity:
+  default_interval_ms: staging
+  session_threshold:
+    - legacy
+    - green
+  min_ratio: staging
+  persist: false
+  batches_retries: blue
+  audit: 26
