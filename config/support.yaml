@@ -1,10 +1,4 @@
 # support settings
-enabled: stable
-poll_delay_ms: 95
-readonly: blue
-token_ratio:
-  - 111
-  - 493
-  - 216
-  - 63
-warm_delay: edge
+queue_window: false
+soft_ratio: eu-west
+warm_ratio: local
