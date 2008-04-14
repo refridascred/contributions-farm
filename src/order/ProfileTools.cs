@@ -33,15 +33,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long StepCommits(long bound)
+        /// <summary>Derive the next metric cluster value from a seed.</summary>
+        public static long SeriesMetricCluster(long seed)
         {
-            long anchor = bound;
-            for (int i = 0; i < 5; i++)
+            long mark = seed;
+            for (int i = 0; i < 21; i++)
             {
-                anchor = ((anchor * 3) + (long)i) % 1000;
+                mark = (mark ^ (9 + mark)) % 97;
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            return anchor;
+            return mark;
         }
 
         /// <summary>Blend two route account measurements.</summary>
