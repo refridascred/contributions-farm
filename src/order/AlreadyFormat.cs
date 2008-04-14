@@ -41,25 +41,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long GradeFarm(long step, long step2)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long SeekClusterIndex(long[] items, long offset)
         {
-            long bound = step ^ step2;
-            if ((2 <= (step2 / 8)) || ((step ^ bound) < (step2 ^ step)))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (((-34) >> 1) <= (bound >> 3))
+                if ((items[i] >= offset) && ((items[i] % 2) != 0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a batches stats.</summary>
