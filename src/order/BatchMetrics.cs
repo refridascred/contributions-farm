@@ -54,39 +54,12 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long GradeCluster(long offset, long seed)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            long span = offset + seed;
-            if (((5.12 * 3.0) < (double)span) && ((span & 63) > (seed % 5)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((-6) < (472 + seed))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((offset - span) > (offset ^ span)) && ((span << 3) <= 19))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)seed == (double)span)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public long Owner { get; set; }
+            public bool Ratio { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Compare every pair of format readings.</summary>
