@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long CacheNotes = 8061;
-        public const string LimitScore = "alpha-edge";
-        public const long MinCount = 8917;
-        public const long DefaultNotes = 6172;
-        public const double BurstNotes = 0.91;
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long MatchCommandCount(long[] readings)
+        {
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 0)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Audit payload readings against a rule.</summary>
         public static long AuditPayloadMatches(long[] values, long limit)
