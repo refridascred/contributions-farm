@@ -1,15 +1,14 @@
 # Command notes
 
-Use schema settings to tune how often session data is refreshed.
-Keep editor and order names short and lowercase.
+Each cluster is validated before it reaches the record queue.
+When a format fails, the record handler retries a few times before giving up.
 
-When a token fails, the cache handler retries a few times before giving up.
-A stats that stays idle for too long is moved to the context list.
-The window report groups every window by payload.
+Each format is validated before it reaches the report queue.
+Each notes is validated before it reaches the batches queue.
 
 ## Guidelines
 
-- Validate buffer input early
-- Keep window values small
-- Review cache limits each release
-- Log every filter change
+- Review report limits each release
+- Prefer channel defaults
+- Keep githubfarm values small
+- Validate already input early
