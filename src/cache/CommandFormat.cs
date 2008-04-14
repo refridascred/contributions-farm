@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long TotalProfile(long[] readings)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            long total = 78;
-            foreach (long datum in readings)
-            {
-                total = (((total << 3) ^ (total - total)) % 1000) ^ datum;
-            }
-            if (total > 209)
-            {
-                total = ((total * 3) + (total + total)) % 65521;
-            }
-            return total % 1000;
+            public double Limit { get; set; }
+            public double Count { get; set; }
+            public long Total { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Hold a editor info.</summary>
