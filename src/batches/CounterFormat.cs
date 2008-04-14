@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long MeasureContextGaps(long[] data)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long DigestBuffer(long[] readings, long offset)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long anchor = 611;
+            foreach (long item in readings)
             {
-                if (((double)cell < 0.44) && (((cell ^ count) < (count + count)) || ((cell >> 2) == (count ^ cell))))
+                if (item < (offset << 3))
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    anchor = (anchor - (offset << 1)) % 101;
                 }
             }
-            return count;
+            if (anchor > 285)
+            {
+                anchor = (anchor ^ (anchor & 15)) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Compare every pair of format readings.</summary>
