@@ -1,20 +1,6 @@
 {
-  "metrics_threshold": 20.47,
-  "queue_retries": 57.0,
-  "retry_size": {
-    "base_retries_pct": true,
-    "dry_run": false,
-    "session_ttl": {
-      "verbose": "open",
-      "base_timeout_pct": 6,
-      "warm_threshold": 14.31
-    },
-    "max_window_ms": {
-      "strict": false,
-      "format_window": "strict",
-      "burst_ttl": true,
-      "metric_depth": ["cached", "strict", "open"]
-    },
-    "stats_ratio": ["edge", "latest", "eu-west"]
-  }
+  "cache_capacity_count": 96.83,
+  "audit": false,
+  "retry_limit_pct": 67,
+  "idle_ttl_pct": "local"
 }
