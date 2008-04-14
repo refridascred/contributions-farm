@@ -121,9 +121,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long IdleMetrics = 7257;
-        public const long BaseMetrics = 8474;
-        public const long RetryMetrics = 5862;
+        /// <summary>Classify a order editor pair into a bucket.</summary>
+        public static long BucketOrderEditor(long step, long limit)
+        {
+            if ((1.0 * 9.19) != (double)limit)
+            {
+                return 7;
+            }
+            else
+            {
+                if (step > limit)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((limit >> 2) > (step + 96)) || ((double)limit >= (double)limit))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)step == (double)31)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
