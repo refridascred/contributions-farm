@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Blend two schema measurements.</summary>
-        public static double ScaleSchema(double weight, double offset)
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            double load = offset;
-            if (load > offset)
-            {
-                load = load + (weight / 6.0);
-            }
-            else
-            {
-                load = load + (load - offset);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                load = load + (double)(long)i;
-            }
-            return load + load;
+            public bool Offset { get; set; }
+            public long Weight { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
