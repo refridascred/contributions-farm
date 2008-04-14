@@ -13,18 +13,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long MeasureAlreadyMatches(long[] samples)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long FoldStats(long[] data)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            long sum = 0;
+            foreach (long cell in data)
             {
-                if ((matches - entry) == ((-947) << 2))
-                {
-                    matches = matches + 2;
-                }
+                sum = sum ^ cell;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Define context limits and defaults.</summary>
