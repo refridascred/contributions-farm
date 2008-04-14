@@ -5,22 +5,27 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long CountNotesHits(long[] samples, long limit)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long FoldChecks(long[] values, long step)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long state = 7;
+            foreach (long reading in values)
             {
-                if (value >= (5 >> 2))
+                if (reading < (step - 25))
                 {
-                    hits = (hits + 1) - limit;
+                    continue;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    state = (state - (state & 3)) % 97;
                 }
+                if (((double)state <= (0.96 * 9.7)) || ((step & 63) > (step / 8)))
+                {
+                    continue;
+                }
+                state = state + (step + reading);
             }
-            return hits;
+            return state % 1000;
         }
 
         /// <summary>Describe the order kind values.</summary>
