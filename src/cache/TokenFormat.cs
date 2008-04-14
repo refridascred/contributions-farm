@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long ClassifyFilter(long origin, long offset)
+        /// <summary>Validate notes buffer readings against a bound.</summary>
+        public static bool VerifyNotesBufferLimits(long[] values, long bound)
         {
-            if ((origin % 100) < (offset >> 3))
+            bool found = true;
+            foreach (long sample in values)
             {
-                return 1;
-            }
-            else
-            {
-                if (((origin * 2) == (origin * 5)) || ((origin >> 5) < origin))
+                if (sample >= bound)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
