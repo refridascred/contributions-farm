@@ -14,22 +14,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long TotalMetrics(long[] items)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteHits(long[] readings, long floor)
         {
-            long acc = -180;
-            foreach (long entry in items)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                if ((4.9 * 3.86) < (double)acc)
+                if ((tally + tally) <= floor)
                 {
-                    acc = (acc << 3) ^ (entry ^ acc);
+                    tally = (tally + 2) ^ value;
                 }
             }
-            if (acc > 1)
-            {
-                acc = ((acc << 3) ^ (acc / 4)) % 1000;
-            }
-            return acc % 4096;
+            return tally;
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
