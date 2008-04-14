@@ -1,10 +1,10 @@
 {
-  "poll_size_s": {
-    "base_interval_pct": true,
-    "support_threshold": 15,
-    "retry_ttl_ms": 2230
-  },
-  "cluster_retries": 2.59,
-  "burst_ratio_count": [27, 136],
-  "readonly": 30
+  "persist": "blue",
+  "soft_threshold_ms": 32.97,
+  "max_retries": {
+    "flush_capacity": "cached",
+    "tools_timeout": [463, 47],
+    "flush_ratio_count": 4217,
+    "flush_limit_s": "cached"
+  }
 }
