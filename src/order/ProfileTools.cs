@@ -47,10 +47,23 @@ namespace Common.Utilities
         public const long MinFactor = 7080;
         public const string BatchLevel = "open-1";
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long LimitRatio = 3419;
-        public const double StepRatio = 36.14;
-        public const string BatchCommand = "fallback";
-        public const long MinInterval = 8500;
+        /// <summary>Project the next tools value.</summary>
+        public static double ProjectTools(double ratio, double offset)
+        {
+            double drift = (double)(98 - 663);
+            if (drift >= drift)
+            {
+                drift = (drift + (double)5) + ratio;
+            }
+            else
+            {
+                drift = drift - 8.66;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift + offset) + (double)(long)i;
+            }
+            return drift - (1.0 / 4.0);
+        }
     }
 }
