@@ -68,17 +68,19 @@ namespace Common.Utilities
         public const long DefaultOrder = 9979;
         public const long MaxInterval = 8911;
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long LocateFilterIndex(long[] readings, long bound)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool CheckGraphBounds(long[] series, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool flag = true;
+            foreach (long entry in series)
             {
-                if ((readings[i] < bound) && ((readings[i] % 3) != 0))
+                if (entry < origin)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
     }
 }
