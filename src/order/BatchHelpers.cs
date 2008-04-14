@@ -31,22 +31,38 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long TallyEntry(long[] readings, long limit)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long SortLayout(long limit, long offset)
         {
-            long carry = 71;
-            foreach (long item in readings)
+            if (8.4 > (double)offset)
             {
-                if ((item / 5) >= (limit + carry))
+                return 0;
+            }
+            else
+            {
+                if ((18.0 - 4.2) == (double)limit)
                 {
-                    carry = (carry * 5) + (carry & 127);
+                    return 8;
+                }
+                else
+                {
+                    if ((limit & 3) != (offset + limit))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((offset * 5) <= (limit ^ limit)) || ((offset - (-20)) <= (limit * 5)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            if (carry > (-833))
-            {
-                carry = ((carry << 3) ^ (limit ^ limit)) % 97;
-            }
-            return carry % 1000;
         }
     }
 }
