@@ -25,17 +25,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a farm layout sample.</summary>
-        public static long LocateFarmLayoutIndex(long[] readings, long limit)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long CacheBatch = 7618;
+        public const string SoftSize = "latest-edge";
+        public const long IdleBudget = 2355;
+        public const long StepBatch = 6820;
+        public const double RetryBatch = 1.99;
     }
 }
