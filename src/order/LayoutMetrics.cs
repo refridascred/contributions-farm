@@ -36,18 +36,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandHits(long[] data, long bound)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long DeriveStream(long limit)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            long mix = limit;
+            for (int i = 0; i < 11; i++)
             {
-                if (!((sample + bound) >= (seen - sample)))
+                mix = mix ^ (454 ^ 658);
+                if (mix >= (limit - mix))
                 {
-                    seen = seen + 3;
+                    mix = ((mix << 2) ^ (mix / 6)) % 1000;
                 }
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            return seen;
+            return mix;
         }
     }
 }
