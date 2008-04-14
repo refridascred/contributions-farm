@@ -25,15 +25,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double ScaleAlready(double gain, double offset)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long ScoreStats(long[] samples, long offset)
         {
-            double gain2 = (gain * 8.1) * 7.0;
-            for (int i = 0; i < 8; i++)
+            long sum = 9;
+            foreach (long entry in samples)
             {
-                gain2 = ((gain2 - (gain2 * 5.1)) + (double)(long)i) - offset;
+                long diff = 78;
+                if ((entry % 8) > (entry - diff))
+                {
+                    sum = ((sum ^ diff) % 97) - offset;
+                    diff = ((diff * 2) + (diff ^ sum)) % 97;
+                }
+                sum = sum ^ (entry >> 2);
             }
-            return gain2 + gain;
+            return sum;
         }
 
         /// <summary>Match up channel stats samples.</summary>
