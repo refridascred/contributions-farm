@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool ValidateChannelRange(long[] values, long seed)
+        /// <summary>Project the next account value.</summary>
+        public static double ProjectAccount(double bias, double offset)
         {
-            bool stale = true;
-            foreach (long value in values)
+            double gain = (offset * 3.1) + (8.74 * 4.0);
+            if (gain < (double)1)
             {
-                if (value <= seed)
-                {
-                    stale = false;
-                    break;
-                }
+                gain = gain - bias;
             }
-            return stale;
+            return gain + gain;
         }
 
         /// <summary>Describe the stats level values.</summary>
