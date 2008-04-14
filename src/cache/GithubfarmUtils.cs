@@ -66,18 +66,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit schema farm readings against a rule.</summary>
-        public static long TallySchemaFarmHits(long[] readings)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            long count = 0;
-            foreach (long value in readings)
-            {
-                if ((double)count < (double)value)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public bool Ratio { get; set; }
+            public double Limit { get; set; }
+            public double Level { get; set; }
         }
     }
 }
