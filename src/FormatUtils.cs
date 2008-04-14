@@ -33,13 +33,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Match up filter samples.</summary>
+        public static long MatchFilterCount(long[] samples)
         {
-            public long Region { get; set; }
-            public string Count { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public long Token { get; set; }
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 11)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
