@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long LookupChecksIndex(long[] data, long bound)
+        /// <summary>Roll a schema metric counter forward.</summary>
+        public static long StepSchemaMetric(long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = seed;
+            for (int i = 0; i < 18; i++)
             {
-                if ((data[i] == bound) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                result = ((result * 2) + (seed + (long)i)) % 101;
+                result = ((result * 5) + (long)i) % 4093;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Measure how many tools stream samples are out of range.</summary>
