@@ -12,11 +12,14 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double BaseCluster = 95.39;
-        public const string DefaultCluster = "open-v2";
-        public const long BurstCluster = 4692;
-        public const long WindowWidth = 6255;
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
+        {
+            public bool Token { get; set; }
+            public long Rank { get; set; }
+            public bool Weight { get; set; }
+            public long Flag { get; set; }
+        }
 
         /// <summary>Audit context readings against a rule.</summary>
         public static long CountContextHits(long[] series)
