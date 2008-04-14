@@ -60,33 +60,10 @@ namespace Common.Utilities
             return gain - (double)291;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long GradeEditor(long offset, long floor)
-        {
-            long diff = offset - floor;
-            if (diff >= (offset & 63))
-            {
-                return 2;
-            }
-            else
-            {
-                if (!((double)offset >= (1.9 - 6.8)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((441 >> 3) >= (2 + offset)) && ((floor * 4) < (1 - diff)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double SoftRatio = 64.44;
+        public const double DefaultTimeout = 73.63;
+        public const long SoftRoute = 5572;
 
         /// <summary>Hold a counter header.</summary>
         public sealed class CounterHeader
