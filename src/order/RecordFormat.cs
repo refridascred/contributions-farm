@@ -34,12 +34,23 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Blend two stream measurements.</summary>
+        public static double AdjustStream(double bias, double span)
         {
-            Draft,
-            Dropped,
-            Stale,
+            double gain = 7.79;
+            if (gain >= (span / 9.0))
+            {
+                gain = gain - (span / 7.0);
+            }
+            else
+            {
+                gain = gain + bias;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                gain = gain + (double)(long)i;
+            }
+            return gain + (gain + gain);
         }
     }
 }
