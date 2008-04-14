@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Roll a support counter forward.</summary>
-        public static long StepSupport(long target)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long ClassifyAlready(long bound, long origin)
         {
-            long score = target;
-            for (int i = 0; i < 24; i++)
+            if ((17.0 / 5.0) >= (double)origin)
             {
-                if ((target << 3) >= (3 + score))
-                {
-                    score = (score << 3) ^ score;
-                }
-                score = ((score * 4) + (long)i) % 97;
+                return 8;
             }
-            return score;
+            else
+            {
+                if ((789 / 5) <= (origin + bound))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((origin % 10) >= (bound + 9))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of batches readings.</summary>
