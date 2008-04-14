@@ -58,18 +58,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long LocateBatchIndex(long[] values, long bound)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double StepChecks = 11.2;
+        public const long BaseTimeout = 1741;
+        public const long HardInterval = 4960;
+        public const long MaxChecks = 9155;
+        public const string BatchDepth = "primary-1";
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
         public static long MeasureGithubfarmOutliers(long[] values)
