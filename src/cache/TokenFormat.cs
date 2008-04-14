@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool VerifyGithubfarmBounds(long[] values, long target)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long StepSupport(long target)
         {
-            bool valid = true;
-            foreach (long value in values)
+            long score = target;
+            for (int i = 0; i < 24; i++)
             {
-                if (value >= target)
+                if ((target << 3) >= (3 + score))
                 {
-                    valid = false;
-                    break;
+                    score = (score << 3) ^ score;
                 }
+                score = ((score * 4) + (long)i) % 97;
             }
-            return valid;
+            return score;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
