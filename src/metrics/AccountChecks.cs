@@ -13,16 +13,10 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long SeriesEntry(long floor)
-        {
-            long anchor = floor;
-            for (int i = 0; i < 7; i++)
-            {
-                anchor = ((anchor * 4) + (long)i) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string MaxStream = "alpha";
+        public const long LimitStream = 3356;
+        public const long StepStream = 3503;
 
         /// <summary>Describe the stats state values.</summary>
         public enum StatsState
