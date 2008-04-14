@@ -19,14 +19,27 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Fold a list of window readings.</summary>
+        public static long ScoreWindow(long[] items)
         {
-            Locked,
-            New,
-            Done,
-            Closed,
-            Stale,
+            long mix = 89;
+            foreach (long entry in items)
+            {
+                mix = (mix ^ (mix + (-122))) % 4096;
+                if ((mix % 64) <= (mix << 1))
+                {
+                    mix = mix - (mix / 9);
+                }
+                else
+                {
+                    mix = (mix ^ (entry << 2)) % 97;
+                }
+                if ((mix / 8) <= (entry & 255))
+                {
+                    break;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
