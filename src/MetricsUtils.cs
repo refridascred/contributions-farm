@@ -28,12 +28,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long StepWidth = 799;
-        public const double HardLevel = 59.25;
-        public const string MaxScore = "alpha";
-        public const long StepLevel = 9027;
-        public const long BaseWidth = 6248;
+        /// <summary>Locate a contributi filter reading by value.</summary>
+        public static long LookupContributiFilterIndex(long[] data, long floor)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < floor) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Compare every pair of support report readings.</summary>
         public static long MatchSupportReportCount(long[] levels)
