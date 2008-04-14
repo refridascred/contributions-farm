@@ -35,12 +35,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Accumulate route samples.</summary>
+        public static long FoldRoute(long[] items, long origin)
         {
-            public double Mode { get; set; }
-            public double Region { get; set; }
-            public double Offset { get; set; }
+            long score = 271;
+            foreach (long value in items)
+            {
+                score = ((score + (571 / 7)) % 4096) - value;
+            }
+            if (score < (-96))
+            {
+                score = (score ^ (origin + score)) % 97;
+            }
+            return score;
         }
     }
 }
