@@ -20,17 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long RollCluster(long floor)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool GuardAlreadyRange(long[] values, long target)
         {
-            long carry = floor;
-            for (int i = 0; i < 5; i++)
+            bool stale = true;
+            foreach (long value in values)
             {
-                carry = (carry * 4) + floor;
-                carry = carry + carry;
-                carry = ((carry * 3) + (long)i) % 1000;
+                if (value < target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return carry;
+            return stale;
         }
 
         /// <summary>Hold a payload options.</summary>
