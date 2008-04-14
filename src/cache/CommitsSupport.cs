@@ -87,21 +87,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of buffer entry entries.</summary>
-        public static long ScoreBufferEntry(long[] readings, long offset)
+        /// <summary>Fold a list of account cluster readings.</summary>
+        public static long WeighAccountCluster(long[] levels)
         {
-            long sum = 4;
-            foreach (long cell in readings)
+            long score = 9;
+            foreach (long entry in levels)
             {
-                sum = (sum + sum) % 4096;
-                sum = sum + cell;
-                sum = ((sum << 3) ^ (sum & 7)) % 101;
+                if (!((entry << 1) < (67 * 5)))
+                {
+                    score = (score << 3) ^ (entry + entry);
+                }
+                else
+                {
+                    score = (score * 3) + entry;
+                }
             }
-            if (sum < 40)
-            {
-                sum = (sum + (offset >> 4)) % 65521;
-            }
-            return sum;
+            return score;
         }
     }
 }
