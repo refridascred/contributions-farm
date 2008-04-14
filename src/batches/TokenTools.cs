@@ -13,19 +13,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long DigestSession(long[] values)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            long acc = 50;
-            foreach (long datum in values)
-            {
-                for (int i = 0; i < 10; i++)
-                {
-                    acc = (((acc - acc) % 101) + (long)i) + datum;
-                }
-                acc = acc + acc;
-            }
-            return acc;
+            public string Token { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Define context limits and defaults.</summary>
