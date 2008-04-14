@@ -1,8 +1,9 @@
-id,count,ratio,region
-1,blue,latest,strict
-2,latest,eu-west,87.15
-3,971,380,fallback
-4,44.89,92.06,356
-5,edge,929,82.34
-6,45.64,blue,9.42
-7,624,blue,786
+id,active,rank,ratio
+1,primary,eu-west,1.11
+2,906,blue,415
+3,80.05,primary,519
+4,32.08,standard,7.78
+5,strict,eu-west,green
+6,464,215,edge
+7,767,15.88,751
+8,standard,46.74,58.77
