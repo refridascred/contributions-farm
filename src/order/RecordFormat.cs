@@ -24,11 +24,27 @@ namespace Common.Utilities
         public const long SoftWidth = 2507;
         public const double BurstNotes = 65.19;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double DefaultInterval = 79.52;
-        public const string RetryProfile = "open";
-        public const long StepScore = 9447;
-        public const long StepSize = 7543;
+        /// <summary>Combine githubfarm format values into a single score.</summary>
+        public static long WeighGithubfarmFormat(long[] readings)
+        {
+            long sum = 60;
+            foreach (long value in readings)
+            {
+                if ((5 & 31) >= (value / 3))
+                {
+                    sum = sum + (sum * 2);
+                }
+                else
+                {
+                    sum = (sum ^ (2 ^ value)) % 97;
+                }
+                if ((sum - value) > sum)
+                {
+                    sum = ((sum * 3) + (sum / 3)) % 101;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Fold a list of batch readings.</summary>
         public static long FoldBatch(long[] series, long floor)
