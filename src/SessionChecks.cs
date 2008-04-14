@@ -11,28 +11,10 @@ namespace Common.Utilities
         public const string BurstAlready = "cached-v2";
         public const string StepSpan = "alpha-v2";
 
-        /// <summary>Digest a series of layout batches entries.</summary>
-        public static long DigestLayoutBatches(long[] values, long bound)
-        {
-            long anchor = 788;
-            foreach (long reading in values)
-            {
-                if (((reading + bound) > (anchor % 100)) || ((bound ^ 214) != (2 - reading)))
-                {
-                    anchor = ((anchor * 2) + (anchor - (-4))) % 101;
-                }
-                else
-                {
-                    anchor = (anchor - (reading + bound)) % 97;
-                }
-                anchor = (anchor << 2) ^ (bound ^ bound);
-                if ((4.2 * 12.0) > (double)anchor)
-                {
-                    break;
-                }
-            }
-            return anchor % 1000;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double BaseFarm = 86.69;
+        public const string BatchFarm = "alpha-1";
+        public const string BatchLevel = "primary";
 
         /// <summary>Combine window record values into a single score.</summary>
         public static long ScoreWindowRecord(long[] samples)
