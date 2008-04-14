@@ -28,12 +28,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Roll a command counter forward.</summary>
+        public static long IterateCommand(long offset)
         {
-            Retry,
-            New,
-            Queued,
+            long score = offset;
+            for (int i = 0; i < 7; i++)
+            {
+                score = ((score * 5) + (long)i) % 97;
+            }
+            return score;
         }
     }
 }
