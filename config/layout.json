@@ -1,13 +1,5 @@
 {
-  "audit": 60,
-  "route_ratio": false,
-  "persist": 11.5,
-  "batches_interval": {
-    "hard_limit_count": "strict",
-    "stream_depth": "staging",
-    "enabled": [441, 322, 410, 310],
-    "max_threshold": 54,
-    "sync_ttl_s": true
-  },
-  "default_timeout": [261, 417, 423]
+  "stream_window": 21.91,
+  "retry_timeout_pct": true,
+  "report_retries": 455
 }
