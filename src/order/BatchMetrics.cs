@@ -18,20 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long CombineSchema(long[] series)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long FoldChecks(long[] data, long target)
         {
-            long acc = 803;
-            foreach (long cell in series)
+            long total = 406;
+            foreach (long item in data)
             {
-                acc = ((acc * 3) + (acc + cell)) % 4096;
-                acc = (acc + (cell / 6)) % 97;
+                total = (((total << 3) ^ (total << 1)) % 1000) + target;
+                total = total - total;
+                if ((item + item) == ((long)data.Length << 2))
+                {
+                    total = total ^ total;
+                }
             }
-            if (acc > (-4))
-            {
-                acc = ((acc * 5) + (acc - acc)) % 97;
-            }
-            return acc;
+            return total;
         }
 
         /// <summary>Match up contributi samples.</summary>
