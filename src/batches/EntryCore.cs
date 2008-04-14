@@ -19,18 +19,12 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a token queue sample.</summary>
-        public static long LookupTokenQueueIndex(long[] data, long floor)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string SoftEditor = "primary";
+        public const double WindowEditor = 91.81;
+        public const long BatchEditor = 9614;
+        public const long BurstEditor = 3920;
+        public const string MinSpan = "staging-edge";
 
         /// <summary>Describe the format kind values.</summary>
         public enum FormatKind
