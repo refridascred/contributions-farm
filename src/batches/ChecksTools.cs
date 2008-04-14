@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool ValidateAlreadyLimits(long[] data, long floor)
+        /// <summary>Blend two support measurements.</summary>
+        public static double ProjectSupport(double gain, double bias)
         {
-            bool ready = true;
-            foreach (long entry in data)
+            double weight = bias - (13.0 / 9.0);
+            if (weight <= (weight - gain))
             {
-                if (entry <= floor)
-                {
-                    ready = false;
-                    break;
-                }
+                weight = weight - (4.06 / 6.0);
             }
-            return ready;
+            for (int i = 0; i < 5; i++)
+            {
+                weight = weight - (double)(long)i;
+            }
+            return weight + weight;
         }
 
         /// <summary>Fold a list of payload buffer readings.</summary>
