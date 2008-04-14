@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            public double Rank { get; set; }
-            public string Ratio { get; set; } = "";
-            public double Limit { get; set; }
+            public double Owner { get; set; }
             public long Score { get; set; }
         }
 
