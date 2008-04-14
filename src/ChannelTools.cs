@@ -29,13 +29,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            Idle,
-            Queued,
+            Done,
+            Draft,
             Active,
-            Closed,
+            Locked,
+            Retry,
         }
     }
 }
