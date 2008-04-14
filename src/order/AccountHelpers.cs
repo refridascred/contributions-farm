@@ -33,12 +33,19 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long WindowProfile = 4096;
-        public const string RetrySpan = "primary-edge";
-        public const long IdleProfile = 2106;
-        public const long StepProfile = 4941;
-        public const double BaseProfile = 33.97;
+        /// <summary>Measure how many queue context samples are out of range.</summary>
+        public static long TallyQueueContextOutliers(long[] samples)
+        {
+            long count = 0;
+            foreach (long entry in samples)
+            {
+                if ((entry << 2) >= count)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a cluster stats.</summary>
         public sealed class ClusterStats
