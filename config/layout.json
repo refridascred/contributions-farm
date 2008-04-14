@@ -1,17 +1,5 @@
 {
-  "strict": [231, 45],
-  "metrics_window": 954,
-  "default_depth_pct": {
-    "base_ttl": 51,
-    "burst_window_count": "standard",
-    "soft_limit_s": "cached",
-    "soft_window": {
-      "retry_delay_ms": [451, 72, 86],
-      "max_timeout_pct": 9290,
-      "readonly": 9,
-      "burst_retries_s": "fallback"
-    },
-    "strict": 61.9,
-    "persist": ["primary", "open", "green", "staging"]
-  }
+  "compress": "local",
+  "support_timeout": 7510,
+  "idle_interval": "primary"
 }
