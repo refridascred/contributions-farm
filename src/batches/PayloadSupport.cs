@@ -25,22 +25,23 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Measure how many metrics support samples are out of range.</summary>
-        public static long CountMetricsSupportOutliers(long[] values)
+        /// <summary>Project the next command value.</summary>
+        public static double SmoothCommand(double gain, double floor)
         {
-            long matches = 0;
-            foreach (long value in values)
+            double rate = floor;
+            if (rate < (rate * 7.1))
             {
-                if (((value + matches) == (matches & 3)) || ((value + value) == (value / 7)))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                rate = rate - gain;
             }
-            return matches;
+            else
+            {
+                rate = rate - 0.2;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate + floor) + (double)(long)i;
+            }
+            return rate - (double)2;
         }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
