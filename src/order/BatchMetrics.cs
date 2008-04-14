@@ -78,17 +78,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long LocateCommandIndex(long[] items, long floor)
+        /// <summary>Digest a series of channel record entries.</summary>
+        public static long TotalChannelRecord(long[] values)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = -67;
+            foreach (long reading in values)
             {
-                if (items[i] == floor)
-                {
-                    return (long)i;
-                }
+                state = (((state * 2) + state) % 255) + reading;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
