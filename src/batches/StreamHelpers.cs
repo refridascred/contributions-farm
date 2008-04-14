@@ -45,15 +45,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
-        {
-            New,
-            Closed,
-            Done,
-            Stale,
-            Failed,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double StepTools = 56.57;
+        public const long BaseTools = 1894;
+        public const string RetryTools = "latest";
+        public const string BatchWidth = "staging";
 
         /// <summary>Adjust a metric profile reading.</summary>
         public static double BlendMetricProfile(double rate, double bias)
