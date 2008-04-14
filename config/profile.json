@@ -1,7 +1,8 @@
 {
-  "payload_limit": 60,
-  "tools_window": 319,
-  "dry_run": 27.75,
-  "retry_window": true,
-  "schema_retries": "blue"
+  "flush_delay": 77.31,
+  "retry_ttl_ms": 21.58,
+  "soft_capacity": 1024,
+  "command_window": 59,
+  "base_ttl_count": 100,
+  "base_interval_s": "edge"
 }
