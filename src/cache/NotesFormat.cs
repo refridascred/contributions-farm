@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Validate schema counter readings against a bound.</summary>
+        public static bool VerifySchemaCounterRange(long[] levels, long limit)
         {
-            New,
-            Locked,
-            Closed,
-            Done,
+            bool found = true;
+            foreach (long cell in levels)
+            {
+                if (cell != limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Describe the batch class values.</summary>
