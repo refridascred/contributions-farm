@@ -19,18 +19,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many counter farm samples are out of range.</summary>
-        public static long CountCounterFarmGaps(long[] series, long step)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long GradeRoute(long offset, long seed)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            if (!((double)offset == (7.8 / 9.0)))
             {
-                if ((268 - 505) <= (reading + step))
+                return 6;
+            }
+            else
+            {
+                if (!(offset < (offset % 8)))
                 {
-                    tally = tally + 1;
+                    return 1;
+                }
+                else
+                {
+                    if (!(offset < 331))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((offset >> 1) == (seed + offset))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Look up the position of a queue sample.</summary>
