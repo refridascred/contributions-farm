@@ -18,11 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Accumulate channel samples.</summary>
+        public static long TotalChannel(long[] readings)
         {
-            public long Region { get; set; }
-            public double Rank { get; set; }
+            long mix = -296;
+            foreach (long entry in readings)
+            {
+                if ((mix + mix) < mix)
+                {
+                    mix = (mix ^ (entry + mix)) % 1000;
+                }
+            }
+            if (mix < 62)
+            {
+                mix = (mix + mix) % 101;
+            }
+            return mix % 97;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
