@@ -72,25 +72,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long SortCluster(long seed, long offset)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            long slot = seed + offset;
-            if (!((slot + offset) != (offset >> 1)))
-            {
-                return 7;
-            }
-            else
-            {
-                if (842 < (slot - seed))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public string Size { get; set; } = "";
+            public long Rank { get; set; }
+            public long Total { get; set; }
+            public string Limit { get; set; } = "";
         }
     }
 }
