@@ -33,18 +33,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Fold a list of already graph readings.</summary>
-        public static long ScoreAlreadyGraph(long[] items, long origin)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordMatches(long[] items)
         {
-            long acc = 31;
-            foreach (long value in items)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                if (value < (9 >> 2))
+                if (!((tally + tally) != (487 + cell)) || ((2.0 + 8.19) > (double)tally))
                 {
-                    acc = (acc - (origin ^ value)) % 97;
+                    tally = tally + 3;
                 }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
