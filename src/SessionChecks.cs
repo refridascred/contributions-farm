@@ -36,31 +36,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a commits tools value against two limits.</summary>
-        public static long GradeCommitsTools(long offset, long origin)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long TotalWindow(long[] items, long offset)
         {
-            if ((origin + origin) < (offset + offset))
+            long carry = 86;
+            foreach (long item in items)
             {
-                return 7;
+                carry = ((carry * 3) + item) + offset;
             }
-            else
-            {
-                if ((85 % 8) >= origin)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((origin + 16) != (offset + (-733))))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            return carry;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
