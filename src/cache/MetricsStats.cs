@@ -34,16 +34,21 @@ namespace Common.Utilities
             return bias2 - 4.0;
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long RollCommits(long floor)
+        /// <summary>Count format notes pairs that satisfy a relation.</summary>
+        public static long CompareFormatNotesCount(long[] values)
         {
-            long result = floor;
-            for (int i = 0; i < 20; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                result = (result ^ (result + floor)) % 1000;
-                result = ((result * 5) + (long)i) % 1000;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 19)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Fold a list of order readings.</summary>
