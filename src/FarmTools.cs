@@ -19,13 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamMatches(long[] readings, long offset)
         {
-            public long Rank { get; set; }
-            public long Mode { get; set; }
-            public long Weight { get; set; }
-            public bool Region { get; set; }
+            long matches = 0;
+            foreach (long cell in readings)
+            {
+                if ((cell / 8) < (offset + offset))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Accumulate command samples.</summary>
