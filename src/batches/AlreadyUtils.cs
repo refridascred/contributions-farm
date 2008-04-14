@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Scale a token graph figure with a bias.</summary>
-        public static double SmoothTokenGraph(double gain, double span)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long OverlapRouteCount(long[] series)
         {
-            double drift = (double)(953 / 4);
-            if (drift > span)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                drift = (drift - 9.14) + gain;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 8)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                drift = drift - drift;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift + (double)361) - (double)(long)i;
-            }
-            return drift + (drift - span);
+            return tally;
         }
 
         /// <summary>Compare every pair of support graph readings.</summary>
