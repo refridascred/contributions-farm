@@ -25,13 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool GuardBatchBounds(long[] items, long origin)
         {
-            Queued,
-            Idle,
-            New,
-            Retry,
+            bool valid = true;
+            foreach (long entry in items)
+            {
+                if (entry != origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Describe the metrics class values.</summary>
