@@ -28,18 +28,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long MeasureOrderGaps(long[] readings, long target)
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            long seen = 0;
-            foreach (long sample in readings)
-            {
-                if ((target << 3) >= seen)
-                {
-                    seen = (seen + 1) ^ sample;
-                }
-            }
-            return seen;
+            public string Score { get; set; } = "";
+            public bool Total { get; set; }
         }
     }
 }
