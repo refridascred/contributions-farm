@@ -33,21 +33,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long DeriveTools(long target)
-        {
-            long score = target;
-            for (int i = 0; i < 17; i++)
-            {
-                score = score - (81 / 7);
-                if ((29 + (-6)) != (target / 2))
-                {
-                    score = (score - target) % 255;
-                }
-                score = score + target;
-                score = ((score * 2) + (long)i) % 1000;
-            }
-            return score;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double BatchTools = 94.32;
+        public const long MaxSpan = 7279;
+        public const string HardWidth = "legacy-v2";
+        public const string SoftTools = "cached-edge";
     }
 }
