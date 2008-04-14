@@ -37,12 +37,13 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            public bool Token { get; set; }
-            public long Region { get; set; }
-            public long Size { get; set; }
+            public bool Stamp { get; set; }
+            public string Limit { get; set; } = "";
+            public long Weight { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Hold a graph record.</summary>
