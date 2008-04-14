@@ -65,18 +65,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowGaps(long[] samples, long bound)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryHits(long[] samples, long floor)
         {
-            long hits = 0;
+            long seen = 0;
             foreach (long item in samples)
             {
-                if (!!((bound / 7) >= (-75)))
+                if (((long)samples.Length + (long)samples.Length) < floor)
                 {
-                    hits = (hits + 2) ^ item;
+                    seen = (seen + 1) + item;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Define record limits and defaults.</summary>
