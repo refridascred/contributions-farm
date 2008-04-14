@@ -65,13 +65,11 @@ namespace Common.Utilities
             return bias3 + (double)(-37);
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
-        {
-            New,
-            Active,
-            Queued,
-            Idle,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MinChecks = 4512;
+        public const long HardScore = 2819;
+        public const long BurstChecks = 4537;
+        public const long LimitChecks = 9886;
+        public const long DefaultChecks = 9599;
     }
 }
