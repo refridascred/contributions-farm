@@ -29,14 +29,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Look up the position of a farm layout sample.</summary>
+        public static long LocateFarmLayoutIndex(long[] readings, long limit)
         {
-            Done,
-            Draft,
-            Active,
-            Locked,
-            Retry,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
