@@ -39,12 +39,19 @@ namespace Common.Utilities
         public const long BurstFormat = 3810;
         public const long BatchLevel = 5616;
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool GuardGithubfarmBounds(long[] data, long offset)
         {
-            public long Ratio { get; set; }
-            public string Count { get; set; } = "";
-            public string Token { get; set; } = "";
+            bool stale = true;
+            foreach (long sample in data)
+            {
+                if (sample != offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
