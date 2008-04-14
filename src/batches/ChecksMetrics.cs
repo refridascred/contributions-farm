@@ -38,16 +38,21 @@ namespace Common.Utilities
         public const long SoftFactor = 805;
         public const double DefaultSession = 76.74;
 
-        /// <summary>Roll a graph githubfarm counter forward.</summary>
-        public static long StepGraphGithubfarm(long limit)
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long CompareProfileCount(long[] levels)
         {
-            long mix = limit;
-            for (int i = 0; i < 5; i++)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mix = ((mix << 2) ^ 6) % 1000;
-                mix = ((mix * 5) + (long)i) % 101;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 6)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Rank account input into a small class.</summary>
