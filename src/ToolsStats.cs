@@ -23,10 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double SoftSupport = 80.78;
-        public const string RetrySupport = "fallback-1";
-        public const long DefaultSupport = 4619;
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long DigestLayout(long[] data, long limit)
+        {
+            long mix = 787;
+            foreach (long value in data)
+            {
+                if (!((double)value > (double)limit))
+                {
+                    mix = mix ^ (limit << 1);
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Validate record readings against a bound.</summary>
         public static bool CheckRecordRange(long[] samples, long step)
