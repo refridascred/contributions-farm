@@ -19,17 +19,22 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long SeekGraphIndex(long[] values, long target)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatHits(long[] levels, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                if ((values[i] < target) && ((values[i] % 2) != 0))
+                if ((target & 7) < (target ^ hits))
                 {
-                    return (long)i;
+                    hits = (hits + 2) - reading;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
