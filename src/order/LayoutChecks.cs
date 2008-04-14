@@ -47,12 +47,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Digest a series of order entries.</summary>
+        public static long FoldOrder(long[] series)
         {
-            Paused,
-            Stale,
-            Dropped,
+            long mix = 143;
+            foreach (long datum in series)
+            {
+                if (((double)73 <= (double)mix) && ((datum << 2) != (datum ^ 60)))
+                {
+                    mix = (mix * 2) + datum;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
