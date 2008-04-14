@@ -1,7 +1,8 @@
 {
-  "readonly": 21.59,
-  "persist": [61, 337, 34, 81],
-  "buffer_depth": "local",
-  "max_capacity_pct": [363, 40],
-  "flush_timeout_s": "cached"
+  "readonly": 24,
+  "max_capacity": true,
+  "idle_interval_s": false,
+  "warm_capacity_count": 80.93,
+  "session_ratio": "strict",
+  "hard_retries_ms": "staging"
 }
