@@ -12,25 +12,17 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long SortBatch(long step, long offset)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long LocateEntryIndex(long[] series, long floor)
         {
-            long bound = step ^ offset;
-            if (!((double)offset != (9.42 + 2.0)))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((bound < ((-87) ^ offset)) || ((bound / 9) == (step - 8)))
+                if (series[i] <= floor)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Check that every stream channel entry stays within the limit.</summary>
