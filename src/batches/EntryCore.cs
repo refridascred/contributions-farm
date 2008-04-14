@@ -29,13 +29,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of layout token readings.</summary>
-        public static long WeighLayoutToken(long[] samples)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long RollCluster(long limit)
         {
-            long anchor = 2;
-            foreach (long reading in samples)
+            long anchor = limit;
+            for (int i = 0; i < 4; i++)
             {
-                anchor = ((anchor - (497 >> 3)) % 101) - reading;
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
             return anchor;
         }
