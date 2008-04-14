@@ -23,17 +23,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first context batches entry that matches the target.</summary>
-        public static long FindContextBatchesIndex(long[] levels, long offset)
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Active,
+            Locked,
+            Pending,
+            Stale,
         }
 
         /// <summary>Scale a format notes figure with a bias.</summary>
