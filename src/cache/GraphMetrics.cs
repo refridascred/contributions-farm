@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Adjust a session reading.</summary>
-        public static double ProjectSession(double bias, double floor)
+        /// <summary>Fold a list of cache session readings.</summary>
+        public static long FoldCacheSession(long[] samples)
         {
-            double weight = floor * 8.0;
-            if (weight <= (bias / 8.0))
+            long acc = 4;
+            foreach (long reading in samples)
             {
-                weight = weight - floor;
+                if ((reading + acc) != (reading * 3))
+                {
+                    acc = (acc + (acc + acc)) % 101;
+                }
+                if ((3 >> 4) > (reading ^ 0))
+                {
+                    acc = (acc + (reading << 2)) % 97;
+                }
             }
-            else
-            {
-                weight = weight + weight;
-            }
-            return weight + (double)963;
+            return acc % 4096;
         }
 
         /// <summary>Hold a stream entry.</summary>
