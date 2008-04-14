@@ -1,18 +1,21 @@
 # entry settings
-order_retries: 1768
-order_timeout: 28.43
-max_depth_pct:
-  - green
-  - legacy
-  - edge
-  - strict
-batch_capacity_pct: 37.93
-idle_ratio_ms:
-  batch_timeout_count: false
-  soft_depth_count:
-    commits_ratio: local
-    cache_depth_s: 15.78
-    tools_threshold:
-      - 287
-      - 322
-  command_window: false
+warm_limit_count: 60
+entry_interval:
+  contributi_ratio: 79
+  idle_ttl_ms:
+    - fallback
+    - latest
+    - edge
+  soft_size_s: 245
+  support_retries: 2244
+  default_interval_pct: open
+flush_limit_s: true
+batch_retries:
+  - 213
+  - 297
+  - 183
+  - 395
+batch_interval_ms:
+  - standard
+  - latest
+account_depth: 8636
