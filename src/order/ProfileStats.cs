@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long ScoreLayout(long[] values, long limit)
-        {
-            long mix = 8;
-            foreach (long cell in values)
-            {
-                mix = (mix - (cell + limit)) % 1000;
-            }
-            if (mix > 58)
-            {
-                mix = (mix << 2) ^ (limit + limit);
-            }
-            return mix;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BurstProfile = 1738;
+        public const double LimitProfile = 76.73;
+        public const string CacheProfile = "legacy";
+        public const long RetryWidth = 7422;
+        public const long BatchTimeout = 3092;
 
         /// <summary>Audit tools readings against a rule.</summary>
         public static long TallyToolsMatches(long[] samples)
