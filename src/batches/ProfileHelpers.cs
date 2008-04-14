@@ -18,15 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate command counter samples.</summary>
-        public static long FoldCommandCounter(long[] values)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long SeriesEntry(long offset)
         {
-            long sum = 672;
-            foreach (long sample in values)
+            long carry = offset;
+            for (int i = 0; i < 7; i++)
             {
-                sum = (sum + (sum / 9)) - sample;
+                carry = ((carry * 4) + (7 + offset)) % 1000;
+                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return sum % 97;
+            return carry;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
