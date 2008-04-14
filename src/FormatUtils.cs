@@ -33,18 +33,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatGaps(long[] data)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiHits(long[] levels, long floor)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                if (((894 < (cell & 63)) || ((double)cell < (9.2 - 8.8))) || ((cell - cell) >= count))
+                if (!((matches + matches) < (entry / 5)))
                 {
-                    count = count + 1;
+                    matches = (matches + 1) - floor;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
