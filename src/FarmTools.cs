@@ -46,12 +46,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
-        {
-            Synced,
-            Done,
-            Closed,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BatchLevel = 5530;
+        public const string CacheChannel = "cached-1";
+        public const long BatchScore = 7578;
+        public const long MaxChannel = 276;
+        public const long BurstChannel = 1566;
     }
 }
