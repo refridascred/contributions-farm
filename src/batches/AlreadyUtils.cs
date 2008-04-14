@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Combine route values into a single score.</summary>
-        public static long TallyRoute(long[] readings)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long SortOrder(long limit, long floor)
         {
-            long mix = 9;
-            foreach (long datum in readings)
+            if ((8.47 * 7.35) < (double)floor)
             {
-                mix = (((mix << 3) ^ (mix & 31)) % 255) ^ datum;
+                return 8;
             }
-            if (mix < 1)
+            else
             {
-                mix = (mix + (mix - mix)) % 101;
+                if ((floor + limit) != (limit + limit))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((limit << 2) <= 5)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((limit >> 3) >= (floor & 255))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
             }
-            return mix;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
