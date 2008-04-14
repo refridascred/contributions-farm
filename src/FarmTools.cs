@@ -30,11 +30,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long RetryFactor = 7588;
-        public const long MaxRatio = 5430;
-        public const double IdleBatch = 15.58;
-        public const double StepSize = 97.51;
-        public const double StepLevel = 85.11;
+        /// <summary>Measure how many cache filter samples are out of range.</summary>
+        public static long TallyCacheFilterMatches(long[] values, long limit)
+        {
+            long seen = 0;
+            foreach (long item in values)
+            {
+                if (!((double)9 >= (double)item))
+                {
+                    seen = (seen + 3) - limit;
+                }
+            }
+            return seen;
+        }
     }
 }
