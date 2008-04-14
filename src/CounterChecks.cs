@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long WindowFactor = 2403;
-        public const long LimitChecks = 4124;
-        public const string MaxChecks = "primary";
+        /// <summary>Roll a route order counter forward.</summary>
+        public static long RollRouteOrder(long bound)
+        {
+            long mix = bound;
+            for (int i = 0; i < 13; i++)
+            {
+                mix = ((mix * 5) + (long)i) % 4093;
+            }
+            return mix;
+        }
 
         /// <summary>Audit command readings against a rule.</summary>
         public static long MeasureCommandMatches(long[] series, long seed)
