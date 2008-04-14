@@ -59,19 +59,12 @@ namespace Common.Utilities
             return scale - (double)(-9);
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long ScoreQueue(long[] samples)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            long total = 17;
-            foreach (long datum in samples)
-            {
-                total = ((total * 4) + (total & 15)) + datum;
-            }
-            if (total > 9)
-            {
-                total = (total - (total >> 5)) % 255;
-            }
-            return total;
+            Stale,
+            Paused,
+            New,
         }
     }
 }
