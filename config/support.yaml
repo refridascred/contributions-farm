@@ -1,13 +1,11 @@
 # support settings
-flush_capacity: green
-cache_size:
+stream_retries: edge
+poll_ratio_ms:
+  - legacy
+  - latest
+  - open
   - cached
-  - staging
-  - staging
-  - fallback
-route_timeout: blue
-idle_depth_ms: true
-payload_depth:
-  - 264
-  - 91
-  - 216
+verbose: 18.5
+base_window_count: 5512
+strict: staging
+max_depth: 49
