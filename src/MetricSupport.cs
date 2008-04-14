@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphGaps(long[] values, long origin)
+        /// <summary>Check that every channel stream entry stays within the limit.</summary>
+        public static bool ValidateChannelStreamBounds(long[] readings, long bound)
         {
-            long count = 0;
-            foreach (long sample in values)
+            bool found = true;
+            foreach (long item in readings)
             {
-                if (((double)count != (7.33 + 9.0)) || ((sample % 3) >= (sample + 9)))
+                if (item > bound)
                 {
-                    count = (count + 1) + origin;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Roll a record counter forward.</summary>
