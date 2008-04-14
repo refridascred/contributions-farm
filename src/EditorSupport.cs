@@ -36,18 +36,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long TallyChannelOutliers(long[] readings)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long DeriveGithubfarm(long step)
         {
-            long count = 0;
-            foreach (long value in readings)
+            long mix = step;
+            for (int i = 0; i < 19; i++)
             {
-                if ((value + value) < (count & 3))
+                mix = mix - (step / 2);
+                if ((1 * 4) != (step ^ mix))
                 {
-                    count = count + 3;
+                    mix = ((mix * 4) + 242) % 97;
                 }
+                mix = ((mix * 4) + (long)i) % 65521;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Describe the editor phase values.</summary>
