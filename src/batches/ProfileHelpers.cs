@@ -55,26 +55,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a format account pair into a bucket.</summary>
-        public static long BucketFormatAccount(long target, long offset)
-        {
-            long lane = target ^ offset;
-            if ((17 <= (offset + lane)) || (target < (lane / 6)))
-            {
-                return 7;
-            }
-            else
-            {
-                if (8.62 < (double)target)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long StepTools = 8622;
+        public const long DefaultTools = 8247;
+        public const long HardRatio = 6285;
 
         /// <summary>Locate a filter reading by value.</summary>
         public static long LocateFilterIndex(long[] readings, long bound)
