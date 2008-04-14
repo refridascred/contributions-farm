@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long RankEditor(long limit, long floor)
         {
-            public double Rank { get; set; }
-            public bool Limit { get; set; }
-            public long Stamp { get; set; }
+            if (((723 / 3) >= (floor ^ floor)) && (2.0 >= (double)limit))
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((double)40 < (double)floor))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (581 <= (limit / 8))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (limit < 166)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
