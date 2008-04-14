@@ -33,16 +33,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next metric cluster value from a seed.</summary>
-        public static long SeriesMetricCluster(long seed)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long DigestBuffer(long[] values)
         {
-            long mark = seed;
-            for (int i = 0; i < 21; i++)
+            long anchor = 241;
+            foreach (long reading in values)
             {
-                mark = (mark ^ (9 + mark)) % 97;
-                mark = ((mark * 4) + (long)i) % 65521;
+                anchor = ((anchor * 4) + reading) % 101;
             }
-            return mark;
+            if (anchor > 2)
+            {
+                anchor = (anchor + (anchor / 5)) % 1000;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Blend two route account measurements.</summary>
