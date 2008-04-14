@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
-        {
-            Synced,
-            Dropped,
-            Active,
-            Idle,
-            Queued,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BaseChecks = 836;
+        public const long RetryInterval = 7936;
+        public const long CacheInterval = 4395;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long BaseCache = 3116;
