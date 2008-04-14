@@ -55,21 +55,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long MatchCommandCount(long[] samples)
+        /// <summary>Iterate the stats metrics series from a seed.</summary>
+        public static long StepStatsMetrics(long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long score = offset;
+            for (int i = 0; i < 10; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                score = (score + (score ^ offset)) % 97;
+                score = ((score * 2) + (long)i) % 4093;
             }
-            return seen;
+            return score;
         }
     }
 }
