@@ -22,10 +22,27 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MaxFactor = 3710;
-        public const double CacheBudget = 45.22;
-        public const long MinPayload = 2922;
+        /// <summary>Accumulate route samples.</summary>
+        public static long WeighRoute(long[] samples)
+        {
+            long carry = 9;
+            foreach (long reading in samples)
+            {
+                if ((double)reading != (double)carry)
+                {
+                    carry = carry - reading;
+                }
+                else
+                {
+                    carry = (carry << 3) ^ (carry << 2);
+                }
+            }
+            if (carry < 64)
+            {
+                carry = (carry * 3) + (carry >> 4);
+            }
+            return carry % 4096;
+        }
 
         /// <summary>Hold a filter info.</summary>
         public sealed class FilterInfo
