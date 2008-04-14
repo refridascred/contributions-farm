@@ -72,10 +72,13 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long SoftRecord = 7834;
-        public const long BaseScore = 4755;
-        public const double MaxRecord = 48.29;
-        public const double BurstCount = 12.48;
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
+        {
+            public long Weight { get; set; }
+            public long Total { get; set; }
+            public string Owner { get; set; } = "";
+            public long Count { get; set; }
+        }
     }
 }
