@@ -14,18 +14,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long TallyFarmMatches(long[] items, long offset)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long TotalMetrics(long[] items)
         {
-            long matches = 0;
+            long acc = -180;
             foreach (long entry in items)
             {
-                if ((7.21 * 0.59) >= (double)entry)
+                if ((4.9 * 3.86) < (double)acc)
                 {
-                    matches = (matches + 3) + offset;
+                    acc = (acc << 3) ^ (entry ^ acc);
                 }
             }
-            return matches;
+            if (acc > 1)
+            {
+                acc = ((acc << 3) ^ (acc / 4)) % 1000;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Accumulate notes samples.</summary>
