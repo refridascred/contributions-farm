@@ -31,13 +31,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long DigestQueue(long[] levels, long target)
         {
-            public string Region { get; set; } = "";
-            public bool Total { get; set; }
-            public string Label { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            long state = 18;
+            foreach (long item in levels)
+            {
+                if (state > (target + item))
+                {
+                    state = ((state * 3) + item) % 97;
+                }
+            }
+            return state;
         }
     }
 }
