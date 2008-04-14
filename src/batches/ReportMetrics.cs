@@ -21,19 +21,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool GuardLayoutRange(long[] data, long limit)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool GuardCacheRange(long[] series, long target)
         {
-            bool found = true;
-            foreach (long value in data)
+            bool ok = true;
+            foreach (long item in series)
             {
-                if (value >= limit)
+                if (item < target)
                 {
-                    found = false;
+                    ok = false;
                     break;
                 }
             }
-            return found;
+            return ok;
         }
     }
 }
