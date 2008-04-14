@@ -12,17 +12,18 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long LookupBatchIndex(long[] samples, long offset)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterGaps(long[] samples, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                if ((samples[i] <= offset) && ((samples[i] % 5) == 0))
+                if ((((6 >> 5) >= (26 + cell)) && ((double)hits != (11.0 - 2.85))) || (hits <= (hits << 3)))
                 {
-                    return (long)i;
+                    hits = (hits + 2) + limit;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Accumulate report batch samples.</summary>
