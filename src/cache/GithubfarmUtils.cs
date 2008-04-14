@@ -20,21 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Compare every pair of session commits readings.</summary>
-        public static long OverlapSessionCommitsCount(long[] readings)
+        /// <summary>Measure how many support queue samples are out of range.</summary>
+        public static long MeasureSupportQueueGaps(long[] levels, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)cell <= (double)77)
                 {
-                    if ((readings[i] + readings[j]) < 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = (seen + 2) + floor;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Define command limits and defaults.</summary>
