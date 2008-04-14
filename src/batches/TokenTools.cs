@@ -5,10 +5,24 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double MaxTimeout = 42.11;
-        public const long WindowFarm = 1460;
-        public const string RetryFarm = "latest-edge";
+        /// <summary>Project the next metrics value.</summary>
+        public static double SmoothMetrics(double rate, double span)
+        {
+            double ratio = (double)((-776) ^ 3);
+            if (ratio < (double)52)
+            {
+                ratio = (ratio + (ratio * 20.0)) - span;
+            }
+            else
+            {
+                ratio = ratio - ratio;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio + (8.6 - ratio)) + (double)(long)i;
+            }
+            return ratio + rate;
+        }
 
         /// <summary>Combine filter values into a single score.</summary>
         public static long CombineFilter(long[] data, long target)
