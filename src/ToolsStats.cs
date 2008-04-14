@@ -66,12 +66,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long ClassifyEditor(long step, long floor)
         {
-            Active,
-            Retry,
-            Paused,
+            long gap = step ^ floor;
+            if (gap > floor)
+            {
+                return 6;
+            }
+            else
+            {
+                if (((gap & 255) > (gap - gap)) && (gap < (step ^ gap)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((floor << 2) == (49 >> 5))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
