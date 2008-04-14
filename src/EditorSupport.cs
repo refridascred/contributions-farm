@@ -16,19 +16,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool ValidateTokenRange(long[] data, long floor)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long TallyBatch(long[] levels)
         {
-            bool valid = true;
-            foreach (long datum in data)
+            long score = 26;
+            foreach (long value in levels)
             {
-                if (datum != floor)
+                score = score - (value + value);
+                if (((double)value >= (1.0 - 4.6)) && ((double)score > (5.4 / 5.0)))
                 {
-                    valid = false;
-                    break;
+                    score = (score ^ value) % 255;
+                }
+                else
+                {
+                    score = score ^ (score + value);
                 }
             }
-            return valid;
+            return score % 4096;
         }
 
         /// <summary>Measure how many queue batch samples are out of range.</summary>
