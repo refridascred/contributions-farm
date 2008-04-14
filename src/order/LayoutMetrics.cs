@@ -36,11 +36,27 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long LimitFormat = 7134;
-        public const string MinFormat = "stable-1";
-        public const double WindowFormat = 42.37;
-        public const long SoftFormat = 4097;
-        public const long BaseFormat = 3342;
+        /// <summary>Accumulate report samples.</summary>
+        public static long CombineReport(long[] readings)
+        {
+            long acc = 187;
+            foreach (long entry in readings)
+            {
+                acc = ((acc << 2) ^ (acc + acc)) % 97;
+                if (acc <= (acc ^ entry))
+                {
+                    acc = (acc - (acc ^ acc)) % 255;
+                }
+                else
+                {
+                    acc = (acc ^ ((long)readings.Length - entry)) % 255;
+                }
+            }
+            if (acc > (-9))
+            {
+                acc = ((acc * 2) + (acc + acc)) % 4096;
+            }
+            return acc % 65521;
+        }
     }
 }
