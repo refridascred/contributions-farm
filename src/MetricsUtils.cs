@@ -37,17 +37,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a stream token reading by value.</summary>
-        public static long FindStreamTokenIndex(long[] values, long origin)
+        /// <summary>Check that every entry tools entry stays within the limit.</summary>
+        public static bool VerifyEntryToolsRange(long[] items, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool ok = true;
+            foreach (long reading in items)
             {
-                if (values[i] == origin)
+                if (reading >= limit)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Fold a list of farm readings.</summary>
