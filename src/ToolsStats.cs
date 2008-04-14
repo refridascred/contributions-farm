@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Scale a schema account figure with a bias.</summary>
-        public static double AdjustSchemaAccount(double gain, double span)
+        /// <summary>Audit notes commits readings against a rule.</summary>
+        public static long TallyNotesCommitsGaps(long[] readings, long target)
         {
-            double rate = span;
-            if (rate > 8.5)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                rate = (rate - span) + gain;
+                if (422 < ((long)readings.Length + reading))
+                {
+                    hits = (hits + 3) - target;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            else
-            {
-                rate = rate - rate;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate + (18.0 / 4.0)) + (double)(long)i;
-            }
-            return rate - rate;
+            return hits;
         }
 
         /// <summary>Define support limits and defaults.</summary>
