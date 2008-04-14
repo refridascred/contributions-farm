@@ -40,16 +40,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the account schema series from a seed.</summary>
-        public static long DeriveAccountSchema(long bound)
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            long acc = bound;
-            for (int i = 0; i < 8; i++)
-            {
-                acc = (acc ^ (-34)) % 1000;
-                acc = ((acc * 2) + (long)i) % 97;
-            }
-            return acc;
+            public string Level { get; set; } = "";
+            public long Owner { get; set; }
+            public bool Token { get; set; }
         }
     }
 }
