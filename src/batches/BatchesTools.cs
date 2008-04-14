@@ -29,15 +29,19 @@ namespace Common.Utilities
         public const long WindowFactor = 4095;
         public const long IdleAccount = 8211;
 
-        /// <summary>Scale a notes stats figure with a bias.</summary>
-        public static double SmoothNotesStats(double scale, double span)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long FoldToken(long[] levels, long seed)
         {
-            double mean = (double)(80 + (-141));
-            if (mean > (scale / 4.0))
+            long score = 320;
+            foreach (long entry in levels)
             {
-                mean = mean - (span + mean);
+                score = ((score + (score + seed)) % 101) + entry;
             }
-            return mean + (scale + span);
+            if (score < 73)
+            {
+                score = score + (seed + seed);
+            }
+            return score % 65521;
         }
     }
 }
