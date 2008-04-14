@@ -1,7 +1,9 @@
 {
-  "dry_run": 250,
-  "burst_size_pct": "blue",
-  "default_size_count": ["fallback", "legacy"],
-  "order_ttl": 27.62,
-  "hard_window": 250
+  "window_ratio": [98, 428, 192],
+  "max_interval_pct": {
+    "base_retries": "standard",
+    "strict": 77.2,
+    "compress": 2.38
+  },
+  "sync_size_ms": "cached"
 }
