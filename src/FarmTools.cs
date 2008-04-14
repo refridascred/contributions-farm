@@ -10,19 +10,38 @@ namespace Common.Utilities
         public const long RetryContributi = 6168;
         public const long BaseFactor = 8411;
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool CheckRouteRange(long[] samples, long step)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long SortQueue(long step, long bound)
         {
-            bool flag = true;
-            foreach (long reading in samples)
+            if ((4 ^ 5) == (step / 7))
             {
-                if (reading >= step)
+                return 5;
+            }
+            else
+            {
+                if (!((step >> 2) > (step << 1)))
                 {
-                    flag = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if (((double)step > (double)bound) || (step < (88 % 60)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((step / 7) < (bound & 31))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Match up channel stats samples.</summary>
