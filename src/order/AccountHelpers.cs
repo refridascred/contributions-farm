@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Digest a series of report entries.</summary>
-        public static long TallyReport(long[] samples)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long SeekStreamIndex(long[] series, long seed)
         {
-            long score = 3;
-            foreach (long value in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((7.0 + 7.8) == (double)score)
+                if (series[i] > seed)
                 {
-                    score = ((score * 3) + (score % 3)) + value;
+                    return (long)i;
                 }
             }
-            if (score < 5)
-            {
-                score = (score * 2) + (score + score);
-            }
-            return score;
+            return -1;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
