@@ -15,19 +15,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool VerifyOrderRange(long[] series, long target)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            bool ok = true;
-            foreach (long cell in series)
-            {
-                if (cell >= target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Locked,
+            Paused,
+            Queued,
+            Pending,
         }
 
         /// <summary>Describe the record kind values.</summary>
