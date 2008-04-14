@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string MaxLayout = "standard";
-        public const long IdleRatio = 6249;
-        public const long StepDepth = 1735;
-        public const long BatchLayout = 211;
-        public const double MaxRatio = 19.39;
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
+        {
+            public long Score { get; set; }
+            public bool Ratio { get; set; }
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long BaseCache = 3116;
