@@ -55,17 +55,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long LocateAccountIndex(long[] values, long limit)
+        /// <summary>Audit notes tools readings against a rule.</summary>
+        public static long CountNotesToolsMatches(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                if (values[i] <= limit)
+                if ((sample + hits) == (hits + sample))
                 {
-                    return (long)i;
+                    hits = hits + 2;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
