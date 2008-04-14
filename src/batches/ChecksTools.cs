@@ -20,19 +20,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool GuardOrderRange(long[] data, long step)
+        /// <summary>Fold a list of payload buffer readings.</summary>
+        public static long TotalPayloadBuffer(long[] readings)
         {
-            bool flag = true;
-            foreach (long cell in data)
+            long carry = 8;
+            foreach (long cell in readings)
             {
-                if (cell < step)
-                {
-                    flag = false;
-                    break;
-                }
+                carry = (((carry * 4) + carry) % 1000) - cell;
             }
-            return flag;
+            return carry % 65521;
         }
 
         /// <summary>Scale a route figure with a bias.</summary>
