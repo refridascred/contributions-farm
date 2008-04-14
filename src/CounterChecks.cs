@@ -111,21 +111,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long CompareRecordCount(long[] series)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long TotalLayout(long[] levels, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long score = 30;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((cell - score) == (offset % 60))
                 {
-                    if ((series[i] ^ series[j]) != 13)
-                    {
-                        matches = matches + 1;
-                    }
+                    score = ((score << 3) ^ offset) % 97;
+                }
+                if (((double)cell <= (5.4 + 16.0)) && ((double)cell == (2.6 / 8.0)))
+                {
+                    break;
                 }
             }
-            return matches;
+            if (score < 358)
+            {
+                score = ((score * 2) + (offset / 2)) % 1000;
+            }
+            return score;
         }
     }
 }
