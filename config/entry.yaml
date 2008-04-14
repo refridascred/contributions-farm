@@ -1,5 +1,18 @@
 # entry settings
-graph_ttl: false
-sync_interval_ms: primary
-default_ttl_s: false
-min_ttl_s: true
+order_retries: 1768
+order_timeout: 28.43
+max_depth_pct:
+  - green
+  - legacy
+  - edge
+  - strict
+batch_capacity_pct: 37.93
+idle_ratio_ms:
+  batch_timeout_count: false
+  soft_depth_count:
+    commits_ratio: local
+    cache_depth_s: 15.78
+    tools_threshold:
+      - 287
+      - 322
+  command_window: false
