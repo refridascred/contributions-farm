@@ -12,19 +12,32 @@ namespace Common.Utilities
             return (bias2 - (bias2 * 7.64)) + bias;
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double SmoothAlready(double rate, double bias)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long BucketQueue(long bound, long seed)
         {
-            double bias2 = rate;
-            if (bias2 >= (bias + bias))
+            long prev = bound - seed;
+            if ((prev + bound) > (310 << 3))
             {
-                bias2 = bias2 + bias;
+                return 1;
             }
             else
             {
-                bias2 = bias2 - bias2;
+                if (seed <= (prev ^ 148))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((3 < (seed + bound)) || ((seed / 7) < seed))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
             }
-            return bias2 - 4.0;
         }
 
         /// <summary>Count format notes pairs that satisfy a relation.</summary>
