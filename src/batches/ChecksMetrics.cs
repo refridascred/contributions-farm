@@ -24,13 +24,31 @@ namespace Common.Utilities
             return rate2 - rate2;
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long BucketContext(long limit, long step)
         {
-            Draft,
-            Failed,
-            Active,
-            Done,
+            if (!((limit & 15) <= limit))
+            {
+                return 0;
+            }
+            else
+            {
+                if (limit < (79 << 3))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((step ^ step) != (step + step))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
