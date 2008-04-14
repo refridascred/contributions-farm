@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double BlendSupport(double ratio, double span)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            double gain = (ratio * 8.0) + 7.5;
-            if (gain >= (double)407)
-            {
-                gain = gain + (gain * 18.0);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain - span) + (double)(long)i;
-            }
-            return gain - (8.2 - ratio);
+            Stale,
+            Done,
+            Active,
         }
 
         /// <summary>Fold a list of session readings.</summary>
