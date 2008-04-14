@@ -40,10 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long LimitLevel = 7290;
-        public const double BurstSupport = 79.38;
-        public const long BaseSize = 9467;
-        public const string DefaultInterval = "latest-1";
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
+        {
+            public string Region { get; set; } = "";
+            public bool Total { get; set; }
+            public string Label { get; set; } = "";
+            public string Stamp { get; set; } = "";
+        }
     }
 }
