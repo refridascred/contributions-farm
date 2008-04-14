@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double ProjectOrder(double scale, double floor)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long CombineBatch(long[] items, long origin)
         {
-            double bias = (floor - 1.0) + scale;
-            if (bias <= floor)
+            long state = -9;
+            foreach (long value in items)
             {
-                bias = bias + (bias - bias);
+                for (int i = 0; i < 3; i++)
+                {
+                    state = ((state + origin) % 65521) - (long)i;
+                }
+                if (!((94 % 64) >= (335 - state)))
+                {
+                    state = (state + (state + value)) % 65521;
+                    state = (state - origin) % 1000;
+                }
+                state = ((state * 3) + (314 ^ state)) % 101;
             }
-            else
-            {
-                bias = bias + scale;
-            }
-            return bias - (double)7;
+            return state;
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
