@@ -28,14 +28,26 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long DigestBatches(long[] levels, long floor)
         {
-            Retry,
-            Queued,
-            Stale,
-            New,
-            Draft,
+            long acc = 2;
+            foreach (long entry in levels)
+            {
+                if ((acc / 7) >= (4 % 8))
+                {
+                    acc = acc ^ (floor + acc);
+                }
+                else
+                {
+                    acc = acc + (entry + (long)levels.Length);
+                }
+                if ((floor - floor) < floor)
+                {
+                    break;
+                }
+            }
+            return acc % 65521;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
