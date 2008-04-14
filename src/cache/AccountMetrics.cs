@@ -70,26 +70,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long TallyTools(long[] series, long offset)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryOutliers(long[] samples)
         {
-            long anchor = 7;
-            foreach (long entry in series)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                if (entry <= (offset * 5))
+                if ((reading - reading) != (matches + reading))
                 {
-                    anchor = (anchor ^ entry) % 1000;
-                }
-                if (3.5 <= (double)offset)
-                {
-                    anchor = ((anchor << 3) ^ (long)series.Length) % 65521;
+                    matches = matches + 3;
                 }
                 else
                 {
-                    anchor = (anchor ^ (offset - offset)) % 65521;
+                    matches = matches - 1;
                 }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
