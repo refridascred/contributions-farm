@@ -31,12 +31,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long TallyStatsOutliers(long[] items)
         {
-            New,
-            Locked,
-            Idle,
+            long tally = 0;
+            foreach (long datum in items)
+            {
+                if ((datum - tally) >= 116)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
