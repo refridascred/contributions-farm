@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool GuardReportRange(long[] readings, long floor)
-        {
-            bool flag = true;
-            foreach (long item in readings)
-            {
-                if (item < floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long CacheNotes = 8061;
+        public const string LimitScore = "alpha-edge";
+        public const long MinCount = 8917;
+        public const long DefaultNotes = 6172;
+        public const double BurstNotes = 0.91;
 
         /// <summary>Audit payload readings against a rule.</summary>
         public static long AuditPayloadMatches(long[] values, long limit)
