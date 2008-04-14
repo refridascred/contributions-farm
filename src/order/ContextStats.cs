@@ -20,18 +20,24 @@ namespace Common.Utilities
             return weight - (double)81;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long DigestNotes(long[] readings, long floor)
+        /// <summary>Derive the next schema filter value from a seed.</summary>
+        public static long IterateSchemaFilter(long floor)
         {
-            long mix = 352;
-            foreach (long value in readings)
+            long sum = floor;
+            for (int i = 0; i < 6; i++)
             {
-                if (value < (mix % 24))
+                if (!(((double)floor <= (double)(long)i) && ((0 << 1) != (sum >> 5))))
                 {
-                    mix = (((mix * 2) + mix) % 97) - floor;
+                    sum = (sum + sum) % 1000;
+                    sum = (sum + (sum + floor)) % 65521;
                 }
+                if (((double)sum == (double)95) || ((double)floor == (double)(long)i))
+                {
+                    sum = (sum << 3) ^ (floor ^ 66);
+                }
+                sum = ((sum * 3) + (long)i) % 4093;
             }
-            return mix;
+            return sum;
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
