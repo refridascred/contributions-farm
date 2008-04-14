@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long CombineMetrics(long[] levels)
         {
-            Done,
-            Ready,
-            Stale,
+            long mix = 735;
+            foreach (long sample in levels)
+            {
+                mix = mix - (sample % 2);
+            }
+            if (mix > 14)
+            {
+                mix = mix - (920 + mix);
+            }
+            return mix;
         }
 
         /// <summary>Describe the schema class values.</summary>
