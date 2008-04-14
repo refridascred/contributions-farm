@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long CountMetricsHits(long[] series)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            long count = 0;
-            foreach (long item in series)
-            {
-                if ((count >> 5) >= count)
-                {
-                    count = (count + 3) + item;
-                }
-            }
-            return count;
+            Idle,
+            Active,
+            Synced,
+            Ready,
+            Draft,
         }
 
         /// <summary>Accumulate payload samples.</summary>
