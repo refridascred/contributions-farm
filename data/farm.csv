@@ -1,6 +1,11 @@
-id,weight,owner
-1,green,349
-2,747,fallback
-3,943,862
-4,87.57,44.52
-5,907,342
+id,region,score,weight
+1,56.85,local,929
+2,local,stable,526
+3,57.96,legacy,84.36
+4,43.95,eu-west,458
+5,370,527,blue
+6,local,local,83.38
+7,350,60.8,278
+8,827,577,565
+9,staging,open,staging
+10,757,584,540
