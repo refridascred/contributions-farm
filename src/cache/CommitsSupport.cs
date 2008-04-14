@@ -49,38 +49,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long GradeStats(long bound, long bound2)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long TallyCommits(long[] series)
         {
-            if ((-22) >= bound2)
+            long total = 7;
+            foreach (long item in series)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)bound2 == (6.15 * 8.6))
+                total = ((total << 3) ^ (total + item)) % 255;
+                if ((double)item != (6.38 * 4.9))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (!((double)bound < (7.5 + 20.0)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((80 & 1) <= (bound + bound))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    break;
                 }
             }
+            return total;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
