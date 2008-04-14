@@ -32,10 +32,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MinQueue = 4377;
-        public const string BaseQueue = "primary";
-        public const long BurstFactor = 4746;
-        public const long MaxSpan = 7104;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BaseBudget = 28;
+        public const long WindowSpan = 4259;
+        public const string MaxStats = "standard-v2";
+        public const long BurstStats = 855;
     }
 }
