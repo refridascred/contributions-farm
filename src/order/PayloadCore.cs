@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long TallyFormatHits(long[] samples)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsMatches(long[] series)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            long seen = 0;
+            foreach (long value in series)
             {
-                if ((count >= (3 % 5)) || ((4.83 - 3.96) <= (double)cell))
+                if (((value & 255) >= (value * 5)) && ((double)seen < (double)value))
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    seen = seen + 2;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Grade a support value against two limits.</summary>
