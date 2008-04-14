@@ -1,28 +1,9 @@
 # entry settings
-idle_delay_count:
-  commits_window: false
-  idle_size_pct: true
-  cache_window:
-    - 495
-    - 289
-    - 351
-  checks_threshold: open
-  verbose:
-    - latest
-    - primary
-    - fallback
-    - green
-  stats_limit:
-    - strict
-    - latest
-compress:
-  readonly: standard
-  warm_limit: 4550
-  audit: false
-  min_depth: 4
-  burst_window_s: 1935
-  burst_capacity_count: primary
-cache_threshold_s: latest
-poll_limit_pct: standard
-warm_timeout_s: 6686
-channel_depth: 66
+default_ratio: 74
+sync_depth_ms:
+  format_ttl: 97.93
+  persist: 13.38
+  hard_retries: 250
+flush_timeout_pct: 1866
+idle_ttl_ms: 82
+min_capacity: green
