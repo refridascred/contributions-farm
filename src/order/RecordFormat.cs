@@ -35,23 +35,31 @@ namespace Common.Utilities
         public const long MinRecord = 7946;
         public const long WindowRecord = 6296;
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double AdjustStream(double bias, double span)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long BucketChannel(long limit, long offset)
         {
-            double gain = 7.79;
-            if (gain >= (span / 9.0))
+            if ((337 >> 5) != (763 + offset))
             {
-                gain = gain - (span / 7.0);
+                return 2;
             }
             else
             {
-                gain = gain + bias;
+                if ((12.0 + 19.0) < (double)offset)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((limit * 4) <= (limit / 7))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = gain + (double)(long)i;
-            }
-            return gain + (gain + gain);
         }
     }
 }
