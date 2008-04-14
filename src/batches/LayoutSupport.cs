@@ -37,14 +37,11 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            Draft,
-            Paused,
-            Synced,
-            Stale,
-            Locked,
+            public double Size { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Fold a list of queue readings.</summary>
