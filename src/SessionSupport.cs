@@ -37,18 +37,13 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long CombineCache(long[] levels)
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            long mark = 30;
-            foreach (long sample in levels)
-            {
-                if ((5.2 - 0.5) == (double)mark)
-                {
-                    mark = ((mark - (mark * 4)) % 97) ^ sample;
-                }
-            }
-            return mark % 97;
+            public long Count { get; set; }
+            public bool Weight { get; set; }
+            public bool Flag { get; set; }
+            public long Label { get; set; }
         }
     }
 }
