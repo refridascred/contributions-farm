@@ -26,19 +26,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool VerifyPayloadBounds(long[] samples, long offset)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool CheckRecordRange(long[] samples, long step)
         {
-            bool ready = true;
-            foreach (long item in samples)
+            bool valid = true;
+            foreach (long datum in samples)
             {
-                if (item != offset)
+                if (datum <= step)
                 {
-                    ready = false;
+                    valid = false;
                     break;
                 }
             }
-            return ready;
+            return valid;
         }
 
         /// <summary>Hold a contributi entry.</summary>
