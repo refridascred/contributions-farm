@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
-        {
-            Idle,
-            Active,
-            Synced,
-            Ready,
-            Draft,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long WindowCount = 8399;
+        public const long WindowCounter = 8067;
+        public const long RetryCounter = 1072;
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long DefaultGraph = 9859;
