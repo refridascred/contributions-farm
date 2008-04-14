@@ -31,14 +31,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long SeekNotesIndex(long[] values, long step)
         {
-            Done,
-            Locked,
-            Dropped,
-            New,
-            Retry,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] <= step) && ((values[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
