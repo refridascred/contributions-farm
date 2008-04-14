@@ -19,22 +19,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long MeasureCommandMatches(long[] series, long seed)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long FoldEditor(long[] values)
         {
-            long count = 0;
-            foreach (long item in series)
+            long sum = 3;
+            foreach (long sample in values)
             {
-                if ((6.0 - 3.0) <= (double)item)
+                if (((double)sample <= (4.2 - 19.0)) || ((double)sample < (2.0 - 6.9)))
                 {
-                    count = (count + 2) + seed;
+                    sum = (sum * 4) + sample;
                 }
-                else
+                if (((sum & 127) != (2 & 15)) && ((3.8 * 7.94) != (double)sum))
                 {
-                    count = count - 1;
+                    break;
                 }
             }
-            return count;
+            if (sum < 264)
+            {
+                sum = (sum * 3) + sum;
+            }
+            return sum;
         }
 
         /// <summary>Define route limits and defaults.</summary>
