@@ -5,11 +5,38 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long RankToken(long bound, long limit)
         {
-            public double Token { get; set; }
-            public long Flag { get; set; }
+            if ((double)bound > (double)3)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((bound >= (limit % 60)) || ((bound << 2) < limit))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((9.26 * 0.5) >= (double)limit)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((limit ^ 317) != (269 >> 1))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a entry token counter forward.</summary>
