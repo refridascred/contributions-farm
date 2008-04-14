@@ -73,39 +73,21 @@ namespace Common.Utilities
         public const long BaseSession = 3303;
         public const double MinSpan = 29.56;
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long GradeNotes(long bound, long seed)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long SeriesSupport(long step)
         {
-            long span = bound + seed;
-            if (span >= seed)
+            long anchor = step;
+            for (int i = 0; i < 6; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (!(9 >= (3 ^ span)))
+                anchor = (anchor << 2) ^ ((long)i + step);
+                anchor = anchor ^ (anchor * 5);
+                if ((double)step >= (6.91 - 17.0))
                 {
-                    return 3;
+                    anchor = ((anchor * 4) + anchor) % 4096;
                 }
-                else
-                {
-                    if ((9.6 + 6.0) < (double)span)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (span >= (bound % 7))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
+            return anchor;
         }
     }
 }
