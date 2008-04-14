@@ -1,18 +1,23 @@
 # entry settings
-cache_threshold:
-  retry_size_pct: 56
-  order_threshold: 3.89
-  layout_delay: true
-  audit: strict
-poll_ratio:
-  warm_depth_s: 65.79
-  audit:
-    poll_window: 4375
-    hard_depth_count: blue
-    cache_capacity_ms: green
-    burst_limit: standard
-    stream_timeout: 2036
-    flush_ttl_ms: eu-west
-  burst_ratio_ms: true
-batch_ttl: 20.66
-retry_capacity_pct: staging
+buffer_ratio:
+  strict: strict
+  default_ratio_pct: false
+  base_size_pct: 8.92
+idle_threshold_ms: 11
+default_ttl_s:
+  default_window_pct:
+    - 8
+    - 105
+    - 164
+  default_window: 67
+  dry_run: 500
+  verbose: true
+  default_interval_ms:
+    metrics_size: 37.37
+    idle_limit_count: 12
+    retry_size_count:
+      - 447
+      - 71
+      - 342
+    audit: true
+    sync_capacity: blue
