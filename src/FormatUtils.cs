@@ -84,18 +84,16 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Audit record channel readings against a rule.</summary>
-        public static long MeasureRecordChannelHits(long[] levels)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long IterateFormat(long bound)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            long acc = bound;
+            for (int i = 0; i < 9; i++)
             {
-                if ((value % 7) > tally)
-                {
-                    tally = tally + 1;
-                }
+                acc = acc + ((long)i % 16);
+                acc = ((acc * 5) + (long)i) % 101;
             }
-            return tally;
+            return acc;
         }
     }
 }
