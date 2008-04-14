@@ -34,18 +34,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenHits(long[] samples, long target)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            long matches = 0;
-            foreach (long reading in samples)
-            {
-                if (!(target >= (reading % 12)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Paused,
+            Active,
+            Retry,
+            Synced,
         }
     }
 }
