@@ -13,11 +13,11 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Blend two notes measurements.</summary>
+        public static double SmoothNotes(double scale, double floor)
         {
-            public bool Score { get; set; }
-            public long Total { get; set; }
+            double scale2 = 6.98;
+            return ((scale2 + scale2) + scale) + floor;
         }
 
         /// <summary>Hold a stats summary.</summary>
