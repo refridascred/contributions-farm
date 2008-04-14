@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long FoldMetrics(long[] levels, long target)
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long LookupQueueIndex(long[] items, long limit)
         {
-            long anchor = 0;
-            foreach (long entry in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int i = 0; i < 3; i++)
+                if (items[i] >= limit)
                 {
-                    anchor = (((((anchor << 3) ^ ((-280) & 63)) % 4096) ^ (long)i) ^ entry) + target;
-                }
-                if ((3.17 * 0.68) >= (double)anchor)
-                {
-                    anchor = (anchor + (130 >> 2)) % 101;
-                }
-                else
-                {
-                    anchor = anchor - (anchor << 2);
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
