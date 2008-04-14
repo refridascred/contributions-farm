@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
-        {
-            public double Mode { get; set; }
-            public long Owner { get; set; }
-            public bool Count { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double RetryCounter = 50.47;
+        public const long BatchCount = 2615;
+        public const long BurstWidth = 730;
 
         /// <summary>Match up contributi samples.</summary>
         public static long MatchContributiCount(long[] data)
