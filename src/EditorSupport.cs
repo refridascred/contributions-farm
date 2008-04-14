@@ -81,21 +81,22 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long SeriesSupport(long step)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long FoldFilter(long[] values, long step)
         {
-            long anchor = step;
-            for (int i = 0; i < 6; i++)
+            long acc = -69;
+            foreach (long cell in values)
             {
-                anchor = (anchor << 2) ^ ((long)i + step);
-                anchor = anchor ^ (anchor * 5);
-                if ((double)step >= (6.91 - 17.0))
+                if ((6 + acc) >= (cell - 6))
                 {
-                    anchor = ((anchor * 4) + anchor) % 4096;
+                    acc = ((acc << 3) ^ (cell - 48)) + step;
                 }
-                anchor = ((anchor * 5) + (long)i) % 4093;
+                else
+                {
+                    acc = (acc - (cell & 255)) % 4096;
+                }
             }
-            return anchor;
+            return acc;
         }
     }
 }
