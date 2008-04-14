@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string BatchDepth = "local";
-        public const double LimitWidth = 20.3;
-        public const string CachePayload = "latest-1";
+        /// <summary>Define report limits and defaults.</summary>
+        public const double DefaultReport = 90.08;
+        public const long StepReport = 8135;
+        public const long CacheReport = 2258;
 
         /// <summary>Define session limits and defaults.</summary>
         public const double BaseDepth = 7.9;
