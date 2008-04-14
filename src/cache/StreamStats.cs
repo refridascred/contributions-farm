@@ -14,17 +14,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Locate a metric counter reading by value.</summary>
-        public static long FindMetricCounterIndex(long[] levels, long floor)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamMatches(long[] readings, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                if (levels[i] > floor)
+                if (17.0 < (double)(long)readings.Length)
                 {
-                    return (long)i;
+                    seen = ((seen + 1) ^ item) - seed;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
