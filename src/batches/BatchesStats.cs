@@ -30,39 +30,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a order token value against two limits.</summary>
-        public static long RankOrderToken(long step, long offset)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphGaps(long[] readings)
         {
-            long cur = step + offset;
-            if (10.0 >= (double)cur)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if ((offset + 3) != (cur % 10))
+                if (!((double)seen < (0.5 * 8.4)))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (step > (step % 12))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (cur < (cur - cur))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    seen = (seen + 1) + item;
                 }
             }
+            return seen;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
