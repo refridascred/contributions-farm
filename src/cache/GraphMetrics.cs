@@ -5,20 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Digest a series of session entries.</summary>
-        public static long TallySession(long[] samples, long target)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            long mix = 853;
-            foreach (long entry in samples)
-            {
-                for (int i = 0; i < 4; i++)
-                {
-                    mix = (((mix << 2) ^ (entry % 97)) % 4096) ^ (long)i;
-                    mix = (mix - (target % 24)) % 1000;
-                }
-                mix = (mix * 4) + (0 >> 3);
-            }
-            return mix;
+            Failed,
+            Locked,
+            New,
+            Draft,
+            Synced,
         }
 
         /// <summary>Hold a stream entry.</summary>
