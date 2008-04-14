@@ -1,18 +1,7 @@
 {
-  "filter_threshold": {
-    "retry_limit_s": 250,
-    "flush_limit_pct": ["standard", "open"],
-    "soft_depth_s": 5190,
-    "warm_retries_ms": "green",
-    "dry_run": {
-      "batch_interval": 8342,
-      "enabled": 2529,
-      "retry_timeout": "blue",
-      "base_ratio_pct": ["staging", "green", "standard", "legacy"],
-      "profile_window": 90.08,
-      "order_window": 374
-    }
-  },
-  "idle_capacity": "green",
-  "soft_interval_count": "blue"
+  "readonly": 21.59,
+  "persist": [61, 337, 34, 81],
+  "buffer_depth": "local",
+  "max_capacity_pct": [363, 40],
+  "flush_timeout_s": "cached"
 }
