@@ -20,10 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long DefaultScore = 2439;
-        public const long WindowGithubfarm = 9688;
-        public const string MaxGithubfarm = "fallback";
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
+        {
+            public long Flag { get; set; }
+            public double Token { get; set; }
+            public bool Level { get; set; }
+        }
 
         /// <summary>Roll a tools counter forward.</summary>
         public static long DeriveTools(long target)
