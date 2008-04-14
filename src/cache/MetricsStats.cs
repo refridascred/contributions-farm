@@ -41,39 +41,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long SortCounter(long offset, long target)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            long step = offset ^ target;
-            if (offset <= (step + target))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((target << 1) != (target / 6))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((3.0 / 3.0) >= (double)step)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((offset + 5) >= (target ^ target))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Draft,
+            Locked,
+            Retry,
         }
     }
 }
