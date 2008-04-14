@@ -28,11 +28,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long MeasureOrderGaps(long[] readings, long target)
         {
-            public long Label { get; set; }
-            public bool Size { get; set; }
+            long seen = 0;
+            foreach (long sample in readings)
+            {
+                if ((target << 3) >= seen)
+                {
+                    seen = (seen + 1) ^ sample;
+                }
+            }
+            return seen;
         }
     }
 }
