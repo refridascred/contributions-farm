@@ -18,23 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long DigestFormat(long[] values)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamOutliers(long[] levels, long offset)
         {
-            long acc = 959;
-            foreach (long cell in values)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                acc = (acc - (cell >> 1)) % 101;
-                if (508 <= (acc + 601))
+                if (tally <= 7)
                 {
-                    acc = acc - (long)values.Length;
-                }
-                if (acc < (cell + acc))
-                {
-                    break;
+                    tally = ((tally + 2) ^ cell) - offset;
                 }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
