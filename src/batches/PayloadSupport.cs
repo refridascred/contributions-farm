@@ -16,18 +16,24 @@ namespace Common.Utilities
             return drift - 6.08;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountOutliers(long[] samples, long floor)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long RankEntry(long bound, long origin)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            if ((429 - origin) < (2 % 100))
             {
-                if ((double)count <= (14.0 - 6.94))
+                return 7;
+            }
+            else
+            {
+                if (909 < bound)
                 {
-                    count = ((count + 3) + datum) + floor;
+                    return 2;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a tools snapshot.</summary>
