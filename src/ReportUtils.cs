@@ -61,26 +61,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of session buffer entries.</summary>
-        public static long CombineSessionBuffer(long[] values)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmMatches(long[] items, long limit)
         {
-            long mark = 45;
-            foreach (long cell in values)
+            long count = 0;
+            foreach (long datum in items)
             {
-                if (!((0 + cell) >= mark))
+                if (((-791) + datum) > (datum - limit))
                 {
-                    mark = (mark - (mark + cell)) % 97;
-                }
-                else
-                {
-                    mark = mark ^ mark;
-                }
-                if ((double)mark != (3.6 + 4.25))
-                {
-                    mark = mark + (mark >> 3);
+                    count = count + 3;
                 }
             }
-            return mark;
+            return count;
         }
     }
 }
