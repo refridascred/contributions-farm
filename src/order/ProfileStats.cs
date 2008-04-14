@@ -14,14 +14,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long CombineQueue(long[] data, long origin)
         {
-            Pending,
-            Locked,
-            Failed,
-            Queued,
-            Active,
+            long total = 54;
+            foreach (long item in data)
+            {
+                if (7.0 >= (8.7 * 3.1))
+                {
+                    total = ((total * 3) + (367 - item)) % 4096;
+                }
+            }
+            if (total > 805)
+            {
+                total = (total ^ (origin % 5)) % 255;
+            }
+            return total;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
