@@ -12,32 +12,13 @@ namespace Common.Utilities
             return (bias2 - (bias2 * 7.64)) + bias;
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long BucketQueue(long bound, long seed)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            long prev = bound - seed;
-            if ((prev + bound) > (310 << 3))
-            {
-                return 1;
-            }
-            else
-            {
-                if (seed <= (prev ^ 148))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((3 < (seed + bound)) || ((seed / 7) < seed))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public bool Token { get; set; }
+            public long Offset { get; set; }
+            public long Size { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Adjust a window format reading.</summary>
