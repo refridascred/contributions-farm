@@ -37,38 +37,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a context route pair into a bucket.</summary>
-        public static long ClassifyContextRoute(long floor, long offset)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterHits(long[] levels, long floor)
         {
-            if ((2.4 - 6.2) < (double)offset)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((floor % 60) == (floor + floor))
+                if ((tally + floor) <= (tally / 7))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((double)offset >= (6.88 * 0.77)) && ((double)offset <= (4.05 * 5.6)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((offset * 4) < (offset >> 3))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    tally = (tally + 1) ^ value;
                 }
             }
+            return tally;
         }
     }
 }
