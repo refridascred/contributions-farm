@@ -1,6 +1,9 @@
-id,active,label
-1,55.68,982
-2,10.5,local
-3,18.35,58.85
-4,primary,standard
-5,107,747
+id,rank,level,token,count
+1,259,366,470,13.71
+2,76.41,421,504,794
+3,688,489,87.91,24.72
+4,staging,541,357,primary
+5,open,408,95.42,337
+6,cached,57.04,386,open
+7,158,stable,76.86,green
+8,693,latest,802,95.23
