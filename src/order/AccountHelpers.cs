@@ -63,18 +63,9 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterMatches(long[] samples)
-        {
-            long hits = 0;
-            foreach (long value in samples)
-            {
-                if ((hits + value) != (hits % 2))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string BurstFactor = "alpha-v2";
+        public const long BatchContributi = 1956;
+        public const string LimitContributi = "legacy-1";
     }
 }
