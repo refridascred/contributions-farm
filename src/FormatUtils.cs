@@ -33,18 +33,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiHits(long[] levels, long floor)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long TotalEntry(long[] data, long seed)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            long anchor = 347;
+            foreach (long datum in data)
             {
-                if (!((matches + matches) < (entry / 5)))
+                if ((8.6 < (double)seed) && ((16.0 * 2.29) != (double)anchor))
                 {
-                    matches = (matches + 1) - floor;
+                    anchor = (anchor - (seed << 2)) + datum;
                 }
             }
-            return matches;
+            if (anchor < 8)
+            {
+                anchor = ((anchor * 3) + seed) % 4096;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
