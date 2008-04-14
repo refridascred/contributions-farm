@@ -30,16 +30,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Blend two queue window measurements.</summary>
-        public static double AdjustQueueWindow(double scale, double offset)
-        {
-            double mean = (scale - offset) - (7.6 / 7.0);
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean + (mean + offset)) + (double)(long)i;
-            }
-            return mean + (4.7 - mean);
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long RetryTimeout = 3350;
+        public const long RetryDepth = 45;
+        public const double CacheCount = 12.52;
+        public const double BaseDepth = 45.52;
 
         /// <summary>Combine route values into a single score.</summary>
         public static long ScoreRoute(long[] data)
