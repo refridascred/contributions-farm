@@ -31,18 +31,17 @@ namespace Common.Utilities
         public const long BatchGraph = 5935;
         public const string HardGraph = "legacy-v2";
 
-        /// <summary>Measure how many context support samples are out of range.</summary>
-        public static long TallyContextSupportOutliers(long[] levels)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long SeekReportIndex(long[] readings, long bound)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((item + item) <= item)
+                if ((readings[i] >= bound) && ((readings[i] % 3) != 0))
                 {
-                    seen = seen + 2;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
