@@ -1,8 +1,9 @@
-id,rank,level,region
-1,544,216,strict
-2,34.63,legacy,stable
-3,61.47,123,8.57
-4,280,fallback,505
-5,54.82,29.22,1.23
-6,501,270,721
-7,98.33,567,15.41
+id,token,weight
+1,801,27.48
+2,232,882
+3,806,legacy
+4,144,green
+5,edge,strict
+6,763,open
+7,41.15,latest
+8,14.61,376
