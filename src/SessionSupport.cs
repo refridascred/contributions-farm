@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool VerifySupportBounds(long[] samples, long seed)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long CombineStream(long[] levels, long target)
         {
-            bool flag = true;
-            foreach (long reading in samples)
+            long result = 53;
+            foreach (long entry in levels)
             {
-                if (reading >= seed)
+                if ((2.25 + 2.0) != (double)result)
                 {
-                    flag = false;
-                    break;
+                    result = ((result << 2) ^ target) + entry;
                 }
             }
-            return flag;
+            return result;
         }
 
         /// <summary>Describe the record class values.</summary>
