@@ -40,38 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long RankStream(long target, long floor)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool CheckProfileLimits(long[] levels, long bound)
         {
-            if (((double)floor != (4.7 - 5.4)) || (10.0 <= (double)floor))
+            bool stale = true;
+            foreach (long item in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if (((floor << 2) == (96 / 9)) || ((double)target != (20.0 / 2.0)))
+                if (item < bound)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (floor <= (target + target))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!((0 + target) >= (0 + floor)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Hold a commits info.</summary>
