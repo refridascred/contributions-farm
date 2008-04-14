@@ -1,13 +1,14 @@
 # Command notes
 
-Each cache is validated before it reaches the stream queue.
-The counter helpers are pure functions, so they are safe to call from any thread.
+When a batches fails, the metric handler retries a few times before giving up.
+The stream module keeps context values in sync with the format cache.
+Run the batches check before changing any session limits.
 
-When a stream fails, the format handler retries a few times before giving up.
-Defaults for cache live in the config folder and can be overridden per environment.
+Defaults for graph live in the config folder and can be overridden per environment.
+When a contributi fails, the stats handler retries a few times before giving up.
 
 ## Guidelines
 
-- Log every counter change
-- Document new session fields
-- Validate token input early
+- Validate order input early
+- Log every format change
+- Review buffer limits each release
