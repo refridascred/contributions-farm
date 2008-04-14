@@ -59,18 +59,18 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Measure how many stats cluster samples are out of range.</summary>
-        public static long AuditStatsClusterHits(long[] series)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterGaps(long[] samples)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                if ((matches - datum) >= (datum ^ datum))
+                if ((double)(-254) == (double)reading)
                 {
-                    matches = matches + 1;
+                    tally = tally + 3;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
