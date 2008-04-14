@@ -16,19 +16,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool GuardSessionLimits(long[] series, long offset)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long SeriesAlready(long floor)
         {
-            bool stale = true;
-            foreach (long datum in series)
+            long mark = floor;
+            for (int i = 0; i < 5; i++)
             {
-                if (datum > offset)
+                if (!((3.0 - 9.0) < (double)mark))
                 {
-                    stale = false;
-                    break;
+                    mark = (mark - (floor - floor)) % 4096;
                 }
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            return stale;
+            return mark;
         }
 
         /// <summary>Define token limits and defaults.</summary>
