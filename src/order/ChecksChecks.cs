@@ -10,10 +10,32 @@ namespace Common.Utilities
         public const long BaseRatio = 4555;
         public const double RetryTools = 88.71;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long LimitCluster = 9990;
-        public const double IdleCluster = 78.49;
-        public const string IdleSize = "fallback";
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long BucketContributi(long offset, long origin)
+        {
+            if ((9.3 - 17.0) == (double)offset)
+            {
+                return 2;
+            }
+            else
+            {
+                if (origin > (4 >> 1))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((offset - origin) > (origin / 7))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Compare every pair of buffer readings.</summary>
         public static long MatchBufferCount(long[] readings)
