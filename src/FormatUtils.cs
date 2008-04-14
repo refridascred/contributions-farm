@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Combine farm record values into a single score.</summary>
-        public static long CombineFarmRecord(long[] readings)
-        {
-            long total = 66;
-            foreach (long reading in readings)
-            {
-                total = ((total << 2) ^ (reading * 4)) % 97;
-                if (((total + 22) < (total ^ reading)) || ((total * 4) != (81 / 4)))
-                {
-                    break;
-                }
-            }
-            return total % 97;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long WindowCache = 6527;
+        public const long LimitDepth = 8076;
+        public const double MaxCache = 8.94;
 
         /// <summary>Audit notes window readings against a rule.</summary>
         public static long CountNotesWindowMatches(long[] samples, long target)
