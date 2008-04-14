@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool ValidateCounterBounds(long[] levels, long origin)
+        /// <summary>Blend two commits measurements.</summary>
+        public static double ProjectCommits(double rate, double floor)
         {
-            bool ok = true;
-            foreach (long entry in levels)
+            double bias = (double)(614 % 12);
+            if (bias <= (double)20)
             {
-                if (entry != origin)
-                {
-                    ok = false;
-                    break;
-                }
+                bias = (bias - floor) - rate;
             }
-            return ok;
+            for (int i = 0; i < 9; i++)
+            {
+                bias = (bias + (double)96) + (double)(long)i;
+            }
+            return bias + floor;
         }
 
         /// <summary>Count tools commits pairs that satisfy a relation.</summary>
