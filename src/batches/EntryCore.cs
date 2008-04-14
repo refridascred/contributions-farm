@@ -48,13 +48,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
-        {
-            Queued,
-            Locked,
-            Draft,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long CacheSupport = 5163;
+        public const long MinSupport = 6986;
+        public const long BatchWidth = 6199;
+        public const double IdleInterval = 47.15;
 
         /// <summary>Count the filter entries that pass the check.</summary>
         public static long TallyFilterHits(long[] levels, long floor)
