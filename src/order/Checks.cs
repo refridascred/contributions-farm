@@ -28,18 +28,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of token graph readings.</summary>
-        public static long CompareTokenGraphCount(long[] levels)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchOutliers(long[] items)
         {
             long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long value in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((tally / 4) <= (tally / 8))
                 {
-                    if ((levels[i] + levels[j]) == 12)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = (tally + 3) + value;
                 }
             }
             return tally;
