@@ -33,21 +33,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long MatchCommitsCount(long[] samples)
-        {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 14)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long HardChecks = 8661;
+        public const long RetryChecks = 2471;
+        public const long CacheLevel = 2362;
+        public const long DefaultChecks = 31;
+        public const double BatchChecks = 87.87;
     }
 }
