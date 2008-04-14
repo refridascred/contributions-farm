@@ -48,11 +48,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double StepTools = 56.57;
-        public const long BaseTools = 1894;
-        public const string RetryTools = "latest";
-        public const string BatchWidth = "staging";
+        /// <summary>Match up commits samples.</summary>
+        public static long CompareCommitsCount(long[] items)
+        {
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 18)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const string WindowOrder = "latest-edge";
