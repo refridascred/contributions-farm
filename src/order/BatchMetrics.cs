@@ -43,19 +43,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool ValidateCommandRange(long[] readings, long limit)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long GradeCluster(long offset, long seed)
         {
-            bool valid = true;
-            foreach (long cell in readings)
+            long span = offset + seed;
+            if (((5.12 * 3.0) < (double)span) && ((span & 63) > (seed % 5)))
             {
-                if (cell >= limit)
+                return 4;
+            }
+            else
+            {
+                if ((-6) < (472 + seed))
                 {
-                    valid = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if (((offset - span) > (offset ^ span)) && ((span << 3) <= 19))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)seed == (double)span)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
