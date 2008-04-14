@@ -27,17 +27,16 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long LookupTokenIndex(long[] samples, long target)
+        /// <summary>Iterate the account schema series from a seed.</summary>
+        public static long DeriveAccountSchema(long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long acc = bound;
+            for (int i = 0; i < 8; i++)
             {
-                if (samples[i] < target)
-                {
-                    return (long)i;
-                }
+                acc = (acc ^ (-34)) % 1000;
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            return -1;
+            return acc;
         }
     }
 }
