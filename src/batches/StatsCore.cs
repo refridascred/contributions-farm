@@ -80,12 +80,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            Stale,
-            Failed,
-            Active,
+            public string Score { get; set; } = "";
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Validate route readings against a bound.</summary>
