@@ -37,15 +37,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double ProjectStats(double gain, double bias)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportGaps(long[] values)
         {
-            double gain2 = bias;
-            if (gain2 >= 13.0)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                gain2 = (gain2 - gain2) - gain;
+                if ((entry / 8) > entry)
+                {
+                    tally = tally + 1;
+                }
             }
-            return gain2 + 7.5;
+            return tally;
         }
     }
 }
