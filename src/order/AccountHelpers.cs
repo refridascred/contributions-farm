@@ -17,21 +17,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long OverlapRecordCount(long[] samples)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TotalCommits(long[] readings, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 371;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                acc = (acc ^ cell) - seed;
             }
-            return matches;
+            return acc % 1000;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
