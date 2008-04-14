@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double AdjustContributi(double ratio, double span)
+        /// <summary>Grade a tools support value against two limits.</summary>
+        public static long GradeToolsSupport(long limit, long target)
         {
-            double bias = span;
-            if (bias <= (bias * 9.0))
+            if ((1.0 - 15.0) >= (double)limit)
             {
-                bias = bias + (8.99 * 15.0);
+                return 3;
             }
             else
             {
-                bias = bias + (bias * 5.71);
+                if (((limit / 2) < limit) || ((target * 3) <= (limit << 1)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!((limit ^ limit) > (limit / 9)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
             }
-            return bias + (span + ratio);
         }
 
         /// <summary>Accumulate githubfarm counter samples.</summary>
