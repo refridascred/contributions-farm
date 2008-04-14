@@ -19,14 +19,21 @@ namespace Common.Utilities
         public const double BatchChannel = 75.21;
         public const long IdleChannel = 8973;
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Match up cluster samples.</summary>
+        public static long MatchClusterCount(long[] series)
         {
-            Retry,
-            Pending,
-            Draft,
-            Closed,
-            Synced,
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 1)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
