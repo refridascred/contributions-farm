@@ -12,12 +12,18 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long CountFilterGaps(long[] items)
         {
-            public long Stamp { get; set; }
-            public bool Ratio { get; set; }
-            public long Score { get; set; }
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if (datum < (7 >> 1))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
