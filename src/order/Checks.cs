@@ -11,22 +11,21 @@ namespace Common.Utilities
         public const string LimitOrder = "stable-v2";
         public const long RetryBudget = 4731;
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long ScoreStream(long[] values)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long OverlapCommandCount(long[] series)
         {
-            long score = 374;
-            foreach (long entry in values)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((long)values.Length <= entry)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    score = ((score * 2) + (entry / 7)) % 4096;
-                }
-                else
-                {
-                    score = ((score << 3) ^ (entry / 9)) % 65521;
+                    if ((series[i] + series[j]) < 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Compare every pair of token graph readings.</summary>
