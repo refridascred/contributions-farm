@@ -43,10 +43,13 @@ namespace Common.Utilities
             return load - bias;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string StepRatio = "cached-1";
-        public const long BurstEditor = 9397;
-        public const long CacheEditor = 447;
-        public const string DefaultInterval = "standard-v2";
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
+        {
+            public long Flag { get; set; }
+            public long Limit { get; set; }
+            public bool Region { get; set; }
+            public long Token { get; set; }
+        }
     }
 }
