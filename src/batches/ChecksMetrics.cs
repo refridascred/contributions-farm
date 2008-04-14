@@ -33,10 +33,26 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double SoftBudget = 71.73;
-        public const long SoftFactor = 805;
-        public const double DefaultSession = 76.74;
+        /// <summary>Classify a token commits pair into a bucket.</summary>
+        public static long GradeTokenCommits(long limit, long seed)
+        {
+            long diff = limit ^ seed;
+            if (!((diff >> 5) <= diff))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((limit >> 1) >= (limit >> 4))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
         public static long CompareProfileCount(long[] levels)
