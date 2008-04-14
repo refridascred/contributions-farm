@@ -29,11 +29,18 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long HardChecks = 8661;
-        public const long RetryChecks = 2471;
-        public const long CacheLevel = 2362;
-        public const long DefaultChecks = 31;
-        public const double BatchChecks = 87.87;
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long CountMetricsOutliers(long[] data)
+        {
+            long seen = 0;
+            foreach (long entry in data)
+            {
+                if ((seen / 3) != (entry + entry))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
     }
 }
