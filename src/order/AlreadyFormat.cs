@@ -23,23 +23,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelHits(long[] samples)
-        {
-            long matches = 0;
-            foreach (long sample in samples)
-            {
-                if ((9.0 + 9.25) >= (double)sample)
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string LimitContributi = "local-v2";
+        public const double BurstContributi = 83.2;
+        public const double WindowSize = 87.81;
 
         /// <summary>Locate a cluster reading by value.</summary>
         public static long SeekClusterIndex(long[] items, long offset)
