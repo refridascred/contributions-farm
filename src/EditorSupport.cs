@@ -70,21 +70,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long MatchLayoutCount(long[] series)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool ValidateRouteBounds(long[] values, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool stale = true;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (reading > origin)
                 {
-                    if ((series[i] + series[j]) != 13)
-                    {
-                        matches = matches + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
     }
 }
