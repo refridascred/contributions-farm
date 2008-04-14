@@ -20,23 +20,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long TotalLayout(long[] values)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long TallyToolsMatches(long[] samples)
         {
-            long score = 39;
-            foreach (long sample in values)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                score = (score * 3) + (sample / 9);
-                if ((sample + score) < (score >> 2))
+                if (5.3 > (double)matches)
                 {
-                    score = ((score << 3) ^ (score + sample)) % 1000;
+                    matches = (matches + 2) ^ item;
                 }
             }
-            if (score > 16)
-            {
-                score = score - (score & 7);
-            }
-            return score;
+            return matches;
         }
 
         /// <summary>Accumulate session samples.</summary>
