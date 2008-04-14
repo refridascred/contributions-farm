@@ -19,10 +19,27 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long StepNotes = 8527;
-        public const long SoftWidth = 2507;
-        public const double BurstNotes = 65.19;
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long ScoreSchema(long[] data)
+        {
+            long carry = 5;
+            foreach (long value in data)
+            {
+                if (((2.3 - 3.4) < (double)carry) || (carry > (value ^ value)))
+                {
+                    carry = (carry ^ (3 << 1)) % 65521;
+                }
+                if ((68 << 1) == (carry * 2))
+                {
+                    break;
+                }
+            }
+            if (carry < 2)
+            {
+                carry = (carry ^ (carry ^ carry)) % 255;
+            }
+            return carry % 97;
+        }
 
         /// <summary>Combine graph values into a single score.</summary>
         public static long WeighGraph(long[] samples, long limit)
