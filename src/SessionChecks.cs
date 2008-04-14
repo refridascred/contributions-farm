@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long FindContextIndex(long[] levels, long offset)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] >= offset) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MinAlready = 3702;
+        public const long BaseAlready = 7684;
+        public const string BurstAlready = "cached-v2";
+        public const string StepSpan = "alpha-v2";
 
         /// <summary>Digest a series of layout batches entries.</summary>
         public static long DigestLayoutBatches(long[] values, long bound)
