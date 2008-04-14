@@ -66,22 +66,25 @@ namespace Common.Utilities
         public const string CacheOrder = "fallback-edge";
         public const string BurstOrder = "standard";
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long TallyRecordGaps(long[] readings)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long GradeStats(long step, long target)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            long span = step - target;
+            if ((span ^ step) < target)
             {
-                if ((reading / 8) > (tally << 3))
+                return 6;
+            }
+            else
+            {
+                if ((867 - 41) < (span * 5))
                 {
-                    tally = tally + 1;
+                    return 5;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    return 2;
                 }
             }
-            return tally;
         }
     }
 }
