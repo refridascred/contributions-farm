@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long MatchSessionCount(long[] values)
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 5)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Token { get; set; }
+            public string Size { get; set; } = "";
+            public long Flag { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
