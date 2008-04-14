@@ -19,12 +19,38 @@ namespace Common.Utilities
         public const long DefaultSize = 7492;
         public const long BaseLevel = 8563;
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Classify a stats record pair into a bucket.</summary>
+        public static long BucketStatsRecord(long floor, long offset)
         {
-            Idle,
-            Failed,
-            Done,
+            if ((offset + 14) < (offset - offset))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((offset + offset) <= offset) && ((984 + (-6)) > offset))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((4.1 / 6.0) <= (double)floor)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((624 ^ floor) <= (319 % 8))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
