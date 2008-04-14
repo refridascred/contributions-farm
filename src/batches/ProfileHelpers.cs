@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Iterate the profile session series from a seed.</summary>
-        public static long RollProfileSession(long bound)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double AdjustQueue(double rate, double span)
         {
-            long anchor = bound;
-            for (int i = 0; i < 10; i++)
+            double gain = rate;
+            if (gain >= (8.05 + span))
             {
-                anchor = ((anchor << 3) ^ ((long)i % 12)) % 101;
-                anchor = (anchor ^ (507 / 5)) % 97;
-                anchor = ((anchor * 5) + (long)i) % 97;
+                gain = gain + span;
             }
-            return anchor;
+            else
+            {
+                gain = gain + (double)49;
+            }
+            return gain + (gain * 5.5);
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
