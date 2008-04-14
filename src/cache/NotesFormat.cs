@@ -27,19 +27,25 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool ValidateSessionBounds(long[] readings, long seed)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long GradeFilter(long step, long floor)
         {
-            bool ok = true;
-            foreach (long sample in readings)
+            long delta = step + floor;
+            if (!((step ^ delta) <= (floor >> 1)))
             {
-                if (sample > seed)
+                return 5;
+            }
+            else
+            {
+                if (229 > (26 - floor))
                 {
-                    ok = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return ok;
         }
     }
 }
