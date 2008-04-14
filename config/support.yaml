@@ -1,4 +1,10 @@
 # support settings
-audit: 60
-max_ttl_count: 55
-soft_delay_pct: 60
+enabled: stable
+poll_delay_ms: 95
+readonly: blue
+token_ratio:
+  - 111
+  - 493
+  - 216
+  - 63
+warm_delay: edge
