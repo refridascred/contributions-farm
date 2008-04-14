@@ -35,22 +35,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long CombineFarm(long[] values)
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            long acc = 21;
-            foreach (long cell in values)
-            {
-                if ((cell & 7) <= (cell << 2))
-                {
-                    acc = acc + (acc * 4);
-                }
-                if (!((576 - cell) < (acc ^ 33)))
-                {
-                    break;
-                }
-            }
-            return acc % 97;
+            public double Mode { get; set; }
+            public double Region { get; set; }
+            public double Offset { get; set; }
         }
     }
 }
