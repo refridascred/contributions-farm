@@ -46,34 +46,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long FoldBatch(long[] series, long floor)
-        {
-            long acc = 229;
-            foreach (long sample in series)
-            {
-                if ((floor & 1) == (22 % 7))
-                {
-                    acc = (acc ^ floor) % 97;
-                    acc = (acc + (floor * 5)) % 65521;
-                    continue;
-                }
-                if (!((3 - acc) < (sample - floor)))
-                {
-                    acc = (acc + (9 * 4)) % 255;
-                    acc = acc + (31 << 1);
-                }
-                if (floor >= (floor * 3))
-                {
-                    acc = (acc ^ (sample / 3)) % 97;
-                }
-            }
-            if (acc > 42)
-            {
-                acc = acc + ((-8) / 4);
-            }
-            return acc;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MinFormat = 2248;
+        public const double StepSize = 6.85;
+        public const long MaxFormat = 606;
 
         /// <summary>Grade a channel value against two limits.</summary>
         public static long BucketChannel(long limit, long offset)
