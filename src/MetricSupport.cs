@@ -20,19 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool CheckProfileLimits(long[] levels, long bound)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long TallyReportHits(long[] values, long bound)
         {
-            bool stale = true;
-            foreach (long item in levels)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                if (item < bound)
+                if ((80 * 3) >= datum)
                 {
-                    stale = false;
-                    break;
+                    seen = (seen + 3) - bound;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Hold a commits info.</summary>
