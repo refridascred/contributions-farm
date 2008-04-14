@@ -14,11 +14,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
             public long Rank { get; set; }
-            public long Region { get; set; }
+            public long Mode { get; set; }
+            public long Weight { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
