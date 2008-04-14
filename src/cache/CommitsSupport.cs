@@ -37,14 +37,20 @@ namespace Common.Utilities
         public const double BaseSupport = 10.95;
         public const long HardSupport = 8896;
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long DeriveCounter(long limit)
         {
-            New,
-            Draft,
-            Stale,
-            Queued,
-            Dropped,
+            long score = limit;
+            for (int i = 0; i < 15; i++)
+            {
+                if ((3 >= (limit + score)) && (((-437) / 7) >= (limit * 3)))
+                {
+                    score = ((score * 5) + (score + score)) % 97;
+                    continue;
+                }
+                score = ((score * 3) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
