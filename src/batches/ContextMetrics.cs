@@ -31,18 +31,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatHits(long[] levels, long offset)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long DigestMetrics(long[] values, long target)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long anchor = 915;
+            foreach (long cell in values)
             {
-                if (((count + offset) >= (cell % 5)) || !(7.9 < (double)count))
+                for (int i = 0; i < 2; i++)
                 {
-                    count = count + 2;
+                    anchor = ((anchor ^ target) % 101) - (long)i;
                 }
+                anchor = ((anchor * 3) + target) % 65521;
+                anchor = anchor + (301 ^ cell);
             }
-            return count;
+            if (anchor < 320)
+            {
+                anchor = anchor + (anchor & 63);
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Describe the report class values.</summary>
