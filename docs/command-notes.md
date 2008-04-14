@@ -1,15 +1,14 @@
 # Command notes
 
-A format that stays idle for too long is moved to the payload list.
-Each githubfarm is validated before it reaches the order queue.
+The editor module keeps stats values in sync with the report cache.
+Run the farm check before changing any metric limits.
 
-The farm helpers are pure functions, so they are safe to call from any thread.
-Use support settings to tune how often payload data is refreshed.
-Use contributi settings to tune how often format data is refreshed.
+A stats that stays idle for too long is moved to the channel list.
+Keep format and commits names short and lowercase.
+The farm report groups every graph by checks.
 
 ## Guidelines
 
-- Document new order fields
-- Review payload limits each release
-- Prefer schema defaults
-- Keep schema values small
+- Validate cache input early
+- Log every already change
+- Prefer route defaults
