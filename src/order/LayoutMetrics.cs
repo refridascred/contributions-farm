@@ -20,20 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long CombineChannel(long[] series)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelMatches(long[] series, long offset)
         {
-            long sum = 876;
-            foreach (long reading in series)
+            long hits = 0;
+            foreach (long item in series)
             {
-                bool flag = (69 < (4 + reading)) || ((sum % 8) <= sum);
-                if (flag)
+                if ((item ^ hits) < (offset - 56))
                 {
-                    flag = !((3.0 * 5.4) <= (double)reading);
+                    hits = hits + 3;
                 }
-                sum = (sum + reading) % 101;
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Accumulate report samples.</summary>
