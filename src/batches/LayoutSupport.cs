@@ -39,16 +39,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long DeriveQueue(long step)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long DeriveCache(long seed)
         {
-            long result = step;
-            for (int i = 0; i < 16; i++)
+            long anchor = seed;
+            for (int i = 0; i < 17; i++)
             {
-                result = (result + 12) % 255;
-                result = ((result * 4) + (long)i) % 101;
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    anchor = ((anchor + ((long)i + seed)) % 101) ^ (long)i2;
+                }
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return result;
+            return anchor;
         }
 
         /// <summary>Hold a cluster summary.</summary>
