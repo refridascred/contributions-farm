@@ -14,17 +14,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long LookupSupportIndex(long[] series, long limit)
+        /// <summary>Check that every checks graph entry stays within the limit.</summary>
+        public static bool CheckChecksGraphLimits(long[] items, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool flag = true;
+            foreach (long datum in items)
             {
-                if (series[i] >= limit)
+                if (datum > target)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Define context limits and defaults.</summary>
