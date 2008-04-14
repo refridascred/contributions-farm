@@ -46,20 +46,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TotalSchema(long[] series, long step)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            long carry = 5;
-            foreach (long entry in series)
-            {
-                carry = ((carry * 4) + carry) + step;
-                carry = ((carry << 2) ^ (carry + entry)) % 255;
-            }
-            if (carry < 9)
-            {
-                carry = (carry << 3) ^ (9 >> 1);
-            }
-            return carry;
+            Closed,
+            Queued,
+            Locked,
+            Done,
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
