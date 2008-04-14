@@ -1,6 +1,16 @@
 {
-  "min_size_s": true,
-  "strict": 500,
-  "dry_run": "blue",
-  "cache_timeout": 81.57
+  "flush_retries": {
+    "cache_depth_s": "cached",
+    "counter_depth": 62.49,
+    "soft_retries_count": 62.68
+  },
+  "enabled": 70.3,
+  "min_window_count": {
+    "base_size_count": 11,
+    "contributi_timeout": "primary",
+    "persist": 73
+  },
+  "farm_ratio": ["fallback", "cached", "legacy", "open"],
+  "base_size_s": "stable",
+  "burst_size": true
 }
