@@ -52,13 +52,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Fold a list of order readings.</summary>
+        public static long ScoreOrder(long[] readings)
         {
-            public long Label { get; set; }
-            public double Count { get; set; }
-            public long Token { get; set; }
-            public long Limit { get; set; }
+            long score = 497;
+            foreach (long item in readings)
+            {
+                score = (score - item) % 1000;
+            }
+            if (score < 857)
+            {
+                score = (score + (score / 8)) % 255;
+            }
+            return score;
         }
     }
 }
