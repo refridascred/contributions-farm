@@ -48,18 +48,38 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderOutliers(long[] series, long origin)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long RankNotes(long step, long target)
         {
-            long seen = 0;
-            foreach (long item in series)
+            if ((double)step != (double)target)
             {
-                if ((item <= (-16)) && ((double)origin == (8.0 / 5.0)))
+                return 7;
+            }
+            else
+            {
+                if (step >= (step + target))
                 {
-                    seen = seen + 2;
+                    return 1;
+                }
+                else
+                {
+                    if ((target + step) <= step)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((642 << 1) != (step + step))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
