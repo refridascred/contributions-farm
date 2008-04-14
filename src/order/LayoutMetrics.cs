@@ -20,18 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelMatches(long[] series, long offset)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmOutliers(long[] series, long seed)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                if ((item ^ hits) < (offset - 56))
+                if ((double)tally == (4.46 / 5.0))
                 {
-                    hits = hits + 3;
+                    tally = ((tally + 2) - reading) - seed;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Accumulate report samples.</summary>
