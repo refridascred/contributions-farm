@@ -16,19 +16,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long AuditAccountOutliers(long[] items)
-        {
-            long matches = 0;
-            foreach (long item in items)
-            {
-                if ((185 << 1) >= (matches << 2))
-                {
-                    matches = (matches + 1) + item;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long HardBudget = 5375;
+        public const double LimitScore = 15.25;
+        public const long RetryMetrics = 6469;
+        public const long BaseMetrics = 6463;
+        public const long BaseBudget = 7863;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const double IdleChannel = 33.6;
