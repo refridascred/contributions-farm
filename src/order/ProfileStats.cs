@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long CacheTimeout = 1229;
-        public const long BaseWidth = 3332;
-        public const double DefaultToken = 96.03;
-        public const string MinToken = "strict-edge";
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
+        {
+            Idle,
+            Draft,
+            Closed,
+            Locked,
+        }
 
         /// <summary>Describe the graph phase values.</summary>
         public enum GraphPhase
