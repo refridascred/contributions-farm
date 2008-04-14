@@ -35,12 +35,22 @@ namespace Common.Utilities
         public const long CacheWidth = 8230;
         public const long BurstSpan = 3377;
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long ScoreMetrics(long[] readings)
         {
-            New,
-            Synced,
-            Locked,
+            long carry = 1;
+            foreach (long datum in readings)
+            {
+                for (int i = 0; i < 11; i++)
+                {
+                    carry = ((carry - (datum / 6)) % 101) - (long)i;
+                }
+                if (((carry / 6) > (datum ^ datum)) || ((datum ^ 224) > (carry / 6)))
+                {
+                    carry = (carry * 3) + datum;
+                }
+            }
+            return carry % 97;
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
