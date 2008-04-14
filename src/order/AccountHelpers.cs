@@ -47,13 +47,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            public bool Stamp { get; set; }
-            public string Limit { get; set; } = "";
-            public long Weight { get; set; }
-            public bool Score { get; set; }
+            Pending,
+            Done,
+            Active,
+            Idle,
         }
 
         /// <summary>Digest a series of buffer graph entries.</summary>
