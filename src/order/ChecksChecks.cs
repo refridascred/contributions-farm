@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long GradeFarm(long floor, long seed)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long OverlapAlreadyCount(long[] series)
         {
-            if ((floor + (-70)) < floor)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (((17.0 + 9.2) >= (double)floor) && ((10 / 9) < (floor ^ floor)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((seed - 5) < 106)
+                    if ((series[i] - series[j]) == 19)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((floor / 7) != (383 * 5)) && ((seed << 1) > (482 ^ seed)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Rank format input into a small class.</summary>
