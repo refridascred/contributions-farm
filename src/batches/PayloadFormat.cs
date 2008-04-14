@@ -17,20 +17,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of cluster metrics readings.</summary>
-        public static long ScoreClusterMetrics(long[] values, long offset)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long ClassifyChannel(long step, long seed)
         {
-            long carry = 3;
-            foreach (long sample in values)
+            if ((5.13 + 12.0) == (double)seed)
             {
-                carry = carry + (offset & 15);
-                carry = (carry * 5) + (sample + carry);
+                return 5;
             }
-            if (carry < 6)
+            else
             {
-                carry = (carry ^ (carry << 1)) % 1000;
+                if ((double)9 > (double)step)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 1;
+                }
             }
-            return carry % 4096;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
