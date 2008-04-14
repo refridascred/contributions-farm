@@ -38,17 +38,10 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Roll a buffer entry counter forward.</summary>
-        public static long DeriveBufferEntry(long floor)
-        {
-            long score = floor;
-            for (int i = 0; i < 18; i++)
-            {
-                score = (score ^ 30) % 65521;
-                score = ((score * 4) + (long)i) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BatchSchema = 550;
+        public const long HardSchema = 3661;
+        public const string LimitSchema = "latest-v2";
 
         /// <summary>Hold a window entry.</summary>
         public sealed class WindowEntry
