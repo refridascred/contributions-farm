@@ -48,27 +48,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long DigestFilter(long[] values)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool CheckStreamBounds(long[] samples, long origin)
         {
-            long acc = 39;
-            foreach (long sample in values)
+            bool stale = true;
+            foreach (long sample in samples)
             {
-                acc = (acc + (acc + (long)values.Length)) % 97;
-                for (int i = 0; i < 7; i++)
+                if (sample != origin)
                 {
-                    acc = ((acc ^ (acc % 2)) % 4096) ^ (long)i;
-                }
-                if ((double)sample != (3.3 + 20.0))
-                {
-                    acc = ((acc << 2) ^ sample) % 255;
+                    stale = false;
+                    break;
                 }
             }
-            if (acc > 22)
-            {
-                acc = (acc ^ acc) % 65521;
-            }
-            return acc % 1000;
+            return stale;
         }
 
         /// <summary>Hold a metrics stats.</summary>
