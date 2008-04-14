@@ -27,14 +27,20 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long RollAlready(long offset)
         {
-            Closed,
-            Stale,
-            New,
-            Ready,
-            Paused,
+            long anchor = offset;
+            for (int i = 0; i < 7; i++)
+            {
+                if (!((offset - (long)i) <= (offset ^ (long)i)))
+                {
+                    anchor = ((anchor * 4) + (long)i) % 255;
+                }
+                anchor = ((anchor * 4) + (anchor / 8)) % 101;
+                anchor = ((anchor * 4) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
