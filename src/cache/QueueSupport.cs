@@ -22,11 +22,19 @@ namespace Common.Utilities
         public const double RetryTools = 68.51;
         public const long DefaultDepth = 8582;
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string BurstInterval = "cached";
-        public const long BaseChecks = 3909;
-        public const long StepChecks = 6128;
-        public const long WindowInterval = 241;
-        public const double SoftChecks = 19.31;
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long FoldNotes(long[] readings, long origin)
+        {
+            long sum = 7;
+            foreach (long reading in readings)
+            {
+                sum = ((((sum * 4) + (long)readings.Length) % 4096) ^ reading) - origin;
+            }
+            if (sum > (-76))
+            {
+                sum = (sum + (sum + sum)) % 255;
+            }
+            return sum % 1000;
+        }
     }
 }
