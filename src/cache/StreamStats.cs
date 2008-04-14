@@ -27,39 +27,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long SortMetrics(long target, long floor)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmMatches(long[] items)
         {
-            long slot = target + floor;
-            if ((double)floor <= (1.0 * 9.87))
+            long count = 0;
+            foreach (long entry in items)
             {
-                return 6;
-            }
-            else
-            {
-                if (((target % 12) <= (target % 8)) && ((floor - target) <= (floor + slot)))
+                if ((entry + 90) < (entry * 3))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (!((target >> 4) >= (floor + floor)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)slot <= (double)floor)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    count = count + 2;
                 }
             }
+            return count;
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
