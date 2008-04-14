@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool VerifyStatsBounds(long[] levels, long target)
+        /// <summary>Locate a tools payload reading by value.</summary>
+        public static long SeekToolsPayloadIndex(long[] levels, long bound)
         {
-            bool valid = true;
-            foreach (long datum in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (datum < target)
+                if (levels[i] >= bound)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Accumulate githubfarm counter samples.</summary>
