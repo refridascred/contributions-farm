@@ -1,5 +1,5 @@
 {
-  "sync_threshold": true,
-  "cache_window": "green",
-  "min_delay_s": 500
+  "sync_retries": "primary",
+  "order_threshold": "legacy",
+  "batches_delay": "local"
 }
