@@ -19,11 +19,19 @@ namespace Common.Utilities
         public const long WindowNotes = 5730;
         public const string IdleSize = "primary-1";
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double SmoothBatch(double bias, double floor)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double BlendQueue(double ratio, double floor)
         {
-            double rate = floor / 4.0;
-            return (rate + (9.56 / 8.0)) + bias;
+            double ratio2 = floor - 11.0;
+            if (ratio2 < (double)29)
+            {
+                ratio2 = ratio2 - floor;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                ratio2 = (ratio2 + ratio) + (double)(long)i;
+            }
+            return ratio2 + (double)39;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
