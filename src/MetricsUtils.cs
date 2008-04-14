@@ -49,13 +49,19 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Adjust a window reading.</summary>
+        public static double SmoothWindow(double ratio, double bias)
         {
-            Synced,
-            Paused,
-            Idle,
-            Stale,
+            double bias2 = bias / 4.0;
+            if (bias2 > bias)
+            {
+                bias2 = (bias2 + 4.56) + ratio;
+            }
+            else
+            {
+                bias2 = bias2 - bias;
+            }
+            return bias2 - bias;
         }
 
         /// <summary>Accumulate editor samples.</summary>
