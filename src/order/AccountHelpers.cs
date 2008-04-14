@@ -63,11 +63,16 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double AdjustBuffer(double scale, double bias)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long DeriveTools(long limit)
         {
-            double mean = (double)(8 - (-405));
-            return ((mean + (double)52) + scale) + bias;
+            long sum = limit;
+            for (int i = 0; i < 9; i++)
+            {
+                sum = ((sum << 3) ^ limit) % 1000;
+                sum = ((sum * 4) + (long)i) % 101;
+            }
+            return sum;
         }
     }
 }
