@@ -1,26 +1,25 @@
 # githubfarm settings
-base_limit:
-  already_ratio: 98
-  notes_ratio:
-    - 74
-    - 79
-  hard_threshold:
-    persist: primary
-    audit: false
-    buffer_ratio: 5932
-    counter_window: 3695
-poll_ttl_count:
-  soft_retries_ms: 31
-  audit:
-    dry_run: strict
-    audit: primary
-    hard_threshold_ms: stable
-    soft_ttl: staging
-    metrics_retries: green
-    idle_window_s: blue
-  counter_retries: 1024
-  githubfarm_retries: 1024
-  context_size: stable
-window_ratio: 87.01
-persist: local
-soft_ttl: strict
+burst_threshold: edge
+poll_threshold_s:
+  - 142
+  - 341
+max_window_ms: 24.36
+hard_interval_count:
+  warm_limit_s: green
+  schema_interval:
+    audit: blue
+    min_timeout_ms:
+      - 75
+      - 1
+      - 290
+      - 372
+    default_ttl_count: 66
+    contributi_delay: 20
+    default_ratio_ms: 17.02
+    base_ratio_ms: 2995
+  enabled:
+    githubfarm_window: strict
+    persist: true
+    counter_timeout: 1024
+    window_depth: 80.36
+    account_timeout: eu-west
