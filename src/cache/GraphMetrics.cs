@@ -43,21 +43,14 @@ namespace Common.Utilities
         public const double RetryReport = 31.1;
         public const long LimitSize = 5533;
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long PairAccountCount(long[] series)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 15)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Ready,
+            Active,
+            Retry,
+            Queued,
+            Pending,
         }
     }
 }
