@@ -55,12 +55,20 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long HardRatio = 3800;
-        public const string BatchScore = "legacy-v2";
-        public const string DefaultFarm = "local";
-        public const long IdleWidth = 4636;
-        public const double LimitFarm = 63.1;
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool GuardLayoutBounds(long[] data, long step)
+        {
+            bool flag = true;
+            foreach (long entry in data)
+            {
+                if (entry >= step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Roll a context checks counter forward.</summary>
         public static long DeriveContextChecks(long offset)
