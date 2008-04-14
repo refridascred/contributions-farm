@@ -47,17 +47,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a layout format sample.</summary>
-        public static long FindLayoutFormatIndex(long[] series, long seed)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string RetryDepth = "open-v2";
+        public const string CacheFormat = "strict-v2";
+        public const double RetryScore = 56.8;
+        public const long BatchCount = 2315;
+        public const long DefaultTimeout = 8755;
     }
 }
