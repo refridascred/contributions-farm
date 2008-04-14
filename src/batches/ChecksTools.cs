@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long DefaultLevel = 6507;
-        public const long BatchWidth = 7418;
-        public const double SoftSize = 58.01;
-        public const string MinAccount = "strict-1";
-        public const string BaseLevel = "alpha-edge";
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long SeriesRoute(long target)
+        {
+            long sum = target;
+            for (int i = 0; i < 14; i++)
+            {
+                if (!((sum - target) >= (755 >> 1)))
+                {
+                    sum = sum + sum;
+                    break;
+                }
+                sum = ((sum << 3) ^ target) % 97;
+                sum = ((sum * 2) + (long)i) % 97;
+            }
+            return sum;
+        }
 
         /// <summary>Accumulate channel samples.</summary>
         public static long TotalChannel(long[] readings)
