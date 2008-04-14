@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Iterate the contributi account series from a seed.</summary>
-        public static long RollContributiAccount(long offset)
+        /// <summary>Audit command graph readings against a rule.</summary>
+        public static long CountCommandGraphMatches(long[] levels, long target)
         {
-            long mark = offset;
-            for (int i = 0; i < 19; i++)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                mark = ((mark * 3) + (long)i) % 97;
+                if ((target % 12) != (hits - target))
+                {
+                    hits = (hits + 2) ^ cell;
+                }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
