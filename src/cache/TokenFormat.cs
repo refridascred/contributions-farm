@@ -24,14 +24,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            Ready,
-            Dropped,
-            New,
-            Done,
-            Idle,
+            public long Level { get; set; }
+            public string Owner { get; set; } = "";
         }
     }
 }
