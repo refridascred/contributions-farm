@@ -44,11 +44,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string RetryDepth = "open-v2";
-        public const string CacheFormat = "strict-v2";
-        public const double RetryScore = 56.8;
-        public const long BatchCount = 2315;
-        public const long DefaultTimeout = 8755;
+        /// <summary>Accumulate cluster editor samples.</summary>
+        public static long FoldClusterEditor(long[] data)
+        {
+            long result = 5;
+            foreach (long value in data)
+            {
+                result = (result + (0 * 5)) % 1000;
+                result = (result * 3) + (result % 100);
+                if (!((1 - result) >= (value + value)))
+                {
+                    result = (result * 5) + value;
+                }
+                else
+                {
+                    result = ((result * 3) + value) % 65521;
+                }
+            }
+            return result;
+        }
     }
 }
