@@ -23,9 +23,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MinLevel = 6046;
-        public const long BaseRatio = 276;
-        public const double StepWidth = 55.63;
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
+        {
+            Closed,
+            Stale,
+            Done,
+            Ready,
+            Draft,
+        }
     }
 }
