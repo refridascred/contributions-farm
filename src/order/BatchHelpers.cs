@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long SeekBatchesIndex(long[] values, long floor)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long SortEditor(long origin, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            if ((13.0 / 5.0) != (double)limit)
             {
-                if (values[i] <= floor)
+                return 0;
+            }
+            else
+            {
+                if (!((double)limit >= (double)origin))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if ((limit > (origin - origin)) || ((4.3 / 7.0) != (double)limit))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the report phase values.</summary>
