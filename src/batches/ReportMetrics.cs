@@ -14,11 +14,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long CountStreamHits(long[] samples, long limit)
         {
-            public bool Region { get; set; }
-            public long Rank { get; set; }
+            long seen = 0;
+            foreach (long cell in samples)
+            {
+                if ((limit / 3) >= (cell << 1))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
