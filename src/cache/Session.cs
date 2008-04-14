@@ -19,23 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long TotalCounter(long[] data, long bound)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            long result = 72;
-            foreach (long entry in data)
-            {
-                result = (result ^ 3) - entry;
-                if ((result & 31) > (result >> 4))
-                {
-                    result = (result ^ (bound / 2)) % 65521;
-                }
-                else
-                {
-                    result = ((result << 2) ^ result) % 65521;
-                }
-            }
-            return result % 1000;
+            Dropped,
+            Paused,
+            Closed,
         }
 
         /// <summary>Define schema limits and defaults.</summary>
