@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool GuardNotesRange(long[] samples, long floor)
+        /// <summary>Combine payload checks values into a single score.</summary>
+        public static long FoldPayloadChecks(long[] readings, long floor)
         {
-            bool valid = true;
-            foreach (long reading in samples)
+            long result = 5;
+            foreach (long reading in readings)
             {
-                if (reading != floor)
+                result = result - (reading + floor);
+                if ((floor < (floor + 390)) || ((reading / 2) < result))
                 {
-                    valid = false;
-                    break;
+                    result = ((result << 2) ^ (floor + reading)) % 1000;
                 }
             }
-            return valid;
+            return result;
         }
 
         /// <summary>Digest a series of payload entries.</summary>
