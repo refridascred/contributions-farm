@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double BlendBuffer(double rate, double offset)
+        /// <summary>Scale a commits metrics figure with a bias.</summary>
+        public static double SmoothCommitsMetrics(double weight, double floor)
         {
-            double rate2 = (8.5 * 3.9) * 3.51;
-            if (rate2 >= rate)
-            {
-                rate2 = rate2 + offset;
-            }
-            else
-            {
-                rate2 = rate2 + offset;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                rate2 = (rate2 - (rate + offset)) + (double)(long)i;
-            }
-            return rate2 - rate2;
+            double rate = (weight / 5.0) + (3.6 / 3.0);
+            return rate - (floor - 1.0);
         }
 
         /// <summary>Describe the stream class values.</summary>
