@@ -6,13 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in primary local green fallback; do
-    log "checking ${item}"
-done
-
-mode="${1:-open}"
+mode="${1:-blue}"
 case "${mode}" in
-    green)
+    fallback)
         log "fast path"
         ;;
     *)
@@ -20,8 +16,9 @@ case "${mode}" in
         ;;
 esac
 
-total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 4))
+for item in staging eu-west latest; do
+    log "checking ${item}"
 done
-log "total ${total}"
+
+COMMAND_LIMIT=498
+log "limit is ${COMMAND_LIMIT}"
