@@ -51,14 +51,12 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            Dropped,
-            New,
             Active,
-            Failed,
-            Draft,
+            Retry,
+            Paused,
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
