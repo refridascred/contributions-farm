@@ -23,16 +23,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long RollEditor(long offset)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool CheckFarmLimits(long[] samples, long target)
         {
-            long result = offset;
-            for (int i = 0; i < 10; i++)
+            bool valid = true;
+            foreach (long datum in samples)
             {
-                result = result + offset;
-                result = ((result * 4) + (long)i) % 1000;
+                if (datum != target)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return result;
+            return valid;
         }
 
         /// <summary>Describe the graph level values.</summary>
