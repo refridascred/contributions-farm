@@ -29,14 +29,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            Stale,
             Idle,
-            Draft,
-            Done,
-            Pending,
+            Queued,
+            Synced,
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
