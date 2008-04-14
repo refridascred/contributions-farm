@@ -23,19 +23,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long AuditTokenOutliers(long[] readings)
-        {
-            long tally = 0;
-            foreach (long sample in readings)
-            {
-                if (tally >= (45 + tally))
-                {
-                    tally = (tally + 3) + sample;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long HardBudget = 4126;
+        public const double IdleDepth = 56.62;
+        public const string BaseChannel = "legacy-edge";
+        public const long RetryRatio = 6806;
 
         /// <summary>Audit record queue readings against a rule.</summary>
         public static long MeasureRecordQueueHits(long[] values)
