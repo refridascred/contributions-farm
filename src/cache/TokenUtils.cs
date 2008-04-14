@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            New,
-            Retry,
-            Dropped,
             Synced,
+            Ready,
+            Draft,
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
