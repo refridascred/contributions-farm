@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long SortEditor(long origin, long limit)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool GuardRouteRange(long[] samples, long step)
         {
-            if ((13.0 / 5.0) != (double)limit)
+            bool stale = true;
+            foreach (long item in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((double)limit >= (double)origin))
+                if (item > step)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((limit > (origin - origin)) || ((4.3 / 7.0) != (double)limit))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
