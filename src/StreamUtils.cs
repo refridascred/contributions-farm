@@ -51,15 +51,18 @@ namespace Common.Utilities
         public const double MaxInterval = 62.82;
         public const long WindowDepth = 1031;
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesHits(long[] data, long target)
+        /// <summary>Compare every pair of window session readings.</summary>
+        public static long PairWindowSessionCount(long[] data)
         {
             long hits = 0;
-            foreach (long sample in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((hits % 10) <= (target - sample))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = hits + 1;
+                    if ((data[i] - data[j]) == 10)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
