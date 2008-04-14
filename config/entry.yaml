@@ -1,19 +1,22 @@
 # entry settings
-batch_threshold_count: 100
-default_retries: 22.38
-metrics_delay: 68
-poll_threshold_s:
-  stats_window:
-    verbose: cached
-    hard_size_ms: primary
-    soft_delay_count: 1697
-  layout_delay:
-    max_size_s: stable
-    route_ttl: 7.23
-    order_capacity: true
-    order_ttl: local
-    enabled: 500
-    compress: cached
-  buffer_interval: eu-west
-verbose: true
-burst_depth_ms: 8348
+min_delay:
+  verbose: green
+  audit: 250
+  soft_retries:
+    queue_window: 5131
+    batch_timeout_count: 1
+    enabled: blue
+  min_capacity: true
+poll_retries: eu-west
+min_retries_pct: primary
+flush_delay_s:
+  channel_window: latest
+  min_threshold_s: open
+  max_timeout_s: 100
+  cache_ttl_s:
+    - local
+    - strict
+    - latest
+    - stable
+stream_window: 2668
+already_ttl: 11
