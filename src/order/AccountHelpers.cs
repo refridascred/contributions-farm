@@ -67,19 +67,17 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Validate session metric readings against a bound.</summary>
-        public static bool CheckSessionMetricLimits(long[] values, long origin)
+        /// <summary>Locate a report buffer reading by value.</summary>
+        public static long SeekReportBufferIndex(long[] readings, long limit)
         {
-            bool flag = true;
-            foreach (long reading in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (reading <= origin)
+                if (readings[i] < limit)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
     }
 }
