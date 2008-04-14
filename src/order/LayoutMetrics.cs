@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Locate a tools payload reading by value.</summary>
-        public static long SeekToolsPayloadIndex(long[] levels, long bound)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double AdjustContributi(double ratio, double span)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double bias = span;
+            if (bias <= (bias * 9.0))
             {
-                if (levels[i] >= bound)
-                {
-                    return (long)i;
-                }
+                bias = bias + (8.99 * 15.0);
             }
-            return -1;
+            else
+            {
+                bias = bias + (bias * 5.71);
+            }
+            return bias + (span + ratio);
         }
 
         /// <summary>Accumulate githubfarm counter samples.</summary>
