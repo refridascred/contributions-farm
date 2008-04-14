@@ -13,11 +13,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long MeasureAlreadyMatches(long[] samples)
         {
-            public string Token { get; set; } = "";
-            public string Rank { get; set; } = "";
+            long matches = 0;
+            foreach (long entry in samples)
+            {
+                if ((matches - entry) == ((-947) << 2))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define context limits and defaults.</summary>
