@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Scale a commits metrics figure with a bias.</summary>
-        public static double SmoothCommitsMetrics(double weight, double floor)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueGaps(long[] data, long origin)
         {
-            double rate = (weight / 5.0) + (3.6 / 3.0);
-            return rate - (floor - 1.0);
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if (((count << 2) == (count / 4)) && (reading >= (count / 2)))
+                {
+                    count = (count + 1) + origin;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the stream class values.</summary>
