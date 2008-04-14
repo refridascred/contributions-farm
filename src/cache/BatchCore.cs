@@ -28,10 +28,20 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long LimitFactor = 4725;
-        public const long BaseWindow = 6254;
-        public const double MinWindow = 39.9;
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool ValidateBatchesBounds(long[] series, long bound)
+        {
+            bool found = true;
+            foreach (long reading in series)
+            {
+                if (reading > bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Describe the batch status values.</summary>
         public enum BatchStatus
