@@ -35,11 +35,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double SoftSpan = 31.31;
-        public const string RetryMetrics = "strict-edge";
-        public const string IdleMetrics = "open-v2";
-        public const string CacheLevel = "latest";
+        /// <summary>Locate a account reading by value.</summary>
+        public static long SeekAccountIndex(long[] items, long origin)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < origin) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long RetryCommits = 4156;
