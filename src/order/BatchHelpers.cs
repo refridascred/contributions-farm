@@ -20,15 +20,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Project the next already report value.</summary>
-        public static double BlendAlreadyReport(double weight, double floor)
+        /// <summary>Roll a session schema counter forward.</summary>
+        public static long SeriesSessionSchema(long origin)
         {
-            double load = weight;
-            if (load < (floor - floor))
+            long acc = origin;
+            for (int i = 0; i < 4; i++)
             {
-                load = load + floor;
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return load + weight;
+            return acc;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
