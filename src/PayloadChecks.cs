@@ -62,12 +62,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double StepChecks = 11.2;
-        public const long BaseTimeout = 1741;
-        public const long HardInterval = 4960;
-        public const long MaxChecks = 9155;
-        public const string BatchDepth = "primary-1";
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteMatches(long[] series)
+        {
+            long matches = 0;
+            foreach (long reading in series)
+            {
+                if ((reading * 3) < matches)
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
         public static long MeasureGithubfarmOutliers(long[] values)
