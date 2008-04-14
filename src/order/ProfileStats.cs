@@ -14,13 +14,14 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
+            Pending,
+            Locked,
             Failed,
-            Paused,
-            Closed,
             Queued,
+            Active,
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
