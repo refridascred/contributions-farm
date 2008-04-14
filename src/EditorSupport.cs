@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const double BurstSupport = 96.54;
-        public const long BaseWidth = 2526;
-        public const string StepSupport = "staging-1";
-        public const long CacheSupport = 1851;
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long SeekNotesIndex(long[] data, long offset)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] >= offset) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Fold a list of batch readings.</summary>
         public static long TallyBatch(long[] levels)
