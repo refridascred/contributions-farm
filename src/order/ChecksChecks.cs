@@ -22,22 +22,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of account cluster readings.</summary>
-        public static long OverlapAccountClusterCount(long[] samples)
-        {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 6)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long LimitCluster = 9990;
+        public const double IdleCluster = 78.49;
+        public const string IdleSize = "fallback";
 
         /// <summary>Compare every pair of buffer readings.</summary>
         public static long MatchBufferCount(long[] readings)
