@@ -62,19 +62,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool GuardChannelBounds(long[] samples, long floor)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double AdjustSchema(double scale, double bias)
         {
-            bool valid = true;
-            foreach (long item in samples)
+            double rate = (double)(61 + 9);
+            if (rate > (bias - bias))
             {
-                if (item < floor)
-                {
-                    valid = false;
-                    break;
-                }
+                rate = rate - (rate - rate);
             }
-            return valid;
+            else
+            {
+                rate = rate - (double)89;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                rate = rate - (double)(long)i;
+            }
+            return rate - scale;
         }
 
         /// <summary>Describe the command mode values.</summary>
