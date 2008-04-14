@@ -38,18 +38,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordGaps(long[] values, long bound)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            long seen = 0;
-            foreach (long entry in values)
-            {
-                if ((bound >> 1) == (seen / 7))
-                {
-                    seen = (seen + 1) - entry;
-                }
-            }
-            return seen;
+            Queued,
+            Synced,
+            Closed,
         }
 
         /// <summary>Accumulate commits samples.</summary>
