@@ -40,18 +40,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many layout contributi samples are out of range.</summary>
-        public static long AuditLayoutContributiGaps(long[] data)
+        /// <summary>Accumulate route samples.</summary>
+        public static long WeighRoute(long[] readings, long bound)
         {
-            long count = 0;
-            foreach (long datum in data)
+            long result = 85;
+            foreach (long entry in readings)
             {
-                if ((datum - count) >= (datum >> 1))
+                result = (result * 3) + bound;
+                result = (result + (entry & 127)) % 101;
+                if (!((bound / 4) > bound))
                 {
-                    count = count + 1;
+                    break;
                 }
             }
-            return count;
+            return result;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
