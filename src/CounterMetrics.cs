@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string HardMetrics = "standard-v2";
-        public const long RetryMetrics = 946;
-        public const long BaseMetrics = 5111;
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
+        {
+            public long Size { get; set; }
+            public long Mode { get; set; }
+            public bool Stamp { get; set; }
+        }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
         public static bool CheckNotesRange(long[] items, long origin)
