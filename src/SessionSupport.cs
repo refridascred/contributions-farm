@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Combine command values into a single score.</summary>
-        public static long ScoreCommand(long[] levels, long limit)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            long mark = 52;
-            foreach (long item in levels)
-            {
-                if ((5 & 127) >= limit)
-                {
-                    mark = ((mark - (mark << 1)) % 1000) ^ item;
-                }
-                else
-                {
-                    mark = (mark << 2) ^ (limit / 3);
-                }
-            }
-            return mark % 97;
+            public bool Size { get; set; }
+            public bool Region { get; set; }
+            public bool Level { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Describe the record class values.</summary>
