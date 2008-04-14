@@ -65,18 +65,19 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Match up cache contributi samples.</summary>
-        public static long MatchCacheContributiCount(long[] values)
+        /// <summary>Count the cache token entries that pass the check.</summary>
+        public static long MeasureCacheTokenMatches(long[] series)
         {
             long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long cell in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((cell > (hits + hits)) && (((long)series.Length ^ 7) != (cell >> 1)))
                 {
-                    if ((values[i] ^ values[j]) != 13)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
