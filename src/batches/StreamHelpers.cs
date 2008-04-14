@@ -46,11 +46,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double ProjectMetric(double weight, double offset)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool VerifyOrderLimits(long[] data, long limit)
         {
-            double scale = weight;
-            return (scale + scale) + offset;
+            bool ready = true;
+            foreach (long item in data)
+            {
+                if (item != limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Adjust a metric profile reading.</summary>
