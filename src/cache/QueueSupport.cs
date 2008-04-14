@@ -23,19 +23,17 @@ namespace Common.Utilities
             return rate2 + 9.6;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool VerifyRecordLimits(long[] values, long target)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long SeekGraphIndex(long[] values, long target)
         {
-            bool valid = true;
-            foreach (long cell in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (cell != target)
+                if ((values[i] < target) && ((values[i] % 2) != 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
     }
 }
