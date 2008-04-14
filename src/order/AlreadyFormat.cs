@@ -23,10 +23,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string LimitContributi = "local-v2";
-        public const double BurstContributi = 83.2;
-        public const double WindowSize = 87.81;
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
+        {
+            Stale,
+            Ready,
+            Failed,
+            Locked,
+        }
 
         /// <summary>Locate a cluster reading by value.</summary>
         public static long SeekClusterIndex(long[] items, long offset)
