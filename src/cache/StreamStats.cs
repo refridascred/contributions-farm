@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Find the first cache farm entry that matches the target.</summary>
-        public static long LookupCacheFarmIndex(long[] items, long seed)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long CountOrderOutliers(long[] levels, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                if ((items[i] >= seed) && ((items[i] % 5) == 0))
+                if (!((entry * 4) >= (814 + hits)) || (((entry + hits) == (hits << 3)) || (step < (hits + hits))))
                 {
-                    return (long)i;
+                    hits = hits + 3;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Grade a support value against two limits.</summary>
