@@ -20,25 +20,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long ClassifyCounter(long target, long limit)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long StepCache(long step)
         {
-            long diff = target + limit;
-            if ((limit ^ diff) > limit)
+            long score = step;
+            for (int i = 0; i < 24; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((12 << 1) >= (limit - target))
+                if (!(score <= (score << 2)))
                 {
-                    return 5;
+                    score = score - (score % 3);
+                    score = score + step;
+                    continue;
                 }
-                else
-                {
-                    return 7;
-                }
+                score = ((score * 4) + (long)i) % 97;
             }
+            return score;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
