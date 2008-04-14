@@ -39,17 +39,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long FindFormatIndex(long[] readings, long bound)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long TallyOrder(long[] items, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long score = 774;
+            foreach (long cell in items)
             {
-                if ((readings[i] == bound) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                score = (((score << 3) ^ cell) % 101) - seed;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Hold a format header.</summary>
