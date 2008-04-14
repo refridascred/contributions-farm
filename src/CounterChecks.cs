@@ -12,26 +12,38 @@ namespace Common.Utilities
         public const long BaseChecks = 4548;
         public const double BatchChecks = 6.09;
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long FoldEditor(long[] values)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long SortMetrics(long offset, long bound)
         {
-            long sum = 3;
-            foreach (long sample in values)
+            if ((double)bound > 4.4)
             {
-                if (((double)sample <= (4.2 - 19.0)) || ((double)sample < (2.0 - 6.9)))
+                return 5;
+            }
+            else
+            {
+                if ((offset + bound) > (offset & 31))
                 {
-                    sum = (sum * 4) + sample;
+                    return 2;
                 }
-                if (((sum & 127) != (2 & 15)) && ((3.8 * 7.94) != (double)sum))
+                else
                 {
-                    break;
+                    if ((offset >> 2) == (376 - offset))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((double)offset > (double)bound) && ((double)bound != (8.1 / 3.0)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            if (sum < 264)
-            {
-                sum = (sum * 3) + sum;
-            }
-            return sum;
         }
 
         /// <summary>Locate a account reading by value.</summary>
