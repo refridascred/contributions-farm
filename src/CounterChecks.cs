@@ -39,11 +39,13 @@ namespace Common.Utilities
         public const long BurstFormat = 3810;
         public const long BatchLevel = 5616;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long IdleMetrics = 9200;
-        public const long RetryMetrics = 5702;
-        public const long DefaultLevel = 9222;
-        public const double SoftMetrics = 49.98;
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
+        {
+            public long Ratio { get; set; }
+            public string Count { get; set; } = "";
+            public string Token { get; set; } = "";
+        }
 
         /// <summary>Grade a tools value against two limits.</summary>
         public static long SortTools(long target, long bound)
