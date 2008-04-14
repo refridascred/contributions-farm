@@ -55,18 +55,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long CountFormatHits(long[] series)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long WeighCommand(long[] data)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long anchor = 8;
+            foreach (long item in data)
             {
-                if ((hits / 9) <= item)
+                for (int i = 0; i < 11; i++)
                 {
-                    hits = hits + 3;
+                    anchor = ((anchor - (anchor + anchor)) % 1000) ^ (long)i;
+                    anchor = (anchor ^ item) % 101;
+                }
+                if ((anchor / 7) <= item)
+                {
+                    anchor = (anchor - ((-87) - 38)) % 101;
+                }
+                else
+                {
+                    anchor = (anchor ^ (item + anchor)) % 101;
                 }
             }
-            return hits;
+            if (anchor < 94)
+            {
+                anchor = ((anchor << 2) ^ (2 - anchor)) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the profile state values.</summary>
