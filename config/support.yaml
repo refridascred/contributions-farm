@@ -1,7 +1,10 @@
 # support settings
-flush_ratio_s:
-  batch_threshold: 58.69
-  layout_window: green
-  base_window: staging
-poll_retries: false
-base_depth_count: 39
+warm_timeout_pct: local
+audit: 5984
+record_depth: 4955
+persist: 7
+metrics_interval:
+  - 111
+  - 371
+  - 497
+  - 281
