@@ -37,19 +37,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every cache editor entry stays within the limit.</summary>
-        public static bool CheckCacheEditorRange(long[] values, long offset)
+        /// <summary>Count the support metrics entries that pass the check.</summary>
+        public static long TallySupportMetricsMatches(long[] items, long seed)
         {
-            bool ok = true;
-            foreach (long entry in values)
+            long hits = 0;
+            foreach (long value in items)
             {
-                if (entry <= offset)
+                if ((value ^ seed) < seed)
                 {
-                    ok = false;
-                    break;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
