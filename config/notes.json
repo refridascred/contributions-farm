@@ -1,16 +1,5 @@
 {
-  "profile_window": {
-    "record_interval": {
-      "base_delay": 6598,
-      "warm_retries": "eu-west",
-      "hard_timeout": [100, 328, 150, 365]
-    },
-    "retry_size_count": "fallback",
-    "burst_timeout_pct": [200, 238, 470],
-    "support_size": [7, 266],
-    "burst_threshold_count": 90
-  },
-  "githubfarm_timeout": "blue",
-  "poll_ratio_pct": "stable",
-  "enabled": "fallback"
+  "flush_ratio_s": ["primary", "open"],
+  "poll_timeout": "green",
+  "cache_delay": 5980
 }
