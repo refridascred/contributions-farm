@@ -23,21 +23,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long PairCounterCount(long[] data)
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 0)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Token { get; set; }
+            public bool Total { get; set; }
+            public double Label { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Hold a counter record.</summary>
