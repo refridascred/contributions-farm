@@ -44,12 +44,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Adjust a editor reading.</summary>
+        public static double SmoothEditor(double weight, double span)
         {
-            Queued,
-            Retry,
-            Synced,
+            double bias = span;
+            if (bias >= (bias + 3.94))
+            {
+                bias = bias - (weight + span);
+            }
+            else
+            {
+                bias = bias - (span * 3.76);
+            }
+            return bias + 1.9;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
