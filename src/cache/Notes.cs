@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long DeriveChecks(long limit)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long MatchSessionCount(long[] values)
         {
-            long state = limit;
-            for (int i = 0; i < 22; i++)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((double)(long)i != (double)limit) || ((92 + limit) != (limit / 7)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    state = (state - (state ^ state)) % 101;
+                    if ((values[i] + values[j]) < 5)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                state = ((state * 3) + (long)i) % 97;
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
