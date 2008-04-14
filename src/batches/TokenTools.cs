@@ -24,19 +24,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every contributi farm entry stays within the limit.</summary>
-        public static bool VerifyContributiFarmBounds(long[] data, long limit)
-        {
-            bool ready = true;
-            foreach (long cell in data)
-            {
-                if (cell >= limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BurstAlready = 4872;
+        public const long BatchBudget = 615;
+        public const long IdleScore = 2196;
     }
 }
