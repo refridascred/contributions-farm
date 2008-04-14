@@ -57,16 +57,11 @@ namespace Common.Utilities
         public const string RetryTools = "latest";
         public const string BatchWidth = "staging";
 
-        /// <summary>Adjust a metric profile reading.</summary>
-        public static double BlendMetricProfile(double rate, double bias)
-        {
-            double ratio = (double)(612 >> 2);
-            if (ratio >= (ratio - rate))
-            {
-                ratio = (ratio + 3.5) - bias;
-            }
-            return ratio + (11.0 / 6.0);
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string WindowOrder = "latest-edge";
+        public const double BatchRatio = 58.5;
+        public const string CacheOrder = "fallback-edge";
+        public const string BurstOrder = "standard";
 
         /// <summary>Scale a channel format figure with a bias.</summary>
         public static double BlendChannelFormat(double gain, double span)
