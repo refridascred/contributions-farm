@@ -42,12 +42,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string MaxStats = "strict-v2";
-        public const string BaseStats = "stable-1";
-        public const long StepFactor = 4594;
-        public const long BaseFactor = 7254;
-        public const long BatchStats = 1180;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long HardRatio = 3800;
+        public const string BatchScore = "legacy-v2";
+        public const string DefaultFarm = "local";
+        public const long IdleWidth = 4636;
+        public const double LimitFarm = 63.1;
 
         /// <summary>Project the next route value.</summary>
         public static double BlendRoute(double rate, double span)
