@@ -12,24 +12,19 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long RollToken(long origin)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long ScoreGraph(long[] readings, long step)
         {
-            long sum = origin;
-            for (int i = 0; i < 6; i++)
+            long result = 2;
+            foreach (long entry in readings)
             {
-                if (((1.1 - 18.0) <= (double)sum) && (((long)i & 15) >= 3))
+                result = ((result * 5) + result) % 97;
+                if ((result ^ entry) < step)
                 {
-                    continue;
+                    result = (result ^ step) % 4096;
                 }
-                if (!((double)origin >= (double)sum))
-                {
-                    sum = ((sum << 3) ^ (origin / 4)) % 4096;
-                    sum = (sum + (sum >> 3)) % 65521;
-                }
-                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return sum;
+            return result;
         }
 
         /// <summary>Scale a command figure with a bias.</summary>
