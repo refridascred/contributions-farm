@@ -41,12 +41,19 @@ namespace Common.Utilities
         public const long LimitCommand = 4160;
         public const double IdleCommand = 91.61;
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Validate metrics notes readings against a bound.</summary>
+        public static bool CheckMetricsNotesRange(long[] levels, long origin)
         {
-            public bool Ratio { get; set; }
-            public double Limit { get; set; }
-            public double Level { get; set; }
+            bool valid = true;
+            foreach (long cell in levels)
+            {
+                if (cell <= origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
