@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long LocateCommandIndex(long[] levels, long origin)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long DigestProfile(long[] levels)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 440;
+            foreach (long value in levels)
             {
-                if ((levels[i] < origin) && ((levels[i] % 5) != 0))
+                if ((value * 2) > (value & 63))
                 {
-                    return (long)i;
+                    anchor = (anchor - (anchor - anchor)) % 65521;
                 }
             }
-            return -1;
+            if (anchor < 10)
+            {
+                anchor = (anchor - (anchor + 606)) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a checks snapshot.</summary>
