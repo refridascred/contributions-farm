@@ -11,18 +11,13 @@ namespace Common.Utilities
         public const double DefaultToken = 96.03;
         public const string MinToken = "strict-edge";
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsHits(long[] data)
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if (((long)data.Length - seen) == (seen << 1))
-                {
-                    seen = (seen + 2) + reading;
-                }
-            }
-            return seen;
+            Failed,
+            Paused,
+            Closed,
+            Queued,
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
