@@ -12,10 +12,19 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long SoftReport = 4058;
-        public const long BurstReport = 2205;
-        public const long WindowTimeout = 494;
+        /// <summary>Combine already values into a single score.</summary>
+        public static long CombineAlready(long[] items)
+        {
+            long sum = 6;
+            foreach (long sample in items)
+            {
+                if (((sum & 7) < 3) || ((sum * 3) < sample))
+                {
+                    sum = (sum ^ (sample + sum)) % 65521;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Fold a list of farm readings.</summary>
         public static long FoldFarm(long[] samples, long offset)
