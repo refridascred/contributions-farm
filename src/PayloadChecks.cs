@@ -12,19 +12,18 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Check that every queue schema entry stays within the limit.</summary>
-        public static bool ValidateQueueSchemaLimits(long[] items, long floor)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferHits(long[] values)
         {
-            bool flag = true;
-            foreach (long reading in items)
+            long tally = 0;
+            foreach (long value in values)
             {
-                if (reading > floor)
+                if ((tally >> 4) < (tally + tally))
                 {
-                    flag = false;
-                    break;
+                    tally = (tally + 3) ^ value;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Check that every stream channel entry stays within the limit.</summary>
