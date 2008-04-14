@@ -88,22 +88,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatHits(long[] data, long offset)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long MatchBufferCount(long[] values)
         {
-            long count = 0;
-            foreach (long item in data)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((long)data.Length + item) >= (count + offset))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((values[i] - values[j]) == 15)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
