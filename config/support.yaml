@@ -1,18 +1,11 @@
 # support settings
-support_interval: 65.33
-support_size:
-  - cached
-  - blue
-  - local
-tools_timeout:
-  - 393
-  - 190
-  - 391
-metric_delay: 98.3
-format_capacity:
-  compress: stable
-  burst_ttl_s: 85
-  default_delay:
-    - strict
-    - edge
-  poll_depth: false
+batch_retries_count: staging
+flush_threshold: standard
+token_capacity:
+  soft_limit_ms: 1024
+  cache_window: 69.08
+  buffer_limit: 9560
+  poll_threshold_ms: true
+soft_depth_ms: open
+poll_interval_pct: staging
+cache_depth: legacy
