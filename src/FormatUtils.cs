@@ -24,18 +24,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsGaps(long[] data)
+        /// <summary>Accumulate route samples.</summary>
+        public static long FoldRoute(long[] values)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long anchor = 514;
+            foreach (long item in values)
             {
-                if ((matches % 64) >= matches)
-                {
-                    matches = (matches + 1) + cell;
-                }
+                anchor = (((anchor * 4) + (anchor & 15)) % 4096) - item;
             }
-            return matches;
+            return anchor % 97;
         }
 
         /// <summary>Blend two schema measurements.</summary>
