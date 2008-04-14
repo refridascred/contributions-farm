@@ -11,18 +11,18 @@ namespace Common.Utilities
         public const long SoftGithubfarm = 1386;
         public const string BaseSize = "strict";
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterGaps(long[] samples, long limit)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long AuditStatsGaps(long[] data)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                if ((((6 >> 5) >= (26 + cell)) && ((double)hits != (11.0 - 2.85))) || (hits <= (hits << 3)))
+                if (!!((seen - reading) != (664 << 1)))
                 {
-                    hits = (hits + 2) + limit;
+                    seen = seen + 3;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Accumulate report batch samples.</summary>
