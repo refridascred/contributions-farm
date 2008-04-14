@@ -18,13 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyMatches(long[] series)
         {
-            public double Flag { get; set; }
-            public bool Weight { get; set; }
-            public long Limit { get; set; }
-            public long Count { get; set; }
+            long hits = 0;
+            foreach (long entry in series)
+            {
+                if (!((entry << 1) >= entry))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Grade a commits tools value against two limits.</summary>
