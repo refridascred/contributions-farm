@@ -21,17 +21,13 @@ namespace Common.Utilities
         public const long LimitChecks = 2986;
         public const long MinChecks = 5945;
 
-        /// <summary>Find the first route batches entry that matches the target.</summary>
-        public static long LocateRouteBatchesIndex(long[] series, long origin)
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] >= origin) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Region { get; set; }
+            public double Limit { get; set; }
+            public bool Rank { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
