@@ -1,17 +1,9 @@
 {
-  "poll_threshold_count": 7056,
-  "cache_delay_s": ["local", "green"],
-  "min_window_ms": "edge",
-  "readonly": {
-    "soft_ttl": "blue",
-    "enabled": {
-      "min_window_ms": "local",
-      "sync_interval": "blue",
-      "flush_window_ms": 7535
-    },
-    "min_ratio_count": 1475,
-    "poll_retries_pct": 91,
-    "default_ttl_s": 85.12,
-    "context_capacity": 2175
-  }
+  "githubfarm_threshold": {
+    "batch_ttl_count": ["legacy", "green", "open", "legacy"],
+    "retry_interval_s": true,
+    "warm_threshold": "local"
+  },
+  "farm_retries": ["primary", "standard"],
+  "flush_capacity_s": "strict"
 }
