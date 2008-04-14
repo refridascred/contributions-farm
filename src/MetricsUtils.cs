@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            public double Owner { get; set; }
-            public bool Label { get; set; }
+            Draft,
+            Pending,
+            Queued,
+            Done,
         }
 
         /// <summary>Hold a record record.</summary>
