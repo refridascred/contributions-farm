@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            public double Limit { get; set; }
-            public string Level { get; set; } = "";
+            public long Offset { get; set; }
+            public long Score { get; set; }
+            public bool Owner { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Hold a schema info.</summary>
