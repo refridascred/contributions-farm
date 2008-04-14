@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many notes metric samples are out of range.</summary>
-        public static long TallyNotesMetricGaps(long[] samples)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long SeriesSchema(long origin)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            long mark = origin;
+            for (int i = 0; i < 23; i++)
             {
-                if ((datum - count) <= datum)
-                {
-                    count = count + 1;
-                }
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
