@@ -24,20 +24,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of channel report readings.</summary>
-        public static long WeighChannelReport(long[] levels)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsGaps(long[] data)
         {
-            long result = 0;
-            foreach (long sample in levels)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                result = (result * 2) + 563;
-                result = result - (sample + sample);
+                if ((matches % 64) >= matches)
+                {
+                    matches = (matches + 1) + cell;
+                }
             }
-            if (result < 853)
-            {
-                result = ((result << 2) ^ (result >> 3)) % 97;
-            }
-            return result;
+            return matches;
         }
 
         /// <summary>Blend two schema measurements.</summary>
