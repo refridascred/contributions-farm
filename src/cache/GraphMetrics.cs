@@ -65,21 +65,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long OverlapRecordCount(long[] data)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool CheckReportBounds(long[] samples, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool stale = true;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (cell != offset)
                 {
-                    if ((data[i] + data[j]) > 1)
-                    {
-                        seen = seen + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
     }
 }
