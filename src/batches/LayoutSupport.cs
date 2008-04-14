@@ -30,19 +30,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every buffer commits entry stays within the limit.</summary>
-        public static bool VerifyBufferCommitsBounds(long[] data, long bound)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool CheckTokenRange(long[] levels, long seed)
         {
-            bool flag = true;
-            foreach (long item in data)
+            bool found = true;
+            foreach (long entry in levels)
             {
-                if (item <= bound)
+                if (entry >= seed)
                 {
-                    flag = false;
+                    found = false;
                     break;
                 }
             }
-            return flag;
+            return found;
         }
 
         /// <summary>Audit entry account readings against a rule.</summary>
