@@ -23,19 +23,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool VerifyFarmBounds(long[] samples, long step)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            bool valid = true;
-            foreach (long reading in samples)
-            {
-                if (reading <= step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Draft,
+            Done,
+            New,
+            Idle,
         }
     }
 }
