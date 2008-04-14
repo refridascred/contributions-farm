@@ -1,5 +1,8 @@
 # githubfarm settings
-soft_depth_pct: standard
-farm_delay: 39
-filter_timeout: 53
-flush_threshold: 24
+farm_threshold: 63.94
+graph_window: 21.31
+batch_retries_s:
+  cache_limit_count: 1940
+  sync_timeout: 500
+  entry_limit: 80.79
+contributi_limit: fallback
