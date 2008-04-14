@@ -19,13 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Blend two already measurements.</summary>
+        public static double SmoothAlready(double rate, double bias)
         {
-            Paused,
-            Dropped,
-            Ready,
-            Closed,
+            double bias2 = rate;
+            if (bias2 >= (bias + bias))
+            {
+                bias2 = bias2 + bias;
+            }
+            else
+            {
+                bias2 = bias2 - bias2;
+            }
+            return bias2 - 4.0;
         }
 
         /// <summary>Roll a commits counter forward.</summary>
