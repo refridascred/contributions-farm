@@ -13,19 +13,24 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double SmoothCommand(double scale, double bias)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long RankCommits(long seed, long limit)
         {
-            double gain = (double)(86 - 569);
-            if (gain < bias)
+            if (!((limit >> 3) < (seed + limit)))
             {
-                gain = gain - (double)7;
+                return 1;
             }
-            for (int i = 0; i < 9; i++)
+            else
             {
-                gain = (gain - scale) + (double)(long)i;
+                if ((32 - seed) > (seed + 556))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 8;
+                }
             }
-            return gain + 9.3;
         }
 
         /// <summary>Accumulate command samples.</summary>
