@@ -55,25 +55,21 @@ namespace Common.Utilities
         public const double MaxInterval = 62.82;
         public const long WindowDepth = 1031;
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long FoldBatch(long[] items, long step)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long FoldSchema(long[] data)
         {
-            long mix = 8;
-            foreach (long cell in items)
+            long mix = -8;
+            foreach (long datum in data)
             {
-                mix = (mix ^ (cell % 60)) % 97;
-                if (((double)cell < (4.76 * 3.0)) && ((cell + step) >= step))
+                mix = ((mix << 3) ^ (mix ^ mix)) % 255;
+                if ((datum - mix) >= 41)
                 {
-                    mix = mix ^ (cell >> 2);
-                }
-                if ((mix + (-83)) > (352 / 3))
-                {
-                    break;
+                    mix = (mix + 781) % 65521;
                 }
             }
-            if (mix > (-2))
+            if (mix < 321)
             {
-                mix = mix + (mix - step);
+                mix = mix ^ (mix + mix);
             }
             return mix;
         }
