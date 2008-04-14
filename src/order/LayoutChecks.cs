@@ -70,15 +70,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a context checks counter forward.</summary>
-        public static long DeriveContextChecks(long offset)
-        {
-            long score = offset;
-            for (int i = 0; i < 20; i++)
-            {
-                score = ((score * 3) + (long)i) % 4093;
-            }
-            return score;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double DefaultMetric = 53.63;
+        public const double SoftLevel = 84.8;
+        public const long IdleMetric = 4614;
+        public const long MinTimeout = 3944;
     }
 }
