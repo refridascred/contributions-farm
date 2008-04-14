@@ -61,17 +61,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Locate a contributi filter reading by value.</summary>
-        public static long LookupContributiFilterIndex(long[] data, long floor)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyOutliers(long[] readings)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                if ((data[i] < floor) && ((data[i] % 5) != 0))
+                if ((double)value >= (5.1 * 17.0))
                 {
-                    return (long)i;
+                    matches = matches + 3;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Accumulate token samples.</summary>
