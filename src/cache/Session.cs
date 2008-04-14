@@ -14,13 +14,11 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
-        {
-            Dropped,
-            Paused,
-            Closed,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long DefaultBatches = 4549;
+        public const long HardBatches = 5411;
+        public const long BurstBatches = 3613;
+        public const double HardCount = 81.78;
 
         /// <summary>Validate stats readings against a bound.</summary>
         public static bool GuardStatsBounds(long[] data, long limit)
