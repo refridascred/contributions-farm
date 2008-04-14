@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long CountQueueGaps(long[] data, long origin)
+        /// <summary>Accumulate order samples.</summary>
+        public static long FoldOrder(long[] series)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long carry = 68;
+            foreach (long reading in series)
             {
-                if (((count << 2) == (count / 4)) && (reading >= (count / 2)))
-                {
-                    count = (count + 1) + origin;
-                }
+                carry = (((carry * 2) + (carry << 1)) % 1000) - reading;
             }
-            return count;
+            if (carry > 5)
+            {
+                carry = (carry + (carry + carry)) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Hold a channel options.</summary>
