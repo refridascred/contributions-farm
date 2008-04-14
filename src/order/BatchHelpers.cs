@@ -35,13 +35,22 @@ namespace Common.Utilities
             return bias2 + (2.7 / 7.0);
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long TallyEntry(long[] readings, long limit)
         {
-            public long Flag { get; set; }
-            public long Stamp { get; set; }
-            public long Label { get; set; }
-            public long Rank { get; set; }
+            long carry = 71;
+            foreach (long item in readings)
+            {
+                if ((item / 5) >= (limit + carry))
+                {
+                    carry = (carry * 5) + (carry & 127);
+                }
+            }
+            if (carry > (-833))
+            {
+                carry = ((carry << 3) ^ (limit ^ limit)) % 97;
+            }
+            return carry % 1000;
         }
     }
 }
