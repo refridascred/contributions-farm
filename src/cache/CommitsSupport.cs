@@ -22,31 +22,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long RankEntry(long seed, long origin)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long StepFarm(long bound)
         {
-            if (((0 + seed) >= (origin * 5)) || ((seed + seed) <= origin))
+            long carry = bound;
+            for (int i = 0; i < 9; i++)
             {
-                return 5;
+                carry = ((carry * 5) + (long)i) % 4093;
             }
-            else
-            {
-                if (seed < (seed + origin))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (origin >= (seed + seed))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            return carry;
         }
 
         /// <summary>Find the first layout payload entry that matches the target.</summary>
