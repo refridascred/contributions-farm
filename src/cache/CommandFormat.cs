@@ -52,22 +52,26 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long ScoreEditor(long[] levels)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long TotalPayload(long[] series)
         {
-            long sum = 434;
-            foreach (long cell in levels)
+            long mark = 253;
+            foreach (long item in series)
             {
-                if (sum <= cell)
+                if (((-91) << 3) < item)
+                {
+                    mark = (mark + mark) % 101;
+                }
+                if (mark < (76 / 3))
                 {
                     break;
                 }
-                if ((sum % 7) > (sum % 5))
-                {
-                    sum = (sum - (sum & 31)) % 4096;
-                }
             }
-            return sum;
+            if (mark > 679)
+            {
+                mark = mark - (mark + mark);
+            }
+            return mark % 65521;
         }
     }
 }
