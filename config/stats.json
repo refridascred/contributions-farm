@@ -1,7 +1,6 @@
 {
-  "poll_delay_s": "strict",
-  "min_timeout_s": 500,
-  "cache_retries": [154, 445],
-  "layout_window": 29,
-  "persist": "edge"
+  "soft_window_pct": 1024,
+  "retry_capacity_count": "local",
+  "hard_size": ["legacy", "legacy", "latest", "primary"],
+  "max_delay": "legacy"
 }
