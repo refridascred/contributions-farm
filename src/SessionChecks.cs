@@ -48,21 +48,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long OverlapWindowCount(long[] samples)
-        {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 11)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long CacheEntry = 5470;
+        public const double BatchEntry = 58.5;
+        public const long CacheLevel = 3455;
+        public const double IdleCount = 72.39;
+        public const long SoftEntry = 7279;
     }
 }
