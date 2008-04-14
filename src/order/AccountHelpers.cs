@@ -38,10 +38,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long SoftSession = 3243;
-        public const long DefaultSession = 2038;
-        public const long StepSession = 5012;
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
+        {
+            public bool Token { get; set; }
+            public double Flag { get; set; }
+        }
 
         /// <summary>Validate payload readings against a bound.</summary>
         public static bool ValidatePayloadLimits(long[] series, long bound)
