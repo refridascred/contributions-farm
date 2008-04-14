@@ -39,18 +39,31 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long DeriveBuffer(long bound)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long BucketCommits(long limit, long floor)
         {
-            long carry = bound;
-            for (int i = 0; i < 15; i++)
+            if (floor <= limit)
             {
-                carry = (carry ^ (6 - 485)) % 1000;
-                carry = ((carry * 4) + bound) % 255;
-                carry = (carry ^ (bound ^ bound)) % 101;
-                carry = ((carry * 3) + (long)i) % 97;
+                return 7;
             }
-            return carry;
+            else
+            {
+                if (!((double)floor < (3.3 * 7.9)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((limit + limit) >= limit)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
     }
 }
