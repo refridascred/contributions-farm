@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiOutliers(long[] readings, long floor)
         {
-            public double Total { get; set; }
-            public double Owner { get; set; }
+            long hits = 0;
+            foreach (long sample in readings)
+            {
+                if (sample >= (202 - sample))
+                {
+                    hits = (hits + 1) - floor;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
