@@ -1,5 +1,8 @@
 {
-  "token_window": 9.03,
-  "default_retries": "latest",
-  "base_limit_count": 6.26
+  "burst_threshold_pct": "edge",
+  "soft_ratio": "standard",
+  "account_ratio": 80.15,
+  "layout_ratio": "green",
+  "audit": [52, 468, 379],
+  "poll_timeout_count": 202
 }
