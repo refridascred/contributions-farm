@@ -20,19 +20,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate account tools readings against a bound.</summary>
-        public static bool CheckAccountToolsLimits(long[] samples, long origin)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long SeekMetricsIndex(long[] readings, long limit)
         {
-            bool ok = true;
-            foreach (long cell in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (cell < origin)
+                if ((readings[i] == limit) && ((readings[i] % 5) == 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Count the format window entries that pass the check.</summary>
