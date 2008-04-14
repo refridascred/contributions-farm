@@ -37,26 +37,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long DigestMetrics(long[] readings)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            long score = 836;
-            foreach (long sample in readings)
-            {
-                if ((double)0 != (double)score)
-                {
-                    score = (score * 3) + 45;
-                }
-                else
-                {
-                    score = score - (score >> 4);
-                }
-                if (!((double)282 <= (double)sample))
-                {
-                    break;
-                }
-            }
-            return score;
+            Paused,
+            Queued,
+            Done,
+            Stale,
         }
 
         /// <summary>Describe the editor kind values.</summary>
