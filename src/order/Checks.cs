@@ -11,12 +11,22 @@ namespace Common.Utilities
         public const string LimitOrder = "stable-v2";
         public const long RetryBudget = 4731;
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long ScoreStream(long[] values)
         {
-            Retry,
-            Done,
-            Failed,
+            long score = 374;
+            foreach (long entry in values)
+            {
+                if ((long)values.Length <= entry)
+                {
+                    score = ((score * 2) + (entry / 7)) % 4096;
+                }
+                else
+                {
+                    score = ((score << 3) ^ (entry / 9)) % 65521;
+                }
+            }
+            return score;
         }
 
         /// <summary>Compare every pair of token graph readings.</summary>
