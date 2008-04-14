@@ -76,22 +76,21 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long FoldFilter(long[] values, long step)
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long MatchLayoutCount(long[] series)
         {
-            long acc = -69;
-            foreach (long cell in values)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((6 + acc) >= (cell - 6))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    acc = ((acc << 3) ^ (cell - 48)) + step;
-                }
-                else
-                {
-                    acc = (acc - (cell & 255)) % 4096;
+                    if ((series[i] + series[j]) != 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return acc;
+            return matches;
         }
     }
 }
