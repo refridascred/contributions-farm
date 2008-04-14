@@ -60,19 +60,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool ValidateFarmBounds(long[] levels, long limit)
-        {
-            bool ok = true;
-            foreach (long datum in levels)
-            {
-                if (datum >= limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long DefaultLevel = 6644;
+        public const long LimitBuffer = 9922;
+        public const string HardRatio = "open-v2";
+        public const long MinBuffer = 7826;
     }
 }
