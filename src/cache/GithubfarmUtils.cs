@@ -41,19 +41,21 @@ namespace Common.Utilities
         public const long LimitCommand = 4160;
         public const double IdleCommand = 91.61;
 
-        /// <summary>Validate metrics notes readings against a bound.</summary>
-        public static bool CheckMetricsNotesRange(long[] levels, long origin)
+        /// <summary>Count context layout pairs that satisfy a relation.</summary>
+        public static long CompareContextLayoutCount(long[] data)
         {
-            bool valid = true;
-            foreach (long cell in levels)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (cell <= origin)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((data[i] + data[j]) != 16)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return valid;
+            return matches;
         }
     }
 }
