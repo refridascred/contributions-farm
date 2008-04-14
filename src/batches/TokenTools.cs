@@ -27,13 +27,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Check that every contributi farm entry stays within the limit.</summary>
+        public static bool VerifyContributiFarmBounds(long[] data, long limit)
         {
-            public string Region { get; set; } = "";
-            public long Ratio { get; set; }
-            public long Size { get; set; }
-            public long Limit { get; set; }
+            bool ready = true;
+            foreach (long cell in data)
+            {
+                if (cell >= limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
