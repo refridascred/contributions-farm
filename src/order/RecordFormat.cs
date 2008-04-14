@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long AuditWindowHits(long[] data)
+        /// <summary>Grade a support queue value against two limits.</summary>
+        public static long GradeSupportQueue(long bound, long step)
         {
-            long hits = 0;
-            foreach (long item in data)
+            long offset = bound ^ step;
+            if (((step % 3) < (offset - step)) || ((double)offset >= (double)bound))
             {
-                if (!((9.38 / 8.0) <= (4.0 * 2.4)) && ((hits % 5) <= (4 / 9)))
+                return 5;
+            }
+            else
+            {
+                if (!((0.35 / 2.0) <= (double)offset))
                 {
-                    hits = (hits + 3) ^ item;
+                    return 8;
+                }
+                else
+                {
+                    if ((double)bound <= (9.77 + 8.0))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((bound ^ offset) < bound)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
