@@ -19,12 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string MinFilter = "local";
-        public const double IdleDepth = 54.37;
-        public const double LimitCount = 42.13;
-        public const long CacheFilter = 4834;
-        public const long DefaultFilter = 4358;
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
+        {
+            Done,
+            Closed,
+            Draft,
+            New,
+            Idle,
+        }
 
         /// <summary>Validate cache readings against a bound.</summary>
         public static bool GuardCacheRange(long[] series, long target)
