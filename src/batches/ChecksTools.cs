@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long SeriesRoute(long target)
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            long sum = target;
-            for (int i = 0; i < 14; i++)
-            {
-                if (!((sum - target) >= (755 >> 1)))
-                {
-                    sum = sum + sum;
-                    break;
-                }
-                sum = ((sum << 3) ^ target) % 97;
-                sum = ((sum * 2) + (long)i) % 97;
-            }
-            return sum;
+            public double Score { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Accumulate channel samples.</summary>
