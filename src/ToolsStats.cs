@@ -41,15 +41,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long CombineCommits(long[] items, long origin)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorGaps(long[] values, long target)
         {
-            long acc = 1;
-            foreach (long datum in items)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                acc = (((acc * 5) + (acc - origin)) % 97) ^ datum;
+                if ((target ^ target) < (matches + sample))
+                {
+                    matches = matches + 2;
+                }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Grade a support value against two limits.</summary>
