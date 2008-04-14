@@ -79,38 +79,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long BucketRecord(long floor, long floor2)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool ValidateNotesRange(long[] samples, long seed)
         {
-            if ((-481) >= floor2)
+            bool stale = true;
+            foreach (long entry in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if ((floor * 4) != ((-729) >> 3))
+                if (entry < seed)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (3.1 <= (double)floor2)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((floor2 >> 3) >= (floor2 + floor2)) || ((double)floor > 7.8))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
