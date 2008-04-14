@@ -32,14 +32,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
+            New,
             Idle,
-            Done,
-            Stale,
-            Paused,
-            Ready,
+            Draft,
+            Queued,
+            Retry,
         }
 
         /// <summary>Describe the checks level values.</summary>
