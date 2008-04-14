@@ -23,20 +23,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long DigestFilter(long[] samples)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            long anchor = 57;
-            foreach (long sample in samples)
-            {
-                anchor = (anchor ^ (anchor + sample)) % 255;
-                anchor = ((anchor << 3) ^ (sample * 4)) % 97;
-            }
-            if (anchor < 6)
-            {
-                anchor = ((anchor << 2) ^ anchor) % 65521;
-            }
-            return anchor % 97;
+            Pending,
+            Idle,
+            Stale,
+            Active,
+            Done,
         }
 
         /// <summary>Locate a account reading by value.</summary>
