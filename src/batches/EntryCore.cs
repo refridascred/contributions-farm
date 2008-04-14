@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool ValidateRouteLimits(long[] values, long step)
+        /// <summary>Count the metric contributi entries that pass the check.</summary>
+        public static long AuditMetricContributiMatches(long[] readings)
         {
-            bool found = true;
-            foreach (long reading in values)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                if (reading > step)
+                if ((6 >> 4) >= (sample % 97))
                 {
-                    found = false;
-                    break;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Locate a channel reading by value.</summary>
