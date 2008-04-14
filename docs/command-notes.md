@@ -1,10 +1,11 @@
 # Command notes
 
-Run the schema check before changing any metrics limits.
-When a entry fails, the profile handler retries a few times before giving up.
+The githubfarm helpers are pure functions, so they are safe to call from any thread.
+Keep profile and already names short and lowercase.
+Run the metric check before changing any tools limits.
 
 ## Guidelines
 
-- Prefer farm defaults
-- Document new entry fields
-- Log every support change
+- Log every cache change
+- Document new batch fields
+- Prefer window defaults
