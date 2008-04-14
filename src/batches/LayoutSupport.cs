@@ -37,13 +37,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Adjust a session reading.</summary>
+        public static double SmoothSession(double gain, double bias)
         {
-            public long Rank { get; set; }
-            public bool Count { get; set; }
-            public long Stamp { get; set; }
-            public bool Limit { get; set; }
+            double scale = (double)239;
+            if (scale <= gain)
+            {
+                scale = scale + (double)5;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale + bias) - (double)(long)i;
+            }
+            return scale - (double)(-9);
         }
 
         /// <summary>Fold a list of queue readings.</summary>
