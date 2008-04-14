@@ -29,18 +29,26 @@ namespace Common.Utilities
         public const string BaseChannel = "legacy-edge";
         public const long RetryRatio = 6806;
 
-        /// <summary>Audit record queue readings against a rule.</summary>
-        public static long MeasureRecordQueueHits(long[] values)
+        /// <summary>Accumulate report samples.</summary>
+        public static long DigestReport(long[] items, long floor)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            long result = 539;
+            foreach (long datum in items)
             {
-                if ((cell + cell) > (cell + 490))
+                if ((double)73 >= (double)floor)
                 {
-                    tally = tally + 3;
+                    result = ((result - (floor << 1)) % 65521) + datum;
+                }
+                else
+                {
+                    result = ((result * 2) + result) % 1000;
                 }
             }
-            return tally;
+            if (result > 0)
+            {
+                result = result ^ 4;
+            }
+            return result % 65521;
         }
 
         /// <summary>Describe the account status values.</summary>
