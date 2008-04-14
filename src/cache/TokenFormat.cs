@@ -37,9 +37,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double MinEntry = 70.54;
-        public const long WindowInterval = 2785;
-        public const long IdleEntry = 6320;
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double BlendLayout(double weight, double bias)
+        {
+            double weight2 = (double)(808 - 659);
+            if (weight2 < weight2)
+            {
+                weight2 = ((weight2 + (double)7) - weight) - bias;
+            }
+            else
+            {
+                weight2 = weight2 + weight2;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                weight2 = (weight2 + (4.48 * 7.4)) + (double)(long)i;
+            }
+            return weight2 - (9.69 * 7.86);
+        }
     }
 }
