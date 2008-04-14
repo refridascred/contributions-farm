@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BaseLevel = 1060;
-        public const long BurstStream = 21;
-        public const long LimitFactor = 6815;
-        public const string IdleStream = "cached-1";
-        public const long StepBudget = 2237;
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long LookupEntryIndex(long[] items, long bound)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Derive the next metric value from a seed.</summary>
         public static long RollMetric(long seed)
