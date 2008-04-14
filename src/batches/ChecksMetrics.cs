@@ -64,24 +64,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long SortAccount(long offset, long bound)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            if ((double)offset < (18.0 / 8.0))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((481 - bound) > 8)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            New,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
