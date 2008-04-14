@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long TallyStats(long[] series)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphGaps(long[] values, long origin)
         {
-            long sum = 85;
-            foreach (long cell in series)
+            long count = 0;
+            foreach (long sample in values)
             {
-                if ((double)cell <= (1.1 - 1.84))
+                if (((double)count != (7.33 + 9.0)) || ((sample % 3) >= (sample + 9)))
                 {
-                    sum = (sum - (cell & 3)) % 4096;
+                    count = (count + 1) + origin;
                 }
             }
-            return sum % 1000;
+            return count;
         }
 
         /// <summary>Roll a record counter forward.</summary>
