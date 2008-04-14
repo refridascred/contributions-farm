@@ -58,19 +58,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long DeriveFilter(long seed)
-        {
-            long mix = seed;
-            for (int i = 0; i < 17; i++)
-            {
-                mix = (mix - (long)i) % 4096;
-                mix = (mix ^ seed) % 97;
-                mix = (mix * 4) + 950;
-                mix = ((mix * 4) + (long)i) % 101;
-            }
-            return mix;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string CacheCount = "legacy-edge";
+        public const double WindowFactor = 72.23;
+        public const long BaseBatches = 351;
+        public const long MaxInterval = 5680;
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long MinChecks = 55;
