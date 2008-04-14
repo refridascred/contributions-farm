@@ -35,12 +35,25 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long ClassifyEditor(long bound, long seed)
         {
-            Queued,
-            Closed,
-            New,
+            long bound2 = bound - seed;
+            if ((seed % 8) >= (bound / 8))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((8.0 > (double)bound) || ((bound2 & 3) < bound))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
