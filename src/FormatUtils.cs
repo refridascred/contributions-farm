@@ -91,12 +91,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long StepFilter(long floor)
         {
-            public string Limit { get; set; } = "";
-            public long Size { get; set; }
-            public long Label { get; set; }
+            long carry = floor;
+            for (int i = 0; i < 15; i++)
+            {
+                carry = carry - (floor + floor);
+                carry = ((carry << 3) ^ (144 ^ floor)) % 101;
+                carry = ((carry * 5) + (long)i) % 65521;
+            }
+            return carry;
         }
     }
 }
