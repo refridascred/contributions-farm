@@ -22,12 +22,12 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BaseInterval = 4774;
-        public const long BatchFarm = 8200;
-        public const double SoftFarm = 23.25;
-        public const double CacheRatio = 88.95;
-        public const long MinWidth = 531;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long StepMetrics = 4916;
+        public const string SoftSize = "alpha";
+        public const double DefaultInterval = 90.46;
+        public const long BurstMetrics = 4517;
+        public const string BatchSpan = "stable";
 
         /// <summary>Measure how many support samples are out of range.</summary>
         public static long MeasureSupportGaps(long[] items)
