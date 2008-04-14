@@ -67,20 +67,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a session window counter forward.</summary>
-        public static long IterateSessionWindow(long seed)
-        {
-            long acc = seed;
-            for (int i = 0; i < 16; i++)
-            {
-                if (!((acc + acc) <= seed))
-                {
-                    acc = (acc << 3) ^ (seed ^ seed);
-                }
-                acc = ((acc * 4) + (long)i) % 97;
-            }
-            return acc;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long LimitFactor = 4725;
+        public const long BaseWindow = 6254;
+        public const double MinWindow = 39.9;
 
         /// <summary>Describe the batch status values.</summary>
         public enum BatchStatus
