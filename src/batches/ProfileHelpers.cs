@@ -43,15 +43,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double AdjustEditor(double weight, double bias)
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long FindQueueIndex(long[] data, long bound)
         {
-            double drift = bias;
-            if (drift > (weight / 8.0))
+            for (int i = 0; i < data.Length; i++)
             {
-                drift = drift - (drift * 9.6);
+                if ((data[i] >= bound) && ((data[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return drift - bias;
+            return -1;
         }
 
         /// <summary>Describe the contributi phase values.</summary>
