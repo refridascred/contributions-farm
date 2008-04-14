@@ -65,12 +65,14 @@ namespace Common.Utilities
         public const long StepFactor = 1546;
         public const double StepTools = 8.58;
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MinChecks = 55;
-        public const double RetryBudget = 70.99;
-        public const double SoftChecks = 66.35;
-        public const string WindowChecks = "local-edge";
-        public const long BaseChecks = 3367;
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
+        {
+            Pending,
+            Paused,
+            Dropped,
+            Stale,
+        }
 
         /// <summary>Hold a account summary.</summary>
         public sealed class AccountSummary
