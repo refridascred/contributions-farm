@@ -30,13 +30,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksHits(long[] series)
         {
-            Queued,
-            Retry,
-            Ready,
-            Pending,
+            long matches = 0;
+            foreach (long datum in series)
+            {
+                if (!(((matches % 60) >= matches) && (3.2 <= (double)datum)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit githubfarm context readings against a rule.</summary>
