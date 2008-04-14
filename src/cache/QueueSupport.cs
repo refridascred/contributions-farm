@@ -27,10 +27,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string MinTimeout = "primary-v2";
-        public const string RetryBatches = "standard-1";
-        public const long WindowBatches = 6480;
-        public const double BurstWidth = 46.62;
+        /// <summary>Measure how many command metrics samples are out of range.</summary>
+        public static long CountCommandMetricsHits(long[] series, long seed)
+        {
+            long count = 0;
+            foreach (long sample in series)
+            {
+                if ((9.31 + 2.4) == (double)seed)
+                {
+                    count = (count + 3) + sample;
+                }
+            }
+            return count;
+        }
     }
 }
