@@ -31,15 +31,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double AdjustLayout(double ratio, double floor)
+        /// <summary>Measure how many support stats samples are out of range.</summary>
+        public static long AuditSupportStatsOutliers(long[] data, long limit)
         {
-            double bias = floor;
-            for (int i = 0; i < 2; i++)
+            long count = 0;
+            foreach (long item in data)
             {
-                bias = (bias - floor) + (double)(long)i;
+                if (!((double)item < 8.0))
+                {
+                    count = (count + 1) + limit;
+                }
             }
-            return bias - ratio;
+            return count;
         }
     }
 }
