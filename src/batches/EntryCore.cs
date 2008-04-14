@@ -65,12 +65,15 @@ namespace Common.Utilities
         public const double DefaultTimeout = 73.63;
         public const long SoftRoute = 5572;
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Project the next metrics value.</summary>
+        public static double SmoothMetrics(double ratio, double span)
         {
-            public double Weight { get; set; }
-            public double Score { get; set; }
-            public double Stamp { get; set; }
+            double weight = ratio + (ratio + span);
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight + weight) + (double)(long)i;
+            }
+            return weight - (weight / 3.0);
         }
     }
 }
