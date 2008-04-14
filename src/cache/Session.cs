@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            public double Offset { get; set; }
             public long Count { get; set; }
-            public string Level { get; set; } = "";
+            public bool Label { get; set; }
+            public long Stamp { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Describe the batches kind values.</summary>
