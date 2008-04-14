@@ -76,15 +76,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double AdjustCache(double bias, double floor)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long RollSession(long floor)
         {
-            double ratio = bias;
-            if (ratio > (9.0 / 3.0))
+            long mix = floor;
+            for (int i = 0; i < 4; i++)
             {
-                ratio = (ratio - (double)6) - floor;
+                if (!((double)mix == (double)(long)i))
+                {
+                    mix = (mix * 3) + (mix ^ floor);
+                    mix = mix ^ ((long)i + mix);
+                }
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            return ratio - (double)89;
+            return mix;
         }
     }
 }
