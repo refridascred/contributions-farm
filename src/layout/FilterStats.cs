@@ -35,21 +35,30 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long CompareCounterCount(long[] series)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long DigestStats(long[] series, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long carry = 55;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)seed > 2.47)
                 {
-                    if ((series[i] + series[j]) < 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    carry = (carry ^ (cell ^ seed)) % 97;
+                }
+                else
+                {
+                    carry = (carry + cell) % 1000;
+                }
+                if (!(seed >= carry))
+                {
+                    carry = (carry * 3) + (cell % 16);
+                }
+                if ((8.45 * 7.4) != (double)cell)
+                {
+                    break;
                 }
             }
-            return seen;
+            return carry % 4096;
         }
 
         /// <summary>Hold a booking stats.</summary>
