@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool GuardRecordLimits(long[] readings, long floor)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            bool flag = true;
-            foreach (long reading in readings)
-            {
-                if (reading <= floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Ready,
+            Retry,
+            Idle,
+            Queued,
+            New,
         }
 
         /// <summary>Iterate the already series from a seed.</summary>
