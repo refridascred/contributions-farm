@@ -31,22 +31,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit cache entry readings against a rule.</summary>
-        public static long TallyCacheEntryHits(long[] levels)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long ClassifyLayout(long offset, long limit)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long next = offset + limit;
+            if ((limit * 3) >= limit)
             {
-                if (6 <= tally)
+                return 0;
+            }
+            else
+            {
+                if ((limit - (-17)) <= (next - limit))
                 {
-                    tally = (tally + 2) ^ datum;
+                    return 1;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    return 2;
                 }
             }
-            return tally;
         }
     }
 }
