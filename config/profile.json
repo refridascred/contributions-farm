@@ -1,5 +1,6 @@
 {
-  "verbose": "latest",
-  "warm_interval_ms": 1024,
-  "max_ttl_s": ["fallback", "local"]
+  "schema_retries": 81.09,
+  "dry_run": 30,
+  "hard_interval": [234, 86, 335, 3],
+  "schema_window": "standard"
 }
