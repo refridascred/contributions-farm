@@ -25,10 +25,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string CacheMetrics = "latest";
-        public const long LimitMetrics = 2957;
-        public const long DefaultTimeout = 4114;
-        public const long BaseTimeout = 1774;
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long OverlapLayoutCount(long[] readings)
+        {
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 13)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
