@@ -12,18 +12,24 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportGaps(long[] series)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long RollToken(long origin)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            long sum = origin;
+            for (int i = 0; i < 6; i++)
             {
-                if (!(seen < (reading - seen)))
+                if (((1.1 - 18.0) <= (double)sum) && (((long)i & 15) >= 3))
                 {
-                    seen = seen + 3;
+                    continue;
                 }
+                if (!((double)origin >= (double)sum))
+                {
+                    sum = ((sum << 3) ^ (origin / 4)) % 4096;
+                    sum = (sum + (sum >> 3)) % 65521;
+                }
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Scale a command figure with a bias.</summary>
