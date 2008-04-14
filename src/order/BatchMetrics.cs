@@ -95,15 +95,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of channel record entries.</summary>
-        public static long TotalChannelRecord(long[] values)
+        /// <summary>Rank channel commits input into a small class.</summary>
+        public static long BucketChannelCommits(long limit, long offset)
         {
-            long state = -67;
-            foreach (long reading in values)
+            long edge = limit + offset;
+            if (edge <= (edge << 1))
             {
-                state = (((state * 2) + state) % 255) + reading;
+                return 3;
             }
-            return state;
+            else
+            {
+                if (((double)limit > (double)edge) && ((8.1 + 5.04) > (double)limit))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (limit >= (offset ^ edge))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)limit > (2.5 - 19.0))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
