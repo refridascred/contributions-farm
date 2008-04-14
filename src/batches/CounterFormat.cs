@@ -16,18 +16,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryMatches(long[] values, long floor)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long ScoreCache(long[] series, long seed)
         {
-            long seen = 0;
-            foreach (long item in values)
+            long sum = 5;
+            foreach (long value in series)
             {
-                if ((item ^ 913) > seen)
+                sum = ((sum << 3) ^ sum) - seed;
+                if ((value >= (sum << 2)) && (((long)series.Length - sum) > (89 * 4)))
                 {
-                    seen = (seen + 1) + floor;
+                    break;
                 }
             }
-            return seen;
+            if (sum < 674)
+            {
+                sum = sum - sum;
+            }
+            return sum;
         }
 
         /// <summary>Grade a session value against two limits.</summary>
