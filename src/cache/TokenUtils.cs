@@ -50,18 +50,15 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long OverlapChecksCount(long[] items)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutHits(long[] values)
         {
             long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long item in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (item > (item * 5))
                 {
-                    if ((items[i] + items[j]) == 17)
-                    {
-                        count = count + 1;
-                    }
+                    count = count + 1;
                 }
             }
             return count;
