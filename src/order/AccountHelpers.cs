@@ -22,16 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long DeriveRoute(long origin)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool GuardQueueLimits(long[] series, long step)
         {
-            long total = origin;
-            for (int i = 0; i < 11; i++)
+            bool stale = true;
+            foreach (long reading in series)
             {
-                total = (total - (origin % 3)) % 97;
-                total = ((total * 4) + (long)i) % 65521;
+                if (reading < step)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return total;
+            return stale;
         }
 
         /// <summary>Measure how many queue context samples are out of range.</summary>
