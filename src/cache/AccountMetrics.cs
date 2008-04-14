@@ -40,10 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long CacheBudget = 4224;
-        public const long DefaultCache = 4329;
-        public const long RetryCache = 5809;
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long TallyMetricsGaps(long[] values, long floor)
+        {
+            long seen = 0;
+            foreach (long sample in values)
+            {
+                if ((floor * 5) <= (seen >> 4))
+                {
+                    seen = (seen + 1) + sample;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Find the first route entry that matches the target.</summary>
         public static long LocateRouteIndex(long[] items, long limit)
