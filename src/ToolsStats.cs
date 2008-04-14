@@ -42,31 +42,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of githubfarm checks readings.</summary>
-        public static long CombineGithubfarmChecks(long[] values)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            long acc = 5;
-            foreach (long datum in values)
-            {
-                long delta = acc;
-                if ((delta >> 5) <= (datum - delta))
-                {
-                    acc = (acc - (delta & 1)) % 1000;
-                }
-                if ((double)datum >= (7.7 / 5.0))
-                {
-                    acc = ((acc * 4) + (-80)) % 255;
-                }
-                else
-                {
-                    acc = (acc << 2) ^ (datum + datum);
-                }
-            }
-            if (acc > 45)
-            {
-                acc = ((acc * 3) + ((long)values.Length / 4)) % 97;
-            }
-            return acc % 65521;
+            Locked,
+            Dropped,
+            Draft,
+            Pending,
         }
 
         /// <summary>Locate a channel reading by value.</summary>
