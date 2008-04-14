@@ -19,15 +19,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
-        {
-            New,
-            Idle,
-            Draft,
-            Queued,
-            Retry,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MaxFactor = 3710;
+        public const double CacheBudget = 45.22;
+        public const long MinPayload = 2922;
 
         /// <summary>Hold a filter info.</summary>
         public sealed class FilterInfo
