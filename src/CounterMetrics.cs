@@ -25,14 +25,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
-        {
-            Retry,
-            Idle,
-            Dropped,
-            Ready,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BatchCount = 4965;
+        public const long DefaultFactor = 645;
+        public const long BatchGraph = 5935;
+        public const string HardGraph = "legacy-v2";
 
         /// <summary>Hold a window stats.</summary>
         public sealed class WindowStats
