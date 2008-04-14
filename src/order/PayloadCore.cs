@@ -69,24 +69,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long GradeMetric(long target, long step)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool GuardContextBounds(long[] readings, long limit)
         {
-            if (!((double)step < 9.0))
+            bool ok = true;
+            foreach (long sample in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if ((step - step) >= step)
+                if (sample >= limit)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
     }
 }
