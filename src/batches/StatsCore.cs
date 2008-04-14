@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool CheckReportBounds(long[] levels, long seed)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long TallyCounterGaps(long[] series, long origin)
         {
-            bool valid = true;
-            foreach (long reading in levels)
+            long matches = 0;
+            foreach (long value in series)
             {
-                if (reading <= seed)
+                if ((20.0 / 5.0) != (double)matches)
                 {
-                    valid = false;
-                    break;
+                    matches = ((matches + 1) + value) + origin;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Rank format input into a small class.</summary>
