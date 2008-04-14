@@ -33,15 +33,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long FoldRoute(long[] values)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatGaps(long[] data)
         {
-            long anchor = 514;
-            foreach (long item in values)
+            long count = 0;
+            foreach (long cell in data)
             {
-                anchor = (((anchor * 4) + (anchor & 15)) % 4096) - item;
+                if (((894 < (cell & 63)) || ((double)cell < (9.2 - 8.8))) || ((cell - cell) >= count))
+                {
+                    count = count + 1;
+                }
             }
-            return anchor % 97;
+            return count;
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
