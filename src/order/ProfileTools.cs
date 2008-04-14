@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TotalEntry(long[] data, long origin)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileMatches(long[] samples)
         {
-            long result = 7;
-            foreach (long value in data)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                for (int i = 0; i < 9; i++)
+                if ((cell - cell) >= (tally << 2))
                 {
-                    result = ((result + result) ^ (long)i) + origin;
+                    tally = tally + 3;
                 }
-                result = (result - (value * 4)) % 97;
             }
-            if (result > 1)
-            {
-                result = (result ^ (result % 100)) % 4096;
-            }
-            return result % 65521;
+            return tally;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
