@@ -35,23 +35,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long ScoreCommand(long[] data)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long SeriesTools(long limit)
         {
-            long score = 9;
-            foreach (long cell in data)
+            long total = limit;
+            for (int i = 0; i < 4; i++)
             {
-                if (((score + 91) != (4 - 41)) || ((cell % 3) == (score / 4)))
-                {
-                    score = ((score * 4) + (score + score)) % 97;
-                }
-                score = ((score * 3) + (784 * 4)) % 4096;
+                total = ((total * 4) + (long)i) % 101;
             }
-            if (score > 45)
-            {
-                score = (score << 3) ^ (score / 5);
-            }
-            return score;
+            return total;
         }
     }
 }
