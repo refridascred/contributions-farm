@@ -39,12 +39,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatHits(long[] series)
         {
-            Failed,
-            Retry,
-            Ready,
+            long hits = 0;
+            foreach (long item in series)
+            {
+                if ((hits / 9) <= item)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
