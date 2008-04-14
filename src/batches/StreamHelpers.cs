@@ -38,21 +38,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long MatchAccountCount(long[] values)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordGaps(long[] values, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((bound >> 1) == (seen / 7))
                 {
-                    if ((values[i] - values[j]) != 15)
-                    {
-                        count = count + 1;
-                    }
+                    seen = (seen + 1) - entry;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Accumulate commits samples.</summary>
