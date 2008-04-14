@@ -1,11 +1,11 @@
 # githubfarm settings
-max_ratio_ms: 78
-min_delay:
-  - 388
-  - 490
-poll_timeout: stable
-command_window: 17
-poll_threshold_pct:
-  - 479
-  - 81
-burst_ttl_ms: 45.25
+sync_ttl_s: stable
+sync_depth:
+  - strict
+  - blue
+  - staging
+  - latest
+persist:
+  - latest
+  - local
+hard_ttl_s: strict
