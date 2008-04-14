@@ -31,18 +31,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long TallyStatsOutliers(long[] items)
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long CompareCommitsCount(long[] levels)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((datum - tally) >= 116)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    tally = tally + 2;
+                    if ((levels[i] + levels[j]) > 0)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
