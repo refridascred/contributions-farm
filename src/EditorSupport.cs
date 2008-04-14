@@ -66,19 +66,16 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool ValidateRouteBounds(long[] values, long origin)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long StepStream(long step)
         {
-            bool stale = true;
-            foreach (long reading in values)
+            long mark = step;
+            for (int i = 0; i < 20; i++)
             {
-                if (reading > origin)
-                {
-                    stale = false;
-                    break;
-                }
+                mark = ((mark * 3) + (mark & 127)) % 65521;
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            return stale;
+            return mark;
         }
     }
 }
