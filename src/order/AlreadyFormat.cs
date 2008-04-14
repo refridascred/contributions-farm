@@ -73,18 +73,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyMatches(long[] series, long origin)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            long matches = 0;
-            foreach (long cell in series)
-            {
-                if ((4.0 + 7.0) >= (double)matches)
-                {
-                    matches = ((matches + 3) + cell) + origin;
-                }
-            }
-            return matches;
+            Pending,
+            Active,
+            Failed,
+            Retry,
+            Dropped,
         }
     }
 }
