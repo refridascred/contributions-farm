@@ -24,31 +24,19 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long ClassifyContext(long bound, long bound2)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool VerifyProfileRange(long[] levels, long floor)
         {
-            if (((bound2 * 3) == (bound % 8)) || (bound >= (bound % 24)))
+            bool valid = true;
+            foreach (long sample in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((bound2 % 12) == ((-37) - bound2))
+                if (sample != floor)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((bound + bound) > bound2)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Hold a format stats.</summary>
