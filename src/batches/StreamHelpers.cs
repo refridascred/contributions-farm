@@ -20,23 +20,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long WeighContext(long[] data)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long OverlapNotesCount(long[] levels)
         {
-            long total = 873;
-            foreach (long sample in data)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                total = total ^ 6;
-                for (int i = 0; i < 6; i++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    total = (((total << 2) ^ (sample - sample)) % 97) ^ (long)i;
-                }
-                if ((double)total >= (8.59 + 2.76))
-                {
-                    total = (total ^ (total & 127)) % 255;
+                    if ((levels[i] + levels[j]) != 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return total % 1000;
+            return matches;
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
