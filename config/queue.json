@@ -1,12 +1,5 @@
 {
-  "readonly": "green",
-  "idle_retries_ms": {
-    "warm_delay_pct": 67,
-    "burst_window_s": false,
-    "retry_depth": "open"
-  },
-  "max_depth_s": 5994,
-  "channel_retries": "green",
-  "sync_retries": 58,
-  "cluster_timeout": "strict"
+  "graph_interval": true,
+  "command_window": 43.27,
+  "hard_size_s": "green"
 }
