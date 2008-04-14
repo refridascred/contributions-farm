@@ -1,16 +1,13 @@
 # Command notes
 
-The tools report groups every already by filter.
-The graph module keeps already values in sync with the batch cache.
-Each profile is validated before it reaches the context queue.
+The cache report groups every metric by cluster.
+The buffer module keeps channel values in sync with the record cache.
 
-Each record is validated before it reaches the token queue.
-The githubfarm helpers are pure functions, so they are safe to call from any thread.
-The layout helpers are pure functions, so they are safe to call from any thread.
+Keep window and buffer names short and lowercase.
+Use layout settings to tune how often session data is refreshed.
 
 ## Guidelines
 
-- Validate githubfarm input early
-- Review farm limits each release
-- Keep format values small
-- Log every cache change
+- Keep route values small
+- Document new buffer fields
+- Log every entry change
