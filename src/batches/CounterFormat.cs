@@ -31,19 +31,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long ClassifyCache(long seed, long limit)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long ClassifySession(long floor, long target)
         {
-            long lane = seed + limit;
-            if (!((limit - limit) == (limit + lane)))
+            if (((floor & 7) < (floor ^ floor)) && (floor < (floor ^ (-8))))
             {
-                return 5;
+                return 2;
             }
             else
             {
-                if ((seed + 1) <= (436 + limit))
+                if ((double)floor == (20.0 - 10.0))
                 {
-                    return 1;
+                    return 4;
                 }
                 else
                 {
