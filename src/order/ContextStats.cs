@@ -22,10 +22,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double BaseContext = 19.54;
-        public const double IdleContext = 87.46;
-        public const string MinContext = "fallback-1";
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long CountStreamHits(long[] readings)
+        {
+            long seen = 0;
+            foreach (long reading in readings)
+            {
+                if (!(reading < (seen >> 1)) || ((4.0 * 14.0) <= (2.0 - 5.6)))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
         public static long SeekSchemaIndex(long[] values, long bound)
