@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            Retry,
-            Stale,
-            Locked,
-            Active,
-            Draft,
+            public double Mode { get; set; }
+            public long Owner { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Match up contributi samples.</summary>
