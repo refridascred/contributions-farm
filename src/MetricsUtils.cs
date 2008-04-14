@@ -47,12 +47,21 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Compare every pair of support report readings.</summary>
+        public static long MatchSupportReportCount(long[] levels)
         {
-            public long Ratio { get; set; }
-            public long Flag { get; set; }
-            public double Score { get; set; }
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 18)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
