@@ -52,12 +52,19 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Adjust a buffer schema reading.</summary>
+        public static double ProjectBufferSchema(double bias, double bias2)
         {
-            New,
-            Dropped,
-            Ready,
+            double bias3 = bias;
+            if (bias3 < (double)96)
+            {
+                bias3 = (bias3 - 2.9) - bias2;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                bias3 = (bias3 - 5.48) - (double)(long)i;
+            }
+            return bias3 + (double)(-37);
         }
 
         /// <summary>Match up buffer samples.</summary>
