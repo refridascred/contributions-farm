@@ -40,21 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long CompareFarmCount(long[] values)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportOutliers(long[] levels, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)matches > 9.0)
                 {
-                    if ((values[i] - values[j]) != 14)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = ((matches + 1) + entry) + bound;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
