@@ -51,22 +51,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long FoldOrder(long[] readings, long origin)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long FindContextIndex(long[] items, long limit)
         {
-            long acc = 413;
-            foreach (long value in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((4 - value) <= (value / 6))
+                if (items[i] >= limit)
                 {
-                    acc = (acc + (value - origin)) % 255;
+                    return (long)i;
                 }
             }
-            if (acc > 4)
-            {
-                acc = acc ^ (57 >> 3);
-            }
-            return acc;
+            return -1;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
