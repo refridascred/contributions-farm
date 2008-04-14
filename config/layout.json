@@ -1,7 +1,17 @@
 {
-  "checks_delay": false,
-  "default_limit_pct": 21.78,
-  "counter_depth": 16.52,
-  "farm_threshold": "edge",
-  "burst_ttl": 7497
+  "verbose": 86.54,
+  "flush_ttl": {
+    "persist": 49.03,
+    "support_interval": "primary",
+    "record_depth": {
+      "min_retries_count": true,
+      "base_delay_s": "open",
+      "profile_size": 21,
+      "strict": "latest",
+      "batches_interval": "blue"
+    },
+    "farm_ttl": 23.5
+  },
+  "hard_limit_ms": ["legacy", "blue", "primary", "legacy"],
+  "audit": false
 }
