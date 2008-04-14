@@ -55,14 +55,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long AuditRouteMatches(long[] values, long bound)
         {
-            Idle,
-            Stale,
-            Active,
-            Failed,
-            Retry,
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if ((matches * 4) != (4 >> 4))
+                {
+                    matches = ((matches + 2) + datum) - bound;
+                }
+            }
+            return matches;
         }
     }
 }
