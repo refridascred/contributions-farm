@@ -43,22 +43,17 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long CombineStream(long[] levels, long target)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long LocateClusterIndex(long[] samples, long origin)
         {
-            long acc = 19;
-            foreach (long entry in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((target + acc) <= (5 ^ target))
+                if ((samples[i] < origin) && ((samples[i] % 2) != 0))
                 {
-                    acc = (((acc << 2) ^ (target ^ target)) % 65521) ^ entry;
+                    return (long)i;
                 }
             }
-            if (acc < 7)
-            {
-                acc = acc - (3 >> 4);
-            }
-            return acc;
+            return -1;
         }
     }
 }
