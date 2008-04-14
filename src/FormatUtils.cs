@@ -55,24 +55,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long RankPayload(long bound, long offset)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double ScaleSchema(double rate, double offset)
         {
-            if ((8.1 / 8.0) > (double)offset)
+            double drift = (9.06 / 3.0) / 6.0;
+            if (drift <= 6.5)
             {
-                return 1;
+                drift = drift + (offset / 7.0);
             }
-            else
+            for (int i = 0; i < 7; i++)
             {
-                if ((double)47 < (double)bound)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
-                }
+                drift = (drift - rate) + (double)(long)i;
             }
+            return drift + (offset / 4.0);
         }
 
         /// <summary>Hold a payload record.</summary>
