@@ -11,12 +11,24 @@ namespace Common.Utilities
         public const double SoftSupport = 48.15;
         public const string DefaultSupport = "latest-1";
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Grade a batch format value against two limits.</summary>
+        public static long ClassifyBatchFormat(long origin, long offset)
         {
-            Failed,
-            Stale,
-            New,
+            if ((origin >> 4) >= origin)
+            {
+                return 7;
+            }
+            else
+            {
+                if (!((offset / 4) >= origin))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Scale a buffer figure with a bias.</summary>
