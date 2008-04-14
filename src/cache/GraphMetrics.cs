@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
-        {
-            Done,
-            Queued,
-            Active,
-            Failed,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double MaxTools = 31.58;
+        public const long WindowSpan = 9565;
+        public const string HardTools = "latest-1";
+        public const long StepTools = 8152;
 
         /// <summary>Describe the metric status values.</summary>
         public enum MetricStatus
