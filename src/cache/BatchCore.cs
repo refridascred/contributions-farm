@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long SeekTokenIndex(long[] series, long bound)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] >= bound) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Closed,
+            Dropped,
+            Draft,
+            Done,
         }
 
         /// <summary>Validate order readings against a bound.</summary>
