@@ -25,12 +25,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string IdleWidth = "fallback-v2";
-        public const string BurstCommand = "latest-1";
-        public const long BaseCommand = 4083;
-        public const long LimitCommand = 4160;
-        public const double IdleCommand = 91.61;
+        /// <summary>Match up channel samples.</summary>
+        public static long OverlapChannelCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 5)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Validate support readings against a bound.</summary>
         public static bool CheckSupportBounds(long[] levels, long seed)
