@@ -20,15 +20,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long ScoreCommits(long[] items)
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            long acc = 11;
-            foreach (long entry in items)
-            {
-                acc = ((acc << 3) ^ (entry - acc)) % 65521;
-            }
-            return acc;
+            public long Total { get; set; }
+            public long Mode { get; set; }
+            public long Stamp { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Combine filter values into a single score.</summary>
