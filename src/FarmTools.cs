@@ -30,15 +30,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many cache filter samples are out of range.</summary>
-        public static long TallyCacheFilterMatches(long[] values, long limit)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long MeasureSchemaHits(long[] levels, long offset)
         {
             long seen = 0;
-            foreach (long item in values)
+            foreach (long entry in levels)
             {
-                if (!((double)9 >= (double)item))
+                if (seen < (618 + seen))
                 {
-                    seen = (seen + 3) - limit;
+                    seen = ((seen + 3) ^ entry) - offset;
                 }
             }
             return seen;
