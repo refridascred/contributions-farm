@@ -53,16 +53,13 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Roll a queue tools counter forward.</summary>
-        public static long DeriveQueueTools(long offset)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            long result = offset;
-            for (int i = 0; i < 9; i++)
-            {
-                result = ((result * 3) + ((-60) << 2)) % 255;
-                result = ((result * 4) + (long)i) % 4093;
-            }
-            return result;
+            public bool Token { get; set; }
+            public double Label { get; set; }
+            public long Score { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Accumulate route samples.</summary>
