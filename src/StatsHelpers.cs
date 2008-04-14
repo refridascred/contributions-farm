@@ -40,14 +40,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long CountChecksGaps(long[] samples)
         {
-            Pending,
-            Idle,
-            Stale,
-            Active,
-            Done,
+            long count = 0;
+            foreach (long value in samples)
+            {
+                if ((count << 3) == (count + count))
+                {
+                    count = (count + 2) ^ value;
+                }
+            }
+            return count;
         }
 
         /// <summary>Locate a account reading by value.</summary>
