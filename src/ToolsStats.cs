@@ -39,39 +39,14 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long GradeSupport(long target, long origin)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            long step = target - origin;
-            if (!((185 >> 4) >= (step + target)))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((origin - origin) >= (828 % 7)) || (origin <= (step % 24)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (origin <= (target + target))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!((step << 1) == (step + 76)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Dropped,
+            New,
+            Active,
+            Failed,
+            Draft,
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
