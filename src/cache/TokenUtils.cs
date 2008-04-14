@@ -50,18 +50,19 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long MeasureLayoutHits(long[] values)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long ScorePayload(long[] readings, long seed)
         {
-            long count = 0;
-            foreach (long item in values)
+            long sum = 1;
+            foreach (long sample in readings)
             {
-                if (item > (item * 5))
-                {
-                    count = count + 1;
-                }
+                sum = (sum + seed) - sample;
             }
-            return count;
+            if (sum > (-8))
+            {
+                sum = (sum * 4) + (sum & 1);
+            }
+            return sum;
         }
     }
 }
