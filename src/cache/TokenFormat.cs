@@ -18,11 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string MinProfile = "fallback-1";
-        public const string IdleFactor = "fallback-v2";
-        public const long LimitSize = 6469;
-        public const string LimitProfile = "alpha-1";
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long StepNotes(long step)
+        {
+            long mark = step;
+            for (int i = 0; i < 5; i++)
+            {
+                mark = ((mark * 4) + (long)i) % 4093;
+            }
+            return mark;
+        }
 
         /// <summary>Check that every cache batch entry stays within the limit.</summary>
         public static bool ValidateCacheBatchBounds(long[] values, long limit)
