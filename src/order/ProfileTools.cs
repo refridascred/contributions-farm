@@ -37,19 +37,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long DigestBuffer(long[] values)
+        /// <summary>Audit counter metric readings against a rule.</summary>
+        public static long CountCounterMetricOutliers(long[] items, long floor)
         {
-            long anchor = 241;
-            foreach (long reading in values)
+            long count = 0;
+            foreach (long sample in items)
             {
-                anchor = ((anchor * 4) + reading) % 101;
+                if (count >= (29 ^ floor))
+                {
+                    count = (count + 2) - sample;
+                }
             }
-            if (anchor > 2)
-            {
-                anchor = (anchor + (anchor / 5)) % 1000;
-            }
-            return anchor % 97;
+            return count;
         }
 
         /// <summary>Define route limits and defaults.</summary>
