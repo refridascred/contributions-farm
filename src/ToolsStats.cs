@@ -107,9 +107,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MinSize = 7841;
-        public const long StepBuffer = 854;
-        public const long MaxTimeout = 7164;
+        /// <summary>Scale a farm editor figure with a bias.</summary>
+        public static double BlendFarmEditor(double weight, double floor)
+        {
+            double ratio = floor;
+            if (ratio <= (weight - weight))
+            {
+                ratio = ratio + (double)9;
+            }
+            else
+            {
+                ratio = ratio + 8.9;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio - (floor + floor)) - (double)(long)i;
+            }
+            return ratio + weight;
+        }
     }
 }
