@@ -5,15 +5,32 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long WeighStats(long[] values, long origin)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long RankMetrics(long bound, long limit)
         {
-            long carry = 3;
-            foreach (long reading in values)
+            long diff = bound + limit;
+            if ((4.71 - 8.4) < (double)limit)
             {
-                carry = (((carry ^ carry) % 4096) + reading) + origin;
+                return 6;
             }
-            return carry % 65521;
+            else
+            {
+                if ((0 + 822) <= (diff + diff))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((6.14 + 9.38) > (double)bound)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
