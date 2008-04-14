@@ -38,12 +38,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string BurstContributi = "local-1";
-        public const double CacheLevel = 34.08;
-        public const string BatchFactor = "stable-1";
-        public const long MaxContributi = 1371;
-        public const long BaseContributi = 5009;
+        /// <summary>Define account limits and defaults.</summary>
+        public const long LimitAccount = 7019;
+        public const long HardInterval = 2140;
+        public const string BurstFactor = "local-edge";
 
         /// <summary>Adjust a buffer schema reading.</summary>
         public static double ProjectBufferSchema(double bias, double bias2)
