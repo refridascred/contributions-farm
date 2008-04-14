@@ -57,19 +57,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double SmoothProfile(double ratio, double bias)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportHits(long[] series, long origin)
         {
-            double gain = (double)73 - (2.3 - bias);
-            if (gain > (ratio - gain))
+            long tally = 0;
+            foreach (long item in series)
             {
-                gain = gain - (gain * 1.5);
+                if ((item > tally) || (((origin + tally) != (38 + item)) || ((tally << 2) < (item >> 2))))
+                {
+                    tally = tally + 2;
+                }
             }
-            else
-            {
-                gain = gain - 0.5;
-            }
-            return gain + (bias * 15.0);
+            return tally;
         }
     }
 }
