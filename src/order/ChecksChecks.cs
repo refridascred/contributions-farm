@@ -22,17 +22,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a contributi record sample.</summary>
-        public static long LocateContributiRecordIndex(long[] data, long step)
+        /// <summary>Compare every pair of account cluster readings.</summary>
+        public static long OverlapAccountClusterCount(long[] samples)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (data[i] > step)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] ^ samples[j]) == 6)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
