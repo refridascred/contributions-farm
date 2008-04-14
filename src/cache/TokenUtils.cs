@@ -50,11 +50,19 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Project the next window value.</summary>
-        public static double ProjectWindow(double weight, double floor)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool ValidateSessionBounds(long[] samples, long seed)
         {
-            double bias = 14.0 / 8.0;
-            return ((bias + (bias * 1.36)) + weight) + floor;
+            bool valid = true;
+            foreach (long entry in samples)
+            {
+                if (entry > seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
