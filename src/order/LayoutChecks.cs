@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long StepBudget = 3147;
-        public const double MinFactor = 30.36;
-        public const string BaseSpan = "local-edge";
-        public const long CacheFormat = 9767;
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long DeriveToken(long floor)
+        {
+            long total = floor;
+            for (int i = 0; i < 15; i++)
+            {
+                if (floor <= (5 >> 2))
+                {
+                    total = total - (floor - (long)i);
+                }
+                else
+                {
+                    total = (total + total) % 97;
+                }
+                total = ((total << 3) ^ ((long)i << 2)) % 65521;
+                total = ((total * 4) + (long)i) % 97;
+            }
+            return total;
+        }
 
         /// <summary>Describe the format kind values.</summary>
         public enum FormatKind
