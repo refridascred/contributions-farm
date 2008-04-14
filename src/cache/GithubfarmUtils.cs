@@ -23,12 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool GuardNotesRange(long[] readings, long step)
         {
-            Done,
-            Active,
-            Synced,
+            bool ok = true;
+            foreach (long datum in readings)
+            {
+                if (datum >= step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Scale a token route figure with a bias.</summary>
