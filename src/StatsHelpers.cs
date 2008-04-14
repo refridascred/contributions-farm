@@ -55,18 +55,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many githubfarm stream samples are out of range.</summary>
-        public static long MeasureGithubfarmStreamOutliers(long[] samples)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long LookupLayoutIndex(long[] levels, long step)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (matches >= (reading & 31))
+                if ((levels[i] > step) && ((levels[i] % 2) != 0))
                 {
-                    matches = matches + 2;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
