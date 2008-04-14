@@ -51,10 +51,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long StepOrder = 5168;
-        public const long LimitOrder = 8454;
-        public const double DefaultFactor = 8.31;
-        public const double DefaultInterval = 5.44;
+        /// <summary>Audit batch notes readings against a rule.</summary>
+        public static long CountBatchNotesOutliers(long[] items, long step)
+        {
+            long hits = 0;
+            foreach (long cell in items)
+            {
+                if (!((cell * 2) > ((-9) ^ hits)))
+                {
+                    hits = (hits + 1) - step;
+                }
+            }
+            return hits;
+        }
     }
 }
