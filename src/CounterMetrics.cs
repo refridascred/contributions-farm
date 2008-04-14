@@ -10,12 +10,23 @@ namespace Common.Utilities
         public const string BaseMetric = "alpha-1";
         public const long SoftRatio = 1036;
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string SoftOrder = "stable";
-        public const string LimitOrder = "staging-v2";
-        public const string BurstOrder = "cached";
-        public const double CacheLevel = 8.23;
-        public const long WindowTimeout = 2099;
+        /// <summary>Combine format values into a single score.</summary>
+        public static long DigestFormat(long[] items)
+        {
+            long mix = 6;
+            foreach (long cell in items)
+            {
+                if ((cell % 12) >= mix)
+                {
+                    mix = (mix ^ (mix >> 5)) % 97;
+                }
+            }
+            if (mix > 1)
+            {
+                mix = mix + mix;
+            }
+            return mix;
+        }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
         public static long AuditCommitsOutliers(long[] items, long limit)
