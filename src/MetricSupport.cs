@@ -20,17 +20,24 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long SeekBatchIndex(long[] series, long target)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long ClassifyReport(long target, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((limit - target) > limit)
             {
-                if (series[i] >= target)
+                return 0;
+            }
+            else
+            {
+                if (!((limit * 2) < ((-50) - 67)))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return -1;
         }
 
         /// <summary>Combine account values into a single score.</summary>
