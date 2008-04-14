@@ -19,18 +19,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadMatches(long[] levels)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if ((sample + sample) <= (44 + hits))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Paused,
+            Queued,
+            Done,
+            Closed,
+            New,
         }
 
         /// <summary>Accumulate command samples.</summary>
