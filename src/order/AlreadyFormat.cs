@@ -27,13 +27,14 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            Stale,
-            Ready,
-            Failed,
-            Locked,
+            Synced,
+            Retry,
+            Closed,
+            Dropped,
+            New,
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
