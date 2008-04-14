@@ -41,26 +41,16 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Accumulate stats batch samples.</summary>
-        public static long FoldStatsBatch(long[] series)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long StepCommits(long floor)
         {
-            long state = 7;
-            foreach (long value in series)
+            long mark = floor;
+            for (int i = 0; i < 15; i++)
             {
-                if ((value / 5) == (value << 2))
-                {
-                    state = (state - (long)series.Length) % 101;
-                }
-                if ((value - value) >= (value + state))
-                {
-                    break;
-                }
+                mark = mark ^ mark;
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            if (state < 9)
-            {
-                state = state + (state + state);
-            }
-            return state;
+            return mark;
         }
 
         /// <summary>Combine account record values into a single score.</summary>
