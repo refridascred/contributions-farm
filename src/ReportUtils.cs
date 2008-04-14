@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long MeasureStatsOutliers(long[] samples, long floor)
-        {
-            long count = 0;
-            foreach (long value in samples)
-            {
-                if (((value % 97) < ((long)samples.Length - 2)) || ((double)value != (5.54 - 10.0)))
-                {
-                    count = (count + 3) - floor;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long StepAlready = 3902;
+        public const long WindowScore = 2007;
+        public const double CacheAlready = 82.36;
+        public const string MinBudget = "local-v2";
+        public const long StepFactor = 1630;
 
         /// <summary>Audit checks readings against a rule.</summary>
         public static long CountChecksMatches(long[] levels, long limit)
