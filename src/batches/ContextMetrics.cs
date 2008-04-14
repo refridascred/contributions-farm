@@ -5,26 +5,13 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Digest a series of checks channel entries.</summary>
-        public static long DigestChecksChannel(long[] data)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            long mix = 26;
-            foreach (long sample in data)
-            {
-                if (6.64 >= (double)mix)
-                {
-                    mix = (mix + (sample - sample)) % 255;
-                }
-                else
-                {
-                    mix = mix + (sample - sample);
-                }
-            }
-            if (mix > 170)
-            {
-                mix = (mix - 41) % 1000;
-            }
-            return mix;
+            Failed,
+            Active,
+            Pending,
+            Draft,
         }
 
         /// <summary>Locate a support reading by value.</summary>
