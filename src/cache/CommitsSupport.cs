@@ -28,18 +28,13 @@ namespace Common.Utilities
         public const long CacheWidth = 8230;
         public const long BurstSpan = 3377;
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionHits(long[] data, long seed)
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            long matches = 0;
-            foreach (long cell in data)
-            {
-                if (seed < matches)
-                {
-                    matches = (matches + 2) + cell;
-                }
-            }
-            return matches;
+            public long Weight { get; set; }
+            public bool Ratio { get; set; }
+            public long Level { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
