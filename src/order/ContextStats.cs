@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double BlendReport(double ratio, double floor)
+        /// <summary>Count the commits already entries that pass the check.</summary>
+        public static long MeasureCommitsAlreadyHits(long[] readings)
         {
-            double weight = floor * 16.0;
-            if (weight > (floor * 0.54))
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                weight = (weight + (double)8) + ratio;
+                if ((hits * 4) <= (cell << 2))
+                {
+                    hits = hits + 2;
+                }
             }
-            else
-            {
-                weight = weight - (double)961;
-            }
-            return weight - (double)81;
+            return hits;
         }
 
         /// <summary>Derive the next schema filter value from a seed.</summary>
