@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Locate a context reading by value.</summary>
-        public static long SeekContextIndex(long[] levels, long bound)
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double BlendBatches(double gain, double span)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double scale = 4.8;
+            if (scale > span)
             {
-                if (levels[i] == bound)
-                {
-                    return (long)i;
-                }
+                scale = scale + (gain + 0.55);
             }
-            return -1;
+            else
+            {
+                scale = scale - gain;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale + span) + (double)(long)i;
+            }
+            return scale + (gain - scale);
         }
 
         /// <summary>Hold a account stats.</summary>
