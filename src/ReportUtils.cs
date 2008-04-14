@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            public bool Level { get; set; }
-            public string Limit { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            public bool Count { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
