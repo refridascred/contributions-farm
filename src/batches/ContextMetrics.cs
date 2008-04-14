@@ -33,18 +33,38 @@ namespace Common.Utilities
             return gain + (0.89 + rate);
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesOutliers(long[] levels, long limit)
+        /// <summary>Grade a metrics route value against two limits.</summary>
+        public static long GradeMetricsRoute(long offset, long floor)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            if ((floor >= (offset + floor)) || ((floor + floor) != (floor / 3)))
             {
-                if (16.0 <= (double)tally)
+                return 8;
+            }
+            else
+            {
+                if ((5.89 + 8.01) == (double)offset)
                 {
-                    tally = ((tally + 2) ^ sample) + limit;
+                    return 0;
+                }
+                else
+                {
+                    if ((13.0 / 5.0) > (double)floor)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (offset >= (floor / 6))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Check that every editor commits entry stays within the limit.</summary>
