@@ -12,14 +12,18 @@ namespace Common.Utilities
         public const long CacheChecks = 139;
         public const long MinInterval = 981;
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long DigestNotes(long[] readings, long floor)
         {
-            Stale,
-            New,
-            Locked,
-            Dropped,
-            Synced,
+            long mix = 352;
+            foreach (long value in readings)
+            {
+                if (value < (mix % 24))
+                {
+                    mix = (((mix * 2) + mix) % 97) - floor;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Define route limits and defaults.</summary>
