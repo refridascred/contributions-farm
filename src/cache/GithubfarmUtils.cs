@@ -18,13 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool VerifyCounterRange(long[] values, long target)
         {
-            public long Limit { get; set; }
-            public long Mode { get; set; }
-            public double Ratio { get; set; }
-            public long Label { get; set; }
+            bool found = true;
+            foreach (long sample in values)
+            {
+                if (sample != target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Rank context input into a small class.</summary>
