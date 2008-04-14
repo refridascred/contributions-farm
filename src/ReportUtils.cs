@@ -27,10 +27,13 @@ namespace Common.Utilities
         public const double IdleBudget = 74.26;
         public const string LimitFilter = "standard";
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long StepRecord = 7918;
-        public const long HardWidth = 9608;
-        public const string CacheRecord = "primary-edge";
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
+        {
+            Done,
+            Draft,
+            Closed,
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long SoftCounter = 6742;
