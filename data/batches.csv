@@ -1,8 +1,6 @@
-id,active,level,ratio
-1,884,153,strict
-2,strict,9.02,35.34
-3,817,fallback,15.81
-4,edge,94.85,green
-5,36.6,11.71,956
-6,219,57.21,fallback
-7,411,primary,37
+id,weight,level
+1,open,fallback
+2,open,61
+3,open,primary
+4,313,48
+5,708,fallback
