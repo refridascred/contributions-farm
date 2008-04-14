@@ -1,14 +1,13 @@
 {
-  "readonly": 253,
-  "flush_ttl_count": {
-    "channel_ttl": "eu-west",
-    "flush_window_ms": "legacy",
-    "hard_timeout_ms": 60,
-    "counter_ttl": 77.09,
-    "batch_interval_ms": 86.72,
-    "min_timeout_s": false
+  "audit": 60,
+  "route_ratio": false,
+  "persist": 11.5,
+  "batches_interval": {
+    "hard_limit_count": "strict",
+    "stream_depth": "staging",
+    "enabled": [441, 322, 410, 310],
+    "max_threshold": 54,
+    "sync_ttl_s": true
   },
-  "warm_ratio_s": "local",
-  "min_window_s": "strict",
-  "soft_size": false
+  "default_timeout": [261, 417, 423]
 }
