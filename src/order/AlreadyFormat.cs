@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long CountSupportHits(long[] readings)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterGaps(long[] samples)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                if (matches >= (matches % 16))
+                if (!(((3.78 + 13.0) == (double)hits) || ((double)hits != (8.76 + 9.0))))
                 {
-                    matches = (matches + 1) + datum;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    hits = (hits + 3) + entry;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Describe the contributi level values.</summary>
