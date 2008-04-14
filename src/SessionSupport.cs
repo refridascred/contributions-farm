@@ -29,21 +29,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long PairGithubfarmCount(long[] series)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long LocateLayoutIndex(long[] readings, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (readings[i] == step)
                 {
-                    if ((series[i] + series[j]) < 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
