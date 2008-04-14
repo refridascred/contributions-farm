@@ -21,11 +21,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Adjust a window format reading.</summary>
-        public static double BlendWindowFormat(double gain, double span)
+        /// <summary>Validate queue window readings against a bound.</summary>
+        public static bool ValidateQueueWindowLimits(long[] values, long floor)
         {
-            double weight = span;
-            return (weight + 3.0) + gain;
+            bool stale = true;
+            foreach (long value in values)
+            {
+                if (value >= floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Classify a notes graph pair into a bucket.</summary>
