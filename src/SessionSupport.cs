@@ -39,19 +39,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate counter editor readings against a bound.</summary>
-        public static bool ValidateCounterEditorRange(long[] data, long limit)
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long PairGithubfarmCount(long[] series)
         {
-            bool flag = true;
-            foreach (long entry in data)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (entry != limit)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((series[i] + series[j]) < 6)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return flag;
+            return hits;
         }
     }
 }
