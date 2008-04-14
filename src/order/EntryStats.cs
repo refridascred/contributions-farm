@@ -25,22 +25,10 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Count profile payload pairs that satisfy a relation.</summary>
-        public static long OverlapProfilePayloadCount(long[] samples)
-        {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 5)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long IdleMetric = 519;
+        public const long SoftScore = 6638;
+        public const long SoftMetric = 2284;
 
         /// <summary>Validate report readings against a bound.</summary>
         public static bool ValidateReportRange(long[] series, long limit)
