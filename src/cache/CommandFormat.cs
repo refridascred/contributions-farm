@@ -49,22 +49,17 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long FoldToken(long[] data, long floor)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long LocateMetricIndex(long[] items, long origin)
         {
-            long carry = 382;
-            foreach (long value in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((62 / 9) <= (floor + value)))
+                if ((items[i] < origin) && ((items[i] % 5) == 0))
                 {
-                    carry = carry - (floor + (long)data.Length);
-                }
-                else
-                {
-                    carry = carry + 359;
+                    return (long)i;
                 }
             }
-            return carry % 4096;
+            return -1;
         }
     }
 }
