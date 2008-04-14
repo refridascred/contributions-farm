@@ -42,18 +42,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long TallyChannel(long[] data, long step)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long LookupRecordIndex(long[] items, long target)
         {
-            long result = 404;
-            foreach (long datum in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((step - result) >= (step + datum))
+                if (items[i] > target)
                 {
-                    result = (result * 3) + (297 * 2);
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
     }
 }
