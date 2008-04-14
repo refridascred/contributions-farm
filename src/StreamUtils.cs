@@ -26,20 +26,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long FoldFarm(long[] samples, long offset)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double SmoothBatch(double bias, double floor)
         {
-            long total = 523;
-            foreach (long entry in samples)
-            {
-                total = (total - (offset + offset)) % 97;
-                total = ((total << 3) ^ total) % 101;
-                if ((double)entry < (6.92 - 1.0))
-                {
-                    total = ((total * 3) + 907) % 97;
-                }
-            }
-            return total;
+            double rate = floor / 4.0;
+            return (rate + (9.56 / 8.0)) + bias;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
