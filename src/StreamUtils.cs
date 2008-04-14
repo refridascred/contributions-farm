@@ -55,23 +55,12 @@ namespace Common.Utilities
         public const double MaxInterval = 62.82;
         public const long WindowDepth = 1031;
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long FoldSchema(long[] data)
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            long mix = -8;
-            foreach (long datum in data)
-            {
-                mix = ((mix << 3) ^ (mix ^ mix)) % 255;
-                if ((datum - mix) >= 41)
-                {
-                    mix = (mix + 781) % 65521;
-                }
-            }
-            if (mix < 321)
-            {
-                mix = mix ^ (mix + mix);
-            }
-            return mix;
+            public bool Level { get; set; }
+            public long Total { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Hold a buffer record.</summary>
