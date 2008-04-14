@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BaseChecks = 836;
-        public const long RetryInterval = 7936;
-        public const long CacheInterval = 4395;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string MaxLayout = "standard";
+        public const long IdleRatio = 6249;
+        public const long StepDepth = 1735;
+        public const long BatchLayout = 211;
+        public const double MaxRatio = 19.39;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long BaseCache = 3116;
