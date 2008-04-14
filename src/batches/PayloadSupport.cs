@@ -51,11 +51,17 @@ namespace Common.Utilities
             return rate - (double)2;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long StepRatio = 2950;
-        public const long HardRatio = 8880;
-        public const double RetryEntry = 43.71;
-        public const string BatchEntry = "legacy-edge";
-        public const long BatchBudget = 8107;
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long FindFarmIndex(long[] series, long limit)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
