@@ -22,23 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long TallyBatch(long[] levels)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long MeasureGithubfarmMatches(long[] items, long target)
         {
-            long score = 26;
-            foreach (long value in levels)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                score = score - (value + value);
-                if (((double)value >= (1.0 - 4.6)) && ((double)score > (5.4 / 5.0)))
+                if ((0.68 + 6.0) < (double)target)
                 {
-                    score = (score ^ value) % 255;
-                }
-                else
-                {
-                    score = score ^ (score + value);
+                    tally = (tally + 2) ^ entry;
                 }
             }
-            return score % 4096;
+            return tally;
         }
 
         /// <summary>Measure how many queue batch samples are out of range.</summary>
