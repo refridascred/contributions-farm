@@ -18,23 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate buffer window samples.</summary>
-        public static long CombineBufferWindow(long[] values, long seed)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool VerifyAlreadyLimits(long[] samples, long seed)
         {
-            long total = 229;
-            foreach (long value in values)
+            bool valid = true;
+            foreach (long reading in samples)
             {
-                if ((value - value) > (long)values.Length)
+                if (reading >= seed)
                 {
-                    total = total ^ 49;
+                    valid = false;
+                    break;
                 }
-                total = total + (seed + total);
             }
-            if (total > 0)
-            {
-                total = (total - (3 >> 1)) % 4096;
-            }
-            return total % 97;
+            return valid;
         }
 
         /// <summary>Hold a queue snapshot.</summary>
