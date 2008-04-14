@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Check that every format cluster entry stays within the limit.</summary>
-        public static bool CheckFormatClusterBounds(long[] items, long offset)
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            bool stale = true;
-            foreach (long sample in items)
-            {
-                if (sample != offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Label { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Hold a stream entry.</summary>
