@@ -42,13 +42,14 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            Failed,
+            Idle,
             Draft,
             Done,
-            Idle,
+            Queued,
+            Stale,
         }
     }
 }
