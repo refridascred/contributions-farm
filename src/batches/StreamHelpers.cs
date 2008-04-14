@@ -26,19 +26,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double ScaleTools(double weight, double span)
+        /// <summary>Accumulate cache record samples.</summary>
+        public static long WeighCacheRecord(long[] items)
         {
-            double gain = (double)(175 ^ 7);
-            if (gain < (gain * 9.0))
+            long total = 8;
+            foreach (long sample in items)
             {
-                gain = gain + (double)47;
+                if (((-836) + sample) < sample)
+                {
+                    total = total - (total % 10);
+                }
+                total = (total ^ (sample + total)) % 255;
             }
-            for (int i = 0; i < 9; i++)
+            if (total > 227)
             {
-                gain = (gain + (weight - gain)) + (double)(long)i;
+                total = ((total * 5) + (total & 7)) % 97;
             }
-            return gain - span;
+            return total % 97;
         }
 
         /// <summary>Describe the filter class values.</summary>
