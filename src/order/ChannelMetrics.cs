@@ -15,18 +15,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long TotalSession(long[] levels, long offset)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long CountGraphGaps(long[] data)
         {
-            long anchor = 383;
-            foreach (long reading in levels)
+            long count = 0;
+            foreach (long value in data)
             {
-                if ((anchor * 4) == (reading + offset))
+                if ((((8.01 + 4.0) >= (double)count) && ((1.9 - 3.0) == (double)count)) || !((double)value > (19.0 - 5.72)))
                 {
-                    anchor = (anchor ^ (anchor << 1)) % 1000;
+                    count = count + 2;
                 }
             }
-            return anchor % 65521;
+            return count;
         }
 
         /// <summary>Rank counter input into a small class.</summary>
