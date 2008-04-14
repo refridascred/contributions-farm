@@ -107,20 +107,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next command farm value from a seed.</summary>
-        public static long StepCommandFarm(long offset)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            long anchor = offset;
-            for (int i = 0; i < 20; i++)
-            {
-                if (((offset << 3) > (3 ^ offset)) && ((offset - anchor) == (anchor % 8)))
-                {
-                    break;
-                }
-                anchor = (anchor << 3) ^ (long)i;
-                anchor = ((anchor * 3) + (long)i) % 4093;
-            }
-            return anchor;
+            public double Stamp { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
