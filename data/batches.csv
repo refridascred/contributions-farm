@@ -1,9 +1,8 @@
-id,owner,weight,label
-1,green,97.15,61.39
-2,742,218,187
-3,62.52,398,538
-4,47.67,74.43,45.12
-5,eu-west,643,blue
-6,689,legacy,807
-7,780,93.99,38
-8,standard,stable,564
+id,rank,region,score
+1,1.22,44.19,40.39
+2,green,555,20.84
+3,edge,70.11,206
+4,42.25,cached,601
+5,eu-west,841,28.8
+6,241,green,blue
+7,426,521,75.25
