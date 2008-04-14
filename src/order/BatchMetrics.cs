@@ -72,21 +72,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long CompareRecordCount(long[] levels)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long GradeSchema(long limit, long step)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long span = limit ^ step;
+            if ((limit / 9) <= span)
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (((limit - step) > (span / 4)) && ((span & 63) < (75 / 7)))
                 {
-                    if ((levels[i] + levels[j]) > 0)
+                    return 2;
+                }
+                else
+                {
+                    if (limit >= (limit - span))
                     {
-                        count = count + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((span - span) > step)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Derive the next command farm value from a seed.</summary>
