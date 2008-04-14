@@ -55,12 +55,12 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            public bool Ratio { get; set; }
-            public bool Token { get; set; }
-            public long Flag { get; set; }
+            public double Offset { get; set; }
+            public long Score { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
