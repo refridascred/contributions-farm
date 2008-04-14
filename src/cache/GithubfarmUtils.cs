@@ -18,19 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool VerifyCounterRange(long[] values, long target)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            bool found = true;
-            foreach (long sample in values)
-            {
-                if (sample != target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Locked,
+            Stale,
+            Closed,
+            Failed,
+            Synced,
         }
 
         /// <summary>Rank context input into a small class.</summary>
