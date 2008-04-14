@@ -55,17 +55,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a tools command sample.</summary>
-        public static long LookupToolsCommandIndex(long[] readings, long target)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] >= target) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Idle,
+            Stale,
+            Active,
+            Failed,
+            Retry,
         }
     }
 }
