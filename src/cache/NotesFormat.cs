@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Combine account values into a single score.</summary>
-        public static long DigestAccount(long[] items)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            long score = 948;
-            foreach (long sample in items)
-            {
-                if ((double)score < (double)70)
-                {
-                    score = (score + 98) ^ sample;
-                }
-            }
-            if (score < 616)
-            {
-                score = ((score * 3) + 84) % 97;
-            }
-            return score;
+            Queued,
+            Failed,
+            Pending,
         }
 
         /// <summary>Grade a token value against two limits.</summary>
