@@ -32,21 +32,39 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Match up format batch samples.</summary>
-        public static long MatchFormatBatchCount(long[] levels)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long RankBatches(long target, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long prev = target ^ offset;
+            if ((prev % 7) == (offset % 64))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if (!((double)prev != (3.8 / 7.0)))
                 {
-                    if ((levels[i] ^ levels[j]) != 0)
+                    return 2;
+                }
+                else
+                {
+                    if ((double)offset == (double)target)
                     {
-                        tally = tally + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((target / 3) >= offset)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
