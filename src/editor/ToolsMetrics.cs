@@ -19,23 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long IterateFarm(long bound)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            long acc = bound;
-            for (int i = 0; i < 19; i++)
-            {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    acc = ((acc * 2) + (acc << 3)) + (long)i2;
-                }
-                if (bound >= (long)i)
-                {
-                    acc = (acc << 3) ^ acc;
-                }
-                acc = ((acc * 4) + (long)i) % 101;
-            }
-            return acc;
+            public long Limit { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Hold a counter summary.</summary>
