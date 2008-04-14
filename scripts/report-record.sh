@@ -6,15 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in green primary strict eu-west; do
-    log "checking ${item}"
-done
-
-RECORD_LIMIT=406
+RECORD_LIMIT=438
 log "limit is ${RECORD_LIMIT}"
 
-count=0
-while [ "${count}" -lt 2 ]; do
-    count=$((count + 1))
+total=0
+for i in $(seq 1 3); do
+    total=$((total + i * 5))
 done
-log "ran ${count} rounds"
+log "total ${total}"
+
+for item in strict latest edge; do
+    log "checking ${item}"
+done
