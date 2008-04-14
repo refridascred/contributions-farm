@@ -29,13 +29,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long SortMetrics(long target, long floor)
         {
-            public string Count { get; set; } = "";
-            public bool Level { get; set; }
-            public string Mode { get; set; } = "";
-            public string Token { get; set; } = "";
+            long slot = target + floor;
+            if ((double)floor <= (1.0 * 9.87))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((target % 12) <= (target % 8)) && ((floor - target) <= (floor + slot)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!((target >> 4) >= (floor + floor)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)slot <= (double)floor)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
