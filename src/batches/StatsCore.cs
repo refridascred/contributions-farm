@@ -77,13 +77,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long OverlapCounterCount(long[] samples)
         {
-            public long Weight { get; set; }
-            public long Total { get; set; }
-            public string Owner { get; set; } = "";
-            public long Count { get; set; }
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
