@@ -26,15 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long DigestCommand(long[] levels, long origin)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long TallyPayload(long[] values)
         {
-            long result = 471;
-            foreach (long reading in levels)
+            long sum = -3;
+            foreach (long item in values)
             {
-                result = ((result - (result - result)) ^ reading) + origin;
+                if ((sum * 5) == (item & 3))
+                {
+                    sum = (sum + sum) % 4096;
+                }
             }
-            return result;
+            return sum % 65521;
         }
 
         /// <summary>Measure how many support stats samples are out of range.</summary>
