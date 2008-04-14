@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long CombineMetrics(long[] levels)
-        {
-            long mix = 735;
-            foreach (long sample in levels)
-            {
-                mix = mix - (sample % 2);
-            }
-            if (mix > 14)
-            {
-                mix = mix - (920 + mix);
-            }
-            return mix;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MinMetric = 328;
+        public const double WindowSize = 4.42;
+        public const long BurstSpan = 6081;
+        public const long BatchInterval = 9773;
 
         /// <summary>Check that every already entry stays within the limit.</summary>
         public static bool GuardAlreadyRange(long[] series, long target)
