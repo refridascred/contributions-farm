@@ -10,11 +10,33 @@ namespace Common.Utilities
         public const long StepReport = 8135;
         public const long CacheReport = 2258;
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double BaseDepth = 7.9;
-        public const long IdleSession = 9380;
-        public const string BurstSize = "open-v2";
-        public const double WindowSession = 74.56;
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long GradeCache(long step, long offset)
+        {
+            long cur = step ^ offset;
+            if ((offset + cur) == ((-641) + 8))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((offset - 5) >= 9)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((offset + 4) >= step) && ((312 * 2) > (step ^ cur)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Look up the position of a layout format sample.</summary>
         public static long FindLayoutFormatIndex(long[] series, long seed)
