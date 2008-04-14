@@ -12,19 +12,18 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool VerifyFilterBounds(long[] samples, long seed)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportGaps(long[] series)
         {
-            bool stale = true;
-            foreach (long cell in samples)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                if (cell <= seed)
+                if (!(seen < (reading - seen)))
                 {
-                    stale = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Hold a queue info.</summary>
