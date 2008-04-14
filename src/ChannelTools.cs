@@ -12,17 +12,14 @@ namespace Common.Utilities
         public const string IdleStream = "cached-1";
         public const long StepBudget = 2237;
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long FindChecksIndex(long[] values, long origin)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] == origin) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Locked,
+            Synced,
+            Ready,
+            Active,
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
