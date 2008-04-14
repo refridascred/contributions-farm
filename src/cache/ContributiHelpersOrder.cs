@@ -31,15 +31,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long IterateRecord(long step)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double AdjustLayout(double ratio, double floor)
         {
-            long mix = step;
-            for (int i = 0; i < 15; i++)
+            double bias = floor;
+            for (int i = 0; i < 2; i++)
             {
-                mix = ((mix * 3) + (long)i) % 97;
+                bias = (bias - floor) + (double)(long)i;
             }
-            return mix;
+            return bias - ratio;
         }
     }
 }
