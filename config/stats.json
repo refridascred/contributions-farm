@@ -1,6 +1,6 @@
 {
-  "enabled": true,
-  "default_interval": ["stable", "primary", "fallback"],
-  "cache_window_count": "fallback",
-  "cache_delay_pct": "stable"
+  "batch_depth_s": "strict",
+  "min_ratio_count": 72.16,
+  "poll_timeout_ms": false,
+  "default_size_s": 7735
 }
