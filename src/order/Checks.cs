@@ -69,9 +69,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long WindowAlready = 9503;
-        public const string MinCount = "local-v2";
-        public const double BurstSpan = 58.14;
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double AdjustCache(double bias, double floor)
+        {
+            double ratio = bias;
+            if (ratio > (9.0 / 3.0))
+            {
+                ratio = (ratio - (double)6) - floor;
+            }
+            return ratio - (double)89;
+        }
     }
 }
