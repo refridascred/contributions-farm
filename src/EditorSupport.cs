@@ -36,22 +36,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many queue batch samples are out of range.</summary>
-        public static long CountQueueBatchOutliers(long[] items)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long BucketProfile(long offset, long bound)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long lane = offset + bound;
+            if ((10.0 + 2.69) == (double)lane)
             {
-                if ((15.0 * 5.6) < (4.07 + 5.2))
+                return 6;
+            }
+            else
+            {
+                if (offset <= (bound - lane))
                 {
-                    seen = (seen + 3) + entry;
+                    return 0;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if (((offset << 2) > 437) || ((offset + offset) <= bound))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((bound + bound) > bound)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the editor phase values.</summary>
