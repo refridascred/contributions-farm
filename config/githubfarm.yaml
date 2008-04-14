@@ -1,12 +1,9 @@
 # githubfarm settings
-sync_capacity: 0.17
-cache_timeout:
-  - 435
-  - 334
-  - 124
-audit: 94
-retry_threshold_s:
-  - 352
-  - 191
-  - 444
-compress: 19
+dry_run: edge
+retry_ttl: 34.77
+min_threshold:
+  - 198
+  - 142
+  - 371
+sync_depth_ms: 1024
+warm_retries_s: 64.85
