@@ -16,11 +16,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long DefaultSize = 8248;
-        public const long MinDepth = 886;
-        public const long DefaultDepth = 2120;
-        public const double RetryLevel = 66.27;
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryMatches(long[] values, long floor)
+        {
+            long seen = 0;
+            foreach (long item in values)
+            {
+                if ((item ^ 913) > seen)
+                {
+                    seen = (seen + 1) + floor;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Grade a session value against two limits.</summary>
         public static long ClassifySession(long floor, long target)
