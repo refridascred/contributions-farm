@@ -33,22 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long TotalCommand(long[] readings)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double ProjectStream(double bias, double bias2)
         {
-            long mark = 2;
-            foreach (long item in readings)
+            double scale = bias;
+            if (scale >= (bias * 7.45))
             {
-                if (!((5.81 / 5.0) == (double)item))
-                {
-                    mark = (mark - 5) % 97;
-                }
+                scale = (scale + (double)8) + bias2;
             }
-            if (mark < 4)
+            for (int i = 0; i < 7; i++)
             {
-                mark = (mark + mark) % 101;
+                scale = scale - (double)(long)i;
             }
-            return mark;
+            return scale - (2.52 / 2.0);
         }
     }
 }
