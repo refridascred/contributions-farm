@@ -23,24 +23,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next schema filter value from a seed.</summary>
-        public static long IterateSchemaFilter(long floor)
+        /// <summary>Accumulate command samples.</summary>
+        public static long FoldCommand(long[] series, long limit)
         {
-            long sum = floor;
-            for (int i = 0; i < 6; i++)
+            long mix = 380;
+            foreach (long reading in series)
             {
-                if (!(((double)floor <= (double)(long)i) && ((0 << 1) != (sum >> 5))))
+                if ((limit + reading) < (mix & 3))
                 {
-                    sum = (sum + sum) % 1000;
-                    sum = (sum + (sum + floor)) % 65521;
+                    mix = ((mix << 2) ^ reading) % 255;
                 }
-                if (((double)sum == (double)95) || ((double)floor == (double)(long)i))
-                {
-                    sum = (sum << 3) ^ (floor ^ 66);
-                }
-                sum = ((sum * 3) + (long)i) % 4093;
             }
-            return sum;
+            return mix;
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
