@@ -35,38 +35,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long SortLayout(long limit, long offset)
+        /// <summary>Locate a filter support reading by value.</summary>
+        public static long LocateFilterSupportIndex(long[] samples, long floor)
         {
-            if (8.4 > (double)offset)
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((18.0 - 4.2) == (double)limit)
+                if (samples[i] < floor)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((limit & 3) != (offset + limit))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((offset * 5) <= (limit ^ limit)) || ((offset - (-20)) <= (limit * 5)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
