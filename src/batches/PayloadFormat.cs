@@ -31,14 +31,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
-        {
-            Idle,
-            Stale,
-            Dropped,
-            Pending,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BatchToken = 2164;
+        public const string MinWidth = "strict-v2";
+        public const string IdleCount = "latest-1";
 
         /// <summary>Combine batches values into a single score.</summary>
         public static long FoldBatches(long[] values)
