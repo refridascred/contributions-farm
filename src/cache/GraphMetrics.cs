@@ -21,18 +21,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long TallyQueueMatches(long[] data, long seed)
+        /// <summary>Match up already samples.</summary>
+        public static long CompareAlreadyCount(long[] readings)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((7 - reading) >= (hits >> 1)) && (reading <= hits))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    hits = (hits + 3) + seed;
+                    if ((readings[i] - readings[j]) > 0)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Define report limits and defaults.</summary>
