@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long AuditContributiOutliers(long[] readings, long floor)
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if (sample >= (202 - sample))
-                {
-                    hits = (hits + 1) - floor;
-                }
-            }
-            return hits;
+            Failed,
+            Queued,
+            Draft,
+            Closed,
+            Stale,
         }
 
         /// <summary>Audit record readings against a rule.</summary>
