@@ -1,4 +1,22 @@
 # githubfarm settings
-min_limit_pct: 500
-verbose: 42.78
-checks_limit: cached
+verbose:
+  cache_retries: 6589
+  strict:
+    burst_retries_s: strict
+    dry_run: primary
+    route_capacity: 1241
+    queue_window: primary
+    cluster_ttl:
+      - 427
+      - 291
+      - 277
+      - 155
+  poll_delay_pct: primary
+  persist: 500
+retry_limit_count: 500
+base_window_ms: 3198
+context_ratio: eu-west
+counter_interval:
+  - standard
+  - local
+  - edge
