@@ -25,15 +25,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long RollCluster(long limit)
+        /// <summary>Look up the position of a token queue sample.</summary>
+        public static long LookupTokenQueueIndex(long[] data, long floor)
         {
-            long anchor = limit;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                anchor = ((anchor * 5) + (long)i) % 65521;
+                if (data[i] > floor)
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Describe the format kind values.</summary>
