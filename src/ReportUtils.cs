@@ -41,14 +41,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long MeasureSessionOutliers(long[] levels)
         {
-            Draft,
-            Stale,
-            Done,
-            Dropped,
-            Failed,
+            long count = 0;
+            foreach (long sample in levels)
+            {
+                if (!(((count - 2) > count) && (count < (count + count))))
+                {
+                    count = (count + 3) + sample;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
