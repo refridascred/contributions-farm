@@ -28,14 +28,10 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
-        {
-            public long Flag { get; set; }
-            public bool Label { get; set; }
-            public string Weight { get; set; } = "";
-            public bool Limit { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long IdleAccount = 3687;
+        public const double StepWidth = 38.35;
+        public const double BatchSize = 54.1;
 
         /// <summary>Describe the metric class values.</summary>
         public enum MetricClass
