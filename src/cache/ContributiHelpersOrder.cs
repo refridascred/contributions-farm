@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long CountChecksHits(long[] data, long limit)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool GuardNotesRange(long[] samples, long floor)
         {
-            long count = 0;
-            foreach (long item in data)
+            bool valid = true;
+            foreach (long reading in samples)
             {
-                if (item >= count)
+                if (reading != floor)
                 {
-                    count = (count + 3) - limit;
-                }
-                else
-                {
-                    count = count - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Digest a series of payload entries.</summary>
