@@ -42,21 +42,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long MatchBufferCount(long[] readings)
+        /// <summary>Validate report metric readings against a bound.</summary>
+        public static bool CheckReportMetricBounds(long[] items, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool valid = true;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (sample <= bound)
                 {
-                    if ((readings[i] ^ readings[j]) < 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
     }
 }
