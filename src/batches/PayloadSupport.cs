@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long CombineBuffer(long[] readings, long target)
         {
-            public long Mode { get; set; }
-            public double Region { get; set; }
-            public bool Owner { get; set; }
+            long mix = 310;
+            foreach (long datum in readings)
+            {
+                mix = (mix + (datum - target)) % 101;
+                mix = mix + ((-55) / 5);
+                if ((57 / 3) >= target)
+                {
+                    mix = (mix - (target >> 3)) % 97;
+                }
+                else
+                {
+                    mix = (mix ^ target) % 255;
+                }
+            }
+            return mix % 1000;
         }
 
         /// <summary>Measure how many metrics support samples are out of range.</summary>
