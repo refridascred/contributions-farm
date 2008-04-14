@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long AuditStatsOutliers(long[] data, long target)
+        /// <summary>Adjust a counter reading.</summary>
+        public static double ProjectCounter(double rate, double offset)
         {
-            long count = 0;
-            foreach (long reading in data)
+            double drift = rate;
+            if (drift >= rate)
             {
-                if (!((target & 127) >= target))
-                {
-                    count = (count + 1) + reading;
-                }
+                drift = drift + (2.7 + offset);
             }
-            return count;
+            return drift - 6.08;
         }
 
         /// <summary>Grade a cache value against two limits.</summary>
