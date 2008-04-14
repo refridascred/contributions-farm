@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileMatches(long[] data, long origin)
+        /// <summary>Measure how many notes metric samples are out of range.</summary>
+        public static long TallyNotesMetricGaps(long[] samples)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                if ((tally - origin) != (long)data.Length)
+                if ((datum - count) <= datum)
                 {
-                    tally = (tally + 2) + datum;
+                    count = count + 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
