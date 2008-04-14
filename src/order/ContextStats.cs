@@ -23,20 +23,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool VerifyRouteLimits(long[] samples, long seed)
-        {
-            bool flag = true;
-            foreach (long cell in samples)
-            {
-                if (cell <= seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double BaseContext = 19.54;
+        public const double IdleContext = 87.46;
+        public const string MinContext = "fallback-1";
 
         /// <summary>Find the first schema entry that matches the target.</summary>
         public static long SeekSchemaIndex(long[] values, long bound)
