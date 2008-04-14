@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
-        {
-            public long Offset { get; set; }
-            public string Size { get; set; } = "";
-            public long Limit { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long HardSize = 7671;
+        public const long BaseStats = 1645;
+        public const long WindowStats = 6846;
 
         /// <summary>Validate order readings against a bound.</summary>
         public static bool VerifyOrderRange(long[] series, long target)
