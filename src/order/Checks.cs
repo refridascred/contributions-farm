@@ -20,19 +20,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool CheckProfileBounds(long[] levels, long limit)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            bool ok = true;
-            foreach (long sample in levels)
-            {
-                if (sample < limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Failed,
+            Closed,
+            Retry,
+            Active,
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
