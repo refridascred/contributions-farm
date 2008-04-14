@@ -32,19 +32,21 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Validate session payload readings against a bound.</summary>
-        public static bool VerifySessionPayloadLimits(long[] levels, long offset)
+        /// <summary>Match up support samples.</summary>
+        public static long PairSupportCount(long[] data)
         {
-            bool stale = true;
-            foreach (long item in levels)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (item < offset)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((data[i] ^ data[j]) > 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Combine window record values into a single score.</summary>
