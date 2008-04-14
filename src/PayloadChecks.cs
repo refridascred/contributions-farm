@@ -27,15 +27,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long MeasureContributiHits(long[] items, long origin)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueGaps(long[] samples)
         {
             long matches = 0;
-            foreach (long item in items)
+            foreach (long value in samples)
             {
-                if ((origin - origin) <= ((-93) % 7))
+                if ((((matches + value) <= (long)samples.Length) && ((179 / 2) != (matches - value))) && ((double)value >= 5.0))
                 {
-                    matches = (matches + 2) ^ item;
+                    matches = matches + 3;
                 }
                 else
                 {
