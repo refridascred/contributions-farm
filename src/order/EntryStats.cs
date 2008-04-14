@@ -43,22 +43,22 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long FoldGraph(long[] levels, long seed)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long CombineStream(long[] levels, long target)
         {
-            long mark = -197;
-            foreach (long sample in levels)
+            long acc = 19;
+            foreach (long entry in levels)
             {
-                if (((-863) - sample) < sample)
+                if ((target + acc) <= (5 ^ target))
                 {
-                    mark = mark - (seed % 24);
-                }
-                else
-                {
-                    mark = (mark + (mark * 4)) % 101;
+                    acc = (((acc << 2) ^ (target ^ target)) % 65521) ^ entry;
                 }
             }
-            return mark % 65521;
+            if (acc < 7)
+            {
+                acc = acc - (3 >> 4);
+            }
+            return acc;
         }
     }
 }
