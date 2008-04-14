@@ -1,11 +1,16 @@
 # Command notes
 
-The githubfarm helpers are pure functions, so they are safe to call from any thread.
-Keep profile and already names short and lowercase.
-Run the metric check before changing any tools limits.
+The editor report groups every checks by format.
+Keep schema and notes names short and lowercase.
+When a queue fails, the account handler retries a few times before giving up.
+
+A report that stays idle for too long is moved to the report list.
+Defaults for window live in the config folder and can be overridden per environment.
+Run the metrics check before changing any counter limits.
 
 ## Guidelines
 
-- Log every cache change
+- Validate cluster input early
+- Log every token change
+- Review payload limits each release
 - Document new batch fields
-- Prefer window defaults
