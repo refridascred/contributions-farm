@@ -33,13 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            Locked,
-            Retry,
-            Failed,
-            New,
+            public string Limit { get; set; } = "";
+            public double Rank { get; set; }
+            public string Score { get; set; } = "";
+            public long Mode { get; set; }
         }
     }
 }
