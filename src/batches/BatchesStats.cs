@@ -15,18 +15,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long MeasureToolsOutliers(long[] values, long seed)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            long count = 0;
-            foreach (long sample in values)
-            {
-                if (sample >= seed)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public double Region { get; set; }
+            public string Rank { get; set; } = "";
+            public long Ratio { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Combine order values into a single score.</summary>
