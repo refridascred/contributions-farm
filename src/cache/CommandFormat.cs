@@ -22,14 +22,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long IterateFormat(long bound)
         {
-            Draft,
-            Done,
-            Closed,
-            Retry,
-            Dropped,
+            long sum = bound;
+            for (int i = 0; i < 23; i++)
+            {
+                if (78 <= ((long)i >> 5))
+                {
+                    sum = sum - (sum * 2);
+                }
+                else
+                {
+                    sum = sum - (bound / 7);
+                }
+                sum = ((sum * 3) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
