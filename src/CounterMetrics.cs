@@ -43,9 +43,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double MaxScore = 8.73;
-        public const long DefaultDepth = 6911;
-        public const long BurstSize = 4391;
+        /// <summary>Project the next support command value.</summary>
+        public static double SmoothSupportCommand(double rate, double bias)
+        {
+            double scale = bias;
+            if (scale < (double)(-5))
+            {
+                scale = (scale + scale) - rate;
+            }
+            else
+            {
+                scale = scale - (double)531;
+            }
+            return scale - (bias * 4.0);
+        }
     }
 }
