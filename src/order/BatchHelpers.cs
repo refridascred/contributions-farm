@@ -20,21 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long MatchFilterCount(long[] items)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool CheckProfileLimits(long[] items, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool ok = true;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (reading <= floor)
                 {
-                    if ((items[i] ^ items[j]) != 3)
-                    {
-                        matches = matches + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
