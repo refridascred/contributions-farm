@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Count the batches contributi entries that pass the check.</summary>
+        public static long MeasureBatchesContributiHits(long[] data)
         {
-            Ready,
-            Stale,
-            Draft,
-            Failed,
+            long matches = 0;
+            foreach (long value in data)
+            {
+                if ((matches * 2) >= (matches - matches))
+                {
+                    matches = (matches + 1) - value;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a route stats.</summary>
