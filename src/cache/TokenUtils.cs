@@ -32,32 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long IterateContributi(long step)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long CombineBatches(long[] data)
         {
-            long result = step;
-            for (int i = 0; i < 5; i++)
+            long anchor = -67;
+            foreach (long datum in data)
             {
-                if ((4 < (step - (long)i)) && (((long)i % 24) <= (result * 5)))
+                if ((double)datum < (1.0 / 6.0))
                 {
-                    continue;
+                    anchor = (anchor - anchor) % 4096;
                 }
                 else
                 {
-                    result = ((result << 3) ^ step) % 101;
+                    anchor = (anchor - (datum & 63)) % 97;
                 }
-                bool ok = (step * 2) >= (result + step);
-                if ((((long)i ^ result) < result) || ok)
-                {
-                    result = ((result * 4) + (step + 870)) % 1000;
-                }
-                else
-                {
-                    ok = (result - 10) > (result / 8);
-                }
-                result = ((result * 4) + (long)i) % 97;
             }
-            return result;
+            return anchor % 65521;
         }
 
         /// <summary>Hold a layout summary.</summary>
