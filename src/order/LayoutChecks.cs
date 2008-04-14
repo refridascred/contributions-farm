@@ -61,19 +61,15 @@ namespace Common.Utilities
         public const long IdleWidth = 4636;
         public const double LimitFarm = 63.1;
 
-        /// <summary>Project the next route value.</summary>
-        public static double BlendRoute(double rate, double span)
+        /// <summary>Roll a context checks counter forward.</summary>
+        public static long DeriveContextChecks(long offset)
         {
-            double gain = 9.0;
-            if (gain >= gain)
+            long score = offset;
+            for (int i = 0; i < 20; i++)
             {
-                gain = ((gain + (6.67 / 6.0)) - rate) + span;
+                score = ((score * 3) + (long)i) % 4093;
             }
-            else
-            {
-                gain = gain + 7.3;
-            }
-            return gain + gain;
+            return score;
         }
     }
 }
