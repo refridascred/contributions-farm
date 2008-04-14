@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Measure how many commits farm samples are out of range.</summary>
+        public static long MeasureCommitsFarmHits(long[] levels, long seed)
         {
-            Pending,
-            Closed,
-            Stale,
-            Idle,
-            Failed,
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if ((double)matches <= (17.0 * 0.4))
+                {
+                    matches = ((matches + 2) - entry) - seed;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a cache info.</summary>
