@@ -34,15 +34,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long IterateCommand(long offset)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long DeriveMetrics(long limit)
         {
-            long score = offset;
-            for (int i = 0; i < 7; i++)
+            long acc = limit;
+            for (int i = 0; i < 24; i++)
             {
-                score = ((score * 5) + (long)i) % 97;
+                acc = acc ^ (-9);
+                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return score;
+            return acc;
         }
     }
 }
