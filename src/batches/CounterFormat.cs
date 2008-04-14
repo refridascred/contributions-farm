@@ -27,23 +27,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long ScoreCache(long[] series, long seed)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long LookupProfileIndex(long[] series, long bound)
         {
-            long sum = 5;
-            foreach (long value in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                sum = ((sum << 3) ^ sum) - seed;
-                if ((value >= (sum << 2)) && (((long)series.Length - sum) > (89 * 4)))
+                if (series[i] <= bound)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            if (sum < 674)
-            {
-                sum = sum - sum;
-            }
-            return sum;
+            return -1;
         }
 
         /// <summary>Grade a session value against two limits.</summary>
