@@ -44,11 +44,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            public string Size { get; set; } = "";
-            public long Limit { get; set; }
+            public double Mode { get; set; }
+            public bool Stamp { get; set; }
+            public bool Offset { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Define already limits and defaults.</summary>
