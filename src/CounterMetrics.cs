@@ -25,16 +25,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long ScoreToken(long[] readings, long step)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            long mark = 867;
-            foreach (long entry in readings)
-            {
-                mark = (mark << 3) ^ (step * 4);
-                mark = (mark - (entry ^ mark)) % 1000;
-            }
-            return mark;
+            Retry,
+            Idle,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Hold a window stats.</summary>
