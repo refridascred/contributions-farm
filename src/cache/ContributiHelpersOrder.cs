@@ -5,25 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long SortStats(long target, long limit)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            long delta = target + limit;
-            if (((limit - 7) == (limit - 1)) && (limit >= (limit << 1)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((target < delta) && ((target / 9) >= (delta % 97)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Active,
+            New,
+            Ready,
+            Idle,
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
