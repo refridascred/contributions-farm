@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long HardQueue = 5558;
-        public const double BaseQueue = 18.96;
-        public const long StepQueue = 335;
-        public const long BaseBudget = 4815;
+        /// <summary>Define order limits and defaults.</summary>
+        public const long HardSpan = 5123;
+        public const long BatchOrder = 8387;
+        public const string LimitOrder = "stable-v2";
+        public const long RetryBudget = 4731;
 
         /// <summary>Describe the window phase values.</summary>
         public enum WindowPhase
