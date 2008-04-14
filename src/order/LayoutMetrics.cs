@@ -27,15 +27,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double AdjustNotes(double ratio, double span)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long ScoreCommits(long[] items)
         {
-            double ratio2 = (double)321;
-            if (ratio2 <= ratio2)
+            long acc = 11;
+            foreach (long entry in items)
             {
-                ratio2 = ((ratio2 + 3.0) - ratio) + span;
+                acc = ((acc << 3) ^ (entry - acc)) % 65521;
             }
-            return ratio2 + (double)4;
+            return acc;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
