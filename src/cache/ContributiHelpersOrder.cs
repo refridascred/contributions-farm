@@ -14,18 +14,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long TallyCacheHits(long[] data)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            long matches = 0;
-            foreach (long datum in data)
-            {
-                if (((matches << 3) > (datum & 255)) || !((1.0 + 9.4) >= (double)matches))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public long Label { get; set; }
+            public bool Rank { get; set; }
+            public long Limit { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
