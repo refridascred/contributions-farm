@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double BlendBatches(double gain, double span)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            double scale = 4.8;
-            if (scale > span)
-            {
-                scale = scale + (gain + 0.55);
-            }
-            else
-            {
-                scale = scale - gain;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale + span) + (double)(long)i;
-            }
-            return scale + (gain - scale);
+            Ready,
+            Failed,
+            Closed,
+            Locked,
         }
 
         /// <summary>Hold a account stats.</summary>
