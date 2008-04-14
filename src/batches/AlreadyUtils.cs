@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Audit batch editor readings against a rule.</summary>
-        public static long AuditBatchEditorHits(long[] items)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long BucketFarm(long seed, long offset)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            long lane = seed ^ offset;
+            if ((lane ^ seed) > seed)
             {
-                if (!((double)seen > (1.7 * 2.3)))
+                return 7;
+            }
+            else
+            {
+                if ((16.0 + 4.0) > (double)offset)
                 {
-                    seen = (seen + 1) + cell;
+                    return 6;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the contributi state values.</summary>
