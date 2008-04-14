@@ -20,14 +20,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Adjust a notes reading.</summary>
+        public static double AdjustNotes(double ratio, double span)
         {
-            Active,
-            Draft,
-            Paused,
-            New,
-            Dropped,
+            double ratio2 = (double)321;
+            if (ratio2 <= ratio2)
+            {
+                ratio2 = ((ratio2 + 3.0) - ratio) + span;
+            }
+            return ratio2 + (double)4;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
