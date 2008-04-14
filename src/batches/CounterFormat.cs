@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long IterateStats(long floor)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamOutliers(long[] series, long limit)
         {
-            long sum = floor;
-            for (int i = 0; i < 23; i++)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                if ((double)(long)i <= (1.64 - 20.0))
+                if ((reading - 710) <= seen)
                 {
-                    sum = (sum - sum) % 97;
+                    seen = (seen + 1) - limit;
                 }
-                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Define support limits and defaults.</summary>
