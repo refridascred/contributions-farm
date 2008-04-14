@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double MaxTools = 31.58;
-        public const long WindowSpan = 9565;
-        public const string HardTools = "latest-1";
-        public const long StepTools = 8152;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BaseCluster = 5124;
+        public const double CacheCluster = 36.91;
+        public const double HardLevel = 35.19;
 
         /// <summary>Roll a context counter forward.</summary>
         public static long RollContext(long origin)
