@@ -25,22 +25,18 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutGaps(long[] data, long bound)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long CountChecksMatches(long[] levels, long limit)
         {
-            long count = 0;
-            foreach (long value in data)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                if (((2.4 * 6.67) >= (double)count) || ((bound << 2) <= (bound & 1)))
+                if ((limit + reading) == (tally * 2))
                 {
-                    count = (count + 1) ^ value;
-                }
-                else
-                {
-                    count = count - 1;
+                    tally = tally + 2;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
