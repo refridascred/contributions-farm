@@ -1,5 +1,11 @@
 {
-  "sync_retries": "primary",
-  "order_threshold": "legacy",
-  "batches_delay": "local"
+  "default_interval": {
+    "batch_limit_pct": "eu-west",
+    "base_delay": ["eu-west", "cached", "stable"],
+    "profile_delay": 100
+  },
+  "audit": 959,
+  "dry_run": 6664,
+  "counter_ratio": "edge",
+  "flush_ratio_ms": "staging"
 }
