@@ -1,11 +1,5 @@
 # entry settings
-idle_ttl_pct: strict
-max_delay_pct:
-  - blue
-  - stable
-  - blue
-  - latest
-default_size_pct: 4735
-poll_timeout_pct: 60.84
-session_retries: 100
-retry_interval: 49
+default_window_pct: standard
+max_ttl_ms: false
+max_ttl: 55.23
+batch_ratio: green
