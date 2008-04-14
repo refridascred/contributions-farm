@@ -71,18 +71,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionMatches(long[] series)
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            long hits = 0;
-            foreach (long cell in series)
-            {
-                if ((hits + cell) >= 744)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public bool Owner { get; set; }
+            public long Label { get; set; }
+            public string Total { get; set; } = "";
+            public double Weight { get; set; }
         }
     }
 }
