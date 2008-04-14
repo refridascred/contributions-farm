@@ -43,19 +43,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool CheckStreamBounds(long[] samples, long origin)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long MeasureEditorMatches(long[] data)
         {
-            bool stale = true;
-            foreach (long sample in samples)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                if (sample != origin)
+                if ((entry <= (hits + entry)) && (956 >= entry))
                 {
-                    stale = false;
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Describe the contributi phase values.</summary>
