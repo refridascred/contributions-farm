@@ -5,21 +5,32 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long OverlapWindowCount(long[] data)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long RankSupport(long origin, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long delta = origin ^ bound;
+            if ((11.0 / 5.0) == (double)bound)
             {
-                for (int j = 0; j < data.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((origin >= delta) || ((delta ^ origin) != (2 ^ origin)))
                 {
-                    if ((data[i] ^ data[j]) != 11)
+                    return 5;
+                }
+                else
+                {
+                    if ((origin * 4) >= (delta ^ 1))
                     {
-                        tally = tally + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Compare every pair of window githubfarm readings.</summary>
