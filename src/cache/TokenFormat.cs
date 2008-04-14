@@ -36,19 +36,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every cache batch entry stays within the limit.</summary>
-        public static bool ValidateCacheBatchBounds(long[] values, long limit)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            bool flag = true;
-            foreach (long cell in values)
-            {
-                if (cell > limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Ready,
+            Dropped,
+            New,
+            Done,
+            Idle,
         }
     }
 }
