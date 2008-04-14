@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Check that every window entry entry stays within the limit.</summary>
-        public static bool GuardWindowEntryRange(long[] readings, long step)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            bool ok = true;
-            foreach (long value in readings)
-            {
-                if (value <= step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Flag { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
