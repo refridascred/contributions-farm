@@ -49,20 +49,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long RollFormat(long origin)
+        /// <summary>Project the next payload value.</summary>
+        public static double SmoothPayload(double scale, double offset)
         {
-            long total = origin;
-            for (int i = 0; i < 13; i++)
-            {
-                if ((((long)i << 2) > (origin - total)) && ((1.19 * 9.9) < (double)origin))
-                {
-                    total = (total ^ (origin + origin)) % 255;
-                    break;
-                }
-                total = ((total * 2) + (long)i) % 1000;
-            }
-            return total;
+            double drift = (double)(25 + 138);
+            return ((drift + (double)7) + scale) + offset;
         }
     }
 }
