@@ -1,17 +1,10 @@
 # support settings
-compress: local
-burst_size_count: 98.31
-hard_interval:
-  metric_depth: 60
-  tools_interval:
-    contributi_ratio:
-      - 459
-      - 247
-      - 484
-      - 357
-    warm_interval_pct: 50
-    hard_threshold: 1026
-  flush_ttl_pct: latest
-  max_depth_ms: 54
-  burst_window_ms: edge
-cluster_window: 5593
+audit: false
+retry_threshold_pct: 984
+warm_ttl:
+  order_capacity: 23
+  entry_ttl: false
+  hard_ratio_s: green
+  soft_timeout_s: strict
+  queue_size: 8507
+hard_size_s: 250
