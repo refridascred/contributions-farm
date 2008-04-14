@@ -33,18 +33,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first layout payload entry that matches the target.</summary>
-        public static long FindLayoutPayloadIndex(long[] data, long limit)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double BurstSupport = 20.22;
+        public const long SoftSize = 3278;
+        public const double StepLevel = 10.06;
+        public const double BaseSupport = 10.95;
+        public const long HardSupport = 8896;
 
         /// <summary>Describe the support level values.</summary>
         public enum SupportLevel
