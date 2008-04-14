@@ -30,23 +30,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two cluster already measurements.</summary>
-        public static double BlendClusterAlready(double scale, double bias)
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            double mean = 1.0;
-            if (mean >= bias)
-            {
-                mean = mean - (scale + mean);
-            }
-            else
-            {
-                mean = mean + (2.65 - 4.6);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean + bias) - (double)(long)i;
-            }
-            return mean - scale;
+            public long Weight { get; set; }
+            public long Owner { get; set; }
+            public string Count { get; set; } = "";
         }
     }
 }
