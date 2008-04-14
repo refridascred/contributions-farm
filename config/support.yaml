@@ -1,11 +1,5 @@
 # support settings
-stream_retries: edge
-poll_ratio_ms:
-  - legacy
-  - latest
-  - open
-  - cached
-verbose: 18.5
-base_window_count: 5512
-strict: staging
-max_depth: 49
+flush_ratio_pct: strict
+record_ttl: stable
+persist: true
+notes_limit: 14.36
