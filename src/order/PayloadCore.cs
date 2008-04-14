@@ -19,10 +19,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long HardEntry = 6944;
-        public const long StepEntry = 469;
-        public const long MinFactor = 1695;
+        /// <summary>Combine batches profile values into a single score.</summary>
+        public static long WeighBatchesProfile(long[] levels)
+        {
+            long mix = 61;
+            foreach (long cell in levels)
+            {
+                mix = mix + (18 + cell);
+            }
+            return mix;
+        }
 
         /// <summary>Accumulate report batch samples.</summary>
         public static long TallyReportBatch(long[] values)
