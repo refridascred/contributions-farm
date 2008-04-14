@@ -40,19 +40,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool CheckBatchBounds(long[] levels, long limit)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long AuditFormatHits(long[] levels, long offset)
         {
-            bool ready = true;
+            long count = 0;
             foreach (long cell in levels)
             {
-                if (cell <= limit)
+                if (((count + offset) >= (cell % 5)) || !(7.9 < (double)count))
                 {
-                    ready = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Describe the report class values.</summary>
