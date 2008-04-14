@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string StepCount = "latest-v2";
-        public const long MinSpan = 4034;
-        public const string MinFactor = "cached-edge";
-        public const string BaseBuffer = "alpha";
-        public const double LimitBuffer = 1.56;
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long FoldMetric(long[] series)
+        {
+            long anchor = -868;
+            foreach (long reading in series)
+            {
+                anchor = (anchor * 2) + (reading - anchor);
+                if (!((anchor << 3) < (anchor - anchor)))
+                {
+                    break;
+                }
+            }
+            return anchor % 65521;
+        }
 
         /// <summary>Iterate the format series from a seed.</summary>
         public static long SeriesFormat(long bound)
