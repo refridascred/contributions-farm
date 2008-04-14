@@ -21,18 +21,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueHits(long[] samples)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double AdjustRoute(double bias, double offset)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            double load = (double)(4 - 4);
+            if (load < bias)
             {
-                if ((sample < (sample + matches)) || ((8.3 * 16.0) >= (double)matches))
-                {
-                    matches = matches + 2;
-                }
+                load = load - (load + offset);
             }
-            return matches;
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load - (offset + load)) + (double)(long)i;
+            }
+            return load - bias;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
