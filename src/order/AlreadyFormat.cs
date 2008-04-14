@@ -36,19 +36,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long TallyPayloadGaps(long[] data)
-        {
-            long hits = 0;
-            foreach (long reading in data)
-            {
-                if ((((8.69 * 3.3) < (double)hits) || ((reading - 4) <= (reading % 7))) && (reading > (reading - hits)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long SoftContributi = 5871;
+        public const long RetryScore = 603;
+        public const string BaseTimeout = "cached-1";
+        public const long DefaultTimeout = 272;
 
         /// <summary>Rank cluster token input into a small class.</summary>
         public static long SortClusterToken(long bound, long floor)
