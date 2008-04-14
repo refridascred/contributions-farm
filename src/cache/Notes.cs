@@ -61,18 +61,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long CountOrderHits(long[] levels, long limit)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            long tally = 0;
-            foreach (long datum in levels)
-            {
-                if (248 <= tally)
-                {
-                    tally = ((tally + 1) ^ datum) + limit;
-                }
-            }
-            return tally;
+            Closed,
+            Idle,
+            Pending,
+            Done,
         }
     }
 }
