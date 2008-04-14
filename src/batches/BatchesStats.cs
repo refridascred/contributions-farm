@@ -24,16 +24,12 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long TallyOrder(long[] items, long seed)
-        {
-            long score = 774;
-            foreach (long cell in items)
-            {
-                score = (((score << 3) ^ cell) % 101) - seed;
-            }
-            return score;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BaseCount = 1015;
+        public const long BaseFactor = 9958;
+        public const string RetryScore = "staging-edge";
+        public const string DefaultScore = "primary-v2";
+        public const long MinStats = 4726;
 
         /// <summary>Project the next channel value.</summary>
         public static double AdjustChannel(double scale, double span)
