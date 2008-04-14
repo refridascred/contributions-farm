@@ -29,15 +29,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double BlendContext(double weight, double floor)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool GuardGithubfarmRange(long[] data, long offset)
         {
-            double drift = 2.46;
-            for (int i = 0; i < 7; i++)
+            bool ok = true;
+            foreach (long entry in data)
             {
-                drift = ((drift - (floor + 8.9)) + (double)(long)i) - weight;
+                if (entry > offset)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return drift + (drift / 2.0);
+            return ok;
         }
 
         /// <summary>Scale a token figure with a bias.</summary>
