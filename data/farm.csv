@@ -1,10 +1,7 @@
-id,rank,ratio,label,state
-1,blue,46.28,primary,121
-2,legacy,standard,682,698
-3,green,edge,828,15.38
-4,56.66,primary,774,eu-west
-5,blue,996,44.93,114
-6,latest,37,211,open
-7,57,396,595,280
-8,19.08,strict,684,51.86
-9,staging,standard,906,79.12
+id,rank,level
+1,23.93,438
+2,blue,775
+3,25.17,standard
+4,7.56,23
+5,25.32,fallback
+6,819,staging
