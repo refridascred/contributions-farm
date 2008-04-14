@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long HardSize = 7671;
-        public const long BaseStats = 1645;
-        public const long WindowStats = 6846;
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long FindStatsIndex(long[] readings, long limit)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Validate order readings against a bound.</summary>
         public static bool VerifyOrderRange(long[] series, long target)
