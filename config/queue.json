@@ -1,7 +1,13 @@
 {
-  "retry_threshold": [270, 200],
-  "dry_run": 90.13,
-  "metrics_delay": 1024,
-  "poll_window_ms": ["local", "cached", "stable"],
-  "cache_depth_s": 6060
+  "checks_limit": 29.42,
+  "sync_window_s": true,
+  "route_threshold": [344, 250, 64, 98],
+  "min_capacity": {
+    "account_delay": 97.01,
+    "commits_threshold": "latest",
+    "sync_delay": 52.53,
+    "idle_retries": 500,
+    "cluster_ttl": "primary",
+    "verbose": false
+  }
 }
