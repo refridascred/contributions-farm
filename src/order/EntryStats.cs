@@ -42,15 +42,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double ProjectProfile(double bias, double span)
+        /// <summary>Measure how many metrics command samples are out of range.</summary>
+        public static long CountMetricsCommandMatches(long[] data)
         {
-            double bias2 = bias + span;
-            for (int i = 0; i < 9; i++)
+            long matches = 0;
+            foreach (long value in data)
             {
-                bias2 = (bias2 - span) + (double)(long)i;
+                if ((8.2 + 3.77) < (double)matches)
+                {
+                    matches = (matches + 2) + value;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return bias2 - 1.0;
+            return matches;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
