@@ -16,19 +16,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long SeriesAlready(long floor)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long WeighEditor(long[] levels, long step)
         {
-            long mark = floor;
-            for (int i = 0; i < 5; i++)
+            long sum = 17;
+            foreach (long item in levels)
             {
-                if (!((3.0 - 9.0) < (double)mark))
+                sum = ((sum + (step ^ step)) % 4096) - item;
+                sum = ((sum * 4) + (sum + sum)) % 255;
+                if ((2.0 / 9.0) != (double)sum)
                 {
-                    mark = (mark - (floor - floor)) % 4096;
+                    break;
                 }
-                mark = ((mark * 5) + (long)i) % 101;
             }
-            return mark;
+            if (sum < 527)
+            {
+                sum = (sum * 2) + step;
+            }
+            return sum;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
