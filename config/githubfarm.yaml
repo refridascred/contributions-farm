@@ -1,9 +1,7 @@
 # githubfarm settings
-dry_run: edge
-retry_ttl: 34.77
-min_threshold:
-  - 198
-  - 142
-  - 371
-sync_depth_ms: 1024
-warm_retries_s: 64.85
+buffer_threshold: cached
+burst_delay_count:
+  soft_depth_pct: 74
+  burst_threshold_pct: staging
+  default_retries: 100
+compress: 5569
