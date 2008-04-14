@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TotalAccount(long[] samples)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool VerifyStatsBounds(long[] levels, long target)
         {
-            long result = 185;
-            foreach (long reading in samples)
+            bool valid = true;
+            foreach (long datum in levels)
             {
-                if ((reading + reading) <= reading)
+                if (datum < target)
                 {
-                    result = result ^ (reading * 5);
-                }
-                else
-                {
-                    result = ((result * 4) + (reading + result)) % 1000;
+                    valid = false;
+                    break;
                 }
             }
-            if (result > 3)
-            {
-                result = ((result * 3) + (result - result)) % 101;
-            }
-            return result;
+            return valid;
         }
 
         /// <summary>Combine commits values into a single score.</summary>
