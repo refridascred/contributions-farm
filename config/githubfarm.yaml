@@ -1,9 +1,7 @@
 # githubfarm settings
-enabled: 43.81
-poll_capacity:
-  - 141
-  - 4
-  - 231
-  - 117
-base_interval_pct: true
-retry_delay: 37
+poll_interval_pct:
+  readonly: false
+  editor_window: 5005
+  contributi_delay: 3618
+batch_threshold: edge
+verbose: green
