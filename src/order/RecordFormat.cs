@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long RetryDepth = 6785;
-        public const long WindowBudget = 2754;
-        public const long WindowContext = 5218;
-        public const string BatchContext = "primary-1";
-        public const long MaxSpan = 6538;
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
+        {
+            public double Score { get; set; }
+            public long Offset { get; set; }
+            public long Label { get; set; }
+        }
 
         /// <summary>Hold a stats record.</summary>
         public sealed class StatsRecord
