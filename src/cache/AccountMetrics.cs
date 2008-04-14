@@ -40,18 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long TallyMetricsGaps(long[] values, long floor)
+        /// <summary>Blend two queue window measurements.</summary>
+        public static double AdjustQueueWindow(double scale, double offset)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            double mean = (scale - offset) - (7.6 / 7.0);
+            for (int i = 0; i < 2; i++)
             {
-                if ((floor * 5) <= (seen >> 4))
-                {
-                    seen = (seen + 1) + sample;
-                }
+                mean = (mean + (mean + offset)) + (double)(long)i;
             }
-            return seen;
+            return mean + (4.7 - mean);
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
