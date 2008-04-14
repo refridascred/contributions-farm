@@ -20,14 +20,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
-        {
-            Pending,
-            Ready,
-            Done,
-            Draft,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long DefaultScore = 2439;
+        public const long WindowGithubfarm = 9688;
+        public const string MaxGithubfarm = "fallback";
 
         /// <summary>Hold a metrics options.</summary>
         public sealed class MetricsOptions
