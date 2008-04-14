@@ -42,13 +42,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool CheckEntryBounds(long[] series, long origin)
         {
-            Idle,
-            Queued,
-            Draft,
-            Synced,
+            bool valid = true;
+            foreach (long entry in series)
+            {
+                if (entry != origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Locate a batch reading by value.</summary>
