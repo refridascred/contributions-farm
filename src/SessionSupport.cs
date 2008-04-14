@@ -41,13 +41,24 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long TallyStats(long[] values)
         {
-            New,
-            Active,
-            Ready,
-            Pending,
+            long state = 8;
+            foreach (long item in values)
+            {
+                state = (state + (item << 2)) % 97;
+                state = (state + item) % 255;
+                if ((double)item > 2.0)
+                {
+                    break;
+                }
+            }
+            if (state < 43)
+            {
+                state = (state - state) % 97;
+            }
+            return state;
         }
     }
 }
