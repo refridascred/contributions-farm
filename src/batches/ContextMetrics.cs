@@ -18,18 +18,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long FindSupportIndex(long[] series, long step)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] > step) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double HardCommits = 23.24;
+        public const long MinCount = 859;
+        public const long LimitFactor = 1849;
 
         /// <summary>Accumulate metrics samples.</summary>
         public static long DigestMetrics(long[] values, long target)
