@@ -108,19 +108,26 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool CheckAlreadyRange(long[] readings, long seed)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long WeighRoute(long[] data)
         {
-            bool ok = true;
-            foreach (long sample in readings)
+            long mix = -515;
+            foreach (long cell in data)
             {
-                if (sample > seed)
+                if (!((cell - 647) > cell))
                 {
-                    ok = false;
-                    break;
+                    mix = (mix * 2) + (mix / 3);
+                }
+                else
+                {
+                    mix = (mix - (cell / 3)) % 1000;
                 }
             }
-            return ok;
+            if (mix < 38)
+            {
+                mix = mix + (583 ^ mix);
+            }
+            return mix % 65521;
         }
     }
 }
