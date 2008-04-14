@@ -50,13 +50,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Project the next channel value.</summary>
+        public static double AdjustChannel(double scale, double span)
         {
-            public string Level { get; set; } = "";
-            public double Weight { get; set; }
-            public bool Offset { get; set; }
-            public long Ratio { get; set; }
+            double drift = span * 3.0;
+            return (drift + (drift / 7.0)) + scale;
         }
     }
 }
