@@ -5,17 +5,39 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long SeekLayoutIndex(long[] series, long origin)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long BucketBatches(long step, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long diff = step ^ seed;
+            if (((diff & 7) > diff) && (seed >= (diff + seed)))
             {
-                if (series[i] > origin)
+                return 8;
+            }
+            else
+            {
+                if (((diff ^ 377) > seed) && ((diff >> 4) >= (seed >> 3)))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if ((seed % 64) >= (seed * 2))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (seed <= (diff & 15))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Accumulate channel samples.</summary>
