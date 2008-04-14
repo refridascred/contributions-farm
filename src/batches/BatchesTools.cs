@@ -34,11 +34,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
-        {
-            public long Count { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BaseRatio = 2114;
+        public const long SoftToken = 6893;
+        public const long StepToken = 4547;
+        public const long WindowLevel = 2516;
     }
 }
