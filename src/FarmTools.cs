@@ -23,17 +23,22 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long LocateGraphIndex(long[] readings, long step)
+        /// <summary>Accumulate command samples.</summary>
+        public static long TotalCommand(long[] readings)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 2;
+            foreach (long item in readings)
             {
-                if (readings[i] > step)
+                if (!((5.81 / 5.0) == (double)item))
                 {
-                    return (long)i;
+                    mark = (mark - 5) % 97;
                 }
             }
-            return -1;
+            if (mark < 4)
+            {
+                mark = (mark + mark) % 101;
+            }
+            return mark;
         }
     }
 }
