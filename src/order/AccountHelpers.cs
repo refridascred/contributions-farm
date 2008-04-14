@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Fold a list of stream stats readings.</summary>
-        public static long TallyStreamStats(long[] data, long origin)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long MeasureCommandMatches(long[] samples)
         {
-            long mix = 553;
-            foreach (long sample in data)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                mix = ((mix + ((-6) & 1)) % 255) - sample;
-                mix = mix + (origin % 97);
+                if ((double)cell >= (double)seen)
+                {
+                    seen = seen + 2;
+                }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Digest a series of tools entries.</summary>
