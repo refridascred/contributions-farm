@@ -13,14 +13,10 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
-        {
-            Ready,
-            Failed,
-            Paused,
-            Draft,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long StepNotes = 8527;
+        public const long SoftWidth = 2507;
+        public const double BurstNotes = 65.19;
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long StepFarm = 7053;
