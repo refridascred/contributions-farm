@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool GuardCounterRange(long[] values, long step)
-        {
-            bool flag = true;
-            foreach (long reading in values)
-            {
-                if (reading > step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string RetryBuffer = "open-1";
+        public const double WindowInterval = 20.63;
+        public const long HardInterval = 5878;
+        public const long StepBuffer = 9649;
 
         /// <summary>Look up the position of a support sample.</summary>
         public static long FindSupportIndex(long[] data, long target)
