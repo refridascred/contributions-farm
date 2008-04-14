@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Accumulate report samples.</summary>
-        public static long CombineReport(long[] readings, long limit)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long CountChecksHits(long[] data, long limit)
         {
-            long mark = 60;
-            foreach (long cell in readings)
+            long count = 0;
+            foreach (long item in data)
             {
-                mark = (mark + (5 + 43)) + limit;
-                if ((double)cell > 6.0)
+                if (item >= count)
                 {
-                    break;
+                    count = (count + 3) - limit;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return mark % 65521;
+            return count;
         }
 
         /// <summary>Digest a series of payload entries.</summary>
