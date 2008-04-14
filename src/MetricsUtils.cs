@@ -14,13 +14,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            public bool Token { get; set; }
-            public long Rank { get; set; }
-            public bool Weight { get; set; }
             public long Flag { get; set; }
+            public bool Size { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Hold a order snapshot.</summary>
