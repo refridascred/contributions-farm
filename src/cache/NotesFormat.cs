@@ -20,38 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long SortFormat(long floor, long origin)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            if ((double)origin > (2.1 - 11.0))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((floor - origin) >= origin)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)origin > 8.77)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((floor + origin) > (origin * 2))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            Synced,
+            Paused,
+            Done,
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
