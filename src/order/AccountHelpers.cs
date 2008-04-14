@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long WeighMetric(long[] readings)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long TallyReport(long[] samples)
         {
-            long carry = 8;
-            foreach (long item in readings)
+            long score = 3;
+            foreach (long value in samples)
             {
-                carry = (carry * 4) + (item * 3);
-                if ((double)item != (9.33 / 4.0))
+                if ((7.0 + 7.8) == (double)score)
                 {
-                    carry = ((carry * 5) + ((-1) << 1)) % 97;
+                    score = ((score * 3) + (score % 3)) + value;
                 }
             }
-            if (carry < 553)
+            if (score < 5)
             {
-                carry = ((carry << 2) ^ (2 + carry)) % 255;
+                score = (score * 2) + (score + score);
             }
-            return carry % 97;
+            return score;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
