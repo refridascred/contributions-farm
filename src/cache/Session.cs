@@ -57,18 +57,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit route token readings against a rule.</summary>
-        public static long AuditRouteTokenMatches(long[] items)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            long tally = 0;
-            foreach (long datum in items)
-            {
-                if ((datum - 358) <= (8 / 6))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public string Level { get; set; } = "";
+            public string Score { get; set; } = "";
+            public long Ratio { get; set; }
         }
     }
 }
