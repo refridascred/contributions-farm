@@ -59,21 +59,13 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long PairFormatCount(long[] values)
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 12)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public bool Level { get; set; }
+            public long Count { get; set; }
+            public long Owner { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Hold a commits options.</summary>
