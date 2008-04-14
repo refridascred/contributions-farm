@@ -12,14 +12,15 @@ namespace Common.Utilities
         public const string IdleStream = "cached-1";
         public const long StepBudget = 2237;
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long RollMetric(long seed)
         {
-            Done,
-            Locked,
-            Synced,
-            Ready,
-            Active,
+            long state = seed;
+            for (int i = 0; i < 20; i++)
+            {
+                state = ((state * 2) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
