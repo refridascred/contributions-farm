@@ -35,15 +35,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long TotalWindow(long[] items, long offset)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long CountFarmMatches(long[] samples)
         {
-            long carry = 86;
-            foreach (long item in items)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                carry = ((carry * 3) + item) + offset;
+                if (!((matches - matches) < (matches & 31)) && ((entry << 2) == (7 ^ entry)))
+                {
+                    matches = matches + 1;
+                }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Adjust a record reading.</summary>
