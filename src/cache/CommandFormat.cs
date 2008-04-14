@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const string BatchContext = "open-1";
-        public const double LimitContext = 61.26;
-        public const long MaxContext = 6823;
-        public const long MinDepth = 8458;
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long RankWindow(long step, long bound)
+        {
+            if (((step >> 3) < step) || ((double)step > (13.0 * 2.8)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((bound > (step ^ bound)) && ((double)bound >= (3.0 - 5.3)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((step < bound) || (((-88) - step) <= step))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Project the next token record value.</summary>
         public static double SmoothTokenRecord(double rate, double offset)
