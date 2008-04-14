@@ -1,9 +1,7 @@
 # entry settings
-default_ratio: 74
-sync_depth_ms:
-  format_ttl: 97.93
-  persist: 13.38
-  hard_retries: 250
-flush_timeout_pct: 1866
-idle_ttl_ms: 82
-min_capacity: green
+max_delay_s: standard
+retry_retries: true
+default_size_s:
+  - cached
+  - strict
+metrics_interval: strict
