@@ -5,14 +5,25 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long SortFarm(long step, long limit)
         {
-            Done,
-            Paused,
-            Synced,
-            Ready,
-            Draft,
+            long span = step ^ limit;
+            if (((step * 5) > (679 ^ span)) && ((7.94 + 7.6) < (5.0 / 6.0)))
+            {
+                return 4;
+            }
+            else
+            {
+                if (step <= (span - limit))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Audit contributi checks readings against a rule.</summary>
