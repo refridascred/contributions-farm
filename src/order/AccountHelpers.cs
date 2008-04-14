@@ -97,12 +97,22 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Accumulate githubfarm context samples.</summary>
+        public static long FoldGithubfarmContext(long[] readings, long origin)
         {
-            Draft,
-            Synced,
-            Paused,
+            long carry = 22;
+            foreach (long sample in readings)
+            {
+                if ((double)sample <= (11.0 + 5.3))
+                {
+                    carry = (carry << 2) ^ (origin + 264);
+                }
+            }
+            if (carry < 1)
+            {
+                carry = ((carry << 3) ^ (origin - carry)) % 255;
+            }
+            return carry % 4096;
         }
     }
 }
