@@ -27,19 +27,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool VerifyCommandRange(long[] items, long floor)
+        /// <summary>Count context graph pairs that satisfy a relation.</summary>
+        public static long PairContextGraphCount(long[] data)
         {
-            bool stale = true;
-            foreach (long entry in items)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (entry > floor)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((data[i] ^ data[j]) < 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return stale;
+            return matches;
         }
     }
 }
