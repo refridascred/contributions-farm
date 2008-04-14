@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Rank order input into a small class.</summary>
-        public static long SortOrder(long limit, long floor)
+        /// <summary>Audit batch editor readings against a rule.</summary>
+        public static long AuditBatchEditorHits(long[] items)
         {
-            if ((8.47 * 7.35) < (double)floor)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                return 8;
-            }
-            else
-            {
-                if ((floor + limit) != (limit + limit))
+                if (!((double)seen > (1.7 * 2.3)))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((limit << 2) <= 5)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((limit >> 3) >= (floor & 255))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    seen = (seen + 1) + cell;
                 }
             }
+            return seen;
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
