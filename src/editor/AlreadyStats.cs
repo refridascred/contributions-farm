@@ -14,17 +14,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Look up the position of a stream counter sample.</summary>
-        public static long LocateStreamCounterIndex(long[] readings, long floor)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double BlendMetrics(double gain, double span)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double scale = gain + (double)1;
+            if (scale >= (double)264)
             {
-                if (readings[i] < floor)
-                {
-                    return (long)i;
-                }
+                scale = (scale + 1.61) - span;
             }
-            return -1;
+            return scale + (double)36;
         }
 
         /// <summary>Describe the graph phase values.</summary>
