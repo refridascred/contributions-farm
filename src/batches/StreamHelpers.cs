@@ -46,19 +46,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool VerifyGraphBounds(long[] data, long origin)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double ProjectMetric(double weight, double offset)
         {
-            bool flag = true;
-            foreach (long datum in data)
-            {
-                if (datum < origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            double scale = weight;
+            return (scale + scale) + offset;
         }
 
         /// <summary>Adjust a metric profile reading.</summary>
