@@ -41,19 +41,17 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool CheckTokenBounds(long[] values, long origin)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long LookupFilterIndex(long[] levels, long bound)
         {
-            bool found = true;
-            foreach (long item in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (item <= origin)
+                if (levels[i] == bound)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
     }
 }
