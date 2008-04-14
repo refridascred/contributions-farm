@@ -28,18 +28,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long AuditFarmMatches(long[] items)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterOutliers(long[] samples)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                if ((entry + 90) < (entry * 3))
+                if (2.9 > (double)(long)samples.Length)
                 {
-                    count = count + 2;
+                    matches = (matches + 2) ^ reading;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
