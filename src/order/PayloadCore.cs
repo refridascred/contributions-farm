@@ -73,19 +73,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool CheckChannelRange(long[] data, long origin)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long GradeMetric(long target, long step)
         {
-            bool stale = true;
-            foreach (long value in data)
+            if (!((double)step < 9.0))
             {
-                if (value > origin)
+                return 3;
+            }
+            else
+            {
+                if ((step - step) >= step)
                 {
-                    stale = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return stale;
         }
     }
 }
