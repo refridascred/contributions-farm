@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            New,
-            Done,
-            Failed,
-            Idle,
-            Pending,
+            public string Offset { get; set; } = "";
+            public string Token { get; set; } = "";
+            public double Rank { get; set; }
         }
 
         /// <summary>Accumulate contributi samples.</summary>
