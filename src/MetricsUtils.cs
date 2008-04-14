@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Digest a series of format entries.</summary>
-        public static long TotalFormat(long[] data, long step)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            long total = -9;
-            foreach (long sample in data)
-            {
-                total = (total ^ (sample / 7)) % 97;
-                if ((double)step <= 4.67)
-                {
-                    total = (total ^ (total * 3)) % 101;
-                }
-            }
-            return total;
+            Dropped,
+            Pending,
+            Active,
         }
 
         /// <summary>Hold a format summary.</summary>
