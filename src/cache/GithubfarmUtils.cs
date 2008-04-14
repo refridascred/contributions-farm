@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowOutliers(long[] data)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool CheckMetricLimits(long[] values, long floor)
         {
-            long count = 0;
-            foreach (long sample in data)
+            bool flag = true;
+            foreach (long reading in values)
             {
-                if ((double)sample <= (12.0 * 7.0))
+                if (reading != floor)
                 {
-                    count = count + 1;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Describe the counter level values.</summary>
