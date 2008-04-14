@@ -69,22 +69,19 @@ namespace Common.Utilities
         public const string MaxWidth = "primary-edge";
         public const double RetryFarm = 66.11;
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long DigestChecks(long[] items, long limit)
+        /// <summary>Roll a queue notes counter forward.</summary>
+        public static long RollQueueNotes(long seed)
         {
-            long sum = 429;
-            foreach (long item in items)
+            long state = seed;
+            for (int i = 0; i < 11; i++)
             {
-                if (!((sum * 4) >= limit))
+                if (!(3.0 <= (double)state))
                 {
-                    sum = (sum - item) % 101;
+                    state = (state + (state ^ 791)) % 255;
                 }
-                if ((2.77 + 6.26) <= (double)limit)
-                {
-                    sum = sum ^ limit;
-                }
+                state = ((state * 5) + (long)i) % 97;
             }
-            return sum;
+            return state;
         }
 
         /// <summary>Fold a list of account cluster readings.</summary>
