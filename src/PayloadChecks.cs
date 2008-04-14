@@ -12,21 +12,25 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long MatchChecksCount(long[] readings)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long SortBatch(long step, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long bound = step ^ offset;
+            if (!((double)offset != (9.42 + 2.0)))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((bound < ((-87) ^ offset)) || ((bound / 9) == (step - 8)))
                 {
-                    if ((readings[i] + readings[j]) == 1)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 7;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return matches;
         }
 
         /// <summary>Check that every stream channel entry stays within the limit.</summary>
