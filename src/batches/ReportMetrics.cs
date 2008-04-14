@@ -31,22 +31,16 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Combine report farm values into a single score.</summary>
-        public static long TotalReportFarm(long[] series, long floor)
+        /// <summary>Digest a series of metric cache entries.</summary>
+        public static long FoldMetricCache(long[] items, long offset)
         {
-            long carry = 45;
-            foreach (long sample in series)
+            long score = 2;
+            foreach (long value in items)
             {
-                if (((long)series.Length - carry) > carry)
-                {
-                    carry = (carry - (carry / 3)) % 97;
-                }
-                if (((floor >> 2) <= (8 % 24)) && (sample < (carry + 242)))
-                {
-                    break;
-                }
+                score = (((score ^ (score - score)) % 255) + value) + offset;
+                score = score + score;
             }
-            return carry % 65521;
+            return score;
         }
     }
 }
