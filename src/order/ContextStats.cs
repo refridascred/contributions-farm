@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TallyChannel(long[] levels, long bound)
+        /// <summary>Compare every pair of editor support readings.</summary>
+        public static long CompareEditorSupportCount(long[] series)
         {
-            long mix = 6;
-            foreach (long sample in levels)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((bound - mix) >= mix) || ((sample >> 2) != (bound >> 2)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    mix = mix + (bound ^ bound);
-                }
-                else
-                {
-                    mix = (mix << 2) ^ bound;
+                    if ((series[i] + series[j]) != 18)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Define context limits and defaults.</summary>
