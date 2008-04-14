@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Accumulate context samples.</summary>
-        public static long CombineContext(long[] series)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool CheckReportBounds(long[] levels, long seed)
         {
-            long acc = 92;
-            foreach (long datum in series)
+            bool valid = true;
+            foreach (long reading in levels)
             {
-                if ((datum - datum) < (datum & 63))
+                if (reading <= seed)
                 {
-                    acc = acc + acc;
-                }
-                else
-                {
-                    acc = ((acc * 5) + (datum & 127)) % 255;
+                    valid = false;
+                    break;
                 }
             }
-            return acc;
+            return valid;
         }
 
         /// <summary>Rank format input into a small class.</summary>
