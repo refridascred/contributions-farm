@@ -29,19 +29,17 @@ namespace Common.Utilities
         public const long SoftDepth = 4433;
         public const long RetryRecord = 1465;
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool VerifyLayoutBounds(long[] series, long step)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long LocateEntryIndex(long[] values, long origin)
         {
-            bool found = true;
-            foreach (long datum in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (datum >= step)
+                if ((values[i] > origin) && ((values[i] % 5) == 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Define account limits and defaults.</summary>
