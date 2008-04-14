@@ -49,10 +49,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string BatchFactor = "staging-edge";
-        public const string RetryEditor = "strict-v2";
-        public const string WindowEditor = "alpha-edge";
+        /// <summary>Measure how many route checks samples are out of range.</summary>
+        public static long CountRouteChecksOutliers(long[] samples, long limit)
+        {
+            long tally = 0;
+            foreach (long value in samples)
+            {
+                if (!((double)tally > 3.86))
+                {
+                    tally = ((tally + 2) - value) - limit;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define session limits and defaults.</summary>
         public const double BatchSession = 70.92;
