@@ -52,22 +52,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long DigestFarm(long[] levels, long seed)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            long anchor = 303;
-            foreach (long reading in levels)
-            {
-                for (int i = 0; i < 3; i++)
-                {
-                    anchor = (((anchor - anchor) % 1000) ^ (long)i) + reading;
-                }
-                if ((double)seed <= (4.92 - 7.0))
-                {
-                    anchor = (anchor ^ (anchor - anchor)) % 255;
-                }
-            }
-            return anchor % 1000;
+            public long Ratio { get; set; }
+            public long Flag { get; set; }
+            public double Score { get; set; }
         }
     }
 }
