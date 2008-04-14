@@ -19,13 +19,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Grade a route contributi value against two limits.</summary>
+        public static long SortRouteContributi(long target, long floor)
         {
-            public long Mode { get; set; }
-            public bool Label { get; set; }
-            public double Rank { get; set; }
-            public string Region { get; set; } = "";
+            long bound = target - floor;
+            if ((bound & 1) > bound)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)bound == (7.79 * 9.8))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (floor < (floor << 1))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Match up contributi samples.</summary>
