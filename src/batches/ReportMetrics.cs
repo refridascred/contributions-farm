@@ -29,18 +29,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long AuditWindowGaps(long[] values)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteGaps(long[] levels)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                if ((14.0 - 4.0) <= (double)sample)
+                if (!((double)tally == (0.1 - 4.38)))
                 {
-                    hits = hits + 3;
+                    tally = (tally + 1) + reading;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
