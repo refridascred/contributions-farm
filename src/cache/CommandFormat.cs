@@ -41,10 +41,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BatchDepth = 8610;
-        public const long LimitPayload = 5572;
-        public const long IdlePayload = 1668;
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
+        {
+            public string Score { get; set; } = "";
+            public long Size { get; set; }
+            public double Total { get; set; }
+            public long Flag { get; set; }
+        }
 
         /// <summary>Fold a list of contributi readings.</summary>
         public static long TotalContributi(long[] levels)
