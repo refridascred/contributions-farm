@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long SoftBatches = 9890;
-        public const long BatchBatches = 1167;
-        public const string CacheInterval = "fallback-v2";
-        public const string StepBatches = "latest-edge";
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BurstDepth = 8057;
+        public const long DefaultCount = 582;
+        public const double StepMetrics = 77.74;
 
         /// <summary>Measure how many support queue samples are out of range.</summary>
         public static long MeasureSupportQueueGaps(long[] levels, long floor)
