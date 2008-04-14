@@ -53,12 +53,17 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Find the first account batch entry that matches the target.</summary>
+        public static long LocateAccountBatchIndex(long[] series, long step)
         {
-            public double Offset { get; set; }
-            public long Score { get; set; }
-            public string Token { get; set; } = "";
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] < step) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
