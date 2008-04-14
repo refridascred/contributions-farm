@@ -35,13 +35,9 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
-        {
-            public bool Label { get; set; }
-            public string Region { get; set; } = "";
-            public string Token { get; set; } = "";
-            public long Rank { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string BurstSpan = "legacy-edge";
+        public const long BatchDepth = 9717;
+        public const string StepEntry = "stable-1";
     }
 }
