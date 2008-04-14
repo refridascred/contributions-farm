@@ -82,11 +82,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long SoftCount = 1719;
-        public const double IdleFilter = 21.34;
-        public const double CacheWidth = 14.37;
-        public const string HardLevel = "legacy-1";
-        public const string BaseFactor = "fallback-v2";
+        /// <summary>Find the first channel filter entry that matches the target.</summary>
+        public static long SeekChannelFilterIndex(long[] values, long origin)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
