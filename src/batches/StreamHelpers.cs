@@ -26,15 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
-        {
-            Dropped,
-            Failed,
-            Ready,
-            Closed,
-            Retry,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string BaseProfile = "open";
+        public const double BatchProfile = 61.4;
+        public const string MaxProfile = "open-edge";
+        public const long MaxLevel = 9034;
+        public const long StepFactor = 597;
 
         /// <summary>Describe the filter class values.</summary>
         public enum FilterClass
