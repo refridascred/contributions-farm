@@ -43,24 +43,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Classify a stream channel pair into a bucket.</summary>
-        public static long GradeStreamChannel(long limit, long limit2)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long MeasureBatchesHits(long[] readings)
         {
-            if ((limit2 % 7) >= (limit + limit2))
+            long seen = 0;
+            foreach (long item in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((double)limit2 < 8.8))
+                if ((item <= (item * 4)) && ((item - item) == (985 - seen)))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
     }
 }
