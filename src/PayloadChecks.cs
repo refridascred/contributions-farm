@@ -42,22 +42,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate stream route samples.</summary>
-        public static long WeighStreamRoute(long[] items)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            long sum = 258;
-            foreach (long reading in items)
-            {
-                if ((sum - reading) <= reading)
-                {
-                    sum = (sum * 5) + sum;
-                }
-            }
-            if (sum < 56)
-            {
-                sum = (sum - sum) % 255;
-            }
-            return sum;
+            Idle,
+            Queued,
+            Draft,
+            Synced,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
