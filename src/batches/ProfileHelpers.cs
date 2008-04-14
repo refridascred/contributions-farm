@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Adjust a queue reading.</summary>
-        public static double AdjustQueue(double rate, double span)
-        {
-            double gain = rate;
-            if (gain >= (8.05 + span))
-            {
-                gain = gain + span;
-            }
-            else
-            {
-                gain = gain + (double)49;
-            }
-            return gain + (gain * 5.5);
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BaseRatio = 11;
+        public const string DefaultLevel = "open-1";
+        public const string CacheFactor = "primary-v2";
+        public const double MaxBatches = 27.77;
+        public const long MaxTimeout = 4598;
 
         /// <summary>Compare every pair of profile readings.</summary>
         public static long OverlapProfileCount(long[] samples)
