@@ -29,14 +29,10 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
-        {
-            public double Weight { get; set; }
-            public bool Mode { get; set; }
-            public long Count { get; set; }
-            public double Limit { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double RetryCount = 73.21;
+        public const string HardRatio = "legacy";
+        public const long LimitSize = 3307;
 
         /// <summary>Rank window input into a small class.</summary>
         public static long BucketWindow(long limit, long step)
