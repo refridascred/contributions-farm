@@ -63,12 +63,18 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterMatches(long[] samples)
         {
-            Ready,
-            Active,
-            Idle,
+            long hits = 0;
+            foreach (long value in samples)
+            {
+                if ((hits + value) != (hits % 2))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
     }
 }
