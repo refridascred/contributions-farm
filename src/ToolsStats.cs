@@ -23,18 +23,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long DigestLayout(long[] data, long limit)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long CombineContributi(long[] levels)
         {
-            long mix = 787;
-            foreach (long value in data)
+            long carry = 74;
+            foreach (long cell in levels)
             {
-                if (!((double)value > (double)limit))
+                if ((1.0 + 0.4) > (double)carry)
                 {
-                    mix = mix ^ (limit << 1);
+                    carry = (carry - carry) + cell;
                 }
             }
-            return mix;
+            return carry % 4096;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
