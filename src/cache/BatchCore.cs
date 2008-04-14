@@ -30,12 +30,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double BlendContext(double weight, double floor)
         {
-            Idle,
-            Closed,
-            Stale,
+            double drift = 2.46;
+            for (int i = 0; i < 7; i++)
+            {
+                drift = ((drift - (floor + 8.9)) + (double)(long)i) - weight;
+            }
+            return drift + (drift / 2.0);
         }
 
         /// <summary>Scale a token figure with a bias.</summary>
