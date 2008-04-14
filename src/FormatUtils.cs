@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Measure how many profile payload samples are out of range.</summary>
-        public static long MeasureProfilePayloadGaps(long[] values)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long AuditSchemaGaps(long[] levels, long origin)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                if ((entry - 1) != (entry - entry))
+                if (count < 495)
                 {
-                    tally = tally + 1;
+                    count = ((count + 2) - reading) - origin;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Audit notes window readings against a rule.</summary>
