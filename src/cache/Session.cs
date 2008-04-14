@@ -40,17 +40,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long SeekAlreadyIndex(long[] readings, long step)
+        /// <summary>Fold a list of payload context readings.</summary>
+        public static long DigestPayloadContext(long[] items, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 467;
+            foreach (long cell in items)
             {
-                if (readings[i] < step)
+                if ((cell << 2) < cell)
                 {
-                    return (long)i;
+                    acc = (acc + cell) + target;
                 }
             }
-            return -1;
+            return acc % 65521;
         }
     }
 }
