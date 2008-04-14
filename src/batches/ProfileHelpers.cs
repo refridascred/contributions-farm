@@ -23,12 +23,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double WindowProfile = 38.02;
-        public const long BurstCount = 4340;
-        public const string MaxProfile = "strict-edge";
-        public const long StepProfile = 2057;
-        public const long CacheScore = 5913;
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double SmoothAccount(double gain, double bias)
+        {
+            double mean = (bias + 6.82) + bias;
+            return (mean + 8.8) + gain;
+        }
 
         /// <summary>Describe the batch kind values.</summary>
         public enum BatchKind
