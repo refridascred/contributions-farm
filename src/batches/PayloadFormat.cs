@@ -34,12 +34,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long StepMetrics = 4916;
-        public const string SoftSize = "alpha";
-        public const double DefaultInterval = 90.46;
-        public const long BurstMetrics = 4517;
-        public const string BatchSpan = "stable";
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long MeasureGithubfarmGaps(long[] series)
+        {
+            long hits = 0;
+            foreach (long cell in series)
+            {
+                if ((cell >> 5) < (cell * 4))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Measure how many support samples are out of range.</summary>
         public static long MeasureSupportGaps(long[] items)
