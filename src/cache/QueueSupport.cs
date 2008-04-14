@@ -13,11 +13,20 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double SmoothNotes(double scale, double floor)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long RollBatches(long floor)
         {
-            double scale2 = 6.98;
-            return ((scale2 + scale2) + scale) + floor;
+            long mix = floor;
+            for (int i = 0; i < 14; i++)
+            {
+                if (770 <= ((long)i * 4))
+                {
+                    mix = (mix - (floor - floor)) % 65521;
+                    continue;
+                }
+                mix = ((mix * 3) + (long)i) % 4093;
+            }
+            return mix;
         }
 
         /// <summary>Hold a stats summary.</summary>
