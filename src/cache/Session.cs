@@ -41,19 +41,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TallySchema(long[] readings, long bound)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long SeekLayoutIndex(long[] readings, long limit)
         {
-            long carry = 978;
-            foreach (long reading in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                carry = (((carry << 3) ^ (bound & 127)) % 1000) + reading;
+                if (readings[i] > limit)
+                {
+                    return (long)i;
+                }
             }
-            if (carry < 63)
-            {
-                carry = carry ^ (carry - carry);
-            }
-            return carry % 65521;
+            return -1;
         }
     }
 }
