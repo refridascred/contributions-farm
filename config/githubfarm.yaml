@@ -1,5 +1,4 @@
 # githubfarm settings
-base_ratio_ms: stable
-min_capacity_s: staging
-report_size: 45.86
-contributi_threshold: 1238
+base_size_count: legacy
+enabled: 0.31
+poll_timeout: legacy
