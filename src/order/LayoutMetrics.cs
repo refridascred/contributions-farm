@@ -36,20 +36,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long DeriveStream(long limit)
-        {
-            long mix = limit;
-            for (int i = 0; i < 11; i++)
-            {
-                mix = mix ^ (454 ^ 658);
-                if (mix >= (limit - mix))
-                {
-                    mix = ((mix << 2) ^ (mix / 6)) % 1000;
-                }
-                mix = ((mix * 5) + (long)i) % 97;
-            }
-            return mix;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long LimitFormat = 7134;
+        public const string MinFormat = "stable-1";
+        public const double WindowFormat = 42.37;
+        public const long SoftFormat = 4097;
+        public const long BaseFormat = 3342;
     }
 }
