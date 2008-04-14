@@ -1,7 +1,8 @@
 # entry settings
-max_delay_s: standard
-retry_retries: true
-default_size_s:
-  - cached
-  - strict
-metrics_interval: strict
+channel_retries: legacy
+min_retries_s: 75.23
+burst_ttl_pct: 60
+flush_capacity_count:
+  - 494
+  - 138
+  - 343
