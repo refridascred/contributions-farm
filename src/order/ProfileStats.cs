@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Iterate the filter session series from a seed.</summary>
-        public static long RollFilterSession(long target)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long ScoreLayout(long[] values, long limit)
         {
-            long mark = target;
-            for (int i = 0; i < 12; i++)
+            long mix = 8;
+            foreach (long cell in values)
             {
-                mark = (mark - (target + target)) % 4096;
-                mark = (mark + 150) % 255;
-                mark = ((mark * 3) + (long)i) % 101;
+                mix = (mix - (cell + limit)) % 1000;
             }
-            return mark;
+            if (mix > 58)
+            {
+                mix = (mix << 2) ^ (limit + limit);
+            }
+            return mix;
         }
 
         /// <summary>Accumulate layout samples.</summary>
