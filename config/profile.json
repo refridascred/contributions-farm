@@ -1,8 +1,25 @@
 {
-  "poll_retries_ms": "fallback",
-  "min_capacity": false,
-  "cache_timeout_pct": true,
-  "max_interval": "legacy",
-  "hard_ratio_ms": 53.67,
-  "cache_interval_ms": ["local", "edge", "legacy", "edge"]
+  "commits_delay": {
+    "already_threshold": 53,
+    "base_ttl_s": 69.64,
+    "burst_capacity": 83.88,
+    "min_limit": {
+      "default_limit_ms": "edge",
+      "counter_retries": [305, 9, 464, 256],
+      "readonly": [107, 88],
+      "strict": false
+    },
+    "entry_delay": 6543
+  },
+  "min_retries": 250,
+  "dry_run": "staging",
+  "default_ttl": {
+    "soft_interval_ms": 1024,
+    "enabled": 55.75,
+    "context_interval": ["cached", "green"],
+    "entry_depth": [436, 300, 435, 102],
+    "sync_retries_count": false,
+    "verbose": 27
+  },
+  "burst_timeout_s": 1024
 }
