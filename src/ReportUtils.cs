@@ -52,18 +52,32 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordHits(long[] samples)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long BucketToken(long floor, long offset)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            long step = floor + offset;
+            if ((step + 2) < (step ^ step))
             {
-                if ((reading >> 5) > count)
+                return 5;
+            }
+            else
+            {
+                if ((4.59 + 1.6) >= (double)offset)
                 {
-                    count = count + 3;
+                    return 7;
+                }
+                else
+                {
+                    if ((1.8 - 15.0) <= (double)offset)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
