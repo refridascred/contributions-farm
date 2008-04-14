@@ -44,21 +44,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up channel stats samples.</summary>
-        public static long PairChannelStatsCount(long[] data)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long FindLayoutIndex(long[] series, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (series[i] == limit)
                 {
-                    if ((data[i] ^ data[j]) != 8)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
