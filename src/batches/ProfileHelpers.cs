@@ -49,14 +49,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Classify a format account pair into a bucket.</summary>
+        public static long BucketFormatAccount(long target, long offset)
         {
-            Done,
-            Queued,
-            Active,
-            Closed,
-            Dropped,
+            long lane = target ^ offset;
+            if ((17 <= (offset + lane)) || (target < (lane / 6)))
+            {
+                return 7;
+            }
+            else
+            {
+                if (8.62 < (double)target)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Locate a filter reading by value.</summary>
