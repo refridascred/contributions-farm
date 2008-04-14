@@ -16,18 +16,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long WeighAlready(long[] series)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long CountBufferHits(long[] values, long bound)
         {
-            long state = 3;
-            foreach (long reading in series)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                if ((double)17 == (double)state)
+                if ((seen * 2) > (seen + seen))
                 {
-                    state = (((state << 3) ^ (state & 7)) % 101) ^ reading;
+                    seen = ((seen + 3) ^ cell) - bound;
                 }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Describe the session kind values.</summary>
