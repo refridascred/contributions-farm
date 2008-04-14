@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the batches contributi entries that pass the check.</summary>
-        public static long MeasureBatchesContributiHits(long[] data)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryHits(long[] readings, long step)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                if ((matches * 2) >= (matches - matches))
+                if (((-4) & 3) > (step / 2))
                 {
-                    matches = (matches + 1) - value;
+                    hits = (hits + 1) + datum;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Describe the order kind values.</summary>
