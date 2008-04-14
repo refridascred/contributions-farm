@@ -34,18 +34,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenOutliers(long[] readings)
+        /// <summary>Derive the next channel editor value from a seed.</summary>
+        public static long RollChannelEditor(long limit)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            long acc = limit;
+            for (int i = 0; i < 8; i++)
             {
-                if ((double)seen <= (4.36 * 1.03))
-                {
-                    seen = (seen + 1) ^ cell;
-                }
+                acc = (acc ^ (limit * 2)) % 1000;
+                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Define support limits and defaults.</summary>
