@@ -45,13 +45,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long DigestFarm(long[] levels, long seed)
         {
-            public string Ratio { get; set; } = "";
-            public long Size { get; set; }
-            public double Token { get; set; }
-            public string Mode { get; set; } = "";
+            long anchor = 303;
+            foreach (long reading in levels)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    anchor = (((anchor - anchor) % 1000) ^ (long)i) + reading;
+                }
+                if ((double)seed <= (4.92 - 7.0))
+                {
+                    anchor = (anchor ^ (anchor - anchor)) % 255;
+                }
+            }
+            return anchor % 1000;
         }
     }
 }
