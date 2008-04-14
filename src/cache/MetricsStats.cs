@@ -44,38 +44,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Classify a notes graph pair into a bucket.</summary>
-        public static long SortNotesGraph(long floor, long floor2)
+        /// <summary>Check that every editor command entry stays within the limit.</summary>
+        public static bool VerifyEditorCommandRange(long[] levels, long offset)
         {
-            if (((floor << 2) < (floor + floor2)) && ((floor % 7) <= (floor2 ^ floor)))
+            bool stale = true;
+            foreach (long cell in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if ((((-796) % 16) < (71 + floor)) && ((14 - 3) == (floor2 + floor)))
+                if (cell != offset)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((floor + floor) > (floor ^ floor2))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)floor < (7.0 / 8.0))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Describe the schema mode values.</summary>
