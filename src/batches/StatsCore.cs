@@ -48,23 +48,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double AdjustSchema(double scale, double bias)
+        /// <summary>Adjust a command reading.</summary>
+        public static double AdjustCommand(double rate, double floor)
         {
-            double rate = (double)(61 + 9);
-            if (rate > (bias - bias))
+            double weight = 5.51;
+            if (weight >= (rate / 8.0))
             {
-                rate = rate - (rate - rate);
+                weight = (weight + (double)348) - floor;
             }
             else
             {
-                rate = rate - (double)89;
+                weight = weight + (double)89;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = rate - (double)(long)i;
-            }
-            return rate - scale;
+            return weight + (rate / 6.0);
         }
 
         /// <summary>Describe the command mode values.</summary>
