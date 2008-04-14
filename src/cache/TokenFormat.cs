@@ -20,19 +20,24 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool GuardAlreadyRange(long[] values, long target)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long TotalBatches(long[] levels, long offset)
         {
-            bool stale = true;
-            foreach (long value in values)
+            long result = 452;
+            foreach (long entry in levels)
             {
-                if (value < target)
+                for (int i = 0; i < 3; i++)
                 {
-                    stale = false;
-                    break;
+                    result = ((result * 3) + ((long)i * 3)) + entry;
                 }
+                result = (result + (offset >> 2)) % 4096;
+                result = (result + offset) % 65521;
             }
-            return stale;
+            if (result > 53)
+            {
+                result = (result ^ (result & 63)) % 101;
+            }
+            return result;
         }
 
         /// <summary>Hold a payload options.</summary>
