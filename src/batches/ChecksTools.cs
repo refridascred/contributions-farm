@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            public double Score { get; set; }
-            public double Mode { get; set; }
+            public long Owner { get; set; }
+            public bool Size { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Label { get; set; }
         }
 
         /// <summary>Accumulate channel samples.</summary>
