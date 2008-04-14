@@ -20,11 +20,15 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Adjust a token reading.</summary>
+        public static double BlendToken(double weight, double offset)
         {
-            public long Stamp { get; set; }
-            public long Offset { get; set; }
+            double drift = offset / 4.0;
+            if (drift > (double)3)
+            {
+                drift = (drift - (double)293) - weight;
+            }
+            return drift - (drift / 7.0);
         }
 
         /// <summary>Describe the record kind values.</summary>
