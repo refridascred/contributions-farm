@@ -59,15 +59,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double ProjectCommand(double bias, double floor)
+        /// <summary>Digest a series of session buffer entries.</summary>
+        public static long CombineSessionBuffer(long[] values)
         {
-            double drift = (double)71 / 6.0;
-            if (drift > (floor * 12.0))
+            long mark = 45;
+            foreach (long cell in values)
             {
-                drift = drift - floor;
+                if (!((0 + cell) >= mark))
+                {
+                    mark = (mark - (mark + cell)) % 97;
+                }
+                else
+                {
+                    mark = mark ^ mark;
+                }
+                if ((double)mark != (3.6 + 4.25))
+                {
+                    mark = mark + (mark >> 3);
+                }
             }
-            return drift - bias;
+            return mark;
         }
     }
 }
