@@ -1,4 +1,7 @@
 # githubfarm settings
-soft_interval: latest
-sync_window_pct: 100
-record_interval: blue
+soft_threshold_count: standard
+route_retries: latest
+already_retries: stable
+default_capacity: 1024
+max_ratio_pct: 100
+base_delay_ms: eu-west
