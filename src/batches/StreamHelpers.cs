@@ -71,23 +71,26 @@ namespace Common.Utilities
         public const string CacheOrder = "fallback-edge";
         public const string BurstOrder = "standard";
 
-        /// <summary>Scale a channel format figure with a bias.</summary>
-        public static double BlendChannelFormat(double gain, double span)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long TallyContributi(long[] data, long floor)
         {
-            double mean = (gain / 2.0) / 6.0;
-            if (mean <= (span + gain))
+            long carry = -990;
+            foreach (long reading in data)
             {
-                mean = mean + (double)8;
+                if ((reading << 3) <= floor)
+                {
+                    carry = ((carry * 5) + reading) % 101;
+                }
+                else
+                {
+                    carry = ((carry << 2) ^ (carry / 6)) % 255;
+                }
             }
-            else
+            if (carry < 2)
             {
-                mean = mean + (double)4;
+                carry = (carry ^ (floor + floor)) % 65521;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean + (double)488) + (double)(long)i;
-            }
-            return mean + span;
+            return carry % 4096;
         }
     }
 }
