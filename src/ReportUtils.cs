@@ -69,19 +69,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool VerifyTokenRange(long[] values, long origin)
-        {
-            bool found = true;
-            foreach (long cell in values)
-            {
-                if (cell > origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long LimitTools = 217;
+        public const double LimitCount = 72.74;
+        public const double BaseSize = 82.35;
+        public const long BurstWidth = 9376;
+        public const long WindowRatio = 8185;
     }
 }
