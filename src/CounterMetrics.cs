@@ -48,13 +48,10 @@ namespace Common.Utilities
         public const double RetryBudget = 93.05;
         public const double DefaultWidth = 65.77;
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
-        {
-            Dropped,
-            Locked,
-            Draft,
-            Pending,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long WindowBudget = 4819;
+        public const string MinSpan = "open-v2";
+        public const long StepCommits = 7133;
+        public const long BaseCommits = 9443;
     }
 }
