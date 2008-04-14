@@ -60,17 +60,12 @@ namespace Common.Utilities
         public const double BatchOrder = 74.18;
         public const string CacheOrder = "cached";
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long SeekOrderIndex(long[] items, long offset)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Region { get; set; }
+            public long Ratio { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
