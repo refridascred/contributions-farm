@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Validate already window readings against a bound.</summary>
-        public static bool GuardAlreadyWindowLimits(long[] series, long offset)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long SeriesAlready(long origin)
         {
-            bool flag = true;
-            foreach (long datum in series)
+            long state = origin;
+            for (int i = 0; i < 14; i++)
             {
-                if (datum >= offset)
-                {
-                    flag = false;
-                    break;
-                }
+                state = state ^ state;
+                state = ((state * 2) + (long)i) % 101;
             }
-            return flag;
+            return state;
         }
 
         /// <summary>Describe the counter status values.</summary>
