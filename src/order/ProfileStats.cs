@@ -34,16 +34,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long ScoreCounter(long[] readings, long step)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphHits(long[] levels)
         {
-            long sum = 677;
-            foreach (long entry in readings)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                sum = ((sum ^ (step % 12)) % 1000) + entry;
-                sum = (sum + (step << 1)) % 97;
+                if (matches < datum)
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return sum % 1000;
+            return matches;
         }
 
         /// <summary>Grade a cache buffer value against two limits.</summary>
