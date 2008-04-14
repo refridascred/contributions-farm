@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long WindowBudget = 854;
-        public const long SoftWidth = 166;
-        public const long BaseBatches = 8521;
-        public const string StepScore = "strict-v2";
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long SeekLayoutIndex(long[] levels, long step)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit commits readings against a rule.</summary>
         public static long AuditCommitsGaps(long[] data)
