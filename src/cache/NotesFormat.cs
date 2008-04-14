@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Measure how many command entry samples are out of range.</summary>
+        public static long AuditCommandEntryMatches(long[] series)
         {
-            Queued,
-            Failed,
-            Pending,
+            long seen = 0;
+            foreach (long value in series)
+            {
+                if (value <= (value * 5))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Rank format input into a small class.</summary>
