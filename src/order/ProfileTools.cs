@@ -44,24 +44,12 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Blend two route account measurements.</summary>
-        public static double ScaleRouteAccount(double rate, double bias)
-        {
-            double ratio = (bias + bias) + (double)24;
-            if (ratio < (10.0 * 3.89))
-            {
-                ratio = (ratio + 4.1) - rate;
-            }
-            else
-            {
-                ratio = ratio - (9.0 * 8.05);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio + 9.5) - (double)(long)i;
-            }
-            return ratio - ratio;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long StepCounter = 6508;
+        public const string MinCounter = "strict-edge";
+        public const long SoftCounter = 7555;
+        public const long HardWidth = 5427;
+        public const long LimitLevel = 5408;
 
         /// <summary>Measure how many metric samples are out of range.</summary>
         public static long MeasureMetricGaps(long[] items)
