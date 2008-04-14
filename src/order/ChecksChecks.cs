@@ -15,31 +15,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long BucketContributi(long offset, long origin)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            if ((9.3 - 17.0) == (double)offset)
-            {
-                return 2;
-            }
-            else
-            {
-                if (origin > (4 >> 1))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((offset - origin) > (origin / 7))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public string Weight { get; set; } = "";
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
