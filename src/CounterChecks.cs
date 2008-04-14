@@ -10,22 +10,24 @@ namespace Common.Utilities
         public const long LimitChecks = 4124;
         public const string MaxChecks = "primary";
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long CountBufferMatches(long[] items, long bound)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long BucketEditor(long bound, long floor)
         {
-            long matches = 0;
-            foreach (long value in items)
+            if ((floor > (844 + floor)) && ((194 % 24) < (floor + bound)))
             {
-                if (bound < (matches - value))
+                return 3;
+            }
+            else
+            {
+                if (((6.9 * 7.6) <= (double)floor) || ((91 / 7) >= (floor / 6)))
                 {
-                    matches = matches + 3;
+                    return 6;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    return 5;
                 }
             }
-            return matches;
         }
 
         /// <summary>Project the next tools value.</summary>
