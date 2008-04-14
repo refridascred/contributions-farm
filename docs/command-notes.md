@@ -1,13 +1,10 @@
 # Command notes
 
-The cache report groups every metric by cluster.
-The buffer module keeps channel values in sync with the record cache.
-
-Keep window and buffer names short and lowercase.
-Use layout settings to tune how often session data is refreshed.
+Run the schema check before changing any metrics limits.
+When a entry fails, the profile handler retries a few times before giving up.
 
 ## Guidelines
 
-- Keep route values small
-- Document new buffer fields
-- Log every entry change
+- Prefer farm defaults
+- Document new entry fields
+- Log every support change
