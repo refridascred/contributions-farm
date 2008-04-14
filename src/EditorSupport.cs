@@ -16,21 +16,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next layout stats value from a seed.</summary>
-        public static long DeriveLayoutStats(long target)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool ValidateTokenRange(long[] data, long floor)
         {
-            long result = target;
-            for (int i = 0; i < 20; i++)
+            bool valid = true;
+            foreach (long datum in data)
             {
-                result = (result * 4) + (7 - result);
-                if (!(81 < ((long)i % 2)))
+                if (datum != floor)
                 {
-                    result = (result + result) % 255;
-                    result = result ^ (target % 10);
+                    valid = false;
+                    break;
                 }
-                result = ((result * 5) + (long)i) % 4093;
             }
-            return result;
+            return valid;
         }
 
         /// <summary>Measure how many queue batch samples are out of range.</summary>
