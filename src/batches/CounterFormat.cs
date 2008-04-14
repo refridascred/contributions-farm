@@ -5,26 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TotalMetric(long[] samples, long seed)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            long anchor = 61;
-            foreach (long reading in samples)
-            {
-                if (((double)anchor > (4.5 * 2.3)) || ((seed % 3) >= anchor))
-                {
-                    anchor = ((anchor ^ (1 - (-10))) % 97) + reading;
-                }
-                else
-                {
-                    anchor = anchor + ((long)samples.Length + anchor);
-                }
-            }
-            if (anchor < 78)
-            {
-                anchor = (anchor ^ (anchor - anchor)) % 1000;
-            }
-            return anchor;
+            Pending,
+            Closed,
+            Stale,
+            Idle,
+            Failed,
         }
 
         /// <summary>Hold a cache info.</summary>
