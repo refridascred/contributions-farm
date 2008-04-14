@@ -24,31 +24,11 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long SortTools(long target, long floor)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            if (((double)floor == (5.89 / 8.0)) || ((double)floor == (2.75 - 11.0)))
-            {
-                return 5;
-            }
-            else
-            {
-                if (floor > 5)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((target - floor) != (floor - floor))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public double Score { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Validate command graph readings against a bound.</summary>
