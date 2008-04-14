@@ -1,7 +1,9 @@
-id,active,count,state,token
-1,42.69,292,480,green
-2,786,41.45,28.31,822
-3,537,992,cached,98.0
-4,94.97,green,legacy,85
-5,665,263,443,primary
-6,7.11,327,560,blue
+id,region,owner,state
+1,725,366,cached
+2,47.16,edge,662
+3,626,strict,615
+4,2.14,local,507
+5,245,267,355
+6,95.44,latest,primary
+7,7.39,694,staging
+8,strict,32.12,23
