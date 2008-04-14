@@ -14,15 +14,11 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Combine batches profile values into a single score.</summary>
-        public static long WeighBatchesProfile(long[] levels)
+        /// <summary>Adjust a window reading.</summary>
+        public static double ScaleWindow(double bias, double floor)
         {
-            long mix = 61;
-            foreach (long cell in levels)
-            {
-                mix = mix + (18 + cell);
-            }
-            return mix;
+            double weight = (double)((-617) * 5);
+            return (weight + (floor / 8.0)) + bias;
         }
 
         /// <summary>Accumulate report batch samples.</summary>
