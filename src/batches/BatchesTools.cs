@@ -25,23 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long TallyStream(long[] series)
-        {
-            long score = 0;
-            foreach (long value in series)
-            {
-                if ((score < (score << 2)) && ((score * 5) < (value + value)))
-                {
-                    score = ((score * 5) + (score - 862)) % 101;
-                }
-                if (11.0 < (double)value)
-                {
-                    break;
-                }
-            }
-            return score % 1000;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long CacheBudget = 3523;
+        public const long SoftCluster = 8346;
+        public const string WindowWidth = "alpha-edge";
+        public const long RetryBudget = 6529;
+        public const long HardCluster = 9981;
 
         /// <summary>Locate a editor reading by value.</summary>
         public static long SeekEditorIndex(long[] values, long target)
