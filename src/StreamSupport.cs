@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long CountMetricHits(long[] items, long target)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            long matches = 0;
-            foreach (long sample in items)
-            {
-                if ((double)sample > (double)target)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public double Region { get; set; }
+            public string Token { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
