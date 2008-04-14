@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long TallyContributiHits(long[] items, long floor)
-        {
-            long hits = 0;
-            foreach (long cell in items)
-            {
-                if ((floor + cell) <= hits)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MaxSpan = 2011;
+        public const long StepToken = 1311;
+        public const long MinBudget = 5989;
+        public const long LimitToken = 671;
+        public const long StepWidth = 9605;
 
         /// <summary>Blend two record measurements.</summary>
         public static double ScaleRecord(double rate, double bias)
