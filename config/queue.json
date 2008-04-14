@@ -1,9 +1,11 @@
 {
-  "githubfarm_threshold": {
-    "batch_ttl_count": ["legacy", "green", "open", "legacy"],
-    "retry_interval_s": true,
-    "warm_threshold": "local"
-  },
-  "farm_retries": ["primary", "standard"],
-  "flush_capacity_s": "strict"
+  "min_timeout": "legacy",
+  "default_interval_pct": false,
+  "compress": 91.24,
+  "soft_interval_s": {
+    "session_timeout": "open",
+    "burst_ttl_s": ["blue", "stable", "legacy"],
+    "cluster_timeout": 3198,
+    "max_ttl_ms": 82.48
+  }
 }
