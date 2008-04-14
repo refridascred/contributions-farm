@@ -6,15 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in strict blue latest; do
+RECORD_LIMIT=30
+log "limit is ${RECORD_LIMIT}"
+
+for item in open edge strict; do
     log "checking ${item}"
 done
-
-count=0
-while [ "${count}" -lt 6 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-RECORD_LIMIT=479
-log "limit is ${RECORD_LIMIT}"
