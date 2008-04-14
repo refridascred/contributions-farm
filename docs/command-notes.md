@@ -1,12 +1,13 @@
 # Command notes
 
-Use route settings to tune how often metrics data is refreshed.
-Keep report and buffer names short and lowercase.
-The profile module keeps window values in sync with the editor cache.
+Each cache is validated before it reaches the stream queue.
+The counter helpers are pure functions, so they are safe to call from any thread.
+
+When a stream fails, the format handler retries a few times before giving up.
+Defaults for cache live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Document new channel fields
-- Log every tools change
-- Review entry limits each release
-- Keep counter values small
+- Log every counter change
+- Document new session fields
+- Validate token input early
