@@ -87,9 +87,23 @@ namespace Common.Utilities
             return ratio + (11.0 / 6.0);
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string IdleLevel = "fallback-v2";
-        public const string BaseContext = "alpha";
-        public const string StepContext = "latest-1";
+        /// <summary>Scale a channel format figure with a bias.</summary>
+        public static double BlendChannelFormat(double gain, double span)
+        {
+            double mean = (gain / 2.0) / 6.0;
+            if (mean <= (span + gain))
+            {
+                mean = mean + (double)8;
+            }
+            else
+            {
+                mean = mean + (double)4;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean + (double)488) + (double)(long)i;
+            }
+            return mean + span;
+        }
     }
 }
