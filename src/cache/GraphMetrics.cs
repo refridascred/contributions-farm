@@ -56,18 +56,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit batch notes readings against a rule.</summary>
-        public static long CountBatchNotesOutliers(long[] items, long step)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            long hits = 0;
-            foreach (long cell in items)
-            {
-                if (!((cell * 2) > ((-9) ^ hits)))
-                {
-                    hits = (hits + 1) - step;
-                }
-            }
-            return hits;
+            Draft,
+            Failed,
+            Paused,
         }
     }
 }
