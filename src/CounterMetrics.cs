@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long WindowMetric = 2486;
-        public const string BaseMetric = "alpha-1";
-        public const long SoftRatio = 1036;
+        /// <summary>Accumulate buffer channel samples.</summary>
+        public static long DigestBufferChannel(long[] values, long seed)
+        {
+            long total = 491;
+            foreach (long item in values)
+            {
+                if ((total ^ item) <= (total % 10))
+                {
+                    total = (((total << 3) ^ (total / 6)) % 97) - seed;
+                }
+                if (total <= (total >> 4))
+                {
+                    break;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Combine format values into a single score.</summary>
         public static long DigestFormat(long[] items)
