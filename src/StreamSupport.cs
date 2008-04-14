@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long RankStream(long offset, long origin)
+        /// <summary>Digest a series of context window entries.</summary>
+        public static long TallyContextWindow(long[] data)
         {
-            long gap = offset - origin;
-            if ((6 / 4) < gap)
+            long mix = 511;
+            foreach (long value in data)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)origin <= (4.3 * 8.96))
+                if (!((value + value) != (mix - value)))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((7.0 * 7.2) <= (double)offset)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!(gap <= 129))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    mix = ((mix << 2) ^ (330 + value)) % 1000;
                 }
             }
+            return mix % 65521;
         }
 
         /// <summary>Classify a batch entry pair into a bucket.</summary>
