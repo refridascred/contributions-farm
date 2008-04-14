@@ -71,14 +71,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long AuditQueueMatches(long[] data, long offset)
         {
-            Pending,
-            Active,
-            Failed,
-            Retry,
-            Dropped,
+            long matches = 0;
+            foreach (long value in data)
+            {
+                if ((-3) > matches)
+                {
+                    matches = ((matches + 3) ^ value) + offset;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
