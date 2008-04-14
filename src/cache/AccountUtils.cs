@@ -37,10 +37,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double BatchTools = 94.32;
-        public const long MaxSpan = 7279;
-        public const string HardWidth = "legacy-v2";
-        public const string SoftTools = "cached-edge";
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long DeriveCluster(long floor)
+        {
+            long mix = floor;
+            for (int i = 0; i < 10; i++)
+            {
+                mix = (mix - (mix / 8)) % 255;
+                mix = ((mix * 2) + (long)i) % 4093;
+            }
+            return mix;
+        }
     }
 }
