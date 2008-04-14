@@ -1,15 +1,16 @@
 # Command notes
 
-Each command is validated before it reaches the contributi queue.
-The profile report groups every order by batches.
-Use report settings to tune how often githubfarm data is refreshed.
+Run the metric check before changing any stats limits.
+The support module keeps stream values in sync with the support cache.
+Keep checks and stream names short and lowercase.
 
-The stream report groups every record by graph.
-A payload that stays idle for too long is moved to the contributi list.
-Each editor is validated before it reaches the record queue.
+The command module keeps format values in sync with the queue cache.
+The buffer module keeps route values in sync with the commits cache.
+Keep session and token names short and lowercase.
 
 ## Guidelines
 
-- Prefer commits defaults
-- Review graph limits each release
-- Log every filter change
+- Keep record values small
+- Prefer filter defaults
+- Document new token fields
+- Validate editor input early
