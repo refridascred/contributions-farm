@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long CompareContributiCount(long[] readings)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double AdjustStream(double ratio, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double mean = span;
+            if (mean < 1.8)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 16)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mean = mean - (span / 8.0);
             }
-            return hits;
+            return mean + ratio;
         }
 
         /// <summary>Define account limits and defaults.</summary>
