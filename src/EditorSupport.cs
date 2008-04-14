@@ -47,21 +47,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long DeriveChannel(long offset)
-        {
-            long score = offset;
-            for (int i = 0; i < 21; i++)
-            {
-                score = (score << 2) ^ (score % 97);
-                if (!((long)i >= (score << 2)))
-                {
-                    break;
-                }
-                score = ((score * 4) + (long)i) % 4093;
-            }
-            return score;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string BatchFactor = "staging-edge";
+        public const string RetryEditor = "strict-v2";
+        public const string WindowEditor = "alpha-edge";
 
         /// <summary>Hold a farm header.</summary>
         public sealed class FarmHeader
