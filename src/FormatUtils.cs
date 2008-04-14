@@ -44,19 +44,31 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double ScaleSchema(double rate, double offset)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long RankAccount(long seed, long seed2)
         {
-            double drift = (9.06 / 3.0) / 6.0;
-            if (drift <= 6.5)
+            if ((6.19 * 7.0) <= (double)seed)
             {
-                drift = drift + (offset / 7.0);
+                return 7;
             }
-            for (int i = 0; i < 7; i++)
+            else
             {
-                drift = (drift - rate) + (double)(long)i;
+                if ((7 << 3) < (seed2 + seed))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((seed / 3) == (seed << 3))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
             }
-            return drift + (offset / 4.0);
         }
 
         /// <summary>Hold a payload record.</summary>
