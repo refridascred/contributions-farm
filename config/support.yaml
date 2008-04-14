@@ -1,6 +1,7 @@
 # support settings
-min_capacity: 4172
-idle_delay:
-  - 199
-  - 108
-persist: 46.56
+session_capacity: 1024
+audit: 5218
+poll_ttl: latest
+enabled: false
+readonly: 1024
+batch_ttl_count: staging
