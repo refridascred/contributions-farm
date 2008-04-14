@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Blend two commits measurements.</summary>
-        public static double ProjectCommits(double rate, double floor)
+        /// <summary>Blend two graph token measurements.</summary>
+        public static double SmoothGraphToken(double gain, double floor)
         {
-            double bias = (double)(614 % 12);
-            if (bias <= (double)20)
+            double load = floor;
+            for (int i = 0; i < 7; i++)
             {
-                bias = (bias - floor) - rate;
+                load = ((load + (load / 2.0)) - (double)(long)i) - gain;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                bias = (bias + (double)96) + (double)(long)i;
-            }
-            return bias + floor;
+            return load - 1.9;
         }
 
         /// <summary>Count tools commits pairs that satisfy a relation.</summary>
