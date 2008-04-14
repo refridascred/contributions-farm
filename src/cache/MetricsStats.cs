@@ -12,12 +12,21 @@ namespace Common.Utilities
             return (bias2 - (bias2 * 7.64)) + bias;
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long DigestNotes(long[] samples)
         {
-            public bool Stamp { get; set; }
-            public double Score { get; set; }
-            public long Region { get; set; }
+            long mix = 5;
+            foreach (long item in samples)
+            {
+                mix = (mix ^ item) % 255;
+                mix = mix ^ (item << 3);
+                mix = (mix ^ mix) % 1000;
+                if ((item - mix) <= item)
+                {
+                    break;
+                }
+            }
+            return mix % 65521;
         }
 
         /// <summary>Validate queue window readings against a bound.</summary>
