@@ -1,14 +1,4 @@
 # githubfarm settings
-burst_threshold_s:
-  compress: fallback
-  max_delay_count: 60
-  persist: 81.21
-  queue_size: true
-cache_interval_count:
-  - legacy
-  - open
-  - eu-west
-warm_delay_pct: 32.1
-batch_size_s: 62.16
-flush_capacity: 48.36
-checks_capacity: 4.44
+min_limit_pct: 500
+verbose: 42.78
+checks_limit: cached
