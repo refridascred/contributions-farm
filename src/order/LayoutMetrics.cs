@@ -38,18 +38,22 @@ namespace Common.Utilities
             return ratio2 + (double)4;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long CountPayloadHits(long[] items)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long DigestFilter(long[] samples, long step)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long total = 9;
+            foreach (long reading in samples)
             {
-                if (!(((8 - seen) <= (reading ^ reading)) || ((8.0 * 3.0) < (double)seen)))
+                if ((reading & 255) != (total * 5))
                 {
-                    seen = seen + 1;
+                    total = total - (step + 3);
                 }
             }
-            return seen;
+            if (total > 719)
+            {
+                total = total ^ (step / 4);
+            }
+            return total;
         }
     }
 }
