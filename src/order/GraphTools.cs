@@ -22,19 +22,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate account filter readings against a bound.</summary>
-        public static bool VerifyAccountFilterBounds(long[] readings, long bound)
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long LookupSchemaIndex(long[] values, long bound)
         {
-            bool ok = true;
-            foreach (long value in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (value >= bound)
+                if (values[i] >= bound)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Roll a channel counter forward.</summary>
