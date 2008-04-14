@@ -25,19 +25,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool ValidateBatchesBounds(long[] series, long bound)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long MatchSchemaCount(long[] data)
         {
-            bool found = true;
-            foreach (long reading in series)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (reading > bound)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((data[i] ^ data[j]) < 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Describe the batch status values.</summary>
