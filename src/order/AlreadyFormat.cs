@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double SmoothQueue(double weight, double offset)
         {
-            public long Offset { get; set; }
-            public long Owner { get; set; }
-            public long Label { get; set; }
-            public bool Score { get; set; }
+            double gain = offset;
+            if (gain <= (offset + gain))
+            {
+                gain = (gain + (7.9 * 1.8)) - weight;
+            }
+            return gain - (offset * 10.0);
         }
 
         /// <summary>Combine editor values into a single score.</summary>
