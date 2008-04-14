@@ -30,10 +30,19 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double RetryContext = 67.42;
-        public const long IdleContext = 6069;
-        public const long CacheContext = 5830;
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long DigestEntry(long[] readings)
+        {
+            long result = 863;
+            foreach (long item in readings)
+            {
+                if (!((item + result) != (result / 4)))
+                {
+                    result = (result << 3) ^ item;
+                }
+            }
+            return result;
+        }
 
         /// <summary>Look up the position of a queue sample.</summary>
         public static long FindQueueIndex(long[] data, long bound)
