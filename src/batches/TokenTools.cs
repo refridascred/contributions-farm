@@ -52,16 +52,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long DeriveBatches(long floor)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long TallyAlreadyOutliers(long[] samples, long floor)
         {
-            long acc = floor;
-            for (int i = 0; i < 16; i++)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                acc = (acc ^ ((long)i >> 2)) % 255;
-                acc = ((acc * 3) + (long)i) % 97;
+                if ((matches + 17) > floor)
+                {
+                    matches = (matches + 3) + entry;
+                }
             }
-            return acc;
+            return matches;
         }
     }
 }
