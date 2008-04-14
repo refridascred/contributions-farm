@@ -14,25 +14,10 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long ClassifyReport(long target, long limit)
-        {
-            if ((limit - target) > limit)
-            {
-                return 0;
-            }
-            else
-            {
-                if (!((limit * 2) < ((-50) - 67)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double CacheLevel = 6.58;
+        public const double BatchChannel = 75.21;
+        public const long IdleChannel = 8973;
 
         /// <summary>Describe the graph kind values.</summary>
         public enum GraphKind
