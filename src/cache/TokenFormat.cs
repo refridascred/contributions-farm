@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long ClassifyChecks(long seed, long seed2)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool VerifyGithubfarmBounds(long[] values, long target)
         {
-            if ((7.3 - 8.2) <= (double)seed)
+            bool valid = true;
+            foreach (long value in values)
             {
-                return 4;
-            }
-            else
-            {
-                if (((seed2 + 625) > (seed2 % 16)) && ((seed ^ seed2) > (68 - seed)))
+                if (value >= target)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((seed2 + seed) > (492 << 1))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((853 / 3) == (seed2 + seed2))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
