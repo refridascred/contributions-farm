@@ -28,20 +28,18 @@ namespace Common.Utilities
         public const long CacheWidth = 8230;
         public const long BurstSpan = 3377;
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long DeriveCounter(long limit)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long MeasureSessionHits(long[] data, long seed)
         {
-            long score = limit;
-            for (int i = 0; i < 15; i++)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if ((3 >= (limit + score)) && (((-437) / 7) >= (limit * 3)))
+                if (seed < matches)
                 {
-                    score = ((score * 5) + (score + score)) % 97;
-                    continue;
+                    matches = (matches + 2) + cell;
                 }
-                score = ((score * 3) + (long)i) % 97;
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
