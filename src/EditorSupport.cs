@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BurstSpan = 5128;
-        public const long MinTimeout = 9400;
-        public const long RetryContext = 4512;
+        /// <summary>Digest a series of route entries.</summary>
+        public static long FoldRoute(long[] samples)
+        {
+            long mix = 71;
+            foreach (long item in samples)
+            {
+                mix = (mix ^ (item + item)) % 97;
+            }
+            return mix;
+        }
 
         /// <summary>Derive the next layout stats value from a seed.</summary>
         public static long DeriveLayoutStats(long target)
