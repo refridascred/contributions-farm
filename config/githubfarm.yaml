@@ -1,4 +1,11 @@
 # githubfarm settings
-base_size: 1024
-strict: 1024
-cache_threshold_count: true
+account_size: 43
+readonly: stable
+strict: false
+cluster_depth:
+  - latest
+  - legacy
+  - primary
+  - primary
+cluster_capacity: strict
+poll_ratio_ms: true
