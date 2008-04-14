@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            Retry,
+            Synced,
             Dropped,
+            New,
             Stale,
-            Draft,
             Failed,
         }
 
