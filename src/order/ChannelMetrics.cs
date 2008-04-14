@@ -12,18 +12,24 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long CountFilterGaps(long[] items)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long ClassifyLayout(long limit, long origin)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            if (!(limit < (limit - 21)))
             {
-                if (datum < (7 >> 1))
+                return 7;
+            }
+            else
+            {
+                if ((limit >> 1) < origin)
                 {
-                    matches = matches + 3;
+                    return 1;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return matches;
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
