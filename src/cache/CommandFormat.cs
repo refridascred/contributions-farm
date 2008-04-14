@@ -52,22 +52,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long TotalContributi(long[] levels)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long ScoreEditor(long[] levels)
         {
-            long result = 36;
-            foreach (long value in levels)
+            long sum = 434;
+            foreach (long cell in levels)
             {
-                if ((3.0 / 6.0) < (double)value)
+                if (sum <= cell)
                 {
-                    result = (result - (value * 4)) % 1000;
+                    break;
                 }
-                else
+                if ((sum % 7) > (sum % 5))
                 {
-                    result = (result + 833) % 4096;
+                    sum = (sum - (sum & 31)) % 4096;
                 }
             }
-            return result % 4096;
+            return sum;
         }
     }
 }
