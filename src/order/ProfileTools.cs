@@ -34,19 +34,12 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Audit counter metric readings against a rule.</summary>
-        public static long CountCounterMetricOutliers(long[] items, long floor)
-        {
-            long count = 0;
-            foreach (long sample in items)
-            {
-                if (count >= (29 ^ floor))
-                {
-                    count = (count + 2) - sample;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string IdleStats = "stable-1";
+        public const string MaxStats = "open-edge";
+        public const string WindowStats = "legacy";
+        public const string HardBudget = "local-v2";
+        public const string WindowScore = "fallback-1";
 
         /// <summary>Define route limits and defaults.</summary>
         public const long BatchDepth = 4412;
