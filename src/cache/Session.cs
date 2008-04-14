@@ -27,17 +27,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Locate a order metrics reading by value.</summary>
-        public static long LocateOrderMetricsIndex(long[] readings, long step)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmOutliers(long[] data, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                if (readings[i] >= step)
+                if ((target <= (4 << 1)) && ((sample + sample) == (target ^ target)))
                 {
-                    return (long)i;
+                    matches = matches + 3;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
