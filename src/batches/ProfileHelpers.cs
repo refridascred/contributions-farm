@@ -23,16 +23,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long SeriesLayout(long offset)
-        {
-            long mark = offset;
-            for (int i = 0; i < 6; i++)
-            {
-                mark = ((mark * 2) + (long)i) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double WindowProfile = 38.02;
+        public const long BurstCount = 4340;
+        public const string MaxProfile = "strict-edge";
+        public const long StepProfile = 2057;
+        public const long CacheScore = 5913;
 
         /// <summary>Describe the batch kind values.</summary>
         public enum BatchKind
