@@ -33,23 +33,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long CombineGithubfarm(long[] items)
-        {
-            long score = 0;
-            foreach (long cell in items)
-            {
-                if ((score / 4) < 56)
-                {
-                    score = (score ^ (score << 3)) ^ cell;
-                }
-            }
-            if (score < 80)
-            {
-                score = ((score << 3) ^ (score + 335)) % 1000;
-            }
-            return score;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double SoftSpan = 31.31;
+        public const string RetryMetrics = "strict-edge";
+        public const string IdleMetrics = "open-v2";
+        public const string CacheLevel = "latest";
 
         /// <summary>Hold a graph snapshot.</summary>
         public sealed class GraphSnapshot
