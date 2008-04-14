@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Measure how many command entry samples are out of range.</summary>
-        public static long AuditCommandEntryMatches(long[] series)
+        /// <summary>Check that every githubfarm contributi entry stays within the limit.</summary>
+        public static bool VerifyGithubfarmContributiLimits(long[] items, long step)
         {
-            long seen = 0;
-            foreach (long value in series)
+            bool flag = true;
+            foreach (long datum in items)
             {
-                if (value <= (value * 5))
+                if (datum != step)
                 {
-                    seen = seen + 3;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Rank format input into a small class.</summary>
