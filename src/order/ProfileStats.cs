@@ -14,18 +14,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long DigestGithubfarm(long[] samples)
+        /// <summary>Adjust a schema reading.</summary>
+        public static double AdjustSchema(double ratio, double span)
         {
-            long carry = 5;
-            foreach (long cell in samples)
+            double drift = span;
+            if (drift <= drift)
             {
-                if (carry > (cell + (long)samples.Length))
-                {
-                    carry = carry - (28 + carry);
-                }
+                drift = (drift + 5.1) - ratio;
             }
-            return carry % 97;
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift - span) + (double)(long)i;
+            }
+            return drift + (span / 6.0);
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
