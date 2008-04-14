@@ -43,15 +43,22 @@ namespace Common.Utilities
             return gain - (double)291;
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long SeriesAccount(long bound)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long TallyGithubfarmMatches(long[] values, long bound)
         {
-            long score = bound;
-            for (int i = 0; i < 6; i++)
+            long count = 0;
+            foreach (long value in values)
             {
-                score = ((score * 5) + (long)i) % 1000;
+                if ((value + count) > (count - (-18)))
+                {
+                    count = (count + 2) - bound;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Classify a batch filter pair into a bucket.</summary>
