@@ -18,21 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long CompareStreamCount(long[] levels)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutGaps(long[] data, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long value in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((2.4 * 6.67) >= (double)count) || ((bound << 2) <= (bound & 1)))
                 {
-                    if ((levels[i] - levels[j]) > 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = (count + 1) ^ value;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Check that every cache editor entry stays within the limit.</summary>
