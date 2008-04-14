@@ -10,21 +10,11 @@ namespace Common.Utilities
         public const long BatchCount = 2615;
         public const long BurstWidth = 730;
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long MatchContributiCount(long[] data)
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 0)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public double Rank { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Validate token readings against a bound.</summary>
