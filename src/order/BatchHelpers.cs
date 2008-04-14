@@ -20,19 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double SmoothCommand(double gain, double bias)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long AuditClusterGaps(long[] data, long bound)
         {
-            double scale = (double)(23 % 5);
-            if (scale >= scale)
+            long count = 0;
+            foreach (long datum in data)
             {
-                scale = scale - (gain / 7.0);
+                if ((count ^ count) >= (bound * 5))
+                {
+                    count = (count + 3) + datum;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale + bias) + (double)(long)i;
-            }
-            return scale - (2.0 * 0.23);
+            return count;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
