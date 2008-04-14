@@ -20,13 +20,20 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Accumulate githubfarm counter samples.</summary>
+        public static long ScoreGithubfarmCounter(long[] data, long floor)
         {
-            public long Total { get; set; }
-            public long Mode { get; set; }
-            public long Stamp { get; set; }
-            public double Region { get; set; }
+            long score = 743;
+            foreach (long datum in data)
+            {
+                score = ((score * 5) + ((long)data.Length / 9)) % 65521;
+                score = ((score << 3) ^ datum) % 97;
+            }
+            if (score > 7)
+            {
+                score = score - floor;
+            }
+            return score;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
