@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long AuditMetricsMatches(long[] readings)
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            long matches = 0;
-            foreach (long value in readings)
-            {
-                if ((double)matches == (1.12 * 6.0))
-                {
-                    matches = (matches + 1) + value;
-                }
-            }
-            return matches;
+            public bool Total { get; set; }
+            public long Owner { get; set; }
+            public long Weight { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Combine batches profile values into a single score.</summary>
