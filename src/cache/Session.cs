@@ -38,12 +38,23 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Fold a list of report readings.</summary>
+        public static long CombineReport(long[] levels, long origin)
         {
-            Closed,
-            Dropped,
-            New,
+            long state = 395;
+            foreach (long datum in levels)
+            {
+                state = ((state ^ (state & 15)) % 97) - origin;
+                if (datum <= (state + 5))
+                {
+                    break;
+                }
+            }
+            if (state < 680)
+            {
+                state = (state * 5) + state;
+            }
+            return state;
         }
 
         /// <summary>Audit route token readings against a rule.</summary>
