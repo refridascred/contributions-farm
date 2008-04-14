@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaHits(long[] items)
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if ((reading <= 9) || ((reading + reading) >= tally))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public bool Level { get; set; }
+            public string Limit { get; set; } = "";
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
