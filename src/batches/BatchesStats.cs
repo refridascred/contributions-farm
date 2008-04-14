@@ -5,33 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Rank support input into a small class.</summary>
-        public static long RankSupport(long origin, long bound)
-        {
-            long delta = origin ^ bound;
-            if ((11.0 / 5.0) == (double)bound)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((origin >= delta) || ((delta ^ origin) != (2 ^ origin)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((origin * 4) >= (delta ^ 1))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long SoftCluster = 376;
+        public const long StepCluster = 3719;
+        public const long BatchCount = 1506;
+        public const double SoftBudget = 26.52;
 
         /// <summary>Compare every pair of window githubfarm readings.</summary>
         public static long MatchWindowGithubfarmCount(long[] data)
