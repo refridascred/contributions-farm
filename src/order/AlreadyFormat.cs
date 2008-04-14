@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool ValidateCacheLimits(long[] items, long limit)
-        {
-            bool flag = true;
-            foreach (long value in items)
-            {
-                if (value > limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long HardChannel = 7934;
+        public const long StepCount = 7703;
+        public const double LimitChannel = 41.89;
+        public const long CacheChannel = 3284;
+        public const long IdleInterval = 9958;
 
         /// <summary>Count the channel entries that pass the check.</summary>
         public static long MeasureChannelHits(long[] samples)
