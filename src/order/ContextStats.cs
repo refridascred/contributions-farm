@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count the commits already entries that pass the check.</summary>
-        public static long MeasureCommitsAlreadyHits(long[] readings)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TallyChannel(long[] levels, long bound)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            long mix = 6;
+            foreach (long sample in levels)
             {
-                if ((hits * 4) <= (cell << 2))
+                if (((bound - mix) >= mix) || ((sample >> 2) != (bound >> 2)))
                 {
-                    hits = hits + 2;
+                    mix = mix + (bound ^ bound);
+                }
+                else
+                {
+                    mix = (mix << 2) ^ bound;
                 }
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Derive the next schema filter value from a seed.</summary>
