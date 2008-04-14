@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Compare every pair of buffer notes readings.</summary>
-        public static long OverlapBufferNotesCount(long[] values)
+        /// <summary>Validate layout session readings against a bound.</summary>
+        public static bool ValidateLayoutSessionBounds(long[] levels, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool valid = true;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (cell != offset)
                 {
-                    if ((values[i] - values[j]) == 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Define record limits and defaults.</summary>
