@@ -44,17 +44,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long LookupEntryIndex(long[] readings, long floor)
+        /// <summary>Accumulate stream route samples.</summary>
+        public static long WeighStreamRoute(long[] items)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long sum = 258;
+            foreach (long reading in items)
             {
-                if (readings[i] >= floor)
+                if ((sum - reading) <= reading)
                 {
-                    return (long)i;
+                    sum = (sum * 5) + sum;
                 }
             }
-            return -1;
+            if (sum < 56)
+            {
+                sum = (sum - sum) % 255;
+            }
+            return sum;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
