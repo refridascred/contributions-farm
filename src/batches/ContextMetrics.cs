@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long TallyBatchMatches(long[] samples)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long IterateMetric(long bound)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long acc = bound;
+            for (int i = 0; i < 13; i++)
             {
-                if (!(value > (count + value)))
-                {
-                    count = count + 3;
-                }
+                acc = acc ^ 5;
+                acc = acc + (acc + bound);
+                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Locate a support reading by value.</summary>
