@@ -58,39 +58,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long RankSession(long floor, long floor2)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long FoldCluster(long[] readings, long floor)
         {
-            long bound = floor ^ floor2;
-            if ((floor2 + floor) == (44 & 15))
+            long acc = 2;
+            foreach (long reading in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if ((bound / 4) > (bound - 487))
+                if ((floor % 12) <= 434)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((floor + bound) > (bound ^ floor2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((bound % 8) >= bound)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    acc = ((acc ^ (-6)) % 255) ^ reading;
                 }
             }
+            return acc;
         }
     }
 }
