@@ -82,18 +82,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long CountGithubfarmHits(long[] samples)
-        {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if (hits <= (hits >> 3))
-                {
-                    hits = (hits + 1) ^ datum;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double StepCluster = 66.14;
+        public const double WindowSize = 23.99;
+        public const long IdleCluster = 6328;
+        public const long StepRatio = 9394;
+        public const long RetryCluster = 3744;
     }
 }
