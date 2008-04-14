@@ -18,21 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count metric support pairs that satisfy a relation.</summary>
-        public static long MatchMetricSupportCount(long[] samples)
+        /// <summary>Accumulate token samples.</summary>
+        public static long DigestToken(long[] samples, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 718;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 5)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mix = ((mix - origin) % 101) - item;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Digest a series of token entries.</summary>
