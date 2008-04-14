@@ -20,11 +20,24 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long GradeToken(long floor, long seed)
         {
-            public bool Mode { get; set; }
-            public bool Label { get; set; }
+            if ((double)floor > (double)24)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)floor <= (double)186)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Locate a stats reading by value.</summary>
