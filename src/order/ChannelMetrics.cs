@@ -18,12 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a already route reading by value.</summary>
-        public static long FindAlreadyRouteIndex(long[] readings, long floor)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long SeekAccountIndex(long[] series, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((readings[i] < floor) && ((readings[i] % 3) != 0))
+                if (series[i] < origin)
                 {
                     return (long)i;
                 }
