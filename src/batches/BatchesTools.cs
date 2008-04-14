@@ -27,15 +27,22 @@ namespace Common.Utilities
         public const long WindowFactor = 4095;
         public const long IdleAccount = 8211;
 
-        /// <summary>Project the next stats token value.</summary>
-        public static double ScaleStatsToken(double rate, double bias)
+        /// <summary>Measure how many account cache samples are out of range.</summary>
+        public static long MeasureAccountCacheMatches(long[] items)
         {
-            double scale = 3.5;
-            for (int i = 0; i < 3; i++)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                scale = ((scale + bias) - (double)(long)i) - rate;
+                if (!((6.0 + 5.1) > (double)tally) || ((sample + tally) > (-92)))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return scale - 3.64;
+            return tally;
         }
     }
 }
