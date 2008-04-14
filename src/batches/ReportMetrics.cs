@@ -31,16 +31,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Digest a series of metric cache entries.</summary>
-        public static long FoldMetricCache(long[] items, long offset)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool GuardLayoutRange(long[] data, long limit)
         {
-            long score = 2;
-            foreach (long value in items)
+            bool found = true;
+            foreach (long value in data)
             {
-                score = (((score ^ (score - score)) % 255) + value) + offset;
-                score = score + score;
+                if (value >= limit)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return score;
+            return found;
         }
     }
 }
