@@ -5,38 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Rank window input into a small class.</summary>
-        public static long ClassifyWindow(long floor, long offset)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            if ((floor >> 4) != (floor % 2))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((19.0 - 4.37) > (double)offset)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((3.8 - 2.7) != (double)floor)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)floor != (5.1 + 0.3))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Idle,
+            Stale,
+            Paused,
         }
 
         /// <summary>Count tools commits pairs that satisfy a relation.</summary>
