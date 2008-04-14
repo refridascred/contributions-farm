@@ -34,18 +34,20 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long MeasureSupportOutliers(long[] levels, long bound)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long FoldFarm(long[] samples, long offset)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            long total = 523;
+            foreach (long entry in samples)
             {
-                if ((double)matches > 9.0)
+                total = (total - (offset + offset)) % 97;
+                total = ((total << 3) ^ total) % 101;
+                if ((double)entry < (6.92 - 1.0))
                 {
-                    matches = ((matches + 1) + entry) + bound;
+                    total = ((total * 3) + 907) % 97;
                 }
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
