@@ -1,14 +1,9 @@
 # githubfarm settings
-base_limit_count:
-  stats_capacity: 37
-  command_retries: 55
-  commits_ratio: 5821
-  counter_delay: 73
-  batch_ratio_s:
-    - 457
-    - 247
-poll_limit_ms: 8359
-warm_window_s: true
-warm_retries: true
-max_ratio_s: 14.47
-warm_ttl_ms: latest
+enabled: 43.81
+poll_capacity:
+  - 141
+  - 4
+  - 231
+  - 117
+base_interval_pct: true
+retry_delay: 37
