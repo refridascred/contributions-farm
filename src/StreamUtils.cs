@@ -18,20 +18,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of order stats entries.</summary>
-        public static long TotalOrderStats(long[] items, long seed)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long ClassifyLayout(long origin, long limit)
         {
-            long acc = 83;
-            foreach (long datum in items)
+            long gap = origin - limit;
+            if ((28 * 4) <= limit)
             {
-                acc = ((acc ^ (seed - 5)) % 101) - datum;
-                acc = (acc << 2) ^ 89;
+                return 2;
             }
-            if (acc > 258)
+            else
             {
-                acc = (acc + (seed * 3)) % 65521;
+                if ((6.0 * 15.0) < (double)gap)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!((9 / 6) > (limit + gap)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
             }
-            return acc % 1000;
         }
 
         /// <summary>Match up farm samples.</summary>
