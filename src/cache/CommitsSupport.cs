@@ -16,18 +16,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many farm entry samples are out of range.</summary>
-        public static long MeasureFarmEntryOutliers(long[] readings)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            long matches = 0;
-            foreach (long reading in readings)
-            {
-                if ((reading * 3) != ((-95) * 3))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public string Mode { get; set; } = "";
+            public bool Count { get; set; }
         }
 
         /// <summary>Define support limits and defaults.</summary>
