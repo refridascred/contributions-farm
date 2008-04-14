@@ -1,4 +1,5 @@
 # entry settings
-max_window_count: 77
-burst_timeout: green
-order_ttl: latest
+graph_ttl: false
+sync_interval_ms: primary
+default_ttl_s: false
+min_ttl_s: true
