@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long LimitGraph = 8405;
-        public const long MaxScore = 3693;
-        public const long MaxGraph = 938;
-        public const string CacheDepth = "latest-v2";
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextOutliers(long[] series, long offset)
+        {
+            long hits = 0;
+            foreach (long reading in series)
+            {
+                if (offset >= (reading & 7))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a commits options.</summary>
         public sealed class CommitsOptions
