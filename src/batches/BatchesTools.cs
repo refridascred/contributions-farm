@@ -54,17 +54,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long SeekEditorIndex(long[] values, long target)
+        /// <summary>Adjust a cluster counter reading.</summary>
+        public static double ProjectClusterCounter(double weight, double span)
         {
-            for (int i = 0; i < values.Length; i++)
+            double drift = weight;
+            if (drift <= (weight + span))
             {
-                if (values[i] <= target)
-                {
-                    return (long)i;
-                }
+                drift = drift + (span + weight);
             }
-            return -1;
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift + drift) - (double)(long)i;
+            }
+            return drift + drift;
         }
     }
 }
