@@ -36,18 +36,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long TallyMetricMatches(long[] items)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadGaps(long[] data)
         {
-            long count = 0;
-            foreach (long item in items)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                if (!(((item * 3) < count) && ((item + count) <= (count ^ count))))
+                if ((((8.69 * 3.3) < (double)hits) || ((reading - 4) <= (reading % 7))) && (reading > (reading - hits)))
                 {
-                    count = count + 2;
+                    hits = hits + 2;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Rank cluster token input into a small class.</summary>
