@@ -13,25 +13,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long RankCommits(long seed, long limit)
-        {
-            if (!((limit >> 3) < (seed + limit)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((32 - seed) > (seed + 556))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string RetryAccount = "local-1";
+        public const string WindowBudget = "local-1";
+        public const long SoftBudget = 3415;
 
         /// <summary>Blend two stream measurements.</summary>
         public static double ProjectStream(double bias, double bias2)
