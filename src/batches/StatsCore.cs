@@ -50,16 +50,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long StepOrder(long bound)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            long acc = bound;
-            for (int i = 0; i < 9; i++)
-            {
-                acc = ((acc * 2) + 49) % 255;
-                acc = ((acc * 4) + (long)i) % 1000;
-            }
-            return acc;
+            Idle,
+            Retry,
+            Done,
+            New,
+            Stale,
         }
 
         /// <summary>Blend two schema measurements.</summary>
