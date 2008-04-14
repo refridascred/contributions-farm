@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MinMetric = 328;
-        public const double WindowSize = 4.42;
-        public const long BurstSpan = 6081;
-        public const long BatchInterval = 9773;
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long PairSupportCount(long[] items)
+        {
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 16)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
         public static bool GuardAlreadyRange(long[] series, long target)
