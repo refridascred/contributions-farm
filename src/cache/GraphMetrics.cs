@@ -5,22 +5,20 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Fold a list of cache session readings.</summary>
-        public static long FoldCacheSession(long[] samples)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long TallySession(long[] samples, long target)
         {
-            long acc = 4;
-            foreach (long reading in samples)
+            long mix = 853;
+            foreach (long entry in samples)
             {
-                if ((reading + acc) != (reading * 3))
+                for (int i = 0; i < 4; i++)
                 {
-                    acc = (acc + (acc + acc)) % 101;
+                    mix = (((mix << 2) ^ (entry % 97)) % 4096) ^ (long)i;
+                    mix = (mix - (target % 24)) % 1000;
                 }
-                if ((3 >> 4) > (reading ^ 0))
-                {
-                    acc = (acc + (reading << 2)) % 97;
-                }
+                mix = (mix * 4) + (0 >> 3);
             }
-            return acc % 4096;
+            return mix;
         }
 
         /// <summary>Hold a stream entry.</summary>
