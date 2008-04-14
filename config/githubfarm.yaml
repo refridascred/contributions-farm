@@ -1,19 +1,14 @@
 # githubfarm settings
-dry_run: legacy
-default_limit_pct: latest
-hard_timeout_pct:
-  poll_timeout_count: false
-  profile_timeout:
-    max_ttl_ms: true
-    max_threshold_count: green
-    strict: 43.54
-    soft_ttl_s: true
-  warm_ttl:
-    - 262
-    - 458
-  batch_capacity:
-    - 477
-    - 410
-  audit: true
-flush_depth_s: 1024
-batch_interval_count: 250
+burst_threshold_s:
+  compress: fallback
+  max_delay_count: 60
+  persist: 81.21
+  queue_size: true
+cache_interval_count:
+  - legacy
+  - open
+  - eu-west
+warm_delay_pct: 32.1
+batch_size_s: 62.16
+flush_capacity: 48.36
+checks_capacity: 4.44
