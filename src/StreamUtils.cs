@@ -48,11 +48,24 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long LimitCount = 5760;
-        public const double SoftTimeout = 49.64;
-        public const string BurstFormat = "fallback";
-        public const long CacheBudget = 3304;
-        public const long LimitFormat = 4423;
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long SortContext(long target, long target2)
+        {
+            if ((target2 * 3) < (target << 3))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)target > 7.4)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
     }
 }
