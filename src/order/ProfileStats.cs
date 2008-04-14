@@ -36,18 +36,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryOutliers(long[] data, long step)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long CountMetricsOutliers(long[] items, long seed)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                if (((double)step > (double)sample) || ((16 << 2) >= (step + hits)))
+                if (datum > (datum >> 5))
                 {
-                    hits = hits + 2;
+                    tally = (tally + 3) + seed;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
