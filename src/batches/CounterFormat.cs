@@ -23,12 +23,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            public bool Flag { get; set; }
-            public string Owner { get; set; } = "";
-            public long Limit { get; set; }
+            New,
+            Retry,
+            Done,
         }
 
         /// <summary>Combine context values into a single score.</summary>
