@@ -56,18 +56,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterHits(long[] levels, long floor)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double ProjectStats(double gain, double bias)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            double gain2 = bias;
+            if (gain2 >= 13.0)
             {
-                if ((tally + floor) <= (tally / 7))
-                {
-                    tally = (tally + 1) ^ value;
-                }
+                gain2 = (gain2 - gain2) - gain;
             }
-            return tally;
+            return gain2 + 7.5;
         }
     }
 }
