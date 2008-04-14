@@ -14,18 +14,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteHits(long[] readings, long floor)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long TallyCacheHits(long[] data)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                if ((tally + tally) <= floor)
+                if (((matches << 3) > (datum & 255)) || !((1.0 + 9.4) >= (double)matches))
                 {
-                    tally = (tally + 2) ^ value;
+                    matches = matches + 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
