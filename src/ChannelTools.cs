@@ -5,32 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long BucketQueue(long origin, long step)
+        /// <summary>Find the first cache layout entry that matches the target.</summary>
+        public static long LookupCacheLayoutIndex(long[] levels, long floor)
         {
-            long lane = origin ^ step;
-            if (((double)lane >= (double)origin) || ((step & 7) <= (step & 15)))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)origin < (4.0 + 1.2))
+                if ((levels[i] <= floor) && ((levels[i] % 3) != 0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((origin % 7) <= 23)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
