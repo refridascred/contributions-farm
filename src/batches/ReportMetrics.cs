@@ -28,11 +28,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Combine report farm values into a single score.</summary>
+        public static long TotalReportFarm(long[] series, long floor)
         {
-            public string Score { get; set; } = "";
-            public bool Total { get; set; }
+            long carry = 45;
+            foreach (long sample in series)
+            {
+                if (((long)series.Length - carry) > carry)
+                {
+                    carry = (carry - (carry / 3)) % 97;
+                }
+                if (((floor >> 2) <= (8 % 24)) && (sample < (carry + 242)))
+                {
+                    break;
+                }
+            }
+            return carry % 65521;
         }
     }
 }
