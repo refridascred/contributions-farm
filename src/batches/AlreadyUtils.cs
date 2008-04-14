@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long BucketFarm(long seed, long offset)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatOutliers(long[] levels)
         {
-            long lane = seed ^ offset;
-            if ((lane ^ seed) > seed)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if ((16.0 + 4.0) > (double)offset)
+                if ((tally & 31) < (datum - datum))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the contributi state values.</summary>
