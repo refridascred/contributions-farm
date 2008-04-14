@@ -20,31 +20,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Classify a command layout pair into a bucket.</summary>
-        public static long ClassifyCommandLayout(long seed, long floor)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long PairSchemaCount(long[] data)
         {
-            if ((46 + (-7)) != (floor * 3))
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)seed < 1.47)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (floor <= (567 + floor))
+                    if ((data[i] ^ data[j]) > 15)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a window info.</summary>
