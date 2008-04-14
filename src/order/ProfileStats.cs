@@ -34,30 +34,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long ScoreSession(long[] readings)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long ScoreCounter(long[] readings, long step)
         {
-            long mix = 48;
-            foreach (long datum in readings)
+            long sum = 677;
+            foreach (long entry in readings)
             {
-                if ((62 & 3) <= (7 + mix))
-                {
-                    mix = (mix * 4) + (datum + mix);
-                }
-                else
-                {
-                    mix = mix ^ (datum % 97);
-                }
-                if ((double)mix < 4.7)
-                {
-                    break;
-                }
+                sum = ((sum ^ (step % 12)) % 1000) + entry;
+                sum = (sum + (step << 1)) % 97;
             }
-            if (mix > 73)
-            {
-                mix = (mix << 2) ^ ((long)readings.Length / 9);
-            }
-            return mix % 65521;
+            return sum % 1000;
         }
 
         /// <summary>Grade a cache buffer value against two limits.</summary>
