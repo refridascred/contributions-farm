@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Audit contributi order readings against a rule.</summary>
-        public static long AuditContributiOrderGaps(long[] data, long step)
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            long matches = 0;
-            foreach (long entry in data)
-            {
-                if ((entry - step) > (step + step))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public string Mode { get; set; } = "";
+            public double Weight { get; set; }
         }
 
         /// <summary>Hold a stats record.</summary>
