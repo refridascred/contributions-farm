@@ -1,11 +1,32 @@
 # entry settings
-batch_delay:
-  - 45
-  - 435
-cache_depth_count: 30
-retry_limit_pct: 698
-poll_retries_s:
-  - edge
-  - strict
-  - cached
-sync_threshold_ms: 7047
+cache_ratio:
+  compress: blue
+  graph_retries: true
+  burst_ttl_s:
+    - staging
+    - local
+  flush_capacity_count: 11.12
+  flush_depth_pct: blue
+  warm_ratio_count: 60
+batch_ttl_ms: stable
+idle_delay: 0.02
+max_retries_count:
+  - 282
+  - 7
+  - 120
+base_retries_pct:
+  enabled:
+    - 37
+    - 8
+    - 227
+  burst_ratio_ms:
+    audit: 80.43
+    soft_size:
+      - fallback
+      - fallback
+      - blue
+    sync_size_pct: primary
+    retry_threshold: 6047
+  soft_retries_s: open
+  strict: 47.07
+max_ttl: 2049
