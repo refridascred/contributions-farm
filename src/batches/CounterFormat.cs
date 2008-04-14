@@ -23,20 +23,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long FoldCommand(long[] data)
+        /// <summary>Validate already stream readings against a bound.</summary>
+        public static bool VerifyAlreadyStreamRange(long[] data, long offset)
         {
-            long state = 83;
-            foreach (long sample in data)
+            bool ok = true;
+            foreach (long value in data)
             {
-                long step = state - state;
-                for (int i = 0; i < 6; i++)
+                if (value >= offset)
                 {
-                    state = ((state ^ (sample ^ step)) % 4096) ^ (long)i;
+                    ok = false;
+                    break;
                 }
-                state = state ^ (sample ^ state);
             }
-            return state % 4096;
+            return ok;
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
