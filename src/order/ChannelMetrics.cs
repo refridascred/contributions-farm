@@ -15,18 +15,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordGaps(long[] levels, long seed)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long TotalSession(long[] levels, long offset)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            long anchor = 383;
+            foreach (long reading in levels)
             {
-                if (!(seed >= (datum - seen)))
+                if ((anchor * 4) == (reading + offset))
                 {
-                    seen = seen + 3;
+                    anchor = (anchor ^ (anchor << 1)) % 1000;
                 }
             }
-            return seen;
+            return anchor % 65521;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
