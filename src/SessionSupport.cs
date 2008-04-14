@@ -39,13 +39,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Validate counter editor readings against a bound.</summary>
+        public static bool ValidateCounterEditorRange(long[] data, long limit)
         {
-            public long Count { get; set; }
-            public bool Weight { get; set; }
-            public bool Flag { get; set; }
-            public long Label { get; set; }
+            bool flag = true;
+            foreach (long entry in data)
+            {
+                if (entry != limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
