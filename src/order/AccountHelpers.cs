@@ -63,9 +63,11 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string BurstFactor = "alpha-v2";
-        public const long BatchContributi = 1956;
-        public const string LimitContributi = "legacy-1";
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double AdjustBuffer(double scale, double bias)
+        {
+            double mean = (double)(8 - (-405));
+            return ((mean + (double)52) + scale) + bias;
+        }
     }
 }
