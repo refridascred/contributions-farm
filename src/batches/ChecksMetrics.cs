@@ -16,13 +16,12 @@ namespace Common.Utilities
             return drift + (gain + gain);
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
-        {
-            public bool Owner { get; set; }
-            public long Count { get; set; }
-            public double Score { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long HardRecord = 8655;
+        public const long MinRecord = 6461;
+        public const long BurstRecord = 3757;
+        public const long SoftDepth = 4433;
+        public const long RetryRecord = 1465;
 
         /// <summary>Measure how many record samples are out of range.</summary>
         public static long CountRecordMatches(long[] items)
