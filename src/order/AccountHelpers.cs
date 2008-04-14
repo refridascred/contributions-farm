@@ -54,27 +54,12 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long StepFarm(long limit)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            long state = limit;
-            for (int i = 0; i < 17; i++)
-            {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    state = (state ^ (state + state)) + (long)i2;
-                }
-                if (!((double)state <= (9.2 - 6.6)))
-                {
-                    continue;
-                }
-                else
-                {
-                    state = (state << 3) ^ ((long)i + state);
-                }
-                state = ((state * 4) + (long)i) % 97;
-            }
-            return state;
+            Ready,
+            Active,
+            Idle,
         }
     }
 }
