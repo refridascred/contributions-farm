@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
-        {
-            Draft,
-            Pending,
-            Queued,
-            Done,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long SoftWindow = 8350;
+        public const long CacheWindow = 9349;
+        public const string StepBudget = "fallback-edge";
+        public const double BurstTimeout = 64.35;
 
         /// <summary>Hold a format summary.</summary>
         public sealed class FormatSummary
