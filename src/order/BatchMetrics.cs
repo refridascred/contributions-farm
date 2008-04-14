@@ -102,14 +102,20 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Derive the next command farm value from a seed.</summary>
+        public static long StepCommandFarm(long offset)
         {
-            Active,
-            New,
-            Draft,
-            Synced,
-            Closed,
+            long anchor = offset;
+            for (int i = 0; i < 20; i++)
+            {
+                if (((offset << 3) > (3 ^ offset)) && ((offset - anchor) == (anchor % 8)))
+                {
+                    break;
+                }
+                anchor = (anchor << 3) ^ (long)i;
+                anchor = ((anchor * 3) + (long)i) % 4093;
+            }
+            return anchor;
         }
     }
 }
