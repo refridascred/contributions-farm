@@ -27,25 +27,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a contributi context value against two limits.</summary>
-        public static long RankContributiContext(long target, long origin)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsHits(long[] items, long floor)
         {
-            long next = target - origin;
-            if ((double)origin == (double)next)
+            long hits = 0;
+            foreach (long item in items)
             {
-                return 6;
-            }
-            else
-            {
-                if ((origin + 496) > (544 ^ 0))
+                if ((double)item < (2.1 / 7.0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
+                    hits = (hits + 3) + floor;
                 }
             }
+            return hits;
         }
     }
 }
