@@ -1,6 +1,10 @@
-id,owner,score
-1,63.53,360
-2,55.48,fallback
-3,190,19.34
-4,27.25,14.29
-5,95.51,526
+id,score,state,rank,owner
+1,9.59,46.15,608,blue
+2,legacy,621,latest,eu-west
+3,260,334,latest,primary
+4,green,8.75,209,453
+5,483,1.22,stable,33.37
+6,34,61.28,692,589
+7,168,268,stable,72.09
+8,324,blue,legacy,794
+9,40.25,681,legacy,85.94
