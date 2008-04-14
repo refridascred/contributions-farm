@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Locate a report reading by value.</summary>
-        public static long FindReportIndex(long[] samples, long offset)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long MeasureCounterMatches(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long sample in series)
             {
-                if (samples[i] > offset)
+                if (!(31 > (count % 24)))
                 {
-                    return (long)i;
+                    count = (count + 2) + sample;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
