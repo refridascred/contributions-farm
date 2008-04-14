@@ -13,19 +13,17 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool VerifyProfileRange(long[] levels, long floor)
+        /// <summary>Find the first report cluster entry that matches the target.</summary>
+        public static long LocateReportClusterIndex(long[] samples, long floor)
         {
-            bool valid = true;
-            foreach (long sample in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (sample != floor)
+                if (samples[i] < floor)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Combine report farm values into a single score.</summary>
