@@ -21,12 +21,12 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long FindLayoutIndex(long[] series, long limit)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long LocateGraphIndex(long[] readings, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (series[i] == limit)
+                if (readings[i] > step)
                 {
                     return (long)i;
                 }
