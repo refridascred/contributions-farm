@@ -18,22 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyMatches(long[] series)
+        /// <summary>Match up token samples.</summary>
+        public static long MatchTokenCount(long[] levels)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((entry << 1) >= entry))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((levels[i] - levels[j]) != 16)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Digest a series of window entries.</summary>
