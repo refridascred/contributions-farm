@@ -22,22 +22,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long CountStreamHits(long[] readings)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            long seen = 0;
-            foreach (long reading in readings)
-            {
-                if (!(reading < (seen >> 1)) || ((4.0 * 14.0) <= (2.0 - 5.6)))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Active,
+            Locked,
+            Retry,
+            Ready,
+            Draft,
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
