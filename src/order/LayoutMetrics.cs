@@ -20,22 +20,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long TallyPayloadGaps(long[] data)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            long seen = 0;
-            foreach (long item in data)
-            {
-                if ((item >> 3) <= (seen - seen))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Active,
+            Draft,
+            Paused,
+            New,
+            Dropped,
         }
 
         /// <summary>Find the first route profile entry that matches the target.</summary>
