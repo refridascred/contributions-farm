@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long MeasureCommandMatches(long[] samples)
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long OverlapClusterCount(long[] readings)
         {
             long seen = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)cell >= (double)seen)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = seen + 2;
+                    if ((readings[i] + readings[j]) == 11)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
