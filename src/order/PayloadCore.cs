@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string DefaultSpan = "alpha-edge";
-        public const long MinTimeout = 3508;
-        public const long SoftGithubfarm = 1386;
-        public const string BaseSize = "strict";
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsMatches(long[] readings)
+        {
+            long matches = 0;
+            foreach (long value in readings)
+            {
+                if ((double)matches == (1.12 * 6.0))
+                {
+                    matches = (matches + 1) + value;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Audit stats readings against a rule.</summary>
         public static long AuditStatsGaps(long[] data)
