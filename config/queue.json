@@ -1,7 +1,8 @@
 {
-  "tools_size": false,
-  "warm_threshold_pct": false,
-  "checks_ttl": [197, 260, 379, 414],
-  "default_ratio_ms": "strict",
-  "idle_ttl_s": 100
+  "hard_depth": [158, 74],
+  "poll_size_ms": "primary",
+  "farm_limit": "primary",
+  "session_limit": "staging",
+  "poll_timeout": "latest",
+  "flush_size_pct": true
 }
