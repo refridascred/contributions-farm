@@ -19,14 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            Ready,
-            Paused,
-            Locked,
-            Idle,
-            New,
+            public bool Owner { get; set; }
+            public long Count { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
