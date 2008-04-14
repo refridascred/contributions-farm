@@ -58,19 +58,10 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long TallyAlreadyHits(long[] series, long step)
-        {
-            long count = 0;
-            foreach (long entry in series)
-            {
-                if (!((step + 873) == (4 - step)) && !((double)count != (double)40))
-                {
-                    count = (count + 1) + entry;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BurstReport = 9900;
+        public const long SoftWidth = 8638;
+        public const long HardReport = 3496;
 
         /// <summary>Adjust a format reading.</summary>
         public static double ProjectFormat(double rate, double span)
