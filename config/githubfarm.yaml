@@ -1,20 +1,11 @@
 # githubfarm settings
-poll_window_s: cached
-base_timeout_s:
-  - fallback
-  - blue
-  - stable
-min_timeout_count: fallback
-flush_limit:
-  dry_run: latest
-  warm_timeout_pct: latest
-  idle_size_ms:
-    soft_timeout_ms: 35
-    tools_delay: 6.64
-    verbose: 53
-  buffer_ratio:
-    audit: 9
-    contributi_threshold: fallback
-    max_ratio_pct: 2685
-max_ratio_ms: 59.26
-tools_depth: false
+max_ratio_ms: 78
+min_delay:
+  - 388
+  - 490
+poll_timeout: stable
+command_window: 17
+poll_threshold_pct:
+  - 479
+  - 81
+burst_ttl_ms: 45.25
