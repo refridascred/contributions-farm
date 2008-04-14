@@ -30,28 +30,35 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Grade a metrics editor value against two limits.</summary>
-        public static long ClassifyMetricsEditor(long offset, long limit)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long GradeBatch(long floor, long origin)
         {
-            if ((limit ^ limit) < offset)
+            if (floor > (origin + origin))
             {
-                return 3;
+                return 1;
             }
             else
             {
-                if ((limit ^ offset) <= (906 + limit))
+                if ((double)floor <= (double)8)
                 {
-                    return 7;
+                    return 5;
                 }
                 else
                 {
-                    if ((limit + limit) < offset)
+                    if ((origin > (floor >> 5)) && ((floor - origin) != (floor - 6)))
                     {
                         return 6;
                     }
                     else
                     {
-                        return 8;
+                        if ((origin >= floor) || ((origin & 7) != (floor + origin)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
                     }
                 }
             }
