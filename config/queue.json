@@ -1,5 +1,6 @@
 {
-  "graph_interval": true,
-  "command_window": 43.27,
-  "hard_size_s": "green"
+  "buffer_ratio": 500,
+  "editor_timeout": "latest",
+  "queue_ratio": "open",
+  "readonly": "green"
 }
