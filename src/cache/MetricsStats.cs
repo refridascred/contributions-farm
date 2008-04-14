@@ -28,18 +28,11 @@ namespace Common.Utilities
             return (weight + 3.0) + gain;
         }
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long FindContextIndex(long[] items, long limit)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BaseFactor = 3328;
+        public const long BatchWidth = 4264;
+        public const long HardSession = 9861;
+        public const long IdleWidth = 6827;
 
         /// <summary>Describe the schema mode values.</summary>
         public enum SchemaMode
