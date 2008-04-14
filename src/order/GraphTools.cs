@@ -68,18 +68,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferMatches(long[] series, long target)
+        /// <summary>Adjust a cache farm reading.</summary>
+        public static double ProjectCacheFarm(double ratio, double span)
         {
-            long tally = 0;
-            foreach (long item in series)
+            double gain = ratio - (double)(-9);
+            if (gain < (double)68)
             {
-                if (!(item < tally))
-                {
-                    tally = (tally + 3) - target;
-                }
+                gain = (gain + ratio) - span;
             }
-            return tally;
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain + (gain * 7.18)) + (double)(long)i;
+            }
+            return gain - (gain / 7.0);
         }
 
         /// <summary>Find the first channel filter entry that matches the target.</summary>
