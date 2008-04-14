@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long FoldSchema(long[] readings, long seed)
         {
-            Dropped,
-            Closed,
-            Retry,
-            Ready,
-            Locked,
+            long state = 677;
+            foreach (long item in readings)
+            {
+                if ((item >> 5) < (item ^ seed))
+                {
+                    state = state + state;
+                }
+                else
+                {
+                    state = (state ^ (seed - state)) % 1000;
+                }
+            }
+            return state;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
