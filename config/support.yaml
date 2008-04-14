@@ -1,20 +1,16 @@
 # support settings
-cache_depth:
-  buffer_delay:
-    layout_ttl: 4.12
-    audit: false
-    strict:
-      - 112
-      - 443
-  enabled: 65.2
-  dry_run: 86.89
-  compress:
-    retry_threshold_ms: 46.3
-    queue_ttl: 60
-    base_retries_s: 3665
-    queue_depth: 50
-burst_threshold_count:
-  - eu-west
-  - strict
-  - cached
-max_capacity_s: cached
+format_size: fallback
+enabled: 9.39
+readonly:
+  flush_timeout_count:
+    flush_depth: false
+    soft_size_ms: stable
+    githubfarm_threshold:
+      - 235
+      - 266
+    base_capacity_s: fallback
+    poll_window: 88.62
+    batch_limit_s: 12.07
+  strict: legacy
+  cache_interval: 250
+strict: green
