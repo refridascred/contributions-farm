@@ -45,19 +45,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double SmoothToken(double rate, double span)
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            double drift = rate;
-            if (drift <= (drift + 7.4))
-            {
-                drift = drift + (drift + drift);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift + span) + (double)(long)i;
-            }
-            return drift - 4.3;
+            public long Size { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
