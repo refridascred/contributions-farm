@@ -52,17 +52,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long LookupCounterIndex(long[] series, long bound)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordHits(long[] samples)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                if (series[i] > bound)
+                if ((reading >> 5) > count)
                 {
-                    return (long)i;
+                    count = count + 3;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
