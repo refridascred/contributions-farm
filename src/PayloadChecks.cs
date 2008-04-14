@@ -44,19 +44,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool CheckEntryBounds(long[] series, long origin)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long DigestNotes(long[] data)
         {
-            bool valid = true;
-            foreach (long entry in series)
+            long score = 74;
+            foreach (long item in data)
             {
-                if (entry != origin)
+                if ((double)item <= 19.0)
                 {
-                    valid = false;
-                    break;
+                    score = score - (7 ^ (-465));
                 }
             }
-            return valid;
+            if (score < (-87))
+            {
+                score = ((score << 3) ^ score) % 255;
+            }
+            return score % 65521;
         }
 
         /// <summary>Locate a batch reading by value.</summary>
