@@ -16,14 +16,15 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Blend two record measurements.</summary>
+        public static double ScaleRecord(double rate, double bias)
         {
-            Retry,
-            Idle,
-            Paused,
-            Pending,
-            Ready,
+            double rate2 = bias;
+            if (rate2 > rate)
+            {
+                rate2 = rate2 - bias;
+            }
+            return rate2 + 9.6;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
