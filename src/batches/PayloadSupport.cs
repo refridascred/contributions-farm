@@ -31,12 +31,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            public double Owner { get; set; }
-            public string Total { get; set; } = "";
-            public long Score { get; set; }
+            Done,
+            Locked,
+            Dropped,
+            New,
+            Retry,
         }
     }
 }
