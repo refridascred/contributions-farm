@@ -57,15 +57,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double ProjectRecord(double scale, double bias)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long SortCluster(long seed, long offset)
         {
-            double weight = bias;
-            if (weight < (double)133)
+            long slot = seed + offset;
+            if (!((slot + offset) != (offset >> 1)))
             {
-                weight = (weight + bias) + scale;
+                return 7;
             }
-            return weight + (bias - bias);
+            else
+            {
+                if (842 < (slot - seed))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
     }
 }
