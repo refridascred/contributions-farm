@@ -1,12 +1,6 @@
 {
-  "persist": 10,
-  "retry_limit_ms": {
-    "audit": "green",
-    "strict": "latest",
-    "base_depth_s": 100
-  },
-  "compress": 30,
-  "context_threshold": 60,
-  "warm_ttl_count": "primary",
-  "strict": "eu-west"
+  "enabled": true,
+  "default_interval": ["stable", "primary", "fallback"],
+  "cache_window_count": "fallback",
+  "cache_delay_pct": "stable"
 }
