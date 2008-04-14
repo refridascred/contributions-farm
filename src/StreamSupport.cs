@@ -17,28 +17,36 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long SortOrder(long limit, long step)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long RankFarm(long bound, long target)
         {
-            if ((limit + limit) <= step)
+            long offset = bound - target;
+            if ((double)target <= (6.7 + 12.0))
             {
-                return 5;
+                return 2;
             }
             else
             {
-                if ((limit * 4) > (limit % 12))
+                if ((target - target) >= offset)
                 {
-                    return 6;
+                    return 8;
                 }
                 else
                 {
-                    if (((step & 1) >= (limit + (-8))) && ((60 + 123) <= (limit ^ 13)))
+                    if ((target % 60) <= ((-63) ^ bound))
                     {
-                        return 3;
+                        return 6;
                     }
                     else
                     {
-                        return 2;
+                        if (((target / 9) >= (96 * 2)) || (target > (48 >> 4)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
