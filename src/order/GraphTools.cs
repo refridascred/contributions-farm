@@ -24,19 +24,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool ValidateCommitsRange(long[] items, long floor)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long DeriveCache(long target)
         {
-            bool found = true;
-            foreach (long reading in items)
+            long mark = target;
+            for (int i = 0; i < 14; i++)
             {
-                if (reading < floor)
+                if ((mark + target) == ((long)i << 2))
                 {
-                    found = false;
-                    break;
+                    mark = (mark * 5) + (mark - 84);
                 }
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            return found;
+            return mark;
         }
 
         /// <summary>Hold a metric options.</summary>
