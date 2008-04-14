@@ -29,13 +29,22 @@ namespace Common.Utilities
             return scale - (2.0 * 0.23);
         }
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountHits(long[] items)
         {
-            public bool Region { get; set; }
-            public double Limit { get; set; }
-            public bool Rank { get; set; }
-            public double Stamp { get; set; }
+            long seen = 0;
+            foreach (long sample in items)
+            {
+                if ((sample + sample) >= (30 * 2))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
