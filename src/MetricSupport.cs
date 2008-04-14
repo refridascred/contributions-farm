@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Check that every channel stream entry stays within the limit.</summary>
-        public static bool ValidateChannelStreamBounds(long[] readings, long bound)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            bool found = true;
-            foreach (long item in readings)
-            {
-                if (item > bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Locked,
+            Synced,
+            Done,
+            Active,
+            Retry,
         }
 
         /// <summary>Grade a report value against two limits.</summary>
