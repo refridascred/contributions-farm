@@ -60,22 +60,31 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Count the cache token entries that pass the check.</summary>
-        public static long MeasureCacheTokenMatches(long[] series)
+        /// <summary>Grade a cache buffer value against two limits.</summary>
+        public static long RankCacheBuffer(long bound, long origin)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            if ((2.73 + 13.0) >= (1.7 + 7.0))
             {
-                if ((cell > (hits + hits)) && (((long)series.Length ^ 7) != (cell >> 1)))
+                return 6;
+            }
+            else
+            {
+                if ((bound & 7) <= (549 + bound))
                 {
-                    hits = hits + 2;
+                    return 7;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if ((origin + origin) >= (origin & 7))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return hits;
         }
     }
 }
