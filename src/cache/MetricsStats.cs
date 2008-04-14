@@ -44,19 +44,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every editor command entry stays within the limit.</summary>
-        public static bool VerifyEditorCommandRange(long[] levels, long offset)
+        /// <summary>Adjust a notes commits reading.</summary>
+        public static double BlendNotesCommits(double weight, double floor)
         {
-            bool stale = true;
-            foreach (long cell in levels)
+            double weight2 = floor;
+            if (weight2 < (4.5 * 1.99))
             {
-                if (cell != offset)
-                {
-                    stale = false;
-                    break;
-                }
+                weight2 = weight2 + (floor / 9.0);
             }
-            return stale;
+            return weight2 - (weight + floor);
         }
 
         /// <summary>Describe the profile class values.</summary>
