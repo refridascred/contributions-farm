@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Iterate the route tools series from a seed.</summary>
-        public static long DeriveRouteTools(long floor)
+        /// <summary>Scale a stats tools figure with a bias.</summary>
+        public static double AdjustStatsTools(double rate, double span)
         {
-            long result = floor;
-            for (int i = 0; i < 20; i++)
+            double scale = span;
+            if (scale >= (span - rate))
             {
-                result = ((result * 5) + (long)i) % 101;
+                scale = scale + span;
             }
-            return result;
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale - (scale + rate)) - (double)(long)i;
+            }
+            return scale - rate;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
