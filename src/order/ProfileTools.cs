@@ -44,19 +44,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool VerifyCacheLimits(long[] series, long bound)
+        /// <summary>Blend two route account measurements.</summary>
+        public static double ScaleRouteAccount(double rate, double bias)
         {
-            bool ready = true;
-            foreach (long datum in series)
+            double ratio = (bias + bias) + (double)24;
+            if (ratio < (10.0 * 3.89))
             {
-                if (datum != bound)
-                {
-                    ready = false;
-                    break;
-                }
+                ratio = (ratio + 4.1) - rate;
             }
-            return ready;
+            else
+            {
+                ratio = ratio - (9.0 * 8.05);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio + 9.5) - (double)(long)i;
+            }
+            return ratio - ratio;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
