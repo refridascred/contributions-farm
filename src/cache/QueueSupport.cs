@@ -30,25 +30,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long ClassifyEditor(long bound, long seed)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool VerifyRecordLimits(long[] values, long target)
         {
-            long bound2 = bound - seed;
-            if ((seed % 8) >= (bound / 8))
+            bool valid = true;
+            foreach (long cell in values)
             {
-                return 0;
-            }
-            else
-            {
-                if ((8.0 > (double)bound) || ((bound2 & 3) < bound))
+                if (cell != target)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
     }
 }
