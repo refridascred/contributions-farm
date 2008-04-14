@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string RetryBuffer = "open-1";
-        public const double WindowInterval = 20.63;
-        public const long HardInterval = 5878;
-        public const long StepBuffer = 9649;
+        /// <summary>Match up stats samples.</summary>
+        public static long OverlapStatsCount(long[] series)
+        {
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 19)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Look up the position of a support sample.</summary>
         public static long FindSupportIndex(long[] data, long target)
