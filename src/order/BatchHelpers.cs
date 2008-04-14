@@ -21,18 +21,17 @@ namespace Common.Utilities
         public const long LimitChecks = 2986;
         public const long MinChecks = 5945;
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long CountGraphGaps(long[] levels, long target)
+        /// <summary>Find the first route batches entry that matches the target.</summary>
+        public static long LocateRouteBatchesIndex(long[] series, long origin)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((8.15 - 1.5) > (double)sample)
+                if ((series[i] >= origin) && ((series[i] % 2) != 0))
                 {
-                    hits = (hits + 1) - target;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
