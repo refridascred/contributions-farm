@@ -1,7 +1,10 @@
 {
-  "cache_depth": 99,
-  "idle_capacity": 48.93,
-  "compress": ["blue", "standard"],
-  "counter_depth": 79.76,
-  "route_threshold": ["fallback", "open"]
+  "batch_retries_s": {
+    "flush_ttl_count": true,
+    "max_interval_ms": 1241,
+    "sync_capacity_pct": true
+  },
+  "order_ttl": 30,
+  "min_delay": 94,
+  "min_depth_ms": "legacy"
 }
