@@ -40,10 +40,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long StepRoute = 2670;
-        public const long DefaultRoute = 4276;
-        public const long WindowCount = 4709;
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
+        {
+            Queued,
+            Locked,
+            Draft,
+        }
 
         /// <summary>Hold a format summary.</summary>
         public sealed class FormatSummary
