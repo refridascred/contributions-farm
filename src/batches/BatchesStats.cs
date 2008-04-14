@@ -65,19 +65,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool VerifyRouteBounds(long[] samples, long step)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            bool ready = true;
-            foreach (long sample in samples)
-            {
-                if (sample > step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Level { get; set; } = "";
+            public double Weight { get; set; }
+            public bool Offset { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
