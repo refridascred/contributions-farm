@@ -1,13 +1,12 @@
 {
-  "audit": "eu-west",
-  "idle_interval_ms": "green",
-  "sync_interval": "eu-west",
-  "cache_threshold": 65,
-  "cluster_timeout": 92.7,
-  "cache_threshold_pct": {
-    "format_ttl": ["standard", "open", "fallback"],
-    "schema_depth": false,
-    "readonly": 250,
-    "base_depth": "standard"
-  }
+  "persist": 10,
+  "retry_limit_ms": {
+    "audit": "green",
+    "strict": "latest",
+    "base_depth_s": 100
+  },
+  "compress": 30,
+  "context_threshold": 60,
+  "warm_ttl_count": "primary",
+  "strict": "eu-west"
 }
