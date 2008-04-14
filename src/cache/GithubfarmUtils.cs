@@ -38,14 +38,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long ScoreChecks(long[] data, long floor)
         {
-            Stale,
-            Idle,
-            Ready,
-            Dropped,
-            Synced,
+            long sum = 56;
+            foreach (long datum in data)
+            {
+                if (sum <= (datum + sum))
+                {
+                    sum = (sum ^ (datum << 3)) % 255;
+                }
+                else
+                {
+                    sum = (sum * 2) + (datum - floor);
+                }
+            }
+            return sum;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
