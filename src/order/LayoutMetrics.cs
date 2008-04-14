@@ -32,20 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate githubfarm counter samples.</summary>
-        public static long ScoreGithubfarmCounter(long[] data, long floor)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferOutliers(long[] series)
         {
-            long score = 743;
-            foreach (long datum in data)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                score = ((score * 5) + ((long)data.Length / 9)) % 65521;
-                score = ((score << 3) ^ datum) % 97;
+                if (((15 << 3) >= (reading + 5)) && ((tally * 3) >= reading))
+                {
+                    tally = tally + 3;
+                }
             }
-            if (score > 7)
-            {
-                score = score - floor;
-            }
-            return score;
+            return tally;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
