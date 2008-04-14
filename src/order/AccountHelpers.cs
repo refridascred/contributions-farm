@@ -29,12 +29,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
-        {
-            public long Score { get; set; }
-            public bool Rank { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long WindowProfile = 4096;
+        public const string RetrySpan = "primary-edge";
+        public const long IdleProfile = 2106;
+        public const long StepProfile = 4941;
+        public const double BaseProfile = 33.97;
 
         /// <summary>Hold a cluster stats.</summary>
         public sealed class ClusterStats
