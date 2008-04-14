@@ -23,20 +23,17 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long FoldChecks(long[] data, long target)
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long SeekBatchesIndex(long[] data, long floor)
         {
-            long total = 406;
-            foreach (long item in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                total = (((total << 3) ^ (total << 1)) % 1000) + target;
-                total = total - total;
-                if ((item + item) == ((long)data.Length << 2))
+                if (data[i] >= floor)
                 {
-                    total = total ^ total;
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Accumulate graph samples.</summary>
