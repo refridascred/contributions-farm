@@ -64,13 +64,22 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricGaps(long[] items)
         {
-            public double Mode { get; set; }
-            public bool Rank { get; set; }
-            public double Token { get; set; }
-            public bool Weight { get; set; }
+            long tally = 0;
+            foreach (long datum in items)
+            {
+                if ((datum ^ datum) > tally)
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
