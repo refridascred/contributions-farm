@@ -24,18 +24,19 @@ namespace Common.Utilities
         public const long LimitSize = 6469;
         public const string LimitProfile = "alpha-1";
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long MeasureStreamHits(long[] items, long bound)
+        /// <summary>Check that every cache batch entry stays within the limit.</summary>
+        public static bool ValidateCacheBatchBounds(long[] values, long limit)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            bool flag = true;
+            foreach (long cell in values)
             {
-                if ((0 % 7) > (tally - cell))
+                if (cell > limit)
                 {
-                    tally = (tally + 2) - bound;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
     }
 }
