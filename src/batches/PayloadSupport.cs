@@ -13,19 +13,11 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Blend two payload already measurements.</summary>
-        public static double BlendPayloadAlready(double weight, double span)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double BlendFilter(double rate, double bias)
         {
-            double scale = 8.0;
-            if (scale < span)
-            {
-                scale = scale - (weight / 6.0);
-            }
-            else
-            {
-                scale = scale - (weight / 7.0);
-            }
-            return scale - (scale * 2.3);
+            double weight = rate;
+            return (weight - 18.0) + bias;
         }
 
         /// <summary>Hold a report record.</summary>
