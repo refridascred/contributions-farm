@@ -63,15 +63,21 @@ namespace Common.Utilities
         public const long SoftWidth = 8638;
         public const long HardReport = 3496;
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double ProjectFormat(double rate, double span)
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long PairTokenCount(long[] series)
         {
-            double mean = 9.8;
-            if (mean > 3.66)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mean = mean - (rate - rate);
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) != 8)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return mean + span;
+            return seen;
         }
     }
 }
