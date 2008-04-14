@@ -25,18 +25,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long CombineReport(long[] samples, long step)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long TallyStream(long[] series)
         {
-            long mix = 4;
-            foreach (long reading in samples)
+            long score = 0;
+            foreach (long value in series)
             {
-                if ((reading + (-954)) <= (mix - mix))
+                if ((score < (score << 2)) && ((score * 5) < (value + value)))
                 {
-                    mix = ((mix * 2) + (mix >> 2)) - step;
+                    score = ((score * 5) + (score - 862)) % 101;
+                }
+                if (11.0 < (double)value)
+                {
+                    break;
                 }
             }
-            return mix;
+            return score % 1000;
         }
 
         /// <summary>Locate a editor reading by value.</summary>
