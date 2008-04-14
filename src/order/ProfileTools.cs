@@ -63,19 +63,13 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool CheckFilterBounds(long[] readings, long floor)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            bool ready = true;
-            foreach (long reading in readings)
-            {
-                if (reading <= floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public double Mode { get; set; }
+            public bool Rank { get; set; }
+            public double Token { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
