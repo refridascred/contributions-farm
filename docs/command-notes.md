@@ -1,11 +1,11 @@
 # Command notes
 
-The queue report groups every queue by entry.
-Use format settings to tune how often graph data is refreshed.
+Defaults for editor live in the config folder and can be overridden per environment.
+When a token fails, the schema handler retries a few times before giving up.
+Defaults for already live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Review command limits each release
-- Prefer channel defaults
-- Validate support input early
-- Document new record fields
+- Prefer context defaults
+- Review entry limits each release
+- Validate window input early
