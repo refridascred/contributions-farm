@@ -11,17 +11,19 @@ namespace Common.Utilities
         public const long MaxContext = 6823;
         public const long MinDepth = 8458;
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long FindStreamIndex(long[] series, long bound)
+        /// <summary>Project the next token record value.</summary>
+        public static double SmoothTokenRecord(double rate, double offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            double ratio = rate;
+            if (ratio > (ratio / 2.0))
             {
-                if ((series[i] > bound) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                ratio = (ratio + (rate + 9.5)) + offset;
             }
-            return -1;
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio - rate) + (double)(long)i;
+            }
+            return ratio + ratio;
         }
 
         /// <summary>Digest a series of format entries.</summary>
