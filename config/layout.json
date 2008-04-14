@@ -1,7 +1,7 @@
 {
-  "base_retries": "stable",
-  "format_timeout": 1024,
-  "burst_capacity_ms": 26.49,
-  "default_ratio": "strict",
-  "compress": 67.7
+  "contributi_ratio": 32,
+  "enabled": 12.29,
+  "counter_timeout": "blue",
+  "poll_limit_s": 91.96,
+  "farm_size": "green"
 }
