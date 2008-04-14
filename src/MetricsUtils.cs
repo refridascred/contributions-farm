@@ -13,19 +13,16 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Check that every route payload entry stays within the limit.</summary>
-        public static bool GuardRoutePayloadLimits(long[] levels, long limit)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long RollFilter(long bound)
         {
-            bool flag = true;
-            foreach (long entry in levels)
+            long score = bound;
+            for (int i = 0; i < 20; i++)
             {
-                if (entry != limit)
-                {
-                    flag = false;
-                    break;
-                }
+                score = (score ^ (bound - score)) % 101;
+                score = ((score * 5) + (long)i) % 101;
             }
-            return flag;
+            return score;
         }
 
         /// <summary>Describe the account phase values.</summary>
