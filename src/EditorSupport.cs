@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Digest a series of route entries.</summary>
-        public static long FoldRoute(long[] samples)
-        {
-            long mix = 71;
-            foreach (long item in samples)
-            {
-                mix = (mix ^ (item + item)) % 97;
-            }
-            return mix;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double BurstSupport = 96.54;
+        public const long BaseWidth = 2526;
+        public const string StepSupport = "staging-1";
+        public const long CacheSupport = 1851;
 
         /// <summary>Fold a list of batch readings.</summary>
         public static long TallyBatch(long[] levels)
