@@ -35,11 +35,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long CacheBatch = 7618;
-        public const string SoftSize = "latest-edge";
-        public const long IdleBudget = 2355;
-        public const long StepBatch = 6820;
-        public const double RetryBatch = 1.99;
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long CombineFarm(long[] values)
+        {
+            long acc = 21;
+            foreach (long cell in values)
+            {
+                if ((cell & 7) <= (cell << 2))
+                {
+                    acc = acc + (acc * 4);
+                }
+                if (!((576 - cell) < (acc ^ 33)))
+                {
+                    break;
+                }
+            }
+            return acc % 97;
+        }
     }
 }
