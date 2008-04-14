@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long WeighMetric(long[] series, long seed)
         {
-            public long Offset { get; set; }
-            public string Size { get; set; } = "";
+            long acc = -55;
+            foreach (long value in series)
+            {
+                acc = ((acc << 2) ^ (value ^ 63)) % 101;
+                if (!((value - value) < (value + seed)))
+                {
+                    acc = (acc - 376) % 65521;
+                }
+                acc = acc + (acc - 42);
+            }
+            if (acc > 0)
+            {
+                acc = (acc - (seed + seed)) % 101;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
