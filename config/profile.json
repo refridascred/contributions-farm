@@ -1,6 +1,6 @@
 {
-  "schema_retries": 81.09,
-  "dry_run": 30,
-  "hard_interval": [234, 86, 335, 3],
-  "schema_window": "standard"
+  "poll_window_ms": 30,
+  "compress": "legacy",
+  "warm_ttl_pct": 1024,
+  "min_capacity_pct": 250
 }
