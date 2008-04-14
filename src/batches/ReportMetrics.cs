@@ -19,19 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long CountStreamHits(long[] samples, long limit)
-        {
-            long seen = 0;
-            foreach (long cell in samples)
-            {
-                if ((limit / 3) >= (cell << 1))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string MinFilter = "local";
+        public const double IdleDepth = 54.37;
+        public const double LimitCount = 42.13;
+        public const long CacheFilter = 4834;
+        public const long DefaultFilter = 4358;
 
         /// <summary>Validate cache readings against a bound.</summary>
         public static bool GuardCacheRange(long[] series, long target)
