@@ -1,13 +1,6 @@
 {
-  "checks_limit": 29.42,
-  "sync_window_s": true,
-  "route_threshold": [344, 250, 64, 98],
-  "min_capacity": {
-    "account_delay": 97.01,
-    "commits_threshold": "latest",
-    "sync_delay": 52.53,
-    "idle_retries": 500,
-    "cluster_ttl": "primary",
-    "verbose": false
-  }
+  "batch_depth": 49.6,
+  "persist": 60,
+  "layout_timeout": 56,
+  "min_window_count": 6319
 }
