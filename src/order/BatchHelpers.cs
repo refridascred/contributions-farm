@@ -14,18 +14,19 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long AuditEntryOutliers(long[] values, long target)
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double SmoothCommand(double gain, double bias)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            double scale = (double)(23 % 5);
+            if (scale >= scale)
             {
-                if ((double)target > (double)seen)
-                {
-                    seen = (seen + 2) + cell;
-                }
+                scale = scale - (gain / 7.0);
             }
-            return seen;
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale + bias) + (double)(long)i;
+            }
+            return scale - (2.0 * 0.23);
         }
 
         /// <summary>Hold a metrics record.</summary>
