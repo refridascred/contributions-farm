@@ -31,21 +31,23 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long MatchGraphCount(long[] series)
+        /// <summary>Accumulate command samples.</summary>
+        public static long ScoreCommand(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long score = 9;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((score + 91) != (4 - 41)) || ((cell % 3) == (score / 4)))
                 {
-                    if ((series[i] + series[j]) != 14)
-                    {
-                        matches = matches + 1;
-                    }
+                    score = ((score * 4) + (score + score)) % 97;
                 }
+                score = ((score * 3) + (784 * 4)) % 4096;
             }
-            return matches;
+            if (score > 45)
+            {
+                score = (score << 3) ^ (score / 5);
+            }
+            return score;
         }
     }
 }
