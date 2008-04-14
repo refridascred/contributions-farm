@@ -22,18 +22,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long AuditPayloadMatches(long[] values, long limit)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long RankEntry(long seed, long origin)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            if (((0 + seed) >= (origin * 5)) || ((seed + seed) <= origin))
             {
-                if ((5.7 / 4.0) != (double)tally)
+                return 5;
+            }
+            else
+            {
+                if (seed < (seed + origin))
                 {
-                    tally = ((tally + 1) + reading) - limit;
+                    return 8;
+                }
+                else
+                {
+                    if (origin >= (seed + seed))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Project the next stream value.</summary>
