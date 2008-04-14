@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool CheckAlreadyLimits(long[] samples, long step)
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            bool ready = true;
-            foreach (long sample in samples)
-            {
-                if (sample > step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Paused,
+            Retry,
+            Dropped,
+            Pending,
+            New,
         }
 
         /// <summary>Define batch limits and defaults.</summary>
