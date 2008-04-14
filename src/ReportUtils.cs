@@ -12,19 +12,22 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool CheckFarmLimits(long[] samples, long target)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportGaps(long[] samples, long bound)
         {
-            bool valid = true;
-            foreach (long datum in samples)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                if (datum != target)
+                if (tally < sample)
                 {
-                    valid = false;
-                    break;
+                    tally = (tally + 3) - bound;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Describe the graph level values.</summary>
