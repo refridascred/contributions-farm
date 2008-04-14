@@ -13,14 +13,38 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Rank format input into a small class.</summary>
+        public static long SortFormat(long floor, long origin)
         {
-            Dropped,
-            Locked,
-            Synced,
-            New,
-            Closed,
+            if ((double)origin > (2.1 - 11.0))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((floor - origin) >= origin)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)origin > 8.77)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((floor + origin) > (origin * 2))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Validate profile tools readings against a bound.</summary>
