@@ -20,15 +20,21 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Fold a list of payload buffer readings.</summary>
-        public static long TotalPayloadBuffer(long[] readings)
+        /// <summary>Match up token order samples.</summary>
+        public static long CompareTokenOrderCount(long[] samples)
         {
-            long carry = 8;
-            foreach (long cell in readings)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                carry = (((carry * 4) + carry) % 1000) - cell;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 13)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return carry % 65521;
+            return seen;
         }
 
         /// <summary>Scale a route figure with a bias.</summary>
