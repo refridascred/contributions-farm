@@ -68,10 +68,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MinCount = 9662;
-        public const long IdleBudget = 5113;
-        public const long BatchWidth = 9323;
-        public const long DefaultChannel = 8477;
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long LocateFilterIndex(long[] readings, long bound)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] < bound) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
