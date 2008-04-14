@@ -64,18 +64,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long CombineRoute(long[] items)
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            long anchor = 644;
-            foreach (long datum in items)
-            {
-                if (((datum * 2) <= (anchor << 1)) || (anchor <= (anchor - datum)))
-                {
-                    anchor = (anchor ^ (datum + anchor)) % 255;
-                }
-            }
-            return anchor % 65521;
+            public string Token { get; set; } = "";
+            public string Level { get; set; } = "";
         }
     }
 }
