@@ -1,7 +1,25 @@
 # githubfarm settings
-buffer_threshold: cached
-burst_delay_count:
-  soft_depth_pct: 74
-  burst_threshold_pct: staging
-  default_retries: 100
-compress: 5569
+profile_size: 89
+graph_window: 100
+metrics_depth: 5
+sync_delay:
+  flush_size_pct: 100
+  min_ratio: 48.92
+  verbose: 22.33
+  default_window_pct:
+    idle_ratio: 73.98
+    profile_capacity:
+      - staging
+      - stable
+      - fallback
+      - open
+    hard_limit: 30
+    dry_run:
+      - 117
+      - 465
+      - 442
+      - 441
+    warm_window: false
+    hard_interval_count: 41.61
+  batches_capacity: primary
+counter_limit: true
