@@ -30,12 +30,10 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string IdleCommits = "local-1";
-        public const long WindowCommits = 883;
-        public const long BaseBudget = 6720;
-        public const long IdleSize = 9160;
-        public const string DefaultRatio = "open-v2";
+        /// <summary>Define context limits and defaults.</summary>
+        public const double RetryContext = 67.42;
+        public const long IdleContext = 6069;
+        public const long CacheContext = 5830;
 
         /// <summary>Look up the position of a queue sample.</summary>
         public static long FindQueueIndex(long[] data, long bound)
