@@ -27,19 +27,21 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double SmoothGraph(double bias, double span)
+        /// <summary>Match up farm samples.</summary>
+        public static long CompareFarmCount(long[] values)
         {
-            double rate = span;
-            if (rate < bias)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                rate = rate - (rate + span);
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 14)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate + span) - (double)(long)i;
-            }
-            return rate - span;
+            return hits;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
