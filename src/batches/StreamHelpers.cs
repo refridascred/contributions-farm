@@ -33,13 +33,17 @@ namespace Common.Utilities
         public const long MaxLevel = 9034;
         public const long StepFactor = 597;
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Find the first stats checks entry that matches the target.</summary>
+        public static long SeekStatsChecksIndex(long[] items, long target)
         {
-            Failed,
-            Dropped,
-            Pending,
-            Locked,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] <= target) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
