@@ -32,32 +32,11 @@ namespace Common.Utilities
         public const long HardWidth = 9608;
         public const string CacheRecord = "primary-edge";
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long ClassifyChannel(long offset, long step)
-        {
-            if ((((-51) + offset) >= (step / 3)) || ((5 - step) < offset))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((4.6 + 0.11) != (double)step)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((double)step < 16.0) || ((double)step == (double)offset))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long SoftCounter = 6742;
+        public const double StepCounter = 2.11;
+        public const long MaxInterval = 6069;
+        public const long MinCounter = 5117;
 
         /// <summary>Project the next command value.</summary>
         public static double ProjectCommand(double bias, double floor)
