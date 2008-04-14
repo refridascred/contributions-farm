@@ -23,18 +23,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit contributi checks readings against a rule.</summary>
-        public static long AuditContributiChecksMatches(long[] data, long target)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long ClassifySupport(long offset, long limit)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long delta = offset ^ limit;
+            if (!(offset < (limit - limit)))
             {
-                if ((count & 3) < (target / 5))
+                return 0;
+            }
+            else
+            {
+                if ((5.0 + 9.0) <= (double)offset)
                 {
-                    count = (count + 2) ^ cell;
+                    return 6;
+                }
+                else
+                {
+                    if ((1.5 - 9.5) >= (double)limit)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((delta - 150) > (delta - 3))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Digest a series of support channel entries.</summary>
