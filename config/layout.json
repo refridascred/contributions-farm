@@ -1,6 +1,7 @@
 {
-  "poll_retries_count": "fallback",
-  "min_ttl": true,
-  "batch_capacity_s": 30,
-  "warm_delay_ms": 89
+  "base_retries": "stable",
+  "format_timeout": 1024,
+  "burst_capacity_ms": 26.49,
+  "default_ratio": "strict",
+  "compress": 67.7
 }
