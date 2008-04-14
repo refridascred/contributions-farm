@@ -50,18 +50,17 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorMatches(long[] levels)
+        /// <summary>Locate a account farm reading by value.</summary>
+        public static long SeekAccountFarmIndex(long[] data, long seed)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((cell * 2) <= (tally - (-137)))
+                if (data[i] == seed)
                 {
-                    tally = tally + 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
