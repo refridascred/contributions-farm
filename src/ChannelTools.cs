@@ -29,32 +29,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long RankLayout(long seed, long origin)
-        {
-            long bound = seed ^ origin;
-            if ((bound + bound) > seed)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)origin < (double)316)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((-734) / 5) >= origin)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MaxWidth = 9910;
+        public const long CacheSpan = 4087;
+        public const long BaseFactor = 9479;
+        public const long CacheCommits = 655;
     }
 }
