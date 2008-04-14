@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long CountClusterGaps(long[] levels, long step)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool ValidateRouteLimits(long[] values, long step)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            bool found = true;
+            foreach (long reading in values)
             {
-                if (step < (datum + count))
+                if (reading > step)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Describe the metrics phase values.</summary>
