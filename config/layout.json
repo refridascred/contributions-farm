@@ -1,8 +1,11 @@
 {
-  "commits_capacity": ["local", "primary", "open", "standard"],
-  "account_delay": "blue",
-  "sync_timeout_ms": 72.84,
-  "profile_retries": false,
-  "cache_retries": false,
-  "stats_threshold": ["stable", "strict", "primary"]
+  "hard_ratio_ms": {
+    "max_depth_pct": 250,
+    "dry_run": true,
+    "channel_limit": "edge"
+  },
+  "hard_window": [88, 291, 111],
+  "burst_limit": 1024,
+  "warm_retries": "legacy",
+  "max_retries_s": "eu-west"
 }
