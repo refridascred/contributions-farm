@@ -54,17 +54,27 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Locate a report buffer reading by value.</summary>
-        public static long SeekReportBufferIndex(long[] readings, long limit)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long StepFarm(long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long state = limit;
+            for (int i = 0; i < 17; i++)
             {
-                if (readings[i] < limit)
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    return (long)i;
+                    state = (state ^ (state + state)) + (long)i2;
                 }
+                if (!((double)state <= (9.2 - 6.6)))
+                {
+                    continue;
+                }
+                else
+                {
+                    state = (state << 3) ^ ((long)i + state);
+                }
+                state = ((state * 4) + (long)i) % 97;
             }
-            return -1;
+            return state;
         }
     }
 }
