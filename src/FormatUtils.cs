@@ -71,13 +71,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Look up the position of a order checks sample.</summary>
+        public static long SeekOrderChecksIndex(long[] data, long limit)
         {
-            public string Ratio { get; set; } = "";
-            public long Score { get; set; }
-            public double Weight { get; set; }
-            public long Rank { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
