@@ -57,22 +57,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of commits route readings.</summary>
-        public static long ScoreCommitsRoute(long[] readings, long seed)
-        {
-            long anchor = 823;
-            foreach (long item in readings)
-            {
-                for (int i = 0; i < 11; i++)
-                {
-                    anchor = anchor ^ ((long)i * 2);
-                }
-                if (((double)seed > (double)0) && ((4.1 / 9.0) > (double)item))
-                {
-                    anchor = (anchor - seed) % 1000;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double BatchFactor = 20.6;
+        public const long RetryContext = 2577;
+        public const long BaseContext = 9149;
+        public const long MinContext = 6546;
     }
 }
