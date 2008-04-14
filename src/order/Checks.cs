@@ -29,38 +29,21 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long ClassifyLayout(long target, long limit)
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long OverlapContextCount(long[] samples)
         {
-            if (target <= (7 << 2))
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((limit << 3) <= (limit - 14))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (!(limit < (target - target)))
+                    if ((samples[i] ^ samples[j]) > 19)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (2.0 >= (double)target)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
