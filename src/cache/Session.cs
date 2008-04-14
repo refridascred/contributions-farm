@@ -22,18 +22,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmOutliers(long[] data, long target)
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            long matches = 0;
-            foreach (long sample in data)
-            {
-                if ((target <= (4 << 1)) && ((sample + sample) == (target ^ target)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public long Size { get; set; }
+            public long Label { get; set; }
+            public double Owner { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
