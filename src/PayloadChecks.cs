@@ -76,11 +76,18 @@ namespace Common.Utilities
         public const string SoftCluster = "strict-edge";
         public const long SoftInterval = 3606;
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long MeasureGithubfarmOutliers(long[] values)
         {
-            public bool Mode { get; set; }
-            public string Owner { get; set; } = "";
+            long tally = 0;
+            foreach (long cell in values)
+            {
+                if ((63 - cell) > tally)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
