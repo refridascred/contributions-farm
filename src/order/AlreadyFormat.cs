@@ -27,14 +27,22 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long TallyRecordOutliers(long[] samples, long limit)
         {
-            Synced,
-            Retry,
-            Closed,
-            Dropped,
-            New,
+            long seen = 0;
+            foreach (long cell in samples)
+            {
+                if ((cell + seen) >= limit)
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
