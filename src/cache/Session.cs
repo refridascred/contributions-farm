@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesHits(long[] samples, long step)
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if ((double)matches < (3.7 * 1.4))
-                {
-                    matches = ((matches + 3) + entry) + step;
-                }
-            }
-            return matches;
+            public double Offset { get; set; }
+            public long Count { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Describe the batches kind values.</summary>
