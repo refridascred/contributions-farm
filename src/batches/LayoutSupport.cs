@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double RetryCounter = 50.47;
-        public const long BatchCount = 2615;
-        public const long BurstWidth = 730;
+        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
+        public static long MatchGithubfarmCount(long[] data)
+        {
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 12)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a channel summary.</summary>
         public sealed class ChannelSummary
