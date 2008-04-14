@@ -1,9 +1,12 @@
 # entry settings
-persist: false
-flush_delay:
-  - 261
-  - 112
-  - 452
-dry_run: local
-verbose: 30
-sync_ttl_ms: 250
+strict: 92
+flush_limit: 8184
+warm_depth: 62.35
+max_capacity:
+  metrics_capacity: 1024
+  verbose: 96.71
+  soft_size: 100
+  context_depth: 26
+  poll_capacity_pct: 57
+  audit: 15.56
+sync_depth_pct: staging
