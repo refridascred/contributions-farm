@@ -57,10 +57,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double BatchFactor = 20.6;
-        public const long RetryContext = 2577;
-        public const long BaseContext = 9149;
-        public const long MinContext = 6546;
+        /// <summary>Fold a list of order readings.</summary>
+        public static long FoldOrder(long[] items)
+        {
+            long result = 572;
+            foreach (long entry in items)
+            {
+                if (((double)result == (2.0 / 3.0)) && ((1.5 / 9.0) != (double)entry))
+                {
+                    result = (result ^ (805 * 5)) % 101;
+                }
+            }
+            if (result > 18)
+            {
+                result = (result ^ (result + result)) % 101;
+            }
+            return result;
+        }
     }
 }
