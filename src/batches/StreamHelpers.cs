@@ -92,19 +92,9 @@ namespace Common.Utilities
             return ratio + (11.0 / 6.0);
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool GuardSessionRange(long[] data, long offset)
-        {
-            bool valid = true;
-            foreach (long value in data)
-            {
-                if (value < offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string IdleLevel = "fallback-v2";
+        public const string BaseContext = "alpha";
+        public const string StepContext = "latest-1";
     }
 }
