@@ -81,13 +81,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long CountGithubfarmHits(long[] samples)
         {
-            public bool Owner { get; set; }
-            public long Label { get; set; }
-            public string Total { get; set; } = "";
-            public double Weight { get; set; }
+            long hits = 0;
+            foreach (long datum in samples)
+            {
+                if (hits <= (hits >> 3))
+                {
+                    hits = (hits + 1) ^ datum;
+                }
+            }
+            return hits;
         }
     }
 }
