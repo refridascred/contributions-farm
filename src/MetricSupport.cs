@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long ClassifyRoute(long step, long bound)
         {
-            public double Flag { get; set; }
-            public bool Mode { get; set; }
-            public long Limit { get; set; }
-            public long Score { get; set; }
+            if ((step & 1) <= bound)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((bound / 6) <= (1 << 1))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Define channel limits and defaults.</summary>
