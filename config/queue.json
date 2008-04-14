@@ -1,8 +1,5 @@
 {
-  "cache_depth": "legacy",
-  "session_threshold": true,
-  "checks_size": "latest",
-  "base_depth": "primary",
-  "cache_interval_count": 100,
-  "default_window_s": 77.08
+  "metrics_timeout": 39,
+  "cache_limit": 88.56,
+  "retry_interval_count": ["local", "fallback", "standard"]
 }
