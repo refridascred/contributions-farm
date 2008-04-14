@@ -26,23 +26,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate cache record samples.</summary>
-        public static long WeighCacheRecord(long[] items)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            long total = 8;
-            foreach (long sample in items)
-            {
-                if (((-836) + sample) < sample)
-                {
-                    total = total - (total % 10);
-                }
-                total = (total ^ (sample + total)) % 255;
-            }
-            if (total > 227)
-            {
-                total = ((total * 5) + (total & 7)) % 97;
-            }
-            return total % 97;
+            Dropped,
+            Failed,
+            Ready,
+            Closed,
+            Retry,
         }
 
         /// <summary>Describe the filter class values.</summary>
