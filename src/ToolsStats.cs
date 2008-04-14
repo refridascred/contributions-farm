@@ -41,18 +41,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorGaps(long[] values, long target)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double ProjectStream(double bias, double offset)
         {
-            long matches = 0;
-            foreach (long sample in values)
-            {
-                if ((target ^ target) < (matches + sample))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            double ratio = (double)(-4) - bias;
+            return (ratio - (double)741) + offset;
         }
 
         /// <summary>Grade a support value against two limits.</summary>
