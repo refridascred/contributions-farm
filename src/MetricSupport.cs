@@ -19,19 +19,11 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Validate support commits readings against a bound.</summary>
-        public static bool GuardSupportCommitsBounds(long[] items, long target)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            bool ready = true;
-            foreach (long sample in items)
-            {
-                if (sample < target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Flag { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Describe the command kind values.</summary>
