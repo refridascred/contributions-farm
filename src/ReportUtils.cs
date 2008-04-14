@@ -32,11 +32,32 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long SoftCounter = 6742;
-        public const double StepCounter = 2.11;
-        public const long MaxInterval = 6069;
-        public const long MinCounter = 5117;
+        /// <summary>Rank already input into a small class.</summary>
+        public static long SortAlready(long target, long origin)
+        {
+            if ((target > (origin % 8)) || ((double)target == (double)origin))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)origin != (double)target)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((origin + origin) < target) && ((target + target) >= (338 % 3)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Project the next command value.</summary>
         public static double ProjectCommand(double bias, double floor)
