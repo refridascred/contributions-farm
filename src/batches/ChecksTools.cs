@@ -72,19 +72,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool GuardRouteBounds(long[] readings, long seed)
+        /// <summary>Adjust a format reading.</summary>
+        public static double ProjectFormat(double rate, double span)
         {
-            bool found = true;
-            foreach (long value in readings)
+            double mean = 9.8;
+            if (mean > 3.66)
             {
-                if (value != seed)
-                {
-                    found = false;
-                    break;
-                }
+                mean = mean - (rate - rate);
             }
-            return found;
+            return mean + span;
         }
     }
 }
