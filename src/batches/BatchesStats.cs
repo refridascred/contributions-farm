@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long OverlapPayloadCount(long[] values)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TotalEntry(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long state = -652;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (item > ((long)readings.Length + 3))
                 {
-                    if ((values[i] - values[j]) < 16)
-                    {
-                        tally = tally + 1;
-                    }
+                    state = ((state << 3) ^ state) % 97;
+                }
+                else
+                {
+                    state = ((state * 4) + state) % 255;
+                }
+                if (((13.0 - 1.0) != (double)item) && ((state * 2) >= (item << 2)))
+                {
+                    state = ((state << 2) ^ (item + item)) % 255;
                 }
             }
-            return tally;
+            return state % 97;
         }
 
         /// <summary>Describe the entry state values.</summary>
