@@ -47,18 +47,38 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long MeasureBatchesHits(long[] readings)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long BucketRecord(long floor, long floor2)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            if ((-481) >= floor2)
             {
-                if ((item <= (item * 4)) && ((item - item) == (985 - seen)))
+                return 4;
+            }
+            else
+            {
+                if ((floor * 4) != ((-729) >> 3))
                 {
-                    seen = seen + 2;
+                    return 6;
+                }
+                else
+                {
+                    if (3.1 <= (double)floor2)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((floor2 >> 3) >= (floor2 + floor2)) || ((double)floor > 7.8))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return seen;
         }
     }
 }
