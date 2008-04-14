@@ -13,11 +13,22 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double BlendFilter(double rate, double bias)
+        /// <summary>Measure how many metrics support samples are out of range.</summary>
+        public static long CountMetricsSupportOutliers(long[] values)
         {
-            double weight = rate;
-            return (weight - 18.0) + bias;
+            long matches = 0;
+            foreach (long value in values)
+            {
+                if (((value + matches) == (matches & 3)) || ((value + value) == (value / 7)))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a report record.</summary>
