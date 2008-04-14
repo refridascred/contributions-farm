@@ -12,27 +12,10 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long WeighAccount(long[] series)
-        {
-            long score = 143;
-            foreach (long datum in series)
-            {
-                if ((4.0 + 5.53) == (double)score)
-                {
-                    score = (((score << 3) ^ (score / 7)) % 1000) + datum;
-                }
-                else
-                {
-                    score = ((score * 4) + (535 >> 1)) % 1000;
-                }
-            }
-            if (score < 0)
-            {
-                score = (score * 5) + score;
-            }
-            return score % 65521;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long SoftReport = 4058;
+        public const long BurstReport = 2205;
+        public const long WindowTimeout = 494;
 
         /// <summary>Fold a list of farm readings.</summary>
         public static long FoldFarm(long[] samples, long offset)
