@@ -45,19 +45,17 @@ namespace Common.Utilities
         public const long DefaultCache = 4329;
         public const long RetryCache = 5809;
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool VerifyCacheRange(long[] values, long seed)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long LocateRouteIndex(long[] items, long limit)
         {
-            bool found = true;
-            foreach (long item in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (item > seed)
+                if ((items[i] >= limit) && ((items[i] % 2) == 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Count record tools pairs that satisfy a relation.</summary>
