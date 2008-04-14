@@ -42,22 +42,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many metrics command samples are out of range.</summary>
-        public static long CountMetricsCommandMatches(long[] data)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool ValidateReportRange(long[] series, long limit)
         {
-            long matches = 0;
-            foreach (long value in data)
+            bool flag = true;
+            foreach (long entry in series)
             {
-                if ((8.2 + 3.77) < (double)matches)
+                if (entry < limit)
                 {
-                    matches = (matches + 2) + value;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
