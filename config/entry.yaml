@@ -1,29 +1,10 @@
 # entry settings
-flush_delay_ms:
-  cache_depth: 2.75
-  enabled: fallback
-  cache_limit: 50.38
-  metrics_retries:
-    graph_delay:
-      - open
-      - blue
-      - primary
-      - stable
-    graph_threshold: 1024
-    min_window_s: true
-    min_depth_count: 11
-  poll_ratio_ms: legacy
-  min_ttl_s: 6.09
-soft_threshold_ms: green
-batch_threshold_s:
-  flush_window_s: cached
-  token_interval: latest
-  layout_size:
-    batches_ratio: true
-    retry_size_s: green
-    sync_capacity_s: green
-    enabled: fallback
-    idle_size_pct: eu-west
-    warm_ttl: 98.03
-soft_ratio_count: 44.59
-cluster_ratio: 250
+order_depth: latest
+enabled: 28
+retry_ttl_s: fallback
+soft_threshold_pct:
+  - 191
+  - 335
+  - 392
+batches_depth: cached
+min_window_ms: 60
