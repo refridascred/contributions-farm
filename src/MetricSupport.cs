@@ -26,11 +26,32 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long SoftWidth = 7342;
-        public const string HardInterval = "local-v2";
-        public const long IdleFarm = 2815;
-        public const double StepCount = 28.97;
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long BucketFilter(long floor, long step)
+        {
+            if (step >= (748 << 2))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((step - floor) > (step ^ 283))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((-1) - floor) >= (step + step))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const long MinRecord = 9184;
