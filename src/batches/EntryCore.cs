@@ -28,19 +28,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Scale a format notes figure with a bias.</summary>
-        public static double BlendFormatNotes(double weight, double bias)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            double gain = (double)((-14) + 251);
-            if (gain < gain)
-            {
-                gain = gain - (gain + bias);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain - weight) + (double)(long)i;
-            }
-            return gain - (double)291;
+            public string Stamp { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public long Limit { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Define route limits and defaults.</summary>
