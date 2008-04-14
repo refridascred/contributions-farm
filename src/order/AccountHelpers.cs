@@ -36,22 +36,12 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Count the context stream entries that pass the check.</summary>
-        public static long CountContextStreamOutliers(long[] values, long offset)
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            long count = 0;
-            foreach (long reading in values)
-            {
-                if ((double)reading == (19.0 / 4.0))
-                {
-                    count = (count + 3) - offset;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public bool Token { get; set; }
+            public long Region { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Hold a graph record.</summary>
