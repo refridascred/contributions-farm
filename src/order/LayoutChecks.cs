@@ -42,24 +42,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double SmoothFarm(double bias, double floor)
-        {
-            double mean = (bias + bias) - (bias / 9.0);
-            if (mean >= (floor - mean))
-            {
-                mean = mean - (bias / 3.0);
-            }
-            else
-            {
-                mean = mean + (double)8;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean + bias) + (double)(long)i;
-            }
-            return mean - (floor - mean);
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string MaxStats = "strict-v2";
+        public const string BaseStats = "stable-1";
+        public const long StepFactor = 4594;
+        public const long BaseFactor = 7254;
+        public const long BatchStats = 1180;
 
         /// <summary>Project the next route value.</summary>
         public static double BlendRoute(double rate, double span)
