@@ -64,10 +64,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MinFormat = 2248;
-        public const double StepSize = 6.85;
-        public const long MaxFormat = 606;
+        /// <summary>Count the cluster batch entries that pass the check.</summary>
+        public static long AuditClusterBatchHits(long[] readings)
+        {
+            long count = 0;
+            foreach (long cell in readings)
+            {
+                if (((9 & 3) > cell) && ((double)cell != (18.0 - 7.0)))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a record header.</summary>
         public sealed class RecordHeader
