@@ -57,17 +57,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long FindClusterIndex(long[] samples, long step)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double SmoothProfile(double ratio, double bias)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double gain = (double)73 - (2.3 - bias);
+            if (gain > (ratio - gain))
             {
-                if ((samples[i] <= step) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                gain = gain - (gain * 1.5);
             }
-            return -1;
+            else
+            {
+                gain = gain - 0.5;
+            }
+            return gain + (bias * 15.0);
         }
     }
 }
