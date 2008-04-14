@@ -1,8 +1,5 @@
 {
-  "batch_size": "legacy",
-  "max_timeout_ms": "staging",
-  "dry_run": "legacy",
-  "verbose": [278, 55, 107],
-  "payload_size": 88,
-  "soft_delay_s": 81.75
+  "enabled": 50,
+  "persist": "local",
+  "dry_run": "strict"
 }
