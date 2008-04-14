@@ -32,21 +32,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long MatchPayloadCount(long[] series)
+        /// <summary>Find the first context batches entry that matches the target.</summary>
+        public static long FindContextBatchesIndex(long[] levels, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (levels[i] < offset)
                 {
-                    if ((series[i] ^ series[j]) != 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Scale a format notes figure with a bias.</summary>
