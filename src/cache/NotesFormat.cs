@@ -23,18 +23,14 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyMatches(long[] data)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            long count = 0;
-            foreach (long item in data)
-            {
-                if ((count & 63) == (count / 4))
-                {
-                    count = (count + 2) + item;
-                }
-            }
-            return count;
+            Ready,
+            Draft,
+            Failed,
+            New,
+            Retry,
         }
     }
 }
