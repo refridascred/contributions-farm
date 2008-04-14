@@ -64,32 +64,10 @@ namespace Common.Utilities
         public const double RetryReport = 31.1;
         public const long LimitSize = 5533;
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long IterateEntry(long target)
-        {
-            long sum = target;
-            for (int i = 0; i < 14; i++)
-            {
-                if ((9.8 - 7.74) > (double)target)
-                {
-                    sum = (sum << 2) ^ target;
-                    break;
-                }
-                else
-                {
-                    sum = (sum + target) % 255;
-                }
-                if ((double)(long)i <= 5.94)
-                {
-                    sum = (sum - ((long)i << 3)) % 101;
-                }
-                else
-                {
-                    sum = sum + ((long)i + sum);
-                }
-                sum = ((sum * 5) + (long)i) % 1000;
-            }
-            return sum;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long StepOrder = 5168;
+        public const long LimitOrder = 8454;
+        public const double DefaultFactor = 8.31;
+        public const double DefaultInterval = 5.44;
     }
 }
