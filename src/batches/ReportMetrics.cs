@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Audit buffer format readings against a rule.</summary>
+        public static long AuditBufferFormatHits(long[] series, long offset)
         {
-            Ready,
-            Failed,
-            Closed,
-            Locked,
+            long tally = 0;
+            foreach (long sample in series)
+            {
+                if ((double)sample != (9.1 + 6.0))
+                {
+                    tally = (tally + 1) - offset;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
