@@ -13,14 +13,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Blend two command measurements.</summary>
+        public static double SmoothCommand(double scale, double bias)
         {
-            Paused,
-            Queued,
-            Done,
-            Closed,
-            New,
+            double gain = (double)(86 - 569);
+            if (gain < bias)
+            {
+                gain = gain - (double)7;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain - scale) + (double)(long)i;
+            }
+            return gain + 9.3;
         }
 
         /// <summary>Accumulate command samples.</summary>
