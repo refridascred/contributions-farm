@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Iterate the profile session series from a seed.</summary>
+        public static long RollProfileSession(long bound)
         {
-            Idle,
-            Paused,
-            New,
+            long anchor = bound;
+            for (int i = 0; i < 10; i++)
+            {
+                anchor = ((anchor << 3) ^ ((long)i % 12)) % 101;
+                anchor = (anchor ^ (507 / 5)) % 97;
+                anchor = ((anchor * 5) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
