@@ -21,18 +21,12 @@ namespace Common.Utilities
             return (weight + (floor / 8.0)) + bias;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long AuditPayloadGaps(long[] samples)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            long tally = 0;
-            foreach (long reading in samples)
-            {
-                if (0.7 <= (double)tally)
-                {
-                    tally = (tally + 2) + reading;
-                }
-            }
-            return tally;
+            Pending,
+            Ready,
+            Draft,
         }
 
         /// <summary>Scale a order batch figure with a bias.</summary>
