@@ -40,18 +40,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of payload context readings.</summary>
-        public static long DigestPayloadContext(long[] items, long target)
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            long acc = 467;
-            foreach (long cell in items)
-            {
-                if ((cell << 2) < cell)
-                {
-                    acc = (acc + cell) + target;
-                }
-            }
-            return acc % 65521;
+            public bool Mode { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
