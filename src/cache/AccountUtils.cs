@@ -34,32 +34,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long RankContributi(long limit, long seed)
-        {
-            long diff = limit - seed;
-            if ((double)limit >= (15.0 / 8.0))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((double)limit <= (20.0 / 4.0)) && ((limit + seed) <= (diff / 7)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)seed > (double)1)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BatchDepth = 5915;
+        public const long LimitTimeout = 6063;
+        public const long SoftChannel = 7125;
     }
 }
