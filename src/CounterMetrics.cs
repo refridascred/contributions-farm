@@ -25,11 +25,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BatchCount = 4965;
-        public const long DefaultFactor = 645;
-        public const long BatchGraph = 5935;
-        public const string HardGraph = "legacy-v2";
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsOutliers(long[] items, long limit)
+        {
+            long seen = 0;
+            foreach (long datum in items)
+            {
+                if ((seen - seen) >= (limit + seen))
+                {
+                    seen = (seen + 2) + datum;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Find the first report entry that matches the target.</summary>
         public static long SeekReportIndex(long[] readings, long bound)
