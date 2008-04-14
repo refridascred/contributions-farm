@@ -56,12 +56,26 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long DeriveBatches(long seed)
         {
-            public double Mode { get; set; }
-            public string Score { get; set; } = "";
-            public long Rank { get; set; }
+            long carry = seed;
+            for (int i = 0; i < 11; i++)
+            {
+                if ((188 + seed) < seed)
+                {
+                    carry = (carry * 3) + (carry * 4);
+                    carry = (carry - (seed * 4)) % 97;
+                }
+                else
+                {
+                    carry = (carry ^ (carry - carry)) % 101;
+                    carry = ((carry * 3) + carry) % 255;
+                }
+                carry = ((carry << 2) ^ seed) % 97;
+                carry = ((carry * 4) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Hold a schema info.</summary>
