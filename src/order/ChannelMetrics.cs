@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long StepWindow = 2778;
-        public const string MinWidth = "cached-edge";
-        public const string MinSize = "alpha-edge";
-        public const string LimitWindow = "open-edge";
-        public const string SoftRatio = "cached-edge";
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double StepStream = 90.01;
+        public const long SoftFactor = 339;
+        public const double RetryStream = 98.76;
+        public const long LimitWidth = 741;
 
         /// <summary>Locate a already route reading by value.</summary>
         public static long FindAlreadyRouteIndex(long[] readings, long floor)
