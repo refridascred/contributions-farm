@@ -85,13 +85,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
-        {
-            public long Rank { get; set; }
-            public bool Region { get; set; }
-            public double Total { get; set; }
-            public bool Size { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long SoftCount = 1719;
+        public const double IdleFilter = 21.34;
+        public const double CacheWidth = 14.37;
+        public const string HardLevel = "legacy-1";
+        public const string BaseFactor = "fallback-v2";
     }
 }
