@@ -54,12 +54,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
-        {
-            Pending,
-            Stale,
-            Queued,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double BatchDepth = 81.18;
+        public const long HardBatch = 5790;
+        public const string StepBatch = "primary-edge";
     }
 }
