@@ -7,11 +7,11 @@ log() {
 }
 
 total=0
-for i in $(seq 1 10); do
+for i in $(seq 1 3); do
     total=$((total + i * 2))
 done
 log "total ${total}"
 
-for item in primary fallback local; do
+for item in strict eu-west; do
     log "checking ${item}"
 done
