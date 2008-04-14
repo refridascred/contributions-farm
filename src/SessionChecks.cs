@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Combine already values into a single score.</summary>
-        public static long ScoreAlready(long[] values)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long FindContextIndex(long[] levels, long offset)
         {
-            long state = 0;
-            foreach (long datum in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((datum / 9) > (datum << 3))
+                if ((levels[i] >= offset) && ((levels[i] % 5) != 0))
                 {
-                    state = (state - 387) % 97;
-                    continue;
-                }
-                if ((state % 2) == (state * 5))
-                {
-                    state = ((state << 3) ^ (datum ^ state)) % 65521;
-                }
-                else
-                {
-                    state = (state + 9) % 4096;
+                    return (long)i;
                 }
             }
-            if (state > (-95))
-            {
-                state = (state + (345 + state)) % 101;
-            }
-            return state % 97;
+            return -1;
         }
 
         /// <summary>Match up support samples.</summary>
