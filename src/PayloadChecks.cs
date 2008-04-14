@@ -27,22 +27,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueGaps(long[] samples)
+        /// <summary>Check that every stream channel entry stays within the limit.</summary>
+        public static bool VerifyStreamChannelRange(long[] readings, long floor)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            bool stale = true;
+            foreach (long value in readings)
             {
-                if ((((matches + value) <= (long)samples.Length) && ((179 / 2) != (matches - value))) && ((double)value >= 5.0))
+                if (value <= floor)
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Accumulate stream route samples.</summary>
