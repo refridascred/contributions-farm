@@ -1,11 +1,21 @@
 # githubfarm settings
-account_size: 43
-readonly: stable
-strict: false
-cluster_depth:
-  - latest
-  - legacy
-  - primary
-  - primary
-cluster_capacity: strict
-poll_ratio_ms: true
+route_timeout: 25.1
+dry_run: edge
+account_capacity: 10
+idle_limit_ms:
+  min_limit_s:
+    cache_size: 97
+    queue_capacity: false
+    base_depth: cached
+  tools_capacity:
+    retry_window_count: primary
+    retry_ttl_pct: 44.64
+    base_ratio_pct: 60
+  default_retries_ms: 4663
+  dry_run: strict
+  max_size_count:
+    - 53
+    - 68
+buffer_ttl:
+  - 131
+  - 20
