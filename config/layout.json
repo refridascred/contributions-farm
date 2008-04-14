@@ -1,5 +1,14 @@
 {
-  "cache_window": 43.49,
-  "record_size": 52.38,
-  "warm_window": 69.53
+  "base_window": 30,
+  "base_limit_s": 35.1,
+  "idle_capacity_ms": 250,
+  "retry_ttl_s": 250,
+  "persist": {
+    "flush_window": "cached",
+    "notes_size": [103, 379, 47],
+    "batch_capacity": 100,
+    "githubfarm_size": 13,
+    "default_limit_s": ["strict", "cached"],
+    "batches_depth": false
+  }
 }
