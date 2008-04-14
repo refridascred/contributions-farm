@@ -16,17 +16,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long LookupClusterIndex(long[] items, long limit)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long WeighAlready(long[] series, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = 92;
+            foreach (long item in series)
             {
-                if (items[i] == limit)
-                {
-                    return (long)i;
-                }
+                state = ((state * 2) + (origin + 1)) ^ item;
             }
-            return -1;
+            return state % 65521;
         }
 
         /// <summary>Describe the metric state values.</summary>
