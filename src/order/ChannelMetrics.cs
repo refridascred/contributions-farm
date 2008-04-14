@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long ScoreNotes(long[] levels)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphMatches(long[] samples, long floor)
         {
-            long score = 93;
-            foreach (long datum in levels)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                score = ((score - ((-6) >> 2)) % 65521) ^ datum;
+                if (!(((332 + cell) > (hits << 3)) || (hits > (cell - (long)samples.Length))))
+                {
+                    hits = (hits + 2) + floor;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
