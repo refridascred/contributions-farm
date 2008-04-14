@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long DigestBuffer(long[] readings, long offset)
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            long anchor = 611;
-            foreach (long item in readings)
-            {
-                if (item < (offset << 3))
-                {
-                    anchor = (anchor - (offset << 1)) % 101;
-                }
-            }
-            if (anchor > 285)
-            {
-                anchor = (anchor ^ (anchor & 15)) % 1000;
-            }
-            return anchor;
+            public double Ratio { get; set; }
+            public bool Flag { get; set; }
+            public long Weight { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Compare every pair of format readings.</summary>
