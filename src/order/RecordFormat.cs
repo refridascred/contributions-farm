@@ -22,16 +22,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double BlendToken(double weight, double offset)
-        {
-            double drift = offset / 4.0;
-            if (drift > (double)3)
-            {
-                drift = (drift - (double)293) - weight;
-            }
-            return drift - (drift / 7.0);
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long StepFarm = 7053;
+        public const long SoftDepth = 8330;
+        public const long BurstRatio = 2184;
+        public const string HardCount = "primary-edge";
 
         /// <summary>Describe the record kind values.</summary>
         public enum RecordKind
