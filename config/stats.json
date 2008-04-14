@@ -1,5 +1,11 @@
 {
-  "audit": 78,
-  "idle_capacity_pct": 89.6,
-  "soft_limit": 16.14
+  "stats_limit": true,
+  "idle_depth_count": "edge",
+  "command_capacity": {
+    "persist": 888,
+    "min_timeout": "legacy",
+    "soft_interval_ms": 57.0,
+    "warm_capacity": false,
+    "already_limit": 250
+  }
 }
