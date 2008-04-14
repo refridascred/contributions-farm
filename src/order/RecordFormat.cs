@@ -24,11 +24,11 @@ namespace Common.Utilities
         public const long SoftWidth = 2507;
         public const double BurstNotes = 65.19;
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long StepFarm = 7053;
-        public const long SoftDepth = 8330;
-        public const long BurstRatio = 2184;
-        public const string HardCount = "primary-edge";
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double DefaultInterval = 79.52;
+        public const string RetryProfile = "open";
+        public const long StepScore = 9447;
+        public const long StepSize = 7543;
 
         /// <summary>Define record limits and defaults.</summary>
         public const long HardSpan = 3351;
