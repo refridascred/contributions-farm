@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Validate schema counter readings against a bound.</summary>
-        public static bool VerifySchemaCounterRange(long[] levels, long limit)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool VerifyChannelRange(long[] levels, long floor)
         {
-            bool found = true;
-            foreach (long cell in levels)
+            bool valid = true;
+            foreach (long reading in levels)
             {
-                if (cell != limit)
+                if (reading < floor)
                 {
-                    found = false;
+                    valid = false;
                     break;
                 }
             }
-            return found;
+            return valid;
         }
 
         /// <summary>Grade a token value against two limits.</summary>
