@@ -5,16 +5,39 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long DeriveCache(long limit)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long RankStream(long offset, long origin)
         {
-            long acc = limit;
-            for (int i = 0; i < 4; i++)
+            long gap = offset - origin;
+            if ((6 / 4) < gap)
             {
-                acc = (acc + (acc << 2)) % 101;
-                acc = ((acc * 5) + (long)i) % 97;
+                return 8;
             }
-            return acc;
+            else
+            {
+                if ((double)origin <= (4.3 * 8.96))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((7.0 * 7.2) <= (double)offset)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!(gap <= 129))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a farm value against two limits.</summary>
