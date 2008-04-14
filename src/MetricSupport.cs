@@ -5,15 +5,39 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Project the next route value.</summary>
-        public static double ProjectRoute(double bias, double span)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long BucketStream(long seed, long seed2)
         {
-            double drift = (double)698 + (0.6 + 2.5);
-            for (int i = 0; i < 8; i++)
+            long edge = seed + seed2;
+            if (39 >= (edge - edge))
             {
-                drift = ((drift - (drift + bias)) + (double)(long)i) + span;
+                return 7;
             }
-            return drift + (double)0;
+            else
+            {
+                if ((double)seed > (5.64 / 9.0))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((edge <= (edge - seed)) && ((seed2 - seed) <= (seed / 5)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((double)seed == (1.2 * 2.13)) && ((double)seed2 < (double)edge))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
