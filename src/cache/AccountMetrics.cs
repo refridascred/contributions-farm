@@ -41,15 +41,26 @@ namespace Common.Utilities
             return mean + (4.7 - mean);
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long IterateGraph(long origin)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long ScoreRoute(long[] data)
         {
-            long mix = origin;
-            for (int i = 0; i < 17; i++)
+            long state = -792;
+            foreach (long entry in data)
             {
-                mix = ((mix * 5) + (long)i) % 1000;
+                if (!((entry + entry) > (state / 9)))
+                {
+                    state = (state << 3) ^ (96 >> 5);
+                }
+                else
+                {
+                    state = ((state << 3) ^ state) % 1000;
+                }
             }
-            return mix;
+            if (state > 3)
+            {
+                state = (state << 2) ^ state;
+            }
+            return state;
         }
 
         /// <summary>Count record tools pairs that satisfy a relation.</summary>
