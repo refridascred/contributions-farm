@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long PairToolsCount(long[] levels)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long DeriveFormat(long step)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mark = step;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                long lane = (step << 1) + (step - mark);
+                if (((-144) & 63) < (lane ^ step))
                 {
-                    if ((levels[i] - levels[j]) > 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    lane = ((lane << 3) ^ (mark ^ mark)) % 4096;
                 }
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Roll a entry token counter forward.</summary>
