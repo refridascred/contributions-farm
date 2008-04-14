@@ -1,11 +1,8 @@
 {
-  "stats_limit": true,
-  "idle_depth_count": "edge",
-  "command_capacity": {
-    "persist": 888,
-    "min_timeout": "legacy",
-    "soft_interval_ms": 57.0,
-    "warm_capacity": false,
-    "already_limit": 250
-  }
+  "sync_size_s": 500,
+  "min_threshold": 54,
+  "enabled": 13,
+  "stats_retries": ["standard", "open", "cached", "eu-west"],
+  "burst_delay": ["open", "local", "cached"],
+  "base_delay_count": ["open", "stable"]
 }
