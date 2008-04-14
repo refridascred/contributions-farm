@@ -25,12 +25,15 @@ namespace Common.Utilities
             return rate + (double)(-75);
         }
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long DeriveMetrics(long target)
         {
-            public long Level { get; set; }
-            public long Score { get; set; }
-            public long Stamp { get; set; }
+            long anchor = target;
+            for (int i = 0; i < 10; i++)
+            {
+                anchor = ((anchor * 3) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Adjust a notes commits reading.</summary>
