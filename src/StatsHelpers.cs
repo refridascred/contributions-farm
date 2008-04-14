@@ -55,15 +55,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long WeighChannel(long[] items)
+        /// <summary>Measure how many githubfarm stream samples are out of range.</summary>
+        public static long MeasureGithubfarmStreamOutliers(long[] samples)
         {
-            long state = 13;
-            foreach (long cell in items)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                state = ((state - (state & 7)) % 65521) + cell;
+                if (matches >= (reading & 31))
+                {
+                    matches = matches + 2;
+                }
             }
-            return state;
+            return matches;
         }
     }
 }
