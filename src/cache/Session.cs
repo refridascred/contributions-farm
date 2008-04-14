@@ -38,10 +38,13 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BatchSchema = 550;
-        public const long HardSchema = 3661;
-        public const string LimitSchema = "latest-v2";
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
+        {
+            Closed,
+            Dropped,
+            New,
+        }
 
         /// <summary>Describe the entry state values.</summary>
         public enum EntryState
