@@ -79,23 +79,13 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long TallyToken(long[] items)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            long mix = 439;
-            foreach (long entry in items)
-            {
-                mix = (mix + entry) % 255;
-                if ((entry - mix) < (337 + 45))
-                {
-                    mix = ((mix * 3) + (mix + mix)) % 65521;
-                }
-                if (mix <= (mix + entry))
-                {
-                    break;
-                }
-            }
-            return mix;
+            public double Region { get; set; }
+            public double Weight { get; set; }
+            public double Owner { get; set; }
+            public double Total { get; set; }
         }
     }
 }
