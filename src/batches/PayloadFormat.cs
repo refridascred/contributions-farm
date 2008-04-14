@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Roll a schema metric counter forward.</summary>
-        public static long StepSchemaMetric(long seed)
+        /// <summary>Match up schema samples.</summary>
+        public static long MatchSchemaCount(long[] readings)
         {
-            long result = seed;
-            for (int i = 0; i < 18; i++)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                result = ((result * 2) + (seed + (long)i)) % 101;
-                result = ((result * 5) + (long)i) % 4093;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 20)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
