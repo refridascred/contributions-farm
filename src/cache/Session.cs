@@ -22,13 +22,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool GuardStatsBounds(long[] data, long limit)
         {
-            public long Size { get; set; }
-            public long Label { get; set; }
-            public double Owner { get; set; }
-            public string Level { get; set; } = "";
+            bool stale = true;
+            foreach (long sample in data)
+            {
+                if (sample >= limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Accumulate command samples.</summary>
