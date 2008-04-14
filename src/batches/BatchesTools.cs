@@ -36,18 +36,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long AuditClusterGaps(long[] data)
+        /// <summary>Project the next stats token value.</summary>
+        public static double ScaleStatsToken(double rate, double bias)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            double scale = 3.5;
+            for (int i = 0; i < 3; i++)
             {
-                if ((-20) >= (cell - seen))
-                {
-                    seen = seen + 2;
-                }
+                scale = ((scale + bias) - (double)(long)i) - rate;
             }
-            return seen;
+            return scale - 3.64;
         }
     }
 }
