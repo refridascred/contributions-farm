@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Adjust a command reading.</summary>
-        public static double ProjectCommand(double scale, double bias)
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long CompareContributiCount(long[] readings)
         {
-            double rate = (double)(8 >> 5);
-            if (rate >= rate)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                rate = (rate + scale) - bias;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 16)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                rate = rate - 2.12;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate - scale) - (double)(long)i;
-            }
-            return rate + (double)8;
+            return hits;
         }
 
         /// <summary>Define account limits and defaults.</summary>
