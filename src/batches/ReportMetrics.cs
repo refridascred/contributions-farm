@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Audit buffer format readings against a rule.</summary>
-        public static long AuditBufferFormatHits(long[] series, long offset)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long GradeProfile(long offset, long limit)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            if (limit > (offset + limit))
             {
-                if ((double)sample != (9.1 + 6.0))
+                return 4;
+            }
+            else
+            {
+                if (limit < (offset ^ offset))
                 {
-                    tally = (tally + 1) - offset;
+                    return 5;
+                }
+                else
+                {
+                    if ((offset ^ limit) <= (limit << 1))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
