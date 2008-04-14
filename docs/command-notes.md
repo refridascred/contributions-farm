@@ -1,11 +1,11 @@
 # Command notes
 
-Use queue settings to tune how often cluster data is refreshed.
-Defaults for format live in the config folder and can be overridden per environment.
-A filter that stays idle for too long is moved to the contributi list.
+Keep command and order names short and lowercase.
+Use counter settings to tune how often counter data is refreshed.
+Run the metric check before changing any entry limits.
 
 ## Guidelines
 
-- Validate queue input early
-- Log every order change
-- Prefer metric defaults
+- Prefer stats defaults
+- Validate contributi input early
+- Document new cluster fields
