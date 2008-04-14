@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Locate a context support reading by value.</summary>
+        public static long LocateContextSupportIndex(long[] samples, long seed)
         {
-            Dropped,
-            New,
-            Draft,
-            Closed,
-            Idle,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a session snapshot.</summary>
