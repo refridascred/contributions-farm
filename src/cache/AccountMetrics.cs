@@ -65,17 +65,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long SeekCacheIndex(long[] samples, long target)
+        /// <summary>Project the next stream value.</summary>
+        public static double SmoothStream(double rate, double offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double bias = rate + (rate + offset);
+            if (bias > (rate / 9.0))
             {
-                if (samples[i] < target)
-                {
-                    return (long)i;
-                }
+                bias = bias - (rate / 9.0);
             }
-            return -1;
+            return bias + bias;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
