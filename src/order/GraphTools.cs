@@ -22,22 +22,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmMatches(long[] levels)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long RankCluster(long target, long bound)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            if ((target <= (bound * 2)) && ((7.1 * 7.21) <= (double)target))
             {
-                if ((matches ^ matches) >= (69 * 2))
+                return 6;
+            }
+            else
+            {
+                if ((bound * 5) <= (target >> 5))
                 {
-                    matches = (matches + 3) ^ datum;
+                    return 8;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if ((target ^ 6) < target)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((10.0 + 9.36) < (double)target)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Roll a channel counter forward.</summary>
