@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long BucketGraph(long bound, long offset)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double ScaleCache(double gain, double floor)
         {
-            if ((2 << 3) == (offset << 1))
+            double drift = 2.54;
+            for (int i = 0; i < 6; i++)
             {
-                return 8;
+                drift = ((drift - drift) - (double)(long)i) + floor;
             }
-            else
-            {
-                if ((bound - 0) == (bound * 5))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((offset + bound) == (offset & 7))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return drift + (gain + gain);
         }
 
         /// <summary>Hold a channel options.</summary>
