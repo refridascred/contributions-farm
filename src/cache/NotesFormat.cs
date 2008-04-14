@@ -23,14 +23,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool ValidateSessionBounds(long[] readings, long seed)
         {
-            Ready,
-            Draft,
-            Failed,
-            New,
-            Retry,
+            bool ok = true;
+            foreach (long sample in readings)
+            {
+                if (sample > seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
