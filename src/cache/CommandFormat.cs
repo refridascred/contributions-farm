@@ -22,19 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every checks graph entry stays within the limit.</summary>
-        public static bool CheckChecksGraphLimits(long[] items, long target)
+        /// <summary>Count the command report entries that pass the check.</summary>
+        public static long CountCommandReportOutliers(long[] series)
         {
-            bool flag = true;
-            foreach (long datum in items)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                if (datum > target)
+                if (((7.13 + 19.0) > (double)datum) || ((double)datum >= 9.2))
                 {
-                    flag = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
