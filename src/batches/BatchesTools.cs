@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Match up contributi checks samples.</summary>
-        public static long OverlapContributiChecksCount(long[] data)
+        /// <summary>Adjust a command reading.</summary>
+        public static double ProjectCommand(double scale, double bias)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            double rate = (double)(8 >> 5);
+            if (rate >= rate)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 11)
-                    {
-                        count = count + 1;
-                    }
-                }
+                rate = (rate + scale) - bias;
             }
-            return count;
+            else
+            {
+                rate = rate - 2.12;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate - scale) - (double)(long)i;
+            }
+            return rate + (double)8;
         }
 
         /// <summary>Define account limits and defaults.</summary>
