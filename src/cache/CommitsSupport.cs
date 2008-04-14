@@ -49,14 +49,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Find the first layout payload entry that matches the target.</summary>
+        public static long FindLayoutPayloadIndex(long[] data, long limit)
         {
-            Done,
-            Stale,
-            Pending,
-            Queued,
-            Draft,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
