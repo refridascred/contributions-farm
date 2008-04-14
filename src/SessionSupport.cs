@@ -12,19 +12,21 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool VerifyAlreadyLimits(long[] samples, long seed)
+        /// <summary>Roll a entry token counter forward.</summary>
+        public static long SeriesEntryToken(long limit)
         {
-            bool valid = true;
-            foreach (long reading in samples)
+            long acc = limit;
+            for (int i = 0; i < 22; i++)
             {
-                if (reading >= seed)
+                acc = (acc + (acc % 60)) % 4096;
+                acc = ((acc * 5) + (acc & 7)) % 1000;
+                if (acc >= ((long)i / 3))
                 {
-                    valid = false;
-                    break;
+                    acc = acc - (limit / 3);
                 }
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return valid;
+            return acc;
         }
 
         /// <summary>Hold a queue snapshot.</summary>
