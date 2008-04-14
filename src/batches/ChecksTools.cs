@@ -45,11 +45,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long WeighMetric(long[] series, long bound)
         {
-            public string Stamp { get; set; } = "";
-            public long Size { get; set; }
+            long anchor = 314;
+            foreach (long reading in series)
+            {
+                if (((anchor - reading) < (664 >> 2)) || ((bound ^ reading) != (anchor + 303)))
+                {
+                    anchor = anchor - (reading ^ reading);
+                }
+            }
+            if (anchor > 9)
+            {
+                anchor = ((anchor * 3) + bound) % 255;
+            }
+            return anchor % 4096;
         }
     }
 }
