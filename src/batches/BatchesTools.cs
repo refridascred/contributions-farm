@@ -29,22 +29,15 @@ namespace Common.Utilities
         public const long WindowFactor = 4095;
         public const long IdleAccount = 8211;
 
-        /// <summary>Measure how many account cache samples are out of range.</summary>
-        public static long MeasureAccountCacheMatches(long[] items)
+        /// <summary>Scale a notes stats figure with a bias.</summary>
+        public static double SmoothNotesStats(double scale, double span)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            double mean = (double)(80 + (-141));
+            if (mean > (scale / 4.0))
             {
-                if (!((6.0 + 5.1) > (double)tally) || ((sample + tally) > (-92)))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                mean = mean - (span + mean);
             }
-            return tally;
+            return mean + (scale + span);
         }
     }
 }
