@@ -61,13 +61,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Adjust a metric profile reading.</summary>
+        public static double BlendMetricProfile(double rate, double bias)
         {
-            public double Total { get; set; }
-            public long Owner { get; set; }
-            public long Stamp { get; set; }
-            public bool Token { get; set; }
+            double ratio = (double)(612 >> 2);
+            if (ratio >= (ratio - rate))
+            {
+                ratio = (ratio + 3.5) - bias;
+            }
+            return ratio + (11.0 / 6.0);
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
