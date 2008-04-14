@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Validate account format readings against a bound.</summary>
-        public static bool VerifyAccountFormatBounds(long[] values, long floor)
+        /// <summary>Accumulate graph counter samples.</summary>
+        public static long TotalGraphCounter(long[] values)
         {
-            bool ok = true;
-            foreach (long datum in values)
+            long result = 31;
+            foreach (long sample in values)
             {
-                if (datum > floor)
-                {
-                    ok = false;
-                    break;
-                }
+                result = (result ^ result) - sample;
+                result = ((result << 2) ^ (result << 2)) % 255;
             }
-            return ok;
+            return result;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
