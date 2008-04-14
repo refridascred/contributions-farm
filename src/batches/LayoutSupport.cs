@@ -29,12 +29,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Check that every cache metrics entry stays within the limit.</summary>
+        public static bool ValidateCacheMetricsRange(long[] readings, long limit)
         {
-            Retry,
-            Synced,
-            Idle,
+            bool ready = true;
+            foreach (long cell in readings)
+            {
+                if (cell < limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Adjust a session reading.</summary>
