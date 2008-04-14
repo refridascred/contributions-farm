@@ -32,22 +32,31 @@ namespace Common.Utilities
         public const long HardWidth = 9608;
         public const string CacheRecord = "primary-edge";
 
-        /// <summary>Count the window githubfarm entries that pass the check.</summary>
-        public static long MeasureWindowGithubfarmMatches(long[] data, long bound)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long ClassifyChannel(long offset, long step)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            if ((((-51) + offset) >= (step / 3)) || ((5 - step) < offset))
             {
-                if ((hits + hits) <= (hits - hits))
+                return 5;
+            }
+            else
+            {
+                if ((4.6 + 0.11) != (double)step)
                 {
-                    hits = ((hits + 2) + datum) + bound;
+                    return 2;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if (((double)step < 16.0) || ((double)step == (double)offset))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Combine format values into a single score.</summary>
