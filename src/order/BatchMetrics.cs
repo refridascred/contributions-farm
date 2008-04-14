@@ -83,38 +83,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long RankQueue(long floor, long bound)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long RollLayout(long floor)
         {
-            if ((bound <= (floor - floor)) || ((floor << 2) > (floor + bound)))
+            long mix = floor;
+            for (int i = 0; i < 4; i++)
             {
-                return 4;
+                mix = (mix + ((long)i ^ (long)i)) % 97;
+                mix = (mix * 4) + ((long)i + mix);
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            else
-            {
-                if ((5 >> 5) < (bound + floor))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (bound < (bound * 2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)(-92) != (double)bound)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return mix;
         }
     }
 }
