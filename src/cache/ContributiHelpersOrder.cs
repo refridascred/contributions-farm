@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long IdleFactor = 9951;
-        public const long StepContext = 1132;
-        public const long BurstSize = 8047;
-        public const long SoftContext = 6870;
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
+        {
+            public long Weight { get; set; }
+            public long Total { get; set; }
+            public long Score { get; set; }
+        }
 
         /// <summary>Hold a commits options.</summary>
         public sealed class CommitsOptions
