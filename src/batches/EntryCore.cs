@@ -59,11 +59,31 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Classify a batch filter pair into a bucket.</summary>
+        public static long BucketBatchFilter(long origin, long step)
         {
-            public long Score { get; set; }
-            public double Mode { get; set; }
+            if (((step & 31) >= (step / 6)) || ((step * 5) > (step + step)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((1.28 * 3.2) > (double)step)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((origin - 633) > (6 + origin)) && ((double)origin != (1.95 + 8.28)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
