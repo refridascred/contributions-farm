@@ -35,11 +35,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadMatches(long[] series)
         {
-            public bool Level { get; set; }
-            public long Size { get; set; }
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if (!((matches / 9) <= matches))
+                {
+                    matches = (matches + 1) + sample;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Look up the position of a queue sample.</summary>
