@@ -29,19 +29,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long CombineGithubfarm(long[] readings, long floor)
+        /// <summary>Check that every report metrics entry stays within the limit.</summary>
+        public static bool GuardReportMetricsLimits(long[] items, long origin)
         {
-            long acc = 82;
-            foreach (long datum in readings)
+            bool flag = true;
+            foreach (long sample in items)
             {
-                acc = (((acc - (52 * 3)) % 4096) + datum) + floor;
+                if (sample >= origin)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            if (acc > (-4))
-            {
-                acc = (acc ^ acc) % 1000;
-            }
-            return acc % 1000;
+            return flag;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
