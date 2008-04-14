@@ -1,4 +1,16 @@
 # githubfarm settings
-base_size_count: legacy
-enabled: 0.31
-poll_timeout: legacy
+cache_ratio_count:
+  - legacy
+  - primary
+  - cached
+idle_window: blue
+soft_limit_count:
+  retry_timeout_pct:
+    idle_delay_s: 98.6
+    dry_run: true
+    warm_size: 68.25
+    batch_retries_ms: fallback
+    command_delay: cached
+  warm_depth_pct: 500
+  compress: latest
+warm_depth: 55.81
