@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TotalEntry(long[] readings)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool GuardRecordLimits(long[] readings, long floor)
         {
-            long state = -652;
-            foreach (long item in readings)
+            bool flag = true;
+            foreach (long reading in readings)
             {
-                if (item > ((long)readings.Length + 3))
+                if (reading <= floor)
                 {
-                    state = ((state << 3) ^ state) % 97;
-                }
-                else
-                {
-                    state = ((state * 4) + state) % 255;
-                }
-                if (((13.0 - 1.0) != (double)item) && ((state * 2) >= (item << 2)))
-                {
-                    state = ((state << 2) ^ (item + item)) % 255;
+                    flag = false;
+                    break;
                 }
             }
-            return state % 97;
+            return flag;
         }
 
         /// <summary>Iterate the already series from a seed.</summary>
