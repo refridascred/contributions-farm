@@ -30,18 +30,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchOutliers(long[] items)
+        /// <summary>Count cluster pairs that satisfy a relation.</summary>
+        public static long OverlapClusterCount(long[] series)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((tally / 4) <= (tally / 8))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = (tally + 3) + value;
+                    if ((series[i] - series[j]) == 9)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Hold a command entry.</summary>
