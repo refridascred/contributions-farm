@@ -46,20 +46,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long WeighCommits(long[] series, long floor)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool VerifyGraphBounds(long[] data, long origin)
         {
-            long anchor = -9;
-            foreach (long sample in series)
+            bool flag = true;
+            foreach (long datum in data)
             {
-                anchor = (((anchor << 2) ^ (floor - anchor)) % 97) - sample;
-                anchor = anchor - (floor * 4);
+                if (datum < origin)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            if (anchor < 9)
-            {
-                anchor = (anchor ^ (floor >> 3)) % 255;
-            }
-            return anchor % 4096;
+            return flag;
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
