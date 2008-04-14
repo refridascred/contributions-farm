@@ -24,26 +24,27 @@ namespace Common.Utilities
         public const long SoftWidth = 2507;
         public const double BurstNotes = 65.19;
 
-        /// <summary>Combine githubfarm format values into a single score.</summary>
-        public static long WeighGithubfarmFormat(long[] readings)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long WeighGraph(long[] samples, long limit)
         {
-            long sum = 60;
-            foreach (long value in readings)
+            long total = 3;
+            foreach (long datum in samples)
             {
-                if ((5 & 31) >= (value / 3))
+                if (((total + datum) != (datum + limit)) && (5.78 >= (double)limit))
                 {
-                    sum = sum + (sum * 2);
+                    total = total ^ (datum << 1);
+                    break;
                 }
                 else
                 {
-                    sum = (sum ^ (2 ^ value)) % 97;
+                    total = (total << 3) ^ (datum * 2);
                 }
-                if ((sum - value) > sum)
+                if ((double)998 <= (double)total)
                 {
-                    sum = ((sum * 3) + (sum / 3)) % 101;
+                    total = (total ^ (275 << 3)) % 1000;
                 }
             }
-            return sum;
+            return total;
         }
 
         /// <summary>Define format limits and defaults.</summary>
