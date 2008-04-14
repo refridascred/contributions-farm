@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Accumulate stream samples.</summary>
-        public static long CombineStream(long[] levels, long target)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long OverlapAlreadyCount(long[] samples)
         {
-            long result = 53;
-            foreach (long entry in levels)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((2.25 + 2.0) != (double)result)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    result = ((result << 2) ^ target) + entry;
+                    if ((samples[i] + samples[j]) > 18)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
