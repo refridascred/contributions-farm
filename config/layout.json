@@ -1,12 +1,7 @@
 {
-  "default_delay": "strict",
-  "flush_limit_s": [441, 215, 110],
-  "hard_delay_pct": [158, 137, 39, 279],
-  "soft_capacity_s": 73,
-  "verbose": {
-    "audit": 81,
-    "base_retries": "legacy",
-    "counter_ratio": 68.46,
-    "verbose": true
-  }
+  "checks_delay": false,
+  "default_limit_pct": 21.78,
+  "counter_depth": 16.52,
+  "farm_threshold": "edge",
+  "burst_ttl": 7497
 }
