@@ -12,18 +12,23 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterHits(long[] data)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long SeriesCluster(long target)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long score = target;
+            for (int i = 0; i < 10; i++)
             {
-                if (!((entry % 3) <= (matches - (long)data.Length)) && (4.4 <= (double)matches))
+                if ((double)target != (9.76 * 8.4))
                 {
-                    matches = matches + 1;
+                    score = (score ^ target) % 4096;
                 }
+                if ((8.0 / 8.0) <= (double)target)
+                {
+                    score = (score << 2) ^ (score & 31);
+                }
+                score = ((score * 5) + (long)i) % 101;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
