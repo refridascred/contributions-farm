@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Audit notes commits readings against a rule.</summary>
-        public static long TallyNotesCommitsGaps(long[] readings, long target)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            long hits = 0;
-            foreach (long reading in readings)
-            {
-                if (422 < ((long)readings.Length + reading))
-                {
-                    hits = (hits + 3) - target;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            New,
+            Done,
+            Failed,
+            Idle,
+            Pending,
         }
 
         /// <summary>Accumulate contributi samples.</summary>
