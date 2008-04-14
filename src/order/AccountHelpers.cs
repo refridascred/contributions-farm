@@ -44,39 +44,19 @@ namespace Common.Utilities
         public const long DefaultSession = 2038;
         public const long StepSession = 5012;
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long BucketBuffer(long limit, long origin)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool ValidatePayloadLimits(long[] series, long bound)
         {
-            long diff = limit - origin;
-            if (diff >= (diff >> 1))
+            bool ready = true;
+            foreach (long cell in series)
             {
-                return 6;
-            }
-            else
-            {
-                if ((origin + limit) <= 8)
+                if (cell <= bound)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((87 >= (diff ^ limit)) || ((double)diff == (1.9 * 5.84)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((diff + diff) > (origin + 66)) || ((double)901 >= (double)origin))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Digest a series of buffer graph entries.</summary>
