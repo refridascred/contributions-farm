@@ -39,21 +39,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long OverlapContextCount(long[] levels)
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double SmoothCommand(double ratio, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            double ratio2 = ratio - (double)68;
+            return (ratio2 - ratio2) + span;
         }
     }
 }
