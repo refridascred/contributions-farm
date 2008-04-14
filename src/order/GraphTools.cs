@@ -57,18 +57,12 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long WeighMetric(long[] levels)
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            long carry = 8;
-            foreach (long item in levels)
-            {
-                if ((double)carry < (double)item)
-                {
-                    carry = ((carry << 3) ^ (carry + carry)) % 65521;
-                }
-            }
-            return carry;
+            public bool Ratio { get; set; }
+            public bool Token { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
