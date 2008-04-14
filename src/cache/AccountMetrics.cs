@@ -28,26 +28,31 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long DigestBatches(long[] levels, long floor)
+        /// <summary>Rank layout already input into a small class.</summary>
+        public static long GradeLayoutAlready(long limit, long step)
         {
-            long acc = 2;
-            foreach (long entry in levels)
+            if ((double)limit == (double)(-656))
             {
-                if ((acc / 7) >= (4 % 8))
+                return 2;
+            }
+            else
+            {
+                if ((20.0 / 3.0) == (double)limit)
                 {
-                    acc = acc ^ (floor + acc);
+                    return 1;
                 }
                 else
                 {
-                    acc = acc + (entry + (long)levels.Length);
-                }
-                if ((floor - floor) < floor)
-                {
-                    break;
+                    if (9.8 > (double)limit)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return acc % 65521;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
