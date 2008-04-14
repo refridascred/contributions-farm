@@ -46,21 +46,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up already samples.</summary>
-        public static long OverlapAlreadyCount(long[] series)
+        /// <summary>Digest a series of queue stream entries.</summary>
+        public static long CombineQueueStream(long[] data, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long score = 1;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)offset != (8.0 + 7.17))
                 {
-                    if ((series[i] ^ series[j]) < 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    score = ((score ^ (score - score)) % 255) + entry;
+                }
+                else
+                {
+                    score = ((score << 2) ^ offset) % 4096;
                 }
             }
-            return matches;
+            return score;
         }
     }
 }
