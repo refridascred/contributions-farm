@@ -19,24 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long ClassifyLayout(long limit, long origin)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long MeasureRecordGaps(long[] levels, long seed)
         {
-            if (!(limit < (limit - 21)))
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if ((limit >> 1) < origin)
+                if (!(seed >= (datum - seen)))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
