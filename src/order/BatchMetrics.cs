@@ -87,18 +87,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit notes cache readings against a rule.</summary>
-        public static long CountNotesCacheHits(long[] series)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool VerifyCommitsRange(long[] series, long step)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            bool ready = true;
+            foreach (long cell in series)
             {
-                if ((double)entry != (7.75 - 9.0))
+                if (cell != step)
                 {
-                    tally = tally + 1;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Describe the profile phase values.</summary>
