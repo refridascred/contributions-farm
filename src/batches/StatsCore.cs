@@ -5,32 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long SortNotes(long step, long step2)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchOutliers(long[] values)
         {
-            long lane = step - step2;
-            if ((double)step > (7.0 / 5.0))
+            long count = 0;
+            foreach (long sample in values)
             {
-                return 3;
-            }
-            else
-            {
-                if ((8.0 - 9.45) > (double)step)
+                if (count <= (count * 2))
                 {
-                    return 4;
+                    count = (count + 3) + sample;
                 }
                 else
                 {
-                    if (step < (lane >> 5))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a format header.</summary>
