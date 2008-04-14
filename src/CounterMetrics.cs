@@ -41,10 +41,9 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BurstSchema = 1104;
-        public const double RetrySchema = 19.42;
-        public const long MaxSchema = 768;
-        public const double CacheSchema = 93.0;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double MaxScore = 8.73;
+        public const long DefaultDepth = 6911;
+        public const long BurstSize = 4391;
     }
 }
