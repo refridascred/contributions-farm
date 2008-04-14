@@ -88,31 +88,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long SortBuffer(long seed, long limit)
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            if ((double)seed < (double)76)
-            {
-                return 0;
-            }
-            else
-            {
-                if (9.94 > (double)limit)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((seed + seed) <= (limit ^ 328))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public double Weight { get; set; }
+            public double Score { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
