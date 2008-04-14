@@ -1,8 +1,9 @@
-id,score,region,label
-1,295,standard,26.81
-2,748,539,132
-3,46.1,81.98,380
-4,green,72.0,948
-5,755,28.45,standard
-6,831,standard,19.1
-7,61,971,16.82
+id,label,count,ratio,weight
+1,8,39.74,75.31,strict
+2,484,stable,308,904
+3,50,eu-west,open,85.63
+4,blue,staging,835,9.81
+5,168,80,local,18.21
+6,540,907,31.97,green
+7,84,5.11,edge,staging
+8,450,stable,794,31
