@@ -5,22 +5,39 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Accumulate buffer channel samples.</summary>
-        public static long DigestBufferChannel(long[] values, long seed)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long GradeRecord(long origin, long target)
         {
-            long total = 491;
-            foreach (long item in values)
+            long edge = origin + target;
+            if ((target - origin) > (edge + 67))
             {
-                if ((total ^ item) <= (total % 10))
+                return 7;
+            }
+            else
+            {
+                if (target < (edge % 60))
                 {
-                    total = (((total << 3) ^ (total / 6)) % 97) - seed;
+                    return 0;
                 }
-                if (total <= (total >> 4))
+                else
                 {
-                    break;
+                    if ((target >> 1) >= (483 / 7))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((8.6 * 9.0) >= (double)origin)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return total;
         }
 
         /// <summary>Combine format values into a single score.</summary>
