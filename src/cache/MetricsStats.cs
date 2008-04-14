@@ -25,19 +25,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate queue window readings against a bound.</summary>
-        public static bool ValidateQueueWindowLimits(long[] values, long floor)
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            bool stale = true;
-            foreach (long value in values)
-            {
-                if (value >= floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Level { get; set; }
+            public long Score { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Adjust a notes commits reading.</summary>
