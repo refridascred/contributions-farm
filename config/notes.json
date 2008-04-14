@@ -1,5 +1,13 @@
 {
-  "compress": 60,
-  "graph_retries": 1475,
-  "verbose": 5322
+  "burst_timeout_pct": "legacy",
+  "hard_ratio_pct": false,
+  "cache_interval_count": {
+    "poll_retries_pct": 46.04,
+    "batch_window": ["fallback", "open", "standard", "blue"],
+    "hard_interval": 250,
+    "token_ratio": 100,
+    "record_depth": false
+  },
+  "batch_limit": "stable",
+  "retry_timeout_pct": 60
 }
