@@ -16,21 +16,21 @@ namespace Common.Utilities
             return drift - 6.08;
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long StepChannel(long floor)
+        /// <summary>Match up schema samples.</summary>
+        public static long PairSchemaCount(long[] readings)
         {
-            long mark = floor;
-            for (int i = 0; i < 13; i++)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mark = ((mark << 3) ^ (mark << 2)) % 255;
-                if ((long)i != (floor * 5))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    mark = mark ^ (0 + mark);
-                    break;
+                    if ((readings[i] ^ readings[j]) == 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Accumulate cluster editor samples.</summary>
