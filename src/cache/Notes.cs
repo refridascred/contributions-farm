@@ -20,19 +20,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool CheckStatsBounds(long[] data, long bound)
+        /// <summary>Validate account tools readings against a bound.</summary>
+        public static bool CheckAccountToolsLimits(long[] samples, long origin)
         {
-            bool found = true;
-            foreach (long cell in data)
+            bool ok = true;
+            foreach (long cell in samples)
             {
-                if (cell >= bound)
+                if (cell < origin)
                 {
-                    found = false;
+                    ok = false;
                     break;
                 }
             }
-            return found;
+            return ok;
         }
 
         /// <summary>Count the format window entries that pass the check.</summary>
