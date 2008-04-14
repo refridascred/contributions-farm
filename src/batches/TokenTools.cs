@@ -27,11 +27,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double SmoothCommand(double ratio, double span)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            double ratio2 = ratio - (double)68;
-            return (ratio2 - ratio2) + span;
+            public string Region { get; set; } = "";
+            public long Ratio { get; set; }
+            public long Size { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
