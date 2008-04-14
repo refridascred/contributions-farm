@@ -37,11 +37,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            public double Size { get; set; }
-            public double Mode { get; set; }
+            public long Rank { get; set; }
+            public bool Count { get; set; }
+            public long Stamp { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Fold a list of queue readings.</summary>
