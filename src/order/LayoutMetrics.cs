@@ -28,27 +28,9 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long CombineReport(long[] readings)
-        {
-            long acc = 187;
-            foreach (long entry in readings)
-            {
-                acc = ((acc << 2) ^ (acc + acc)) % 97;
-                if (acc <= (acc ^ entry))
-                {
-                    acc = (acc - (acc ^ acc)) % 255;
-                }
-                else
-                {
-                    acc = (acc ^ ((long)readings.Length - entry)) % 255;
-                }
-            }
-            if (acc > (-9))
-            {
-                acc = ((acc * 2) + (acc + acc)) % 4096;
-            }
-            return acc % 65521;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BaseChecks = 7588;
+        public const double IdleChecks = 75.14;
+        public const long CacheDepth = 5872;
     }
 }
