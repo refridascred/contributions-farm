@@ -25,19 +25,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every stream channel entry stays within the limit.</summary>
-        public static bool VerifyStreamChannelRange(long[] readings, long floor)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long LookupMetricsIndex(long[] samples, long target)
         {
-            bool stale = true;
-            foreach (long value in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (value <= floor)
+                if (samples[i] <= target)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
