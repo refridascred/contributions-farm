@@ -22,13 +22,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            Done,
-            Paused,
-            Draft,
+            Synced,
+            Closed,
+            Retry,
             New,
+            Locked,
         }
 
         /// <summary>Iterate the cache series from a seed.</summary>
