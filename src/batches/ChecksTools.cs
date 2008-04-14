@@ -20,21 +20,12 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Match up token order samples.</summary>
-        public static long CompareTokenOrderCount(long[] samples)
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 13)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Draft,
+            Done,
+            Pending,
         }
 
         /// <summary>Scale a route figure with a bias.</summary>
