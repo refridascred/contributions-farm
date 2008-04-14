@@ -59,12 +59,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            Draft,
-            Locked,
-            Retry,
+            Active,
+            Ready,
+            Done,
         }
     }
 }
