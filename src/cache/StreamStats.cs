@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            public long Offset { get; set; }
-            public long Score { get; set; }
-            public bool Owner { get; set; }
-            public double Token { get; set; }
+            Ready,
+            New,
+            Stale,
+            Queued,
         }
 
         /// <summary>Hold a schema info.</summary>
