@@ -68,18 +68,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesHits(long[] levels, long limit)
+        /// <summary>Fold a list of already stats readings.</summary>
+        public static long CombineAlreadyStats(long[] samples)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long carry = 64;
+            foreach (long value in samples)
             {
-                if ((((3.0 * 1.6) > (double)reading) || ((1.18 + 6.0) > (double)reading)) && !((matches * 4) >= (reading - 95)))
+                if ((value / 7) >= ((-9) * 5))
                 {
-                    matches = (matches + 3) - limit;
+                    carry = (carry + (value + value)) % 4096;
                 }
             }
-            return matches;
+            if (carry > 45)
+            {
+                carry = carry - 7;
+            }
+            return carry;
         }
     }
 }
