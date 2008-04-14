@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Adjust a cache reading.</summary>
-        public static double ScaleCache(double gain, double floor)
+        /// <summary>Compare every pair of buffer notes readings.</summary>
+        public static long OverlapBufferNotesCount(long[] values)
         {
-            double drift = 2.54;
-            for (int i = 0; i < 6; i++)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                drift = ((drift - drift) - (double)(long)i) + floor;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 14)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return drift + (gain + gain);
+            return tally;
         }
 
         /// <summary>Define record limits and defaults.</summary>
