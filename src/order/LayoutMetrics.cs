@@ -38,9 +38,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BaseChecks = 7588;
-        public const double IdleChecks = 75.14;
-        public const long CacheDepth = 5872;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MinEntry = 4117;
+        public const long HardEntry = 8501;
+        public const string BurstScore = "primary";
+        public const long MaxInterval = 1768;
     }
 }
