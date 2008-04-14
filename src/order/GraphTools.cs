@@ -64,14 +64,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            Failed,
-            Active,
-            New,
-            Pending,
-            Closed,
+            public long Rank { get; set; }
+            public bool Region { get; set; }
+            public double Total { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
