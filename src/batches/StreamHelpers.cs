@@ -20,21 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long OverlapNotesCount(long[] levels)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double BlendPayload(double ratio, double bias)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double mean = 7.7 + (ratio - ratio);
+            if (mean > (double)127)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 4)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mean = mean + (ratio / 4.0);
             }
-            return matches;
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean - bias) + (double)(long)i;
+            }
+            return mean + bias;
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
