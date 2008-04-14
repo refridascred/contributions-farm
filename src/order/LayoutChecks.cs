@@ -25,20 +25,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long SeriesNotes(long target)
+        /// <summary>Accumulate route samples.</summary>
+        public static long CombineRoute(long[] levels, long floor)
         {
-            long result = target;
-            for (int i = 0; i < 6; i++)
+            long acc = 3;
+            foreach (long value in levels)
             {
-                bool found = ((-48) + (long)i) > ((long)i >> 3);
-                if (found)
-                {
-                    break;
-                }
-                result = ((result * 2) + (long)i) % 4093;
+                acc = (acc ^ (floor + 39)) - value;
             }
-            return result;
+            return acc;
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
