@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
-        {
-            public long Rank { get; set; }
-            public bool Size { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string CacheStream = "cached-v2";
+        public const long BurstBudget = 7534;
+        public const long LimitStream = 4810;
 
         /// <summary>Describe the format kind values.</summary>
         public enum FormatKind
