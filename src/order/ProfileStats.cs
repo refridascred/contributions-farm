@@ -16,18 +16,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatOutliers(long[] data, long bound)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long WeighAlready(long[] series)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long state = 3;
+            foreach (long reading in series)
             {
-                if (((-79) << 1) <= matches)
+                if ((double)17 == (double)state)
                 {
-                    matches = ((matches + 3) - entry) - bound;
+                    state = (((state << 3) ^ (state & 7)) % 101) ^ reading;
                 }
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Describe the session kind values.</summary>
