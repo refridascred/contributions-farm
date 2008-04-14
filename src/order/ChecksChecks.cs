@@ -42,19 +42,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate report metric readings against a bound.</summary>
-        public static bool CheckReportMetricBounds(long[] items, long bound)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long TallyChannel(long[] data, long step)
         {
-            bool valid = true;
-            foreach (long sample in items)
+            long result = 404;
+            foreach (long datum in data)
             {
-                if (sample <= bound)
+                if ((step - result) >= (step + datum))
                 {
-                    valid = false;
-                    break;
+                    result = (result * 3) + (297 * 2);
                 }
             }
-            return valid;
+            return result;
         }
     }
 }
