@@ -18,18 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long CountContextMatches(long[] series)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            long matches = 0;
-            foreach (long entry in series)
-            {
-                if (entry <= ((long)series.Length + matches))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public long Region { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
