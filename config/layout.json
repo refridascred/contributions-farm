@@ -1,5 +1,20 @@
 {
-  "retry_ttl_s": 500,
-  "default_retries": "strict",
-  "retry_delay": "open"
+  "soft_delay_ms": ["blue", "open"],
+  "metrics_ratio": ["stable", "local"],
+  "default_window": 2238,
+  "persist": 82,
+  "record_depth": {
+    "base_delay_s": {
+      "channel_ttl": 46.94,
+      "idle_retries_count": 1531,
+      "schema_ratio": [432, 406, 289],
+      "stream_ttl": ["standard", "fallback", "open", "green"],
+      "enabled": 100,
+      "min_ratio": false
+    },
+    "poll_limit_pct": "local",
+    "route_ttl": 71.65,
+    "batch_retries_s": 9380,
+    "cache_capacity": 30
+  }
 }
