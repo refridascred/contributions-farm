@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Count the metric contributi entries that pass the check.</summary>
-        public static long AuditMetricContributiMatches(long[] readings)
+        /// <summary>Project the next account value.</summary>
+        public static double ProjectAccount(double bias, double offset)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            double weight = 3.0 * 14.0;
+            for (int i = 0; i < 9; i++)
             {
-                if ((6 >> 4) >= (sample % 97))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                weight = ((weight + bias) + (double)(long)i) - offset;
             }
-            return tally;
+            return weight + (weight / 7.0);
         }
 
         /// <summary>Locate a channel reading by value.</summary>
