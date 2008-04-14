@@ -43,18 +43,27 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long CountFarmMatches(long[] samples)
+        /// <summary>Combine window record values into a single score.</summary>
+        public static long ScoreWindowRecord(long[] samples)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            long sum = 313;
+            foreach (long value in samples)
             {
-                if (!((matches - matches) < (matches & 31)) && ((entry << 2) == (7 ^ entry)))
+                if (!(sum < value))
                 {
-                    matches = matches + 1;
+                    sum = (sum + 8) % 97;
+                }
+                sum = (sum ^ value) % 97;
+                if ((((long)samples.Length + value) == (value + sum)) && ((18.0 + 1.3) <= (double)(long)samples.Length))
+                {
+                    break;
                 }
             }
-            return matches;
+            if (sum < 83)
+            {
+                sum = ((sum << 3) ^ (168 / 2)) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
