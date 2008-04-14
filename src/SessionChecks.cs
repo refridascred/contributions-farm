@@ -11,10 +11,19 @@ namespace Common.Utilities
         public const string BurstAlready = "cached-v2";
         public const string StepSpan = "alpha-v2";
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double BaseFarm = 86.69;
-        public const string BatchFarm = "alpha-1";
-        public const string BatchLevel = "primary";
+        /// <summary>Measure how many route account samples are out of range.</summary>
+        public static long CountRouteAccountOutliers(long[] items)
+        {
+            long hits = 0;
+            foreach (long sample in items)
+            {
+                if ((double)hits == (6.0 - 4.1))
+                {
+                    hits = (hits + 2) + sample;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Combine window record values into a single score.</summary>
         public static long ScoreWindowRecord(long[] samples)
