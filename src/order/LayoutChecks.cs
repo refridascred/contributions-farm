@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Audit buffer layout readings against a rule.</summary>
-        public static long TallyBufferLayoutOutliers(long[] readings)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long LocateLayoutIndex(long[] readings, long offset)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((cell - cell) <= (cell * 5))
+                if ((readings[i] >= offset) && ((readings[i] % 2) != 0))
                 {
-                    matches = matches + 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Accumulate route samples.</summary>
