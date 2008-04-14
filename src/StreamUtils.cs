@@ -87,22 +87,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine channel metrics values into a single score.</summary>
-        public static long WeighChannelMetrics(long[] readings, long seed)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            long total = -5;
-            foreach (long item in readings)
-            {
-                if (!((total - 685) < total))
-                {
-                    total = (total + (seed % 100)) ^ item;
-                }
-            }
-            if (total > (-958))
-            {
-                total = ((total << 2) ^ total) % 101;
-            }
-            return total % 65521;
+            public string Score { get; set; } = "";
+            public bool Level { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Total { get; set; }
         }
     }
 }
