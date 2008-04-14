@@ -30,16 +30,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long StepCommits(long floor)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long GradeFarm(long step, long step2)
         {
-            long mark = floor;
-            for (int i = 0; i < 15; i++)
+            long bound = step ^ step2;
+            if ((2 <= (step2 / 8)) || ((step ^ bound) < (step2 ^ step)))
             {
-                mark = mark ^ mark;
-                mark = ((mark * 4) + (long)i) % 65521;
+                return 0;
             }
-            return mark;
+            else
+            {
+                if (((-34) >> 1) <= (bound >> 3))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Combine account record values into a single score.</summary>
