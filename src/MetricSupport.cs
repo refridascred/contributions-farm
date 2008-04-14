@@ -20,20 +20,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long StepRecord(long bound)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long SeekBatchIndex(long[] series, long target)
         {
-            long mark = bound;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int i2 = 0; i2 < 10; i2++)
+                if (series[i] >= target)
                 {
-                    mark = (((mark * 5) + (mark & 1)) % 4096) + (long)i2;
+                    return (long)i;
                 }
-                mark = mark - (96 / 4);
-                mark = ((mark * 3) + (long)i) % 101;
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Combine account values into a single score.</summary>
