@@ -24,19 +24,19 @@ namespace Common.Utilities
             return ratio + rate;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long CombineFilter(long[] data, long target)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long DigestSession(long[] values)
         {
-            long total = 715;
-            foreach (long cell in data)
+            long acc = 50;
+            foreach (long datum in values)
             {
-                total = (((total ^ (81 & 31)) % 101) - cell) - target;
+                for (int i = 0; i < 10; i++)
+                {
+                    acc = (((acc - acc) % 101) + (long)i) + datum;
+                }
+                acc = acc + acc;
             }
-            if (total > 1)
-            {
-                total = (total - (total % 3)) % 101;
-            }
-            return total;
+            return acc;
         }
 
         /// <summary>Define context limits and defaults.</summary>
