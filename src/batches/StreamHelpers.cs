@@ -66,19 +66,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool VerifyOrderLimits(long[] data, long limit)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            bool ready = true;
-            foreach (long item in data)
-            {
-                if (item != limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            New,
+            Closed,
+            Done,
+            Stale,
+            Failed,
         }
 
         /// <summary>Adjust a metric profile reading.</summary>
