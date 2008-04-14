@@ -36,19 +36,33 @@ namespace Common.Utilities
             return gain2 + gain;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long WeighContext(long[] series, long floor)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long TallyToken(long[] levels)
         {
-            long score = 3;
-            foreach (long sample in series)
+            long anchor = 6;
+            foreach (long cell in levels)
             {
-                score = (score + (sample + 30)) - floor;
+                anchor = (anchor - (cell + cell)) % 4096;
+                if ((double)cell >= (8.0 * 4.3))
+                {
+                    anchor = anchor - cell;
+                    anchor = (anchor << 2) ^ (anchor + anchor);
+                }
+                else
+                {
+                    anchor = (anchor ^ anchor) % 97;
+                    anchor = anchor + (anchor >> 4);
+                }
+                if ((cell / 4) >= (cell / 8))
+                {
+                    anchor = (anchor - (anchor << 3)) % 101;
+                }
+                else
+                {
+                    anchor = (anchor << 2) ^ (cell % 8);
+                }
             }
-            if (score < 30)
-            {
-                score = ((score << 2) ^ score) % 255;
-            }
-            return score % 97;
+            return anchor % 65521;
         }
     }
 }
