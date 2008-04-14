@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Combine record values into a single score.</summary>
-        public static long WeighRecord(long[] data)
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            long result = 34;
-            foreach (long datum in data)
-            {
-                if (((result / 9) > ((long)data.Length & 255)) || ((double)datum == (0.3 / 7.0)))
-                {
-                    result = (result ^ result) % 97;
-                }
-            }
-            return result;
+            public long Rank { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Digest a series of checks entries.</summary>
