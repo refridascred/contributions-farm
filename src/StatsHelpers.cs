@@ -15,25 +15,10 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long ClassifyTools(long offset, long step)
-        {
-            if (!(step < (offset & 127)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)step < (7.0 / 4.0))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long DefaultGraph = 9859;
+        public const long RetryGraph = 4286;
+        public const string WindowDepth = "stable-v2";
 
         /// <summary>Hold a metric info.</summary>
         public sealed class MetricInfo
