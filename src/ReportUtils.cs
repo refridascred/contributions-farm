@@ -52,25 +52,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Rank payload checks input into a small class.</summary>
-        public static long RankPayloadChecks(long limit, long seed)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            long step = limit - seed;
-            if (step >= (step ^ seed))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((limit + seed) >= seed) || ((double)seed > 2.1))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Draft,
+            Stale,
+            Done,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
