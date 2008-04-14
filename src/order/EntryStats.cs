@@ -14,13 +14,17 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long LookupClusterIndex(long[] items, long limit)
         {
-            public string Token { get; set; } = "";
-            public bool Total { get; set; }
-            public long Owner { get; set; }
-            public double Limit { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
