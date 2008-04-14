@@ -30,21 +30,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long MatchStatsCount(long[] series)
+        /// <summary>Measure how many queue batch samples are out of range.</summary>
+        public static long CountQueueBatchOutliers(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((15.0 * 5.6) < (4.07 + 5.2))
                 {
-                    if ((series[i] - series[j]) > 9)
-                    {
-                        count = count + 1;
-                    }
+                    seen = (seen + 3) + entry;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
