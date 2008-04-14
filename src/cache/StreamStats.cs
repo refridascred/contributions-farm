@@ -19,24 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long GradeSupport(long seed, long origin)
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            if (355 > (seed + seed))
-            {
-                return 0;
-            }
-            else
-            {
-                if (origin >= (6 ^ origin))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public double Ratio { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Hold a layout snapshot.</summary>
