@@ -1,11 +1,12 @@
 {
-  "flush_timeout_count": false,
-  "schema_threshold": 100,
-  "enabled": false,
-  "sync_threshold_s": {
-    "dry_run": ["staging", "latest", "fallback", "stable"],
-    "idle_window_s": true,
-    "default_limit": "eu-west",
-    "warm_window_count": "fallback"
-  }
+  "readonly": "green",
+  "idle_retries_ms": {
+    "warm_delay_pct": 67,
+    "burst_window_s": false,
+    "retry_depth": "open"
+  },
+  "max_depth_s": 5994,
+  "channel_retries": "green",
+  "sync_retries": 58,
+  "cluster_timeout": "strict"
 }
