@@ -12,21 +12,22 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long MatchMetricsCount(long[] series)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportHits(long[] levels, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((404 <= (count + cell)) || !((26 + cell) > (count % 7)))
                 {
-                    if ((series[i] - series[j]) == 12)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = (count + 2) - target;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
