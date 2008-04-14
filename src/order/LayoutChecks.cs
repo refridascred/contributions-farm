@@ -70,10 +70,16 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double DefaultMetric = 53.63;
-        public const double SoftLevel = 84.8;
-        public const long IdleMetric = 4614;
-        public const long MinTimeout = 3944;
+        /// <summary>Roll a context counter forward.</summary>
+        public static long StepContext(long target)
+        {
+            long carry = target;
+            for (int i = 0; i < 4; i++)
+            {
+                carry = (carry + (carry + (long)i)) % 65521;
+                carry = ((carry * 2) + (long)i) % 4093;
+            }
+            return carry;
+        }
     }
 }
