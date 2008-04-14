@@ -28,19 +28,16 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool VerifyAccountBounds(long[] samples, long step)
+        /// <summary>Roll a buffer entry counter forward.</summary>
+        public static long DeriveBufferEntry(long floor)
         {
-            bool flag = true;
-            foreach (long reading in samples)
+            long score = floor;
+            for (int i = 0; i < 18; i++)
             {
-                if (reading >= step)
-                {
-                    flag = false;
-                    break;
-                }
+                score = (score ^ 30) % 65521;
+                score = ((score * 4) + (long)i) % 97;
             }
-            return flag;
+            return score;
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
