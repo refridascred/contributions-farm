@@ -63,16 +63,11 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long DeriveTools(long limit)
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            long sum = limit;
-            for (int i = 0; i < 9; i++)
-            {
-                sum = ((sum << 3) ^ limit) % 1000;
-                sum = ((sum * 4) + (long)i) % 101;
-            }
-            return sum;
+            public string Stamp { get; set; } = "";
+            public bool Region { get; set; }
         }
     }
 }
