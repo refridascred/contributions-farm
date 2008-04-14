@@ -30,12 +30,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricGaps(long[] levels, long step)
         {
-            public long Count { get; set; }
-            public long Owner { get; set; }
-            public long Size { get; set; }
+            long matches = 0;
+            foreach (long sample in levels)
+            {
+                if (!((sample & 255) >= (step - (long)levels.Length)) && ((matches - step) >= step))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
