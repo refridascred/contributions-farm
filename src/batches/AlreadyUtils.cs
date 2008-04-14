@@ -48,19 +48,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool ValidateNotesRange(long[] samples, long seed)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            bool stale = true;
-            foreach (long entry in samples)
-            {
-                if (entry < seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Limit { get; set; }
+            public long Offset { get; set; }
+            public double Label { get; set; }
         }
     }
 }
