@@ -51,31 +51,11 @@ namespace Common.Utilities
         public const double StepSize = 6.85;
         public const long MaxFormat = 606;
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long BucketChannel(long limit, long offset)
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            if ((337 >> 5) != (763 + offset))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((12.0 + 19.0) < (double)offset)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((limit * 4) <= (limit / 7))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public long Token { get; set; }
+            public string Size { get; set; } = "";
         }
     }
 }
