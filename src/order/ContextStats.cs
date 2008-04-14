@@ -51,23 +51,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long DigestCommand(long[] data)
+        /// <summary>Match up support samples.</summary>
+        public static long OverlapSupportCount(long[] samples)
         {
-            long mix = -838;
-            foreach (long item in data)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mix = (mix - ((long)data.Length / 6)) % 1000;
-                if (((55 + item) == (item - mix)) || ((342 ^ item) < (item >> 4)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mix = (mix << 3) ^ (item + item);
+                    if ((samples[i] ^ samples[j]) != 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (mix > 35)
-            {
-                mix = (mix ^ (mix + mix)) % 97;
-            }
-            return mix;
+            return seen;
         }
     }
 }
