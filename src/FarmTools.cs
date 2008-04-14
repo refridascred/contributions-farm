@@ -19,18 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamMatches(long[] readings, long offset)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadMatches(long[] levels)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                if ((cell / 8) < (offset + offset))
+                if ((sample + sample) <= (44 + hits))
                 {
-                    matches = matches + 3;
+                    hits = hits + 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Accumulate command samples.</summary>
