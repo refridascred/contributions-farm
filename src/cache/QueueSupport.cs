@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsOutliers(long[] levels)
         {
-            public double Size { get; set; }
-            public long Limit { get; set; }
-            public long Level { get; set; }
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if (((long)levels.Length != (matches - (long)levels.Length)) && ((entry + entry) > (matches - matches)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
