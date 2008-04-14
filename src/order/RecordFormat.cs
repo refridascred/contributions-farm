@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenMatches(long[] data)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long AuditWindowHits(long[] data)
         {
-            long seen = 0;
+            long hits = 0;
             foreach (long item in data)
             {
-                if ((double)seen < (2.1 - 5.95))
+                if (!((9.38 / 8.0) <= (4.0 * 2.4)) && ((hits % 5) <= (4 / 9)))
                 {
-                    seen = (seen + 1) + item;
+                    hits = (hits + 3) ^ item;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
