@@ -35,24 +35,17 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long ClassifySession(long floor, long target)
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long SeekAlreadyIndex(long[] readings, long seed)
         {
-            if (((floor & 7) < (floor ^ floor)) && (floor < (floor ^ (-8))))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)floor == (20.0 - 10.0))
+                if (readings[i] <= seed)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
