@@ -13,24 +13,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long GradeToken(long floor, long seed)
+        /// <summary>Audit layout record readings against a rule.</summary>
+        public static long CountLayoutRecordHits(long[] data)
         {
-            if ((double)floor > (double)24)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)floor <= (double)186)
+                if ((double)tally >= (4.4 - 4.9))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
+                    tally = (tally + 2) ^ sample;
                 }
             }
+            return tally;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
