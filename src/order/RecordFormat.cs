@@ -64,22 +64,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the cluster batch entries that pass the check.</summary>
-        public static long AuditClusterBatchHits(long[] readings)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long DigestContributi(long[] values)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long mark = 91;
+            foreach (long entry in values)
             {
-                if (((9 & 3) > cell) && ((double)cell != (18.0 - 7.0)))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                mark = mark ^ (mark + entry);
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Hold a record header.</summary>
