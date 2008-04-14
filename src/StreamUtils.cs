@@ -5,38 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Grade a metric channel value against two limits.</summary>
-        public static long ClassifyMetricChannel(long bound, long seed)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            if ((seed - seed) >= (88 / 6))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)bound != (13.0 * 6.05))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((seed <= (seed << 2)) || ((3.35 + 4.54) > (double)bound))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (seed > (seed % 24))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public long Count { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
