@@ -46,13 +46,22 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Digest a series of buffer graph entries.</summary>
+        public static long ScoreBufferGraph(long[] values)
         {
-            public double Stamp { get; set; }
-            public bool Total { get; set; }
-            public long Level { get; set; }
-            public string Score { get; set; } = "";
+            long mark = -35;
+            foreach (long entry in values)
+            {
+                if ((972 << 1) == (entry & 7))
+                {
+                    mark = ((mark << 2) ^ (mark / 8)) % 4096;
+                }
+                else
+                {
+                    mark = (mark ^ (entry >> 1)) % 65521;
+                }
+            }
+            return mark % 1000;
         }
 
         /// <summary>Describe the batch state values.</summary>
