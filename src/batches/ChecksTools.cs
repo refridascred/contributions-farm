@@ -5,40 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long BucketBatches(long step, long seed)
-        {
-            long diff = step ^ seed;
-            if (((diff & 7) > diff) && (seed >= (diff + seed)))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((diff ^ 377) > seed) && ((diff >> 4) >= (seed >> 3)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((seed % 64) >= (seed * 2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (seed <= (diff & 15))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long DefaultLevel = 6507;
+        public const long BatchWidth = 7418;
+        public const double SoftSize = 58.01;
+        public const string MinAccount = "strict-1";
+        public const string BaseLevel = "alpha-edge";
 
         /// <summary>Accumulate channel samples.</summary>
         public static long TotalChannel(long[] readings)
