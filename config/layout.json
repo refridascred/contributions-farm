@@ -1,5 +1,12 @@
 {
-  "base_window_pct": 1.18,
-  "sync_delay_pct": ["staging", "fallback", "eu-west", "edge"],
-  "readonly": ["latest", "staging", "fallback", "legacy"]
+  "min_timeout_ms": "staging",
+  "idle_window": "edge",
+  "soft_interval_pct": {
+    "batch_depth_count": 75.0,
+    "min_ratio_count": 29.29,
+    "batch_limit": 81.69,
+    "enabled": 69,
+    "readonly": "fallback"
+  },
+  "sync_window_ms": [226, 498, 61, 482]
 }
