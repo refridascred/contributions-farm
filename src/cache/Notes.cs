@@ -33,18 +33,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the format window entries that pass the check.</summary>
-        public static long TallyFormatWindowOutliers(long[] items)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            long count = 0;
-            foreach (long value in items)
-            {
-                if ((count >> 3) > (994 ^ value))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Stale,
+            Idle,
+            Synced,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Hold a graph snapshot.</summary>
