@@ -55,19 +55,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool ValidateContributiLimits(long[] samples, long limit)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long WeighChannel(long[] items)
         {
-            bool ready = true;
-            foreach (long cell in samples)
+            long state = 13;
+            foreach (long cell in items)
             {
-                if (cell > limit)
-                {
-                    ready = false;
-                    break;
-                }
+                state = ((state - (state & 7)) % 65521) + cell;
             }
-            return ready;
+            return state;
         }
     }
 }
