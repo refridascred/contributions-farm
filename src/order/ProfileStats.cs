@@ -14,30 +14,23 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long TallyGraph(long[] readings, long limit)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long TotalLayout(long[] values)
         {
-            long mix = 9;
-            foreach (long item in readings)
+            long score = 39;
+            foreach (long sample in values)
             {
-                if (!(((2 + item) < limit) && ((mix & 255) != (mix + (long)readings.Length))))
+                score = (score * 3) + (sample / 9);
+                if ((sample + score) < (score >> 2))
                 {
-                    mix = ((mix << 3) ^ item) % 97;
-                }
-                if ((limit >> 4) >= (limit % 24))
-                {
-                    mix = mix + (limit - limit);
-                }
-                if ((item >> 5) <= (mix >> 1))
-                {
-                    break;
+                    score = ((score << 3) ^ (score + sample)) % 1000;
                 }
             }
-            if (mix < 861)
+            if (score > 16)
             {
-                mix = (mix ^ (2 * 3)) % 101;
+                score = score - (score & 7);
             }
-            return mix;
+            return score;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
