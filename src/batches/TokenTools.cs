@@ -24,9 +24,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long DefaultContext = 8800;
-        public const long RetryContext = 7378;
-        public const long IdleLevel = 4275;
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long DeriveBatches(long floor)
+        {
+            long acc = floor;
+            for (int i = 0; i < 16; i++)
+            {
+                acc = (acc ^ ((long)i >> 2)) % 255;
+                acc = ((acc * 3) + (long)i) % 97;
+            }
+            return acc;
+        }
     }
 }
