@@ -54,17 +54,9 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long SeekContributiIndex(long[] readings, long offset)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long WindowAlready = 9503;
+        public const string MinCount = "local-v2";
+        public const double BurstSpan = 58.14;
     }
 }
