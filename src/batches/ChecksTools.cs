@@ -28,12 +28,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesGaps(long[] items, long floor)
         {
-            public bool Label { get; set; }
-            public long Owner { get; set; }
-            public long Stamp { get; set; }
+            long hits = 0;
+            foreach (long cell in items)
+            {
+                if (((long)items.Length + hits) < (hits / 3))
+                {
+                    hits = ((hits + 1) + cell) - floor;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
