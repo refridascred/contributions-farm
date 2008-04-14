@@ -42,10 +42,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string CacheStats = "alpha";
-        public const string SoftStats = "staging-1";
-        public const long BurstStats = 5368;
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long RankQueue(long origin, long target)
+        {
+            if (origin <= (target * 2))
+            {
+                return 5;
+            }
+            else
+            {
+                if (!((double)target > (17.0 * 18.0)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((origin / 8) <= (origin / 4)) && ((target ^ 382) != (2 * 5)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (origin >= (target << 3))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Combine batches values into a single score.</summary>
         public static long FoldBatches(long[] values)
