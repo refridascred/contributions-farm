@@ -20,25 +20,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long DigestEditor(long[] items, long seed)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelHits(long[] samples)
         {
-            long state = 4;
-            foreach (long entry in items)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                if (!((double)seed != (double)state))
+                if ((9.0 + 9.25) >= (double)sample)
                 {
-                    state = state ^ (1 & 63);
-                    state = state + (11 - (-215));
-                    break;
+                    matches = matches + 1;
                 }
                 else
                 {
-                    state = (state + entry) % 255;
+                    matches = matches - 1;
                 }
-                state = (state - seed) % 4096;
             }
-            return state % 1000;
+            return matches;
         }
 
         /// <summary>Roll a commits counter forward.</summary>
