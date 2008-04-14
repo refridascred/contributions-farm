@@ -5,22 +5,38 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenMatches(long[] data, long step)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long ClassifyChecks(long seed, long seed2)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            if ((7.3 - 8.2) <= (double)seed)
             {
-                if (!!(9.3 >= (double)step))
+                return 4;
+            }
+            else
+            {
+                if (((seed2 + 625) > (seed2 % 16)) && ((seed ^ seed2) > (68 - seed)))
                 {
-                    seen = (seen + 2) + datum;
+                    return 3;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if ((seed2 + seed) > (492 << 1))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((853 / 3) == (seed2 + seed2))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
