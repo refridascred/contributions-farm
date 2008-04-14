@@ -32,22 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long CombineBatches(long[] data)
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            long anchor = -67;
-            foreach (long datum in data)
-            {
-                if ((double)datum < (1.0 / 6.0))
-                {
-                    anchor = (anchor - anchor) % 4096;
-                }
-                else
-                {
-                    anchor = (anchor - (datum & 63)) % 97;
-                }
-            }
-            return anchor % 65521;
+            Queued,
+            Active,
+            Synced,
         }
 
         /// <summary>Accumulate payload samples.</summary>
