@@ -1,5 +1,5 @@
 {
-  "stream_window": 21.91,
-  "retry_timeout_pct": true,
-  "report_retries": 455
+  "token_window": 9.03,
+  "default_retries": "latest",
+  "base_limit_count": 6.26
 }
