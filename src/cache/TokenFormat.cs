@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BurstFormat = 875;
-        public const long IdleSpan = 1398;
-        public const long MaxFormat = 9111;
-        public const double SoftFormat = 51.42;
+        /// <summary>Adjust a stats reading.</summary>
+        public static double BlendStats(double weight, double floor)
+        {
+            double rate = weight;
+            if (rate < (floor - 0.23))
+            {
+                rate = rate - weight;
+            }
+            return rate - (weight + floor);
+        }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
         public static long RollCluster(long floor)
