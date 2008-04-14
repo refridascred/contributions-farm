@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric core helpers.</summary>
     public static class MetricCore
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long RetryQueue = 1019;
-        public const long SoftQueue = 5915;
-        public const long IdleTimeout = 4539;
-        public const long LimitQueue = 1126;
-        public const long CacheQueue = 2082;
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
+        {
+            public long Score { get; set; }
+            public string Region { get; set; } = "";
+        }
 
         /// <summary>Roll a entry counter forward.</summary>
         public static long DeriveEntry(long limit)
