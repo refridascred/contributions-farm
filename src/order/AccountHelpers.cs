@@ -12,21 +12,22 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long PairSchemaCount(long[] data)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long WeighNotes(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long acc = 7;
+            foreach (long item in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (acc < (item + item))
                 {
-                    if ((data[i] ^ data[j]) > 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    acc = ((acc * 3) + (acc / 2)) % 97;
                 }
             }
-            return hits;
+            if (acc < 0)
+            {
+                acc = ((acc * 5) + (acc * 5)) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Hold a window info.</summary>
