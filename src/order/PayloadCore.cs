@@ -55,20 +55,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of support channel entries.</summary>
-        public static long TallySupportChannel(long[] levels)
-        {
-            long acc = 855;
-            foreach (long cell in levels)
-            {
-                acc = (acc + (cell << 3)) % 101;
-            }
-            if (acc > 93)
-            {
-                acc = acc ^ (8 + acc);
-            }
-            return acc;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long DefaultLevel = 3570;
+        public const double BatchOrder = 74.18;
+        public const string CacheOrder = "cached";
 
         /// <summary>Locate a order reading by value.</summary>
         public static long SeekOrderIndex(long[] items, long offset)
