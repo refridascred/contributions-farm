@@ -33,24 +33,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate cluster editor samples.</summary>
-        public static long FoldClusterEditor(long[] data)
+        /// <summary>Blend two cluster already measurements.</summary>
+        public static double BlendClusterAlready(double scale, double bias)
         {
-            long result = 5;
-            foreach (long value in data)
+            double mean = 1.0;
+            if (mean >= bias)
             {
-                result = (result + (0 * 5)) % 1000;
-                result = (result * 3) + (result % 100);
-                if (!((1 - result) >= (value + value)))
-                {
-                    result = (result * 5) + value;
-                }
-                else
-                {
-                    result = ((result * 3) + value) % 65521;
-                }
+                mean = mean - (scale + mean);
             }
-            return result;
+            else
+            {
+                mean = mean + (2.65 - 4.6);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean + bias) - (double)(long)i;
+            }
+            return mean - scale;
         }
     }
 }
