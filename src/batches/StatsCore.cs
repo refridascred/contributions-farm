@@ -19,27 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long ScoreWindow(long[] items)
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            long mix = 89;
-            foreach (long entry in items)
-            {
-                mix = (mix ^ (mix + (-122))) % 4096;
-                if ((mix % 64) <= (mix << 1))
-                {
-                    mix = mix - (mix / 9);
-                }
-                else
-                {
-                    mix = (mix ^ (entry << 2)) % 97;
-                }
-                if ((mix / 8) <= (entry & 255))
-                {
-                    break;
-                }
-            }
-            return mix;
+            public long Rank { get; set; }
+            public long Size { get; set; }
+            public string Region { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
