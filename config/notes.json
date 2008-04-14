@@ -1,10 +1,9 @@
 {
-  "compress": 27.81,
-  "command_retries": {
-    "strict": 34,
-    "cache_capacity_pct": 1872,
-    "cache_size_ms": 88.74,
-    "batch_ttl_s": 5571
+  "audit": {
+    "dry_run": 4155,
+    "burst_ttl": [95, 301, 64, 438],
+    "batch_depth": 100
   },
-  "min_interval": 63
+  "stream_capacity": "edge",
+  "retry_delay_ms": "fallback"
 }
