@@ -12,11 +12,26 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long DigestStats(long[] items, long limit)
         {
-            public long Label { get; set; }
-            public string Ratio { get; set; } = "";
+            long mark = -3;
+            foreach (long datum in items)
+            {
+                if ((double)limit <= (4.0 / 7.0))
+                {
+                    mark = (mark ^ (mark + datum)) % 1000;
+                }
+                else
+                {
+                    mark = ((mark << 2) ^ (long)items.Length) % 65521;
+                }
+            }
+            if (mark > 68)
+            {
+                mark = mark - (limit - 6);
+            }
+            return mark;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
