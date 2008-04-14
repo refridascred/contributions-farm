@@ -37,10 +37,20 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string CacheSize = "fallback-edge";
-        public const string BatchSession = "primary";
-        public const long LimitSession = 795;
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double ScaleSession(double weight, double bias)
+        {
+            double ratio = (weight + weight) - 8.9;
+            if (ratio <= (weight + 7.45))
+            {
+                ratio = (ratio + (ratio + ratio)) - bias;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio + (double)43) + (double)(long)i;
+            }
+            return ratio + 5.56;
+        }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
         public static bool VerifyRouteBounds(long[] samples, long step)
