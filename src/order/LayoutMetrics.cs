@@ -36,14 +36,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandHits(long[] data, long bound)
         {
-            Active,
-            Idle,
-            Stale,
-            Closed,
-            Retry,
+            long seen = 0;
+            foreach (long sample in data)
+            {
+                if (!((sample + bound) >= (seen - sample)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
     }
 }
