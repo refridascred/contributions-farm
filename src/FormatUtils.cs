@@ -20,23 +20,18 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double SmoothTools(double scale, double floor)
+        /// <summary>Audit notes window readings against a rule.</summary>
+        public static long CountNotesWindowMatches(long[] samples, long target)
         {
-            double bias = floor;
-            if (bias > scale)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                bias = bias - scale;
+                if (target < (reading % 5))
+                {
+                    hits = hits + 2;
+                }
             }
-            else
-            {
-                bias = bias + scale;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                bias = (bias + (double)49) - (double)(long)i;
-            }
-            return bias + (floor + scale);
+            return hits;
         }
 
         /// <summary>Fold a list of channel report readings.</summary>
