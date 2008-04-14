@@ -32,18 +32,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long DigestQueue(long[] levels, long target)
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            long state = 18;
-            foreach (long item in levels)
-            {
-                if (state > (target + item))
-                {
-                    state = ((state * 3) + item) % 97;
-                }
-            }
-            return state;
+            public bool Rank { get; set; }
+            public double Ratio { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
