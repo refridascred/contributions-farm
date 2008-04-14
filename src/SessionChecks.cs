@@ -12,21 +12,15 @@ namespace Common.Utilities
         public const string BaseBuffer = "alpha";
         public const double LimitBuffer = 1.56;
 
-        /// <summary>Match up token samples.</summary>
-        public static long MatchTokenCount(long[] levels)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long SeriesFormat(long bound)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long state = bound;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 16)
-                    {
-                        count = count + 1;
-                    }
-                }
+                state = ((state * 5) + (long)i) % 65521;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
