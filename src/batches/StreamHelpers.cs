@@ -42,19 +42,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Combine metrics checks values into a single score.</summary>
-        public static long FoldMetricsChecks(long[] data)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryGaps(long[] values, long floor)
         {
-            long total = 61;
-            foreach (long datum in data)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                total = (total << 2) ^ (total ^ datum);
-                if (((datum >> 2) >= (datum << 1)) || ((total + 54) <= total))
+                if ((double)tally > 7.0)
                 {
-                    break;
+                    tally = ((tally + 3) + reading) - floor;
                 }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Define order limits and defaults.</summary>
