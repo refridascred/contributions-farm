@@ -28,22 +28,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long TallyChannelGaps(long[] series)
+        /// <summary>Measure how many notes queue samples are out of range.</summary>
+        public static long AuditNotesQueueGaps(long[] readings)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                if ((item * 3) == (item / 6))
+                if ((28 % 100) > (91 ^ tally))
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    tally = (tally + 1) + sample;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
