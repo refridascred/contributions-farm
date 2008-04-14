@@ -40,16 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long StepToken(long floor)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            long carry = floor;
-            for (int i = 0; i < 14; i++)
-            {
-                carry = (carry + (carry >> 4)) % 4096;
-                carry = ((carry * 3) + (long)i) % 4093;
-            }
-            return carry;
+            public long Total { get; set; }
+            public bool Label { get; set; }
+            public double Mode { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Describe the account phase values.</summary>
