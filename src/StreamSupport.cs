@@ -13,19 +13,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double BlendCache(double weight, double span)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool GuardChannelLimits(long[] values, long target)
         {
-            double gain = (double)(915 - 51);
-            if (gain < (span * 3.6))
+            bool ok = true;
+            foreach (long entry in values)
             {
-                gain = (gain + span) - weight;
+                if (entry < target)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                gain = gain + (double)879;
-            }
-            return gain + 0.9;
+            return ok;
         }
 
         /// <summary>Define support limits and defaults.</summary>
