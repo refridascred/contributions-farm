@@ -1,10 +1,17 @@
 {
-  "batch_retries_s": {
-    "flush_ttl_count": true,
-    "max_interval_ms": 1241,
-    "sync_capacity_pct": true
+  "warm_delay_s": "local",
+  "farm_timeout": {
+    "filter_ratio": false,
+    "flush_depth_pct": {
+      "default_window_count": 57,
+      "compress": true,
+      "poll_ratio": "standard",
+      "farm_window": 59
+    },
+    "idle_size_s": 3873,
+    "dry_run": 13.48,
+    "compress": "blue"
   },
-  "order_ttl": 30,
-  "min_delay": 94,
-  "min_depth_ms": "legacy"
+  "sync_depth_ms": false,
+  "stream_window": "blue"
 }
