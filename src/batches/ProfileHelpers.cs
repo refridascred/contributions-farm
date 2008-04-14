@@ -69,19 +69,21 @@ namespace Common.Utilities
         public const long DefaultOrder = 9979;
         public const long MaxInterval = 8911;
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool CheckGraphBounds(long[] series, long origin)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long FoldToken(long[] values)
         {
-            bool flag = true;
-            foreach (long entry in series)
+            long score = 0;
+            foreach (long value in values)
             {
-                if (entry < origin)
+                if ((6 + score) != (score >> 4))
                 {
-                    flag = false;
+                    score = score + (value / 4);
                     break;
                 }
+                score = (score * 4) + score;
+                score = (score * 3) + (value + 8);
             }
-            return flag;
+            return score % 97;
         }
     }
 }
