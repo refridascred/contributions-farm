@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long CompareMetricsCount(long[] readings)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long GradeChannel(long limit, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if (floor <= (limit + limit))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if (((double)limit >= 11.0) && ((floor + floor) < floor))
                 {
-                    if ((readings[i] ^ readings[j]) == 1)
+                    return 7;
+                }
+                else
+                {
+                    if ((limit + floor) == (floor % 2))
                     {
-                        tally = tally + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
