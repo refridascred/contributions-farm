@@ -34,12 +34,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BatchRoute = 450;
-        public const long LimitRoute = 3391;
-        public const long IdleRoute = 19;
-        public const long SoftLevel = 2605;
-        public const long HardRoute = 2415;
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long SeekSchemaIndex(long[] values, long bound)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Look up the position of a layout graph sample.</summary>
         public static long LocateLayoutGraphIndex(long[] items, long floor)
