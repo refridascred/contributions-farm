@@ -76,22 +76,37 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long SortTools(long target, long bound)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long ClassifyFormat(long floor, long limit)
         {
-            if ((5.0 - 1.0) == (double)bound)
+            long step = floor - limit;
+            if (limit > (limit + limit))
             {
-                return 5;
+                return 2;
             }
             else
             {
-                if (!((target * 4) >= bound))
+                if ((step + floor) >= (limit - step))
                 {
-                    return 8;
+                    return 6;
                 }
                 else
                 {
-                    return 3;
+                    if ((16.0 / 9.0) < (double)floor)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)floor >= (6.0 / 5.0))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
         }
