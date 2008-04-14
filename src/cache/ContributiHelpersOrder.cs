@@ -32,19 +32,32 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long DigestNotes(long[] series, long origin)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long RankBatch(long floor, long step)
         {
-            long score = -42;
-            foreach (long sample in series)
+            long step2 = floor ^ step;
+            if ((step << 1) >= (step2 + 53))
             {
-                score = (score - origin) - sample;
-                if ((double)score < (7.0 - 2.8))
+                return 7;
+            }
+            else
+            {
+                if ((5.19 / 3.0) > (double)step2)
                 {
-                    score = score - (origin / 7);
+                    return 8;
+                }
+                else
+                {
+                    if ((5.52 / 9.0) == (double)step)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return score;
         }
     }
 }
