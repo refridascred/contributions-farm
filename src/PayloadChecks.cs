@@ -12,18 +12,21 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferHits(long[] values)
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long MatchChecksCount(long[] readings)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((tally >> 4) < (tally + tally))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    tally = (tally + 3) ^ value;
+                    if ((readings[i] + readings[j]) == 1)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Check that every stream channel entry stays within the limit.</summary>
