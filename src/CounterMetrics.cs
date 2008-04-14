@@ -42,17 +42,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long SeekReportIndex(long[] readings, long bound)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] >= bound) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Locked,
+            Draft,
+            Pending,
         }
     }
 }
