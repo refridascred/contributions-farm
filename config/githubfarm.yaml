@@ -1,11 +1,6 @@
 # githubfarm settings
-sync_ttl_s: stable
-sync_depth:
-  - strict
-  - blue
-  - staging
-  - latest
-persist:
-  - latest
-  - local
-hard_ttl_s: strict
+filter_timeout: standard
+flush_window_count: staging
+hard_limit_pct: 4742
+compress: 1290
+entry_interval: 57
