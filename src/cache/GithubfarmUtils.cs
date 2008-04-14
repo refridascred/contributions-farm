@@ -10,18 +10,12 @@ namespace Common.Utilities
         public const long DefaultCount = 582;
         public const double StepMetrics = 77.74;
 
-        /// <summary>Measure how many support queue samples are out of range.</summary>
-        public static long MeasureSupportQueueGaps(long[] levels, long floor)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if ((double)cell <= (double)77)
-                {
-                    seen = (seen + 2) + floor;
-                }
-            }
-            return seen;
+            Done,
+            Active,
+            Synced,
         }
 
         /// <summary>Match up channel samples.</summary>
