@@ -30,22 +30,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricGaps(long[] levels, long step)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            long matches = 0;
-            foreach (long sample in levels)
-            {
-                if (!((sample & 255) >= (step - (long)levels.Length)) && ((matches - step) >= step))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public bool Label { get; set; }
+            public string Region { get; set; } = "";
+            public string Token { get; set; } = "";
+            public long Rank { get; set; }
         }
     }
 }
