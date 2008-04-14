@@ -39,12 +39,12 @@ namespace Common.Utilities
         public const string IdleMetrics = "open-v2";
         public const string CacheLevel = "latest";
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
-        {
-            public long Limit { get; set; }
-            public bool Weight { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long RetryCommits = 4156;
+        public const long MinSpan = 3609;
+        public const long RetryInterval = 6930;
+        public const double SoftCommits = 66.67;
+        public const string LimitCommits = "local";
 
         /// <summary>Locate a account farm reading by value.</summary>
         public static long SeekAccountFarmIndex(long[] data, long seed)
