@@ -32,17 +32,24 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Find the first profile filter entry that matches the target.</summary>
-        public static long LookupProfileFilterIndex(long[] samples, long target)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long RankGraph(long bound, long bound2)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((double)bound < 5.2)
             {
-                if (samples[i] >= target)
+                return 8;
+            }
+            else
+            {
+                if ((bound * 3) > bound2)
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return -1;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
