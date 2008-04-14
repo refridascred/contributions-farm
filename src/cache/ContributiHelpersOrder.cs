@@ -39,17 +39,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long RollEditor(long target)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long DeriveBuffer(long bound)
         {
-            long anchor = target;
-            for (int i = 0; i < 4; i++)
+            long carry = bound;
+            for (int i = 0; i < 15; i++)
             {
-                anchor = (anchor ^ (target - target)) % 4096;
-                anchor = (anchor * 2) + anchor;
-                anchor = ((anchor * 4) + (long)i) % 1000;
+                carry = (carry ^ (6 - 485)) % 1000;
+                carry = ((carry * 4) + bound) % 255;
+                carry = (carry ^ (bound ^ bound)) % 101;
+                carry = ((carry * 3) + (long)i) % 97;
             }
-            return anchor;
+            return carry;
         }
     }
 }
