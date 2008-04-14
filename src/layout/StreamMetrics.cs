@@ -35,21 +35,14 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Match up queue samples.</summary>
-        public static long MatchQueueCount(long[] readings)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 2)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Queued,
+            Dropped,
+            Retry,
+            Closed,
+            Failed,
         }
 
         /// <summary>Measure how many booking samples are out of range.</summary>
