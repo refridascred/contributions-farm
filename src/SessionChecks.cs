@@ -46,26 +46,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TotalLayout(long[] data, long seed)
+        /// <summary>Adjust a record reading.</summary>
+        public static double ProjectRecord(double scale, double bias)
         {
-            long anchor = 157;
-            foreach (long sample in data)
+            double weight = bias;
+            if (weight < (double)133)
             {
-                if (seed < anchor)
-                {
-                    anchor = ((anchor ^ (689 + seed)) % 97) - sample;
-                }
-                else
-                {
-                    anchor = (anchor ^ (seed / 9)) % 65521;
-                }
+                weight = (weight + bias) + scale;
             }
-            if (anchor > 871)
-            {
-                anchor = anchor ^ (anchor & 255);
-            }
-            return anchor % 65521;
+            return weight + (bias - bias);
         }
     }
 }
