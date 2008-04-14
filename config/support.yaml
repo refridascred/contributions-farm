@@ -1,7 +1,18 @@
 # support settings
-cache_ttl_s: stable
-sync_depth_s: true
-dry_run: false
-default_delay: 29.82
-flush_timeout: 40
-default_ttl_ms: 818
+support_interval: 65.33
+support_size:
+  - cached
+  - blue
+  - local
+tools_timeout:
+  - 393
+  - 190
+  - 391
+metric_delay: 98.3
+format_capacity:
+  compress: stable
+  burst_ttl_s: 85
+  default_delay:
+    - strict
+    - edge
+  poll_depth: false
