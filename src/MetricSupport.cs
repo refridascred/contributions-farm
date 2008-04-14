@@ -20,31 +20,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long BucketFilter(long floor, long step)
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long SeekSchemaIndex(long[] values, long limit)
         {
-            if (step >= (748 << 2))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((step - floor) > (step ^ 283))
+                if (values[i] < limit)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((-1) - floor) >= (step + step))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Match up tools samples.</summary>
