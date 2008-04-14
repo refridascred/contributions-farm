@@ -23,12 +23,18 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double BurstSupport = 20.22;
-        public const long SoftSize = 3278;
-        public const double StepLevel = 10.06;
-        public const double BaseSupport = 10.95;
-        public const long HardSupport = 8896;
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long LookupSupportIndex(long[] levels, long target)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Roll a counter counter forward.</summary>
         public static long DeriveCounter(long limit)
