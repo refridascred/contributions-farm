@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchMatches(long[] readings)
-        {
-            long count = 0;
-            foreach (long cell in readings)
-            {
-                if (count > cell)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long IdleWidth = 5549;
+        public const long RetryChecks = 1671;
+        public const double DefaultChecks = 21.83;
+        public const long BaseChecks = 4548;
+        public const double BatchChecks = 6.09;
 
         /// <summary>Digest a series of editor entries.</summary>
         public static long FoldEditor(long[] values)
