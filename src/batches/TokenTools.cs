@@ -39,9 +39,9 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BurstAlready = 4872;
-        public const long BatchBudget = 615;
-        public const long IdleScore = 2196;
+        /// <summary>Define context limits and defaults.</summary>
+        public const long DefaultContext = 8800;
+        public const long RetryContext = 7378;
+        public const long IdleLevel = 4275;
     }
 }
