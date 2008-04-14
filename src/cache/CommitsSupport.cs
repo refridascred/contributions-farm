@@ -46,10 +46,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long SoftAlready = 5347;
-        public const long StepAlready = 8093;
-        public const double BaseTimeout = 89.34;
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
+        {
+            New,
+            Draft,
+            Stale,
+            Queued,
+            Dropped,
+        }
 
         /// <summary>Accumulate window samples.</summary>
         public static long FoldWindow(long[] series, long seed)
