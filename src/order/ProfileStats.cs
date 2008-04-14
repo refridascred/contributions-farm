@@ -14,19 +14,30 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double AdjustSchema(double ratio, double span)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long TallyGraph(long[] readings, long limit)
         {
-            double drift = span;
-            if (drift <= drift)
+            long mix = 9;
+            foreach (long item in readings)
             {
-                drift = (drift + 5.1) - ratio;
+                if (!(((2 + item) < limit) && ((mix & 255) != (mix + (long)readings.Length))))
+                {
+                    mix = ((mix << 3) ^ item) % 97;
+                }
+                if ((limit >> 4) >= (limit % 24))
+                {
+                    mix = mix + (limit - limit);
+                }
+                if ((item >> 5) <= (mix >> 1))
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 9; i++)
+            if (mix < 861)
             {
-                drift = (drift - span) + (double)(long)i;
+                mix = (mix ^ (2 * 3)) % 101;
             }
-            return drift + (span / 6.0);
+            return mix;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
