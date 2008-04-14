@@ -20,12 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            Synced,
-            Paused,
             Done,
+            Idle,
+            Pending,
+            Retry,
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
