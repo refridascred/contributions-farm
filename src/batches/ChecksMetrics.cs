@@ -47,10 +47,20 @@ namespace Common.Utilities
         public const long HardInterval = 2140;
         public const string BurstFactor = "local-edge";
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long CacheToken = 2013;
-        public const string WindowToken = "staging-edge";
-        public const double HardToken = 10.64;
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool ValidatePayloadBounds(long[] levels, long bound)
+        {
+            bool valid = true;
+            foreach (long reading in levels)
+            {
+                if (reading != bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Describe the entry kind values.</summary>
         public enum EntryKind
