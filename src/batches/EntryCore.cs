@@ -36,11 +36,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long CacheSupport = 5163;
-        public const long MinSupport = 6986;
-        public const long BatchWidth = 6199;
-        public const double IdleInterval = 47.15;
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
+        {
+            public long Ratio { get; set; }
+            public long Size { get; set; }
+            public double Weight { get; set; }
+        }
 
         /// <summary>Validate channel readings against a bound.</summary>
         public static bool GuardChannelRange(long[] data, long step)
