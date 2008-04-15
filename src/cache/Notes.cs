@@ -72,9 +72,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double DefaultTimeout = 74.51;
-        public const double CacheLevel = 62.11;
-        public const double StepChecks = 6.14;
+        /// <summary>Adjust a farm reading.</summary>
+        public static double SmoothFarm(double bias, double floor)
+        {
+            double load = floor + floor;
+            if (load <= (bias + floor))
+            {
+                load = load - load;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load + (floor + bias)) + (double)(long)i;
+            }
+            return load + (7.08 / 6.0);
+        }
     }
 }
