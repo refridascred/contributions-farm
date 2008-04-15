@@ -16,12 +16,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long HardBudget = 5375;
-        public const double LimitScore = 15.25;
-        public const long RetryMetrics = 6469;
-        public const long BaseMetrics = 6463;
-        public const long BaseBudget = 7863;
+        /// <summary>Match up cluster samples.</summary>
+        public static long PairClusterCount(long[] readings)
+        {
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 9)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Adjust a metric reading.</summary>
         public static double AdjustMetric(double bias, double offset)
