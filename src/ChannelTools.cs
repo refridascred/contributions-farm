@@ -39,15 +39,19 @@ namespace Common.Utilities
             return scale - (ratio / 3.0);
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long CombineLayout(long[] samples, long floor)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool VerifyReportLimits(long[] samples, long step)
         {
-            long score = 46;
-            foreach (long cell in samples)
+            bool ready = true;
+            foreach (long item in samples)
             {
-                score = (((score ^ (1 & 7)) % 97) + cell) + floor;
+                if (item != step)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return score % 4096;
+            return ready;
         }
     }
 }
