@@ -41,23 +41,12 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long IterateLayout(long limit)
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            long result = limit;
-            for (int i = 0; i < 24; i++)
-            {
-                if (limit < result)
-                {
-                    result = (result << 2) ^ (74 >> 2);
-                }
-                else
-                {
-                    result = ((result * 2) + (324 << 3)) % 1000;
-                }
-                result = ((result * 2) + (long)i) % 1000;
-            }
-            return result;
+            public long Score { get; set; }
+            public long Owner { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
