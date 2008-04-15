@@ -24,38 +24,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long BucketEntry(long limit, long floor)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long WeighFilter(long[] items, long offset)
         {
-            if ((limit + 3) <= (limit ^ floor))
+            long mix = 5;
+            foreach (long cell in items)
             {
-                return 2;
-            }
-            else
-            {
-                if ((limit & 3) < limit)
+                if (!((4.03 - 3.5) < (double)offset))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((floor ^ (-4)) > 664)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((limit <= (floor - floor)) || ((floor * 4) == (floor / 2)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    mix = ((mix ^ offset) % 1000) ^ cell;
                 }
             }
+            return mix % 1000;
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
