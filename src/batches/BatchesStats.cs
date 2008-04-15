@@ -5,11 +5,40 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long WindowDepth = 6096;
-        public const long SoftRoute = 5864;
-        public const double IdleWidth = 50.72;
-        public const double DefaultRoute = 94.32;
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long GradeEntry(long floor, long floor2)
+        {
+            long step = floor + floor2;
+            if ((473 ^ step) < floor2)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((floor / 2) != ((-790) - 6))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)floor2 != (double)0)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((step & 15) > (floor2 * 5))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a metrics snapshot.</summary>
         public sealed class MetricsSnapshot
