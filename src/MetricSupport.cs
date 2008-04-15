@@ -37,17 +37,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long LocateGraphIndex(long[] readings, long offset)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] <= offset) && ((readings[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long LimitTools = 2922;
+        public const long LimitRatio = 9714;
+        public const long WindowTools = 8985;
+        public const string SoftWidth = "fallback-edge";
     }
 }
