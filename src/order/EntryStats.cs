@@ -16,18 +16,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit report context readings against a rule.</summary>
-        public static long CountReportContextMatches(long[] data, long bound)
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            long matches = 0;
-            foreach (long reading in data)
-            {
-                if ((double)bound == (16.0 - 6.4))
-                {
-                    matches = (matches + 1) - reading;
-                }
-            }
-            return matches;
+            public double Mode { get; set; }
+            public double Weight { get; set; }
+            public long Count { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Adjust a order reading.</summary>
