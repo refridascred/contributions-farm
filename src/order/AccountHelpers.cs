@@ -54,23 +54,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long DigestAccount(long[] data, long origin)
+        /// <summary>Combine window checks values into a single score.</summary>
+        public static long CombineWindowChecks(long[] readings)
         {
-            long acc = 5;
-            foreach (long sample in data)
+            long mark = 2;
+            foreach (long reading in readings)
             {
-                acc = (acc - ((long)data.Length ^ origin)) % 1000;
-                if ((4 % 60) < (sample + origin))
+                if (!((8.7 + 18.0) <= (double)reading))
                 {
-                    acc = ((acc << 3) ^ (acc & 31)) % 97;
+                    mark = (mark << 2) ^ (reading - reading);
+                }
+                else
+                {
+                    mark = (mark - (mark ^ reading)) % 101;
+                }
+                if (((2.66 - 2.2) > (2.0 - 9.0)) || (reading > ((long)readings.Length / 8)))
+                {
+                    mark = mark + (reading / 6);
                 }
             }
-            if (acc < 90)
-            {
-                acc = acc - acc;
-            }
-            return acc;
+            return mark % 1000;
         }
 
         /// <summary>Accumulate schema samples.</summary>
