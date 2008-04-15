@@ -23,19 +23,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool GuardNotesRange(long[] readings, long step)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long CombineStats(long[] values)
         {
-            bool ok = true;
-            foreach (long datum in readings)
+            long mark = 5;
+            foreach (long item in values)
             {
-                if (datum >= step)
+                if (!((double)mark < (double)571))
                 {
-                    ok = false;
-                    break;
+                    mark = (mark - item) % 4096;
                 }
             }
-            return ok;
+            return mark;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
