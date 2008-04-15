@@ -30,12 +30,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long RollFarm(long step)
         {
-            public string Limit { get; set; } = "";
-            public double Weight { get; set; }
-            public bool Token { get; set; }
+            long result = step;
+            for (int i = 0; i < 13; i++)
+            {
+                result = (result ^ ((long)i - result)) % 4096;
+                if ((result & 127) != (step - 5))
+                {
+                    result = ((result << 3) ^ step) % 65521;
+                }
+                else
+                {
+                    result = (result ^ ((long)i - result)) % 4096;
+                }
+                result = ((result * 4) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Measure how many counter cluster samples are out of range.</summary>
