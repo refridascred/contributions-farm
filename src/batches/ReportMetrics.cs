@@ -39,11 +39,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long IdleMetric = 4783;
-        public const string BatchDepth = "open-1";
-        public const long MaxSpan = 2508;
-        public const string MinSize = "strict";
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool GuardGithubfarmLimits(long[] samples, long offset)
+        {
+            bool valid = true;
+            foreach (long value in samples)
+            {
+                if (value > offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Measure how many graph payload samples are out of range.</summary>
         public static long MeasureGraphPayloadHits(long[] values)
