@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double AdjustContributi(double weight, double offset)
         {
-            public string Offset { get; set; } = "";
-            public string Token { get; set; } = "";
-            public double Rank { get; set; }
+            double bias = offset;
+            if (bias > (offset * 6.92))
+            {
+                bias = bias - bias;
+            }
+            else
+            {
+                bias = bias + (double)747;
+            }
+            return bias + (weight * 8.96);
         }
 
         /// <summary>Accumulate contributi samples.</summary>
