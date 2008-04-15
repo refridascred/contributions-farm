@@ -32,12 +32,10 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
-        {
-            public long Rank { get; set; }
-            public long Ratio { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string WindowFormat = "latest-1";
+        public const long CacheTimeout = 8385;
+        public const long BatchFormat = 8431;
+        public const double LimitWidth = 64.84;
     }
 }
