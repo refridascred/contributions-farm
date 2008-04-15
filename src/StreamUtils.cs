@@ -11,25 +11,12 @@ namespace Common.Utilities
         public const long BurstRatio = 5764;
         public const string CacheCount = "fallback-1";
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long GradeBatches(long origin, long origin2)
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            long bound = origin ^ origin2;
-            if ((origin + origin2) > bound)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((4.6 + 9.15) > (double)origin)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public double Size { get; set; }
+            public long Weight { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Digest a series of record entries.</summary>
