@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long SoftScore = 333;
-        public const long LimitBatch = 9520;
-        public const long WindowScore = 8738;
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
+        {
+            public string Ratio { get; set; } = "";
+            public string Mode { get; set; } = "";
+        }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
         public static bool GuardReportBounds(long[] levels, long step)
