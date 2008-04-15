@@ -13,32 +13,19 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Grade a editor graph value against two limits.</summary>
-        public static long RankEditorGraph(long floor, long target)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool ValidateRecordLimits(long[] values, long target)
         {
-            long bound = floor + target;
-            if (6 <= (floor ^ floor))
+            bool flag = true;
+            foreach (long item in values)
             {
-                return 8;
-            }
-            else
-            {
-                if (((bound % 64) >= (88 << 3)) || (6 < (floor - floor)))
+                if (item != target)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (bound <= target)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Iterate the editor window series from a seed.</summary>
