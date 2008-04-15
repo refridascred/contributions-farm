@@ -61,22 +61,17 @@ namespace Common.Utilities
         public const long HardInterval = 2759;
         public const string MaxCount = "staging-edge";
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long AuditQueueHits(long[] samples)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long LocateBatchIndex(long[] series, long origin)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((tally - 834) < (-72)) && !((double)tally < (1.0 + 9.3)))
+                if (series[i] <= origin)
                 {
-                    tally = (tally + 1) + sample;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
