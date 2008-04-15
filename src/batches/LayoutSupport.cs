@@ -25,13 +25,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Audit editor payload readings against a rule.</summary>
+        public static long TallyEditorPayloadOutliers(long[] samples)
         {
-            Done,
-            Dropped,
-            Synced,
-            Retry,
+            long matches = 0;
+            foreach (long entry in samples)
+            {
+                if (616 > (matches / 9))
+                {
+                    matches = (matches + 1) - entry;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Rank commits input into a small class.</summary>
