@@ -1,7 +1,9 @@
 # entry settings
-warm_timeout_s: 100
-poll_interval: 22
-idle_delay: true
-editor_window: eu-west
-command_window: 3753
-audit: strict
+max_interval_s: eu-west
+min_interval:
+  warm_timeout: 764
+  max_window_pct: 84.19
+  strict: 66.61
+filter_capacity: 35
+burst_retries_s: false
+base_ratio: standard
