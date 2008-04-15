@@ -1,23 +1,6 @@
 # entry settings
-burst_limit: blue
-strict: 834
-burst_timeout:
-  - 467
-  - 416
-  - 264
-  - 455
-poll_retries_count: green
-buffer_retries:
-  hard_ttl_count: 100
-  flush_depth_pct:
-    batch_interval_ms: local
-    poll_timeout: 224
-    strict: strict
-    report_retries: local
-    idle_window_ms:
-      - 354
-      - 210
-      - 244
-  command_ratio: 4433
-  flush_ttl_pct: 3596
-  max_limit: staging
+counter_timeout: 250
+audit: 1024
+max_retries_count: false
+strict: true
+warm_depth_s: edge
