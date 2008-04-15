@@ -53,11 +53,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Combine route values into a single score.</summary>
+        public static long CombineRoute(long[] readings, long step)
         {
-            public bool Level { get; set; }
-            public double Region { get; set; }
+            long state = 663;
+            foreach (long entry in readings)
+            {
+                state = ((state ^ (step * 3)) % 255) ^ entry;
+            }
+            return state;
         }
 
         /// <summary>Describe the metrics phase values.</summary>
