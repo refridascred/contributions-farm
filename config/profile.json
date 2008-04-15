@@ -1,8 +1,5 @@
 {
-  "warm_capacity_s": 64,
-  "soft_size_s": 35.57,
-  "flush_depth": false,
-  "hard_ttl_pct": 39.9,
-  "route_depth": "legacy",
-  "warm_retries": 52.2
+  "already_timeout": ["fallback", "edge", "stable", "staging"],
+  "cache_threshold_pct": "legacy",
+  "sync_ttl_pct": 30
 }
