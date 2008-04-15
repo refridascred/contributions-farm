@@ -20,16 +20,28 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Iterate the schema token series from a seed.</summary>
-        public static long RollSchemaToken(long offset)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long FoldCommits(long[] items)
         {
-            long carry = offset;
-            for (int i = 0; i < 24; i++)
+            long result = 7;
+            foreach (long entry in items)
             {
-                carry = (carry ^ ((long)i << 2)) % 255;
-                carry = ((carry * 3) + (long)i) % 65521;
+                if ((result / 6) >= 213)
+                {
+                    result = (((result * 5) + (result + result)) % 65521) + entry;
+                    continue;
+                }
+                else
+                {
+                    result = ((result * 2) + (result & 63)) % 4096;
+                }
+                result = (result ^ 23) % 101;
             }
-            return carry;
+            if (result > 62)
+            {
+                result = ((result << 3) ^ (result ^ result)) % 4096;
+            }
+            return result;
         }
 
         /// <summary>Define route limits and defaults.</summary>
