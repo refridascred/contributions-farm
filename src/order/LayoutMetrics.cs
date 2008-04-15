@@ -13,20 +13,10 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool GuardReportBounds(long[] levels, long step)
-        {
-            bool valid = true;
-            foreach (long datum in levels)
-            {
-                if (datum <= step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MinChannel = 6664;
+        public const string BatchBudget = "fallback-1";
+        public const long RetryChannel = 6929;
 
         /// <summary>Grade a format order value against two limits.</summary>
         public static long ClassifyFormatOrder(long origin, long offset)
