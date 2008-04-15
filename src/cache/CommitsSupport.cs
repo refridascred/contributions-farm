@@ -43,15 +43,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long SeriesRoute(long origin)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsGaps(long[] readings)
         {
-            long sum = origin;
-            for (int i = 0; i < 4; i++)
+            long count = 0;
+            foreach (long value in readings)
             {
-                sum = ((sum * 3) + (long)i) % 65521;
+                if ((12.0 - 5.0) == (double)count)
+                {
+                    count = (count + 1) + value;
+                }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Check that every channel queue entry stays within the limit.</summary>
