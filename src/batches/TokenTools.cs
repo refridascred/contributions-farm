@@ -20,19 +20,10 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Measure how many contributi already samples are out of range.</summary>
-        public static long CountContributiAlreadyHits(long[] levels, long step)
-        {
-            long seen = 0;
-            foreach (long value in levels)
-            {
-                if ((value + step) >= (seen * 2))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MaxDepth = 9829;
+        public const double SoftBudget = 1.34;
+        public const string WindowDepth = "stable-v2";
 
         /// <summary>Hold a support summary.</summary>
         public sealed class SupportSummary
