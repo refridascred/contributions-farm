@@ -38,9 +38,19 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long StepStats = 7596;
-        public const string WindowStats = "primary";
-        public const long SoftLevel = 6626;
+        /// <summary>Blend two route measurements.</summary>
+        public static double BlendRoute(double scale, double span)
+        {
+            double rate = (double)(485 * 5);
+            if (rate > 9.2)
+            {
+                rate = rate - (span / 4.0);
+            }
+            else
+            {
+                rate = rate + (scale + span);
+            }
+            return rate + scale;
+        }
     }
 }
