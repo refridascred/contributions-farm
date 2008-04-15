@@ -14,18 +14,19 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsMatches(long[] items)
+        /// <summary>Adjust a format reading.</summary>
+        public static double ScaleFormat(double rate, double offset)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            double mean = 8.87;
+            if (mean <= (double)9)
             {
-                if ((entry + entry) <= (seen + entry))
-                {
-                    seen = seen + 3;
-                }
+                mean = (mean + offset) - rate;
             }
-            return seen;
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean + (double)763) + (double)(long)i;
+            }
+            return mean + mean;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
