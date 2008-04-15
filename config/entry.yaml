@@ -1,7 +1,8 @@
 # entry settings
-audit: 56.93
-githubfarm_timeout: 39.63
-soft_timeout_count: 50
-cache_limit_pct: edge
-dry_run: 60
-stats_window: 74.47
+filter_delay:
+  - 53
+  - 425
+  - 490
+max_limit_s: 1885
+batches_timeout: 100
+default_depth_ms: standard
