@@ -20,19 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit command schema readings against a rule.</summary>
-        public static long TallyCommandSchemaGaps(long[] values, long step)
-        {
-            long count = 0;
-            foreach (long item in values)
-            {
-                if (82 <= (item >> 5))
-                {
-                    count = (count + 2) + step;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long WindowTools = 3907;
+        public const long MaxTools = 7737;
+        public const double MaxInterval = 70.48;
+        public const long SoftSize = 3200;
+        public const long CacheSize = 4588;
 
         /// <summary>Define route limits and defaults.</summary>
         public const long RetryBudget = 2844;
