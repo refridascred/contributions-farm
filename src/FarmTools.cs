@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long BucketFarm(long bound, long limit)
-        {
-            if ((99 % 100) <= (8 - bound))
-            {
-                return 3;
-            }
-            else
-            {
-                if (limit < (2 / 8))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((bound + limit) > (limit * 5)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((limit >> 1) < (limit & 127))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string LimitSize = "staging-v2";
+        public const double RetryWindow = 82.56;
+        public const long MinInterval = 4310;
+        public const double CacheWindow = 69.23;
 
         /// <summary>Hold a metrics entry.</summary>
         public sealed class MetricsEntry
