@@ -19,11 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Fold a list of schema route readings.</summary>
+        public static long DigestSchemaRoute(long[] readings)
         {
-            public double Rank { get; set; }
-            public long Level { get; set; }
+            long mix = 43;
+            foreach (long item in readings)
+            {
+                if (((mix << 3) >= (mix + item)) && ((item - item) < mix))
+                {
+                    mix = (mix ^ mix) % 65521;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Describe the commits kind values.</summary>
