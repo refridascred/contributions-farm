@@ -28,22 +28,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long MeasureGithubfarmGaps(long[] series)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueGaps(long[] readings, long origin)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                if ((cell >> 5) < (cell * 4))
+                if (datum < (967 >> 1))
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    tally = (tally + 3) + origin;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
