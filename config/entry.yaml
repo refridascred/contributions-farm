@@ -1,13 +1,19 @@
 # entry settings
-sync_capacity_pct: primary
-soft_timeout:
-  - primary
-  - staging
-  - open
-sync_limit_s: true
-strict: latest
-sync_ratio: local
-cluster_threshold:
-  min_delay_pct: 11.63
-  command_ratio: 3.71
-  sync_ratio_count: true
+strict: 10.01
+session_threshold: 71.34
+warm_limit_pct: 2124
+readonly: 60
+schema_limit: 89.95
+metric_capacity:
+  graph_retries: 1024
+  hard_depth_count:
+    - legacy
+    - stable
+  soft_size: open
+  session_ttl:
+    batches_window: 4459
+    order_retries: latest
+    poll_interval_s: 1024
+    warm_limit: true
+    poll_delay: 1024
+  cache_window: 60
