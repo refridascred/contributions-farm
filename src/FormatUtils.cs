@@ -58,12 +58,14 @@ namespace Common.Utilities
         public const string SoftEditor = "cached-1";
         public const long SoftRatio = 1673;
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            public bool Offset { get; set; }
-            public long Token { get; set; }
-            public long Limit { get; set; }
+            Failed,
+            Synced,
+            New,
+            Dropped,
+            Locked,
         }
     }
 }
