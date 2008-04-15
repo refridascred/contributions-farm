@@ -1,8 +1,7 @@
 {
-  "flush_threshold": 68,
-  "min_capacity_ms": "staging",
-  "max_ttl": "green",
-  "max_threshold_pct": false,
-  "session_size": 94,
-  "cache_ratio_s": 87.45
+  "max_limit_ms": 30,
+  "enabled": [353, 339, 213, 104],
+  "retry_size": "strict",
+  "retry_ttl": true,
+  "batch_timeout": "cached"
 }
