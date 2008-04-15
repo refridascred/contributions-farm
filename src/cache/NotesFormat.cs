@@ -42,19 +42,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool VerifyGraphLimits(long[] series, long step)
-        {
-            bool valid = true;
-            foreach (long entry in series)
-            {
-                if (entry <= step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string DefaultSize = "stable-1";
+        public const long WindowQueue = 6609;
+        public const string LimitScore = "local-edge";
+        public const string MaxScore = "primary-1";
     }
 }
