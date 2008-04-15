@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long ClassifyBuffer(long floor, long floor2)
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            long delta = floor - floor2;
-            if ((delta << 3) <= delta)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((floor / 7) < (delta & 15))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (delta < floor)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public bool Label { get; set; }
+            public long Score { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Hold a record info.</summary>
