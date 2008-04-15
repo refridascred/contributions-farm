@@ -18,23 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadOutliers(long[] samples, long bound)
-        {
-            long tally = 0;
-            foreach (long entry in samples)
-            {
-                if ((((tally * 3) < entry) && ((entry % 64) < entry)) || (15.0 <= (double)(long)samples.Length))
-                {
-                    tally = (tally + 3) + bound;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long DefaultRatio = 536;
+        public const string HardSize = "cached";
+        public const double RetryBudget = 85.29;
+        public const long StepSchema = 3881;
 
         /// <summary>Grade a profile value against two limits.</summary>
         public static long SortProfile(long floor, long offset)
