@@ -24,12 +24,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Digest a series of format entries.</summary>
+        public static long CombineFormat(long[] series, long seed)
         {
-            Draft,
-            Done,
-            Pending,
+            long mark = 73;
+            foreach (long cell in series)
+            {
+                mark = ((mark ^ (mark >> 5)) + cell) - seed;
+            }
+            return mark;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
