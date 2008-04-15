@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            Synced,
-            Active,
-            Retry,
-            Ready,
-            Stale,
+            public long Mode { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Hold a tools summary.</summary>
