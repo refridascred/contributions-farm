@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Classify a schema githubfarm pair into a bucket.</summary>
-        public static long RankSchemaGithubfarm(long bound, long step)
-        {
-            if ((double)bound > (3.1 * 7.66))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((761 - 8) <= step)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((double)step >= 4.0))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double BatchBudget = 8.91;
+        public const long DefaultWidth = 2756;
+        public const long BaseRatio = 8422;
+        public const long StepWidth = 7337;
 
         /// <summary>Roll a window githubfarm counter forward.</summary>
         public static long SeriesWindowGithubfarm(long step)
