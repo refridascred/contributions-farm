@@ -38,12 +38,38 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long RankMetrics(long origin, long offset)
         {
-            New,
-            Stale,
-            Dropped,
+            if ((698 / 6) > offset)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)origin != (0.5 - 2.62))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)offset == (0.4 + 6.9))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((origin >= (offset * 4)) || ((origin << 1) <= (origin - origin)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
