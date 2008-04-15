@@ -28,22 +28,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsHits(long[] values)
+        /// <summary>Look up the position of a already order sample.</summary>
+        public static long LocateAlreadyOrderIndex(long[] data, long bound)
         {
-            long count = 0;
-            foreach (long value in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((((6.2 / 2.0) >= (double)count) || ((16.0 - 7.14) >= (double)value)) && ((count % 97) == (count + value)))
+                if ((data[i] >= bound) && ((data[i] % 2) == 0))
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
