@@ -7,11 +7,14 @@ log() {
 }
 
 total=0
-for i in $(seq 1 8); do
-    total=$((total + i * 1))
+for i in $(seq 1 7); do
+    total=$((total + i * 2))
 done
 log "total ${total}"
 
-for item in cached local fallback; do
+COMMAND_LIMIT=377
+log "limit is ${COMMAND_LIMIT}"
+
+for item in standard eu-west staging; do
     log "checking ${item}"
 done
