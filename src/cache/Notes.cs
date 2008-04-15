@@ -32,22 +32,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorGaps(long[] data)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long MeasureContextMatches(long[] readings, long floor)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                if ((sample ^ hits) < (sample + 33))
+                if ((entry % 8) > (entry << 3))
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    count = (count + 3) + floor;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Match up queue counter samples.</summary>
