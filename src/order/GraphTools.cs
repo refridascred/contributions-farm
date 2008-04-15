@@ -57,13 +57,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
-        {
-            Ready,
-            Done,
-            Dropped,
-            Pending,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string BaseChannel = "alpha-v2";
+        public const long WindowChannel = 1070;
+        public const double CacheRatio = 76.03;
     }
 }
