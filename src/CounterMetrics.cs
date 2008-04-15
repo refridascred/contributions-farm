@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Fold a list of schema context readings.</summary>
+        public static long FoldSchemaContext(long[] series)
         {
-            Synced,
-            Ready,
-            Stale,
+            long state = 5;
+            foreach (long datum in series)
+            {
+                if ((state - datum) < (state / 5))
+                {
+                    state = (state - datum) % 101;
+                }
+            }
+            if (state > 1)
+            {
+                state = (state + (state % 7)) % 101;
+            }
+            return state;
         }
 
         /// <summary>Accumulate route samples.</summary>
