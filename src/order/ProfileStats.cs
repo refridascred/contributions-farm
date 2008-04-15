@@ -50,13 +50,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            public string Flag { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public double Label { get; set; }
-            public string Rank { get; set; } = "";
+            Draft,
+            Dropped,
+            Paused,
+            Queued,
         }
     }
 }
