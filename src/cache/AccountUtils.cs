@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double SmoothFilter(double bias, double offset)
         {
-            public double Total { get; set; }
-            public string Size { get; set; } = "";
+            double drift = (double)(20 << 2);
+            if (drift < (double)5)
+            {
+                drift = (drift - (offset / 2.0)) + bias;
+            }
+            return drift - offset;
         }
 
         /// <summary>Audit batches metrics readings against a rule.</summary>
