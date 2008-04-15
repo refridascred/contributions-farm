@@ -38,23 +38,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double SmoothOrder(double bias, double bias2)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool GuardContributiLimits(long[] samples, long step)
         {
-            double gain = bias;
-            if (gain > (gain + bias2))
+            bool ok = true;
+            foreach (long value in samples)
             {
-                gain = gain - bias2;
+                if (value <= step)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                gain = gain - (double)37;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain + (3.2 - bias2)) - (double)(long)i;
-            }
-            return gain - bias2;
+            return ok;
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
