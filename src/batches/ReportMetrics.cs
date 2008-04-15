@@ -20,11 +20,19 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double AdjustSupport(double ratio, double floor)
         {
-            public long Rank { get; set; }
-            public double Count { get; set; }
+            double mean = (ratio / 8.0) + floor;
+            if (mean >= (mean + ratio))
+            {
+                mean = mean + mean;
+            }
+            else
+            {
+                mean = mean + (double)(-41);
+            }
+            return mean + (double)97;
         }
     }
 }
