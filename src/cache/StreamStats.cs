@@ -35,17 +35,22 @@ namespace Common.Utilities
             return drift - scale;
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long LookupBatchIndex(long[] values, long offset)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long TotalAlready(long[] samples)
         {
-            for (int i = 0; i < values.Length; i++)
+            long carry = 4;
+            foreach (long item in samples)
             {
-                if (values[i] <= offset)
+                if ((carry + (-531)) <= 70)
                 {
-                    return (long)i;
+                    carry = (carry - (item + item)) % 4096;
+                }
+                else
+                {
+                    carry = (carry * 3) + 3;
                 }
             }
-            return -1;
+            return carry;
         }
     }
 }
