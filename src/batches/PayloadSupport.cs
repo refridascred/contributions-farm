@@ -26,12 +26,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Combine account values into a single score.</summary>
+        public static long ScoreAccount(long[] series, long step)
         {
-            Locked,
-            Stale,
-            Closed,
+            long state = -457;
+            foreach (long entry in series)
+            {
+                state = state - (entry + state);
+                if ((state < 82) || ((entry & 127) < (step << 1)))
+                {
+                    state = (state * 4) + (entry - state);
+                }
+            }
+            return state % 4096;
         }
     }
 }
