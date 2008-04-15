@@ -27,11 +27,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double SoftCount = 7.43;
-        public const long HardBatch = 3890;
-        public const double LimitSize = 32.87;
-        public const string SoftBatch = "strict-edge";
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long CacheSize = 1560;
+        public const long DefaultTimeout = 3107;
+        public const long SoftEditor = 2006;
 
         /// <summary>Classify a support pair into a bucket.</summary>
         public static long GradeSupport(long bound, long origin)
