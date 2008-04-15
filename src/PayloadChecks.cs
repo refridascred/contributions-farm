@@ -47,12 +47,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
             public long Level { get; set; }
-            public string Score { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            public bool Score { get; set; }
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
