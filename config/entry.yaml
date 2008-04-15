@@ -1,11 +1,11 @@
 # entry settings
-compress: 9154
-poll_ratio: 30
-dry_run:
-  audit: 30
-  layout_limit: eu-west
-  strict: local
-  cache_timeout_s: cached
-warm_delay_count: staging
-hard_timeout_s: open
-base_ttl_count: 1024
+hard_window:
+  batch_limit: 1024
+  idle_size_pct:
+    base_retries_s: 250
+    compress: false
+    warm_threshold_s: 5769
+    readonly: false
+  checks_interval: 250
+burst_capacity_s: 5.03
+session_window: local
