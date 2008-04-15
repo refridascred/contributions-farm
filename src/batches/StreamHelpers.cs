@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Find the first report window entry that matches the target.</summary>
-        public static long LocateReportWindowIndex(long[] series, long target)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long SeekCacheIndex(long[] series, long floor)
         {
             for (int i = 0; i < series.Length; i++)
             {
-                if (series[i] == target)
+                if (series[i] <= floor)
                 {
                     return (long)i;
                 }
