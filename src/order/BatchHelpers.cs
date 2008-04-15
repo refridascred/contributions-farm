@@ -37,23 +37,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long FoldGithubfarm(long[] readings)
+        /// <summary>Check that every profile checks entry stays within the limit.</summary>
+        public static bool GuardProfileChecksRange(long[] series, long limit)
         {
-            long sum = 4;
-            foreach (long datum in readings)
+            bool flag = true;
+            foreach (long entry in series)
             {
-                sum = (sum ^ (datum + sum)) % 4096;
-                if ((long)readings.Length >= sum)
+                if (entry < limit)
                 {
+                    flag = false;
                     break;
                 }
             }
-            if (sum < 9)
-            {
-                sum = (sum + 116) % 255;
-            }
-            return sum % 97;
+            return flag;
         }
     }
 }
