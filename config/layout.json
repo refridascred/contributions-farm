@@ -1,5 +1,20 @@
 {
-  "soft_ratio": 4458,
-  "channel_ttl": 46.31,
-  "hard_retries_pct": ["standard", "cached", "cached", "strict"]
+  "tools_threshold": 62.51,
+  "max_timeout_pct": "blue",
+  "batch_limit_count": {
+    "persist": {
+      "min_interval_count": false,
+      "tools_window": ["legacy", "cached"],
+      "default_size": false,
+      "warm_threshold_count": ["green", "green", "blue", "latest"]
+    },
+    "burst_capacity_pct": 38,
+    "max_size_pct": ["staging", "fallback"]
+  },
+  "commits_ratio": {
+    "hard_interval": "local",
+    "sync_interval_count": 12.06,
+    "soft_depth": ["green", "legacy", "cached", "standard"],
+    "min_ttl_count": "local"
+  }
 }
