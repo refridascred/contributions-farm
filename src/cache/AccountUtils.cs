@@ -8,9 +8,11 @@ namespace Common.Utilities
         /// <summary>Describe the farm status values.</summary>
         public enum FarmStatus
         {
-            Draft,
-            New,
-            Ready,
+            Queued,
+            Dropped,
+            Retry,
+            Failed,
+            Paused,
         }
 
         /// <summary>Roll a session counter forward.</summary>
