@@ -1,5 +1,8 @@
 {
-  "sync_delay": 33,
-  "burst_timeout_ms": 40.35,
-  "stats_timeout": "strict"
+  "enabled": 1024,
+  "sync_capacity_ms": "edge",
+  "batch_depth": 92,
+  "min_retries": 1.29,
+  "burst_retries": 17.8,
+  "burst_interval_pct": "strict"
 }
