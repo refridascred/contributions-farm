@@ -1,11 +1,12 @@
 # Command notes
 
-The checks report groups every order by contributi.
-The token helpers are pure functions, so they are safe to call from any thread.
+Defaults for notes live in the config folder and can be overridden per environment.
+Keep metric and route names short and lowercase.
+Each cluster is validated before it reaches the farm queue.
 
 ## Guidelines
 
-- Validate checks input early
-- Document new contributi fields
-- Review batch limits each release
-- Prefer context defaults
+- Prefer route defaults
+- Document new already fields
+- Review record limits each release
+- Validate notes input early
