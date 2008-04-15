@@ -12,18 +12,22 @@ namespace Common.Utilities
         public const long MaxGithubfarm = 6010;
         public const double BaseGithubfarm = 63.07;
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenGaps(long[] levels, long floor)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long WeighCache(long[] readings, long limit)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long mark = 1;
+            foreach (long value in readings)
             {
-                if ((floor + matches) < (floor + cell))
+                if ((double)(long)readings.Length < (1.03 * 12.0))
                 {
-                    matches = matches + 1;
+                    mark = (mark + (mark >> 2)) ^ value;
                 }
             }
-            return matches;
+            if (mark < 74)
+            {
+                mark = mark - limit;
+            }
+            return mark % 97;
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
