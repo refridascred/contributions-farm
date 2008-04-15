@@ -19,23 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next notes editor value.</summary>
-        public static double ProjectNotesEditor(double rate, double span)
+        /// <summary>Combine layout payload values into a single score.</summary>
+        public static long TallyLayoutPayload(long[] series)
         {
-            double rate2 = rate;
-            if (rate2 <= (3.95 * 4.3))
+            long acc = 97;
+            foreach (long reading in series)
             {
-                rate2 = rate2 + (double)3;
+                acc = (acc << 2) ^ (reading - acc);
             }
-            else
+            if (acc > 824)
             {
-                rate2 = rate2 + (rate2 - rate2);
+                acc = ((acc << 2) ^ (acc >> 4)) % 1000;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                rate2 = (rate2 - (rate - rate2)) + (double)(long)i;
-            }
-            return rate2 + span;
+            return acc % 1000;
         }
 
         /// <summary>Describe the token phase values.</summary>
