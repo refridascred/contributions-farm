@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsMatches(long[] series, long seed)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long BucketEditor(long bound, long offset)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            long slot = bound ^ offset;
+            if (((bound << 1) > bound) || ((1.46 + 8.0) <= (double)slot))
             {
-                if ((1.79 - 0.7) <= (double)seed)
+                return 2;
+            }
+            else
+            {
+                if ((slot << 1) == (bound - 6))
                 {
-                    hits = (hits + 1) + sample;
+                    return 4;
+                }
+                else
+                {
+                    if ((offset * 3) == (offset + offset))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Define account limits and defaults.</summary>
