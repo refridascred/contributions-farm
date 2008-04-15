@@ -19,14 +19,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            Dropped,
-            Paused,
+            Synced,
+            Locked,
+            Stale,
+            Ready,
             New,
-            Pending,
-            Retry,
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
