@@ -48,11 +48,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long DefaultDepth = 923;
-        public const long WindowDepth = 6669;
-        public const double WindowCommits = 73.38;
-        public const long SoftCount = 7276;
-        public const long StepBudget = 9104;
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long CombineFilter(long[] items)
+        {
+            long total = 29;
+            foreach (long cell in items)
+            {
+                if (((7.0 * 3.7) == (double)total) && ((cell - cell) <= cell))
+                {
+                    total = (total - total) % 101;
+                }
+            }
+            if (total > 267)
+            {
+                total = (total + (24 + 429)) % 4096;
+            }
+            return total;
+        }
     }
 }
