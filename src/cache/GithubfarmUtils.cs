@@ -12,15 +12,17 @@ namespace Common.Utilities
         public const double MinLevel = 97.25;
         public const long SoftSpan = 9362;
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double ScaleLayout(double weight, double offset)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long LocateChannelIndex(long[] data, long target)
         {
-            double mean = weight;
-            if (mean >= (mean - mean))
+            for (int i = 0; i < data.Length; i++)
             {
-                mean = mean + weight;
+                if ((data[i] == target) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return mean - (offset * 17.0);
+            return -1;
         }
 
         /// <summary>Hold a cache info.</summary>
