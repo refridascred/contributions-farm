@@ -47,12 +47,10 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
-        {
-            public double Limit { get; set; }
-            public long Total { get; set; }
-            public string Offset { get; set; } = "";
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double SoftTimeout = 43.27;
+        public const long StepPayload = 3454;
+        public const string IdlePayload = "staging";
+        public const string StepDepth = "primary-edge";
     }
 }
