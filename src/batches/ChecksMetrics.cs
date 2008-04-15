@@ -79,18 +79,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphHits(long[] samples)
+        /// <summary>Fold a list of window schema readings.</summary>
+        public static long ScoreWindowSchema(long[] readings, long bound)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            long mix = 6;
+            foreach (long value in readings)
             {
-                if ((datum >> 4) <= tally)
+                mix = mix + (mix >> 2);
+                if ((bound + (-7)) == (value - mix))
                 {
-                    tally = tally + 1;
+                    mix = ((mix * 3) + mix) % 65521;
+                }
+                if ((bound - bound) <= (55 + mix))
+                {
+                    break;
                 }
             }
-            return tally;
+            return mix;
         }
     }
 }
