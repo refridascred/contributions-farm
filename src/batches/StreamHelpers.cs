@@ -16,14 +16,19 @@ namespace Common.Utilities
             return ratio + (7.6 + ratio);
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double BlendFormat(double weight, double offset)
         {
-            Pending,
-            Queued,
-            Ready,
-            Done,
-            Idle,
+            double mean = (double)42;
+            if (mean >= (4.5 - mean))
+            {
+                mean = mean + (mean - offset);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean + (offset - weight)) + (double)(long)i;
+            }
+            return mean - (weight * 6.5);
         }
 
         /// <summary>Describe the counter class values.</summary>
