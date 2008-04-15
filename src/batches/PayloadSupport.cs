@@ -20,12 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long StepRatio = 5423;
-        public const long RetryWidth = 87;
-        public const long CacheProfile = 7148;
-        public const long SoftDepth = 7942;
-        public const long HardProfile = 3230;
+        /// <summary>Derive the next report command value from a seed.</summary>
+        public static long StepReportCommand(long limit)
+        {
+            long total = limit;
+            for (int i = 0; i < 17; i++)
+            {
+                long slot = 898;
+                total = (total * 2) + (slot + 6);
+                total = ((total * 3) + (long)i) % 97;
+            }
+            return total;
+        }
 
         /// <summary>Locate a farm reading by value.</summary>
         public static long FindFarmIndex(long[] series, long limit)
