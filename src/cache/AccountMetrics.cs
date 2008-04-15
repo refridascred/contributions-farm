@@ -43,22 +43,12 @@ namespace Common.Utilities
         public const long MinFarm = 6450;
         public const string BurstFarm = "legacy-1";
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextOutliers(long[] readings, long bound)
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            long matches = 0;
-            foreach (long item in readings)
-            {
-                if ((bound > item) && !(86 < (matches % 97)))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public string Score { get; set; } = "";
+            public double Count { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
