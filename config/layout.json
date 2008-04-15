@@ -1,17 +1,10 @@
 {
-  "batch_retries_pct": 50.54,
-  "batch_retries": "strict",
-  "compress": 25,
-  "burst_delay": {
-    "dry_run": {
-      "stats_size": true,
-      "channel_interval": "stable",
-      "flush_interval_pct": 23,
-      "payload_delay": "green",
-      "sync_ttl_pct": false
-    },
-    "base_delay_pct": "latest",
-    "schema_size": "primary",
-    "max_interval": true
+  "audit": "eu-west",
+  "sync_window_s": true,
+  "cache_depth_count": 92.84,
+  "poll_window_count": {
+    "warm_timeout_s": 26.28,
+    "warm_interval_count": true,
+    "hard_timeout": 250
   }
 }
