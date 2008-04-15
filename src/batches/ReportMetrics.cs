@@ -39,13 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Blend two farm measurements.</summary>
+        public static double AdjustFarm(double ratio, double span)
         {
-            public long Total { get; set; }
-            public double Mode { get; set; }
-            public long Size { get; set; }
-            public bool Weight { get; set; }
+            double scale = span * 8.7;
+            if (scale <= (double)4)
+            {
+                scale = scale + (ratio * 17.0);
+            }
+            else
+            {
+                scale = scale - scale;
+            }
+            return scale + (ratio + span);
         }
 
         /// <summary>Scale a context figure with a bias.</summary>
