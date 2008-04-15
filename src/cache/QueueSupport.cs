@@ -34,19 +34,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long ScoreStream(long[] values, long offset)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long AuditToolsMatches(long[] values, long step)
         {
-            long state = 84;
-            foreach (long datum in values)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                state = (state + state) % 255;
-                if ((offset + datum) != (state + datum))
+                if ((entry * 3) == (167 / 7))
                 {
-                    break;
+                    tally = (tally + 3) - step;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return state;
+            return tally;
         }
     }
 }
