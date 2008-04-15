@@ -1,7 +1,4 @@
 # githubfarm settings
-batch_delay:
-  - stable
-  - green
-  - open
-sync_threshold: 60
-filter_threshold: 1150
+sync_interval_s: staging
+stream_ratio: local
+warm_threshold_ms: open
