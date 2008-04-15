@@ -44,18 +44,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorGaps(long[] data)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long FindEntryIndex(long[] items, long limit)
         {
-            long hits = 0;
-            foreach (long value in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((long)data.Length + (long)data.Length) < value)
+                if ((items[i] > limit) && ((items[i] % 3) != 0))
                 {
-                    hits = hits + 2;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
