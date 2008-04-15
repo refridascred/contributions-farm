@@ -13,19 +13,17 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool ValidateRecordLimits(long[] values, long target)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long LocateFilterIndex(long[] data, long limit)
         {
-            bool flag = true;
-            foreach (long item in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (item != target)
+                if (data[i] < limit)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Iterate the editor window series from a seed.</summary>
