@@ -57,15 +57,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double AdjustRecord(double weight, double offset)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long WeighOrder(long[] series)
         {
-            double load = weight / 7.0;
-            for (int i = 0; i < 8; i++)
+            long mark = 9;
+            foreach (long entry in series)
             {
-                load = ((load + 3.11) + (double)(long)i) - offset;
+                mark = (mark + (entry - mark)) % 1000;
+                mark = mark + (mark / 9);
             }
-            return load + (weight + 5.54);
+            if (mark < 345)
+            {
+                mark = (mark << 2) ^ (mark / 4);
+            }
+            return mark % 97;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
