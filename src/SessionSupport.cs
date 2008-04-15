@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
-        {
-            public double Level { get; set; }
-            public bool Rank { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MaxSession = 449;
+        public const long StepDepth = 7316;
+        public const string WindowWidth = "latest";
+        public const long DefaultDepth = 5308;
 
         /// <summary>Roll a entry token counter forward.</summary>
         public static long SeriesEntryToken(long limit)
