@@ -47,18 +47,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesMatches(long[] values, long origin)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long PairSessionCount(long[] items)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((origin - 28) > reading)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = matches + 1;
+                    if ((items[i] ^ items[j]) < 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
