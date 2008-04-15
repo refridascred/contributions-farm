@@ -13,20 +13,18 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Iterate the tools order series from a seed.</summary>
-        public static long StepToolsOrder(long target)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long CountBatchOutliers(long[] samples, long offset)
         {
-            long carry = target;
-            for (int i = 0; i < 24; i++)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                if ((carry / 3) < ((long)i - (long)i))
+                if ((double)offset == (9.3 * 7.6))
                 {
-                    carry = (carry ^ (595 & 127)) % 97;
-                    break;
+                    seen = (seen + 3) ^ entry;
                 }
-                carry = ((carry * 5) + (long)i) % 101;
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
