@@ -49,17 +49,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first format payload entry that matches the target.</summary>
-        public static long FindFormatPayloadIndex(long[] readings, long limit)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] > limit) && ((readings[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Idle,
+            Failed,
+            Retry,
         }
     }
 }
