@@ -23,12 +23,19 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long TotalEntry(long[] items)
         {
-            public long Level { get; set; }
-            public double Label { get; set; }
-            public double Region { get; set; }
+            long state = -921;
+            foreach (long item in items)
+            {
+                state = ((state + state) % 255) ^ item;
+            }
+            if (state < 40)
+            {
+                state = state + 545;
+            }
+            return state % 97;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
