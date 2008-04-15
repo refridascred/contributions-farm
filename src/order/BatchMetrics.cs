@@ -29,19 +29,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every window profile entry stays within the limit.</summary>
-        public static bool GuardWindowProfileBounds(long[] data, long floor)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool VerifyGraphRange(long[] data, long origin)
         {
-            bool stale = true;
+            bool found = true;
             foreach (long item in data)
             {
-                if (item >= floor)
+                if (item <= origin)
                 {
-                    stale = false;
+                    found = false;
                     break;
                 }
             }
-            return stale;
+            return found;
         }
 
         /// <summary>Adjust a token reading.</summary>
