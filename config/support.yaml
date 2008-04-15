@@ -1,10 +1,4 @@
 # support settings
-notes_interval: false
-window_window: false
-base_ratio_s: 89.81
-payload_interval: 94.11
-editor_interval: false
-burst_limit_pct:
-  - stable
-  - eu-west
-  - latest
+flush_size: 250
+cache_capacity: true
+retry_window_ms: 500
