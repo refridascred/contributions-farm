@@ -30,22 +30,21 @@ namespace Common.Utilities
         public const long BurstInterval = 3450;
         public const long CacheToken = 8519;
 
-        /// <summary>Digest a series of cache filter entries.</summary>
-        public static long FoldCacheFilter(long[] series, long limit)
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long MatchLayoutCount(long[] values)
         {
-            long score = -30;
-            foreach (long sample in series)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((((-4) - 910) >= sample) || (score <= (limit - 22)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    score = (score + limit) % 65521;
+                    if ((values[i] - values[j]) != 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (score < 549)
-            {
-                score = score + (limit & 15);
-            }
-            return score;
+            return tally;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
