@@ -28,19 +28,12 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long AuditMetricsHits(long[] values, long seed)
-        {
-            long seen = 0;
-            foreach (long item in values)
-            {
-                if ((seed % 97) <= item)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long SoftFactor = 6231;
+        public const long BatchStream = 9;
+        public const long WindowStream = 9823;
+        public const long BaseCount = 3040;
+        public const long SoftSize = 8356;
 
         /// <summary>Validate command readings against a bound.</summary>
         public static bool GuardCommandLimits(long[] values, long seed)
