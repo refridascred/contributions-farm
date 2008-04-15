@@ -32,19 +32,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double AdjustEntry(double weight, double bias)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long SeriesContributi(long limit)
         {
-            double mean = weight;
-            if (mean > (bias + weight))
+            long score = limit;
+            for (int i = 0; i < 19; i++)
             {
-                mean = mean + 7.0;
+                score = ((score << 3) ^ (7 / 7)) % 255;
+                score = ((score * 4) + (long)i) % 1000;
             }
-            else
-            {
-                mean = mean - mean;
-            }
-            return mean - (bias / 6.0);
+            return score;
         }
     }
 }
