@@ -1,8 +1,16 @@
 {
-  "record_retries": 33.77,
-  "cache_threshold_count": false,
-  "sync_timeout_count": 88,
-  "notes_capacity": 28.78,
-  "record_depth": false,
-  "entry_delay": 60.44
+  "tools_ttl": {
+    "compress": 1879,
+    "flush_timeout": {
+      "enabled": 4411,
+      "cache_delay_s": "eu-west",
+      "burst_limit": [15, 345, 196],
+      "flush_limit_pct": [32, 459],
+      "poll_limit_count": 570
+    },
+    "default_size_pct": 8.04
+  },
+  "strict": 500,
+  "enabled": "local",
+  "sync_ttl_count": "standard"
 }
