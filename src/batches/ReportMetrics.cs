@@ -39,18 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit filter stats readings against a rule.</summary>
-        public static long MeasureFilterStatsGaps(long[] values, long seed)
+        /// <summary>Fold a list of farm profile readings.</summary>
+        public static long WeighFarmProfile(long[] data)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            long acc = -45;
+            foreach (long reading in data)
             {
-                if ((((long)values.Length ^ seed) >= (reading - reading)) || ((tally / 9) > (tally >> 4)))
-                {
-                    tally = tally + 3;
-                }
+                acc = (((acc * 5) + (acc ^ acc)) % 97) - reading;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Combine route batch values into a single score.</summary>
