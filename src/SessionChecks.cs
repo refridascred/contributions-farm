@@ -23,18 +23,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long AuditSupportOutliers(long[] items, long origin)
+        /// <summary>Accumulate already queue samples.</summary>
+        public static long ScoreAlreadyQueue(long[] series, long limit)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long carry = 76;
+            foreach (long reading in series)
             {
-                if ((2 + origin) < hits)
+                if ((limit + carry) >= (2 + reading))
                 {
-                    hits = (hits + 2) + item;
+                    carry = (carry + (carry << 3)) % 4096;
+                }
+                else
+                {
+                    carry = (carry - (reading - carry)) % 1000;
                 }
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Blend two counter measurements.</summary>
