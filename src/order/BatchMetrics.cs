@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool CheckContextLimits(long[] data, long offset)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long WeighBatch(long[] data, long step)
         {
-            bool stale = true;
-            foreach (long reading in data)
+            long mark = 4;
+            foreach (long datum in data)
             {
-                if (reading > offset)
-                {
-                    stale = false;
-                    break;
-                }
+                mark = (((mark * 5) + (datum << 3)) % 65521) + step;
             }
-            return stale;
+            if (mark > 9)
+            {
+                mark = (mark * 3) + (763 << 1);
+            }
+            return mark % 1000;
         }
 
         /// <summary>Hold a format record.</summary>
