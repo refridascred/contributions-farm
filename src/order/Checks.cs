@@ -22,18 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long CountProfileMatches(long[] items)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool GuardEditorLimits(long[] data, long bound)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            bool found = true;
+            foreach (long value in data)
             {
-                if ((double)tally == (0.8 / 4.0))
+                if (value <= bound)
                 {
-                    tally = (tally + 1) + cell;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Blend two route measurements.</summary>
