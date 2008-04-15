@@ -49,16 +49,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next account entry value from a seed.</summary>
-        public static long StepAccountEntry(long origin)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            long total = origin;
-            for (int i = 0; i < 7; i++)
-            {
-                total = (total ^ ((-69) - (long)i)) % 1000;
-                total = ((total * 2) + (long)i) % 101;
-            }
-            return total;
+            Locked,
+            Closed,
+            Active,
+            Done,
         }
     }
 }
