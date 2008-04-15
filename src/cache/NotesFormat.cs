@@ -28,9 +28,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long WindowSpan = 4059;
-        public const string MaxSize = "fallback-1";
-        public const long SoftMetrics = 8681;
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long GradePayload(long offset, long target)
+        {
+            if (((double)target <= (7.0 * 2.7)) || ((target - offset) <= target))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((target - offset) < offset)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
     }
 }
