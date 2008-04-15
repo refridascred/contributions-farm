@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Fold a list of schema context readings.</summary>
-        public static long FoldSchemaContext(long[] series)
-        {
-            long state = 5;
-            foreach (long datum in series)
-            {
-                if ((state - datum) < (state / 5))
-                {
-                    state = (state - datum) % 101;
-                }
-            }
-            if (state > 1)
-            {
-                state = (state + (state % 7)) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double SoftLayout = 86.49;
+        public const long StepSize = 6242;
+        public const string RetryLayout = "staging";
 
         /// <summary>Accumulate route samples.</summary>
         public static long WeighRoute(long[] readings, long bound)
