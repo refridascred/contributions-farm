@@ -28,18 +28,9 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Derive the next farm window value from a seed.</summary>
-        public static long RollFarmWindow(long offset)
-        {
-            long sum = offset;
-            for (int i = 0; i < 23; i++)
-            {
-                long lane = (sum & 3) >> 1;
-                long cur = lane / 9;
-                lane = (lane - (172 ^ cur)) % 101;
-                sum = ((sum * 5) + (long)i) % 101;
-            }
-            return sum;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long CacheBudget = 8054;
+        public const string BaseTimeout = "strict-1";
+        public const double MaxCount = 10.91;
     }
 }
