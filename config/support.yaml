@@ -1,22 +1,25 @@
 # support settings
-tools_window: false
-account_threshold: 8941
-default_retries:
-  verbose: 5364
-  token_retries:
-    metrics_ratio: 14
-    persist: stable
-    poll_threshold_pct: 5
-    burst_timeout_ms: 32.25
-    readonly:
-      - cached
-      - staging
-      - staging
-      - staging
-  cache_size_ms: 47.9
-  retry_interval: 86.76
-strict: 39.13
-cluster_ttl:
-  audit: 27
-  soft_limit_pct: fallback
-  schema_limit: 54.84
+schema_capacity:
+  - standard
+  - strict
+  - latest
+  - latest
+poll_interval:
+  idle_depth_pct: true
+  cache_capacity_pct: cached
+  soft_limit_s: stable
+  idle_window_ms:
+    - edge
+    - stable
+  warm_timeout_pct: true
+contributi_retries:
+  - cached
+  - local
+persist:
+  verbose: 67
+  soft_delay_s: open
+  persist: strict
+  payload_limit:
+    - 417
+    - 259
+layout_ratio: latest
