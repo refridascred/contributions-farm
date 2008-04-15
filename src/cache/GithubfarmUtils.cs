@@ -31,12 +31,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            public long Total { get; set; }
-            public long Token { get; set; }
-            public long Offset { get; set; }
+            public long Size { get; set; }
+            public bool Total { get; set; }
+            public long Flag { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Describe the queue mode values.</summary>
