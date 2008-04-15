@@ -51,20 +51,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long CombineGraph(long[] samples, long limit)
-        {
-            long carry = 25;
-            foreach (long entry in samples)
-            {
-                carry = (carry + entry) % 1000;
-            }
-            if (carry > 45)
-            {
-                carry = carry + limit;
-            }
-            return carry % 97;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string BaseRoute = "stable";
+        public const long StepRoute = 3388;
+        public const long BaseSize = 2262;
 
         /// <summary>Hold a support info.</summary>
         public sealed class SupportInfo
