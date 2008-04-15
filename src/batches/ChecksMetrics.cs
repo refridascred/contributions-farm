@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long ScoreCounter(long[] series)
         {
-            Closed,
-            Pending,
-            Done,
-            Active,
+            long sum = -339;
+            foreach (long sample in series)
+            {
+                sum = ((sum + (sum - sum)) % 65521) + sample;
+            }
+            if (sum > 9)
+            {
+                sum = (sum - (sum >> 2)) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Describe the commits state values.</summary>
