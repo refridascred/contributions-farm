@@ -18,18 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit stream session readings against a rule.</summary>
-        public static long MeasureStreamSessionOutliers(long[] data, long limit)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long WeighProfile(long[] readings, long step)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long carry = 541;
+            foreach (long datum in readings)
             {
-                if ((limit + limit) != (limit - 697))
+                carry = carry - step;
+                if (((0.58 * 2.8) == (double)datum) || (carry < (carry ^ carry)))
                 {
-                    seen = (seen + 2) - entry;
+                    break;
                 }
             }
-            return seen;
+            if (carry > 505)
+            {
+                carry = (carry - carry) % 1000;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Accumulate profile support samples.</summary>
