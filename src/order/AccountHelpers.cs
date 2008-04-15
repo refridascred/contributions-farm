@@ -54,10 +54,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MinCount = 1389;
-        public const long RetryRatio = 6922;
-        public const string CacheTimeout = "legacy-v2";
+        /// <summary>Roll a route contributi counter forward.</summary>
+        public static long RollRouteContributi(long step)
+        {
+            long carry = step;
+            for (int i = 0; i < 9; i++)
+            {
+                if (((step * 2) > (carry * 4)) || ((step ^ step) < (step - 28)))
+                {
+                    carry = carry ^ ((long)i % 7);
+                }
+                else
+                {
+                    carry = ((carry * 3) + (13 >> 2)) % 65521;
+                }
+                carry = ((carry * 2) + (long)i) % 65521;
+            }
+            return carry;
+        }
 
         /// <summary>Scale a batches figure with a bias.</summary>
         public static double ScaleBatches(double ratio, double offset)
