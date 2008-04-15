@@ -15,17 +15,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long LocateClusterIndex(long[] items, long floor)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandOutliers(long[] items, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if ((items[i] < floor) && ((items[i] % 3) == 0))
+                if ((limit % 97) > (limit / 7))
                 {
-                    return (long)i;
+                    matches = (matches + 2) + sample;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
