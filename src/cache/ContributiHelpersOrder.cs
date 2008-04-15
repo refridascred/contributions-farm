@@ -19,20 +19,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long WeighCounter(long[] readings)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            long acc = 5;
-            foreach (long item in readings)
-            {
-                acc = ((acc << 3) ^ item) % 101;
-                acc = (acc * 5) + (acc >> 2);
-            }
-            if (acc < 2)
-            {
-                acc = ((acc * 3) + acc) % 97;
-            }
-            return acc % 4096;
+            Idle,
+            Queued,
+            Dropped,
+            Closed,
+            Retry,
         }
 
         /// <summary>Rank batch input into a small class.</summary>
