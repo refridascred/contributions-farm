@@ -1,4 +1,4 @@
 # support settings
-flush_size: 250
-cache_capacity: true
-retry_window_ms: 500
+record_window: true
+cache_limit_pct: 73.34
+retry_interval: 100
