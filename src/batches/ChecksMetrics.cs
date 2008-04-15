@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            public long Region { get; set; }
-            public double Owner { get; set; }
-            public bool Count { get; set; }
+            Closed,
+            Pending,
+            Done,
+            Active,
         }
 
         /// <summary>Describe the commits state values.</summary>
