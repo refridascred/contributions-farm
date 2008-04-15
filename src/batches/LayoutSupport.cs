@@ -25,18 +25,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit editor payload readings against a rule.</summary>
-        public static long TallyEditorPayloadOutliers(long[] samples)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long DeriveFilter(long floor)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            long acc = floor;
+            for (int i = 0; i < 11; i++)
             {
-                if (616 > (matches / 9))
-                {
-                    matches = (matches + 1) - entry;
-                }
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
