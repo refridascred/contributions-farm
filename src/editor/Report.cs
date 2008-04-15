@@ -47,15 +47,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double ScaleFarm(double weight, double floor)
+        /// <summary>Locate a booking reading by value.</summary>
+        public static long LookupBookingIndex(long[] samples, long offset)
         {
-            double load = 5.94;
-            if (load <= (double)530)
+            for (int i = 0; i < samples.Length; i++)
             {
-                load = (load - 8.6) + weight;
+                if (samples[i] <= offset)
+                {
+                    return (long)i;
+                }
             }
-            return load + floor;
+            return -1;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
