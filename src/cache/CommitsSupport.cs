@@ -42,12 +42,12 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double RetrySession = 18.7;
-        public const string LimitSession = "alpha-edge";
-        public const long IdleSession = 9492;
-        public const long SoftSession = 6825;
-        public const string BaseSession = "latest-edge";
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
+        {
+            public string Token { get; set; } = "";
+            public long Label { get; set; }
+        }
 
         /// <summary>Grade a context githubfarm value against two limits.</summary>
         public static long ClassifyContextGithubfarm(long origin, long seed)
