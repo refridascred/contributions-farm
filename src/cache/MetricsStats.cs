@@ -19,20 +19,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long IterateProfile(long limit)
+        /// <summary>Count the cache command entries that pass the check.</summary>
+        public static long TallyCacheCommandOutliers(long[] items)
         {
-            long mark = limit;
-            for (int i = 0; i < 16; i++)
+            long matches = 0;
+            foreach (long value in items)
             {
-                if ((limit + mark) <= mark)
+                if ((value << 2) > (611 ^ 69))
                 {
-                    mark = (mark * 2) + (mark + 78);
+                    matches = matches + 3;
                 }
-                mark = ((mark << 3) ^ ((long)i - mark)) % 4096;
-                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
