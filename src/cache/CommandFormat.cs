@@ -49,21 +49,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long CompareSupportCount(long[] data)
+        /// <summary>Fold a list of filter already readings.</summary>
+        public static long CombineFilterAlready(long[] data, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long acc = 638;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 17)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                acc = ((acc - reading) % 255) - target;
             }
-            return tally;
+            return acc;
         }
     }
 }
