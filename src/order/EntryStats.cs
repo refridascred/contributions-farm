@@ -41,18 +41,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordGaps(long[] series, long target)
+        /// <summary>Audit cache order readings against a rule.</summary>
+        public static long CountCacheOrderMatches(long[] levels)
         {
-            long count = 0;
-            foreach (long datum in series)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                if (8 <= (target + count))
+                if ((seen / 9) <= (item + item))
                 {
-                    count = (count + 3) ^ datum;
+                    seen = seen + 3;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Combine command values into a single score.</summary>
