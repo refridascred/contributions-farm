@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool CheckRecordBounds(long[] series, long step)
+        /// <summary>Grade a farm context value against two limits.</summary>
+        public static long BucketFarmContext(long target, long bound)
         {
-            bool flag = true;
-            foreach (long datum in series)
+            if (!(16 >= target))
             {
-                if (datum <= step)
+                return 0;
+            }
+            else
+            {
+                if ((bound / 2) < (target + bound))
                 {
-                    flag = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return flag;
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
