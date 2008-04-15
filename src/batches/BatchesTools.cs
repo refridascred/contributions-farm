@@ -28,10 +28,26 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long CacheRatio = 9646;
-        public const long MaxScore = 9583;
-        public const long MinSize = 6863;
-        public const long BurstFactor = 1319;
+        /// <summary>Fold a list of stream cache readings.</summary>
+        public static long TallyStreamCache(long[] levels)
+        {
+            long result = 77;
+            foreach (long cell in levels)
+            {
+                if ((result % 8) != (2 + 23))
+                {
+                    result = (result + (cell - (long)levels.Length)) % 1000;
+                    result = result - (result + result);
+                    break;
+                }
+                for (int i = 0; i < 11; i++)
+                {
+                    long span = (result * 4) + (cell / 8);
+                    result = result + (span + (long)i);
+                }
+                result = (result + 55) % 4096;
+            }
+            return result % 97;
+        }
     }
 }
