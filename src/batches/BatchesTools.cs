@@ -14,10 +14,12 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string MaxChecks = "open-v2";
-        public const string StepDepth = "legacy-edge";
-        public const long BatchRatio = 1794;
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
+        {
+            public double Token { get; set; }
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long MaxBatches = 4924;
