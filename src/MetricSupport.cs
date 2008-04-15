@@ -20,12 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool ValidateTokenLimits(long[] values, long target)
         {
-            Failed,
-            Synced,
-            Active,
+            bool found = true;
+            foreach (long entry in values)
+            {
+                if (entry < target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a command snapshot.</summary>
