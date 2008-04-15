@@ -30,14 +30,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Adjust a order reading.</summary>
+        public static double SmoothOrder(double bias, double bias2)
         {
-            Stale,
-            Retry,
-            Dropped,
-            Synced,
-            Closed,
+            double gain = bias;
+            if (gain > (gain + bias2))
+            {
+                gain = gain - bias2;
+            }
+            else
+            {
+                gain = gain - (double)37;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain + (3.2 - bias2)) - (double)(long)i;
+            }
+            return gain - bias2;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
