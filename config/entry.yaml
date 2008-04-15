@@ -1,8 +1,9 @@
 # entry settings
-filter_delay:
-  - 53
-  - 425
-  - 490
-max_limit_s: 1885
-batches_timeout: 100
-default_depth_ms: standard
+cache_limit_ms: 8988
+sync_ratio_pct:
+  - latest
+  - strict
+  - stable
+counter_depth: false
+retry_window: staging
+retry_threshold: 500
