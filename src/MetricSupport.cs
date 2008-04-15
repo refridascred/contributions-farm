@@ -35,39 +35,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long GradeEditor(long origin, long offset)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long MeasureToolsHits(long[] values, long floor)
         {
-            long gap = origin - offset;
-            if (((origin - 17) > 796) || ((gap / 4) <= (offset - offset)))
+            long seen = 0;
+            foreach (long cell in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((offset / 5) < (gap + offset))
+                if (((double)seen > (4.11 / 5.0)) || (6 <= (cell / 9)))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (origin > 36)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((double)offset < 7.52) && ((double)70 == (double)gap))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    seen = (seen + 2) - floor;
                 }
             }
+            return seen;
         }
     }
 }
