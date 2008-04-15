@@ -5,32 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Grade a schema buffer value against two limits.</summary>
-        public static long GradeSchemaBuffer(long seed, long target)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            long bound = seed - target;
-            if (bound < target)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)seed > (14.0 * 1.63))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((bound << 2) == (bound + (-5)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Active,
+            Closed,
+            Draft,
+            Paused,
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
