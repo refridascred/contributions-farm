@@ -75,12 +75,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
-        {
-            Synced,
-            Stale,
-            Draft,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MinFactor = 7791;
+        public const string BurstCache = "legacy-v2";
+        public const long SoftSize = 3627;
+        public const double IdleSpan = 77.87;
     }
 }
