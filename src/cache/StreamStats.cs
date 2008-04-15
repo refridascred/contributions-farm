@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string BaseFactor = "open-v2";
-        public const double BatchTools = 86.45;
-        public const double BaseSize = 64.74;
-        public const string CacheTools = "primary-1";
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
+        {
+            public long Region { get; set; }
+            public string Stamp { get; set; } = "";
+            public bool Size { get; set; }
+        }
 
         /// <summary>Grade a editor graph value against two limits.</summary>
         public static long RankEditorGraph(long floor, long target)
