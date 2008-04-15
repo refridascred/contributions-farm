@@ -28,19 +28,18 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool ValidateBatchesBounds(long[] readings, long floor)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long CountTokenMatches(long[] series)
         {
-            bool ready = true;
-            foreach (long sample in readings)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                if (sample <= floor)
+                if ((tally >> 1) < (cell ^ tally))
                 {
-                    ready = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Hold a queue record.</summary>
