@@ -69,19 +69,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Scale a token layout figure with a bias.</summary>
-        public static double SmoothTokenLayout(double scale, double offset)
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            double scale2 = (double)51;
-            if (scale2 >= scale2)
-            {
-                scale2 = scale2 + 18.0;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                scale2 = (scale2 + scale) + (double)(long)i;
-            }
-            return scale2 + offset;
+            public long Weight { get; set; }
+            public double Owner { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
