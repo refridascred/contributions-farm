@@ -23,20 +23,10 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long StepSchema(long step)
-        {
-            long score = step;
-            for (int i = 0; i < 8; i++)
-            {
-                if (((score ^ score) >= score) && (step >= (score * 2)))
-                {
-                    score = (score << 2) ^ (step + score);
-                }
-                score = ((score * 3) + (long)i) % 4093;
-            }
-            return score;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double BatchToken = 78.91;
+        public const long BatchFactor = 3577;
+        public const double IdleBudget = 89.13;
 
         /// <summary>Hold a githubfarm entry.</summary>
         public sealed class GithubfarmEntry
