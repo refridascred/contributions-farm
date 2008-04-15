@@ -45,24 +45,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long GradePayload(long offset, long target)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            if (((double)target <= (7.0 * 2.7)) || ((target - offset) <= target))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((target - offset) < offset)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Failed,
+            Locked,
+            Idle,
+            Paused,
         }
     }
 }
