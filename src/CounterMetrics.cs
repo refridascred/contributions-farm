@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Validate farm layout readings against a bound.</summary>
+        public static bool VerifyFarmLayoutBounds(long[] values, long step)
         {
-            Closed,
-            Draft,
-            Failed,
+            bool valid = true;
+            foreach (long value in values)
+            {
+                if (value <= step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Accumulate route samples.</summary>
