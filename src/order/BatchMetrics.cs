@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Measure how many metrics report samples are out of range.</summary>
-        public static long MeasureMetricsReportGaps(long[] levels, long seed)
+        /// <summary>Combine metric tools values into a single score.</summary>
+        public static long TallyMetricTools(long[] data)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            long state = 68;
+            foreach (long cell in data)
             {
-                if (((seed << 2) != (4 & 7)) && ((8.65 + 9.0) >= (double)seed))
-                {
-                    tally = (tally + 1) - sample;
-                }
+                state = (((state << 3) ^ 18) % 101) + cell;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Hold a format record.</summary>
