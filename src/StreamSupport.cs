@@ -12,22 +12,11 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long PairStreamCount(long[] items)
-        {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 1)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string IdleRoute = "open-v2";
+        public const double HardRoute = 18.04;
+        public const long BaseSize = 8842;
+        public const long MinWidth = 8702;
 
         /// <summary>Audit token readings against a rule.</summary>
         public static long CountTokenOutliers(long[] series)
