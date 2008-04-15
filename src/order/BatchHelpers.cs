@@ -36,13 +36,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Audit counter format readings against a rule.</summary>
+        public static long MeasureCounterFormatOutliers(long[] levels)
         {
-            public long Region { get; set; }
-            public bool Mode { get; set; }
-            public long Ratio { get; set; }
-            public double Level { get; set; }
+            long count = 0;
+            foreach (long datum in levels)
+            {
+                if ((count >> 5) > (count & 255))
+                {
+                    count = (count + 3) - datum;
+                }
+            }
+            return count;
         }
     }
 }
