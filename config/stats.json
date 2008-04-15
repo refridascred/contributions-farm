@@ -1,6 +1,6 @@
 {
-  "max_interval_pct": "staging",
-  "record_timeout": 28,
-  "max_threshold": [493, 24, 302],
-  "default_timeout_count": 100
+  "poll_interval_count": 7441,
+  "queue_interval": 67.29,
+  "contributi_timeout": [499, 390, 63, 104],
+  "cache_retries_count": true
 }
