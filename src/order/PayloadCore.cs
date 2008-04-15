@@ -20,18 +20,18 @@ namespace Common.Utilities
             return ratio + rate;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long CombineCounter(long[] series)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsOutliers(long[] series)
         {
-            long score = 0;
+            long seen = 0;
             foreach (long value in series)
             {
-                if ((value << 3) >= 859)
+                if (((87 + seen) > (919 - 5)) || ((value >> 5) >= seen))
                 {
-                    score = (score * 5) + 62;
+                    seen = seen + 2;
                 }
             }
-            return score % 4096;
+            return seen;
         }
 
         /// <summary>Hold a contributi stats.</summary>
