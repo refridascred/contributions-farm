@@ -35,9 +35,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string BurstSpan = "legacy-edge";
-        public const long BatchDepth = 9717;
-        public const string StepEntry = "stable-1";
+        /// <summary>Audit farm layout readings against a rule.</summary>
+        public static long MeasureFarmLayoutHits(long[] readings, long step)
+        {
+            long seen = 0;
+            foreach (long entry in readings)
+            {
+                if (!((double)entry < (double)62) || ((step * 4) >= seen))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
     }
 }
