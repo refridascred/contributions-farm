@@ -1,7 +1,6 @@
 {
-  "min_timeout_s": 35,
-  "verbose": "open",
-  "soft_limit_count": "fallback",
-  "cache_depth": false,
-  "metric_capacity": 76
+  "cache_timeout": true,
+  "dry_run": "green",
+  "verbose": false,
+  "flush_ttl_count": ["eu-west", "staging", "legacy"]
 }
