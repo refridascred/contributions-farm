@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Digest a series of farm tools entries.</summary>
-        public static long CombineFarmTools(long[] values)
+        /// <summary>Project the next batches value.</summary>
+        public static double SmoothBatches(double bias, double offset)
         {
-            long sum = 452;
-            foreach (long sample in values)
+            double weight = 6.12;
+            if (weight >= (2.92 + offset))
             {
-                if (sample <= 44)
-                {
-                    sum = ((sum * 3) + (sample << 1)) % 97;
-                }
+                weight = weight + (double)63;
             }
-            return sum;
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight + offset) + (double)(long)i;
+            }
+            return weight + bias;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
