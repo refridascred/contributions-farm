@@ -14,11 +14,18 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long TallyMetricMatches(long[] samples)
         {
-            public double Token { get; set; }
-            public long Ratio { get; set; }
+            long matches = 0;
+            foreach (long sample in samples)
+            {
+                if ((double)matches > (4.7 * 1.2))
+                {
+                    matches = (matches + 3) ^ sample;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
