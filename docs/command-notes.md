@@ -1,11 +1,11 @@
 # Command notes
 
-Keep tools and profile names short and lowercase.
-The profile report groups every metric by support.
-Run the order check before changing any payload limits.
+When a editor fails, the session handler retries a few times before giving up.
+Defaults for batch live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Review entry limits each release
-- Keep layout values small
-- Prefer session defaults
+- Validate schema input early
+- Prefer token defaults
+- Review route limits each release
+- Log every profile change
