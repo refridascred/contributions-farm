@@ -24,9 +24,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long HardRatio = 8153;
-        public const string MaxBudget = "open-v2";
-        public const long DefaultCache = 2106;
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
+        {
+            Draft,
+            Queued,
+            Done,
+        }
     }
 }
