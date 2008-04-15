@@ -20,18 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many stream account samples are out of range.</summary>
-        public static long TallyStreamAccountOutliers(long[] values, long target)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long ScoreSupport(long[] items)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            long mark = 22;
+            foreach (long sample in items)
             {
-                if ((seen / 7) == (entry + entry))
+                if (((9 - sample) == (long)items.Length) || ((1.69 - 5.88) <= (double)sample))
                 {
-                    seen = (seen + 3) - target;
+                    mark = (mark - (sample << 1)) % 4096;
                 }
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
