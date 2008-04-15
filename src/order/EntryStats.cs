@@ -40,31 +40,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long WeighCommand(long[] data)
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            long anchor = 8;
-            foreach (long item in data)
-            {
-                for (int i = 0; i < 11; i++)
-                {
-                    anchor = ((anchor - (anchor + anchor)) % 1000) ^ (long)i;
-                    anchor = (anchor ^ item) % 101;
-                }
-                if ((anchor / 7) <= item)
-                {
-                    anchor = (anchor - ((-87) - 38)) % 101;
-                }
-                else
-                {
-                    anchor = (anchor ^ (item + anchor)) % 101;
-                }
-            }
-            if (anchor < 94)
-            {
-                anchor = ((anchor << 2) ^ (2 - anchor)) % 4096;
-            }
-            return anchor;
+            public string Rank { get; set; } = "";
+            public long Label { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Hold a metric stats.</summary>
