@@ -1,6 +1,6 @@
 # entry settings
-counter_timeout: 250
-audit: 1024
-max_retries_count: false
-strict: true
-warm_depth_s: edge
+retry_limit: open
+idle_capacity_ms: edge
+default_timeout_count: fallback
+profile_ratio: false
+audit: 47.17
