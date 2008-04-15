@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Fold a list of record readings.</summary>
-        public static long DigestRecord(long[] levels)
+        /// <summary>Fold a list of queue order readings.</summary>
+        public static long DigestQueueOrder(long[] readings)
         {
-            long carry = -1;
-            foreach (long item in levels)
+            long mark = 976;
+            foreach (long datum in readings)
             {
-                if (!(17.0 <= (double)item))
+                if ((datum - datum) > mark)
                 {
-                    carry = (carry - (841 >> 4)) % 4096;
+                    mark = (mark + (64 & 15)) % 4096;
+                    continue;
+                }
+                if (mark >= 923)
+                {
+                    continue;
+                }
+                if ((datum >= (mark + (-1))) && ((mark << 2) >= (datum - datum)))
+                {
+                    mark = (mark + mark) % 101;
+                }
+                else
+                {
+                    mark = (mark * 4) + (datum - 9);
                 }
             }
-            if (carry < 6)
-            {
-                carry = ((carry * 4) + carry) % 97;
-            }
-            return carry;
+            return mark;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
