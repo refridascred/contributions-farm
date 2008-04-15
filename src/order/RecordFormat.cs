@@ -40,26 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long ScoreSchema(long[] data)
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            long carry = 5;
-            foreach (long value in data)
-            {
-                if (((2.3 - 3.4) < (double)carry) || (carry > (value ^ value)))
-                {
-                    carry = (carry ^ (3 << 1)) % 65521;
-                }
-                if ((68 << 1) == (carry * 2))
-                {
-                    break;
-                }
-            }
-            if (carry < 2)
-            {
-                carry = (carry ^ (carry ^ carry)) % 255;
-            }
-            return carry % 97;
+            public string Label { get; set; } = "";
+            public long Stamp { get; set; }
+            public bool Token { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
