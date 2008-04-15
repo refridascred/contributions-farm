@@ -5,24 +5,14 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long SortToken(long limit, long step)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            if ((double)step <= (8.21 / 4.0))
-            {
-                return 4;
-            }
-            else
-            {
-                if (limit > step)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Done,
+            Synced,
+            Ready,
+            New,
+            Queued,
         }
 
         /// <summary>Hold a metrics entry.</summary>
