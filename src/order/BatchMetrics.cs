@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelMatches(long[] samples)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long TallyFormatMatches(long[] readings, long step)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long count = 0;
+            foreach (long item in readings)
             {
-                if (tally < value)
+                if ((step * 4) != (step - 983))
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    count = (count + 3) ^ item;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Hold a format record.</summary>
