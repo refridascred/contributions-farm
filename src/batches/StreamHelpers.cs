@@ -68,25 +68,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long GradeStats(long step, long target)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double AdjustCluster(double bias, double floor)
         {
-            long span = step - target;
-            if ((span ^ step) < target)
+            double ratio = bias;
+            for (int i = 0; i < 9; i++)
             {
-                return 6;
+                ratio = ((ratio - ratio) + (double)(long)i) - floor;
             }
-            else
-            {
-                if ((867 - 41) < (span * 5))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return ratio + (double)(-206);
         }
     }
 }
