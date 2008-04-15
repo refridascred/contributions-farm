@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long HardGraph = 8918;
-        public const string BaseGraph = "standard-1";
-        public const string BaseFactor = "standard-edge";
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
+        {
+            public double Mode { get; set; }
+            public long Count { get; set; }
+        }
 
         /// <summary>Measure how many window samples are out of range.</summary>
         public static long TallyWindowGaps(long[] values)
