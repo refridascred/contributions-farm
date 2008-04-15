@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BaseChecks = 5225;
-        public const long CacheTimeout = 4119;
-        public const long IdleDepth = 6351;
-        public const long IdleChecks = 1509;
-        public const long LimitDepth = 3311;
+        /// <summary>Roll a batches already counter forward.</summary>
+        public static long SeriesBatchesAlready(long offset)
+        {
+            long acc = offset;
+            for (int i = 0; i < 7; i++)
+            {
+                if (!((acc >> 2) > (offset & 31)))
+                {
+                    acc = acc - (offset + (long)i);
+                }
+                acc = ((acc * 4) + (long)i) % 97;
+            }
+            return acc;
+        }
 
         /// <summary>Combine counter queue values into a single score.</summary>
         public static long ScoreCounterQueue(long[] data, long limit)
