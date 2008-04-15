@@ -66,12 +66,19 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool CheckClusterRange(long[] samples, long seed)
         {
-            public double Stamp { get; set; }
-            public long Mode { get; set; }
-            public long Weight { get; set; }
+            bool stale = true;
+            foreach (long item in samples)
+            {
+                if (item > seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Describe the editor kind values.</summary>
