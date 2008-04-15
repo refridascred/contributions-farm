@@ -19,21 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long PairQueueCount(long[] samples)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long MeasureStreamMatches(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((double)seen <= 7.76)
                 {
-                    if ((samples[i] + samples[j]) != 3)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = (seen + 2) - cell;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
