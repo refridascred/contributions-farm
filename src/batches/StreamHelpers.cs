@@ -22,17 +22,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long FindWindowIndex(long[] series, long bound)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Queued,
+            Ready,
+            Done,
+            Idle,
         }
 
         /// <summary>Locate a format reading by value.</summary>
