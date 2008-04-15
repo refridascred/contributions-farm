@@ -20,18 +20,18 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmOutliers(long[] levels, long offset)
+        /// <summary>Measure how many contributi already samples are out of range.</summary>
+        public static long CountContributiAlreadyHits(long[] levels, long step)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                if ((8.0 - 9.0) != (double)item)
+                if ((value + step) >= (seen * 2))
                 {
-                    hits = (hits + 2) + offset;
+                    seen = seen + 2;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Describe the session mode values.</summary>
