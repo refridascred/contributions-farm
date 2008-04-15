@@ -49,9 +49,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long IdleRatio = 4194;
-        public const long RetryAccount = 8480;
-        public const double MinBudget = 0.53;
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long DeriveRecord(long floor)
+        {
+            long sum = floor;
+            for (int i = 0; i < 15; i++)
+            {
+                if (9 <= (floor + floor))
+                {
+                    sum = sum ^ ((long)i + sum);
+                    break;
+                }
+                sum = ((sum * 5) + (long)i) % 4093;
+            }
+            return sum;
+        }
     }
 }
