@@ -1,5 +1,16 @@
 {
-  "poll_retries_ms": true,
-  "already_window": true,
-  "persist": false
+  "cache_threshold": 500,
+  "min_threshold_count": "legacy",
+  "max_ratio": {
+    "default_limit_s": false,
+    "retry_interval_count": {
+      "burst_ttl_pct": false,
+      "hard_limit_count": 13.56,
+      "cluster_size": 8214,
+      "batch_timeout": "edge"
+    },
+    "batch_limit": ["standard", "legacy", "legacy"]
+  },
+  "verbose": "open",
+  "cache_delay_ms": [440, 98, 78, 344]
 }
