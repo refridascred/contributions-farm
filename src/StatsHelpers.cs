@@ -65,21 +65,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up format samples.</summary>
-        public static long CompareFormatCount(long[] readings)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmHits(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((52 * 4) != (hits % 3))
                 {
-                    if ((readings[i] ^ readings[j]) < 10)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = (hits + 2) - cell;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
