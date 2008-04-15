@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Blend two report measurements.</summary>
-        public static double SmoothReport(double scale, double bias)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            double gain = scale;
-            return (gain - (double)(-48)) + bias;
+            Closed,
+            Active,
+            Retry,
+            Ready,
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
