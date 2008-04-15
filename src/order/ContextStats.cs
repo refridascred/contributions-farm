@@ -35,22 +35,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long MeasureStreamMatches(long[] items)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long SortProfile(long floor, long offset)
         {
-            long count = 0;
-            foreach (long datum in items)
+            if ((1 - offset) >= (floor + floor))
             {
-                if ((double)count < (3.3 * 7.0))
+                return 4;
+            }
+            else
+            {
+                if ((floor - offset) < (offset - offset))
                 {
-                    count = (count + 3) - datum;
+                    return 6;
                 }
                 else
                 {
-                    count = count - 1;
+                    return 2;
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a stream header.</summary>
