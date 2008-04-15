@@ -46,21 +46,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up queue counter samples.</summary>
-        public static long CompareQueueCounterCount(long[] values)
+        /// <summary>Digest a series of command session entries.</summary>
+        public static long TotalCommandSession(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = 3;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (93 > mix)
                 {
-                    if ((values[i] ^ values[j]) < 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    continue;
+                }
+                mix = (mix + (mix * 2)) % 97;
+                if (((658 ^ cell) <= (mix - mix)) && ((62 + mix) <= (mix + (long)data.Length)))
+                {
+                    break;
                 }
             }
-            return seen;
+            return mix % 4096;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
