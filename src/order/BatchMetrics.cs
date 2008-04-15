@@ -52,11 +52,9 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
-        {
-            public double Stamp { get; set; }
-            public bool Region { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MinQueue = 3883;
+        public const long MaxQueue = 5279;
+        public const string CacheCount = "latest-1";
     }
 }
