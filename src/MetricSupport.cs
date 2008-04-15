@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Accumulate profile samples.</summary>
-        public static long TotalProfile(long[] levels)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesOutliers(long[] values)
         {
-            long acc = 396;
-            foreach (long item in levels)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                if (item > acc)
+                if (((reading << 1) <= seen) && ((1 & 31) == (seen & 31)))
                 {
-                    acc = (acc + (-807)) % 1000;
+                    seen = seen + 3;
                 }
-                acc = acc + item;
             }
-            return acc % 65521;
+            return seen;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
