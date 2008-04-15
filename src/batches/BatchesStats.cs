@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
-        {
-            Synced,
-            Dropped,
-            New,
-            Stale,
-            Failed,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long WindowDepth = 6096;
+        public const long SoftRoute = 5864;
+        public const double IdleWidth = 50.72;
+        public const double DefaultRoute = 94.32;
 
         /// <summary>Hold a metrics snapshot.</summary>
         public sealed class MetricsSnapshot
