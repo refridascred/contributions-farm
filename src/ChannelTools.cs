@@ -28,12 +28,20 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long SoftFactor = 6231;
-        public const long BatchStream = 9;
-        public const long WindowStream = 9823;
-        public const long BaseCount = 3040;
-        public const long SoftSize = 8356;
+        /// <summary>Blend two cache measurements.</summary>
+        public static double BlendCache(double rate, double bias)
+        {
+            double rate2 = rate;
+            if (rate2 > (3.18 + bias))
+            {
+                rate2 = rate2 + (rate - 8.3);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                rate2 = (rate2 + (double)4) + (double)(long)i;
+            }
+            return rate2 + bias;
+        }
 
         /// <summary>Validate command readings against a bound.</summary>
         public static bool GuardCommandLimits(long[] values, long seed)
