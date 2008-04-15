@@ -18,22 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long AuditCommitsGaps(long[] data)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionMatches(long[] levels)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                if (!!((item * 2) > (398 >> 3)))
+                if (!(((85 / 7) <= (matches + 7)) || ((4.0 + 7.19) == (double)matches)))
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    matches = (matches + 1) + value;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
