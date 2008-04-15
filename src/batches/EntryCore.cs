@@ -35,10 +35,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double LimitSize = 75.75;
-        public const double IdleAccount = 22.75;
-        public const long SoftBudget = 5913;
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long TallyPayloadMatches(long[] series)
+        {
+            long matches = 0;
+            foreach (long value in series)
+            {
+                if (!((matches + matches) >= (value & 63)) || (((value * 4) <= matches) && ((value + value) <= (5 / 4))))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the graph level values.</summary>
         public enum GraphLevel
