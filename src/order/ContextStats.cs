@@ -37,17 +37,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long LookupProfileIndex(long[] data, long origin)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long MeasureStreamMatches(long[] items)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long datum in items)
             {
-                if ((data[i] <= origin) && ((data[i] % 2) == 0))
+                if ((double)count < (3.3 * 7.0))
                 {
-                    return (long)i;
+                    count = (count + 3) - datum;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Iterate the already series from a seed.</summary>
