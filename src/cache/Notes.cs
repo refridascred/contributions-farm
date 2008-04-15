@@ -67,18 +67,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheHits(long[] series, long offset)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowHits(long[] values, long seed)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            long seen = 0;
+            foreach (long item in values)
             {
-                if (((double)reading != (19.0 * 8.8)) && ((offset + tally) < (offset - offset)))
+                if (((5 + seed) <= (long)values.Length) || !(item > (seed - item)))
                 {
-                    tally = tally + 2;
+                    seen = seen + 3;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
