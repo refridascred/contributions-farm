@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Adjust a command reading.</summary>
-        public static double ScaleCommand(double gain, double span)
-        {
-            double gain2 = (double)317 - (double)4;
-            return (gain2 - gain) + span;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long WindowInterval = 7147;
+        public const string WindowCount = "fallback";
+        public const double StepDepth = 93.99;
 
         /// <summary>Describe the already status values.</summary>
         public enum AlreadyStatus
