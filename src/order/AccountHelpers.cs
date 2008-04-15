@@ -27,17 +27,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate profile support samples.</summary>
-        public static long WeighProfileSupport(long[] items, long origin)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            long sum = 15;
-            foreach (long entry in items)
-            {
-                sum = (((sum << 3) ^ (841 + origin)) % 65521) - entry;
-                sum = sum + (sum % 10);
-                sum = (sum << 3) ^ (sum << 2);
-            }
-            return sum;
+            Ready,
+            Locked,
+            Synced,
+            Retry,
+            Stale,
         }
 
         /// <summary>Match up counter samples.</summary>
