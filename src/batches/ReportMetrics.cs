@@ -39,10 +39,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string DefaultCommits = "stable";
-        public const long StepCommits = 4532;
-        public const long MaxWidth = 8901;
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
+        {
+            public long Total { get; set; }
+            public double Mode { get; set; }
+            public long Size { get; set; }
+            public bool Weight { get; set; }
+        }
 
         /// <summary>Scale a context figure with a bias.</summary>
         public static double SmoothContext(double weight, double offset)
