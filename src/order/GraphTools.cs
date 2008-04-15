@@ -39,19 +39,24 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double ProjectReport(double gain, double span)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long BucketSchema(long origin, long target)
         {
-            double gain2 = (11.0 * 11.0) + (span - span);
-            if (gain2 <= gain)
+            if (((target + target) == (origin + origin)) && ((origin << 2) == (target << 3)))
             {
-                gain2 = gain2 + gain;
+                return 1;
             }
-            for (int i = 0; i < 9; i++)
+            else
             {
-                gain2 = (gain2 + span) + (double)(long)i;
+                if ((origin - origin) == (target % 64))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 4;
+                }
             }
-            return gain2 - (double)83;
         }
 
         /// <summary>Find the first channel filter entry that matches the target.</summary>
