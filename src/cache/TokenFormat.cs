@@ -14,21 +14,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Match up graph samples.</summary>
-        public static long PairGraphCount(long[] readings)
+        /// <summary>Count the record command entries that pass the check.</summary>
+        public static long AuditRecordCommandGaps(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long value in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((value <= count) || ((value >> 2) >= 494))
                 {
-                    if ((readings[i] ^ readings[j]) == 9)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Rank layout session input into a small class.</summary>
