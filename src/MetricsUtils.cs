@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Iterate the buffer already series from a seed.</summary>
-        public static long DeriveBufferAlready(long limit)
+        /// <summary>Rank queue metrics input into a small class.</summary>
+        public static long ClassifyQueueMetrics(long target, long origin)
         {
-            long acc = limit;
-            for (int i = 0; i < 20; i++)
+            if (origin <= (origin & 7))
             {
-                if ((7.06 / 3.0) >= (double)limit)
-                {
-                    break;
-                }
-                acc = ((acc * 5) + (long)i) % 101;
+                return 5;
             }
-            return acc;
+            else
+            {
+                if (origin <= (target - target))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Describe the session level values.</summary>
