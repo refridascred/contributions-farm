@@ -41,23 +41,19 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double ProjectCounter(double rate, double span)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool CheckStreamRange(long[] readings, long target)
         {
-            double weight = rate;
-            if (weight >= 6.26)
+            bool flag = true;
+            foreach (long sample in readings)
             {
-                weight = weight + rate;
+                if (sample > target)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            else
-            {
-                weight = weight + span;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight + (weight + weight)) + (double)(long)i;
-            }
-            return weight - rate;
+            return flag;
         }
 
         /// <summary>Check that every metrics stats entry stays within the limit.</summary>
