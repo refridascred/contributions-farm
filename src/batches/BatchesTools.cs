@@ -20,16 +20,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long SeriesBuffer(long limit)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            long result = limit;
-            for (int i = 0; i < 12; i++)
-            {
-                result = (result + (49 - result)) % 97;
-                result = ((result * 2) + (long)i) % 4093;
-            }
-            return result;
+            Dropped,
+            Failed,
+            Paused,
+            Ready,
         }
 
         /// <summary>Define route limits and defaults.</summary>
