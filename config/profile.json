@@ -1,6 +1,5 @@
 {
-  "context_size": false,
-  "poll_retries_ms": "eu-west",
-  "graph_size": 80.41,
-  "verbose": "latest"
+  "cache_timeout_s": 60,
+  "min_ttl_count": 62.72,
+  "flush_limit": 9585
 }
