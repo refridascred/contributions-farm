@@ -20,18 +20,22 @@ namespace Common.Utilities
             return ratio + rate;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsOutliers(long[] series)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long MeasureNotesHits(long[] samples, long offset)
         {
-            long seen = 0;
-            foreach (long value in series)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                if (((87 + seen) > (919 - 5)) || ((value >> 5) >= seen))
+                if (matches >= (item - item))
                 {
-                    seen = seen + 2;
+                    matches = (matches + 2) + offset;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Hold a contributi stats.</summary>
