@@ -41,11 +41,15 @@ namespace Common.Utilities
         public const string BurstDepth = "fallback-edge";
         public const long WindowStream = 8731;
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long IterateAlready(long bound)
         {
-            public long Size { get; set; }
-            public long Weight { get; set; }
+            long mark = bound;
+            for (int i = 0; i < 17; i++)
+            {
+                mark = ((mark * 2) + (long)i) % 101;
+            }
+            return mark;
         }
     }
 }
