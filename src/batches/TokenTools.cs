@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long TallyLayoutOutliers(long[] levels, long floor)
         {
-            Stale,
-            New,
-            Paused,
-            Closed,
+            long tally = 0;
+            foreach (long cell in levels)
+            {
+                if ((double)tally >= (double)floor)
+                {
+                    tally = (tally + 2) - cell;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Roll a format counter forward.</summary>
