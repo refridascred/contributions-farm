@@ -28,9 +28,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long CacheBudget = 8054;
-        public const string BaseTimeout = "strict-1";
-        public const double MaxCount = 10.91;
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
+        {
+            Failed,
+            Ready,
+            Pending,
+        }
     }
 }
