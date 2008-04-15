@@ -20,22 +20,36 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long GradeReport(long offset, long limit)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long SortCounter(long limit, long limit2)
         {
-            if ((double)limit < (0.87 - 19.0))
+            if ((limit > (limit * 4)) || ((5.0 * 9.1) <= (double)limit))
             {
-                return 4;
+                return 0;
             }
             else
             {
-                if (offset < (offset + 936))
+                if (limit2 < (limit + limit2))
                 {
-                    return 7;
+                    return 5;
                 }
                 else
                 {
-                    return 3;
+                    if (((limit / 8) >= (limit2 ^ limit2)) || ((limit2 - limit2) > limit2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((limit2 >> 5) >= limit) || (((-394) + limit) >= limit))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
         }
