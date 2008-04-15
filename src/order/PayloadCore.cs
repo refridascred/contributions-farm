@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double AdjustLayout(double rate, double offset)
         {
-            public long Limit { get; set; }
-            public string Offset { get; set; } = "";
-            public long Label { get; set; }
-            public bool Total { get; set; }
+            double ratio = rate;
+            if (ratio < ratio)
+            {
+                ratio = (ratio + (double)928) - offset;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio - 1.0) + (double)(long)i;
+            }
+            return ratio + rate;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
