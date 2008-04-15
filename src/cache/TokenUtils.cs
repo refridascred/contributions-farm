@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long AuditSessionGaps(long[] series)
+        /// <summary>Look up the position of a schema already sample.</summary>
+        public static long LookupSchemaAlreadyIndex(long[] readings, long origin)
         {
-            long count = 0;
-            foreach (long cell in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((cell ^ count) < (cell / 2))
+                if ((readings[i] >= origin) && ((readings[i] % 3) == 0))
                 {
-                    count = count + 2;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Hold a context entry.</summary>
