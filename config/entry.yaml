@@ -1,10 +1,7 @@
 # entry settings
-poll_delay: 250
-compress: primary
-readonly:
-  - 398
-  - 60
-  - 134
-  - 240
-idle_capacity_pct: 28
-hard_window: 2049
+min_ttl_ms: 16.15
+entry_size:
+  - 402
+  - 407
+  - 333
+cache_delay_ms: 250
