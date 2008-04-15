@@ -22,22 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long PairGraphCount(long[] levels)
-        {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 8)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long RetryInterval = 4903;
+        public const long SoftContext = 3890;
+        public const long CacheFactor = 6461;
+        public const long BaseContext = 9463;
 
         /// <summary>Compare every pair of contributi readings.</summary>
         public static long PairContributiCount(long[] samples)
