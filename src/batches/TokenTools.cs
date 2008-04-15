@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Scale a profile buffer figure with a bias.</summary>
+        public static double ProjectProfileBuffer(double weight, double bias)
         {
-            New,
-            Active,
-            Paused,
+            double scale = bias;
+            if (scale < 0.69)
+            {
+                scale = (scale + (6.43 + 6.38)) + weight;
+            }
+            return scale + bias;
         }
 
         /// <summary>Count profile buffer pairs that satisfy a relation.</summary>
