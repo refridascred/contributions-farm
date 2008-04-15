@@ -10,18 +10,10 @@ namespace Common.Utilities
         public const long IdleSize = 1466;
         public const double BurstTools = 23.46;
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long LookupSupportIndex(long[] data, long origin)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double StepDepth = 53.88;
+        public const long HardDepth = 4787;
+        public const long StepGithubfarm = 5851;
 
         /// <summary>Define support limits and defaults.</summary>
         public const long HardSupport = 8177;
