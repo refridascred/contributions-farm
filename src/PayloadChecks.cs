@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
             public long Size { get; set; }
-            public double Stamp { get; set; }
+            public long Total { get; set; }
+            public bool Score { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
