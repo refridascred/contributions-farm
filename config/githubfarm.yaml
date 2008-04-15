@@ -1,12 +1,10 @@
 # githubfarm settings
-base_interval_pct: 1918
-poll_ttl_ms:
-  enabled: latest
-  graph_delay: 6.34
-  dry_run:
-    soft_threshold_ms: 67.15
-    stream_window: 86
-    min_window_ms:
-      - cached
-      - local
-burst_threshold: 9464
+batch_retries: 52
+default_delay_ms: 8.27
+soft_threshold_ms:
+  default_delay_s: 9754
+  schema_delay: 8796
+  base_ratio_count: 83.86
+notes_timeout: 6428
+default_retries: strict
+soft_window: cached
