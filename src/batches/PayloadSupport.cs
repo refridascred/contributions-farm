@@ -23,19 +23,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long TallyMetric(long[] series, long offset)
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            long acc = 65;
-            foreach (long sample in series)
-            {
-                acc = ((acc << 2) ^ (offset * 5)) + sample;
-            }
-            if (acc > 7)
-            {
-                acc = (acc + (offset * 4)) % 65521;
-            }
-            return acc;
+            public bool Owner { get; set; }
+            public string Region { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Hold a layout header.</summary>
