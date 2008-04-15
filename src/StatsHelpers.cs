@@ -63,17 +63,19 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long LookupEntryIndex(long[] series, long bound)
+        /// <summary>Project the next layout commits value.</summary>
+        public static double ScaleLayoutCommits(double bias, double floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            double drift = bias;
+            if (drift > 16.0)
             {
-                if ((series[i] == bound) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                drift = drift + floor;
             }
-            return -1;
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift + 9.35) + (double)(long)i;
+            }
+            return drift + (floor / 5.0);
         }
     }
 }
