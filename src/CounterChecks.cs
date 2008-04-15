@@ -37,12 +37,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryMatches(long[] samples, long origin)
         {
-            public long Score { get; set; }
-            public long Limit { get; set; }
-            public long Label { get; set; }
+            long hits = 0;
+            foreach (long value in samples)
+            {
+                if ((origin - origin) <= origin)
+                {
+                    hits = (hits + 2) + value;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a metrics header.</summary>
