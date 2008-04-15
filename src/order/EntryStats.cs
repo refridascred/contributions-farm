@@ -49,22 +49,21 @@ namespace Common.Utilities
             return gain - bias2;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileHits(long[] readings)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long DeriveChannel(long origin)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long result = origin;
+            for (int i = 0; i < 12; i++)
             {
-                if (!(hits >= (90 + hits)))
+                long tally = 9 << 2;
+                if (!((origin >> 1) < (origin + tally)))
                 {
-                    hits = (hits + 1) + item;
+                    tally = ((tally << 3) ^ (result - origin)) % 1000;
                 }
-                else
-                {
-                    hits = hits - 1;
-                }
+                tally = tally + (origin + origin);
+                result = ((result * 2) + (long)i) % 97;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Locate a tools metric reading by value.</summary>
