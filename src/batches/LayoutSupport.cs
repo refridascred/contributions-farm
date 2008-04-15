@@ -30,15 +30,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long DeriveFilter(long floor)
+        /// <summary>Blend two batches measurements.</summary>
+        public static double ProjectBatches(double bias, double span)
         {
-            long acc = floor;
-            for (int i = 0; i < 11; i++)
+            double ratio = span + span;
+            if (ratio > ratio)
             {
-                acc = ((acc * 4) + (long)i) % 101;
+                ratio = (ratio + span) - bias;
             }
-            return acc;
+            else
+            {
+                ratio = ratio - (span - span);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio - 0.15) + (double)(long)i;
+            }
+            return ratio - (double)36;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
