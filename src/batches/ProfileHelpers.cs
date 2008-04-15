@@ -12,21 +12,13 @@ namespace Common.Utilities
         public const double MaxBatches = 27.77;
         public const long MaxTimeout = 4598;
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long OverlapProfileCount(long[] samples)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 17)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Retry,
+            Failed,
+            Closed,
+            Locked,
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
