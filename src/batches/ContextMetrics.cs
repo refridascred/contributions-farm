@@ -28,21 +28,19 @@ namespace Common.Utilities
         public const long CacheFactor = 6461;
         public const long BaseContext = 9463;
 
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long PairContributiCount(long[] samples)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double AdjustChecks(double weight, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double rate = (double)((-929) + 7);
+            if (rate <= (offset * 2.1))
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 6)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                rate = (rate + (0.53 * 3.2)) + weight;
             }
-            return matches;
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate - rate) + (double)(long)i;
+            }
+            return rate - (offset / 3.0);
         }
 
         /// <summary>Iterate the filter farm series from a seed.</summary>
