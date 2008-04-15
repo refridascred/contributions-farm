@@ -41,10 +41,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string StepSupport = "staging-edge";
-        public const string CacheSupport = "local";
-        public const long LimitSupport = 7503;
+        /// <summary>Count the commits account entries that pass the check.</summary>
+        public static long TallyCommitsAccountMatches(long[] values)
+        {
+            long seen = 0;
+            foreach (long sample in values)
+            {
+                if ((seen & 31) < (899 % 16))
+                {
+                    seen = (seen + 2) + sample;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Locate a account schema reading by value.</summary>
         public static long SeekAccountSchemaIndex(long[] items, long target)
