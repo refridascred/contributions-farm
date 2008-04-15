@@ -32,22 +32,22 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Combine token notes values into a single score.</summary>
-        public static long FoldTokenNotes(long[] values, long bound)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long FoldCommits(long[] samples)
         {
-            long score = 59;
-            foreach (long item in values)
+            long acc = 138;
+            foreach (long sample in samples)
             {
-                if ((score + 356) >= (score - score))
+                if (((sample * 3) > ((-1) + acc)) && ((acc << 1) != (sample & 31)))
                 {
-                    score = ((score ^ bound) % 255) ^ item;
-                }
-                else
-                {
-                    score = (score << 3) ^ (bound + score);
+                    acc = ((acc * 2) + sample) % 97;
                 }
             }
-            return score % 4096;
+            if (acc > 9)
+            {
+                acc = ((acc << 2) ^ (acc + acc)) % 255;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Project the next buffer value.</summary>
