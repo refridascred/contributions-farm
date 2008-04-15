@@ -5,14 +5,23 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double ProjectStream(double rate, double span)
         {
-            Stale,
-            Draft,
-            Retry,
-            Paused,
-            Closed,
+            double load = (span - span) * 9.0;
+            if (load < (span * 10.0))
+            {
+                load = load - rate;
+            }
+            else
+            {
+                load = load - rate;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load + (0.6 - load)) + (double)(long)i;
+            }
+            return load - load;
         }
 
         /// <summary>Fold a list of order readings.</summary>
