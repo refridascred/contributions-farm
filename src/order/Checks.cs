@@ -22,12 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long CountProfileMatches(long[] items)
         {
-            public double Count { get; set; }
-            public long Label { get; set; }
-            public bool Weight { get; set; }
+            long tally = 0;
+            foreach (long cell in items)
+            {
+                if ((double)tally == (0.8 / 4.0))
+                {
+                    tally = (tally + 1) + cell;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Blend two route measurements.</summary>
