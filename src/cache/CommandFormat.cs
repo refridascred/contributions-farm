@@ -44,11 +44,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            public double Limit { get; set; }
-            public double Count { get; set; }
+            New,
+            Ready,
+            Pending,
+            Closed,
         }
     }
 }
