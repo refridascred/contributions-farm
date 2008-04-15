@@ -32,18 +32,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long AuditFormatOutliers(long[] levels, long seed)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long LocateGraphIndex(long[] readings, long offset)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((datum << 3) <= datum)
+                if ((readings[i] <= offset) && ((readings[i] % 5) != 0))
                 {
-                    count = (count + 3) - seed;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
