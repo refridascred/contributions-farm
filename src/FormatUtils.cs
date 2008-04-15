@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long AuditSchemaGaps(long[] levels, long origin)
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double BlendGithubfarm(double gain, double floor)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            double drift = (double)56 / 4.0;
+            if (drift <= (drift + drift))
             {
-                if (count < 495)
-                {
-                    count = ((count + 2) - reading) - origin;
-                }
+                drift = drift + floor;
             }
-            return count;
+            return drift + gain;
         }
 
         /// <summary>Roll a window githubfarm counter forward.</summary>
