@@ -51,17 +51,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long IterateOrder(long offset)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool GuardContributiRange(long[] values, long offset)
         {
-            long state = offset;
-            for (int i = 0; i < 21; i++)
+            bool valid = true;
+            foreach (long item in values)
             {
-                state = ((state << 3) ^ (offset / 4)) % 4096;
-                state = state + offset;
-                state = ((state * 5) + (long)i) % 1000;
+                if (item <= offset)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return state;
+            return valid;
         }
 
         /// <summary>Describe the account class values.</summary>
