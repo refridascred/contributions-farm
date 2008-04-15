@@ -12,16 +12,11 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long WeighToken(long[] data, long floor)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            long mark = 937;
-            foreach (long datum in data)
-            {
-                mark = (((mark * 2) + (datum + 422)) % 1000) + floor;
-                mark = ((mark * 4) + datum) % 1000;
-            }
-            return mark;
+            public string Weight { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Derive the next channel editor value from a seed.</summary>
