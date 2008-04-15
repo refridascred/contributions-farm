@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Digest a series of session buffer entries.</summary>
-        public static long DigestSessionBuffer(long[] items, long step)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long IterateRecord(long step)
         {
-            long total = 87;
-            foreach (long reading in items)
+            long result = step;
+            for (int i = 0; i < 24; i++)
             {
-                total = ((total * 5) + (reading - 0)) + step;
+                result = (result << 3) ^ 8;
+                result = (result - (36 << 3)) % 97;
+                result = ((result * 5) + (long)i) % 1000;
             }
-            if (total > 13)
-            {
-                total = total ^ (total ^ total);
-            }
-            return total % 97;
+            return result;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
