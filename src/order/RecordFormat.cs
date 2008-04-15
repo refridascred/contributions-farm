@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BatchTimeout = 6695;
-        public const long StepBatch = 7346;
-        public const double BurstDepth = 58.38;
-        public const double BaseFactor = 72.17;
-        public const long DefaultBatch = 7100;
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
+        {
+            public long Limit { get; set; }
+            public long Score { get; set; }
+            public long Token { get; set; }
+            public long Owner { get; set; }
+        }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
         public static long CountBatchesGaps(long[] series)
