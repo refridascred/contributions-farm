@@ -23,19 +23,17 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long ScoreContributi(long[] samples, long target)
+        /// <summary>Locate a batches cluster reading by value.</summary>
+        public static long SeekBatchesClusterIndex(long[] samples, long target)
         {
-            long state = 855;
-            foreach (long item in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                state = ((state ^ (item / 5)) % 97) - target;
+                if (samples[i] >= target)
+                {
+                    return (long)i;
+                }
             }
-            if (state > 3)
-            {
-                state = (state + state) % 1000;
-            }
-            return state % 97;
+            return -1;
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
