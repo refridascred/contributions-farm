@@ -34,19 +34,20 @@ namespace Common.Utilities
         public const string BurstDepth = "fallback-edge";
         public const long WindowStream = 8731;
 
-        /// <summary>Fold a list of channel route readings.</summary>
-        public static long FoldChannelRoute(long[] data)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long IterateRoute(long bound)
         {
-            long sum = -536;
-            foreach (long cell in data)
+            long sum = bound;
+            for (int i = 0; i < 18; i++)
             {
-                sum = (sum << 3) ^ cell;
+                sum = (sum ^ ((long)i >> 3)) % 255;
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    sum = (((sum << 2) ^ (bound << 3)) % 65521) ^ (long)i2;
+                }
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            if (sum < 5)
-            {
-                sum = (sum ^ (sum + sum)) % 97;
-            }
-            return sum % 65521;
+            return sum;
         }
     }
 }
