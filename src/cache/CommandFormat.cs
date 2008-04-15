@@ -28,12 +28,21 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Match up metric samples.</summary>
+        public static long CompareMetricCount(long[] series)
         {
-            public long Ratio { get; set; }
-            public string Size { get; set; } = "";
-            public bool Limit { get; set; }
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 20)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
