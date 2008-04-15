@@ -62,20 +62,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long IterateBatch(long limit)
-        {
-            long anchor = limit;
-            for (int i = 0; i < 16; i++)
-            {
-                if (((15.0 + 8.16) > (double)anchor) || ((limit + anchor) != (limit % 64)))
-                {
-                    anchor = (anchor - (limit + anchor)) % 1000;
-                }
-                anchor = ((anchor * 5) + limit) % 255;
-                anchor = ((anchor * 4) + (long)i) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long WindowGraph = 3477;
+        public const string IdleSize = "latest-edge";
+        public const double BatchDepth = 90.69;
+        public const string BatchGraph = "legacy-edge";
+        public const string BaseGraph = "staging-v2";
     }
 }
