@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Rank report input into a small class.</summary>
+        public static long RankReport(long seed, long origin)
         {
-            public long Count { get; set; }
-            public bool Label { get; set; }
-            public long Stamp { get; set; }
-            public long Rank { get; set; }
+            if (seed <= (seed + origin))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((origin ^ origin) != (origin >> 2))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((origin + origin) != (seed ^ origin))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a route stats.</summary>
