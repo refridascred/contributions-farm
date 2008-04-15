@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long LocateLayoutIndex(long[] readings, long offset)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long BucketCounter(long seed, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if (((double)seed != (double)813) && ((71 - 4) < (seed - (-807))))
             {
-                if ((readings[i] >= offset) && ((readings[i] % 2) != 0))
+                return 2;
+            }
+            else
+            {
+                if ((205 + origin) < (origin / 2))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if (!((double)seed < 17.0))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((20.0 + 9.0) > (double)seed)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Accumulate route samples.</summary>
