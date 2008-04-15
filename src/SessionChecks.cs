@@ -28,18 +28,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long MeasureStatsHits(long[] data, long floor)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long MeasureBatchesMatches(long[] samples, long offset)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                if ((4.43 * 0.8) >= (double)matches)
+                if (datum >= (offset % 8))
                 {
-                    matches = ((matches + 3) + item) - floor;
+                    seen = seen + 2;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
