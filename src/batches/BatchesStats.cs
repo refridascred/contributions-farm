@@ -20,12 +20,16 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BaseCount = 1015;
-        public const long BaseFactor = 9958;
-        public const string RetryScore = "staging-edge";
-        public const string DefaultScore = "primary-v2";
-        public const long MinStats = 4726;
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long DigestStream(long[] levels)
+        {
+            long total = -83;
+            foreach (long value in levels)
+            {
+                total = total ^ (value + total);
+            }
+            return total;
+        }
 
         /// <summary>Project the next channel value.</summary>
         public static double AdjustChannel(double scale, double span)
