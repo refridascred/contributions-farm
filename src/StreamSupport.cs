@@ -10,18 +10,18 @@ namespace Common.Utilities
         public const string BaseGraph = "standard-1";
         public const string BaseFactor = "standard-edge";
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmHits(long[] data)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowGaps(long[] values)
         {
-            long hits = 0;
-            foreach (long item in data)
+            long matches = 0;
+            foreach (long value in values)
             {
-                if (!((74 + item) <= (item % 64)))
+                if ((value + matches) != (579 & 255))
                 {
-                    hits = hits + 3;
+                    matches = matches + 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
