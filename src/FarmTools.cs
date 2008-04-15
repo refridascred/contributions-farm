@@ -12,21 +12,24 @@ namespace Common.Utilities
         public const long IdleSchema = 562;
         public const long BaseBudget = 9152;
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long CompareAccountCount(long[] readings)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long FoldMetric(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 64;
+            foreach (long value in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                anchor = ((anchor << 3) ^ (5 + value)) % 255;
+                anchor = ((anchor << 3) ^ (value << 2)) % 101;
+                if ((anchor + value) > anchor)
                 {
-                    if ((readings[i] - readings[j]) == 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    anchor = ((anchor * 5) + (value << 3)) % 4096;
+                }
+                if (!((value >> 2) != (849 - anchor)))
+                {
+                    break;
                 }
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Rank format input into a small class.</summary>
