@@ -1,7 +1,14 @@
 {
-  "compress": "stable",
-  "cache_depth": 32,
-  "readonly": "cached",
-  "audit": 26,
-  "flush_timeout_pct": "open"
+  "soft_ratio": 8402,
+  "profile_delay": {
+    "soft_depth_ms": false,
+    "stats_ttl": ["stable", "strict", "primary"],
+    "idle_interval": "blue",
+    "min_delay_count": false,
+    "dry_run": 35
+  },
+  "poll_window_ms": [125, 107, 341],
+  "soft_ttl": "eu-west",
+  "compress": "strict",
+  "idle_capacity": true
 }
