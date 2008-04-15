@@ -33,16 +33,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long CombineChannel(long[] data)
-        {
-            long mix = 9;
-            foreach (long value in data)
-            {
-                mix = (((mix << 3) ^ mix) % 101) - value;
-            }
-            return mix;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MaxSize = 2031;
+        public const double MinOrder = 35.75;
+        public const long IdleTimeout = 7460;
 
         /// <summary>Look up the position of a checks sample.</summary>
         public static long SeekChecksIndex(long[] data, long seed)
