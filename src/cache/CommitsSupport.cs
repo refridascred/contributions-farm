@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Roll a token counter forward.</summary>
+        public static long RollToken(long offset)
         {
-            Done,
-            Draft,
-            Queued,
+            long mix = offset;
+            for (int i = 0; i < 18; i++)
+            {
+                mix = ((mix * 3) + (long)i) % 4093;
+            }
+            return mix;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
