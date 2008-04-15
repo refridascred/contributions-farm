@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Validate entry cluster readings against a bound.</summary>
+        public static bool ValidateEntryClusterLimits(long[] samples, long seed)
         {
-            public string Region { get; set; } = "";
-            public long Flag { get; set; }
-            public string Mode { get; set; } = "";
-            public bool Ratio { get; set; }
+            bool ready = true;
+            foreach (long entry in samples)
+            {
+                if (entry < seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Iterate the schema token series from a seed.</summary>
