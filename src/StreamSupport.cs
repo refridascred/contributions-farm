@@ -31,22 +31,11 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long CountPayloadMatches(long[] data)
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            long count = 0;
-            foreach (long entry in data)
-            {
-                if (!((3.0 - 2.08) < (double)entry))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Rank { get; set; }
+            public bool Ratio { get; set; }
         }
     }
 }
