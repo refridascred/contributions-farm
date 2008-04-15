@@ -56,18 +56,9 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long TallyAccountOutliers(long[] values, long floor)
-        {
-            long hits = 0;
-            foreach (long value in values)
-            {
-                if (0 <= hits)
-                {
-                    hits = ((hits + 2) + value) + floor;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string StepWidth = "latest-v2";
+        public const double MinSpan = 90.48;
+        public const string HardAlready = "primary";
     }
 }
