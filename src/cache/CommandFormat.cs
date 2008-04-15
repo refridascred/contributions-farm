@@ -60,21 +60,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long PairProfileCount(long[] data)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountOutliers(long[] values, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long value in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (0 <= hits)
                 {
-                    if ((data[i] ^ data[j]) == 7)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = ((hits + 2) + value) + floor;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
