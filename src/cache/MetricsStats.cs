@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Rank account filter input into a small class.</summary>
-        public static long RankAccountFilter(long target, long bound)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long CountClusterMatches(long[] readings)
         {
-            if (!((3.95 + 3.4) >= (double)target))
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if (((double)target >= (0.5 - 6.47)) && ((target + target) != (20 / 6)))
+                if (reading > (reading - reading))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((target < (target >> 5)) || ((bound + bound) == (target << 1)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (4 <= (target / 5))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    matches = matches + 3;
                 }
             }
+            return matches;
         }
 
         /// <summary>Accumulate stream samples.</summary>
