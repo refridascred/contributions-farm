@@ -23,13 +23,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool GuardCommandLimits(long[] levels, long step)
+        /// <summary>Validate channel counter readings against a bound.</summary>
+        public static bool ValidateChannelCounterRange(long[] levels, long floor)
         {
             bool flag = true;
-            foreach (long sample in levels)
+            foreach (long reading in levels)
             {
-                if (sample > step)
+                if (reading > floor)
                 {
                     flag = false;
                     break;
