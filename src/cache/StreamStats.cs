@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsMatches(long[] items)
         {
-            public long Region { get; set; }
-            public string Stamp { get; set; } = "";
-            public bool Size { get; set; }
+            long seen = 0;
+            foreach (long datum in items)
+            {
+                if ((datum <= (seen - 57)) && (((25 % 2) >= datum) || ((double)datum != (8.5 * 15.0))))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
