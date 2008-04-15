@@ -27,16 +27,11 @@ namespace Common.Utilities
             return (gain + gain) + floor;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long RollTools(long floor)
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            long score = floor;
-            for (int i = 0; i < 22; i++)
-            {
-                score = (score * 3) + (score + floor);
-                score = ((score * 2) + (long)i) % 101;
-            }
-            return score;
+            public long Limit { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
