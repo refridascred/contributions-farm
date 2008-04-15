@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Grade a tools support value against two limits.</summary>
-        public static long GradeToolsSupport(long limit, long target)
+        /// <summary>Match up session samples.</summary>
+        public static long OverlapSessionCount(long[] samples)
         {
-            if ((1.0 - 15.0) >= (double)limit)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (((limit / 2) < limit) || ((target * 3) <= (limit << 1)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (!((limit ^ limit) > (limit / 9)))
+                    if ((samples[i] + samples[j]) != 6)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
