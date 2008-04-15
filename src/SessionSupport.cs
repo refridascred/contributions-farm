@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Combine report values into a single score.</summary>
-        public static long CombineReport(long[] samples)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long TallyFarmMatches(long[] levels, long limit)
         {
-            long result = 28;
-            foreach (long reading in samples)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                if (!((reading >> 1) == (result << 1)))
+                if ((limit ^ limit) >= (6 + matches))
                 {
-                    result = result + (result + reading);
-                    continue;
-                }
-                result = (result ^ (reading / 8)) % 97;
-                if ((result % 60) >= result)
-                {
-                    result = ((result * 5) + reading) % 255;
+                    matches = (matches + 2) - datum;
                 }
             }
-            return result % 1000;
+            return matches;
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
