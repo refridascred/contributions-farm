@@ -26,25 +26,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank metric notes input into a small class.</summary>
-        public static long BucketMetricNotes(long offset, long offset2)
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            long slot = offset ^ offset2;
-            if (((3 ^ offset2) != (offset2 << 2)) && ((double)slot != (5.47 / 7.0)))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((double)8 < (double)offset) || (slot <= (offset - slot)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public string Label { get; set; } = "";
+            public double Owner { get; set; }
+            public bool Size { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
