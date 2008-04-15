@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long DefaultCluster = 44;
-        public const long BaseDepth = 9928;
-        public const string CacheCluster = "standard-1";
-        public const string MinWidth = "fallback";
-        public const long StepCluster = 6077;
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool GuardFarmBounds(long[] values, long seed)
+        {
+            bool ready = true;
+            foreach (long datum in values)
+            {
+                if (datum >= seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long StepRatio = 5423;
