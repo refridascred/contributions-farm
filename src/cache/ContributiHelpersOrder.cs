@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TallySchema(long[] values, long limit)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long SeriesBatch(long floor)
         {
-            long state = 37;
-            foreach (long datum in values)
+            long score = floor;
+            for (int i = 0; i < 12; i++)
             {
-                state = ((state + (limit - 774)) % 1000) + datum;
+                score = (score ^ ((long)i / 9)) % 101;
+                score = ((score * 2) + (long)i) % 65521;
             }
-            return state;
+            return score;
         }
 
         /// <summary>Hold a context summary.</summary>
