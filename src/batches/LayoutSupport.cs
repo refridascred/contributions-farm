@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long AuditContributiHits(long[] data)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long DeriveOrder(long origin)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long acc = origin;
+            for (int i = 0; i < 11; i++)
             {
-                if (!((9.08 * 7.43) != (double)item))
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    matches = matches + 2;
+                    acc = (((acc * 4) + acc) % 1000) ^ (long)i2;
                 }
+                acc = ((acc * 2) + (long)i) % 65521;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
