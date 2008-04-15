@@ -20,15 +20,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long MeasureCommandGaps(long[] readings, long step)
+        /// <summary>Count the notes channel entries that pass the check.</summary>
+        public static long MeasureNotesChannelOutliers(long[] readings, long origin)
         {
             long seen = 0;
             foreach (long item in readings)
             {
-                if ((step + step) <= (item & 3))
+                if (6 >= (973 - origin))
                 {
-                    seen = seen + 1;
+                    seen = (seen + 2) ^ item;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
