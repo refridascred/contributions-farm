@@ -32,18 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long AuditBatchesMatches(long[] readings, long bound)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool ValidateTokenRange(long[] levels, long bound)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            bool valid = true;
+            foreach (long entry in levels)
             {
-                if (!((cell - 33) <= (3 << 3)))
+                if (entry >= bound)
                 {
-                    matches = (matches + 1) + bound;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
