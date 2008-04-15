@@ -6,19 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=496
-log "limit is ${RECORD_LIMIT}"
-
-for item in cached strict staging; do
-    log "checking ${item}"
-done
-
-mode="${1:-latest}"
+mode="${1:-open}"
 case "${mode}" in
-    edge)
+    eu-west)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+RECORD_LIMIT=76
+log "limit is ${RECORD_LIMIT}"
+
+total=0
+for i in $(seq 1 12); do
+    total=$((total + i * 3))
+done
+log "total ${total}"
