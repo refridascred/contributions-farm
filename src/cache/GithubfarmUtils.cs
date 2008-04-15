@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long TallyEditorGaps(long[] samples)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            long hits = 0;
-            foreach (long item in samples)
-            {
-                if ((((hits - hits) <= (hits % 16)) || ((hits << 2) <= 9)) && (item >= hits))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Failed,
+            Locked,
+            Synced,
         }
 
         /// <summary>Hold a stats snapshot.</summary>
