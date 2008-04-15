@@ -1,5 +1,15 @@
 {
-  "warm_delay_ms": 71,
-  "report_ratio": ["legacy", "latest", "stable"],
-  "warm_limit": 1549
+  "context_threshold": [108, 102],
+  "route_limit": {
+    "flush_ratio_count": {
+      "retry_limit_pct": 65,
+      "warm_limit_pct": 250,
+      "batch_retries": ["staging", "open"]
+    },
+    "enabled": 14,
+    "soft_timeout": [69, 316],
+    "notes_delay": "latest"
+  },
+  "flush_size": "local",
+  "flush_ratio_s": 78
 }
