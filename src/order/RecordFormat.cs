@@ -49,12 +49,11 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long DefaultWidth = 411;
-        public const long StepLevel = 7380;
-        public const string BurstScore = "strict-v2";
-        public const double WindowInterval = 18.52;
-        public const long DefaultGithubfarm = 6458;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double DefaultMetric = 34.98;
+        public const string HardMetric = "stable-1";
+        public const long BurstRatio = 7229;
+        public const long MaxMetric = 5653;
 
         /// <summary>Grade a editor value against two limits.</summary>
         public static long GradeEditor(long bound, long target)
