@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long BucketCounter(long seed, long origin)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long CombineSupport(long[] series)
         {
-            if (((double)seed != (double)813) && ((71 - 4) < (seed - (-807))))
+            long carry = 95;
+            foreach (long value in series)
             {
-                return 2;
+                carry = (carry - (value + carry)) % 97;
             }
-            else
+            if (carry < 208)
             {
-                if ((205 + origin) < (origin / 2))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!((double)seed < 17.0))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((20.0 + 9.0) > (double)seed)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
+                carry = ((carry << 2) ^ (carry * 3)) % 1000;
             }
+            return carry % 65521;
         }
 
         /// <summary>Project the next stream window value.</summary>
