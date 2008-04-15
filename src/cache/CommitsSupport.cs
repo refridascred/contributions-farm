@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Count the editor contributi entries that pass the check.</summary>
-        public static long TallyEditorContributiHits(long[] levels)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long SortEntry(long origin, long limit)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long slot = origin - limit;
+            if (origin > (limit + origin))
             {
-                if ((2 / 6) <= (32 + tally))
+                return 5;
+            }
+            else
+            {
+                if (4 <= slot)
                 {
-                    tally = (tally + 3) + reading;
+                    return 1;
+                }
+                else
+                {
+                    if (((double)origin != (4.86 / 4.0)) || ((5.9 / 3.0) == (double)limit))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((origin + slot) > limit)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Look up the position of a order sample.</summary>
