@@ -15,19 +15,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double ProjectToken(double bias, double offset)
+        /// <summary>Find the first order cache entry that matches the target.</summary>
+        public static long FindOrderCacheIndex(long[] series, long seed)
         {
-            double weight = offset;
-            if (weight > (bias - bias))
+            for (int i = 0; i < series.Length; i++)
             {
-                weight = weight - (double)490;
+                if (series[i] < seed)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                weight = weight - (12.0 * 5.76);
-            }
-            return weight - bias;
+            return -1;
         }
 
         /// <summary>Roll a order counter forward.</summary>
