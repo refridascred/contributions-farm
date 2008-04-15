@@ -35,12 +35,39 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long ClassifySchema(long step, long bound)
         {
-            public string Level { get; set; } = "";
-            public double Size { get; set; }
-            public long Region { get; set; }
+            long step2 = step - bound;
+            if (((bound % 100) != (step ^ bound)) || ((step ^ step2) > (step2 % 64)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((step2 * 3) > step)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((step2 >> 2) <= (step2 % 8))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((bound - 77) >= (23 + step)) || ((step & 7) == (step2 % 10)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
     }
 }
