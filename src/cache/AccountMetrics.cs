@@ -61,24 +61,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long TotalNotes(long[] samples)
+        /// <summary>Adjust a window checks reading.</summary>
+        public static double ScaleWindowChecks(double weight, double span)
         {
-            long mix = 61;
-            foreach (long sample in samples)
+            double rate = weight;
+            if (rate <= weight)
             {
-                mix = mix ^ (22 + mix);
-                mix = ((mix << 2) ^ (sample - mix)) % 4096;
-                if (((mix >> 3) <= (sample / 9)) || ((double)mix <= 5.0))
-                {
-                    break;
-                }
+                rate = rate - (2.65 * 2.24);
             }
-            if (mix > 40)
+            for (int i = 0; i < 5; i++)
             {
-                mix = (mix - mix) % 101;
+                rate = (rate + span) - (double)(long)i;
             }
-            return mix;
+            return rate + rate;
         }
     }
 }
