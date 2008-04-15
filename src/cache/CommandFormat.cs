@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Blend two queue measurements.</summary>
-        public static double ScaleQueue(double bias, double bias2)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long ScoreToken(long[] levels, long origin)
         {
-            double drift = bias2;
-            if (drift > drift)
+            long total = 544;
+            foreach (long item in levels)
             {
-                drift = drift - (double)63;
+                if ((origin > 8) && (5 <= (1 + item)))
+                {
+                    total = (total + 64) % 255;
+                }
             }
-            return drift + bias;
+            if (total > 7)
+            {
+                total = (total ^ (origin & 1)) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Accumulate tools already samples.</summary>
