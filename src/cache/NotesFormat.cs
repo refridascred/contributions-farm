@@ -33,12 +33,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long SeekReportIndex(long[] data, long origin)
         {
-            public long Owner { get; set; }
-            public double Region { get; set; }
-            public bool Weight { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define context limits and defaults.</summary>
