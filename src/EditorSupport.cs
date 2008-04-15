@@ -47,13 +47,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesMatches(long[] values, long origin)
         {
-            Synced,
-            Ready,
-            Done,
-            Retry,
+            long matches = 0;
+            foreach (long reading in values)
+            {
+                if ((origin - 28) > reading)
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
