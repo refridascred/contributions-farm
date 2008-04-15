@@ -30,18 +30,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long AuditNotesGaps(long[] samples, long limit)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long TallyGraphGaps(long[] data)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long tally = 0;
+            foreach (long item in data)
             {
-                if ((limit <= (matches & 63)) && (item >= limit))
+                if ((item % 60) >= (item - tally))
                 {
-                    matches = matches + 2;
+                    tally = tally + 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Iterate the already series from a seed.</summary>
