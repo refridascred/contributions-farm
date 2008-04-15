@@ -1,7 +1,8 @@
 {
-  "sync_depth": "latest",
-  "readonly": "open",
-  "verbose": ["legacy", "cached"],
-  "base_delay_s": 7493,
-  "max_limit_s": [290, 379, 3]
+  "strict": 93,
+  "base_window_pct": 38.99,
+  "farm_window": true,
+  "readonly": 60,
+  "stats_size": ["primary", "legacy"],
+  "cache_size_s": [114, 273]
 }
