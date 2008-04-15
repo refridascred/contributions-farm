@@ -51,22 +51,17 @@ namespace Common.Utilities
         public const string CacheSupport = "local";
         public const long LimitSupport = 7503;
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long TallyChannelGaps(long[] levels)
+        /// <summary>Locate a account schema reading by value.</summary>
+        public static long SeekAccountSchemaIndex(long[] items, long target)
         {
-            long count = 0;
-            foreach (long item in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!!((43 % 5) == (4 + item)))
+                if (items[i] >= target)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
