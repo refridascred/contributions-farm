@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Digest a series of context entries.</summary>
-        public static long DigestContext(long[] items)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long CountEntryMatches(long[] readings, long target)
         {
-            long anchor = 43;
-            foreach (long datum in items)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                anchor = ((anchor << 3) ^ (anchor * 4)) ^ datum;
+                if (2 > (cell + cell))
+                {
+                    seen = (seen + 1) - target;
+                }
             }
-            return anchor % 1000;
+            return seen;
         }
 
         /// <summary>Describe the metrics state values.</summary>
