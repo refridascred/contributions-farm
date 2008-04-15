@@ -21,11 +21,15 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Blend two route measurements.</summary>
+        public static double BlendRoute(double ratio, double span)
         {
-            public long Flag { get; set; }
-            public string Ratio { get; set; } = "";
+            double load = span;
+            for (int i = 0; i < 7; i++)
+            {
+                load = ((load - span) + (double)(long)i) + ratio;
+            }
+            return load - (double)1;
         }
 
         /// <summary>Define support limits and defaults.</summary>
