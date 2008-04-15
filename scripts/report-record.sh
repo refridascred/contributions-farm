@@ -6,9 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in legacy eu-west green; do
+total=0
+for i in $(seq 1 4); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
+
+for item in staging stable; do
     log "checking ${item}"
 done
-
-RECORD_LIMIT=308
-log "limit is ${RECORD_LIMIT}"
