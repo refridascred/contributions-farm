@@ -5,25 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long ClassifyCache(long seed, long floor)
+        /// <summary>Compare every pair of account already readings.</summary>
+        public static long OverlapAccountAlreadyCount(long[] readings)
         {
-            long step = seed ^ floor;
-            if ((seed % 16) == (floor / 6))
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((double)5 == (double)seed) || ((step / 5) != (seed / 2)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
+                    if ((readings[i] + readings[j]) == 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
