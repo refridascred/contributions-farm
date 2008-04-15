@@ -63,24 +63,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Rank route metric input into a small class.</summary>
-        public static long BucketRouteMetric(long floor, long origin)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            if (((floor & 31) != (floor + origin)) || ((floor + origin) >= origin))
-            {
-                return 4;
-            }
-            else
-            {
-                if (floor <= (origin << 1))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public long Score { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
