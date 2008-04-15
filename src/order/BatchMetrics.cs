@@ -58,19 +58,18 @@ namespace Common.Utilities
             return gain + (span * 16.0);
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool GuardSchemaRange(long[] levels, long offset)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long MeasureOrderMatches(long[] items)
         {
-            bool flag = true;
-            foreach (long datum in levels)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                if (datum >= offset)
+                if ((seen - seen) == (sample * 5))
                 {
-                    flag = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
