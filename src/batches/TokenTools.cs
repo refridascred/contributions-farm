@@ -20,12 +20,15 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Project the next batches value.</summary>
+        public static double SmoothBatches(double weight, double bias)
         {
-            public long Size { get; set; }
-            public long Region { get; set; }
-            public long Count { get; set; }
+            double rate = weight;
+            if (rate <= (double)26)
+            {
+                rate = (rate + (weight + weight)) - bias;
+            }
+            return rate - (5.07 + 20.0);
         }
 
         /// <summary>Hold a support summary.</summary>
