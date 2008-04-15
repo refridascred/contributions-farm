@@ -36,22 +36,17 @@ namespace Common.Utilities
         public const long BaseChannel = 8368;
         public const string CacheChannel = "local-edge";
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportHits(long[] series)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long SeekEditorIndex(long[] data, long floor)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((2.57 - 6.93) <= (double)hits)
+                if (data[i] == floor)
                 {
-                    hits = (hits + 2) - sample;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Accumulate checks samples.</summary>
