@@ -29,19 +29,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double ProjectRoute(double gain, double bias)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long GradeFormat(long target, long target2)
         {
-            double rate = gain;
-            if (rate < (double)688)
+            if (((double)target2 > 6.04) || ((target2 / 6) > (target2 + target)))
             {
-                rate = (rate + (rate / 8.0)) - bias;
+                return 4;
             }
             else
             {
-                rate = rate + (rate / 9.0);
+                if ((target % 64) > target)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (target >= (target - 14))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((1.8 * 2.07) >= (double)target2)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
             }
-            return rate - rate;
         }
     }
 }
