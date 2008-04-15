@@ -70,22 +70,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate githubfarm context samples.</summary>
-        public static long FoldGithubfarmContext(long[] readings, long origin)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextOutliers(long[] items, long origin)
         {
-            long carry = 22;
-            foreach (long sample in readings)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                if ((double)sample <= (11.0 + 5.3))
+                if ((reading << 1) < (tally - reading))
                 {
-                    carry = (carry << 2) ^ (origin + 264);
+                    tally = (tally + 1) + origin;
                 }
             }
-            if (carry < 1)
-            {
-                carry = ((carry << 3) ^ (origin - carry)) % 255;
-            }
-            return carry % 4096;
+            return tally;
         }
     }
 }
