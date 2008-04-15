@@ -5,21 +5,14 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long PairChannelCount(long[] samples)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Done,
+            Active,
+            Stale,
+            Draft,
+            Locked,
         }
 
         /// <summary>Describe the session class values.</summary>
