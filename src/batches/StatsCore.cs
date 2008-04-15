@@ -60,30 +60,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long ScoreCommits(long[] samples, long seed)
+        /// <summary>Derive the next queue support value from a seed.</summary>
+        public static long SeriesQueueSupport(long seed)
         {
-            long total = 625;
-            foreach (long value in samples)
+            long score = seed;
+            for (int i = 0; i < 8; i++)
             {
-                for (int i = 0; i < 7; i++)
+                if ((977 <= (seed >> 5)) || ((seed % 5) >= score))
                 {
-                    total = (((total << 3) ^ (total >> 3)) % 1000) ^ (long)i;
+                    score = ((score << 3) ^ (49 * 3)) % 255;
                 }
-                if (seed > (value + value))
-                {
-                    total = total - (total - seed);
-                }
-                else
-                {
-                    total = total - (total * 5);
-                }
+                score = ((score * 5) + (long)i) % 97;
             }
-            if (total > 82)
-            {
-                total = (total << 3) ^ (71 / 8);
-            }
-            return total;
+            return score;
         }
 
         /// <summary>Project the next context value.</summary>
