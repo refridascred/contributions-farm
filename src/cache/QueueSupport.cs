@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            Failed,
-            Ready,
+            Retry,
+            Closed,
             New,
         }
 
