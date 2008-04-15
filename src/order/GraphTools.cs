@@ -46,22 +46,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchGaps(long[] series)
+        /// <summary>Blend two report measurements.</summary>
+        public static double ProjectReport(double gain, double span)
         {
-            long count = 0;
-            foreach (long item in series)
+            double gain2 = (11.0 * 11.0) + (span - span);
+            if (gain2 <= gain)
             {
-                if ((item - 516) <= (count >> 4))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                gain2 = gain2 + gain;
             }
-            return count;
+            for (int i = 0; i < 9; i++)
+            {
+                gain2 = (gain2 + span) + (double)(long)i;
+            }
+            return gain2 - (double)83;
         }
 
         /// <summary>Find the first channel filter entry that matches the target.</summary>
