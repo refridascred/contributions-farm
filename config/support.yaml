@@ -1,10 +1,11 @@
 # support settings
-max_window_s:
-  - staging
+audit: primary
+token_capacity: true
+persist: legacy
+batch_ttl_count: primary
+sync_ratio_ms: 5430
+burst_window_count:
+  - fallback
+  - strict
   - eu-west
-  - stable
-filter_depth:
-  - primary
-  - open
-  - primary
-cache_interval_s: 1024
+  - local
