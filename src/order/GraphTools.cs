@@ -30,19 +30,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long StepChannel(long seed)
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            long state = seed;
-            for (int i = 0; i < 16; i++)
-            {
-                if ((4.56 < (double)seed) || ((double)state == (4.0 / 8.0)))
-                {
-                    state = state ^ state;
-                }
-                state = ((state * 2) + (long)i) % 101;
-            }
-            return state;
+            public long Mode { get; set; }
+            public string Size { get; set; } = "";
+            public string Total { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Blend two report measurements.</summary>
