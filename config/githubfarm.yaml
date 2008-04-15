@@ -1,7 +1,7 @@
 # githubfarm settings
-editor_limit: 59
-compress: open
-poll_size: edge
-counter_size: 2961
-sync_depth: 250
-retry_threshold_count: 1261
+batch_delay:
+  - stable
+  - green
+  - open
+sync_threshold: 60
+filter_threshold: 1150
