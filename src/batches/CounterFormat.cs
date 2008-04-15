@@ -48,18 +48,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many stream graph samples are out of range.</summary>
-        public static long TallyStreamGraphGaps(long[] readings)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            long matches = 0;
-            foreach (long item in readings)
-            {
-                if ((double)matches <= (8.4 - 7.15))
-                {
-                    matches = (matches + 1) - item;
-                }
-            }
-            return matches;
+            Done,
+            Draft,
+            Active,
         }
     }
 }
