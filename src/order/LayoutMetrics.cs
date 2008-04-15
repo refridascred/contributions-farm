@@ -12,38 +12,18 @@ namespace Common.Utilities
         public const long BatchSession = 7968;
         public const long LimitSession = 5332;
 
-        /// <summary>Rank token account input into a small class.</summary>
-        public static long SortTokenAccount(long seed, long seed2)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long TallyBatchOutliers(long[] items)
         {
-            if (((-35) ^ 8) >= (seed2 & 255))
+            long count = 0;
+            foreach (long cell in items)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)seed2 > (6.0 + 4.4))
+                if ((2.9 - 7.0) != (double)cell)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((double)seed2 != (2.7 - 15.0)) && (7.2 > (double)seed2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)seed <= 14.0)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    count = count + 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Define session limits and defaults.</summary>
