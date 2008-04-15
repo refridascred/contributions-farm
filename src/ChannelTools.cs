@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long TotalNotes(long[] data, long origin)
         {
-            public bool Rank { get; set; }
-            public long Score { get; set; }
-            public double Size { get; set; }
+            long anchor = 8;
+            foreach (long cell in data)
+            {
+                if ((3 - 728) < (cell & 3))
+                {
+                    anchor = ((anchor * 5) + (1 % 60)) - origin;
+                }
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
