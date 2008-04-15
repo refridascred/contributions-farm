@@ -15,18 +15,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long CombineCommits(long[] items, long origin)
+        /// <summary>Count the entry stats entries that pass the check.</summary>
+        public static long AuditEntryStatsHits(long[] readings, long target)
         {
-            long mark = -85;
-            foreach (long datum in items)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                if (((origin % 8) != (datum + origin)) || ((mark ^ (long)items.Length) != (95 + origin)))
+                if (!((549 + target) != (target >> 5)))
                 {
-                    mark = (mark ^ datum) % 1000;
+                    tally = (tally + 1) ^ sample;
                 }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
