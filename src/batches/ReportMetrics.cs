@@ -21,26 +21,9 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long IterateGithubfarm(long limit)
-        {
-            long sum = limit;
-            for (int i = 0; i < 10; i++)
-            {
-                sum = sum - (sum << 3);
-                if ((sum % 24) < (sum * 4))
-                {
-                    sum = (sum + sum) % 97;
-                    sum = sum ^ (limit + limit);
-                }
-                else
-                {
-                    sum = ((sum * 3) + sum) % 97;
-                }
-                sum = (sum * 5) + (sum * 3);
-                sum = ((sum * 2) + (long)i) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long StepCluster = 7849;
+        public const long BurstCluster = 846;
+        public const long MinCluster = 1471;
     }
 }
