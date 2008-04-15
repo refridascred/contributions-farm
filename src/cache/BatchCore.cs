@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long MatchSupportCount(long[] series)
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 6)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public string Size { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Score { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Hold a order options.</summary>
