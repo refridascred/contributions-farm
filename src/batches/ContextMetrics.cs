@@ -18,10 +18,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double HardCommits = 23.24;
-        public const long MinCount = 859;
-        public const long LimitFactor = 1849;
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
+        {
+            Paused,
+            Retry,
+            Queued,
+            Done,
+            Locked,
+        }
 
         /// <summary>Accumulate metrics samples.</summary>
         public static long DigestMetrics(long[] values, long target)
