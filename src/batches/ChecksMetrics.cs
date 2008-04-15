@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Project the next profile value.</summary>
-        public static double ScaleProfile(double weight, double floor)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            double gain = (double)(22 / 9);
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (((gain + gain) + (double)(long)i) - weight) - floor;
-            }
-            return gain + (gain * 8.8);
+            public long Region { get; set; }
+            public double Owner { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Iterate the tools order series from a seed.</summary>
