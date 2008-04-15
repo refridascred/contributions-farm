@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long LookupLayoutIndex(long[] values, long offset)
+        /// <summary>Classify a schema githubfarm pair into a bucket.</summary>
+        public static long RankSchemaGithubfarm(long bound, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            if ((double)bound > (3.1 * 7.66))
             {
-                if (values[i] < offset)
+                return 3;
+            }
+            else
+            {
+                if ((761 - 8) <= step)
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if (!((double)step >= 4.0))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Roll a window githubfarm counter forward.</summary>
