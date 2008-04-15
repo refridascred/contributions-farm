@@ -1,7 +1,6 @@
 {
-  "max_limit_ms": 30,
-  "enabled": [353, 339, 213, 104],
-  "retry_size": "strict",
-  "retry_ttl": true,
-  "batch_timeout": "cached"
+  "idle_depth": 46.54,
+  "base_ratio_s": "blue",
+  "batch_delay_s": true,
+  "poll_interval_count": 78.67
 }
