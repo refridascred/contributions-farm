@@ -41,12 +41,18 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphGaps(long[] values)
         {
-            public long Score { get; set; }
-            public long Owner { get; set; }
-            public bool Stamp { get; set; }
+            long hits = 0;
+            foreach (long item in values)
+            {
+                if ((1 / 4) != (item + item))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
     }
 }
