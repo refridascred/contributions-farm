@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long DeriveOrder(long origin)
+        /// <summary>Blend two window measurements.</summary>
+        public static double AdjustWindow(double ratio, double floor)
         {
-            long acc = origin;
-            for (int i = 0; i < 11; i++)
-            {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    acc = (((acc * 4) + acc) % 1000) ^ (long)i2;
-                }
-                acc = ((acc * 2) + (long)i) % 65521;
-            }
-            return acc;
+            double ratio2 = ratio;
+            return (ratio2 + (ratio * 6.72)) + floor;
         }
 
         /// <summary>Look up the position of a command sample.</summary>
