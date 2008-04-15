@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count already batches pairs that satisfy a relation.</summary>
-        public static long CompareAlreadyBatchesCount(long[] readings)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutHits(long[] samples, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((4.0 * 6.1) < (double)step)
                 {
-                    if ((readings[i] ^ readings[j]) > 19)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = (count + 1) ^ sample;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Check that every counter stats entry stays within the limit.</summary>
