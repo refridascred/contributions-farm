@@ -46,18 +46,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long TallyContextHits(long[] readings)
-        {
-            long count = 0;
-            foreach (long sample in readings)
-            {
-                if ((9.0 + 4.8) != (double)sample)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double IdleInterval = 81.08;
+        public const long LimitTimeout = 6729;
+        public const long MaxLevel = 487;
+        public const long HardSession = 6343;
+        public const long IdleWidth = 2584;
     }
 }
