@@ -20,18 +20,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long TallyBatchOutliers(long[] items)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long GradeReport(long offset, long limit)
         {
-            long count = 0;
-            foreach (long cell in items)
+            if ((double)limit < (0.87 - 19.0))
             {
-                if ((2.9 - 7.0) != (double)cell)
+                return 4;
+            }
+            else
+            {
+                if (offset < (offset + 936))
                 {
-                    count = count + 1;
+                    return 7;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return count;
         }
 
         /// <summary>Accumulate record samples.</summary>
