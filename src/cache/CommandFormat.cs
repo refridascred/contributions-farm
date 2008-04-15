@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            public string Weight { get; set; } = "";
-            public bool Count { get; set; }
-            public long Score { get; set; }
-            public long Stamp { get; set; }
+            public bool Size { get; set; }
+            public double Mode { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Digest a series of layout entries.</summary>
