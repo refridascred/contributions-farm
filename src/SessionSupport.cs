@@ -34,18 +34,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long MeasureAccountHits(long[] items)
+        /// <summary>Measure how many report batches samples are out of range.</summary>
+        public static long TallyReportBatchesOutliers(long[] levels)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                if ((double)tally <= (4.55 * 8.0))
+                if ((double)seen > (16.0 - 8.4))
                 {
-                    tally = (tally + 2) + item;
+                    seen = (seen + 3) - reading;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
