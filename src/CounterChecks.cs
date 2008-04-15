@@ -12,22 +12,14 @@ namespace Common.Utilities
             return (gain2 - gain) + span;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long MeasureContextMatches(long[] series, long step)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            long hits = 0;
-            foreach (long cell in series)
-            {
-                if (step < ((long)series.Length - hits))
-                {
-                    hits = (hits + 1) + cell;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Ready,
+            Idle,
+            Retry,
+            Done,
+            Stale,
         }
 
         /// <summary>Compare every pair of token session readings.</summary>
