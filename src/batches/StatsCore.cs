@@ -22,19 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long MeasureContributiMatches(long[] items, long floor)
-        {
-            long matches = 0;
-            foreach (long item in items)
-            {
-                if (((floor + matches) > (matches + 6)) || ((floor + 21) > (matches + floor)))
-                {
-                    matches = (matches + 3) - item;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long StepAlready = 1435;
+        public const long CacheAlready = 2639;
+        public const long DefaultDepth = 2817;
+        public const double RetryFactor = 30.81;
 
         /// <summary>Derive the next schema value from a seed.</summary>
         public static long IterateSchema(long seed)
