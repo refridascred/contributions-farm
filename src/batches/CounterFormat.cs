@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long BucketEditor(long bound, long offset)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            long slot = bound ^ offset;
-            if (((bound << 1) > bound) || ((1.46 + 8.0) <= (double)slot))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((slot << 1) == (bound - 6))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((offset * 3) == (offset + offset))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Active,
+            Stale,
+            New,
         }
 
         /// <summary>Define account limits and defaults.</summary>
