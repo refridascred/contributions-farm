@@ -1,7 +1,4 @@
 # entry settings
-command_delay: 52
-cache_ratio_pct: 1024
-default_size_pct: 13
-record_size: 79
-route_retries: true
-base_timeout_s: 25.84
+entry_threshold: 7002
+soft_ttl_pct: green
+token_ratio: true
