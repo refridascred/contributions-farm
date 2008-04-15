@@ -6,7 +6,7 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-eu-west}"
+mode="${1:-cached}"
 case "${mode}" in
     edge)
         log "fast path"
@@ -16,6 +16,11 @@ case "${mode}" in
         ;;
 esac
 
-for item in local open stable; do
-    log "checking ${item}"
+CHANNEL_LIMIT=278
+log "limit is ${CHANNEL_LIMIT}"
+
+total=0
+for i in $(seq 1 5); do
+    total=$((total + i * 3))
 done
+log "total ${total}"
