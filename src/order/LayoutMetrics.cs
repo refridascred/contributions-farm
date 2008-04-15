@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            public string Ratio { get; set; } = "";
             public string Mode { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
