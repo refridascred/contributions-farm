@@ -19,15 +19,18 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double ScaleContributi(double ratio, double span)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long MeasureSchemaGaps(long[] readings)
         {
-            double bias = ratio;
-            if (bias >= (double)(-7))
+            long count = 0;
+            foreach (long item in readings)
             {
-                bias = bias - (ratio / 3.0);
+                if ((15.0 - 3.05) > (double)item)
+                {
+                    count = count + 1;
+                }
             }
-            return bias - (ratio + span);
+            return count;
         }
 
         /// <summary>Digest a series of layout metrics entries.</summary>
