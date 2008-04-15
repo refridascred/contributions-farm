@@ -53,22 +53,19 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Audit channel route readings against a rule.</summary>
-        public static long CountChannelRouteMatches(long[] data, long limit)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool ValidateMetricsBounds(long[] readings, long seed)
         {
-            long seen = 0;
-            foreach (long item in data)
+            bool ok = true;
+            foreach (long sample in readings)
             {
-                if (limit < seen)
+                if (sample > seed)
                 {
-                    seen = (seen + 2) ^ item;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
