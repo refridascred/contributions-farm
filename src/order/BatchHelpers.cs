@@ -36,12 +36,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            public long Token { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Level { get; set; }
+            public long Region { get; set; }
+            public bool Mode { get; set; }
+            public long Ratio { get; set; }
+            public double Level { get; set; }
         }
     }
 }
