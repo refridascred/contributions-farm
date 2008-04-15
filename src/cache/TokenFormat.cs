@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            public bool Mode { get; set; }
-            public long Limit { get; set; }
-            public long Count { get; set; }
+            Pending,
+            Idle,
+            Closed,
+            Paused,
         }
 
         /// <summary>Match up graph samples.</summary>
