@@ -42,18 +42,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryGaps(long[] values, long floor)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long WeighMetric(long[] levels, long seed)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            long total = 92;
+            foreach (long entry in levels)
             {
-                if ((double)tally > 7.0)
+                if (((seed + entry) > (entry - entry)) || ((double)entry > (0.16 / 3.0)))
                 {
-                    tally = ((tally + 3) + reading) - floor;
+                    total = (total ^ (total & 1)) % 1000;
+                    total = ((total * 4) + (seed * 4)) % 1000;
+                }
+                if ((entry + total) > (entry - entry))
+                {
+                    total = (total << 2) ^ seed;
+                }
+                else
+                {
+                    total = total - entry;
                 }
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
