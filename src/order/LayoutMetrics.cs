@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long ClassifyNotes(long origin, long step)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long RollPayload(long limit)
         {
-            if (9 < (step + origin))
+            long state = limit;
+            for (int i = 0; i < 14; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((origin >> 4) < origin)
+                if (state < 18)
                 {
-                    return 3;
+                    state = (state ^ ((long)i - state)) % 1000;
                 }
-                else
-                {
-                    if ((origin % 2) >= step)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                state = ((state * 5) + (long)i) % 97;
             }
+            return state;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
