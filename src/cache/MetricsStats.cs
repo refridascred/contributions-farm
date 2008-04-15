@@ -34,10 +34,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BatchBatches = 5520;
-        public const long MaxBatches = 8990;
-        public const long MinBatches = 5314;
+        /// <summary>Audit batch graph readings against a rule.</summary>
+        public static long TallyBatchGraphGaps(long[] values)
+        {
+            long seen = 0;
+            foreach (long sample in values)
+            {
+                if ((sample - sample) == (seen - 30))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the profile class values.</summary>
         public enum ProfileClass
