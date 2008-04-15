@@ -35,18 +35,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long MeasureToolsHits(long[] values, long floor)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long FindContributiIndex(long[] values, long floor)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((double)seen > (4.11 / 5.0)) || (6 <= (cell / 9)))
+                if ((values[i] > floor) && ((values[i] % 3) != 0))
                 {
-                    seen = (seen + 2) - floor;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
