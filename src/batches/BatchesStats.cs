@@ -20,18 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long AuditContributiHits(long[] values, long target)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long DigestRecord(long[] series, long offset)
         {
-            long count = 0;
-            foreach (long reading in values)
+            long state = 93;
+            foreach (long value in series)
             {
-                if ((double)count > (7.25 + 6.6))
+                if (((value - offset) == (value + offset)) || ((state / 2) == (state >> 5)))
                 {
-                    count = ((count + 1) ^ reading) + target;
+                    state = state - value;
                 }
             }
-            return count;
+            return state;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
