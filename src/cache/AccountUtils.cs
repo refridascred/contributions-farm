@@ -37,15 +37,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit profile schema readings against a rule.</summary>
-        public static long MeasureProfileSchemaHits(long[] values)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesGaps(long[] samples, long seed)
         {
             long matches = 0;
-            foreach (long value in values)
+            foreach (long reading in samples)
             {
-                if (!((value + matches) >= (value >> 2)))
+                if ((double)seed != (3.96 + 4.15))
                 {
-                    matches = matches + 3;
+                    matches = (matches + 2) + reading;
                 }
             }
             return matches;
