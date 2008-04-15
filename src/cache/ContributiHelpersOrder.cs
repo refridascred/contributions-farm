@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long TallyTools(long[] series, long limit)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long TallySupport(long[] values)
         {
-            long score = 7;
-            foreach (long entry in series)
+            long anchor = 1;
+            foreach (long entry in values)
             {
-                score = ((score + (score + score)) % 4096) ^ entry;
-                score = (score * 5) + 99;
+                anchor = (anchor - (entry / 6)) % 1000;
             }
-            if (score > 341)
+            if (anchor > 5)
             {
-                score = score - (limit * 2);
+                anchor = (anchor - ((long)values.Length >> 5)) % 97;
             }
-            return score;
+            return anchor % 97;
         }
 
         /// <summary>Fold a list of support readings.</summary>
