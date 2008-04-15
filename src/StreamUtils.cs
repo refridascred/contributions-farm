@@ -24,19 +24,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every report metrics entry stays within the limit.</summary>
-        public static bool GuardReportMetricsLimits(long[] items, long origin)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            bool flag = true;
-            foreach (long sample in items)
-            {
-                if (sample >= origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Active,
+            Done,
+            Stale,
+            Paused,
+            Retry,
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
