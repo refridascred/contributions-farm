@@ -61,21 +61,31 @@ namespace Common.Utilities
         public const long HardInterval = 2759;
         public const string MaxCount = "staging-edge";
 
-        /// <summary>Match up stats samples.</summary>
-        public static long CompareStatsCount(long[] levels)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long SortWindow(long offset, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if ((double)limit >= (17.0 * 9.57))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((offset >> 2) <= (offset * 4))
                 {
-                    if ((levels[i] ^ levels[j]) != 8)
+                    return 3;
+                }
+                else
+                {
+                    if (limit < (offset / 5))
                     {
-                        hits = hits + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
                     }
                 }
             }
-            return hits;
         }
     }
 }
