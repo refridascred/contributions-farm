@@ -38,17 +38,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long SeekCacheIndex(long[] levels, long bound)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool GuardSessionBounds(long[] samples, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool ok = true;
+            foreach (long item in samples)
             {
-                if (levels[i] == bound)
+                if (item > target)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
     }
 }
