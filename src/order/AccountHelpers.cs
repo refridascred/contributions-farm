@@ -57,18 +57,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Find the first report entry entry that matches the target.</summary>
-        public static long LookupReportEntryIndex(long[] data, long step)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MinCount = 1389;
+        public const long RetryRatio = 6922;
+        public const string CacheTimeout = "legacy-v2";
 
         /// <summary>Describe the context class values.</summary>
         public enum ContextClass
