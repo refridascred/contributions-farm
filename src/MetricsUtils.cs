@@ -59,18 +59,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsGaps(long[] samples)
-        {
-            long count = 0;
-            foreach (long value in samples)
-            {
-                if ((count / 8) <= (count << 2))
-                {
-                    count = (count + 2) + value;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string BurstSpan = "cached-1";
+        public const string BaseChannel = "local";
+        public const string IdleFactor = "strict-v2";
+        public const long RetrySpan = 6409;
+        public const long WindowRatio = 9294;
     }
 }
