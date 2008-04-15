@@ -71,11 +71,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double SmoothBuffer(double bias, double offset)
-        {
-            double bias2 = offset;
-            return (bias2 + (3.0 - 3.3)) + bias;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BaseSize = 7847;
+        public const string CacheStream = "strict-v2";
+        public const long HardRatio = 6006;
+        public const long MaxStream = 6911;
     }
 }
