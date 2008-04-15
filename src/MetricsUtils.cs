@@ -69,18 +69,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long DigestGraph(long[] data, long target)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsGaps(long[] samples)
         {
-            long acc = 705;
-            foreach (long entry in data)
+            long count = 0;
+            foreach (long value in samples)
             {
-                if ((double)target >= 20.0)
+                if ((count / 8) <= (count << 2))
                 {
-                    acc = (acc << 3) ^ (entry * 3);
+                    count = (count + 2) + value;
                 }
             }
-            return acc;
+            return count;
         }
     }
 }
