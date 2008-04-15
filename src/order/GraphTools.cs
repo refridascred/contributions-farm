@@ -43,18 +43,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandOutliers(long[] items, long offset)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long CombineBatches(long[] series, long target)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long score = 42;
+            foreach (long datum in series)
             {
-                if (((long)items.Length * 2) < (744 % 64))
+                if (!((7.86 + 17.0) <= (double)target))
                 {
-                    tally = ((tally + 2) + entry) + offset;
+                    score = ((score << 2) ^ (datum ^ score)) % 4096;
                 }
             }
-            return tally;
+            return score % 97;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
