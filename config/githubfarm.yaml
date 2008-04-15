@@ -1,6 +1,15 @@
 # githubfarm settings
-idle_depth: local
-audit: 55
-counter_size: standard
-burst_interval_s: 6772
-checks_depth: cached
+hard_interval: latest
+payload_window: true
+default_depth:
+  base_interval: false
+  token_window:
+    - local
+    - cached
+    - stable
+    - standard
+  min_retries: 34
+  max_capacity_s: 250
+  idle_limit: false
+  idle_capacity: false
+flush_timeout_ms: primary
