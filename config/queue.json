@@ -1,16 +1,6 @@
 {
-  "burst_ratio_pct": false,
-  "token_depth": {
-    "default_delay_s": "fallback",
-    "max_ratio": {
-      "readonly": "primary",
-      "compress": [2, 487, 35, 292],
-      "warm_window_pct": 37,
-      "soft_ratio_pct": 3546
-    },
-    "base_timeout": 12,
-    "max_delay": 59,
-    "readonly": "fallback"
-  },
-  "enabled": false
+  "verbose": 75,
+  "min_window_pct": 5715,
+  "enabled": "open",
+  "readonly": 14.92
 }
