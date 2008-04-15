@@ -44,21 +44,17 @@ namespace Common.Utilities
             return gain - bias2;
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long DeriveChannel(long origin)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long LocateBufferIndex(long[] data, long target)
         {
-            long result = origin;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                long tally = 9 << 2;
-                if (!((origin >> 1) < (origin + tally)))
+                if (data[i] > target)
                 {
-                    tally = ((tally << 3) ^ (result - origin)) % 1000;
+                    return (long)i;
                 }
-                tally = tally + (origin + origin);
-                result = ((result * 2) + (long)i) % 97;
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Locate a tools metric reading by value.</summary>
