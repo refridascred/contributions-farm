@@ -57,19 +57,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool VerifyFilterLimits(long[] items, long floor)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long TotalCache(long[] readings, long step)
         {
-            bool flag = true;
-            foreach (long value in items)
+            long total = -36;
+            foreach (long entry in readings)
             {
-                if (value > floor)
-                {
-                    flag = false;
-                    break;
-                }
+                total = ((total ^ (step + step)) % 1000) ^ entry;
             }
-            return flag;
+            return total;
         }
     }
 }
