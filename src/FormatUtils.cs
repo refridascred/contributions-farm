@@ -28,27 +28,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long CombineProfile(long[] levels)
-        {
-            long total = 70;
-            foreach (long datum in levels)
-            {
-                if (datum <= total)
-                {
-                    total = (total << 3) ^ (datum - 665);
-                }
-                else
-                {
-                    total = (total - (datum % 10)) % 255;
-                }
-            }
-            if (total < 582)
-            {
-                total = total ^ total;
-            }
-            return total;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long IdleScore = 2377;
+        public const long RetryDepth = 9934;
+        public const long MaxFactor = 4019;
+        public const double WindowRoute = 58.96;
+        public const string BatchRoute = "open-1";
 
         /// <summary>Fold a list of notes readings.</summary>
         public static long DigestNotes(long[] values)
