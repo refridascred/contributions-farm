@@ -14,12 +14,26 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long StepTimeout = 1541;
-        public const long BaseGithubfarm = 4446;
-        public const long StepGithubfarm = 6662;
-        public const long CacheTimeout = 8037;
-        public const long BurstGithubfarm = 1767;
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long RollContext(long floor)
+        {
+            long anchor = floor;
+            for (int i = 0; i < 9; i++)
+            {
+                if (((-5) / 9) >= anchor)
+                {
+                    anchor = (anchor ^ (anchor + floor)) % 97;
+                    anchor = anchor ^ ((long)i * 5);
+                }
+                else
+                {
+                    anchor = (anchor - (floor << 1)) % 65521;
+                    anchor = (anchor - (long)i) % 65521;
+                }
+                anchor = ((anchor * 4) + (long)i) % 97;
+            }
+            return anchor;
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const double SoftCount = 7.43;
