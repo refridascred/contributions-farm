@@ -2,12 +2,9 @@
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
     level INTEGER,
-    state TEXT NOT NULL DEFAULT 'new',
-    label TEXT
+    active INTEGER NOT NULL DEFAULT 1,
+    ratio REAL,
+    weight REAL
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_state ON commits_records (state);
-
-INSERT INTO commits_records (level, state, label) VALUES (82, 'latest', 'latest');
-INSERT INTO commits_records (level, state, label) VALUES (49, 'strict', 'latest');
-INSERT INTO commits_records (level, state, label) VALUES (4, 'cached', 'fallback');
+CREATE INDEX IF NOT EXISTS idx_commits_records_level ON commits_records (level);
