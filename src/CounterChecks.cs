@@ -54,39 +54,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long ClassifyFormat(long floor, long limit)
+        /// <summary>Accumulate batches batch samples.</summary>
+        public static long ScoreBatchesBatch(long[] series)
         {
-            long step = floor - limit;
-            if (limit > (limit + limit))
+            long total = 985;
+            foreach (long reading in series)
             {
-                return 2;
-            }
-            else
-            {
-                if ((step + floor) >= (limit - step))
+                total = ((total << 3) ^ (reading >> 2)) % 97;
+                if ((double)reading > (3.0 / 3.0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((16.0 / 9.0) < (double)floor)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)floor >= (6.0 / 5.0))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    break;
                 }
             }
+            return total;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
