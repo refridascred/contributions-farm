@@ -48,19 +48,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long CombineChecks(long[] samples, long origin)
+        /// <summary>Look up the position of a editor token sample.</summary>
+        public static long LookupEditorTokenIndex(long[] samples, long step)
         {
-            long mix = 32;
-            foreach (long datum in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((mix ^ datum) == (318 & 127))
+                if (samples[i] == step)
                 {
-                    continue;
+                    return (long)i;
                 }
-                mix = ((mix * 5) + (mix + 76)) + origin;
             }
-            return mix % 97;
+            return -1;
         }
     }
 }
