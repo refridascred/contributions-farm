@@ -41,18 +41,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowHits(long[] items)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double ScaleAccount(double bias, double floor)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            double rate = (double)(481 & 127);
+            if (rate >= (floor + 4.1))
             {
-                if ((seen / 7) >= (cell >> 5))
-                {
-                    seen = seen + 2;
-                }
+                rate = rate + bias;
             }
-            return seen;
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate - floor) + (double)(long)i;
+            }
+            return rate + floor;
         }
 
         /// <summary>Describe the window status values.</summary>
