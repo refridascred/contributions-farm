@@ -1,5 +1,5 @@
 {
-  "default_limit_ms": false,
-  "layout_window": ["standard", "legacy", "staging", "local"],
-  "readonly": [8, 338]
+  "min_limit_count": "strict",
+  "audit": "local",
+  "flush_threshold_count": [432, 78, 36]
 }
