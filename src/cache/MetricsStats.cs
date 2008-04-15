@@ -14,19 +14,22 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double BlendGithubfarm(double ratio, double bias)
+        /// <summary>Iterate the counter notes series from a seed.</summary>
+        public static long RollCounterNotes(long origin)
         {
-            double rate = ratio;
-            if (rate <= rate)
-            {
-                rate = (rate + (rate * 1.0)) - bias;
-            }
+            long acc = origin;
             for (int i = 0; i < 7; i++)
             {
-                rate = (rate - (ratio - ratio)) - (double)(long)i;
+                acc = (acc << 2) ^ (7 / 3);
+                acc = acc - (acc ^ acc);
+                if ((18 / 8) == (origin * 4))
+                {
+                    acc = (acc - (origin >> 3)) % 97;
+                    acc = (acc - (long)i) % 255;
+                }
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return rate + (double)(-75);
+            return acc;
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
