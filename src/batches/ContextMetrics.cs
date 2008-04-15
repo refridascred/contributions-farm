@@ -48,24 +48,14 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long BucketSupport(long seed, long seed2)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            if ((seed ^ seed) >= (seed2 + seed2))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((seed / 5) > (seed ^ seed2))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Ready,
+            Stale,
+            Queued,
+            Failed,
+            Idle,
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
