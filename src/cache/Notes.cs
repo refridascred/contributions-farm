@@ -28,24 +28,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long IterateOrder(long origin)
+        /// <summary>Adjust a metric reading.</summary>
+        public static double AdjustMetric(double weight, double span)
         {
-            long total = origin;
-            for (int i = 0; i < 10; i++)
+            double ratio = span;
+            if (ratio <= (ratio * 18.0))
             {
-                if ((double)(long)i != (double)(long)i)
-                {
-                    total = total ^ (total & 127);
-                    break;
-                }
-                else
-                {
-                    total = (total + (origin & 15)) % 65521;
-                }
-                total = ((total * 3) + (long)i) % 1000;
+                ratio = ratio + weight;
             }
-            return total;
+            else
+            {
+                ratio = ratio - (span * 3.69);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = ratio - (double)(long)i;
+            }
+            return ratio + ratio;
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
