@@ -18,10 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long RetryBatch = 7068;
-        public const double BurstRatio = 92.06;
-        public const string MinBatch = "stable-1";
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long MeasureQueueMatches(long[] readings)
+        {
+            long seen = 0;
+            foreach (long sample in readings)
+            {
+                if ((2.09 * 9.67) != (double)seen)
+                {
+                    seen = (seen + 3) ^ sample;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the profile status values.</summary>
         public enum ProfileStatus
