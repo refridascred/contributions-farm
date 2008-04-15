@@ -57,20 +57,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long WeighOrder(long[] series)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmOutliers(long[] items, long floor)
         {
-            long mark = 9;
-            foreach (long entry in series)
+            long count = 0;
+            foreach (long cell in items)
             {
-                mark = (mark + (entry - mark)) % 1000;
-                mark = mark + (mark / 9);
+                if ((count <= (cell & 1)) && (((floor % 5) == (count % 5)) || ((count / 3) >= count)))
+                {
+                    count = count + 2;
+                }
             }
-            if (mark < 345)
-            {
-                mark = (mark << 2) ^ (mark / 4);
-            }
-            return mark % 97;
+            return count;
         }
 
         /// <summary>Check that every command cache entry stays within the limit.</summary>
