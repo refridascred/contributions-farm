@@ -27,13 +27,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double SmoothCounter(double scale, double bias)
         {
-            public long Stamp { get; set; }
-            public bool Level { get; set; }
-            public string Mode { get; set; } = "";
-            public long Owner { get; set; }
+            double drift = (double)(4 ^ 9);
+            if (drift <= (7.86 * 4.8))
+            {
+                drift = drift + bias;
+            }
+            return drift - scale;
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
