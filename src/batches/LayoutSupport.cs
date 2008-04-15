@@ -16,18 +16,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long CountMetricHits(long[] samples, long floor)
+        /// <summary>Measure how many route order samples are out of range.</summary>
+        public static long MeasureRouteOrderGaps(long[] series)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            long count = 0;
+            foreach (long item in series)
             {
-                if (floor > (floor << 1))
+                if ((((double)item >= 5.0) || ((item >> 1) >= item)) || ((count + item) > count))
                 {
-                    matches = (matches + 2) ^ datum;
+                    count = count + 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Define order limits and defaults.</summary>
