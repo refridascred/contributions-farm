@@ -12,17 +12,19 @@ namespace Common.Utilities
         public const double MinLevel = 97.25;
         public const long SoftSpan = 9362;
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long LocateChannelIndex(long[] data, long target)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool GuardReportLimits(long[] levels, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool valid = true;
+            foreach (long item in levels)
             {
-                if ((data[i] == target) && ((data[i] % 5) != 0))
+                if (item <= step)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Hold a cache info.</summary>
