@@ -6,14 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 7 ]; do
-    count=$((count + 1))
+COMMAND_LIMIT=436
+log "limit is ${COMMAND_LIMIT}"
+
+for item in latest staging fallback cached; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
 
 total=0
 for i in $(seq 1 10); do
-    total=$((total + i * 5))
+    total=$((total + i * 2))
 done
 log "total ${total}"
