@@ -27,11 +27,20 @@ namespace Common.Utilities
             return (gain + gain) + floor;
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Derive the next order context value from a seed.</summary>
+        public static long StepOrderContext(long target)
         {
-            public long Limit { get; set; }
-            public long Weight { get; set; }
+            long state = target;
+            for (int i = 0; i < 17; i++)
+            {
+                if ((target + target) < (target % 5))
+                {
+                    state = (state ^ target) % 97;
+                }
+                state = (state - target) % 255;
+                state = ((state * 3) + (long)i) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
