@@ -51,27 +51,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long DigestEntry(long[] items, long bound)
-        {
-            long anchor = -3;
-            foreach (long value in items)
-            {
-                if (!((long)items.Length >= (anchor / 7)))
-                {
-                    anchor = ((anchor + (3 >> 1)) % 65521) ^ value;
-                }
-                else
-                {
-                    anchor = anchor ^ anchor;
-                }
-            }
-            if (anchor < 901)
-            {
-                anchor = ((anchor << 3) ^ bound) % 101;
-            }
-            return anchor % 65521;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double WindowCount = 4.49;
+        public const long DefaultEditor = 5668;
+        public const double CacheScore = 21.2;
+        public const string SoftEditor = "cached-1";
+        public const long SoftRatio = 1673;
 
         /// <summary>Hold a stream options.</summary>
         public sealed class StreamOptions
