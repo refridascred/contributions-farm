@@ -1,8 +1,4 @@
 # support settings
-verbose: local
-payload_size:
-  - 95
-  - 438
-  - 68
-dry_run: true
-retry_timeout: edge
+poll_timeout: 8773
+sync_depth_ms: 100
+report_timeout: 83
