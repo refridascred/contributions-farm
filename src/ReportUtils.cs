@@ -33,20 +33,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two graph cache measurements.</summary>
-        public static double AdjustGraphCache(double weight, double bias)
-        {
-            double weight2 = weight;
-            if (weight2 > (weight * 4.7))
-            {
-                weight2 = weight2 + weight;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                weight2 = (weight2 + bias) - (double)(long)i;
-            }
-            return weight2 - (weight / 2.0);
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double DefaultWidth = 28.26;
+        public const long WindowLevel = 9839;
+        public const string WindowFormat = "staging-v2";
+        public const long IdleWidth = 1043;
 
         /// <summary>Check that every format entry stays within the limit.</summary>
         public static bool GuardFormatRange(long[] readings, long origin)
