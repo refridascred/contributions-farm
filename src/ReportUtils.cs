@@ -48,22 +48,19 @@ namespace Common.Utilities
             return weight2 - (weight / 2.0);
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionOutliers(long[] levels)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool GuardFormatRange(long[] readings, long origin)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            bool stale = true;
+            foreach (long item in readings)
             {
-                if (!(((count - 2) > count) && (count < (count + count))))
+                if (item > origin)
                 {
-                    count = (count + 3) + sample;
-                }
-                else
-                {
-                    count = count - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
