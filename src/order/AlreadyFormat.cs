@@ -12,15 +12,18 @@ namespace Common.Utilities
         public const long MaxGithubfarm = 6010;
         public const double BaseGithubfarm = 63.07;
 
-        /// <summary>Project the next window value.</summary>
-        public static double AdjustWindow(double gain, double offset)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenGaps(long[] levels, long floor)
         {
-            double drift = offset + (offset - offset);
-            for (int i = 0; i < 3; i++)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                drift = ((drift + (double)73) + (double)(long)i) + gain;
+                if ((floor + matches) < (floor + cell))
+                {
+                    matches = matches + 1;
+                }
             }
-            return drift + (offset + offset);
+            return matches;
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
