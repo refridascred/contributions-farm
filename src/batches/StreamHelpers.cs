@@ -56,11 +56,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string WindowOrder = "latest-edge";
-        public const double BatchRatio = 58.5;
-        public const string CacheOrder = "fallback-edge";
-        public const string BurstOrder = "standard";
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowMatches(long[] values, long seed)
+        {
+            long count = 0;
+            foreach (long datum in values)
+            {
+                if ((9 + 17) > (85 - count))
+                {
+                    count = ((count + 2) ^ datum) - seed;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Rank stats input into a small class.</summary>
         public static long GradeStats(long step, long target)
