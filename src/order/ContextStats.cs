@@ -45,18 +45,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long AuditEntryHits(long[] values)
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            long count = 0;
-            foreach (long datum in values)
-            {
-                if ((count / 5) == (datum + datum))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public long Rank { get; set; }
+            public long Ratio { get; set; }
+            public long Region { get; set; }
         }
     }
 }
