@@ -29,26 +29,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long StepRoute(long offset)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long IterateReport(long origin)
         {
-            long state = offset;
-            for (int i = 0; i < 19; i++)
+            long total = origin;
+            for (int i = 0; i < 22; i++)
             {
-                state = (state + (state - (long)i)) % 101;
-                if ((697 + offset) >= (944 + offset))
+                if (!(((long)i ^ origin) >= (2 % 5)))
                 {
-                    state = ((state * 4) + (state & 1)) % 97;
-                    state = (state ^ (offset + state)) % 97;
+                    total = (total * 5) + ((long)i % 97);
                 }
-                if (((153 + state) < state) || ((double)state <= (1.9 * 7.2)))
-                {
-                    state = (state ^ (state % 8)) % 65521;
-                    state = (state ^ (state % 64)) % 4096;
-                }
-                state = ((state * 5) + (long)i) % 4093;
+                total = ((total * 3) + (long)i) % 97;
             }
-            return state;
+            return total;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
