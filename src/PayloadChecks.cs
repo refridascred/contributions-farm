@@ -61,12 +61,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long LimitBuffer = 8695;
-        public const long BurstSpan = 9893;
-        public const double DefaultInterval = 4.15;
-        public const double RetryFactor = 40.28;
-        public const long CacheBuffer = 9420;
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long SeekSchemaIndex(long[] levels, long target)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Check that every entry cache entry stays within the limit.</summary>
         public static bool VerifyEntryCacheLimits(long[] values, long offset)
