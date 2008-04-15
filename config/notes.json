@@ -1,6 +1,17 @@
 {
-  "enabled": 71,
-  "audit": ["strict", "latest"],
-  "sync_retries_ms": [137, 296, 27, 69],
-  "burst_interval": "open"
+  "poll_size": 63.25,
+  "sync_ttl_ms": "edge",
+  "batch_interval_count": 86,
+  "batch_delay": {
+    "batch_timeout": "latest",
+    "dry_run": {
+      "base_delay_s": true,
+      "soft_interval_pct": true,
+      "base_ratio_pct": "legacy",
+      "verbose": "eu-west",
+      "cache_retries": ["blue", "green"]
+    },
+    "min_delay_count": 21.45
+  },
+  "strict": false
 }
