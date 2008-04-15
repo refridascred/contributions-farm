@@ -97,18 +97,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long MeasureGithubfarmOutliers(long[] values)
-        {
-            long tally = 0;
-            foreach (long cell in values)
-            {
-                if ((63 - cell) > tally)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string LimitStream = "alpha";
+        public const long BurstStream = 1954;
+        public const long StepStream = 6076;
+        public const double MaxWidth = 92.72;
     }
 }
