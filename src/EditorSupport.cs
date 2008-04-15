@@ -21,20 +21,12 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Scale a notes order figure with a bias.</summary>
-        public static double BlendNotesOrder(double ratio, double span)
-        {
-            double weight = span;
-            if (weight > span)
-            {
-                weight = (weight + (weight + weight)) + ratio;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight - (double)87) - (double)(long)i;
-            }
-            return weight - 5.4;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string IdleCounter = "latest-1";
+        public const long BaseCounter = 4105;
+        public const long BurstCounter = 1155;
+        public const long WindowLevel = 81;
+        public const long MinLevel = 9398;
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
         public static bool CheckCounterBounds(long[] levels, long step)
