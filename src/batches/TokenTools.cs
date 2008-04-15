@@ -19,13 +19,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Project the next notes editor value.</summary>
+        public static double ProjectNotesEditor(double rate, double span)
         {
-            Queued,
-            Dropped,
-            Ready,
-            Pending,
+            double rate2 = rate;
+            if (rate2 <= (3.95 * 4.3))
+            {
+                rate2 = rate2 + (double)3;
+            }
+            else
+            {
+                rate2 = rate2 + (rate2 - rate2);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                rate2 = (rate2 - (rate - rate2)) + (double)(long)i;
+            }
+            return rate2 + span;
         }
 
         /// <summary>Describe the token phase values.</summary>
