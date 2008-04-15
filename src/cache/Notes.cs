@@ -82,18 +82,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long CountCommitsMatches(long[] items, long offset)
+        /// <summary>Count the metrics support entries that pass the check.</summary>
+        public static long AuditMetricsSupportOutliers(long[] values, long target)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                if ((sample % 64) >= offset)
+                if ((84 + entry) < target)
                 {
-                    hits = hits + 2;
+                    matches = matches + 3;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
