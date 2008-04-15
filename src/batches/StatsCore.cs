@@ -18,13 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
-        {
-            public bool Mode { get; set; }
-            public long Size { get; set; }
-            public double Stamp { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double LimitContributi = 17.03;
+        public const string RetryContributi = "staging-v2";
+        public const double CacheWidth = 1.57;
+        public const string DefaultSize = "cached-v2";
+        public const double BurstContributi = 20.25;
 
         /// <summary>Combine session values into a single score.</summary>
         public static long FoldSession(long[] values)
