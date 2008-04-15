@@ -24,19 +24,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool CheckSessionLimits(long[] data, long origin)
-        {
-            bool found = true;
-            foreach (long reading in data)
-            {
-                if (reading < origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BatchCount = 3263;
+        public const string MinToken = "primary";
+        public const string BurstToken = "strict";
+        public const string MaxToken = "open-edge";
     }
 }
