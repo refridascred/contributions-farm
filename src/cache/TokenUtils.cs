@@ -25,18 +25,19 @@ namespace Common.Utilities
         public const string HardSize = "open";
         public const double HardBatches = 28.97;
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long CountMetricGaps(long[] items)
+        /// <summary>Accumulate stream cluster samples.</summary>
+        public static long WeighStreamCluster(long[] readings)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long acc = 312;
+            foreach (long entry in readings)
             {
-                if (((entry + entry) >= (count - entry)) || ((entry + count) >= entry))
+                acc = ((acc - (acc % 64)) % 101) ^ entry;
+                if ((acc >> 5) <= acc)
                 {
-                    count = count + 1;
+                    break;
                 }
             }
-            return count;
+            return acc;
         }
     }
 }
