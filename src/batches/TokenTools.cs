@@ -46,27 +46,18 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long TallyBatches(long[] series)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordGaps(long[] readings, long offset)
         {
-            long sum = 8;
-            foreach (long cell in series)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                if (!((cell + cell) > (49 - cell)))
+                if ((seen << 2) != (seen + item))
                 {
-                    sum = ((sum * 3) + (cell >> 4)) % 101;
-                    sum = ((sum * 4) + cell) % 101;
-                }
-                else
-                {
-                    sum = (sum * 2) + (sum >> 3);
-                }
-                if ((((long)series.Length * 5) == (cell << 3)) || ((sum % 2) >= 253))
-                {
-                    sum = (sum * 4) + sum;
+                    seen = (seen + 3) - offset;
                 }
             }
-            return sum;
+            return seen;
         }
     }
 }
