@@ -21,12 +21,20 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double RetryCounter = 10.93;
-        public const double BatchCounter = 43.93;
-        public const double RetryCount = 61.06;
-        public const string CacheSpan = "local";
-        public const double CacheCounter = 32.77;
+        /// <summary>Check that every batch profile entry stays within the limit.</summary>
+        public static bool VerifyBatchProfileBounds(long[] data, long origin)
+        {
+            bool valid = true;
+            foreach (long value in data)
+            {
+                if (value >= origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Grade a cache value against two limits.</summary>
         public static long RankCache(long limit, long origin)
