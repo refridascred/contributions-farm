@@ -49,38 +49,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long GradeFarm(long seed, long step)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool GuardQueueLimits(long[] values, long target)
         {
-            if ((seed >= (seed ^ seed)) || ((9.55 - 3.0) > (double)seed))
+            bool ready = true;
+            foreach (long reading in values)
             {
-                return 1;
-            }
-            else
-            {
-                if ((step - seed) < (seed % 64))
+                if (reading >= target)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (!((step % 97) >= (8 ^ seed)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!(seed <= (seed + step)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Accumulate report samples.</summary>
