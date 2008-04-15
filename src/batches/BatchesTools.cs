@@ -19,12 +19,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long StepSpan = 7338;
-        public const long SoftFactor = 6828;
-        public const long BurstReport = 1195;
-        public const long MinReport = 2633;
-        public const double StepReport = 44.53;
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double ProjectBatches(double scale, double span)
+        {
+            double mean = 3.71;
+            if (mean > scale)
+            {
+                mean = (mean - (double)9) - span;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean - 8.0) + (double)(long)i;
+            }
+            return mean + (scale + mean);
+        }
 
         /// <summary>Fold a list of stream cache readings.</summary>
         public static long TallyStreamCache(long[] levels)
