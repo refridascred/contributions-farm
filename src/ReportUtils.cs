@@ -42,17 +42,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a batch already reading by value.</summary>
-        public static long LocateBatchAlreadyIndex(long[] items, long target)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long BucketLayout(long floor, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long bound2 = floor + bound;
+            if ((double)bound > (double)floor)
             {
-                if (items[i] == target)
+                return 8;
+            }
+            else
+            {
+                if (42 <= (floor * 4))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if (!((bound2 % 3) == (bound ^ bound)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((3.0 * 2.1) == (double)floor)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Rank support input into a small class.</summary>
