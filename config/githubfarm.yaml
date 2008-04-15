@@ -1,14 +1,8 @@
 # githubfarm settings
-warm_ratio_s: 100
-min_ratio_s: local
-hard_limit_s: 250
-hard_size_pct:
-  - blue
-  - standard
-payload_limit:
-  flush_retries: blue
-  batch_capacity_pct: false
-  context_ratio: true
-  editor_size: true
-  session_ratio: false
-batch_size_s: 7563
+notes_retries: legacy
+strict: 21.19
+min_limit: 21
+warm_ttl_ms:
+  report_delay: blue
+  sync_delay_ms: latest
+  channel_threshold: 3832
