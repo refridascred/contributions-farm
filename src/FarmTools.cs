@@ -47,18 +47,9 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphGaps(long[] values)
-        {
-            long hits = 0;
-            foreach (long item in values)
-            {
-                if ((1 / 4) != (item + item))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long RetryEntry = 3963;
+        public const long StepSize = 445;
+        public const long CacheSize = 3638;
     }
 }
