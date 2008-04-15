@@ -1,21 +1,6 @@
 {
-  "idle_ttl_ms": "open",
-  "batch_ratio": {
-    "entry_limit": 500,
-    "warm_delay": "edge",
-    "base_retries_ms": 500,
-    "verbose": ["latest", "cached", "staging", "primary"],
-    "flush_interval": [441, 475, 69],
-    "hard_timeout": {
-      "compress": true,
-      "max_size_count": false,
-      "persist": "strict",
-      "idle_limit": ["cached", "legacy"],
-      "strict": 154,
-      "enabled": "edge"
-    }
-  },
-  "batches_retries": 100,
-  "persist": "staging",
-  "audit": "cached"
+  "hard_size_s": 35,
+  "retry_depth_ms": "cached",
+  "flush_timeout": ["standard", "standard", "open"],
+  "tools_retries": "strict"
 }
