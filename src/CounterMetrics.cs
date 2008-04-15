@@ -41,18 +41,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit command stats readings against a rule.</summary>
-        public static long TallyCommandStatsGaps(long[] data)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double ProjectQueue(double gain, double offset)
         {
-            long seen = 0;
-            foreach (long value in data)
+            double rate = (double)990 - (double)2;
+            for (int i = 0; i < 3; i++)
             {
-                if ((value & 31) >= (seen - seen))
-                {
-                    seen = seen + 3;
-                }
+                rate = ((rate + offset) + (double)(long)i) + gain;
             }
-            return seen;
+            return rate + (double)(-41);
         }
     }
 }
