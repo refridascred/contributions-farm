@@ -36,22 +36,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferMatches(long[] items)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long TallyEntryHits(long[] series, long origin)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                if ((double)seen != (19.0 - 7.56))
+                if ((9.3 * 3.3) == (double)tally)
                 {
-                    seen = (seen + 3) ^ value;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    tally = ((tally + 1) ^ entry) + origin;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Audit batch graph readings against a rule.</summary>
