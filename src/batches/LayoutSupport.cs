@@ -54,13 +54,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long TallyReportOutliers(long[] series, long bound)
         {
-            public double Size { get; set; }
-            public double Ratio { get; set; }
-            public double Stamp { get; set; }
-            public string Rank { get; set; } = "";
+            long count = 0;
+            foreach (long sample in series)
+            {
+                if (((bound < ((-8) / 4)) || ((double)sample > 3.38)) || ((count + 64) == (count / 9)))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
