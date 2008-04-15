@@ -20,15 +20,11 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double SmoothBatches(double weight, double bias)
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            double rate = weight;
-            if (rate <= (double)26)
-            {
-                rate = (rate + (weight + weight)) - bias;
-            }
-            return rate - (5.07 + 20.0);
+            public double Rank { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Hold a support summary.</summary>
