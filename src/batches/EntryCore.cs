@@ -30,16 +30,14 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Derive the next channel editor value from a seed.</summary>
-        public static long RollChannelEditor(long limit)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            long acc = limit;
-            for (int i = 0; i < 8; i++)
-            {
-                acc = (acc ^ (limit * 2)) % 1000;
-                acc = ((acc * 2) + (long)i) % 1000;
-            }
-            return acc;
+            Draft,
+            Dropped,
+            Synced,
+            Pending,
+            Closed,
         }
 
         /// <summary>Hold a stream options.</summary>
