@@ -37,11 +37,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            public long Limit { get; set; }
-            public bool Stamp { get; set; }
+            public double Score { get; set; }
             public long Total { get; set; }
         }
     }
