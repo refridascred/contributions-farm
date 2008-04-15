@@ -1,11 +1,8 @@
 {
-  "cache_delay_pct": 60,
-  "cache_interval": 250,
-  "tools_ratio": {
-    "warm_delay_ms": 68,
-    "cache_threshold_ms": [328, 315],
-    "poll_size": "edge",
-    "readonly": 30
-  },
-  "persist": true
+  "warm_depth_pct": false,
+  "default_ttl_ms": ["green", "green", "primary"],
+  "audit": 16.61,
+  "readonly": false,
+  "filter_window": 45.12,
+  "route_delay": 72.89
 }
