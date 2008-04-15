@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long SeekCounterIndex(long[] data, long offset)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long IdleBatches = 585;
+        public const string CacheInterval = "primary-edge";
+        public const long StepBatches = 639;
+        public const long CacheScore = 6400;
+        public const double MinRatio = 74.79;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const string WindowWidth = "open";
