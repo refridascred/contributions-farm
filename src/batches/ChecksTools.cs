@@ -64,13 +64,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Project the next buffer value.</summary>
+        public static double SmoothBuffer(double bias, double offset)
         {
-            public bool Token { get; set; }
-            public bool Flag { get; set; }
-            public bool Score { get; set; }
-            public long Region { get; set; }
+            double bias2 = offset;
+            return (bias2 + (3.0 - 3.3)) + bias;
         }
     }
 }
