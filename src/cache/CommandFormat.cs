@@ -48,22 +48,26 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long CombineFilter(long[] items)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long TotalWindow(long[] data, long limit)
         {
-            long total = 29;
-            foreach (long cell in items)
+            long anchor = 254;
+            foreach (long cell in data)
             {
-                if (((7.0 * 3.7) == (double)total) && ((cell - cell) <= cell))
+                if (!((7.87 / 2.0) < (double)cell))
                 {
-                    total = (total - total) % 101;
+                    anchor = (anchor ^ (limit - limit)) % 255;
+                }
+                if (limit < (cell + cell))
+                {
+                    anchor = (anchor ^ (8 - limit)) % 255;
+                }
+                if ((limit << 2) == (limit & 15))
+                {
+                    break;
                 }
             }
-            if (total > 267)
-            {
-                total = (total + (24 + 429)) % 4096;
-            }
-            return total;
+            return anchor % 97;
         }
     }
 }
