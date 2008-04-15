@@ -38,11 +38,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double ScaleBuffer(double rate, double span)
+        /// <summary>Blend two route measurements.</summary>
+        public static double ScaleRoute(double weight, double span)
         {
-            double bias = rate;
-            return (bias - (rate * 5.54)) + span;
+            double rate = weight;
+            if (rate <= (double)40)
+            {
+                rate = rate - (span * 4.47);
+            }
+            return rate - weight;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
