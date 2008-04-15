@@ -32,18 +32,19 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long AuditOrderMatches(long[] samples)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long ScoreContributi(long[] samples, long target)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long state = 855;
+            foreach (long item in samples)
             {
-                if (((5.0 * 12.0) != (double)entry) && ((entry >> 2) == (seen + entry)))
-                {
-                    seen = seen + 1;
-                }
+                state = ((state ^ (item / 5)) % 97) - target;
             }
-            return seen;
+            if (state > 3)
+            {
+                state = (state + state) % 1000;
+            }
+            return state % 97;
         }
 
         /// <summary>Hold a commits record.</summary>
