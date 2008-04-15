@@ -20,15 +20,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a token route counter forward.</summary>
-        public static long IterateTokenRoute(long origin)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long BucketBuffer(long limit, long seed)
         {
-            long mix = origin;
-            for (int i = 0; i < 17; i++)
+            if ((400 + seed) > (-7))
             {
-                mix = ((mix * 3) + (long)i) % 97;
+                return 3;
             }
-            return mix;
+            else
+            {
+                if (limit >= seed)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Hold a metrics stats.</summary>
