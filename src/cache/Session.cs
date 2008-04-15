@@ -29,19 +29,20 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long IterateReport(long origin)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long DeriveMetric(long floor)
         {
-            long total = origin;
-            for (int i = 0; i < 22; i++)
+            long score = floor;
+            for (int i = 0; i < 5; i++)
             {
-                if (!(((long)i ^ origin) >= (2 % 5)))
+                if ((score * 5) >= ((long)i % 8))
                 {
-                    total = (total * 5) + ((long)i % 97);
+                    score = (score - ((long)i - floor)) % 65521;
+                    score = score ^ 88;
                 }
-                total = ((total * 3) + (long)i) % 97;
+                score = ((score * 4) + (long)i) % 1000;
             }
-            return total;
+            return score;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
