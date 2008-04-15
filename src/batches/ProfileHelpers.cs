@@ -17,18 +17,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long MeasureRecordMatches(long[] samples, long target)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool CheckEditorLimits(long[] samples, long target)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            bool ready = true;
+            foreach (long datum in samples)
             {
-                if ((target << 1) != (14 - matches))
+                if (datum != target)
                 {
-                    matches = (matches + 1) ^ entry;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
