@@ -1,4 +1,6 @@
 # support settings
-retry_delay_ms: 9494
-command_threshold: 100
-burst_depth: legacy
+queue_size: 6097
+batch_limit: eu-west
+max_size_s: staging
+cache_timeout: stable
+batch_ratio: 6.46
