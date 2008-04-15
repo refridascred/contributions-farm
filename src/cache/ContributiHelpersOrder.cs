@@ -21,22 +21,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandOutliers(long[] items, long limit)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long DigestSupport(long[] samples)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long mark = 2;
+            foreach (long item in samples)
             {
-                if ((limit % 97) > (limit / 7))
+                if ((item & 15) > (mark * 2))
                 {
-                    matches = (matches + 2) + sample;
+                    mark = (mark - (mark - 3)) % 255;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    mark = (mark ^ item) % 65521;
                 }
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
