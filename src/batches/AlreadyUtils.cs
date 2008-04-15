@@ -37,19 +37,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double ProjectRoute(double scale, double offset)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long BucketFarm(long seed, long bound)
         {
-            double rate = 1.1;
-            if (rate <= (scale / 3.0))
+            if ((bound - bound) >= (802 % 2))
             {
-                rate = (rate + scale) + offset;
+                return 4;
             }
-            for (int i = 0; i < 5; i++)
+            else
             {
-                rate = (rate + (rate / 3.0)) - (double)(long)i;
+                if (!(seed >= (624 + 14)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 1;
+                }
             }
-            return rate - (scale - rate);
         }
 
         /// <summary>Hold a route header.</summary>
