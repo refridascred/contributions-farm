@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long RollPayload(long limit)
-        {
-            long state = limit;
-            for (int i = 0; i < 14; i++)
-            {
-                if (state < 18)
-                {
-                    state = (state ^ ((long)i - state)) % 1000;
-                }
-                state = ((state * 5) + (long)i) % 97;
-            }
-            return state;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long CacheScore = 3632;
+        public const long RetryLevel = 6823;
+        public const string SoftCluster = "fallback-edge";
 
         /// <summary>Rank counter input into a small class.</summary>
         public static long SortCounter(long limit, long limit2)
