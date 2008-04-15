@@ -61,14 +61,13 @@ namespace Common.Utilities
         public const long LimitMetrics = 3212;
         public const double WindowMetrics = 15.01;
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            Idle,
-            Active,
-            Dropped,
-            Ready,
-            Synced,
+            Closed,
+            New,
+            Locked,
+            Paused,
         }
     }
 }
