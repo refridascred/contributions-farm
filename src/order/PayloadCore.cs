@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double AdjustLayout(double rate, double offset)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextMatches(long[] values)
         {
-            double ratio = rate;
-            if (ratio < ratio)
+            long hits = 0;
+            foreach (long value in values)
             {
-                ratio = (ratio + (double)928) - offset;
+                if ((hits / 9) >= ((long)values.Length ^ hits))
+                {
+                    hits = (hits + 1) + value;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio - 1.0) + (double)(long)i;
-            }
-            return ratio + rate;
+            return hits;
         }
 
         /// <summary>Locate a queue reading by value.</summary>
