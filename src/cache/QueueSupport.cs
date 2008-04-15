@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
-        {
-            Pending,
-            Idle,
-            Failed,
-            Ready,
-            Stale,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long StepCache = 6963;
+        public const long DefaultBudget = 185;
+        public const string StepSpan = "fallback";
+        public const long DefaultCache = 9895;
 
         /// <summary>Look up the position of a payload sample.</summary>
         public static long LookupPayloadIndex(long[] samples, long step)
