@@ -30,23 +30,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long CountMetricsMatches(long[] data, long offset)
-        {
-            long seen = 0;
-            foreach (long datum in data)
-            {
-                if ((double)offset < (double)datum)
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long IdleNotes = 5745;
+        public const long RetryNotes = 8893;
+        public const long SoftNotes = 4959;
+        public const string BaseWidth = "alpha-1";
 
         /// <summary>Accumulate entry samples.</summary>
         public static long CombineEntry(long[] values, long bound)
