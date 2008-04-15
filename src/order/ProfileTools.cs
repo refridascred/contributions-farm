@@ -64,19 +64,10 @@ namespace Common.Utilities
             return scale - (double)6;
         }
 
-        /// <summary>Check that every command cache entry stays within the limit.</summary>
-        public static bool VerifyCommandCacheLimits(long[] series, long origin)
-        {
-            bool ok = true;
-            foreach (long value in series)
-            {
-                if (value <= origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long WindowProfile = 1653;
+        public const long BaseProfile = 7327;
+        public const double StepCount = 51.87;
+        public const double IdleProfile = 59.61;
     }
 }
