@@ -1,21 +1,7 @@
 {
-  "retry_capacity": {
-    "metrics_window": 9548,
-    "dry_run": {
-      "audit": [378, 472],
-      "farm_timeout": [433, 478, 463, 298],
-      "cache_depth_ms": true,
-      "channel_interval": "fallback",
-      "dry_run": "blue",
-      "hard_limit_count": 63.89
-    },
-    "command_interval": 85,
-    "strict": 9.87,
-    "soft_limit_ms": 4524
-  },
-  "sync_capacity_s": "green",
-  "verbose": "local",
-  "default_timeout_ms": 9504,
-  "flush_retries": 100,
-  "warm_delay": 24
+  "counter_delay": 250,
+  "tools_interval": 100,
+  "buffer_window": true,
+  "strict": "staging",
+  "base_delay_count": false
 }
