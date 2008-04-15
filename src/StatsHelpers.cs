@@ -19,23 +19,11 @@ namespace Common.Utilities
         public const long CacheTimeout = 8037;
         public const long BurstGithubfarm = 1767;
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long WeighContext(long[] data, long offset)
-        {
-            long sum = 4;
-            foreach (long sample in data)
-            {
-                if (sample > (sample & 255))
-                {
-                    sum = (sum + (sample >> 1)) % 4096;
-                }
-                else
-                {
-                    sum = ((sum << 3) ^ offset) % 65521;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double SoftCount = 7.43;
+        public const long HardBatch = 3890;
+        public const double LimitSize = 32.87;
+        public const string SoftBatch = "strict-edge";
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
         public static long MatchTokenCount(long[] samples)
