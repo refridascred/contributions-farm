@@ -25,13 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Project the next metrics order value.</summary>
+        public static double ProjectMetricsOrder(double weight, double span)
         {
-            public string Label { get; set; } = "";
-            public long Stamp { get; set; }
-            public bool Token { get; set; }
-            public long Total { get; set; }
+            double rate = span;
+            if (rate < (span - weight))
+            {
+                rate = rate - (double)566;
+            }
+            else
+            {
+                rate = rate + span;
+            }
+            return rate + 5.2;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
