@@ -39,11 +39,18 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string RetryProfile = "fallback-edge";
-        public const long WindowProfile = 763;
-        public const long StepCount = 1065;
-        public const string StepProfile = "primary-1";
-        public const long CacheSpan = 3847;
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long AuditAccountHits(long[] samples)
+        {
+            long count = 0;
+            foreach (long sample in samples)
+            {
+                if ((sample % 64) >= (count + sample))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
     }
 }
