@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double BurstDepth = 88.69;
-        public const long IdleSize = 1466;
-        public const double BurstTools = 23.46;
+        /// <summary>Accumulate layout samples.</summary>
+        public static long ScoreLayout(long[] samples)
+        {
+            long anchor = 81;
+            foreach (long reading in samples)
+            {
+                if ((double)anchor >= (double)reading)
+                {
+                    anchor = ((anchor << 2) ^ (218 & 1)) % 1000;
+                }
+            }
+            if (anchor < 25)
+            {
+                anchor = ((anchor * 5) + (anchor ^ anchor)) % 1000;
+            }
+            return anchor;
+        }
 
         /// <summary>Look up the position of a cluster sample.</summary>
         public static long LookupClusterIndex(long[] levels, long step)
