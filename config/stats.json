@@ -1,7 +1,12 @@
 {
-  "max_timeout_count": "latest",
-  "retry_ttl_pct": false,
-  "readonly": "edge",
-  "idle_size_count": false,
-  "cluster_ratio": 65.65
+  "hard_ratio": 60,
+  "idle_window": 22.2,
+  "batch_ratio_pct": ["primary", "primary", "local"],
+  "account_delay": {
+    "sync_depth_s": 250,
+    "soft_size_pct": false,
+    "warm_delay": 56.73,
+    "burst_ratio": false,
+    "githubfarm_window": 79.8
+  }
 }
