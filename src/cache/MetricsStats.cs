@@ -13,13 +13,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            public long Ratio { get; set; }
-            public double Label { get; set; }
-            public long Weight { get; set; }
-            public long Token { get; set; }
+            public long Owner { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Fold a list of account readings.</summary>
