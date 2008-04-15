@@ -84,20 +84,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long RollMetric(long step)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long CountCommitsMatches(long[] items, long offset)
         {
-            long score = step;
-            for (int i = 0; i < 11; i++)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                if (((step / 5) >= (step + score)) || ((step >> 5) >= (score & 15)))
+                if ((sample % 64) >= offset)
                 {
-                    score = score + (score << 3);
-                    continue;
+                    hits = hits + 2;
                 }
-                score = ((score * 3) + (long)i) % 1000;
             }
-            return score;
+            return hits;
         }
     }
 }
