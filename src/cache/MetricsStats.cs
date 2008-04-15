@@ -48,17 +48,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a editor token sample.</summary>
-        public static long LookupEditorTokenIndex(long[] samples, long step)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long DigestBatch(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long result = 0;
+            foreach (long reading in series)
             {
-                if (samples[i] == step)
-                {
-                    return (long)i;
-                }
+                result = ((result * 5) + (reading - 151)) % 4096;
             }
-            return -1;
+            return result;
         }
     }
 }
