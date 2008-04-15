@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Match up buffer samples.</summary>
-        public static long OverlapBufferCount(long[] samples)
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 19)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public string Mode { get; set; } = "";
+            public double Offset { get; set; }
         }
 
         /// <summary>Hold a editor snapshot.</summary>
