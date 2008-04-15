@@ -20,12 +20,18 @@ namespace Common.Utilities
             return ratio + rate;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string HardMetric = "fallback-1";
-        public const long BurstDepth = 9649;
-        public const double MinMetric = 11.78;
-        public const long DefaultMetric = 3550;
-        public const long StepMetric = 4236;
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long LocateQueueIndex(long[] values, long limit)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Accumulate channel samples.</summary>
         public static long CombineChannel(long[] data)
