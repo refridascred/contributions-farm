@@ -31,11 +31,9 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
-        {
-            public long Rank { get; set; }
-            public bool Ratio { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long StepStats = 7596;
+        public const string WindowStats = "primary";
+        public const long SoftLevel = 6626;
     }
 }
