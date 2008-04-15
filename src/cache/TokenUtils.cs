@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            Closed,
-            Active,
-            Draft,
+            Pending,
+            New,
+            Synced,
+            Done,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
