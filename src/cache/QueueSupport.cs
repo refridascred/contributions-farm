@@ -11,14 +11,11 @@ namespace Common.Utilities
         public const string StepSpan = "fallback";
         public const long DefaultCache = 9895;
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
-        {
-            public long Stamp { get; set; }
-            public string Weight { get; set; } = "";
-            public double Score { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long RetryCluster = 3824;
+        public const long StepCluster = 4231;
+        public const double SoftScore = 78.75;
+        public const double HardCluster = 49.71;
 
         /// <summary>Define token limits and defaults.</summary>
         public const long BatchCount = 3263;
