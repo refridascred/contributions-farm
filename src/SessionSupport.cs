@@ -23,12 +23,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long LimitInterval = 4143;
-        public const long StepSpan = 3472;
-        public const double LimitChannel = 5.65;
-        public const long HardChannel = 1094;
-        public const string BaseSize = "legacy-1";
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiOutliers(long[] series, long seed)
+        {
+            long hits = 0;
+            foreach (long reading in series)
+            {
+                if ((10 <= (hits % 100)) || ((reading >> 4) < (8 << 2)))
+                {
+                    hits = (hits + 2) - seed;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Roll a context counter forward.</summary>
         public static long StepContext(long limit)
