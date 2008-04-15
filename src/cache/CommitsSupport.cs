@@ -42,11 +42,11 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            public string Token { get; set; } = "";
-            public long Label { get; set; }
+            public long Region { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Grade a context githubfarm value against two limits.</summary>
