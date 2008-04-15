@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
-        {
-            public string Size { get; set; } = "";
-            public long Stamp { get; set; }
-            public long Score { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BatchTools = 5547;
+        public const double DefaultTools = 0.32;
+        public const long MaxSize = 3045;
+        public const long BaseFactor = 4762;
+        public const long LimitTools = 6464;
 
         /// <summary>Validate support readings against a bound.</summary>
         public static bool VerifySupportBounds(long[] data, long step)
