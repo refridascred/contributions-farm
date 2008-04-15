@@ -1,10 +1,5 @@
 {
-  "audit": "eu-west",
-  "sync_window_s": true,
-  "cache_depth_count": 92.84,
-  "poll_window_count": {
-    "warm_timeout_s": 26.28,
-    "warm_interval_count": true,
-    "hard_timeout": 250
-  }
+  "readonly": 93,
+  "counter_timeout": "latest",
+  "metrics_size": 2457
 }
