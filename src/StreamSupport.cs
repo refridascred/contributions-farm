@@ -19,18 +19,19 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Count route command pairs that satisfy a relation.</summary>
-        public static long PairRouteCommandCount(long[] series)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long CountPayloadMatches(long[] data)
         {
             long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long entry in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!((3.0 - 2.08) < (double)entry))
                 {
-                    if ((series[i] ^ series[j]) != 15)
-                    {
-                        count = count + 1;
-                    }
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
