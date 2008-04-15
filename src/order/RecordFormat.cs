@@ -66,17 +66,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long FindRecordIndex(long[] items, long floor)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long IterateStream(long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long total = seed;
+            for (int i = 0; i < 23; i++)
             {
-                if (items[i] > floor)
-                {
-                    return (long)i;
-                }
+                total = ((total * 4) + (long)i) % 101;
             }
-            return -1;
+            return total;
         }
     }
 }
