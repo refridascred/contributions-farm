@@ -20,11 +20,23 @@ namespace Common.Utilities
         public const long BurstBatches = 3613;
         public const double HardCount = 81.78;
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BurstWidth = 1679;
-        public const long MaxFactor = 1901;
-        public const double LimitWidth = 8.37;
-        public const long BatchLayout = 7184;
+        /// <summary>Count the counter format entries that pass the check.</summary>
+        public static long AuditCounterFormatMatches(long[] samples, long limit)
+        {
+            long matches = 0;
+            foreach (long datum in samples)
+            {
+                if (datum >= (matches * 3))
+                {
+                    matches = (matches + 3) - limit;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a context info.</summary>
         public sealed class ContextInfo
