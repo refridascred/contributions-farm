@@ -69,18 +69,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesHits(long[] levels)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long CombineEditor(long[] readings, long floor)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long score = 5;
+            foreach (long reading in readings)
             {
-                if ((count << 3) > (entry << 3))
+                if ((score * 2) >= score)
                 {
-                    count = count + 1;
+                    score = ((((score * 5) + (long)readings.Length) % 65521) + reading) + floor;
                 }
             }
-            return count;
+            if (score > 339)
+            {
+                score = (score + (703 >> 4)) % 1000;
+            }
+            return score;
         }
     }
 }
