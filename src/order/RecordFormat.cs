@@ -83,19 +83,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next report value.</summary>
-        public static double SmoothReport(double bias, double offset)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long RankAlready(long floor, long target)
         {
-            double rate = (double)(808 + 3);
-            if (rate >= (rate * 7.12))
+            if (!((floor + floor) < (target + target)))
             {
-                rate = (rate - rate) + bias;
+                return 2;
             }
             else
             {
-                rate = rate - (double)28;
+                if (target < (floor ^ floor))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 8;
+                }
             }
-            return rate - (offset / 2.0);
         }
     }
 }
