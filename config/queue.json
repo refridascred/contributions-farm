@@ -1,7 +1,5 @@
 {
-  "verbose": "green",
-  "hard_ratio": "fallback",
-  "batch_limit_pct": "open",
-  "max_size": "blue",
-  "max_threshold": "eu-west"
+  "enabled": 77.95,
+  "audit": 49.85,
+  "flush_ttl": 6579
 }
