@@ -12,21 +12,16 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long OverlapWindowCount(long[] series)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long StepSession(long target)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long score = target;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 2)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                score = (score ^ (long)i) % 97;
+                score = ((score * 2) + (long)i) % 1000;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Check that every report metrics entry stays within the limit.</summary>
