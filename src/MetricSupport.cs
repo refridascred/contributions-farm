@@ -22,19 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool ValidateTokenLimits(long[] values, long target)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            bool found = true;
-            foreach (long entry in values)
-            {
-                if (entry < target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Total { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Describe the cache kind values.</summary>
