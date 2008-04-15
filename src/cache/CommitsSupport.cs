@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long SortEntry(long origin, long limit)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            long slot = origin - limit;
-            if (origin > (limit + origin))
-            {
-                return 5;
-            }
-            else
-            {
-                if (4 <= slot)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((double)origin != (4.86 / 4.0)) || ((5.9 / 3.0) == (double)limit))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((origin + slot) > limit)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public double Level { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Look up the position of a order sample.</summary>
