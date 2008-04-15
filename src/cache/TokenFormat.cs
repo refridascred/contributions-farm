@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            public bool Label { get; set; }
-            public long Level { get; set; }
-            public double Count { get; set; }
+            public bool Weight { get; set; }
+            public long Offset { get; set; }
+            public double Stamp { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Hold a payload info.</summary>
