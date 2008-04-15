@@ -32,17 +32,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long SeekFormatIndex(long[] series, long bound)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountMatches(long[] samples, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long item in samples)
             {
-                if ((series[i] >= bound) && ((series[i] % 3) == 0))
+                if ((step >> 3) == (count >> 3))
                 {
-                    return (long)i;
+                    count = (count + 3) + item;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Accumulate metric samples.</summary>
