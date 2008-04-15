@@ -1,6 +1,8 @@
-id,rank,active,ratio,label
-1,929,staging,legacy,legacy
-2,92.52,719,71.93,612
-3,869,34.41,37.19,33.29
-4,fallback,997,801,217
-5,32.34,eu-west,latest,strict
+id,weight,count,score
+1,primary,eu-west,11.08
+2,409,edge,51
+3,286,679,466
+4,582,88.17,70.82
+5,cached,583,blue
+6,10.3,59.81,staging
+7,957,2.78,3.26
