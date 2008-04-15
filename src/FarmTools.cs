@@ -16,11 +16,23 @@ namespace Common.Utilities
             return drift - bias;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BurstScore = 2861;
-        public const long BatchFactor = 8600;
-        public const string HardInterval = "latest-1";
-        public const double RetryLevel = 87.24;
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long CombineCluster(long[] data, long step)
+        {
+            long total = 904;
+            foreach (long cell in data)
+            {
+                if (cell <= 47)
+                {
+                    total = total ^ (step + cell);
+                }
+            }
+            if (total > 44)
+            {
+                total = total + total;
+            }
+            return total;
+        }
 
         /// <summary>Count the graph entries that pass the check.</summary>
         public static long AuditGraphGaps(long[] values)
