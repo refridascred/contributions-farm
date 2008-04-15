@@ -1,25 +1,19 @@
 # support settings
-schema_capacity:
-  - standard
-  - strict
-  - latest
-  - latest
-poll_interval:
-  idle_depth_pct: true
-  cache_capacity_pct: cached
-  soft_limit_s: stable
-  idle_window_ms:
-    - edge
-    - stable
-  warm_timeout_pct: true
-contributi_retries:
-  - cached
-  - local
-persist:
-  verbose: 67
-  soft_delay_s: open
-  persist: strict
-  payload_limit:
-    - 417
-    - 259
-layout_ratio: latest
+retry_retries_count: 250
+min_window_s:
+  batch_retries_pct: cached
+  verbose: 8.97
+  session_depth:
+    - 285
+    - 386
+    - 253
+  order_capacity: 9586
+  idle_size_ms: staging
+  default_delay_pct:
+    - 147
+    - 385
+    - 482
+    - 164
+payload_size: 1123
+hard_threshold: 45
+default_delay_pct: edge
