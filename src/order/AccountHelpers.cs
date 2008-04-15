@@ -52,24 +52,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a route contributi counter forward.</summary>
-        public static long RollRouteContributi(long step)
-        {
-            long carry = step;
-            for (int i = 0; i < 9; i++)
-            {
-                if (((step * 2) > (carry * 4)) || ((step ^ step) < (step - 28)))
-                {
-                    carry = carry ^ ((long)i % 7);
-                }
-                else
-                {
-                    carry = ((carry * 3) + (13 >> 2)) % 65521;
-                }
-                carry = ((carry * 2) + (long)i) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long StepTimeout = 1472;
+        public const long WindowGraph = 1954;
+        public const long SoftWidth = 6716;
 
         /// <summary>Scale a batches figure with a bias.</summary>
         public static double ScaleBatches(double ratio, double offset)
