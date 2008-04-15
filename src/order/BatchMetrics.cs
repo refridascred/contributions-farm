@@ -55,18 +55,12 @@ namespace Common.Utilities
             return gain + (span * 16.0);
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long MeasureOrderMatches(long[] items)
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            long seen = 0;
-            foreach (long sample in items)
-            {
-                if ((seen - seen) == (sample * 5))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public double Owner { get; set; }
+            public long Limit { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Define queue limits and defaults.</summary>
