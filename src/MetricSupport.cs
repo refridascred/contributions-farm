@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long AuditStreamMatches(long[] readings)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long LookupCounterIndex(long[] data, long target)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (matches < (99 / 5))
+                if (data[i] < target)
                 {
-                    matches = (matches + 1) ^ value;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Hold a stream stats.</summary>
