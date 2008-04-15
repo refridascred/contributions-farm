@@ -13,13 +13,21 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long MatchCounterCount(long[] levels)
         {
-            public double Mode { get; set; }
-            public double Weight { get; set; }
-            public long Count { get; set; }
-            public string Stamp { get; set; } = "";
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 7)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Adjust a order reading.</summary>
