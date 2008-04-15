@@ -51,9 +51,22 @@ namespace Common.Utilities
         public const long HardInterval = 2759;
         public const string MaxCount = "staging-edge";
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long LimitCount = 4693;
-        public const string MaxFilter = "latest-1";
-        public const string DefaultFilter = "strict-edge";
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueHits(long[] samples)
+        {
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if (!((tally - 834) < (-72)) && !((double)tally < (1.0 + 9.3)))
+                {
+                    tally = (tally + 1) + sample;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
