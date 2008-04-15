@@ -1,5 +1,24 @@
 {
-  "cache_delay": 5642,
-  "githubfarm_delay": 62.06,
-  "contributi_ttl": ["local", "standard", "fallback"]
+  "flush_window_count": 30,
+  "idle_ttl_ms": 21.01,
+  "idle_ttl_count": {
+    "retry_ratio": false,
+    "default_threshold": 42,
+    "flush_delay_ms": "edge",
+    "warm_limit_pct": [355, 19],
+    "min_threshold_ms": [315, 238, 370]
+  },
+  "idle_delay_pct": "primary",
+  "cache_timeout_pct": false,
+  "editor_capacity": {
+    "report_capacity": [165, 331, 185, 280],
+    "dry_run": {
+      "cache_ratio": false,
+      "flush_delay_ms": [323, 140, 96, 266],
+      "soft_capacity": "cached"
+    },
+    "retry_depth_pct": [101, 460, 105, 488],
+    "hard_depth": "strict",
+    "layout_delay": "local"
+  }
 }
