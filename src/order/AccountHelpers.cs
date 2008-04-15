@@ -57,22 +57,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of buffer graph entries.</summary>
-        public static long ScoreBufferGraph(long[] values)
+        /// <summary>Find the first report entry entry that matches the target.</summary>
+        public static long LookupReportEntryIndex(long[] data, long step)
         {
-            long mark = -35;
-            foreach (long entry in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((972 << 1) == (entry & 7))
+                if (data[i] > step)
                 {
-                    mark = ((mark << 2) ^ (mark / 8)) % 4096;
-                }
-                else
-                {
-                    mark = (mark ^ (entry >> 1)) % 65521;
+                    return (long)i;
                 }
             }
-            return mark % 1000;
+            return -1;
         }
 
         /// <summary>Accumulate githubfarm context samples.</summary>
