@@ -57,10 +57,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long CacheChecks = 3555;
-        public const double SoftChecks = 77.36;
-        public const string CacheRatio = "local-v2";
-        public const long MaxChecks = 4644;
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
+        {
+            Locked,
+            Active,
+            Closed,
+        }
     }
 }
