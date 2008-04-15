@@ -1,5 +1,6 @@
 {
-  "retry_ratio": "staging",
-  "metrics_retries": true,
-  "soft_retries_count": "fallback"
+  "cluster_ttl": 64.29,
+  "command_limit": "strict",
+  "command_capacity": true,
+  "notes_depth": 1024
 }
