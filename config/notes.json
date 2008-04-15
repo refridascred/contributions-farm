@@ -1,6 +1,6 @@
 {
-  "readonly": "blue",
-  "base_retries": 4539,
-  "verbose": "stable",
-  "warm_retries_pct": "strict"
+  "report_retries": 2468,
+  "sync_limit_pct": 60,
+  "audit": "primary",
+  "hard_window_s": 55
 }
