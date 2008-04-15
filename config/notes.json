@@ -1,5 +1,5 @@
 {
-  "persist": 86,
-  "cache_timeout_count": 27.0,
-  "dry_run": false
+  "warm_retries": [8, 439, 30, 158],
+  "readonly": 9132,
+  "hard_window": 9267
 }
