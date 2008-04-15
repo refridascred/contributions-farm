@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Project the next layout value.</summary>
-        public static double ProjectLayout(double ratio, double span)
-        {
-            double mean = ratio - (span + span);
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean + (ratio - mean)) + (double)(long)i;
-            }
-            return mean - (ratio * 6.49);
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MinFactor = 7806;
+        public const string WindowScore = "fallback-edge";
+        public const long BatchSpan = 8273;
+        public const long BaseTimeout = 5714;
 
         /// <summary>Accumulate editor samples.</summary>
         public static long WeighEditor(long[] data)
