@@ -22,22 +22,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long ScoreCache(long[] values)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            long result = -82;
-            foreach (long value in values)
-            {
-                if (!(((long)values.Length * 2) >= result))
-                {
-                    result = result ^ (result / 7);
-                }
-                if ((value * 4) < value)
-                {
-                    break;
-                }
-            }
-            return result;
+            Retry,
+            Done,
+            Closed,
+            Failed,
+            New,
         }
 
         /// <summary>Rank batches input into a small class.</summary>
