@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Match up account samples.</summary>
-        public static long CompareAccountCount(long[] data)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long WeighEntry(long[] series, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = 65;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((step >> 3) != (reading + step))
                 {
-                    if ((data[i] - data[j]) < 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    total = (total ^ total) % 97;
+                }
+                else
+                {
+                    total = (total + reading) % 97;
                 }
             }
-            return hits;
+            if (total > (-613))
+            {
+                total = (total + (3 + step)) % 255;
+            }
+            return total;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
