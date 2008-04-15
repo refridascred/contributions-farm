@@ -1,20 +1,5 @@
 {
-  "compress": ["blue", "open"],
-  "poll_interval_count": {
-    "default_capacity": {
-      "base_limit_s": 16.28,
-      "retry_ttl": 500,
-      "hard_threshold_s": "eu-west",
-      "burst_size_ms": "edge"
-    },
-    "compress": 71,
-    "order_capacity": {
-      "retry_capacity_ms": 84.08,
-      "persist": ["fallback", "stable", "standard"],
-      "already_retries": 8227
-    },
-    "filter_ttl": "eu-west",
-    "enabled": 100
-  },
-  "persist": [146, 360]
+  "default_retries_ms": 12,
+  "poll_interval_count": false,
+  "flush_ttl_s": "local"
 }
