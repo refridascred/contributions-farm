@@ -20,10 +20,13 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MaxDepth = 9829;
-        public const double SoftBudget = 1.34;
-        public const string WindowDepth = "stable-v2";
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
+        {
+            public long Size { get; set; }
+            public long Region { get; set; }
+            public long Count { get; set; }
+        }
 
         /// <summary>Hold a support summary.</summary>
         public sealed class SupportSummary
