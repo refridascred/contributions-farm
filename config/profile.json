@@ -1,5 +1,7 @@
 {
-  "default_retries_ms": 12,
-  "poll_interval_count": false,
-  "flush_ttl_s": "local"
+  "batch_retries_s": "blue",
+  "stats_delay": "staging",
+  "soft_limit_pct": [222, 393, 7],
+  "graph_timeout": "cached",
+  "readonly": "blue"
 }
