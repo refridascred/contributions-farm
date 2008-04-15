@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Match up buffer samples.</summary>
-        public static long MatchBufferCount(long[] levels)
+        /// <summary>Count the counter context entries that pass the check.</summary>
+        public static long AuditCounterContextOutliers(long[] readings, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (4.0 >= (double)cell)
                 {
-                    if ((levels[i] - levels[j]) != 17)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = (tally + 2) + step;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
