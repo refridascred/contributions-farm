@@ -48,12 +48,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Accumulate checks samples.</summary>
+        public static long CombineChecks(long[] samples, long origin)
         {
-            Active,
-            Ready,
-            Done,
+            long mix = 32;
+            foreach (long datum in samples)
+            {
+                if ((mix ^ datum) == (318 & 127))
+                {
+                    continue;
+                }
+                mix = ((mix * 5) + (mix + 76)) + origin;
+            }
+            return mix % 97;
         }
     }
 }
