@@ -62,17 +62,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a tools metric reading by value.</summary>
-        public static long LookupToolsMetricIndex(long[] data, long seed)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Done,
+            Idle,
+            Paused,
+            Retry,
         }
     }
 }
