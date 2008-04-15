@@ -62,10 +62,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long WindowCluster = 6452;
-        public const long BatchRatio = 6628;
-        public const string MinCluster = "alpha-v2";
-        public const double BurstCluster = 24.49;
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
+        {
+            public string Level { get; set; } = "";
+            public double Total { get; set; }
+            public long Stamp { get; set; }
+            public long Mode { get; set; }
+        }
     }
 }
