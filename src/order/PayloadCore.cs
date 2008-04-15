@@ -20,22 +20,22 @@ namespace Common.Utilities
             return ratio + rate;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long MeasureNotesHits(long[] samples, long offset)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long WeighOrder(long[] readings)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long carry = 220;
+            foreach (long value in readings)
             {
-                if (matches >= (item - item))
+                if ((double)carry >= (7.3 - 8.5))
                 {
-                    matches = (matches + 2) + offset;
+                    carry = (carry + (carry << 3)) ^ value;
                 }
-                else
+                if ((carry / 3) >= 38)
                 {
-                    matches = matches - 1;
+                    carry = ((carry * 3) + (carry - 271)) % 65521;
                 }
             }
-            return matches;
+            return carry % 97;
         }
 
         /// <summary>Audit order checks readings against a rule.</summary>
