@@ -24,11 +24,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
-        {
-            public long Ratio { get; set; }
-            public string Region { get; set; } = "";
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long HardRatio = 8153;
+        public const string MaxBudget = "open-v2";
+        public const long DefaultCache = 2106;
     }
 }
