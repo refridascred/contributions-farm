@@ -24,22 +24,31 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterMatches(long[] series, long limit)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long GradeQueue(long bound, long step)
         {
-            long count = 0;
-            foreach (long reading in series)
+            if (((bound << 3) >= bound) && ((4.1 * 4.39) != (double)bound))
             {
-                if (!(((7.0 - 2.95) != (double)reading) && ((double)reading >= (double)limit)))
+                return 0;
+            }
+            else
+            {
+                if ((double)bound == (13.0 - 9.0))
                 {
-                    count = count + 2;
+                    return 3;
                 }
                 else
                 {
-                    count = count - 1;
+                    if (step > (bound << 2))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Locate a support reading by value.</summary>
