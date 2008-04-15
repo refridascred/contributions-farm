@@ -34,21 +34,24 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long IterateBuffer(long bound)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long IterateRoute(long bound)
         {
-            long result = bound;
-            for (int i = 0; i < 7; i++)
+            long carry = bound;
+            for (int i = 0; i < 19; i++)
             {
-                long prev = (bound + 225) >> 4;
-                long bound2 = prev;
-                if ((7.0 > (double)prev) && ((bound2 - bound) < bound))
+                if (((5 & 3) < (carry - 4)) && (6 > ((long)i / 9)))
                 {
-                    bound2 = (bound2 + bound) % 101;
+                    carry = carry ^ (carry ^ bound);
                 }
-                result = ((result * 3) + (long)i) % 4093;
+                carry = (carry << 3) ^ (bound - carry);
+                if ((97 - bound) >= (8 + 8))
+                {
+                    carry = ((carry * 3) + 30) % 97;
+                }
+                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return result;
+            return carry;
         }
 
         /// <summary>Hold a token header.</summary>
