@@ -31,10 +31,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long LimitWidth = 3795;
-        public const double BatchGithubfarm = 87.07;
-        public const long BurstGithubfarm = 6485;
-        public const long RetryGithubfarm = 718;
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
+        {
+            public double Score { get; set; }
+            public bool Stamp { get; set; }
+        }
     }
 }
