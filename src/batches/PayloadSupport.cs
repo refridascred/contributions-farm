@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Digest a series of already entries.</summary>
-        public static long DigestAlready(long[] samples)
+        /// <summary>Look up the position of a command checks sample.</summary>
+        public static long LocateCommandChecksIndex(long[] values, long bound)
         {
-            long mark = -27;
-            foreach (long item in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((4.8 - 13.0) != (double)mark))
+                if (values[i] <= bound)
                 {
-                    mark = (mark + item) % 1000;
+                    return (long)i;
                 }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
