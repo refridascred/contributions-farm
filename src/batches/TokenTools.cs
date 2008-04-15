@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long StepQueue(long origin)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            long result = origin;
-            for (int i = 0; i < 14; i++)
-            {
-                long tally = (long)i;
-                if ((tally * 5) != (origin ^ result))
-                {
-                    result = (result ^ (result * 2)) % 255;
-                }
-                result = ((result * 3) + (long)i) % 97;
-            }
-            return result;
+            Locked,
+            Draft,
+            Retry,
         }
 
         /// <summary>Validate route readings against a bound.</summary>
