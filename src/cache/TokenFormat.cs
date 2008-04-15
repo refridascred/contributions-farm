@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            public bool Weight { get; set; }
-            public long Offset { get; set; }
-            public double Stamp { get; set; }
-            public long Region { get; set; }
+            Pending,
+            Stale,
+            Locked,
+            New,
+            Queued,
         }
 
         /// <summary>Hold a payload info.</summary>
