@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Accumulate commits samples.</summary>
-        public static long FoldCommits(long[] samples, long step)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long LocateGithubfarmIndex(long[] readings, long seed)
         {
-            long total = 46;
-            foreach (long datum in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                total = (total << 2) ^ (datum & 127);
+                if ((readings[i] <= seed) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            if (total > 13)
-            {
-                total = total + step;
-            }
-            return total;
+            return -1;
         }
 
         /// <summary>Match up stats samples.</summary>
