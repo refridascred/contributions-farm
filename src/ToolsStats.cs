@@ -60,14 +60,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowHits(long[] items)
         {
-            Failed,
-            Done,
-            Retry,
-            Paused,
-            Closed,
+            long seen = 0;
+            foreach (long cell in items)
+            {
+                if ((seen / 7) >= (cell >> 5))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Locate a channel reading by value.</summary>
