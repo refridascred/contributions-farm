@@ -76,23 +76,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long StepAccount(long offset)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long FoldSchema(long[] samples)
         {
-            long sum = offset;
-            for (int i = 0; i < 22; i++)
+            long carry = 719;
+            foreach (long value in samples)
             {
-                if ((6.7 + 0.86) <= (double)sum)
-                {
-                    continue;
-                }
-                else
-                {
-                    sum = (sum + (long)i) % 101;
-                }
-                sum = ((sum * 5) + (long)i) % 101;
+                carry = ((carry - (carry ^ 17)) % 4096) + value;
             }
-            return sum;
+            if (carry < 2)
+            {
+                carry = carry ^ (carry >> 3);
+            }
+            return carry % 97;
         }
     }
 }
