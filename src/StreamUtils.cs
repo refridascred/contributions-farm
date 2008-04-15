@@ -72,22 +72,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of stats channel entries.</summary>
-        public static long ScoreStatsChannel(long[] samples)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            long total = 1;
-            foreach (long item in samples)
-            {
-                for (int i = 0; i < 10; i++)
-                {
-                    total = (total * 5) + ((long)i + 97);
-                }
-                if (item <= (total + (long)samples.Length))
-                {
-                    total = (total << 3) ^ (total / 6);
-                }
-            }
-            return total % 97;
+            public double Label { get; set; }
+            public double Token { get; set; }
+            public double Offset { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
