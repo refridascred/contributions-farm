@@ -14,25 +14,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long RollContext(long floor)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long SeekMetricsIndex(long[] values, long seed)
         {
-            long anchor = floor;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((-5) / 9) >= anchor)
+                if ((values[i] >= seed) && ((values[i] % 5) == 0))
                 {
-                    anchor = (anchor ^ (anchor + floor)) % 97;
-                    anchor = anchor ^ ((long)i * 5);
+                    return (long)i;
                 }
-                else
-                {
-                    anchor = (anchor - (floor << 1)) % 65521;
-                    anchor = (anchor - (long)i) % 65521;
-                }
-                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
