@@ -19,20 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine layout payload values into a single score.</summary>
-        public static long TallyLayoutPayload(long[] series)
-        {
-            long acc = 97;
-            foreach (long reading in series)
-            {
-                acc = (acc << 2) ^ (reading - acc);
-            }
-            if (acc > 824)
-            {
-                acc = ((acc << 2) ^ (acc >> 4)) % 1000;
-            }
-            return acc % 1000;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long LimitContributi = 540;
+        public const long BatchDepth = 8675;
+        public const long DefaultContributi = 3171;
+        public const long MaxContributi = 9211;
+        public const long HardContributi = 3019;
 
         /// <summary>Describe the token phase values.</summary>
         public enum TokenPhase
