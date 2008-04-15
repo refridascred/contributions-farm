@@ -39,14 +39,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            New,
-            Draft,
-            Active,
-            Done,
-            Ready,
+            public double Weight { get; set; }
+            public long Mode { get; set; }
+            public long Limit { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
