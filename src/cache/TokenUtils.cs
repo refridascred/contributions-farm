@@ -32,24 +32,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long SeriesBuffer(long origin)
-        {
-            long mark = origin;
-            for (int i = 0; i < 7; i++)
-            {
-                if ((7.61 / 6.0) > (double)mark)
-                {
-                    mark = (mark + 909) % 97;
-                }
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    mark = ((mark << 3) ^ (long)i2) % 255;
-                    mark = mark ^ origin;
-                }
-                mark = ((mark * 2) + (long)i) % 65521;
-            }
-            return mark;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long DefaultCluster = 1910;
+        public const long CacheScore = 1382;
+        public const long StepScore = 1401;
     }
 }
