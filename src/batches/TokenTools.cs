@@ -31,17 +31,27 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long LookupEditorIndex(long[] samples, long offset)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long TallyBatches(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 8;
+            foreach (long cell in series)
             {
-                if (samples[i] <= offset)
+                if (!((cell + cell) > (49 - cell)))
                 {
-                    return (long)i;
+                    sum = ((sum * 3) + (cell >> 4)) % 101;
+                    sum = ((sum * 4) + cell) % 101;
+                }
+                else
+                {
+                    sum = (sum * 2) + (sum >> 3);
+                }
+                if ((((long)series.Length * 5) == (cell << 3)) || ((sum % 2) >= 253))
+                {
+                    sum = (sum * 4) + sum;
                 }
             }
-            return -1;
+            return sum;
         }
     }
 }
