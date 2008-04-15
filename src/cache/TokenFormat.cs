@@ -13,18 +13,21 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Count the graph stats entries that pass the check.</summary>
-        public static long AuditGraphStatsMatches(long[] samples, long target)
+        /// <summary>Match up graph samples.</summary>
+        public static long PairGraphCount(long[] readings)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((seen <= (target + reading)) || ((2.65 - 5.8) >= (double)seen))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = seen + 3;
+                    if ((readings[i] ^ readings[j]) == 9)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Rank layout session input into a small class.</summary>
