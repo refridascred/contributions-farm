@@ -24,31 +24,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long GradeQueue(long bound, long step)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            if (((bound << 3) >= bound) && ((4.1 * 4.39) != (double)bound))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)bound == (13.0 - 9.0))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (step > (bound << 2))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public double Count { get; set; }
+            public string Size { get; set; } = "";
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Combine token notes values into a single score.</summary>
