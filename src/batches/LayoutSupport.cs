@@ -36,17 +36,38 @@ namespace Common.Utilities
         public const long HardOrder = 2869;
         public const long LimitOrder = 7385;
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long LocateCommitsIndex(long[] samples, long seed)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long SortPayload(long limit, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((double)limit != (4.4 / 8.0))
             {
-                if ((samples[i] > seed) && ((samples[i] % 5) == 0))
+                return 6;
+            }
+            else
+            {
+                if ((double)limit > (2.2 * 4.4))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((518 - limit) != (limit >> 4))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!((double)bound <= (0.37 - 1.27)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
