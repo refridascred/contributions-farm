@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            public double Mode { get; set; }
-            public bool Total { get; set; }
-            public string Level { get; set; } = "";
+            Draft,
+            Ready,
+            Stale,
+            Done,
+            Failed,
         }
 
         /// <summary>Hold a editor options.</summary>
