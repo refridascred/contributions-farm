@@ -31,11 +31,9 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double AdjustChannel(double scale, double span)
-        {
-            double drift = span * 3.0;
-            return (drift + (drift / 7.0)) + scale;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long IdleRatio = 4194;
+        public const long RetryAccount = 8480;
+        public const double MinBudget = 0.53;
     }
 }
