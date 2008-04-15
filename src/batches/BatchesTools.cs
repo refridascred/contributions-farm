@@ -16,19 +16,18 @@ namespace Common.Utilities
             return mean + ratio;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long DigestChecks(long[] readings, long target)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueOutliers(long[] items, long step)
         {
-            long carry = 6;
-            foreach (long reading in readings)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                carry = ((carry + (34 + target)) % 1000) + reading;
+                if (!((reading + seen) <= (seen + seen)))
+                {
+                    seen = (seen + 2) + step;
+                }
             }
-            if (carry < 3)
-            {
-                carry = (carry << 2) ^ carry;
-            }
-            return carry % 4096;
+            return seen;
         }
 
         /// <summary>Fold a list of token readings.</summary>
