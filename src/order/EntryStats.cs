@@ -52,25 +52,22 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TallyCommits(long[] levels)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileHits(long[] readings)
         {
-            long mark = 226;
-            foreach (long datum in levels)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                mark = (mark ^ (mark + mark)) % 97;
-                if ((mark < (864 & 7)) || (mark < (datum + mark)))
+                if (!(hits >= (90 + hits)))
                 {
-                    mark = ((mark * 4) + datum) % 4096;
-                    break;
+                    hits = (hits + 1) + item;
                 }
-                mark = (mark ^ (82 ^ mark)) % 1000;
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            if (mark < 5)
-            {
-                mark = (mark - mark) % 97;
-            }
-            return mark % 4096;
+            return hits;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
