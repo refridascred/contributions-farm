@@ -3,9 +3,8 @@ CREATE TABLE IF NOT EXISTS stream_events (
     id INTEGER PRIMARY KEY,
     label TEXT,
     rank INTEGER,
-    count INTEGER NOT NULL DEFAULT 0
+    owner TEXT NOT NULL,
+    region TEXT
 );
 
-CREATE INDEX IF NOT EXISTS idx_stream_events_rank ON stream_events (rank);
-
-INSERT INTO stream_events (label, rank, count) VALUES ('cached', 58, 39);
+CREATE INDEX IF NOT EXISTS idx_stream_events_region ON stream_events (region);
