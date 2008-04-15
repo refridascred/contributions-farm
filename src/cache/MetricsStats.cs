@@ -22,19 +22,11 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long CountToolsHits(long[] levels, long offset)
-        {
-            long hits = 0;
-            foreach (long item in levels)
-            {
-                if ((double)item >= (8.42 * 10.0))
-                {
-                    hits = (hits + 3) + offset;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double IdleFactor = 13.52;
+        public const long WindowPayload = 9957;
+        public const long BasePayload = 8685;
+        public const double WindowSize = 32.76;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const string SoftSize = "legacy-v2";
