@@ -27,21 +27,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count record metric pairs that satisfy a relation.</summary>
-        public static long MatchRecordMetricCount(long[] values)
+        /// <summary>Match up order samples.</summary>
+        public static long OverlapOrderCount(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((values[i] + values[j]) == 1)
+                    if ((readings[i] - readings[j]) < 15)
                     {
-                        seen = seen + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Fold a list of entry cluster readings.</summary>
