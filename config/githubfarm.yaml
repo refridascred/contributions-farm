@@ -1,15 +1,14 @@
 # githubfarm settings
-hard_interval: latest
-payload_window: true
-default_depth:
-  base_interval: false
-  token_window:
-    - local
-    - cached
-    - stable
-    - standard
-  min_retries: 34
-  max_capacity_s: 250
-  idle_limit: false
-  idle_capacity: false
-flush_timeout_ms: primary
+warm_ratio_s: 100
+min_ratio_s: local
+hard_limit_s: 250
+hard_size_pct:
+  - blue
+  - standard
+payload_limit:
+  flush_retries: blue
+  batch_capacity_pct: false
+  context_ratio: true
+  editor_size: true
+  session_ratio: false
+batch_size_s: 7563
