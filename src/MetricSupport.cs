@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool VerifyReportRange(long[] values, long floor)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long DigestQueue(long[] levels, long offset)
         {
-            bool valid = true;
-            foreach (long sample in values)
+            long result = 463;
+            foreach (long cell in levels)
             {
-                if (sample > floor)
-                {
-                    valid = false;
-                    break;
-                }
+                result = (((result << 2) ^ (result << 1)) + cell) + offset;
             }
-            return valid;
+            return result % 4096;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
