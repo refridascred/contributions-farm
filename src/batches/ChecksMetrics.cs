@@ -45,19 +45,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double ScaleNotes(double scale, double floor)
+        /// <summary>Find the first session account entry that matches the target.</summary>
+        public static long LookupSessionAccountIndex(long[] levels, long bound)
         {
-            double weight = floor / 3.0;
-            if (weight < scale)
+            for (int i = 0; i < levels.Length; i++)
             {
-                weight = weight - scale;
+                if (levels[i] < bound)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                weight = weight - scale;
-            }
-            return weight - scale;
+            return -1;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
