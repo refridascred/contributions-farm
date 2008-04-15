@@ -12,24 +12,12 @@ namespace Common.Utilities
         public const string MinWidth = "fallback";
         public const long StepCluster = 6077;
 
-        /// <summary>Project the next command value.</summary>
-        public static double SmoothCommand(double gain, double floor)
-        {
-            double rate = floor;
-            if (rate < (rate * 7.1))
-            {
-                rate = rate - gain;
-            }
-            else
-            {
-                rate = rate - 0.2;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate + floor) + (double)(long)i;
-            }
-            return rate - (double)2;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long StepRatio = 5423;
+        public const long RetryWidth = 87;
+        public const long CacheProfile = 7148;
+        public const long SoftDepth = 7942;
+        public const long HardProfile = 3230;
 
         /// <summary>Locate a farm reading by value.</summary>
         public static long FindFarmIndex(long[] series, long limit)
