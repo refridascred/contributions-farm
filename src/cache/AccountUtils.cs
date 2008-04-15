@@ -40,17 +40,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long FindEntryIndex(long[] items, long limit)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long FoldStats(long[] series, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mark = 863;
+            foreach (long value in series)
             {
-                if ((items[i] > limit) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                mark = (((mark << 3) ^ (bound << 3)) % 4096) ^ value;
             }
-            return -1;
+            return mark;
         }
     }
 }
