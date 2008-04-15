@@ -29,18 +29,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportGaps(long[] values)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            long tally = 0;
-            foreach (long entry in values)
-            {
-                if ((entry / 8) > entry)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public string Limit { get; set; } = "";
+            public long Size { get; set; }
+            public long Offset { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
