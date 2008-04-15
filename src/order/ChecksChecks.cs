@@ -21,9 +21,19 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double RetrySize = 53.14;
-        public const long SoftRatio = 2260;
-        public const string SoftLevel = "open-1";
+        /// <summary>Adjust a stats reading.</summary>
+        public static double ScaleStats(double scale, double span)
+        {
+            double weight = span;
+            if (weight > scale)
+            {
+                weight = weight - 0.6;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight - scale) - (double)(long)i;
+            }
+            return weight + (double)903;
+        }
     }
 }
