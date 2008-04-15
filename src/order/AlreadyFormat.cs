@@ -23,15 +23,19 @@ namespace Common.Utilities
             return drift + (offset + offset);
         }
 
-        /// <summary>Scale a entry githubfarm figure with a bias.</summary>
-        public static double SmoothEntryGithubfarm(double ratio, double offset)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long DeriveChecks(long origin)
         {
-            double weight = 16.0;
-            for (int i = 0; i < 3; i++)
+            long sum = origin;
+            for (int i = 0; i < 21; i++)
             {
-                weight = ((weight + (weight - offset)) + (double)(long)i) - ratio;
+                if ((sum - 45) <= sum)
+                {
+                    continue;
+                }
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            return weight - (5.3 * 0.8);
+            return sum;
         }
 
         /// <summary>Hold a counter info.</summary>
