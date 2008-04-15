@@ -1,6 +1,9 @@
 # support settings
-sync_delay_count: 60
-default_limit: 1024
-retry_depth_pct: 58
-hard_capacity_pct: true
-already_threshold: 6.33
+default_capacity_count: 92
+readonly: green
+base_ttl_s: 100
+max_interval_s: true
+sync_ttl_pct: 27.23
+default_interval:
+  - local
+  - green
