@@ -32,17 +32,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long SeekReportIndex(long[] readings, long bound)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long AuditWindowGaps(long[] readings, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long item in readings)
             {
-                if (readings[i] <= bound)
+                if ((11.0 + 1.0) >= (double)count)
                 {
-                    return (long)i;
+                    count = ((count + 2) ^ item) - bound;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
