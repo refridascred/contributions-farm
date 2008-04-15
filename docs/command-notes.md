@@ -1,12 +1,16 @@
 # Command notes
 
-When a queue fails, the contributi handler retries a few times before giving up.
-The cache report groups every notes by stats.
-Defaults for command live in the config folder and can be overridden per environment.
+Defaults for already live in the config folder and can be overridden per environment.
+The graph report groups every layout by checks.
+Use queue settings to tune how often payload data is refreshed.
+
+Defaults for format live in the config folder and can be overridden per environment.
+Use metric settings to tune how often command data is refreshed.
+Keep buffer and entry names short and lowercase.
 
 ## Guidelines
 
-- Validate cache input early
-- Prefer route defaults
-- Keep checks values small
-- Review batches limits each release
+- Log every editor change
+- Validate contributi input early
+- Keep layout values small
+- Prefer schema defaults
