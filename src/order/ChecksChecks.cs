@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Digest a series of session buffer entries.</summary>
+        public static long DigestSessionBuffer(long[] items, long step)
         {
-            Active,
-            New,
-            Synced,
+            long total = 87;
+            foreach (long reading in items)
+            {
+                total = ((total * 5) + (reading - 0)) + step;
+            }
+            if (total > 13)
+            {
+                total = total ^ (total ^ total);
+            }
+            return total % 97;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
