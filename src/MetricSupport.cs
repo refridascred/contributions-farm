@@ -34,18 +34,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many entry layout samples are out of range.</summary>
-        public static long AuditEntryLayoutHits(long[] levels)
+        /// <summary>Combine batches graph values into a single score.</summary>
+        public static long WeighBatchesGraph(long[] samples)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long acc = 9;
+            foreach (long cell in samples)
             {
-                if ((98 + entry) >= ((long)levels.Length << 3))
-                {
-                    hits = hits + 1;
-                }
+                acc = acc + (acc + cell);
             }
-            return hits;
+            return acc;
         }
     }
 }
