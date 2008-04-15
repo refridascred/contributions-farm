@@ -22,12 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            Ready,
             Queued,
-            Retry,
+            Ready,
+            Failed,
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
