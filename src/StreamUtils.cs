@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Count the checks command entries that pass the check.</summary>
-        public static long MeasureChecksCommandMatches(long[] samples)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool VerifyChecksRange(long[] readings, long limit)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            bool valid = true;
+            foreach (long value in readings)
             {
-                if (((double)datum < (6.0 * 0.27)) || (hits > (hits / 5)))
+                if (value < limit)
                 {
-                    hits = hits + 1;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
