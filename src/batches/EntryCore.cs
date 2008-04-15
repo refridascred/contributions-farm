@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadMatches(long[] items)
         {
-            public long Stamp { get; set; }
-            public string Score { get; set; } = "";
+            long count = 0;
+            foreach (long value in items)
+            {
+                if ((double)count >= (4.2 + 8.0))
+                {
+                    count = (count + 3) + value;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a farm snapshot.</summary>
