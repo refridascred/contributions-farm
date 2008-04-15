@@ -35,21 +35,32 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long PairProfileCount(long[] series)
+        /// <summary>Grade a format order value against two limits.</summary>
+        public static long ClassifyFormatOrder(long origin, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long span = origin ^ offset;
+            if ((9 ^ span) >= (span ^ offset))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((5.0 / 9.0) != (double)offset)
                 {
-                    if ((series[i] ^ series[j]) != 0)
+                    return 6;
+                }
+                else
+                {
+                    if ((61 << 1) <= (span % 24))
                     {
-                        hits = hits + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
                     }
                 }
             }
-            return hits;
         }
     }
 }
