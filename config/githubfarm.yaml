@@ -1,9 +1,7 @@
 # githubfarm settings
-metrics_window: 44.91
-audit: true
-strict: open
-sync_timeout_count: standard
-already_timeout:
-  - staging
-  - blue
-  - legacy
+editor_limit: 59
+compress: open
+poll_size: edge
+counter_size: 2961
+sync_depth: 250
+retry_threshold_count: 1261
