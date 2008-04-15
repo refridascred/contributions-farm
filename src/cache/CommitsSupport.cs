@@ -46,21 +46,15 @@ namespace Common.Utilities
         public const long SoftSession = 6825;
         public const string BaseSession = "latest-edge";
 
-        /// <summary>Match up editor samples.</summary>
-        public static long OverlapEditorCount(long[] series)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double ScaleLayout(double weight, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            double ratio = (weight - weight) * 3.35;
+            if (ratio < weight)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 10)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                ratio = (ratio + (double)326) + span;
             }
-            return tally;
+            return ratio - 8.99;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
