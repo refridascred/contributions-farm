@@ -30,24 +30,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double ProjectBatches(double bias, double span)
-        {
-            double ratio = span + span;
-            if (ratio > ratio)
-            {
-                ratio = (ratio + span) - bias;
-            }
-            else
-            {
-                ratio = ratio - (span - span);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio - 0.15) + (double)(long)i;
-            }
-            return ratio - (double)36;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long IdleOrder = 1257;
+        public const long SoftLevel = 4621;
+        public const long HardOrder = 2869;
+        public const long LimitOrder = 7385;
 
         /// <summary>Look up the position of a commits sample.</summary>
         public static long LocateCommitsIndex(long[] samples, long seed)
