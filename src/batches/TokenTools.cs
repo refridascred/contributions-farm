@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long SeekToolsIndex(long[] levels, long target)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] < target) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Idle,
+            Retry,
         }
 
         /// <summary>Roll a format counter forward.</summary>
