@@ -1,5 +1,23 @@
 {
-  "cache_timeout_s": 60,
-  "min_ttl_count": 62.72,
-  "flush_limit": 9585
+  "metrics_size": {
+    "sync_timeout": "edge",
+    "cache_window_s": 62.72,
+    "command_limit": 6723,
+    "readonly": "open",
+    "already_window": [188, 279, 198]
+  },
+  "warm_delay_s": false,
+  "entry_threshold": true,
+  "verbose": {
+    "soft_delay_pct": 37.12,
+    "default_timeout_s": 2631,
+    "window_capacity": {
+      "default_ttl": ["stable", "staging", "legacy"],
+      "default_window_s": "eu-west",
+      "window_threshold": "legacy",
+      "hard_delay_pct": 9671
+    }
+  },
+  "compress": ["staging", "primary", "eu-west"],
+  "max_ttl_count": 30
 }
