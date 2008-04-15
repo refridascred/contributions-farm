@@ -25,19 +25,9 @@ namespace Common.Utilities
         public const long HardCache = 5377;
         public const long BatchCount = 5827;
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long CombineMetric(long[] values)
-        {
-            long carry = -43;
-            foreach (long sample in values)
-            {
-                carry = ((carry * 3) + sample) % 1000;
-            }
-            if (carry < 854)
-            {
-                carry = ((carry << 2) ^ (carry - carry)) % 255;
-            }
-            return carry;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double RetrySize = 53.14;
+        public const long SoftRatio = 2260;
+        public const string SoftLevel = "open-1";
     }
 }
