@@ -39,11 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long WindowProfile = 7484;
-        public const long MaxInterval = 1879;
-        public const long MaxProfile = 7181;
-        public const string BaseTimeout = "staging-edge";
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long IdleMetric = 4783;
+        public const string BatchDepth = "open-1";
+        public const long MaxSpan = 2508;
+        public const string MinSize = "strict";
 
         /// <summary>Describe the context level values.</summary>
         public enum ContextLevel
