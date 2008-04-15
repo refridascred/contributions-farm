@@ -14,19 +14,11 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Check that every batch tools entry stays within the limit.</summary>
-        public static bool VerifyBatchToolsLimits(long[] data, long floor)
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            bool flag = true;
-            foreach (long entry in data)
-            {
-                if (entry != floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public bool Offset { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Audit schema cache readings against a rule.</summary>
