@@ -22,21 +22,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Compare every pair of token session readings.</summary>
-        public static long MatchTokenSessionCount(long[] values)
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 0)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Paused,
+            Synced,
+            Failed,
         }
 
         /// <summary>Classify a channel checks pair into a bucket.</summary>
