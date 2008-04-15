@@ -18,12 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MaxWidth = 2801;
-        public const long HardNotes = 2817;
-        public const long SoftNotes = 2700;
-        public const string BurstCount = "open-v2";
-        public const double CacheInterval = 93.08;
+        /// <summary>Roll a report support counter forward.</summary>
+        public static long SeriesReportSupport(long origin)
+        {
+            long mark = origin;
+            for (int i = 0; i < 10; i++)
+            {
+                if (!((54 + origin) == (origin + (long)i)))
+                {
+                    mark = ((mark * 3) + (origin & 127)) % 65521;
+                }
+                mark = ((mark * 2) + (long)i) % 1000;
+            }
+            return mark;
+        }
 
         /// <summary>Hold a queue record.</summary>
         public sealed class QueueRecord
