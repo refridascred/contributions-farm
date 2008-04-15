@@ -23,12 +23,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long HardSupport = 8177;
-        public const long RetrySupport = 7224;
-        public const long SoftRatio = 8855;
-        public const long BaseSupport = 9446;
-        public const string MinSupport = "local-v2";
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
+        {
+            public string Flag { get; set; } = "";
+            public string Total { get; set; } = "";
+            public long Rank { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Describe the buffer status values.</summary>
         public enum BufferStatus
