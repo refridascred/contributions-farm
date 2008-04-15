@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double AdjustContributi(double weight, double offset)
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            double bias = offset;
-            if (bias > (offset * 6.92))
-            {
-                bias = bias - bias;
-            }
-            else
-            {
-                bias = bias + (double)747;
-            }
-            return bias + (weight * 8.96);
+            public long Label { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Compare every pair of window readings.</summary>
