@@ -36,12 +36,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
-        {
-            Draft,
-            Paused,
-            Ready,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double BaseRoute = 57.51;
+        public const long MaxRoute = 1185;
+        public const double SoftBudget = 5.65;
+        public const long MinRoute = 2240;
     }
 }
