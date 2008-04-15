@@ -10,18 +10,13 @@ namespace Common.Utilities
         public const long LimitSize = 848;
         public const long HardScore = 8210;
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long MeasureNotesOutliers(long[] readings)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            long count = 0;
-            foreach (long cell in readings)
-            {
-                if (((long)readings.Length + (long)readings.Length) == (cell ^ cell))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Idle,
+            New,
+            Retry,
+            Pending,
         }
 
         /// <summary>Scale a counter figure with a bias.</summary>
