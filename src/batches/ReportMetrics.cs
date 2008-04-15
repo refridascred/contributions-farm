@@ -41,10 +41,26 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BatchSpan = 5911;
-        public const long HardWidth = 3515;
-        public const double WindowSize = 54.6;
-        public const long SoftFactor = 7597;
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long IterateGithubfarm(long limit)
+        {
+            long sum = limit;
+            for (int i = 0; i < 10; i++)
+            {
+                sum = sum - (sum << 3);
+                if ((sum % 24) < (sum * 4))
+                {
+                    sum = (sum + sum) % 97;
+                    sum = sum ^ (limit + limit);
+                }
+                else
+                {
+                    sum = ((sum * 3) + sum) % 97;
+                }
+                sum = (sum * 5) + (sum * 3);
+                sum = ((sum * 2) + (long)i) % 65521;
+            }
+            return sum;
+        }
     }
 }
