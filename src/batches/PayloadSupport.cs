@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Look up the position of a command checks sample.</summary>
-        public static long LocateCommandChecksIndex(long[] values, long bound)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long RollWindow(long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = seed;
+            for (int i = 0; i < 12; i++)
             {
-                if (values[i] <= bound)
-                {
-                    return (long)i;
-                }
+                result = (result + (result / 5)) % 4096;
+                result = ((result * 3) + (long)i) % 97;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Look up the position of a batches sample.</summary>
