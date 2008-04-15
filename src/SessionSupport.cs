@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
-        {
-            Closed,
-            Idle,
-            Synced,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long HardWidth = 1405;
+        public const long HardRecord = 8291;
+        public const string WindowRatio = "latest-1";
 
         /// <summary>Look up the position of a commits sample.</summary>
         public static long LookupCommitsIndex(long[] readings, long seed)
