@@ -24,12 +24,38 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long BucketEntry(long limit, long floor)
         {
-            public double Count { get; set; }
-            public string Size { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            if ((limit + 3) <= (limit ^ floor))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((limit & 3) < limit)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((floor ^ (-4)) > 664)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((limit <= (floor - floor)) || ((floor * 4) == (floor / 2)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Combine commits values into a single score.</summary>
