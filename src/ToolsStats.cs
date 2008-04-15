@@ -63,11 +63,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            public long Score { get; set; }
-            public long Owner { get; set; }
+            Pending,
+            Draft,
+            Dropped,
         }
     }
 }
