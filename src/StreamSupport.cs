@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            public double Mode { get; set; }
-            public long Count { get; set; }
+            Dropped,
+            Retry,
+            Draft,
         }
 
         /// <summary>Define route limits and defaults.</summary>
