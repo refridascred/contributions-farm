@@ -45,22 +45,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit report notes readings against a rule.</summary>
-        public static long CountReportNotesMatches(long[] items, long target)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            long seen = 0;
-            foreach (long entry in items)
-            {
-                if ((0 ^ target) >= (seen ^ 35))
-                {
-                    seen = (seen + 3) + entry;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public double Level { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
