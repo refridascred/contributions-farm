@@ -32,11 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            public bool Token { get; set; }
-            public bool Score { get; set; }
+            public double Count { get; set; }
+            public long Label { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Blend two route measurements.</summary>
