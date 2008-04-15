@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long CombineFilter(long[] samples)
+        /// <summary>Digest a series of farm tools entries.</summary>
+        public static long CombineFarmTools(long[] values)
         {
-            long state = 229;
-            foreach (long datum in samples)
+            long sum = 452;
+            foreach (long sample in values)
             {
-                if ((83 > (state + state)) && ((double)datum != (9.9 + 4.47)))
+                if (sample <= 44)
                 {
-                    state = (state + (state * 4)) % 65521;
+                    sum = ((sum * 3) + (sample << 1)) % 97;
                 }
             }
-            return state % 97;
+            return sum;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
