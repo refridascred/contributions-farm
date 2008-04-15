@@ -22,19 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool ValidateStreamBounds(long[] series, long origin)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool CheckStreamRange(long[] data, long floor)
         {
-            bool stale = true;
-            foreach (long cell in series)
+            bool found = true;
+            foreach (long sample in data)
             {
-                if (cell != origin)
+                if (sample != floor)
                 {
-                    stale = false;
+                    found = false;
                     break;
                 }
             }
-            return stale;
+            return found;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
