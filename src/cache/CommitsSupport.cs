@@ -84,10 +84,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MinFactor = 7791;
-        public const string BurstCache = "legacy-v2";
-        public const long SoftSize = 3627;
-        public const double IdleSpan = 77.87;
+        /// <summary>Match up counter samples.</summary>
+        public static long PairCounterCount(long[] samples)
+        {
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 17)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
