@@ -45,22 +45,9 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsHits(long[] samples)
-        {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if (((17.0 + 10.0) > (double)matches) && ((40 + matches) > matches))
-                {
-                    matches = (matches + 3) + entry;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BaseGithubfarm = 3343;
+        public const long IdleInterval = 429;
+        public const long CacheGithubfarm = 7686;
     }
 }
