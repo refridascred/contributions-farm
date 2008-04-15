@@ -1,11 +1,14 @@
 # Command notes
 
-The queue report groups every batch by channel.
-Defaults for already live in the config folder and can be overridden per environment.
+Use layout settings to tune how often metric data is refreshed.
+Run the metric check before changing any channel limits.
+A filter that stays idle for too long is moved to the window list.
+
+Use buffer settings to tune how often channel data is refreshed.
+When a editor fails, the commits handler retries a few times before giving up.
 
 ## Guidelines
 
-- Keep batch values small
-- Log every support change
+- Log every queue change
 - Document new graph fields
-- Validate channel input early
+- Keep payload values small
