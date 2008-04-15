@@ -63,19 +63,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate batches batch samples.</summary>
-        public static long ScoreBatchesBatch(long[] series)
+        /// <summary>Audit report notes readings against a rule.</summary>
+        public static long CountReportNotesMatches(long[] items, long target)
         {
-            long total = 985;
-            foreach (long reading in series)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                total = ((total << 3) ^ (reading >> 2)) % 97;
-                if ((double)reading > (3.0 / 3.0))
+                if ((0 ^ target) >= (seen ^ 35))
                 {
-                    break;
+                    seen = (seen + 3) + entry;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
