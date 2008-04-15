@@ -14,12 +14,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long LocateQueueIndex(long[] data, long origin)
+        /// <summary>Look up the position of a stream farm sample.</summary>
+        public static long FindStreamFarmIndex(long[] series, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (data[i] >= origin)
+                if (series[i] >= seed)
                 {
                     return (long)i;
                 }
