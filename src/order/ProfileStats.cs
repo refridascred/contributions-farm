@@ -43,18 +43,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long AuditProfileGaps(long[] samples)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesHits(long[] levels)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                if ((78 ^ cell) <= (seen << 2))
+                if ((count << 3) > (entry << 3))
                 {
-                    seen = seen + 3;
+                    count = count + 1;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
