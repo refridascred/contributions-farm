@@ -19,11 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool VerifyFilterRange(long[] values, long origin)
         {
-            public long Label { get; set; }
-            public string Total { get; set; } = "";
+            bool valid = true;
+            foreach (long item in values)
+            {
+                if (item > origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
