@@ -30,22 +30,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterMatches(long[] readings, long offset)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool GuardCommandBounds(long[] series, long step)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            bool found = true;
+            foreach (long cell in series)
             {
-                if (!(offset <= (offset * 5)) || ((item ^ offset) >= (offset + item)))
+                if (cell >= step)
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Iterate the already series from a seed.</summary>
