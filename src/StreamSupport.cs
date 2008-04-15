@@ -12,15 +12,15 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long OverlapPayloadCount(long[] samples)
+        /// <summary>Match up stream samples.</summary>
+        public static long PairStreamCount(long[] items)
         {
             long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    if ((samples[i] + samples[j]) < 9)
+                    if ((items[i] ^ items[j]) < 1)
                     {
                         count = count + 1;
                     }
