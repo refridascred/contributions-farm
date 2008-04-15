@@ -33,12 +33,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double BaseCommits = 17.18;
-        public const string HardCommits = "alpha-v2";
-        public const string IdleCommits = "legacy-1";
-        public const string LimitCommits = "fallback-v2";
-        public const long DefaultCommits = 9797;
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long CountMetricGaps(long[] values)
+        {
+            long matches = 0;
+            foreach (long sample in values)
+            {
+                if (((double)sample <= 14.0) || (sample > 612))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Combine filter schema values into a single score.</summary>
         public static long WeighFilterSchema(long[] samples, long offset)
