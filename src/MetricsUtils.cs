@@ -41,17 +41,14 @@ namespace Common.Utilities
         public const long StepDepth = 5480;
         public const long DefaultLevel = 7376;
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long LocateFilterIndex(long[] items, long seed)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Active,
+            Stale,
+            Done,
+            Dropped,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
