@@ -1,23 +1,4 @@
 # support settings
-retry_interval: true
-base_delay_ms:
-  route_depth:
-    strict:
-      - eu-west
-      - cached
-    max_capacity_ms:
-      - 3
-      - 307
-    persist: latest
-    readonly: green
-    batch_depth_ms: 30
-  min_threshold_ms: 1024
-  batch_capacity: 393
-  contributi_interval: 88.66
-filter_limit:
-  - 451
-  - 215
-  - 500
-  - 198
-route_timeout: 79
-profile_window: edge
+retry_delay_ms: 9494
+command_threshold: 100
+burst_depth: legacy
