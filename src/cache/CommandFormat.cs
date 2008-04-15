@@ -45,24 +45,13 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long RollFarm(long step)
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            long result = step;
-            for (int i = 0; i < 13; i++)
-            {
-                result = (result ^ ((long)i - result)) % 4096;
-                if ((result & 127) != (step - 5))
-                {
-                    result = ((result << 3) ^ step) % 65521;
-                }
-                else
-                {
-                    result = (result ^ ((long)i - result)) % 4096;
-                }
-                result = ((result * 4) + (long)i) % 65521;
-            }
-            return result;
+            public bool Limit { get; set; }
+            public long Size { get; set; }
+            public long Region { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Locate a checks reading by value.</summary>
