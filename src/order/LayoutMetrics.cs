@@ -26,13 +26,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Accumulate record samples.</summary>
+        public static long DigestRecord(long[] samples, long floor)
         {
-            public string Label { get; set; } = "";
-            public double Owner { get; set; }
-            public bool Size { get; set; }
-            public long Flag { get; set; }
+            long mix = 320;
+            foreach (long entry in samples)
+            {
+                mix = ((mix << 3) ^ (floor / 6)) + entry;
+            }
+            if (mix < 422)
+            {
+                mix = mix ^ (floor % 3);
+            }
+            return mix;
         }
     }
 }
