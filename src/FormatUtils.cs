@@ -50,31 +50,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long RankAccount(long seed, long seed2)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            if ((6.19 * 7.0) <= (double)seed)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((7 << 3) < (seed2 + seed))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((seed / 3) == (seed << 3))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Active,
+            Queued,
+            Idle,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Match up context samples.</summary>
