@@ -24,15 +24,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long CombineFormat(long[] series, long seed)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionHits(long[] samples, long floor)
         {
-            long mark = 73;
-            foreach (long cell in series)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                mark = ((mark ^ (mark >> 5)) + cell) - seed;
+                if ((floor + matches) > item)
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
