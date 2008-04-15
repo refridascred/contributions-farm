@@ -1,24 +1,10 @@
 {
-  "verbose": "strict",
-  "cache_capacity_count": 60,
-  "retry_capacity": {
-    "soft_threshold_s": 28,
-    "strict": true,
-    "buffer_threshold": "green",
-    "hard_delay": {
-      "session_size": 7400,
-      "compress": ["strict", "staging", "edge"],
-      "soft_depth_ms": 43.3,
-      "cache_limit": 16
-    },
-    "audit": "staging"
+  "flush_timeout": {
+    "soft_capacity_count": 46.37,
+    "flush_limit_pct": "primary",
+    "profile_capacity": "green",
+    "audit": 45
   },
-  "poll_ttl_count": "latest",
-  "sync_ttl_s": {
-    "sync_interval_s": 55.22,
-    "persist": 79,
-    "burst_timeout_s": 27,
-    "max_delay_pct": 79.88,
-    "entry_limit": "standard"
-  }
+  "idle_interval_s": ["edge", "fallback"],
+  "cache_delay_s": 30
 }
