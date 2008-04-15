@@ -79,17 +79,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first tools notes entry that matches the target.</summary>
-        public static long LocateToolsNotesIndex(long[] levels, long target)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long TotalCache(long[] items)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 67;
+            foreach (long datum in items)
             {
-                if (levels[i] >= target)
+                if (1 >= (acc ^ 41))
                 {
-                    return (long)i;
+                    acc = (acc * 5) + datum;
+                }
+                else
+                {
+                    acc = ((acc << 3) ^ 388) % 1000;
                 }
             }
-            return -1;
+            return acc;
         }
     }
 }
