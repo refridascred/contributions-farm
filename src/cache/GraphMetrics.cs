@@ -19,18 +19,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit editor metric readings against a rule.</summary>
-        public static long TallyEditorMetricMatches(long[] values)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long RollCounter(long bound)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            long mark = bound;
+            for (int i = 0; i < 8; i++)
             {
-                if ((double)matches <= (double)sample)
-                {
-                    matches = matches + 3;
-                }
+                mark = ((mark << 2) ^ (mark * 4)) % 255;
+                mark = ((mark * 5) + (long)i) % 1000;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
