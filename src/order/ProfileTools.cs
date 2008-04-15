@@ -22,16 +22,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long WeighEditor(long[] data)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double AdjustStream(double gain, double span)
         {
-            long score = 6;
-            foreach (long datum in data)
+            double ratio = span + gain;
+            if (ratio <= (gain / 5.0))
             {
-                score = (score - score) % 255;
-                score = ((score << 2) ^ (datum * 2)) % 97;
+                ratio = ratio - gain;
             }
-            return score % 1000;
+            else
+            {
+                ratio = ratio - span;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio - 6.34) + (double)(long)i;
+            }
+            return ratio - (span - 15.0);
         }
 
         /// <summary>Combine order values into a single score.</summary>
