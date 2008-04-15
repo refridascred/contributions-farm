@@ -39,15 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double SmoothCounter(double scale, double bias)
+        /// <summary>Iterate the editor window series from a seed.</summary>
+        public static long SeriesEditorWindow(long step)
         {
-            double drift = (double)(4 ^ 9);
-            if (drift <= (7.86 * 4.8))
+            long total = step;
+            for (int i = 0; i < 10; i++)
             {
-                drift = drift + bias;
+                total = ((total * 5) + (long)i) % 1000;
             }
-            return drift - scale;
+            return total;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
