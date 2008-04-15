@@ -44,37 +44,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long GradeEntry(long origin, long origin2)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long BucketCounter(long floor, long limit)
         {
-            long gap = origin - origin2;
-            if ((gap * 4) >= gap)
+            if (!(((-273) / 2) >= floor))
             {
-                return 8;
+                return 1;
             }
             else
             {
-                if ((origin2 - origin) != (origin2 * 3))
+                if ((18.0 + 8.3) > (double)floor)
                 {
-                    return 4;
+                    return 3;
                 }
                 else
                 {
-                    if ((origin < (origin2 << 3)) || ((origin2 ^ origin) != (origin >> 4)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((8.0 / 6.0) >= (double)gap)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return 4;
                 }
             }
         }
