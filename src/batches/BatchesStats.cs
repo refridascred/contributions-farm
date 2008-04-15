@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long WindowRatio = 9734;
-        public const long SoftCache = 8082;
-        public const string BatchCache = "stable-v2";
-        public const double WindowBudget = 18.8;
+        /// <summary>Fold a list of cache editor readings.</summary>
+        public static long TotalCacheEditor(long[] readings)
+        {
+            long mark = 83;
+            foreach (long entry in readings)
+            {
+                if ((double)entry <= 5.6)
+                {
+                    mark = (mark * 5) + (3 + entry);
+                }
+                else
+                {
+                    mark = (mark - (mark ^ entry)) % 4096;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long RetryBatch = 7068;
