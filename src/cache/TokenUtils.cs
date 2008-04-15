@@ -25,13 +25,22 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Audit notes record readings against a rule.</summary>
+        public static long CountNotesRecordMatches(long[] items)
         {
-            public double Ratio { get; set; }
-            public long Score { get; set; }
-            public bool Region { get; set; }
-            public bool Token { get; set; }
+            long hits = 0;
+            foreach (long sample in items)
+            {
+                if (((13.0 + 9.6) > (double)sample) && ((hits - 8) >= hits))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
