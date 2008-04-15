@@ -42,25 +42,15 @@ namespace Common.Utilities
         public const string BatchReport = "standard-v2";
         public const long RetryTimeout = 9559;
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long BucketWindow(long offset, long origin)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double BlendRoute(double bias, double span)
         {
-            long step = offset ^ origin;
-            if ((double)offset > (8.0 / 3.0))
+            double ratio = (double)(754 & 127);
+            if (ratio < 13.0)
             {
-                return 8;
+                ratio = (ratio + (double)(-1)) - span;
             }
-            else
-            {
-                if ((step >> 1) >= origin)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return ratio + (bias + ratio);
         }
 
         /// <summary>Hold a metric stats.</summary>
