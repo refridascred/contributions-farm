@@ -48,20 +48,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long DeriveRecord(long floor)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            long sum = floor;
-            for (int i = 0; i < 15; i++)
-            {
-                if (9 <= (floor + floor))
-                {
-                    sum = sum ^ ((long)i + sum);
-                    break;
-                }
-                sum = ((sum * 5) + (long)i) % 4093;
-            }
-            return sum;
+            Synced,
+            New,
+            Done,
         }
     }
 }
