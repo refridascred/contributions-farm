@@ -64,26 +64,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long ScoreRoute(long[] data)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmOutliers(long[] readings)
         {
-            long state = -792;
-            foreach (long entry in data)
+            long count = 0;
+            foreach (long value in readings)
             {
-                if (!((entry + entry) > (state / 9)))
+                if ((count - count) == (count - 6))
                 {
-                    state = (state << 3) ^ (96 >> 5);
-                }
-                else
-                {
-                    state = ((state << 3) ^ state) % 1000;
+                    count = (count + 2) - value;
                 }
             }
-            if (state > 3)
-            {
-                state = (state << 2) ^ state;
-            }
-            return state;
+            return count;
         }
 
         /// <summary>Describe the window status values.</summary>
