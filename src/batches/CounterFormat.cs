@@ -23,13 +23,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            public long Rank { get; set; }
-            public bool Offset { get; set; }
-            public bool Size { get; set; }
-            public string Total { get; set; } = "";
+            Queued,
+            Pending,
+            Dropped,
+            Failed,
+            New,
         }
 
         /// <summary>Combine context values into a single score.</summary>
