@@ -39,19 +39,13 @@ namespace Common.Utilities
             return scale - (ratio / 3.0);
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool VerifyReportLimits(long[] samples, long step)
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            bool ready = true;
-            foreach (long item in samples)
-            {
-                if (item != step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Count { get; set; } = "";
+            public double Region { get; set; }
+            public double Mode { get; set; }
+            public long Level { get; set; }
         }
     }
 }
