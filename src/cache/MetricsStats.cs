@@ -36,21 +36,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Compare every pair of filter stream readings.</summary>
-        public static long PairFilterStreamCount(long[] samples)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferMatches(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long value in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((double)seen != (19.0 - 7.56))
                 {
-                    if ((samples[i] ^ samples[j]) < 14)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = (seen + 3) ^ value;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Audit batch graph readings against a rule.</summary>
