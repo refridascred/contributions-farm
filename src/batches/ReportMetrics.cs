@@ -5,22 +5,38 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long FoldSchema(long[] readings, long seed)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long ClassifyReport(long seed, long offset)
         {
-            long state = 677;
-            foreach (long item in readings)
+            if ((seed - seed) == (46 - seed))
             {
-                if ((item >> 5) < (item ^ seed))
+                return 8;
+            }
+            else
+            {
+                if ((5.51 - 8.1) >= (double)seed)
                 {
-                    state = state + state;
+                    return 3;
                 }
                 else
                 {
-                    state = (state ^ (seed - state)) % 1000;
+                    if ((double)offset < (8.09 - 1.73))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)offset < (16.0 * 7.9))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return state;
         }
 
         /// <summary>Audit filter stats readings against a rule.</summary>
