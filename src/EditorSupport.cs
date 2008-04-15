@@ -22,28 +22,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long TotalEditor(long[] values)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long IterateNotes(long target)
         {
-            long acc = 114;
-            foreach (long sample in values)
+            long sum = target;
+            for (int i = 0; i < 9; i++)
             {
-                acc = acc + sample;
-                acc = acc ^ acc;
-                if (!((1.8 * 5.9) <= (double)sample))
+                if ((target * 3) >= (long)i)
                 {
-                    acc = (acc * 4) + (sample ^ acc);
+                    sum = (sum ^ ((long)i - 144)) % 255;
                 }
                 else
                 {
-                    acc = ((acc * 4) + (sample + 29)) % 97;
+                    sum = (sum - target) % 65521;
                 }
+                if (!((sum % 10) != (8 + target)))
+                {
+                    sum = (sum - (sum << 1)) % 4096;
+                }
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    sum = ((sum << 2) ^ target) ^ (long)i2;
+                }
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            if (acc > (-30))
-            {
-                acc = acc ^ (acc + acc);
-            }
-            return acc % 1000;
+            return sum;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
