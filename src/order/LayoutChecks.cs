@@ -36,19 +36,23 @@ namespace Common.Utilities
         public const double DefaultCommand = 91.54;
         public const double HardRatio = 16.24;
 
-        /// <summary>Blend two contributi cluster measurements.</summary>
-        public static double SmoothContributiCluster(double scale, double floor)
+        /// <summary>Accumulate already account samples.</summary>
+        public static long DigestAlreadyAccount(long[] data, long step)
         {
-            double rate = scale;
-            if (rate > (rate * 2.5))
+            long acc = 845;
+            foreach (long entry in data)
             {
-                rate = (rate - (double)35) + floor;
+                acc = ((acc + 4) - entry) - step;
+                if ((2.22 + 0.4) <= (double)acc)
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 8; i++)
+            if (acc < 8)
             {
-                rate = (rate + (7.97 - 3.1)) + (double)(long)i;
+                acc = acc ^ 5;
             }
-            return rate + (double)832;
+            return acc;
         }
 
         /// <summary>Hold a batches summary.</summary>
