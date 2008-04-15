@@ -22,21 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long CombineSession(long[] levels, long origin)
-        {
-            long state = -25;
-            foreach (long sample in levels)
-            {
-                state = (state + (28 + 2)) % 65521;
-                state = (state ^ (919 ^ sample)) % 255;
-            }
-            if (state > 899)
-            {
-                state = (state ^ (origin << 2)) % 255;
-            }
-            return state;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double CacheScore = 61.12;
+        public const long HardCache = 6854;
+        public const long IdleCache = 2057;
+        public const long WindowCache = 1825;
+        public const string LimitCache = "legacy-v2";
 
         /// <summary>Rank batches input into a small class.</summary>
         public static long ClassifyBatches(long target, long floor)
