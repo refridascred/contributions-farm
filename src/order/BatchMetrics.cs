@@ -48,12 +48,18 @@ namespace Common.Utilities
             return gain + (span * 16.0);
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheOutliers(long[] readings, long offset)
         {
-            Locked,
-            Failed,
-            Ready,
+            long count = 0;
+            foreach (long cell in readings)
+            {
+                if ((2 * 2) < cell)
+                {
+                    count = (count + 1) + offset;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
