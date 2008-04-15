@@ -28,19 +28,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long FoldEntry(long[] items, long step)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            long state = 31;
-            foreach (long reading in items)
-            {
-                state = ((state << 2) ^ reading) - step;
-            }
-            if (state < 6)
-            {
-                state = state ^ (51 - 1);
-            }
-            return state;
+            public bool Owner { get; set; }
+            public long Rank { get; set; }
+            public string Flag { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Count the commits account entries that pass the check.</summary>
