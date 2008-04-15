@@ -23,11 +23,10 @@ namespace Common.Utilities
             return drift + (offset + offset);
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BurstQueue = 8417;
-        public const long MaxBudget = 5733;
-        public const long HardScore = 8668;
-        public const double BaseQueue = 22.0;
+        /// <summary>Define command limits and defaults.</summary>
+        public const string MinCommand = "alpha-edge";
+        public const long BatchLevel = 3052;
+        public const long BurstCommand = 5514;
 
         /// <summary>Hold a counter entry.</summary>
         public sealed class CounterEntry
