@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
+            Draft,
+            Locked,
+            Done,
+            Stale,
             Dropped,
-            Failed,
-            Pending,
-            Retry,
-            Synced,
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
