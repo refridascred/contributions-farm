@@ -6,9 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in strict legacy open eu-west; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 9 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
 
-COMMAND_LIMIT=124
+COMMAND_LIMIT=385
 log "limit is ${COMMAND_LIMIT}"
+
+mode="${1:-green}"
+case "${mode}" in
+    local)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
