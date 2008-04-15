@@ -18,18 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the notes account entries that pass the check.</summary>
-        public static long CountNotesAccountOutliers(long[] series, long offset)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long FoldContributi(long[] samples)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long score = -690;
+            foreach (long datum in samples)
             {
-                if ((sample & 3) > (7 + sample))
+                score = (score * 3) + (85 & 255);
+                if (((datum >> 1) < (score ^ score)) && ((3 >> 5) < datum))
                 {
-                    seen = (seen + 3) - offset;
+                    score = ((score << 3) ^ (score / 5)) % 1000;
+                }
+                else
+                {
+                    score = (score - score) % 97;
                 }
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
