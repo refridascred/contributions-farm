@@ -22,17 +22,12 @@ namespace Common.Utilities
         public const long BaseSupport = 9446;
         public const string MinSupport = "local-v2";
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long LookupProfileIndex(long[] series, long floor)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Active,
+            Paused,
         }
     }
 }
