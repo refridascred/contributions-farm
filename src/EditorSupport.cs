@@ -32,19 +32,24 @@ namespace Common.Utilities
         public const long WindowLevel = 81;
         public const long MinLevel = 9398;
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool CheckCounterBounds(long[] levels, long step)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long TallyPayload(long[] readings, long offset)
         {
-            bool found = true;
-            foreach (long value in levels)
+            long score = 9;
+            foreach (long value in readings)
             {
-                if (value < step)
+                score = score ^ (offset >> 2);
+                score = score + (value << 1);
+                if ((771 << 3) >= (offset - score))
                 {
-                    found = false;
-                    break;
+                    score = score + value;
+                }
+                else
+                {
+                    score = ((score << 2) ^ (55 * 5)) % 4096;
                 }
             }
-            return found;
+            return score;
         }
 
         /// <summary>Compare every pair of session readings.</summary>
