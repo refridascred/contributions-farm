@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long RankSupport(long offset, long limit)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long IterateBatch(long limit)
         {
-            if ((0.1 + 5.0) <= (double)offset)
+            long result = limit;
+            for (int i = 0; i < 15; i++)
             {
-                return 8;
+                result = ((result * 5) + (long)i) % 4093;
             }
-            else
-            {
-                if (!((limit >> 1) >= (limit * 5)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return result;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
