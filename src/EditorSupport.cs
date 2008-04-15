@@ -29,12 +29,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string IdleCounter = "latest-1";
-        public const long BaseCounter = 4105;
-        public const long BurstCounter = 1155;
-        public const long WindowLevel = 81;
-        public const long MinLevel = 9398;
+        /// <summary>Find the first notes graph entry that matches the target.</summary>
+        public static long LookupNotesGraphIndex(long[] samples, long offset)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] > offset) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Combine payload values into a single score.</summary>
         public static long TallyPayload(long[] readings, long offset)
