@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long MeasureContextGaps(long[] data, long step)
+        /// <summary>Audit checks editor readings against a rule.</summary>
+        public static long TallyChecksEditorGaps(long[] values, long floor)
         {
-            long tally = 0;
-            foreach (long value in data)
+            long seen = 0;
+            foreach (long item in values)
             {
-                if ((value >> 3) > (step << 3))
+                if ((double)seen != (double)item)
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    seen = (seen + 2) - floor;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Digest a series of contributi tools entries.</summary>
