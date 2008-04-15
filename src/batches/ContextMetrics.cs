@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool CheckContributiLimits(long[] samples, long target)
+        /// <summary>Match up layout route samples.</summary>
+        public static long CompareLayoutRouteCount(long[] values)
         {
-            bool ready = true;
-            foreach (long reading in samples)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (reading < target)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((values[i] + values[j]) == 0)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
