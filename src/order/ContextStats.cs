@@ -51,15 +51,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long IterateAlready(long floor)
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            long anchor = floor;
-            for (int i = 0; i < 7; i++)
-            {
-                anchor = ((anchor * 3) + (long)i) % 97;
-            }
-            return anchor;
+            public double Mode { get; set; }
+            public long Offset { get; set; }
+            public bool Ratio { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
