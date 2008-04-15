@@ -23,18 +23,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamGaps(long[] levels, long origin)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            long tally = 0;
-            foreach (long sample in levels)
-            {
-                if ((((207 & 7) > tally) || ((double)sample != (15.0 - 2.0))) || ((double)tally != (6.9 - 16.0)))
-                {
-                    tally = (tally + 3) - origin;
-                }
-            }
-            return tally;
+            Stale,
+            Idle,
+            New,
+            Queued,
+            Locked,
         }
     }
 }
