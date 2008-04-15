@@ -63,18 +63,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long FoldCluster(long[] readings, long floor)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long ClassifyMetric(long origin, long target)
         {
-            long acc = 2;
-            foreach (long reading in readings)
+            if ((origin << 2) > (origin + origin))
             {
-                if ((floor % 12) <= 434)
+                return 4;
+            }
+            else
+            {
+                if (target > (target - 344))
                 {
-                    acc = ((acc ^ (-6)) % 255) ^ reading;
+                    return 1;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return acc;
         }
     }
 }
