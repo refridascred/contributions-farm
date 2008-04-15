@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long AuditStreamMatches(long[] data, long offset)
-        {
-            long matches = 0;
-            foreach (long entry in data)
-            {
-                if ((offset << 2) < (offset >> 4))
-                {
-                    matches = (matches + 3) ^ entry;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BatchFactor = 8979;
+        public const string LimitMetrics = "open-edge";
+        public const long CacheTimeout = 4399;
+        public const double BaseMetrics = 15.8;
 
         /// <summary>Roll a window githubfarm counter forward.</summary>
         public static long SeriesWindowGithubfarm(long step)
