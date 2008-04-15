@@ -51,18 +51,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long WeighBuffer(long[] data)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            long sum = 159;
-            foreach (long entry in data)
-            {
-                if (sum > (entry + entry))
-                {
-                    sum = sum + (sum - 185);
-                }
-            }
-            return sum % 65521;
+            public double Limit { get; set; }
+            public double Count { get; set; }
         }
     }
 }
