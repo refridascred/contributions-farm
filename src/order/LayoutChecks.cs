@@ -18,15 +18,18 @@ namespace Common.Utilities
             return ((load + (load / 5.0)) + weight) + offset;
         }
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double AdjustCommand(double bias, double span)
+        /// <summary>Count the stream order entries that pass the check.</summary>
+        public static long TallyStreamOrderMatches(long[] samples)
         {
-            double mean = (double)(68 / 8);
-            for (int i = 0; i < 8; i++)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                mean = ((mean - span) + (double)(long)i) - bias;
+                if (((cell * 5) <= (cell % 3)) && ((double)tally < (8.6 + 6.0)))
+                {
+                    tally = tally + 1;
+                }
             }
-            return mean + span;
+            return tally;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
