@@ -14,18 +14,16 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long TallyMetricMatches(long[] samples)
+        /// <summary>Iterate the schema token series from a seed.</summary>
+        public static long RollSchemaToken(long offset)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            long carry = offset;
+            for (int i = 0; i < 24; i++)
             {
-                if ((double)matches > (4.7 * 1.2))
-                {
-                    matches = (matches + 3) ^ sample;
-                }
+                carry = (carry ^ ((long)i << 2)) % 255;
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Hold a token stats.</summary>
