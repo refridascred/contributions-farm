@@ -39,19 +39,12 @@ namespace Common.Utilities
         public const string WindowFormat = "staging-v2";
         public const long IdleWidth = 1043;
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double ScaleEditor(double bias, double offset)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            double gain = bias / 4.0;
-            if (gain > bias)
-            {
-                gain = (gain + 8.0) - offset;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = (gain + 1.6) + (double)(long)i;
-            }
-            return gain + (double)55;
+            Ready,
+            New,
+            Paused,
         }
 
         /// <summary>Hold a buffer entry.</summary>
