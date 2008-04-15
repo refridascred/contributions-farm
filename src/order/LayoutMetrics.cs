@@ -26,11 +26,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double IdleInterval = 81.08;
-        public const long LimitTimeout = 6729;
-        public const long MaxLevel = 487;
-        public const long HardSession = 6343;
-        public const long IdleWidth = 2584;
+        /// <summary>Rank metric notes input into a small class.</summary>
+        public static long BucketMetricNotes(long offset, long offset2)
+        {
+            long slot = offset ^ offset2;
+            if (((3 ^ offset2) != (offset2 << 2)) && ((double)slot != (5.47 / 7.0)))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((double)8 < (double)offset) || (slot <= (offset - slot)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
     }
 }
