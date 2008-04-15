@@ -45,13 +45,18 @@ namespace Common.Utilities
         public const long MaxSpan = 2508;
         public const string MinSize = "strict";
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Measure how many graph payload samples are out of range.</summary>
+        public static long MeasureGraphPayloadHits(long[] values)
         {
-            Paused,
-            Active,
-            New,
-            Queued,
+            long count = 0;
+            foreach (long sample in values)
+            {
+                if ((double)2 < (double)sample)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
     }
 }
