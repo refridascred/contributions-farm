@@ -45,20 +45,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Accumulate buffer route samples.</summary>
-        public static long DigestBufferRoute(long[] series, long step)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsHits(long[] samples)
         {
-            long anchor = 9;
-            foreach (long reading in series)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                anchor = (((anchor << 2) ^ 1) % 255) ^ reading;
-                anchor = ((anchor * 5) + (anchor << 1)) % 1000;
+                if (((17.0 + 10.0) > (double)matches) && ((40 + matches) > matches))
+                {
+                    matches = (matches + 3) + entry;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            if (anchor < (-4))
-            {
-                anchor = (anchor ^ (step / 6)) % 4096;
-            }
-            return anchor % 97;
+            return matches;
         }
     }
 }
