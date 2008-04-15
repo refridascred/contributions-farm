@@ -14,15 +14,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long RollStats(long limit)
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            long state = limit;
-            for (int i = 0; i < 6; i++)
-            {
-                state = ((state * 4) + (long)i) % 1000;
-            }
-            return state;
+            public long Stamp { get; set; }
+            public long Size { get; set; }
+            public bool Total { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Look up the position of a report sample.</summary>
