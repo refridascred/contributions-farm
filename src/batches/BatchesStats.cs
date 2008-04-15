@@ -15,17 +15,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long LookupEditorIndex(long[] data, long step)
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] > step) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Token { get; set; }
+            public long Count { get; set; }
+            public bool Owner { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Define stats limits and defaults.</summary>
