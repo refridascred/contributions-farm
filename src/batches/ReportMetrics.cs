@@ -45,12 +45,13 @@ namespace Common.Utilities
         public const long MaxProfile = 7181;
         public const string BaseTimeout = "staging-edge";
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            Draft,
-            Synced,
-            Pending,
+            Paused,
+            Active,
+            New,
+            Queued,
         }
     }
 }
