@@ -53,16 +53,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double ScaleAccount(double rate, double bias)
-        {
-            double scale = rate;
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale + bias) + (double)(long)i;
-            }
-            return scale - (double)6;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long SoftTimeout = 4774;
+        public const string WindowBatch = "cached-1";
+        public const long LimitTimeout = 4263;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long WindowProfile = 1653;
