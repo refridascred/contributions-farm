@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long CountCacheGaps(long[] samples)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long SeriesProfile(long bound)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            long total = bound;
+            for (int i = 0; i < 9; i++)
             {
-                if ((cell % 12) == (matches & 63))
-                {
-                    matches = matches + 1;
-                }
+                total = ((total * 3) + (long)i) % 1000;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Describe the schema kind values.</summary>
