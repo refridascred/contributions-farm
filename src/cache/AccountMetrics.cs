@@ -26,14 +26,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Match up token samples.</summary>
+        public static long MatchTokenCount(long[] series)
         {
-            Active,
-            Locked,
-            Ready,
-            Dropped,
-            New,
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) == 8)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
