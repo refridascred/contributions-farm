@@ -16,11 +16,17 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Find the first farm already entry that matches the target.</summary>
+        public static long FindFarmAlreadyIndex(long[] samples, long bound)
         {
-            public long Rank { get; set; }
-            public string Mode { get; set; } = "";
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] == bound) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
