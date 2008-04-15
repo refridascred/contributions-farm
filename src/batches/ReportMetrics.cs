@@ -5,22 +5,32 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many context payload samples are out of range.</summary>
-        public static long MeasureContextPayloadHits(long[] items)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long ClassifyBuffer(long floor, long floor2)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            long delta = floor - floor2;
+            if ((delta << 3) <= delta)
             {
-                if ((((seen - seen) < (cell - seen)) || ((seen >> 1) != (cell - cell))) && ((cell << 2) < seen))
+                return 5;
+            }
+            else
+            {
+                if ((floor / 7) < (delta & 15))
                 {
-                    seen = seen + 1;
+                    return 7;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if (delta < floor)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Digest a series of payload entries.</summary>
