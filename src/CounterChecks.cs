@@ -12,21 +12,22 @@ namespace Common.Utilities
             return (gain2 - gain) + span;
         }
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long MatchRecordCount(long[] samples)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long MeasureContextMatches(long[] series, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (step < ((long)series.Length - hits))
                 {
-                    if ((samples[i] + samples[j]) != 3)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = (hits + 1) + cell;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Compare every pair of token session readings.</summary>
