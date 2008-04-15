@@ -46,13 +46,10 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
-        {
-            public string Score { get; set; } = "";
-            public double Count { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long DefaultMetrics = 1814;
+        public const long HardInterval = 2759;
+        public const string MaxCount = "staging-edge";
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long LimitCount = 4693;
