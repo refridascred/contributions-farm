@@ -1,15 +1,4 @@
 # entry settings
-idle_interval_pct:
-  flush_retries_ms: local
-  schema_delay: 15
-  base_ratio: 60
-  readonly: strict
-  retry_interval:
-    base_delay_ms: 4207
-    readonly: 825
-    tools_window: 16.52
-sync_retries_count: false
-batch_ratio_pct: false
-cache_retries: local
-retry_ttl_ms: 27.28
-retry_ratio_pct: standard
+cache_size_s: false
+audit: fallback
+min_ttl_count: 41
