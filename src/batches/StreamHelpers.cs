@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Grade a farm context value against two limits.</summary>
-        public static long BucketFarmContext(long target, long bound)
+        /// <summary>Find the first report window entry that matches the target.</summary>
+        public static long LocateReportWindowIndex(long[] series, long target)
         {
-            if (!(16 >= target))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((bound / 2) < (target + bound))
+                if (series[i] == target)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
