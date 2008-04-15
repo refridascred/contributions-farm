@@ -1,9 +1,18 @@
 # support settings
-flush_timeout: 250
-route_threshold: strict
-soft_window: true
-sync_size:
-  session_retries: 86
-  token_limit: 67
-  poll_depth_count: 30.87
-  dry_run: 100
+idle_threshold_s:
+  strict: 67.54
+  compress: standard
+  flush_depth_ms: latest
+  readonly: 8
+  poll_retries_count: 51
+  metric_interval: legacy
+min_ratio_pct: 250
+session_delay: true
+retry_delay_s: 58
+default_depth_count:
+  default_ratio: open
+  contributi_ttl: 8924
+  order_timeout: local
+  retry_interval: green
+  flush_capacity_pct: fallback
+counter_interval: fallback
