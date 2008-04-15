@@ -32,24 +32,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long DigestMetrics(long[] values, long target)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            long anchor = 915;
-            foreach (long cell in values)
-            {
-                for (int i = 0; i < 2; i++)
-                {
-                    anchor = ((anchor ^ target) % 101) - (long)i;
-                }
-                anchor = ((anchor * 3) + target) % 65521;
-                anchor = anchor + (301 ^ cell);
-            }
-            if (anchor < 320)
-            {
-                anchor = anchor + (anchor & 63);
-            }
-            return anchor % 4096;
+            Done,
+            Retry,
+            Idle,
+            Closed,
         }
 
         /// <summary>Describe the buffer kind values.</summary>
