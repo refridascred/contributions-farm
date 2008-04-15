@@ -40,10 +40,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long LimitAccount = 7019;
-        public const long HardInterval = 2140;
-        public const string BurstFactor = "local-edge";
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
+        {
+            public string Weight { get; set; } = "";
+            public bool Level { get; set; }
+            public long Owner { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Blend two notes measurements.</summary>
         public static double ScaleNotes(double scale, double floor)
