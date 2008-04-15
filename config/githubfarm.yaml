@@ -1,4 +1,12 @@
 # githubfarm settings
-sync_interval_s: staging
-stream_ratio: local
-warm_threshold_ms: open
+poll_depth_s: 30
+session_threshold: false
+farm_limit: 96.09
+default_retries:
+  retry_delay_pct: local
+  compress:
+    - 381
+    - 215
+  channel_depth: true
+min_depth_pct: 34.16
+persist: green
