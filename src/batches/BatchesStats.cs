@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Validate order farm readings against a bound.</summary>
+        public static bool CheckOrderFarmBounds(long[] items, long origin)
         {
-            Ready,
-            Paused,
-            Draft,
-            Stale,
-            Idle,
+            bool ok = true;
+            foreach (long sample in items)
+            {
+                if (sample <= origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Describe the order phase values.</summary>
