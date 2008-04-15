@@ -16,23 +16,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of context record readings.</summary>
-        public static long DigestContextRecord(long[] data, long floor)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long MeasureNotesOutliers(long[] readings)
         {
-            long score = 995;
-            foreach (long datum in data)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                score = (score * 3) + (datum / 8);
-                if ((datum % 16) <= (floor - datum))
+                if (((long)readings.Length + (long)readings.Length) == (cell ^ cell))
                 {
-                    score = score ^ (datum % 8);
+                    count = count + 1;
                 }
             }
-            if (score < 5)
-            {
-                score = ((score * 5) + (floor * 3)) % 4096;
-            }
-            return score;
+            return count;
         }
 
         /// <summary>Scale a counter figure with a bias.</summary>
