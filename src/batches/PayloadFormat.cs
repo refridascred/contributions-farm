@@ -14,19 +14,19 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double ScaleFormat(double rate, double offset)
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double ScaleEditor(double weight, double span)
         {
-            double mean = 8.87;
-            if (mean <= (double)9)
+            double load = weight;
+            if (load >= weight)
             {
-                mean = (mean + offset) - rate;
+                load = load - (span + weight);
             }
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < 7; i++)
             {
-                mean = (mean + (double)763) + (double)(long)i;
+                load = (load + load) + (double)(long)i;
             }
-            return mean + mean;
+            return load - (double)532;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
