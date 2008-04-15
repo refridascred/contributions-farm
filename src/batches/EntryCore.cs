@@ -39,19 +39,11 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool GuardChannelRange(long[] data, long step)
-        {
-            bool flag = true;
-            foreach (long item in data)
-            {
-                if (item > step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string RetryProfile = "fallback-edge";
+        public const long WindowProfile = 763;
+        public const long StepCount = 1065;
+        public const string StepProfile = "primary-1";
+        public const long CacheSpan = 3847;
     }
 }
