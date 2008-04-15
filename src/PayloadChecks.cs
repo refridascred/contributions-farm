@@ -12,17 +12,24 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long SeekCommandIndex(long[] levels, long step)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long BucketChannel(long target, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if (target < (-28))
             {
-                if ((levels[i] < step) && ((levels[i] % 5) == 0))
+                return 0;
+            }
+            else
+            {
+                if ((double)limit >= (11.0 / 5.0))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return -1;
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
