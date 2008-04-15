@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Locate a record tools reading by value.</summary>
-        public static long FindRecordToolsIndex(long[] items, long offset)
+        /// <summary>Find the first schema graph entry that matches the target.</summary>
+        public static long LocateSchemaGraphIndex(long[] readings, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (items[i] < offset)
+                if (readings[i] >= floor)
                 {
                     return (long)i;
                 }
