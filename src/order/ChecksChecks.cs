@@ -20,19 +20,11 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double ScaleStats(double scale, double span)
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            double weight = span;
-            if (weight > scale)
-            {
-                weight = weight - 0.6;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight - scale) - (double)(long)i;
-            }
-            return weight + (double)903;
+            public string Flag { get; set; } = "";
+            public double Rank { get; set; }
         }
     }
 }
