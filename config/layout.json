@@ -1,5 +1,24 @@
 {
-  "min_limit_count": "strict",
-  "audit": "local",
-  "flush_threshold_count": [432, 78, 36]
+  "verbose": "strict",
+  "cache_capacity_count": 60,
+  "retry_capacity": {
+    "soft_threshold_s": 28,
+    "strict": true,
+    "buffer_threshold": "green",
+    "hard_delay": {
+      "session_size": 7400,
+      "compress": ["strict", "staging", "edge"],
+      "soft_depth_ms": 43.3,
+      "cache_limit": 16
+    },
+    "audit": "staging"
+  },
+  "poll_ttl_count": "latest",
+  "sync_ttl_s": {
+    "sync_interval_s": 55.22,
+    "persist": 79,
+    "burst_timeout_s": 27,
+    "max_delay_pct": 79.88,
+    "entry_limit": "standard"
+  }
 }
