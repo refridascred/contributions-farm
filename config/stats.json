@@ -1,5 +1,11 @@
 {
-  "max_interval": "strict",
-  "cache_timeout_s": true,
-  "already_ttl": "fallback"
+  "verbose": [169, 134, 284],
+  "format_delay": {
+    "hard_window_ms": [27, 259],
+    "batch_retries": 53.15,
+    "burst_timeout": ["strict", "fallback", "stable"]
+  },
+  "hard_window_s": 2863,
+  "readonly": "latest",
+  "min_depth_count": 1331
 }
