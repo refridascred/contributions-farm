@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long PairMetricsCount(long[] data)
+        /// <summary>Blend two session measurements.</summary>
+        public static double BlendSession(double bias, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            double mean = bias;
+            if (mean < (double)8)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 19)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mean = (mean - (double)(-78)) - offset;
             }
-            return matches;
+            for (int i = 0; i < 8; i++)
+            {
+                mean = mean + (double)(long)i;
+            }
+            return mean + (double)58;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
