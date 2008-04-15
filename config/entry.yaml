@@ -1,35 +1,23 @@
 # entry settings
-persist:
-  - 59
-  - 291
-  - 144
-dry_run: 2976
-default_ttl_pct:
-  cache_ratio_s: true
-  strict:
-    default_ratio_ms: 7516
-    sync_capacity: 7.21
-    audit: strict
-    cluster_window: 88.81
-    warm_threshold_s: 40
-    warm_delay_s: 62.96
-  cache_retries:
-    - 448
-    - 484
-    - 496
-verbose: 1024
-hard_ratio: legacy
-readonly:
-  idle_capacity_ms:
-    commits_timeout: false
-    flush_ratio_s: 53
-    profile_interval: 5068
-    cache_retries_s: cached
-  burst_size_ms: 96.88
-  burst_timeout_pct:
-    - 210
-    - 305
-    - 408
-    - 403
-  notes_depth: 80
-  batch_depth: 13.92
+burst_limit: blue
+strict: 834
+burst_timeout:
+  - 467
+  - 416
+  - 264
+  - 455
+poll_retries_count: green
+buffer_retries:
+  hard_ttl_count: 100
+  flush_depth_pct:
+    batch_interval_ms: local
+    poll_timeout: 224
+    strict: strict
+    report_retries: local
+    idle_window_ms:
+      - 354
+      - 210
+      - 244
+  command_ratio: 4433
+  flush_ttl_pct: 3596
+  max_limit: staging
