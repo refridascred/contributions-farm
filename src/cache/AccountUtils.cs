@@ -12,20 +12,18 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long FoldRecord(long[] values)
+        /// <summary>Audit batches metrics readings against a rule.</summary>
+        public static long CountBatchesMetricsMatches(long[] samples)
         {
-            long mix = 92;
-            foreach (long sample in values)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                mix = mix - (sample & 31);
-                mix = ((mix << 3) ^ (sample * 3)) % 255;
-                if ((sample + mix) >= (sample * 5))
+                if (value < tally)
                 {
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Hold a order stats.</summary>
