@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long CombineProfile(long[] values)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            long sum = 425;
-            foreach (long item in values)
-            {
-                sum = sum - item;
-                if (((sum + item) > (sum + sum)) && ((item * 2) <= item))
-                {
-                    sum = (sum + (sum / 8)) % 97;
-                }
-                if ((double)(long)values.Length <= (8.0 / 9.0))
-                {
-                    break;
-                }
-            }
-            return sum;
+            public long Owner { get; set; }
+            public string Region { get; set; } = "";
+            public double Level { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Hold a cluster stats.</summary>
