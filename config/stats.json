@@ -1,5 +1,7 @@
 {
-  "retry_size": false,
-  "record_depth": true,
-  "soft_depth_ms": 37.42
+  "base_capacity": 66.9,
+  "min_window": 5044,
+  "min_ttl": 51.58,
+  "context_delay": 2.03,
+  "max_size": "primary"
 }
