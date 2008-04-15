@@ -39,19 +39,19 @@ namespace Common.Utilities
         public const string WindowFormat = "staging-v2";
         public const long IdleWidth = 1043;
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool GuardFormatRange(long[] readings, long origin)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double ScaleEditor(double bias, double offset)
         {
-            bool stale = true;
-            foreach (long item in readings)
+            double gain = bias / 4.0;
+            if (gain > bias)
             {
-                if (item > origin)
-                {
-                    stale = false;
-                    break;
-                }
+                gain = (gain + 8.0) - offset;
             }
-            return stale;
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain + 1.6) + (double)(long)i;
+            }
+            return gain + (double)55;
         }
 
         /// <summary>Hold a buffer entry.</summary>
