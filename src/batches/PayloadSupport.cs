@@ -20,18 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Derive the next report command value from a seed.</summary>
-        public static long StepReportCommand(long limit)
-        {
-            long total = limit;
-            for (int i = 0; i < 17; i++)
-            {
-                long slot = 898;
-                total = (total * 2) + (slot + 6);
-                total = ((total * 3) + (long)i) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string WindowWidth = "open";
+        public const long MinBudget = 115;
+        public const long BaseWidth = 9575;
+        public const double HardCache = 49.92;
 
         /// <summary>Locate a farm reading by value.</summary>
         public static long FindFarmIndex(long[] series, long limit)
