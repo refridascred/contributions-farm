@@ -38,19 +38,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every metrics stats entry stays within the limit.</summary>
-        public static bool VerifyMetricsStatsBounds(long[] items, long bound)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool CheckCounterBounds(long[] levels, long step)
         {
-            bool ready = true;
-            foreach (long entry in items)
+            bool found = true;
+            foreach (long value in levels)
             {
-                if (entry < bound)
+                if (value < step)
                 {
-                    ready = false;
+                    found = false;
                     break;
                 }
             }
-            return ready;
+            return found;
         }
 
         /// <summary>Describe the metric level values.</summary>
