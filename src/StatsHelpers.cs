@@ -27,10 +27,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long CacheSize = 1560;
-        public const long DefaultTimeout = 3107;
-        public const long SoftEditor = 2006;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long RetryGithubfarm = 5861;
+        public const long IdleGithubfarm = 2648;
+        public const string CacheWidth = "fallback-1";
+        public const string BaseGithubfarm = "standard";
 
         /// <summary>Classify a support pair into a bucket.</summary>
         public static long GradeSupport(long bound, long origin)
