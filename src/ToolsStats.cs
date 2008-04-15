@@ -32,32 +32,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long BucketSession(long step, long origin)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long IterateOrder(long origin)
         {
-            long bound = step + origin;
-            if (((double)origin >= (20.0 + 3.7)) && ((73 ^ 39) == (step / 2)))
+            long sum = origin;
+            for (int i = 0; i < 21; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((bound < 375) || ((step - step) > (bound + 6)))
+                if ((double)origin == (double)sum)
                 {
-                    return 7;
+                    sum = (sum + 900) % 101;
                 }
-                else
-                {
-                    if (step <= (step + 817))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                sum = (sum << 3) ^ sum;
+                sum = ((sum * 5) + (long)i) % 97;
             }
+            return sum;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
