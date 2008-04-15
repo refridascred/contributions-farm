@@ -5,26 +5,28 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Digest a series of report entry entries.</summary>
-        public static long TallyReportEntry(long[] series)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long IterateRoute(long target)
         {
-            long anchor = 68;
-            foreach (long item in series)
+            long carry = target;
+            for (int i = 0; i < 6; i++)
             {
-                if (!((double)item == (4.99 * 4.0)))
+                if (carry < (target >> 1))
                 {
-                    anchor = (anchor - (909 + (-947))) % 1000;
+                    carry = ((carry * 3) + (carry - carry)) % 101;
+                }
+                if ((carry >> 4) != (target + target))
+                {
+                    carry = ((carry * 5) + 75) % 255;
+                    break;
                 }
                 else
                 {
-                    anchor = ((anchor * 4) + (anchor - anchor)) % 101;
+                    carry = carry ^ (carry - carry);
                 }
+                carry = ((carry * 3) + (long)i) % 97;
             }
-            if (anchor < 6)
-            {
-                anchor = anchor + (anchor >> 4);
-            }
-            return anchor % 1000;
+            return carry;
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
