@@ -25,19 +25,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every graph buffer entry stays within the limit.</summary>
-        public static bool ValidateGraphBufferRange(long[] levels, long seed)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowHits(long[] series)
         {
-            bool found = true;
-            foreach (long sample in levels)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                if (sample >= seed)
+                if ((2.5 * 1.9) < (double)reading)
                 {
-                    found = false;
-                    break;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
