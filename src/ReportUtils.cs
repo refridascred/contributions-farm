@@ -42,23 +42,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate channel support samples.</summary>
-        public static long TotalChannelSupport(long[] data)
+        /// <summary>Locate a batch already reading by value.</summary>
+        public static long LocateBatchAlreadyIndex(long[] items, long target)
         {
-            long result = 9;
-            foreach (long datum in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                result = (result + result) % 97;
-                if ((datum > (result + 6)) && ((double)59 >= (double)result))
+                if (items[i] == target)
                 {
-                    result = result + result;
+                    return (long)i;
                 }
             }
-            if (result < 768)
-            {
-                result = (result - (result + result)) % 101;
-            }
-            return result % 4096;
+            return -1;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
