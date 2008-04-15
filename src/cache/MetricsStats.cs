@@ -43,14 +43,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
-        {
-            public long Rank { get; set; }
-            public string Score { get; set; } = "";
-            public double Total { get; set; }
-            public double Offset { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string SoftSize = "legacy-v2";
+        public const double RetrySize = 68.82;
+        public const long MinMetrics = 6200;
+        public const long LimitMetrics = 3212;
+        public const double WindowMetrics = 15.01;
 
         /// <summary>Describe the stream class values.</summary>
         public enum StreamClass
