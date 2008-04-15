@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit batch format readings against a rule.</summary>
-        public static long AuditBatchFormatGaps(long[] levels)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long FoldCommits(long[] samples, long step)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long total = 46;
+            foreach (long datum in samples)
             {
-                if (entry >= (762 + count))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                total = (total << 2) ^ (datum & 127);
             }
-            return count;
+            if (total > 13)
+            {
+                total = total + step;
+            }
+            return total;
         }
 
         /// <summary>Match up stats samples.</summary>
