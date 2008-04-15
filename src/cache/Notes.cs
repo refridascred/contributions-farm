@@ -15,18 +15,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long MeasureGithubfarmGaps(long[] samples)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if ((((8.1 * 18.0) >= (double)reading) && ((1.4 * 13.0) == (double)(long)samples.Length)) && ((reading - 2) < hits))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Pending,
+            New,
+            Locked,
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
