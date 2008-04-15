@@ -46,13 +46,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool CheckGraphRange(long[] items, long target)
         {
-            Closed,
-            Queued,
-            Locked,
-            Done,
+            bool ok = true;
+            foreach (long sample in items)
+            {
+                if (sample > target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
