@@ -16,11 +16,38 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long RankBatches(long seed, long bound)
         {
-            public double Total { get; set; }
-            public string Rank { get; set; } = "";
+            if ((5.7 - 2.21) >= (double)seed)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((8 >> 1) < (8 - seed))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((seed << 3) != (seed & 31))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (seed > (seed * 3))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
