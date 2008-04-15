@@ -37,9 +37,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long WindowDepth = 9818;
-        public const long BurstScore = 1139;
-        public const string StepStats = "fallback-1";
+        /// <summary>Audit profile schema readings against a rule.</summary>
+        public static long MeasureProfileSchemaHits(long[] values)
+        {
+            long matches = 0;
+            foreach (long value in values)
+            {
+                if (!((value + matches) >= (value >> 2)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
     }
 }
