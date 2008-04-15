@@ -79,11 +79,17 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long LocateCommitsIndex(long[] levels, long offset)
         {
-            public bool Limit { get; set; }
-            public double Region { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
