@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            Stale,
-            Pending,
-            Closed,
-            Done,
+            public long Stamp { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
