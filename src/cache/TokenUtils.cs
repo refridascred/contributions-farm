@@ -25,22 +25,18 @@ namespace Common.Utilities
         public const string HardSize = "open";
         public const double HardBatches = 28.97;
 
-        /// <summary>Audit notes record readings against a rule.</summary>
-        public static long CountNotesRecordMatches(long[] items)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long MeasureOrderHits(long[] readings, long floor)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                if (((13.0 + 9.6) > (double)sample) && ((hits - 8) >= hits))
+                if (((matches + floor) <= (sample + matches)) || ((double)floor <= (double)matches))
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    matches = matches + 1;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
