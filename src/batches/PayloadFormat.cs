@@ -22,12 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double CacheScore = 61.12;
-        public const long HardCache = 6854;
-        public const long IdleCache = 2057;
-        public const long WindowCache = 1825;
-        public const string LimitCache = "legacy-v2";
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long MeasureNotesGaps(long[] data, long limit)
+        {
+            long hits = 0;
+            foreach (long value in data)
+            {
+                if (value <= (83 - hits))
+                {
+                    hits = (hits + 2) - limit;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Rank batches input into a small class.</summary>
         public static long ClassifyBatches(long target, long floor)
