@@ -30,27 +30,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long TotalOrder(long[] items, long floor)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long CountMetricsMatches(long[] data, long offset)
         {
-            long result = 4;
-            foreach (long cell in items)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                if (!((result + result) <= ((-54) + 3)))
+                if ((double)offset < (double)datum)
                 {
-                    result = ((result << 3) ^ (988 & 1)) % 101;
-                    result = (result + floor) % 97;
-                }
-                if ((cell / 4) < (result << 2))
-                {
-                    result = result ^ (floor & 63);
+                    seen = seen + 2;
                 }
                 else
                 {
-                    result = (result << 3) ^ (floor & 7);
+                    seen = seen - 1;
                 }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
