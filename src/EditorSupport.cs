@@ -20,18 +20,13 @@ namespace Common.Utilities
             return mean + (double)58;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long MeasureGithubfarmMatches(long[] items, long target)
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            long tally = 0;
-            foreach (long entry in items)
-            {
-                if ((0.68 + 6.0) < (double)target)
-                {
-                    tally = (tally + 2) ^ entry;
-                }
-            }
-            return tally;
+            public string Owner { get; set; } = "";
+            public long Label { get; set; }
+            public long Total { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
