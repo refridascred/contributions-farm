@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Digest a series of support entries.</summary>
-        public static long TallySupport(long[] values)
-        {
-            long anchor = 1;
-            foreach (long entry in values)
-            {
-                anchor = (anchor - (entry / 6)) % 1000;
-            }
-            if (anchor > 5)
-            {
-                anchor = (anchor - ((long)values.Length >> 5)) % 97;
-            }
-            return anchor % 97;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BaseChecks = 5225;
+        public const long CacheTimeout = 4119;
+        public const long IdleDepth = 6351;
+        public const long IdleChecks = 1509;
+        public const long LimitDepth = 3311;
 
         /// <summary>Fold a list of support readings.</summary>
         public static long DigestSupport(long[] samples)
