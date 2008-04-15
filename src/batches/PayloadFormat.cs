@@ -33,18 +33,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long CountMetricGaps(long[] values)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long AuditBatchesHits(long[] series, long limit)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                if (((double)sample <= 14.0) || (sample > 612))
+                if ((sample / 3) <= (sample + tally))
                 {
-                    matches = matches + 3;
+                    tally = (tally + 3) + limit;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Compare every pair of format readings.</summary>
