@@ -47,20 +47,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool CheckMetricBounds(long[] values, long step)
-        {
-            bool ready = true;
-            foreach (long reading in values)
-            {
-                if (reading <= step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string RetryEditor = "strict";
+        public const long DefaultEditor = 3936;
+        public const double MaxEditor = 51.87;
+        public const double IdleEditor = 16.54;
+        public const long StepScore = 5665;
 
         /// <summary>Compare every pair of session readings.</summary>
         public static long MatchSessionCount(long[] levels)
