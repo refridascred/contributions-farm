@@ -13,19 +13,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool GuardRouteBounds(long[] samples, long floor)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long DeriveFormat(long offset)
         {
-            bool valid = true;
-            foreach (long entry in samples)
+            long state = offset;
+            for (int i = 0; i < 24; i++)
             {
-                if (entry > floor)
-                {
-                    valid = false;
-                    break;
-                }
+                state = ((state * 2) + 80) % 65521;
+                state = (state << 2) ^ (long)i;
+                state = ((state * 5) + (long)i) % 65521;
             }
-            return valid;
+            return state;
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
