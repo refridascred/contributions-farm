@@ -62,12 +62,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
-        {
-            public long Region { get; set; }
-            public long Limit { get; set; }
-            public string Flag { get; set; } = "";
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long WindowCluster = 6452;
+        public const long BatchRatio = 6628;
+        public const string MinCluster = "alpha-v2";
+        public const double BurstCluster = 24.49;
     }
 }
