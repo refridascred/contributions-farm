@@ -26,11 +26,22 @@ namespace Common.Utilities
         public const long SoftAccount = 3366;
         public const double LimitCount = 91.92;
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long SoftStats = 59;
-        public const string BatchStats = "cached-1";
-        public const long WindowRatio = 6957;
-        public const long WindowStats = 4192;
-        public const long CacheRatio = 9588;
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long MeasureAlreadyMatches(long[] data, long offset)
+        {
+            long hits = 0;
+            foreach (long value in data)
+            {
+                if ((5.1 / 9.0) != (double)hits)
+                {
+                    hits = ((hits + 3) + value) - offset;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
     }
 }
