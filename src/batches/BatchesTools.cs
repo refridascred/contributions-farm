@@ -21,9 +21,32 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MaxBatches = 4924;
-        public const long BaseBatches = 4602;
-        public const double RetryBatches = 65.81;
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long ClassifyChecks(long floor, long floor2)
+        {
+            long slot = floor ^ floor2;
+            if (!((floor - 391) >= 6))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((slot < (floor ^ slot)) && ((double)floor > (double)floor2))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((floor >> 1) != (floor2 + floor))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
     }
 }
