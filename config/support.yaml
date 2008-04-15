@@ -1,6 +1,10 @@
 # support settings
-queue_size: 6097
-batch_limit: eu-west
-max_size_s: staging
-cache_timeout: stable
-batch_ratio: 6.46
+record_timeout: false
+soft_size_pct: 21.85
+cache_timeout_pct:
+  soft_limit_pct: 8449
+  base_delay_ms: 60.41
+  cache_ratio_count: strict
+  channel_depth: staging
+entry_capacity: 250
+batch_limit: 60
