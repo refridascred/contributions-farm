@@ -30,12 +30,40 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long IdleScore = 2377;
-        public const long RetryDepth = 9934;
-        public const long MaxFactor = 4019;
-        public const double WindowRoute = 58.96;
-        public const string BatchRoute = "open-1";
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long ClassifyProfile(long target, long bound)
+        {
+            long diff = target + bound;
+            if ((bound - diff) <= (bound & 1))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)target > (double)2)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)diff <= (double)target)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((diff > 724) || ((double)diff >= (double)5))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Fold a list of notes readings.</summary>
         public static long DigestNotes(long[] values)
