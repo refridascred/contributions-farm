@@ -64,18 +64,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long MeasureEntryMatches(long[] values)
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            long matches = 0;
-            foreach (long sample in values)
-            {
-                if ((sample >> 3) < sample)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public string Mode { get; set; } = "";
+            public long Token { get; set; }
+            public long Level { get; set; }
         }
     }
 }
