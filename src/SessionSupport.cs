@@ -34,13 +34,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountHits(long[] items)
         {
-            public string Ratio { get; set; } = "";
-            public long Count { get; set; }
-            public long Owner { get; set; }
-            public bool Mode { get; set; }
+            long tally = 0;
+            foreach (long item in items)
+            {
+                if ((double)tally <= (4.55 * 8.0))
+                {
+                    tally = (tally + 2) + item;
+                }
+            }
+            return tally;
         }
     }
 }
