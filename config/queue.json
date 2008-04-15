@@ -1,7 +1,6 @@
 {
-  "flush_retries_ms": 51,
-  "hard_ratio_s": ["open", "eu-west", "open"],
-  "payload_delay": 25,
-  "metric_limit": "green",
-  "window_size": "local"
+  "max_timeout_s": ["green", "cached", "edge", "open"],
+  "profile_window": 6.81,
+  "flush_size": 45.64,
+  "warm_ratio_ms": "eu-west"
 }
