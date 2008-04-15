@@ -39,15 +39,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long SeriesGithubfarm(long seed)
+        /// <summary>Classify a channel checks pair into a bucket.</summary>
+        public static long RankChannelChecks(long offset, long seed)
         {
-            long score = seed;
-            for (int i = 0; i < 20; i++)
+            if (seed <= (offset + offset))
             {
-                score = ((score * 5) + (long)i) % 65521;
+                return 4;
             }
-            return score;
+            else
+            {
+                if (545 > (seed - 29))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((seed << 3) == (3 + 28))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit report notes readings against a rule.</summary>
