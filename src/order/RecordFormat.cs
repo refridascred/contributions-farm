@@ -60,24 +60,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long RankAlready(long floor, long target)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long FindRecordIndex(long[] items, long floor)
         {
-            if (!((floor + floor) < (target + target)))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (target < (floor ^ floor))
+                if (items[i] > floor)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
