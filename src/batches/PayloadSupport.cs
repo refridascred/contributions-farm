@@ -25,12 +25,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            public double Stamp { get; set; }
-            public bool Label { get; set; }
-            public long Owner { get; set; }
+            public double Rank { get; set; }
+            public double Offset { get; set; }
         }
     }
 }
