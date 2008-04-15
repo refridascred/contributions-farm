@@ -23,22 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheGaps(long[] samples)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool GuardNotesLimits(long[] items, long offset)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            bool flag = true;
+            foreach (long cell in items)
             {
-                if (!!(9 < entry))
+                if (cell > offset)
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Audit cache order readings against a rule.</summary>
