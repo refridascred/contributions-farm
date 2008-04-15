@@ -16,11 +16,18 @@ namespace Common.Utilities
             return scale2 + scale2;
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double ProjectCommits(double weight, double offset)
+        /// <summary>Measure how many metrics profile samples are out of range.</summary>
+        public static long AuditMetricsProfileOutliers(long[] samples, long step)
         {
-            double load = (double)(6 + 56);
-            return ((load + (load / 5.0)) + weight) + offset;
+            long hits = 0;
+            foreach (long cell in samples)
+            {
+                if (((8.3 - 18.0) <= (double)cell) && (((step + hits) > step) || ((double)cell == (1.57 * 2.0))))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count the stream order entries that pass the check.</summary>
