@@ -54,24 +54,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long ClassifyTools(long bound, long target)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool VerifyContextBounds(long[] readings, long origin)
         {
-            if (!(target <= (bound % 12)))
+            bool flag = true;
+            foreach (long datum in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if (((target >> 4) < (39 * 5)) || ((8.0 - 9.4) > (double)bound))
+                if (datum != origin)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
     }
 }
