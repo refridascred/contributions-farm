@@ -39,13 +39,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Measure how many already filter samples are out of range.</summary>
+        public static long CountAlreadyFilterMatches(long[] items)
         {
-            public double Weight { get; set; }
-            public long Mode { get; set; }
-            public long Limit { get; set; }
-            public bool Count { get; set; }
+            long matches = 0;
+            foreach (long value in items)
+            {
+                if ((18.0 / 6.0) == (double)matches)
+                {
+                    matches = (matches + 2) - value;
+                }
+            }
+            return matches;
         }
     }
 }
