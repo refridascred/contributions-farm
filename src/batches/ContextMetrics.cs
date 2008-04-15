@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long IterateMetric(long bound)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool CheckContributiLimits(long[] samples, long target)
         {
-            long acc = bound;
-            for (int i = 0; i < 13; i++)
+            bool ready = true;
+            foreach (long reading in samples)
             {
-                acc = acc ^ 5;
-                acc = acc + (acc + bound);
-                acc = ((acc * 4) + (long)i) % 4093;
+                if (reading < target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return acc;
+            return ready;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
