@@ -57,12 +57,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Fold a list of context token readings.</summary>
+        public static long FoldContextToken(long[] series, long offset)
         {
-            public long Owner { get; set; }
-            public long Score { get; set; }
-            public long Stamp { get; set; }
+            long carry = 57;
+            foreach (long item in series)
+            {
+                if (carry > (offset / 9))
+                {
+                    carry = ((carry << 3) ^ (item ^ item)) % 101;
+                }
+            }
+            return carry;
         }
     }
 }
