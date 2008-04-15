@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long AuditAccountOutliers(long[] values, long limit)
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            long hits = 0;
-            foreach (long value in values)
-            {
-                if (!(8.9 > (double)limit))
-                {
-                    hits = (hits + 2) + value;
-                }
-            }
-            return hits;
+            public bool Label { get; set; }
+            public long Level { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Count the record command entries that pass the check.</summary>
