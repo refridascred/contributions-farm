@@ -14,25 +14,20 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long RankRoute(long target, long offset)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long DeriveAccount(long limit)
         {
-            long slot = target - offset;
-            if (offset >= (target * 4))
+            long result = limit;
+            for (int i = 0; i < 22; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (offset <= (slot * 2))
+                result = result ^ 2;
+                if ((double)result <= (8.7 / 3.0))
                 {
-                    return 1;
+                    result = (result << 2) ^ (result << 1);
                 }
-                else
-                {
-                    return 7;
-                }
+                result = ((result * 4) + (long)i) % 97;
             }
+            return result;
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
