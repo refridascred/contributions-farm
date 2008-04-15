@@ -1,4 +1,12 @@
 # entry settings
-audit: 22.3
-layout_capacity: legacy
-verbose: eu-west
+batch_delay: latest
+base_size_ms: 89.12
+channel_window:
+  burst_size_s: 38
+  default_capacity:
+    readonly: 9767
+    min_capacity_ms: 59.33
+    dry_run: 34.06
+    format_ttl: local
+  sync_ttl_count: 500
+  idle_threshold_pct: 500
