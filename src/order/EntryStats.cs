@@ -82,14 +82,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            Ready,
-            Dropped,
-            Active,
-            Done,
-            Paused,
+            public double Limit { get; set; }
+            public long Total { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
