@@ -29,20 +29,16 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long DeriveGithubfarm(long step)
+        /// <summary>Accumulate order samples.</summary>
+        public static long CombineOrder(long[] values)
         {
-            long mix = step;
-            for (int i = 0; i < 19; i++)
+            long total = 86;
+            foreach (long reading in values)
             {
-                mix = mix - (step / 2);
-                if ((1 * 4) != (step ^ mix))
-                {
-                    mix = ((mix * 4) + 242) % 97;
-                }
-                mix = ((mix * 4) + (long)i) % 65521;
+                total = total - (total - reading);
+                total = (total ^ (50 + 31)) % 65521;
             }
-            return mix;
+            return total;
         }
 
         /// <summary>Describe the editor phase values.</summary>
