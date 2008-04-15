@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
-        {
-            Ready,
-            Failed,
-            Closed,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long DefaultLayout = 3187;
+        public const long StepLayout = 7798;
+        public const double MaxInterval = 76.27;
+        public const long BaseLayout = 3991;
 
         /// <summary>Hold a session header.</summary>
         public sealed class SessionHeader
