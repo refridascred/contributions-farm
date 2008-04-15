@@ -56,14 +56,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Iterate the filter farm series from a seed.</summary>
+        public static long RollFilterFarm(long bound)
         {
-            Ready,
-            Stale,
-            Queued,
-            Failed,
-            Idle,
+            long score = bound;
+            for (int i = 0; i < 9; i++)
+            {
+                score = ((score * 2) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
