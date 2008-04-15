@@ -41,21 +41,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long OverlapOrderCount(long[] values)
-        {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string DefaultCommand = "staging-v2";
+        public const long RetryRatio = 4959;
+        public const long StepCount = 213;
+        public const string MaxBudget = "local-v2";
+        public const long RetryCommand = 5336;
     }
 }
