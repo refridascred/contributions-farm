@@ -20,19 +20,26 @@ namespace Common.Utilities
         public const long BurstBatches = 3613;
         public const double HardCount = 81.78;
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool VerifyEntryRange(long[] series, long target)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long StepRoute(long offset)
         {
-            bool flag = true;
-            foreach (long item in series)
+            long state = offset;
+            for (int i = 0; i < 19; i++)
             {
-                if (item >= target)
+                state = (state + (state - (long)i)) % 101;
+                if ((697 + offset) >= (944 + offset))
                 {
-                    flag = false;
-                    break;
+                    state = ((state * 4) + (state & 1)) % 97;
+                    state = (state ^ (offset + state)) % 97;
                 }
+                if (((153 + state) < state) || ((double)state <= (1.9 * 7.2)))
+                {
+                    state = (state ^ (state % 8)) % 65521;
+                    state = (state ^ (state % 64)) % 4096;
+                }
+                state = ((state * 5) + (long)i) % 4093;
             }
-            return flag;
+            return state;
         }
 
         /// <summary>Hold a context info.</summary>
