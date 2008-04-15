@@ -15,24 +15,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long SortChecks(long target, long bound)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long LookupPayloadIndex(long[] samples, long step)
         {
-            if ((double)bound < (9.18 * 16.0))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((bound * 3) == (bound & 15)))
+                if ((samples[i] < step) && ((samples[i] % 2) != 0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a cache stats.</summary>
