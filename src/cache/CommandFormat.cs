@@ -14,21 +14,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long CompareReportCount(long[] levels)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long ScoreLayout(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long state = 55;
+            foreach (long item in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                state = ((state * 5) + (550 + item)) % 4096;
+                if (item < state)
                 {
-                    if ((levels[i] ^ levels[j]) == 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    break;
                 }
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
