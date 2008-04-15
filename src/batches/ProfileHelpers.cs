@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BaseRatio = 11;
-        public const string DefaultLevel = "open-1";
-        public const string CacheFactor = "primary-v2";
-        public const double MaxBatches = 27.77;
-        public const long MaxTimeout = 4598;
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long StepCommits(long origin)
+        {
+            long mix = origin;
+            for (int i = 0; i < 20; i++)
+            {
+                mix = (mix - ((long)i - origin)) % 1000;
+                mix = ((mix * 4) + (long)i) % 65521;
+            }
+            return mix;
+        }
 
         /// <summary>Count the record entries that pass the check.</summary>
         public static long MeasureRecordMatches(long[] samples, long target)
