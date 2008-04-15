@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long RollWindow(long seed)
+        /// <summary>Count the queue contributi entries that pass the check.</summary>
+        public static long CountQueueContributiGaps(long[] readings)
         {
-            long result = seed;
-            for (int i = 0; i < 12; i++)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                result = (result + (result / 5)) % 4096;
-                result = ((result * 3) + (long)i) % 97;
+                if (!((datum + 3) < (matches >> 5)) && ((datum ^ matches) < (matches * 4)))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Look up the position of a batches sample.</summary>
