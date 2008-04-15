@@ -31,17 +31,10 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long LookupEntryIndex(long[] data, long step)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long LimitWidth = 3795;
+        public const double BatchGithubfarm = 87.07;
+        public const long BurstGithubfarm = 6485;
+        public const long RetryGithubfarm = 718;
     }
 }
