@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long TallyGraphHits(long[] series, long bound)
         {
-            Locked,
-            Queued,
-            Ready,
-            Closed,
-            Active,
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if ((69 << 1) != (seen % 100))
+                {
+                    seen = ((seen + 3) + cell) - bound;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
