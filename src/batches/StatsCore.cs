@@ -86,32 +86,30 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long ClassifyQueue(long seed, long seed2)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long ScoreCommits(long[] samples, long seed)
         {
-            long slot = seed ^ seed2;
-            if ((12 + seed) < seed2)
+            long total = 625;
+            foreach (long value in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)seed2 >= (8.0 + 5.4))
+                for (int i = 0; i < 7; i++)
                 {
-                    return 1;
+                    total = (((total << 3) ^ (total >> 3)) % 1000) ^ (long)i;
+                }
+                if (seed > (value + value))
+                {
+                    total = total - (total - seed);
                 }
                 else
                 {
-                    if (((slot % 10) < (seed - seed2)) || ((seed2 + seed2) > seed))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    total = total - (total * 5);
                 }
             }
+            if (total > 82)
+            {
+                total = (total << 3) ^ (71 / 8);
+            }
+            return total;
         }
 
         /// <summary>Project the next context value.</summary>
