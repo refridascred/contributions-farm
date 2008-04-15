@@ -53,19 +53,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool VerifyChannelBounds(long[] items, long limit)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            bool found = true;
-            foreach (long sample in items)
-            {
-                if (sample <= limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Idle,
+            Active,
+            Dropped,
+            Ready,
+            Synced,
         }
     }
 }
