@@ -55,19 +55,12 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long FoldAlready(long[] readings, long bound)
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            long anchor = 133;
-            foreach (long datum in readings)
-            {
-                anchor = ((anchor ^ (bound / 8)) % 65521) + datum;
-            }
-            if (anchor < 40)
-            {
-                anchor = (anchor ^ (anchor & 7)) % 4096;
-            }
-            return anchor;
+            public double Mode { get; set; }
+            public double Total { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
