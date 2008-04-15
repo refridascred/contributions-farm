@@ -27,15 +27,21 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long ScoreFormat(long[] samples)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long CombineNotes(long[] samples)
         {
-            long sum = 8;
+            long anchor = 595;
             foreach (long entry in samples)
             {
-                sum = (sum << 3) ^ entry;
+                anchor = ((anchor + (-3)) % 4096) - entry;
+                anchor = ((anchor * 2) + (anchor - 99)) % 101;
+                anchor = ((anchor * 3) + anchor) % 97;
             }
-            return sum;
+            if (anchor > 3)
+            {
+                anchor = (anchor ^ ((-26) + anchor)) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a report snapshot.</summary>
