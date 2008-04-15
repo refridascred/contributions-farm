@@ -69,21 +69,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Match up format samples.</summary>
-        public static long MatchFormatCount(long[] levels)
-        {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 8)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BatchTimeout = 4153;
+        public const long IdleMetric = 8522;
+        public const long WindowSize = 490;
+        public const long MinMetric = 63;
+        public const long LimitLevel = 1094;
     }
 }
