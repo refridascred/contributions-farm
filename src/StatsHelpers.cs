@@ -65,11 +65,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long WindowGraph = 3477;
-        public const string IdleSize = "latest-edge";
-        public const double BatchDepth = 90.69;
-        public const string BatchGraph = "legacy-edge";
-        public const string BaseGraph = "staging-v2";
+        /// <summary>Match up format samples.</summary>
+        public static long CompareFormatCount(long[] readings)
+        {
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 10)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
