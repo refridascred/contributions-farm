@@ -52,13 +52,24 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Rank session layout input into a small class.</summary>
+        public static long ClassifySessionLayout(long limit, long bound)
         {
-            Draft,
-            Dropped,
-            Paused,
-            Queued,
+            if (!((limit + 75) < bound))
+            {
+                return 4;
+            }
+            else
+            {
+                if (44 <= (limit % 64))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
