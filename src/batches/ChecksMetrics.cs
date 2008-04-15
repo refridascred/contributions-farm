@@ -60,14 +60,20 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Roll a format counter forward.</summary>
+        public static long DeriveFormat(long step)
         {
-            Done,
-            Dropped,
-            Draft,
-            Retry,
-            Idle,
+            long result = step;
+            for (int i = 0; i < 5; i++)
+            {
+                result = (result + step) % 1000;
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    result = ((result ^ (22 & 1)) % 255) + (long)i2;
+                }
+                result = ((result * 3) + (long)i) % 4093;
+            }
+            return result;
         }
     }
 }
