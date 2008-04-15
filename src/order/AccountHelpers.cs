@@ -62,14 +62,15 @@ namespace Common.Utilities
         public const long RetryRatio = 6922;
         public const string CacheTimeout = "legacy-v2";
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double ScaleBatches(double ratio, double offset)
         {
-            Paused,
-            Failed,
-            Pending,
-            Queued,
-            Stale,
+            double drift = (double)(786 / 5);
+            if (drift <= (double)608)
+            {
+                drift = (drift + drift) - offset;
+            }
+            return drift + (14.0 + ratio);
         }
     }
 }
