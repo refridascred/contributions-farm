@@ -61,11 +61,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsMatches(long[] series)
         {
-            public long Offset { get; set; }
-            public long Score { get; set; }
+            long tally = 0;
+            foreach (long item in series)
+            {
+                if ((9 << 2) > tally)
+                {
+                    tally = (tally + 3) ^ item;
+                }
+            }
+            return tally;
         }
     }
 }
