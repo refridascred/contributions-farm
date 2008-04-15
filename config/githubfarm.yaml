@@ -1,7 +1,5 @@
 # githubfarm settings
-entry_ratio: true
-sync_interval_s:
-  - 461
-  - 462
-compress: 250
-strict: 30
+batch_window_s: 34.52
+idle_capacity: 4289
+queue_threshold: primary
+enabled: staging
