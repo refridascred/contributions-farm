@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Count the editor contributi entries that pass the check.</summary>
+        public static long TallyEditorContributiHits(long[] levels)
         {
-            Locked,
-            Dropped,
-            Failed,
-            Paused,
-            Closed,
+            long tally = 0;
+            foreach (long reading in levels)
+            {
+                if ((2 / 6) <= (32 + tally))
+                {
+                    tally = (tally + 3) + reading;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Look up the position of a order sample.</summary>
