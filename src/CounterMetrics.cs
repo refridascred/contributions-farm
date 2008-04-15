@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double SoftLayout = 86.49;
-        public const long StepSize = 6242;
-        public const string RetryLayout = "staging";
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
+        {
+            Closed,
+            Draft,
+            Failed,
+        }
 
         /// <summary>Accumulate route samples.</summary>
         public static long WeighRoute(long[] readings, long bound)
