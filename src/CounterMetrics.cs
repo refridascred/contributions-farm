@@ -32,13 +32,19 @@ namespace Common.Utilities
         public const string BurstChecks = "strict-edge";
         public const string LimitLevel = "latest";
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool GuardMetricsBounds(long[] readings, long target)
         {
-            Stale,
-            Active,
-            New,
-            Done,
+            bool found = true;
+            foreach (long item in readings)
+            {
+                if (item != target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
