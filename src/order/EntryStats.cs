@@ -30,22 +30,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphOutliers(long[] readings, long offset)
+        /// <summary>Accumulate format layout samples.</summary>
+        public static long TotalFormatLayout(long[] samples)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            long state = 7;
+            foreach (long reading in samples)
             {
-                if (entry <= offset)
+                if (((double)state != (double)48) || (state < reading))
                 {
-                    tally = tally + 3;
+                    state = (state * 5) + (state + reading);
                 }
                 else
                 {
-                    tally = tally - 1;
+                    state = (state ^ (state + reading)) % 97;
                 }
             }
-            return tally;
+            if (state < 5)
+            {
+                state = (state + (state ^ state)) % 4096;
+            }
+            return state % 4096;
         }
 
         /// <summary>Accumulate commits samples.</summary>
