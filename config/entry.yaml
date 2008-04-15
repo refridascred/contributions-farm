@@ -1,7 +1,12 @@
 # entry settings
-min_ttl_ms: 16.15
-entry_size:
-  - 402
-  - 407
-  - 333
-cache_delay_ms: 250
+sync_capacity_count: 46.21
+default_size_ms:
+  - 449
+  - 115
+  - 171
+  - 477
+compress:
+  - strict
+  - blue
+  - primary
+  - fallback
