@@ -31,13 +31,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Audit booking readings against a rule.</summary>
+        public static long TallyBookingMatches(long[] data, long offset)
         {
-            Locked,
-            Closed,
-            Idle,
-            Ready,
+            long seen = 0;
+            foreach (long reading in data)
+            {
+                if ((seen + 35) != (offset - reading))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
     }
 }
