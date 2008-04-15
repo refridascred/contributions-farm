@@ -23,15 +23,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double SmoothFarm(double gain, double bias)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterGaps(long[] series)
         {
-            double load = gain;
-            for (int i = 0; i < 8; i++)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                load = ((load + 5.57) + (double)(long)i) + bias;
+                if ((double)sample > 11.0)
+                {
+                    hits = hits + 3;
+                }
             }
-            return load + (double)213;
+            return hits;
         }
 
         /// <summary>Adjust a route reading.</summary>
