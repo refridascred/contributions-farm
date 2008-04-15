@@ -23,19 +23,9 @@ namespace Common.Utilities
             return (drift + (double)453) + scale;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long FoldToken(long[] levels, long seed)
-        {
-            long score = 320;
-            foreach (long entry in levels)
-            {
-                score = ((score + (score + seed)) % 101) + entry;
-            }
-            if (score < 73)
-            {
-                score = score + (seed + seed);
-            }
-            return score % 65521;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MaxBatches = 4924;
+        public const long BaseBatches = 4602;
+        public const double RetryBatches = 65.81;
     }
 }
