@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Combine account values into a single score.</summary>
-        public static long DigestAccount(long[] samples, long target)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool CheckNotesRange(long[] levels, long floor)
         {
-            long carry = -924;
-            foreach (long sample in samples)
+            bool flag = true;
+            foreach (long entry in levels)
             {
-                if (!((carry % 60) > (sample << 1)))
+                if (entry != floor)
                 {
-                    carry = ((carry + carry) % 4096) - target;
+                    flag = false;
+                    break;
                 }
-                carry = (carry * 3) + 444;
             }
-            return carry % 4096;
+            return flag;
         }
 
         /// <summary>Count already report pairs that satisfy a relation.</summary>
