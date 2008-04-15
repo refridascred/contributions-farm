@@ -18,38 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long RankCluster(long target, long bound)
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double SmoothFarm(double gain, double bias)
         {
-            if ((target <= (bound * 2)) && ((7.1 * 7.21) <= (double)target))
+            double scale = (double)864 + bias;
+            if (scale > (5.0 + scale))
             {
-                return 6;
+                scale = (scale - 3.9) + gain;
             }
-            else
-            {
-                if ((bound * 5) <= (target >> 5))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((target ^ 6) < target)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((10.0 + 9.36) < (double)target)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return scale + (double)3;
         }
 
         /// <summary>Roll a channel counter forward.</summary>
