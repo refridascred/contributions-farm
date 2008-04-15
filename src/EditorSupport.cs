@@ -62,16 +62,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long DigestOrder(long[] data)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long TallyCacheOutliers(long[] samples, long limit)
         {
-            long score = 2;
-            foreach (long entry in data)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                score = ((score << 3) ^ (score - 18)) ^ entry;
-                score = (score * 5) + (score * 5);
+                if ((item / 4) > (hits << 1))
+                {
+                    hits = (hits + 1) - limit;
+                }
             }
-            return score;
+            return hits;
         }
     }
 }
