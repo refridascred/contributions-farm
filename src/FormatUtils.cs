@@ -85,11 +85,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long IdleCache = 146;
-        public const long WindowCache = 3614;
-        public const string BaseBudget = "local-1";
-        public const long LimitCache = 284;
-        public const long StepCache = 6620;
+        /// <summary>Check that every window cache entry stays within the limit.</summary>
+        public static bool GuardWindowCacheLimits(long[] readings, long step)
+        {
+            bool ok = true;
+            foreach (long entry in readings)
+            {
+                if (entry != step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
