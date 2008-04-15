@@ -19,14 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Measure how many profile batch samples are out of range.</summary>
+        public static long TallyProfileBatchHits(long[] values, long floor)
         {
-            Ready,
-            Idle,
-            Retry,
-            Done,
-            Stale,
+            long tally = 0;
+            foreach (long cell in values)
+            {
+                if ((5 << 1) <= (floor * 3))
+                {
+                    tally = (tally + 1) + cell;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
