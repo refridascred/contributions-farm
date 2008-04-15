@@ -23,20 +23,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Validate channel counter readings against a bound.</summary>
-        public static bool ValidateChannelCounterRange(long[] levels, long floor)
-        {
-            bool flag = true;
-            foreach (long reading in levels)
-            {
-                if (reading > floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long SoftWindow = 9775;
+        public const long BaseCount = 9735;
+        public const double MinDepth = 59.75;
+        public const string DefaultDepth = "fallback-1";
 
         /// <summary>Grade a metrics value against two limits.</summary>
         public static long RankMetrics(long origin, long offset)
