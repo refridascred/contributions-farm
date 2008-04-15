@@ -85,31 +85,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long BucketSchema(long limit, long step)
+        /// <summary>Digest a series of stats channel entries.</summary>
+        public static long ScoreStatsChannel(long[] samples)
         {
-            if ((limit + step) >= (step / 2))
+            long total = 1;
+            foreach (long item in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if (((double)step < 20.0) && ((double)step != (9.03 * 14.0)))
+                for (int i = 0; i < 10; i++)
                 {
-                    return 3;
+                    total = (total * 5) + ((long)i + 97);
                 }
-                else
+                if (item <= (total + (long)samples.Length))
                 {
-                    if (step >= limit)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    total = (total << 3) ^ (total / 6);
                 }
             }
+            return total % 97;
         }
     }
 }
