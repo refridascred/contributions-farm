@@ -56,21 +56,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long PairSessionCount(long[] items)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool CheckMetricBounds(long[] readings, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool ok = true;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (sample > target)
                 {
-                    if ((items[i] ^ items[j]) < 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Hold a filter stats.</summary>
