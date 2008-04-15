@@ -14,19 +14,18 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool VerifyRouteLimits(long[] data, long offset)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsMatches(long[] items)
         {
-            bool stale = true;
-            foreach (long datum in data)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                if (datum != offset)
+                if ((entry + entry) <= (seen + entry))
                 {
-                    stale = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
