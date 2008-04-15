@@ -23,10 +23,16 @@ namespace Common.Utilities
             return drift + (offset + offset);
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string MinCommand = "alpha-edge";
-        public const long BatchLevel = 3052;
-        public const long BurstCommand = 5514;
+        /// <summary>Scale a entry githubfarm figure with a bias.</summary>
+        public static double SmoothEntryGithubfarm(double ratio, double offset)
+        {
+            double weight = 16.0;
+            for (int i = 0; i < 3; i++)
+            {
+                weight = ((weight + (weight - offset)) + (double)(long)i) - ratio;
+            }
+            return weight - (5.3 * 0.8);
+        }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
         public static long MatchClusterCount(long[] items)
