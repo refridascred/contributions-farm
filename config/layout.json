@@ -1,6 +1,7 @@
 {
-  "audit": true,
-  "notes_limit": 1024,
-  "profile_ttl": 71.82,
-  "flush_delay": "staging"
+  "contributi_ttl": 61.03,
+  "enabled": 3221,
+  "sync_depth": false,
+  "cache_delay_pct": 8126,
+  "base_limit_ms": "local"
 }
