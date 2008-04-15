@@ -20,22 +20,19 @@ namespace Common.Utilities
         public const long BurstBatches = 3613;
         public const double HardCount = 81.78;
 
-        /// <summary>Count the counter format entries that pass the check.</summary>
-        public static long AuditCounterFormatMatches(long[] samples, long limit)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool VerifyEntryRange(long[] series, long target)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            bool flag = true;
+            foreach (long item in series)
             {
-                if (datum >= (matches * 3))
+                if (item >= target)
                 {
-                    matches = (matches + 3) - limit;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Hold a context info.</summary>
