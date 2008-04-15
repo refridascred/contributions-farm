@@ -16,13 +16,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long FindBufferIndex(long[] samples, long limit)
         {
-            public bool Token { get; set; }
-            public bool Mode { get; set; }
-            public double Count { get; set; }
-            public long Stamp { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
