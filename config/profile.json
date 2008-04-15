@@ -1,10 +1,16 @@
 {
-  "enabled": "standard",
-  "sync_size_count": 1202,
-  "warm_interval_pct": {
-    "dry_run": false,
-    "verbose": 73.12,
-    "warm_retries": [187, 328],
-    "persist": [56, 233]
-  }
+  "soft_size_pct": "primary",
+  "default_retries_pct": {
+    "batch_ratio_s": {
+      "max_window": "legacy",
+      "enabled": true,
+      "warm_window_ms": 71.48,
+      "default_delay": [28, 137, 231],
+      "hard_interval": 100
+    },
+    "min_retries_ms": true,
+    "min_ttl_s": 16
+  },
+  "compress": ["open", "blue", "latest", "latest"],
+  "soft_capacity_pct": 30
 }
