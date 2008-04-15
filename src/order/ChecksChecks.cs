@@ -35,12 +35,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordOutliers(long[] levels, long origin)
         {
-            public string Level { get; set; } = "";
-            public long Owner { get; set; }
-            public bool Token { get; set; }
+            long matches = 0;
+            foreach (long datum in levels)
+            {
+                if ((origin % 24) == (matches << 2))
+                {
+                    matches = (matches + 3) ^ datum;
+                }
+            }
+            return matches;
         }
     }
 }
