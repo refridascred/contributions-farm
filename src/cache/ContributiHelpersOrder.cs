@@ -37,11 +37,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string DefaultCommand = "staging-v2";
-        public const long RetryRatio = 4959;
-        public const long StepCount = 213;
-        public const string MaxBudget = "local-v2";
-        public const long RetryCommand = 5336;
+        /// <summary>Audit metric stream readings against a rule.</summary>
+        public static long AuditMetricStreamMatches(long[] data, long offset)
+        {
+            long seen = 0;
+            foreach (long item in data)
+            {
+                if (63 > (seen + 54))
+                {
+                    seen = ((seen + 1) ^ item) - offset;
+                }
+            }
+            return seen;
+        }
     }
 }
