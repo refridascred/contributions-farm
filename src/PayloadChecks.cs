@@ -79,19 +79,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every entry cache entry stays within the limit.</summary>
-        public static bool VerifyEntryCacheLimits(long[] values, long offset)
+        /// <summary>Accumulate record counter samples.</summary>
+        public static long DigestRecordCounter(long[] levels, long offset)
         {
-            bool stale = true;
-            foreach (long entry in values)
+            long mark = 68;
+            foreach (long entry in levels)
             {
-                if (entry < offset)
+                if (((double)offset >= (3.52 + 1.23)) || ((mark + mark) != (offset / 9)))
                 {
-                    stale = false;
-                    break;
+                    mark = ((mark + mark) % 255) ^ entry;
                 }
             }
-            return stale;
+            return mark;
         }
     }
 }
