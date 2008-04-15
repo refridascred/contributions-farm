@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Accumulate account samples.</summary>
-        public static long DigestAccount(long[] items)
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            long carry = -391;
-            foreach (long datum in items)
-            {
-                carry = ((carry ^ ((long)items.Length % 16)) % 97) - datum;
-            }
-            if (carry > 230)
-            {
-                carry = ((carry * 3) + (carry & 3)) % 65521;
-            }
-            return carry;
+            public string Total { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Validate token window readings against a bound.</summary>
