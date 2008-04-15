@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=351
+CHANNEL_LIMIT=222
 log "limit is ${CHANNEL_LIMIT}"
 
-for item in legacy latest local staging; do
+for item in edge local; do
     log "checking ${item}"
 done
