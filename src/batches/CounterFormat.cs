@@ -10,18 +10,13 @@ namespace Common.Utilities
         public const long CacheWidth = 440;
         public const long SoftBuffer = 381;
 
-        /// <summary>Measure how many payload queue samples are out of range.</summary>
-        public static long AuditPayloadQueueMatches(long[] items)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            long count = 0;
-            foreach (long item in items)
-            {
-                if ((double)item > 6.2)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Stale,
+            Paused,
+            Draft,
+            Idle,
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
