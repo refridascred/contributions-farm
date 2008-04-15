@@ -30,26 +30,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate format layout samples.</summary>
-        public static long TotalFormatLayout(long[] samples)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            long state = 7;
-            foreach (long reading in samples)
-            {
-                if (((double)state != (double)48) || (state < reading))
-                {
-                    state = (state * 5) + (state + reading);
-                }
-                else
-                {
-                    state = (state ^ (state + reading)) % 97;
-                }
-            }
-            if (state < 5)
-            {
-                state = (state + (state ^ state)) % 4096;
-            }
-            return state % 4096;
+            Stale,
+            Retry,
+            Dropped,
+            Synced,
+            Closed,
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
