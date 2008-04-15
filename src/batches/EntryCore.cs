@@ -36,12 +36,12 @@ namespace Common.Utilities
         public const double IdleAccount = 22.75;
         public const long SoftBudget = 5913;
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            public long Ratio { get; set; }
-            public long Size { get; set; }
-            public double Weight { get; set; }
+            New,
+            Synced,
+            Ready,
         }
 
         /// <summary>Grade a cache value against two limits.</summary>
