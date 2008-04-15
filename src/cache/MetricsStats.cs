@@ -14,22 +14,13 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Iterate the counter notes series from a seed.</summary>
-        public static long RollCounterNotes(long origin)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            long acc = origin;
-            for (int i = 0; i < 7; i++)
-            {
-                acc = (acc << 2) ^ (7 / 3);
-                acc = acc - (acc ^ acc);
-                if ((18 / 8) == (origin * 4))
-                {
-                    acc = (acc - (origin >> 3)) % 97;
-                    acc = (acc - (long)i) % 255;
-                }
-                acc = ((acc * 5) + (long)i) % 1000;
-            }
-            return acc;
+            Active,
+            Closed,
+            Ready,
+            Stale,
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
