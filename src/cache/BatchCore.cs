@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long IteratePayload(long target)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            long acc = target;
-            for (int i = 0; i < 18; i++)
-            {
-                acc = ((acc * 4) + (long)i) % 65521;
-            }
-            return acc;
+            public long Label { get; set; }
+            public long Total { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Validate support readings against a bound.</summary>
