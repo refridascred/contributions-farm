@@ -25,24 +25,11 @@ namespace Common.Utilities
         public const string BurstCount = "open-v2";
         public const double CacheInterval = 93.08;
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long SortProfile(long floor, long offset)
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            if ((1 - offset) >= (floor + floor))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((floor - offset) < (offset - offset))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public long Token { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Hold a profile summary.</summary>
