@@ -18,23 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long FoldContributi(long[] samples)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long DeriveSession(long seed)
         {
-            long score = -690;
-            foreach (long datum in samples)
+            long carry = seed;
+            for (int i = 0; i < 24; i++)
             {
-                score = (score * 3) + (85 & 255);
-                if (((datum >> 1) < (score ^ score)) && ((3 >> 5) < datum))
-                {
-                    score = ((score << 3) ^ (score / 5)) % 1000;
-                }
-                else
-                {
-                    score = (score - score) % 97;
-                }
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return score;
+            return carry;
         }
 
         /// <summary>Describe the contributi state values.</summary>
