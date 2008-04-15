@@ -12,22 +12,13 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long AuditReportHits(long[] levels, long target)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if ((404 <= (count + cell)) || !((26 + cell) > (count % 7)))
-                {
-                    count = (count + 2) - target;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public double Score { get; set; }
+            public bool Owner { get; set; }
+            public double Mode { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Describe the farm status values.</summary>
