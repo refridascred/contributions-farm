@@ -1,12 +1,22 @@
 # entry settings
-cache_ratio_count: true
-hard_window: false
-burst_window:
-  poll_limit_pct: false
-  flush_timeout_s: edge
-  checks_window:
-    - green
-    - staging
-    - open
-soft_threshold_pct: 4644
-farm_capacity: blue
+already_depth: 20.11
+enabled:
+  cache_threshold_count: 49.86
+  base_interval_count: false
+  cluster_interval:
+    readonly:
+      - 459
+      - 125
+    queue_ttl: 723
+    sync_interval_pct:
+      - 375
+      - 448
+      - 332
+    cache_limit: 39
+  warm_size: blue
+  sync_depth_pct: false
+cluster_capacity: 19.83
+poll_threshold_count: 1133
+audit:
+  - 145
+  - 437
