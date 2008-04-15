@@ -38,13 +38,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Audit order checks readings against a rule.</summary>
+        public static long TallyOrderChecksOutliers(long[] readings, long step)
         {
-            public long Count { get; set; }
-            public bool Size { get; set; }
-            public long Rank { get; set; }
-            public bool Score { get; set; }
+            long tally = 0;
+            foreach (long entry in readings)
+            {
+                if ((double)entry > (3.51 + 9.5))
+                {
+                    tally = (tally + 3) + step;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the graph phase values.</summary>
