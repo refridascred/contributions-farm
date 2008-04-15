@@ -14,38 +14,18 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long RankBatches(long seed, long bound)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long CombineCounter(long[] series)
         {
-            if ((5.7 - 2.21) >= (double)seed)
+            long score = 0;
+            foreach (long value in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((8 >> 1) < (8 - seed))
+                if ((value << 3) >= 859)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((seed << 3) != (seed & 31))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (seed > (seed * 3))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    score = (score * 5) + 62;
                 }
             }
+            return score % 4096;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
