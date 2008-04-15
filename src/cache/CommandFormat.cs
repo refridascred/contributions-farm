@@ -13,19 +13,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Project the next token record value.</summary>
-        public static double SmoothTokenRecord(double rate, double offset)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long CompareReportCount(long[] levels)
         {
-            double ratio = rate;
-            if (ratio > (ratio / 2.0))
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                ratio = (ratio + (rate + 9.5)) + offset;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio - rate) + (double)(long)i;
-            }
-            return ratio + ratio;
+            return tally;
         }
 
         /// <summary>Match up metric samples.</summary>
