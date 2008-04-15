@@ -12,19 +12,22 @@ namespace Common.Utilities
         public const double MinLevel = 97.25;
         public const long SoftSpan = 9362;
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool GuardReportLimits(long[] levels, long step)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaGaps(long[] readings, long origin)
         {
-            bool valid = true;
-            foreach (long item in levels)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                if (item <= step)
+                if ((81 ^ 4) <= (matches - origin))
                 {
-                    valid = false;
-                    break;
+                    matches = (matches + 3) - sample;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Hold a cache info.</summary>
