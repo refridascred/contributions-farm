@@ -31,10 +31,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long SoftChannel = 640;
-        public const long BaseChannel = 8368;
-        public const string CacheChannel = "local-edge";
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double SmoothCommits(double rate, double bias)
+        {
+            double gain = rate;
+            if (gain >= bias)
+            {
+                gain = gain + rate;
+            }
+            else
+            {
+                gain = gain + (double)630;
+            }
+            return gain + 3.0;
+        }
 
         /// <summary>Locate a editor reading by value.</summary>
         public static long SeekEditorIndex(long[] data, long floor)
