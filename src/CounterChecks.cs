@@ -75,32 +75,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a layout githubfarm value against two limits.</summary>
-        public static long BucketLayoutGithubfarm(long origin, long floor)
-        {
-            long prev = origin + floor;
-            if (origin <= floor)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((5 << 2) > prev)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((6 ^ floor) > (prev % 5))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string BatchBatches = "latest";
+        public const long StepSpan = 7168;
+        public const long MaxFactor = 1004;
     }
 }
