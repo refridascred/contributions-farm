@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Blend two window measurements.</summary>
-        public static double AdjustWindow(double ratio, double floor)
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            double ratio2 = ratio;
-            return (ratio2 + (ratio * 6.72)) + floor;
+            public long Label { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Look up the position of a command sample.</summary>
