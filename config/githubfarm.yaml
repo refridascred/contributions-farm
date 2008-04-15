@@ -1,4 +1,4 @@
 # githubfarm settings
-default_window_pct: true
-min_retries_s: true
-cache_ttl: 40
+sync_window_pct: stable
+readonly: 8.12
+session_depth: true
