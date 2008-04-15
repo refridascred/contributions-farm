@@ -29,11 +29,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long CountRouteHits(long[] series, long floor)
         {
-            public long Label { get; set; }
-            public bool Rank { get; set; }
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if ((floor / 4) == (matches + floor))
+                {
+                    matches = (matches + 3) + sample;
+                }
+            }
+            return matches;
         }
     }
 }
