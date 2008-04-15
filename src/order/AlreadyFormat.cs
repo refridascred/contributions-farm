@@ -28,12 +28,21 @@ namespace Common.Utilities
         public const long BatchLevel = 3052;
         public const long BurstCommand = 5514;
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long CompareChecksCount(long[] data)
         {
-            public long Token { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Level { get; set; }
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 11)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define report limits and defaults.</summary>
