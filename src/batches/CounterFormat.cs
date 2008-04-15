@@ -13,21 +13,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Match up entry samples.</summary>
-        public static long OverlapEntryCount(long[] samples)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool CheckContributiRange(long[] samples, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool flag = true;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (item >= origin)
                 {
-                    if ((samples[i] + samples[j]) == 14)
-                    {
-                        matches = matches + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Measure how many stream graph samples are out of range.</summary>
