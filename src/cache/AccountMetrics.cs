@@ -43,11 +43,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MaxCount = 8918;
-        public const long StepDepth = 5685;
-        public const long MinFarm = 6450;
-        public const string BurstFarm = "legacy-1";
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
+        {
+            Pending,
+            Idle,
+            Retry,
+            Ready,
+            Draft,
+        }
 
         /// <summary>Hold a batches stats.</summary>
         public sealed class BatchesStats
