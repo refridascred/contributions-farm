@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Accumulate layout samples.</summary>
-        public static long ScoreLayout(long[] samples)
+        /// <summary>Adjust a report reading.</summary>
+        public static double BlendReport(double rate, double offset)
         {
-            long anchor = 81;
-            foreach (long reading in samples)
+            double scale = rate;
+            for (int i = 0; i < 7; i++)
             {
-                if ((double)anchor >= (double)reading)
-                {
-                    anchor = ((anchor << 2) ^ (218 & 1)) % 1000;
-                }
+                scale = ((scale - rate) + (double)(long)i) - offset;
             }
-            if (anchor < 25)
-            {
-                anchor = ((anchor * 5) + (anchor ^ anchor)) % 1000;
-            }
-            return anchor;
+            return scale - (double)41;
         }
 
         /// <summary>Look up the position of a order sample.</summary>
