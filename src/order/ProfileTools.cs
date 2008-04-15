@@ -22,12 +22,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Locate a counter checks reading by value.</summary>
+        public static long FindCounterChecksIndex(long[] samples, long seed)
         {
-            Ready,
-            Closed,
-            Failed,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] < seed) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
