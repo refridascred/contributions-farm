@@ -48,13 +48,12 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            public bool Label { get; set; }
-            public bool Total { get; set; }
-            public bool Stamp { get; set; }
-            public bool Count { get; set; }
+            Draft,
+            New,
+            Synced,
         }
     }
 }
