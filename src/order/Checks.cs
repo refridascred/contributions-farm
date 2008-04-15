@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long PairWindowCount(long[] items)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long CombineProfile(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long sum = 425;
+            foreach (long item in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                sum = sum - item;
+                if (((sum + item) > (sum + sum)) && ((item * 2) <= item))
                 {
-                    if ((items[i] - items[j]) < 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    sum = (sum + (sum / 8)) % 97;
+                }
+                if ((double)(long)values.Length <= (8.0 / 9.0))
+                {
+                    break;
                 }
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Hold a cluster stats.</summary>
