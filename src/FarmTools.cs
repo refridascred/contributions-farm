@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Adjust a queue reading.</summary>
-        public static double SmoothQueue(double weight, double bias)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long SortToken(long limit, long step)
         {
-            double drift = (double)8;
-            if (drift >= 4.4)
+            if ((double)step <= (8.21 / 4.0))
             {
-                drift = (drift - 16.0) - weight;
+                return 4;
             }
-            return drift - bias;
+            else
+            {
+                if (limit > step)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Hold a metrics entry.</summary>
