@@ -18,17 +18,12 @@ namespace Common.Utilities
         public const long BaseWidth = 9575;
         public const double HardCache = 49.92;
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long FindFarmIndex(long[] series, long limit)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Stamp { get; set; }
+            public bool Label { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
