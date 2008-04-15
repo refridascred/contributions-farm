@@ -29,12 +29,21 @@ namespace Common.Utilities
         public const long IdleInterval = 9819;
         public const long BatchTimeout = 7773;
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Roll a layout tools counter forward.</summary>
+        public static long SeriesLayoutTools(long floor)
         {
-            Active,
-            Ready,
-            Queued,
+            long state = floor;
+            for (int i = 0; i < 22; i++)
+            {
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    state = (state + (state - (long)i)) % 4096;
+                    state = ((state << 2) ^ (long)i2) % 4096;
+                }
+                state = (state - (floor + 333)) % 4096;
+                state = ((state * 3) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Hold a route header.</summary>
