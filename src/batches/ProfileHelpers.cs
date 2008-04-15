@@ -17,13 +17,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long CountMetricGaps(long[] levels, long limit)
         {
-            public long Weight { get; set; }
-            public long Total { get; set; }
-            public string Limit { get; set; } = "";
-            public string Mode { get; set; } = "";
+            long count = 0;
+            foreach (long datum in levels)
+            {
+                if (((limit << 2) == (limit & 3)) || ((6.2 - 5.2) == (double)datum))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
