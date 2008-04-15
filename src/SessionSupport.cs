@@ -23,19 +23,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool CheckContextBounds(long[] data, long floor)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamGaps(long[] levels, long origin)
         {
-            bool ok = true;
-            foreach (long cell in data)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                if (cell != floor)
+                if ((((207 & 7) > tally) || ((double)sample != (15.0 - 2.0))) || ((double)tally != (6.9 - 16.0)))
                 {
-                    ok = false;
-                    break;
+                    tally = (tally + 3) - origin;
                 }
             }
-            return ok;
+            return tally;
         }
     }
 }
