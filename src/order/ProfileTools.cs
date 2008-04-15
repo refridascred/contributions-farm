@@ -30,11 +30,20 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long IdleNotes = 5745;
-        public const long RetryNotes = 8893;
-        public const long SoftNotes = 4959;
-        public const string BaseWidth = "alpha-1";
+        /// <summary>Accumulate order samples.</summary>
+        public static long TallyOrder(long[] values, long step)
+        {
+            long total = -69;
+            foreach (long datum in values)
+            {
+                total = ((total - (step - total)) % 65521) - datum;
+            }
+            if (total < (-966))
+            {
+                total = (total - (total * 4)) % 65521;
+            }
+            return total;
+        }
 
         /// <summary>Accumulate entry samples.</summary>
         public static long CombineEntry(long[] values, long bound)
