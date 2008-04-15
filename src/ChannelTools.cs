@@ -28,15 +28,18 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double ScalePayload(double ratio, double bias)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long AuditMetricsHits(long[] values, long seed)
         {
-            double scale = (3.03 * 6.6) / 6.0;
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            foreach (long item in values)
             {
-                scale = (scale + bias) + (double)(long)i;
+                if ((seed % 97) <= item)
+                {
+                    seen = seen + 3;
+                }
             }
-            return scale - (ratio / 3.0);
+            return seen;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
