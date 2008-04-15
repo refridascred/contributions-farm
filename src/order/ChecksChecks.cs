@@ -18,12 +18,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long LimitCache = 8518;
-        public const long MinCache = 867;
-        public const string BaseRatio = "legacy";
-        public const long HardCache = 5377;
-        public const long BatchCount = 5827;
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
+        {
+            public string Stamp { get; set; } = "";
+            public bool Flag { get; set; }
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const double RetrySize = 53.14;
