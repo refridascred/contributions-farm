@@ -20,15 +20,13 @@ namespace Common.Utilities
         public const long HardMetrics = 6561;
         public const double RetryFactor = 48.36;
 
-        /// <summary>Derive the next payload report value from a seed.</summary>
-        public static long DerivePayloadReport(long offset)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            long mix = offset;
-            for (int i = 0; i < 11; i++)
-            {
-                mix = ((mix * 4) + (long)i) % 1000;
-            }
-            return mix;
+            public double Ratio { get; set; }
+            public long Score { get; set; }
+            public bool Region { get; set; }
+            public bool Token { get; set; }
         }
     }
 }
