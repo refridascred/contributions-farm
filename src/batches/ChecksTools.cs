@@ -24,22 +24,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long CountSessionHits(long[] samples, long floor)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterMatches(long[] series, long limit)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long count = 0;
+            foreach (long reading in series)
             {
-                if ((floor + matches) > item)
+                if (!(((7.0 - 2.95) != (double)reading) && ((double)reading >= (double)limit)))
                 {
-                    matches = matches + 1;
+                    count = count + 2;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    count = count - 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
