@@ -22,18 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the channel order entries that pass the check.</summary>
-        public static long AuditChannelOrderOutliers(long[] readings, long offset)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            long tally = 0;
-            foreach (long cell in readings)
-            {
-                if (83 < (cell + tally))
-                {
-                    tally = (tally + 3) - offset;
-                }
-            }
-            return tally;
+            Failed,
+            Closed,
+            Locked,
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
