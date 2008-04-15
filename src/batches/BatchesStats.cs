@@ -38,14 +38,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
-        {
-            Paused,
-            Pending,
-            Queued,
-            Synced,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BaseCluster = 5719;
+        public const double MaxScore = 16.18;
+        public const long BatchCluster = 4638;
+        public const long IdleLevel = 655;
+        public const long IdleScore = 1410;
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long BaseGithubfarm = 3343;
