@@ -23,13 +23,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long AuditSupportOutliers(long[] items, long origin)
         {
-            public string Flag { get; set; } = "";
-            public string Total { get; set; } = "";
-            public long Rank { get; set; }
-            public long Level { get; set; }
+            long hits = 0;
+            foreach (long item in items)
+            {
+                if ((2 + origin) < hits)
+                {
+                    hits = (hits + 2) + item;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the buffer status values.</summary>
