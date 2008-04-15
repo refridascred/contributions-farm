@@ -1,12 +1,8 @@
 # entry settings
-sync_capacity_count: 46.21
-default_size_ms:
-  - 449
-  - 115
-  - 171
-  - 477
-compress:
-  - strict
-  - blue
-  - primary
-  - fallback
+flush_timeout_s: fallback
+idle_ratio_ms:
+  - 278
+  - 312
+  - 113
+  - 298
+retry_timeout_pct: false
