@@ -26,12 +26,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long RollEntry(long limit)
         {
-            public bool Ratio { get; set; }
-            public bool Total { get; set; }
-            public long Rank { get; set; }
+            long mark = limit;
+            for (int i = 0; i < 4; i++)
+            {
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    mark = (((mark << 3) ^ (limit * 2)) % 65521) ^ (long)i2;
+                }
+                mark = ((mark * 3) + (long)i) % 4093;
+            }
+            return mark;
         }
     }
 }
