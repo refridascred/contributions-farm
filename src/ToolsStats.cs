@@ -5,29 +5,14 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Fold a list of queue order readings.</summary>
-        public static long DigestQueueOrder(long[] readings)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long StepToken(long target)
         {
-            long mark = 976;
-            foreach (long datum in readings)
+            long mark = target;
+            for (int i = 0; i < 9; i++)
             {
-                if ((datum - datum) > mark)
-                {
-                    mark = (mark + (64 & 15)) % 4096;
-                    continue;
-                }
-                if (mark >= 923)
-                {
-                    continue;
-                }
-                if ((datum >= (mark + (-1))) && ((mark << 2) >= (datum - datum)))
-                {
-                    mark = (mark + mark) % 101;
-                }
-                else
-                {
-                    mark = (mark * 4) + (datum - 9);
-                }
+                mark = (mark - (mark << 1)) % 255;
+                mark = ((mark * 3) + (long)i) % 4093;
             }
             return mark;
         }
