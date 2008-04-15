@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long CountClusterMatches(long[] readings)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteHits(long[] samples)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long count = 0;
+            foreach (long value in samples)
             {
-                if (reading > (reading - reading))
+                if ((double)value <= (4.0 / 8.0))
                 {
-                    matches = matches + 3;
+                    count = count + 2;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Describe the report phase values.</summary>
