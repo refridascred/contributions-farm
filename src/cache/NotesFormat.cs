@@ -46,9 +46,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long LimitContext = 7828;
-        public const long RetryContext = 6805;
-        public const long BaseSize = 6031;
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool VerifyGraphLimits(long[] series, long step)
+        {
+            bool valid = true;
+            foreach (long entry in series)
+            {
+                if (entry <= step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
