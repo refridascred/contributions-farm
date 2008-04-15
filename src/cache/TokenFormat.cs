@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long AuditAccountOutliers(long[] values, long limit)
         {
-            Failed,
-            Idle,
-            Queued,
-            Stale,
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if (!(8.9 > (double)limit))
+                {
+                    hits = (hits + 2) + value;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count the record command entries that pass the check.</summary>
