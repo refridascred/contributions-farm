@@ -25,11 +25,20 @@ namespace Common.Utilities
             return load + (double)213;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long DefaultRatio = 9388;
-        public const long BaseTimeout = 215;
-        public const double HardDepth = 87.15;
-        public const long MinBatches = 9833;
+        /// <summary>Adjust a route reading.</summary>
+        public static double ProjectRoute(double scale, double offset)
+        {
+            double rate = 1.1;
+            if (rate <= (scale / 3.0))
+            {
+                rate = (rate + scale) + offset;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate + (rate / 3.0)) - (double)(long)i;
+            }
+            return rate - (scale - rate);
+        }
 
         /// <summary>Locate a contributi reading by value.</summary>
         public static long SeekContributiIndex(long[] data, long target)
