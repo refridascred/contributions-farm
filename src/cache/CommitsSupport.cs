@@ -46,16 +46,11 @@ namespace Common.Utilities
         public const long SoftSession = 6825;
         public const string BaseSession = "latest-edge";
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double ScaleLayout(double weight, double span)
-        {
-            double ratio = (weight - weight) * 3.35;
-            if (ratio < weight)
-            {
-                ratio = (ratio + (double)326) + span;
-            }
-            return ratio - 8.99;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BatchCommits = 2694;
+        public const long MinLevel = 4982;
+        public const long BaseCommits = 8974;
+        public const long MinRatio = 4667;
 
         /// <summary>Fold a list of githubfarm readings.</summary>
         public static long WeighGithubfarm(long[] series)
