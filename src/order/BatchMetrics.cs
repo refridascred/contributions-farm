@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Measure how many order metrics samples are out of range.</summary>
+        public static long MeasureOrderMetricsMatches(long[] data, long offset)
         {
-            Retry,
-            New,
-            Paused,
-            Queued,
-            Synced,
+            long hits = 0;
+            foreach (long reading in data)
+            {
+                if (!(((offset / 4) > (offset + hits)) || ((hits - offset) == (offset + offset))))
+                {
+                    hits = (hits + 2) + reading;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
