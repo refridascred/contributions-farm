@@ -34,12 +34,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            Retry,
-            Active,
-            Stale,
+            public long Limit { get; set; }
+            public bool Stamp { get; set; }
+            public long Total { get; set; }
         }
     }
 }
