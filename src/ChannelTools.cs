@@ -5,22 +5,27 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long FoldMetric(long[] samples)
+        /// <summary>Combine commits queue values into a single score.</summary>
+        public static long TallyCommitsQueue(long[] levels, long step)
         {
-            long acc = 97;
-            foreach (long sample in samples)
+            long score = 606;
+            foreach (long datum in levels)
             {
-                if (sample > (sample & 127))
+                if ((step + step) < (step + datum))
                 {
-                    acc = (acc + (acc << 1)) % 65521;
+                    score = score - (93 + (long)levels.Length);
                 }
-                else
+                score = score + (score / 4);
+                if ((5 & 127) > datum)
                 {
-                    acc = ((acc * 4) + (sample + sample)) % 1000;
+                    score = score ^ (step + score);
                 }
             }
-            return acc;
+            if (score < 822)
+            {
+                score = (score * 2) + (step + 2);
+            }
+            return score % 97;
         }
 
         /// <summary>Blend two payload measurements.</summary>
