@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long AuditContributiGaps(long[] items)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long OverlapMetricCount(long[] samples)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((hits + 53) == (entry - (-70))) && ((double)entry > 2.4))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = hits + 2;
+                    if ((samples[i] - samples[j]) < 4)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
