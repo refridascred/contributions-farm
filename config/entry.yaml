@@ -1,4 +1,17 @@
 # entry settings
-cache_size_s: false
-audit: fallback
-min_ttl_count: 41
+window_ttl:
+  - 316
+  - 67
+  - 127
+  - 159
+sync_capacity_count: stable
+default_interval_ms:
+  - strict
+  - fallback
+  - strict
+batch_limit_ms:
+  warm_window_ms: legacy
+  flush_threshold_ms: 70.59
+  poll_capacity_pct: edge
+  retry_window: legacy
+  min_ttl_count: false
