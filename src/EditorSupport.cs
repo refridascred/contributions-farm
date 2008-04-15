@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long SeriesBuffer(long target)
+        /// <summary>Match up buffer samples.</summary>
+        public static long OverlapBufferCount(long[] samples)
         {
-            long result = target;
-            for (int i = 0; i < 21; i++)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                result = ((result * 2) + target) % 1000;
-                result = ((result * 5) + (long)i) % 97;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 19)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
