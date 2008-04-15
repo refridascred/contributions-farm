@@ -36,16 +36,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long StepEditor(long target)
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            long anchor = target;
-            for (int i = 0; i < 5; i++)
-            {
-                anchor = anchor - (anchor % 60);
-                anchor = ((anchor * 5) + (long)i) % 101;
-            }
-            return anchor;
+            New,
+            Idle,
+            Queued,
         }
     }
 }
