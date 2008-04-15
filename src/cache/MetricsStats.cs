@@ -19,22 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long DigestStream(long[] items, long limit)
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            long state = 5;
-            foreach (long entry in items)
-            {
-                if ((((long)items.Length >> 1) > entry) || ((double)entry < (6.32 / 3.0)))
-                {
-                    state = state - (limit ^ 20);
-                }
-            }
-            if (state < 16)
-            {
-                state = (state + (limit - state)) % 1000;
-            }
-            return state % 97;
+            Paused,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
