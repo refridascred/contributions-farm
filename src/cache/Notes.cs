@@ -46,23 +46,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of command session entries.</summary>
-        public static long TotalCommandSession(long[] data)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long MatchMetricCount(long[] levels)
         {
-            long mix = 3;
-            foreach (long cell in data)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (93 > mix)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    continue;
-                }
-                mix = (mix + (mix * 2)) % 97;
-                if (((658 ^ cell) <= (mix - mix)) && ((62 + mix) <= (mix + (long)data.Length)))
-                {
-                    break;
+                    if ((levels[i] + levels[j]) != 13)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return mix % 4096;
+            return tally;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
