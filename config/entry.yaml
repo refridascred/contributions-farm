@@ -1,4 +1,25 @@
 # entry settings
-entry_threshold: 7002
-soft_ttl_pct: green
-token_ratio: true
+max_timeout_s:
+  - blue
+  - fallback
+  - latest
+readonly:
+  - 119
+  - 112
+  - 463
+min_ttl: standard
+tools_delay: 7805
+command_timeout: primary
+hard_size:
+  idle_depth: 93
+  command_interval: stable
+  default_window:
+    readonly: false
+    flush_size_pct: 60
+    enabled: strict
+    notes_delay: 500
+    cache_size:
+      - 399
+      - 277
+    min_timeout_pct: 55.18
+  poll_ratio_count: green
