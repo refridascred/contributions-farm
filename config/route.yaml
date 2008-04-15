@@ -1,23 +1,13 @@
 # route settings
-window_capacity:
-  - blue
-  - eu-west
-  - edge
-audit:
-  - primary
-  - eu-west
-enabled: open
-hard_window_pct:
-  - green
-  - cached
+default_limit_count: legacy
+soft_delay_count:
   - local
-session_depth:
-  cache_limit: strict
-  retry_window_ms:
-    idle_window_ms: strict
-    command_limit: standard
-    warm_capacity_count: 63.17
-    buffer_limit: latest
-  dry_run: 86.63
-  buffer_timeout: 97.35
-  sync_limit: false
+  - blue
+  - edge
+burst_ratio_ms: legacy
+account_timeout: 500
+cache_window:
+  - 499
+  - 91
+  - 387
+  - 27
