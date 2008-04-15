@@ -1,6 +1,10 @@
-id,label,ratio
-1,legacy,78.75
-2,412,fallback
-3,latest,39.45
-4,800,70.89
-5,46.46,82.38
+id,level,weight
+1,76.36,169
+2,edge,79.55
+3,standard,green
+4,49.32,67.36
+5,252,49
+6,584,162
+7,latest,strict
+8,73.58,48.83
+9,751,11.4
