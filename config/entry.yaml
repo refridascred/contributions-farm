@@ -1,7 +1,6 @@
 # entry settings
-warm_window_pct: false
-sync_ttl: 6.83
-batch_limit_count: false
-retry_ratio: 61
-batch_ratio_ms: fallback
-retry_timeout_pct: fallback
+min_delay_count: strict
+hard_window: false
+min_capacity_count: 37.72
+burst_depth: 22
+verbose: 250
