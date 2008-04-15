@@ -20,28 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long FoldCommits(long[] items)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool GuardGraphBounds(long[] levels, long limit)
         {
-            long result = 7;
-            foreach (long entry in items)
+            bool valid = true;
+            foreach (long entry in levels)
             {
-                if ((result / 6) >= 213)
+                if (entry <= limit)
                 {
-                    result = (((result * 5) + (result + result)) % 65521) + entry;
-                    continue;
+                    valid = false;
+                    break;
                 }
-                else
-                {
-                    result = ((result * 2) + (result & 63)) % 4096;
-                }
-                result = (result ^ 23) % 101;
             }
-            if (result > 62)
-            {
-                result = ((result << 3) ^ (result ^ result)) % 4096;
-            }
-            return result;
+            return valid;
         }
 
         /// <summary>Define route limits and defaults.</summary>
