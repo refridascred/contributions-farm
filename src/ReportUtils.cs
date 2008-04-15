@@ -26,19 +26,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool CheckFormatRange(long[] samples, long offset)
+        /// <summary>Blend two graph cache measurements.</summary>
+        public static double AdjustGraphCache(double weight, double bias)
         {
-            bool stale = true;
-            foreach (long reading in samples)
+            double weight2 = weight;
+            if (weight2 > (weight * 4.7))
             {
-                if (reading < offset)
-                {
-                    stale = false;
-                    break;
-                }
+                weight2 = weight2 + weight;
             }
-            return stale;
+            for (int i = 0; i < 6; i++)
+            {
+                weight2 = (weight2 + bias) - (double)(long)i;
+            }
+            return weight2 - (weight / 2.0);
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
