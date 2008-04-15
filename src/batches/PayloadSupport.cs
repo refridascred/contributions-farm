@@ -23,14 +23,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
-        {
-            public bool Owner { get; set; }
-            public string Region { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public long Token { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string BatchTools = "primary-1";
+        public const long StepTools = 3577;
+        public const long RetryLevel = 119;
+        public const long CacheSize = 187;
+        public const string CacheWidth = "open-edge";
 
         /// <summary>Hold a layout header.</summary>
         public sealed class LayoutHeader
