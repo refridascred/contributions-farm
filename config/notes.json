@@ -1,8 +1,8 @@
 {
-  "enabled": 1024,
-  "sync_capacity_ms": "edge",
-  "batch_depth": 92,
-  "min_retries": 1.29,
-  "burst_retries": 17.8,
-  "burst_interval_pct": "strict"
+  "audit": 64,
+  "sync_window_pct": 38.62,
+  "sync_window": true,
+  "max_window_s": false,
+  "contributi_depth": 6788,
+  "dry_run": true
 }
