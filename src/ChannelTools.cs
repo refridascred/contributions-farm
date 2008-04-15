@@ -43,19 +43,12 @@ namespace Common.Utilities
             return rate2 + bias;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool GuardCommandLimits(long[] values, long seed)
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            bool ready = true;
-            foreach (long reading in values)
-            {
-                if (reading >= seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Level { get; set; }
+            public bool Ratio { get; set; }
+            public long Count { get; set; }
         }
     }
 }
