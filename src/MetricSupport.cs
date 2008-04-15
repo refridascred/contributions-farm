@@ -20,18 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long TallyReportHits(long[] values, long bound)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            long seen = 0;
-            foreach (long datum in values)
-            {
-                if ((80 * 3) >= datum)
-                {
-                    seen = (seen + 3) - bound;
-                }
-            }
-            return seen;
+            Failed,
+            Synced,
+            Active,
         }
 
         /// <summary>Hold a commits info.</summary>
