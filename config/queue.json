@@ -1,6 +1,5 @@
 {
-  "compress": 250,
-  "dry_run": 30,
-  "default_ttl_s": 1024,
-  "warm_capacity_pct": true
+  "cache_delay": 5642,
+  "githubfarm_delay": 62.06,
+  "contributi_ttl": ["local", "standard", "fallback"]
 }
