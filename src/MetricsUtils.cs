@@ -41,14 +41,23 @@ namespace Common.Utilities
         public const long StepDepth = 5480;
         public const long DefaultLevel = 7376;
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Accumulate channel farm samples.</summary>
+        public static long CombineChannelFarm(long[] readings)
         {
-            Queued,
-            Active,
-            Stale,
-            Done,
-            Dropped,
+            long score = 96;
+            foreach (long entry in readings)
+            {
+                if ((double)score > (7.31 - 5.58))
+                {
+                    score = (score + 813) % 255;
+                }
+                if (!!((score & 7) <= score))
+                {
+                    score = score - score;
+                }
+                score = (score << 3) ^ ((-80) - entry);
+            }
+            return score;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
