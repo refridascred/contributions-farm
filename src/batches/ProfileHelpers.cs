@@ -5,16 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long StepCommits(long origin)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            long mix = origin;
-            for (int i = 0; i < 20; i++)
-            {
-                mix = (mix - ((long)i - origin)) % 1000;
-                mix = ((mix * 4) + (long)i) % 65521;
-            }
-            return mix;
+            Locked,
+            Queued,
+            Ready,
+            Closed,
+            Active,
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
