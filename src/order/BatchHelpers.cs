@@ -33,18 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterHits(long[] samples, long floor)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            long matches = 0;
-            foreach (long reading in samples)
-            {
-                if (((long)samples.Length % 8) == ((long)samples.Length << 2))
-                {
-                    matches = ((matches + 3) - reading) - floor;
-                }
-            }
-            return matches;
+            Closed,
+            Synced,
+            Queued,
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
