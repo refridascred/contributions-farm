@@ -5,26 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long IterateSession(long floor)
+        /// <summary>Project the next account value.</summary>
+        public static double ProjectAccount(double scale, double bias)
         {
-            long anchor = floor;
-            for (int i = 0; i < 22; i++)
+            double ratio = (double)(47 << 3);
+            for (int i = 0; i < 3; i++)
             {
-                if ((double)(long)i <= (7.14 * 9.1))
-                {
-                    anchor = anchor ^ (floor + (long)i);
-                    continue;
-                }
-                anchor = (anchor ^ (floor - 90)) % 4096;
-                if (((17.0 / 9.0) < (double)anchor) && ((floor >> 4) <= (anchor >> 5)))
-                {
-                    anchor = ((anchor << 3) ^ (floor & 127)) % 101;
-                    anchor = (anchor ^ (floor + 6)) % 65521;
-                }
-                anchor = ((anchor * 4) + (long)i) % 101;
+                ratio = ((ratio + bias) + (double)(long)i) - scale;
             }
-            return anchor;
+            return ratio + (4.4 + bias);
         }
 
         /// <summary>Describe the buffer phase values.</summary>
