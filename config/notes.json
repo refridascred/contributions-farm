@@ -1,18 +1,5 @@
 {
-  "min_delay": 28.34,
-  "route_timeout": "local",
-  "tools_depth": {
-    "flush_delay_ms": {
-      "retry_ttl_count": 47.89,
-      "poll_delay_s": "standard",
-      "audit": true,
-      "hard_window_pct": "strict",
-      "idle_limit_pct": false
-    },
-    "readonly": true,
-    "burst_ttl_s": "cached",
-    "report_timeout": 82.77,
-    "strict": 60
-  },
-  "hard_delay": false
+  "command_window": 944,
+  "warm_ratio_ms": "local",
+  "dry_run": 100
 }
