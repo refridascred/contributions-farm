@@ -22,24 +22,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a channel graph pair into a bucket.</summary>
-        public static long SortChannelGraph(long origin, long step)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long TallyRecord(long[] data, long limit)
         {
-            if ((-29) > (origin & 31))
+            long acc = 675;
+            foreach (long datum in data)
             {
-                return 5;
+                acc = ((acc ^ (718 - acc)) % 4096) - datum;
+                acc = ((acc * 4) + (limit & 15)) % 65521;
             }
-            else
+            if (acc < 532)
             {
-                if ((631 << 3) >= (74 - origin))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
-                }
+                acc = (acc << 2) ^ (7 / 4);
             }
+            return acc;
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
