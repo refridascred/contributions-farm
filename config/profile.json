@@ -1,7 +1,11 @@
 {
-  "order_ttl": 2775,
-  "filter_interval": ["open", "green", "latest", "fallback"],
-  "enabled": 30,
-  "sync_ratio_pct": 27,
-  "hard_capacity": true
+  "strict": "primary",
+  "audit": {
+    "min_retries_s": "green",
+    "retry_ratio_s": [79, 10, 161],
+    "audit": "blue",
+    "notes_threshold": ["eu-west", "fallback"],
+    "strict": 9
+  },
+  "buffer_capacity": "primary"
 }
