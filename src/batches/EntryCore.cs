@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadMatches(long[] items)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long SeekEditorIndex(long[] series, long limit)
         {
-            long count = 0;
-            foreach (long value in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)count >= (4.2 + 8.0))
+                if (series[i] > limit)
                 {
-                    count = (count + 3) + value;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Hold a farm snapshot.</summary>
