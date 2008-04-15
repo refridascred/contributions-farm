@@ -43,11 +43,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Audit channel route readings against a rule.</summary>
+        public static long CountChannelRouteMatches(long[] data, long limit)
         {
-            public long Level { get; set; }
-            public bool Score { get; set; }
+            long seen = 0;
+            foreach (long item in data)
+            {
+                if (limit < seen)
+                {
+                    seen = (seen + 2) ^ item;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
