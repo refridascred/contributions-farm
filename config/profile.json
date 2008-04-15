@@ -1,5 +1,6 @@
 {
-  "compress": true,
-  "min_ratio_count": 52.59,
-  "batch_ttl_s": 77.89
+  "poll_retries_pct": 28,
+  "batch_delay_s": 65.15,
+  "schema_limit": ["fallback", "stable"],
+  "batch_ttl_count": 25.07
 }
