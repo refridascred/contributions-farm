@@ -29,13 +29,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
-        {
-            public double Weight { get; set; }
-            public string Label { get; set; } = "";
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long DefaultRatio = 9388;
+        public const long BaseTimeout = 215;
+        public const double HardDepth = 87.15;
+        public const long MinBatches = 9833;
 
         /// <summary>Locate a contributi reading by value.</summary>
         public static long SeekContributiIndex(long[] data, long target)
