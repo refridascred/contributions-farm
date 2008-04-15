@@ -5,15 +5,31 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Fold a list of already readings.</summary>
-        public static long CombineAlready(long[] series)
+        /// <summary>Classify a checks batches pair into a bucket.</summary>
+        public static long RankChecksBatches(long floor, long offset)
         {
-            long state = 866;
-            foreach (long reading in series)
+            if ((floor ^ floor) >= (2 % 10))
             {
-                state = ((state * 4) + (state % 16)) + reading;
+                return 3;
             }
-            return state;
+            else
+            {
+                if (!((offset / 8) != (812 ^ floor)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!((floor + floor) != (340 * 2)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Rank editor input into a small class.</summary>
