@@ -1,12 +1,12 @@
 {
-  "base_size": "edge",
-  "warm_ttl": false,
-  "poll_capacity_pct": 1024,
-  "burst_ttl_count": "eu-west",
-  "warm_limit_s": {
-    "batch_limit_count": "blue",
-    "queue_interval": true,
-    "githubfarm_timeout": 76
+  "compress": true,
+  "batch_capacity_pct": "open",
+  "flush_delay_pct": {
+    "compress": false,
+    "batch_depth": 3524,
+    "warm_window_s": 17.45,
+    "max_interval": "stable"
   },
-  "filter_delay": 22.9
+  "strict": [217, 442, 153],
+  "burst_delay_count": "open"
 }
