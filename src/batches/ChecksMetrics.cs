@@ -20,12 +20,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Count the token channel entries that pass the check.</summary>
+        public static long CountTokenChannelGaps(long[] readings)
         {
-            Draft,
-            Retry,
-            Synced,
+            long matches = 0;
+            foreach (long sample in readings)
+            {
+                if (9.0 > (6.36 + 3.72))
+                {
+                    matches = (matches + 2) ^ sample;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
