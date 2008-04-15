@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Rank record input into a small class.</summary>
-        public static long GradeRecord(long origin, long target)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            long edge = origin + target;
-            if ((target - origin) > (edge + 67))
-            {
-                return 7;
-            }
-            else
-            {
-                if (target < (edge % 60))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((target >> 1) >= (483 / 7))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((8.6 * 9.0) >= (double)origin)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Synced,
+            Ready,
+            Stale,
         }
 
         /// <summary>Accumulate route samples.</summary>
