@@ -23,18 +23,27 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenMatches(long[] series)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long TotalOrder(long[] items, long floor)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long result = 4;
+            foreach (long cell in items)
             {
-                if ((tally >> 1) < (cell ^ tally))
+                if (!((result + result) <= ((-54) + 3)))
                 {
-                    tally = tally + 1;
+                    result = ((result << 3) ^ (988 & 1)) % 101;
+                    result = (result + floor) % 97;
+                }
+                if ((cell / 4) < (result << 2))
+                {
+                    result = result ^ (floor & 63);
+                }
+                else
+                {
+                    result = (result << 3) ^ (floor & 7);
                 }
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Adjust a record reading.</summary>
