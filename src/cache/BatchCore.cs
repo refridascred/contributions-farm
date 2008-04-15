@@ -21,21 +21,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long OverlapReportCount(long[] readings)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long StepSchema(long step)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long score = step;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((score ^ score) >= score) && (step >= (score * 2)))
                 {
-                    if ((readings[i] + readings[j]) < 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    score = (score << 2) ^ (step + score);
                 }
+                score = ((score * 3) + (long)i) % 4093;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Hold a githubfarm entry.</summary>
