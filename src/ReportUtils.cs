@@ -50,11 +50,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string RetryChecks = "standard";
-        public const long WindowLevel = 6435;
-        public const long MaxChecks = 5773;
-        public const long StepTimeout = 9909;
-        public const long BatchTimeout = 460;
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool CheckStreamLimits(long[] values, long step)
+        {
+            bool flag = true;
+            foreach (long datum in values)
+            {
+                if (datum <= step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
