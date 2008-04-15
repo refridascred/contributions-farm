@@ -20,11 +20,21 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Count already report pairs that satisfy a relation.</summary>
+        public static long MatchAlreadyReportCount(long[] values)
         {
-            public double Rank { get; set; }
-            public long Owner { get; set; }
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 4)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a support summary.</summary>
