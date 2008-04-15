@@ -15,18 +15,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long SeriesSession(long bound)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            long anchor = bound;
-            for (int i = 0; i < 19; i++)
-            {
-                anchor = (anchor + bound) % 65521;
-                anchor = (anchor ^ (long)i) % 97;
-                anchor = (anchor * 4) + (anchor << 2);
-                anchor = ((anchor * 5) + (long)i) % 65521;
-            }
-            return anchor;
+            Draft,
+            Closed,
+            Idle,
         }
 
         /// <summary>Define order limits and defaults.</summary>
