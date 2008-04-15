@@ -1,14 +1,14 @@
 # Command notes
 
-Use layout settings to tune how often metric data is refreshed.
-Run the metric check before changing any channel limits.
-A filter that stays idle for too long is moved to the window list.
+Keep already and cluster names short and lowercase.
+The record helpers are pure functions, so they are safe to call from any thread.
+Use context settings to tune how often notes data is refreshed.
 
-Use buffer settings to tune how often channel data is refreshed.
-When a editor fails, the commits handler retries a few times before giving up.
+The notes report groups every context by account.
+The schema helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Log every queue change
+- Keep metric values small
 - Document new graph fields
-- Keep payload values small
+- Review tools limits each release
