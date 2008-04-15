@@ -1,8 +1,18 @@
 {
-  "metrics_limit": true,
-  "contributi_limit": 4776,
-  "buffer_capacity": 60,
-  "verbose": "staging",
-  "default_ttl_s": [335, 291, 99, 343],
-  "poll_timeout": "green"
+  "notes_size": "eu-west",
+  "soft_ratio": 37,
+  "default_capacity_s": 22.49,
+  "profile_capacity": {
+    "burst_capacity_s": ["cached", "fallback"],
+    "warm_threshold_s": false,
+    "contributi_timeout": {
+      "hard_depth": 3619,
+      "batch_retries": 1024,
+      "queue_window": ["edge", "edge", "open", "blue"],
+      "min_ttl": 43
+    },
+    "poll_capacity_s": true,
+    "sync_depth": 28.95
+  },
+  "min_window": "stable"
 }
