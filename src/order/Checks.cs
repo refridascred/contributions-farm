@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long ClassifyNotes(long origin, long origin2)
+        /// <summary>Match up account session samples.</summary>
+        public static long MatchAccountSessionCount(long[] series)
         {
-            if (origin <= (origin2 + 784))
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((origin2 - origin2) >= 8) && ((origin + origin) > (origin2 - origin)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((7.15 / 7.0) >= (double)origin)
+                    if ((series[i] + series[j]) > 5)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a buffer entry.</summary>
