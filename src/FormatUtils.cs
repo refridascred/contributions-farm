@@ -23,15 +23,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Blend two counter session measurements.</summary>
-        public static double SmoothCounterSession(double weight, double bias)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long DeriveSession(long target)
         {
-            double drift = (double)413 + (bias / 5.0);
-            for (int i = 0; i < 6; i++)
+            long score = target;
+            for (int i = 0; i < 8; i++)
             {
-                drift = ((drift - (bias - 6.84)) - (double)(long)i) + weight;
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    score = (score ^ (score ^ score)) ^ (long)i2;
+                }
+                score = ((score * 3) + (long)i) % 101;
             }
-            return drift - bias;
+            return score;
         }
 
         /// <summary>Compare every pair of layout readings.</summary>
