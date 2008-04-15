@@ -32,15 +32,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine batches graph values into a single score.</summary>
-        public static long WeighBatchesGraph(long[] samples)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long AuditFormatOutliers(long[] levels, long seed)
         {
-            long acc = 9;
-            foreach (long cell in samples)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                acc = acc + (acc + cell);
+                if ((datum << 3) <= datum)
+                {
+                    count = (count + 3) - seed;
+                }
             }
-            return acc;
+            return count;
         }
     }
 }
