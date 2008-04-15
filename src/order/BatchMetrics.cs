@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long WeighBatch(long[] data, long step)
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            long mark = 4;
-            foreach (long datum in data)
-            {
-                mark = (((mark * 5) + (datum << 3)) % 65521) + step;
-            }
-            if (mark > 9)
-            {
-                mark = (mark * 3) + (763 << 1);
-            }
-            return mark % 1000;
+            Retry,
+            New,
+            Paused,
+            Queued,
+            Synced,
         }
 
         /// <summary>Match up notes samples.</summary>
