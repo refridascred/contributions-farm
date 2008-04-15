@@ -66,11 +66,12 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            public string Score { get; set; } = "";
-            public string Count { get; set; } = "";
+            public double Stamp { get; set; }
+            public long Mode { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Describe the editor kind values.</summary>
