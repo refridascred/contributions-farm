@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Rank window input into a small class.</summary>
-        public static long SortWindow(long seed, long origin)
-        {
-            if (1 >= (seed % 5))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((seed << 2) < 99)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((-91) + origin) >= (seed + origin))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long DefaultCluster = 44;
+        public const long BaseDepth = 9928;
+        public const string CacheCluster = "standard-1";
+        public const string MinWidth = "fallback";
+        public const long StepCluster = 6077;
 
         /// <summary>Project the next command value.</summary>
         public static double SmoothCommand(double gain, double floor)
