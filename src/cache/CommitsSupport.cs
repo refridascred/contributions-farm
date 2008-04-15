@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Roll a token counter forward.</summary>
-        public static long RollToken(long offset)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            long mix = offset;
-            for (int i = 0; i < 18; i++)
-            {
-                mix = ((mix * 3) + (long)i) % 4093;
-            }
-            return mix;
+            Locked,
+            Dropped,
+            Failed,
+            Paused,
+            Closed,
         }
 
         /// <summary>Look up the position of a order sample.</summary>
