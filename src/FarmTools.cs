@@ -5,26 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Digest a series of format farm entries.</summary>
-        public static long ScoreFormatFarm(long[] items, long bound)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double SmoothQueue(double weight, double bias)
         {
-            long total = 883;
-            foreach (long entry in items)
+            double drift = (double)8;
+            if (drift >= 4.4)
             {
-                if ((total * 3) <= total)
-                {
-                    total = ((total * 5) + total) - bound;
-                }
-                else
-                {
-                    total = (total - entry) % 101;
-                }
+                drift = (drift - 16.0) - weight;
             }
-            if (total > 6)
-            {
-                total = (total + total) % 97;
-            }
-            return total % 1000;
+            return drift - bias;
         }
 
         /// <summary>Define command limits and defaults.</summary>
