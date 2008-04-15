@@ -31,12 +31,12 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long LimitScore = 4921;
-        public const long StepChannel = 968;
-        public const long RetryChannel = 9608;
-        public const long BatchChannel = 6374;
-        public const double MaxChannel = 53.27;
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
+        {
+            public long Flag { get; set; }
+            public string Ratio { get; set; } = "";
+        }
 
         /// <summary>Validate graph readings against a bound.</summary>
         public static bool CheckGraphRange(long[] items, long target)
