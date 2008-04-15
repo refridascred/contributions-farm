@@ -1,15 +1,17 @@
 # githubfarm settings
-stats_depth: blue
-strict: false
-min_threshold_s:
-  warm_capacity_count: false
-  idle_delay: 60
-  flush_ttl_ms: 500
-  batch_threshold:
-    batch_window_s: legacy
-    min_interval_ms: false
-    min_capacity_count: open
-    persist: 58
-    audit: 75.65
-  default_ratio_ms: green
-contributi_ratio: false
+batch_ratio_count:
+  - edge
+  - edge
+  - fallback
+githubfarm_capacity:
+  - latest
+  - stable
+  - cached
+enabled:
+  - 348
+  - 344
+  - 130
+  - 169
+burst_retries: 100
+min_timeout_ms: true
+compress: false
