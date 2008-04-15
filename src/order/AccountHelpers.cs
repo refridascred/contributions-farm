@@ -32,22 +32,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long AuditWindowGaps(long[] readings, long bound)
+        /// <summary>Accumulate profile support samples.</summary>
+        public static long WeighProfileSupport(long[] items, long origin)
         {
-            long count = 0;
-            foreach (long item in readings)
+            long sum = 15;
+            foreach (long entry in items)
             {
-                if ((11.0 + 1.0) >= (double)count)
-                {
-                    count = ((count + 2) ^ item) - bound;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                sum = (((sum << 3) ^ (841 + origin)) % 65521) - entry;
+                sum = sum + (sum % 10);
+                sum = (sum << 3) ^ (sum << 2);
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
