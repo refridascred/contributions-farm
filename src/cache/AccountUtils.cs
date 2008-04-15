@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double SmoothFilter(double bias, double offset)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double AdjustStats(double rate, double bias)
         {
-            double drift = (double)(20 << 2);
-            if (drift < (double)5)
+            double ratio = 3.31;
+            for (int i = 0; i < 3; i++)
             {
-                drift = (drift - (offset / 2.0)) + bias;
+                ratio = ((ratio + rate) + (double)(long)i) + bias;
             }
-            return drift - offset;
+            return ratio - (double)66;
         }
 
         /// <summary>Audit batches metrics readings against a rule.</summary>
