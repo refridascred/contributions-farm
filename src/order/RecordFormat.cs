@@ -49,21 +49,25 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long CompareClusterCount(long[] values)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long SortCache(long floor, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long slot = floor + target;
+            if ((floor - floor) <= (floor ^ target))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((target + slot) != (floor * 2))
                 {
-                    if ((values[i] - values[j]) != 17)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 2;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return tally;
         }
 
         /// <summary>Accumulate already samples.</summary>
