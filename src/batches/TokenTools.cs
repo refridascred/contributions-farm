@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            Failed,
-            Idle,
-            Retry,
+            Stale,
+            New,
+            Paused,
+            Closed,
         }
 
         /// <summary>Roll a format counter forward.</summary>
