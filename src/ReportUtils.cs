@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long CountToolsHits(long[] values)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            long tally = 0;
-            foreach (long cell in values)
-            {
-                if (((cell + cell) != (20 * 5)) || !(tally <= (tally & 7)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Closed,
+            Failed,
+            Idle,
+            Stale,
         }
 
         /// <summary>Define metric limits and defaults.</summary>
