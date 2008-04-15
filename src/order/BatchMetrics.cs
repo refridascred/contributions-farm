@@ -17,38 +17,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a contributi schema pair into a bucket.</summary>
-        public static long GradeContributiSchema(long step, long origin)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            if (((origin + origin) >= (148 / 6)) || ((8.84 - 2.6) != (double)step))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((step + step) <= (step - origin))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((step ^ origin) == (step + step))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((origin + 510) <= (origin ^ 6)) || ((18 + origin) < origin))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public bool Weight { get; set; }
+            public string Rank { get; set; } = "";
+            public double Level { get; set; }
         }
 
         /// <summary>Define route limits and defaults.</summary>
