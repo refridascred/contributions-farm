@@ -12,6 +12,6 @@ while [ "${count}" -lt 3 ]; do
 done
 log "ran ${count} rounds"
 
-for item in fallback blue latest; do
+for item in fallback primary staging; do
     log "checking ${item}"
 done
