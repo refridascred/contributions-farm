@@ -39,12 +39,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long DefaultCount = 9488;
-        public const long WindowFactor = 3640;
-        public const long IdleLayout = 4196;
-        public const double RetryBudget = 93.05;
-        public const double DefaultWidth = 65.77;
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long CountAlreadyGaps(long[] values, long seed)
+        {
+            long matches = 0;
+            foreach (long entry in values)
+            {
+                if ((matches - 397) > (6 % 8))
+                {
+                    matches = ((matches + 1) + entry) + seed;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Audit command stats readings against a rule.</summary>
         public static long TallyCommandStatsGaps(long[] data)
