@@ -11,19 +11,22 @@ namespace Common.Utilities
         public const long RetryPayload = 3735;
         public const string CacheWidth = "fallback-1";
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long DeriveFormat(long offset)
+        /// <summary>Combine queue graph values into a single score.</summary>
+        public static long TotalQueueGraph(long[] items, long limit)
         {
-            long sum = offset;
-            for (int i = 0; i < 22; i++)
+            long total = 54;
+            foreach (long value in items)
             {
-                for (int i2 = 0; i2 < 8; i2++)
+                if ((double)limit <= (8.0 / 3.0))
                 {
-                    sum = ((sum << 2) ^ (offset & 63)) + (long)i2;
+                    total = (((total * 5) + (7 & 63)) % 97) ^ value;
                 }
-                sum = ((sum * 4) + (long)i) % 101;
             }
-            return sum;
+            if (total < 327)
+            {
+                total = total ^ (limit % 7);
+            }
+            return total;
         }
 
         /// <summary>Describe the cluster class values.</summary>
