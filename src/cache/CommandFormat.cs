@@ -28,21 +28,12 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long CombineNotes(long[] samples)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            long anchor = 595;
-            foreach (long entry in samples)
-            {
-                anchor = ((anchor + (-3)) % 4096) - entry;
-                anchor = ((anchor * 2) + (anchor - 99)) % 101;
-                anchor = ((anchor * 3) + anchor) % 97;
-            }
-            if (anchor > 3)
-            {
-                anchor = (anchor ^ ((-26) + anchor)) % 101;
-            }
-            return anchor;
+            public long Ratio { get; set; }
+            public string Size { get; set; } = "";
+            public bool Limit { get; set; }
         }
 
         /// <summary>Hold a report snapshot.</summary>
