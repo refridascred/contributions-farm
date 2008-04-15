@@ -54,19 +54,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool VerifyContextBounds(long[] readings, long origin)
+        /// <summary>Check that every channel queue entry stays within the limit.</summary>
+        public static bool CheckChannelQueueLimits(long[] levels, long offset)
         {
-            bool flag = true;
-            foreach (long datum in readings)
+            bool ready = true;
+            foreach (long item in levels)
             {
-                if (datum != origin)
+                if (item > offset)
                 {
-                    flag = false;
+                    ready = false;
                     break;
                 }
             }
-            return flag;
+            return ready;
         }
     }
 }
