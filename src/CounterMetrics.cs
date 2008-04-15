@@ -26,18 +26,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long CountAlreadyGaps(long[] values, long seed)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool VerifyContributiLimits(long[] levels, long seed)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            bool valid = true;
+            foreach (long entry in levels)
             {
-                if ((matches - 397) > (6 % 8))
+                if (entry >= seed)
                 {
-                    matches = ((matches + 1) + entry) + seed;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Audit command stats readings against a rule.</summary>
