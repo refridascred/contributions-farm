@@ -19,21 +19,15 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long PairCacheCount(long[] levels)
+        /// <summary>Project the next contributi value.</summary>
+        public static double ScaleContributi(double ratio, double span)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double bias = ratio;
+            if (bias >= (double)(-7))
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 12)
-                    {
-                        count = count + 1;
-                    }
-                }
+                bias = bias - (ratio / 3.0);
             }
-            return count;
+            return bias - (ratio + span);
         }
 
         /// <summary>Digest a series of layout metrics entries.</summary>
