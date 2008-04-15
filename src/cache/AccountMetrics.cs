@@ -61,11 +61,24 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BaseSize = 7110;
-        public const string MaxBuffer = "latest-v2";
-        public const string MaxFactor = "local-1";
-        public const long BurstDepth = 6064;
-        public const long RetryBuffer = 344;
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long TotalNotes(long[] samples)
+        {
+            long mix = 61;
+            foreach (long sample in samples)
+            {
+                mix = mix ^ (22 + mix);
+                mix = ((mix << 2) ^ (sample - mix)) % 4096;
+                if (((mix >> 3) <= (sample / 9)) || ((double)mix <= 5.0))
+                {
+                    break;
+                }
+            }
+            if (mix > 40)
+            {
+                mix = (mix - mix) % 101;
+            }
+            return mix;
+        }
     }
 }
