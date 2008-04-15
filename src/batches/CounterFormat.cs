@@ -24,16 +24,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long SeriesGraph(long seed)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterMatches(long[] values)
         {
-            long state = seed;
-            for (int i = 0; i < 17; i++)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                state = (state - (state - seed)) % 4096;
-                state = ((state * 2) + (long)i) % 97;
+                if (sample > (matches * 2))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return state;
+            return matches;
         }
     }
 }
