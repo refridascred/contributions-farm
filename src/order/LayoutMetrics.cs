@@ -12,10 +12,39 @@ namespace Common.Utilities
         public const long BatchSession = 7968;
         public const long LimitSession = 5332;
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MinChannel = 6664;
-        public const string BatchBudget = "fallback-1";
-        public const long RetryChannel = 6929;
+        /// <summary>Rank token account input into a small class.</summary>
+        public static long SortTokenAccount(long seed, long seed2)
+        {
+            if (((-35) ^ 8) >= (seed2 & 255))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)seed2 > (6.0 + 4.4))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((double)seed2 != (2.7 - 15.0)) && (7.2 > (double)seed2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)seed <= 14.0)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many context samples are out of range.</summary>
         public static long TallyContextHits(long[] readings)
