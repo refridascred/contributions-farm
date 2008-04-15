@@ -56,18 +56,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long CountGithubfarmHits(long[] data)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long IterateAlready(long floor)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long anchor = floor;
+            for (int i = 0; i < 7; i++)
             {
-                if (!((long)data.Length <= (tally & 127)))
-                {
-                    tally = (tally + 2) ^ entry;
-                }
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return tally;
+            return anchor;
         }
     }
 }
