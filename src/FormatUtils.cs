@@ -19,19 +19,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool CheckNotesLimits(long[] items, long bound)
+        /// <summary>Roll a window githubfarm counter forward.</summary>
+        public static long SeriesWindowGithubfarm(long step)
         {
-            bool flag = true;
-            foreach (long entry in items)
+            long state = step;
+            for (int i = 0; i < 13; i++)
             {
-                if (entry <= bound)
-                {
-                    flag = false;
-                    break;
-                }
+                state = ((state * 4) + (step + state)) % 1000;
+                state = ((state * 4) + (long)i) % 101;
             }
-            return flag;
+            return state;
         }
 
         /// <summary>Match up filter samples.</summary>
