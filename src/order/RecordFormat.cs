@@ -49,19 +49,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool GuardQueueLimits(long[] values, long target)
+        /// <summary>Compare every pair of filter batch readings.</summary>
+        public static long OverlapFilterBatchCount(long[] items)
         {
-            bool ready = true;
-            foreach (long reading in values)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (reading >= target)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((items[i] + items[j]) != 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Accumulate already samples.</summary>
