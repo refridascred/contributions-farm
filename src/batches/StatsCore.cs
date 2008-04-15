@@ -20,12 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double LimitContributi = 17.03;
-        public const string RetryContributi = "staging-v2";
-        public const double CacheWidth = 1.57;
-        public const string DefaultSize = "cached-v2";
-        public const double BurstContributi = 20.25;
+        /// <summary>Locate a window reading by value.</summary>
+        public static long SeekWindowIndex(long[] readings, long origin)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] <= origin) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Combine session values into a single score.</summary>
         public static long FoldSession(long[] values)
