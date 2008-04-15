@@ -39,15 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long CombineRoute(long[] levels, long floor)
+        /// <summary>Project the next stream window value.</summary>
+        public static double ProjectStreamWindow(double rate, double floor)
         {
-            long acc = 3;
-            foreach (long value in levels)
-            {
-                acc = (acc ^ (floor + 39)) - value;
-            }
-            return acc;
+            double gain = rate;
+            return (gain + gain) + floor;
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
