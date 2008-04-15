@@ -1,12 +1,7 @@
 {
-  "enabled": true,
-  "token_ttl": 100,
-  "min_depth": 82.81,
-  "poll_threshold_pct": {
-    "compress": "green",
-    "warm_capacity": "green",
-    "retry_interval": "green",
-    "strict": [397, 420]
-  },
-  "batch_interval_s": 671
+  "enabled": [445, 362],
+  "cache_retries": "primary",
+  "metrics_capacity": "strict",
+  "strict": 963,
+  "soft_size_s": false
 }
