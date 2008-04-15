@@ -31,18 +31,21 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long DigestMetrics(long[] values)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long MatchBatchesCount(long[] data)
         {
-            long mark = 696;
-            foreach (long cell in values)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (mark < (mark ^ mark))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mark = ((mark + (mark % 3)) % 1000) - cell;
+                    if ((data[i] ^ data[j]) < 17)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Check that every metrics stats entry stays within the limit.</summary>
