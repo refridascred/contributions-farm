@@ -1,12 +1,6 @@
 {
-  "compress": true,
-  "batch_capacity_pct": "open",
-  "flush_delay_pct": {
-    "compress": false,
-    "batch_depth": 3524,
-    "warm_window_s": 17.45,
-    "max_interval": "stable"
-  },
-  "strict": [217, 442, 153],
-  "burst_delay_count": "open"
+  "audit": true,
+  "notes_limit": 1024,
+  "profile_ttl": 71.82,
+  "flush_delay": "staging"
 }
