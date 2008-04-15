@@ -59,15 +59,24 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long RollEditor(long step)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long ClassifyAlready(long offset, long floor)
         {
-            long state = step;
-            for (int i = 0; i < 12; i++)
+            if (((floor + offset) <= floor) || ((offset & 255) > (-435)))
             {
-                state = ((state * 5) + (long)i) % 4093;
+                return 2;
             }
-            return state;
+            else
+            {
+                if ((9.0 / 5.0) != (double)floor)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
     }
 }
