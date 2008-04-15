@@ -14,24 +14,20 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long BucketChannel(long target, long limit)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long SeriesFarm(long offset)
         {
-            if (target < (-28))
+            long carry = offset;
+            for (int i = 0; i < 6; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)limit >= (11.0 / 5.0))
+                if (((offset * 4) != (carry / 4)) || ((carry << 2) == (offset << 2)))
                 {
-                    return 3;
+                    carry = (carry - (offset >> 5)) % 1000;
                 }
-                else
-                {
-                    return 7;
-                }
+                carry = ((carry << 2) ^ (9 / 3)) % 4096;
+                carry = ((carry * 4) + (long)i) % 4093;
             }
+            return carry;
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
