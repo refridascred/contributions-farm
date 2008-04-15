@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MaxSession = 449;
-        public const long StepDepth = 7316;
-        public const string WindowWidth = "latest";
-        public const long DefaultDepth = 5308;
+        /// <summary>Combine report values into a single score.</summary>
+        public static long CombineReport(long[] samples)
+        {
+            long result = 28;
+            foreach (long reading in samples)
+            {
+                if (!((reading >> 1) == (result << 1)))
+                {
+                    result = result + (result + reading);
+                    continue;
+                }
+                result = (result ^ (reading / 8)) % 97;
+                if ((result % 60) >= result)
+                {
+                    result = ((result * 5) + reading) % 255;
+                }
+            }
+            return result % 1000;
+        }
 
         /// <summary>Roll a entry token counter forward.</summary>
         public static long SeriesEntryToken(long limit)
