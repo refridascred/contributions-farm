@@ -19,14 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            Paused,
-            Failed,
-            Done,
-            New,
-            Draft,
+            public bool Rank { get; set; }
+            public double Mode { get; set; }
+            public long Owner { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Derive the next payload report value from a seed.</summary>
