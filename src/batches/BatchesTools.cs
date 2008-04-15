@@ -32,15 +32,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double AdjustProfile(double scale, double bias)
-        {
-            double ratio = scale / 6.0;
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio + (bias * 6.5)) + (double)(long)i;
-            }
-            return ratio + (19.0 / 7.0);
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long RetryBudget = 2844;
+        public const long HardRoute = 6582;
+        public const long WindowFactor = 8704;
+        public const long BaseRoute = 4617;
     }
 }
