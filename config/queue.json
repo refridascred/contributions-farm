@@ -1,14 +1,16 @@
 {
-  "soft_retries": {
-    "min_delay_ms": 78.98,
-    "counter_depth": false,
-    "min_size_ms": 0.33,
-    "sync_ratio_count": ["standard", "cached", "latest"],
-    "window_delay": false,
-    "contributi_interval": "legacy"
+  "burst_ratio_pct": false,
+  "token_depth": {
+    "default_delay_s": "fallback",
+    "max_ratio": {
+      "readonly": "primary",
+      "compress": [2, 487, 35, 292],
+      "warm_window_pct": 37,
+      "soft_ratio_pct": 3546
+    },
+    "base_timeout": 12,
+    "max_delay": 59,
+    "readonly": "fallback"
   },
-  "max_delay_pct": "open",
-  "default_ttl": "staging",
-  "schema_timeout": 95,
-  "verbose": 32.71
+  "enabled": false
 }
