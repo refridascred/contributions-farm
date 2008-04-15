@@ -33,15 +33,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double SmoothSchema(double gain, double offset)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            double mean = (offset - gain) / 4.0;
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean + (mean - offset)) + (double)(long)i;
-            }
-            return mean - mean;
+            Retry,
+            Active,
+            Stale,
         }
     }
 }
