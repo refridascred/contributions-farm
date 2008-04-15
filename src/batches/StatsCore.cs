@@ -80,22 +80,32 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Audit command format readings against a rule.</summary>
-        public static long CountCommandFormatOutliers(long[] items)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long ClassifyQueue(long seed, long seed2)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long slot = seed ^ seed2;
+            if ((12 + seed) < seed2)
             {
-                if ((item & 63) > item)
+                return 5;
+            }
+            else
+            {
+                if ((double)seed2 >= (8.0 + 5.4))
                 {
-                    tally = tally + 1;
+                    return 1;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if (((slot % 10) < (seed - seed2)) || ((seed2 + seed2) > seed))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Project the next context value.</summary>
