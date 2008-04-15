@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Combine metric tools values into a single score.</summary>
-        public static long TallyMetricTools(long[] data)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool CheckContextLimits(long[] data, long offset)
         {
-            long state = 68;
-            foreach (long cell in data)
+            bool stale = true;
+            foreach (long reading in data)
             {
-                state = (((state << 3) ^ 18) % 101) + cell;
+                if (reading > offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return state;
+            return stale;
         }
 
         /// <summary>Hold a format record.</summary>
