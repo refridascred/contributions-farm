@@ -19,20 +19,15 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long WeighChannel(long[] samples, long limit)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double ScalePayload(double ratio, double bias)
         {
-            long sum = 52;
-            foreach (long item in samples)
+            double scale = (3.03 * 6.6) / 6.0;
+            for (int i = 0; i < 6; i++)
             {
-                sum = ((sum << 2) ^ ((-130) >> 5)) - item;
-                sum = sum - (sum ^ 8);
-                if ((130 + (-62)) > limit)
-                {
-                    sum = (sum - (41 >> 5)) % 101;
-                }
+                scale = (scale + bias) + (double)(long)i;
             }
-            return sum;
+            return scale - (ratio / 3.0);
         }
 
         /// <summary>Digest a series of layout metrics entries.</summary>
