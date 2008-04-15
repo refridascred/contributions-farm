@@ -23,11 +23,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long IdleScore = 5036;
-        public const long IdleBudget = 7158;
-        public const string DefaultQueue = "standard";
-        public const long BaseQueue = 973;
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
+        {
+            Closed,
+            Active,
+            Queued,
+            Idle,
+            Dropped,
+        }
 
         /// <summary>Describe the support mode values.</summary>
         public enum SupportMode
