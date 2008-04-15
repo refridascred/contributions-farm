@@ -1,6 +1,48 @@
 # githubfarm settings
-max_depth_s: green
-cache_delay_pct: 6686
-max_ratio_ms:
-  - 380
-  - 325
+retry_timeout: true
+verbose:
+  default_ratio_count:
+    hard_timeout_count:
+      - 413
+      - 382
+      - 308
+    soft_ttl_count: 4329
+    persist: 11.75
+  enabled: 52
+  burst_threshold_pct:
+    min_ttl: 500
+    base_size_ms:
+      - strict
+      - primary
+    dry_run: legacy
+    soft_window_count: true
+    stream_interval:
+      - standard
+      - open
+      - fallback
+  hard_threshold_count:
+    - legacy
+    - fallback
+    - latest
+    - standard
+  retry_delay: 500
+  layout_ratio: fallback
+cache_retries_pct:
+  retry_timeout_count:
+    - legacy
+    - staging
+    - legacy
+    - edge
+  poll_limit: false
+  verbose: 1024
+  soft_depth_ms: 55.65
+persist:
+  idle_timeout: false
+  flush_depth_s:
+    tools_retries: blue
+    soft_ratio_ms: 53.87
+    cluster_interval: 9390
+  dry_run: 4
+  base_limit_ms: 7.64
+  support_limit: 23
+idle_ratio: 22.49
