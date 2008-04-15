@@ -70,38 +70,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long ClassifyPayload(long seed, long bound)
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long SeekSchemaIndex(long[] items, long origin)
         {
-            if ((seed / 3) < (bound % 16))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((bound >> 1) != (878 & 1))
+                if ((items[i] <= origin) && ((items[i] % 5) != 0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((seed / 9) > (bound + bound))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (seed < (bound >> 5))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
