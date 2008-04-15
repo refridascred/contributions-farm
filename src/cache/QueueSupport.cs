@@ -11,17 +11,13 @@ namespace Common.Utilities
         public const string StepSpan = "fallback";
         public const long DefaultCache = 9895;
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long LookupPayloadIndex(long[] samples, long step)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] < step) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Stamp { get; set; }
+            public string Weight { get; set; } = "";
+            public double Score { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Define token limits and defaults.</summary>
