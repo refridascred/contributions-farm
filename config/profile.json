@@ -1,16 +1,8 @@
 {
-  "enabled": false,
-  "support_size": 29.9,
-  "hard_retries_pct": "green",
-  "soft_ratio": {
-    "warm_threshold_ms": 6839,
-    "base_ttl": "edge",
-    "compress": {
-      "payload_depth": false,
-      "warm_window_count": ["primary", "latest", "primary", "legacy"],
-      "idle_retries_pct": "latest",
-      "compress": 7576
-    },
-    "hard_delay_count": 6.8
-  }
+  "flush_window_ms": 90,
+  "base_retries_count": "fallback",
+  "enabled": [461, 423],
+  "checks_interval": 50,
+  "burst_delay": 7.94,
+  "stats_size": true
 }
