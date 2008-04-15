@@ -37,14 +37,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
             Done,
-            Retry,
-            New,
-            Active,
             Dropped,
+            Synced,
+            Retry,
         }
 
         /// <summary>Roll a cache counter forward.</summary>
