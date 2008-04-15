@@ -5,12 +5,33 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long LimitEditor = 940;
-        public const long HardEditor = 9870;
-        public const long BurstEditor = 2866;
-        public const long RetryRatio = 2307;
-        public const double MaxCount = 43.67;
+        /// <summary>Grade a schema buffer value against two limits.</summary>
+        public static long GradeSchemaBuffer(long seed, long target)
+        {
+            long bound = seed - target;
+            if (bound < target)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)seed > (14.0 * 1.63))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((bound << 2) == (bound + (-5)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
         public static long CompareTokenCount(long[] items)
