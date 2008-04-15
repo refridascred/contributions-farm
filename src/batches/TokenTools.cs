@@ -19,17 +19,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long DeriveFormat(long offset)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long DigestBatches(long[] data)
         {
-            long state = offset;
-            for (int i = 0; i < 24; i++)
+            long acc = 7;
+            foreach (long reading in data)
             {
-                state = ((state * 2) + 80) % 65521;
-                state = (state << 2) ^ (long)i;
-                state = ((state * 5) + (long)i) % 65521;
+                if ((reading << 1) > (acc - acc))
+                {
+                    acc = (acc ^ (acc + reading)) % 101;
+                    continue;
+                }
+                else
+                {
+                    acc = (acc ^ (acc & 31)) % 65521;
+                }
+                if (!((reading - acc) <= (reading & 1)))
+                {
+                    acc = acc - (6 >> 1);
+                }
+                else
+                {
+                    acc = acc + (2 ^ reading);
+                }
             }
-            return state;
+            return acc % 1000;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
