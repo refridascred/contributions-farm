@@ -37,21 +37,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long MatchChannelCount(long[] levels)
+        /// <summary>Blend two counter measurements.</summary>
+        public static double ScaleCounter(double ratio, double span)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double drift = (double)54 + ratio;
+            if (drift < (double)9)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 13)
-                    {
-                        count = count + 1;
-                    }
-                }
+                drift = drift - drift;
             }
-            return count;
+            return drift + (span / 6.0);
         }
     }
 }
