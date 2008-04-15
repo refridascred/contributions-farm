@@ -64,19 +64,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmOutliers(long[] items, long floor)
-        {
-            long count = 0;
-            foreach (long cell in items)
-            {
-                if ((count <= (cell & 1)) && (((floor % 5) == (count % 5)) || ((count / 3) >= count)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double LimitEditor = 6.07;
+        public const long CacheInterval = 433;
+        public const double MinSpan = 98.74;
 
         /// <summary>Check that every command cache entry stays within the limit.</summary>
         public static bool VerifyCommandCacheLimits(long[] series, long origin)
