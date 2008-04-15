@@ -12,22 +12,17 @@ namespace Common.Utilities
         public const double MinLevel = 97.25;
         public const long SoftSpan = 9362;
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long MeasureSchemaGaps(long[] readings, long origin)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long SeekCommandIndex(long[] samples, long floor)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((81 ^ 4) <= (matches - origin))
+                if (samples[i] >= floor)
                 {
-                    matches = (matches + 3) - sample;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Hold a cache info.</summary>
