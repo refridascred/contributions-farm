@@ -1,5 +1,19 @@
 {
-  "tools_interval": 9459,
-  "soft_delay_pct": 5,
-  "poll_delay": 1.61
+  "max_threshold_pct": [53, 383, 331, 214],
+  "min_ttl": {
+    "cache_ttl_pct": "edge",
+    "already_capacity": 500,
+    "poll_window": true,
+    "readonly": "standard",
+    "strict": 37.18
+  },
+  "context_depth": {
+    "max_interval": ["edge", "primary", "latest"],
+    "warm_retries": false,
+    "command_limit": "standard",
+    "min_timeout_count": "local",
+    "default_timeout_ms": 100,
+    "audit": 914
+  },
+  "sync_threshold_ms": 1004
 }
