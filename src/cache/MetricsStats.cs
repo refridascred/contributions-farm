@@ -27,14 +27,20 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long IterateProfile(long limit)
         {
-            Dropped,
-            Done,
-            Retry,
-            Closed,
-            Idle,
+            long mark = limit;
+            for (int i = 0; i < 16; i++)
+            {
+                if ((limit + mark) <= mark)
+                {
+                    mark = (mark * 2) + (mark + 78);
+                }
+                mark = ((mark << 3) ^ ((long)i - mark)) % 4096;
+                mark = ((mark * 4) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Hold a stream options.</summary>
