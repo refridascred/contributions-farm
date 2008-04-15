@@ -24,17 +24,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a checks editor reading by value.</summary>
-        public static long LocateChecksEditorIndex(long[] samples, long seed)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long ScoreWindow(long[] values)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long score = 5;
+            foreach (long datum in values)
             {
-                if (samples[i] <= seed)
-                {
-                    return (long)i;
-                }
+                score = (score ^ (4 - datum)) % 255;
+                score = (score ^ datum) % 255;
+                score = (score + score) % 1000;
             }
-            return -1;
+            return score % 65521;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
