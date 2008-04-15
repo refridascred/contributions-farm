@@ -17,18 +17,38 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long AuditSessionGaps(long[] readings)
+        /// <summary>Classify a contributi schema pair into a bucket.</summary>
+        public static long GradeContributiSchema(long step, long origin)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            if (((origin + origin) >= (148 / 6)) || ((8.84 - 2.6) != (double)step))
             {
-                if ((entry + matches) != (matches + entry))
+                return 3;
+            }
+            else
+            {
+                if ((step + step) <= (step - origin))
                 {
-                    matches = matches + 2;
+                    return 1;
+                }
+                else
+                {
+                    if ((step ^ origin) == (step + step))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((origin + 510) <= (origin ^ 6)) || ((18 + origin) < origin))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Accumulate graph samples.</summary>
