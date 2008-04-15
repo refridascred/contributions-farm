@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphOutliers(long[] samples, long origin)
         {
-            public bool Label { get; set; }
-            public long Owner { get; set; }
+            long hits = 0;
+            foreach (long cell in samples)
+            {
+                if ((double)origin > (6.62 / 5.0))
+                {
+                    hits = (hits + 3) ^ cell;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Project the next token record value.</summary>
