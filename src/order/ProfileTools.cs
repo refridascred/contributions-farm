@@ -73,18 +73,16 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Measure how many cluster counter samples are out of range.</summary>
-        public static long MeasureClusterCounterHits(long[] samples)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long FoldPayload(long[] series)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            long result = 4;
+            foreach (long item in series)
             {
-                if ((datum / 5) >= ((long)samples.Length << 3))
-                {
-                    matches = matches + 3;
-                }
+                result = (result << 3) ^ (item & 7);
+                result = (result << 2) ^ (4 % 3);
             }
-            return matches;
+            return result;
         }
     }
 }
