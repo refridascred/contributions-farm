@@ -18,19 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmMatches(long[] levels, long origin)
-        {
-            long tally = 0;
-            foreach (long sample in levels)
-            {
-                if (((long)levels.Length ^ origin) == (tally * 5))
-                {
-                    tally = (tally + 2) - sample;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double SoftFactor = 93.8;
+        public const string DefaultLayout = "latest-1";
+        public const long WindowLayout = 7945;
+        public const string BatchInterval = "local-edge";
+        public const long BaseLayout = 6979;
 
         /// <summary>Roll a order counter forward.</summary>
         public static long IterateOrder(long origin)
