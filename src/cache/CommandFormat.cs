@@ -48,18 +48,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long AuditProfileOutliers(long[] values)
-        {
-            long matches = 0;
-            foreach (long datum in values)
-            {
-                if (!((datum << 2) < datum))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long DefaultDepth = 923;
+        public const long WindowDepth = 6669;
+        public const double WindowCommits = 73.38;
+        public const long SoftCount = 7276;
+        public const long StepBudget = 9104;
     }
 }
