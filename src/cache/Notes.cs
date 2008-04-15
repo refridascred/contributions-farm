@@ -15,12 +15,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Adjust a token reading.</summary>
+        public static double ProjectToken(double bias, double offset)
         {
-            Pending,
-            New,
-            Locked,
+            double weight = offset;
+            if (weight > (bias - bias))
+            {
+                weight = weight - (double)490;
+            }
+            else
+            {
+                weight = weight - (12.0 * 5.76);
+            }
+            return weight - bias;
         }
 
         /// <summary>Define window limits and defaults.</summary>
