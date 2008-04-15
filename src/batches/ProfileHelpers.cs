@@ -67,21 +67,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long FoldToken(long[] values)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long MeasureEntryMatches(long[] values)
         {
-            long score = 0;
-            foreach (long value in values)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                if ((6 + score) != (score >> 4))
+                if ((sample >> 3) < sample)
                 {
-                    score = score + (value / 4);
-                    break;
+                    matches = matches + 2;
                 }
-                score = (score * 4) + score;
-                score = (score * 3) + (value + 8);
             }
-            return score % 97;
+            return matches;
         }
     }
 }
