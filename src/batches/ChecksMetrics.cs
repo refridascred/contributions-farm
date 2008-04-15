@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long ScoreCounter(long[] series)
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long CompareNotesCount(long[] series)
         {
-            long sum = -339;
-            foreach (long sample in series)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                sum = ((sum + (sum - sum)) % 65521) + sample;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 17)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (sum > 9)
-            {
-                sum = (sum - (sum >> 2)) % 97;
-            }
-            return sum;
+            return count;
         }
 
         /// <summary>Count the token channel entries that pass the check.</summary>
