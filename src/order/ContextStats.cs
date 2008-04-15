@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long TotalChecks(long[] items)
+        /// <summary>Match up cluster samples.</summary>
+        public static long PairClusterCount(long[] items)
         {
-            long sum = 538;
-            foreach (long reading in items)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((-90) + 743) == (reading + sum))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    sum = sum - (sum - reading);
-                }
-                else
-                {
-                    sum = sum + (reading << 2);
+                    if ((items[i] + items[j]) == 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Describe the commits status values.</summary>
