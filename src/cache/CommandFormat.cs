@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphOutliers(long[] samples, long origin)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            long hits = 0;
-            foreach (long cell in samples)
-            {
-                if ((double)origin > (6.62 / 5.0))
-                {
-                    hits = (hits + 3) ^ cell;
-                }
-            }
-            return hits;
+            Queued,
+            Pending,
+            Closed,
         }
 
         /// <summary>Project the next token record value.</summary>
