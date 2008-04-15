@@ -51,17 +51,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long LocateSupportIndex(long[] data, long origin)
+        /// <summary>Combine token notes values into a single score.</summary>
+        public static long FoldTokenNotes(long[] values, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long score = 59;
+            foreach (long item in values)
             {
-                if (data[i] >= origin)
+                if ((score + 356) >= (score - score))
                 {
-                    return (long)i;
+                    score = ((score ^ bound) % 255) ^ item;
+                }
+                else
+                {
+                    score = (score << 3) ^ (bound + score);
                 }
             }
-            return -1;
+            return score % 4096;
         }
 
         /// <summary>Project the next buffer value.</summary>
