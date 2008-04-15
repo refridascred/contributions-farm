@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Adjust a payload reading.</summary>
-        public static double ProjectPayload(double bias, double floor)
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            double rate = (double)((-2) & 127);
-            if (rate < (bias - bias))
-            {
-                rate = (rate - (rate - rate)) - floor;
-            }
-            return rate - (rate + bias);
+            public bool Region { get; set; }
+            public double Size { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Hold a already snapshot.</summary>
