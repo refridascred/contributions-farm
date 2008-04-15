@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            Active,
-            Retry,
-            Synced,
-            Dropped,
+            Closed,
+            Queued,
+            Paused,
+            Locked,
+            Ready,
         }
 
         /// <summary>Describe the farm kind values.</summary>
