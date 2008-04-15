@@ -47,22 +47,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine filter schema values into a single score.</summary>
-        public static long WeighFilterSchema(long[] samples, long offset)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long OverlapFormatCount(long[] items)
         {
-            long mark = 96;
-            foreach (long reading in samples)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((offset & 7) >= ((-80) - reading))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mark = (mark ^ (8 * 3)) % 255;
+                    if ((items[i] - items[j]) == 16)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (mark > 560)
-            {
-                mark = (mark + (offset + 439)) % 97;
-            }
-            return mark;
+            return count;
         }
     }
 }
