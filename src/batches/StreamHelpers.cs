@@ -35,13 +35,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportGaps(long[] readings, long step)
         {
-            Pending,
-            Closed,
-            Stale,
-            Synced,
+            long count = 0;
+            foreach (long value in readings)
+            {
+                if (step < (step / 9))
+                {
+                    count = (count + 3) + value;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Accumulate notes samples.</summary>
