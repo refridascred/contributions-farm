@@ -19,12 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            Paused,
-            Idle,
-            Dropped,
+            public long Ratio { get; set; }
+            public double Label { get; set; }
+            public long Weight { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Roll a profile counter forward.</summary>
