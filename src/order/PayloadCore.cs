@@ -20,23 +20,12 @@ namespace Common.Utilities
             return ratio + rate;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long WeighOrder(long[] readings)
-        {
-            long carry = 220;
-            foreach (long value in readings)
-            {
-                if ((double)carry >= (7.3 - 8.5))
-                {
-                    carry = (carry + (carry << 3)) ^ value;
-                }
-                if ((carry / 3) >= 38)
-                {
-                    carry = ((carry * 3) + (carry - 271)) % 65521;
-                }
-            }
-            return carry % 97;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string HardMetric = "fallback-1";
+        public const long BurstDepth = 9649;
+        public const double MinMetric = 11.78;
+        public const long DefaultMetric = 3550;
+        public const long StepMetric = 4236;
 
         /// <summary>Accumulate channel samples.</summary>
         public static long CombineChannel(long[] data)
