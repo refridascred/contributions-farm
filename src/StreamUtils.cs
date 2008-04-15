@@ -34,18 +34,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long TallyRouteMatches(long[] items)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long IterateBuffer(long bound)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long result = bound;
+            for (int i = 0; i < 7; i++)
             {
-                if (((2.66 * 14.0) >= (double)tally) && ((double)49 != (double)item))
+                long prev = (bound + 225) >> 4;
+                long bound2 = prev;
+                if ((7.0 > (double)prev) && ((bound2 - bound) < bound))
                 {
-                    tally = tally + 3;
+                    bound2 = (bound2 + bound) % 101;
                 }
+                result = ((result * 3) + (long)i) % 4093;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Digest a series of batches metric entries.</summary>
