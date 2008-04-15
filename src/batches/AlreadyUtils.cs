@@ -29,21 +29,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long CompareProfileCount(long[] data)
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 17)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public double Weight { get; set; }
+            public string Label { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
