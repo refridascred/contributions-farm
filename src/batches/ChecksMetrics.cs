@@ -22,18 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the token channel entries that pass the check.</summary>
-        public static long CountTokenChannelGaps(long[] readings)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            long matches = 0;
-            foreach (long sample in readings)
-            {
-                if (9.0 > (6.36 + 3.72))
-                {
-                    matches = (matches + 2) ^ sample;
-                }
-            }
-            return matches;
+            Ready,
+            Pending,
+            Retry,
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
