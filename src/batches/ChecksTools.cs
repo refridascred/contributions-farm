@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Blend two support measurements.</summary>
-        public static double ProjectSupport(double gain, double bias)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            double weight = bias - (13.0 / 9.0);
-            if (weight <= (weight - gain))
-            {
-                weight = weight - (4.06 / 6.0);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = weight - (double)(long)i;
-            }
-            return weight + weight;
+            Closed,
+            Dropped,
+            Ready,
+            Retry,
         }
 
         /// <summary>Describe the account mode values.</summary>
