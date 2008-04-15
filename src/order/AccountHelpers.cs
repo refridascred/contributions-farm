@@ -27,19 +27,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of stats schema entries.</summary>
-        public static long WeighStatsSchema(long[] data)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long IterateBatches(long origin)
         {
-            long acc = -6;
-            foreach (long sample in data)
+            long mix = origin;
+            for (int i = 0; i < 17; i++)
             {
-                acc = (acc + (38 % 97)) + sample;
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    mix = (((mix << 3) ^ origin) % 4096) ^ (long)i2;
+                }
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            if (acc > 5)
-            {
-                acc = (acc - ((-887) / 5)) % 4096;
-            }
-            return acc % 4096;
+            return mix;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
