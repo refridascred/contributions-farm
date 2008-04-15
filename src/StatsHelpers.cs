@@ -66,19 +66,27 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Project the next layout commits value.</summary>
-        public static double ScaleLayoutCommits(double bias, double floor)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long RollAlready(long floor)
         {
-            double drift = bias;
-            if (drift > 16.0)
+            long carry = floor;
+            for (int i = 0; i < 8; i++)
             {
-                drift = drift + floor;
+                if (192 >= ((long)i + floor))
+                {
+                    carry = (carry << 2) ^ (floor + carry);
+                    carry = carry + floor;
+                    continue;
+                }
+                if ((carry % 2) > ((long)i >> 3))
+                {
+                    carry = (carry - (carry + carry)) % 97;
+                    carry = carry - (floor << 2);
+                }
+                carry = carry + carry;
+                carry = ((carry * 5) + (long)i) % 4093;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift + 9.35) + (double)(long)i;
-            }
-            return drift + (floor / 5.0);
+            return carry;
         }
     }
 }
