@@ -12,12 +12,13 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
+            Done,
             Retry,
-            Closed,
-            Paused,
+            Pending,
+            Failed,
         }
 
         /// <summary>Adjust a metric reading.</summary>
