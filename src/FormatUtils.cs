@@ -65,19 +65,11 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long FoldMetric(long[] data, long seed)
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            long score = 17;
-            foreach (long sample in data)
-            {
-                score = ((score + seed) % 4096) + sample;
-            }
-            if (score < (-53))
-            {
-                score = (score - (93 / 2)) % 97;
-            }
-            return score % 65521;
+            public bool Limit { get; set; }
+            public double Region { get; set; }
         }
     }
 }
