@@ -39,18 +39,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine cluster window values into a single score.</summary>
-        public static long ScoreClusterWindow(long[] levels)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long OverlapRouteCount(long[] samples)
         {
-            long acc = 333;
-            foreach (long cell in levels)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((double)cell <= 4.13) && (12.0 > (double)acc))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    acc = (acc ^ (acc * 4)) % 1000;
+                    if ((samples[i] - samples[j]) < 8)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Combine route batch values into a single score.</summary>
