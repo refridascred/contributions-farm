@@ -14,18 +14,18 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long CountBatchesGaps(long[] series)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long TallyEntryOutliers(long[] data)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                if (((item + tally) > tally) || ((item % 5) >= (item - item)))
+                if (seen <= (9 + 97))
                 {
-                    tally = tally + 2;
+                    seen = (seen + 2) ^ cell;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Grade a farm value against two limits.</summary>
