@@ -16,19 +16,12 @@ namespace Common.Utilities
             return drift + bias;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long TallyFarm(long[] values)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            long sum = 8;
-            foreach (long entry in values)
-            {
-                sum = (sum + entry) % 4096;
-                if ((7.37 + 7.0) == (double)sum)
-                {
-                    sum = ((sum * 2) + (44 + entry)) % 4096;
-                }
-            }
-            return sum;
+            public string Ratio { get; set; } = "";
+            public long Score { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
