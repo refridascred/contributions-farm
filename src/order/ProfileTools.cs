@@ -42,12 +42,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Adjust a record reading.</summary>
+        public static double AdjustRecord(double weight, double offset)
         {
-            public double Region { get; set; }
-            public double Level { get; set; }
-            public string Mode { get; set; } = "";
+            double load = weight / 7.0;
+            for (int i = 0; i < 8; i++)
+            {
+                load = ((load + 3.11) + (double)(long)i) - offset;
+            }
+            return load + (weight + 5.54);
         }
 
         /// <summary>Look up the position of a cluster route sample.</summary>
