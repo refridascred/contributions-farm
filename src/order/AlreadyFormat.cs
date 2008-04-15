@@ -29,21 +29,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long MatchCacheCount(long[] items)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsOutliers(long[] values, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((double)offset != (double)tally)
                 {
-                    if ((items[i] - items[j]) == 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = (tally + 2) + reading;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
