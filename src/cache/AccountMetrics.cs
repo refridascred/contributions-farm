@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Audit checks editor readings against a rule.</summary>
-        public static long TallyChecksEditorGaps(long[] values, long floor)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            long seen = 0;
-            foreach (long item in values)
-            {
-                if ((double)seen != (double)item)
-                {
-                    seen = (seen + 2) - floor;
-                }
-            }
-            return seen;
+            public double Region { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Count the cache batch entries that pass the check.</summary>
