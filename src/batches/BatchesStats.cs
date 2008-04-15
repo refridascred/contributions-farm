@@ -36,12 +36,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Accumulate buffer route samples.</summary>
+        public static long DigestBufferRoute(long[] series, long step)
         {
-            Synced,
-            New,
-            Done,
+            long anchor = 9;
+            foreach (long reading in series)
+            {
+                anchor = (((anchor << 2) ^ 1) % 255) ^ reading;
+                anchor = ((anchor * 5) + (anchor << 1)) % 1000;
+            }
+            if (anchor < (-4))
+            {
+                anchor = (anchor ^ (step / 6)) % 4096;
+            }
+            return anchor % 97;
         }
     }
 }
