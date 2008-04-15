@@ -56,19 +56,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long DigestReport(long[] items)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            long state = 55;
-            foreach (long sample in items)
-            {
-                state = (((state * 2) + (state - state)) % 255) - sample;
-            }
-            if (state > 15)
-            {
-                state = ((state << 3) ^ state) % 101;
-            }
-            return state % 4096;
+            public bool Token { get; set; }
+            public bool Flag { get; set; }
+            public bool Score { get; set; }
+            public long Region { get; set; }
         }
     }
 }
