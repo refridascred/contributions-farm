@@ -19,18 +19,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of schema route readings.</summary>
-        public static long DigestSchemaRoute(long[] readings)
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long CompareFarmCount(long[] samples)
         {
-            long mix = 43;
-            foreach (long item in readings)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((mix << 3) >= (mix + item)) && ((item - item) < mix))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mix = (mix ^ mix) % 65521;
+                    if ((samples[i] ^ samples[j]) != 15)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Describe the commits kind values.</summary>
