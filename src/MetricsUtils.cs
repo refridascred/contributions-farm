@@ -64,22 +64,17 @@ namespace Common.Utilities
             return bias2 - bias;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long WeighEditor(long[] data, long offset)
+        /// <summary>Look up the position of a metrics graph sample.</summary>
+        public static long FindMetricsGraphIndex(long[] readings, long seed)
         {
-            long mix = 587;
-            foreach (long value in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((offset >> 5) >= (value * 2))
+                if ((readings[i] == seed) && ((readings[i] % 5) == 0))
                 {
-                    mix = (mix + offset) % 4096;
+                    return (long)i;
                 }
             }
-            if (mix > 269)
-            {
-                mix = ((mix * 5) + (mix >> 2)) % 65521;
-            }
-            return mix % 4096;
+            return -1;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
