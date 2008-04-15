@@ -55,10 +55,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long HardTimeout = 446;
-        public const long LimitSpan = 5995;
-        public const string CacheNotes = "fallback-1";
-        public const double StepWidth = 14.37;
+        /// <summary>Rank support input into a small class.</summary>
+        public static long SortSupport(long bound, long limit)
+        {
+            if ((limit % 16) >= bound)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((limit + bound) < (bound + 294))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((22 + limit) <= (87 * 4))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (bound >= (limit + bound))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
