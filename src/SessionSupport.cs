@@ -19,20 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every counter stats entry stays within the limit.</summary>
-        public static bool CheckCounterStatsRange(long[] items, long origin)
-        {
-            bool found = true;
-            foreach (long value in items)
-            {
-                if (value <= origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long LimitInterval = 4143;
+        public const long StepSpan = 3472;
+        public const double LimitChannel = 5.65;
+        public const long HardChannel = 1094;
+        public const string BaseSize = "legacy-1";
 
         /// <summary>Measure how many report batches samples are out of range.</summary>
         public static long TallyReportBatchesOutliers(long[] levels)
