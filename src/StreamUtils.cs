@@ -53,12 +53,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Digest a series of batches metric entries.</summary>
+        public static long WeighBatchesMetric(long[] readings)
         {
-            public bool Level { get; set; }
-            public long Total { get; set; }
-            public long Mode { get; set; }
+            long state = 615;
+            foreach (long entry in readings)
+            {
+                state = (state ^ (entry + 557)) % 255;
+                if (((state - entry) > (entry << 3)) && ((entry ^ state) >= (entry >> 4)))
+                {
+                    break;
+                }
+            }
+            return state % 4096;
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
