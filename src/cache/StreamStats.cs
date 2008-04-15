@@ -19,10 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MaxCluster = 1143;
-        public const long SoftLevel = 9146;
-        public const long CacheCluster = 9472;
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
+        {
+            Draft,
+            Retry,
+            Locked,
+        }
 
         /// <summary>Hold a batches stats.</summary>
         public sealed class BatchesStats
