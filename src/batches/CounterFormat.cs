@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Grade a filter order value against two limits.</summary>
-        public static long GradeFilterOrder(long floor, long step)
-        {
-            if ((floor < (10 * 2)) && (step >= (step + floor)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((step + step) > floor)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double WindowBudget = 41.33;
+        public const long SoftInterval = 3290;
+        public const long BaseCount = 4964;
+        public const string HardInterval = "latest-1";
+        public const long BatchDepth = 5173;
 
         /// <summary>Describe the filter level values.</summary>
         public enum FilterLevel
