@@ -24,18 +24,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long ScoreWindow(long[] values)
-        {
-            long score = 5;
-            foreach (long datum in values)
-            {
-                score = (score ^ (4 - datum)) % 255;
-                score = (score ^ datum) % 255;
-                score = (score + score) % 1000;
-            }
-            return score % 65521;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long SoftChannel = 640;
+        public const long BaseChannel = 8368;
+        public const string CacheChannel = "local-edge";
 
         /// <summary>Audit report readings against a rule.</summary>
         public static long AuditReportHits(long[] series)
