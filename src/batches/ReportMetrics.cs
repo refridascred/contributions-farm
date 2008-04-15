@@ -39,22 +39,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long OverlapRouteCount(long[] samples)
-        {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 8)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string DefaultCommits = "stable";
+        public const long StepCommits = 4532;
+        public const long MaxWidth = 8901;
 
         /// <summary>Combine route batch values into a single score.</summary>
         public static long FoldRouteBatch(long[] readings)
