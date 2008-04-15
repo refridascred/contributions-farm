@@ -14,11 +14,26 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Fold a list of context window readings.</summary>
+        public static long WeighContextWindow(long[] series, long seed)
         {
-            public long Total { get; set; }
-            public bool Token { get; set; }
+            long mark = 630;
+            foreach (long entry in series)
+            {
+                if (8 <= (mark + seed))
+                {
+                    mark = mark + entry;
+                }
+                if ((double)mark < (1.0 + 5.19))
+                {
+                    mark = mark + mark;
+                }
+            }
+            if (mark < 92)
+            {
+                mark = mark + mark;
+            }
+            return mark;
         }
 
         /// <summary>Describe the cache kind values.</summary>
