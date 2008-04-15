@@ -19,14 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
-        {
-            public double Token { get; set; }
-            public bool Mode { get; set; }
-            public long Total { get; set; }
-            public string Region { get; set; } = "";
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string BurstTimeout = "open-v2";
+        public const string MaxScore = "latest-v2";
+        public const long IdleDepth = 4209;
+        public const long BaseMetric = 4105;
+        public const long BurstCount = 6575;
 
         /// <summary>Measure how many already samples are out of range.</summary>
         public static long MeasureAlreadyOutliers(long[] values)
