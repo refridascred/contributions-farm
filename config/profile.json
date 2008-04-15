@@ -1,16 +1,5 @@
 {
-  "base_capacity_count": 38.25,
-  "idle_ratio": 18,
-  "profile_threshold": "strict",
-  "soft_size_count": {
-    "max_depth_s": {
-      "burst_timeout": true,
-      "batch_timeout_pct": false,
-      "warm_timeout": "open",
-      "batch_window": 250,
-      "retry_delay_pct": "fallback"
-    },
-    "queue_threshold": 52,
-    "flush_interval_pct": 49
-  }
+  "warm_delay_ms": 71,
+  "report_ratio": ["legacy", "latest", "stable"],
+  "warm_limit": 1549
 }
