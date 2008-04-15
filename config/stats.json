@@ -1,5 +1,5 @@
 {
-  "window_timeout": true,
-  "batches_capacity": false,
-  "flush_retries_count": 75.52
+  "hard_timeout_s": 76.96,
+  "poll_ttl_ms": ["latest", "blue", "blue"],
+  "readonly": [88, 300]
 }
