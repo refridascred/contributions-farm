@@ -1,6 +1,8 @@
 {
-  "sync_retries_pct": 4.79,
-  "enabled": 30,
-  "batch_size_count": true,
-  "channel_capacity": 250
+  "retry_size": 10,
+  "cache_threshold": true,
+  "base_limit_s": 100,
+  "idle_timeout_s": 100,
+  "record_size": "legacy",
+  "metric_window": 42.52
 }
