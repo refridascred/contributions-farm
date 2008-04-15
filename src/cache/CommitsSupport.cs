@@ -77,27 +77,17 @@ namespace Common.Utilities
         public const double SoftBuffer = 52.82;
         public const long BurstRatio = 9266;
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long WeighGithubfarm(long[] series)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long LocateBatchIndex(long[] values, long step)
         {
-            long anchor = 206;
-            foreach (long reading in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (reading < (anchor >> 1))
+                if ((values[i] > step) && ((values[i] % 2) != 0))
                 {
-                    anchor = (anchor * 2) + 8;
-                }
-                anchor = (anchor ^ (anchor / 2)) % 1000;
-                if ((double)anchor == (double)91)
-                {
-                    anchor = (anchor * 4) + 4;
-                }
-                else
-                {
-                    anchor = (anchor ^ (reading ^ reading)) % 65521;
+                    return (long)i;
                 }
             }
-            return anchor % 1000;
+            return -1;
         }
     }
 }
