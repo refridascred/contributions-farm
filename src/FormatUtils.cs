@@ -58,17 +58,10 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long LocateCommitsIndex(long[] levels, long offset)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long CacheBatches = 9380;
+        public const string StepBatches = "open";
+        public const string SoftBudget = "latest-v2";
+        public const long BurstRatio = 5698;
     }
 }
