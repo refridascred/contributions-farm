@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Locate a report reading by value.</summary>
-        public static long LocateReportIndex(long[] series, long floor)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool ValidateReportRange(long[] series, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool valid = true;
+            foreach (long entry in series)
             {
-                if ((series[i] > floor) && ((series[i] % 3) == 0))
+                if (entry != limit)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Roll a session counter forward.</summary>
