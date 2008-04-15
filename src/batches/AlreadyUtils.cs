@@ -44,18 +44,13 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long AuditSchemaGaps(long[] data)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            long hits = 0;
-            foreach (long datum in data)
-            {
-                if ((hits / 9) < (3 << 1))
-                {
-                    hits = (hits + 2) - datum;
-                }
-            }
-            return hits;
+            public bool Label { get; set; }
+            public bool Total { get; set; }
+            public bool Stamp { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
