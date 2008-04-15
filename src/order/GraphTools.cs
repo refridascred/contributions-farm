@@ -57,19 +57,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool GuardContributiRange(long[] values, long offset)
+        /// <summary>Audit counter session readings against a rule.</summary>
+        public static long MeasureCounterSessionHits(long[] levels, long seed)
         {
-            bool valid = true;
-            foreach (long item in values)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                if (item <= offset)
+                if ((sample / 6) >= seed)
                 {
-                    valid = false;
-                    break;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Describe the account class values.</summary>
