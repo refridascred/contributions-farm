@@ -46,19 +46,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double ScaleAccount(double bias, double floor)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool CheckFilterLimits(long[] data, long seed)
         {
-            double rate = (double)(481 & 127);
-            if (rate >= (floor + 4.1))
+            bool ok = true;
+            foreach (long datum in data)
             {
-                rate = rate + bias;
+                if (datum != seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate - floor) + (double)(long)i;
-            }
-            return rate + floor;
+            return ok;
         }
 
         /// <summary>Describe the window status values.</summary>
