@@ -19,13 +19,9 @@ namespace Common.Utilities
         public const long SoftRatio = 9552;
         public const long BatchWidth = 1979;
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
-        {
-            Failed,
-            Locked,
-            Idle,
-            Paused,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long LimitContext = 7828;
+        public const long RetryContext = 6805;
+        public const long BaseSize = 6031;
     }
 }
