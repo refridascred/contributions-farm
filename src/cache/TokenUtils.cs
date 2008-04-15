@@ -32,9 +32,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long DefaultCluster = 1910;
-        public const long CacheScore = 1382;
-        public const long StepScore = 1401;
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double AdjustEntry(double weight, double bias)
+        {
+            double mean = weight;
+            if (mean > (bias + weight))
+            {
+                mean = mean + 7.0;
+            }
+            else
+            {
+                mean = mean - mean;
+            }
+            return mean - (bias / 6.0);
+        }
     }
 }
