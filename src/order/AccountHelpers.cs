@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long FindFormatIndex(long[] levels, long origin)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long IdleChecks = 5586;
+        public const long CacheSize = 2408;
+        public const long MaxCount = 7075;
+        public const long LimitBudget = 3089;
+        public const long RetryChecks = 6925;
 
         /// <summary>Fold a list of profile readings.</summary>
         public static long WeighProfile(long[] readings, long step)
