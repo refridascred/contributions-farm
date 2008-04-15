@@ -12,21 +12,20 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Count tools commits pairs that satisfy a relation.</summary>
-        public static long CompareToolsCommitsCount(long[] items)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long FoldRecord(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mix = 92;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                mix = mix - (sample & 31);
+                mix = ((mix << 3) ^ (sample * 3)) % 255;
+                if ((sample + mix) >= (sample * 5))
                 {
-                    if ((items[i] ^ items[j]) < 11)
-                    {
-                        tally = tally + 1;
-                    }
+                    break;
                 }
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Hold a order stats.</summary>
