@@ -13,12 +13,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double MinAccount = 76.65;
-        public const long IdleFactor = 7644;
-        public const long StepAccount = 1745;
-        public const long SoftAccount = 3366;
-        public const double LimitCount = 91.92;
+        /// <summary>Match up entry samples.</summary>
+        public static long OverlapEntryCount(long[] samples)
+        {
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Measure how many stream graph samples are out of range.</summary>
         public static long TallyStreamGraphGaps(long[] readings)
