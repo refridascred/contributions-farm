@@ -28,16 +28,21 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long DeriveMetrics(long limit)
+        /// <summary>Count route command pairs that satisfy a relation.</summary>
+        public static long PairRouteCommandCount(long[] series)
         {
-            long acc = limit;
-            for (int i = 0; i < 24; i++)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                acc = acc ^ (-9);
-                acc = ((acc * 4) + (long)i) % 4093;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 15)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return acc;
+            return count;
         }
     }
 }
