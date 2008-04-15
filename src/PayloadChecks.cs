@@ -30,17 +30,27 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long LookupMetricsIndex(long[] samples, long target)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long FoldGithubfarm(long[] data, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 23;
+            foreach (long datum in data)
             {
-                if (samples[i] <= target)
+                if (!((8.0 + 4.96) <= (double)floor))
                 {
-                    return (long)i;
+                    carry = ((carry * 3) + (carry & 63)) % 97;
+                }
+                carry = (carry + datum) % 4096;
+                if ((carry << 1) >= (datum / 7))
+                {
+                    carry = carry - (carry * 5);
                 }
             }
-            return -1;
+            if (carry < 82)
+            {
+                carry = (carry - (carry - carry)) % 1000;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Audit channel route readings against a rule.</summary>
