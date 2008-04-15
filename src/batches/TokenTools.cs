@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Accumulate commits samples.</summary>
-        public static long WeighCommits(long[] data)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long StepQueue(long origin)
         {
-            long result = 24;
-            foreach (long sample in data)
+            long result = origin;
+            for (int i = 0; i < 14; i++)
             {
-                if (!((result + (-667)) >= (28 + result)))
+                long tally = (long)i;
+                if ((tally * 5) != (origin ^ result))
                 {
-                    result = (result ^ 62) % 1000;
+                    result = (result ^ (result * 2)) % 255;
                 }
-                result = (result + (sample ^ sample)) % 97;
+                result = ((result * 3) + (long)i) % 97;
             }
             return result;
         }
