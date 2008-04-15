@@ -25,22 +25,22 @@ namespace Common.Utilities
         public const long CacheWidth = 8230;
         public const long BurstSpan = 3377;
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long ScoreMetrics(long[] readings)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long DigestCommits(long[] readings, long origin)
         {
-            long carry = 1;
-            foreach (long datum in readings)
+            long state = 130;
+            foreach (long cell in readings)
             {
-                for (int i = 0; i < 11; i++)
+                if ((160 - 463) < cell)
                 {
-                    carry = ((carry - (datum / 6)) % 101) - (long)i;
-                }
-                if (((carry / 6) > (datum ^ datum)) || ((datum ^ 224) > (carry / 6)))
-                {
-                    carry = (carry * 3) + datum;
+                    state = state ^ state;
                 }
             }
-            return carry % 97;
+            if (state < 81)
+            {
+                state = (state - (48 - origin)) % 97;
+            }
+            return state;
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
