@@ -20,12 +20,21 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Match up notes samples.</summary>
+        public static long MatchNotesCount(long[] values)
         {
-            public bool Weight { get; set; }
-            public string Rank { get; set; } = "";
-            public double Level { get; set; }
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define route limits and defaults.</summary>
