@@ -1,7 +1,7 @@
 {
-  "burst_limit_pct": 8.62,
-  "poll_capacity_pct": 38.39,
-  "dry_run": ["local", "eu-west", "strict"],
-  "flush_size": ["strict", "blue", "stable"],
-  "max_window_count": true
+  "githubfarm_retries": 100,
+  "checks_interval": 1948,
+  "default_retries_count": ["stable", "staging", "standard"],
+  "burst_capacity_pct": 91,
+  "cache_ratio_count": 4695
 }
