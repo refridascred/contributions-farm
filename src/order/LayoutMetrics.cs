@@ -36,22 +36,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long DigestFilter(long[] samples, long step)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long PairProfileCount(long[] series)
         {
-            long total = 9;
-            foreach (long reading in samples)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((reading & 255) != (total * 5))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    total = total - (step + 3);
+                    if ((series[i] ^ series[j]) != 0)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (total > 719)
-            {
-                total = total ^ (step / 4);
-            }
-            return total;
+            return hits;
         }
     }
 }
