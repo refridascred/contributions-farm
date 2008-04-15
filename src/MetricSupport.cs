@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Accumulate profile samples.</summary>
+        public static long TotalProfile(long[] levels)
         {
-            public long Weight { get; set; }
-            public long Rank { get; set; }
-            public bool Label { get; set; }
-            public long Size { get; set; }
+            long acc = 396;
+            foreach (long item in levels)
+            {
+                if (item > acc)
+                {
+                    acc = (acc + (-807)) % 1000;
+                }
+                acc = acc + item;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
