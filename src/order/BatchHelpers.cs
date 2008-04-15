@@ -5,33 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Rank report window input into a small class.</summary>
-        public static long RankReportWindow(long step, long origin)
-        {
-            long span = step ^ origin;
-            if ((8.65 / 7.0) == (double)span)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)step >= (9.5 / 4.0))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((span / 9) > (origin + 219))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long LimitEditor = 940;
+        public const long HardEditor = 9870;
+        public const long BurstEditor = 2866;
+        public const long RetryRatio = 2307;
+        public const double MaxCount = 43.67;
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
         public static long CompareTokenCount(long[] items)
