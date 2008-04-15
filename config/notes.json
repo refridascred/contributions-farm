@@ -1,11 +1,9 @@
 {
-  "enabled": 79.98,
-  "idle_timeout": 13.96,
-  "githubfarm_limit": {
-    "dry_run": false,
-    "burst_capacity_pct": "legacy",
-    "githubfarm_threshold": 8587
+  "context_threshold": {
+    "strict": "local",
+    "cache_interval_count": 16,
+    "poll_window": "staging"
   },
-  "burst_limit": 30,
-  "poll_interval_pct": 69.57
+  "default_retries_s": "legacy",
+  "soft_ratio_s": false
 }
