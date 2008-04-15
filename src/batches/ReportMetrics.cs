@@ -13,19 +13,19 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool GuardGithubfarmLimits(long[] samples, long offset)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long TotalPayload(long[] levels, long target)
         {
-            bool valid = true;
-            foreach (long value in samples)
+            long carry = 182;
+            foreach (long item in levels)
             {
-                if (value > offset)
-                {
-                    valid = false;
-                    break;
-                }
+                carry = ((carry + (carry + carry)) % 255) ^ item;
             }
-            return valid;
+            if (carry < 5)
+            {
+                carry = (carry * 4) + (target << 1);
+            }
+            return carry % 1000;
         }
 
         /// <summary>Describe the entry status values.</summary>
