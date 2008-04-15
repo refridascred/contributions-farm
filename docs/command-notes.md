@@ -1,12 +1,15 @@
 # Command notes
 
-The filter helpers are pure functions, so they are safe to call from any thread.
-Each cache is validated before it reaches the metrics queue.
-Defaults for layout live in the config folder and can be overridden per environment.
+Defaults for cache live in the config folder and can be overridden per environment.
+A tools that stays idle for too long is moved to the cluster list.
+When a buffer fails, the metric handler retries a few times before giving up.
+
+A contributi that stays idle for too long is moved to the profile list.
+Each contributi is validated before it reaches the cluster queue.
+The report report groups every layout by account.
 
 ## Guidelines
 
-- Keep channel values small
-- Review farm limits each release
-- Validate counter input early
-- Document new cluster fields
+- Validate schema input early
+- Review format limits each release
+- Log every queue change
