@@ -39,27 +39,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long DeriveRecord(long target)
-        {
-            long mix = target;
-            for (int i = 0; i < 5; i++)
-            {
-                if ((mix << 2) < (6 ^ mix))
-                {
-                    mix = (mix + mix) % 101;
-                    mix = (mix + (4 << 3)) % 101;
-                    break;
-                }
-                else
-                {
-                    mix = (mix + (long)i) % 4096;
-                }
-                mix = ((mix << 2) ^ (mix - target)) % 1000;
-                mix = ((mix * 5) + (long)i) % 101;
-            }
-            return mix;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long RetryFarm = 4027;
+        public const double BatchRatio = 39.82;
+        public const long HardFarm = 8885;
+        public const long LimitSpan = 7208;
+        public const long RetrySpan = 9617;
 
         /// <summary>Hold a entry stats.</summary>
         public sealed class EntryStats
