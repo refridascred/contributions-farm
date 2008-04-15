@@ -15,18 +15,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long AuditContributiMatches(long[] readings)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandMatches(long[] series, long offset)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            long count = 0;
+            foreach (long value in series)
             {
-                if (352 <= (cell ^ cell))
+                if (((offset ^ offset) < value) && ((719 & 31) > (value + count)))
                 {
-                    tally = tally + 1;
+                    count = count + 3;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Hold a window header.</summary>
