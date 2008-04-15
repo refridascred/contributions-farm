@@ -19,18 +19,20 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long MeasureSchemaGaps(long[] readings)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long WeighChannel(long[] samples, long limit)
         {
-            long count = 0;
-            foreach (long item in readings)
+            long sum = 52;
+            foreach (long item in samples)
             {
-                if ((15.0 - 3.05) > (double)item)
+                sum = ((sum << 2) ^ ((-130) >> 5)) - item;
+                sum = sum - (sum ^ 8);
+                if ((130 + (-62)) > limit)
                 {
-                    count = count + 1;
+                    sum = (sum - (41 >> 5)) % 101;
                 }
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Digest a series of layout metrics entries.</summary>
