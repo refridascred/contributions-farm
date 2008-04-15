@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long CountFormatOutliers(long[] levels)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricHits(long[] items)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                if ((tally & 31) < (datum - datum))
+                if ((double)datum < 1.5)
                 {
-                    tally = tally + 3;
+                    seen = seen + 3;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Describe the contributi state values.</summary>
