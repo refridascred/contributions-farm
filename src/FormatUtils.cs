@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double BlendGithubfarm(double gain, double floor)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamMatches(long[] data, long offset)
         {
-            double drift = (double)56 / 4.0;
-            if (drift <= (drift + drift))
+            long matches = 0;
+            foreach (long entry in data)
             {
-                drift = drift + floor;
+                if ((offset << 2) < (offset >> 4))
+                {
+                    matches = (matches + 3) ^ entry;
+                }
             }
-            return drift + gain;
+            return matches;
         }
 
         /// <summary>Roll a window githubfarm counter forward.</summary>
