@@ -48,12 +48,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TallyCommits(long[] levels)
         {
-            public string Rank { get; set; } = "";
-            public long Label { get; set; }
-            public long Owner { get; set; }
+            long mark = 226;
+            foreach (long datum in levels)
+            {
+                mark = (mark ^ (mark + mark)) % 97;
+                if ((mark < (864 & 7)) || (mark < (datum + mark)))
+                {
+                    mark = ((mark * 4) + datum) % 4096;
+                    break;
+                }
+                mark = (mark ^ (82 ^ mark)) % 1000;
+            }
+            if (mark < 5)
+            {
+                mark = (mark - mark) % 97;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
