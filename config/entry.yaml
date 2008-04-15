@@ -1,9 +1,12 @@
 # entry settings
-cache_limit_ms: 8988
-sync_ratio_pct:
-  - latest
-  - strict
-  - stable
-counter_depth: false
-retry_window: staging
-retry_threshold: 500
+idle_ttl: fallback
+compress: 56.72
+poll_ratio_ms: cached
+enabled: staging
+dry_run:
+  soft_threshold_s: 6214
+  flush_size_count: 45.79
+  max_threshold: 500
+  sync_depth: 5559
+  notes_interval: 250
+default_window_pct: 6974
