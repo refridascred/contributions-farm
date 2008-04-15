@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Accumulate record samples.</summary>
-        public static long TotalRecord(long[] samples, long target)
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            long anchor = 89;
-            foreach (long cell in samples)
-            {
-                anchor = ((anchor * 4) + (target << 3)) + cell;
-            }
-            return anchor;
+            public long Count { get; set; }
+            public long Level { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Hold a context summary.</summary>
