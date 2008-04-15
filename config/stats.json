@@ -1,11 +1,5 @@
 {
-  "hard_timeout_count": {
-    "editor_threshold": 1033,
-    "readonly": ["fallback", "primary", "standard"],
-    "persist": 74
-  },
-  "buffer_size": "strict",
-  "format_capacity": false,
-  "burst_limit_pct": "open",
-  "readonly": [197, 345]
+  "retry_size": false,
+  "record_depth": true,
+  "soft_depth_ms": 37.42
 }
