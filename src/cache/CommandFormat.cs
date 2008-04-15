@@ -30,21 +30,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up metric samples.</summary>
-        public static long CompareMetricCount(long[] series)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public string Limit { get; set; } = "";
+            public double Weight { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Measure how many counter cluster samples are out of range.</summary>
