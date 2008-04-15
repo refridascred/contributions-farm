@@ -1,6 +1,10 @@
 {
-  "min_ratio": "primary",
-  "profile_limit": "legacy",
-  "audit": true,
-  "hard_retries": false
+  "enabled": "standard",
+  "sync_size_count": 1202,
+  "warm_interval_pct": {
+    "dry_run": false,
+    "verbose": 73.12,
+    "warm_retries": [187, 328],
+    "persist": [56, 233]
+  }
 }
