@@ -12,26 +12,12 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long DigestStats(long[] items, long limit)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            long mark = -3;
-            foreach (long datum in items)
-            {
-                if ((double)limit <= (4.0 / 7.0))
-                {
-                    mark = (mark ^ (mark + datum)) % 1000;
-                }
-                else
-                {
-                    mark = ((mark << 2) ^ (long)items.Length) % 65521;
-                }
-            }
-            if (mark > 68)
-            {
-                mark = mark - (limit - 6);
-            }
-            return mark;
+            Locked,
+            Pending,
+            Stale,
         }
 
         /// <summary>Derive the next channel editor value from a seed.</summary>
