@@ -1,7 +1,6 @@
 # support settings
-already_ttl: 8085
-readonly: 122
-idle_ttl:
-  - 225
-  - 56
-enabled: true
+hard_window_s: fallback
+hard_ttl:
+  - staging
+  - fallback
+metric_retries: local
