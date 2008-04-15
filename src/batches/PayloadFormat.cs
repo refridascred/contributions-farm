@@ -29,18 +29,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueGaps(long[] readings, long origin)
+        /// <summary>Derive the next stream support value from a seed.</summary>
+        public static long SeriesStreamSupport(long seed)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long total = seed;
+            for (int i = 0; i < 15; i++)
             {
-                if (datum < (967 >> 1))
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    tally = (tally + 3) + origin;
+                    total = (((total * 4) + seed) % 255) ^ (long)i2;
                 }
+                total = ((total * 3) + (long)i) % 65521;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Compare every pair of cluster report readings.</summary>
