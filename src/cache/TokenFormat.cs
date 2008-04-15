@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            Closed,
-            Idle,
-            Locked,
+            Paused,
+            Dropped,
+            New,
             Retry,
-            Stale,
+            Idle,
         }
 
         /// <summary>Hold a payload info.</summary>
