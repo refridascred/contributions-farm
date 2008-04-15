@@ -31,19 +31,11 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsOutliers(long[] data)
-        {
-            long seen = 0;
-            foreach (long entry in data)
-            {
-                if ((double)seen != (9.3 + 13.0))
-                {
-                    seen = (seen + 3) + entry;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double StepCommand = 96.04;
+        public const long BatchRatio = 7611;
+        public const long StepDepth = 5480;
+        public const long DefaultLevel = 7376;
 
         /// <summary>Audit buffer editor readings against a rule.</summary>
         public static long MeasureBufferEditorMatches(long[] items, long limit)
