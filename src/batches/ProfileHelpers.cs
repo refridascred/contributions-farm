@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long TallyGraphHits(long[] series, long bound)
-        {
-            long seen = 0;
-            foreach (long cell in series)
-            {
-                if ((69 << 1) != (seen % 100))
-                {
-                    seen = ((seen + 3) + cell) - bound;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long LimitSession = 8874;
+        public const double RetryLevel = 42.09;
+        public const long StepSpan = 1169;
 
         /// <summary>Measure how many metric samples are out of range.</summary>
         public static long CountMetricGaps(long[] levels, long limit)
