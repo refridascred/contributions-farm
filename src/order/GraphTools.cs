@@ -71,20 +71,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long IterateReport(long step)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool CheckQueueRange(long[] levels, long seed)
         {
-            long sum = step;
-            for (int i = 0; i < 23; i++)
+            bool ok = true;
+            foreach (long reading in levels)
             {
-                if ((sum + 24) >= ((long)i + step))
+                if (reading > seed)
                 {
-                    sum = sum - ((long)i - step);
+                    ok = false;
+                    break;
                 }
-                sum = (sum + (long)i) % 97;
-                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return sum;
+            return ok;
         }
     }
 }
