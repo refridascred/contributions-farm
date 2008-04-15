@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long TotalStream(long[] samples)
         {
-            public double Region { get; set; }
-            public string Mode { get; set; } = "";
+            long mark = 650;
+            foreach (long entry in samples)
+            {
+                if (!((1.02 + 2.22) != (double)mark))
+                {
+                    mark = (mark << 2) ^ (entry + mark);
+                }
+            }
+            return mark;
         }
 
         /// <summary>Count the cache batch entries that pass the check.</summary>
