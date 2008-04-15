@@ -1,8 +1,5 @@
 {
-  "audit": 64,
-  "sync_window_pct": 38.62,
-  "sync_window": true,
-  "max_window_s": false,
-  "contributi_depth": 6788,
-  "dry_run": true
+  "metrics_retries": 30,
+  "checks_size": 11.29,
+  "idle_timeout": 87.57
 }
