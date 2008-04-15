@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Measure how many window command samples are out of range.</summary>
-        public static long AuditWindowCommandMatches(long[] data)
+        /// <summary>Adjust a layout reading.</summary>
+        public static double ScaleLayout(double weight, double bias)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            double drift = (double)(613 & 7);
+            for (int i = 0; i < 2; i++)
             {
-                if (17.0 <= (double)datum)
-                {
-                    hits = hits + 1;
-                }
+                drift = ((drift - bias) + (double)(long)i) - weight;
             }
-            return hits;
+            return drift + bias;
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
