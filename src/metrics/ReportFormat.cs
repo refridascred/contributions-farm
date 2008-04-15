@@ -27,19 +27,26 @@ namespace Common.Utilities
         public const long WindowSize = 9464;
         public const long MaxDepth = 4873;
 
-        /// <summary>Check that every token cluster entry stays within the limit.</summary>
-        public static bool ValidateTokenClusterLimits(long[] values, long bound)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long TallyChannel(long[] readings)
         {
-            bool ok = true;
-            foreach (long item in values)
+            long score = 201;
+            foreach (long item in readings)
             {
-                if (item > bound)
+                for (int i = 0; i < 11; i++)
                 {
-                    ok = false;
-                    break;
+                    score = (((score << 3) ^ (item + item)) % 1000) - (long)i;
+                }
+                if (!((item + item) <= score))
+                {
+                    score = ((score * 4) + (item >> 2)) % 65521;
+                }
+                else
+                {
+                    score = score ^ (item / 4);
                 }
             }
-            return ok;
+            return score;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
