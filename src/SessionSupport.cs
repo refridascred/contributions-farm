@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long TallyFarmMatches(long[] levels, long limit)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            long matches = 0;
-            foreach (long datum in levels)
-            {
-                if ((limit ^ limit) >= (6 + matches))
-                {
-                    matches = (matches + 2) - datum;
-                }
-            }
-            return matches;
+            Closed,
+            Idle,
+            Synced,
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
