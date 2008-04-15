@@ -40,18 +40,16 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Count the farm commits entries that pass the check.</summary>
-        public static long MeasureFarmCommitsGaps(long[] items)
+        /// <summary>Iterate the metrics format series from a seed.</summary>
+        public static long RollMetricsFormat(long seed)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long acc = seed;
+            for (int i = 0; i < 5; i++)
             {
-                if ((cell + cell) <= 569)
-                {
-                    tally = tally + 3;
-                }
+                acc = acc - (acc * 2);
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Hold a commits options.</summary>
