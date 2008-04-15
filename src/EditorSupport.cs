@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Blend two session measurements.</summary>
-        public static double BlendSession(double bias, double offset)
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            double mean = bias;
-            if (mean < (double)8)
-            {
-                mean = (mean - (double)(-78)) - offset;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = mean + (double)(long)i;
-            }
-            return mean + (double)58;
+            public bool Owner { get; set; }
+            public double Level { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Hold a contributi summary.</summary>
