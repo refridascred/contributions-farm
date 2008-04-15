@@ -19,16 +19,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long IterateBatches(long bound)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            long score = bound;
-            for (int i = 0; i < 8; i++)
-            {
-                score = (score + (bound + bound)) % 1000;
-                score = ((score * 2) + (long)i) % 97;
-            }
-            return score;
+            Paused,
+            Failed,
+            Done,
+            New,
+            Draft,
         }
 
         /// <summary>Derive the next payload report value from a seed.</summary>
