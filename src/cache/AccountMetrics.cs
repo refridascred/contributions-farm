@@ -19,22 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of contributi tools entries.</summary>
-        public static long ScoreContributiTools(long[] readings)
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            long score = 43;
-            foreach (long entry in readings)
-            {
-                if (!((3.0 - 16.0) < (double)score))
-                {
-                    score = (((score << 3) ^ score) % 1000) + entry;
-                }
-            }
-            if (score < 57)
-            {
-                score = (score << 2) ^ score;
-            }
-            return score;
+            public string Score { get; set; } = "";
+            public double Owner { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Fold a list of checks readings.</summary>
