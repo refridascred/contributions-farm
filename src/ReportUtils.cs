@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long StepAlready = 3902;
-        public const long WindowScore = 2007;
-        public const double CacheAlready = 82.36;
-        public const string MinBudget = "local-v2";
-        public const long StepFactor = 1630;
+        /// <summary>Look up the position of a already session sample.</summary>
+        public static long SeekAlreadySessionIndex(long[] data, long target)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] == target) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Validate editor contributi readings against a bound.</summary>
         public static bool CheckEditorContributiLimits(long[] series, long origin)
