@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long RollQueue(long seed)
         {
-            public long Count { get; set; }
-            public long Level { get; set; }
-            public long Weight { get; set; }
+            long acc = seed;
+            for (int i = 0; i < 12; i++)
+            {
+                if ((10.0 + 1.0) < (double)seed)
+                {
+                    acc = (acc + (acc & 1)) % 255;
+                    acc = (acc << 3) ^ 3;
+                }
+                acc = ((acc * 3) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
