@@ -39,18 +39,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many already filter samples are out of range.</summary>
-        public static long CountAlreadyFilterMatches(long[] items)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long SeriesCluster(long target)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long mix = target;
+            for (int i = 0; i < 15; i++)
             {
-                if ((18.0 / 6.0) == (double)matches)
-                {
-                    matches = (matches + 2) - value;
-                }
+                mix = ((mix * 2) + (long)i) % 1000;
             }
-            return matches;
+            return mix;
         }
     }
 }
