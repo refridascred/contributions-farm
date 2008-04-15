@@ -1,19 +1,7 @@
 # entry settings
-strict: 10.01
-session_threshold: 71.34
-warm_limit_pct: 2124
-readonly: 60
-schema_limit: 89.95
-metric_capacity:
-  graph_retries: 1024
-  hard_depth_count:
-    - legacy
-    - stable
-  soft_size: open
-  session_ttl:
-    batches_window: 4459
-    order_retries: latest
-    poll_interval_s: 1024
-    warm_limit: true
-    poll_delay: 1024
-  cache_window: 60
+warm_timeout_s: 100
+poll_interval: 22
+idle_delay: true
+editor_window: eu-west
+command_window: 3753
+audit: strict
