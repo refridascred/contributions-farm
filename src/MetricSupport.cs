@@ -26,11 +26,18 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MaxMetric = 7964;
-        public const double BatchMetric = 63.83;
-        public const long IdleMetric = 4056;
-        public const long StepMetric = 5409;
-        public const long MinLevel = 853;
+        /// <summary>Measure how many entry layout samples are out of range.</summary>
+        public static long AuditEntryLayoutHits(long[] levels)
+        {
+            long hits = 0;
+            foreach (long entry in levels)
+            {
+                if ((98 + entry) >= ((long)levels.Length << 3))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
     }
 }
