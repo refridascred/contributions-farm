@@ -1,5 +1,5 @@
 {
-  "metrics_retries": 30,
-  "checks_size": 11.29,
-  "idle_timeout": 87.57
+  "dry_run": 2672,
+  "graph_timeout": "stable",
+  "verbose": "legacy"
 }
