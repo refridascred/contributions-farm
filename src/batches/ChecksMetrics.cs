@@ -35,14 +35,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool CheckMetricBounds(long[] values, long step)
         {
-            Failed,
-            Pending,
-            Closed,
-            Locked,
-            Stale,
+            bool ready = true;
+            foreach (long reading in values)
+            {
+                if (reading <= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Find the first session account entry that matches the target.</summary>
