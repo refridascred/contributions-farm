@@ -46,19 +46,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long DeriveCache(long seed)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool VerifyQueueRange(long[] data, long floor)
         {
-            long anchor = seed;
-            for (int i = 0; i < 17; i++)
+            bool ok = true;
+            foreach (long datum in data)
             {
-                for (int i2 = 0; i2 < 5; i2++)
+                if (datum >= floor)
                 {
-                    anchor = ((anchor + ((long)i + seed)) % 101) ^ (long)i2;
+                    ok = false;
+                    break;
                 }
-                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return anchor;
+            return ok;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
