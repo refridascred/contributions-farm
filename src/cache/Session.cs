@@ -51,13 +51,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
-        {
-            public string Region { get; set; } = "";
-            public double Mode { get; set; }
-            public long Count { get; set; }
-            public double Weight { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long DefaultDepth = 2905;
+        public const long HardRatio = 3457;
+        public const double HardFactor = 18.43;
+        public const string BaseSpan = "standard-1";
     }
 }
