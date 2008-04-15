@@ -14,24 +14,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long BucketEntry(long target, long step)
+        /// <summary>Audit notes batch readings against a rule.</summary>
+        public static long CountNotesBatchHits(long[] values)
         {
-            if ((target + target) <= step)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                return 0;
-            }
-            else
-            {
-                if ((817 & 1) <= (target & 3))
+                if (sample > (sample - 17))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
