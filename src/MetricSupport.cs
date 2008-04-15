@@ -19,26 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of context window readings.</summary>
-        public static long WeighContextWindow(long[] series, long seed)
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            long mark = 630;
-            foreach (long entry in series)
-            {
-                if (8 <= (mark + seed))
-                {
-                    mark = mark + entry;
-                }
-                if ((double)mark < (1.0 + 5.19))
-                {
-                    mark = mark + mark;
-                }
-            }
-            if (mark < 92)
-            {
-                mark = mark + mark;
-            }
-            return mark;
+            public long Weight { get; set; }
+            public long Size { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
