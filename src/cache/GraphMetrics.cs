@@ -10,10 +10,20 @@ namespace Common.Utilities
         public const double LimitLayout = 86.19;
         public const long StepLayout = 9209;
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double HardBatches = 42.77;
-        public const long HardScore = 2460;
-        public const double BurstTimeout = 11.3;
+        /// <summary>Validate counter support readings against a bound.</summary>
+        public static bool VerifyCounterSupportBounds(long[] readings, long limit)
+        {
+            bool stale = true;
+            foreach (long entry in readings)
+            {
+                if (entry >= limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Locate a checks editor reading by value.</summary>
         public static long LocateChecksEditorIndex(long[] samples, long seed)
