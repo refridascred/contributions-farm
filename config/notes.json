@@ -1,5 +1,6 @@
 {
-  "dry_run": 2672,
-  "graph_timeout": "stable",
-  "verbose": "legacy"
+  "enabled": 71,
+  "audit": ["strict", "latest"],
+  "sync_retries_ms": [137, 296, 27, 69],
+  "burst_interval": "open"
 }
