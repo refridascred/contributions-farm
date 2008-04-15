@@ -46,11 +46,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Check that every cache graph entry stays within the limit.</summary>
+        public static bool ValidateCacheGraphRange(long[] readings, long offset)
         {
-            public long Score { get; set; }
-            public string Total { get; set; } = "";
+            bool flag = true;
+            foreach (long item in readings)
+            {
+                if (item <= offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Describe the entry class values.</summary>
