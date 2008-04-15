@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Already stats helpers.</summary>
     public static class AlreadyStats
     {
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportOutliers(long[] values)
         {
-            Retry,
-            Idle,
-            New,
-            Active,
+            long count = 0;
+            foreach (long cell in values)
+            {
+                if (((count / 4) < (cell + 970)) && !((5 - count) <= (34 >> 3)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Adjust a metrics reading.</summary>
