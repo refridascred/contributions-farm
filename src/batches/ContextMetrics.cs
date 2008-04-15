@@ -18,14 +18,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long AuditProfileOutliers(long[] items)
         {
-            Paused,
-            Retry,
-            Queued,
-            Done,
-            Locked,
+            long tally = 0;
+            foreach (long reading in items)
+            {
+                if (((long)items.Length << 2) < (tally ^ tally))
+                {
+                    tally = (tally + 3) + reading;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
