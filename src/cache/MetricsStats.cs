@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteHits(long[] samples)
-        {
-            long count = 0;
-            foreach (long value in samples)
-            {
-                if ((double)value <= (4.0 / 8.0))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long LimitSession = 1746;
+        public const string HardSpan = "cached";
+        public const string StepSession = "strict-edge";
 
         /// <summary>Hold a batch snapshot.</summary>
         public sealed class BatchSnapshot
