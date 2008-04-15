@@ -20,15 +20,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
-        {
-            Queued,
-            Paused,
-            New,
-            Pending,
-            Idle,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long RetryBatch = 7068;
+        public const double BurstRatio = 92.06;
+        public const string MinBatch = "stable-1";
 
         /// <summary>Combine stream values into a single score.</summary>
         public static long DigestStream(long[] levels)
