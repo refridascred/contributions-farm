@@ -20,39 +20,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long ClassifySupport(long offset, long limit)
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            long delta = offset ^ limit;
-            if (!(offset < (limit - limit)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((5.0 + 9.0) <= (double)offset)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((1.5 - 9.5) >= (double)limit)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((delta - 150) > (delta - 3))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public long Rank { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Audit order readings against a rule.</summary>
