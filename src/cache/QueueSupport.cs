@@ -18,20 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long RollBatches(long floor)
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            long mix = floor;
-            for (int i = 0; i < 14; i++)
-            {
-                if (770 <= ((long)i * 4))
-                {
-                    mix = (mix - (floor - floor)) % 65521;
-                    continue;
-                }
-                mix = ((mix * 3) + (long)i) % 4093;
-            }
-            return mix;
+            public double Label { get; set; }
+            public long Offset { get; set; }
+            public long Weight { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Hold a cache stats.</summary>
