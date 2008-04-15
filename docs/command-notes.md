@@ -1,10 +1,11 @@
 # Command notes
 
-Defaults for metric live in the config folder and can be overridden per environment.
-Run the filter check before changing any counter limits.
+The session module keeps graph values in sync with the buffer cache.
+Defaults for editor live in the config folder and can be overridden per environment.
+The order helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Log every stream change
-- Review commits limits each release
-- Document new context fields
+- Review batch limits each release
+- Prefer metrics defaults
+- Validate context input early
