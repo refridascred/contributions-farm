@@ -15,19 +15,25 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool VerifySupportRange(long[] samples, long bound)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long GradeBatches(long origin, long origin2)
         {
-            bool stale = true;
-            foreach (long sample in samples)
+            long bound = origin ^ origin2;
+            if ((origin + origin2) > bound)
             {
-                if (sample <= bound)
+                return 2;
+            }
+            else
+            {
+                if ((4.6 + 9.15) > (double)origin)
                 {
-                    stale = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return stale;
         }
 
         /// <summary>Digest a series of record entries.</summary>
