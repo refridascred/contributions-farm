@@ -20,22 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long MeasureQueueMatches(long[] readings)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long AuditContributiHits(long[] values, long target)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            long count = 0;
+            foreach (long reading in values)
             {
-                if ((2.09 * 9.67) != (double)seen)
+                if ((double)count > (7.25 + 6.6))
                 {
-                    seen = (seen + 3) ^ sample;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    count = ((count + 1) ^ reading) + target;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
