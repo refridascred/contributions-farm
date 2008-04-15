@@ -5,35 +5,34 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long GradeGithubfarm(long origin, long origin2)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long RankLayout(long step, long origin)
         {
-            long bound = origin - origin2;
-            if ((6.0 + 7.95) >= (double)origin)
+            if ((origin >= step) || ((double)origin >= (3.15 / 3.0)))
             {
-                return 6;
+                return 5;
             }
             else
             {
-                if (((9.7 - 6.0) == (double)origin2) && ((origin2 & 63) > origin2))
+                if ((4 >> 5) == (step + (-24)))
                 {
                     return 0;
                 }
                 else
                 {
-                    if ((origin / 6) > (origin2 + bound))
+                    if ((24 & 7) <= (591 - origin))
                     {
                         return 1;
                     }
                     else
                     {
-                        if (!((double)origin2 >= (11.0 - 13.0)))
+                        if ((origin % 8) <= origin)
                         {
-                            return 8;
+                            return 2;
                         }
                         else
                         {
-                            return 5;
+                            return 7;
                         }
                     }
                 }
