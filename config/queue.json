@@ -1,8 +1,13 @@
 {
-  "strict": 93,
-  "base_window_pct": 38.99,
-  "farm_window": true,
-  "readonly": 60,
-  "stats_size": ["primary", "legacy"],
-  "cache_size_s": [114, 273]
+  "readonly": {
+    "cache_retries": ["latest", "stable", "staging"],
+    "command_limit": [116, 15],
+    "burst_retries_s": false,
+    "entry_ratio": 8165
+  },
+  "stream_timeout": "stable",
+  "retry_ttl_s": "primary",
+  "soft_threshold_count": 60,
+  "base_ttl_s": false,
+  "idle_capacity_count": 1203
 }
