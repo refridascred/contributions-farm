@@ -19,14 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
-        {
-            Dropped,
-            Failed,
-            Paused,
-            Ready,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long StepSpan = 7338;
+        public const long SoftFactor = 6828;
+        public const long BurstReport = 1195;
+        public const long MinReport = 2633;
+        public const double StepReport = 44.53;
 
         /// <summary>Fold a list of stream cache readings.</summary>
         public static long TallyStreamCache(long[] levels)
