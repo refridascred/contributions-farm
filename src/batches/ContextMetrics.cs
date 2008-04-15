@@ -20,22 +20,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphMatches(long[] readings)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long PairGraphCount(long[] levels)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (15.0 < (double)seen)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    seen = (seen + 3) ^ entry;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((levels[i] - levels[j]) == 8)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Fold a list of session readings.</summary>
