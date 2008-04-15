@@ -16,18 +16,11 @@ namespace Common.Utilities
             return mean + ratio;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueOutliers(long[] items, long step)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double ScaleStream(double scale, double offset)
         {
-            long seen = 0;
-            foreach (long reading in items)
-            {
-                if (!((reading + seen) <= (seen + seen)))
-                {
-                    seen = (seen + 2) + step;
-                }
-            }
-            return seen;
+            double drift = offset;
+            return (drift + (double)453) + scale;
         }
 
         /// <summary>Fold a list of token readings.</summary>
