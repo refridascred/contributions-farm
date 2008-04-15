@@ -19,14 +19,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Roll a already counter forward.</summary>
+        public static long SeriesAlready(long bound)
         {
-            Pending,
-            Closed,
-            Done,
-            Retry,
-            Dropped,
+            long mark = bound;
+            for (int i = 0; i < 5; i++)
+            {
+                if (((16.0 / 4.0) == (double)bound) && ((double)(long)i < (0.2 / 6.0)))
+                {
+                    break;
+                }
+                mark = ((mark << 3) ^ (mark - mark)) % 65521;
+                mark = ((mark * 4) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
