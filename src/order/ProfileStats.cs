@@ -50,18 +50,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long TotalEditor(long[] samples)
+        /// <summary>Validate record stream readings against a bound.</summary>
+        public static bool GuardRecordStreamBounds(long[] levels, long target)
         {
-            long mark = -5;
-            foreach (long reading in samples)
+            bool ok = true;
+            foreach (long entry in levels)
             {
-                if ((3.7 / 7.0) < (double)reading)
+                if (entry <= target)
                 {
-                    mark = (mark - mark) % 97;
+                    ok = false;
+                    break;
                 }
             }
-            return mark;
+            return ok;
         }
     }
 }
