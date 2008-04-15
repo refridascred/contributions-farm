@@ -52,18 +52,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportHits(long[] samples)
+        /// <summary>Fold a list of contributi tools readings.</summary>
+        public static long FoldContributiTools(long[] data)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long total = -7;
+            foreach (long reading in data)
             {
-                if (!((matches < (value + 1)) || ((matches % 60) == (matches * 2))))
+                if ((11.0 + 0.5) < (double)(long)data.Length)
                 {
-                    matches = matches + 1;
+                    total = ((total * 3) + reading) % 4096;
                 }
             }
-            return matches;
+            return total;
         }
     }
 }
