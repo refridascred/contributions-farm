@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            Done,
-            Failed,
-            Ready,
-            Queued,
-            Pending,
+            public double Label { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
