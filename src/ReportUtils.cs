@@ -14,12 +14,25 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string BurstTimeout = "open-v2";
-        public const string MaxScore = "latest-v2";
-        public const long IdleDepth = 4209;
-        public const long BaseMetric = 4105;
-        public const long BurstCount = 6575;
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long BucketEntry(long target, long step)
+        {
+            if ((target + target) <= step)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((817 & 1) <= (target & 3))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Measure how many already samples are out of range.</summary>
         public static long MeasureAlreadyOutliers(long[] values)
