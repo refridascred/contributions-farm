@@ -29,12 +29,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            public string Token { get; set; } = "";
-            public bool Weight { get; set; }
-            public long Owner { get; set; }
+            public long Stamp { get; set; }
+            public long Score { get; set; }
+            public long Limit { get; set; }
+            public double Total { get; set; }
         }
     }
 }
