@@ -25,18 +25,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit cache order readings against a rule.</summary>
-        public static long CountCacheOrderMatches(long[] levels)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphOutliers(long[] readings, long offset)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                if ((seen / 9) <= (item + item))
+                if (entry <= offset)
                 {
-                    seen = seen + 3;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Hold a payload snapshot.</summary>
