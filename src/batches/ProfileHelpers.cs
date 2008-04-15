@@ -81,12 +81,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long StepStream(long target)
         {
-            public string Mode { get; set; } = "";
-            public long Token { get; set; }
-            public long Level { get; set; }
+            long result = target;
+            for (int i = 0; i < 20; i++)
+            {
+                if ((8.98 <= (double)result) && ((long)i >= result))
+                {
+                    result = (result - (long)i) % 255;
+                    result = (result ^ target) % 4096;
+                }
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    result = ((result - (target >> 4)) % 255) + (long)i2;
+                }
+                result = ((result * 5) + (long)i) % 97;
+            }
+            return result;
         }
     }
 }
