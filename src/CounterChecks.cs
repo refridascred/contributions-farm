@@ -28,31 +28,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Classify a channel checks pair into a bucket.</summary>
-        public static long RankChannelChecks(long offset, long seed)
+        /// <summary>Match up window samples.</summary>
+        public static long CompareWindowCount(long[] values)
         {
-            if (seed <= (offset + offset))
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (545 > (seed - 29))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((seed << 3) == (3 + 28))
+                    if ((values[i] ^ values[j]) < 1)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Audit report notes readings against a rule.</summary>
