@@ -38,19 +38,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmOutliers(long[] readings)
-        {
-            long count = 0;
-            foreach (long value in readings)
-            {
-                if ((count - count) == (count - 6))
-                {
-                    count = (count + 2) - value;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MaxCount = 8918;
+        public const long StepDepth = 5685;
+        public const long MinFarm = 6450;
+        public const string BurstFarm = "legacy-1";
 
         /// <summary>Audit context readings against a rule.</summary>
         public static long CountContextOutliers(long[] readings, long bound)
