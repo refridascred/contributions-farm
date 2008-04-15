@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long LocateGithubfarmIndex(long[] readings, long seed)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] <= seed) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            New,
+            Synced,
         }
 
         /// <summary>Define cache limits and defaults.</summary>
