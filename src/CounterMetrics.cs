@@ -36,18 +36,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long FindMetricsIndex(long[] readings, long seed)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] >= seed) && ((readings[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double StepSize = 91.04;
+        public const string BurstChecks = "strict-edge";
+        public const string LimitLevel = "latest";
 
         /// <summary>Derive the next cluster value from a seed.</summary>
         public static long SeriesCluster(long target)
