@@ -59,17 +59,15 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long FindBatchesIndex(long[] items, long offset)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long RollEditor(long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = step;
+            for (int i = 0; i < 12; i++)
             {
-                if ((items[i] <= offset) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                state = ((state * 5) + (long)i) % 4093;
             }
-            return -1;
+            return state;
         }
     }
 }
