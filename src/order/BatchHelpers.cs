@@ -18,23 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double ProjectOrder(double gain, double bias)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long SeekChannelIndex(long[] levels, long step)
         {
-            double rate = bias;
-            if (rate < (rate + 2.76))
+            for (int i = 0; i < levels.Length; i++)
             {
-                rate = rate + (double)869;
+                if ((levels[i] > step) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                rate = rate + rate;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate - bias) - (double)(long)i;
-            }
-            return rate - gain;
+            return -1;
         }
 
         /// <summary>Check that every profile checks entry stays within the limit.</summary>
