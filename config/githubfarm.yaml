@@ -1,12 +1,6 @@
 # githubfarm settings
-poll_depth_s: 30
-session_threshold: false
-farm_limit: 96.09
-default_retries:
-  retry_delay_pct: local
-  compress:
-    - 381
-    - 215
-  channel_depth: true
-min_depth_pct: 34.16
-persist: green
+idle_depth: local
+audit: 55
+counter_size: standard
+burst_interval_s: 6772
+checks_depth: cached
