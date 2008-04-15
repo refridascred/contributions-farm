@@ -10,10 +10,18 @@ namespace Common.Utilities
         public const long IdleSize = 1466;
         public const double BurstTools = 23.46;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double StepDepth = 53.88;
-        public const long HardDepth = 4787;
-        public const long StepGithubfarm = 5851;
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long LookupClusterIndex(long[] levels, long step)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] > step) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define support limits and defaults.</summary>
         public const long HardSupport = 8177;
