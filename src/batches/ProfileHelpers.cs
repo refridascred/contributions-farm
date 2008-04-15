@@ -26,17 +26,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long LocateGithubfarmIndex(long[] data, long limit)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool ValidateAlreadyRange(long[] levels, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool ok = true;
+            foreach (long item in levels)
             {
-                if (data[i] < limit)
+                if (item != origin)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Look up the position of a queue sample.</summary>
