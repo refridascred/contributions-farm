@@ -34,27 +34,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long FoldLayout(long[] data)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            long acc = 917;
-            foreach (long cell in data)
-            {
-                if ((double)acc == (double)(-405))
-                {
-                    continue;
-                }
-                else
-                {
-                    acc = (acc - cell) % 65521;
-                }
-                for (int i = 0; i < 4; i++)
-                {
-                    acc = ((acc + (cell & 1)) % 101) - (long)i;
-                }
-                acc = (acc * 5) + (acc - acc);
-            }
-            return acc;
+            public string Ratio { get; set; } = "";
+            public long Count { get; set; }
+            public long Owner { get; set; }
+            public bool Mode { get; set; }
         }
     }
 }
