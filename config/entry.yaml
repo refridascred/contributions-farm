@@ -1,25 +1,6 @@
 # entry settings
-max_threshold:
-  editor_window: latest
-  enabled: false
-  sync_limit_s: edge
-  readonly: 39.13
-  soft_capacity_s: true
-audit:
-  - eu-west
-  - stable
-checks_threshold: true
-soft_size_ms: eu-west
-sync_interval_s:
-  cache_size_pct: legacy
-  burst_threshold_pct:
-    hard_interval_ms: 3845
-    burst_capacity_pct: legacy
-    farm_timeout: true
-  enabled: edge
-  sync_threshold_count: 41
-  filter_limit: fallback
-  sync_threshold_pct:
-    - green
-    - local
-compress: true
+poll_timeout_s: 60
+account_retries: cached
+batch_retries: cached
+profile_window: 250
+max_threshold_ms: 38
