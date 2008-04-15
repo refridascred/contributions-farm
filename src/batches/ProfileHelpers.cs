@@ -79,24 +79,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long StepStream(long target)
+        /// <summary>Find the first tools notes entry that matches the target.</summary>
+        public static long LocateToolsNotesIndex(long[] levels, long target)
         {
-            long result = target;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((8.98 <= (double)result) && ((long)i >= result))
+                if (levels[i] >= target)
                 {
-                    result = (result - (long)i) % 255;
-                    result = (result ^ target) % 4096;
+                    return (long)i;
                 }
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    result = ((result - (target >> 4)) % 255) + (long)i2;
-                }
-                result = ((result * 5) + (long)i) % 97;
             }
-            return result;
+            return -1;
         }
     }
 }
