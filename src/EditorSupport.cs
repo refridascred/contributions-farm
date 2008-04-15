@@ -56,12 +56,19 @@ namespace Common.Utilities
             return weight - rate;
         }
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Check that every metrics stats entry stays within the limit.</summary>
+        public static bool VerifyMetricsStatsBounds(long[] items, long bound)
         {
-            Ready,
-            Failed,
-            Queued,
+            bool ready = true;
+            foreach (long entry in items)
+            {
+                if (entry < bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Roll a token counter forward.</summary>
