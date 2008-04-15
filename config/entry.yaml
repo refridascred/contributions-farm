@@ -1,7 +1,5 @@
 # entry settings
-readonly: strict
-sync_window: green
-verbose:
-  default_timeout_ms: 39
-  burst_window_ms: 8875
-  record_timeout: 98.04
+flush_ratio_ms: true
+readonly: 89.11
+burst_ratio_ms: 64.3
+burst_interval: 74.26
