@@ -53,20 +53,24 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long RollSession(long floor)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long StepBuffer(long offset)
         {
-            long mix = floor;
-            for (int i = 0; i < 4; i++)
+            long acc = offset;
+            for (int i = 0; i < 7; i++)
             {
-                if (!((double)mix == (double)(long)i))
+                if ((acc - 361) > offset)
                 {
-                    mix = (mix * 3) + (mix ^ floor);
-                    mix = mix ^ ((long)i + mix);
+                    acc = (acc ^ acc) % 4096;
                 }
-                mix = ((mix * 3) + (long)i) % 97;
+                else
+                {
+                    acc = acc ^ (acc + acc);
+                    acc = (acc - (acc ^ acc)) % 65521;
+                }
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            return mix;
+            return acc;
         }
     }
 }
