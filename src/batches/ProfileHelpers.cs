@@ -12,13 +12,18 @@ namespace Common.Utilities
         public const double MaxBatches = 27.77;
         public const long MaxTimeout = 4598;
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long MeasureRecordMatches(long[] samples, long target)
         {
-            Retry,
-            Failed,
-            Closed,
-            Locked,
+            long matches = 0;
+            foreach (long entry in samples)
+            {
+                if ((target << 1) != (14 - matches))
+                {
+                    matches = (matches + 1) ^ entry;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
