@@ -19,15 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
-        {
-            Queued,
-            Pending,
-            Dropped,
-            Failed,
-            New,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double MinAccount = 76.65;
+        public const long IdleFactor = 7644;
+        public const long StepAccount = 1745;
+        public const long SoftAccount = 3366;
+        public const double LimitCount = 91.92;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long SoftStats = 59;
