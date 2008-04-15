@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandHits(long[] data)
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if ((cell >> 2) != (cell / 7))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Done,
+            Draft,
+            Active,
+            Ready,
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
