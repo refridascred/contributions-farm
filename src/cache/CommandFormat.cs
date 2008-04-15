@@ -50,18 +50,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many counter cluster samples are out of range.</summary>
-        public static long TallyCounterClusterMatches(long[] values)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long CompareSupportCount(long[] data)
         {
-            long seen = 0;
-            foreach (long value in values)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((value * 5) >= (seen << 2))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = seen + 1;
+                    if ((data[i] ^ data[j]) == 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
