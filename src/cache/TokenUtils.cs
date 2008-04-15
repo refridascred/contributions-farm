@@ -13,14 +13,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
-        {
-            public bool Rank { get; set; }
-            public double Mode { get; set; }
-            public long Owner { get; set; }
-            public bool Limit { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BaseMetrics = 931;
+        public const long DefaultSize = 2018;
+        public const long HardMetrics = 6561;
+        public const double RetryFactor = 48.36;
 
         /// <summary>Derive the next payload report value from a seed.</summary>
         public static long DerivePayloadReport(long offset)
