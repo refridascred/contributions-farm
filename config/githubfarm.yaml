@@ -1,33 +1,6 @@
 # githubfarm settings
-batch_timeout_s:
-  enabled:
-    command_limit: 60.12
-    batch_limit: fallback
-    sync_capacity: green
-    support_retries: legacy
-    batch_timeout_s: strict
-    compress: true
-  record_depth: stable
-  hard_window_count: 30
-  default_depth: local
-warm_window_pct: 521
-batch_window_ms:
-  - primary
-  - strict
-  - cached
-githubfarm_limit:
-  default_size_s: 25
-  format_threshold:
-    - 302
-    - 401
-  base_capacity_s: blue
-  compress: 4893
-  hard_ratio_s:
-    - 353
-    - 430
-    - 395
-  base_depth_pct:
-    - 399
-    - 484
-    - 206
-    - 206
+warm_ttl_count: 67.66
+hard_delay: cached
+readonly: cached
+warm_delay_s: true
+hard_threshold_ms: 100
