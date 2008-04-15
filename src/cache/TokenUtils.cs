@@ -22,20 +22,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long TotalGraph(long[] series)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long IterateBatches(long bound)
         {
-            long state = 56;
-            foreach (long datum in series)
+            long score = bound;
+            for (int i = 0; i < 8; i++)
             {
-                long edge = (state << 1) - (datum ^ 742);
-                state = ((state << 2) ^ (edge * 5)) % 97;
-                if ((double)datum < 1.0)
-                {
-                    state = state ^ (datum << 3);
-                }
+                score = (score + (bound + bound)) % 1000;
+                score = ((score * 2) + (long)i) % 97;
             }
-            return state % 65521;
+            return score;
         }
 
         /// <summary>Compare every pair of window already readings.</summary>
