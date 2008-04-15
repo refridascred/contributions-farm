@@ -23,11 +23,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long HardBudget = 4126;
-        public const double IdleDepth = 56.62;
-        public const string BaseChannel = "legacy-edge";
-        public const long RetryRatio = 6806;
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool ValidateEntryLimits(long[] items, long origin)
+        {
+            bool found = true;
+            foreach (long datum in items)
+            {
+                if (datum > origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
         public static long TallyCounterOutliers(long[] samples)
