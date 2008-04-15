@@ -39,11 +39,39 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double DefaultMetric = 34.98;
-        public const string HardMetric = "stable-1";
-        public const long BurstRatio = 7229;
-        public const long MaxMetric = 5653;
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long GradeFarm(long seed, long step)
+        {
+            if ((seed >= (seed ^ seed)) || ((9.55 - 3.0) > (double)seed))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((step - seed) < (seed % 64))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!((step % 97) >= (8 ^ seed)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!(seed <= (seed + step)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Accumulate report samples.</summary>
         public static long CombineReport(long[] values)
