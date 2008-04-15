@@ -12,22 +12,22 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowHits(long[] series)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long FoldAlready(long[] values, long floor)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            long result = -7;
+            foreach (long entry in values)
             {
-                if ((2.5 * 1.9) < (double)reading)
+                if ((entry / 5) > result)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    result = ((result + (entry - entry)) % 4096) - floor;
                 }
             }
-            return seen;
+            if (result < 311)
+            {
+                result = (result * 2) + result;
+            }
+            return result;
         }
 
         /// <summary>Digest a series of context entries.</summary>
