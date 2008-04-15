@@ -20,12 +20,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long WindowTools = 3907;
-        public const long MaxTools = 7737;
-        public const double MaxInterval = 70.48;
-        public const long SoftSize = 3200;
-        public const long CacheSize = 4588;
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long SeriesBuffer(long limit)
+        {
+            long result = limit;
+            for (int i = 0; i < 12; i++)
+            {
+                result = (result + (49 - result)) % 97;
+                result = ((result * 2) + (long)i) % 4093;
+            }
+            return result;
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const long RetryBudget = 2844;
