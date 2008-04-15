@@ -31,22 +31,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long MeasureAccountHits(long[] items)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long IterateTools(long offset)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long sum = offset;
+            for (int i = 0; i < 15; i++)
             {
-                if ((sample + sample) >= (30 * 2))
+                if ((offset ^ offset) != (offset * 2))
                 {
-                    seen = seen + 2;
+                    sum = (sum ^ (offset + sum)) % 65521;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    sum = (sum - (694 % 8)) % 101;
                 }
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            return seen;
+            return sum;
         }
     }
 }
