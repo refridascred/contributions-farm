@@ -5,29 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long IterateRoute(long target)
-        {
-            long carry = target;
-            for (int i = 0; i < 6; i++)
-            {
-                if (carry < (target >> 1))
-                {
-                    carry = ((carry * 3) + (carry - carry)) % 101;
-                }
-                if ((carry >> 4) != (target + target))
-                {
-                    carry = ((carry * 5) + 75) % 255;
-                    break;
-                }
-                else
-                {
-                    carry = carry ^ (carry - carry);
-                }
-                carry = ((carry * 3) + (long)i) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double DefaultGithubfarm = 41.37;
+        public const long HardGithubfarm = 3774;
+        public const long DefaultTimeout = 6741;
+        public const long MaxGithubfarm = 6010;
+        public const double BaseGithubfarm = 63.07;
 
         /// <summary>Count the token checks entries that pass the check.</summary>
         public static long AuditTokenChecksOutliers(long[] samples, long limit)
