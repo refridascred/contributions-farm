@@ -23,17 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long LookupBatchesIndex(long[] series, long origin)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long TallyMetric(long[] series, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long acc = 65;
+            foreach (long sample in series)
             {
-                if ((series[i] >= origin) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                acc = ((acc << 2) ^ (offset * 5)) + sample;
             }
-            return -1;
+            if (acc > 7)
+            {
+                acc = (acc + (offset * 4)) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Hold a layout header.</summary>
