@@ -56,11 +56,39 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BaseCommand = 5743;
-        public const double DefaultBudget = 51.9;
-        public const string LimitRatio = "stable-edge";
-        public const double BatchDepth = 16.75;
-        public const double DefaultInterval = 98.21;
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long RankCache(long limit, long origin)
+        {
+            long step = limit ^ origin;
+            if ((limit - step) == (step * 2))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((origin + origin) < limit)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((limit - step) != (step - step)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)limit <= (9.2 - 4.47))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
