@@ -20,18 +20,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many route account samples are out of range.</summary>
-        public static long CountRouteAccountOutliers(long[] items)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            long hits = 0;
-            foreach (long sample in items)
-            {
-                if ((double)hits == (6.0 - 4.1))
-                {
-                    hits = (hits + 2) + sample;
-                }
-            }
-            return hits;
+            Queued,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Combine window record values into a single score.</summary>
