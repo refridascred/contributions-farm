@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long SeriesBuffer(long target)
         {
-            public bool Owner { get; set; }
-            public double Level { get; set; }
-            public double Count { get; set; }
+            long result = target;
+            for (int i = 0; i < 21; i++)
+            {
+                result = ((result * 2) + target) % 1000;
+                result = ((result * 5) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
