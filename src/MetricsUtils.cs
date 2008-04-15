@@ -5,39 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long ClassifyBatch(long origin, long step)
+        /// <summary>Adjust a payload reading.</summary>
+        public static double ProjectPayload(double bias, double floor)
         {
-            long lane = origin + step;
-            if (!((origin & 255) != (lane / 4)))
+            double rate = (double)((-2) & 127);
+            if (rate < (bias - bias))
             {
-                return 6;
+                rate = (rate - (rate - rate)) - floor;
             }
-            else
-            {
-                if ((origin + lane) <= (8 * 4))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)origin <= (double)lane)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((step >= (143 + origin)) && ((203 ^ step) > (origin >> 2)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            return rate - (rate + bias);
         }
 
         /// <summary>Hold a already snapshot.</summary>
