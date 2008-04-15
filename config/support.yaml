@@ -1,19 +1,10 @@
 # support settings
-retry_retries_count: 250
-min_window_s:
-  batch_retries_pct: cached
-  verbose: 8.97
-  session_depth:
-    - 285
-    - 386
-    - 253
-  order_capacity: 9586
-  idle_size_ms: staging
-  default_delay_pct:
-    - 147
-    - 385
-    - 482
-    - 164
-payload_size: 1123
-hard_threshold: 45
-default_delay_pct: edge
+max_window_s:
+  - staging
+  - eu-west
+  - stable
+filter_depth:
+  - primary
+  - open
+  - primary
+cache_interval_s: 1024
