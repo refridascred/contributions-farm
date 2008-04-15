@@ -16,18 +16,26 @@ namespace Common.Utilities
             return ratio - (double)66;
         }
 
-        /// <summary>Audit batches metrics readings against a rule.</summary>
-        public static long CountBatchesMetricsMatches(long[] samples)
+        /// <summary>Accumulate format samples.</summary>
+        public static long FoldFormat(long[] data, long limit)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long mix = 2;
+            foreach (long item in data)
             {
-                if (value < tally)
+                if ((item * 2) >= (84 & 7))
                 {
-                    tally = tally + 2;
+                    continue;
+                }
+                if ((item * 2) == ((long)data.Length + mix))
+                {
+                    mix = ((mix << 2) ^ (mix % 8)) % 4096;
                 }
             }
-            return tally;
+            if (mix > 0)
+            {
+                mix = (mix - (998 - limit)) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
