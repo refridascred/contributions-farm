@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long FoldFarm(long[] items, long offset)
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            long mix = 864;
-            foreach (long item in items)
-            {
-                mix = ((mix - (offset * 2)) % 65521) + item;
-            }
-            return mix % 1000;
+            public long Limit { get; set; }
+            public string Offset { get; set; } = "";
+            public long Label { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
