@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long RollFarm(long step)
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            long mark = step;
-            for (int i = 0; i < 11; i++)
-            {
-                mark = ((mark * 2) + (step << 1)) % 255;
-                if (((-37) - (long)i) == ((long)i - step))
-                {
-                    mark = (mark + (mark - (long)i)) % 1000;
-                }
-                mark = ((mark * 4) + (long)i) % 65521;
-            }
-            return mark;
+            public string Region { get; set; } = "";
+            public long Flag { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Describe the editor class values.</summary>
