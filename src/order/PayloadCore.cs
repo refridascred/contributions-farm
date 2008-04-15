@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long DeriveWindow(long floor)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long FoldFarm(long[] items, long offset)
         {
-            long mix = floor;
-            for (int i = 0; i < 23; i++)
+            long mix = 864;
+            foreach (long item in items)
             {
-                if ((floor - mix) < (floor / 9))
-                {
-                    mix = (mix << 2) ^ mix;
-                }
-                mix = (mix * 2) + (mix + mix);
-                if (!(mix >= (floor / 4)))
-                {
-                    mix = mix + (floor * 3);
-                }
-                mix = ((mix * 4) + (long)i) % 97;
+                mix = ((mix - (offset * 2)) % 65521) + item;
             }
-            return mix;
+            return mix % 1000;
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
