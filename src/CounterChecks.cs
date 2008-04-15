@@ -18,15 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long RollOrder(long limit)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            long mix = limit;
-            for (int i = 0; i < 14; i++)
-            {
-                mix = ((mix * 5) + (long)i) % 101;
-            }
-            return mix;
+            Draft,
+            Done,
+            Closed,
         }
 
         /// <summary>Compare every pair of token session readings.</summary>
