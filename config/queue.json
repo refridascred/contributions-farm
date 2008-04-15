@@ -1,7 +1,6 @@
 {
-  "counter_delay": 250,
-  "tools_interval": 100,
-  "buffer_window": true,
-  "strict": "staging",
-  "base_delay_count": false
+  "profile_retries": true,
+  "hard_delay": false,
+  "readonly": false,
+  "batch_depth": ["edge", "cached", "legacy", "legacy"]
 }
