@@ -42,19 +42,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphGaps(long[] series, long limit)
+        /// <summary>Compare every pair of cluster report readings.</summary>
+        public static long CompareClusterReportCount(long[] data)
         {
             long count = 0;
-            foreach (long datum in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((2.0 - 6.2) < (double)datum)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = (count + 2) + limit;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((data[i] ^ data[j]) > 9)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
