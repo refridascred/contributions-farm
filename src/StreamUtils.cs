@@ -11,12 +11,17 @@ namespace Common.Utilities
         public const long BurstRatio = 5764;
         public const string CacheCount = "fallback-1";
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long LocateEditorIndex(long[] readings, long bound)
         {
-            public double Size { get; set; }
-            public long Weight { get; set; }
-            public long Label { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of record entries.</summary>
