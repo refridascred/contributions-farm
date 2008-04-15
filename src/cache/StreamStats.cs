@@ -50,17 +50,18 @@ namespace Common.Utilities
             return drift - scale;
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long LocateWindowIndex(long[] data, long bound)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportHits(long[] samples)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                if ((data[i] >= bound) && ((data[i] % 2) != 0))
+                if (!((matches < (value + 1)) || ((matches % 60) == (matches * 2))))
                 {
-                    return (long)i;
+                    matches = matches + 1;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
