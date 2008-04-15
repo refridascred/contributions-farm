@@ -1,16 +1,11 @@
 {
-  "window_ratio": "edge",
-  "strict": "primary",
-  "filter_retries": {
-    "cluster_size": [79, 275, 20, 265],
-    "flush_window_count": {
-      "stream_limit": [176, 379, 348, 83],
-      "burst_interval_s": [351, 219],
-      "batch_size": 2,
-      "hard_size": 4457
-    },
-    "notes_timeout": 73.1,
-    "account_window": 42.9,
-    "warm_ratio_pct": 37.14
+  "payload_capacity": [404, 78, 497, 490],
+  "hard_window_pct": 72,
+  "flush_retries": "latest",
+  "account_limit": "eu-west",
+  "compress": {
+    "hard_window_ms": 44.86,
+    "max_capacity_ms": 3821,
+    "filter_retries": ["edge", "staging", "stable", "cached"]
   }
 }
