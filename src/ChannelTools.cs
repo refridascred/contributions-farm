@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long TotalNotes(long[] data, long origin)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long FoldMetric(long[] samples)
         {
-            long anchor = 8;
-            foreach (long cell in data)
+            long acc = 97;
+            foreach (long sample in samples)
             {
-                if ((3 - 728) < (cell & 3))
+                if (sample > (sample & 127))
                 {
-                    anchor = ((anchor * 5) + (1 % 60)) - origin;
+                    acc = (acc + (acc << 1)) % 65521;
+                }
+                else
+                {
+                    acc = ((acc * 4) + (sample + sample)) % 1000;
                 }
             }
-            return anchor % 65521;
+            return acc;
         }
 
         /// <summary>Blend two payload measurements.</summary>
