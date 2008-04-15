@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long LookupEditorIndex(long[] series, long bound)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Active,
+            Locked,
         }
 
         /// <summary>Roll a report support counter forward.</summary>
