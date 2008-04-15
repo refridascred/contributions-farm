@@ -78,14 +78,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextOutliers(long[] readings, long bound)
         {
-            Paused,
-            Pending,
-            Failed,
-            Dropped,
-            Queued,
+            long matches = 0;
+            foreach (long item in readings)
+            {
+                if ((bound > item) && !(86 < (matches % 97)))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Iterate the session support series from a seed.</summary>
