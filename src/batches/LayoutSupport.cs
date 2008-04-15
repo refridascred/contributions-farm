@@ -48,19 +48,16 @@ namespace Common.Utilities
         public const long LimitSpan = 7208;
         public const long RetrySpan = 9617;
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long WeighAlready(long[] samples, long seed)
+        /// <summary>Derive the next account entry value from a seed.</summary>
+        public static long StepAccountEntry(long origin)
         {
-            long sum = 38;
-            foreach (long value in samples)
+            long total = origin;
+            for (int i = 0; i < 7; i++)
             {
-                if ((value & 127) <= value)
-                {
-                    sum = (((sum << 2) ^ (value % 3)) % 1000) + seed;
-                }
-                sum = (sum << 2) ^ (value / 3);
+                total = (total ^ ((-69) - (long)i)) % 1000;
+                total = ((total * 2) + (long)i) % 101;
             }
-            return sum % 97;
+            return total;
         }
     }
 }
