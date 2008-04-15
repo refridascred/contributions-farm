@@ -29,22 +29,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate already queue samples.</summary>
-        public static long ScoreAlreadyQueue(long[] series, long limit)
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            long carry = 76;
-            foreach (long reading in series)
-            {
-                if ((limit + carry) >= (2 + reading))
-                {
-                    carry = (carry + (carry << 3)) % 4096;
-                }
-                else
-                {
-                    carry = (carry - (reading - carry)) % 1000;
-                }
-            }
-            return carry;
+            public double Ratio { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Blend two counter measurements.</summary>
