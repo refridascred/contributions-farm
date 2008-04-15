@@ -14,18 +14,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long MatchOrderCount(long[] readings)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterHits(long[] samples, long floor)
         {
             long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((long)samples.Length % 8) == ((long)samples.Length << 2))
                 {
-                    if ((readings[i] ^ readings[j]) > 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = ((matches + 3) - reading) - floor;
                 }
             }
             return matches;
