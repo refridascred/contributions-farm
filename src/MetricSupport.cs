@@ -35,35 +35,35 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long ClassifySchema(long step, long bound)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long GradeEditor(long origin, long offset)
         {
-            long step2 = step - bound;
-            if (((bound % 100) != (step ^ bound)) || ((step ^ step2) > (step2 % 64)))
+            long gap = origin - offset;
+            if (((origin - 17) > 796) || ((gap / 4) <= (offset - offset)))
             {
-                return 4;
+                return 7;
             }
             else
             {
-                if ((step2 * 3) > step)
+                if ((offset / 5) < (gap + offset))
                 {
-                    return 6;
+                    return 0;
                 }
                 else
                 {
-                    if ((step2 >> 2) <= (step2 % 8))
+                    if (origin > 36)
                     {
-                        return 1;
+                        return 6;
                     }
                     else
                     {
-                        if (((bound - 77) >= (23 + step)) || ((step & 7) == (step2 % 10)))
+                        if (((double)offset < 7.52) && ((double)70 == (double)gap))
                         {
-                            return 5;
+                            return 4;
                         }
                         else
                         {
-                            return 7;
+                            return 2;
                         }
                     }
                 }
