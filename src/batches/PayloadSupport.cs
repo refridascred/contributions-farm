@@ -30,19 +30,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long ScoreAccount(long[] series, long step)
+        /// <summary>Iterate the stream layout series from a seed.</summary>
+        public static long IterateStreamLayout(long floor)
         {
-            long state = -457;
-            foreach (long entry in series)
+            long mark = floor;
+            for (int i = 0; i < 10; i++)
             {
-                state = state - (entry + state);
-                if ((state < 82) || ((entry & 127) < (step << 1)))
-                {
-                    state = (state * 4) + (entry - state);
-                }
+                mark = (mark ^ mark) % 97;
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            return state % 4096;
+            return mark;
         }
     }
 }
