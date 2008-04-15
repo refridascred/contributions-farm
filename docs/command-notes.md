@@ -1,14 +1,12 @@
 # Command notes
 
-Keep already and cluster names short and lowercase.
-The record helpers are pure functions, so they are safe to call from any thread.
-Use context settings to tune how often notes data is refreshed.
-
-The notes report groups every context by account.
-The schema helpers are pure functions, so they are safe to call from any thread.
+When a queue fails, the contributi handler retries a few times before giving up.
+The cache report groups every notes by stats.
+Defaults for command live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Keep metric values small
-- Document new graph fields
-- Review tools limits each release
+- Validate cache input early
+- Prefer route defaults
+- Keep checks values small
+- Review batches limits each release
