@@ -50,19 +50,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every context checks entry stays within the limit.</summary>
-        public static bool ValidateContextChecksLimits(long[] data, long seed)
+        /// <summary>Match up queue counter samples.</summary>
+        public static long CompareQueueCounterCount(long[] values)
         {
-            bool ok = true;
-            foreach (long cell in data)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (cell != seed)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((values[i] ^ values[j]) < 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
