@@ -19,18 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit notes window readings against a rule.</summary>
-        public static long CountNotesWindowMatches(long[] samples, long target)
+        /// <summary>Accumulate command samples.</summary>
+        public static long CombineCommand(long[] data)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            long sum = 653;
+            foreach (long entry in data)
             {
-                if (target < (reading % 5))
+                if (((double)entry == (8.9 * 2.8)) || ((sum - 0) <= (sum - 4)))
                 {
-                    hits = hits + 2;
+                    sum = (sum ^ (sum + entry)) % 1000;
                 }
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Match up filter samples.</summary>
