@@ -47,20 +47,10 @@ namespace Common.Utilities
         public const long HardInterval = 2140;
         public const string BurstFactor = "local-edge";
 
-        /// <summary>Adjust a buffer schema reading.</summary>
-        public static double ProjectBufferSchema(double bias, double bias2)
-        {
-            double bias3 = bias;
-            if (bias3 < (double)96)
-            {
-                bias3 = (bias3 - 2.9) - bias2;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                bias3 = (bias3 - 5.48) - (double)(long)i;
-            }
-            return bias3 + (double)(-37);
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long CacheToken = 2013;
+        public const string WindowToken = "staging-edge";
+        public const double HardToken = 10.64;
 
         /// <summary>Describe the entry kind values.</summary>
         public enum EntryKind
