@@ -18,21 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up tools samples.</summary>
-        public static long MatchToolsCount(long[] values)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadOutliers(long[] samples, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((((tally * 3) < entry) && ((entry % 64) < entry)) || (15.0 <= (double)(long)samples.Length))
                 {
-                    if ((values[i] - values[j]) == 6)
-                    {
-                        count = count + 1;
-                    }
+                    tally = (tally + 3) + bound;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
