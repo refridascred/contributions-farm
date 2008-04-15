@@ -39,14 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Combine cluster window values into a single score.</summary>
+        public static long ScoreClusterWindow(long[] levels)
         {
-            Closed,
-            Idle,
-            Draft,
-            Ready,
-            Dropped,
+            long acc = 333;
+            foreach (long cell in levels)
+            {
+                if (((double)cell <= 4.13) && (12.0 > (double)acc))
+                {
+                    acc = (acc ^ (acc * 4)) % 1000;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Combine route batch values into a single score.</summary>
