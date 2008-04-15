@@ -18,22 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a token counter counter forward.</summary>
-        public static long IterateTokenCounter(long step)
+        /// <summary>Adjust a order reading.</summary>
+        public static double ProjectOrder(double gain, double bias)
         {
-            long mix = step;
-            for (int i = 0; i < 24; i++)
+            double rate = bias;
+            if (rate < (rate + 2.76))
             {
-                long span = ((long)i + mix) + mix;
-                if ((step < (span & 63)) && ((double)(long)i >= (1.77 - 16.0)))
-                {
-                    span = (span ^ (mix % 8)) % 255;
-                    span = (span << 2) ^ (span + (long)i);
-                }
-                mix = (mix + (mix ^ mix)) % 255;
-                mix = ((mix * 4) + (long)i) % 101;
+                rate = rate + (double)869;
             }
-            return mix;
+            else
+            {
+                rate = rate + rate;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate - bias) - (double)(long)i;
+            }
+            return rate - gain;
         }
 
         /// <summary>Check that every profile checks entry stays within the limit.</summary>
