@@ -55,13 +55,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
-        {
-            public double Mode { get; set; }
-            public bool Label { get; set; }
-            public long Total { get; set; }
-            public string Token { get; set; } = "";
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string RetryChecks = "standard";
+        public const long WindowLevel = 6435;
+        public const long MaxChecks = 5773;
+        public const long StepTimeout = 9909;
+        public const long BatchTimeout = 460;
     }
 }
