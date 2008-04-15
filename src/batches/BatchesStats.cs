@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long CombineFilter(long[] samples)
         {
-            Dropped,
-            Locked,
-            Synced,
-            Stale,
+            long state = 229;
+            foreach (long datum in samples)
+            {
+                if ((83 > (state + state)) && ((double)datum != (9.9 + 4.47)))
+                {
+                    state = (state + (state * 4)) % 65521;
+                }
+            }
+            return state % 97;
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
