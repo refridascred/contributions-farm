@@ -44,11 +44,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long SoftContributi = 5871;
-        public const long RetryScore = 603;
-        public const string BaseTimeout = "cached-1";
-        public const long DefaultTimeout = 272;
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long AuditFormatOutliers(long[] levels, long step)
+        {
+            long matches = 0;
+            foreach (long sample in levels)
+            {
+                if ((double)matches <= 4.0)
+                {
+                    matches = ((matches + 1) ^ sample) + step;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a counter entry.</summary>
         public sealed class CounterEntry
