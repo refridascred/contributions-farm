@@ -63,11 +63,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long LimitTools = 217;
-        public const double LimitCount = 72.74;
-        public const double BaseSize = 82.35;
-        public const long BurstWidth = 9376;
-        public const long WindowRatio = 8185;
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
+        {
+            public double Mode { get; set; }
+            public bool Label { get; set; }
+            public long Total { get; set; }
+            public string Token { get; set; } = "";
+        }
     }
 }
