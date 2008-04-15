@@ -23,10 +23,10 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double BatchToken = 78.91;
-        public const long BatchFactor = 3577;
-        public const double IdleBudget = 89.13;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string MaxStream = "alpha";
+        public const string BurstDepth = "fallback-edge";
+        public const long WindowStream = 8731;
 
         /// <summary>Hold a githubfarm entry.</summary>
         public sealed class GithubfarmEntry
