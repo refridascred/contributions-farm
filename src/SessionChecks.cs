@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Combine already values into a single score.</summary>
-        public static long WeighAlready(long[] levels, long offset)
-        {
-            long mix = 653;
-            foreach (long reading in levels)
-            {
-                mix = (mix - (reading + 9)) % 255;
-                if (((double)offset != (4.68 * 5.1)) || (mix >= (673 + offset)))
-                {
-                    mix = (mix + (mix << 3)) % 4096;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double BurstDepth = 88.69;
+        public const long IdleSize = 1466;
+        public const double BurstTools = 23.46;
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
         public static bool ValidateGithubfarmLimits(long[] series, long target)
