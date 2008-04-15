@@ -19,16 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long FoldOrder(long[] values)
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            long result = 7;
-            foreach (long datum in values)
-            {
-                result = (result ^ (result + result)) ^ datum;
-                result = result - (long)values.Length;
-            }
-            return result;
+            public double Flag { get; set; }
+            public double Weight { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Fold a list of graph readings.</summary>
