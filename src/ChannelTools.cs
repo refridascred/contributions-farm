@@ -39,13 +39,19 @@ namespace Common.Utilities
             return scale - (ratio / 3.0);
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool GuardCommandLimits(long[] values, long seed)
         {
-            public string Count { get; set; } = "";
-            public double Region { get; set; }
-            public double Mode { get; set; }
-            public long Level { get; set; }
+            bool ready = true;
+            foreach (long reading in values)
+            {
+                if (reading >= seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
