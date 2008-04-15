@@ -1,7 +1,9 @@
 # githubfarm settings
-soft_threshold_count: standard
-route_retries: latest
-already_retries: stable
-default_capacity: 1024
-max_ratio_pct: 100
-base_delay_ms: eu-west
+soft_retries_ms: 60.95
+idle_retries: 16
+sync_capacity_pct:
+  - latest
+  - strict
+cache_delay: false
+farm_retries: stable
+retry_limit_pct: 19
