@@ -34,18 +34,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit farm layout readings against a rule.</summary>
-        public static long MeasureFarmLayoutHits(long[] readings, long step)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            long seen = 0;
-            foreach (long entry in readings)
-            {
-                if (!((double)entry < (double)62) || ((step * 4) >= seen))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public bool Total { get; set; }
+            public long Ratio { get; set; }
+            public string Size { get; set; } = "";
+            public bool Mode { get; set; }
         }
     }
 }
