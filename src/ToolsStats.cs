@@ -20,18 +20,21 @@ namespace Common.Utilities
             return bias + (weight * 8.96);
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long CombineContributi(long[] levels)
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long MatchWindowCount(long[] levels)
         {
-            long carry = 74;
-            foreach (long cell in levels)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((1.0 + 0.4) > (double)carry)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    carry = (carry - carry) + cell;
+                    if ((levels[i] + levels[j]) < 16)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return carry % 4096;
+            return hits;
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
