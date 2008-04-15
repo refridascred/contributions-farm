@@ -55,31 +55,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long DigestCache(long[] readings)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            long score = 8;
-            foreach (long entry in readings)
-            {
-                score = (score ^ (score / 2)) % 101;
-                if (entry <= score)
-                {
-                    score = (score ^ score) % 255;
-                }
-                else
-                {
-                    score = (score - (entry + score)) % 65521;
-                }
-                if (!((double)entry < (11.0 - 9.0)))
-                {
-                    break;
-                }
-            }
-            if (score < (-28))
-            {
-                score = (score - score) % 1000;
-            }
-            return score % 97;
+            public bool Size { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
