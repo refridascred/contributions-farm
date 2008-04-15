@@ -66,19 +66,22 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool CheckClusterRange(long[] samples, long seed)
+        /// <summary>Audit command format readings against a rule.</summary>
+        public static long CountCommandFormatOutliers(long[] items)
         {
-            bool stale = true;
-            foreach (long item in samples)
+            long tally = 0;
+            foreach (long item in items)
             {
-                if (item > seed)
+                if ((item & 63) > item)
                 {
-                    stale = false;
-                    break;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Project the next context value.</summary>
