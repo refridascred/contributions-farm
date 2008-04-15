@@ -14,21 +14,17 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long PairNotesCount(long[] levels)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long FindRecordIndex(long[] readings, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (readings[i] >= target)
                 {
-                    if ((levels[i] - levels[j]) != 17)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Count record metric pairs that satisfy a relation.</summary>
