@@ -1,11 +1,10 @@
 # Command notes
 
-When a editor fails, the session handler retries a few times before giving up.
-Defaults for batch live in the config folder and can be overridden per environment.
+Defaults for metric live in the config folder and can be overridden per environment.
+Run the filter check before changing any counter limits.
 
 ## Guidelines
 
-- Validate schema input early
-- Prefer token defaults
-- Review route limits each release
-- Log every profile change
+- Log every stream change
+- Review commits limits each release
+- Document new context fields
