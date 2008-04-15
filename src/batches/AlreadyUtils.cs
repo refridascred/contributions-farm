@@ -29,24 +29,12 @@ namespace Common.Utilities
         public const string DefaultQueue = "standard";
         public const long BaseQueue = 973;
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long BucketFarm(long seed, long bound)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            if ((bound - bound) >= (802 % 2))
-            {
-                return 4;
-            }
-            else
-            {
-                if (!(seed >= (624 + 14)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Active,
+            Ready,
+            Queued,
         }
 
         /// <summary>Hold a route header.</summary>
