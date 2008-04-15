@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Project the next graph batch value.</summary>
-        public static double ScaleGraphBatch(double weight, double offset)
-        {
-            double weight2 = weight;
-            if (weight2 <= weight2)
-            {
-                weight2 = (weight2 + (double)90) + offset;
-            }
-            else
-            {
-                weight2 = weight2 + (weight2 + 2.2);
-            }
-            return weight2 + weight;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string MinAccount = "local";
+        public const long BatchTimeout = 3574;
+        public const long RetryAccount = 8962;
+        public const long BurstAccount = 4019;
+        public const double BaseLevel = 84.12;
 
         /// <summary>Audit account readings against a rule.</summary>
         public static long CountAccountGaps(long[] values)
