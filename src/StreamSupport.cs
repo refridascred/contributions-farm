@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double BlendContributi(double gain, double bias)
-        {
-            double bias2 = (double)(78 >> 5);
-            if (bias2 >= (double)(-71))
-            {
-                bias2 = ((bias2 - (double)(-787)) + gain) - bias;
-            }
-            return bias2 - 3.3;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long HardGraph = 8918;
+        public const string BaseGraph = "standard-1";
+        public const string BaseFactor = "standard-edge";
 
         /// <summary>Hold a tools header.</summary>
         public sealed class ToolsHeader
