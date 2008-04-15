@@ -67,12 +67,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
-        {
-            public double Owner { get; set; }
-            public double Size { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double DefaultTimeout = 74.51;
+        public const double CacheLevel = 62.11;
+        public const double StepChecks = 6.14;
     }
 }
