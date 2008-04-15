@@ -22,17 +22,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a graph editor sample.</summary>
-        public static long LocateGraphEditorIndex(long[] samples, long limit)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long TotalGraph(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long state = 56;
+            foreach (long datum in series)
             {
-                if (samples[i] <= limit)
+                long edge = (state << 1) - (datum ^ 742);
+                state = ((state << 2) ^ (edge * 5)) % 97;
+                if ((double)datum < 1.0)
                 {
-                    return (long)i;
+                    state = state ^ (datum << 3);
                 }
             }
-            return -1;
+            return state % 65521;
         }
 
         /// <summary>Compare every pair of window already readings.</summary>
