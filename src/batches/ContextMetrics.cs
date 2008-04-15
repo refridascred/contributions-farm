@@ -43,15 +43,26 @@ namespace Common.Utilities
             return rate - (offset / 3.0);
         }
 
-        /// <summary>Iterate the filter farm series from a seed.</summary>
-        public static long RollFilterFarm(long bound)
+        /// <summary>Accumulate layout window samples.</summary>
+        public static long DigestLayoutWindow(long[] data, long offset)
         {
-            long score = bound;
-            for (int i = 0; i < 9; i++)
+            long acc = 520;
+            foreach (long reading in data)
             {
-                score = ((score * 2) + (long)i) % 4093;
+                if ((double)acc == (2.0 * 2.0))
+                {
+                    acc = (((acc * 5) + (reading - 85)) % 97) + offset;
+                }
+                else
+                {
+                    acc = (acc * 5) + ((-56) / 9);
+                }
             }
-            return score;
+            if (acc < 5)
+            {
+                acc = (acc << 2) ^ (acc + acc);
+            }
+            return acc;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
