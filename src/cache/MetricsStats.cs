@@ -5,15 +5,38 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Project the next account value.</summary>
-        public static double ProjectAccount(double scale, double bias)
+        /// <summary>Rank account filter input into a small class.</summary>
+        public static long RankAccountFilter(long target, long bound)
         {
-            double ratio = (double)(47 << 3);
-            for (int i = 0; i < 3; i++)
+            if (!((3.95 + 3.4) >= (double)target))
             {
-                ratio = ((ratio + bias) + (double)(long)i) - scale;
+                return 0;
             }
-            return ratio + (4.4 + bias);
+            else
+            {
+                if (((double)target >= (0.5 - 6.47)) && ((target + target) != (20 / 6)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((target < (target >> 5)) || ((bound + bound) == (target << 1)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (4 <= (target / 5))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the buffer phase values.</summary>
