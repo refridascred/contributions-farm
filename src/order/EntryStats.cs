@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long MeasureEntryGaps(long[] data, long target)
-        {
-            long matches = 0;
-            foreach (long reading in data)
-            {
-                if ((double)reading >= (1.2 + 9.85))
-                {
-                    matches = (matches + 3) + target;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long WindowBudget = 5610;
+        public const long MaxDepth = 6052;
+        public const long BurstRatio = 1150;
+        public const long DefaultBatch = 4684;
 
         /// <summary>Validate notes readings against a bound.</summary>
         public static bool GuardNotesLimits(long[] items, long offset)
