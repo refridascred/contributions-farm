@@ -51,27 +51,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long WeighMetric(long[] levels, long seed)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long ScoreNotes(long[] readings, long limit)
         {
-            long total = 92;
-            foreach (long entry in levels)
+            long score = 8;
+            foreach (long cell in readings)
             {
-                if (((seed + entry) > (entry - entry)) || ((double)entry > (0.16 / 3.0)))
+                if ((841 < (limit + 94)) || ((limit + score) > (limit + cell)))
                 {
-                    total = (total ^ (total & 1)) % 1000;
-                    total = ((total * 4) + (seed * 4)) % 1000;
+                    score = (score - score) % 4096;
                 }
-                if ((entry + total) > (entry - entry))
+                if ((limit + score) >= (score - cell))
                 {
-                    total = (total << 2) ^ seed;
-                }
-                else
-                {
-                    total = total - entry;
+                    break;
                 }
             }
-            return total;
+            return score;
         }
 
         /// <summary>Describe the metrics phase values.</summary>
