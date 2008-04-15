@@ -50,12 +50,12 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string DefaultStream = "standard";
-        public const string WindowStream = "open";
-        public const long SoftScore = 2245;
-        public const long HardStream = 9412;
-        public const long BurstStream = 7383;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long LimitBuffer = 8695;
+        public const long BurstSpan = 9893;
+        public const double DefaultInterval = 4.15;
+        public const double RetryFactor = 40.28;
+        public const long CacheBuffer = 9420;
 
         /// <summary>Check that every entry cache entry stays within the limit.</summary>
         public static bool VerifyEntryCacheLimits(long[] values, long offset)
