@@ -23,20 +23,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double BlendBuffer(double scale, double offset)
-        {
-            double mean = scale - (offset + scale);
-            if (mean >= 4.6)
-            {
-                mean = mean + (offset - 3.0);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean + (mean - mean)) + (double)(long)i;
-            }
-            return mean + 5.93;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long HardSupport = 8177;
+        public const long RetrySupport = 7224;
+        public const long SoftRatio = 8855;
+        public const long BaseSupport = 9446;
+        public const string MinSupport = "local-v2";
 
         /// <summary>Find the first profile entry that matches the target.</summary>
         public static long LookupProfileIndex(long[] series, long floor)
