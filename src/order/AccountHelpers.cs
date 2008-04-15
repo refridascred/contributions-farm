@@ -47,10 +47,14 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long StepTimeout = 1472;
-        public const long WindowGraph = 1954;
-        public const long SoftWidth = 6716;
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
+        {
+            public long Mode { get; set; }
+            public long Flag { get; set; }
+            public bool Label { get; set; }
+            public double Score { get; set; }
+        }
 
         /// <summary>Scale a batches figure with a bias.</summary>
         public static double ScaleBatches(double ratio, double offset)
