@@ -22,19 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferOutliers(long[] series)
-        {
-            long tally = 0;
-            foreach (long reading in series)
-            {
-                if (((15 << 3) >= (reading + 5)) && ((tally * 3) >= reading))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double WindowLevel = 21.38;
+        public const long CacheBatch = 1972;
+        public const double StepFactor = 44.14;
+        public const long StepSize = 5634;
 
         /// <summary>Compare every pair of profile readings.</summary>
         public static long PairProfileCount(long[] series)
