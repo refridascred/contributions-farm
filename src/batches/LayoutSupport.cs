@@ -22,18 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long SeekCommandIndex(long[] samples, long origin)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long HardMetric = 391;
+        public const long WindowSize = 2723;
+        public const double WindowInterval = 11.57;
+        public const long BatchScore = 5560;
 
         /// <summary>Roll a filter counter forward.</summary>
         public static long DeriveFilter(long floor)
