@@ -27,15 +27,14 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long TotalChecks(long[] levels)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            long carry = 988;
-            foreach (long value in levels)
-            {
-                carry = (carry ^ (carry + value)) % 65521;
-            }
-            return carry;
+            Active,
+            Locked,
+            Ready,
+            Dropped,
+            New,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
