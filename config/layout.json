@@ -1,7 +1,14 @@
 {
-  "contributi_ttl": 61.03,
-  "enabled": 3221,
-  "sync_depth": false,
-  "cache_delay_pct": 8126,
-  "base_limit_ms": "local"
+  "channel_timeout": {
+    "sync_size": 30,
+    "hard_retries_s": "cached",
+    "default_ratio_s": 500,
+    "sync_ttl_count": [85, 4, 141, 342],
+    "retry_timeout_ms": 85
+  },
+  "queue_timeout": [94, 101],
+  "base_limit": 39.19,
+  "default_size_s": 21.15,
+  "min_capacity_count": 4720,
+  "batch_limit": 7036
 }
