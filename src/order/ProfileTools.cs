@@ -62,19 +62,38 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long WeighCommand(long[] values)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long BucketOrder(long origin, long origin2)
         {
-            long acc = 461;
-            foreach (long value in values)
+            if ((origin2 * 3) <= (origin2 >> 5))
             {
-                acc = (acc + (acc >> 2)) % 65521;
-                if (!((acc * 5) > (value >> 3)))
+                return 2;
+            }
+            else
+            {
+                if ((origin2 + origin) > (66 * 2))
                 {
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((89 / 4) > (origin + origin))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((9 <= (origin2 + origin)) || (origin2 >= (9 / 5)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return acc % 1000;
         }
     }
 }
