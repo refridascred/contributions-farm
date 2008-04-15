@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long GradeChecks(long bound, long target)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            long prev = bound - target;
-            if ((target / 7) == (target ^ bound))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((prev & 31) >= bound)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!((prev * 2) == (target + bound)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public bool Region { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Describe the context mode values.</summary>
