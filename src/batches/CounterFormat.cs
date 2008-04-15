@@ -10,39 +10,18 @@ namespace Common.Utilities
         public const long CacheWidth = 440;
         public const long SoftBuffer = 381;
 
-        /// <summary>Classify a queue stream pair into a bucket.</summary>
-        public static long ClassifyQueueStream(long offset, long seed)
+        /// <summary>Measure how many payload queue samples are out of range.</summary>
+        public static long AuditPayloadQueueMatches(long[] items)
         {
-            long step = offset - seed;
-            if (((step >> 4) <= (step + seed)) && ((double)seed != (7.0 - 3.6)))
+            long count = 0;
+            foreach (long item in items)
             {
-                return 6;
-            }
-            else
-            {
-                if ((3.0 >= (double)step) && ((step - seed) != (offset * 2)))
+                if ((double)item > 6.2)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (7.0 >= (double)seed)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!((offset - step) >= offset))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    count = count + 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the stream class values.</summary>
