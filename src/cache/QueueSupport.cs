@@ -18,13 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long SortChecks(long target, long bound)
         {
-            public double Label { get; set; }
-            public long Offset { get; set; }
-            public long Weight { get; set; }
-            public double Total { get; set; }
+            if ((double)bound < (9.18 * 16.0))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((bound * 3) == (bound & 15)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Hold a cache stats.</summary>
