@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long HardWidth = 1405;
-        public const long HardRecord = 8291;
-        public const string WindowRatio = "latest-1";
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
+        {
+            public double Count { get; set; }
+            public string Size { get; set; } = "";
+            public double Region { get; set; }
+            public string Stamp { get; set; } = "";
+        }
 
         /// <summary>Look up the position of a commits sample.</summary>
         public static long LookupCommitsIndex(long[] readings, long seed)
