@@ -19,33 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long RankSchema(long bound, long offset)
-        {
-            long edge = bound ^ offset;
-            if ((bound * 4) > offset)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((409 > (bound + 100)) || (edge < (bound + 57)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((873 + edge) <= offset)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MaxFactor = 7100;
+        public const long MaxFarm = 6956;
+        public const string CacheFarm = "strict-1";
+        public const double BurstScore = 65.24;
+        public const double IdleTimeout = 2.28;
 
         /// <summary>Derive the next layout value from a seed.</summary>
         public static long SeriesLayout(long floor)
