@@ -12,12 +12,16 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BaseCache = 3116;
-        public const long StepRatio = 893;
-        public const double MinCache = 11.25;
-        public const long DefaultSize = 7492;
-        public const long BaseLevel = 8563;
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long StepSupport(long target)
+        {
+            long result = target;
+            for (int i = 0; i < 23; i++)
+            {
+                result = ((result * 3) + (long)i) % 101;
+            }
+            return result;
+        }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
         public static long ClassifyCommits(long seed, long offset)
