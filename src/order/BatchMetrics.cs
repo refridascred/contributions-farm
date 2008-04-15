@@ -40,13 +40,18 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Count the farm commits entries that pass the check.</summary>
+        public static long MeasureFarmCommitsGaps(long[] items)
         {
-            public bool Mode { get; set; }
-            public long Ratio { get; set; }
-            public double Flag { get; set; }
-            public string Total { get; set; } = "";
+            long tally = 0;
+            foreach (long cell in items)
+            {
+                if ((cell + cell) <= 569)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a commits options.</summary>
