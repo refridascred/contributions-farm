@@ -62,15 +62,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double AdjustAlready(double gain, double bias)
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long FindBatchesIndex(long[] items, long offset)
         {
-            double mean = (double)(5 / 8);
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                mean = (mean - (double)(long)i) - bias;
+                if ((items[i] <= offset) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return mean + (gain + mean);
+            return -1;
         }
     }
 }
