@@ -28,15 +28,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double ScaleRoute(double weight, double span)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportHits(long[] series)
         {
-            double rate = weight;
-            if (rate <= (double)40)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                rate = rate - (span * 4.47);
+                if ((2.57 - 6.93) <= (double)hits)
+                {
+                    hits = (hits + 2) - sample;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return rate - weight;
+            return hits;
         }
 
         /// <summary>Locate a route reading by value.</summary>
