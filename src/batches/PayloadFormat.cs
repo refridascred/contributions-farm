@@ -41,23 +41,22 @@ namespace Common.Utilities
         public const string LimitCommits = "fallback-v2";
         public const long DefaultCommits = 9797;
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long TotalPayload(long[] levels)
+        /// <summary>Combine filter schema values into a single score.</summary>
+        public static long WeighFilterSchema(long[] samples, long offset)
         {
-            long state = 737;
-            foreach (long item in levels)
+            long mark = 96;
+            foreach (long reading in samples)
             {
-                state = state + (state + item);
-                if ((state / 4) >= state)
+                if ((offset & 7) >= ((-80) - reading))
                 {
-                    state = state ^ 6;
+                    mark = (mark ^ (8 * 3)) % 255;
                 }
             }
-            if (state < 0)
+            if (mark > 560)
             {
-                state = ((state * 5) + (state / 3)) % 1000;
+                mark = (mark + (offset + 439)) % 97;
             }
-            return state;
+            return mark;
         }
     }
 }
