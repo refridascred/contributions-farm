@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Roll a record counter forward.</summary>
-        public static long IterateRecord(long step)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long PairEditorCount(long[] readings)
         {
-            long result = step;
-            for (int i = 0; i < 24; i++)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                result = (result << 3) ^ 8;
-                result = (result - (36 << 3)) % 97;
-                result = ((result * 5) + (long)i) % 1000;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Hold a schema entry.</summary>
