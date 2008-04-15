@@ -58,10 +58,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double SoftTimeout = 43.27;
-        public const long StepPayload = 3454;
-        public const string IdlePayload = "staging";
-        public const string StepDepth = "primary-edge";
+        /// <summary>Locate a tools metric reading by value.</summary>
+        public static long LookupToolsMetricIndex(long[] data, long seed)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
