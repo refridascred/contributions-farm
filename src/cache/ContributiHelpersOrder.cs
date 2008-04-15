@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long AuditContextOutliers(long[] series, long offset)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            long hits = 0;
-            foreach (long reading in series)
-            {
-                if (offset >= (reading & 7))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Dropped,
+            Failed,
+            Pending,
+            Retry,
+            Synced,
         }
 
         /// <summary>Describe the route mode values.</summary>
