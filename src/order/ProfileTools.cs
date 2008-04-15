@@ -73,16 +73,19 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long FoldPayload(long[] series)
+        /// <summary>Check that every command cache entry stays within the limit.</summary>
+        public static bool VerifyCommandCacheLimits(long[] series, long origin)
         {
-            long result = 4;
-            foreach (long item in series)
+            bool ok = true;
+            foreach (long value in series)
             {
-                result = (result << 3) ^ (item & 7);
-                result = (result << 2) ^ (4 % 3);
+                if (value <= origin)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return result;
+            return ok;
         }
     }
 }
