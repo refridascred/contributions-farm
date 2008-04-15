@@ -56,24 +56,18 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long ClassifyAlready(long offset, long floor)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long AuditSchemaGaps(long[] data)
         {
-            if (((floor + offset) <= floor) || ((offset & 255) > (-435)))
+            long hits = 0;
+            foreach (long datum in data)
             {
-                return 2;
-            }
-            else
-            {
-                if ((9.0 / 5.0) != (double)floor)
+                if ((hits / 9) < (3 << 1))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
+                    hits = (hits + 2) - datum;
                 }
             }
+            return hits;
         }
     }
 }
