@@ -1,5 +1,6 @@
 {
-  "window_size": "fallback",
-  "idle_limit_ms": "legacy",
-  "retry_window_s": 500
+  "max_interval_pct": "staging",
+  "record_timeout": 28,
+  "max_threshold": [493, 24, 302],
+  "default_timeout_count": 100
 }
