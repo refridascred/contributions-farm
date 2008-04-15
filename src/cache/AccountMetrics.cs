@@ -96,21 +96,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the session support series from a seed.</summary>
-        public static long RollSessionSupport(long seed)
-        {
-            long acc = seed;
-            for (int i = 0; i < 7; i++)
-            {
-                acc = acc + ((long)i << 1);
-                if ((((long)i + 4) >= seed) && (((long)i - acc) > 9))
-                {
-                    acc = (acc ^ (acc >> 1)) % 101;
-                    acc = (acc ^ (acc >> 2)) % 101;
-                }
-                acc = ((acc * 3) + (long)i) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BaseSize = 7110;
+        public const string MaxBuffer = "latest-v2";
+        public const string MaxFactor = "local-1";
+        public const long BurstDepth = 6064;
+        public const long RetryBuffer = 344;
     }
 }
