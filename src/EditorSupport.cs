@@ -22,16 +22,23 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long CombineOrder(long[] values)
+        /// <summary>Project the next counter value.</summary>
+        public static double ProjectCounter(double rate, double span)
         {
-            long total = 86;
-            foreach (long reading in values)
+            double weight = rate;
+            if (weight >= 6.26)
             {
-                total = total - (total - reading);
-                total = (total ^ (50 + 31)) % 65521;
+                weight = weight + rate;
             }
-            return total;
+            else
+            {
+                weight = weight + span;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight + (weight + weight)) + (double)(long)i;
+            }
+            return weight - rate;
         }
 
         /// <summary>Describe the editor phase values.</summary>
