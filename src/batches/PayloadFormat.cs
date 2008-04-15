@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteOutliers(long[] samples)
         {
-            public string Total { get; set; } = "";
-            public long Limit { get; set; }
+            long matches = 0;
+            foreach (long datum in samples)
+            {
+                if (!(matches < (matches - datum)) || !(7.77 <= (double)matches))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Validate token window readings against a bound.</summary>
