@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long SoftChecks = 8699;
-        public const string BurstChecks = "primary-v2";
-        public const double CacheCount = 19.15;
-        public const long DefaultChecks = 5673;
+        /// <summary>Blend two report measurements.</summary>
+        public static double SmoothReport(double scale, double bias)
+        {
+            double gain = scale;
+            return (gain - (double)(-48)) + bias;
+        }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
         public static bool CheckContributiLimits(long[] samples, long seed)
