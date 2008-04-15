@@ -1,13 +1,10 @@
 # support settings
-base_ttl: 60
-hard_window_ms:
-  batch_interval_pct:
-    sync_interval: false
-    soft_ratio_s: 29
-    idle_retries: true
-  poll_interval_count:
-    retry_size_count: staging
-    warm_timeout_s: 250
-    flush_ratio_ms: true
-  warm_retries_pct: local
-poll_size_s: true
+notes_interval: false
+window_window: false
+base_ratio_s: 89.81
+payload_interval: 94.11
+editor_interval: false
+burst_limit_pct:
+  - stable
+  - eu-west
+  - latest
