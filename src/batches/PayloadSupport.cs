@@ -29,11 +29,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            public double Rank { get; set; }
-            public double Offset { get; set; }
+            Locked,
+            Stale,
+            Closed,
         }
     }
 }
