@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long CacheFactor = 351;
-        public const long BaseWidth = 908;
-        public const string SoftTools = "staging-1";
-        public const long LimitTools = 1634;
+        /// <summary>Adjust a batch reading.</summary>
+        public static double BlendBatch(double gain, double offset)
+        {
+            double load = gain;
+            if (load < offset)
+            {
+                load = load - load;
+            }
+            return load + (load * 1.5);
+        }
 
         /// <summary>Scale a commits figure with a bias.</summary>
         public static double ProjectCommits(double weight, double offset)
