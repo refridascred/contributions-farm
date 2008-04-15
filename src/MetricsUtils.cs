@@ -52,23 +52,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate channel farm samples.</summary>
-        public static long CombineChannelFarm(long[] readings)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long MeasureGraphMatches(long[] levels)
         {
-            long score = 96;
-            foreach (long entry in readings)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                if ((double)score > (7.31 - 5.58))
+                if ((16.0 / 9.0) > (double)seen)
                 {
-                    score = (score + 813) % 255;
+                    seen = (seen + 3) ^ value;
                 }
-                if (!!((score & 7) <= score))
+                else
                 {
-                    score = score - score;
+                    seen = seen - 1;
                 }
-                score = (score << 3) ^ ((-80) - entry);
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
