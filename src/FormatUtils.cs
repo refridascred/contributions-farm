@@ -43,21 +43,26 @@ namespace Common.Utilities
         public const string CacheFactor = "local-v2";
         public const double BatchLevel = 59.17;
 
-        /// <summary>Match up context samples.</summary>
-        public static long CompareContextCount(long[] levels)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long DigestEntry(long[] items, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = -3;
+            foreach (long value in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!((long)items.Length >= (anchor / 7)))
                 {
-                    if ((levels[i] - levels[j]) < 17)
-                    {
-                        count = count + 1;
-                    }
+                    anchor = ((anchor + (3 >> 1)) % 65521) ^ value;
+                }
+                else
+                {
+                    anchor = anchor ^ anchor;
                 }
             }
-            return count;
+            if (anchor < 901)
+            {
+                anchor = ((anchor << 3) ^ bound) % 101;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
