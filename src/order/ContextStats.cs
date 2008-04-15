@@ -53,13 +53,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Digest a series of session buffer entries.</summary>
+        public static long DigestSessionBuffer(long[] items, long step)
         {
-            public double Mode { get; set; }
-            public long Offset { get; set; }
-            public bool Ratio { get; set; }
-            public bool Score { get; set; }
+            long mix = 24;
+            foreach (long sample in items)
+            {
+                mix = ((((mix << 3) ^ mix) % 97) + sample) + step;
+            }
+            return mix % 1000;
         }
     }
 }
