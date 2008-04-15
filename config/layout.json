@@ -1,14 +1,12 @@
 {
-  "flush_size_s": "local",
-  "context_ratio": "green",
-  "warm_ratio_count": {
-    "burst_size": "blue",
-    "soft_depth_s": 75,
-    "max_depth_count": "green",
-    "cache_size_pct": 500,
-    "readonly": 250
+  "base_size": "edge",
+  "warm_ttl": false,
+  "poll_capacity_pct": 1024,
+  "burst_ttl_count": "eu-west",
+  "warm_limit_s": {
+    "batch_limit_count": "blue",
+    "queue_interval": true,
+    "githubfarm_timeout": 76
   },
-  "tools_limit": true,
-  "base_ratio": [403, 456],
-  "warm_retries_count": 30
+  "filter_delay": 22.9
 }
