@@ -50,22 +50,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long CombineEditor(long[] readings, long floor)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long TotalEditor(long[] samples)
         {
-            long score = 5;
-            foreach (long reading in readings)
+            long mark = -5;
+            foreach (long reading in samples)
             {
-                if ((score * 2) >= score)
+                if ((3.7 / 7.0) < (double)reading)
                 {
-                    score = ((((score * 5) + (long)readings.Length) % 65521) + reading) + floor;
+                    mark = (mark - mark) % 97;
                 }
             }
-            if (score > 339)
-            {
-                score = (score + (703 >> 4)) % 1000;
-            }
-            return score;
+            return mark;
         }
     }
 }
