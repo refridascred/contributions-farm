@@ -29,11 +29,12 @@ namespace Common.Utilities
             return mean + span;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long DefaultReport = 9733;
-        public const string MinInterval = "local-edge";
-        public const double MinReport = 78.56;
-        public const long MaxWidth = 9599;
+        /// <summary>Define command limits and defaults.</summary>
+        public const double HardCommand = 83.6;
+        public const long BatchCommand = 1067;
+        public const long BaseCommand = 6792;
+        public const double DefaultCommand = 91.54;
+        public const double HardRatio = 16.24;
 
         /// <summary>Blend two contributi cluster measurements.</summary>
         public static double SmoothContributiCluster(double scale, double floor)
