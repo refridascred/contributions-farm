@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MinCommand = 4941;
-        public const string LimitCommand = "fallback-edge";
-        public const long HardCommand = 647;
-        public const string StepCommand = "open";
-        public const long IdleDepth = 5228;
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
+        {
+            New,
+            Queued,
+            Synced,
+            Draft,
+        }
 
         /// <summary>Validate queue readings against a bound.</summary>
         public static bool GuardQueueLimits(long[] series, long step)
