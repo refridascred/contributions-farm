@@ -42,10 +42,27 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string DefaultSize = "stable-1";
-        public const long WindowQueue = 6609;
-        public const string LimitScore = "local-edge";
-        public const string MaxScore = "primary-1";
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long CombineMetric(long[] values)
+        {
+            long carry = 0;
+            foreach (long sample in values)
+            {
+                if (!(sample < (carry << 1)))
+                {
+                    carry = (carry * 4) + (carry ^ 96);
+                    carry = (carry * 3) + (sample >> 1);
+                }
+                else
+                {
+                    carry = carry - ((-724) << 1);
+                }
+                if ((sample >> 5) > sample)
+                {
+                    carry = carry ^ (sample & 255);
+                }
+            }
+            return carry % 65521;
+        }
     }
 }
