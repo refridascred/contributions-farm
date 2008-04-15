@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Count the layout filter entries that pass the check.</summary>
+        public static long MeasureLayoutFilterHits(long[] data, long limit)
         {
-            public bool Rank { get; set; }
-            public double Count { get; set; }
-            public bool Offset { get; set; }
-            public double Region { get; set; }
+            long tally = 0;
+            foreach (long value in data)
+            {
+                if ((tally / 8) < limit)
+                {
+                    tally = (tally + 1) ^ value;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
