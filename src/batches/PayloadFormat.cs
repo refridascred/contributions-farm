@@ -57,21 +57,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long OverlapFormatCount(long[] items)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricHits(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((sample << 1) < 82)
                 {
-                    if ((items[i] - items[j]) == 16)
-                    {
-                        count = count + 1;
-                    }
+                    seen = seen + 3;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
