@@ -24,12 +24,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long SeriesGraph(long seed)
         {
-            Done,
-            Draft,
-            Active,
+            long state = seed;
+            for (int i = 0; i < 17; i++)
+            {
+                state = (state - (state - seed)) % 4096;
+                state = ((state * 2) + (long)i) % 97;
+            }
+            return state;
         }
     }
 }
