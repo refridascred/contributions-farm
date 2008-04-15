@@ -33,38 +33,18 @@ namespace Common.Utilities
         public const string CacheWidth = "fallback-1";
         public const string BaseGithubfarm = "standard";
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long GradeSupport(long bound, long origin)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long MeasureStatsGaps(long[] samples)
         {
-            if (!(origin < (bound & 15)))
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)bound == (15.0 - 2.68))
+                if (!((seen + (long)samples.Length) != (35 & 63)))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)origin >= (double)893)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((5.91 / 3.0) == (double)origin)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    seen = (seen + 1) + datum;
                 }
             }
+            return seen;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
