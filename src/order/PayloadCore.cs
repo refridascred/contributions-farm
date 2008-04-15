@@ -28,18 +28,13 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowMatches(long[] series, long limit)
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            long count = 0;
-            foreach (long datum in series)
-            {
-                if (datum <= (853 << 3))
-                {
-                    count = (count + 3) - limit;
-                }
-            }
-            return count;
+            public long Count { get; set; }
+            public bool Size { get; set; }
+            public long Rank { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Describe the graph phase values.</summary>
