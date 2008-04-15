@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long FindLayoutIndex(long[] values, long floor)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long MeasurePayloadGaps(long[] levels, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                if ((values[i] < floor) && ((values[i] % 5) != 0))
+                if ((bound & 3) != (entry & 7))
                 {
-                    return (long)i;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Measure how many batch cluster samples are out of range.</summary>
