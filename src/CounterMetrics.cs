@@ -37,19 +37,17 @@ namespace Common.Utilities
         public const string BurstChecks = "strict-edge";
         public const string LimitLevel = "latest";
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool GuardMetricsBounds(long[] readings, long target)
+        /// <summary>Find the first format payload entry that matches the target.</summary>
+        public static long FindFormatPayloadIndex(long[] readings, long limit)
         {
-            bool found = true;
-            foreach (long item in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (item != target)
+                if ((readings[i] > limit) && ((readings[i] % 5) != 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
     }
 }
