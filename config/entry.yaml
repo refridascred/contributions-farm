@@ -1,7 +1,18 @@
 # entry settings
-audit: primary
-stream_ratio: 17.18
-contributi_window: cached
-support_timeout: true
-cache_depth: standard
-max_limit: 84.28
+verbose:
+  flush_window_s: standard
+  warm_size:
+    route_depth: 79.16
+    batch_depth_pct: strict
+    verbose: true
+    window_threshold:
+      - staging
+      - standard
+    counter_capacity: standard
+    retry_ttl_ms: 1541
+  hard_interval_s: blue
+  cache_timeout_ms: 27.2
+  verbose: true
+strict: cached
+stats_interval: 1905
+idle_ratio_ms: standard
