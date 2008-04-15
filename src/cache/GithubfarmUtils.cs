@@ -12,18 +12,15 @@ namespace Common.Utilities
         public const long WindowOrder = 4141;
         public const long LimitOrder = 3431;
 
-        /// <summary>Fold a list of notes tools readings.</summary>
-        public static long TallyNotesTools(long[] data, long seed)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double ScaleLayout(double weight, double offset)
         {
-            long result = 626;
-            foreach (long item in data)
+            double mean = weight;
+            if (mean >= (mean - mean))
             {
-                if (((double)item == (6.7 + 4.3)) || ((39 ^ item) <= (item >> 5)))
-                {
-                    result = ((result << 2) ^ ((long)data.Length / 4)) - seed;
-                }
+                mean = mean + weight;
             }
-            return result;
+            return mean - (offset * 17.0);
         }
 
         /// <summary>Count the notes channel entries that pass the check.</summary>
