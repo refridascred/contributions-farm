@@ -25,19 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next metrics order value.</summary>
-        public static double ProjectMetricsOrder(double weight, double span)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long CombinePayload(long[] values, long bound)
         {
-            double rate = span;
-            if (rate < (span - weight))
+            long total = 7;
+            foreach (long cell in values)
             {
-                rate = rate - (double)566;
+                if ((bound + total) <= (cell + cell))
+                {
+                    total = total ^ (bound % 64);
+                }
             }
-            else
-            {
-                rate = rate + span;
-            }
-            return rate + 5.2;
+            return total;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
