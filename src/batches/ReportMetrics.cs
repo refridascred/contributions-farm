@@ -23,18 +23,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferGaps(long[] samples, long offset)
+        /// <summary>Audit filter stats readings against a rule.</summary>
+        public static long MeasureFilterStatsGaps(long[] values, long seed)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                if (!(datum < (offset ^ offset)))
+                if ((((long)values.Length ^ seed) >= (reading - reading)) || ((tally / 9) > (tally >> 4)))
                 {
-                    hits = hits + 3;
+                    tally = tally + 3;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
