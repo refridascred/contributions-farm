@@ -36,22 +36,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long AuditBatchesHits(long[] series, long limit)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long ClassifyBatches(long target, long floor)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            long offset = target ^ floor;
+            if ((offset << 2) >= (floor % 24))
             {
-                if ((sample / 3) <= (sample + tally))
+                return 5;
+            }
+            else
+            {
+                if (((target & 7) != (offset - floor)) && ((8.1 * 4.0) <= (double)floor))
                 {
-                    tally = (tally + 3) + limit;
+                    return 4;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if ((752 & 1) >= offset)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Compare every pair of format readings.</summary>
