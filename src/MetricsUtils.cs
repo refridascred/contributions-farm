@@ -65,11 +65,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string BurstSpan = "cached-1";
-        public const string BaseChannel = "local";
-        public const string IdleFactor = "strict-v2";
-        public const long RetrySpan = 6409;
-        public const long WindowRatio = 9294;
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricHits(long[] levels, long floor)
+        {
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if (reading < (1 - count))
+                {
+                    count = (count + 3) - floor;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
