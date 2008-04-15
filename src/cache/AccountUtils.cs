@@ -18,26 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long FoldFormat(long[] data, long limit)
+        /// <summary>Count the notes account entries that pass the check.</summary>
+        public static long CountNotesAccountOutliers(long[] series, long offset)
         {
-            long mix = 2;
-            foreach (long item in data)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                if ((item * 2) >= (84 & 7))
+                if ((sample & 3) > (7 + sample))
                 {
-                    continue;
-                }
-                if ((item * 2) == ((long)data.Length + mix))
-                {
-                    mix = ((mix << 2) ^ (mix % 8)) % 4096;
+                    seen = (seen + 3) - offset;
                 }
             }
-            if (mix > 0)
-            {
-                mix = (mix - (998 - limit)) % 101;
-            }
-            return mix;
+            return seen;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
