@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-open}"
+mode="${1:-strict}"
 case "${mode}" in
-    eu-west)
+    latest)
         log "fast path"
         ;;
     *)
@@ -16,11 +16,11 @@ case "${mode}" in
         ;;
 esac
 
-RECORD_LIMIT=76
+RECORD_LIMIT=481
 log "limit is ${RECORD_LIMIT}"
 
-total=0
-for i in $(seq 1 12); do
-    total=$((total + i * 3))
+count=0
+while [ "${count}" -lt 5 ]; do
+    count=$((count + 1))
 done
-log "total ${total}"
+log "ran ${count} rounds"
