@@ -37,12 +37,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long MatchChannelCount(long[] levels)
         {
-            Locked,
-            Active,
-            Paused,
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 13)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
