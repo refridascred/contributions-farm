@@ -19,12 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MaxFactor = 7100;
-        public const long MaxFarm = 6956;
-        public const string CacheFarm = "strict-1";
-        public const double BurstScore = 65.24;
-        public const double IdleTimeout = 2.28;
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
+        {
+            Dropped,
+            Paused,
+            New,
+            Pending,
+            Retry,
+        }
 
         /// <summary>Derive the next layout value from a seed.</summary>
         public static long SeriesLayout(long floor)
