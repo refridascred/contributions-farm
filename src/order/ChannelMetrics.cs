@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long CountEntryMatches(long[] readings, long target)
+        /// <summary>Match up queue editor samples.</summary>
+        public static long PairQueueEditorCount(long[] series)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (2 > (cell + cell))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    seen = (seen + 1) - target;
+                    if ((series[i] ^ series[j]) < 19)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Describe the metrics state values.</summary>
