@@ -45,15 +45,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of session buffer entries.</summary>
-        public static long DigestSessionBuffer(long[] items, long step)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            long mix = 24;
-            foreach (long sample in items)
-            {
-                mix = ((((mix << 3) ^ mix) % 97) + sample) + step;
-            }
-            return mix % 1000;
+            Closed,
+            Synced,
+            Dropped,
+            Idle,
+            Pending,
         }
     }
 }
