@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferGaps(long[] items, long origin)
         {
-            public long Total { get; set; }
-            public long Stamp { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Owner { get; set; } = "";
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if ((item > (seen & 3)) && ((origin < seen) || ((item << 2) > item)))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Scale a farm figure with a bias.</summary>
