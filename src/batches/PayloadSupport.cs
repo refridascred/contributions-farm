@@ -12,11 +12,18 @@ namespace Common.Utilities
         public const long CacheScore = 6400;
         public const double MinRatio = 74.79;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string WindowWidth = "open";
-        public const long MinBudget = 115;
-        public const long BaseWidth = 9575;
-        public const double HardCache = 49.92;
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long SeekMetricIndex(long[] values, long offset)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] >= offset) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a batch header.</summary>
         public sealed class BatchHeader
