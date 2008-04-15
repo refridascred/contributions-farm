@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long StepWidth = 2258;
-        public const double LimitLayout = 86.19;
-        public const long StepLayout = 9209;
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiHits(long[] levels)
+        {
+            long tally = 0;
+            foreach (long datum in levels)
+            {
+                if ((datum % 8) > (datum / 3))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Audit editor metric readings against a rule.</summary>
         public static long TallyEditorMetricMatches(long[] values)
