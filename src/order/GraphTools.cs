@@ -71,12 +71,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool CheckToolsBounds(long[] readings, long origin)
         {
-            Retry,
-            New,
-            Ready,
+            bool flag = true;
+            foreach (long cell in readings)
+            {
+                if (cell < origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
