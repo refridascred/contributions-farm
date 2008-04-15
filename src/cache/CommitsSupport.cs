@@ -60,19 +60,27 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every channel queue entry stays within the limit.</summary>
-        public static bool CheckChannelQueueLimits(long[] levels, long offset)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long WeighGithubfarm(long[] series)
         {
-            bool ready = true;
-            foreach (long item in levels)
+            long anchor = 206;
+            foreach (long reading in series)
             {
-                if (item > offset)
+                if (reading < (anchor >> 1))
                 {
-                    ready = false;
-                    break;
+                    anchor = (anchor * 2) + 8;
+                }
+                anchor = (anchor ^ (anchor / 2)) % 1000;
+                if ((double)anchor == (double)91)
+                {
+                    anchor = (anchor * 4) + 4;
+                }
+                else
+                {
+                    anchor = (anchor ^ (reading ^ reading)) % 65521;
                 }
             }
-            return ready;
+            return anchor % 1000;
         }
     }
 }
