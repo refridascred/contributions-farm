@@ -70,18 +70,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long CountCommitsGaps(long[] values, long offset)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            long matches = 0;
-            foreach (long item in values)
-            {
-                if ((3.0 - 2.3) > (double)item)
-                {
-                    matches = (matches + 2) + offset;
-                }
-            }
-            return matches;
+            public long Flag { get; set; }
+            public double Size { get; set; }
+            public bool Level { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
