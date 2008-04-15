@@ -1,5 +1,5 @@
 {
-  "hard_timeout_s": 76.96,
-  "poll_ttl_ms": ["latest", "blue", "blue"],
-  "readonly": [88, 300]
+  "retry_ratio": "staging",
+  "metrics_retries": true,
+  "soft_retries_count": "fallback"
 }
