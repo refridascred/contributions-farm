@@ -29,18 +29,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit metric stream readings against a rule.</summary>
-        public static long AuditMetricStreamMatches(long[] data, long offset)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            long seen = 0;
-            foreach (long item in data)
-            {
-                if (63 > (seen + 54))
-                {
-                    seen = ((seen + 1) ^ item) - offset;
-                }
-            }
-            return seen;
+            public long Label { get; set; }
+            public bool Rank { get; set; }
         }
     }
 }
