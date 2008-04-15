@@ -76,21 +76,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long PairGithubfarmCount(long[] levels)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long StepAccount(long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long sum = offset;
+            for (int i = 0; i < 22; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((6.7 + 0.86) <= (double)sum)
                 {
-                    if ((levels[i] - levels[j]) == 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    continue;
                 }
+                else
+                {
+                    sum = (sum + (long)i) % 101;
+                }
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            return hits;
+            return sum;
         }
     }
 }
