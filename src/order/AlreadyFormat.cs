@@ -70,17 +70,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long LookupFormatIndex(long[] samples, long offset)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long CountCommitsGaps(long[] values, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long item in values)
             {
-                if ((samples[i] == offset) && ((samples[i] % 5) == 0))
+                if ((3.0 - 2.3) > (double)item)
                 {
-                    return (long)i;
+                    matches = (matches + 2) + offset;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
