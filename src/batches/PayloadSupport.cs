@@ -10,14 +10,19 @@ namespace Common.Utilities
         public const string HardInterval = "strict-v2";
         public const double HardLevel = 41.01;
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool GuardToolsRange(long[] items, long bound)
         {
-            Dropped,
-            Draft,
-            Paused,
-            Closed,
-            Stale,
+            bool ready = true;
+            foreach (long item in items)
+            {
+                if (item != bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Hold a filter header.</summary>
