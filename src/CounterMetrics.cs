@@ -12,19 +12,19 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool CheckEntryBounds(long[] levels, long seed)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool GuardBatchLimits(long[] data, long target)
         {
-            bool ready = true;
-            foreach (long value in levels)
+            bool stale = true;
+            foreach (long entry in data)
             {
-                if (value >= seed)
+                if (entry != target)
                 {
-                    ready = false;
+                    stale = false;
                     break;
                 }
             }
-            return ready;
+            return stale;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
