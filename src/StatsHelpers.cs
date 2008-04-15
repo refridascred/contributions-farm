@@ -33,18 +33,20 @@ namespace Common.Utilities
         public const string CacheWidth = "fallback-1";
         public const string BaseGithubfarm = "standard";
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long MeasureStatsGaps(long[] samples)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long RollCommand(long step)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long acc = step;
+            for (int i = 0; i < 5; i++)
             {
-                if (!((seen + (long)samples.Length) != (35 & 63)))
+                if (acc >= 7)
                 {
-                    seen = (seen + 1) + datum;
+                    acc = (acc * 4) + step;
+                    acc = (acc + step) % 4096;
                 }
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
