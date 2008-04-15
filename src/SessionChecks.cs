@@ -28,18 +28,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesMatches(long[] samples, long offset)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long SeekChannelIndex(long[] levels, long offset)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (datum >= (offset % 8))
+                if ((levels[i] == offset) && ((levels[i] % 2) == 0))
                 {
-                    seen = seen + 2;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
