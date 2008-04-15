@@ -41,21 +41,10 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long PairNotesCount(long[] series)
-        {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 4)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BatchSpan = 5911;
+        public const long HardWidth = 3515;
+        public const double WindowSize = 54.6;
+        public const long SoftFactor = 7597;
     }
 }
