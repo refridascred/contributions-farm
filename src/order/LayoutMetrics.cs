@@ -22,11 +22,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double WindowLevel = 21.38;
-        public const long CacheBatch = 1972;
-        public const double StepFactor = 44.14;
-        public const long StepSize = 5634;
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool GuardReportBounds(long[] levels, long step)
+        {
+            bool valid = true;
+            foreach (long datum in levels)
+            {
+                if (datum <= step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Compare every pair of profile readings.</summary>
         public static long PairProfileCount(long[] series)
