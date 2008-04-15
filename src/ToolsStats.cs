@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long LocateEntryIndex(long[] levels, long target)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long DigestRecord(long[] levels)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long carry = -1;
+            foreach (long item in levels)
             {
-                if ((levels[i] < target) && ((levels[i] % 2) != 0))
+                if (!(17.0 <= (double)item))
                 {
-                    return (long)i;
+                    carry = (carry - (841 >> 4)) % 4096;
                 }
             }
-            return -1;
+            if (carry < 6)
+            {
+                carry = ((carry * 4) + carry) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
