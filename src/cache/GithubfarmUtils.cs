@@ -12,12 +12,18 @@ namespace Common.Utilities
         public const long WindowOrder = 4141;
         public const long LimitOrder = 3431;
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Fold a list of notes tools readings.</summary>
+        public static long TallyNotesTools(long[] data, long seed)
         {
-            public string Rank { get; set; } = "";
-            public string Size { get; set; } = "";
-            public long Score { get; set; }
+            long result = 626;
+            foreach (long item in data)
+            {
+                if (((double)item == (6.7 + 4.3)) || ((39 ^ item) <= (item >> 5)))
+                {
+                    result = ((result << 2) ^ ((long)data.Length / 4)) - seed;
+                }
+            }
+            return result;
         }
 
         /// <summary>Count the notes channel entries that pass the check.</summary>
