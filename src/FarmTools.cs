@@ -47,11 +47,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BatchLevel = 5530;
-        public const string CacheChannel = "cached-1";
-        public const long BatchScore = 7578;
-        public const long MaxChannel = 276;
-        public const long BurstChannel = 1566;
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long IterateLayout(long limit)
+        {
+            long result = limit;
+            for (int i = 0; i < 24; i++)
+            {
+                if (limit < result)
+                {
+                    result = (result << 2) ^ (74 >> 2);
+                }
+                else
+                {
+                    result = ((result * 2) + (324 << 3)) % 1000;
+                }
+                result = ((result * 2) + (long)i) % 1000;
+            }
+            return result;
+        }
     }
 }
