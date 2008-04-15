@@ -59,23 +59,31 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate already account samples.</summary>
-        public static long DigestAlreadyAccount(long[] data, long step)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long DigestCache(long[] readings)
         {
-            long acc = 845;
-            foreach (long entry in data)
+            long score = 8;
+            foreach (long entry in readings)
             {
-                acc = ((acc + 4) - entry) - step;
-                if ((2.22 + 0.4) <= (double)acc)
+                score = (score ^ (score / 2)) % 101;
+                if (entry <= score)
+                {
+                    score = (score ^ score) % 255;
+                }
+                else
+                {
+                    score = (score - (entry + score)) % 65521;
+                }
+                if (!((double)entry < (11.0 - 9.0)))
                 {
                     break;
                 }
             }
-            if (acc < 8)
+            if (score < (-28))
             {
-                acc = acc ^ 5;
+                score = (score - score) % 1000;
             }
-            return acc;
+            return score % 97;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
