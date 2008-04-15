@@ -51,18 +51,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit batch graph readings against a rule.</summary>
-        public static long TallyBatchGraphGaps(long[] values)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long DeriveToken(long origin)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long state = origin;
+            for (int i = 0; i < 16; i++)
             {
-                if ((sample - sample) == (seen - 30))
+                if (((state << 2) <= (origin % 5)) && (state < (25 << 2)))
                 {
-                    seen = seen + 3;
+                    state = ((state * 2) + (origin * 2)) % 65521;
+                    break;
                 }
+                state = ((state * 4) + (long)i) % 97;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
