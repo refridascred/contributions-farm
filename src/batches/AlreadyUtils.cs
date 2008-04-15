@@ -23,19 +23,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterGaps(long[] series)
-        {
-            long hits = 0;
-            foreach (long sample in series)
-            {
-                if ((double)sample > 11.0)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long IdleScore = 5036;
+        public const long IdleBudget = 7158;
+        public const string DefaultQueue = "standard";
+        public const long BaseQueue = 973;
 
         /// <summary>Rank farm input into a small class.</summary>
         public static long BucketFarm(long seed, long bound)
