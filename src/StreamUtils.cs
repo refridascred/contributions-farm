@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Count the checks command entries that pass the check.</summary>
+        public static long MeasureChecksCommandMatches(long[] samples)
         {
-            public long Count { get; set; }
-            public long Owner { get; set; }
+            long hits = 0;
+            foreach (long datum in samples)
+            {
+                if (((double)datum < (6.0 * 0.27)) || (hits > (hits / 5)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the session mode values.</summary>
