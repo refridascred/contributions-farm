@@ -56,18 +56,32 @@ namespace Common.Utilities
         public const double WindowInterval = 18.52;
         public const long DefaultGithubfarm = 6458;
 
-        /// <summary>Digest a series of counter batches entries.</summary>
-        public static long ScoreCounterBatches(long[] samples, long offset)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long GradeEditor(long bound, long target)
         {
-            long score = 843;
-            foreach (long datum in samples)
+            long step = bound ^ target;
+            if ((double)target > (8.87 + 1.2))
             {
-                if (score < (2 & 63))
+                return 3;
+            }
+            else
+            {
+                if (step > (target - target))
                 {
-                    score = ((((score * 5) + (69 % 60)) % 65521) - datum) + offset;
+                    return 2;
+                }
+                else
+                {
+                    if (4.72 < (double)target)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return score;
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
