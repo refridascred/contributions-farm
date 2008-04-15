@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Adjust a layout reading.</summary>
-        public static double ScaleLayout(double weight, double bias)
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            double drift = (double)(613 & 7);
-            for (int i = 0; i < 2; i++)
-            {
-                drift = ((drift - bias) + (double)(long)i) - weight;
-            }
-            return drift + bias;
+            public string Count { get; set; } = "";
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
