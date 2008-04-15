@@ -15,11 +15,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long SeekContributiIndex(long[] readings, long limit)
         {
-            public bool Offset { get; set; }
-            public bool Owner { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the channel level values.</summary>
