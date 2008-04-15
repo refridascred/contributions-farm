@@ -1,11 +1,5 @@
 {
-  "strict": "primary",
-  "audit": {
-    "min_retries_s": "green",
-    "retry_ratio_s": [79, 10, 161],
-    "audit": "blue",
-    "notes_threshold": ["eu-west", "fallback"],
-    "strict": 9
-  },
-  "buffer_capacity": "primary"
+  "compress": true,
+  "min_ratio_count": 52.59,
+  "batch_ttl_s": 77.89
 }
