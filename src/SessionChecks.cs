@@ -20,12 +20,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            Queued,
-            Dropped,
-            Ready,
+            public long Ratio { get; set; }
+            public long Count { get; set; }
+            public string Mode { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
