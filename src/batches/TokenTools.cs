@@ -20,18 +20,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long AuditSessionHits(long[] data)
+        /// <summary>Roll a token route counter forward.</summary>
+        public static long IterateTokenRoute(long origin)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long mix = origin;
+            for (int i = 0; i < 17; i++)
             {
-                if (entry < (25 + entry))
-                {
-                    count = count + 1;
-                }
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Hold a metrics stats.</summary>
