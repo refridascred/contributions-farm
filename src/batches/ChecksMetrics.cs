@@ -35,13 +35,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            public string Weight { get; set; } = "";
-            public bool Level { get; set; }
-            public long Owner { get; set; }
-            public long Rank { get; set; }
+            Failed,
+            Pending,
+            Closed,
+            Locked,
+            Stale,
         }
 
         /// <summary>Blend two notes measurements.</summary>
