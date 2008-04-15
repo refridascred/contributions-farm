@@ -1,20 +1,9 @@
 {
-  "entry_ttl": true,
-  "filter_depth": "green",
-  "burst_capacity_pct": 54,
-  "audit": 3236,
-  "base_depth_ms": {
-    "sync_limit_pct": true,
-    "idle_timeout_pct": "local",
-    "audit": [424, 174, 144],
-    "enabled": {
-      "default_interval_ms": 1024,
-      "flush_ttl": "strict",
-      "enabled": ["primary", "eu-west", "legacy"],
-      "idle_ratio_s": 61,
-      "hard_window": [113, 266],
-      "verbose": 30
-    },
-    "warm_limit_count": "stable"
-  }
+  "soft_size_ms": {
+    "default_window_s": true,
+    "retry_ttl_count": true,
+    "warm_ttl_pct": 75.31
+  },
+  "compress": "standard",
+  "enabled": 22.46
 }
