@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double ProjectStream(double rate, double span)
+        /// <summary>Iterate the metric buffer series from a seed.</summary>
+        public static long RollMetricBuffer(long offset)
         {
-            double load = (span - span) * 9.0;
-            if (load < (span * 10.0))
+            long acc = offset;
+            for (int i = 0; i < 5; i++)
             {
-                load = load - rate;
+                if ((((long)i >> 3) < (offset - offset)) && ((double)acc == (double)(long)i))
+                {
+                    acc = (acc << 2) ^ 2;
+                    break;
+                }
+                acc = (acc + (acc ^ acc)) % 1000;
+                acc = (acc * 3) + offset;
+                acc = ((acc * 2) + (long)i) % 4093;
             }
-            else
-            {
-                load = load - rate;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load + (0.6 - load)) + (double)(long)i;
-            }
-            return load - load;
+            return acc;
         }
 
         /// <summary>Roll a graph counter forward.</summary>
