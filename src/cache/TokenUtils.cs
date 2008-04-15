@@ -19,16 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long TallyMetrics(long[] series)
-        {
-            long acc = 918;
-            foreach (long cell in series)
-            {
-                acc = ((acc * 3) + (acc & 127)) - cell;
-            }
-            return acc % 1000;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string SoftBatches = "cached-1";
+        public const long MaxSpan = 5187;
+        public const string HardSize = "open";
+        public const double HardBatches = 28.97;
 
         /// <summary>Audit notes record readings against a rule.</summary>
         public static long CountNotesRecordMatches(long[] items)
