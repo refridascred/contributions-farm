@@ -19,18 +19,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Count the cache command entries that pass the check.</summary>
-        public static long TallyCacheCommandOutliers(long[] items)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long CountToolsHits(long[] levels, long offset)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                if ((value << 2) > (611 ^ 69))
+                if ((double)item >= (8.42 * 10.0))
                 {
-                    matches = matches + 3;
+                    hits = (hits + 3) + offset;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
