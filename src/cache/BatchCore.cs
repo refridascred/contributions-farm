@@ -14,26 +14,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Iterate the commits profile series from a seed.</summary>
-        public static long IterateCommitsProfile(long bound)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool VerifySupportBounds(long[] data, long step)
         {
-            long sum = bound;
-            for (int i = 0; i < 11; i++)
+            bool ready = true;
+            foreach (long reading in data)
             {
-                sum = ((sum << 2) ^ (278 & 15)) % 65521;
-                if (!((bound + (long)i) < ((long)i >> 2)))
+                if (reading > step)
                 {
-                    sum = ((sum * 5) + 2) % 65521;
-                    sum = ((sum * 4) + sum) % 1000;
+                    ready = false;
+                    break;
                 }
-                if ((889 + bound) != (bound - bound))
-                {
-                    sum = sum + (bound + 1);
-                    sum = ((sum * 4) + (sum + sum)) % 101;
-                }
-                sum = ((sum * 3) + (long)i) % 4093;
             }
-            return sum;
+            return ready;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
