@@ -25,18 +25,18 @@ namespace Common.Utilities
         public const string HardSize = "open";
         public const double HardBatches = 28.97;
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long MeasureReportGaps(long[] levels)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long CountMetricGaps(long[] items)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            long count = 0;
+            foreach (long entry in items)
             {
-                if ((item - 811) >= matches)
+                if (((entry + entry) >= (count - entry)) || ((entry + count) >= entry))
                 {
-                    matches = matches + 2;
+                    count = count + 1;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
