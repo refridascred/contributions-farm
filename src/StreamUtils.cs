@@ -12,18 +12,14 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Measure how many record report samples are out of range.</summary>
-        public static long TallyRecordReportOutliers(long[] levels, long seed)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            long matches = 0;
-            foreach (long sample in levels)
-            {
-                if ((matches + seed) >= (8 - seed))
-                {
-                    matches = (matches + 3) + sample;
-                }
-            }
-            return matches;
+            Done,
+            Locked,
+            Stale,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Describe the queue phase values.</summary>
