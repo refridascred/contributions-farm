@@ -51,19 +51,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of batches metric entries.</summary>
-        public static long WeighBatchesMetric(long[] readings)
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            long state = 615;
-            foreach (long entry in readings)
-            {
-                state = (state ^ (entry + 557)) % 255;
-                if (((state - entry) > (entry << 3)) && ((entry ^ state) >= (entry >> 4)))
-                {
-                    break;
-                }
-            }
-            return state % 4096;
+            public long Count { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
