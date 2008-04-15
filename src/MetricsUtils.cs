@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Iterate the buffer already series from a seed.</summary>
+        public static long DeriveBufferAlready(long limit)
         {
-            public string Count { get; set; } = "";
-            public long Rank { get; set; }
+            long acc = limit;
+            for (int i = 0; i < 20; i++)
+            {
+                if ((7.06 / 3.0) >= (double)limit)
+                {
+                    break;
+                }
+                acc = ((acc * 5) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Accumulate queue samples.</summary>
