@@ -33,21 +33,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up token samples.</summary>
-        public static long MatchTokenCount(long[] series)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long FindSupportIndex(long[] samples, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((samples[i] <= limit) && ((samples[i] % 5) == 0))
                 {
-                    if ((series[i] - series[j]) == 8)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
