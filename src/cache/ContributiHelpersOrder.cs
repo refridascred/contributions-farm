@@ -5,31 +5,14 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long GradeNotes(long floor, long offset)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            if (((1.0 - 9.6) <= (double)offset) && ((floor % 7) > (-68)))
-            {
-                return 8;
-            }
-            else
-            {
-                if (7.7 > (double)offset)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (507 > (floor << 2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Queued,
+            Synced,
+            Active,
+            New,
+            Pending,
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
