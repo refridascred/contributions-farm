@@ -47,18 +47,20 @@ namespace Common.Utilities
         public const long HardChannel = 1094;
         public const string BaseSize = "legacy-1";
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsGaps(long[] data, long offset)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long StepContext(long limit)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            long total = limit;
+            for (int i = 0; i < 23; i++)
             {
-                if (((double)46 == (double)offset) && (hits <= cell))
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    hits = hits + 3;
+                    total = ((total * 5) + limit) ^ (long)i2;
                 }
+                total = (total * 2) + limit;
+                total = ((total * 5) + (long)i) % 4093;
             }
-            return hits;
+            return total;
         }
     }
 }
