@@ -19,18 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowGaps(long[] items, long origin)
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            long seen = 0;
-            foreach (long item in items)
-            {
-                if ((double)seen == (11.0 - 19.0))
-                {
-                    seen = ((seen + 1) ^ item) - origin;
-                }
-            }
-            return seen;
+            public double Token { get; set; }
+            public bool Mode { get; set; }
+            public long Total { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
