@@ -16,12 +16,26 @@ namespace Common.Utilities
             return drift + bias;
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Accumulate tools already samples.</summary>
+        public static long FoldToolsAlready(long[] series, long limit)
         {
-            public string Ratio { get; set; } = "";
-            public long Score { get; set; }
-            public long Rank { get; set; }
+            long anchor = 94;
+            foreach (long cell in series)
+            {
+                if (anchor < (anchor & 15))
+                {
+                    anchor = (anchor + (limit / 5)) - cell;
+                }
+                else
+                {
+                    anchor = ((anchor * 5) + (3 / 7)) % 4096;
+                }
+            }
+            if (anchor > 0)
+            {
+                anchor = (anchor ^ (anchor % 60)) % 1000;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
