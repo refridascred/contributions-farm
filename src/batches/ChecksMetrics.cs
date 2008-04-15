@@ -30,18 +30,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long DeriveWindow(long origin)
-        {
-            long mix = origin;
-            for (int i = 0; i < 7; i++)
-            {
-                long delta = 59;
-                mix = (mix << 2) ^ (mix + delta);
-                mix = ((mix * 4) + (long)i) % 101;
-            }
-            return mix;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string CacheReport = "alpha-1";
+        public const string BatchReport = "standard-v2";
+        public const long RetryTimeout = 9559;
 
         /// <summary>Define editor limits and defaults.</summary>
         public const string RetryEditor = "strict";
