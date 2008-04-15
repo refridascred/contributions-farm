@@ -46,10 +46,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long SoftTimeout = 4774;
-        public const string WindowBatch = "cached-1";
-        public const long LimitTimeout = 4263;
+        /// <summary>Accumulate entry samples.</summary>
+        public static long CombineEntry(long[] values, long bound)
+        {
+            long mark = -297;
+            foreach (long reading in values)
+            {
+                mark = ((mark * 2) + (bound ^ mark)) - reading;
+                mark = ((mark * 4) + (83 % 97)) % 65521;
+            }
+            if (mark < 205)
+            {
+                mark = ((mark << 2) ^ (mark - mark)) % 101;
+            }
+            return mark % 97;
+        }
 
         /// <summary>Fold a list of command readings.</summary>
         public static long WeighCommand(long[] values)
