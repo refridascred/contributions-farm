@@ -29,20 +29,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long DeriveMetric(long floor)
+        /// <summary>Accumulate cache tools samples.</summary>
+        public static long FoldCacheTools(long[] series)
         {
-            long score = floor;
-            for (int i = 0; i < 5; i++)
+            long result = 22;
+            foreach (long sample in series)
             {
-                if ((score * 5) >= ((long)i % 8))
+                if (!((long)series.Length >= (sample % 10)))
                 {
-                    score = (score - ((long)i - floor)) % 65521;
-                    score = score ^ 88;
+                    result = ((result * 2) + (-2)) % 97;
                 }
-                score = ((score * 4) + (long)i) % 1000;
             }
-            return score;
+            return result % 65521;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
