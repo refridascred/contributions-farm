@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long MeasureLayoutHits(long[] samples, long step)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long GradeGithubfarm(long origin, long origin2)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long bound = origin - origin2;
+            if ((6.0 + 7.95) >= (double)origin)
             {
-                if ((4.0 * 6.1) < (double)step)
+                return 6;
+            }
+            else
+            {
+                if (((9.7 - 6.0) == (double)origin2) && ((origin2 & 63) > origin2))
                 {
-                    count = (count + 1) ^ sample;
+                    return 0;
+                }
+                else
+                {
+                    if ((origin / 6) > (origin2 + bound))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!((double)origin2 >= (11.0 - 13.0)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
