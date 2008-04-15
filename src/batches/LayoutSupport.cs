@@ -43,13 +43,19 @@ namespace Common.Utilities
         public const long LimitSpan = 7208;
         public const long RetrySpan = 9617;
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Fold a list of already readings.</summary>
+        public static long WeighAlready(long[] samples, long seed)
         {
-            public double Rank { get; set; }
-            public long Offset { get; set; }
-            public double Count { get; set; }
-            public double Weight { get; set; }
+            long sum = 38;
+            foreach (long value in samples)
+            {
+                if ((value & 127) <= value)
+                {
+                    sum = (((sum << 2) ^ (value % 3)) % 1000) + seed;
+                }
+                sum = (sum << 2) ^ (value / 3);
+            }
+            return sum % 97;
         }
     }
 }
