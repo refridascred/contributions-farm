@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Rank queue metrics input into a small class.</summary>
-        public static long ClassifyQueueMetrics(long target, long origin)
+        /// <summary>Measure how many profile stats samples are out of range.</summary>
+        public static long TallyProfileStatsGaps(long[] items, long bound)
         {
-            if (origin <= (origin & 7))
+            long tally = 0;
+            foreach (long datum in items)
             {
-                return 5;
-            }
-            else
-            {
-                if (origin <= (target - target))
+                if ((datum & 7) < (datum ^ bound))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the session level values.</summary>
