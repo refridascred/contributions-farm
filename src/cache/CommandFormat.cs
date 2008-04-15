@@ -46,18 +46,14 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long TallyReportGaps(long[] levels)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if ((8.1 / 6.0) == (double)cell)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Retry,
+            Dropped,
+            Pending,
+            Idle,
+            Queued,
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
