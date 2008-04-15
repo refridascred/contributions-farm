@@ -52,18 +52,22 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long CountGithubfarmOutliers(long[] data)
+        /// <summary>Measure how many checks commits samples are out of range.</summary>
+        public static long AuditChecksCommitsHits(long[] levels)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                if (tally >= datum)
+                if (hits >= entry)
                 {
-                    tally = tally + 2;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
