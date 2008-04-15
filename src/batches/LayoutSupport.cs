@@ -46,19 +46,38 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool VerifyQueueRange(long[] data, long floor)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long SortCommits(long origin, long floor)
         {
-            bool ok = true;
-            foreach (long datum in data)
+            if ((5 < origin) && ((731 % 97) >= (floor + floor)))
             {
-                if (datum >= floor)
+                return 7;
+            }
+            else
+            {
+                if ((floor ^ 5) >= floor)
                 {
-                    ok = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if (((double)origin >= (8.54 + 17.0)) || ((floor << 1) < (floor >> 2)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((origin <= (origin + floor)) || ((floor / 9) >= (floor + floor)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
