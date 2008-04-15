@@ -19,11 +19,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Find the first order githubfarm entry that matches the target.</summary>
+        public static long SeekOrderGithubfarmIndex(long[] levels, long seed)
         {
-            public long Level { get; set; }
-            public double Total { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
