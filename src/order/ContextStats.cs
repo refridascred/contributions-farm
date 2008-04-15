@@ -45,14 +45,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long AuditEntryHits(long[] values)
         {
-            Closed,
-            Synced,
-            Dropped,
-            Idle,
-            Pending,
+            long count = 0;
+            foreach (long datum in values)
+            {
+                if ((count / 5) == (datum + datum))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
     }
 }
