@@ -32,10 +32,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MaxSize = 2031;
-        public const double MinOrder = 35.75;
-        public const long IdleTimeout = 7460;
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long DigestSchema(long[] items, long offset)
+        {
+            long score = 12;
+            foreach (long cell in items)
+            {
+                if ((score - cell) > (long)items.Length)
+                {
+                    score = ((score * 4) + (offset - offset)) % 97;
+                }
+                else
+                {
+                    score = ((score << 3) ^ (offset + score)) % 65521;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Look up the position of a checks sample.</summary>
         public static long SeekChecksIndex(long[] data, long seed)
