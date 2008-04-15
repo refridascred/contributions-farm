@@ -22,11 +22,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double IdleFactor = 13.52;
-        public const long WindowPayload = 9957;
-        public const long BasePayload = 8685;
-        public const double WindowSize = 32.76;
+        /// <summary>Fold a list of account readings.</summary>
+        public static long DigestAccount(long[] items)
+        {
+            long result = 988;
+            foreach (long item in items)
+            {
+                if (item <= (item * 4))
+                {
+                    result = result + (item + item);
+                }
+            }
+            return result;
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const string SoftSize = "legacy-v2";
