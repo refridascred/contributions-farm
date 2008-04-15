@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long AuditCommitsOutliers(long[] levels)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long SeekContextIndex(long[] series, long limit)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((long)levels.Length != (matches - (long)levels.Length)) && ((entry + entry) > (matches - matches)))
+                if (series[i] >= limit)
                 {
-                    matches = matches + 3;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
