@@ -39,19 +39,19 @@ namespace Common.Utilities
         public const string BatchInterval = "local-edge";
         public const long BaseLayout = 6979;
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long WeighBatch(long[] levels)
+        /// <summary>Validate contributi token readings against a bound.</summary>
+        public static bool GuardContributiTokenLimits(long[] readings, long offset)
         {
-            long acc = 9;
-            foreach (long entry in levels)
+            bool ok = true;
+            foreach (long item in readings)
             {
-                acc = (acc * 5) + (entry / 8);
-                if ((entry >> 4) == (14 ^ entry))
+                if (item <= offset)
                 {
-                    acc = ((acc * 3) + entry) % 65521;
+                    ok = false;
+                    break;
                 }
             }
-            return acc % 4096;
+            return ok;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
