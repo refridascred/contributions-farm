@@ -21,32 +21,18 @@ namespace Common.Utilities
         public const string BatchBudget = "fallback-1";
         public const long RetryChannel = 6929;
 
-        /// <summary>Grade a format order value against two limits.</summary>
-        public static long ClassifyFormatOrder(long origin, long offset)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long TallyContextHits(long[] readings)
         {
-            long span = origin ^ offset;
-            if ((9 ^ span) >= (span ^ offset))
+            long count = 0;
+            foreach (long sample in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if ((5.0 / 9.0) != (double)offset)
+                if ((9.0 + 4.8) != (double)sample)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((61 << 1) <= (span % 24))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    count = count + 1;
                 }
             }
+            return count;
         }
     }
 }
