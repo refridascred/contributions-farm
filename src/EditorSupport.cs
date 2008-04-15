@@ -21,21 +21,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long MatchBatchesCount(long[] data)
+        /// <summary>Scale a notes order figure with a bias.</summary>
+        public static double BlendNotesOrder(double ratio, double span)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            double weight = span;
+            if (weight > span)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 17)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                weight = (weight + (weight + weight)) + ratio;
             }
-            return matches;
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight - (double)87) - (double)(long)i;
+            }
+            return weight - 5.4;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
