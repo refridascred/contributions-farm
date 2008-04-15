@@ -19,12 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Count the cache batch entries that pass the check.</summary>
+        public static long TallyCacheBatchGaps(long[] levels, long step)
         {
-            public string Score { get; set; } = "";
-            public double Owner { get; set; }
-            public string Size { get; set; } = "";
+            long hits = 0;
+            foreach (long datum in levels)
+            {
+                if ((1 + (-6)) > (step * 3))
+                {
+                    hits = (hits + 2) ^ datum;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the batch level values.</summary>
