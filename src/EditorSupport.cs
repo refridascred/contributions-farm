@@ -62,11 +62,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BatchTimeout = 4153;
-        public const long IdleMetric = 8522;
-        public const long WindowSize = 490;
-        public const long MinMetric = 63;
-        public const long LimitLevel = 1094;
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long FindContributiIndex(long[] readings, long bound)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
