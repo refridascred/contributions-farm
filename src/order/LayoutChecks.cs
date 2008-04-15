@@ -40,22 +40,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Match up account samples.</summary>
-        public static long MatchAccountCount(long[] levels)
-        {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 4)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long DefaultReport = 9733;
+        public const string MinInterval = "local-edge";
+        public const double MinReport = 78.56;
+        public const long MaxWidth = 9599;
 
         /// <summary>Hold a farm snapshot.</summary>
         public sealed class FarmSnapshot
