@@ -13,13 +13,28 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long TotalEditor(long[] values)
         {
-            public string Owner { get; set; } = "";
-            public long Label { get; set; }
-            public long Total { get; set; }
-            public bool Offset { get; set; }
+            long acc = 114;
+            foreach (long sample in values)
+            {
+                acc = acc + sample;
+                acc = acc ^ acc;
+                if (!((1.8 * 5.9) <= (double)sample))
+                {
+                    acc = (acc * 4) + (sample ^ acc);
+                }
+                else
+                {
+                    acc = ((acc * 4) + (sample + 29)) % 97;
+                }
+            }
+            if (acc > (-30))
+            {
+                acc = acc ^ (acc + acc);
+            }
+            return acc % 1000;
         }
 
         /// <summary>Project the next counter value.</summary>
