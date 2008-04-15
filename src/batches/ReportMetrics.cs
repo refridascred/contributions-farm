@@ -37,18 +37,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteGaps(long[] levels)
+        /// <summary>Combine route batch values into a single score.</summary>
+        public static long FoldRouteBatch(long[] readings)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long mark = -37;
+            foreach (long datum in readings)
             {
-                if (!((double)tally == (0.1 - 4.38)))
-                {
-                    tally = (tally + 1) + reading;
-                }
+                mark = ((mark - mark) % 65521) ^ datum;
             }
-            return tally;
+            return mark;
         }
     }
 }
