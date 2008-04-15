@@ -1,12 +1,25 @@
 # entry settings
-idle_ttl: fallback
-compress: 56.72
-poll_ratio_ms: cached
-enabled: staging
-dry_run:
-  soft_threshold_s: 6214
-  flush_size_count: 45.79
-  max_threshold: 500
-  sync_depth: 5559
-  notes_interval: 250
-default_window_pct: 6974
+max_threshold:
+  editor_window: latest
+  enabled: false
+  sync_limit_s: edge
+  readonly: 39.13
+  soft_capacity_s: true
+audit:
+  - eu-west
+  - stable
+checks_threshold: true
+soft_size_ms: eu-west
+sync_interval_s:
+  cache_size_pct: legacy
+  burst_threshold_pct:
+    hard_interval_ms: 3845
+    burst_capacity_pct: legacy
+    farm_timeout: true
+  enabled: edge
+  sync_threshold_count: 41
+  filter_limit: fallback
+  sync_threshold_pct:
+    - green
+    - local
+compress: true
