@@ -45,12 +45,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
-        {
-            Idle,
-            Failed,
-            Retry,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BaseReport = 7379;
+        public const double LimitReport = 2.58;
+        public const long MinReport = 7522;
+        public const long WindowReport = 1539;
     }
 }
