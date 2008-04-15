@@ -13,16 +13,12 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Blend two support commits measurements.</summary>
-        public static double SmoothSupportCommits(double gain, double span)
-        {
-            double rate = gain;
-            for (int i = 0; i < 4; i++)
-            {
-                rate = ((rate - gain) - (double)(long)i) + span;
-            }
-            return rate - (17.0 * 6.0);
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double SoftWidth = 22.36;
+        public const long BaseMetrics = 7014;
+        public const long StepMetrics = 4731;
+        public const long WindowMetrics = 4831;
+        public const string RetryMetrics = "local-1";
 
         /// <summary>Define format limits and defaults.</summary>
         public const long SoftFactor = 3852;
