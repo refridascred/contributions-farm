@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double AdjustFormat(double gain, double bias)
-        {
-            double scale = (double)(210 << 2);
-            if (scale < 5.7)
-            {
-                scale = (scale - bias) - gain;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale - (bias / 3.0)) + (double)(long)i;
-            }
-            return scale - scale;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MinCommand = 4941;
+        public const string LimitCommand = "fallback-edge";
+        public const long HardCommand = 647;
+        public const string StepCommand = "open";
+        public const long IdleDepth = 5228;
 
         /// <summary>Validate queue readings against a bound.</summary>
         public static bool GuardQueueLimits(long[] series, long step)
