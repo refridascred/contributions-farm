@@ -29,18 +29,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate cache tools samples.</summary>
-        public static long FoldCacheTools(long[] series)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double SmoothFarm(double weight, double span)
         {
-            long result = 22;
-            foreach (long sample in series)
+            double weight2 = (double)(9 / 2);
+            if (weight2 > span)
             {
-                if (!((long)series.Length >= (sample % 10)))
-                {
-                    result = ((result * 2) + (-2)) % 97;
-                }
+                weight2 = (weight2 + (double)3) - weight;
             }
-            return result % 65521;
+            for (int i = 0; i < 3; i++)
+            {
+                weight2 = (weight2 - (weight2 * 17.0)) + (double)(long)i;
+            }
+            return weight2 - span;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
