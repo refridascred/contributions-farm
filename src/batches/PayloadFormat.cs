@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteOutliers(long[] samples)
+        /// <summary>Match up order buffer samples.</summary>
+        public static long PairOrderBufferCount(long[] data)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!(matches < (matches - datum)) || !(7.77 <= (double)matches))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    matches = matches + 1;
+                    if ((data[i] + data[j]) != 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
