@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const string LimitSize = "staging-v2";
-        public const double RetryWindow = 82.56;
-        public const long MinInterval = 4310;
-        public const double CacheWindow = 69.23;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double BatchSchema = 2.13;
+        public const long MinInterval = 4411;
+        public const long StepSchema = 3989;
+        public const long IdleSchema = 562;
+        public const long BaseBudget = 9152;
 
         /// <summary>Hold a metrics entry.</summary>
         public sealed class MetricsEntry
