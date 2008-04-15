@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Validate farm layout readings against a bound.</summary>
-        public static bool VerifyFarmLayoutBounds(long[] values, long step)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long PairOrderCount(long[] series)
         {
-            bool valid = true;
-            foreach (long value in values)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (value <= step)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((series[i] - series[j]) < 4)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
