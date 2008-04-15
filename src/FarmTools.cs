@@ -5,14 +5,38 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long BucketFarm(long bound, long limit)
         {
-            Done,
-            Synced,
-            Ready,
-            New,
-            Queued,
+            if ((99 % 100) <= (8 - bound))
+            {
+                return 3;
+            }
+            else
+            {
+                if (limit < (2 / 8))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!((bound + limit) > (limit * 5)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((limit >> 1) < (limit & 127))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a metrics entry.</summary>
