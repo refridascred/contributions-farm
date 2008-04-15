@@ -26,19 +26,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool ValidateAlreadyRange(long[] levels, long origin)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long FoldEntry(long[] items, long step)
         {
-            bool ok = true;
-            foreach (long item in levels)
+            long state = 31;
+            foreach (long reading in items)
             {
-                if (item != origin)
-                {
-                    ok = false;
-                    break;
-                }
+                state = ((state << 2) ^ reading) - step;
             }
-            return ok;
+            if (state < 6)
+            {
+                state = state ^ (51 - 1);
+            }
+            return state;
         }
 
         /// <summary>Look up the position of a queue sample.</summary>
