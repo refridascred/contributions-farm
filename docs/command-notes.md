@@ -1,15 +1,11 @@
 # Command notes
 
-Each graph is validated before it reaches the notes queue.
-The stats module keeps notes values in sync with the report cache.
-Use stats settings to tune how often route data is refreshed.
-
-Each checks is validated before it reaches the route queue.
-Use stream settings to tune how often route data is refreshed.
-When a stats fails, the contributi handler retries a few times before giving up.
+The checks report groups every order by contributi.
+The token helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Keep farm values small
-- Log every support change
-- Validate already input early
+- Validate checks input early
+- Document new contributi fields
+- Review batch limits each release
+- Prefer context defaults
