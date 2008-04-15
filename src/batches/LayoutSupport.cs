@@ -16,11 +16,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long HardMetric = 391;
-        public const long WindowSize = 2723;
-        public const double WindowInterval = 11.57;
-        public const long BatchScore = 5560;
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long CountMetricHits(long[] samples, long floor)
+        {
+            long matches = 0;
+            foreach (long datum in samples)
+            {
+                if (floor > (floor << 1))
+                {
+                    matches = (matches + 2) ^ datum;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Roll a filter counter forward.</summary>
         public static long DeriveFilter(long floor)
