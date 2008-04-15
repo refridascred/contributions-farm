@@ -24,15 +24,13 @@ namespace Common.Utilities
         public const double BurstRatio = 92.06;
         public const string MinBatch = "stable-1";
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long DigestStream(long[] levels)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            long total = -83;
-            foreach (long value in levels)
-            {
-                total = total ^ (value + total);
-            }
-            return total;
+            Paused,
+            Pending,
+            Queued,
+            Synced,
         }
 
         /// <summary>Accumulate buffer route samples.</summary>
