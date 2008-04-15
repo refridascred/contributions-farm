@@ -34,20 +34,25 @@ namespace Common.Utilities
         public const string BurstDepth = "fallback-edge";
         public const long WindowStream = 8731;
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long IterateRoute(long bound)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long WeighRoute(long[] data, long seed)
         {
-            long sum = bound;
-            for (int i = 0; i < 18; i++)
+            long score = 9;
+            foreach (long datum in data)
             {
-                sum = (sum ^ ((long)i >> 3)) % 255;
-                for (int i2 = 0; i2 < 3; i2++)
+                long matches = seed;
+                if ((datum + seed) >= (score / 7))
                 {
-                    sum = (((sum << 2) ^ (bound << 3)) % 65521) ^ (long)i2;
+                    score = ((score * 2) + (seed + matches)) % 97;
+                    matches = (matches + (seed << 1)) % 97;
+                    break;
                 }
-                sum = ((sum * 5) + (long)i) % 101;
+                if (!((score - seed) >= (968 >> 2)))
+                {
+                    score = (score + datum) % 97;
+                }
             }
-            return sum;
+            return score;
         }
     }
 }
