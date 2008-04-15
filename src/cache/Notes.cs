@@ -67,17 +67,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a channel route reading by value.</summary>
-        public static long LookupChannelRouteIndex(long[] values, long target)
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Owner { get; set; }
+            public double Size { get; set; }
+            public long Level { get; set; }
         }
     }
 }
