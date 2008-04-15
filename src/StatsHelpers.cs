@@ -12,23 +12,12 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteMatches(long[] data)
-        {
-            long tally = 0;
-            foreach (long value in data)
-            {
-                if ((value + tally) >= value)
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long StepTimeout = 1541;
+        public const long BaseGithubfarm = 4446;
+        public const long StepGithubfarm = 6662;
+        public const long CacheTimeout = 8037;
+        public const long BurstGithubfarm = 1767;
 
         /// <summary>Digest a series of context entries.</summary>
         public static long WeighContext(long[] data, long offset)
