@@ -25,21 +25,21 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Roll a entry token counter forward.</summary>
-        public static long SeriesEntryToken(long limit)
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long PairQueueCount(long[] samples)
         {
-            long acc = limit;
-            for (int i = 0; i < 22; i++)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                acc = (acc + (acc % 60)) % 4096;
-                acc = ((acc * 5) + (acc & 7)) % 1000;
-                if (acc >= ((long)i / 3))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    acc = acc - (limit / 3);
+                    if ((samples[i] + samples[j]) != 3)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
