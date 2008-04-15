@@ -54,23 +54,12 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteMatches(long[] series)
-        {
-            long matches = 0;
-            foreach (long reading in series)
-            {
-                if ((reading * 3) < matches)
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string DefaultStream = "standard";
+        public const string WindowStream = "open";
+        public const long SoftScore = 2245;
+        public const long HardStream = 9412;
+        public const long BurstStream = 7383;
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
         public static long DeriveGithubfarm(long target)
