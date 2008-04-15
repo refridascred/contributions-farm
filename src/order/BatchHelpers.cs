@@ -31,19 +31,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every profile checks entry stays within the limit.</summary>
-        public static bool GuardProfileChecksRange(long[] series, long limit)
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            bool flag = true;
-            foreach (long entry in series)
-            {
-                if (entry < limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Token { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Level { get; set; }
         }
     }
 }
