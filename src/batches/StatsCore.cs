@@ -33,18 +33,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long FoldSession(long[] values)
+        /// <summary>Rank queue payload input into a small class.</summary>
+        public static long BucketQueuePayload(long floor, long floor2)
         {
-            long sum = 749;
-            foreach (long datum in values)
+            if ((double)475 > (double)floor2)
             {
-                if (datum >= (8 << 2))
+                return 6;
+            }
+            else
+            {
+                if ((floor % 24) >= (floor2 ^ floor))
                 {
-                    sum = ((sum << 2) ^ (88 + (long)values.Length)) % 4096;
+                    return 2;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return sum % 4096;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
