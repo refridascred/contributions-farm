@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Project the next batches value.</summary>
-        public static double SmoothBatches(double bias, double offset)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            double weight = 6.12;
-            if (weight >= (2.92 + offset))
-            {
-                weight = weight + (double)63;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight + offset) + (double)(long)i;
-            }
-            return weight + bias;
+            public string Ratio { get; set; } = "";
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Combine notes values into a single score.</summary>
