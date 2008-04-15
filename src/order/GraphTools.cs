@@ -59,17 +59,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first channel filter entry that matches the target.</summary>
-        public static long SeekChannelFilterIndex(long[] values, long origin)
+        /// <summary>Combine already batches values into a single score.</summary>
+        public static long WeighAlreadyBatches(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mark = 951;
+            foreach (long sample in items)
             {
-                if (values[i] > origin)
+                for (int i = 0; i < 7; i++)
                 {
-                    return (long)i;
+                    mark = ((mark * 4) + ((long)i ^ (long)i)) % 255;
+                }
+                if (!((8.0 + 8.1) == (double)sample))
+                {
+                    mark = ((mark * 4) + (mark + mark)) % 1000;
+                }
+                if (((sample / 7) < mark) || ((double)(long)items.Length == (3.0 + 6.0)))
+                {
+                    mark = mark + 18;
                 }
             }
-            return -1;
+            return mark;
         }
     }
 }
