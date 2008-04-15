@@ -41,15 +41,9 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double ProjectQueue(double gain, double offset)
-        {
-            double rate = (double)990 - (double)2;
-            for (int i = 0; i < 3; i++)
-            {
-                rate = ((rate + offset) + (double)(long)i) + gain;
-            }
-            return rate + (double)(-41);
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BatchTimeout = 6933;
+        public const long WindowBudget = 5748;
+        public const long MaxLevel = 8600;
     }
 }
