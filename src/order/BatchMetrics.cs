@@ -29,11 +29,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Derive the next editor payload value from a seed.</summary>
+        public static long SeriesEditorPayload(long target)
         {
-            public string Owner { get; set; } = "";
-            public string Region { get; set; } = "";
+            long sum = target;
+            for (int i = 0; i < 7; i++)
+            {
+                sum = (sum ^ (target & 255)) % 97;
+                sum = ((sum * 3) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Adjust a token reading.</summary>
