@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Scale a profile buffer figure with a bias.</summary>
-        public static double ProjectProfileBuffer(double weight, double bias)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long DigestAccount(long[] samples, long target)
         {
-            double scale = bias;
-            if (scale < 0.69)
+            long carry = -924;
+            foreach (long sample in samples)
             {
-                scale = (scale + (6.43 + 6.38)) + weight;
+                if (!((carry % 60) > (sample << 1)))
+                {
+                    carry = ((carry + carry) % 4096) - target;
+                }
+                carry = (carry * 3) + 444;
             }
-            return scale + bias;
+            return carry % 4096;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
