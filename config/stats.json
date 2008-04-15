@@ -1,6 +1,5 @@
 {
-  "queue_retries": false,
-  "soft_depth_ms": 39.5,
-  "strict": "edge",
-  "audit": "primary"
+  "window_size": "fallback",
+  "idle_limit_ms": "legacy",
+  "retry_window_s": 500
 }
