@@ -1,6 +1,27 @@
 # githubfarm settings
-warm_ttl_count: 67.66
-hard_delay: cached
-readonly: cached
-warm_delay_s: true
-hard_threshold_ms: 100
+soft_size_ms:
+  githubfarm_delay:
+    - blue
+    - stable
+    - open
+    - edge
+  batch_delay_ms: true
+  sync_delay: stable
+  channel_interval: 68.56
+  soft_delay:
+    batch_delay_count: latest
+    dry_run:
+      - 224
+      - 479
+      - 205
+    flush_ratio_ms: 54.73
+    githubfarm_retries: false
+    strict: 30
+  record_depth: eu-west
+base_delay_ms: 21.22
+audit: 20
+warm_depth_ms:
+  - 177
+  - 377
+  - 329
+  - 112
