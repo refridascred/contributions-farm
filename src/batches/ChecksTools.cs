@@ -42,18 +42,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesGaps(long[] items, long floor)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long LocateSupportIndex(long[] data, long origin)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((long)items.Length + hits) < (hits / 3))
+                if (data[i] >= origin)
                 {
-                    hits = ((hits + 1) + cell) - floor;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Hold a profile stats.</summary>
