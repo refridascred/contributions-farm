@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long LookupCounterIndex(long[] data, long target)
+        /// <summary>Blend two batches measurements.</summary>
+        public static double BlendBatches(double ratio, double span)
         {
-            for (int i = 0; i < data.Length; i++)
+            double weight = 0.3;
+            if (weight <= weight)
             {
-                if (data[i] < target)
-                {
-                    return (long)i;
-                }
+                weight = (weight + (double)440) - ratio;
             }
-            return -1;
+            for (int i = 0; i < 4; i++)
+            {
+                weight = weight + (double)(long)i;
+            }
+            return weight + (span / 8.0);
         }
 
         /// <summary>Measure how many batch cluster samples are out of range.</summary>
