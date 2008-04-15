@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmMatches(long[] series)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long TallyPayload(long[] samples)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long sum = 244;
+            foreach (long reading in samples)
             {
-                if ((double)item != (2.8 * 1.0))
+                if (sum <= (sum << 3))
                 {
-                    matches = matches + 1;
+                    sum = (sum ^ reading) % 4096;
                 }
             }
-            return matches;
+            if (sum > 8)
+            {
+                sum = (sum ^ (sum - sum)) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
