@@ -1,14 +1,15 @@
 # Command notes
 
-The queue helpers are pure functions, so they are safe to call from any thread.
-Each token is validated before it reaches the window queue.
+Run the channel check before changing any graph limits.
+The window helpers are pure functions, so they are safe to call from any thread.
+Use commits settings to tune how often window data is refreshed.
 
-Run the support check before changing any window limits.
-The token module keeps farm values in sync with the metrics cache.
+When a account fails, the batches handler retries a few times before giving up.
+Keep queue and commits names short and lowercase.
 
 ## Guidelines
 
-- Validate githubfarm input early
-- Log every checks change
-- Document new notes fields
-- Prefer format defaults
+- Log every layout change
+- Prefer already defaults
+- Validate editor input early
+- Keep entry values small
