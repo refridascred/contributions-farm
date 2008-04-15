@@ -1,11 +1,10 @@
 # support settings
-audit: primary
-token_capacity: true
-persist: legacy
-batch_ttl_count: primary
-sync_ratio_ms: 5430
-burst_window_count:
-  - fallback
-  - strict
-  - eu-west
-  - local
+min_threshold_pct:
+  max_size_count:
+    - standard
+    - latest
+  tools_limit: stable
+  queue_threshold: staging
+sync_delay_count: false
+flush_threshold: false
+base_interval_pct: false
