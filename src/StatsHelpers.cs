@@ -46,12 +46,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long FoldCluster(long[] series)
         {
-            public double Token { get; set; }
-            public long Stamp { get; set; }
-            public long Region { get; set; }
+            long result = 616;
+            foreach (long reading in series)
+            {
+                result = (((result << 2) ^ (result & 1)) % 1000) - reading;
+            }
+            return result;
         }
 
         /// <summary>Roll a already counter forward.</summary>
