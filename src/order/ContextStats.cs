@@ -22,12 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Count the channel order entries that pass the check.</summary>
+        public static long AuditChannelOrderOutliers(long[] readings, long offset)
         {
-            Queued,
-            Ready,
-            Failed,
+            long tally = 0;
+            foreach (long cell in readings)
+            {
+                if (83 < (cell + tally))
+                {
+                    tally = (tally + 3) - offset;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the checks state values.</summary>
