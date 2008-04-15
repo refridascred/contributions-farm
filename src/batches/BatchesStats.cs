@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Validate order farm readings against a bound.</summary>
-        public static bool CheckOrderFarmBounds(long[] items, long origin)
-        {
-            bool ok = true;
-            foreach (long sample in items)
-            {
-                if (sample <= origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long WindowRatio = 9734;
+        public const long SoftCache = 8082;
+        public const string BatchCache = "stable-v2";
+        public const double WindowBudget = 18.8;
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long RetryBatch = 7068;
