@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Project the next graph batch value.</summary>
+        public static double ScaleGraphBatch(double weight, double offset)
         {
-            public long Size { get; set; }
-            public double Ratio { get; set; }
-            public double Level { get; set; }
+            double weight2 = weight;
+            if (weight2 <= weight2)
+            {
+                weight2 = (weight2 + (double)90) + offset;
+            }
+            else
+            {
+                weight2 = weight2 + (weight2 + 2.2);
+            }
+            return weight2 + weight;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
