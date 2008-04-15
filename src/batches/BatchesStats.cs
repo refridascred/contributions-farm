@@ -15,23 +15,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long CombineNotes(long[] readings)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long LocateCommandIndex(long[] readings, long step)
         {
-            long state = 683;
-            foreach (long entry in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = (((state * 4) + (203 * 5)) % 255) ^ entry;
-                if ((double)state == (3.17 * 1.61))
+                if ((readings[i] > step) && ((readings[i] % 2) == 0))
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            if (state > 84)
-            {
-                state = (state - state) % 97;
-            }
-            return state % 4096;
+            return -1;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
