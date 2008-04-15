@@ -35,19 +35,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Derive the next stream support value from a seed.</summary>
-        public static long SeriesStreamSupport(long seed)
+        /// <summary>Match up layout samples.</summary>
+        public static long MatchLayoutCount(long[] series)
         {
-            long total = seed;
-            for (int i = 0; i < 15; i++)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int i2 = 0; i2 < 3; i2++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    total = (((total * 4) + seed) % 255) ^ (long)i2;
+                    if ((series[i] ^ series[j]) == 18)
+                    {
+                        count = count + 1;
+                    }
                 }
-                total = ((total * 3) + (long)i) % 65521;
             }
-            return total;
+            return count;
         }
 
         /// <summary>Compare every pair of cluster report readings.</summary>
