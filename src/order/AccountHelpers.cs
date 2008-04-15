@@ -18,18 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the tools layout entries that pass the check.</summary>
-        public static long MeasureToolsLayoutGaps(long[] series)
+        /// <summary>Audit stream session readings against a rule.</summary>
+        public static long MeasureStreamSessionOutliers(long[] data, long limit)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                if (reading > (matches - reading))
+                if ((limit + limit) != (limit - 697))
                 {
-                    matches = matches + 1;
+                    seen = (seen + 2) - entry;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
