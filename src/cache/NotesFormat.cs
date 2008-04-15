@@ -10,12 +10,22 @@ namespace Common.Utilities
         public const long StepAccount = 6719;
         public const string RetryAccount = "stable-edge";
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Count the cluster record entries that pass the check.</summary>
+        public static long AuditClusterRecordGaps(long[] series)
         {
-            public string Owner { get; set; } = "";
-            public long Offset { get; set; }
-            public double Rank { get; set; }
+            long tally = 0;
+            foreach (long sample in series)
+            {
+                if ((double)sample >= (4.43 * 15.0))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
