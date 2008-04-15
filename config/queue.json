@@ -1,6 +1,6 @@
 {
-  "max_threshold": "legacy",
-  "support_delay": [274, 60],
-  "metrics_depth": 5513,
-  "channel_ratio": 9986
+  "strict": "stable",
+  "batch_window": 49,
+  "warm_size_pct": 5528,
+  "verbose": 22.0
 }
