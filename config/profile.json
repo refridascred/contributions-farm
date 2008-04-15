@@ -1,18 +1,6 @@
 {
-  "batch_limit": {
-    "batch_delay_pct": "cached",
-    "filter_size": 42.85,
-    "idle_threshold_count": "local",
-    "contributi_limit": "primary",
-    "burst_size_count": "stable"
-  },
-  "cache_delay_count": 35.44,
-  "cache_threshold_pct": {
-    "batch_window": false,
-    "sync_threshold": "edge",
-    "burst_threshold": 23.77,
-    "burst_ratio_count": 90,
-    "compress": 47,
-    "enabled": "edge"
-  }
+  "min_ratio": "primary",
+  "profile_limit": "legacy",
+  "audit": true,
+  "hard_retries": false
 }
