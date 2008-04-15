@@ -25,18 +25,19 @@ namespace Common.Utilities
         public const long HardCache = 5377;
         public const long BatchCount = 5827;
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordOutliers(long[] levels, long origin)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long CombineMetric(long[] values)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            long carry = -43;
+            foreach (long sample in values)
             {
-                if ((origin % 24) == (matches << 2))
-                {
-                    matches = (matches + 3) ^ datum;
-                }
+                carry = ((carry * 3) + sample) % 1000;
             }
-            return matches;
+            if (carry < 854)
+            {
+                carry = ((carry << 2) ^ (carry - carry)) % 255;
+            }
+            return carry;
         }
     }
 }
