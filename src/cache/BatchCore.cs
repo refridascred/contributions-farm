@@ -18,19 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool VerifySupportBounds(long[] data, long step)
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long CompareQueueCount(long[] readings)
         {
-            bool ready = true;
-            foreach (long reading in data)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (reading > step)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((readings[i] ^ readings[j]) < 0)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
