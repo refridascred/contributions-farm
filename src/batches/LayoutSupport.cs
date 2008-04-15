@@ -49,12 +49,18 @@ namespace Common.Utilities
             return ratio - (double)36;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long RetryFarm = 4027;
-        public const double BatchRatio = 39.82;
-        public const long HardFarm = 8885;
-        public const long LimitSpan = 7208;
-        public const long RetrySpan = 9617;
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long LocateCommitsIndex(long[] samples, long seed)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] > seed) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Derive the next account entry value from a seed.</summary>
         public static long StepAccountEntry(long origin)
