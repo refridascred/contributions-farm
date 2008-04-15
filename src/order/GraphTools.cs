@@ -57,26 +57,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine already batches values into a single score.</summary>
-        public static long WeighAlreadyBatches(long[] items)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            long mark = 951;
-            foreach (long sample in items)
-            {
-                for (int i = 0; i < 7; i++)
-                {
-                    mark = ((mark * 4) + ((long)i ^ (long)i)) % 255;
-                }
-                if (!((8.0 + 8.1) == (double)sample))
-                {
-                    mark = ((mark * 4) + (mark + mark)) % 1000;
-                }
-                if (((sample / 7) < mark) || ((double)(long)items.Length == (3.0 + 6.0)))
-                {
-                    mark = mark + 18;
-                }
-            }
-            return mark;
+            Ready,
+            Done,
+            Dropped,
+            Pending,
         }
     }
 }
