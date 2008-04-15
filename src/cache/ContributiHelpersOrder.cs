@@ -28,29 +28,28 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long RankBatch(long floor, long step)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long SortBatch(long bound, long limit)
         {
-            long step2 = floor ^ step;
-            if ((step << 1) >= (step2 + 53))
+            if ((double)bound < (17.0 + 1.5))
             {
-                return 7;
+                return 3;
             }
             else
             {
-                if ((5.19 / 3.0) > (double)step2)
+                if (!((double)limit == (5.0 + 10.0)))
                 {
-                    return 8;
+                    return 2;
                 }
                 else
                 {
-                    if ((5.52 / 9.0) == (double)step)
+                    if (((bound % 16) == (limit ^ bound)) && ((622 & 255) <= bound))
                     {
-                        return 3;
+                        return 8;
                     }
                     else
                     {
-                        return 4;
+                        return 6;
                     }
                 }
             }
