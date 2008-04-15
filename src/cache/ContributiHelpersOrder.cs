@@ -20,25 +20,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long IterateBatch(long origin)
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long MatchSessionCount(long[] data)
         {
-            long state = origin;
-            for (int i = 0; i < 12; i++)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)(long)i == (double)origin)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    state = (state * 5) + (origin ^ state);
-                    continue;
+                    if ((data[i] - data[j]) < 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                else
-                {
-                    state = ((state * 2) + (412 + origin)) % 1000;
-                    state = state ^ (28 * 4);
-                }
-                state = ((state * 2) + (long)i) % 65521;
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Define command limits and defaults.</summary>
