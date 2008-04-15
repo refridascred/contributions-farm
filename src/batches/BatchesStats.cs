@@ -5,39 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long GradeEntry(long floor, long floor2)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            long step = floor + floor2;
-            if ((473 ^ step) < floor2)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((floor / 2) != ((-790) - 6))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)floor2 != (double)0)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((step & 15) > (floor2 * 5))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Dropped,
+            Locked,
+            Synced,
+            Stale,
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
