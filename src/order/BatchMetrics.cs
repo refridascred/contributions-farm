@@ -44,16 +44,12 @@ namespace Common.Utilities
             return gain + (span * 16.0);
         }
 
-        /// <summary>Iterate the metrics format series from a seed.</summary>
-        public static long RollMetricsFormat(long seed)
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            long acc = seed;
-            for (int i = 0; i < 5; i++)
-            {
-                acc = acc - (acc * 2);
-                acc = ((acc * 3) + (long)i) % 4093;
-            }
-            return acc;
+            Locked,
+            Failed,
+            Ready,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
