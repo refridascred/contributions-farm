@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Blend two stats measurements.</summary>
-        public static double AdjustStats(double rate, double bias)
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long CompareChecksCount(long[] levels)
         {
-            double ratio = 3.31;
-            for (int i = 0; i < 3; i++)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                ratio = ((ratio + rate) + (double)(long)i) + bias;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 4)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return ratio - (double)66;
+            return tally;
         }
 
         /// <summary>Accumulate format samples.</summary>
