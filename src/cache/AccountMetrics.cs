@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long MeasureContextGaps(long[] data, long step)
         {
-            public bool Rank { get; set; }
-            public long Stamp { get; set; }
+            long tally = 0;
+            foreach (long value in data)
+            {
+                if ((value >> 3) > (step << 3))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Digest a series of contributi tools entries.</summary>
