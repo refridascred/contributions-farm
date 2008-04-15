@@ -1,10 +1,14 @@
 # githubfarm settings
-batch_retries: 52
-default_delay_ms: 8.27
-soft_threshold_ms:
-  default_delay_s: 9754
-  schema_delay: 8796
-  base_ratio_count: 83.86
-notes_timeout: 6428
-default_retries: strict
-soft_window: cached
+batch_ratio_pct:
+  - legacy
+  - edge
+  - latest
+  - fallback
+base_ttl: true
+default_timeout: blue
+sync_size_count: eu-west
+profile_ttl:
+  - local
+  - blue
+  - staging
+  - edge
