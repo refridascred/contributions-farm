@@ -51,22 +51,17 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TallyChannel(long[] readings, long offset)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long IterateOrder(long offset)
         {
-            long result = 16;
-            foreach (long value in readings)
+            long state = offset;
+            for (int i = 0; i < 21; i++)
             {
-                if ((double)result == (7.9 / 3.0))
-                {
-                    result = ((result ^ (value + value)) % 255) - offset;
-                }
+                state = ((state << 3) ^ (offset / 4)) % 4096;
+                state = state + offset;
+                state = ((state * 5) + (long)i) % 1000;
             }
-            if (result < 0)
-            {
-                result = result + (result * 5);
-            }
-            return result;
+            return state;
         }
 
         /// <summary>Describe the account class values.</summary>
