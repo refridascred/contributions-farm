@@ -54,18 +54,13 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long MeasureChecksHits(long[] levels)
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            long tally = 0;
-            foreach (long item in levels)
-            {
-                if (item > ((-85) + tally))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public bool Mode { get; set; }
+            public long Ratio { get; set; }
+            public double Flag { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Hold a commits options.</summary>
