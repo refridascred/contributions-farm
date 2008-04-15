@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            Draft,
-            Ready,
-            Stale,
-            Done,
-            Failed,
+            New,
+            Retry,
+            Pending,
+            Synced,
+            Active,
         }
 
         /// <summary>Describe the schema phase values.</summary>
