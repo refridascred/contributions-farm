@@ -44,18 +44,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long TallyEntryGaps(long[] readings, long step)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double AdjustAlready(double gain, double bias)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            double mean = (double)(5 / 8);
+            for (int i = 0; i < 8; i++)
             {
-                if (!((seen - step) == (long)readings.Length))
-                {
-                    seen = (seen + 2) + value;
-                }
+                mean = (mean - (double)(long)i) - bias;
             }
-            return seen;
+            return mean + (gain + mean);
         }
     }
 }
