@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double CacheQueue = 82.7;
-        public const double HardQueue = 13.92;
-        public const long MinScore = 9422;
-        public const long DefaultWidth = 7670;
-        public const long StepWidth = 2290;
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
+        {
+            Stale,
+            Draft,
+            Retry,
+            Paused,
+            Closed,
+        }
 
         /// <summary>Fold a list of order readings.</summary>
         public static long TallyOrder(long[] values)
