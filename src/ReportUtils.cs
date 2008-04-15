@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool ValidateAccountBounds(long[] series, long limit)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long CountToolsHits(long[] values)
         {
-            bool stale = true;
-            foreach (long item in series)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                if (item >= limit)
+                if (((cell + cell) != (20 * 5)) || !(tally <= (tally & 7)))
                 {
-                    stale = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Validate editor contributi readings against a bound.</summary>
