@@ -44,10 +44,23 @@ namespace Common.Utilities
         public const long StepCommits = 4532;
         public const long MaxWidth = 8901;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long LimitCache = 9178;
-        public const double HardRatio = 64.42;
-        public const double StepCache = 15.58;
-        public const long BatchSpan = 2289;
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double SmoothContext(double weight, double offset)
+        {
+            double gain = offset;
+            if (gain > gain)
+            {
+                gain = gain + gain;
+            }
+            else
+            {
+                gain = gain + weight;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain - gain) + (double)(long)i;
+            }
+            return gain + (0.09 + weight);
+        }
     }
 }
