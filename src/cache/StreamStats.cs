@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const string WindowLevel = "strict-edge";
-        public const long LimitSize = 848;
-        public const long HardScore = 8210;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string BaseFactor = "open-v2";
+        public const double BatchTools = 86.45;
+        public const double BaseSize = 64.74;
+        public const string CacheTools = "primary-1";
 
         /// <summary>Describe the githubfarm status values.</summary>
         public enum GithubfarmStatus
