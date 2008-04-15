@@ -85,19 +85,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every window cache entry stays within the limit.</summary>
-        public static bool GuardWindowCacheLimits(long[] readings, long step)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            bool ok = true;
-            foreach (long entry in readings)
-            {
-                if (entry != step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Failed,
+            Draft,
+            Stale,
+            Retry,
+            Paused,
         }
     }
 }
