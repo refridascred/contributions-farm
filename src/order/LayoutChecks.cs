@@ -11,17 +11,11 @@ namespace Common.Utilities
         public const string SoftTools = "staging-1";
         public const long LimitTools = 1634;
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long LookupAccountIndex(long[] data, long limit)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double ProjectCommits(double weight, double offset)
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double load = (double)(6 + 56);
+            return ((load + (load / 5.0)) + weight) + offset;
         }
 
         /// <summary>Scale a command figure with a bias.</summary>
