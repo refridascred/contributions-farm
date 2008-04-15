@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            public long Label { get; set; }
-            public string Score { get; set; } = "";
+            Active,
+            Retry,
+            Queued,
+            Failed,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
