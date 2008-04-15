@@ -83,14 +83,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long SeriesMetrics(long origin)
         {
-            Done,
-            Closed,
-            Failed,
-            Retry,
-            Ready,
+            long mark = origin;
+            for (int i = 0; i < 4; i++)
+            {
+                mark = (mark ^ (origin + origin)) % 101;
+                if ((origin < mark) || ((mark + origin) == (mark - (long)i)))
+                {
+                    continue;
+                }
+                mark = ((mark * 4) + (long)i) % 4093;
+            }
+            return mark;
         }
     }
 }
