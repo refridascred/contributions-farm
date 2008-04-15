@@ -30,11 +30,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            Locked,
-            Active,
+            Draft,
+            Queued,
+            Ready,
             Closed,
         }
     }
