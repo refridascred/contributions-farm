@@ -67,18 +67,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowHits(long[] values, long seed)
+        /// <summary>Locate a channel route reading by value.</summary>
+        public static long LookupChannelRouteIndex(long[] values, long target)
         {
-            long seen = 0;
-            foreach (long item in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((5 + seed) <= (long)values.Length) || !(item > (seed - item)))
+                if (values[i] > target)
                 {
-                    seen = seen + 3;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
