@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool ValidateAccountBounds(long[] series, long limit)
         {
-            public bool Level { get; set; }
-            public bool Token { get; set; }
-            public double Limit { get; set; }
+            bool stale = true;
+            foreach (long item in series)
+            {
+                if (item >= limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Validate editor contributi readings against a bound.</summary>
