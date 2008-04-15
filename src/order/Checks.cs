@@ -44,19 +44,19 @@ namespace Common.Utilities
             return load - (double)1;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool ValidateStreamRange(long[] samples, long target)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool VerifyEditorBounds(long[] series, long step)
         {
-            bool found = true;
-            foreach (long sample in samples)
+            bool flag = true;
+            foreach (long cell in series)
             {
-                if (sample >= target)
+                if (cell < step)
                 {
-                    found = false;
+                    flag = false;
                     break;
                 }
             }
-            return found;
+            return flag;
         }
 
         /// <summary>Hold a already stats.</summary>
