@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Fold a list of githubfarm entry readings.</summary>
+        public static long ScoreGithubfarmEntry(long[] values, long target)
         {
-            Failed,
-            Locked,
-            Synced,
+            long mark = 54;
+            foreach (long entry in values)
+            {
+                mark = (((mark << 3) ^ entry) % 1000) - target;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Hold a stats snapshot.</summary>
