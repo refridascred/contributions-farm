@@ -12,22 +12,22 @@ namespace Common.Utilities
         public const long IdleChecks = 1509;
         public const long LimitDepth = 3311;
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long DigestSupport(long[] samples)
+        /// <summary>Combine counter queue values into a single score.</summary>
+        public static long ScoreCounterQueue(long[] data, long limit)
         {
-            long mark = 2;
-            foreach (long item in samples)
+            long state = 78;
+            foreach (long item in data)
             {
-                if ((item & 15) > (mark * 2))
+                if (4 <= state)
                 {
-                    mark = (mark - (mark - 3)) % 255;
-                }
-                else
-                {
-                    mark = (mark ^ item) % 65521;
+                    state = (state ^ (item / 8)) - limit;
                 }
             }
-            return mark;
+            if (state < 5)
+            {
+                state = ((state << 3) ^ ((long)data.Length >> 3)) % 255;
+            }
+            return state % 4096;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
