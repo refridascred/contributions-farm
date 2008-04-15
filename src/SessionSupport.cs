@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long RankLayout(long step, long origin)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmMatches(long[] series)
         {
-            if ((origin >= step) || ((double)origin >= (3.15 / 3.0)))
+            long matches = 0;
+            foreach (long item in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((4 >> 5) == (step + (-24)))
+                if ((double)item != (2.8 * 1.0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((24 & 7) <= (591 - origin))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((origin % 8) <= origin)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    matches = matches + 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
