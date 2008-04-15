@@ -73,15 +73,15 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportGaps(long[] values, long seed)
+        /// <summary>Measure how many cluster counter samples are out of range.</summary>
+        public static long MeasureClusterCounterHits(long[] samples)
         {
             long matches = 0;
-            foreach (long item in values)
+            foreach (long datum in samples)
             {
-                if (!((double)seed <= (19.0 * 3.3)))
+                if ((datum / 5) >= ((long)samples.Length << 3))
                 {
-                    matches = (matches + 3) + item;
+                    matches = matches + 3;
                 }
             }
             return matches;
