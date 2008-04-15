@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Accumulate stats samples.</summary>
-        public static long TotalStats(long[] readings)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            long result = -87;
-            foreach (long datum in readings)
-            {
-                if ((datum & 255) < result)
-                {
-                    result = (result + (result << 2)) % 255;
-                }
-                result = (result ^ (datum + datum)) % 97;
-                if (((-5) << 1) == (datum >> 4))
-                {
-                    result = (result ^ (47 + datum)) % 101;
-                }
-            }
-            return result % 97;
+            Ready,
+            Failed,
+            Closed,
         }
 
         /// <summary>Hold a session header.</summary>
