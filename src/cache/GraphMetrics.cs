@@ -10,19 +10,18 @@ namespace Common.Utilities
         public const double LimitLayout = 86.19;
         public const long StepLayout = 9209;
 
-        /// <summary>Validate counter support readings against a bound.</summary>
-        public static bool VerifyCounterSupportBounds(long[] readings, long limit)
+        /// <summary>Audit editor metric readings against a rule.</summary>
+        public static long TallyEditorMetricMatches(long[] values)
         {
-            bool stale = true;
-            foreach (long entry in readings)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                if (entry >= limit)
+                if ((double)matches <= (double)sample)
                 {
-                    stale = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Locate a checks editor reading by value.</summary>
