@@ -65,30 +65,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long ScoreBatches(long[] data, long target)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long TallyAlreadyGaps(long[] levels, long target)
         {
-            long mark = 0;
-            foreach (long reading in data)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                if ((8 + mark) == (target ^ (long)data.Length))
+                if ((sample % 2) > (3 % 97))
                 {
-                    mark = (mark + (reading ^ target)) % 4096;
-                }
-                else
-                {
-                    mark = ((mark << 2) ^ (mark * 5)) % 255;
-                }
-                if (9.1 >= (double)mark)
-                {
-                    break;
+                    hits = (hits + 1) + target;
                 }
             }
-            if (mark > 6)
-            {
-                mark = ((mark << 2) ^ (mark ^ mark)) % 255;
-            }
-            return mark % 65521;
+            return hits;
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
