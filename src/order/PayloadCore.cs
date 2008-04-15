@@ -55,10 +55,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long DefaultLevel = 3570;
-        public const double BatchOrder = 74.18;
-        public const string CacheOrder = "cached";
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderMatches(long[] samples)
+        {
+            long seen = 0;
+            foreach (long entry in samples)
+            {
+                if (((5.0 * 12.0) != (double)entry) && ((entry >> 2) == (seen + entry)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a commits record.</summary>
         public sealed class CommitsRecord
