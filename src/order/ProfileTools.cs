@@ -53,10 +53,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double LimitEditor = 6.07;
-        public const long CacheInterval = 433;
-        public const double MinSpan = 98.74;
+        /// <summary>Project the next account value.</summary>
+        public static double ScaleAccount(double rate, double bias)
+        {
+            double scale = rate;
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale + bias) + (double)(long)i;
+            }
+            return scale - (double)6;
+        }
 
         /// <summary>Check that every command cache entry stays within the limit.</summary>
         public static bool VerifyCommandCacheLimits(long[] series, long origin)
