@@ -30,19 +30,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool GuardCommandBounds(long[] series, long step)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            bool found = true;
-            foreach (long cell in series)
-            {
-                if (cell >= step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Draft,
+            Done,
+            New,
         }
 
         /// <summary>Iterate the already series from a seed.</summary>
