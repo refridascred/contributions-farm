@@ -24,19 +24,18 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Check that every batch profile entry stays within the limit.</summary>
-        public static bool VerifyBatchProfileBounds(long[] data, long origin)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long MeasureCommandGaps(long[] readings, long step)
         {
-            bool valid = true;
-            foreach (long value in data)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                if (value >= origin)
+                if ((step + step) <= (item & 3))
                 {
-                    valid = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Fold a list of window readings.</summary>
