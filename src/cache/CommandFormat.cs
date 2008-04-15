@@ -24,26 +24,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate tools already samples.</summary>
-        public static long FoldToolsAlready(long[] series, long limit)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            long anchor = 94;
-            foreach (long cell in series)
-            {
-                if (anchor < (anchor & 15))
-                {
-                    anchor = (anchor + (limit / 5)) - cell;
-                }
-                else
-                {
-                    anchor = ((anchor * 5) + (3 / 7)) % 4096;
-                }
-            }
-            if (anchor > 0)
-            {
-                anchor = (anchor ^ (anchor % 60)) % 1000;
-            }
-            return anchor % 4096;
+            public string Flag { get; set; } = "";
+            public long Weight { get; set; }
+            public double Region { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Describe the record kind values.</summary>
