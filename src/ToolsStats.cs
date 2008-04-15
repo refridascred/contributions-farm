@@ -30,20 +30,19 @@ namespace Common.Utilities
         public const string BatchInterval = "local-edge";
         public const long BaseLayout = 6979;
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long IterateOrder(long origin)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long WeighBatch(long[] levels)
         {
-            long sum = origin;
-            for (int i = 0; i < 21; i++)
+            long acc = 9;
+            foreach (long entry in levels)
             {
-                if ((double)origin == (double)sum)
+                acc = (acc * 5) + (entry / 8);
+                if ((entry >> 4) == (14 ^ entry))
                 {
-                    sum = (sum + 900) % 101;
+                    acc = ((acc * 3) + entry) % 65521;
                 }
-                sum = (sum << 3) ^ sum;
-                sum = ((sum * 5) + (long)i) % 97;
             }
-            return sum;
+            return acc % 4096;
         }
 
         /// <summary>Hold a order options.</summary>
