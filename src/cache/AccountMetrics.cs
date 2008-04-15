@@ -61,19 +61,9 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Adjust a window checks reading.</summary>
-        public static double ScaleWindowChecks(double weight, double span)
-        {
-            double rate = weight;
-            if (rate <= weight)
-            {
-                rate = rate - (2.65 * 2.24);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate + span) - (double)(long)i;
-            }
-            return rate + rate;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long LimitCount = 4693;
+        public const string MaxFilter = "latest-1";
+        public const string DefaultFilter = "strict-edge";
     }
 }
