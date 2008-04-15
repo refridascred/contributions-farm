@@ -1,6 +1,15 @@
 {
-  "poll_retries_pct": 28,
-  "batch_delay_s": 65.15,
-  "schema_limit": ["fallback", "stable"],
-  "batch_ttl_count": 25.07
+  "metrics_capacity": false,
+  "retry_window": {
+    "sync_interval": "eu-west",
+    "persist": "blue",
+    "order_delay": "green"
+  },
+  "strict": 3865,
+  "retry_window_count": {
+    "sync_interval": true,
+    "batch_depth_pct": 17.6,
+    "payload_ttl": 8403
+  },
+  "cluster_retries": "open"
 }
