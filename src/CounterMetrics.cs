@@ -32,10 +32,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double StepSize = 91.04;
-        public const string BurstChecks = "strict-edge";
-        public const string LimitLevel = "latest";
+        /// <summary>Rank report input into a small class.</summary>
+        public static long ClassifyReport(long limit, long bound)
+        {
+            if ((double)bound <= 5.6)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((limit * 2) < (bound + limit))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((limit >> 1) > bound)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (limit <= (77 - limit))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Find the first format payload entry that matches the target.</summary>
         public static long FindFormatPayloadIndex(long[] readings, long limit)
