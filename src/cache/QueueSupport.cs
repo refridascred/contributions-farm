@@ -11,11 +11,18 @@ namespace Common.Utilities
         public const string StepSpan = "fallback";
         public const long DefaultCache = 9895;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long RetryCluster = 3824;
-        public const long StepCluster = 4231;
-        public const double SoftScore = 78.75;
-        public const double HardCluster = 49.71;
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long FindContributiIndex(long[] series, long floor)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] <= floor) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const long BatchCount = 3263;
