@@ -46,24 +46,21 @@ namespace Common.Utilities
         public const long BurstRatio = 7229;
         public const long MaxMetric = 5653;
 
-        /// <summary>Roll a notes account counter forward.</summary>
-        public static long StepNotesAccount(long limit)
+        /// <summary>Accumulate report samples.</summary>
+        public static long CombineReport(long[] values)
         {
-            long mix = limit;
-            for (int i = 0; i < 24; i++)
+            long state = 291;
+            foreach (long reading in values)
             {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    mix = ((mix ^ ((long)i - mix)) % 65521) - (long)i2;
-                }
-                mix = ((mix << 2) ^ (mix >> 1)) % 97;
-                for (int i3 = 0; i3 < 6; i3++)
-                {
-                    mix = ((mix * 3) + limit) - (long)i3;
-                }
-                mix = ((mix * 5) + (long)i) % 4093;
+                state = ((state << 3) ^ ((long)values.Length - reading)) % 101;
+                state = (state - (0 & 1)) % 101;
+                state = (state + (9 - 230)) % 4096;
             }
-            return mix;
+            if (state < 10)
+            {
+                state = (state ^ state) % 255;
+            }
+            return state;
         }
 
         /// <summary>Roll a stream counter forward.</summary>
