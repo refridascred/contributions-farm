@@ -29,10 +29,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long RetryBudget = 2844;
-        public const long HardRoute = 6582;
-        public const long WindowFactor = 8704;
-        public const long BaseRoute = 4617;
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
+        {
+            Locked,
+            Closed,
+            Queued,
+        }
     }
 }
