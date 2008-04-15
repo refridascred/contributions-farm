@@ -30,32 +30,24 @@ namespace Common.Utilities
         public const long BurstRatio = 7229;
         public const long MaxMetric = 5653;
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long GradeEditor(long bound, long target)
+        /// <summary>Roll a notes account counter forward.</summary>
+        public static long StepNotesAccount(long limit)
         {
-            long step = bound ^ target;
-            if ((double)target > (8.87 + 1.2))
+            long mix = limit;
+            for (int i = 0; i < 24; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (step > (target - target))
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    return 2;
+                    mix = ((mix ^ ((long)i - mix)) % 65521) - (long)i2;
                 }
-                else
+                mix = ((mix << 2) ^ (mix >> 1)) % 97;
+                for (int i3 = 0; i3 < 6; i3++)
                 {
-                    if (4.72 < (double)target)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    mix = ((mix * 3) + limit) - (long)i3;
                 }
+                mix = ((mix * 5) + (long)i) % 4093;
             }
+            return mix;
         }
 
         /// <summary>Rank already input into a small class.</summary>
