@@ -1,16 +1,5 @@
 {
-  "tools_ttl": {
-    "compress": 1879,
-    "flush_timeout": {
-      "enabled": 4411,
-      "cache_delay_s": "eu-west",
-      "burst_limit": [15, 345, 196],
-      "flush_limit_pct": [32, 459],
-      "poll_limit_count": 570
-    },
-    "default_size_pct": 8.04
-  },
-  "strict": 500,
-  "enabled": "local",
-  "sync_ttl_count": "standard"
+  "max_interval": "strict",
+  "cache_timeout_s": true,
+  "already_ttl": "fallback"
 }
