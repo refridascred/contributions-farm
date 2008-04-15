@@ -1,6 +1,6 @@
 {
-  "profile_retries": true,
-  "hard_delay": false,
-  "readonly": false,
-  "batch_depth": ["edge", "cached", "legacy", "legacy"]
+  "compress": 250,
+  "dry_run": 30,
+  "default_ttl_s": 1024,
+  "warm_capacity_pct": true
 }
