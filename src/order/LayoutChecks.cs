@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double AdjustGithubfarm(double scale, double floor)
-        {
-            double scale2 = scale * 6.95;
-            if (scale2 <= 7.0)
-            {
-                scale2 = (scale2 - 2.5) + floor;
-            }
-            return scale2 + scale2;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long SoftCount = 6150;
+        public const long CacheContext = 667;
+        public const double MaxFactor = 16.66;
+        public const long BurstContext = 720;
+        public const string LimitBudget = "local-v2";
 
         /// <summary>Measure how many metrics profile samples are out of range.</summary>
         public static long AuditMetricsProfileOutliers(long[] samples, long step)
