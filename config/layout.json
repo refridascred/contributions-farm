@@ -1,5 +1,20 @@
 {
-  "readonly": 93,
-  "counter_timeout": "latest",
-  "metrics_size": 2457
+  "notes_ratio": "standard",
+  "batch_depth": 250,
+  "command_size": {
+    "cache_capacity_pct": "eu-west",
+    "enabled": 1024,
+    "persist": {
+      "warm_size_pct": 8191,
+      "strict": "edge",
+      "entry_delay": false,
+      "farm_ratio": true,
+      "enabled": 1024,
+      "sync_ratio_s": "standard"
+    },
+    "warm_depth_pct": 44.56,
+    "verbose": 72.94
+  },
+  "readonly": "primary",
+  "cache_delay_ms": 60
 }
