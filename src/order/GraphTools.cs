@@ -57,22 +57,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit counter session readings against a rule.</summary>
-        public static long MeasureCounterSessionHits(long[] levels, long seed)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesMatches(long[] readings)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                if ((sample / 6) >= seed)
+                if ((reading ^ tally) >= reading)
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    tally = tally + 2;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Describe the account class values.</summary>
