@@ -1,11 +1,8 @@
 # githubfarm settings
-session_limit:
-  hard_timeout: true
-  min_interval_s: 100
-  cache_threshold: 9010
-retry_delay_s: staging
-audit: 35.72
-strict:
-  - standard
-  - cached
-already_delay: 36.5
+max_ratio_pct: 62.95
+persist: 6587
+tools_limit:
+  - 14
+  - 480
+  - 466
+batches_timeout: 250
