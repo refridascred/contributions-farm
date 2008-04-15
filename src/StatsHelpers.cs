@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            public long Region { get; set; }
-            public long Mode { get; set; }
-            public long Size { get; set; }
+            Done,
+            Failed,
+            Ready,
+            Queued,
+            Pending,
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
