@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long IdleBatches = 585;
-        public const string CacheInterval = "primary-edge";
-        public const long StepBatches = 639;
-        public const long CacheScore = 6400;
-        public const double MinRatio = 74.79;
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MaxSpan = 386;
+        public const string HardInterval = "strict-v2";
+        public const double HardLevel = 41.01;
 
         /// <summary>Find the first metric entry that matches the target.</summary>
         public static long SeekMetricIndex(long[] values, long offset)
