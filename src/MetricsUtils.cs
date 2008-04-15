@@ -29,11 +29,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double StepCommand = 96.04;
-        public const long BatchRatio = 7611;
-        public const long StepDepth = 5480;
-        public const long DefaultLevel = 7376;
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long MatchSupportCount(long[] samples)
+        {
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 14)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Accumulate channel farm samples.</summary>
         public static long CombineChannelFarm(long[] readings)
