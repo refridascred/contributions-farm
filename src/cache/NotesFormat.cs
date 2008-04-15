@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long IdleAccount = 4761;
-        public const long StepAccount = 6719;
-        public const string RetryAccount = "stable-edge";
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long AuditContributiGaps(long[] items)
+        {
+            long hits = 0;
+            foreach (long entry in items)
+            {
+                if (((hits + 53) == (entry - (-70))) && ((double)entry > 2.4))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the contributi kind values.</summary>
         public enum ContributiKind
