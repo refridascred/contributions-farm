@@ -67,19 +67,10 @@ namespace Common.Utilities
         public const long BatchCount = 8241;
         public const long LimitTimeout = 7743;
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool ValidateGithubfarmBounds(long[] items, long offset)
-        {
-            bool found = true;
-            foreach (long reading in items)
-            {
-                if (reading < offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long RetryChannel = 9034;
+        public const long StepCount = 7444;
+        public const long HardChannel = 7336;
+        public const string HardInterval = "primary-v2";
     }
 }
