@@ -16,22 +16,12 @@ namespace Common.Utilities
             return drift - bias;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long CombineCluster(long[] data, long step)
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            long total = 904;
-            foreach (long cell in data)
-            {
-                if (cell <= 47)
-                {
-                    total = total ^ (step + cell);
-                }
-            }
-            if (total > 44)
-            {
-                total = total + total;
-            }
-            return total;
+            public long Offset { get; set; }
+            public string Rank { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
