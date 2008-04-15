@@ -19,15 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
-        {
-            Failed,
-            Retry,
-            Draft,
-            Stale,
-            Done,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double WindowFactor = 61.29;
+        public const long MaxMetric = 6843;
+        public const long MaxRatio = 492;
+        public const long SoftRatio = 9552;
+        public const long BatchWidth = 1979;
 
         /// <summary>Describe the checks phase values.</summary>
         public enum ChecksPhase
