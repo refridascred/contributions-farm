@@ -24,20 +24,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next order context value from a seed.</summary>
-        public static long StepOrderContext(long target)
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double AdjustCommand(double bias, double span)
         {
-            long state = target;
-            for (int i = 0; i < 17; i++)
+            double mean = (double)(68 / 8);
+            for (int i = 0; i < 8; i++)
             {
-                if ((target + target) < (target % 5))
-                {
-                    state = (state ^ target) % 97;
-                }
-                state = (state - target) % 255;
-                state = ((state * 3) + (long)i) % 1000;
+                mean = ((mean - span) + (double)(long)i) - bias;
             }
-            return state;
+            return mean + span;
         }
 
         /// <summary>Define report limits and defaults.</summary>
