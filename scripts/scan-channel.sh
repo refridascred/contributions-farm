@@ -6,15 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-fallback}"
-case "${mode}" in
-    primary)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-CHANNEL_LIMIT=340
+CHANNEL_LIMIT=132
 log "limit is ${CHANNEL_LIMIT}"
+
+for item in stable fallback; do
+    log "checking ${item}"
+done
