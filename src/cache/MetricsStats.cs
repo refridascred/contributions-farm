@@ -64,15 +64,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long DigestBatch(long[] series)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool VerifyChannelBounds(long[] items, long limit)
         {
-            long result = 0;
-            foreach (long reading in series)
+            bool found = true;
+            foreach (long sample in items)
             {
-                result = ((result * 5) + (reading - 151)) % 4096;
+                if (sample <= limit)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return result;
+            return found;
         }
     }
 }
