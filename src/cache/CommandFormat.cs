@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Blend two queue measurements.</summary>
+        public static double ScaleQueue(double bias, double bias2)
         {
-            public bool Size { get; set; }
-            public double Mode { get; set; }
-            public string Score { get; set; } = "";
+            double drift = bias2;
+            if (drift > drift)
+            {
+                drift = drift - (double)63;
+            }
+            return drift + bias;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
