@@ -33,23 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long TallyCache(long[] items, long origin)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            long total = 3;
-            foreach (long cell in items)
-            {
-                total = ((total ^ ((-481) + cell)) % 65521) + origin;
-                if ((3 << 3) != (cell ^ 548))
-                {
-                    break;
-                }
-            }
-            if (total > 355)
-            {
-                total = (total * 2) + (total / 5);
-            }
-            return total;
+            public double Region { get; set; }
+            public string Flag { get; set; } = "";
+            public double Limit { get; set; }
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
