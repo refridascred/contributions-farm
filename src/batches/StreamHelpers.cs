@@ -53,22 +53,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long ScoreNotes(long[] readings, long limit)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            long score = 8;
-            foreach (long cell in readings)
-            {
-                if ((841 < (limit + 94)) || ((limit + score) > (limit + cell)))
-                {
-                    score = (score - score) % 4096;
-                }
-                if ((limit + score) >= (score - cell))
-                {
-                    break;
-                }
-            }
-            return score;
+            public bool Level { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Describe the metrics phase values.</summary>
