@@ -1,6 +1,10 @@
-id,active,score,label,rank
-1,307,eu-west,49.3,fallback
-2,27.1,open,51,706
-3,eu-west,legacy,69.45,92.53
-4,972,275,46.88,966
-5,83.3,595,140,167
+id,owner,active,state
+1,67.77,971,323
+2,25.18,47.44,418
+3,primary,6.73,588
+4,strict,363,72
+5,557,304,31.17
+6,primary,staging,782
+7,legacy,edge,372
+8,63.28,latest,96.87
+9,641,8.97,15.97
