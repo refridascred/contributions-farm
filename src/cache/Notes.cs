@@ -38,11 +38,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            Failed,
-            Synced,
+            New,
             Stale,
             Dropped,
         }
