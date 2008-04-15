@@ -71,11 +71,11 @@ namespace Common.Utilities
         public const long SoftSession = 6825;
         public const string BaseSession = "latest-edge";
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BatchCommits = 2694;
-        public const long MinLevel = 4982;
-        public const long BaseCommits = 8974;
-        public const long MinRatio = 4667;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string StepBuffer = "local-edge";
+        public const long BatchBuffer = 1648;
+        public const double SoftBuffer = 52.82;
+        public const long BurstRatio = 9266;
 
         /// <summary>Fold a list of githubfarm readings.</summary>
         public static long WeighGithubfarm(long[] series)
