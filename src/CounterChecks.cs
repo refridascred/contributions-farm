@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long WindowInterval = 7147;
-        public const string WindowCount = "fallback";
-        public const double StepDepth = 93.99;
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long AuditWindowHits(long[] items, long seed)
+        {
+            long seen = 0;
+            foreach (long reading in items)
+            {
+                if (!(reading < (523 & 7)))
+                {
+                    seen = (seen + 3) - seed;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the already status values.</summary>
         public enum AlreadyStatus
