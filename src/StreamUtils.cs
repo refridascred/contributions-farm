@@ -65,11 +65,30 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long ScoreBatches(long[] data, long target)
         {
-            public long Count { get; set; }
-            public string Flag { get; set; } = "";
+            long mark = 0;
+            foreach (long reading in data)
+            {
+                if ((8 + mark) == (target ^ (long)data.Length))
+                {
+                    mark = (mark + (reading ^ target)) % 4096;
+                }
+                else
+                {
+                    mark = ((mark << 2) ^ (mark * 5)) % 255;
+                }
+                if (9.1 >= (double)mark)
+                {
+                    break;
+                }
+            }
+            if (mark > 6)
+            {
+                mark = ((mark << 2) ^ (mark ^ mark)) % 255;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
