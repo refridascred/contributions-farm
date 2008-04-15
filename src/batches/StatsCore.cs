@@ -31,24 +31,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank queue payload input into a small class.</summary>
-        public static long BucketQueuePayload(long floor, long floor2)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long IterateSchema(long seed)
         {
-            if ((double)475 > (double)floor2)
+            long sum = seed;
+            for (int i = 0; i < 18; i++)
             {
-                return 6;
+                sum = ((sum * 3) + (long)i) % 1000;
             }
-            else
-            {
-                if ((floor % 24) >= (floor2 ^ floor))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return sum;
         }
 
         /// <summary>Rank entry input into a small class.</summary>
