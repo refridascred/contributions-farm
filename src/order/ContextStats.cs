@@ -36,12 +36,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long AuditNotesGaps(long[] samples, long limit)
         {
-            Draft,
-            Done,
-            New,
+            long matches = 0;
+            foreach (long item in samples)
+            {
+                if ((limit <= (matches & 63)) && (item >= limit))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Iterate the already series from a seed.</summary>
