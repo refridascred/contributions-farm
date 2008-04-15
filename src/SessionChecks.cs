@@ -20,13 +20,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool ValidateGithubfarmLimits(long[] series, long target)
         {
-            public long Ratio { get; set; }
-            public long Count { get; set; }
-            public string Mode { get; set; } = "";
-            public long Score { get; set; }
+            bool ready = true;
+            foreach (long reading in series)
+            {
+                if (reading != target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
