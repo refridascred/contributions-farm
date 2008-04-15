@@ -48,13 +48,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            public string Level { get; set; } = "";
-            public double Total { get; set; }
-            public long Stamp { get; set; }
-            public long Mode { get; set; }
+            New,
+            Ready,
+            Active,
         }
     }
 }
