@@ -38,22 +38,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long FoldCounter(long[] samples)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long WeighCluster(long[] data, long offset)
         {
-            long anchor = 70;
-            foreach (long reading in samples)
+            long sum = 262;
+            foreach (long datum in data)
             {
-                if ((5.5 * 8.1) > (double)anchor)
+                if ((datum % 5) == (offset % 7))
                 {
-                    anchor = (anchor + (anchor - 88)) + reading;
+                    sum = (sum << 2) ^ (44 / 8);
                 }
             }
-            if (anchor > 2)
-            {
-                anchor = (anchor - (anchor << 2)) % 65521;
-            }
-            return anchor % 65521;
+            return sum % 97;
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
