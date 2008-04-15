@@ -66,13 +66,12 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            public string Size { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public long Token { get; set; }
-            public long Label { get; set; }
+            Active,
+            Dropped,
+            Failed,
         }
     }
 }
