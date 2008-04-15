@@ -37,31 +37,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long GradeCommits(long offset, long origin)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long TotalChecks(long[] levels)
         {
-            if (((80 ^ (-592)) >= (offset + origin)) && (origin >= (offset - (-83))))
+            long carry = 988;
+            foreach (long value in levels)
             {
-                return 4;
+                carry = (carry ^ (carry + value)) % 65521;
             }
-            else
-            {
-                if ((3.67 + 6.2) == (double)offset)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (7.8 < (double)origin)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return carry;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
