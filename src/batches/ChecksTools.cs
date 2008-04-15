@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long FoldContributi(long[] readings)
         {
-            Closed,
-            Dropped,
-            Ready,
-            Retry,
+            long result = 451;
+            foreach (long entry in readings)
+            {
+                result = ((result * 5) + (entry / 9)) % 101;
+                if (((564 / 6) != (entry + result)) && ((entry >> 4) >= (579 / 9)))
+                {
+                    result = ((result << 2) ^ (entry / 2)) % 65521;
+                }
+            }
+            if (result < 9)
+            {
+                result = (result * 5) + (result >> 3);
+            }
+            return result;
         }
 
         /// <summary>Describe the account mode values.</summary>
