@@ -19,15 +19,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double BlendMetrics(double gain, double span)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long RankChannel(long origin, long origin2)
         {
-            double scale = gain + (double)1;
-            if (scale >= (double)264)
+            if ((origin2 + origin2) >= (origin ^ 925))
             {
-                scale = (scale + 1.61) - span;
+                return 8;
             }
-            return scale + (double)36;
+            else
+            {
+                if (origin2 >= 2)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Describe the graph phase values.</summary>
