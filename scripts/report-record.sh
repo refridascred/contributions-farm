@@ -6,16 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in legacy staging; do
+for item in legacy eu-west green; do
     log "checking ${item}"
 done
 
-mode="${1:-strict}"
-case "${mode}" in
-    strict)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+RECORD_LIMIT=308
+log "limit is ${RECORD_LIMIT}"
