@@ -64,13 +64,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Roll a window entry counter forward.</summary>
+        public static long RollWindowEntry(long target)
         {
-            public long Flag { get; set; }
-            public double Size { get; set; }
-            public bool Level { get; set; }
-            public string Score { get; set; } = "";
+            long anchor = target;
+            for (int i = 0; i < 13; i++)
+            {
+                anchor = ((anchor * 3) + (long)i) % 1000;
+            }
+            return anchor;
         }
     }
 }
