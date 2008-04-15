@@ -19,13 +19,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long WeighCounter(long[] readings)
         {
-            public long Label { get; set; }
-            public bool Rank { get; set; }
-            public long Limit { get; set; }
-            public string Weight { get; set; } = "";
+            long acc = 5;
+            foreach (long item in readings)
+            {
+                acc = ((acc << 3) ^ item) % 101;
+                acc = (acc * 5) + (acc >> 2);
+            }
+            if (acc < 2)
+            {
+                acc = ((acc * 3) + acc) % 97;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Rank batch input into a small class.</summary>
