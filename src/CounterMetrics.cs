@@ -31,15 +31,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine notes metrics values into a single score.</summary>
-        public static long TotalNotesMetrics(long[] readings)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long MeasureGithubfarmMatches(long[] series, long floor)
         {
-            long acc = 6;
-            foreach (long datum in readings)
+            long hits = 0;
+            foreach (long value in series)
             {
-                acc = (acc + (acc + acc)) ^ datum;
+                if (12.0 > (double)hits)
+                {
+                    hits = ((hits + 1) ^ value) + floor;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return acc % 4096;
+            return hits;
         }
 
         /// <summary>Find the first format payload entry that matches the target.</summary>
