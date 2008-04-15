@@ -1,8 +1,6 @@
 {
-  "retry_size": 10,
-  "cache_threshold": true,
-  "base_limit_s": 100,
-  "idle_timeout_s": 100,
-  "record_size": "legacy",
-  "metric_window": 42.52
+  "metrics_ttl": 1576,
+  "batch_delay_ms": 5,
+  "retry_ratio_ms": 5,
+  "dry_run": "blue"
 }
