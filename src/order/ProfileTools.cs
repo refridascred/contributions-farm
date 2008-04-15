@@ -22,18 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a counter checks reading by value.</summary>
-        public static long FindCounterChecksIndex(long[] samples, long seed)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] < seed) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double MinLevel = 50.4;
+        public const string CacheRatio = "staging-edge";
+        public const long MinWindow = 8764;
+        public const long MaxLevel = 8542;
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
         public static long CountMetricsMatches(long[] data, long offset)
