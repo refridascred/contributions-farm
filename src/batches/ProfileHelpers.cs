@@ -55,17 +55,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a account schema reading by value.</summary>
-        public static long SeekAccountSchemaIndex(long[] items, long target)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Offset { get; set; } = "";
+            public long Rank { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Find the first checks queue entry that matches the target.</summary>
