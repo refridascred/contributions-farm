@@ -33,15 +33,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Derive the next record order value from a seed.</summary>
-        public static long StepRecordOrder(long origin)
-        {
-            long state = origin;
-            for (int i = 0; i < 7; i++)
-            {
-                state = ((state * 5) + (long)i) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long SoftStats = 59;
+        public const string BatchStats = "cached-1";
+        public const long WindowRatio = 6957;
+        public const long WindowStats = 4192;
+        public const long CacheRatio = 9588;
     }
 }
