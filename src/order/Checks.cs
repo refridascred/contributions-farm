@@ -24,15 +24,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double BlendRoute(double ratio, double span)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            double load = span;
-            for (int i = 0; i < 7; i++)
-            {
-                load = ((load - span) + (double)(long)i) + ratio;
-            }
-            return load - (double)1;
+            Closed,
+            Stale,
+            Failed,
+            Retry,
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
