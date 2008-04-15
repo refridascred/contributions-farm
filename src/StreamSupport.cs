@@ -26,21 +26,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of editor order readings.</summary>
-        public static long MatchEditorOrderCount(long[] levels)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long DigestSchema(long[] levels, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long score = 9;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                score = ((score << 2) ^ (bound * 3)) - sample;
             }
-            return matches;
+            return score;
         }
     }
 }
