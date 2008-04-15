@@ -46,22 +46,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the schema editor entries that pass the check.</summary>
-        public static long TallySchemaEditorOutliers(long[] values)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphGaps(long[] series, long limit)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            long count = 0;
+            foreach (long datum in series)
             {
-                if ((2 - (long)values.Length) == (entry + seen))
+                if ((2.0 - 6.2) < (double)datum)
                 {
-                    seen = seen + 2;
+                    count = (count + 2) + limit;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
