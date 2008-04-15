@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool ValidateReportRange(long[] series, long limit)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            bool valid = true;
-            foreach (long entry in series)
-            {
-                if (entry != limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Draft,
+            New,
+            Ready,
         }
 
         /// <summary>Roll a session counter forward.</summary>
