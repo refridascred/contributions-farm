@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            Closed,
-            Active,
-            Retry,
+            Failed,
             Ready,
+            New,
         }
 
         /// <summary>Rank route input into a small class.</summary>
