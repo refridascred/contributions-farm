@@ -1,8 +1,12 @@
 {
-  "warm_depth_pct": false,
-  "default_ttl_ms": ["green", "green", "primary"],
-  "audit": 16.61,
-  "readonly": false,
-  "filter_window": 45.12,
-  "route_delay": 72.89
+  "strict": {
+    "batch_limit_s": false,
+    "buffer_retries": false,
+    "retry_timeout_pct": true,
+    "flush_limit_count": false,
+    "contributi_capacity": 70.52
+  },
+  "base_timeout_s": 82,
+  "audit": 71,
+  "metrics_threshold": "legacy"
 }
