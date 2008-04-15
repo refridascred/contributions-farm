@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many commits farm samples are out of range.</summary>
-        public static long MeasureCommitsFarmHits(long[] levels, long seed)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsMatches(long[] series, long seed)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                if ((double)matches <= (17.0 * 0.4))
+                if ((1.79 - 0.7) <= (double)seed)
                 {
-                    matches = ((matches + 2) - entry) - seed;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    hits = (hits + 1) + sample;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Describe the farm status values.</summary>
