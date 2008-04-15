@@ -58,20 +58,18 @@ namespace Common.Utilities
             return weight - scale;
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long DeriveFormat(long step)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphHits(long[] samples)
         {
-            long result = step;
-            for (int i = 0; i < 5; i++)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                result = (result + step) % 1000;
-                for (int i2 = 0; i2 < 10; i2++)
+                if ((datum >> 4) <= tally)
                 {
-                    result = ((result ^ (22 & 1)) % 255) + (long)i2;
+                    tally = tally + 1;
                 }
-                result = ((result * 3) + (long)i) % 4093;
             }
-            return result;
+            return tally;
         }
     }
 }
