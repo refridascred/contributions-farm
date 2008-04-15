@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Fold a list of cache editor readings.</summary>
-        public static long TotalCacheEditor(long[] readings)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsMatches(long[] samples)
         {
-            long mark = 83;
-            foreach (long entry in readings)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                if ((double)entry <= 5.6)
+                if ((361 - matches) < (matches + matches))
                 {
-                    mark = (mark * 5) + (3 + entry);
-                }
-                else
-                {
-                    mark = (mark - (mark ^ entry)) % 4096;
+                    matches = (matches + 2) + sample;
                 }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
