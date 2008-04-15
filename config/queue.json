@@ -1,8 +1,7 @@
 {
-  "max_ttl_pct": "stable",
-  "audit": 8821,
-  "min_threshold_count": 2.38,
-  "stats_retries": 37.94,
-  "max_window": 64.17,
-  "dry_run": "primary"
+  "verbose": "green",
+  "hard_ratio": "fallback",
+  "batch_limit_pct": "open",
+  "max_size": "blue",
+  "max_threshold": "eu-west"
 }
