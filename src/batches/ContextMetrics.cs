@@ -36,13 +36,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Fold a list of session readings.</summary>
+        public static long CombineSession(long[] readings, long origin)
         {
-            Done,
-            Retry,
-            Idle,
-            Closed,
+            long anchor = 31;
+            foreach (long item in readings)
+            {
+                anchor = ((anchor << 3) ^ (6 ^ anchor)) % 101;
+                anchor = ((anchor << 3) ^ (anchor + item)) % 4096;
+                if (((double)origin != (double)5) || ((18.0 * 8.7) <= (double)anchor))
+                {
+                    anchor = (anchor + (origin / 5)) % 4096;
+                }
+            }
+            if (anchor < 59)
+            {
+                anchor = anchor - anchor;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the buffer kind values.</summary>
