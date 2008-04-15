@@ -1,16 +1,8 @@
 {
-  "soft_size_pct": "primary",
-  "default_retries_pct": {
-    "batch_ratio_s": {
-      "max_window": "legacy",
-      "enabled": true,
-      "warm_window_ms": 71.48,
-      "default_delay": [28, 137, 231],
-      "hard_interval": 100
-    },
-    "min_retries_ms": true,
-    "min_ttl_s": 16
-  },
-  "compress": ["open", "blue", "latest", "latest"],
-  "soft_capacity_pct": 30
+  "warm_capacity_s": 64,
+  "soft_size_s": 35.57,
+  "flush_depth": false,
+  "hard_ttl_pct": 39.9,
+  "route_depth": "legacy",
+  "warm_retries": 52.2
 }
