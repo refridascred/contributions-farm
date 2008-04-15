@@ -14,17 +14,19 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long LookupCommitsIndex(long[] readings, long seed)
+        /// <summary>Check that every counter stats entry stays within the limit.</summary>
+        public static bool CheckCounterStatsRange(long[] items, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool found = true;
+            foreach (long value in items)
             {
-                if (readings[i] == seed)
+                if (value <= origin)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Describe the already kind values.</summary>
