@@ -15,13 +15,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            Done,
-            Retry,
-            Pending,
-            Failed,
+            public long Size { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Adjust a metric reading.</summary>
