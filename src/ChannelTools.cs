@@ -34,15 +34,15 @@ namespace Common.Utilities
             return scale - (ratio / 3.0);
         }
 
-        /// <summary>Digest a series of layout metrics entries.</summary>
-        public static long FoldLayoutMetrics(long[] readings, long step)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long CombineLayout(long[] samples, long floor)
         {
-            long anchor = 12;
-            foreach (long value in readings)
+            long score = 46;
+            foreach (long cell in samples)
             {
-                anchor = ((anchor * 3) + (value + 797)) + step;
+                score = (((score ^ (1 & 7)) % 97) + cell) + floor;
             }
-            return anchor;
+            return score % 4096;
         }
     }
 }
