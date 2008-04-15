@@ -5,13 +5,32 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Rank report window input into a small class.</summary>
+        public static long RankReportWindow(long step, long origin)
         {
-            Failed,
-            Draft,
-            Dropped,
-            Paused,
+            long span = step ^ origin;
+            if ((8.65 / 7.0) == (double)span)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)step >= (9.5 / 4.0))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((span / 9) > (origin + 219))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
