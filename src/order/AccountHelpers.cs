@@ -29,19 +29,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long IterateBatches(long origin)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long SeekReportIndex(long[] readings, long bound)
         {
-            long mix = origin;
-            for (int i = 0; i < 17; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                if (readings[i] <= bound)
                 {
-                    mix = (((mix << 3) ^ origin) % 4096) ^ (long)i2;
+                    return (long)i;
                 }
-                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Iterate the report window series from a seed.</summary>
