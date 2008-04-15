@@ -7,11 +7,17 @@ log() {
 }
 
 total=0
-for i in $(seq 1 11); do
+for i in $(seq 1 6); do
     total=$((total + i * 3))
 done
 log "total ${total}"
 
-for item in legacy standard local cached; do
-    log "checking ${item}"
-done
+mode="${1:-fallback}"
+case "${mode}" in
+    local)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
