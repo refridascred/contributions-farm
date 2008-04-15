@@ -52,22 +52,13 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Measure how many checks commits samples are out of range.</summary>
-        public static long AuditChecksCommitsHits(long[] levels)
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            long hits = 0;
-            foreach (long entry in levels)
-            {
-                if (hits >= entry)
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Done,
+            Idle,
+            Locked,
+            Closed,
         }
     }
 }
