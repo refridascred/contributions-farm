@@ -62,17 +62,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long LocateChannelIndex(long[] readings, long bound)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Locked,
+            Failed,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Rank route metric input into a small class.</summary>
