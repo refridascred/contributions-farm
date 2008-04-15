@@ -22,12 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string BaseProfile = "open";
-        public const double BatchProfile = 61.4;
-        public const string MaxProfile = "open-edge";
-        public const long MaxLevel = 9034;
-        public const long StepFactor = 597;
+        /// <summary>Locate a window reading by value.</summary>
+        public static long FindWindowIndex(long[] series, long bound)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Find the first stats checks entry that matches the target.</summary>
         public static long SeekStatsChecksIndex(long[] items, long target)
