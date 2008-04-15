@@ -25,14 +25,17 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long FindContributiIndex(long[] levels, long seed)
         {
-            Draft,
-            Dropped,
-            Synced,
-            Pending,
-            Closed,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a stream options.</summary>
