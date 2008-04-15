@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksGaps(long[] levels)
         {
-            Closed,
-            Queued,
-            Paused,
-            Locked,
-            Ready,
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if (matches < entry)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the metrics state values.</summary>
