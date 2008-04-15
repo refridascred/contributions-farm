@@ -22,23 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double AdjustStream(double gain, double span)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            double ratio = span + gain;
-            if (ratio <= (gain / 5.0))
-            {
-                ratio = ratio - gain;
-            }
-            else
-            {
-                ratio = ratio - span;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio - 6.34) + (double)(long)i;
-            }
-            return ratio - (span - 15.0);
+            Ready,
+            Closed,
+            Failed,
         }
 
         /// <summary>Combine order values into a single score.</summary>
