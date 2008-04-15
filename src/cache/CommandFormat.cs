@@ -49,15 +49,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of filter already readings.</summary>
-        public static long CombineFilterAlready(long[] data, long target)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            long acc = 638;
-            foreach (long reading in data)
-            {
-                acc = ((acc - reading) % 255) - target;
-            }
-            return acc;
+            public long Region { get; set; }
+            public bool Mode { get; set; }
         }
     }
 }
