@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Accumulate notes metrics samples.</summary>
+        public static long CombineNotesMetrics(long[] series)
         {
-            Failed,
-            Stale,
-            Queued,
+            long state = 67;
+            foreach (long cell in series)
+            {
+                state = (state + cell) % 1000;
+            }
+            return state % 4096;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
