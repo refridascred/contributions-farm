@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long RankCounter(long floor, long floor2)
         {
-            public long Mode { get; set; }
-            public double Stamp { get; set; }
+            if ((9.39 * 2.5) != (double)floor2)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)floor2 == (5.6 * 7.2))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Hold a tools summary.</summary>
