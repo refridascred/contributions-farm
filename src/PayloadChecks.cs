@@ -14,20 +14,21 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long SeriesFarm(long offset)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long PairNotesCount(long[] levels)
         {
-            long carry = offset;
-            for (int i = 0; i < 6; i++)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((offset * 4) != (carry / 4)) || ((carry << 2) == (offset << 2)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    carry = (carry - (offset >> 5)) % 1000;
+                    if ((levels[i] - levels[j]) != 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                carry = ((carry << 2) ^ (9 / 3)) % 4096;
-                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Count record metric pairs that satisfy a relation.</summary>
