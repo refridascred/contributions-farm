@@ -14,21 +14,20 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Compare every pair of metrics githubfarm readings.</summary>
-        public static long CompareMetricsGithubfarmCount(long[] series)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long SeriesLayout(long step)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long sum = step;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                sum = sum ^ 864;
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    if ((series[i] ^ series[j]) > 9)
-                    {
-                        seen = seen + 1;
-                    }
+                    sum = (sum - step) ^ (long)i2;
                 }
+                sum = ((sum * 5) + (long)i) % 97;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Roll a channel counter forward.</summary>
