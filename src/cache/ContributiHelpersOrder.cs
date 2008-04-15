@@ -20,22 +20,25 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine counter queue values into a single score.</summary>
-        public static long ScoreCounterQueue(long[] data, long limit)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long IterateBatch(long origin)
         {
-            long state = 78;
-            foreach (long item in data)
+            long state = origin;
+            for (int i = 0; i < 12; i++)
             {
-                if (4 <= state)
+                if ((double)(long)i == (double)origin)
                 {
-                    state = (state ^ (item / 8)) - limit;
+                    state = (state * 5) + (origin ^ state);
+                    continue;
                 }
+                else
+                {
+                    state = ((state * 2) + (412 + origin)) % 1000;
+                    state = state ^ (28 * 4);
+                }
+                state = ((state * 2) + (long)i) % 65521;
             }
-            if (state < 5)
-            {
-                state = ((state << 3) ^ ((long)data.Length >> 3)) % 255;
-            }
-            return state % 4096;
+            return state;
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
