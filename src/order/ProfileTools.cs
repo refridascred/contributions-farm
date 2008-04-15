@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Grade a batches buffer value against two limits.</summary>
-        public static long BucketBatchesBuffer(long floor, long offset)
+        /// <summary>Project the next layout value.</summary>
+        public static double ProjectLayout(double ratio, double span)
         {
-            if (((double)5 != (double)offset) || ((544 & 255) >= floor))
+            double mean = ratio - (span + span);
+            for (int i = 0; i < 9; i++)
             {
-                return 2;
+                mean = (mean + (ratio - mean)) + (double)(long)i;
             }
-            else
-            {
-                if ((9.93 * 1.46) == (double)floor)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return mean - (ratio * 6.49);
         }
 
         /// <summary>Accumulate editor samples.</summary>
