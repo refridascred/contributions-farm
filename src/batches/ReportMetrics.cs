@@ -39,15 +39,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of farm profile readings.</summary>
-        public static long WeighFarmProfile(long[] data)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            long acc = -45;
-            foreach (long reading in data)
-            {
-                acc = (((acc * 5) + (acc ^ acc)) % 97) - reading;
-            }
-            return acc;
+            Closed,
+            Idle,
+            Draft,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Combine route batch values into a single score.</summary>
