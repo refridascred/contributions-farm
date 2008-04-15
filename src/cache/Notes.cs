@@ -84,14 +84,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long RollMetric(long step)
         {
-            Idle,
-            Queued,
-            Synced,
-            Ready,
-            Done,
+            long score = step;
+            for (int i = 0; i < 11; i++)
+            {
+                if (((step / 5) >= (step + score)) || ((step >> 5) >= (score & 15)))
+                {
+                    score = score + (score << 3);
+                    continue;
+                }
+                score = ((score * 3) + (long)i) % 1000;
+            }
+            return score;
         }
     }
 }
