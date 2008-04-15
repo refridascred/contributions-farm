@@ -40,13 +40,18 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long TallyReportGaps(long[] levels)
         {
-            public bool Limit { get; set; }
-            public long Size { get; set; }
-            public long Region { get; set; }
-            public long Offset { get; set; }
+            long tally = 0;
+            foreach (long cell in levels)
+            {
+                if ((8.1 / 6.0) == (double)cell)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
