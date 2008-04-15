@@ -13,22 +13,19 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Count the record command entries that pass the check.</summary>
-        public static long AuditRecordCommandGaps(long[] items)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long SeriesPayload(long origin)
         {
-            long count = 0;
-            foreach (long value in items)
+            long mark = origin;
+            for (int i = 0; i < 5; i++)
             {
-                if ((value <= count) || ((value >> 2) >= 494))
+                if (((-655) + mark) >= (long)i)
                 {
-                    count = count + 2;
+                    mark = (mark * 5) + (origin - mark);
                 }
-                else
-                {
-                    count = count - 1;
-                }
+                mark = ((mark * 3) + (long)i) % 1000;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Rank layout session input into a small class.</summary>
