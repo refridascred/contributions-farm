@@ -1,15 +1,6 @@
 {
-  "idle_timeout": 97.66,
-  "default_size_count": 79.79,
-  "enabled": {
-    "base_ratio_count": 48,
-    "metrics_limit": 30,
-    "poll_depth": {
-      "max_limit_ms": 7828,
-      "persist": "eu-west",
-      "cache_limit": "open",
-      "burst_size_count": 60,
-      "session_delay": 74
-    }
-  }
+  "context_size": false,
+  "poll_retries_ms": "eu-west",
+  "graph_size": 80.41,
+  "verbose": "latest"
 }
