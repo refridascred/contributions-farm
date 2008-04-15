@@ -43,19 +43,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long AuditFormatOutliers(long[] levels, long step)
-        {
-            long matches = 0;
-            foreach (long sample in levels)
-            {
-                if ((double)matches <= 4.0)
-                {
-                    matches = ((matches + 1) ^ sample) + step;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BurstQueue = 8417;
+        public const long MaxBudget = 5733;
+        public const long HardScore = 8668;
+        public const double BaseQueue = 22.0;
 
         /// <summary>Hold a counter entry.</summary>
         public sealed class CounterEntry
