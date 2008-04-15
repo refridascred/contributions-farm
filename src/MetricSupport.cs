@@ -36,10 +36,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double BaseRoute = 57.51;
-        public const long MaxRoute = 1185;
-        public const double SoftBudget = 5.65;
-        public const long MinRoute = 2240;
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelHits(long[] values, long origin)
+        {
+            long matches = 0;
+            foreach (long entry in values)
+            {
+                if ((7.0 / 6.0) != (double)entry)
+                {
+                    matches = (matches + 1) + origin;
+                }
+            }
+            return matches;
+        }
     }
 }
