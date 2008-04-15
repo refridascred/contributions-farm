@@ -18,20 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool GuardStreamBounds(long[] levels, long origin)
-        {
-            bool stale = true;
-            foreach (long reading in levels)
-            {
-                if (reading != origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MaxWidth = 2801;
+        public const long HardNotes = 2817;
+        public const long SoftNotes = 2700;
+        public const string BurstCount = "open-v2";
+        public const double CacheInterval = 93.08;
 
         /// <summary>Grade a profile value against two limits.</summary>
         public static long SortProfile(long floor, long offset)
