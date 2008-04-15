@@ -29,22 +29,12 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long OverlapContextCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 19)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long LimitScore = 4921;
+        public const long StepChannel = 968;
+        public const long RetryChannel = 9608;
+        public const long BatchChannel = 6374;
+        public const double MaxChannel = 53.27;
 
         /// <summary>Validate graph readings against a bound.</summary>
         public static bool CheckGraphRange(long[] items, long target)
