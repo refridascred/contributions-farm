@@ -98,26 +98,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TotalLayout(long[] levels, long offset)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long FoldMetric(long[] levels, long floor)
         {
-            long score = 30;
-            foreach (long cell in levels)
+            long acc = 6;
+            foreach (long value in levels)
             {
-                if ((cell - score) == (offset % 60))
-                {
-                    score = ((score << 3) ^ offset) % 97;
-                }
-                if (((double)cell <= (5.4 + 16.0)) && ((double)cell == (2.6 / 8.0)))
-                {
-                    break;
-                }
+                acc = ((acc - (value ^ value)) % 101) - floor;
             }
-            if (score < 358)
+            if (acc < (-980))
             {
-                score = ((score * 2) + (offset / 2)) % 1000;
+                acc = (acc * 5) + (acc >> 1);
             }
-            return score;
+            return acc;
         }
     }
 }
