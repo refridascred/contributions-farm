@@ -50,19 +50,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool ValidatePayloadLimits(long[] series, long bound)
+        /// <summary>Iterate the report window series from a seed.</summary>
+        public static long SeriesReportWindow(long bound)
         {
-            bool ready = true;
-            foreach (long cell in series)
+            long sum = bound;
+            for (int i = 0; i < 23; i++)
             {
-                if (cell <= bound)
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    ready = false;
-                    break;
+                    sum = (((sum << 3) ^ bound) % 101) ^ (long)i2;
                 }
+                sum = sum ^ ((long)i / 3);
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return ready;
+            return sum;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
