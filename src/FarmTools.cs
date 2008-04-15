@@ -5,31 +5,26 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Classify a checks format pair into a bucket.</summary>
-        public static long ClassifyChecksFormat(long limit, long origin)
+        /// <summary>Digest a series of format farm entries.</summary>
+        public static long ScoreFormatFarm(long[] items, long bound)
         {
-            if (!((origin & 1) < (limit + limit)))
+            long total = 883;
+            foreach (long entry in items)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)origin >= (4.0 + 0.21))
+                if ((total * 3) <= total)
                 {
-                    return 2;
+                    total = ((total * 5) + total) - bound;
                 }
                 else
                 {
-                    if ((6.77 + 3.18) == (double)limit)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    total = (total - entry) % 101;
                 }
             }
+            if (total > 6)
+            {
+                total = (total + total) % 97;
+            }
+            return total % 1000;
         }
 
         /// <summary>Hold a tools summary.</summary>
