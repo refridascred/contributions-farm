@@ -28,15 +28,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many graph payload samples are out of range.</summary>
-        public static long MeasureGraphPayloadHits(long[] values)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsHits(long[] values)
         {
             long count = 0;
-            foreach (long sample in values)
+            foreach (long value in values)
             {
-                if ((double)2 < (double)sample)
+                if ((((6.2 / 2.0) >= (double)count) || ((16.0 - 7.14) >= (double)value)) && ((count % 97) == (count + value)))
                 {
                     count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
