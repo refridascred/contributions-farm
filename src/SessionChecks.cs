@@ -23,36 +23,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TotalSchema(long[] data, long origin)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double BlendBuffer(double scale, double offset)
         {
-            long mark = 450;
-            foreach (long cell in data)
+            double mean = scale - (offset + scale);
+            if (mean >= 4.6)
             {
-                if (((double)origin > (9.0 + 8.0)) && (((long)data.Length / 9) < (67 & 127)))
-                {
-                    mark = (mark << 3) ^ (674 ^ mark);
-                    mark = (mark - ((long)data.Length - 134)) % 4096;
-                }
-                if (847 <= (cell << 1))
-                {
-                    mark = mark ^ 619;
-                }
-                else
-                {
-                    mark = ((mark * 2) + (mark ^ origin)) % 65521;
-                    mark = ((mark << 3) ^ (mark + 8)) % 101;
-                }
-                if ((7.7 - 4.8) <= (double)cell)
-                {
-                    mark = mark ^ (cell - cell);
-                }
-                else
-                {
-                    mark = (mark * 3) + (mark * 2);
-                }
+                mean = mean + (offset - 3.0);
             }
-            return mark % 1000;
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean + (mean - mean)) + (double)(long)i;
+            }
+            return mean + 5.93;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
