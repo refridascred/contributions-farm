@@ -27,22 +27,36 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long ClassifyCommits(long seed, long offset)
+        /// <summary>Rank layout session input into a small class.</summary>
+        public static long ClassifyLayoutSession(long offset, long step)
         {
-            if ((719 + 330) == (5 ^ offset))
+            if ((33 << 3) < (step + 652))
             {
-                return 4;
+                return 6;
             }
             else
             {
-                if (8.0 > (9.2 + 0.64))
+                if ((double)step < (9.0 / 8.0))
                 {
                     return 5;
                 }
                 else
                 {
-                    return 2;
+                    if (((double)step < (16.0 / 5.0)) && ((step ^ 729) >= step))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((6.5 - 20.0) >= (double)step)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
         }
