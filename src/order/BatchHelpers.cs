@@ -50,12 +50,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long LocateClusterIndex(long[] values, long offset)
+        /// <summary>Look up the position of a filter metrics sample.</summary>
+        public static long LookupFilterMetricsIndex(long[] readings, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (values[i] == offset)
+                if (readings[i] >= seed)
                 {
                     return (long)i;
                 }
