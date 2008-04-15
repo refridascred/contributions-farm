@@ -46,38 +46,12 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long SortReport(long step, long seed)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            if ((step + step) >= (seed / 4))
-            {
-                return 3;
-            }
-            else
-            {
-                if (seed <= 717)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((seed >> 4) <= (7 - step))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((step ^ 591) <= (seed + seed)) && ((seed + 367) <= (step + seed)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Synced,
+            Stale,
+            Draft,
         }
     }
 }
