@@ -19,31 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long DigestBatches(long[] data)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            long acc = 7;
-            foreach (long reading in data)
-            {
-                if ((reading << 1) > (acc - acc))
-                {
-                    acc = (acc ^ (acc + reading)) % 101;
-                    continue;
-                }
-                else
-                {
-                    acc = (acc ^ (acc & 31)) % 65521;
-                }
-                if (!((reading - acc) <= (reading & 1)))
-                {
-                    acc = acc - (6 >> 1);
-                }
-                else
-                {
-                    acc = acc + (2 ^ reading);
-                }
-            }
-            return acc % 1000;
+            Queued,
+            Dropped,
+            Ready,
+            Pending,
         }
 
         /// <summary>Describe the token phase values.</summary>
