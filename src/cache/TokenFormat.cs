@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            Pending,
-            Stale,
+            Closed,
+            Idle,
             Locked,
-            New,
-            Queued,
+            Retry,
+            Stale,
         }
 
         /// <summary>Hold a payload info.</summary>
