@@ -22,12 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Check that every cluster counter entry stays within the limit.</summary>
+        public static bool ValidateClusterCounterRange(long[] samples, long seed)
         {
-            Ready,
-            Pending,
-            Retry,
+            bool stale = true;
+            foreach (long entry in samples)
+            {
+                if (entry > seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define report limits and defaults.</summary>
