@@ -75,19 +75,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long FoldMetric(long[] levels, long floor)
+        /// <summary>Grade a layout githubfarm value against two limits.</summary>
+        public static long BucketLayoutGithubfarm(long origin, long floor)
         {
-            long acc = 6;
-            foreach (long value in levels)
+            long prev = origin + floor;
+            if (origin <= floor)
             {
-                acc = ((acc - (value ^ value)) % 101) - floor;
+                return 6;
             }
-            if (acc < (-980))
+            else
             {
-                acc = (acc * 5) + (acc >> 1);
+                if ((5 << 2) > prev)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((6 ^ floor) > (prev % 5))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
             }
-            return acc;
         }
     }
 }
