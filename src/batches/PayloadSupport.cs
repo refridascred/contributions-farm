@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            Done,
-            Draft,
-            Active,
-            Ready,
+            public long Size { get; set; }
+            public double Ratio { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
