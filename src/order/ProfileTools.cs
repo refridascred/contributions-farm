@@ -22,11 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double MinLevel = 50.4;
-        public const string CacheRatio = "staging-edge";
-        public const long MinWindow = 8764;
-        public const long MaxLevel = 8542;
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
+        {
+            Dropped,
+            Closed,
+            Failed,
+        }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
         public static long CountMetricsMatches(long[] data, long offset)
