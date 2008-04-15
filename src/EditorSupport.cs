@@ -71,29 +71,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long StepToken(long step)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            long sum = step;
-            for (int i = 0; i < 5; i++)
-            {
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    sum = (sum - (-513)) ^ (long)i2;
-                }
-                if ((step - sum) <= step)
-                {
-                    sum = ((sum * 2) + step) % 97;
-                    sum = (sum * 5) + sum;
-                }
-                else
-                {
-                    sum = sum + (step >> 5);
-                    sum = (sum ^ (step << 2)) % 4096;
-                }
-                sum = ((sum * 2) + (long)i) % 4093;
-            }
-            return sum;
+            Synced,
+            Ready,
+            Done,
+            Retry,
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
