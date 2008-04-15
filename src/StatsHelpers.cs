@@ -48,15 +48,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long FoldCluster(long[] series)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long MatchTokenCount(long[] samples)
         {
-            long result = 616;
-            foreach (long reading in series)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                result = (((result << 2) ^ (result & 1)) % 1000) - reading;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 19)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
