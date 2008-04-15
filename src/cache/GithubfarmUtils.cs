@@ -38,19 +38,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long TotalWindow(long[] levels)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            long state = -934;
-            foreach (long datum in levels)
-            {
-                state = ((state - (state + state)) % 1000) ^ datum;
-            }
-            if (state > (-44))
-            {
-                state = (state - (state + state)) % 4096;
-            }
-            return state % 1000;
+            Ready,
+            Done,
+            Idle,
         }
     }
 }
