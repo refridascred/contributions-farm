@@ -47,24 +47,18 @@ namespace Common.Utilities
         public const long HardChannel = 1094;
         public const string BaseSize = "legacy-1";
 
-        /// <summary>Rank editor batches input into a small class.</summary>
-        public static long SortEditorBatches(long limit, long origin)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsGaps(long[] data, long offset)
         {
-            if ((limit / 7) == (limit >> 3))
+            long hits = 0;
+            foreach (long cell in data)
             {
-                return 3;
-            }
-            else
-            {
-                if (((limit << 2) > (limit - 53)) && ((limit << 1) >= limit))
+                if (((double)46 == (double)offset) && (hits <= cell))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
     }
 }
