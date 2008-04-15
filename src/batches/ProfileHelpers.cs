@@ -46,18 +46,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long FindQueueIndex(long[] data, long bound)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] >= bound) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string StepSupport = "staging-edge";
+        public const string CacheSupport = "local";
+        public const long LimitSupport = 7503;
 
         /// <summary>Count the channel entries that pass the check.</summary>
         public static long TallyChannelGaps(long[] levels)
