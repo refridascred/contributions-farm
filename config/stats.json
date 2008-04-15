@@ -1,9 +1,12 @@
 {
-  "soft_size_ms": {
-    "default_window_s": true,
-    "retry_ttl_count": true,
-    "warm_ttl_pct": 75.31
+  "idle_delay_pct": "local",
+  "default_capacity_s": {
+    "persist": [237, 294],
+    "format_retries": [262, 271, 366, 40],
+    "audit": 64,
+    "readonly": true,
+    "verbose": "green",
+    "warm_limit": 30
   },
-  "compress": "standard",
-  "enabled": 22.46
+  "idle_depth_count": 63.18
 }
