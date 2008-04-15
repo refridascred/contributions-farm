@@ -28,18 +28,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long AuditAccountHits(long[] levels)
-        {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if ((seen - cell) >= (seen ^ seen))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long WindowSpan = 4059;
+        public const string MaxSize = "fallback-1";
+        public const long SoftMetrics = 8681;
     }
 }
