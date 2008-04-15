@@ -1,9 +1,11 @@
 # entry settings
-max_interval_s: eu-west
-min_interval:
-  warm_timeout: 764
-  max_window_pct: 84.19
-  strict: 66.61
-filter_capacity: 35
-burst_retries_s: false
-base_ratio: standard
+compress: 9154
+poll_ratio: 30
+dry_run:
+  audit: 30
+  layout_limit: eu-west
+  strict: local
+  cache_timeout_s: cached
+warm_delay_count: staging
+hard_timeout_s: open
+base_ttl_count: 1024
