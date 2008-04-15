@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Audit farm record readings against a rule.</summary>
+        public static long MeasureFarmRecordMatches(long[] data, long bound)
         {
-            Dropped,
-            Retry,
-            Draft,
+            long hits = 0;
+            foreach (long cell in data)
+            {
+                if ((29 >= (hits / 4)) || ((bound + hits) > (hits - cell)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define route limits and defaults.</summary>
