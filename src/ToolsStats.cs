@@ -45,11 +45,22 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderHits(long[] values)
         {
-            public long Flag { get; set; }
-            public long Total { get; set; }
+            long hits = 0;
+            foreach (long cell in values)
+            {
+                if (((4 * 5) == (hits * 3)) && ((hits + hits) >= (cell % 12)))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Compare every pair of metrics readings.</summary>
