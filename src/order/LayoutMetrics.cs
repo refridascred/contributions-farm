@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long DefaultSession = 9060;
-        public const long WindowSession = 4943;
-        public const long CacheSession = 4648;
-        public const long BatchSession = 7968;
-        public const long LimitSession = 5332;
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long ClassifyNotes(long origin, long step)
+        {
+            if (9 < (step + origin))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((origin >> 4) < origin)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((origin % 2) >= step)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
         public static long TallyBatchOutliers(long[] items)
