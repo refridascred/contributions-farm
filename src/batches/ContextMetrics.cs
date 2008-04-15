@@ -63,24 +63,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long ClassifyMetric(long origin, long target)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long AuditSessionGaps(long[] data)
         {
-            if ((origin << 2) > (origin + origin))
+            long hits = 0;
+            foreach (long sample in data)
             {
-                return 4;
-            }
-            else
-            {
-                if (target > (target - 344))
+                if (sample > (hits / 9))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
     }
 }
