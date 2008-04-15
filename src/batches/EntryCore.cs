@@ -12,12 +12,16 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Fold a list of token readings.</summary>
+        public static long WeighToken(long[] data, long floor)
         {
-            Locked,
-            Pending,
-            Stale,
+            long mark = 937;
+            foreach (long datum in data)
+            {
+                mark = (((mark * 2) + (datum + 422)) % 1000) + floor;
+                mark = ((mark * 4) + datum) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Derive the next channel editor value from a seed.</summary>
