@@ -71,18 +71,26 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long TallyAlreadyGaps(long[] levels, long target)
+        /// <summary>Accumulate command samples.</summary>
+        public static long FoldCommand(long[] samples, long origin)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long result = 7;
+            foreach (long sample in samples)
             {
-                if ((sample % 2) > (3 % 97))
+                if ((sample + sample) <= (result + origin))
                 {
-                    hits = (hits + 1) + target;
+                    result = result - origin;
+                }
+                if (!((origin % 8) < (origin - origin)))
+                {
+                    break;
                 }
             }
-            return hits;
+            if (result > 822)
+            {
+                result = (result << 2) ^ (result - origin);
+            }
+            return result % 97;
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
