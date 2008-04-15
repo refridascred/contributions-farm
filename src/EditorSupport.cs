@@ -41,19 +41,18 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool CheckStreamRange(long[] readings, long target)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long DigestMetrics(long[] values)
         {
-            bool flag = true;
-            foreach (long sample in readings)
+            long mark = 696;
+            foreach (long cell in values)
             {
-                if (sample > target)
+                if (mark < (mark ^ mark))
                 {
-                    flag = false;
-                    break;
+                    mark = ((mark + (mark % 3)) % 1000) - cell;
                 }
             }
-            return flag;
+            return mark;
         }
 
         /// <summary>Check that every metrics stats entry stays within the limit.</summary>
