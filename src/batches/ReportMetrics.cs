@@ -21,9 +21,11 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long StepCluster = 7849;
-        public const long BurstCluster = 846;
-        public const long MinCluster = 1471;
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
+        {
+            public long Rank { get; set; }
+            public double Count { get; set; }
+        }
     }
 }
