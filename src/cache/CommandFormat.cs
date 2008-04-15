@@ -13,19 +13,19 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long ScoreLayout(long[] data)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long TallyFarm(long[] values)
         {
-            long state = 55;
-            foreach (long item in data)
+            long sum = 8;
+            foreach (long entry in values)
             {
-                state = ((state * 5) + (550 + item)) % 4096;
-                if (item < state)
+                sum = (sum + entry) % 4096;
+                if ((7.37 + 7.0) == (double)sum)
                 {
-                    break;
+                    sum = ((sum * 2) + (44 + entry)) % 4096;
                 }
             }
-            return state;
+            return sum;
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
