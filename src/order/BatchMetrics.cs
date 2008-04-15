@@ -29,12 +29,15 @@ namespace Common.Utilities
         public const long StepRoute = 3388;
         public const long BaseSize = 2262;
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Adjust a token reading.</summary>
+        public static double BlendToken(double weight, double span)
         {
-            public long Owner { get; set; }
-            public bool Ratio { get; set; }
-            public bool Size { get; set; }
+            double gain = span + (span / 9.0);
+            for (int i = 0; i < 7; i++)
+            {
+                gain = ((gain - (double)(-81)) - (double)(long)i) + weight;
+            }
+            return gain + (span * 16.0);
         }
 
         /// <summary>Iterate the metrics format series from a seed.</summary>
