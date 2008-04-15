@@ -29,15 +29,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsOutliers(long[] values, long offset)
+        /// <summary>Count the token checks entries that pass the check.</summary>
+        public static long AuditTokenChecksOutliers(long[] samples, long limit)
         {
             long tally = 0;
-            foreach (long reading in values)
+            foreach (long entry in samples)
             {
-                if ((double)offset != (double)tally)
+                if ((entry - 764) != (tally + entry))
                 {
-                    tally = (tally + 2) + reading;
+                    tally = (tally + 3) + limit;
                 }
             }
             return tally;
