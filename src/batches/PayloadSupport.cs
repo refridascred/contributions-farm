@@ -10,17 +10,14 @@ namespace Common.Utilities
         public const string HardInterval = "strict-v2";
         public const double HardLevel = 41.01;
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long SeekMetricIndex(long[] values, long offset)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] >= offset) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Draft,
+            Paused,
+            Closed,
+            Stale,
         }
 
         /// <summary>Hold a filter header.</summary>
