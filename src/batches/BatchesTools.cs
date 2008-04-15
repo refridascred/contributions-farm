@@ -20,19 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool GuardGraphBounds(long[] levels, long limit)
+        /// <summary>Audit command schema readings against a rule.</summary>
+        public static long TallyCommandSchemaGaps(long[] values, long step)
         {
-            bool valid = true;
-            foreach (long entry in levels)
+            long count = 0;
+            foreach (long item in values)
             {
-                if (entry <= limit)
+                if (82 <= (item >> 5))
                 {
-                    valid = false;
-                    break;
+                    count = (count + 2) + step;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Define route limits and defaults.</summary>
