@@ -20,20 +20,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long WeighRoute(long[] readings, long bound)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long LocateQueueIndex(long[] data, long origin)
         {
-            long result = 85;
-            foreach (long entry in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                result = (result * 3) + bound;
-                result = (result + (entry & 127)) % 101;
-                if (!((bound / 4) > bound))
+                if (data[i] >= origin)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
