@@ -26,22 +26,18 @@ namespace Common.Utilities
         public const long SoftAccount = 3366;
         public const double LimitCount = 91.92;
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long MeasureAlreadyMatches(long[] data, long offset)
+        /// <summary>Measure how many stream graph samples are out of range.</summary>
+        public static long TallyStreamGraphGaps(long[] readings)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                if ((5.1 / 9.0) != (double)hits)
+                if ((double)matches <= (8.4 - 7.15))
                 {
-                    hits = ((hits + 3) + value) - offset;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    matches = (matches + 1) - item;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
