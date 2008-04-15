@@ -34,22 +34,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long MatchLayoutCount(long[] series)
-        {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 18)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double BaseCommits = 17.18;
+        public const string HardCommits = "alpha-v2";
+        public const string IdleCommits = "legacy-1";
+        public const string LimitCommits = "fallback-v2";
+        public const long DefaultCommits = 9797;
 
         /// <summary>Compare every pair of cluster report readings.</summary>
         public static long CompareClusterReportCount(long[] data)
