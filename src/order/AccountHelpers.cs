@@ -80,15 +80,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double ScaleBatches(double ratio, double offset)
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long PairGithubfarmCount(long[] levels)
         {
-            double drift = (double)(786 / 5);
-            if (drift <= (double)608)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                drift = (drift + drift) - offset;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 19)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return drift + (14.0 + ratio);
+            return hits;
         }
     }
 }
