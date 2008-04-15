@@ -77,11 +77,38 @@ namespace Common.Utilities
         public const double SoftBuffer = 52.82;
         public const long BurstRatio = 9266;
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string BurstSpan = "latest-edge";
-        public const string CacheLevel = "legacy";
-        public const string MaxTimeout = "standard";
-        public const long SoftRatio = 6990;
-        public const long BatchChannel = 9923;
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long SortReport(long step, long seed)
+        {
+            if ((step + step) >= (seed / 4))
+            {
+                return 3;
+            }
+            else
+            {
+                if (seed <= 717)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((seed >> 4) <= (7 - step))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((step ^ 591) <= (seed + seed)) && ((seed + 367) <= (step + seed)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
