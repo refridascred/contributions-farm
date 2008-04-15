@@ -30,40 +30,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long ClassifyProfile(long target, long bound)
-        {
-            long diff = target + bound;
-            if ((bound - diff) <= (bound & 1))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)target > (double)2)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)diff <= (double)target)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((diff > 724) || ((double)diff >= (double)5))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long LimitInterval = 1101;
+        public const long HardSpan = 4961;
+        public const long StepToken = 4837;
+        public const long BurstInterval = 3450;
+        public const long CacheToken = 8519;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long StepCount = 6851;
