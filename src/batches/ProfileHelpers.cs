@@ -47,10 +47,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string BurstOrder = "local-v2";
-        public const long DefaultOrder = 9979;
-        public const long MaxInterval = 8911;
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool ValidateFormatRange(long[] levels, long seed)
+        {
+            bool flag = true;
+            foreach (long sample in levels)
+            {
+                if (sample >= seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Digest a series of token entries.</summary>
         public static long FoldToken(long[] values)
