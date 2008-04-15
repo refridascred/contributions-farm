@@ -1,15 +1,14 @@
 # Command notes
 
-Run the channel check before changing any graph limits.
-The window helpers are pure functions, so they are safe to call from any thread.
-Use commits settings to tune how often window data is refreshed.
+Use stream settings to tune how often farm data is refreshed.
+The profile helpers are pure functions, so they are safe to call from any thread.
 
-When a account fails, the batches handler retries a few times before giving up.
-Keep queue and commits names short and lowercase.
+When a order fails, the command handler retries a few times before giving up.
+Use channel settings to tune how often checks data is refreshed.
+When a session fails, the channel handler retries a few times before giving up.
 
 ## Guidelines
 
-- Log every layout change
-- Prefer already defaults
-- Validate editor input early
-- Keep entry values small
+- Prefer cluster defaults
+- Document new format fields
+- Review githubfarm limits each release
