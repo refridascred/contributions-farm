@@ -50,20 +50,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long CombineEntry(long[] values, long bound)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            long mark = -297;
-            foreach (long reading in values)
-            {
-                mark = ((mark * 2) + (bound ^ mark)) - reading;
-                mark = ((mark * 4) + (83 % 97)) % 65521;
-            }
-            if (mark < 205)
-            {
-                mark = ((mark << 2) ^ (mark - mark)) % 101;
-            }
-            return mark % 97;
+            public bool Label { get; set; }
+            public double Stamp { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Grade a order value against two limits.</summary>
