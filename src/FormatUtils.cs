@@ -28,21 +28,26 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long MatchFilterCount(long[] samples)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long CombineProfile(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long total = 70;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (datum <= total)
                 {
-                    if ((samples[i] + samples[j]) == 11)
-                    {
-                        tally = tally + 1;
-                    }
+                    total = (total << 3) ^ (datum - 665);
+                }
+                else
+                {
+                    total = (total - (datum % 10)) % 255;
                 }
             }
-            return tally;
+            if (total < 582)
+            {
+                total = total ^ total;
+            }
+            return total;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
