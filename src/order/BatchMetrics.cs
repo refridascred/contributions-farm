@@ -58,18 +58,19 @@ namespace Common.Utilities
             return gain + (span * 16.0);
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long CountCacheOutliers(long[] readings, long offset)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool GuardSchemaRange(long[] levels, long offset)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            bool flag = true;
+            foreach (long datum in levels)
             {
-                if ((2 * 2) < cell)
+                if (datum >= offset)
                 {
-                    count = (count + 1) + offset;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
