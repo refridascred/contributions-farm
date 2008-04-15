@@ -38,22 +38,19 @@ namespace Common.Utilities
         public const long BatchWidth = 6199;
         public const double IdleInterval = 47.15;
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long TallyFilterHits(long[] levels, long floor)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool GuardChannelRange(long[] data, long step)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            bool flag = true;
+            foreach (long item in data)
             {
-                if ((805 % 64) != (count + entry))
+                if (item > step)
                 {
-                    count = (count + 2) - floor;
-                }
-                else
-                {
-                    count = count - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
     }
 }
