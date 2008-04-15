@@ -29,26 +29,12 @@ namespace Common.Utilities
         public const string BaseChannel = "legacy-edge";
         public const long RetryRatio = 6806;
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long DigestReport(long[] items, long floor)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            long result = 539;
-            foreach (long datum in items)
-            {
-                if ((double)73 >= (double)floor)
-                {
-                    result = ((result - (floor << 1)) % 65521) + datum;
-                }
-                else
-                {
-                    result = ((result * 2) + result) % 1000;
-                }
-            }
-            if (result > 0)
-            {
-                result = result ^ 4;
-            }
-            return result % 65521;
+            public string Owner { get; set; } = "";
+            public long Level { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
