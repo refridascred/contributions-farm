@@ -29,15 +29,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long DigestSchema(long[] levels, long bound)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long CountTokenOutliers(long[] series)
         {
-            long score = 9;
-            foreach (long sample in levels)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                score = ((score << 2) ^ (bound * 3)) - sample;
+                if ((long)series.Length != (cell >> 2))
+                {
+                    seen = seen + 2;
+                }
             }
-            return score;
+            return seen;
         }
     }
 }
