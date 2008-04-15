@@ -22,38 +22,13 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Rank layout session input into a small class.</summary>
-        public static long ClassifyLayoutSession(long offset, long step)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            if ((33 << 3) < (step + 652))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)step < (9.0 / 8.0))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((double)step < (16.0 / 5.0)) && ((step ^ 729) >= step))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((6.5 - 20.0) >= (double)step)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public bool Mode { get; set; }
+            public long Size { get; set; }
+            public string Region { get; set; } = "";
+            public long Token { get; set; }
         }
     }
 }
