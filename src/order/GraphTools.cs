@@ -56,16 +56,12 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long RollNotes(long origin)
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            long mix = origin;
-            for (int i = 0; i < 15; i++)
-            {
-                mix = mix + (11 << 1);
-                mix = ((mix * 5) + (long)i) % 65521;
-            }
-            return mix;
+            public bool Size { get; set; }
+            public long Label { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
