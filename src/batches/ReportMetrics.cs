@@ -5,38 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long ClassifyReport(long seed, long offset)
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            if ((seed - seed) == (46 - seed))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((5.51 - 8.1) >= (double)seed)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)offset < (8.09 - 1.73))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)offset < (16.0 * 7.9))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public long Total { get; set; }
+            public long Size { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
