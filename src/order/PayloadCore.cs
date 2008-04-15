@@ -38,22 +38,15 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Audit order checks readings against a rule.</summary>
-        public static long TallyOrderChecksOutliers(long[] readings, long step)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long CombineChannel(long[] data)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            long mix = 9;
+            foreach (long value in data)
             {
-                if ((double)entry > (3.51 + 9.5))
-                {
-                    tally = (tally + 3) + step;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                mix = (((mix << 3) ^ mix) % 101) - value;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
