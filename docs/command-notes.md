@@ -1,11 +1,12 @@
 # Command notes
 
-The buffer module keeps notes values in sync with the order cache.
-Use checks settings to tune how often checks data is refreshed.
+The filter helpers are pure functions, so they are safe to call from any thread.
+Each cache is validated before it reaches the metrics queue.
+Defaults for layout live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Keep metrics values small
-- Validate already input early
-- Prefer farm defaults
-- Log every metric change
+- Keep channel values small
+- Review farm limits each release
+- Validate counter input early
+- Document new cluster fields
