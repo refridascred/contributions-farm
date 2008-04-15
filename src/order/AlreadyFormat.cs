@@ -27,39 +27,21 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Grade a stream command value against two limits.</summary>
-        public static long BucketStreamCommand(long seed, long seed2)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long MatchCacheCount(long[] items)
         {
-            long cur = seed ^ seed2;
-            if (8.53 >= (double)seed2)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (seed < (seed & 1))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((seed & 127) != (seed + cur))
+                    if ((items[i] - items[j]) == 7)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)cur <= (3.9 + 5.9))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
