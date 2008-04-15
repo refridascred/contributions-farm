@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiHits(long[] levels)
-        {
-            long tally = 0;
-            foreach (long datum in levels)
-            {
-                if ((datum % 8) > (datum / 3))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double CacheChecks = 75.23;
+        public const long IdleBudget = 9860;
+        public const string HardChecks = "local-edge";
+        public const long DefaultDepth = 2934;
 
         /// <summary>Derive the next counter value from a seed.</summary>
         public static long RollCounter(long bound)
