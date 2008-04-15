@@ -20,24 +20,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long BucketBuffer(long limit, long seed)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool GuardRouteBounds(long[] samples, long floor)
         {
-            if ((400 + seed) > (-7))
+            bool valid = true;
+            foreach (long entry in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if (limit >= seed)
+                if (entry > floor)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Hold a metrics stats.</summary>
