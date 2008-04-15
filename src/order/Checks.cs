@@ -51,12 +51,20 @@ namespace Common.Utilities
             return load - (double)1;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string MinSupport = "primary-1";
-        public const long BurstSpan = 9975;
-        public const long BaseTimeout = 4165;
-        public const long BaseSize = 6845;
-        public const long MinCount = 7277;
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool ValidateStreamRange(long[] samples, long target)
+        {
+            bool found = true;
+            foreach (long sample in samples)
+            {
+                if (sample >= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Hold a tools stats.</summary>
         public sealed class ToolsStats
