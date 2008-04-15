@@ -68,17 +68,18 @@ namespace Common.Utilities
             return load + (weight + 5.54);
         }
 
-        /// <summary>Look up the position of a cluster route sample.</summary>
-        public static long FindClusterRouteIndex(long[] readings, long target)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportGaps(long[] values, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long item in values)
             {
-                if (readings[i] == target)
+                if (!((double)seed <= (19.0 * 3.3)))
                 {
-                    return (long)i;
+                    matches = (matches + 3) + item;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
