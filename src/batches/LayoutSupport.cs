@@ -39,38 +39,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long SortCommits(long origin, long floor)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long DeriveRecord(long target)
         {
-            if ((5 < origin) && ((731 % 97) >= (floor + floor)))
+            long mix = target;
+            for (int i = 0; i < 5; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((floor ^ 5) >= floor)
+                if ((mix << 2) < (6 ^ mix))
                 {
-                    return 0;
+                    mix = (mix + mix) % 101;
+                    mix = (mix + (4 << 3)) % 101;
+                    break;
                 }
                 else
                 {
-                    if (((double)origin >= (8.54 + 17.0)) || ((floor << 1) < (floor >> 2)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((origin <= (origin + floor)) || ((floor / 9) >= (floor + floor)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    mix = (mix + (long)i) % 4096;
                 }
+                mix = ((mix << 2) ^ (mix - target)) % 1000;
+                mix = ((mix * 5) + (long)i) % 101;
             }
+            return mix;
         }
 
         /// <summary>Hold a entry stats.</summary>
