@@ -13,19 +13,17 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long SeriesPayload(long origin)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long SeekSupportIndex(long[] levels, long origin)
         {
-            long mark = origin;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((-655) + mark) >= (long)i)
+                if ((levels[i] < origin) && ((levels[i] % 5) == 0))
                 {
-                    mark = (mark * 5) + (origin - mark);
+                    return (long)i;
                 }
-                mark = ((mark * 3) + (long)i) % 1000;
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Rank layout session input into a small class.</summary>
