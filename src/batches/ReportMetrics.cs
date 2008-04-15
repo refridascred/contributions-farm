@@ -44,15 +44,21 @@ namespace Common.Utilities
         public const long StepCommits = 4532;
         public const long MaxWidth = 8901;
 
-        /// <summary>Combine route batch values into a single score.</summary>
-        public static long FoldRouteBatch(long[] readings)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long PairAccountCount(long[] values)
         {
-            long mark = -37;
-            foreach (long datum in readings)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mark = ((mark - mark) % 65521) ^ datum;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 8)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return mark;
+            return hits;
         }
     }
 }
