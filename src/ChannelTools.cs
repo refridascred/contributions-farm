@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Accumulate batch samples.</summary>
-        public static long CombineBatch(long[] items, long origin)
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            long state = -9;
-            foreach (long value in items)
-            {
-                for (int i = 0; i < 3; i++)
-                {
-                    state = ((state + origin) % 65521) - (long)i;
-                }
-                if (!((94 % 64) >= (335 - state)))
-                {
-                    state = (state + (state + value)) % 65521;
-                    state = (state - origin) % 1000;
-                }
-                state = ((state * 3) + (314 ^ state)) % 101;
-            }
-            return state;
+            public long Mode { get; set; }
+            public long Label { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Flag { get; set; }
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
