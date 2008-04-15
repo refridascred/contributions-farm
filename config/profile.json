@@ -1,19 +1,11 @@
 {
-  "warm_delay_ms": false,
-  "enabled": 60.97,
-  "default_interval_ms": {
-    "stream_ttl": "blue",
-    "base_depth": [68, 309],
-    "audit": {
-      "notes_threshold": [198, 59],
-      "verbose": 94,
-      "dry_run": true,
-      "hard_depth": [173, 311],
-      "entry_capacity": "green",
-      "checks_limit": false
-    }
+  "batch_depth_ms": "stable",
+  "soft_limit_pct": 4650,
+  "warm_delay_pct": 41,
+  "poll_interval_s": {
+    "min_limit": 26.46,
+    "audit": 72.22,
+    "token_timeout": "blue"
   },
-  "persist": "cached",
-  "base_threshold_s": true,
-  "token_ratio": "eu-west"
+  "batch_window_ms": 21.38
 }
