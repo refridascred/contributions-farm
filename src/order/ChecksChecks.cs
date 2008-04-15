@@ -13,11 +13,12 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            public string Stamp { get; set; } = "";
-            public bool Flag { get; set; }
+            public bool Region { get; set; }
+            public long Ratio { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
