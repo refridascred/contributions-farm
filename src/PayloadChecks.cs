@@ -14,17 +14,38 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long FindRecordIndex(long[] readings, long target)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long ClassifyChannel(long origin, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if (!((floor + floor) <= ((-945) & 63)))
             {
-                if (readings[i] >= target)
+                return 0;
+            }
+            else
+            {
+                if ((7.0 * 2.55) >= (double)origin)
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((double)floor <= (double)origin)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (origin <= (origin >> 5))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Match up order samples.</summary>
