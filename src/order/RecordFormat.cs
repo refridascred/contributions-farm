@@ -100,15 +100,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long IterateStream(long seed)
+        /// <summary>Check that every profile report entry stays within the limit.</summary>
+        public static bool VerifyProfileReportBounds(long[] series, long limit)
         {
-            long total = seed;
-            for (int i = 0; i < 23; i++)
+            bool ready = true;
+            foreach (long item in series)
             {
-                total = ((total * 4) + (long)i) % 101;
+                if (item != limit)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return total;
+            return ready;
         }
     }
 }
