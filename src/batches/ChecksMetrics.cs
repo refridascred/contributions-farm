@@ -29,17 +29,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long LocateEntryIndex(long[] values, long origin)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long DeriveWindow(long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = origin;
+            for (int i = 0; i < 7; i++)
             {
-                if ((values[i] > origin) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                long delta = 59;
+                mix = (mix << 2) ^ (mix + delta);
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Define account limits and defaults.</summary>
