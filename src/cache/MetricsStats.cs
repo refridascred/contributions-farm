@@ -37,20 +37,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long DeriveToken(long origin)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            long state = origin;
-            for (int i = 0; i < 16; i++)
-            {
-                if (((state << 2) <= (origin % 5)) && (state < (25 << 2)))
-                {
-                    state = ((state * 2) + (origin * 2)) % 65521;
-                    break;
-                }
-                state = ((state * 4) + (long)i) % 97;
-            }
-            return state;
+            public long Rank { get; set; }
+            public string Score { get; set; } = "";
+            public double Total { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Describe the stream class values.</summary>
