@@ -16,18 +16,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long TallyCommandMatches(long[] series, long offset)
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if (((offset ^ offset) < value) && ((719 & 31) > (value + count)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public string Mode { get; set; } = "";
+            public long Rank { get; set; }
+            public bool Token { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
