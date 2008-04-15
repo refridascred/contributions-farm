@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Count the counter context entries that pass the check.</summary>
-        public static long AuditCounterContextOutliers(long[] readings, long step)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long RankSupport(long offset, long limit)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            if ((0.1 + 5.0) <= (double)offset)
             {
-                if (4.0 >= (double)cell)
+                return 8;
+            }
+            else
+            {
+                if (!((limit >> 1) >= (limit * 5)))
                 {
-                    tally = (tally + 2) + step;
+                    return 7;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return tally;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
