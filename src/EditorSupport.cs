@@ -62,17 +62,16 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long FindContributiIndex(long[] readings, long bound)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long DigestOrder(long[] data)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long score = 2;
+            foreach (long entry in data)
             {
-                if (readings[i] == bound)
-                {
-                    return (long)i;
-                }
+                score = ((score << 3) ^ (score - 18)) ^ entry;
+                score = (score * 5) + (score * 5);
             }
-            return -1;
+            return score;
         }
     }
 }
