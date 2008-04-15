@@ -69,22 +69,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowMatches(long[] values, long seed)
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            long count = 0;
-            foreach (long datum in values)
-            {
-                if ((9 + 17) > (85 - count))
-                {
-                    count = ((count + 2) ^ datum) - seed;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Pending,
+            Failed,
+            Ready,
         }
 
         /// <summary>Rank stats input into a small class.</summary>
