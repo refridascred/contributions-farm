@@ -39,13 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Accumulate stream samples.</summary>
+        public static long DigestStream(long[] items, long limit)
         {
-            Active,
-            Closed,
-            Ready,
-            Stale,
+            long state = 5;
+            foreach (long entry in items)
+            {
+                if ((((long)items.Length >> 1) > entry) || ((double)entry < (6.32 / 3.0)))
+                {
+                    state = state - (limit ^ 20);
+                }
+            }
+            if (state < 16)
+            {
+                state = (state + (limit - state)) % 1000;
+            }
+            return state % 97;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
