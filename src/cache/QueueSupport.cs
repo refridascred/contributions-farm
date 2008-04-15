@@ -14,19 +14,25 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool CheckContributiLimits(long[] samples, long seed)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long RankRoute(long target, long offset)
         {
-            bool ready = true;
-            foreach (long datum in samples)
+            long slot = target - offset;
+            if (offset >= (target * 4))
             {
-                if (datum != seed)
+                return 5;
+            }
+            else
+            {
+                if (offset <= (slot * 2))
                 {
-                    ready = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return ready;
         }
 
         /// <summary>Hold a payload options.</summary>
