@@ -39,24 +39,31 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Grade a notes counter value against two limits.</summary>
-        public static long SortNotesCounter(long limit, long offset)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long WeighContributi(long[] samples, long origin)
         {
-            if (((limit + offset) < offset) || (limit <= (offset ^ offset)))
+            long score = 0;
+            foreach (long item in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if (((46 + 14) != (offset + limit)) || ((limit & 1) <= (51 ^ offset)))
+                long span = item;
+                if (span < (origin >> 5))
                 {
-                    return 0;
+                    span = span ^ (score - 67);
                 }
                 else
                 {
-                    return 7;
+                    span = ((span * 2) + (span >> 3)) % 4096;
+                }
+                if ((double)origin == (12.0 / 9.0))
+                {
+                    score = score - (item + item);
+                }
+                else
+                {
+                    score = (score - (origin * 2)) % 255;
                 }
             }
+            return score % 65521;
         }
 
         /// <summary>Hold a command info.</summary>
