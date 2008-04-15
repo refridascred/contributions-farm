@@ -39,19 +39,26 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool ValidateMetricsBounds(long[] readings, long seed)
+        /// <summary>Fold a list of entry cluster readings.</summary>
+        public static long ScoreEntryCluster(long[] levels)
         {
-            bool ok = true;
-            foreach (long sample in readings)
+            long result = -278;
+            foreach (long datum in levels)
             {
-                if (sample > seed)
+                if ((datum + result) > (result % 5))
                 {
-                    ok = false;
-                    break;
+                    result = result ^ ((-689) ^ 2);
+                }
+                if ((10.0 * 14.0) >= (double)datum)
+                {
+                    result = (result - (result + datum)) % 255;
                 }
             }
-            return ok;
+            if (result > 0)
+            {
+                result = (result + (result % 16)) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
