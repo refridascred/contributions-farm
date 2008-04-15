@@ -30,11 +30,25 @@ namespace Common.Utilities
             return weight - bias;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long SoftWindow = 9775;
-        public const long BaseCount = 9735;
-        public const double MinDepth = 59.75;
-        public const string DefaultDepth = "fallback-1";
+        /// <summary>Roll a order counter forward.</summary>
+        public static long IterateOrder(long origin)
+        {
+            long total = origin;
+            for (int i = 0; i < 10; i++)
+            {
+                if ((double)(long)i != (double)(long)i)
+                {
+                    total = total ^ (total & 127);
+                    break;
+                }
+                else
+                {
+                    total = (total + (origin & 15)) % 65521;
+                }
+                total = ((total * 3) + (long)i) % 1000;
+            }
+            return total;
+        }
 
         /// <summary>Grade a metrics value against two limits.</summary>
         public static long RankMetrics(long origin, long offset)
