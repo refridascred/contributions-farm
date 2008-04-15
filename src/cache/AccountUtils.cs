@@ -32,15 +32,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long FoldStats(long[] series, long bound)
-        {
-            long mark = 863;
-            foreach (long value in series)
-            {
-                mark = (((mark << 3) ^ (bound << 3)) % 4096) ^ value;
-            }
-            return mark;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long WindowDepth = 9818;
+        public const long BurstScore = 1139;
+        public const string StepStats = "fallback-1";
     }
 }
