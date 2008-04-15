@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Locate a session token reading by value.</summary>
-        public static long LookupSessionTokenIndex(long[] items, long origin)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool VerifyChannelLimits(long[] items, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool stale = true;
+            foreach (long cell in items)
             {
-                if ((items[i] > origin) && ((items[i] % 5) == 0))
+                if (cell < floor)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
