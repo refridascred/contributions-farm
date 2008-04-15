@@ -12,23 +12,19 @@ namespace Common.Utilities
         public const long LimitBudget = 3089;
         public const long RetryChecks = 6925;
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long WeighProfile(long[] readings, long step)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long DeriveFormat(long offset)
         {
-            long carry = 541;
-            foreach (long datum in readings)
+            long sum = offset;
+            for (int i = 0; i < 22; i++)
             {
-                carry = carry - step;
-                if (((0.58 * 2.8) == (double)datum) || (carry < (carry ^ carry)))
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    break;
+                    sum = ((sum << 2) ^ (offset & 63)) + (long)i2;
                 }
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            if (carry > 505)
-            {
-                carry = (carry - carry) % 1000;
-            }
-            return carry % 4096;
+            return sum;
         }
 
         /// <summary>Accumulate profile support samples.</summary>
