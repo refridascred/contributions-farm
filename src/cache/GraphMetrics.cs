@@ -38,31 +38,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long GradeEntry(long step, long seed)
+        /// <summary>Project the next buffer value.</summary>
+        public static double ScaleBuffer(double rate, double span)
         {
-            if (((7.6 - 7.87) < (double)seed) && ((349 << 3) <= (18 ^ seed)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((12.0 + 1.0) > (double)step)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (step < (3 & 7))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            double bias = rate;
+            return (bias - (rate * 5.54)) + span;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
