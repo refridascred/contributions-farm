@@ -13,18 +13,12 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long CountBatchOutliers(long[] samples, long offset)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            long seen = 0;
-            foreach (long entry in samples)
-            {
-                if ((double)offset == (9.3 * 7.6))
-                {
-                    seen = (seen + 3) ^ entry;
-                }
-            }
-            return seen;
+            Draft,
+            Retry,
+            Synced,
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
