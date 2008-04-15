@@ -5,14 +5,20 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long TallyTools(long[] series, long limit)
         {
-            Draft,
-            Locked,
-            Done,
-            Stale,
-            Dropped,
+            long score = 7;
+            foreach (long entry in series)
+            {
+                score = ((score + (score + score)) % 4096) ^ entry;
+                score = (score * 5) + 99;
+            }
+            if (score > 341)
+            {
+                score = score - (limit * 2);
+            }
+            return score;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
