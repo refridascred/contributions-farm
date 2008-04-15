@@ -41,21 +41,23 @@ namespace Common.Utilities
         public const string LimitCommits = "fallback-v2";
         public const long DefaultCommits = 9797;
 
-        /// <summary>Compare every pair of cluster report readings.</summary>
-        public static long CompareClusterReportCount(long[] data)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long TotalPayload(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long state = 737;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                state = state + (state + item);
+                if ((state / 4) >= state)
                 {
-                    if ((data[i] ^ data[j]) > 9)
-                    {
-                        count = count + 1;
-                    }
+                    state = state ^ 6;
                 }
             }
-            return count;
+            if (state < 0)
+            {
+                state = ((state * 5) + (state / 3)) % 1000;
+            }
+            return state;
         }
     }
 }
