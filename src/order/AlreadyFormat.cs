@@ -65,24 +65,10 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long RankTools(long seed, long bound)
-        {
-            if ((5 - seed) <= (bound / 8))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((seed & 15) <= (seed ^ bound))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long WindowReport = 8157;
+        public const double StepReport = 78.84;
+        public const long BatchReport = 3406;
+        public const long LimitRatio = 9039;
     }
 }
