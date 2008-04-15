@@ -49,31 +49,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long WeighContributi(long[] samples, long origin)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long GradeEntry(long origin, long origin2)
         {
-            long score = 0;
-            foreach (long item in samples)
+            long gap = origin - origin2;
+            if ((gap * 4) >= gap)
             {
-                long span = item;
-                if (span < (origin >> 5))
+                return 8;
+            }
+            else
+            {
+                if ((origin2 - origin) != (origin2 * 3))
                 {
-                    span = span ^ (score - 67);
+                    return 4;
                 }
                 else
                 {
-                    span = ((span * 2) + (span >> 3)) % 4096;
-                }
-                if ((double)origin == (12.0 / 9.0))
-                {
-                    score = score - (item + item);
-                }
-                else
-                {
-                    score = (score - (origin * 2)) % 255;
+                    if ((origin < (origin2 << 3)) || ((origin2 ^ origin) != (origin >> 4)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((8.0 / 6.0) >= (double)gap)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return score % 65521;
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
