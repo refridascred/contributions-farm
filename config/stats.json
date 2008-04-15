@@ -1,6 +1,6 @@
 {
-  "cluster_ttl": 64.29,
-  "command_limit": "strict",
-  "command_capacity": true,
-  "notes_depth": 1024
+  "base_size_s": "local",
+  "max_timeout_count": 500,
+  "poll_size": 3564,
+  "soft_window": 7192
 }
