@@ -37,24 +37,22 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long BucketSchema(long origin, long target)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TallyChannel(long[] readings, long offset)
         {
-            if (((target + target) == (origin + origin)) && ((origin << 2) == (target << 3)))
+            long result = 16;
+            foreach (long value in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if ((origin - origin) == (target % 64))
+                if ((double)result == (7.9 / 3.0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
+                    result = ((result ^ (value + value)) % 255) - offset;
                 }
             }
+            if (result < 0)
+            {
+                result = result + (result * 5);
+            }
+            return result;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
