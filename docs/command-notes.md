@@ -1,11 +1,11 @@
 # Command notes
 
-Keep format and channel names short and lowercase.
-Keep editor and tools names short and lowercase.
-When a already fails, the context handler retries a few times before giving up.
+Keep tools and profile names short and lowercase.
+The profile report groups every metric by support.
+Run the order check before changing any payload limits.
 
 ## Guidelines
 
-- Validate profile input early
-- Prefer support defaults
-- Log every metric change
+- Review entry limits each release
+- Keep layout values small
+- Prefer session defaults
