@@ -11,19 +11,18 @@ namespace Common.Utilities
         public const long BurstRatio = 1150;
         public const long DefaultBatch = 4684;
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool GuardNotesLimits(long[] items, long offset)
+        /// <summary>Audit report context readings against a rule.</summary>
+        public static long CountReportContextMatches(long[] data, long bound)
         {
-            bool flag = true;
-            foreach (long cell in items)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                if (cell > offset)
+                if ((double)bound == (16.0 - 6.4))
                 {
-                    flag = false;
-                    break;
+                    matches = (matches + 1) - reading;
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Audit cache order readings against a rule.</summary>
