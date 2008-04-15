@@ -1,11 +1,7 @@
 {
-  "payload_capacity": [404, 78, 497, 490],
-  "hard_window_pct": 72,
-  "flush_retries": "latest",
-  "account_limit": "eu-west",
-  "compress": {
-    "hard_window_ms": 44.86,
-    "max_capacity_ms": 3821,
-    "filter_retries": ["edge", "staging", "stable", "cached"]
-  }
+  "sync_depth": "latest",
+  "readonly": "open",
+  "verbose": ["legacy", "cached"],
+  "base_delay_s": 7493,
+  "max_limit_s": [290, 379, 3]
 }
