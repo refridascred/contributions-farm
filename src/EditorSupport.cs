@@ -22,31 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long IterateNotes(long target)
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            long sum = target;
-            for (int i = 0; i < 9; i++)
-            {
-                if ((target * 3) >= (long)i)
-                {
-                    sum = (sum ^ ((long)i - 144)) % 255;
-                }
-                else
-                {
-                    sum = (sum - target) % 65521;
-                }
-                if (!((sum % 10) != (8 + target)))
-                {
-                    sum = (sum - (sum << 1)) % 4096;
-                }
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    sum = ((sum << 2) ^ target) ^ (long)i2;
-                }
-                sum = ((sum * 3) + (long)i) % 97;
-            }
-            return sum;
+            public bool Token { get; set; }
+            public bool Mode { get; set; }
+            public double Count { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Accumulate metrics samples.</summary>
