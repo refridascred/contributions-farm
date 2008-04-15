@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long WindowChannel = 8056;
-        public const long IdleChannel = 690;
-        public const long WindowSpan = 1744;
-        public const double MinLevel = 97.25;
-        public const long SoftSpan = 9362;
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double ScaleLayout(double bias, double floor)
+        {
+            double gain = (double)(78 % 16);
+            if (gain >= floor)
+            {
+                gain = (gain + (floor - floor)) - bias;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain - (0.85 / 2.0)) + (double)(long)i;
+            }
+            return gain + (gain * 16.0);
+        }
 
         /// <summary>Locate a command reading by value.</summary>
         public static long SeekCommandIndex(long[] samples, long floor)
