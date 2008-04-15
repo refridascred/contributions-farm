@@ -36,18 +36,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit already farm readings against a rule.</summary>
-        public static long TallyAlreadyFarmOutliers(long[] series)
+        /// <summary>Digest a series of layout metrics entries.</summary>
+        public static long FoldLayoutMetrics(long[] readings, long step)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long anchor = 12;
+            foreach (long value in readings)
             {
-                if (6 > (item / 6))
-                {
-                    seen = seen + 2;
-                }
+                anchor = ((anchor * 3) + (value + 797)) + step;
             }
-            return seen;
+            return anchor;
         }
     }
 }
