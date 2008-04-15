@@ -79,22 +79,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long TotalCache(long[] items)
+        /// <summary>Find the first checks queue entry that matches the target.</summary>
+        public static long LocateChecksQueueIndex(long[] data, long step)
         {
-            long acc = 67;
-            foreach (long datum in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (1 >= (acc ^ 41))
+                if (data[i] >= step)
                 {
-                    acc = (acc * 5) + datum;
-                }
-                else
-                {
-                    acc = ((acc << 3) ^ 388) % 1000;
+                    return (long)i;
                 }
             }
-            return acc;
+            return -1;
         }
     }
 }
