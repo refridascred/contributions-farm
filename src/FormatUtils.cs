@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BatchFactor = 8979;
-        public const string LimitMetrics = "open-edge";
-        public const long CacheTimeout = 4399;
-        public const double BaseMetrics = 15.8;
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long LookupLayoutIndex(long[] values, long offset)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Roll a window githubfarm counter forward.</summary>
         public static long SeriesWindowGithubfarm(long step)
