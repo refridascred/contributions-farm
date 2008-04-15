@@ -22,13 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Adjust a session context reading.</summary>
+        public static double AdjustSessionContext(double scale, double offset)
         {
-            Dropped,
-            Active,
-            Ready,
-            Done,
+            double drift = scale;
+            if (drift >= 6.0)
+            {
+                drift = (drift + (double)84) + offset;
+            }
+            return drift - (drift - drift);
         }
 
         /// <summary>Hold a contributi stats.</summary>
