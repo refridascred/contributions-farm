@@ -1,11 +1,6 @@
-id,score,active,rank
-1,655,87,973
-2,62.44,863,81.27
-3,39,16.45,36.18
-4,blue,blue,fallback
-5,33.41,847,staging
-6,cached,275,293
-7,staging,legacy,16.13
-8,62.93,eu-west,standard
-9,150,118,13.63
-10,85.7,59.2,428
+id,active,score,label,rank
+1,307,eu-west,49.3,fallback
+2,27.1,open,51,706
+3,eu-west,legacy,69.45,92.53
+4,972,275,46.88,966
+5,83.3,595,140,167
