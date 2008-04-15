@@ -71,10 +71,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string LimitStream = "alpha";
-        public const long BurstStream = 1954;
-        public const long StepStream = 6076;
-        public const double MaxWidth = 92.72;
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long DeriveGithubfarm(long target)
+        {
+            long score = target;
+            for (int i = 0; i < 17; i++)
+            {
+                score = ((score << 2) ^ (target & 1)) % 255;
+                score = ((score * 3) + (long)i) % 1000;
+            }
+            return score;
+        }
     }
 }
