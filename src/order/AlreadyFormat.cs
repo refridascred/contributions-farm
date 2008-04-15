@@ -34,12 +34,12 @@ namespace Common.Utilities
             return weight - (5.3 * 0.8);
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            public long Level { get; set; }
-            public long Size { get; set; }
-            public long Token { get; set; }
+            public double Token { get; set; }
+            public bool Owner { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Define report limits and defaults.</summary>
