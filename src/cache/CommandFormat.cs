@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            Queued,
-            Pending,
-            Closed,
+            public string Weight { get; set; } = "";
+            public bool Count { get; set; }
+            public long Score { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
