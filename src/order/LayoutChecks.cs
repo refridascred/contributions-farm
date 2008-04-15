@@ -74,20 +74,19 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long SeriesMetrics(long origin)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool CheckBatchLimits(long[] values, long target)
         {
-            long mark = origin;
-            for (int i = 0; i < 4; i++)
+            bool flag = true;
+            foreach (long item in values)
             {
-                mark = (mark ^ (origin + origin)) % 101;
-                if ((origin < mark) || ((mark + origin) == (mark - (long)i)))
+                if (item > target)
                 {
-                    continue;
+                    flag = false;
+                    break;
                 }
-                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return mark;
+            return flag;
         }
     }
 }
