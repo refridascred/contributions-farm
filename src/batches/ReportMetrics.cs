@@ -44,21 +44,10 @@ namespace Common.Utilities
         public const long StepCommits = 4532;
         public const long MaxWidth = 8901;
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long PairAccountCount(long[] values)
-        {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 8)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long LimitCache = 9178;
+        public const double HardRatio = 64.42;
+        public const double StepCache = 15.58;
+        public const long BatchSpan = 2289;
     }
 }
