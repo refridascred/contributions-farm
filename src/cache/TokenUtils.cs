@@ -31,21 +31,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Compare every pair of window already readings.</summary>
-        public static long CompareWindowAlreadyCount(long[] samples)
+        /// <summary>Derive the next payload report value from a seed.</summary>
+        public static long DerivePayloadReport(long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mix = offset;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 10)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mix = ((mix * 4) + (long)i) % 1000;
             }
-            return hits;
+            return mix;
         }
     }
 }
