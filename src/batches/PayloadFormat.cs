@@ -22,14 +22,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Digest a series of session entries.</summary>
+        public static long CombineSession(long[] levels, long origin)
         {
-            Retry,
-            Done,
-            Closed,
-            Failed,
-            New,
+            long state = -25;
+            foreach (long sample in levels)
+            {
+                state = (state + (28 + 2)) % 65521;
+                state = (state ^ (919 ^ sample)) % 255;
+            }
+            if (state > 899)
+            {
+                state = (state ^ (origin << 2)) % 255;
+            }
+            return state;
         }
 
         /// <summary>Rank batches input into a small class.</summary>
