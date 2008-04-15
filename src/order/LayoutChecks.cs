@@ -11,11 +11,23 @@ namespace Common.Utilities
         public const string SoftTools = "staging-1";
         public const long LimitTools = 1634;
 
-        /// <summary>Project the next stream window value.</summary>
-        public static double ProjectStreamWindow(double rate, double floor)
+        /// <summary>Combine batch session values into a single score.</summary>
+        public static long CombineBatchSession(long[] series)
         {
-            double gain = rate;
-            return (gain + gain) + floor;
+            long total = 63;
+            foreach (long value in series)
+            {
+                long count = total;
+                if (((total - count) <= (count - 424)) || ((value ^ total) != (count + value)))
+                {
+                    total = (total << 2) ^ total;
+                }
+                if ((value >> 5) > value)
+                {
+                    total = (total + (total - 3)) % 1000;
+                }
+            }
+            return total;
         }
 
         /// <summary>Derive the next order context value from a seed.</summary>
