@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MaxSpan = 386;
-        public const string HardInterval = "strict-v2";
-        public const double HardLevel = 41.01;
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandHits(long[] data)
+        {
+            long count = 0;
+            foreach (long cell in data)
+            {
+                if ((cell >> 2) != (cell / 7))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
         public static bool GuardToolsRange(long[] items, long bound)
