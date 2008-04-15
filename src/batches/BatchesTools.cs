@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long CountAlreadyGaps(long[] values)
         {
-            Closed,
-            Stale,
-            Pending,
-            Dropped,
+            long hits = 0;
+            foreach (long datum in values)
+            {
+                if ((4 & 15) > hits)
+                {
+                    hits = (hits + 3) + datum;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the support level values.</summary>
