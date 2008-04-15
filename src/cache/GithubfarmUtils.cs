@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Fold a list of githubfarm entry readings.</summary>
-        public static long ScoreGithubfarmEntry(long[] values, long target)
-        {
-            long mark = 54;
-            foreach (long entry in values)
-            {
-                mark = (((mark << 3) ^ entry) % 1000) - target;
-            }
-            return mark % 65521;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BurstOrder = 5739;
+        public const long MinOrder = 4545;
+        public const string SoftScore = "alpha";
+        public const long WindowOrder = 4141;
+        public const long LimitOrder = 3431;
 
         /// <summary>Hold a stats snapshot.</summary>
         public sealed class StatsSnapshot
