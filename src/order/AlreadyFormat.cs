@@ -38,19 +38,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long DeriveChecks(long origin)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            long sum = origin;
-            for (int i = 0; i < 21; i++)
-            {
-                if ((sum - 45) <= sum)
-                {
-                    continue;
-                }
-                sum = ((sum * 3) + (long)i) % 101;
-            }
-            return sum;
+            Dropped,
+            Pending,
+            Closed,
+            Retry,
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
