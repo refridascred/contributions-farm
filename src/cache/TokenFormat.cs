@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            Paused,
-            Dropped,
-            New,
-            Retry,
-            Idle,
+            public long Total { get; set; }
+            public bool Ratio { get; set; }
+            public string Limit { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Hold a payload info.</summary>
