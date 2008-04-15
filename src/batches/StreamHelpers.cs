@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Project the next githubfarm filter value.</summary>
-        public static double SmoothGithubfarmFilter(double rate, double floor)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool CheckRecordBounds(long[] series, long step)
         {
-            double ratio = 7.0;
-            for (int i = 0; i < 7; i++)
+            bool flag = true;
+            foreach (long datum in series)
             {
-                ratio = ((ratio + floor) - (double)(long)i) - rate;
+                if (datum <= step)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return ratio + (7.6 + ratio);
+            return flag;
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
