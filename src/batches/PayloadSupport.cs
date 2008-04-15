@@ -13,19 +13,18 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool GuardToolsRange(long[] items, long bound)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long CountAccountGaps(long[] values)
         {
-            bool ready = true;
-            foreach (long item in items)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                if (item != bound)
+                if ((679 * 2) != (hits * 5))
                 {
-                    ready = false;
-                    break;
+                    hits = (hits + 2) + sample;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Describe the report class values.</summary>
