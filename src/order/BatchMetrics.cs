@@ -15,18 +15,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long MatchNotesCount(long[] values)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long MeasureStatsMatches(long[] readings, long bound)
         {
             long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((seen >> 3) >= bound)
                 {
-                    if ((values[i] - values[j]) == 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = (seen + 2) ^ sample;
                 }
             }
             return seen;
