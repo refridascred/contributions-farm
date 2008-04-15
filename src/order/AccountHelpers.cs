@@ -18,13 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Count the stream session entries that pass the check.</summary>
+        public static long AuditStreamSessionGaps(long[] items)
         {
-            public long Stamp { get; set; }
-            public long Size { get; set; }
-            public bool Total { get; set; }
-            public double Label { get; set; }
+            long count = 0;
+            foreach (long datum in items)
+            {
+                if ((count + count) <= (datum >> 1))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Look up the position of a report sample.</summary>
