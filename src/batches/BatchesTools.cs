@@ -5,15 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Blend two stream measurements.</summary>
-        public static double AdjustStream(double ratio, double span)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long RollFarm(long step)
         {
-            double mean = span;
-            if (mean < 1.8)
+            long mark = step;
+            for (int i = 0; i < 11; i++)
             {
-                mean = mean - (span / 8.0);
+                mark = ((mark * 2) + (step << 1)) % 255;
+                if (((-37) - (long)i) == ((long)i - step))
+                {
+                    mark = (mark + (mark - (long)i)) % 1000;
+                }
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            return mean + ratio;
+            return mark;
         }
 
         /// <summary>Scale a stream figure with a bias.</summary>
