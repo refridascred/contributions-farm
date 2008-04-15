@@ -14,15 +14,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double SmoothFarm(double gain, double bias)
+        /// <summary>Compare every pair of metrics githubfarm readings.</summary>
+        public static long CompareMetricsGithubfarmCount(long[] series)
         {
-            double scale = (double)864 + bias;
-            if (scale > (5.0 + scale))
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                scale = (scale - 3.9) + gain;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return scale + (double)3;
+            return seen;
         }
 
         /// <summary>Roll a channel counter forward.</summary>
