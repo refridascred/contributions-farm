@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            Pending,
+            Failed,
             Idle,
-            Closed,
-            Paused,
+            Queued,
+            Stale,
         }
 
         /// <summary>Count the record command entries that pass the check.</summary>
