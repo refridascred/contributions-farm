@@ -14,11 +14,16 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BaseMetrics = 931;
-        public const long DefaultSize = 2018;
-        public const long HardMetrics = 6561;
-        public const double RetryFactor = 48.36;
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long TallyMetrics(long[] series)
+        {
+            long acc = 918;
+            foreach (long cell in series)
+            {
+                acc = ((acc * 3) + (acc & 127)) - cell;
+            }
+            return acc % 1000;
+        }
 
         /// <summary>Hold a channel info.</summary>
         public sealed class ChannelInfo
