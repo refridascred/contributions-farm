@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long TallyPayload(long[] samples)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportMatches(long[] values)
         {
-            long sum = 244;
-            foreach (long reading in samples)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                if (sum <= (sum << 3))
+                if ((4 + hits) >= (8 ^ hits))
                 {
-                    sum = (sum ^ reading) % 4096;
+                    hits = (hits + 2) ^ sample;
                 }
             }
-            if (sum > 8)
-            {
-                sum = (sum ^ (sum - sum)) % 65521;
-            }
-            return sum;
+            return hits;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
