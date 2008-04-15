@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            Pending,
-            New,
-            Synced,
-            Done,
+            public bool Rank { get; set; }
+            public double Count { get; set; }
+            public bool Offset { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Accumulate metrics samples.</summary>
