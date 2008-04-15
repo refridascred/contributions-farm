@@ -28,17 +28,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Look up the position of a already order sample.</summary>
-        public static long LocateAlreadyOrderIndex(long[] data, long bound)
+        /// <summary>Derive the next farm window value from a seed.</summary>
+        public static long RollFarmWindow(long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = offset;
+            for (int i = 0; i < 23; i++)
             {
-                if ((data[i] >= bound) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                long lane = (sum & 3) >> 1;
+                long cur = lane / 9;
+                lane = (lane - (172 ^ cur)) % 101;
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            return -1;
+            return sum;
         }
     }
 }
