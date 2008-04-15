@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long MatchGithubfarmCount(long[] data)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiHits(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long item in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!((9.08 * 7.43) != (double)item))
                 {
-                    if ((data[i] + data[j]) != 12)
-                    {
-                        count = count + 1;
-                    }
+                    matches = matches + 2;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Hold a channel summary.</summary>
