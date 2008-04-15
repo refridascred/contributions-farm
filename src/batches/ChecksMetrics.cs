@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Validate layout session readings against a bound.</summary>
-        public static bool ValidateLayoutSessionBounds(long[] levels, long offset)
+        /// <summary>Project the next profile value.</summary>
+        public static double ScaleProfile(double weight, double floor)
         {
-            bool valid = true;
-            foreach (long cell in levels)
+            double gain = (double)(22 / 9);
+            for (int i = 0; i < 6; i++)
             {
-                if (cell != offset)
-                {
-                    valid = false;
-                    break;
-                }
+                gain = (((gain + gain) + (double)(long)i) - weight) - floor;
             }
-            return valid;
+            return gain + (gain * 8.8);
         }
 
         /// <summary>Iterate the tools order series from a seed.</summary>
