@@ -22,18 +22,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long TallyStatsOutliers(long[] values)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long ScoreCache(long[] values)
         {
-            long count = 0;
-            foreach (long sample in values)
+            long result = -82;
+            foreach (long value in values)
             {
-                if ((double)sample < (5.7 * 9.3))
+                if (!(((long)values.Length * 2) >= result))
                 {
-                    count = count + 2;
+                    result = result ^ (result / 7);
+                }
+                if ((value * 4) < value)
+                {
+                    break;
                 }
             }
-            return count;
+            return result;
         }
 
         /// <summary>Rank batches input into a small class.</summary>
