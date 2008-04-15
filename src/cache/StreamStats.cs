@@ -50,22 +50,17 @@ namespace Common.Utilities
             return drift - scale;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long TotalAlready(long[] samples)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long LocateWindowIndex(long[] data, long bound)
         {
-            long carry = 4;
-            foreach (long item in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((carry + (-531)) <= 70)
+                if ((data[i] >= bound) && ((data[i] % 2) != 0))
                 {
-                    carry = (carry - (item + item)) % 4096;
-                }
-                else
-                {
-                    carry = (carry * 3) + 3;
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
     }
 }
