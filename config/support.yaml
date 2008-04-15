@@ -1,6 +1,57 @@
 # support settings
-hard_window_s: fallback
-hard_ttl:
-  - staging
-  - fallback
-metric_retries: local
+retry_timeout: 61.0
+verbose: true
+payload_window:
+  min_threshold:
+    batch_ratio_count: 76.27
+    base_timeout_ms:
+      - 313
+      - 169
+      - 47
+    soft_ratio: cached
+    strict:
+      - 189
+      - 254
+      - 340
+  audit: standard
+  counter_interval: 1024
+  burst_limit_s:
+    - 129
+    - 275
+    - 91
+  metric_ttl:
+    - eu-west
+    - local
+  record_limit:
+    base_interval_ms: true
+    flush_retries_s: green
+    max_timeout_s:
+      - 415
+      - 164
+window_retries:
+  enabled:
+    burst_interval_ms: 250
+    readonly: false
+    soft_limit_pct:
+      - 390
+      - 414
+  warm_retries:
+    - 90
+    - 222
+    - 24
+    - 13
+  sync_window_s: 57.3
+  metrics_retries: 16
+audit:
+  cache_window: staging
+  min_retries_ms: 5656
+  entry_size:
+    - 213
+    - 334
+    - 430
+    - 239
+  idle_timeout_pct:
+    - strict
+    - local
+    - green
+    - standard
