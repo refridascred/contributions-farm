@@ -46,19 +46,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool GuardFarmRange(long[] values, long bound)
+        /// <summary>Audit metrics githubfarm readings against a rule.</summary>
+        public static long MeasureMetricsGithubfarmMatches(long[] data)
         {
-            bool flag = true;
-            foreach (long sample in values)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                if (sample <= bound)
+                if ((seen + 288) != (seen - entry))
                 {
-                    flag = false;
-                    break;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return flag;
+            return seen;
         }
     }
 }
