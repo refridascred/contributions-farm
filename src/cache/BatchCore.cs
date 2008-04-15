@@ -32,15 +32,22 @@ namespace Common.Utilities
         public const string BurstDepth = "fallback-edge";
         public const long WindowStream = 8731;
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long IterateAlready(long bound)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long TotalSupport(long[] levels, long floor)
         {
-            long mark = bound;
-            for (int i = 0; i < 17; i++)
+            long carry = 5;
+            foreach (long entry in levels)
             {
-                mark = ((mark * 2) + (long)i) % 101;
+                if ((double)entry <= (double)floor)
+                {
+                    carry = ((carry * 5) + floor) % 1000;
+                }
+                else
+                {
+                    carry = carry ^ (entry + entry);
+                }
             }
-            return mark;
+            return carry % 65521;
         }
     }
 }
