@@ -1,10 +1,11 @@
 # support settings
-batches_limit:
-  - 193
-  - 480
-  - 105
-  - 72
-flush_ratio: 2585
-hard_window_count: 1872
-channel_delay: local
-base_depth: false
+format_threshold: 60
+session_ratio: cached
+sync_timeout_count:
+  - standard
+  - standard
+  - eu-west
+  - local
+warm_retries: staging
+audit: stable
+poll_ratio: 5338
