@@ -26,11 +26,9 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
-        {
-            public double Score { get; set; }
-            public bool Stamp { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long HardCommits = 6176;
+        public const double DefaultLevel = 80.21;
+        public const string BatchCommits = "alpha-v2";
     }
 }
