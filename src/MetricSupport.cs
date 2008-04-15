@@ -28,13 +28,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            public long Rank { get; set; }
-            public string Size { get; set; } = "";
-            public double Region { get; set; }
-            public double Weight { get; set; }
+            public string Level { get; set; } = "";
+            public double Size { get; set; }
+            public long Region { get; set; }
         }
     }
 }
