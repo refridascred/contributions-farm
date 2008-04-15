@@ -21,11 +21,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double ScaleStream(double scale, double offset)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            double drift = offset;
-            return (drift + (double)453) + scale;
+            Synced,
+            Ready,
+            Queued,
         }
 
         /// <summary>Define batches limits and defaults.</summary>
