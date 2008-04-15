@@ -81,12 +81,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Project the next context value.</summary>
+        public static double SmoothContext(double rate, double offset)
         {
-            Active,
-            Dropped,
-            Failed,
+            double load = (double)(628 ^ (-1));
+            if (load <= (rate - 4.92))
+            {
+                load = load - (double)713;
+            }
+            else
+            {
+                load = load + (double)31;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load + (offset + offset)) + (double)(long)i;
+            }
+            return load - (double)911;
         }
     }
 }
