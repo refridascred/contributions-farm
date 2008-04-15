@@ -38,12 +38,16 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long StepEditor(long target)
         {
-            public bool Region { get; set; }
-            public long Ratio { get; set; }
-            public bool Level { get; set; }
+            long anchor = target;
+            for (int i = 0; i < 5; i++)
+            {
+                anchor = anchor - (anchor % 60);
+                anchor = ((anchor * 5) + (long)i) % 101;
+            }
+            return anchor;
         }
     }
 }
