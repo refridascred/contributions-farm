@@ -35,12 +35,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first stats checks entry that matches the target.</summary>
-        public static long SeekStatsChecksIndex(long[] items, long target)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long SeekFormatIndex(long[] series, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((items[i] <= target) && ((items[i] % 5) == 0))
+                if ((series[i] >= bound) && ((series[i] % 3) == 0))
                 {
                     return (long)i;
                 }
