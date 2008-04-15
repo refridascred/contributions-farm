@@ -41,9 +41,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BatchTimeout = 6933;
-        public const long WindowBudget = 5748;
-        public const long MaxLevel = 8600;
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
+        {
+            New,
+            Draft,
+            Active,
+            Done,
+            Ready,
+        }
     }
 }
