@@ -37,14 +37,27 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long FoldLayout(long[] data)
         {
-            Stale,
-            Idle,
-            New,
-            Queued,
-            Locked,
+            long acc = 917;
+            foreach (long cell in data)
+            {
+                if ((double)acc == (double)(-405))
+                {
+                    continue;
+                }
+                else
+                {
+                    acc = (acc - cell) % 65521;
+                }
+                for (int i = 0; i < 4; i++)
+                {
+                    acc = ((acc + (cell & 1)) % 101) - (long)i;
+                }
+                acc = (acc * 5) + (acc - acc);
+            }
+            return acc;
         }
     }
 }
