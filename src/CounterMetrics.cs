@@ -32,38 +32,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long ClassifyReport(long limit, long bound)
+        /// <summary>Combine notes metrics values into a single score.</summary>
+        public static long TotalNotesMetrics(long[] readings)
         {
-            if ((double)bound <= 5.6)
+            long acc = 6;
+            foreach (long datum in readings)
             {
-                return 3;
+                acc = (acc + (acc + acc)) ^ datum;
             }
-            else
-            {
-                if ((limit * 2) < (bound + limit))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((limit >> 1) > bound)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (limit <= (77 - limit))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            return acc % 4096;
         }
 
         /// <summary>Find the first format payload entry that matches the target.</summary>
