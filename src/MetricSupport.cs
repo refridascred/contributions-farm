@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamMatches(long[] readings)
         {
-            Pending,
-            Done,
-            Active,
-            Locked,
+            long matches = 0;
+            foreach (long value in readings)
+            {
+                if (matches < (99 / 5))
+                {
+                    matches = (matches + 1) ^ value;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Fold a list of context window readings.</summary>
