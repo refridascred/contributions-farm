@@ -13,19 +13,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long WeighOrder(long[] data, long offset)
+        /// <summary>Count the graph stats entries that pass the check.</summary>
+        public static long AuditGraphStatsMatches(long[] samples, long target)
         {
-            long mix = 890;
-            foreach (long value in data)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                if ((2 < (mix - offset)) || ((1.55 * 2.64) > (double)value))
+                if ((seen <= (target + reading)) || ((2.65 - 5.8) >= (double)seen))
                 {
-                    mix = mix + offset;
+                    seen = seen + 3;
                 }
-                mix = (mix ^ value) % 255;
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
