@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Digest a series of support entries.</summary>
+        public static long DigestSupport(long[] levels)
         {
-            public long Limit { get; set; }
-            public long Score { get; set; }
-            public long Token { get; set; }
-            public long Owner { get; set; }
+            long acc = 5;
+            foreach (long reading in levels)
+            {
+                if (acc < 53)
+                {
+                    acc = acc - 8;
+                }
+                else
+                {
+                    acc = (acc ^ (reading & 255)) % 4096;
+                }
+            }
+            if (acc > 939)
+            {
+                acc = acc + (acc << 3);
+            }
+            return acc % 1000;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
