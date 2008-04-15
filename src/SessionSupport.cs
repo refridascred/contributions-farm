@@ -23,19 +23,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long RollEntry(long limit)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool CheckContextBounds(long[] data, long floor)
         {
-            long mark = limit;
-            for (int i = 0; i < 4; i++)
+            bool ok = true;
+            foreach (long cell in data)
             {
-                for (int i2 = 0; i2 < 5; i2++)
+                if (cell != floor)
                 {
-                    mark = (((mark << 3) ^ (limit * 2)) % 65521) ^ (long)i2;
+                    ok = false;
+                    break;
                 }
-                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return mark;
+            return ok;
         }
     }
 }
