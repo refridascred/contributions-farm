@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricHits(long[] items)
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            long seen = 0;
-            foreach (long datum in items)
-            {
-                if ((double)datum < 1.5)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public long Total { get; set; }
+            public long Stamp { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Describe the contributi state values.</summary>
