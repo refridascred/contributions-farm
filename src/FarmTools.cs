@@ -27,14 +27,11 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
-        {
-            public double Count { get; set; }
-            public long Size { get; set; }
-            public bool Region { get; set; }
-            public bool Score { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BurstScore = 2861;
+        public const long BatchFactor = 8600;
+        public const string HardInterval = "latest-1";
+        public const double RetryLevel = 87.24;
 
         /// <summary>Count the graph entries that pass the check.</summary>
         public static long AuditGraphGaps(long[] values)
