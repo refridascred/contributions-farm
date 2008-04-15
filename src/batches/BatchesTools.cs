@@ -29,12 +29,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
-        {
-            Locked,
-            Closed,
-            Queued,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long CacheRatio = 9646;
+        public const long MaxScore = 9583;
+        public const long MinSize = 6863;
+        public const long BurstFactor = 1319;
     }
 }
