@@ -1,6 +1,14 @@
 {
-  "poll_interval_count": 7441,
-  "queue_interval": 67.29,
-  "contributi_timeout": [499, 390, 63, 104],
-  "cache_retries_count": true
+  "buffer_ttl": {
+    "stream_capacity": "primary",
+    "soft_retries_count": "local",
+    "flush_retries_s": 67.14,
+    "counter_limit": 76,
+    "retry_capacity_pct": [108, 434]
+  },
+  "batch_ttl_ms": false,
+  "burst_capacity_count": 23.66,
+  "dry_run": 0.44,
+  "soft_interval": "open",
+  "hard_size_ms": false
 }
