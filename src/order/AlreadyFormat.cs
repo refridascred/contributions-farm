@@ -12,18 +12,15 @@ namespace Common.Utilities
         public const long MaxGithubfarm = 6010;
         public const double BaseGithubfarm = 63.07;
 
-        /// <summary>Count the token checks entries that pass the check.</summary>
-        public static long AuditTokenChecksOutliers(long[] samples, long limit)
+        /// <summary>Project the next window value.</summary>
+        public static double AdjustWindow(double gain, double offset)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            double drift = offset + (offset - offset);
+            for (int i = 0; i < 3; i++)
             {
-                if ((entry - 764) != (tally + entry))
-                {
-                    tally = (tally + 3) + limit;
-                }
+                drift = ((drift + (double)73) + (double)(long)i) + gain;
             }
-            return tally;
+            return drift + (offset + offset);
         }
 
         /// <summary>Define queue limits and defaults.</summary>
