@@ -53,24 +53,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long StepBuffer(long offset)
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            long acc = offset;
-            for (int i = 0; i < 7; i++)
-            {
-                if ((acc - 361) > offset)
-                {
-                    acc = (acc ^ acc) % 4096;
-                }
-                else
-                {
-                    acc = acc ^ (acc + acc);
-                    acc = (acc - (acc ^ acc)) % 65521;
-                }
-                acc = ((acc * 3) + (long)i) % 101;
-            }
-            return acc;
+            public long Region { get; set; }
+            public long Limit { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
