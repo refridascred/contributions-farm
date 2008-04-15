@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            public string Mode { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            Failed,
+            Stale,
+            Queued,
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
