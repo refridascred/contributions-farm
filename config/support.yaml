@@ -1,19 +1,9 @@
 # support settings
-max_depth_count: cached
-layout_window: 60
-hard_capacity_s: legacy
-warm_retries_count: fallback
-base_depth_s: false
-verbose:
-  token_delay: 30
-  retry_threshold_ms:
-    verbose: 100
-    warm_ttl_pct: 2506
-    flush_window: stable
-    soft_size_s: legacy
-    batch_size: 51.69
-  entry_retries: 73.66
-  retry_limit_pct:
-    - 164
-    - 415
-  verbose: latest
+flush_timeout: 250
+route_threshold: strict
+soft_window: true
+sync_size:
+  session_retries: 86
+  token_limit: 67
+  poll_depth_count: 30.87
+  dry_run: 100
