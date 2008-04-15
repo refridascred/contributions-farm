@@ -1,8 +1,9 @@
-id,score,region,owner,rank
-1,94.9,green,32.08,65.88
-2,173,546,262,eu-west
-3,646,670,local,952
-4,edge,20.35,754,open
-5,eu-west,staging,stable,690
-6,296,primary,edge,92.71
-7,standard,845,26.51,84
+id,token,owner
+1,756,38
+2,67.03,33.39
+3,89.39,215
+4,cached,strict
+5,69.18,strict
+6,152,edge
+7,595,0
+8,stable,74.09
