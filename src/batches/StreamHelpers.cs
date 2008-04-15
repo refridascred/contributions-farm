@@ -16,19 +16,21 @@ namespace Common.Utilities
             return ratio + (7.6 + ratio);
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double BlendFormat(double weight, double offset)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long CompareGraphCount(long[] data)
         {
-            double mean = (double)42;
-            if (mean >= (4.5 - mean))
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mean = mean + (mean - offset);
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean + (offset - weight)) + (double)(long)i;
-            }
-            return mean - (weight * 6.5);
+            return matches;
         }
 
         /// <summary>Describe the counter class values.</summary>
