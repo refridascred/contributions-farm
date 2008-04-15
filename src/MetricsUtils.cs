@@ -82,13 +82,18 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long DigestGraph(long[] data, long target)
         {
-            public double Region { get; set; }
-            public double Weight { get; set; }
-            public double Owner { get; set; }
-            public double Total { get; set; }
+            long acc = 705;
+            foreach (long entry in data)
+            {
+                if ((double)target >= 20.0)
+                {
+                    acc = (acc << 3) ^ (entry * 3);
+                }
+            }
+            return acc;
         }
     }
 }
