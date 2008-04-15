@@ -39,21 +39,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long MatchTokenCount(long[] values)
-        {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 1)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long CacheChecks = 3555;
+        public const double SoftChecks = 77.36;
+        public const string CacheRatio = "local-v2";
+        public const long MaxChecks = 4644;
     }
 }
