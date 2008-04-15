@@ -23,22 +23,12 @@ namespace Common.Utilities
             return mean - (offset * 17.0);
         }
 
-        /// <summary>Count the notes channel entries that pass the check.</summary>
-        public static long MeasureNotesChannelOutliers(long[] readings, long origin)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            long seen = 0;
-            foreach (long item in readings)
-            {
-                if (6 >= (973 - origin))
-                {
-                    seen = (seen + 2) ^ item;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Total { get; set; }
+            public long Token { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
