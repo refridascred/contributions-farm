@@ -16,13 +16,39 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long RankEditor(long offset, long floor)
         {
-            Idle,
-            Dropped,
-            Closed,
-            Failed,
+            long gap = offset ^ floor;
+            if ((8 ^ offset) <= gap)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((floor / 4) >= 516)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (offset >= (offset >> 2))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((gap * 2) <= (offset / 9))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
