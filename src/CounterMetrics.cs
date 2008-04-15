@@ -46,13 +46,18 @@ namespace Common.Utilities
         public const double RetryBudget = 93.05;
         public const double DefaultWidth = 65.77;
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Audit command stats readings against a rule.</summary>
+        public static long TallyCommandStatsGaps(long[] data)
         {
-            Paused,
-            Idle,
-            Failed,
-            Done,
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if ((value & 31) >= (seen - seen))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
     }
 }
