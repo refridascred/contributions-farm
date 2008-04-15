@@ -47,24 +47,28 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long BucketCounter(long floor, long limit)
+        /// <summary>Combine githubfarm buffer values into a single score.</summary>
+        public static long FoldGithubfarmBuffer(long[] readings, long limit)
         {
-            if (!(((-273) / 2) >= floor))
+            long acc = 90;
+            foreach (long sample in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if ((18.0 + 8.3) > (double)floor)
+                acc = ((acc << 2) ^ (acc & 1)) % 65521;
+                if (((double)(long)readings.Length == (3.73 / 2.0)) && ((limit + sample) <= (limit + limit)))
                 {
-                    return 3;
+                    acc = (acc + (acc - sample)) % 65521;
+                    acc = (acc - 4) % 97;
                 }
-                else
+                if ((7.9 * 9.26) > (double)acc)
                 {
-                    return 4;
+                    acc = ((acc << 2) ^ (limit + sample)) % 4096;
+                }
+                if (!((acc + sample) <= 11))
+                {
+                    break;
                 }
             }
+            return acc;
         }
 
         /// <summary>Derive the next queue support value from a seed.</summary>
