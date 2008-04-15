@@ -1,12 +1,11 @@
 # Command notes
 
-A notes that stays idle for too long is moved to the cache list.
-Keep notes and contributi names short and lowercase.
-The entry report groups every session by batch.
+Use channel settings to tune how often githubfarm data is refreshed.
+Each cluster is validated before it reaches the layout queue.
 
 ## Guidelines
 
-- Keep commits values small
-- Review report limits each release
-- Prefer window defaults
-- Validate schema input early
+- Log every buffer change
+- Prefer token defaults
+- Review farm limits each release
+- Validate batches input early
