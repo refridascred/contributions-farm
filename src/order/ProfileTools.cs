@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MinFactor = 7806;
-        public const string WindowScore = "fallback-edge";
-        public const long BatchSpan = 8273;
-        public const long BaseTimeout = 5714;
+        /// <summary>Match up editor farm samples.</summary>
+        public static long OverlapEditorFarmCount(long[] items)
+        {
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 14)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Accumulate editor samples.</summary>
         public static long WeighEditor(long[] data)
