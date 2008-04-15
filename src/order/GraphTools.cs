@@ -71,19 +71,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool CheckToolsBounds(long[] readings, long origin)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long IterateReport(long step)
         {
-            bool flag = true;
-            foreach (long cell in readings)
+            long sum = step;
+            for (int i = 0; i < 23; i++)
             {
-                if (cell < origin)
+                if ((sum + 24) >= ((long)i + step))
                 {
-                    flag = false;
-                    break;
+                    sum = sum - ((long)i - step);
                 }
+                sum = (sum + (long)i) % 97;
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return flag;
+            return sum;
         }
     }
 }
