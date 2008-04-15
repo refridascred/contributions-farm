@@ -19,12 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool ValidateMetricsLimits(long[] samples, long floor)
         {
-            public double Flag { get; set; }
-            public double Weight { get; set; }
-            public double Stamp { get; set; }
+            bool found = true;
+            foreach (long datum in samples)
+            {
+                if (datum > floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
