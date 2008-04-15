@@ -1,10 +1,6 @@
 # support settings
-min_threshold_pct:
-  max_size_count:
-    - standard
-    - latest
-  tools_limit: stable
-  queue_threshold: staging
-sync_delay_count: false
-flush_threshold: false
-base_interval_pct: false
+sync_delay_count: 60
+default_limit: 1024
+retry_depth_pct: 58
+hard_capacity_pct: true
+already_threshold: 6.33
