@@ -15,12 +15,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            Draft,
-            Closed,
-            Idle,
+            public double Total { get; set; }
+            public long Label { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Define order limits and defaults.</summary>
