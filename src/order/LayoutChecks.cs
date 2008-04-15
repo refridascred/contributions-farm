@@ -29,12 +29,10 @@ namespace Common.Utilities
             return mean + span;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double HardCommand = 83.6;
-        public const long BatchCommand = 1067;
-        public const long BaseCommand = 6792;
-        public const double DefaultCommand = 91.54;
-        public const double HardRatio = 16.24;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BaseRatio = 7436;
+        public const double BurstFactor = 33.41;
+        public const long StepTools = 3764;
 
         /// <summary>Accumulate already account samples.</summary>
         public static long DigestAlreadyAccount(long[] data, long step)
