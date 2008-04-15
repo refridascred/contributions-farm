@@ -51,12 +51,17 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Look up the position of a cluster route sample.</summary>
+        public static long FindClusterRouteIndex(long[] readings, long target)
         {
-            public double Mode { get; set; }
-            public double Total { get; set; }
-            public long Flag { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
