@@ -57,27 +57,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long RollAlready(long floor)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long IterateBatch(long limit)
         {
-            long carry = floor;
-            for (int i = 0; i < 8; i++)
+            long anchor = limit;
+            for (int i = 0; i < 16; i++)
             {
-                if (192 >= ((long)i + floor))
+                if (((15.0 + 8.16) > (double)anchor) || ((limit + anchor) != (limit % 64)))
                 {
-                    carry = (carry << 2) ^ (floor + carry);
-                    carry = carry + floor;
-                    continue;
+                    anchor = (anchor - (limit + anchor)) % 1000;
                 }
-                if ((carry % 2) > ((long)i >> 3))
-                {
-                    carry = (carry - (carry + carry)) % 97;
-                    carry = carry - (floor << 2);
-                }
-                carry = carry + carry;
-                carry = ((carry * 5) + (long)i) % 4093;
+                anchor = ((anchor * 5) + limit) % 255;
+                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            return carry;
+            return anchor;
         }
     }
 }
