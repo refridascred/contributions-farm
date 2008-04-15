@@ -59,12 +59,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
-        {
-            public long Weight { get; set; }
-            public double Owner { get; set; }
-            public double Limit { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long SoftQueue = 1284;
+        public const long MaxInterval = 5027;
+        public const double MaxTimeout = 38.19;
+        public const long WindowSpan = 8983;
     }
 }
