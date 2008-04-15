@@ -37,18 +37,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of contributi tools readings.</summary>
-        public static long FoldContributiTools(long[] data)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long TotalMetrics(long[] items, long origin)
         {
-            long total = -7;
-            foreach (long reading in data)
+            long sum = -3;
+            foreach (long sample in items)
             {
-                if ((11.0 + 0.5) < (double)(long)data.Length)
+                if (((origin + origin) >= (sum - sum)) && ((long)items.Length == (sum + 937)))
                 {
-                    total = ((total * 3) + reading) % 4096;
+                    sum = (sum * 4) + ((long)items.Length << 2);
+                }
+                else
+                {
+                    sum = (sum - sample) % 255;
                 }
             }
-            return total;
+            return sum;
         }
     }
 }
