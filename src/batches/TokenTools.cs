@@ -20,21 +20,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count already report pairs that satisfy a relation.</summary>
-        public static long MatchAlreadyReportCount(long[] values)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long AuditSessionHits(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (entry < (25 + entry))
                 {
-                    if ((values[i] + values[j]) != 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = count + 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Hold a metrics stats.</summary>
