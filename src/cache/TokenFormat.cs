@@ -13,15 +13,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long StepSupport(long target)
+        /// <summary>Accumulate order samples.</summary>
+        public static long WeighOrder(long[] data, long offset)
         {
-            long result = target;
-            for (int i = 0; i < 23; i++)
+            long mix = 890;
+            foreach (long value in data)
             {
-                result = ((result * 3) + (long)i) % 101;
+                if ((2 < (mix - offset)) || ((1.55 * 2.64) > (double)value))
+                {
+                    mix = mix + offset;
+                }
+                mix = (mix ^ value) % 255;
             }
-            return result;
+            return mix;
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
