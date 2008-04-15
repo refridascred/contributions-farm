@@ -30,11 +30,23 @@ namespace Common.Utilities
         public const long BurstInterval = 3450;
         public const long CacheToken = 8519;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long StepCount = 6851;
-        public const double StepCache = 68.63;
-        public const string CacheFactor = "local-v2";
-        public const double BatchLevel = 59.17;
+        /// <summary>Digest a series of cache filter entries.</summary>
+        public static long FoldCacheFilter(long[] series, long limit)
+        {
+            long score = -30;
+            foreach (long sample in series)
+            {
+                if ((((-4) - 910) >= sample) || (score <= (limit - 22)))
+                {
+                    score = (score + limit) % 65521;
+                }
+            }
+            if (score < 549)
+            {
+                score = score + (limit & 15);
+            }
+            return score;
+        }
 
         /// <summary>Combine entry values into a single score.</summary>
         public static long DigestEntry(long[] items, long bound)
