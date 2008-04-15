@@ -40,13 +40,24 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Grade a notes counter value against two limits.</summary>
+        public static long SortNotesCounter(long limit, long offset)
         {
-            public long Weight { get; set; }
-            public bool Region { get; set; }
-            public double Size { get; set; }
-            public double Level { get; set; }
+            if (((limit + offset) < offset) || (limit <= (offset ^ offset)))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((46 + 14) != (offset + limit)) || ((limit & 1) <= (51 ^ offset)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Hold a command info.</summary>
