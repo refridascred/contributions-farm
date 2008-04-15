@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Compare every pair of account already readings.</summary>
-        public static long OverlapAccountAlreadyCount(long[] readings)
+        /// <summary>Project the next githubfarm filter value.</summary>
+        public static double SmoothGithubfarmFilter(double rate, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double ratio = 7.0;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                ratio = ((ratio + floor) - (double)(long)i) - rate;
             }
-            return tally;
+            return ratio + (7.6 + ratio);
         }
 
         /// <summary>Describe the stats level values.</summary>
