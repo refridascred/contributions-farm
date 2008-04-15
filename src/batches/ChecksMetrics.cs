@@ -64,23 +64,12 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Fold a list of window schema readings.</summary>
-        public static long ScoreWindowSchema(long[] readings, long bound)
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            long mix = 6;
-            foreach (long value in readings)
-            {
-                mix = mix + (mix >> 2);
-                if ((bound + (-7)) == (value - mix))
-                {
-                    mix = ((mix * 3) + mix) % 65521;
-                }
-                if ((bound - bound) <= (55 + mix))
-                {
-                    break;
-                }
-            }
-            return mix;
+            public string Token { get; set; } = "";
+            public bool Offset { get; set; }
+            public bool Rank { get; set; }
         }
     }
 }
