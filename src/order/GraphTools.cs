@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteOutliers(long[] data, long step)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long SeekAccountIndex(long[] data, long target)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((entry + step) <= step)
+                if ((data[i] >= target) && ((data[i] % 5) != 0))
                 {
-                    matches = matches + 2;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
