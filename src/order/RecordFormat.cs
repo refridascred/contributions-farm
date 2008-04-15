@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long StepCommand = 1308;
-        public const double BaseCommand = 65.76;
-        public const long BurstBudget = 2122;
-        public const long LimitCommand = 6729;
+        /// <summary>Match up commits samples.</summary>
+        public static long OverlapCommitsCount(long[] items)
+        {
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 7)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
         public static long CountBatchesGaps(long[] series)
