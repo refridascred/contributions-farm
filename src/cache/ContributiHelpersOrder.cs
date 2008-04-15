@@ -20,13 +20,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long AuditContributiMatches(long[] readings)
         {
-            public double Score { get; set; }
-            public double Level { get; set; }
-            public long Token { get; set; }
-            public long Size { get; set; }
+            long tally = 0;
+            foreach (long cell in readings)
+            {
+                if (352 <= (cell ^ cell))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit metric stream readings against a rule.</summary>
