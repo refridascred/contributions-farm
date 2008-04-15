@@ -16,11 +16,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long SoftDepth = 3084;
-        public const long StepCount = 6490;
-        public const long WindowScore = 4546;
-        public const double BurstInterval = 35.8;
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
+        {
+            Idle,
+            Dropped,
+            Closed,
+            Failed,
+        }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
         public static long AuditGraphHits(long[] levels)
