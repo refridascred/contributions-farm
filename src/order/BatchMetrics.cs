@@ -32,10 +32,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string BaseRoute = "stable";
-        public const long StepRoute = 3388;
-        public const long BaseSize = 2262;
+        /// <summary>Check that every window profile entry stays within the limit.</summary>
+        public static bool GuardWindowProfileBounds(long[] data, long floor)
+        {
+            bool stale = true;
+            foreach (long item in data)
+            {
+                if (item >= floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Adjust a token reading.</summary>
         public static double BlendToken(double weight, double span)
