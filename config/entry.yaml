@@ -1,11 +1,4 @@
 # entry settings
-stream_ttl: 6994
-filter_interval: fallback
-already_ttl:
-  - 491
-  - 76
-  - 73
-  - 3
-warm_window_pct: 6534
-compress: 4258
-min_delay_count: primary
+audit: 22.3
+layout_capacity: legacy
+verbose: eu-west
