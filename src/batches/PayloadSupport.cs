@@ -30,32 +30,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long BucketMetrics(long floor, long bound)
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            long edge = floor ^ bound;
-            if ((9.0 - 2.0) <= (double)edge)
-            {
-                return 4;
-            }
-            else
-            {
-                if (!((double)floor >= (2.01 + 17.0)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((bound & 255) <= edge) && (40 > edge))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public long Level { get; set; }
+            public string Stamp { get; set; } = "";
         }
     }
 }
