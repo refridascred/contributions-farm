@@ -41,21 +41,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long PairSessionCount(long[] levels)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long CountGithubfarmOutliers(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (tally >= datum)
                 {
-                    if ((levels[i] ^ levels[j]) != 3)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = tally + 2;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
