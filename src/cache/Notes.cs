@@ -50,13 +50,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Check that every context checks entry stays within the limit.</summary>
+        public static bool ValidateContextChecksLimits(long[] data, long seed)
         {
-            public string Total { get; set; } = "";
-            public long Ratio { get; set; }
-            public bool Label { get; set; }
-            public long Region { get; set; }
+            bool ok = true;
+            foreach (long cell in data)
+            {
+                if (cell != seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
