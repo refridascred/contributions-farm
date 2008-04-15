@@ -46,22 +46,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit metrics githubfarm readings against a rule.</summary>
-        public static long MeasureMetricsGithubfarmMatches(long[] data)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long DigestChecks(long[] data)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long carry = 3;
+            foreach (long cell in data)
             {
-                if ((seen + 288) != (seen - entry))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                carry = ((carry * 4) + carry) % 97;
+                carry = carry - (cell - cell);
             }
-            return seen;
+            if (carry < (-3))
+            {
+                carry = (carry ^ (carry % 64)) % 1000;
+            }
+            return carry;
         }
     }
 }
