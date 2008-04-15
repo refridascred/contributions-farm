@@ -39,12 +39,39 @@ namespace Common.Utilities
         public const long SoftSession = 6825;
         public const string BaseSession = "latest-edge";
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Grade a context githubfarm value against two limits.</summary>
+        public static long ClassifyContextGithubfarm(long origin, long seed)
         {
-            public bool Token { get; set; }
-            public long Owner { get; set; }
-            public string Stamp { get; set; } = "";
+            long edge = origin + seed;
+            if ((edge + origin) < (77 - 744))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((0.1 + 5.5) <= (double)seed)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)origin > (7.2 / 5.0))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (origin <= (edge + origin))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
