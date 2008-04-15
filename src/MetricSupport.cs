@@ -31,17 +31,16 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long FindContributiIndex(long[] values, long floor)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long DeriveCommits(long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long anchor = target;
+            for (int i = 0; i < 18; i++)
             {
-                if ((values[i] > floor) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                anchor = anchor - anchor;
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return -1;
+            return anchor;
         }
     }
 }
