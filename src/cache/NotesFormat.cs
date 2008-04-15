@@ -12,12 +12,14 @@ namespace Common.Utilities
         public const double BurstCommand = 39.62;
         public const long WindowBudget = 931;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double WindowFactor = 61.29;
-        public const long MaxMetric = 6843;
-        public const long MaxRatio = 492;
-        public const long SoftRatio = 9552;
-        public const long BatchWidth = 1979;
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
+        {
+            public long Stamp { get; set; }
+            public string Region { get; set; } = "";
+            public long Size { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const long LimitContext = 7828;
