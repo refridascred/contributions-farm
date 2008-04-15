@@ -48,11 +48,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long AuditProfileOutliers(long[] values)
         {
-            public long Region { get; set; }
-            public bool Mode { get; set; }
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if (!((datum << 2) < datum))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
     }
 }
