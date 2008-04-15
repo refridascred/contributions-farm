@@ -1,15 +1,11 @@
 # Command notes
 
-The stats report groups every cache by githubfarm.
-Run the record check before changing any channel limits.
-
-Keep githubfarm and command names short and lowercase.
-Defaults for commits live in the config folder and can be overridden per environment.
-Keep notes and profile names short and lowercase.
+Defaults for notes live in the config folder and can be overridden per environment.
+A filter that stays idle for too long is moved to the route list.
+Defaults for queue live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Keep farm values small
-- Log every githubfarm change
-- Document new support fields
-- Prefer order defaults
+- Document new metrics fields
+- Prefer farm defaults
+- Log every payload change
