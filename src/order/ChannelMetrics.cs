@@ -19,15 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a session context reading.</summary>
-        public static double AdjustSessionContext(double scale, double offset)
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            double drift = scale;
-            if (drift >= 6.0)
-            {
-                drift = (drift + (double)84) + offset;
-            }
-            return drift - (drift - drift);
+            public string Score { get; set; } = "";
+            public long Limit { get; set; }
+            public string Region { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Hold a contributi stats.</summary>
