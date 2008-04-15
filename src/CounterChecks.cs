@@ -65,11 +65,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Accumulate tools samples.</summary>
+        public static long DigestTools(long[] readings)
         {
-            public double Level { get; set; }
-            public long Offset { get; set; }
+            long acc = 68;
+            foreach (long reading in readings)
+            {
+                if (!(acc > (acc ^ reading)))
+                {
+                    acc = (acc ^ (acc - acc)) % 255;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
