@@ -1,5 +1,8 @@
 {
-  "command_depth": "stable",
-  "burst_limit_pct": true,
-  "persist": "latest"
+  "record_retries": 33.77,
+  "cache_threshold_count": false,
+  "sync_timeout_count": 88,
+  "notes_capacity": 28.78,
+  "record_depth": false,
+  "entry_delay": 60.44
 }
