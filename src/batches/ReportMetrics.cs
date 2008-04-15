@@ -54,23 +54,12 @@ namespace Common.Utilities
             return scale + (ratio + span);
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double SmoothContext(double weight, double offset)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            double gain = offset;
-            if (gain > gain)
-            {
-                gain = gain + gain;
-            }
-            else
-            {
-                gain = gain + weight;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain - gain) + (double)(long)i;
-            }
-            return gain + (0.09 + weight);
+            Draft,
+            Synced,
+            Pending,
         }
     }
 }
