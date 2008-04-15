@@ -1,20 +1,11 @@
 {
-  "tools_threshold": 62.51,
-  "max_timeout_pct": "blue",
-  "batch_limit_count": {
-    "persist": {
-      "min_interval_count": false,
-      "tools_window": ["legacy", "cached"],
-      "default_size": false,
-      "warm_threshold_count": ["green", "green", "blue", "latest"]
-    },
-    "burst_capacity_pct": 38,
-    "max_size_pct": ["staging", "fallback"]
+  "batch_window": {
+    "commits_ttl": ["green", "blue"],
+    "compress": 49,
+    "max_interval_pct": true
   },
-  "commits_ratio": {
-    "hard_interval": "local",
-    "sync_interval_count": 12.06,
-    "soft_depth": ["green", "legacy", "cached", "standard"],
-    "min_ttl_count": "local"
-  }
+  "base_timeout": 5604,
+  "dry_run": "green",
+  "max_delay": 60,
+  "metrics_delay": ["legacy", "stable", "edge", "latest"]
 }
