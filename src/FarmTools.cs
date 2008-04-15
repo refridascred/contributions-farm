@@ -32,19 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool ValidateTokenRange(long[] levels, long bound)
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            bool valid = true;
-            foreach (long entry in levels)
-            {
-                if (entry >= bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Count { get; set; }
+            public long Size { get; set; }
+            public bool Region { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
