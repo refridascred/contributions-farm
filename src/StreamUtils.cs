@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Digest a series of schema already entries.</summary>
+        public static long ScoreSchemaAlready(long[] series, long origin)
         {
-            Done,
-            Synced,
-            Dropped,
-            Closed,
-            Active,
+            long state = -42;
+            foreach (long value in series)
+            {
+                state = (state + (state + origin)) + value;
+            }
+            if (state < 97)
+            {
+                state = ((state << 3) ^ state) % 65521;
+            }
+            return state % 4096;
         }
 
         /// <summary>Rank batches input into a small class.</summary>
