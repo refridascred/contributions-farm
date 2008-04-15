@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Roll a batches already counter forward.</summary>
-        public static long SeriesBatchesAlready(long offset)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long GradeNotes(long floor, long offset)
         {
-            long acc = offset;
-            for (int i = 0; i < 7; i++)
+            if (((1.0 - 9.6) <= (double)offset) && ((floor % 7) > (-68)))
             {
-                if (!((acc >> 2) > (offset & 31)))
-                {
-                    acc = acc - (offset + (long)i);
-                }
-                acc = ((acc * 4) + (long)i) % 97;
+                return 8;
             }
-            return acc;
+            else
+            {
+                if (7.7 > (double)offset)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (507 > (floor << 2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
