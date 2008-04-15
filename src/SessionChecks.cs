@@ -41,15 +41,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long TotalCache(long[] readings, long step)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long LookupProfileIndex(long[] series, long floor)
         {
-            long total = -36;
-            foreach (long entry in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                total = ((total ^ (step + step)) % 1000) ^ entry;
+                if (series[i] <= floor)
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
     }
 }
