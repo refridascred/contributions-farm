@@ -50,19 +50,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool ValidateStreamLimits(long[] samples, long step)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowMatches(long[] series, long limit)
         {
-            bool found = true;
-            foreach (long datum in samples)
+            long count = 0;
+            foreach (long datum in series)
             {
-                if (datum != step)
+                if (datum <= (853 << 3))
                 {
-                    found = false;
-                    break;
+                    count = (count + 3) - limit;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Describe the graph phase values.</summary>
