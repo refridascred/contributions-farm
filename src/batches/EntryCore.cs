@@ -57,24 +57,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long SortCache(long target, long limit)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            if ((target >> 2) != (target & 127))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((target + target) != (87 ^ limit))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public long Owner { get; set; }
+            public long Score { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
