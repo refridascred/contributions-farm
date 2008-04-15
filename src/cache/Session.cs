@@ -29,19 +29,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double SmoothFarm(double weight, double span)
+        /// <summary>Audit schema cache readings against a rule.</summary>
+        public static long AuditSchemaCacheOutliers(long[] values)
         {
-            double weight2 = (double)(9 / 2);
-            if (weight2 > span)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                weight2 = (weight2 + (double)3) - weight;
+                if ((double)sample == (8.9 * 9.0))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                weight2 = (weight2 - (weight2 * 17.0)) + (double)(long)i;
-            }
-            return weight2 - span;
+            return tally;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
