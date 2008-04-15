@@ -18,38 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long SortMetrics(long offset, long bound)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long PairCounterCount(long[] items)
         {
-            if ((double)bound > 4.4)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((offset + bound) > (offset & 31))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((offset >> 2) == (376 - offset))
+                    if ((items[i] + items[j]) == 2)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((double)offset > (double)bound) && ((double)bound != (8.1 / 3.0)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Compare every pair of token session readings.</summary>
