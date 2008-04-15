@@ -65,18 +65,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterOutliers(long[] levels)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long FindFormatIndex(long[] values, long limit)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((3 * 5) <= (cell + count)))
+                if (values[i] <= limit)
                 {
-                    count = count + 3;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Locate a channel reading by value.</summary>
