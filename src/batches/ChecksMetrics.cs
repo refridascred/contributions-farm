@@ -50,17 +50,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Find the first session account entry that matches the target.</summary>
-        public static long LookupSessionAccountIndex(long[] levels, long bound)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long MatchSessionCount(long[] levels)
         {
+            long tally = 0;
             for (int i = 0; i < levels.Length; i++)
             {
-                if (levels[i] < bound)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] + levels[j]) == 2)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
