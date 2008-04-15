@@ -58,12 +58,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
+            Idle,
             Ready,
-            Done,
-            Queued,
+            Paused,
+            New,
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
