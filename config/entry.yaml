@@ -1,17 +1,7 @@
 # entry settings
-max_limit_s:
-  audit:
-    githubfarm_threshold: edge
-    flush_limit: true
-    warm_timeout_s:
-      - 352
-      - 360
-      - 335
-  default_timeout: 17
-  sync_size_s:
-    - 64
-    - 150
-order_ratio: stable
-payload_window: 31
-warm_window: 39
-verbose: strict
+audit: primary
+stream_ratio: 17.18
+contributi_window: cached
+support_timeout: true
+cache_depth: standard
+max_limit: 84.28
