@@ -46,19 +46,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool CheckFilterLimits(long[] data, long seed)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            bool ok = true;
-            foreach (long datum in data)
-            {
-                if (datum != seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Flag { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Describe the window status values.</summary>
