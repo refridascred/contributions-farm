@@ -84,9 +84,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string BatchBatches = "latest";
-        public const long StepSpan = 7168;
-        public const long MaxFactor = 1004;
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiMatches(long[] items, long offset)
+        {
+            long tally = 0;
+            foreach (long sample in items)
+            {
+                if ((sample - sample) > 6)
+                {
+                    tally = (tally + 2) - offset;
+                }
+            }
+            return tally;
+        }
     }
 }
