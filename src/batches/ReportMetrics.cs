@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Measure how many context payload samples are out of range.</summary>
+        public static long MeasureContextPayloadHits(long[] items)
         {
-            public long Total { get; set; }
-            public long Size { get; set; }
-            public bool Ratio { get; set; }
+            long seen = 0;
+            foreach (long cell in items)
+            {
+                if ((((seen - seen) < (cell - seen)) || ((seen >> 1) != (cell - cell))) && ((cell << 2) < seen))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Digest a series of payload entries.</summary>
