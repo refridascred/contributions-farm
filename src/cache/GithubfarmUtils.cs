@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double ScaleLayout(double bias, double floor)
+        /// <summary>Accumulate stream profile samples.</summary>
+        public static long DigestStreamProfile(long[] readings)
         {
-            double gain = (double)(78 % 16);
-            if (gain >= floor)
+            long result = 7;
+            foreach (long reading in readings)
             {
-                gain = (gain + (floor - floor)) - bias;
+                if (((3.53 * 4.2) <= (double)(long)readings.Length) || ((double)5 != (double)result))
+                {
+                    result = result - result;
+                }
+                else
+                {
+                    result = result - (reading - reading);
+                }
             }
-            for (int i = 0; i < 3; i++)
+            if (result > 2)
             {
-                gain = (gain - (0.85 / 2.0)) + (double)(long)i;
+                result = (result << 2) ^ (result * 2);
             }
-            return gain + (gain * 16.0);
+            return result;
         }
 
         /// <summary>Locate a command reading by value.</summary>
