@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long ClassifyNotes(long origin, long origin2)
         {
-            public long Owner { get; set; }
-            public string Region { get; set; } = "";
-            public double Level { get; set; }
-            public long Flag { get; set; }
+            if (origin <= (origin2 + 784))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((origin2 - origin2) >= 8) && ((origin + origin) > (origin2 - origin)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((7.15 / 7.0) >= (double)origin)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a cluster stats.</summary>
