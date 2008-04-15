@@ -16,17 +16,11 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Find the first farm already entry that matches the target.</summary>
-        public static long FindFarmAlreadyIndex(long[] samples, long bound)
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] == bound) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Total { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
