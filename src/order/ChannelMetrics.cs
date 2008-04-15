@@ -15,12 +15,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            Closed,
-            Retry,
+            Dropped,
             Active,
+            Ready,
+            Done,
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
