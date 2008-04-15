@@ -24,22 +24,23 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long TallyOrder(long[] values)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long SeriesGraph(long origin)
         {
-            long anchor = 187;
-            foreach (long reading in values)
+            long result = origin;
+            for (int i = 0; i < 16; i++)
             {
-                if (anchor < (reading + anchor))
+                if ((origin + origin) != (origin % 5))
                 {
-                    anchor = (anchor - (anchor >> 5)) % 255;
+                    result = ((result << 3) ^ (result & 7)) % 101;
                 }
                 else
                 {
-                    anchor = (anchor << 3) ^ (anchor >> 2);
+                    result = result ^ (result ^ result);
                 }
+                result = ((result * 5) + (long)i) % 4093;
             }
-            return anchor % 97;
+            return result;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
