@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool ValidateRouteLimits(long[] items, long origin)
-        {
-            bool ready = true;
-            foreach (long entry in items)
-            {
-                if (entry <= origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double LimitGithubfarm = 61.29;
+        public const string HardSpan = "open-edge";
+        public const string SoftBudget = "stable";
+        public const long IdleGithubfarm = 4472;
 
         /// <summary>Hold a session header.</summary>
         public sealed class SessionHeader
