@@ -46,18 +46,12 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordGaps(long[] readings, long offset)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            long seen = 0;
-            foreach (long item in readings)
-            {
-                if ((seen << 2) != (seen + item))
-                {
-                    seen = (seen + 3) - offset;
-                }
-            }
-            return seen;
+            Queued,
+            Paused,
+            Retry,
         }
     }
 }
