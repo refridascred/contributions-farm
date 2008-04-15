@@ -50,19 +50,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate record stream readings against a bound.</summary>
-        public static bool GuardRecordStreamBounds(long[] levels, long target)
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            bool ok = true;
-            foreach (long entry in levels)
-            {
-                if (entry <= target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Flag { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public double Label { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
