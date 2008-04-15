@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferGaps(long[] items, long origin)
+        /// <summary>Count the graph stream entries that pass the check.</summary>
+        public static long TallyGraphStreamGaps(long[] readings)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                if ((item > (seen & 3)) && ((origin < seen) || ((item << 2) > item)))
+                if ((0.3 * 7.0) == (double)item)
                 {
-                    seen = seen + 2;
+                    tally = tally + 3;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
