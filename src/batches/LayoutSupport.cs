@@ -61,21 +61,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long PairBatchCount(long[] readings)
-        {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string RetryChannel = "local-1";
+        public const long DefaultTimeout = 9714;
+        public const string RetryRatio = "stable-edge";
+        public const double BurstChannel = 11.56;
     }
 }
