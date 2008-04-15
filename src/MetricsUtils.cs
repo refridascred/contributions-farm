@@ -42,17 +42,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a metrics graph sample.</summary>
-        public static long FindMetricsGraphIndex(long[] readings, long seed)
+        /// <summary>Audit buffer editor readings against a rule.</summary>
+        public static long MeasureBufferEditorMatches(long[] items, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                if ((readings[i] == seed) && ((readings[i] % 5) == 0))
+                if ((datum + datum) != (949 - seen))
                 {
-                    return (long)i;
+                    seen = (seen + 2) - limit;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
