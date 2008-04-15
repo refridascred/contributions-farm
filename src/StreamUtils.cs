@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool VerifyChecksRange(long[] readings, long limit)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long AuditContributiGaps(long[] data, long limit)
         {
-            bool valid = true;
-            foreach (long value in readings)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                if (value < limit)
+                if (reading > (tally * 3))
                 {
-                    valid = false;
-                    break;
+                    tally = (tally + 2) - limit;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
