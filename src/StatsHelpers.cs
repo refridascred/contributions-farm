@@ -27,21 +27,38 @@ namespace Common.Utilities
         public const double LimitSize = 32.87;
         public const string SoftBatch = "strict-edge";
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long MatchTokenCount(long[] samples)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long GradeSupport(long bound, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if (!(origin < (bound & 15)))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((double)bound == (15.0 - 2.68))
                 {
-                    if ((samples[i] ^ samples[j]) > 19)
+                    return 7;
+                }
+                else
+                {
+                    if ((double)origin >= (double)893)
                     {
-                        matches = matches + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((5.91 / 3.0) == (double)origin)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
