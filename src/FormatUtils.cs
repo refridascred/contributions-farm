@@ -19,18 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long CombineCommand(long[] data)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool CheckNotesLimits(long[] items, long bound)
         {
-            long sum = 653;
-            foreach (long entry in data)
+            bool flag = true;
+            foreach (long entry in items)
             {
-                if (((double)entry == (8.9 * 2.8)) || ((sum - 0) <= (sum - 4)))
+                if (entry <= bound)
                 {
-                    sum = (sum ^ (sum + entry)) % 1000;
+                    flag = false;
+                    break;
                 }
             }
-            return sum;
+            return flag;
         }
 
         /// <summary>Match up filter samples.</summary>
