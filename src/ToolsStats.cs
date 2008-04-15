@@ -12,19 +12,18 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool VerifyAlreadyBounds(long[] levels, long floor)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmMatches(long[] levels, long origin)
         {
-            bool ok = true;
-            foreach (long entry in levels)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                if (entry != floor)
+                if (((long)levels.Length ^ origin) == (tally * 5))
                 {
-                    ok = false;
-                    break;
+                    tally = (tally + 2) - sample;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
