@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            public double Score { get; set; }
-            public string Label { get; set; } = "";
-            public bool Owner { get; set; }
-            public bool Weight { get; set; }
+            Pending,
+            Locked,
+            New,
+            Paused,
         }
 
         /// <summary>Describe the buffer phase values.</summary>
