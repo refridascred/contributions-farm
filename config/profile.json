@@ -1,11 +1,7 @@
 {
-  "batch_depth_ms": "stable",
-  "soft_limit_pct": 4650,
-  "warm_delay_pct": 41,
-  "poll_interval_s": {
-    "min_limit": 26.46,
-    "audit": 72.22,
-    "token_timeout": "blue"
-  },
-  "batch_window_ms": 21.38
+  "order_ttl": 2775,
+  "filter_interval": ["open", "green", "latest", "fallback"],
+  "enabled": 30,
+  "sync_ratio_pct": 27,
+  "hard_capacity": true
 }
