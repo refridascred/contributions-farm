@@ -36,15 +36,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long DeriveMetrics(long target)
+        /// <summary>Compare every pair of filter stream readings.</summary>
+        public static long PairFilterStreamCount(long[] samples)
         {
-            long anchor = target;
-            for (int i = 0; i < 10; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                anchor = ((anchor * 3) + (long)i) % 101;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 14)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Audit batch graph readings against a rule.</summary>
