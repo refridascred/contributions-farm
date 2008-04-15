@@ -1,10 +1,19 @@
 {
-  "flush_timeout": {
-    "soft_capacity_count": 46.37,
-    "flush_limit_pct": "primary",
-    "profile_capacity": "green",
-    "audit": 45
+  "default_depth": ["open", "standard"],
+  "report_size": {
+    "sync_interval": 7.73,
+    "account_window": 81,
+    "compress": "green",
+    "report_ratio": {
+      "channel_ttl": false,
+      "default_delay": ["green", "local", "latest"],
+      "hard_capacity_ms": [145, 367],
+      "retry_delay_count": 1024
+    },
+    "warm_limit": 8313
   },
-  "idle_interval_s": ["edge", "fallback"],
-  "cache_delay_s": 30
+  "max_ratio_ms": [85, 350],
+  "max_depth": "staging",
+  "record_ratio": 91.64,
+  "sync_size": "legacy"
 }
