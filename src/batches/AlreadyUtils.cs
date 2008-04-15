@@ -23,15 +23,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
-        {
-            Closed,
-            Active,
-            Queued,
-            Idle,
-            Dropped,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long DefaultBudget = 2400;
+        public const string WindowSize = "latest-1";
+        public const long IdleInterval = 9819;
+        public const long BatchTimeout = 7773;
 
         /// <summary>Describe the support mode values.</summary>
         public enum SupportMode
