@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Digest a series of schema already entries.</summary>
-        public static long ScoreSchemaAlready(long[] series, long origin)
-        {
-            long state = -42;
-            foreach (long value in series)
-            {
-                state = (state + (state + origin)) + value;
-            }
-            if (state < 97)
-            {
-                state = ((state << 3) ^ state) % 65521;
-            }
-            return state % 4096;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BaseBudget = 8898;
+        public const double RetryLevel = 83.29;
+        public const long BurstRatio = 5764;
+        public const string CacheCount = "fallback-1";
 
         /// <summary>Rank batches input into a small class.</summary>
         public static long GradeBatches(long origin, long origin2)
