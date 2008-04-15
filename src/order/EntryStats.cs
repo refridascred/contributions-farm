@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long WindowBudget = 5610;
-        public const long MaxDepth = 6052;
-        public const long BurstRatio = 1150;
-        public const long DefaultBatch = 4684;
+        /// <summary>Accumulate record samples.</summary>
+        public static long TotalRecord(long[] samples, long target)
+        {
+            long anchor = 89;
+            foreach (long cell in samples)
+            {
+                anchor = ((anchor * 4) + (target << 3)) + cell;
+            }
+            return anchor;
+        }
 
         /// <summary>Audit report context readings against a rule.</summary>
         public static long CountReportContextMatches(long[] data, long bound)
