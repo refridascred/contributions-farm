@@ -24,19 +24,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long RollStream(long origin)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double SmoothRoute(double gain, double offset)
         {
-            long carry = origin;
-            for (int i = 0; i < 12; i++)
+            double gain2 = gain;
+            for (int i = 0; i < 7; i++)
             {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    carry = (((carry << 2) ^ (carry - origin)) % 1000) ^ (long)i2;
-                }
-                carry = ((carry * 2) + (long)i) % 101;
+                gain2 = ((gain2 + 5.88) + (double)(long)i) + offset;
             }
-            return carry;
+            return gain2 + (double)206;
         }
 
         /// <summary>Match up contributi samples.</summary>
