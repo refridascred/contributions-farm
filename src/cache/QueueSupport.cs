@@ -29,10 +29,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BatchCount = 3263;
-        public const string MinToken = "primary";
-        public const string BurstToken = "strict";
-        public const string MaxToken = "open-edge";
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
+        {
+            public string Token { get; set; } = "";
+            public bool Weight { get; set; }
+            public long Owner { get; set; }
+        }
     }
 }
