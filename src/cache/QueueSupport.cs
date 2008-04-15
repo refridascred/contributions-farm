@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long StepCache = 6963;
-        public const long DefaultBudget = 185;
-        public const string StepSpan = "fallback";
-        public const long DefaultCache = 9895;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long SoftChecks = 8699;
+        public const string BurstChecks = "primary-v2";
+        public const double CacheCount = 19.15;
+        public const long DefaultChecks = 5673;
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
         public static bool CheckContributiLimits(long[] samples, long seed)
