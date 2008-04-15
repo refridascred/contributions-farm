@@ -37,17 +37,19 @@ namespace Common.Utilities
         public const long BaseSize = 3648;
         public const long BurstLevel = 8491;
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long LocateRouteIndex(long[] levels, long limit)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool VerifyGithubfarmLimits(long[] levels, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool found = true;
+            foreach (long cell in levels)
             {
-                if ((levels[i] == limit) && ((levels[i] % 3) == 0))
+                if (cell < limit)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Describe the context class values.</summary>
