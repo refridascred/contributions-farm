@@ -73,18 +73,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long TallyCacheOutliers(long[] samples, long limit)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            long hits = 0;
-            foreach (long item in samples)
-            {
-                if ((item / 4) > (hits << 1))
-                {
-                    hits = (hits + 1) - limit;
-                }
-            }
-            return hits;
+            public string Count { get; set; } = "";
+            public bool Token { get; set; }
+            public bool Mode { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
