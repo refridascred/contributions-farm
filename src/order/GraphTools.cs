@@ -69,19 +69,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool CheckToolsLimits(long[] levels, long step)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            bool ready = true;
-            foreach (long value in levels)
-            {
-                if (value < step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Retry,
+            New,
+            Ready,
         }
     }
 }
