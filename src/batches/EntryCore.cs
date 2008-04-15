@@ -25,18 +25,10 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long FindContributiIndex(long[] levels, long seed)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double LimitSize = 75.75;
+        public const double IdleAccount = 22.75;
+        public const long SoftBudget = 5913;
 
         /// <summary>Hold a stream options.</summary>
         public sealed class StreamOptions
