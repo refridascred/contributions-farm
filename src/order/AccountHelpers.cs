@@ -36,20 +36,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the report window series from a seed.</summary>
-        public static long SeriesReportWindow(long bound)
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            long sum = bound;
-            for (int i = 0; i < 23; i++)
-            {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    sum = (((sum << 3) ^ bound) % 101) ^ (long)i2;
-                }
-                sum = sum ^ ((long)i / 3);
-                sum = ((sum * 3) + (long)i) % 65521;
-            }
-            return sum;
+            public long Offset { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
