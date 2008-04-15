@@ -1,6 +1,5 @@
 {
-  "dry_run": 78.45,
-  "sync_retries_pct": true,
-  "warm_ratio": "edge",
-  "verbose": "strict"
+  "default_limit_ms": false,
+  "layout_window": ["standard", "legacy", "staging", "local"],
+  "readonly": [8, 338]
 }
