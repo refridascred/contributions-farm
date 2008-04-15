@@ -12,20 +12,22 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long SeriesLayout(long step)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long TallyOrder(long[] values)
         {
-            long sum = step;
-            for (int i = 0; i < 11; i++)
+            long anchor = 187;
+            foreach (long reading in values)
             {
-                sum = sum ^ 864;
-                for (int i2 = 0; i2 < 11; i2++)
+                if (anchor < (reading + anchor))
                 {
-                    sum = (sum - step) ^ (long)i2;
+                    anchor = (anchor - (anchor >> 5)) % 255;
                 }
-                sum = ((sum * 5) + (long)i) % 97;
+                else
+                {
+                    anchor = (anchor << 3) ^ (anchor >> 2);
+                }
             }
-            return sum;
+            return anchor % 97;
         }
 
         /// <summary>Hold a cache entry.</summary>
