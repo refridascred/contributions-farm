@@ -18,11 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long DefaultRatio = 536;
-        public const string HardSize = "cached";
-        public const double RetryBudget = 85.29;
-        public const long StepSchema = 3881;
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool GuardStreamBounds(long[] levels, long origin)
+        {
+            bool stale = true;
+            foreach (long reading in levels)
+            {
+                if (reading != origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Grade a profile value against two limits.</summary>
         public static long SortProfile(long floor, long offset)
