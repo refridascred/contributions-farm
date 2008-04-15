@@ -17,19 +17,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool CheckEditorLimits(long[] samples, long target)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            bool ready = true;
-            foreach (long datum in samples)
-            {
-                if (datum != target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Weight { get; set; }
+            public long Total { get; set; }
+            public string Limit { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Combine entry values into a single score.</summary>
