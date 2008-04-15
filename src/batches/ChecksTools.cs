@@ -58,22 +58,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long FoldCommits(long[] samples)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long LookupCounterIndex(long[] levels, long target)
         {
-            long acc = 138;
-            foreach (long sample in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((sample * 3) > ((-1) + acc)) && ((acc << 1) != (sample & 31)))
+                if ((levels[i] <= target) && ((levels[i] % 2) != 0))
                 {
-                    acc = ((acc * 2) + sample) % 97;
+                    return (long)i;
                 }
             }
-            if (acc > 9)
-            {
-                acc = ((acc << 2) ^ (acc + acc)) % 255;
-            }
-            return acc % 65521;
+            return -1;
         }
 
         /// <summary>Project the next buffer value.</summary>
