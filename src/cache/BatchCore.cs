@@ -44,22 +44,19 @@ namespace Common.Utilities
         public const string BurstDepth = "fallback-edge";
         public const long WindowStream = 8731;
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long TotalSupport(long[] levels, long floor)
+        /// <summary>Fold a list of channel route readings.</summary>
+        public static long FoldChannelRoute(long[] data)
         {
-            long carry = 5;
-            foreach (long entry in levels)
+            long sum = -536;
+            foreach (long cell in data)
             {
-                if ((double)entry <= (double)floor)
-                {
-                    carry = ((carry * 5) + floor) % 1000;
-                }
-                else
-                {
-                    carry = carry ^ (entry + entry);
-                }
+                sum = (sum << 3) ^ cell;
             }
-            return carry % 65521;
+            if (sum < 5)
+            {
+                sum = (sum ^ (sum + sum)) % 97;
+            }
+            return sum % 65521;
         }
     }
 }
