@@ -24,18 +24,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long WeighFilter(long[] items, long offset)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long RollStream(long origin)
         {
-            long mix = 5;
-            foreach (long cell in items)
+            long carry = origin;
+            for (int i = 0; i < 12; i++)
             {
-                if (!((4.03 - 3.5) < (double)offset))
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    mix = ((mix ^ offset) % 1000) ^ cell;
+                    carry = (((carry << 2) ^ (carry - origin)) % 1000) ^ (long)i2;
                 }
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return mix % 1000;
+            return carry;
         }
 
         /// <summary>Match up contributi samples.</summary>
