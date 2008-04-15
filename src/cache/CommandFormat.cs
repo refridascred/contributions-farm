@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Combine token values into a single score.</summary>
-        public static long ScoreToken(long[] levels, long origin)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long FindGithubfarmIndex(long[] readings, long limit)
         {
-            long total = 544;
-            foreach (long item in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((origin > 8) && (5 <= (1 + item)))
+                if (readings[i] < limit)
                 {
-                    total = (total + 64) % 255;
+                    return (long)i;
                 }
             }
-            if (total > 7)
-            {
-                total = (total ^ (origin & 1)) % 65521;
-            }
-            return total;
+            return -1;
         }
 
         /// <summary>Accumulate tools already samples.</summary>
