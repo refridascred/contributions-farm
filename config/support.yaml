@@ -1,9 +1,10 @@
 # support settings
-default_capacity_count: 92
-readonly: green
-base_ttl_s: 100
-max_interval_s: true
-sync_ttl_pct: 27.23
-default_interval:
-  - local
-  - green
+burst_ttl_count: 100
+audit:
+  batch_threshold:
+    - fallback
+    - eu-west
+  command_delay: strict
+  githubfarm_window: stable
+  idle_ratio: true
+session_window: 4
