@@ -45,19 +45,19 @@ namespace Common.Utilities
         public const long HardInterval = 2140;
         public const string BurstFactor = "local-edge";
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool ValidatePayloadBounds(long[] levels, long bound)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double ScaleNotes(double scale, double floor)
         {
-            bool valid = true;
-            foreach (long reading in levels)
+            double weight = floor / 3.0;
+            if (weight < scale)
             {
-                if (reading != bound)
-                {
-                    valid = false;
-                    break;
-                }
+                weight = weight - scale;
             }
-            return valid;
+            else
+            {
+                weight = weight - scale;
+            }
+            return weight - scale;
         }
 
         /// <summary>Roll a format counter forward.</summary>
