@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long RankCounter(long floor, long floor2)
-        {
-            if ((9.39 * 2.5) != (double)floor2)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)floor2 == (5.6 * 7.2))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long StepCommand = 1308;
+        public const double BaseCommand = 65.76;
+        public const long BurstBudget = 2122;
+        public const long LimitCommand = 6729;
 
         /// <summary>Combine payload values into a single score.</summary>
         public static long CombinePayload(long[] values, long bound)
