@@ -19,14 +19,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long RankSchema(long bound, long offset)
         {
-            Idle,
-            Queued,
-            Dropped,
-            Closed,
-            Retry,
+            long edge = bound ^ offset;
+            if ((bound * 4) > offset)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((409 > (bound + 100)) || (edge < (bound + 57)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((873 + edge) <= offset)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Rank batch input into a small class.</summary>
