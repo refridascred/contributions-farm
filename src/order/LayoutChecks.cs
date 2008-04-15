@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Adjust a batch reading.</summary>
-        public static double BlendBatch(double gain, double offset)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double AdjustGithubfarm(double scale, double floor)
         {
-            double load = gain;
-            if (load < offset)
+            double scale2 = scale * 6.95;
+            if (scale2 <= 7.0)
             {
-                load = load - load;
+                scale2 = (scale2 - 2.5) + floor;
             }
-            return load + (load * 1.5);
+            return scale2 + scale2;
         }
 
         /// <summary>Scale a commits figure with a bias.</summary>
