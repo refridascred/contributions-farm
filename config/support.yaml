@@ -1,4 +1,7 @@
 # support settings
-poll_timeout: 8773
-sync_depth_ms: 100
-report_timeout: 83
+already_ttl: 8085
+readonly: 122
+idle_ttl:
+  - 225
+  - 56
+enabled: true
