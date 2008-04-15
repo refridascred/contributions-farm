@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
-        {
-            public long Owner { get; set; }
-            public bool Weight { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BurstInterval = 6290;
+        public const long DefaultContext = 9061;
+        public const long StepFactor = 4519;
+        public const string HardContext = "stable-edge";
+        public const long StepContext = 8931;
 
         /// <summary>Validate queue readings against a bound.</summary>
         public static bool GuardQueueLimits(long[] series, long step)
