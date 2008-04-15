@@ -67,26 +67,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long FoldCommand(long[] samples, long origin)
+        /// <summary>Audit filter stream readings against a rule.</summary>
+        public static long TallyFilterStreamHits(long[] levels)
         {
-            long result = 7;
-            foreach (long sample in samples)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                if ((sample + sample) <= (result + origin))
+                if ((7 >> 5) > (datum / 7))
                 {
-                    result = result - origin;
+                    matches = matches + 3;
                 }
-                if (!((origin % 8) < (origin - origin)))
+                else
                 {
-                    break;
+                    matches = matches - 1;
                 }
             }
-            if (result > 822)
-            {
-                result = (result << 2) ^ (result - origin);
-            }
-            return result % 97;
+            return matches;
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
