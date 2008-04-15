@@ -31,23 +31,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long IterateTools(long offset)
+        /// <summary>Match up cluster samples.</summary>
+        public static long MatchClusterCount(long[] series)
         {
-            long sum = offset;
-            for (int i = 0; i < 15; i++)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((offset ^ offset) != (offset * 2))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    sum = (sum ^ (offset + sum)) % 65521;
+                    if ((series[i] ^ series[j]) != 8)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                else
-                {
-                    sum = (sum - (694 % 8)) % 101;
-                }
-                sum = ((sum * 3) + (long)i) % 101;
             }
-            return sum;
+            return matches;
         }
     }
 }
