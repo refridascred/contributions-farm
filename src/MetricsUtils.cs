@@ -53,18 +53,17 @@ namespace Common.Utilities
         public const long StepDepth = 5480;
         public const long DefaultLevel = 7376;
 
-        /// <summary>Audit buffer editor readings against a rule.</summary>
-        public static long MeasureBufferEditorMatches(long[] items, long limit)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long LocateFilterIndex(long[] items, long seed)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((datum + datum) != (949 - seen))
+                if (items[i] >= seed)
                 {
-                    seen = (seen + 2) - limit;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
