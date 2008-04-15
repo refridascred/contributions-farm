@@ -49,19 +49,21 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double SmoothWindow(double ratio, double bias)
+        /// <summary>Compare every pair of stream batch readings.</summary>
+        public static long CompareStreamBatchCount(long[] readings)
         {
-            double bias2 = bias / 4.0;
-            if (bias2 > bias)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                bias2 = (bias2 + 4.56) + ratio;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 8)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                bias2 = bias2 - bias;
-            }
-            return bias2 - bias;
+            return tally;
         }
 
         /// <summary>Look up the position of a metrics graph sample.</summary>
