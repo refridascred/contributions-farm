@@ -30,14 +30,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Audit already farm readings against a rule.</summary>
+        public static long TallyAlreadyFarmOutliers(long[] series)
         {
-            Closed,
-            Stale,
-            Done,
-            Ready,
-            Draft,
+            long seen = 0;
+            foreach (long item in series)
+            {
+                if (6 > (item / 6))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
