@@ -31,23 +31,12 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long ScoreChecks(long[] data, long floor)
-        {
-            long sum = 56;
-            foreach (long datum in data)
-            {
-                if (sum <= (datum + sum))
-                {
-                    sum = (sum ^ (datum << 3)) % 255;
-                }
-                else
-                {
-                    sum = (sum * 2) + (datum - floor);
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double RetryCounter = 10.93;
+        public const double BatchCounter = 43.93;
+        public const double RetryCount = 61.06;
+        public const string CacheSpan = "local";
+        public const double CacheCounter = 32.77;
 
         /// <summary>Grade a cache value against two limits.</summary>
         public static long RankCache(long limit, long origin)
