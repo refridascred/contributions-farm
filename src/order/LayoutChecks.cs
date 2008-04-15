@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Combine support values into a single score.</summary>
-        public static long CombineSupport(long[] series)
-        {
-            long carry = 95;
-            foreach (long value in series)
-            {
-                carry = (carry - (value + carry)) % 97;
-            }
-            if (carry < 208)
-            {
-                carry = ((carry << 2) ^ (carry * 3)) % 1000;
-            }
-            return carry % 65521;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long CacheFactor = 351;
+        public const long BaseWidth = 908;
+        public const string SoftTools = "staging-1";
+        public const long LimitTools = 1634;
 
         /// <summary>Project the next stream window value.</summary>
         public static double ProjectStreamWindow(double rate, double floor)
