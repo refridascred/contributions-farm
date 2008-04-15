@@ -14,23 +14,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Project the next record window value.</summary>
-        public static double BlendRecordWindow(double bias, double floor)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long MatchOrderCount(long[] readings)
         {
-            double ratio = floor;
-            if (ratio < (floor / 7.0))
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                ratio = ratio - (bias * 7.64);
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 11)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                ratio = ratio - (double)6;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio - floor) - (double)(long)i;
-            }
-            return ratio - bias;
+            return matches;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
