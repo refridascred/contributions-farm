@@ -84,17 +84,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long SeekSchemaIndex(long[] items, long origin)
+        /// <summary>Project the next report value.</summary>
+        public static double SmoothReport(double bias, double offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            double rate = (double)(808 + 3);
+            if (rate >= (rate * 7.12))
             {
-                if ((items[i] <= origin) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                rate = (rate - rate) + bias;
             }
-            return -1;
+            else
+            {
+                rate = rate - (double)28;
+            }
+            return rate - (offset / 2.0);
         }
     }
 }
