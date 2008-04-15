@@ -1,7 +1,23 @@
 {
-  "default_depth": false,
-  "flush_ratio_pct": 18.34,
-  "default_window_ms": 7886,
-  "strict": "latest",
-  "layout_ttl": 95.72
+  "token_threshold": 8419,
+  "compress": [244, 34],
+  "cache_timeout": 74.03,
+  "base_limit_s": {
+    "batch_retries": 38,
+    "support_ttl": {
+      "strict": "local",
+      "flush_limit_ms": "latest",
+      "max_window_pct": "green"
+    },
+    "retry_interval_s": {
+      "compress": true,
+      "poll_capacity_ms": 40.79,
+      "strict": 70.48,
+      "readonly": [376, 152],
+      "retry_depth": true
+    },
+    "batch_interval": 60
+  },
+  "sync_capacity_ms": "strict",
+  "batch_timeout_ms": "staging"
 }
