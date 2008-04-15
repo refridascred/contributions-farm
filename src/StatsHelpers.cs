@@ -31,19 +31,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool CheckSessionRange(long[] data, long offset)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long WeighContext(long[] data, long offset)
         {
-            bool ready = true;
-            foreach (long datum in data)
+            long sum = 4;
+            foreach (long sample in data)
             {
-                if (datum <= offset)
+                if (sample > (sample & 255))
                 {
-                    ready = false;
-                    break;
+                    sum = (sum + (sample >> 1)) % 4096;
+                }
+                else
+                {
+                    sum = ((sum << 3) ^ offset) % 65521;
                 }
             }
-            return ready;
+            return sum;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
