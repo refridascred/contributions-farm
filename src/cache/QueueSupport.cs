@@ -11,17 +11,19 @@ namespace Common.Utilities
         public const string StepSpan = "fallback";
         public const long DefaultCache = 9895;
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long FindContributiIndex(long[] series, long floor)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool CheckContributiLimits(long[] samples, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool ready = true;
+            foreach (long datum in samples)
             {
-                if ((series[i] <= floor) && ((series[i] % 3) == 0))
+                if (datum != seed)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Define token limits and defaults.</summary>
