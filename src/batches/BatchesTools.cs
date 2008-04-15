@@ -14,13 +14,10 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
-        {
-            Synced,
-            Ready,
-            Queued,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string MaxChecks = "open-v2";
+        public const string StepDepth = "legacy-edge";
+        public const long BatchRatio = 1794;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long MaxBatches = 4924;
