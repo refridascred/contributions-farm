@@ -1,5 +1,11 @@
 # githubfarm settings
-batch_window_s: 34.52
-idle_capacity: 4289
-queue_threshold: primary
-enabled: staging
+audit: cached
+idle_interval: primary
+tools_window:
+  - green
+  - legacy
+  - local
+  - blue
+hard_interval_s: 15.05
+base_delay_pct: local
+min_ratio_ms: standard
