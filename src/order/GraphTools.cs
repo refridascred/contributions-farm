@@ -56,17 +56,16 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long FindOrderIndex(long[] items, long floor)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long RollNotes(long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = origin;
+            for (int i = 0; i < 15; i++)
             {
-                if (items[i] == floor)
-                {
-                    return (long)i;
-                }
+                mix = mix + (11 << 1);
+                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
