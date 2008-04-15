@@ -41,24 +41,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long DeriveCluster(long seed)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long OverlapOrderCount(long[] values)
         {
-            long carry = seed;
-            for (int i = 0; i < 4; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((6.04 - 15.0) <= (double)seed)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    carry = carry ^ ((long)i << 1);
+                    if ((values[i] ^ values[j]) < 18)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                carry = (carry ^ carry) % 65521;
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    carry = ((carry ^ seed) % 101) ^ (long)i2;
-                }
-                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return carry;
+            return hits;
         }
     }
 }
