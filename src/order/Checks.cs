@@ -28,20 +28,12 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool CheckGraphRange(long[] items, long target)
-        {
-            bool ok = true;
-            foreach (long sample in items)
-            {
-                if (sample > target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string MinSupport = "primary-1";
+        public const long BurstSpan = 9975;
+        public const long BaseTimeout = 4165;
+        public const long BaseSize = 6845;
+        public const long MinCount = 7277;
 
         /// <summary>Hold a tools stats.</summary>
         public sealed class ToolsStats
