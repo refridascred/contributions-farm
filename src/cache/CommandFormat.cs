@@ -48,26 +48,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long TotalWindow(long[] data, long limit)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long WeighBuffer(long[] data)
         {
-            long anchor = 254;
-            foreach (long cell in data)
+            long sum = 159;
+            foreach (long entry in data)
             {
-                if (!((7.87 / 2.0) < (double)cell))
+                if (sum > (entry + entry))
                 {
-                    anchor = (anchor ^ (limit - limit)) % 255;
-                }
-                if (limit < (cell + cell))
-                {
-                    anchor = (anchor ^ (8 - limit)) % 255;
-                }
-                if ((limit << 2) == (limit & 15))
-                {
-                    break;
+                    sum = sum + (sum - 185);
                 }
             }
-            return anchor % 97;
+            return sum % 65521;
         }
     }
 }
