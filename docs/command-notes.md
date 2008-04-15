@@ -1,10 +1,15 @@
 # Command notes
 
-A format that stays idle for too long is moved to the session list.
-A channel that stays idle for too long is moved to the filter list.
+The stats report groups every cache by githubfarm.
+Run the record check before changing any channel limits.
+
+Keep githubfarm and command names short and lowercase.
+Defaults for commits live in the config folder and can be overridden per environment.
+Keep notes and profile names short and lowercase.
 
 ## Guidelines
 
-- Keep profile values small
-- Validate context input early
-- Log every support change
+- Keep farm values small
+- Log every githubfarm change
+- Document new support fields
+- Prefer order defaults
