@@ -33,11 +33,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double DefaultWidth = 28.26;
-        public const long WindowLevel = 9839;
-        public const string WindowFormat = "staging-v2";
-        public const long IdleWidth = 1043;
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyOutliers(long[] values)
+        {
+            long count = 0;
+            foreach (long sample in values)
+            {
+                if (((double)count > 0.5) && (sample <= (count + 82)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the batch level values.</summary>
         public enum BatchLevel
