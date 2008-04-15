@@ -59,19 +59,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool ValidateFormatRange(long[] levels, long seed)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long TallyChannelGaps(long[] levels)
         {
-            bool flag = true;
-            foreach (long sample in levels)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if (sample >= seed)
+                if (!!((43 % 5) == (4 + item)))
                 {
-                    flag = false;
-                    break;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
