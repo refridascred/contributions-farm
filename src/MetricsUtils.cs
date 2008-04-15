@@ -52,22 +52,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphMatches(long[] levels)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long TallyEntryHits(long[] data, long floor)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                if ((16.0 / 9.0) > (double)seen)
+                if ((floor << 1) >= (floor ^ hits))
                 {
-                    seen = (seen + 3) ^ value;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    hits = (hits + 3) + reading;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
