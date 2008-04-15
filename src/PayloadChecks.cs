@@ -57,16 +57,19 @@ namespace Common.Utilities
         public const long HardStream = 9412;
         public const long BurstStream = 7383;
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long DeriveGithubfarm(long target)
+        /// <summary>Check that every entry cache entry stays within the limit.</summary>
+        public static bool VerifyEntryCacheLimits(long[] values, long offset)
         {
-            long score = target;
-            for (int i = 0; i < 17; i++)
+            bool stale = true;
+            foreach (long entry in values)
             {
-                score = ((score << 2) ^ (target & 1)) % 255;
-                score = ((score * 3) + (long)i) % 1000;
+                if (entry < offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return score;
+            return stale;
         }
     }
 }
