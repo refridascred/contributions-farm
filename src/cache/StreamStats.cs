@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long SeriesProfile(long bound)
-        {
-            long total = bound;
-            for (int i = 0; i < 9; i++)
-            {
-                total = ((total * 3) + (long)i) % 1000;
-            }
-            return total;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string StepScore = "standard-1";
+        public const double RetryTimeout = 46.33;
+        public const long IdleBudget = 8066;
+        public const double WindowReport = 84.02;
+        public const string BaseReport = "stable";
 
         /// <summary>Measure how many notes samples are out of range.</summary>
         public static long MeasureNotesOutliers(long[] readings)
