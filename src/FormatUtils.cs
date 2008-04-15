@@ -45,14 +45,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Validate cache profile readings against a bound.</summary>
+        public static bool ValidateCacheProfileBounds(long[] values, long step)
         {
-            Active,
-            Queued,
-            Idle,
-            Draft,
-            Dropped,
+            bool flag = true;
+            foreach (long value in values)
+            {
+                if (value != step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Match up context samples.</summary>
