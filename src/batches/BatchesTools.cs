@@ -32,12 +32,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Project the next profile value.</summary>
+        public static double AdjustProfile(double scale, double bias)
         {
-            public long Region { get; set; }
-            public long Flag { get; set; }
-            public long Limit { get; set; }
+            double ratio = scale / 6.0;
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio + (bias * 6.5)) + (double)(long)i;
+            }
+            return ratio + (19.0 / 7.0);
         }
     }
 }
