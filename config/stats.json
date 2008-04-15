@@ -1,5 +1,5 @@
 {
-  "metrics_depth": true,
-  "notes_ratio": 61,
-  "poll_size_pct": "edge"
+  "command_depth": "stable",
+  "burst_limit_pct": true,
+  "persist": "latest"
 }
