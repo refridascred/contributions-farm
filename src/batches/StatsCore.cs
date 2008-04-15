@@ -20,13 +20,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long DeriveRoute(long seed)
         {
-            Active,
-            Paused,
-            Closed,
-            Idle,
+            long sum = seed;
+            for (int i = 0; i < 14; i++)
+            {
+                sum = ((sum * 3) + (long)i) % 4093;
+            }
+            return sum;
         }
 
         /// <summary>Rank queue payload input into a small class.</summary>
