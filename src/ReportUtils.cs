@@ -19,19 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate editor contributi readings against a bound.</summary>
-        public static bool CheckEditorContributiLimits(long[] series, long origin)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowGaps(long[] items, long origin)
         {
-            bool flag = true;
-            foreach (long cell in series)
+            long seen = 0;
+            foreach (long item in items)
             {
-                if (cell >= origin)
+                if ((double)seen == (11.0 - 19.0))
                 {
-                    flag = false;
-                    break;
+                    seen = ((seen + 1) ^ item) - origin;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Blend two graph cache measurements.</summary>
