@@ -1,5 +1,13 @@
 {
-  "already_timeout": ["fallback", "edge", "stable", "staging"],
-  "cache_threshold_pct": "legacy",
-  "sync_ttl_pct": 30
+  "max_ratio": 8275,
+  "flush_timeout_count": {
+    "batch_limit_count": 1024,
+    "flush_timeout": 68,
+    "hard_capacity_s": 87.07,
+    "metric_window": true,
+    "verbose": "standard",
+    "default_limit_ms": "strict"
+  },
+  "filter_ratio": false,
+  "batch_limit": false
 }
