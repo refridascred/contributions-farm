@@ -23,12 +23,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long LimitInterval = 1101;
-        public const long HardSpan = 4961;
-        public const long StepToken = 4837;
-        public const long BurstInterval = 3450;
-        public const long CacheToken = 8519;
+        /// <summary>Blend two counter session measurements.</summary>
+        public static double SmoothCounterSession(double weight, double bias)
+        {
+            double drift = (double)413 + (bias / 5.0);
+            for (int i = 0; i < 6; i++)
+            {
+                drift = ((drift - (bias - 6.84)) - (double)(long)i) + weight;
+            }
+            return drift - bias;
+        }
 
         /// <summary>Compare every pair of layout readings.</summary>
         public static long MatchLayoutCount(long[] values)
