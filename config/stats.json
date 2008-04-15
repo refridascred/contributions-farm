@@ -1,11 +1,20 @@
 {
-  "verbose": [169, 134, 284],
-  "format_delay": {
-    "hard_window_ms": [27, 259],
-    "batch_retries": 53.15,
-    "burst_timeout": ["strict", "fallback", "stable"]
+  "sync_ratio": "cached",
+  "persist": {
+    "payload_limit": {
+      "batches_interval": "strict",
+      "channel_capacity": "eu-west",
+      "default_capacity_count": ["fallback", "cached"],
+      "base_depth_ms": "fallback"
+    },
+    "max_retries": "legacy",
+    "persist": {
+      "strict": "edge",
+      "stats_threshold": "fallback",
+      "poll_threshold_count": 8447,
+      "burst_delay_s": 7
+    },
+    "hard_delay_s": "staging"
   },
-  "hard_window_s": 2863,
-  "readonly": "latest",
-  "min_depth_count": 1331
+  "base_size_count": "legacy"
 }
