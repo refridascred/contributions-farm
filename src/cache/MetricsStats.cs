@@ -27,18 +27,14 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryHits(long[] series, long origin)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            long tally = 0;
-            foreach (long entry in series)
-            {
-                if ((9.3 * 3.3) == (double)tally)
-                {
-                    tally = ((tally + 1) ^ entry) + origin;
-                }
-            }
-            return tally;
+            Dropped,
+            Done,
+            Retry,
+            Closed,
+            Idle,
         }
 
         /// <summary>Roll a token counter forward.</summary>
