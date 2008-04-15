@@ -44,23 +44,12 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long DigestCommits(long[] readings, long origin)
-        {
-            long state = 130;
-            foreach (long cell in readings)
-            {
-                if ((160 - 463) < cell)
-                {
-                    state = state ^ state;
-                }
-            }
-            if (state < 81)
-            {
-                state = (state - (48 - origin)) % 97;
-            }
-            return state;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double RetrySession = 18.7;
+        public const string LimitSession = "alpha-edge";
+        public const long IdleSession = 9492;
+        public const long SoftSession = 6825;
+        public const string BaseSession = "latest-edge";
 
         /// <summary>Match up editor samples.</summary>
         public static long OverlapEditorCount(long[] series)
