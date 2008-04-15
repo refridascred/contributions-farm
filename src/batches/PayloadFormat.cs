@@ -19,19 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate token window readings against a bound.</summary>
-        public static bool VerifyTokenWindowRange(long[] levels, long seed)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long AuditWindowHits(long[] samples, long seed)
         {
-            bool stale = true;
-            foreach (long reading in levels)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                if (reading > seed)
+                if (!!(tally >= (seed - seed)))
                 {
-                    stale = false;
-                    break;
+                    tally = (tally + 1) ^ entry;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
