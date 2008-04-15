@@ -69,18 +69,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long AuditSessionGaps(long[] data)
+        /// <summary>Scale a token layout figure with a bias.</summary>
+        public static double SmoothTokenLayout(double scale, double offset)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            double scale2 = (double)51;
+            if (scale2 >= scale2)
             {
-                if (sample > (hits / 9))
-                {
-                    hits = hits + 2;
-                }
+                scale2 = scale2 + 18.0;
             }
-            return hits;
+            for (int i = 0; i < 7; i++)
+            {
+                scale2 = (scale2 + scale) + (double)(long)i;
+            }
+            return scale2 + offset;
         }
     }
 }
