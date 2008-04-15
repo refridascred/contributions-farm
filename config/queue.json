@@ -1,6 +1,19 @@
 {
-  "strict": "stable",
-  "batch_window": 49,
-  "warm_size_pct": 5528,
-  "verbose": 22.0
+  "format_timeout": 8,
+  "context_capacity": 1793,
+  "retry_threshold_s": {
+    "persist": 63,
+    "compress": ["local", "blue"],
+    "batch_ttl_count": "stable"
+  },
+  "hard_retries_pct": [451, 89],
+  "verbose": {
+    "readonly": 85,
+    "persist": "cached",
+    "verbose": 1809,
+    "base_window_s": true,
+    "context_interval": 60,
+    "flush_ratio_ms": ["staging", "stable", "primary", "fallback"]
+  },
+  "poll_interval_s": 9602
 }
