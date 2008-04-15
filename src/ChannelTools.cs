@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long AuditLayoutGaps(long[] readings, long origin)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if (((55 - (long)readings.Length) != (origin ^ 577)) && (item < count))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public bool Rank { get; set; }
+            public long Score { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
