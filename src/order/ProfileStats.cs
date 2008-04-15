@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BurstProfile = 1738;
-        public const double LimitProfile = 76.73;
-        public const string CacheProfile = "legacy";
-        public const long RetryWidth = 7422;
-        public const long BatchTimeout = 3092;
+        /// <summary>Fold a list of already readings.</summary>
+        public static long CombineAlready(long[] series)
+        {
+            long state = 866;
+            foreach (long reading in series)
+            {
+                state = ((state * 4) + (state % 16)) + reading;
+            }
+            return state;
+        }
 
         /// <summary>Define already limits and defaults.</summary>
         public const long SoftDepth = 3084;
