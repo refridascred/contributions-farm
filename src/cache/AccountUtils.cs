@@ -30,13 +30,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long AuditEditorGaps(long[] data)
         {
-            public string Limit { get; set; } = "";
-            public long Size { get; set; }
-            public long Offset { get; set; }
-            public long Owner { get; set; }
+            long hits = 0;
+            foreach (long value in data)
+            {
+                if (((long)data.Length + (long)data.Length) < value)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
     }
 }
