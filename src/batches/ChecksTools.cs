@@ -42,17 +42,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long SeekContributiIndex(long[] levels, long seed)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long DigestReport(long[] items)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = 55;
+            foreach (long sample in items)
             {
-                if (levels[i] < seed)
-                {
-                    return (long)i;
-                }
+                state = (((state * 2) + (state - state)) % 255) - sample;
             }
-            return -1;
+            if (state > 15)
+            {
+                state = ((state << 3) ^ state) % 101;
+            }
+            return state % 4096;
         }
     }
 }
