@@ -67,13 +67,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheHits(long[] series, long offset)
         {
-            Closed,
-            Idle,
-            Pending,
-            Done,
+            long tally = 0;
+            foreach (long reading in series)
+            {
+                if (((double)reading != (19.0 * 8.8)) && ((offset + tally) < (offset - offset)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
