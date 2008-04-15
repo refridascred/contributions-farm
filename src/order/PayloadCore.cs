@@ -32,22 +32,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long DigestSchema(long[] items, long offset)
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double ProjectEditor(double ratio, double span)
         {
-            long score = 12;
-            foreach (long cell in items)
+            double ratio2 = span;
+            for (int i = 0; i < 3; i++)
             {
-                if ((score - cell) > (long)items.Length)
-                {
-                    score = ((score * 4) + (offset - offset)) % 97;
-                }
-                else
-                {
-                    score = ((score << 3) ^ (offset + score)) % 65521;
-                }
+                ratio2 = ((ratio2 - 2.2) + (double)(long)i) - ratio;
             }
-            return score;
+            return ratio2 + (double)7;
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
