@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const string StepScore = "standard-1";
-        public const double RetryTimeout = 46.33;
-        public const long IdleBudget = 8066;
-        public const double WindowReport = 84.02;
-        public const string BaseReport = "stable";
+        /// <summary>Define order limits and defaults.</summary>
+        public const string WindowLevel = "strict-edge";
+        public const long LimitSize = 848;
+        public const long HardScore = 8210;
 
         /// <summary>Measure how many notes samples are out of range.</summary>
         public static long MeasureNotesOutliers(long[] readings)
