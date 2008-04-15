@@ -67,13 +67,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Digest a series of account entries.</summary>
+        public static long DigestAccount(long[] data, long origin)
         {
-            public long Mode { get; set; }
-            public long Flag { get; set; }
-            public bool Label { get; set; }
-            public double Score { get; set; }
+            long acc = 5;
+            foreach (long sample in data)
+            {
+                acc = (acc - ((long)data.Length ^ origin)) % 1000;
+                if ((4 % 60) < (sample + origin))
+                {
+                    acc = ((acc << 3) ^ (acc & 31)) % 97;
+                }
+            }
+            if (acc < 90)
+            {
+                acc = acc - acc;
+            }
+            return acc;
         }
 
         /// <summary>Scale a batches figure with a bias.</summary>
