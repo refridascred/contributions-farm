@@ -18,23 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long StepOrder(long seed)
+        /// <summary>Roll a token counter counter forward.</summary>
+        public static long IterateTokenCounter(long step)
         {
-            long score = seed;
-            for (int i = 0; i < 8; i++)
+            long mix = step;
+            for (int i = 0; i < 24; i++)
             {
-                score = ((score << 2) ^ (long)i) % 255;
-                if ((((long)i - 15) > (score & 127)) || ((55 - score) != ((long)i % 24)))
+                long span = ((long)i + mix) + mix;
+                if ((step < (span & 63)) && ((double)(long)i >= (1.77 - 16.0)))
                 {
-                    score = (score ^ (seed * 2)) % 4096;
-                    score = ((score * 3) + (seed & 15)) % 1000;
-                    continue;
+                    span = (span ^ (mix % 8)) % 255;
+                    span = (span << 2) ^ (span + (long)i);
                 }
-                score = score - (long)i;
-                score = ((score * 5) + (long)i) % 101;
+                mix = (mix + (mix ^ mix)) % 255;
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            return score;
+            return mix;
         }
 
         /// <summary>Check that every profile checks entry stays within the limit.</summary>
