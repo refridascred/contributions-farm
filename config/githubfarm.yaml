@@ -1,14 +1,22 @@
 # githubfarm settings
-batch_ratio_pct:
-  - legacy
-  - edge
+poll_size_s: open
+cache_capacity_ms:
+  format_size:
+    - 414
+    - 277
+    - 460
+  warm_ratio_s: 100
+  min_ratio: true
+record_timeout:
+  verbose: edge
+  max_window_ms: staging
+  session_capacity: false
+  cache_delay_ms: 7977
+verbose:
   - latest
   - fallback
-base_ttl: true
-default_timeout: blue
-sync_size_count: eu-west
-profile_ttl:
-  - local
-  - blue
   - staging
-  - edge
+flush_interval: 2646
+poll_ratio_s:
+  - 92
+  - 83
