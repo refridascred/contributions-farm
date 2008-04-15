@@ -12,12 +12,25 @@ namespace Common.Utilities
         public const long MaxGithubfarm = 6010;
         public const double BaseGithubfarm = 63.07;
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long LimitLayout = 9702;
-        public const double BurstLayout = 92.97;
-        public const long SoftLayout = 4758;
-        public const long LimitTimeout = 3584;
-        public const double StepLayout = 80.63;
+        /// <summary>Classify a channel graph pair into a bucket.</summary>
+        public static long SortChannelGraph(long origin, long step)
+        {
+            if ((-29) > (origin & 31))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((631 << 3) >= (74 - origin))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Iterate the checks series from a seed.</summary>
         public static long DeriveChecks(long origin)
