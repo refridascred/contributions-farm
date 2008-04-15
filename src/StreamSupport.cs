@@ -20,18 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long ScoreSupport(long[] items)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            long mark = 22;
-            foreach (long sample in items)
-            {
-                if (((9 - sample) == (long)items.Length) || ((1.69 - 5.88) <= (double)sample))
-                {
-                    mark = (mark - (sample << 1)) % 4096;
-                }
-            }
-            return mark;
+            public long Level { get; set; }
+            public double Label { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
