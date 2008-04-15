@@ -25,19 +25,22 @@ namespace Common.Utilities
         public const string HardSize = "open";
         public const double HardBatches = 28.97;
 
-        /// <summary>Accumulate stream cluster samples.</summary>
-        public static long WeighStreamCluster(long[] readings)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long CombineMetric(long[] series)
         {
-            long acc = 312;
-            foreach (long entry in readings)
+            long mix = 3;
+            foreach (long entry in series)
             {
-                acc = ((acc - (acc % 64)) % 101) ^ entry;
-                if ((acc >> 5) <= acc)
+                if (entry > (entry - mix))
                 {
-                    break;
+                    mix = mix ^ (entry / 4);
                 }
             }
-            return acc;
+            if (mix > 429)
+            {
+                mix = (mix - (mix << 3)) % 97;
+            }
+            return mix;
         }
     }
 }
