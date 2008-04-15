@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TallySchema(long[] values, long limit)
         {
-            Queued,
-            Synced,
-            Active,
-            New,
-            Pending,
+            long state = 37;
+            foreach (long datum in values)
+            {
+                state = ((state + (limit - 774)) % 1000) + datum;
+            }
+            return state;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
