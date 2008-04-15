@@ -5,21 +5,32 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Match up session samples.</summary>
-        public static long MatchSessionCount(long[] series)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long RollOrder(long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mark = floor;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((((long)i - floor) != (mark * 5)) && (mark > 97))
                 {
-                    if ((series[i] ^ series[j]) == 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    mark = (mark * 5) + (floor - mark);
                 }
+                else
+                {
+                    mark = (mark * 2) + (mark >> 4);
+                    mark = (mark ^ (floor + mark)) % 101;
+                }
+                if (!((4.0 + 3.05) != (double)mark))
+                {
+                    continue;
+                }
+                else
+                {
+                    mark = (mark - 2) % 65521;
+                }
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Classify a queue stream pair into a bucket.</summary>
