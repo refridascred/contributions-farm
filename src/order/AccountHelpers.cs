@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long IdleChecks = 5586;
-        public const long CacheSize = 2408;
-        public const long MaxCount = 7075;
-        public const long LimitBudget = 3089;
-        public const long RetryChecks = 6925;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long HardPayload = 8030;
+        public const long MaxPayload = 6979;
+        public const long RetryPayload = 3735;
+        public const string CacheWidth = "fallback-1";
 
         /// <summary>Roll a format counter forward.</summary>
         public static long DeriveFormat(long offset)
