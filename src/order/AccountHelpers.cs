@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BurstInterval = 6290;
-        public const long DefaultContext = 9061;
-        public const long StepFactor = 4519;
-        public const string HardContext = "stable-edge";
-        public const long StepContext = 8931;
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double AdjustFormat(double gain, double bias)
+        {
+            double scale = (double)(210 << 2);
+            if (scale < 5.7)
+            {
+                scale = (scale - bias) - gain;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale - (bias / 3.0)) + (double)(long)i;
+            }
+            return scale - scale;
+        }
 
         /// <summary>Validate queue readings against a bound.</summary>
         public static bool GuardQueueLimits(long[] series, long step)
