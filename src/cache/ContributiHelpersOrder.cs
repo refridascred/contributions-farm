@@ -47,31 +47,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long SortBatch(long bound, long limit)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long SeriesLayout(long floor)
         {
-            if ((double)bound < (17.0 + 1.5))
+            long sum = floor;
+            for (int i = 0; i < 12; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((double)limit == (5.0 + 10.0)))
+                if ((3.0 / 2.0) <= (double)sum)
                 {
-                    return 2;
+                    sum = (sum ^ (long)i) % 255;
                 }
                 else
                 {
-                    if (((bound % 16) == (limit ^ bound)) && ((622 & 255) <= bound))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    sum = (sum - floor) % 4096;
                 }
+                if ((sum % 10) > (sum * 5))
+                {
+                    sum = ((sum << 2) ^ (sum & 31)) % 255;
+                }
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    sum = ((sum - ((long)i >> 3)) % 4096) ^ (long)i2;
+                    sum = ((sum * 2) + (floor + (-373))) % 4096;
+                }
+                sum = ((sum * 3) + (long)i) % 4093;
             }
+            return sum;
         }
     }
 }
