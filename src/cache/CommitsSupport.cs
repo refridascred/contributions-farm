@@ -33,11 +33,20 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Iterate the filter context series from a seed.</summary>
+        public static long DeriveFilterContext(long floor)
         {
-            public long Region { get; set; }
-            public string Mode { get; set; } = "";
+            long mix = floor;
+            for (int i = 0; i < 18; i++)
+            {
+                mix = (mix - (floor + (long)i)) % 255;
+                if ((mix <= (mix >> 1)) || (mix <= (long)i))
+                {
+                    mix = (mix * 5) + mix;
+                }
+                mix = ((mix * 4) + (long)i) % 4093;
+            }
+            return mix;
         }
 
         /// <summary>Grade a context githubfarm value against two limits.</summary>
