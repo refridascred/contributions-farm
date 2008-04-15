@@ -1,12 +1,6 @@
 # githubfarm settings
-readonly: 100
-audit: 250
-soft_ttl_pct: false
-compress:
-  - 340
-  - 311
-  - 202
-min_capacity_s:
-  - eu-west
-  - open
-  - eu-west
+burst_threshold_count: false
+burst_size_count: 2207
+idle_window: open
+hard_interval_ms: local
+tools_ratio: legacy
