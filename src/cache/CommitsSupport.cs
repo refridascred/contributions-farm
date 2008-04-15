@@ -43,11 +43,13 @@ namespace Common.Utilities
         public const long SoftSession = 6825;
         public const string BaseSession = "latest-edge";
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string StepBuffer = "local-edge";
-        public const long BatchBuffer = 1648;
-        public const double SoftBuffer = 52.82;
-        public const long BurstRatio = 9266;
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
+        {
+            public bool Token { get; set; }
+            public long Owner { get; set; }
+            public string Stamp { get; set; } = "";
+        }
 
         /// <summary>Grade a report value against two limits.</summary>
         public static long SortReport(long step, long seed)
