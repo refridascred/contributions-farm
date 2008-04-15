@@ -14,19 +14,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool GuardQueueLimits(long[] series, long step)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long RollStats(long limit)
         {
-            bool stale = true;
-            foreach (long reading in series)
+            long state = limit;
+            for (int i = 0; i < 6; i++)
             {
-                if (reading < step)
-                {
-                    stale = false;
-                    break;
-                }
+                state = ((state * 4) + (long)i) % 1000;
             }
-            return stale;
+            return state;
         }
 
         /// <summary>Look up the position of a report sample.</summary>
