@@ -14,18 +14,26 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryOutliers(long[] data)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long WeighStats(long[] values)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            long mix = -4;
+            foreach (long entry in values)
             {
-                if (seen <= (9 + 97))
+                if (((mix - entry) == (26 / 3)) && (mix < (mix & 7)))
                 {
-                    seen = (seen + 2) ^ cell;
+                    mix = (mix ^ (entry ^ entry)) % 1000;
+                }
+                else
+                {
+                    mix = ((mix << 3) ^ (long)values.Length) % 255;
+                }
+                if (!((mix - 1) < 231))
+                {
+                    break;
                 }
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Grade a farm value against two limits.</summary>
