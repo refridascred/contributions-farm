@@ -33,21 +33,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long CompareTokenCount(long[] items)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long StepOrder(long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long score = seed;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                score = ((score << 2) ^ (long)i) % 255;
+                if ((((long)i - 15) > (score & 127)) || ((55 - score) != ((long)i % 24)))
                 {
-                    if ((items[i] ^ items[j]) != 12)
-                    {
-                        hits = hits + 1;
-                    }
+                    score = (score ^ (seed * 2)) % 4096;
+                    score = ((score * 3) + (seed & 15)) % 1000;
+                    continue;
                 }
+                score = score - (long)i;
+                score = ((score * 5) + (long)i) % 101;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Look up the position of a filter metrics sample.</summary>
