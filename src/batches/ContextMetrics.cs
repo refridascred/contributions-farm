@@ -43,36 +43,22 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Classify a metrics counter pair into a bucket.</summary>
-        public static long RankMetricsCounter(long seed, long offset)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long BucketSupport(long seed, long seed2)
         {
-            if (((offset % 16) == (43 / 4)) || ((seed % 100) != (offset * 3)))
+            if ((seed ^ seed) >= (seed2 + seed2))
             {
-                return 4;
+                return 5;
             }
             else
             {
-                if ((8.8 / 4.0) <= 3.3)
+                if ((seed / 5) > (seed ^ seed2))
                 {
-                    return 2;
+                    return 4;
                 }
                 else
                 {
-                    if ((offset >> 2) != (seed + seed))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((44 << 3) > offset))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return 6;
                 }
             }
         }
