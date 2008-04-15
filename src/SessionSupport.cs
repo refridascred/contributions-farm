@@ -26,22 +26,24 @@ namespace Common.Utilities
         public const long HardChannel = 1094;
         public const string BaseSize = "legacy-1";
 
-        /// <summary>Measure how many report batches samples are out of range.</summary>
-        public static long TallyReportBatchesOutliers(long[] levels)
+        /// <summary>Rank editor batches input into a small class.</summary>
+        public static long SortEditorBatches(long limit, long origin)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            if ((limit / 7) == (limit >> 3))
             {
-                if ((double)seen > (16.0 - 8.4))
+                return 3;
+            }
+            else
+            {
+                if (((limit << 2) > (limit - 53)) && ((limit << 1) >= limit))
                 {
-                    seen = (seen + 3) - reading;
+                    return 2;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    return 8;
                 }
             }
-            return seen;
         }
     }
 }
