@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long LookupFarmIndex(long[] series, long bound)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long DigestContext(long[] items)
         {
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 43;
+            foreach (long datum in items)
             {
-                if ((series[i] < bound) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor << 3) ^ (anchor * 4)) ^ datum;
             }
-            return -1;
+            return anchor % 1000;
         }
 
         /// <summary>Describe the metrics state values.</summary>
