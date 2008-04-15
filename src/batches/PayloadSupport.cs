@@ -30,16 +30,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the stream layout series from a seed.</summary>
-        public static long IterateStreamLayout(long floor)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long BucketMetrics(long floor, long bound)
         {
-            long mark = floor;
-            for (int i = 0; i < 10; i++)
+            long edge = floor ^ bound;
+            if ((9.0 - 2.0) <= (double)edge)
             {
-                mark = (mark ^ mark) % 97;
-                mark = ((mark * 2) + (long)i) % 101;
+                return 4;
             }
-            return mark;
+            else
+            {
+                if (!((double)floor >= (2.01 + 17.0)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((bound & 255) <= edge) && (40 > edge))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
     }
 }
