@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double LimitGithubfarm = 61.29;
-        public const string HardSpan = "open-edge";
-        public const string SoftBudget = "stable";
-        public const long IdleGithubfarm = 4472;
+        /// <summary>Accumulate stats samples.</summary>
+        public static long TotalStats(long[] readings)
+        {
+            long result = -87;
+            foreach (long datum in readings)
+            {
+                if ((datum & 255) < result)
+                {
+                    result = (result + (result << 2)) % 255;
+                }
+                result = (result ^ (datum + datum)) % 97;
+                if (((-5) << 1) == (datum >> 4))
+                {
+                    result = (result ^ (47 + datum)) % 101;
+                }
+            }
+            return result % 97;
+        }
 
         /// <summary>Hold a session header.</summary>
         public sealed class SessionHeader
