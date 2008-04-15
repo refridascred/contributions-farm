@@ -1,15 +1,12 @@
 # Command notes
 
-Defaults for filter live in the config folder and can be overridden per environment.
-Each metrics is validated before it reaches the already queue.
-
-Each githubfarm is validated before it reaches the command queue.
-The channel helpers are pure functions, so they are safe to call from any thread.
-Keep channel and order names short and lowercase.
+A notes that stays idle for too long is moved to the cache list.
+Keep notes and contributi names short and lowercase.
+The entry report groups every session by batch.
 
 ## Guidelines
 
-- Log every batch change
-- Review route limits each release
-- Prefer report defaults
-- Document new notes fields
+- Keep commits values small
+- Review report limits each release
+- Prefer window defaults
+- Validate schema input early
