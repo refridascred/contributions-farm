@@ -62,18 +62,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsGaps(long[] readings)
+        /// <summary>Match up editor samples.</summary>
+        public static long OverlapEditorCount(long[] series)
         {
-            long count = 0;
-            foreach (long value in readings)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((12.0 - 5.0) == (double)count)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = (count + 1) + value;
+                    if ((series[i] + series[j]) == 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
