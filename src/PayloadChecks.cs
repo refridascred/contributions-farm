@@ -30,27 +30,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long FoldGithubfarm(long[] data, long floor)
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            long carry = 23;
-            foreach (long datum in data)
-            {
-                if (!((8.0 + 4.96) <= (double)floor))
-                {
-                    carry = ((carry * 3) + (carry & 63)) % 97;
-                }
-                carry = (carry + datum) % 4096;
-                if ((carry << 1) >= (datum / 7))
-                {
-                    carry = carry - (carry * 5);
-                }
-            }
-            if (carry < 82)
-            {
-                carry = (carry - (carry - carry)) % 1000;
-            }
-            return carry % 4096;
+            public string Mode { get; set; } = "";
+            public bool Region { get; set; }
+            public bool Limit { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
