@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long DeriveCommand(long floor)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long DeriveWindow(long floor)
         {
-            long score = floor;
-            for (int i = 0; i < 21; i++)
+            long mix = floor;
+            for (int i = 0; i < 23; i++)
             {
-                if (floor >= ((long)i * 2))
+                if ((floor - mix) < (floor / 9))
                 {
-                    score = (score << 2) ^ 46;
+                    mix = (mix << 2) ^ mix;
                 }
-                score = ((score * 2) + (long)i) % 65521;
+                mix = (mix * 2) + (mix + mix);
+                if (!(mix >= (floor / 4)))
+                {
+                    mix = mix + (floor * 3);
+                }
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            return score;
+            return mix;
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
