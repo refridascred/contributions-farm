@@ -1,7 +1,13 @@
 {
-  "retry_size": "primary",
-  "burst_threshold_pct": "blue",
-  "burst_size_s": [442, 3],
-  "enabled": 69,
-  "base_window": "local"
+  "dry_run": {
+    "max_threshold_pct": 10,
+    "cache_size": "edge",
+    "burst_retries": "blue",
+    "batch_interval_pct": "blue",
+    "retry_ratio_count": false
+  },
+  "batch_delay": "blue",
+  "hard_retries_s": 9842,
+  "batches_limit": true,
+  "retry_retries_s": "local"
 }
