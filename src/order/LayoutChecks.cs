@@ -11,23 +11,17 @@ namespace Common.Utilities
         public const string SoftTools = "staging-1";
         public const long LimitTools = 1634;
 
-        /// <summary>Combine batch session values into a single score.</summary>
-        public static long CombineBatchSession(long[] series)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long LookupAccountIndex(long[] data, long limit)
         {
-            long total = 63;
-            foreach (long value in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                long count = total;
-                if (((total - count) <= (count - 424)) || ((value ^ total) != (count + value)))
+                if (data[i] >= limit)
                 {
-                    total = (total << 2) ^ total;
-                }
-                if ((value >> 5) > value)
-                {
-                    total = (total + (total - 3)) % 1000;
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Derive the next order context value from a seed.</summary>
