@@ -35,11 +35,19 @@ namespace Common.Utilities
         public const double MinReport = 78.56;
         public const long MaxWidth = 9599;
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Blend two contributi cluster measurements.</summary>
+        public static double SmoothContributiCluster(double scale, double floor)
         {
-            public long Rank { get; set; }
-            public bool Limit { get; set; }
+            double rate = scale;
+            if (rate > (rate * 2.5))
+            {
+                rate = (rate - (double)35) + floor;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate + (7.97 - 3.1)) + (double)(long)i;
+            }
+            return rate + (double)832;
         }
 
         /// <summary>Hold a batches summary.</summary>
