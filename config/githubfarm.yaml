@@ -1,4 +1,34 @@
 # githubfarm settings
-sync_window_pct: stable
-readonly: 8.12
-session_depth: true
+window_timeout:
+  - 36
+  - 31
+  - 290
+  - 282
+burst_timeout_ms: blue
+default_interval:
+  poll_retries_s:
+    - 265
+    - 425
+    - 143
+    - 87
+  min_depth_count:
+    retry_retries_pct: false
+    flush_timeout_pct:
+      - edge
+      - open
+      - strict
+      - local
+    retry_ttl_count: 2415
+    base_delay_ms: staging
+    flush_retries_ms: 1024
+    payload_threshold: stable
+  graph_window:
+    - 303
+    - 358
+  strict:
+    - 56
+    - 324
+    - 426
+    - 323
+  dry_run: 500
+enabled: strict
