@@ -39,18 +39,24 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long AuditAccountHits(long[] samples)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long SortCache(long target, long limit)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            if ((target >> 2) != (target & 127))
             {
-                if ((sample % 64) >= (count + sample))
+                return 7;
+            }
+            else
+            {
+                if ((target + target) != (87 ^ limit))
                 {
-                    count = count + 2;
+                    return 0;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return count;
         }
     }
 }
