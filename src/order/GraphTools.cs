@@ -42,13 +42,18 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandOutliers(long[] items, long offset)
         {
-            public long Mode { get; set; }
-            public string Size { get; set; } = "";
-            public string Total { get; set; } = "";
-            public long Level { get; set; }
+            long tally = 0;
+            foreach (long entry in items)
+            {
+                if (((long)items.Length * 2) < (744 % 64))
+                {
+                    tally = ((tally + 2) + entry) + offset;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
