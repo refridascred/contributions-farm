@@ -1,7 +1,10 @@
-id,score,count
-1,297,845
-2,0.77,54.65
-3,43.31,554
-4,35.16,blue
-5,cached,97.77
-6,green,96.79
+id,weight,active,rank
+1,local,local,eu-west
+2,833,440,11.53
+3,green,green,fallback
+4,latest,26,standard
+5,197,fallback,latest
+6,33.2,local,eu-west
+7,primary,8.55,50.28
+8,865,19,168
+9,57,54.09,294
