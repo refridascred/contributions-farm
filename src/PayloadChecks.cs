@@ -45,38 +45,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long RankNotes(long step, long target)
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            if ((double)step != (double)target)
-            {
-                return 7;
-            }
-            else
-            {
-                if (step >= (step + target))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((target + step) <= step)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((642 << 1) != (step + step))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public long Level { get; set; }
+            public string Score { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
