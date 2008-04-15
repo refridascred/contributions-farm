@@ -1,7 +1,5 @@
 {
-  "already_interval": false,
-  "enabled": "legacy",
-  "base_retries_count": 97.76,
-  "token_ttl": "cached",
-  "verbose": "local"
+  "soft_ratio": 4458,
+  "channel_ttl": 46.31,
+  "hard_retries_pct": ["standard", "cached", "cached", "strict"]
 }
