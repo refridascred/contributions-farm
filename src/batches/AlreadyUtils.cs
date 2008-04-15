@@ -46,19 +46,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every cache graph entry stays within the limit.</summary>
-        public static bool ValidateCacheGraphRange(long[] readings, long offset)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long MatchRouteCount(long[] values)
         {
-            bool flag = true;
-            foreach (long item in readings)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (item <= offset)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((values[i] - values[j]) > 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Describe the entry class values.</summary>
