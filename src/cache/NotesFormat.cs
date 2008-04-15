@@ -10,39 +10,14 @@ namespace Common.Utilities
         public const long StepAccount = 6719;
         public const string RetryAccount = "stable-edge";
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long SortStats(long bound, long limit)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            long cur = bound ^ limit;
-            if (((57 % 16) != (limit + 323)) && ((bound / 4) >= (bound & 31)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((double)limit > (11.0 - 14.0)) || ((67 - 308) > (cur - cur)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((8.77 / 8.0) > (double)bound)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)cur > (2.87 * 4.0))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Failed,
+            Retry,
+            Draft,
+            Stale,
+            Done,
         }
 
         /// <summary>Describe the checks phase values.</summary>
