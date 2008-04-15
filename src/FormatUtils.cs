@@ -88,14 +88,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long FoldMetric(long[] data, long seed)
         {
-            Failed,
-            Draft,
-            Stale,
-            Retry,
-            Paused,
+            long score = 17;
+            foreach (long sample in data)
+            {
+                score = ((score + seed) % 4096) + sample;
+            }
+            if (score < (-53))
+            {
+                score = (score - (93 / 2)) % 97;
+            }
+            return score % 65521;
         }
     }
 }
