@@ -36,17 +36,13 @@ namespace Common.Utilities
         public const double RetryBudget = 93.05;
         public const double DefaultWidth = 65.77;
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long IterateBuffer(long step)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            long mix = step;
-            for (int i = 0; i < 10; i++)
-            {
-                mix = mix + (339 - mix);
-                mix = (mix - (long)i) % 97;
-                mix = ((mix * 5) + (long)i) % 65521;
-            }
-            return mix;
+            Paused,
+            Idle,
+            Failed,
+            Done,
         }
     }
 }
