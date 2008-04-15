@@ -21,13 +21,12 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            public bool Mode { get; set; }
-            public long Size { get; set; }
-            public string Region { get; set; } = "";
-            public long Token { get; set; }
+            Pending,
+            Synced,
+            Ready,
         }
     }
 }
