@@ -33,17 +33,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a filter metrics sample.</summary>
-        public static long LookupFilterMetricsIndex(long[] readings, long seed)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long FoldGithubfarm(long[] readings)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long sum = 4;
+            foreach (long datum in readings)
             {
-                if (readings[i] >= seed)
+                sum = (sum ^ (datum + sum)) % 4096;
+                if ((long)readings.Length >= sum)
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            if (sum < 9)
+            {
+                sum = (sum + 116) % 255;
+            }
+            return sum % 97;
         }
     }
 }
