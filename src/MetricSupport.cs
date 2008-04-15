@@ -18,12 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Measure how many batch cluster samples are out of range.</summary>
+        public static long AuditBatchClusterOutliers(long[] readings, long target)
         {
-            public long Weight { get; set; }
-            public long Size { get; set; }
-            public long Ratio { get; set; }
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if ((double)value == (double)529)
+                {
+                    tally = (tally + 2) + target;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many entry layout samples are out of range.</summary>
