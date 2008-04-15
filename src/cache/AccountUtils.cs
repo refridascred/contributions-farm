@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Locate a format reading by value.</summary>
-        public static long FindFormatIndex(long[] values, long limit)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long LocateReportIndex(long[] series, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (values[i] >= limit)
+                if ((series[i] > floor) && ((series[i] % 3) == 0))
                 {
                     return (long)i;
                 }
