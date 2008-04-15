@@ -19,19 +19,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double ProjectBatches(double scale, double span)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long FoldOrder(long[] values)
         {
-            double mean = 3.71;
-            if (mean > scale)
+            long result = 7;
+            foreach (long datum in values)
             {
-                mean = (mean - (double)9) - span;
+                result = (result ^ (result + result)) ^ datum;
+                result = result - (long)values.Length;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean - 8.0) + (double)(long)i;
-            }
-            return mean + (scale + mean);
+            return result;
         }
 
         /// <summary>Fold a list of stream cache readings.</summary>
