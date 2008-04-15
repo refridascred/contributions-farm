@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Check that every farm token entry stays within the limit.</summary>
-        public static bool CheckFarmTokenBounds(long[] samples, long target)
+        /// <summary>Grade a batches buffer value against two limits.</summary>
+        public static long BucketBatchesBuffer(long floor, long offset)
         {
-            bool valid = true;
-            foreach (long entry in samples)
+            if (((double)5 != (double)offset) || ((544 & 255) >= floor))
             {
-                if (entry > target)
+                return 2;
+            }
+            else
+            {
+                if ((9.93 * 1.46) == (double)floor)
                 {
-                    valid = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return valid;
         }
 
         /// <summary>Accumulate editor samples.</summary>
