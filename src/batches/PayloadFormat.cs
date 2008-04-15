@@ -14,19 +14,19 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double ScaleEditor(double weight, double span)
+        /// <summary>Validate token window readings against a bound.</summary>
+        public static bool VerifyTokenWindowRange(long[] levels, long seed)
         {
-            double load = weight;
-            if (load >= weight)
+            bool stale = true;
+            foreach (long reading in levels)
             {
-                load = load - (span + weight);
+                if (reading > seed)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load + load) + (double)(long)i;
-            }
-            return load - (double)532;
+            return stale;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
