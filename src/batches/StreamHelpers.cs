@@ -32,18 +32,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long AuditAccountMatches(long[] samples, long step)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            long count = 0;
-            foreach (long item in samples)
-            {
-                if ((step >> 3) == (count >> 3))
-                {
-                    count = (count + 3) + item;
-                }
-            }
-            return count;
+            Pending,
+            Closed,
+            Stale,
+            Synced,
         }
 
         /// <summary>Accumulate metric samples.</summary>
