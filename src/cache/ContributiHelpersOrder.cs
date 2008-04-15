@@ -15,14 +15,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long LocateClusterIndex(long[] items, long floor)
         {
-            Synced,
-            Locked,
-            Stale,
-            Ready,
-            New,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < floor) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
