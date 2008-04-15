@@ -21,18 +21,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadMatches(long[] series)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long LocateGithubfarmIndex(long[] data, long limit)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((matches / 9) <= matches))
+                if (data[i] < limit)
                 {
-                    matches = (matches + 1) + sample;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Look up the position of a queue sample.</summary>
