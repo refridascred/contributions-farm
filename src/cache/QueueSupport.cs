@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            Retry,
-            Closed,
-            New,
+            public string Limit { get; set; } = "";
+            public bool Rank { get; set; }
+            public long Owner { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Rank route input into a small class.</summary>
