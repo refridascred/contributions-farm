@@ -14,14 +14,15 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double SmoothFarm(double gain, double bias)
         {
-            Idle,
-            Active,
-            Pending,
-            Locked,
-            Queued,
+            double load = gain;
+            for (int i = 0; i < 8; i++)
+            {
+                load = ((load + 5.57) + (double)(long)i) + bias;
+            }
+            return load + (double)213;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
