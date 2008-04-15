@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Measure how many window command samples are out of range.</summary>
+        public static long AuditWindowCommandMatches(long[] data)
         {
-            Failed,
-            Locked,
-            Dropped,
-            Stale,
+            long hits = 0;
+            foreach (long datum in data)
+            {
+                if (17.0 <= (double)datum)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Look up the position of a stream farm sample.</summary>
