@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
-        {
-            public long Stamp { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double CacheQueue = 82.7;
+        public const double HardQueue = 13.92;
+        public const long MinScore = 9422;
+        public const long DefaultWidth = 7670;
+        public const long StepWidth = 2290;
 
         /// <summary>Fold a list of order readings.</summary>
         public static long TallyOrder(long[] values)
