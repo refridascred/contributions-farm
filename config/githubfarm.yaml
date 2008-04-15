@@ -1,6 +1,9 @@
 # githubfarm settings
-burst_threshold_count: false
-burst_size_count: 2207
-idle_window: open
-hard_interval_ms: local
-tools_ratio: legacy
+metrics_window: 44.91
+audit: true
+strict: open
+sync_timeout_count: standard
+already_timeout:
+  - staging
+  - blue
+  - legacy
