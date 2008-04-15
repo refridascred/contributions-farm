@@ -39,20 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double AdjustFarm(double ratio, double span)
-        {
-            double scale = span * 8.7;
-            if (scale <= (double)4)
-            {
-                scale = scale + (ratio * 17.0);
-            }
-            else
-            {
-                scale = scale - scale;
-            }
-            return scale + (ratio + span);
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long WindowProfile = 7484;
+        public const long MaxInterval = 1879;
+        public const long MaxProfile = 7181;
+        public const string BaseTimeout = "staging-edge";
 
         /// <summary>Describe the record class values.</summary>
         public enum RecordClass
