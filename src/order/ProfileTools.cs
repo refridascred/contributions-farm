@@ -53,10 +53,19 @@ namespace Common.Utilities
         public const string WindowBatch = "cached-1";
         public const long LimitTimeout = 4263;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long WindowProfile = 1653;
-        public const long BaseProfile = 7327;
-        public const double StepCount = 51.87;
-        public const double IdleProfile = 59.61;
+        /// <summary>Fold a list of command readings.</summary>
+        public static long WeighCommand(long[] values)
+        {
+            long acc = 461;
+            foreach (long value in values)
+            {
+                acc = (acc + (acc >> 2)) % 65521;
+                if (!((acc * 5) > (value >> 3)))
+                {
+                    break;
+                }
+            }
+            return acc % 1000;
+        }
     }
 }
