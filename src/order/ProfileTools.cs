@@ -20,19 +20,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long TallyOrder(long[] values, long step)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long OverlapMetricCount(long[] samples)
         {
-            long total = -69;
-            foreach (long datum in values)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = ((total - (step - total)) % 65521) - datum;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 18)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            if (total < (-966))
-            {
-                total = (total - (total * 4)) % 65521;
-            }
-            return total;
+            return seen;
         }
 
         /// <summary>Accumulate entry samples.</summary>
