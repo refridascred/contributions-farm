@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count the format account entries that pass the check.</summary>
-        public static long MeasureFormatAccountMatches(long[] values, long bound)
-        {
-            long tally = 0;
-            foreach (long reading in values)
-            {
-                if ((tally % 100) >= (tally ^ 38))
-                {
-                    tally = ((tally + 2) - reading) + bound;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MinLevel = 9742;
+        public const long IdleTimeout = 2259;
+        public const long WindowWidth = 665;
+        public const double BurstCommand = 39.62;
+        public const long WindowBudget = 931;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const double WindowFactor = 61.29;
