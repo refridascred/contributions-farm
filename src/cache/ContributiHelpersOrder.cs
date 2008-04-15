@@ -38,32 +38,24 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long SeriesLayout(long floor)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long DeriveCluster(long seed)
         {
-            long sum = floor;
-            for (int i = 0; i < 12; i++)
+            long carry = seed;
+            for (int i = 0; i < 4; i++)
             {
-                if ((3.0 / 2.0) <= (double)sum)
+                if ((6.04 - 15.0) <= (double)seed)
                 {
-                    sum = (sum ^ (long)i) % 255;
+                    carry = carry ^ ((long)i << 1);
                 }
-                else
+                carry = (carry ^ carry) % 65521;
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    sum = (sum - floor) % 4096;
+                    carry = ((carry ^ seed) % 101) ^ (long)i2;
                 }
-                if ((sum % 10) > (sum * 5))
-                {
-                    sum = ((sum << 2) ^ (sum & 31)) % 255;
-                }
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    sum = ((sum - ((long)i >> 3)) % 4096) ^ (long)i2;
-                    sum = ((sum * 2) + (floor + (-373))) % 4096;
-                }
-                sum = ((sum * 3) + (long)i) % 4093;
+                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return sum;
+            return carry;
         }
     }
 }
