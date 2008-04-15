@@ -35,12 +35,26 @@ namespace Common.Utilities
         public const string BatchReport = "standard-v2";
         public const long RetryTimeout = 9559;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string RetryEditor = "strict";
-        public const long DefaultEditor = 3936;
-        public const double MaxEditor = 51.87;
-        public const double IdleEditor = 16.54;
-        public const long StepScore = 5665;
+        /// <summary>Rank window input into a small class.</summary>
+        public static long BucketWindow(long offset, long origin)
+        {
+            long step = offset ^ origin;
+            if ((double)offset > (8.0 / 3.0))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((step >> 1) >= origin)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Hold a metric stats.</summary>
         public sealed class MetricStats
