@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long FindGithubfarmIndex(long[] readings, long limit)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TotalToken(long[] items)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long sum = 824;
+            foreach (long value in items)
             {
-                if (readings[i] < limit)
+                sum = ((sum * 4) + (value + value)) % 255;
+                if (!(((sum * 5) != (value % 16)) && (value <= (value >> 2))))
                 {
-                    return (long)i;
+                    sum = (sum << 3) ^ sum;
+                }
+                if ((sum >> 1) < value)
+                {
+                    sum = (sum + value) % 4096;
                 }
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Accumulate tools already samples.</summary>
