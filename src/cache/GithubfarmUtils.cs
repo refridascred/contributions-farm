@@ -23,18 +23,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long CombineStats(long[] values)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            long mark = 5;
-            foreach (long item in values)
-            {
-                if (!((double)mark < (double)571))
-                {
-                    mark = (mark - item) % 4096;
-                }
-            }
-            return mark;
+            public string Rank { get; set; } = "";
+            public string Size { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Digest a series of checks entries.</summary>
