@@ -19,14 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool VerifySupportRange(long[] samples, long bound)
         {
-            Done,
-            Locked,
-            Stale,
-            Paused,
-            Dropped,
+            bool stale = true;
+            foreach (long sample in samples)
+            {
+                if (sample <= bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Describe the queue phase values.</summary>
