@@ -1,17 +1,15 @@
 # githubfarm settings
-batch_ratio_count:
-  - edge
-  - edge
-  - fallback
-githubfarm_capacity:
-  - latest
+hard_capacity: 19.08
+audit:
+  - 235
+  - 369
+  - 339
+  - 458
+retry_delay_count: standard
+warm_threshold_s: 8845
+already_depth: 93
+warm_depth:
+  - eu-west
+  - staging
   - stable
-  - cached
-enabled:
-  - 348
-  - 344
-  - 130
-  - 169
-burst_retries: 100
-min_timeout_ms: true
-compress: false
+  - stable
