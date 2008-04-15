@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Validate entry cluster readings against a bound.</summary>
-        public static bool ValidateEntryClusterLimits(long[] samples, long seed)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            bool ready = true;
-            foreach (long entry in samples)
-            {
-                if (entry < seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Closed,
+            Stale,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Describe the support level values.</summary>
