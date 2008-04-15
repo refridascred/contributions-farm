@@ -12,12 +12,21 @@ namespace Common.Utilities
         public const long IdleSchema = 562;
         public const long BaseBudget = 9152;
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long CompareAccountCount(long[] readings)
         {
-            public long Offset { get; set; }
-            public string Rank { get; set; } = "";
-            public long Token { get; set; }
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 7)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
