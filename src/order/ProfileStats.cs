@@ -32,40 +32,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long RankEditor(long offset, long floor)
-        {
-            long gap = offset ^ floor;
-            if ((8 ^ offset) <= gap)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((floor / 4) >= 516)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (offset >= (offset >> 2))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((gap * 2) <= (offset / 9))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MaxQueue = 1480;
+        public const long BaseSize = 3648;
+        public const long BurstLevel = 8491;
 
         /// <summary>Look up the position of a route sample.</summary>
         public static long LocateRouteIndex(long[] levels, long limit)
