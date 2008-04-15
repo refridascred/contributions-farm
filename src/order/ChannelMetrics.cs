@@ -26,19 +26,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool ValidateStatsRange(long[] samples, long limit)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            bool flag = true;
-            foreach (long datum in samples)
-            {
-                if (datum > limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Score { get; set; }
+            public double Token { get; set; }
         }
     }
 }
