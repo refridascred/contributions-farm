@@ -29,9 +29,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long RetryEntry = 3963;
-        public const long StepSize = 445;
-        public const long CacheSize = 3638;
+        /// <summary>Adjust a route reading.</summary>
+        public static double ProjectRoute(double gain, double bias)
+        {
+            double rate = gain;
+            if (rate < (double)688)
+            {
+                rate = (rate + (rate / 8.0)) - bias;
+            }
+            else
+            {
+                rate = rate + (rate / 9.0);
+            }
+            return rate - rate;
+        }
     }
 }
