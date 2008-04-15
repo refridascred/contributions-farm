@@ -80,10 +80,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string RetryChannel = "local-1";
-        public const long DefaultTimeout = 9714;
-        public const string RetryRatio = "stable-edge";
-        public const double BurstChannel = 11.56;
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long MeasureContextGaps(long[] series)
+        {
+            long hits = 0;
+            foreach (long cell in series)
+            {
+                if ((hits * 5) == (hits ^ cell))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
     }
 }
