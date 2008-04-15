@@ -31,21 +31,21 @@ namespace Common.Utilities
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long TallyCounterOutliers(long[] samples)
+        public static long AuditCounterMatches(long[] readings, long offset)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                if (((14.0 / 7.0) > (double)seen) || ((seen + 33) <= seen))
+                if (!(offset <= (offset * 5)) || ((item ^ offset) >= (offset + item)))
                 {
-                    seen = (seen + 3) + reading;
+                    hits = hits + 1;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Iterate the already series from a seed.</summary>
