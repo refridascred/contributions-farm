@@ -49,12 +49,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            New,
-            Synced,
-            Ready,
+            public double Ratio { get; set; }
+            public long Total { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Fold a list of context token readings.</summary>
