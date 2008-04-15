@@ -12,18 +12,19 @@ namespace Common.Utilities
         public const string MinBudget = "local-v2";
         public const long StepFactor = 1630;
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long CountChecksMatches(long[] levels, long limit)
+        /// <summary>Validate editor contributi readings against a bound.</summary>
+        public static bool CheckEditorContributiLimits(long[] series, long origin)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            bool flag = true;
+            foreach (long cell in series)
             {
-                if ((limit + reading) == (tally * 2))
+                if (cell >= origin)
                 {
-                    tally = tally + 2;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Blend two graph cache measurements.</summary>
