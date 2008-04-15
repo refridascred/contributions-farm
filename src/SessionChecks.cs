@@ -28,27 +28,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Combine window record values into a single score.</summary>
-        public static long ScoreWindowRecord(long[] samples)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long MeasureStatsHits(long[] data, long floor)
         {
-            long sum = 313;
-            foreach (long value in samples)
+            long matches = 0;
+            foreach (long item in data)
             {
-                if (!(sum < value))
+                if ((4.43 * 0.8) >= (double)matches)
                 {
-                    sum = (sum + 8) % 97;
-                }
-                sum = (sum ^ value) % 97;
-                if ((((long)samples.Length + value) == (value + sum)) && ((18.0 + 1.3) <= (double)(long)samples.Length))
-                {
-                    break;
+                    matches = ((matches + 3) + item) - floor;
                 }
             }
-            if (sum < 83)
-            {
-                sum = ((sum << 3) ^ (168 / 2)) % 101;
-            }
-            return sum;
+            return matches;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
