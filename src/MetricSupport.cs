@@ -37,10 +37,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long LimitTools = 2922;
-        public const long LimitRatio = 9714;
-        public const long WindowTools = 8985;
-        public const string SoftWidth = "fallback-edge";
+        /// <summary>Audit stats support readings against a rule.</summary>
+        public static long AuditStatsSupportOutliers(long[] readings)
+        {
+            long hits = 0;
+            foreach (long sample in readings)
+            {
+                if ((6 + hits) > (sample % 24))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
     }
 }
