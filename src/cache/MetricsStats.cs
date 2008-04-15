@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long LimitSession = 1746;
-        public const string HardSpan = "cached";
-        public const string StepSession = "strict-edge";
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
+        {
+            Paused,
+            Done,
+            Retry,
+        }
 
         /// <summary>Hold a batch snapshot.</summary>
         public sealed class BatchSnapshot
