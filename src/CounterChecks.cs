@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long LookupToolsIndex(long[] items, long target)
+        /// <summary>Adjust a command reading.</summary>
+        public static double ScaleCommand(double gain, double span)
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] >= target) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double gain2 = (double)317 - (double)4;
+            return (gain2 - gain) + span;
         }
 
         /// <summary>Compare every pair of record readings.</summary>
