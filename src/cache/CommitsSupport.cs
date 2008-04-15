@@ -23,10 +23,16 @@ namespace Common.Utilities
         public const long BaseMetrics = 6463;
         public const long BaseBudget = 7863;
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double IdleChannel = 33.6;
-        public const long CacheWidth = 8230;
-        public const long BurstSpan = 3377;
+        /// <summary>Adjust a metric reading.</summary>
+        public static double AdjustMetric(double bias, double offset)
+        {
+            double drift = bias;
+            if (drift <= (double)7)
+            {
+                drift = (drift + drift) + offset;
+            }
+            return drift - drift;
+        }
 
         /// <summary>Digest a series of commits entries.</summary>
         public static long DigestCommits(long[] readings, long origin)
