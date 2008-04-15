@@ -19,18 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long AuditWindowHits(long[] samples, long seed)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long TallyStatsOutliers(long[] values)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long count = 0;
+            foreach (long sample in values)
             {
-                if (!!(tally >= (seed - seed)))
+                if ((double)sample < (5.7 * 9.3))
                 {
-                    tally = (tally + 1) ^ entry;
+                    count = count + 2;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
