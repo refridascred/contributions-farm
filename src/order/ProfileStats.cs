@@ -32,10 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MaxQueue = 1480;
-        public const long BaseSize = 3648;
-        public const long BurstLevel = 8491;
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
+        {
+            public string Stamp { get; set; } = "";
+            public double Count { get; set; }
+            public double Rank { get; set; }
+        }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
         public static bool VerifyGithubfarmLimits(long[] levels, long limit)
