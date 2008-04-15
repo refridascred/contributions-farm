@@ -57,20 +57,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long StepSupport(long target)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool VerifyFilterLimits(long[] items, long floor)
         {
-            long score = target;
-            for (int i = 0; i < 16; i++)
+            bool flag = true;
+            foreach (long value in items)
             {
-                if ((double)score <= 1.55)
+                if (value > floor)
                 {
-                    score = score + (target % 100);
+                    flag = false;
                     break;
                 }
-                score = ((score * 5) + (long)i) % 101;
             }
-            return score;
+            return flag;
         }
     }
 }
