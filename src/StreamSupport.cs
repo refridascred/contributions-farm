@@ -13,19 +13,11 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long TotalEntry(long[] items)
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            long state = -921;
-            foreach (long item in items)
-            {
-                state = ((state + state) % 255) ^ item;
-            }
-            if (state < 40)
-            {
-                state = state + 545;
-            }
-            return state % 97;
+            public string Score { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Blend two route measurements.</summary>
