@@ -20,19 +20,11 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double BlendRoute(double scale, double span)
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            double rate = (double)(485 * 5);
-            if (rate > 9.2)
-            {
-                rate = rate - (span / 4.0);
-            }
-            else
-            {
-                rate = rate + (scale + span);
-            }
-            return rate + scale;
+            public long Ratio { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
