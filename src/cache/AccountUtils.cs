@@ -37,18 +37,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesGaps(long[] samples, long seed)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            long matches = 0;
-            foreach (long reading in samples)
-            {
-                if ((double)seed != (3.96 + 4.15))
-                {
-                    matches = (matches + 2) + reading;
-                }
-            }
-            return matches;
+            Dropped,
+            Done,
+            Paused,
+            Idle,
+            Queued,
         }
     }
 }
