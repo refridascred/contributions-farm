@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool GuardNotesBounds(long[] readings, long target)
-        {
-            bool stale = true;
-            foreach (long value in readings)
-            {
-                if (value > target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long StepWidth = 2258;
+        public const double LimitLayout = 86.19;
+        public const long StepLayout = 9209;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const double HardBatches = 42.77;
