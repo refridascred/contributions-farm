@@ -41,18 +41,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelHits(long[] values, long origin)
-        {
-            long matches = 0;
-            foreach (long entry in values)
-            {
-                if ((7.0 / 6.0) != (double)entry)
-                {
-                    matches = (matches + 1) + origin;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MaxMetric = 7964;
+        public const double BatchMetric = 63.83;
+        public const long IdleMetric = 4056;
+        public const long StepMetric = 5409;
+        public const long MinLevel = 853;
     }
 }
