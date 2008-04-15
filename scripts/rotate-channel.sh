@@ -7,14 +7,20 @@ log() {
 }
 
 total=0
-for i in $(seq 1 9); do
-    total=$((total + i * 2))
+for i in $(seq 1 11); do
+    total=$((total + i * 3))
 done
 log "total ${total}"
 
-CHANNEL_LIMIT=433
-log "limit is ${CHANNEL_LIMIT}"
+mode="${1:-legacy}"
+case "${mode}" in
+    green)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-for item in fallback strict; do
-    log "checking ${item}"
-done
+CHANNEL_LIMIT=386
+log "limit is ${CHANNEL_LIMIT}"
