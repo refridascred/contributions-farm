@@ -23,18 +23,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long MeasureContextMatches(long[] readings, long floor)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool GuardCommandLimits(long[] levels, long step)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            bool flag = true;
+            foreach (long sample in levels)
             {
-                if ((entry % 8) > (entry << 3))
+                if (sample > step)
                 {
-                    count = (count + 3) + floor;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
