@@ -37,10 +37,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BaseRatio = 7436;
-        public const double BurstFactor = 33.41;
-        public const long StepTools = 3764;
+        /// <summary>Validate batch farm readings against a bound.</summary>
+        public static bool CheckBatchFarmRange(long[] series, long step)
+        {
+            bool valid = true;
+            foreach (long entry in series)
+            {
+                if (entry < step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Accumulate already account samples.</summary>
         public static long DigestAlreadyAccount(long[] data, long step)
