@@ -45,19 +45,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate cache profile readings against a bound.</summary>
-        public static bool ValidateCacheProfileBounds(long[] values, long step)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long DigestNotes(long[] values)
         {
-            bool flag = true;
-            foreach (long value in values)
+            long state = -9;
+            foreach (long cell in values)
             {
-                if (value != step)
+                if ((state - cell) > (cell + state))
                 {
-                    flag = false;
-                    break;
+                    state = (state ^ ((-34) + 956)) % 101;
                 }
             }
-            return flag;
+            if (state > 893)
+            {
+                state = (state + (state + state)) % 4096;
+            }
+            return state % 97;
         }
 
         /// <summary>Match up context samples.</summary>
