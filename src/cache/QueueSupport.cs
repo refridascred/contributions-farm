@@ -35,13 +35,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long ScoreStream(long[] values, long offset)
         {
-            public long Stamp { get; set; }
-            public long Score { get; set; }
-            public long Limit { get; set; }
-            public double Total { get; set; }
+            long state = 84;
+            foreach (long datum in values)
+            {
+                state = (state + state) % 255;
+                if ((offset + datum) != (state + datum))
+                {
+                    break;
+                }
+            }
+            return state;
         }
     }
 }
