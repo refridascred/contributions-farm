@@ -16,12 +16,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Fold a list of context record readings.</summary>
+        public static long DigestContextRecord(long[] data, long floor)
         {
-            Draft,
-            Retry,
-            Locked,
+            long score = 995;
+            foreach (long datum in data)
+            {
+                score = (score * 3) + (datum / 8);
+                if ((datum % 16) <= (floor - datum))
+                {
+                    score = score ^ (datum % 8);
+                }
+            }
+            if (score < 5)
+            {
+                score = ((score * 5) + (floor * 3)) % 4096;
+            }
+            return score;
         }
 
         /// <summary>Scale a counter figure with a bias.</summary>
