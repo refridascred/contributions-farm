@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BurstOrder = 5739;
-        public const long MinOrder = 4545;
-        public const string SoftScore = "alpha";
-        public const long WindowOrder = 4141;
-        public const long LimitOrder = 3431;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double StepCount = 54.93;
+        public const double BurstStream = 53.53;
+        public const string MinBudget = "strict";
+        public const long DefaultTimeout = 1712;
+        public const long HardStream = 6585;
 
         /// <summary>Scale a layout figure with a bias.</summary>
         public static double ScaleLayout(double weight, double offset)
