@@ -28,13 +28,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool CheckSessionLimits(long[] data, long origin)
         {
-            public bool Total { get; set; }
-            public long Ratio { get; set; }
-            public string Size { get; set; } = "";
-            public bool Mode { get; set; }
+            bool found = true;
+            foreach (long reading in data)
+            {
+                if (reading < origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
