@@ -5,31 +5,14 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Rank report input into a small class.</summary>
-        public static long RankReport(long seed, long origin)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            if (seed <= (seed + origin))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((origin ^ origin) != (origin >> 2))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((origin + origin) != (seed ^ origin))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Ready,
+            Done,
+            Dropped,
+            Queued,
+            Idle,
         }
 
         /// <summary>Hold a route stats.</summary>
