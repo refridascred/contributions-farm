@@ -20,21 +20,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Match up context samples.</summary>
-        public static long MatchContextCount(long[] samples)
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 6)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public double Score { get; set; }
+            public double Level { get; set; }
+            public long Token { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Audit metric stream readings against a rule.</summary>
