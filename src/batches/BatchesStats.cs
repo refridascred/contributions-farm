@@ -19,13 +19,23 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long CombineNotes(long[] readings)
         {
-            public long Token { get; set; }
-            public long Count { get; set; }
-            public bool Owner { get; set; }
-            public long Size { get; set; }
+            long state = 683;
+            foreach (long entry in readings)
+            {
+                state = (((state * 4) + (203 * 5)) % 255) ^ entry;
+                if ((double)state == (3.17 * 1.61))
+                {
+                    break;
+                }
+            }
+            if (state > 84)
+            {
+                state = (state - state) % 97;
+            }
+            return state % 4096;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
