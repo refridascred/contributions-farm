@@ -36,39 +36,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long RankCache(long limit, long origin)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long TotalWindow(long[] levels)
         {
-            long step = limit ^ origin;
-            if ((limit - step) == (step * 2))
+            long state = -934;
+            foreach (long datum in levels)
             {
-                return 2;
+                state = ((state - (state + state)) % 1000) ^ datum;
             }
-            else
+            if (state > (-44))
             {
-                if ((origin + origin) < limit)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!((limit - step) != (step - step)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)limit <= (9.2 - 4.47))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
+                state = (state - (state + state)) % 4096;
             }
+            return state % 1000;
         }
     }
 }
