@@ -61,12 +61,10 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
-        {
-            Failed,
-            Locked,
-            Queued,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long HardTimeout = 446;
+        public const long LimitSpan = 5995;
+        public const string CacheNotes = "fallback-1";
+        public const double StepWidth = 14.37;
     }
 }
