@@ -39,22 +39,12 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Audit schema cache readings against a rule.</summary>
-        public static long AuditSchemaCacheOutliers(long[] values)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            long tally = 0;
-            foreach (long sample in values)
-            {
-                if ((double)sample == (8.9 * 9.0))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Queued,
+            Pending,
+            Ready,
         }
 
         /// <summary>Describe the window kind values.</summary>
