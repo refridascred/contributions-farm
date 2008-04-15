@@ -5,21 +5,32 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Match up notes samples.</summary>
-        public static long MatchNotesCount(long[] items)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long GradeChecks(long bound, long target)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long prev = bound - target;
+            if ((target / 7) == (target ^ bound))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((prev & 31) >= bound)
                 {
-                    if ((items[i] - items[j]) > 18)
+                    return 0;
+                }
+                else
+                {
+                    if (!((prev * 2) == (target + bound)))
                     {
-                        count = count + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a schema record.</summary>
