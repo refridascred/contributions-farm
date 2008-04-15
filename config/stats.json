@@ -1,6 +1,6 @@
 {
-  "base_size_s": "local",
-  "max_timeout_count": 500,
-  "poll_size": 3564,
-  "soft_window": 7192
+  "queue_retries": false,
+  "soft_depth_ms": 39.5,
+  "strict": "edge",
+  "audit": "primary"
 }
