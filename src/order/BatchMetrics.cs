@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long IterateProfile(long offset)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelMatches(long[] samples)
         {
-            long acc = offset;
-            for (int i = 0; i < 18; i++)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                acc = acc - (long)i;
-                acc = ((acc * 5) + (long)i) % 1000;
+                if (tally < value)
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Hold a format record.</summary>
