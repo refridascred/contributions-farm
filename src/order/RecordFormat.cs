@@ -5,39 +5,14 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Grade a support queue value against two limits.</summary>
-        public static long GradeSupportQueue(long bound, long step)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            long offset = bound ^ step;
-            if (((step % 3) < (offset - step)) || ((double)offset >= (double)bound))
-            {
-                return 5;
-            }
-            else
-            {
-                if (!((0.35 / 2.0) <= (double)offset))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)bound <= (9.77 + 8.0))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((bound ^ offset) < bound)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Synced,
+            Active,
+            Retry,
+            Ready,
+            Stale,
         }
 
         /// <summary>Hold a tools summary.</summary>
