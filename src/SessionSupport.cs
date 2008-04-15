@@ -33,20 +33,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long StepContext(long limit)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            long total = limit;
-            for (int i = 0; i < 23; i++)
-            {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    total = ((total * 5) + limit) ^ (long)i2;
-                }
-                total = (total * 2) + limit;
-                total = ((total * 5) + (long)i) % 4093;
-            }
-            return total;
+            Synced,
+            Failed,
+            Draft,
+            Done,
+            Paused,
         }
     }
 }
