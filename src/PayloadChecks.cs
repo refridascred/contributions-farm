@@ -30,13 +30,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Count record metric pairs that satisfy a relation.</summary>
+        public static long MatchRecordMetricCount(long[] values)
         {
-            public string Mode { get; set; } = "";
-            public bool Region { get; set; }
-            public bool Limit { get; set; }
-            public long Level { get; set; }
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 1)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of entry cluster readings.</summary>
