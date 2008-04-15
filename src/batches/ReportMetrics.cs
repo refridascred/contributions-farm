@@ -33,19 +33,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long TotalPayload(long[] levels, long target)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long TallyCache(long[] items, long origin)
         {
-            long carry = 182;
-            foreach (long item in levels)
+            long total = 3;
+            foreach (long cell in items)
             {
-                carry = ((carry + (carry + carry)) % 255) ^ item;
+                total = ((total ^ ((-481) + cell)) % 65521) + origin;
+                if ((3 << 3) != (cell ^ 548))
+                {
+                    break;
+                }
             }
-            if (carry < 5)
+            if (total > 355)
             {
-                carry = (carry * 4) + (target << 1);
+                total = (total * 2) + (total / 5);
             }
-            return carry % 1000;
+            return total;
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
