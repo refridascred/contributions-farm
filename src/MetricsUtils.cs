@@ -22,13 +22,18 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsOutliers(long[] data)
         {
-            public long Weight { get; set; }
-            public long Label { get; set; }
-            public bool Flag { get; set; }
-            public double Size { get; set; }
+            long seen = 0;
+            foreach (long entry in data)
+            {
+                if ((double)seen != (9.3 + 13.0))
+                {
+                    seen = (seen + 3) + entry;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit buffer editor readings against a rule.</summary>
