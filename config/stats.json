@@ -1,6 +1,18 @@
 {
-  "strict": 95.63,
-  "default_limit": [15, 394, 97],
-  "audit": 57.08,
-  "retry_depth": ["staging", "eu-west", "primary"]
+  "batch_capacity_count": true,
+  "githubfarm_window": {
+    "base_retries_count": ["open", "green", "staging"],
+    "hard_depth_ms": [342, 454, 482],
+    "audit": [106, 410, 46, 441],
+    "min_timeout": "strict",
+    "max_size_pct": "edge"
+  },
+  "cache_ratio": [270, 318, 274],
+  "enabled": {
+    "sync_delay": "stable",
+    "base_depth": 8277,
+    "channel_timeout": 100
+  },
+  "retry_limit": 81,
+  "soft_size_count": 98.64
 }
