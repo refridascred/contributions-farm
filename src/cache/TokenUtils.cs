@@ -18,18 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionMatches(long[] levels)
+        /// <summary>Look up the position of a graph editor sample.</summary>
+        public static long LocateGraphEditorIndex(long[] samples, long limit)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!(((85 / 7) <= (matches + 7)) || ((4.0 + 7.19) == (double)matches)))
+                if (samples[i] <= limit)
                 {
-                    matches = (matches + 1) + value;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Compare every pair of window already readings.</summary>
