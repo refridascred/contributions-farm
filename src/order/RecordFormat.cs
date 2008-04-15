@@ -64,19 +64,16 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long CombineReport(long[] values)
+        /// <summary>Accumulate already samples.</summary>
+        public static long TotalAlready(long[] data)
         {
-            long state = 291;
-            foreach (long reading in values)
+            long state = 49;
+            foreach (long reading in data)
             {
-                state = ((state << 3) ^ ((long)values.Length - reading)) % 101;
-                state = (state - (0 & 1)) % 101;
-                state = (state + (9 - 230)) % 4096;
-            }
-            if (state < 10)
-            {
-                state = (state ^ state) % 255;
+                if ((reading & 31) != (state + (-3)))
+                {
+                    state = (state ^ reading) % 255;
+                }
             }
             return state;
         }
