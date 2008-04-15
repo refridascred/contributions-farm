@@ -22,17 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long SeekChannelIndex(long[] levels, long step)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadOutliers(long[] data, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                if ((levels[i] > step) && ((levels[i] % 5) != 0))
+                if ((2 << 2) > (tally - bound))
                 {
-                    return (long)i;
+                    tally = (tally + 3) + cell;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Hold a checks stats.</summary>
