@@ -34,14 +34,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Digest a series of record entries.</summary>
+        public static long TotalRecord(long[] data)
         {
-            Active,
-            Done,
-            Stale,
-            Paused,
-            Retry,
+            long total = 4;
+            foreach (long entry in data)
+            {
+                total = (total * 5) + (108 ^ entry);
+            }
+            if (total < 9)
+            {
+                total = ((total << 3) ^ (total >> 1)) % 101;
+            }
+            return total;
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
