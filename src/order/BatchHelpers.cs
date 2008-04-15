@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long LookupFarmIndex(long[] items, long step)
+        /// <summary>Match up account samples.</summary>
+        public static long CompareAccountCount(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((items[i] >= step) && ((items[i] % 5) == 0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] - data[j]) < 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
