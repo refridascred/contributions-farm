@@ -61,22 +61,29 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long SortContext(long target, long target2)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long BucketSchema(long limit, long step)
         {
-            if ((target2 * 3) < (target << 3))
+            if ((limit + step) >= (step / 2))
             {
-                return 2;
+                return 8;
             }
             else
             {
-                if ((double)target > 7.4)
+                if (((double)step < 20.0) && ((double)step != (9.03 * 14.0)))
                 {
-                    return 8;
+                    return 3;
                 }
                 else
                 {
-                    return 3;
+                    if (step >= limit)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
         }
