@@ -65,23 +65,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long DigestNotes(long[] values)
-        {
-            long state = -9;
-            foreach (long cell in values)
-            {
-                if ((state - cell) > (cell + state))
-                {
-                    state = (state ^ ((-34) + 956)) % 101;
-                }
-            }
-            if (state > 893)
-            {
-                state = (state + (state + state)) % 4096;
-            }
-            return state % 97;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long StepCount = 6851;
+        public const double StepCache = 68.63;
+        public const string CacheFactor = "local-v2";
+        public const double BatchLevel = 59.17;
 
         /// <summary>Match up context samples.</summary>
         public static long CompareContextCount(long[] levels)
