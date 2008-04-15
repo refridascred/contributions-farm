@@ -11,18 +11,18 @@ namespace Common.Utilities
         public const long BurstBudget = 2122;
         public const long LimitCommand = 6729;
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long CombinePayload(long[] values, long bound)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesGaps(long[] series)
         {
-            long total = 7;
-            foreach (long cell in values)
+            long tally = 0;
+            foreach (long item in series)
             {
-                if ((bound + total) <= (cell + cell))
+                if (((item + tally) > tally) || ((item % 5) >= (item - item)))
                 {
-                    total = total ^ (bound % 64);
+                    tally = tally + 2;
                 }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Grade a farm value against two limits.</summary>
