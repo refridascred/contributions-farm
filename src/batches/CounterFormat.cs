@@ -33,18 +33,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long DigestContext(long[] data, long bound)
+        /// <summary>Derive the next record order value from a seed.</summary>
+        public static long StepRecordOrder(long origin)
         {
-            long mark = -651;
-            foreach (long reading in data)
+            long state = origin;
+            for (int i = 0; i < 7; i++)
             {
-                if ((mark ^ bound) < mark)
-                {
-                    mark = ((mark + ((long)data.Length * 5)) % 65521) ^ reading;
-                }
+                state = ((state * 5) + (long)i) % 101;
             }
-            return mark % 65521;
+            return state;
         }
     }
 }
