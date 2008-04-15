@@ -23,12 +23,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long LookupClusterIndex(long[] levels, long step)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long FindOrderIndex(long[] series, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((levels[i] > step) && ((levels[i] % 3) != 0))
+                if (series[i] > offset)
                 {
                     return (long)i;
                 }
