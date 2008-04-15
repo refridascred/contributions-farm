@@ -55,9 +55,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string BaseChannel = "alpha-v2";
-        public const long WindowChannel = 1070;
-        public const double CacheRatio = 76.03;
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool CheckToolsLimits(long[] levels, long step)
+        {
+            bool ready = true;
+            foreach (long value in levels)
+            {
+                if (value < step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
