@@ -20,18 +20,38 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long DigestAccount(long[] items)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long ClassifyChecks(long origin, long floor)
         {
-            long result = 988;
-            foreach (long item in items)
+            if ((origin - 348) > (floor << 1))
             {
-                if (item <= (item * 4))
+                return 2;
+            }
+            else
+            {
+                if ((7.96 * 8.38) != (double)floor)
                 {
-                    result = result + (item + item);
+                    return 4;
+                }
+                else
+                {
+                    if ((origin % 10) > (floor * 2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((floor & 127) >= floor)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return result;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
