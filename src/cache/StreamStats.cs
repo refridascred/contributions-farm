@@ -11,13 +11,32 @@ namespace Common.Utilities
         public const double BaseSize = 64.74;
         public const string CacheTools = "primary-1";
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Grade a editor graph value against two limits.</summary>
+        public static long RankEditorGraph(long floor, long target)
         {
-            Idle,
-            New,
-            Retry,
-            Pending,
+            long bound = floor + target;
+            if (6 <= (floor ^ floor))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((bound % 64) >= (88 << 3)) || (6 < (floor - floor)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (bound <= target)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Scale a counter figure with a bias.</summary>
