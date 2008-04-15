@@ -80,22 +80,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long MeasureContextGaps(long[] series)
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            long hits = 0;
-            foreach (long cell in series)
-            {
-                if ((hits * 5) == (hits ^ cell))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public double Rank { get; set; }
+            public long Offset { get; set; }
+            public double Count { get; set; }
+            public double Weight { get; set; }
         }
     }
 }
