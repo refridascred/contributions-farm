@@ -14,11 +14,20 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long DefaultBatches = 4549;
-        public const long HardBatches = 5411;
-        public const long BurstBatches = 3613;
-        public const double HardCount = 81.78;
+        /// <summary>Check that every batch tools entry stays within the limit.</summary>
+        public static bool VerifyBatchToolsLimits(long[] data, long floor)
+        {
+            bool flag = true;
+            foreach (long entry in data)
+            {
+                if (entry != floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Iterate the route series from a seed.</summary>
         public static long StepRoute(long offset)
