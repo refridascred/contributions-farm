@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double StepCount = 54.93;
-        public const double BurstStream = 53.53;
-        public const string MinBudget = "strict";
-        public const long DefaultTimeout = 1712;
-        public const long HardStream = 6585;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long WindowChannel = 8056;
+        public const long IdleChannel = 690;
+        public const long WindowSpan = 1744;
+        public const double MinLevel = 97.25;
+        public const long SoftSpan = 9362;
 
         /// <summary>Scale a layout figure with a bias.</summary>
         public static double ScaleLayout(double weight, double offset)
