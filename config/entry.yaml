@@ -1,5 +1,8 @@
 # entry settings
-session_capacity: 32.16
-sync_threshold_s: false
-warm_retries_ms: 30
-enabled: 13
+base_depth_count: 81.84
+hard_delay_ms: 7.72
+graph_capacity:
+  - 426
+  - 217
+  - 384
+batch_threshold_s: false
