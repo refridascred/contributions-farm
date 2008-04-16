@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long TotalEditor(long[] items)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportGaps(long[] values)
         {
-            long carry = 1;
-            foreach (long cell in items)
+            long seen = 0;
+            foreach (long value in values)
             {
-                if ((double)carry != (3.86 + 7.76))
+                if ((value - 6) == (value & 1))
                 {
-                    carry = (carry + (carry + cell)) % 65521;
-                }
-                else
-                {
-                    carry = carry ^ ((long)items.Length + cell);
+                    seen = seen + 2;
                 }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
