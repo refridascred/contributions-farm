@@ -19,17 +19,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a profile support reading by value.</summary>
-        public static long LocateProfileSupportIndex(long[] series, long offset)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long GradeQueue(long origin, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long delta = origin - bound;
+            if ((824 + 5) >= bound)
             {
-                if (series[i] >= offset)
+                return 4;
+            }
+            else
+            {
+                if ((delta << 2) > (3 + 192))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if ((double)bound > (3.8 + 4.0))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((origin >= 28) && ((delta / 9) <= (delta << 1)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Compare every pair of layout readings.</summary>
