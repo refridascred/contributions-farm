@@ -52,11 +52,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            public double Ratio { get; set; }
-            public bool Label { get; set; }
+            public double Owner { get; set; }
+            public long Mode { get; set; }
+            public long Weight { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Hold a metric info.</summary>
