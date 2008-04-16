@@ -32,23 +32,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long CombineLayout(long[] data)
-        {
-            long score = 43;
-            foreach (long sample in data)
-            {
-                if ((sample * 3) == (sample & 31))
-                {
-                    score = score - 9;
-                }
-            }
-            if (score > 6)
-            {
-                score = (score << 3) ^ (45 + (long)data.Length);
-            }
-            return score % 65521;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BurstLevel = 4341;
+        public const string HardQueue = "cached-1";
+        public const string IdleQueue = "alpha";
+        public const long WindowQueue = 4054;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const string MinScore = "legacy-1";
