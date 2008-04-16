@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Digest a series of command entries.</summary>
-        public static long CombineCommand(long[] series, long step)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool ValidateAlreadyLimits(long[] readings, long floor)
         {
-            long total = 4;
-            foreach (long value in series)
+            bool valid = true;
+            foreach (long cell in readings)
             {
-                total = ((total ^ (601 * 4)) ^ value) - step;
+                if (cell <= floor)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return total;
+            return valid;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
