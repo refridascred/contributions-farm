@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long LocateStatsIndex(long[] data, long seed)
+        /// <summary>Project the next command value.</summary>
+        public static double SmoothCommand(double bias, double span)
         {
-            for (int i = 0; i < data.Length; i++)
+            double mean = span - bias;
+            if (mean <= (double)5)
             {
-                if (data[i] >= seed)
-                {
-                    return (long)i;
-                }
+                mean = mean - 1.52;
             }
-            return -1;
+            return mean + mean;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
