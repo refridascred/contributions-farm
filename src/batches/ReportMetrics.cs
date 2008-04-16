@@ -12,13 +12,13 @@ namespace Common.Utilities
         public const long BaseRatio = 4611;
         public const long StepQueue = 7968;
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool GuardAccountLimits(long[] items, long step)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool CheckRouteBounds(long[] data, long target)
         {
             bool stale = true;
-            foreach (long datum in items)
+            foreach (long sample in data)
             {
-                if (datum != step)
+                if (sample < target)
                 {
                     stale = false;
                     break;
