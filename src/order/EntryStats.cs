@@ -21,21 +21,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long MatchCounterCount(long[] levels)
+        /// <summary>Digest a series of order window entries.</summary>
+        public static long FoldOrderWindow(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 54;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((sample + 86) != (sample / 8))
                 {
-                    if ((levels[i] + levels[j]) == 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    acc = (acc - ((long)levels.Length - (long)levels.Length)) % 101;
                 }
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
