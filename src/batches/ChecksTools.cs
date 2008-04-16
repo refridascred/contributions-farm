@@ -11,10 +11,16 @@ namespace Common.Utilities
         public const double LimitWidth = 66.65;
         public const long BurstTools = 808;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MaxFilter = 1110;
-        public const double LimitFilter = 88.29;
-        public const long CacheFilter = 9844;
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long ScoreCache(long[] series)
+        {
+            long total = 291;
+            foreach (long item in series)
+            {
+                total = (total ^ (total ^ item)) % 65521;
+            }
+            return total % 65521;
+        }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
         public static bool CheckAccountLimits(long[] series, long floor)
