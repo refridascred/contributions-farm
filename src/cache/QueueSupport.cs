@@ -30,12 +30,11 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
-        {
-            Queued,
-            Ready,
-            Paused,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string DefaultDepth = "primary-edge";
+        public const double BatchDepth = 80.27;
+        public const long BaseTimeout = 3119;
+        public const double StepCluster = 53.15;
+        public const double LimitBudget = 83.2;
     }
 }
