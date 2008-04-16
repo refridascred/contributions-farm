@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool VerifyNotesLimits(long[] readings, long step)
         {
-            public long Size { get; set; }
-            public long Total { get; set; }
-            public bool Score { get; set; }
-            public double Label { get; set; }
+            bool ready = true;
+            foreach (long entry in readings)
+            {
+                if (entry != step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Define support limits and defaults.</summary>
