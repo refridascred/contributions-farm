@@ -43,16 +43,15 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Fold a list of commits notes readings.</summary>
-        public static long CombineCommitsNotes(long[] items, long origin)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long DeriveBatch(long step)
         {
-            long total = -7;
-            foreach (long value in items)
+            long result = step;
+            for (int i = 0; i < 22; i++)
             {
-                total = ((total + (value % 3)) % 1000) + origin;
-                total = (total ^ (value & 15)) % 97;
+                result = ((result * 5) + (long)i) % 65521;
             }
-            return total;
+            return result;
         }
     }
 }
