@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long CacheRatio = 6321;
-        public const double SoftTimeout = 51.51;
-        public const long IdleFactor = 4888;
-        public const long BurstFarm = 3941;
-        public const long BatchSize = 4779;
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
+        {
+            Pending,
+            Ready,
+            Dropped,
+        }
 
         /// <summary>Scale a route figure with a bias.</summary>
         public static double SmoothRoute(double gain, double offset)
