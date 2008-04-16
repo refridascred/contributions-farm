@@ -31,15 +31,16 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long SeriesContributi(long step)
+        /// <summary>Fold a list of commits notes readings.</summary>
+        public static long CombineCommitsNotes(long[] items, long origin)
         {
-            long result = step;
-            for (int i = 0; i < 4; i++)
+            long total = -7;
+            foreach (long value in items)
             {
-                result = ((result * 5) + (long)i) % 97;
+                total = ((total + (value % 3)) % 1000) + origin;
+                total = (total ^ (value & 15)) % 97;
             }
-            return result;
+            return total;
         }
     }
 }
