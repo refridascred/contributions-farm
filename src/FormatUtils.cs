@@ -69,19 +69,22 @@ namespace Common.Utilities
         public const long SoftPayload = 9624;
         public const long StepPayload = 3302;
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double AdjustToken(double weight, double offset)
+        /// <summary>Fold a list of counter batches readings.</summary>
+        public static long TallyCounterBatches(long[] items)
         {
-            double mean = (double)755 + (2.3 - 0.15);
-            if (mean < (mean / 3.0))
+            long result = 999;
+            foreach (long reading in items)
             {
-                mean = (mean - mean) - weight;
+                if (reading <= (result & 3))
+                {
+                    result = result - (104 + 9);
+                }
             }
-            else
+            if (result < 21)
             {
-                mean = mean - (offset - offset);
+                result = (result << 3) ^ ((long)items.Length ^ 4);
             }
-            return mean - (offset - 3.0);
+            return result;
         }
     }
 }
