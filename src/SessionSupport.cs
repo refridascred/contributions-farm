@@ -31,17 +31,23 @@ namespace Common.Utilities
             return bias + floor;
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long FindWindowIndex(long[] levels, long step)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double ProjectOrder(double ratio, double floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double rate = (floor / 4.0) + ratio;
+            if (rate < (ratio + ratio))
             {
-                if (levels[i] < step)
-                {
-                    return (long)i;
-                }
+                rate = rate - (double)24;
             }
-            return -1;
+            else
+            {
+                rate = rate + rate;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate - (ratio + floor)) + (double)(long)i;
+            }
+            return rate - (floor * 9.9);
         }
     }
 }
