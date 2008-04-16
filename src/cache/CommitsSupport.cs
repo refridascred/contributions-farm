@@ -91,21 +91,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up counter samples.</summary>
-        public static long PairCounterCount(long[] samples)
+        /// <summary>Project the next cache value.</summary>
+        public static double SmoothCache(double gain, double bias)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double ratio = (double)((-804) << 2);
+            if (ratio > ratio)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 17)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                ratio = (ratio + bias) - gain;
             }
-            return matches;
+            else
+            {
+                ratio = ratio + (ratio * 6.0);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = ratio + (double)(long)i;
+            }
+            return ratio - 2.3;
         }
     }
 }
