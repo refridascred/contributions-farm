@@ -67,19 +67,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next profile editor value.</summary>
-        public static double ScaleProfileEditor(double weight, double span)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            double ratio = (weight / 7.0) / 7.0;
-            if (ratio > ratio)
-            {
-                ratio = (ratio - (double)53) - span;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio - weight) + (double)(long)i;
-            }
-            return ratio - (double)208;
+            public double Flag { get; set; }
+            public double Size { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
