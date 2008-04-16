@@ -61,25 +61,17 @@ namespace Common.Utilities
             return bias - (bias - rate);
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long BucketMetric(long limit, long origin)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long FindGraphIndex(long[] samples, long floor)
         {
-            long next = limit + origin;
-            if ((next % 7) < (659 / 9))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (((3.2 - 7.0) < (double)limit) || ((0 + limit) != (origin - limit)))
+                if ((samples[i] >= floor) && ((samples[i] % 5) != 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
