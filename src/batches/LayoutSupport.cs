@@ -28,11 +28,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long IdleOrder = 1257;
-        public const long SoftLevel = 4621;
-        public const long HardOrder = 2869;
-        public const long LimitOrder = 7385;
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
+        {
+            public string Rank { get; set; } = "";
+            public long Mode { get; set; }
+        }
 
         /// <summary>Hold a batches header.</summary>
         public sealed class BatchesHeader
