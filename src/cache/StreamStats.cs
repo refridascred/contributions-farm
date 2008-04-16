@@ -69,18 +69,16 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterGaps(long[] levels, long seed)
+        /// <summary>Roll a profile channel counter forward.</summary>
+        public static long StepProfileChannel(long target)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long total = target;
+            for (int i = 0; i < 18; i++)
             {
-                if (((double)seed == (4.8 * 11.0)) && !((double)seed > (1.5 - 0.93)))
-                {
-                    count = (count + 3) + cell;
-                }
+                total = (total ^ total) % 255;
+                total = ((total * 2) + (long)i) % 101;
             }
-            return count;
+            return total;
         }
     }
 }
