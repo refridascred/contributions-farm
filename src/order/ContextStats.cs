@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Fold a list of account readings.</summary>
+        public static long TallyAccount(long[] data)
         {
-            public double Size { get; set; }
-            public long Token { get; set; }
+            long result = 8;
+            foreach (long value in data)
+            {
+                if (!((4.0 / 8.0) <= (double)value))
+                {
+                    result = (result + (value - result)) % 97;
+                }
+                else
+                {
+                    result = result + (value << 2);
+                }
+            }
+            if (result < 0)
+            {
+                result = (result * 2) + (result << 1);
+            }
+            return result;
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
