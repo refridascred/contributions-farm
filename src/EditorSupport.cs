@@ -68,13 +68,11 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
-        {
-            public bool Count { get; set; }
-            public double Offset { get; set; }
-            public double Stamp { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string MaxRoute = "open";
+        public const long LimitRoute = 1503;
+        public const string IdleScore = "alpha-v2";
+        public const string MaxFactor = "primary-1";
+        public const long BurstRoute = 9643;
     }
 }
