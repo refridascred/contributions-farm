@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long LocateRouteIndex(long[] series, long step)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long ClassifyGithubfarm(long bound, long bound2)
         {
-            for (int i = 0; i < series.Length; i++)
+            if (((bound >> 1) > (8 ^ 638)) || ((bound % 3) != (bound + 735)))
             {
-                if (series[i] == step)
+                return 7;
+            }
+            else
+            {
+                if (((bound / 9) > (bound + bound)) || (4.2 <= (double)bound))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if ((bound - bound) <= (bound + bound2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the report kind values.</summary>
