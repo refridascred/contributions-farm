@@ -1,9 +1,6 @@
 {
-  "readonly": {
-    "base_window_pct": ["staging", "primary", "strict", "standard"],
-    "cache_threshold_pct": [315, 151, 103],
-    "max_limit": 41.69
-  },
-  "entry_capacity": "fallback",
-  "idle_ttl_s": "edge"
+  "support_ttl": 30,
+  "sync_retries_s": "local",
+  "enabled": true,
+  "warm_timeout": "local"
 }
