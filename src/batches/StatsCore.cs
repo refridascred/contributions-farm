@@ -48,19 +48,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool VerifySchemaBounds(long[] levels, long floor)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool CheckProfileBounds(long[] readings, long bound)
         {
-            bool stale = true;
-            foreach (long datum in levels)
+            bool found = true;
+            foreach (long item in readings)
             {
-                if (datum >= floor)
+                if (item < bound)
                 {
-                    stale = false;
+                    found = false;
                     break;
                 }
             }
-            return stale;
+            return found;
         }
 
         /// <summary>Rank route input into a small class.</summary>
