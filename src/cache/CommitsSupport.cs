@@ -69,17 +69,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long SeekAlreadyIndex(long[] data, long floor)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long DeriveBatch(long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = seed;
+            for (int i = 0; i < 20; i++)
             {
-                if (data[i] <= floor)
+                if (((long)i + 817) >= (long)i)
                 {
-                    return (long)i;
+                    mark = (mark * 4) + seed;
+                    mark = mark - seed;
                 }
+                else
+                {
+                    mark = (mark ^ seed) % 1000;
+                }
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            return -1;
+            return mark;
         }
     }
 }
