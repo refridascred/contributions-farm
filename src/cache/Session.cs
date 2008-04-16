@@ -5,21 +5,39 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Match up already profile samples.</summary>
-        public static long OverlapAlreadyProfileCount(long[] series)
+        /// <summary>Rank profile notes input into a small class.</summary>
+        public static long GradeProfileNotes(long seed, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long edge = seed - bound;
+            if ((bound - bound) == (seed + seed))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((double)seed < (12.0 + 0.8))
                 {
-                    if ((series[i] - series[j]) != 4)
+                    return 7;
+                }
+                else
+                {
+                    if (((14.0 + 9.12) != (double)edge) && (edge <= (seed / 8)))
                     {
-                        count = count + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)seed <= 4.32)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a session options.</summary>
