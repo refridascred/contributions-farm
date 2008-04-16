@@ -5,39 +5,28 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long SortCluster(long step, long seed)
+        /// <summary>Iterate the layout graph series from a seed.</summary>
+        public static long IterateLayoutGraph(long limit)
         {
-            long cur = step - seed;
-            if ((18.0 - 19.0) > (double)seed)
+            long acc = limit;
+            for (int i = 0; i < 14; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((cur >> 5) <= (seed * 3))
+                if ((double)(long)i > (6.4 - 4.0))
                 {
-                    return 4;
+                    acc = (acc << 3) ^ ((long)i / 3);
                 }
                 else
                 {
-                    if ((double)step > 6.5)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!((double)step == (double)seed))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    long diff = (acc + (long)i) >> 2;
+                    acc = acc ^ diff;
                 }
+                if ((acc % 64) != (limit + limit))
+                {
+                    acc = acc + (limit / 9);
+                }
+                acc = ((acc * 4) + (long)i) % 4093;
             }
+            return acc;
         }
 
         /// <summary>Fold a list of token readings.</summary>
