@@ -5,36 +5,28 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long SortStream(long step, long limit)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long SortGraph(long origin, long offset)
         {
-            long bound = step + limit;
-            if (bound > (limit << 1))
+            if (origin <= (offset + origin))
             {
-                return 6;
+                return 4;
             }
             else
             {
-                if (((limit >> 1) < (step ^ step)) || ((6.8 + 2.42) < (double)step))
+                if (((double)54 > (double)offset) && ((origin << 2) > origin))
                 {
-                    return 8;
+                    return 1;
                 }
                 else
                 {
-                    if ((limit & 1) >= bound)
+                    if ((double)offset <= (7.8 * 2.5))
                     {
-                        return 0;
+                        return 3;
                     }
                     else
                     {
-                        if (!((limit & 255) == (step << 2)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        return 6;
                     }
                 }
             }
