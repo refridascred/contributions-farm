@@ -5,27 +5,38 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long TallyCommits(long[] values, long target)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long BucketAlready(long target, long offset)
         {
-            long anchor = 89;
-            foreach (long value in values)
+            if ((double)target == (3.3 / 2.0))
             {
-                anchor = anchor - (value << 3);
-                if (anchor <= (value * 4))
+                return 7;
+            }
+            else
+            {
+                if ((offset / 9) <= 6)
                 {
-                    anchor = (anchor << 3) ^ (anchor + anchor);
+                    return 2;
                 }
                 else
                 {
-                    anchor = anchor ^ anchor;
+                    if ((target / 9) < offset)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (offset < (offset + target))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            if (anchor < (-371))
-            {
-                anchor = (anchor ^ target) % 97;
-            }
-            return anchor % 97;
         }
 
         /// <summary>Look up the position of a report sample.</summary>
