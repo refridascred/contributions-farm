@@ -59,12 +59,27 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Combine graph counter values into a single score.</summary>
+        public static long WeighGraphCounter(long[] items, long bound)
         {
-            public string Size { get; set; } = "";
-            public long Rank { get; set; }
-            public bool Weight { get; set; }
+            long score = 7;
+            foreach (long item in items)
+            {
+                if (!(1.9 > (double)score))
+                {
+                    score = score ^ (bound % 60);
+                }
+                score = score - (item / 8);
+                if ((7.5 * 7.36) >= (double)bound)
+                {
+                    score = (score * 4) + (99 - 9);
+                }
+            }
+            if (score > 15)
+            {
+                score = (score - (score ^ score)) % 255;
+            }
+            return score;
         }
 
         /// <summary>Audit filter stream readings against a rule.</summary>
