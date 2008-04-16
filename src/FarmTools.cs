@@ -27,19 +27,18 @@ namespace Common.Utilities
             return rate - 15.0;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long CombineSession(long[] items, long target)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesGaps(long[] values)
         {
-            long state = 5;
-            foreach (long reading in items)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                state = (((state * 2) + (state - reading)) % 1000) + target;
-                if ((state / 8) < reading)
+                if ((tally << 2) < tally)
                 {
-                    break;
+                    tally = (tally + 2) + datum;
                 }
             }
-            return state % 65521;
+            return tally;
         }
     }
 }
