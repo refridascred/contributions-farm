@@ -31,11 +31,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            public string Offset { get; set; } = "";
-            public bool Owner { get; set; }
+            public bool Region { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
