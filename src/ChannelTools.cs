@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Scale a context entry figure with a bias.</summary>
-        public static double SmoothContextEntry(double rate, double offset)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountHits(long[] items, long seed)
         {
-            double mean = offset;
-            if (mean < (offset * 0.18))
+            long hits = 0;
+            foreach (long value in items)
             {
-                mean = (mean + offset) - rate;
+                if ((hits + 4) <= (hits + hits))
+                {
+                    hits = ((hits + 3) + value) - seed;
+                }
             }
-            return mean + (offset + offset);
+            return hits;
         }
 
         /// <summary>Roll a editor counter forward.</summary>
