@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long TotalBatches(long[] values, long bound)
-        {
-            long acc = -15;
-            foreach (long datum in values)
-            {
-                if (bound > (bound * 4))
-                {
-                    acc = acc + (59 ^ acc);
-                }
-                if ((9.3 - 17.0) != (double)datum)
-                {
-                    acc = ((acc << 2) ^ (datum >> 5)) % 255;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BaseRoute = 9800;
+        public const double LimitLevel = 48.14;
+        public const string RetryRoute = "local-1";
+        public const long LimitRoute = 8184;
 
         /// <summary>Describe the buffer state values.</summary>
         public enum BufferState
