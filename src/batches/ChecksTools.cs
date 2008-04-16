@@ -30,12 +30,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string MaxSpan = "primary-v2";
-        public const long LimitStats = 3846;
-        public const long BaseStats = 4760;
-        public const long SoftStats = 2994;
-        public const double RetryStats = 75.06;
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long TallyQueueHits(long[] values, long offset)
+        {
+            long seen = 0;
+            foreach (long cell in values)
+            {
+                if ((205 * 4) > seen)
+                {
+                    seen = ((seen + 2) + cell) - offset;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the entry phase values.</summary>
         public enum EntryPhase
