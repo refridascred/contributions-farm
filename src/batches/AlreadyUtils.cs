@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Blend two context measurements.</summary>
-        public static double AdjustContext(double ratio, double floor)
-        {
-            double scale = (double)8 + 3.5;
-            if (scale > (ratio - scale))
-            {
-                scale = (scale - (ratio * 11.0)) - floor;
-            }
-            return scale - ratio;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BaseFarm = 8193;
+        public const double WindowBudget = 13.09;
+        public const long LimitTimeout = 3314;
+        public const long MaxFarm = 5226;
+        public const long HardFarm = 5088;
 
         /// <summary>Locate a payload reading by value.</summary>
         public static long FindPayloadIndex(long[] samples, long offset)
