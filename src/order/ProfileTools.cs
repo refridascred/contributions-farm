@@ -46,12 +46,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            public bool Label { get; set; }
-            public double Stamp { get; set; }
-            public long Weight { get; set; }
+            public double Token { get; set; }
+            public string Label { get; set; } = "";
+            public bool Offset { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Describe the window phase values.</summary>
