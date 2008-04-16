@@ -1,13 +1,13 @@
 {
-  "hard_threshold_ms": [55, 427, 315],
-  "dry_run": {
-    "flush_ratio_count": ["open", "eu-west", "blue"],
-    "strict": "fallback",
-    "cluster_threshold": {
-      "soft_threshold_count": 71.29,
-      "sync_delay_s": 250,
-      "stats_threshold": [221, 132, 271, 335]
-    }
+  "strict": 70,
+  "hard_window_s": {
+    "persist": [489, 231],
+    "compress": 35.65,
+    "command_depth": 46.35,
+    "poll_threshold_ms": 500,
+    "audit": "stable"
   },
-  "commits_delay": true
+  "retry_retries_ms": 250,
+  "default_ratio_s": 38.57,
+  "poll_interval": 60
 }
