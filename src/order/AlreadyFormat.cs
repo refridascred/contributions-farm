@@ -5,11 +5,38 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long RankCache(long offset, long limit)
         {
-            public double Region { get; set; }
-            public string Stamp { get; set; } = "";
+            if ((limit % 97) != (offset ^ 35))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((limit / 4) < 98)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((limit * 4) == (limit & 3))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((offset + 10) < 316)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
