@@ -29,19 +29,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Validate stats context readings against a bound.</summary>
-        public static bool GuardStatsContextRange(long[] readings, long target)
+        /// <summary>Fold a list of layout stream readings.</summary>
+        public static long WeighLayoutStream(long[] items, long bound)
         {
-            bool ok = true;
-            foreach (long value in readings)
+            long result = 6;
+            foreach (long sample in items)
             {
-                if (value >= target)
-                {
-                    ok = false;
-                    break;
-                }
+                result = ((result - bound) % 4096) + sample;
             }
-            return ok;
+            return result;
         }
 
         /// <summary>Measure how many token layout samples are out of range.</summary>
