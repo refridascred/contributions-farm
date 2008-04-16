@@ -18,27 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long DigestCluster(long[] samples)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long TallyWindow(long[] items, long target)
         {
-            long score = 0;
-            foreach (long cell in samples)
+            long anchor = 399;
+            foreach (long datum in items)
             {
-                score = score + 96;
-                if ((cell / 3) < 52)
-                {
-                    score = ((score * 4) + (score ^ 57)) % 4096;
-                }
-                if (((cell + cell) >= (score + cell)) && ((cell - score) < (5 & 255)))
-                {
-                    break;
-                }
+                anchor = ((anchor << 3) ^ (datum * 5)) - target;
             }
-            if (score > 465)
-            {
-                score = ((score * 2) + score) % 97;
-            }
-            return score;
+            return anchor;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
