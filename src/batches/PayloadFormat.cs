@@ -52,18 +52,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricHits(long[] series)
+        /// <summary>Combine window stats values into a single score.</summary>
+        public static long TallyWindowStats(long[] series)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long carry = -3;
+            foreach (long value in series)
             {
-                if ((sample << 1) < 82)
+                if ((double)value <= (double)carry)
                 {
-                    seen = seen + 3;
+                    carry = (carry ^ (value << 2)) % 1000;
                 }
             }
-            return seen;
+            return carry % 4096;
         }
     }
 }
