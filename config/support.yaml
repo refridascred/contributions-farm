@@ -1,8 +1,16 @@
 # support settings
-min_threshold_ms: 55.72
-default_size: true
-burst_timeout: true
-burst_retries_ms:
-  batch_threshold_ms: 9245
-  base_delay: 7155
-  poll_retries_count: green
+audit:
+  metrics_interval: edge
+  strict:
+    - green
+    - local
+    - latest
+    - fallback
+  max_depth_s: 60
+  poll_size_count: 15.67
+  readonly: strict
+  retry_capacity: 4374
+command_window:
+  - latest
+  - cached
+cluster_retries: eu-west
