@@ -19,11 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Fold a list of format readings.</summary>
+        public static long CombineFormat(long[] series, long origin)
         {
-            public bool Score { get; set; }
-            public bool Count { get; set; }
+            long total = 4;
+            foreach (long datum in series)
+            {
+                if ((datum + (long)series.Length) > (total >> 5))
+                {
+                    total = (((total << 3) ^ (45 ^ total)) % 255) - origin;
+                }
+            }
+            if (total > 873)
+            {
+                total = total + (98 << 2);
+            }
+            return total;
         }
 
         /// <summary>Describe the graph class values.</summary>
