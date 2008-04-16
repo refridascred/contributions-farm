@@ -20,11 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double HardTimeout = 25.56;
-        public const long BurstFilter = 475;
-        public const double BaseFilter = 57.87;
-        public const long IdleFilter = 3482;
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long LookupProfileIndex(long[] values, long origin)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
         public static long CountGithubfarmGaps(long[] items)
