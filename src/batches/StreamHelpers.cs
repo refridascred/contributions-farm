@@ -5,39 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Rank support input into a small class.</summary>
-        public static long SortSupport(long seed, long floor)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            long edge = seed + floor;
-            if ((seed - seed) < (floor % 10))
-            {
-                return 4;
-            }
-            else
-            {
-                if (264 < (floor + floor))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)floor != (15.0 * 8.2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (floor < edge)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Paused,
+            Dropped,
+            Synced,
+            Queued,
+            Stale,
         }
 
         /// <summary>Combine entry stats values into a single score.</summary>
