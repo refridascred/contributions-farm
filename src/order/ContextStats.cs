@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Fold a list of account readings.</summary>
-        public static long TallyAccount(long[] data)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool CheckLayoutLimits(long[] data, long floor)
         {
-            long result = 8;
-            foreach (long value in data)
+            bool stale = true;
+            foreach (long cell in data)
             {
-                if (!((4.0 / 8.0) <= (double)value))
+                if (cell <= floor)
                 {
-                    result = (result + (value - result)) % 97;
-                }
-                else
-                {
-                    result = result + (value << 2);
+                    stale = false;
+                    break;
                 }
             }
-            if (result < 0)
-            {
-                result = (result * 2) + (result << 1);
-            }
-            return result;
+            return stale;
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
