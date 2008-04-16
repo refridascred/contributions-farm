@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Iterate the commits context series from a seed.</summary>
+        public static long RollCommitsContext(long target)
         {
-            public long Region { get; set; }
-            public bool Rank { get; set; }
+            long anchor = target;
+            for (int i = 0; i < 18; i++)
+            {
+                anchor = ((anchor * 5) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Look up the position of a report sample.</summary>
