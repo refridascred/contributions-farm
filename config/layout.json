@@ -1,6 +1,25 @@
 {
-  "strict": 43.26,
-  "poll_interval_count": 44.53,
-  "audit": false,
-  "verbose": "local"
+  "poll_size_pct": {
+    "soft_interval_count": 100,
+    "support_timeout": 20,
+    "token_depth": 13.61
+  },
+  "route_retries": {
+    "soft_size_s": 60,
+    "burst_delay": {
+      "sync_depth_count": 30,
+      "idle_retries_pct": false,
+      "idle_timeout_pct": "edge"
+    },
+    "hard_retries": {
+      "max_capacity_pct": false,
+      "min_ratio_count": true,
+      "buffer_size": "open",
+      "batch_limit": 500
+    },
+    "checks_ratio": 41,
+    "batch_ttl_ms": "blue",
+    "format_ttl": ["cached", "latest", "standard", "primary"]
+  },
+  "flush_threshold_pct": "standard"
 }
