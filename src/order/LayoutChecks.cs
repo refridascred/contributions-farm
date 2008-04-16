@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsOutliers(long[] data)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long RankCommits(long floor, long step)
         {
-            long tally = 0;
-            foreach (long item in data)
+            if ((double)floor >= (17.0 - 7.5))
             {
-                if (tally <= (item - item))
+                return 4;
+            }
+            else
+            {
+                if (!((step * 3) == (step + step)))
                 {
-                    tally = tally + 1;
+                    return 2;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return tally;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
