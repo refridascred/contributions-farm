@@ -1,5 +1,5 @@
 {
-  "readonly": "edge",
-  "burst_limit_count": 84.39,
-  "idle_timeout_count": "cached"
+  "burst_delay_s": ["cached", "green"],
+  "poll_delay_pct": "staging",
+  "soft_capacity": true
 }
