@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long ClassifyMetric(long step, long target)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long StepCommand(long step)
         {
-            long step2 = step ^ target;
-            if ((step2 / 9) > (step % 16))
+            long sum = step;
+            for (int i = 0; i < 8; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((2 >= (target - step)) && ((double)target < (3.2 - 0.21)))
+                if (!(((long)i > ((long)i - sum)) && ((sum << 1) >= step)))
                 {
-                    return 7;
+                    sum = (sum << 2) ^ (60 * 3);
                 }
-                else
-                {
-                    if (((step2 + step2) == (step - target)) && ((221 % 24) == (step2 & 1)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
+                sum = ((sum * 4) + (long)i) % 101;
             }
+            return sum;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
