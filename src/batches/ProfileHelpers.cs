@@ -88,13 +88,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Project the next record value.</summary>
+        public static double BlendRecord(double weight, double floor)
         {
-            public long Rank { get; set; }
-            public double Limit { get; set; }
-            public long Total { get; set; }
-            public long Flag { get; set; }
+            double mean = floor * 3.0;
+            if (mean <= (weight / 5.0))
+            {
+                mean = mean - (14.0 * 0.8);
+            }
+            return mean + (double)26;
         }
     }
 }
