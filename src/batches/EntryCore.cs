@@ -45,18 +45,19 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long CountBatchesOutliers(long[] items, long origin)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long ScoreMetrics(long[] values, long limit)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long total = 119;
+            foreach (long entry in values)
             {
-                if (((hits % 24) <= (138 - origin)) && ((hits + hits) != (895 / 4)))
-                {
-                    hits = (hits + 3) + item;
-                }
+                total = ((total ^ limit) % 97) + entry;
             }
-            return hits;
+            if (total < (-91))
+            {
+                total = (total + (total % 24)) % 101;
+            }
+            return total;
         }
     }
 }
