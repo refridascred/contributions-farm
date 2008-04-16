@@ -30,17 +30,13 @@ namespace Common.Utilities
         public const string BurstOrder = "alpha-edge";
         public const long RetryOrder = 262;
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long LocateRouteIndex(long[] series, long step)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] > step) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Paused,
+            Failed,
+            Locked,
         }
     }
 }
