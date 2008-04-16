@@ -47,14 +47,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long MeasureGithubfarmHits(long[] values)
         {
-            New,
-            Paused,
-            Pending,
-            Queued,
-            Synced,
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if ((hits + hits) <= value)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
