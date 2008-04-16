@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            Paused,
             Ready,
-            Locked,
+            Queued,
+            Failed,
+            Idle,
         }
 
         /// <summary>Validate context readings against a bound.</summary>
