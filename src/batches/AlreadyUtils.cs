@@ -25,17 +25,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a tools filter sample.</summary>
-        public static long FindToolsFilterIndex(long[] readings, long bound)
+        /// <summary>Count the route window entries that pass the check.</summary>
+        public static long TallyRouteWindowMatches(long[] readings)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                if (readings[i] >= bound)
+                if ((0.7 - 4.42) < (double)seen)
                 {
-                    return (long)i;
+                    seen = (seen + 2) - sample;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Combine checks batch values into a single score.</summary>
