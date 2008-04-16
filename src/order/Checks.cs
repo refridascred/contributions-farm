@@ -32,16 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a layout entry counter forward.</summary>
-        public static long SeriesLayoutEntry(long offset)
+        /// <summary>Measure how many token stats samples are out of range.</summary>
+        public static long AuditTokenStatsOutliers(long[] data, long offset)
         {
-            long mark = offset;
-            for (int i = 0; i < 4; i++)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                mark = (mark + mark) % 101;
-                mark = ((mark * 3) + (long)i) % 101;
+                if ((8 * 4) <= (matches & 255))
+                {
+                    matches = ((matches + 1) + reading) - offset;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Blend two stream batches measurements.</summary>
