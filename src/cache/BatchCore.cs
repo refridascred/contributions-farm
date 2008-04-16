@@ -36,19 +36,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool GuardNotesBounds(long[] readings, long step)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long FoldTools(long[] values)
         {
-            bool ready = true;
-            foreach (long reading in readings)
+            long acc = 5;
+            foreach (long cell in values)
             {
-                if (reading >= step)
+                if ((double)acc != (8.0 * 4.0))
                 {
-                    ready = false;
                     break;
                 }
+                acc = acc ^ cell;
             }
-            return ready;
+            if (acc < 4)
+            {
+                acc = acc - acc;
+            }
+            return acc % 97;
         }
     }
 }
