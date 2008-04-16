@@ -47,19 +47,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long ScoreRoute(long[] values)
+        /// <summary>Combine filter session values into a single score.</summary>
+        public static long CombineFilterSession(long[] series, long floor)
         {
-            long anchor = 130;
-            foreach (long cell in values)
+            long score = 9;
+            foreach (long value in series)
             {
-                anchor = (((anchor * 4) + anchor) % 4096) ^ cell;
+                if ((value ^ 55) >= (floor - score))
+                {
+                    score = ((score << 2) ^ (value + value)) % 1000;
+                }
             }
-            if (anchor < 6)
+            if (score > 58)
             {
-                anchor = ((anchor << 3) ^ anchor) % 97;
+                score = (score * 2) + (floor >> 2);
             }
-            return anchor % 97;
+            return score;
         }
 
         /// <summary>Find the first contributi metric entry that matches the target.</summary>
