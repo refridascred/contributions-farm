@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Blend two cache stats measurements.</summary>
+        public static double ScaleCacheStats(double bias, double bias2)
         {
-            Dropped,
-            Synced,
-            New,
+            double ratio = (double)(616 & 3);
+            if (ratio <= (ratio * 6.1))
+            {
+                ratio = ratio - (bias2 / 6.0);
+            }
+            else
+            {
+                ratio = ratio + (double)61;
+            }
+            return ratio - bias;
         }
 
         /// <summary>Project the next report value.</summary>
