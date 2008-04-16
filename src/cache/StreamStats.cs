@@ -33,17 +33,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long LocateFilterIndex(long[] data, long limit)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long ClassifyContributi(long target, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((target <= (95 + target)) || (target > (step * 3)))
             {
-                if (data[i] < limit)
+                return 0;
+            }
+            else
+            {
+                if ((target / 9) < (2 + target))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if (!((target * 5) != (step - target)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
