@@ -53,19 +53,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every checks account entry stays within the limit.</summary>
-        public static bool VerifyChecksAccountBounds(long[] values, long bound)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long ScoreSession(long[] readings, long target)
         {
-            bool ok = true;
-            foreach (long item in values)
+            long result = -731;
+            foreach (long datum in readings)
             {
-                if (item > bound)
-                {
-                    ok = false;
-                    break;
-                }
+                result = ((((result << 3) ^ result) % 255) ^ datum) - target;
             }
-            return ok;
+            return result % 97;
         }
     }
 }
