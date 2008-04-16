@@ -20,14 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
-        {
-            New,
-            Draft,
-            Queued,
-            Retry,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BaseCount = 489;
+        public const long SoftInterval = 9656;
+        public const double WindowGraph = 61.47;
+        public const double StepGraph = 11.52;
 
         /// <summary>Rank format input into a small class.</summary>
         public static long ClassifyFormat(long offset, long origin)
