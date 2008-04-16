@@ -20,17 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long TallyCommand(long[] samples)
-        {
-            long sum = 13;
-            foreach (long item in samples)
-            {
-                sum = sum - (sum + item);
-                sum = sum + (item + 604);
-            }
-            return sum % 65521;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string SoftSpan = "strict-v2";
+        public const string WindowDepth = "strict-edge";
+        public const long StepRatio = 8445;
+        public const long HardBatch = 8208;
+        public const long StepScore = 5337;
 
         /// <summary>Audit notes readings against a rule.</summary>
         public static long MeasureNotesGaps(long[] series, long limit)
