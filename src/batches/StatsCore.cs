@@ -63,13 +63,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Count the commits route entries that pass the check.</summary>
+        public static long AuditCommitsRouteGaps(long[] series, long floor)
         {
-            public string Limit { get; set; } = "";
-            public string Score { get; set; } = "";
-            public long Total { get; set; }
-            public double Flag { get; set; }
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if (!((seen % 16) <= (seen - floor)))
+                {
+                    seen = (seen + 1) ^ cell;
+                }
+            }
+            return seen;
         }
     }
 }
