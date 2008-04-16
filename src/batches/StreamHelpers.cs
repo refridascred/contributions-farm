@@ -78,17 +78,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long SeekAccountIndex(long[] series, long floor)
+        /// <summary>Validate checks payload readings against a bound.</summary>
+        public static bool ValidateChecksPayloadRange(long[] levels, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool valid = true;
+            foreach (long cell in levels)
             {
-                if (series[i] <= floor)
+                if (cell != offset)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
