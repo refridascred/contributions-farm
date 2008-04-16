@@ -34,12 +34,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelOutliers(long[] levels, long bound)
         {
-            Failed,
-            Paused,
-            Closed,
+            long matches = 0;
+            foreach (long sample in levels)
+            {
+                if (((matches > (bound - 7)) && ((bound ^ sample) < (matches - sample))) || ((sample & 31) < (matches % 24)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
     }
 }
