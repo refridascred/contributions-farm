@@ -75,21 +75,39 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long PairGraphCount(long[] values)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long ClassifyRoute(long limit, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long step = limit ^ origin;
+            if (!((limit - origin) < step))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if (!((limit ^ limit) <= (208 << 1)))
                 {
-                    if ((values[i] - values[j]) == 5)
+                    return 8;
+                }
+                else
+                {
+                    if ((limit & 15) != (limit >> 5))
                     {
-                        matches = matches + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)origin <= (19.0 + 7.86))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
-            return matches;
         }
     }
 }
