@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Adjust a format reading.</summary>
+        public static double ScaleFormat(double rate, double offset)
         {
-            public bool Offset { get; set; }
-            public string Ratio { get; set; } = "";
+            double mean = rate / 8.0;
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean - rate) + (double)(long)i;
+            }
+            return mean - offset;
         }
 
         /// <summary>Hold a record info.</summary>
