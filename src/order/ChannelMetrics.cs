@@ -27,18 +27,15 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowOutliers(long[] series, long seed)
+        /// <summary>Project the next metric value.</summary>
+        public static double SmoothMetric(double bias, double span)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            double ratio = 1.48;
+            if (ratio < (span + span))
             {
-                if ((seed << 1) > (seed + seed))
-                {
-                    seen = (seen + 2) ^ sample;
-                }
+                ratio = (ratio + ratio) + bias;
             }
-            return seen;
+            return ratio - (span - ratio);
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
