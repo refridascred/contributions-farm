@@ -52,11 +52,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string BaseSession = "primary-v2";
-        public const long RetryLevel = 216;
-        public const long MaxInterval = 9180;
-        public const long SoftTimeout = 6344;
-        public const long BatchSession = 772;
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
+        {
+            New,
+            Done,
+            Active,
+            Idle,
+            Paused,
+        }
     }
 }
