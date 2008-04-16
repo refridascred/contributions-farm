@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Check that every window queue entry stays within the limit.</summary>
-        public static bool VerifyWindowQueueBounds(long[] readings, long limit)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long CombineEditor(long[] data)
         {
-            bool stale = true;
-            foreach (long value in readings)
+            long anchor = 4;
+            foreach (long value in data)
             {
-                if (value != limit)
+                if ((493 * 3) <= (value - value))
                 {
-                    stale = false;
+                    anchor = (anchor - (729 + value)) % 97;
+                }
+                else
+                {
+                    anchor = (anchor ^ (1 + anchor)) % 65521;
+                }
+                if ((double)anchor > (6.46 + 2.5))
+                {
                     break;
                 }
             }
-            return stale;
+            return anchor;
         }
 
         /// <summary>Project the next command value.</summary>
