@@ -35,16 +35,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long SeriesContributi(long bound)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            long score = bound;
-            for (int i = 0; i < 9; i++)
-            {
-                score = score - score;
-                score = ((score * 5) + (long)i) % 4093;
-            }
-            return score;
+            Stale,
+            Ready,
+            Draft,
+            Pending,
+            Synced,
         }
 
         /// <summary>Audit record readings against a rule.</summary>
