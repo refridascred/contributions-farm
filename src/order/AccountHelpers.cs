@@ -41,20 +41,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool VerifyCommandLimits(long[] values, long floor)
-        {
-            bool found = true;
-            foreach (long item in values)
-            {
-                if (item <= floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long StepFactor = 7569;
+        public const long BaseCounter = 7766;
+        public const long BurstBudget = 9795;
+        public const long MaxCounter = 2263;
 
         /// <summary>Count the queue entries that pass the check.</summary>
         public static long TallyQueueHits(long[] levels, long offset)
