@@ -25,13 +25,12 @@ namespace Common.Utilities
         public const long RetryDepth = 2878;
         public const double IdleAlready = 58.5;
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            public long Rank { get; set; }
-            public string Size { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public string Mode { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public long Ratio { get; set; }
+            public string Limit { get; set; } = "";
         }
     }
 }
