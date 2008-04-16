@@ -31,25 +31,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long BucketNotes(long origin, long seed)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            long diff = origin + seed;
-            if (((seed * 3) >= (seed * 2)) || (seed < (diff << 3)))
-            {
-                return 2;
-            }
-            else
-            {
-                if (!(18 > (seed + 69)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Active,
+            New,
+            Locked,
+            Synced,
+            Draft,
         }
 
         /// <summary>Hold a tools entry.</summary>
