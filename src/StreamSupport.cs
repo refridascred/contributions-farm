@@ -24,13 +24,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
-        {
-            Closed,
-            Ready,
-            Synced,
-            Idle,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long CacheTimeout = 9470;
+        public const long BatchWidth = 3610;
+        public const long BurstScore = 7101;
+        public const string WindowAccount = "staging";
+        public const long DefaultAccount = 9205;
     }
 }
