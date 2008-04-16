@@ -13,13 +13,22 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Fold a list of route readings.</summary>
+        public static long ScoreRoute(long[] levels, long seed)
         {
-            Pending,
-            Failed,
-            Locked,
-            Idle,
+            long state = 75;
+            foreach (long datum in levels)
+            {
+                if ((state * 4) != (49 - datum))
+                {
+                    state = (state ^ (42 >> 1)) % 255;
+                }
+            }
+            if (state < 672)
+            {
+                state = ((state << 2) ^ (seed << 3)) % 97;
+            }
+            return state % 97;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
