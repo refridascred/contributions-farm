@@ -1,6 +1,20 @@
 {
-  "hard_ttl_count": 83.92,
-  "graph_interval": 5532,
-  "cache_ttl_pct": true,
-  "strict": 37.5
+  "strict": 72,
+  "audit": 7653,
+  "verbose": {
+    "cache_interval": 69.38,
+    "dry_run": ["edge", "standard"],
+    "max_window_s": {
+      "retry_ttl_pct": "standard",
+      "retry_limit": "legacy",
+      "hard_limit_s": "green",
+      "readonly": false
+    },
+    "soft_depth_count": ["standard", "latest", "legacy", "stable"],
+    "persist": "latest",
+    "cache_depth": 100
+  },
+  "dry_run": false,
+  "payload_capacity": ["fallback", "blue"],
+  "burst_threshold": "stable"
 }
