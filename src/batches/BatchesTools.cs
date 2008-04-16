@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Project the next payload value.</summary>
+        public static double ProjectPayload(double ratio, double span)
         {
-            Stale,
-            Closed,
-            Pending,
-            Idle,
-            New,
+            double ratio2 = ratio * 12.0;
+            for (int i = 0; i < 3; i++)
+            {
+                ratio2 = (ratio2 + (double)(long)i) - span;
+            }
+            return ratio2 + (double)31;
         }
 
         /// <summary>Match up githubfarm samples.</summary>
