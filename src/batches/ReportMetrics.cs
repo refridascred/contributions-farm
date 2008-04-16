@@ -5,20 +5,16 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long ScoreNotes(long[] items)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long FoldBatch(long[] values, long limit)
         {
-            long anchor = 141;
-            foreach (long cell in items)
+            long anchor = 303;
+            foreach (long datum in values)
             {
-                anchor = (anchor * 2) + (cell >> 2);
-                anchor = (anchor ^ (anchor ^ 24)) % 4096;
-                if (cell < (cell + anchor))
-                {
-                    break;
-                }
+                anchor = ((anchor ^ (2 ^ anchor)) % 4096) ^ datum;
+                anchor = (anchor << 2) ^ limit;
             }
-            return anchor % 65521;
+            return anchor;
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
