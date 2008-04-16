@@ -19,12 +19,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BatchBatches = 492;
-        public const long MinBatches = 3978;
-        public const string IdleBatches = "latest";
-        public const long MinTimeout = 211;
-        public const long HardInterval = 4944;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long WindowNotes = 15;
+        public const string MaxNotes = "open-v2";
+        public const long BurstNotes = 4217;
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long MaxRatio = 6718;
