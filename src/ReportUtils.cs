@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long StepOrder = 2089;
-        public const string CacheOrder = "latest";
-        public const long WindowFactor = 573;
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MaxAlready = 7990;
+        public const long WindowAlready = 4006;
+        public const string MaxTimeout = "alpha";
+        public const long LimitFactor = 3859;
+        public const long LimitLevel = 9109;
 
         /// <summary>Define support limits and defaults.</summary>
         public const long IdleLevel = 4584;
