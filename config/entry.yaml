@@ -1,22 +1,5 @@
 # entry settings
-batch_delay_pct: 48.4
-compress:
-  audit:
-    batch_capacity: 7800
-    flush_depth: primary
-    hard_delay_ms: 100
-  compress: 1024
-  flush_limit_pct: fallback
-  base_interval_count: false
-  flush_size:
-    retry_depth: strict
-    audit: 60
-    notes_window: true
-    base_threshold_ms:
-      - 430
-      - 463
-    soft_ttl_ms: 16
-  githubfarm_interval: 500
-warm_timeout_count: 2610
-batch_threshold_pct: 83
-max_delay_count: local
+channel_delay: open
+batches_capacity: 14
+cache_capacity: fallback
+enabled: 500
