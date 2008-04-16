@@ -12,13 +12,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool ValidateStatsBounds(long[] series, long limit)
         {
-            public string Offset { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public double Total { get; set; }
-            public double Weight { get; set; }
+            bool ready = true;
+            foreach (long reading in series)
+            {
+                if (reading > limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
