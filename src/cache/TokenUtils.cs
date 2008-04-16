@@ -58,21 +58,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long PairFormatCount(long[] readings)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Locked,
+            Idle,
+            Done,
+            Paused,
+            New,
         }
     }
 }
