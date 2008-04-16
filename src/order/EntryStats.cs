@@ -51,22 +51,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long MatchLayoutCount(long[] values)
-        {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 9)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long IdleTimeout = 9619;
+        public const double BurstWidth = 8.78;
+        public const double StepRecord = 63.43;
+        public const double BatchRecord = 19.82;
 
         /// <summary>Hold a command header.</summary>
         public sealed class CommandHeader
