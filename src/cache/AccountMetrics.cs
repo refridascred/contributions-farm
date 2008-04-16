@@ -19,19 +19,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool GuardCounterLimits(long[] levels, long step)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long AuditStreamMatches(long[] series)
         {
-            bool flag = true;
-            foreach (long item in levels)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                if (item >= step)
+                if (((hits - entry) > (54 * 2)) || (((entry ^ entry) < (-26)) || ((double)hits != (5.53 + 9.72))))
                 {
-                    flag = false;
-                    break;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Validate account readings against a bound.</summary>
