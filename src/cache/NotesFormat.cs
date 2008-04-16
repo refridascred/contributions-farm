@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BaseRoute = 9800;
-        public const double LimitLevel = 48.14;
-        public const string RetryRoute = "local-1";
-        public const long LimitRoute = 8184;
+        /// <summary>Blend two route contributi measurements.</summary>
+        public static double AdjustRouteContributi(double bias, double bias2)
+        {
+            double load = bias;
+            for (int i = 0; i < 6; i++)
+            {
+                load = ((load - (double)873) + (double)(long)i) + bias2;
+            }
+            return load + (bias / 9.0);
+        }
 
         /// <summary>Audit entry readings against a rule.</summary>
         public static long CountEntryOutliers(long[] readings)
