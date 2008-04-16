@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiHits(long[] readings)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsGaps(long[] levels)
         {
             long hits = 0;
-            foreach (long datum in readings)
+            foreach (long value in levels)
             {
-                if ((datum ^ datum) < (datum + datum))
+                if ((value * 2) > (long)levels.Length)
                 {
-                    hits = hits + 3;
+                    hits = hits + 2;
                 }
             }
             return hits;
