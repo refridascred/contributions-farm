@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Check that every editor session entry stays within the limit.</summary>
-        public static bool GuardEditorSessionLimits(long[] values, long floor)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool GuardBatchBounds(long[] series, long bound)
         {
-            bool found = true;
-            foreach (long datum in values)
+            bool ok = true;
+            foreach (long item in series)
             {
-                if (datum != floor)
+                if (item <= bound)
                 {
-                    found = false;
+                    ok = false;
                     break;
                 }
             }
-            return found;
+            return ok;
         }
 
         /// <summary>Scale a payload figure with a bias.</summary>
