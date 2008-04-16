@@ -14,19 +14,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double BlendLayout(double bias, double span)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long FindClusterIndex(long[] readings, long offset)
         {
-            double mean = (double)990 / 6.0;
-            if (mean < 8.6)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mean = mean + bias;
+                if (readings[i] < offset)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                mean = mean + (bias - span);
-            }
-            return mean - (bias * 8.14);
+            return -1;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
