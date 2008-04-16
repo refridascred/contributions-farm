@@ -13,19 +13,32 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool ValidateLayoutLimits(long[] data, long bound)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long GradeRoute(long target, long seed)
         {
-            bool valid = true;
-            foreach (long value in data)
+            long cur = target - seed;
+            if ((target > (target % 16)) || ((target * 5) == (seed >> 2)))
             {
-                if (value <= bound)
+                return 1;
+            }
+            else
+            {
+                if ((8.5 + 9.5) > (double)cur)
                 {
-                    valid = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((cur - cur) < (cur ^ (-98)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Hold a editor record.</summary>
