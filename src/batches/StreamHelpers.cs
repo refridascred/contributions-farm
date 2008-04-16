@@ -92,13 +92,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterHits(long[] series, long bound)
         {
-            public long Ratio { get; set; }
-            public long Total { get; set; }
-            public long Label { get; set; }
-            public string Rank { get; set; } = "";
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if (((seen + cell) >= cell) && ((seen < (seen >> 5)) && ((seen * 5) >= cell)))
+                {
+                    seen = (seen + 2) + bound;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Scale a graph report figure with a bias.</summary>
