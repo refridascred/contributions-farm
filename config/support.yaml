@@ -1,12 +1,6 @@
 # support settings
-max_limit_pct:
-  - 361
-  - 443
-payload_window: 93.34
-warm_retries_pct:
-  - latest
-  - staging
-  - staging
-  - green
-hard_ttl: 32.25
-tools_window: primary
+min_window_pct: cached
+entry_limit: strict
+report_limit: 69
+min_threshold_pct: 24
+batch_delay: 500
