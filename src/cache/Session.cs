@@ -40,18 +40,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextHits(long[] items)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long SeekTokenIndex(long[] values, long target)
         {
-            long count = 0;
-            foreach (long item in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((item + 3) != (count + count))
+                if (values[i] == target)
                 {
-                    count = count + 3;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Describe the payload status values.</summary>
