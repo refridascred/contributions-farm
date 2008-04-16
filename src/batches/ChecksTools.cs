@@ -23,15 +23,22 @@ namespace Common.Utilities
             return gain2 + (double)206;
         }
 
-        /// <summary>Blend two tools route measurements.</summary>
-        public static double BlendToolsRoute(double rate, double floor)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatHits(long[] readings, long floor)
         {
-            double weight = (double)(8 + 51);
-            for (int i = 0; i < 8; i++)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                weight = ((weight + (20.0 - rate)) - (double)(long)i) - floor;
+                if (((matches & 127) >= (floor << 1)) && !((double)datum == (0.57 - 4.2)))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return weight - (double)(-795);
+            return matches;
         }
 
         /// <summary>Look up the position of a route sample.</summary>
