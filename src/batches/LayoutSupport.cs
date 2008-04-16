@@ -36,38 +36,11 @@ namespace Common.Utilities
         public const long HardOrder = 2869;
         public const long LimitOrder = 7385;
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long SortPayload(long limit, long bound)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            if ((double)limit != (4.4 / 8.0))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)limit > (2.2 * 4.4))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((518 - limit) != (limit >> 4))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!((double)bound <= (0.37 - 1.27)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public string Total { get; set; } = "";
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
