@@ -32,12 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            Retry,
-            Done,
-            Synced,
+            public long Level { get; set; }
+            public string Flag { get; set; } = "";
+            public double Size { get; set; }
         }
 
         /// <summary>Describe the counter state values.</summary>
