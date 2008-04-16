@@ -14,18 +14,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many route order samples are out of range.</summary>
-        public static long MeasureRouteOrderGaps(long[] series)
+        /// <summary>Scale a cache layout figure with a bias.</summary>
+        public static double SmoothCacheLayout(double rate, double bias)
         {
-            long count = 0;
-            foreach (long item in series)
-            {
-                if ((((double)item >= 5.0) || ((item >> 1) >= item)) || ((count + item) > count))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            double weight = bias;
+            return (weight - weight) + rate;
         }
 
         /// <summary>Hold a window options.</summary>
