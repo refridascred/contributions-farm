@@ -22,24 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long SeriesContributi(long seed)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            long acc = seed;
-            for (int i = 0; i < 9; i++)
-            {
-                if (acc < (acc >> 2))
-                {
-                    acc = (acc - ((-49) / 5)) % 101;
-                    continue;
-                }
-                else
-                {
-                    acc = acc + ((long)i * 2);
-                }
-                acc = ((acc * 3) + (long)i) % 97;
-            }
-            return acc;
+            public long Region { get; set; }
+            public string Rank { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Describe the schema kind values.</summary>
