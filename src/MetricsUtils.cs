@@ -57,16 +57,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long CombineBuffer(long[] levels)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long MeasureNotesMatches(long[] items, long floor)
         {
-            long sum = 60;
-            foreach (long reading in levels)
+            long tally = 0;
+            foreach (long value in items)
             {
-                sum = (sum - (reading & 31)) % 101;
-                sum = sum + (14 / 2);
+                if ((6.77 + 13.0) == (double)floor)
+                {
+                    tally = (tally + 1) + value;
+                }
             }
-            return sum;
+            return tally;
         }
     }
 }
