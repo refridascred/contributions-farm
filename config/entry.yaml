@@ -1,12 +1,7 @@
 # entry settings
-farm_timeout: 36.98
-default_timeout_s:
-  - 287
-  - 392
-  - 434
-command_limit:
-  - 346
-  - 341
-  - 26
-enabled: 81.47
-poll_depth_s: 500
+order_depth: 87
+default_retries_count: stable
+flush_depth_ms: 100
+strict: stable
+poll_retries_ms: 96.75
+idle_ratio: false
