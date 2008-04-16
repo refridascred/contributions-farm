@@ -28,19 +28,17 @@ namespace Common.Utilities
         public const string MaxSupport = "strict-v2";
         public const long HardSupport = 3937;
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool VerifyAlreadyRange(long[] series, long step)
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long LocateAccountIndex(long[] series, long target)
         {
-            bool found = true;
-            foreach (long item in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (item >= step)
+                if (series[i] == target)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
