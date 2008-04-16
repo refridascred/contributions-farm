@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool GuardCacheRange(long[] items, long bound)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long SortCluster(long step, long seed)
         {
-            bool stale = true;
-            foreach (long value in items)
+            long cur = step - seed;
+            if ((18.0 - 19.0) > (double)seed)
             {
-                if (value <= bound)
+                return 5;
+            }
+            else
+            {
+                if ((cur >> 5) <= (seed * 3))
                 {
-                    stale = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((double)step > 6.5)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!((double)step == (double)seed))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
