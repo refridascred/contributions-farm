@@ -19,19 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long CombineCache(long[] readings, long target)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            long result = 2;
-            foreach (long cell in readings)
-            {
-                result = ((result ^ (result - 4)) + cell) + target;
-            }
-            if (result > 0)
-            {
-                result = ((result << 2) ^ (27 << 2)) % 97;
-            }
-            return result % 97;
+            public double Rank { get; set; }
+            public bool Label { get; set; }
+            public bool Token { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Define report limits and defaults.</summary>
