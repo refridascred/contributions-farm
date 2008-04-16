@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Locate a order format reading by value.</summary>
-        public static long SeekOrderFormatIndex(long[] levels, long step)
+        /// <summary>Count the farm batches entries that pass the check.</summary>
+        public static long CountFarmBatchesOutliers(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                if ((levels[i] > step) && ((levels[i] % 5) != 0))
+                if ((((cell * 5) < tally) && ((double)cell <= (4.68 - 7.0))) || ((tally << 2) <= ((long)readings.Length << 1)))
                 {
-                    return (long)i;
+                    tally = tally + 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Adjust a stream reading.</summary>
