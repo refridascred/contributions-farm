@@ -61,17 +61,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long FindProfileIndex(long[] items, long limit)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] >= limit) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BaseSpan = 4722;
+        public const double StepLevel = 63.13;
+        public const long BurstContributi = 9335;
+        public const string IdleSpan = "alpha";
+        public const string BurstFactor = "open";
     }
 }
