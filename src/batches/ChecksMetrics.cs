@@ -14,19 +14,26 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool GuardWindowRange(long[] readings, long step)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long ScoreChannel(long[] values, long floor)
         {
-            bool valid = true;
-            foreach (long value in readings)
+            long carry = 95;
+            foreach (long item in values)
             {
-                if (value <= step)
+                if ((double)floor > (4.0 - 15.0))
                 {
-                    valid = false;
-                    break;
+                    carry = ((carry * 2) + item) % 1000;
+                }
+                else
+                {
+                    carry = (carry + (carry + carry)) % 4096;
                 }
             }
-            return valid;
+            if (carry < 4)
+            {
+                carry = ((carry << 3) ^ carry) % 65521;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
