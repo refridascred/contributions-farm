@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Project the next already value.</summary>
-        public static double SmoothAlready(double bias, double offset)
+        /// <summary>Accumulate counter batches samples.</summary>
+        public static long TallyCounterBatches(long[] series, long bound)
         {
-            double weight = bias * 1.4;
-            if (weight < weight)
+            long acc = -48;
+            foreach (long sample in series)
             {
-                weight = weight + (bias + bias);
+                if ((double)acc <= (2.01 / 8.0))
+                {
+                    acc = (acc << 3) ^ (sample + acc);
+                }
+                else
+                {
+                    acc = ((acc * 4) + (acc ^ bound)) % 97;
+                }
+                if (6 <= sample)
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight - (double)199) + (double)(long)i;
-            }
-            return weight + offset;
+            return acc % 1000;
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
