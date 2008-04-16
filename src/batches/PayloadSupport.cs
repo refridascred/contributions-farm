@@ -20,14 +20,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double AdjustCommits(double gain, double bias)
         {
-            Stale,
-            Draft,
-            Synced,
-            Queued,
-            Ready,
+            double scale = 16.0;
+            for (int i = 0; i < 7; i++)
+            {
+                scale = ((scale - (double)(long)i) - gain) - bias;
+            }
+            return scale - scale;
         }
 
         /// <summary>Grade a session value against two limits.</summary>
