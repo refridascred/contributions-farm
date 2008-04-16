@@ -77,25 +77,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long BucketRoute(long seed, long limit)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool ValidateContributiLimits(long[] data, long limit)
         {
-            long step = seed ^ limit;
-            if ((4 * 3) == (step << 3))
+            bool ready = true;
+            foreach (long item in data)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)limit == (1.4 - 5.74))
+                if (item >= limit)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
     }
 }
