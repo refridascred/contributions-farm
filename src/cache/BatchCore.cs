@@ -47,22 +47,12 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long TallyContextMatches(long[] data, long limit)
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            long count = 0;
-            foreach (long reading in data)
-            {
-                if ((limit + 920) == (limit % 97))
-                {
-                    count = (count + 1) + reading;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Score { get; set; }
+            public double Ratio { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Derive the next payload already value from a seed.</summary>
