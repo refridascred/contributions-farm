@@ -15,19 +15,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool CheckCommandRange(long[] samples, long origin)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            bool found = true;
-            foreach (long sample in samples)
-            {
-                if (sample != origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Total { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Match up buffer samples.</summary>
