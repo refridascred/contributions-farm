@@ -1,25 +1,11 @@
 # githubfarm settings
-poll_size_pct: 7818
-warm_depth_count: 6184
-enabled:
-  flush_capacity:
-    batch_timeout_s: 77
-    profile_ratio: 96.76
-    cache_threshold_ms:
-      - 33
-      - 184
-      - 86
-    entry_interval: 13
-    session_depth: true
-    burst_ratio_ms: 500
-  persist: 62.44
-  poll_ratio_s: 89
-  queue_delay: false
-  base_limit:
-    - green
-    - staging
-editor_timeout:
-  - eu-west
-  - fallback
-  - open
-  - cached
+batch_ttl_ms: 250
+readonly: false
+tools_delay: 22.06
+soft_threshold_ms:
+  context_window: false
+  soft_ratio_s: staging
+  route_capacity:
+    - 39
+    - 107
+base_retries_s: edge
