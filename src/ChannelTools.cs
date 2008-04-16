@@ -19,11 +19,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long SortEditor(long step, long bound)
         {
-            public long Rank { get; set; }
-            public string Label { get; set; } = "";
+            if (((step + step) > (step >> 4)) && ((12.0 - 5.53) != (double)bound))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((8.0 + 7.74) < (double)step) || (bound > (4 & 127)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((bound ^ 5) != (208 + 379))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (6.22 >= (double)step)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the buffer githubfarm series from a seed.</summary>
