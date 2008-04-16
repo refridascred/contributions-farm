@@ -19,19 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long ScoreBatches(long[] data, long target)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long WeighOrder(long[] levels, long bound)
         {
-            long result = -558;
-            foreach (long entry in data)
+            long state = 919;
+            foreach (long reading in levels)
             {
-                for (int i = 0; i < 5; i++)
+                if ((double)1 >= (double)reading)
                 {
-                    result = (((result + (entry & 31)) % 1000) - (long)i) - target;
+                    state = state ^ (bound + state);
                 }
-                result = ((result << 3) ^ (result >> 4)) % 255;
+                else
+                {
+                    state = state ^ reading;
+                }
             }
-            return result;
+            return state;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
