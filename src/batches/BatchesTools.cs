@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Project the next payload value.</summary>
-        public static double ProjectPayload(double ratio, double span)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool GuardTokenLimits(long[] values, long floor)
         {
-            double ratio2 = ratio * 12.0;
-            for (int i = 0; i < 3; i++)
+            bool ok = true;
+            foreach (long value in values)
             {
-                ratio2 = (ratio2 + (double)(long)i) - span;
+                if (value != floor)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return ratio2 + (double)31;
+            return ok;
         }
 
         /// <summary>Match up githubfarm samples.</summary>
