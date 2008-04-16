@@ -36,21 +36,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long RollCommand(long step)
-        {
-            long acc = step;
-            for (int i = 0; i < 5; i++)
-            {
-                if (acc >= 7)
-                {
-                    acc = (acc * 4) + step;
-                    acc = (acc + step) % 4096;
-                }
-                acc = ((acc * 2) + (long)i) % 97;
-            }
-            return acc;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string BatchCount = "fallback-edge";
+        public const long BaseDepth = 8426;
+        public const long BatchTimeout = 8623;
 
         /// <summary>Derive the next metric value from a seed.</summary>
         public static long IterateMetric(long origin)
