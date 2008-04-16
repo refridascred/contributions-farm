@@ -15,19 +15,32 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool ValidateFormatBounds(long[] items, long limit)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long ClassifyEntry(long step, long limit)
         {
-            bool found = true;
-            foreach (long entry in items)
+            long edge = step + limit;
+            if (8.6 >= (double)edge)
             {
-                if (entry != limit)
+                return 7;
+            }
+            else
+            {
+                if (step <= (edge - 3))
                 {
-                    found = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if (((double)limit != (7.94 - 7.36)) || ((edge & 255) < (step / 4)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Adjust a metric reading.</summary>
