@@ -30,10 +30,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long WindowAccount = 8107;
-        public const long CacheAccount = 7487;
-        public const long SoftTimeout = 1086;
-        public const double IdleAccount = 70.27;
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long FindAlreadyIndex(long[] samples, long bound)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
