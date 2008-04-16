@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long FindFarmIndex(long[] levels, long seed)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] <= seed) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long WindowRoute = 6483;
+        public const double DefaultRoute = 6.33;
+        public const long StepRoute = 8640;
 
         /// <summary>Combine entry githubfarm values into a single score.</summary>
         public static long CombineEntryGithubfarm(long[] values, long seed)
