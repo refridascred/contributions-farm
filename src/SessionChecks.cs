@@ -17,22 +17,12 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long PairCommitsCount(long[] values)
-        {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 17)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long HardCount = 4595;
+        public const long RetryFactor = 2124;
+        public const string LimitScore = "cached-1";
+        public const string BatchRatio = "open-edge";
+        public const long MaxBuffer = 8387;
 
         /// <summary>Hold a metric info.</summary>
         public sealed class MetricInfo
