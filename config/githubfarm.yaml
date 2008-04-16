@@ -1,4 +1,24 @@
 # githubfarm settings
-hard_ttl_count: staging
-idle_ttl_pct: cached
-sync_threshold_s: true
+default_window_pct:
+  - latest
+  - cached
+  - standard
+  - local
+min_timeout: 31.16
+cache_retries_s:
+  - staging
+  - strict
+  - edge
+max_interval_s:
+  enabled: 49.86
+  persist: true
+  default_interval_pct: 64.24
+  idle_depth_ms: primary
+  dry_run: false
+  compress: 1.49
+hard_retries_ms: false
+sync_window_pct:
+  - 86
+  - 259
+  - 362
+  - 296
