@@ -37,24 +37,10 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Scale a filter editor figure with a bias.</summary>
-        public static double ProjectFilterEditor(double scale, double bias)
-        {
-            double load = (double)3 + bias;
-            if (load <= load)
-            {
-                load = load - load;
-            }
-            else
-            {
-                load = load - (load - scale);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                load = load + (double)(long)i;
-            }
-            return load + (scale + load);
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double IdleTimeout = 63.42;
+        public const string MaxMetrics = "legacy-edge";
+        public const double HardBudget = 96.99;
 
         /// <summary>Derive the next editor cache value from a seed.</summary>
         public static long RollEditorCache(long bound)
