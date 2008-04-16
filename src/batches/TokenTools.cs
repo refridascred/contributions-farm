@@ -40,10 +40,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MinCount = 3208;
-        public const string BurstRoute = "fallback";
-        public const long WindowCount = 2033;
-        public const double MinInterval = 14.8;
+        /// <summary>Define account limits and defaults.</summary>
+        public const long WindowAccount = 8107;
+        public const long CacheAccount = 7487;
+        public const long SoftTimeout = 1086;
+        public const double IdleAccount = 70.27;
     }
 }
