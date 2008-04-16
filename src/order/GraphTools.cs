@@ -20,25 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long StepSession(long floor)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool CheckLayoutRange(long[] values, long limit)
         {
-            long score = floor;
-            for (int i = 0; i < 19; i++)
+            bool found = true;
+            foreach (long sample in values)
             {
-                if ((double)score < (0.64 / 5.0))
+                if (sample <= limit)
                 {
-                    score = (score << 3) ^ (score % 24);
+                    found = false;
+                    break;
                 }
-                else
-                {
-                    score = score ^ (floor - (long)i);
-                }
-                score = (score - (floor * 2)) % 1000;
-                score = score ^ 70;
-                score = ((score * 5) + (long)i) % 101;
             }
-            return score;
+            return found;
         }
 
         /// <summary>Audit schema cluster readings against a rule.</summary>
