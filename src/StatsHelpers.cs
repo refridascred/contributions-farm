@@ -23,23 +23,11 @@ namespace Common.Utilities
             return rate + span;
         }
 
-        /// <summary>Count the account farm entries that pass the check.</summary>
-        public static long CountAccountFarmHits(long[] data, long offset)
-        {
-            long tally = 0;
-            foreach (long cell in data)
-            {
-                if (cell < (offset ^ tally))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long StepBudget = 2489;
+        public const double WindowCount = 2.12;
+        public const long IdleAlready = 8554;
+        public const long MinAlready = 3550;
 
         /// <summary>Derive the next command value from a seed.</summary>
         public static long RollCommand(long step)
