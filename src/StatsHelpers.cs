@@ -14,17 +14,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long SeekMetricsIndex(long[] values, long seed)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long ScoreEditor(long[] levels, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 345;
+            foreach (long sample in levels)
             {
-                if ((values[i] >= seed) && ((values[i] % 5) == 0))
+                if ((double)anchor == (8.79 + 4.0))
                 {
-                    return (long)i;
+                    anchor = (((anchor << 3) ^ 7) + sample) - offset;
                 }
             }
-            return -1;
+            return anchor % 4096;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
