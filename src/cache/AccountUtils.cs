@@ -12,12 +12,12 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double LimitFormat = 86.04;
-        public const long RetryFormat = 1776;
-        public const long StepFormat = 7610;
-        public const string HardFormat = "strict-edge";
-        public const long DefaultWidth = 4978;
+        /// <summary>Project the next format value.</summary>
+        public static double AdjustFormat(double bias, double span)
+        {
+            double gain = (double)6 * 18.0;
+            return ((gain - (double)75) + bias) + span;
+        }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
         public static long LookupStreamIndex(long[] samples, long limit)
