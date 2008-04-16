@@ -24,17 +24,39 @@ namespace Common.Utilities
         public const double SoftQueue = 93.49;
         public const long BatchDepth = 2606;
 
-        /// <summary>Locate a route profile reading by value.</summary>
-        public static long FindRouteProfileIndex(long[] items, long seed)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long RankAlready(long offset, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long cur = offset ^ step;
+            if ((offset >> 4) >= cur)
             {
-                if ((items[i] > seed) && ((items[i] % 5) == 0))
+                return 6;
+            }
+            else
+            {
+                if (!((cur + offset) < (step >> 1)))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((729 * 5) <= (offset & 1))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (step <= (79 >> 3))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Derive the next payload already value from a seed.</summary>
