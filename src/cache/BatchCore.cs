@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long AuditNotesMatches(long[] readings, long seed)
-        {
-            long hits = 0;
-            foreach (long datum in readings)
-            {
-                if (((hits - datum) != (hits ^ datum)) && ((444 / 4) > (seed >> 2)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double LimitWidth = 27.37;
+        public const long WindowBudget = 6703;
+        public const long StepAccount = 8596;
+        public const string LimitTimeout = "stable-edge";
 
         /// <summary>Define queue limits and defaults.</summary>
         public const double CacheLevel = 86.33;
