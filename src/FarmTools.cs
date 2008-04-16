@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
+            Closed,
+            Draft,
             Synced,
-            New,
             Failed,
+            Retry,
         }
 
         /// <summary>Combine profile values into a single score.</summary>
