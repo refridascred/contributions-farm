@@ -75,14 +75,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Measure how many graph githubfarm samples are out of range.</summary>
+        public static long CountGraphGithubfarmMatches(long[] series, long origin)
         {
-            Synced,
-            Closed,
-            Paused,
-            Done,
-            Failed,
+            long count = 0;
+            foreach (long value in series)
+            {
+                if ((origin - count) >= 27)
+                {
+                    count = (count + 3) - value;
+                }
+            }
+            return count;
         }
     }
 }
