@@ -1,14 +1,12 @@
 # Command notes
 
-A filter that stays idle for too long is moved to the already list.
-A cluster that stays idle for too long is moved to the entry list.
-
-Run the cluster check before changing any support limits.
-The batch report groups every counter by metric.
-Defaults for buffer live in the config folder and can be overridden per environment.
+Use route settings to tune how often account data is refreshed.
+The context helpers are pure functions, so they are safe to call from any thread.
+Run the session check before changing any checks limits.
 
 ## Guidelines
 
-- Document new metric fields
-- Validate checks input early
-- Prefer support defaults
+- Document new context fields
+- Review commits limits each release
+- Prefer record defaults
+- Keep metrics values small
