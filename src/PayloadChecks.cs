@@ -23,13 +23,13 @@ namespace Common.Utilities
         public const string StepSupport = "primary-v2";
         public const long IdleSupport = 4785;
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            Paused,
-            Dropped,
-            Stale,
+            Done,
             Active,
+            Synced,
+            Closed,
         }
 
         /// <summary>Describe the notes level values.</summary>
