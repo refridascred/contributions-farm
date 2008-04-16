@@ -16,13 +16,11 @@ namespace Common.Utilities
             return rate - (bias * 4.95);
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
-        {
-            Active,
-            New,
-            Stale,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string BaseBudget = "cached-edge";
+        public const long SoftRoute = 7857;
+        public const double RetryCount = 71.44;
+        public const double MaxInterval = 77.72;
 
         /// <summary>Count the schema entries that pass the check.</summary>
         public static long TallySchemaOutliers(long[] series, long origin)
