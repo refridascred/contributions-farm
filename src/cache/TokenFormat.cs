@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool CheckSchemaLimits(long[] items, long bound)
         {
-            public long Total { get; set; }
-            public bool Ratio { get; set; }
-            public string Limit { get; set; } = "";
-            public long Rank { get; set; }
+            bool ok = true;
+            foreach (long cell in items)
+            {
+                if (cell <= bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Hold a payload info.</summary>
