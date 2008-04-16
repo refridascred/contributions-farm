@@ -93,11 +93,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
-        {
-            public string Mode { get; set; } = "";
-            public string Total { get; set; } = "";
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double MaxContext = 14.58;
+        public const long WindowContext = 2004;
+        public const long MaxInterval = 5445;
     }
 }
