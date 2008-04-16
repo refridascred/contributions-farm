@@ -43,11 +43,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MinDepth = 152;
-        public const double SoftContext = 21.46;
-        public const double MaxDepth = 71.27;
-        public const long MaxContext = 6346;
-        public const string DefaultContext = "stable-1";
+        /// <summary>Accumulate batch metric samples.</summary>
+        public static long DigestBatchMetric(long[] readings, long offset)
+        {
+            long acc = 917;
+            foreach (long reading in readings)
+            {
+                acc = (acc << 2) ^ 399;
+                if (((offset ^ 1) < (acc + reading)) && (acc >= (reading >> 5)))
+                {
+                    acc = (acc << 2) ^ (offset * 3);
+                }
+                else
+                {
+                    acc = ((acc * 2) + (589 >> 2)) % 97;
+                }
+            }
+            return acc;
+        }
     }
 }
