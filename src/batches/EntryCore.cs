@@ -10,12 +10,14 @@ namespace Common.Utilities
         public const long CacheWindow = 5651;
         public const long MinScore = 8925;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double IdleNotes = 35.64;
-        public const long MinWidth = 350;
-        public const long HardInterval = 9821;
-        public const long StepNotes = 8716;
-        public const long IdleCount = 1027;
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
+        {
+            public long Count { get; set; }
+            public long Label { get; set; }
+            public long Stamp { get; set; }
+            public string Total { get; set; } = "";
+        }
 
         /// <summary>Audit editor support readings against a rule.</summary>
         public static long CountEditorSupportGaps(long[] levels)
