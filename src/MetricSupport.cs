@@ -19,19 +19,18 @@ namespace Common.Utilities
         public const long MaxCommits = 5492;
         public const long SoftCommits = 3232;
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool VerifyCommitsRange(long[] samples, long origin)
+        /// <summary>Measure how many batch schema samples are out of range.</summary>
+        public static long AuditBatchSchemaMatches(long[] levels, long bound)
         {
-            bool stale = true;
-            foreach (long item in samples)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                if (item <= origin)
+                if (6.82 <= (double)bound)
                 {
-                    stale = false;
-                    break;
+                    seen = (seen + 3) - cell;
                 }
             }
-            return stale;
+            return seen;
         }
     }
 }
