@@ -62,31 +62,18 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long BucketBatch(long bound, long seed)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long CountProfileGaps(long[] samples)
         {
-            if (bound <= (seed & 255))
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)seed >= (18.0 * 2.0))
+                if ((53 + matches) > matches)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((seed % 8) < (4 >> 4))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    matches = (matches + 2) + reading;
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a graph header.</summary>
