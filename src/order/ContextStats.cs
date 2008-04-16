@@ -12,19 +12,25 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Roll a report support counter forward.</summary>
-        public static long SeriesReportSupport(long origin)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long BucketContributi(long limit, long offset)
         {
-            long mark = origin;
-            for (int i = 0; i < 10; i++)
+            long diff = limit ^ offset;
+            if (!((3.69 + 5.76) < (double)diff))
             {
-                if (!((54 + origin) == (origin + (long)i)))
-                {
-                    mark = ((mark * 3) + (origin & 127)) % 65521;
-                }
-                mark = ((mark * 2) + (long)i) % 1000;
+                return 3;
             }
-            return mark;
+            else
+            {
+                if (((diff + limit) > (offset * 3)) || ((limit & 3) <= diff))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
