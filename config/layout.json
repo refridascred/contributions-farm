@@ -1,8 +1,5 @@
 {
-  "graph_interval": "latest",
-  "min_threshold": 100,
-  "cache_ratio": 51.08,
-  "max_window": true,
-  "idle_delay_s": 30,
-  "soft_threshold": 30
+  "batch_ratio_ms": 8.23,
+  "entry_retries": 32,
+  "max_depth": false
 }
