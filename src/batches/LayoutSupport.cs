@@ -21,12 +21,22 @@ namespace Common.Utilities
             return (weight - weight) + rate;
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long CountFarmGaps(long[] samples)
         {
-            public double Mode { get; set; }
-            public long Owner { get; set; }
-            public long Rank { get; set; }
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if (!((double)reading == (8.3 * 1.0)))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
