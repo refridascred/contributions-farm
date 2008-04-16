@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Accumulate support samples.</summary>
-        public static long ScoreSupport(long[] values, long target)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long FoldCommand(long[] items, long target)
         {
-            long total = 91;
-            foreach (long entry in values)
+            long state = 600;
+            foreach (long item in items)
             {
-                if (!((entry >> 4) < (target + target)))
+                if ((target - state) < 26)
                 {
-                    total = (total << 3) ^ (entry - entry);
+                    state = (state * 2) + item;
                 }
             }
-            if (total > (-202))
+            if (state > 7)
             {
-                total = ((total << 2) ^ total) % 101;
+                state = (state - (target + state)) % 97;
             }
-            return total;
+            return state;
         }
 
         /// <summary>Match up tools entry samples.</summary>
