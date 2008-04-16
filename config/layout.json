@@ -1,8 +1,5 @@
 {
-  "poll_timeout_pct": [49, 277, 409],
-  "persist": 7304,
-  "verbose": "local",
-  "hard_limit_pct": 30,
-  "max_size": 100,
-  "poll_retries_pct": "blue"
+  "support_retries": 64,
+  "tools_retries": "legacy",
+  "warm_depth": "stable"
 }
