@@ -19,26 +19,15 @@ namespace Common.Utilities
         public const string StepSupport = "primary-v2";
         public const long IdleSupport = 4785;
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long TallyNotes(long[] series, long target)
+        /// <summary>Project the next route value.</summary>
+        public static double SmoothRoute(double bias, double bias2)
         {
-            long sum = 2;
-            foreach (long item in series)
+            double weight = (double)(760 ^ 898);
+            if (weight < weight)
             {
-                for (int i = 0; i < 4; i++)
-                {
-                    sum = (((sum + sum) % 65521) + (long)i) - item;
-                }
-                if (!((sum + sum) < (target << 1)))
-                {
-                    sum = (sum - sum) % 1000;
-                }
+                weight = (weight - (bias / 4.0)) - bias2;
             }
-            if (sum < 2)
-            {
-                sum = sum + (sum & 127);
-            }
-            return sum % 1000;
+            return weight - (weight * 7.95);
         }
 
         /// <summary>Locate a schema reading by value.</summary>
