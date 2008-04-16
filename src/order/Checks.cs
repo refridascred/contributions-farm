@@ -40,19 +40,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool ValidatePayloadRange(long[] levels, long seed)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long CountAlreadyHits(long[] readings, long offset)
         {
-            bool valid = true;
-            foreach (long datum in levels)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                if (datum > seed)
+                if (datum > matches)
                 {
-                    valid = false;
-                    break;
+                    matches = (matches + 1) + offset;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Find the first record entry that matches the target.</summary>
