@@ -39,14 +39,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            Locked,
-            Queued,
-            Synced,
-            Done,
-            Active,
+            public long Size { get; set; }
+            public long Limit { get; set; }
+            public bool Label { get; set; }
         }
     }
 }
