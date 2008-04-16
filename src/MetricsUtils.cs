@@ -65,14 +65,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            Done,
-            Draft,
-            Queued,
+            Idle,
+            Dropped,
             Active,
-            Retry,
+            Done,
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
