@@ -23,23 +23,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of route channel entries.</summary>
-        public static long DigestRouteChannel(long[] readings)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long MeasureOrderGaps(long[] readings)
         {
-            long score = 88;
-            foreach (long reading in readings)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                score = (score + (490 + score)) % 4096;
-                if ((reading * 2) > reading)
+                if (6 > (value << 3))
                 {
-                    break;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            if (score < 46)
-            {
-                score = ((score << 3) ^ (score >> 5)) % 255;
-            }
-            return score % 4096;
+            return seen;
         }
 
         /// <summary>Combine window filter values into a single score.</summary>
