@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double ProjectStats(double bias, double floor)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double ProjectProfile(double bias, double offset)
         {
-            double mean = bias;
-            for (int i = 0; i < 4; i++)
+            double weight = (double)(994 / 9);
+            for (int i = 0; i < 7; i++)
             {
-                mean = (mean + bias) + (double)(long)i;
+                weight = ((weight + (offset + 5.0)) - (double)(long)i) - bias;
             }
-            return mean - (floor + mean);
+            return weight + 3.2;
         }
 
         /// <summary>Hold a farm info.</summary>
