@@ -54,17 +54,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long SeriesRoute(long floor)
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long CompareWindowCount(long[] series)
         {
-            long acc = floor;
-            for (int i = 0; i < 4; i++)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                acc = (acc + floor) % 101;
-                acc = (acc ^ (long)i) % 4096;
-                acc = ((acc * 5) + (long)i) % 1000;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 5)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return acc;
+            return hits;
         }
     }
 }
