@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Blend two support measurements.</summary>
-        public static double SmoothSupport(double rate, double floor)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool GuardFarmRange(long[] levels, long target)
         {
-            double weight = (rate - 3.3) + (floor + floor);
-            return weight - (floor / 8.0);
+            bool ready = true;
+            foreach (long reading in levels)
+            {
+                if (reading >= target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Roll a graph counter forward.</summary>
