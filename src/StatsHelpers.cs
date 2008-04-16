@@ -41,18 +41,19 @@ namespace Common.Utilities
         public const long BaseDepth = 8426;
         public const long BatchTimeout = 8623;
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long CountContextHits(long[] data, long target)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool ValidateContributiLimits(long[] series, long limit)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            bool ready = true;
+            foreach (long datum in series)
             {
-                if ((double)cell != (3.88 * 2.3))
+                if (datum < limit)
                 {
-                    hits = (hits + 3) + target;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
     }
 }
