@@ -68,18 +68,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long CountChecksHits(long[] items)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            long seen = 0;
-            foreach (long value in items)
-            {
-                if ((seen + 2) == (value & 3))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Done,
+            Active,
+            Stale,
+            Paused,
         }
     }
 }
