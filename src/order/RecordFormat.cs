@@ -43,12 +43,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            public string Mode { get; set; } = "";
-            public bool Total { get; set; }
-            public string Size { get; set; } = "";
+            public long Mode { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Hold a record entry.</summary>
