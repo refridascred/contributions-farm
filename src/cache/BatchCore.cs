@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
-        {
-            Stale,
-            Idle,
-            Pending,
-            Done,
-            New,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string HardAlready = "fallback";
+        public const long MinAlready = 5460;
+        public const long RetryAlready = 4292;
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long BaseCounter = 219;
