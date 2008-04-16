@@ -27,14 +27,11 @@ namespace Common.Utilities
             return (mean + (double)2) + bias;
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
-        {
-            public long Mode { get; set; }
-            public long Label { get; set; }
-            public long Token { get; set; }
-            public bool Level { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long LimitScore = 1745;
+        public const long DefaultBatch = 1842;
+        public const long LimitInterval = 2890;
+        public const long WindowBatch = 5270;
 
         /// <summary>Combine graph counter values into a single score.</summary>
         public static long WeighGraphCounter(long[] items, long bound)
