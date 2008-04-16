@@ -31,20 +31,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a counter support figure with a bias.</summary>
-        public static double SmoothCounterSupport(double weight, double floor)
-        {
-            double bias = floor;
-            if (bias < (bias / 7.0))
-            {
-                bias = bias - (floor - bias);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                bias = (bias - (weight * 1.39)) - (double)(long)i;
-            }
-            return bias - floor;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long WindowRatio = 2228;
+        public const string WindowBudget = "latest-edge";
+        public const long CacheEditor = 2615;
+        public const long MaxRatio = 6149;
+        public const long HardEditor = 4601;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const string SoftSize = "legacy-v2";
