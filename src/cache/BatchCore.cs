@@ -22,18 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long TallyAlreadyHits(long[] values)
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            long matches = 0;
-            foreach (long entry in values)
-            {
-                if ((9.3 <= (double)entry) || (matches > (entry - entry)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public double Owner { get; set; }
+            public bool Ratio { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Rank already input into a small class.</summary>
