@@ -41,15 +41,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of entry cache entries.</summary>
-        public static long TallyEntryCache(long[] series, long seed)
+        /// <summary>Check that every githubfarm editor entry stays within the limit.</summary>
+        public static bool GuardGithubfarmEditorBounds(long[] readings, long seed)
         {
-            long score = 152;
-            foreach (long item in series)
+            bool ready = true;
+            foreach (long entry in readings)
             {
-                score = (score ^ item) - seed;
+                if (entry != seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return score;
+            return ready;
         }
     }
 }
