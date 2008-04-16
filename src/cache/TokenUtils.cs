@@ -25,22 +25,13 @@ namespace Common.Utilities
         public const string HardSize = "open";
         public const double HardBatches = 28.97;
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long CombineMetric(long[] series)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            long mix = 3;
-            foreach (long entry in series)
-            {
-                if (entry > (entry - mix))
-                {
-                    mix = mix ^ (entry / 4);
-                }
-            }
-            if (mix > 429)
-            {
-                mix = (mix - (mix << 3)) % 97;
-            }
-            return mix;
+            public bool Limit { get; set; }
+            public long Ratio { get; set; }
+            public string Token { get; set; } = "";
+            public bool Total { get; set; }
         }
     }
 }
