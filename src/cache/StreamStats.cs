@@ -46,19 +46,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool VerifySchemaLimits(long[] items, long limit)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool CheckTokenLimits(long[] items, long origin)
         {
-            bool ok = true;
-            foreach (long value in items)
+            bool found = true;
+            foreach (long item in items)
             {
-                if (value >= limit)
+                if (item <= origin)
                 {
-                    ok = false;
+                    found = false;
                     break;
                 }
             }
-            return ok;
+            return found;
         }
 
         /// <summary>Define context limits and defaults.</summary>
