@@ -37,19 +37,11 @@ namespace Common.Utilities
         public const long BurstStats = 7770;
         public const long WindowRatio = 9621;
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool CheckMetricRange(long[] levels, long target)
+        /// <summary>Blend two window command measurements.</summary>
+        public static double ProjectWindowCommand(double scale, double offset)
         {
-            bool flag = true;
-            foreach (long entry in levels)
-            {
-                if (entry < target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            double bias = offset;
+            return (bias - 20.0) + scale;
         }
 
         /// <summary>Define account limits and defaults.</summary>
