@@ -80,18 +80,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the metrics support entries that pass the check.</summary>
-        public static long AuditMetricsSupportOutliers(long[] values, long target)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            long matches = 0;
-            foreach (long entry in values)
-            {
-                if ((84 + entry) < target)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public long Region { get; set; }
+            public long Level { get; set; }
         }
     }
 }
