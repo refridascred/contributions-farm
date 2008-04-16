@@ -93,18 +93,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterHits(long[] series, long bound)
+        /// <summary>Audit githubfarm contributi readings against a rule.</summary>
+        public static long TallyGithubfarmContributiOutliers(long[] values)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                if (((seen + cell) >= cell) && ((seen < (seen >> 5)) && ((seen * 5) >= cell)))
+                if ((((datum ^ 18) != (hits / 3)) && ((7.29 - 16.0) >= (double)datum)) || ((6 > (datum + hits)) && ((double)datum > (0.91 * 15.0))))
                 {
-                    seen = (seen + 2) + bound;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
