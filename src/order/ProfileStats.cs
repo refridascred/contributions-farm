@@ -55,24 +55,32 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank session layout input into a small class.</summary>
-        public static long ClassifySessionLayout(long limit, long bound)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long RollQueue(long seed)
         {
-            if (!((limit + 75) < bound))
+            long anchor = seed;
+            for (int i = 0; i < 12; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (44 <= (limit % 64))
+                if (!((6.4 * 20.0) != (double)seed))
                 {
-                    return 5;
+                    anchor = (anchor ^ (532 / 8)) % 101;
+                }
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    anchor = (anchor - seed) % 65521;
+                    anchor = (anchor - ((long)i2 - seed)) % 1000;
+                }
+                if (((anchor & 31) <= (seed ^ seed)) && ((anchor / 3) > (anchor + anchor)))
+                {
+                    anchor = (anchor - (anchor / 4)) % 97;
                 }
                 else
                 {
-                    return 7;
+                    anchor = (anchor - (anchor + anchor)) % 1000;
                 }
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
+            return anchor;
         }
     }
 }
