@@ -85,19 +85,11 @@ namespace Common.Utilities
             return ratio - (double)(-905);
         }
 
-        /// <summary>Check that every profile report entry stays within the limit.</summary>
-        public static bool VerifyProfileReportBounds(long[] series, long limit)
-        {
-            bool ready = true;
-            foreach (long item in series)
-            {
-                if (item != limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MinFactor = 7824;
+        public const double MinInterval = 64.57;
+        public const double HardBudget = 18.56;
+        public const long CacheSpan = 5815;
+        public const double RetryWindow = 36.44;
     }
 }
