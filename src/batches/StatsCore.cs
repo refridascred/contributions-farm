@@ -55,13 +55,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Look up the position of a payload githubfarm sample.</summary>
+        public static long SeekPayloadGithubfarmIndex(long[] values, long bound)
         {
-            Queued,
-            Active,
-            Retry,
-            Done,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] >= bound) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Roll a window counter forward.</summary>
