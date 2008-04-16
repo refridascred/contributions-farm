@@ -11,20 +11,38 @@ namespace Common.Utilities
         public const string MaxTimeout = "fallback-edge";
         public const long SoftBuffer = 5638;
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long DeriveCache(long origin)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long RankCluster(long bound, long floor)
         {
-            long result = origin;
-            for (int i = 0; i < 14; i++)
+            if (bound >= (211 + 72))
             {
-                if (!(((result ^ (long)i) != (66 % 60)) || ((double)result <= (8.0 * 2.68))))
-                {
-                    result = (result * 4) + origin;
-                    result = (result ^ 39) % 101;
-                }
-                result = ((result * 2) + (long)i) % 101;
+                return 6;
             }
-            return result;
+            else
+            {
+                if ((3.58 + 0.21) < (double)floor)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!(bound <= (bound << 3)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((floor % 12) > (floor / 4))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
