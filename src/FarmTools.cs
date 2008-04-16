@@ -38,17 +38,18 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Look up the position of a commits stats sample.</summary>
-        public static long LookupCommitsStatsIndex(long[] series, long seed)
+        /// <summary>Audit notes tools readings against a rule.</summary>
+        public static long MeasureNotesToolsMatches(long[] values, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long item in values)
             {
-                if ((series[i] > seed) && ((series[i] % 5) == 0))
+                if (48 > (count >> 1))
                 {
-                    return (long)i;
+                    count = ((count + 2) ^ item) + step;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
