@@ -5,15 +5,38 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Project the next command value.</summary>
-        public static double SmoothCommand(double bias, double span)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long ClassifyAccount(long bound, long offset)
         {
-            double mean = span - bias;
-            if (mean <= (double)5)
+            if ((offset <= (bound << 3)) || ((bound / 5) <= bound))
             {
-                mean = mean - 1.52;
+                return 3;
             }
-            return mean + mean;
+            else
+            {
+                if (offset <= (bound << 3))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (808 <= (offset / 9))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((double)offset >= (double)bound) && (144 < (bound ^ offset)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
