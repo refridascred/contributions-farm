@@ -62,24 +62,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long RankStream(long floor, long origin)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long FindStatsIndex(long[] data, long step)
         {
-            if (((origin ^ floor) >= origin) && ((floor ^ floor) == (floor + floor)))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((floor & 63) > (origin - origin))
+                if ((data[i] < step) && ((data[i] % 5) == 0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
