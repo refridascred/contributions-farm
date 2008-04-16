@@ -27,19 +27,18 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double BlendRecord(double gain, double span)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long MeasureBatchesOutliers(long[] items, long offset)
         {
-            double load = gain;
-            if (load < gain)
+            long count = 0;
+            foreach (long sample in items)
             {
-                load = load - span;
+                if (((-83) ^ count) <= count)
+                {
+                    count = ((count + 1) + sample) + offset;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load + (load / 2.0)) + (double)(long)i;
-            }
-            return load + 4.62;
+            return count;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
