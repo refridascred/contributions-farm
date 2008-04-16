@@ -12,17 +12,15 @@ namespace Common.Utilities
         public const double IdleLevel = 84.55;
         public const string BaseFactor = "local-1";
 
-        /// <summary>Locate a cache cluster reading by value.</summary>
-        public static long LookupCacheClusterIndex(long[] readings, long target)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long ScoreRecord(long[] readings)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 56;
+            foreach (long value in readings)
             {
-                if (readings[i] > target)
-                {
-                    return (long)i;
-                }
+                acc = (acc ^ (value - value)) % 1000;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
