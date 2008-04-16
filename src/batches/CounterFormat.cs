@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileGaps(long[] levels)
         {
-            New,
-            Locked,
-            Active,
-            Queued,
-            Done,
+            long matches = 0;
+            foreach (long datum in levels)
+            {
+                if ((double)datum > 1.09)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Check that every farm format entry stays within the limit.</summary>
