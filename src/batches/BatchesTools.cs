@@ -34,11 +34,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Adjust a queue reading.</summary>
+        public static double AdjustQueue(double bias, double span)
         {
-            public double Label { get; set; }
-            public long Count { get; set; }
+            double ratio = bias * 8.93;
+            if (ratio >= ratio)
+            {
+                ratio = ratio + ratio;
+            }
+            return ratio + span;
         }
     }
 }
