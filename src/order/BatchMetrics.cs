@@ -33,16 +33,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next editor payload value from a seed.</summary>
-        public static long SeriesEditorPayload(long target)
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            long sum = target;
-            for (int i = 0; i < 7; i++)
-            {
-                sum = (sum ^ (target & 255)) % 97;
-                sum = ((sum * 3) + (long)i) % 101;
-            }
-            return sum;
+            public double Offset { get; set; }
+            public string Count { get; set; } = "";
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Describe the filter phase values.</summary>
