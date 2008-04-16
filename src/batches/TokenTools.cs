@@ -21,25 +21,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long BucketRecord(long offset, long seed)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long ScoreMetrics(long[] data)
         {
-            long step = offset - seed;
-            if (seed < (step + offset))
+            long carry = 88;
+            foreach (long reading in data)
             {
-                return 5;
+                carry = ((carry ^ (carry + carry)) % 255) ^ reading;
             }
-            else
-            {
-                if (((step ^ seed) == (step + 98)) || ((seed * 2) < (step & 1)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            return carry;
         }
 
         /// <summary>Project the next session value.</summary>
