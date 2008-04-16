@@ -28,17 +28,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long FindToolsIndex(long[] samples, long offset)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long StepOrder(long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mix = target;
+            for (int i = 0; i < 16; i++)
             {
-                if (samples[i] < offset)
-                {
-                    return (long)i;
-                }
+                mix = ((mix * 2) + (long)i) % 97;
             }
-            return -1;
+            return mix;
         }
     }
 }
