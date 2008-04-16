@@ -39,17 +39,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long FindCommitsIndex(long[] items, long floor)
+        /// <summary>Combine entry githubfarm values into a single score.</summary>
+        public static long CombineEntryGithubfarm(long[] values, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = 1;
+            foreach (long item in values)
             {
-                if ((items[i] >= floor) && ((items[i] % 3) != 0))
+                if (((item + item) < (item * 5)) && (item >= (score + score)))
                 {
-                    return (long)i;
+                    score = ((score * 4) + (score << 3)) % 97;
+                }
+                score = score + (long)values.Length;
+                if (((-8) < seed) || ((10.0 + 7.0) <= (double)seed))
+                {
+                    score = ((score << 2) ^ (seed + item)) % 65521;
                 }
             }
-            return -1;
+            if (score < 352)
+            {
+                score = (score * 3) + (seed + score);
+            }
+            return score;
         }
 
         /// <summary>Hold a order stats.</summary>
