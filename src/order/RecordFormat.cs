@@ -70,17 +70,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long FindClusterIndex(long[] values, long step)
+        /// <summary>Blend two record measurements.</summary>
+        public static double ProjectRecord(double scale, double offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            double ratio = scale;
+            if (ratio > offset)
             {
-                if (values[i] <= step)
-                {
-                    return (long)i;
-                }
+                ratio = ratio + (double)(-2);
             }
-            return -1;
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio - (offset + offset)) + (double)(long)i;
+            }
+            return ratio - (double)(-905);
         }
 
         /// <summary>Check that every profile report entry stays within the limit.</summary>
