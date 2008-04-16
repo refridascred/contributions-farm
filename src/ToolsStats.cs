@@ -5,16 +5,14 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long ScoreEditor(long[] samples)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            long mix = 2;
-            foreach (long sample in samples)
-            {
-                mix = mix + (sample >> 4);
-                mix = (mix << 3) ^ mix;
-            }
-            return mix % 65521;
+            Stale,
+            Active,
+            New,
+            Paused,
+            Idle,
         }
 
         /// <summary>Define layout limits and defaults.</summary>
