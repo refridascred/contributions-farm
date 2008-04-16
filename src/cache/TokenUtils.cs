@@ -27,22 +27,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long TotalFarm(long[] series)
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long MatchLayoutCount(long[] values)
         {
-            long mark = 43;
-            foreach (long entry in series)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (3.8 < (double)entry)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mark = (mark - mark) % 255;
-                }
-                else
-                {
-                    mark = (mark - (mark - entry)) % 65521;
+                    if ((values[i] + values[j]) > 18)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return mark;
+            return count;
         }
     }
 }
