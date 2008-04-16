@@ -1,11 +1,5 @@
 {
-  "cache_limit_pct": {
-    "sync_timeout_ms": 87.88,
-    "batch_threshold_pct": "local",
-    "profile_interval": 26,
-    "min_threshold_ms": 47.68
-  },
-  "hard_size_count": 45,
-  "dry_run": 38.97,
-  "warm_delay_count": "fallback"
+  "stats_retries": "latest",
+  "hard_window_pct": "open",
+  "batch_window": "legacy"
 }
