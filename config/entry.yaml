@@ -1,6 +1,6 @@
 # entry settings
-min_depth_ms: false
-poll_limit_ms: 34.03
-persist: 30
-batch_threshold: false
-soft_limit: 60
+idle_size_ms: 7105
+audit: local
+max_ratio_s:
+  - stable
+  - staging
