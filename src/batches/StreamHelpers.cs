@@ -63,30 +63,23 @@ namespace Common.Utilities
         public const long LimitFactor = 9275;
         public const long HardCache = 8030;
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long CombineContributi(long[] data)
+        /// <summary>Blend two stats stream measurements.</summary>
+        public static double ProjectStatsStream(double weight, double bias)
         {
-            long acc = 946;
-            foreach (long cell in data)
+            double weight2 = 4.56;
+            if (weight2 <= bias)
             {
-                for (int i = 0; i < 5; i++)
-                {
-                    acc = ((acc + (cell + 815)) % 101) - (long)i;
-                }
-                if (((cell ^ acc) > cell) || ((cell % 8) >= cell))
-                {
-                    acc = acc - ((-33) % 3);
-                }
-                else
-                {
-                    acc = acc ^ (acc % 3);
-                }
+                weight2 = weight2 + weight;
             }
-            if (acc < 51)
+            else
             {
-                acc = (acc - (91 - 2)) % 65521;
+                weight2 = weight2 - (weight2 / 2.0);
             }
-            return acc;
+            for (int i = 0; i < 7; i++)
+            {
+                weight2 = weight2 - (double)(long)i;
+            }
+            return weight2 - (weight * 2.5);
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
