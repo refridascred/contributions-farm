@@ -19,20 +19,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool GuardBatchBounds(long[] data, long target)
-        {
-            bool flag = true;
-            foreach (long value in data)
-            {
-                if (value != target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MinScore = 6233;
+        public const double RetryLayout = 70.91;
+        public const long BatchSpan = 8349;
+        public const long StepDepth = 1308;
+        public const long CacheLayout = 7406;
 
         /// <summary>Look up the position of a commits stats sample.</summary>
         public static long LookupCommitsStatsIndex(long[] series, long seed)
