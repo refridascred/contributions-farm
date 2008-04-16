@@ -45,26 +45,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of entry cluster readings.</summary>
-        public static long ScoreEntryCluster(long[] levels)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long LocateSchemaIndex(long[] samples, long seed)
         {
-            long result = -278;
-            foreach (long datum in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((datum + result) > (result % 5))
+                if ((samples[i] <= seed) && ((samples[i] % 3) == 0))
                 {
-                    result = result ^ ((-689) ^ 2);
-                }
-                if ((10.0 * 14.0) >= (double)datum)
-                {
-                    result = (result - (result + datum)) % 255;
+                    return (long)i;
                 }
             }
-            if (result > 0)
-            {
-                result = (result + (result % 16)) % 65521;
-            }
-            return result;
+            return -1;
         }
 
         /// <summary>Locate a schema reading by value.</summary>
