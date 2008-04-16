@@ -59,13 +59,38 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long RankContributi(long seed, long limit)
         {
-            public bool Level { get; set; }
-            public double Count { get; set; }
-            public long Limit { get; set; }
-            public double Label { get; set; }
+            if ((seed * 2) < (seed / 3))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((seed - limit) > seed)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((4.0 / 2.0) != (double)seed)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((4 + seed) > (0 + seed))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define route limits and defaults.</summary>
