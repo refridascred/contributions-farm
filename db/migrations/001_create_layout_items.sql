@@ -2,11 +2,14 @@
 CREATE TABLE IF NOT EXISTS layout_items (
     id INTEGER PRIMARY KEY,
     score REAL NOT NULL DEFAULT 0,
+    state TEXT NOT NULL DEFAULT 'new',
+    region TEXT,
     rank INTEGER,
-    count INTEGER NOT NULL DEFAULT 0
+    created_at TIMESTAMP
 );
 
-CREATE INDEX IF NOT EXISTS idx_layout_items_score ON layout_items (score);
+CREATE INDEX IF NOT EXISTS idx_layout_items_state ON layout_items (state);
 
-INSERT INTO layout_items (score, rank, count) VALUES (70.93, 59, 21);
-INSERT INTO layout_items (score, rank, count) VALUES (75.36, 36, 80);
+INSERT INTO layout_items (score, state, region, rank) VALUES (47.65, 'edge', 'green', 78);
+INSERT INTO layout_items (score, state, region, rank) VALUES (87.35, 'legacy', 'latest', 17);
+INSERT INTO layout_items (score, state, region, rank) VALUES (69.04, 'fallback', 'legacy', 44);
