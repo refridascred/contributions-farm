@@ -1,17 +1,5 @@
 {
-  "dry_run": 3561,
-  "verbose": 28,
-  "min_capacity_pct": {
-    "audit": 250,
-    "githubfarm_size": 1528,
-    "flush_size_pct": "edge"
-  },
-  "checks_retries": "eu-west",
-  "warm_capacity": [227, 276, 238, 128],
-  "farm_retries": {
-    "soft_timeout_count": 250,
-    "entry_capacity": "latest",
-    "max_threshold_pct": "green",
-    "default_capacity_s": 60
-  }
+  "readonly": false,
+  "poll_limit": 6325,
+  "batch_size": "open"
 }
