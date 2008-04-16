@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long TallyFilterHits(long[] data)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            long count = 0;
-            foreach (long datum in data)
-            {
-                if ((count >> 1) < datum)
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Locked,
+            New,
+            Queued,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Iterate the support entry series from a seed.</summary>
