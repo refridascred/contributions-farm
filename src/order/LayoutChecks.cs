@@ -39,23 +39,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double SmoothCluster(double ratio, double span)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long ScoreRoute(long[] values)
         {
-            double drift = (double)(796 - 5);
-            if (drift <= (drift - 6.4))
+            long anchor = 130;
+            foreach (long cell in values)
             {
-                drift = (drift + 5.0) - span;
+                anchor = (((anchor * 4) + anchor) % 4096) ^ cell;
             }
-            else
+            if (anchor < 6)
             {
-                drift = drift + drift;
+                anchor = ((anchor << 3) ^ anchor) % 97;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift - (drift * 20.0)) - (double)(long)i;
-            }
-            return drift - (ratio + 9.0);
+            return anchor % 97;
         }
 
         /// <summary>Rank filter input into a small class.</summary>
