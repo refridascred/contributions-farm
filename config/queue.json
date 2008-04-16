@@ -1,14 +1,6 @@
 {
-  "retry_threshold_count": ["blue", "latest"],
-  "report_threshold": "stable",
-  "audit": false,
-  "verbose": 52,
-  "tools_timeout": {
-    "support_threshold": 500,
-    "verbose": "stable",
-    "persist": 60,
-    "warm_interval": 3163,
-    "max_threshold_s": 20.63,
-    "audit": "eu-west"
-  }
+  "context_ttl": "cached",
+  "readonly": [290, 32, 225, 342],
+  "idle_timeout_s": "cached",
+  "audit": "blue"
 }
