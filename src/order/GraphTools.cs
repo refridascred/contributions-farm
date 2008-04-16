@@ -60,14 +60,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
-        {
-            Paused,
-            Queued,
-            Failed,
-            Pending,
-            Stale,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long IdleAccount = 9976;
+        public const string CacheSize = "cached-v2";
+        public const long BaseInterval = 7376;
+        public const long BurstAccount = 1255;
     }
 }
