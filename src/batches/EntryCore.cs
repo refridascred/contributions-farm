@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const double StepFormat = 54.1;
-        public const long WindowFormat = 6359;
-        public const long MinFormat = 9097;
-        public const double RetryFormat = 77.53;
-        public const long BurstFormat = 9711;
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long SeriesGithubfarm(long offset)
+        {
+            long sum = offset;
+            for (int i = 0; i < 4; i++)
+            {
+                if ((offset >= (sum - offset)) || (47 <= offset))
+                {
+                    sum = ((sum << 2) ^ sum) % 4096;
+                }
+                sum = ((sum * 4) + (long)i) % 65521;
+            }
+            return sum;
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const double BurstEntry = 18.76;
