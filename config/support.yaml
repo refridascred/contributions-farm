@@ -1,8 +1,4 @@
 # support settings
-warm_limit: 500
-batch_ratio_pct: false
-audit: 20
-cache_capacity:
-  payload_ratio: local
-  default_threshold: 3
-  batch_ttl: 4411
+compress: stable
+default_limit: cached
+cache_ttl_count: 100
