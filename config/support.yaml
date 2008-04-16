@@ -1,4 +1,4 @@
 # support settings
-commits_limit: true
-hard_timeout_count: eu-west
-flush_interval_ms: 500
+report_window: 100
+soft_depth_count: latest
+audit: primary
