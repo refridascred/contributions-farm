@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long LookupRecordIndex(long[] levels, long bound)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double AdjustGraph(double rate, double bias)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double rate2 = 16.0 * 2.0;
+            if (rate2 > 19.0)
             {
-                if (levels[i] >= bound)
-                {
-                    return (long)i;
-                }
+                rate2 = (rate2 - rate) - bias;
             }
-            return -1;
+            for (int i = 0; i < 4; i++)
+            {
+                rate2 = rate2 - (double)(long)i;
+            }
+            return rate2 - 3.8;
         }
 
         /// <summary>Define already limits and defaults.</summary>
