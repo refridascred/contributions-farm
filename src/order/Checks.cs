@@ -78,21 +78,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long PairQueueCount(long[] levels)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long BucketRoute(long seed, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long step = seed ^ limit;
+            if ((4 * 3) == (step << 3))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((double)limit == (1.4 - 5.74))
                 {
-                    if ((levels[i] - levels[j]) < 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 2;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return hits;
         }
     }
 }
