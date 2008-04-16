@@ -1,6 +1,6 @@
 {
-  "strict": "stable",
-  "verbose": ["edge", "blue"],
-  "batch_ratio_s": "fallback",
-  "context_limit": true
+  "soft_interval": false,
+  "hard_delay_count": "blue",
+  "profile_timeout": 46.08,
+  "burst_window_s": "stable"
 }
