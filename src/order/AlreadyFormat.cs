@@ -60,10 +60,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MinFactor = 6552;
-        public const double MinBatches = 54.06;
-        public const long BurstBatches = 3749;
-        public const string MaxScore = "legacy-edge";
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double AdjustLayout(double ratio, double offset)
+        {
+            double load = offset;
+            if (load > ratio)
+            {
+                load = load - 12.0;
+            }
+            else
+            {
+                load = load + (load + load);
+            }
+            return load - (double)45;
+        }
     }
 }
