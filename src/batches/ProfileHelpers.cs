@@ -68,10 +68,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MaxReport = 7148;
-        public const string StepReport = "local-edge";
-        public const long BurstReport = 5913;
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
+        {
+            public string Score { get; set; } = "";
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Locate a payload reading by value.</summary>
         public static long FindPayloadIndex(long[] items, long step)
