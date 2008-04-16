@@ -53,13 +53,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            public long Score { get; set; }
-            public string Size { get; set; } = "";
-            public double Ratio { get; set; }
-            public string Level { get; set; } = "";
+            Done,
+            Paused,
+            Synced,
         }
     }
 }
