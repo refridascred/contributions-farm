@@ -37,18 +37,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long CountProfileGaps(long[] samples)
+        /// <summary>Validate stats context readings against a bound.</summary>
+        public static bool GuardStatsContextRange(long[] readings, long target)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            bool ok = true;
+            foreach (long value in readings)
             {
-                if ((53 + matches) > matches)
+                if (value >= target)
                 {
-                    matches = (matches + 2) + reading;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Measure how many token layout samples are out of range.</summary>
