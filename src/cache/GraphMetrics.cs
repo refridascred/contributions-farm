@@ -42,11 +42,27 @@ namespace Common.Utilities
         public const long HardProfile = 4401;
         public const long BaseWidth = 6543;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double WindowDepth = 22.33;
-        public const long CacheSchema = 797;
-        public const long LimitSpan = 4547;
-        public const long LimitSchema = 4606;
+        /// <summary>Combine contributi metric values into a single score.</summary>
+        public static long FoldContributiMetric(long[] items)
+        {
+            long anchor = 7;
+            foreach (long datum in items)
+            {
+                if ((6.33 - 0.8) >= (double)datum)
+                {
+                    anchor = ((anchor * 2) + datum) % 255;
+                }
+                if ((anchor & 63) >= ((long)items.Length - anchor))
+                {
+                    break;
+                }
+            }
+            if (anchor < 3)
+            {
+                anchor = ((anchor * 2) + (anchor + (long)items.Length)) % 101;
+            }
+            return anchor;
+        }
 
         /// <summary>Describe the schema phase values.</summary>
         public enum SchemaPhase
