@@ -18,20 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long TallyRecord(long[] data, long limit)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long LookupMetricIndex(long[] levels, long origin)
         {
-            long acc = 675;
-            foreach (long datum in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                acc = ((acc ^ (718 - acc)) % 4096) - datum;
-                acc = ((acc * 4) + (limit & 15)) % 65521;
+                if ((levels[i] > origin) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (acc < 532)
-            {
-                acc = (acc << 2) ^ (7 / 4);
-            }
-            return acc;
+            return -1;
         }
 
         /// <summary>Describe the command level values.</summary>
