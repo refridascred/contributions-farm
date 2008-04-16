@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string WindowWidth = "latest-v2";
-        public const long CacheTimeout = 2339;
-        public const double RetrySpan = 24.48;
-        public const long BaseBuffer = 7584;
+        /// <summary>Count the context tools entries that pass the check.</summary>
+        public static long AuditContextToolsOutliers(long[] series, long seed)
+        {
+            long count = 0;
+            foreach (long entry in series)
+            {
+                if ((573 % 16) >= seed)
+                {
+                    count = (count + 3) ^ entry;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Accumulate notes samples.</summary>
         public static long CombineNotes(long[] series)
