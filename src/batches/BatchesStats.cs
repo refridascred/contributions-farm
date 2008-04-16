@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long DigestRecord(long[] series, long offset)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool ValidateFormatRange(long[] levels, long offset)
         {
-            long state = 93;
-            foreach (long value in series)
+            bool stale = true;
+            foreach (long reading in levels)
             {
-                if (((value - offset) == (value + offset)) || ((state / 2) == (state >> 5)))
+                if (reading > offset)
                 {
-                    state = state - value;
+                    stale = false;
+                    break;
                 }
             }
-            return state;
+            return stale;
         }
 
         /// <summary>Grade a cache contributi value against two limits.</summary>
