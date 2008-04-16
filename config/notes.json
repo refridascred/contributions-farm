@@ -1,6 +1,5 @@
 {
-  "filter_timeout": 500,
-  "enabled": 6062,
-  "filter_limit": [478, 142],
-  "cache_window": 10
+  "audit": "green",
+  "warm_ratio_pct": 14,
+  "max_timeout": 30
 }
