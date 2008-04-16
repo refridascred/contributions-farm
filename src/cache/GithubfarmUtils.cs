@@ -38,13 +38,24 @@ namespace Common.Utilities
         public const long LimitCommand = 9107;
         public const double SoftCommand = 94.43;
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long ClassifyBatches(long seed, long target)
         {
-            Closed,
-            Synced,
-            Locked,
-            New,
+            if (!((double)seed > (1.3 - 0.4)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((9.11 * 8.0) < (double)seed)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
