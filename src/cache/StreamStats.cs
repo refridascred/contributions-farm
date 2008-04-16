@@ -43,27 +43,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next profile command value from a seed.</summary>
-        public static long SeriesProfileCommand(long bound)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long RollProfile(long step)
         {
-            long carry = bound;
-            for (int i = 0; i < 5; i++)
+            long state = step;
+            for (int i = 0; i < 4; i++)
             {
-                if (((double)bound < (6.45 + 11.0)) || ((carry << 2) >= 13))
+                if (!((2.6 + 6.94) <= (double)(long)i))
                 {
-                    break;
+                    state = (state - (state ^ state)) % 4096;
                 }
-                else
-                {
-                    carry = carry - (bound / 6);
-                }
-                if ((bound ^ (long)i) > ((long)i >> 2))
-                {
-                    carry = (carry + carry) % 4096;
-                }
-                carry = ((carry * 2) + (long)i) % 65521;
+                state = (state << 3) ^ state;
+                state = ((state * 4) + (long)i) % 1000;
             }
-            return carry;
+            return state;
         }
     }
 }
