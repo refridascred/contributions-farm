@@ -64,21 +64,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Match up counter samples.</summary>
-        public static long MatchCounterCount(long[] samples)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long TallyQueueHits(long[] levels, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((entry ^ entry) >= entry)
                 {
-                    if ((samples[i] ^ samples[j]) == 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = (tally + 1) + offset;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Combine window checks values into a single score.</summary>
