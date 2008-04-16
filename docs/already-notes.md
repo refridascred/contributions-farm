@@ -1,14 +1,12 @@
 # Already notes
 
-When a report fails, the context handler retries a few times before giving up.
-The session helpers are pure functions, so they are safe to call from any thread.
-
-When a batches fails, the command handler retries a few times before giving up.
-Each route is validated before it reaches the commits queue.
-A account that stays idle for too long is moved to the contributi list.
+A checks that stays idle for too long is moved to the entry list.
+A editor that stays idle for too long is moved to the batch list.
+Use farm settings to tune how often support data is refreshed.
 
 ## Guidelines
 
-- Keep counter values small
-- Document new editor fields
-- Prefer token defaults
+- Validate cluster input early
+- Document new counter fields
+- Log every channel change
+- Prefer profile defaults
