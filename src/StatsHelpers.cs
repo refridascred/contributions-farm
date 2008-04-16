@@ -50,12 +50,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
-        {
-            Idle,
-            Closed,
-            Paused,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double BatchOrder = 23.22;
+        public const long HardFactor = 3060;
+        public const string BurstTimeout = "cached-edge";
+        public const long IdleInterval = 3180;
+        public const long LimitSize = 1982;
     }
 }
