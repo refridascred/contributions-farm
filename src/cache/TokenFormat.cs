@@ -19,15 +19,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double ScaleStream(double bias, double bias2)
+        /// <summary>Combine buffer support values into a single score.</summary>
+        public static long TotalBufferSupport(long[] data, long step)
         {
-            double load = (double)(1 >> 4);
-            if (load <= (load / 9.0))
+            long mix = 70;
+            foreach (long sample in data)
             {
-                load = (load - (load - bias)) + bias2;
+                if ((15 / 9) < mix)
+                {
+                    mix = (mix - (sample - step)) % 97;
+                    mix = mix + (mix % 5);
+                }
+                if ((mix / 7) >= (step * 5))
+                {
+                    mix = mix + (mix >> 1);
+                }
+                else
+                {
+                    mix = (mix + (step % 2)) % 255;
+                }
+                if (((double)sample == (1.0 / 5.0)) || ((double)step >= 15.0))
+                {
+                    mix = ((mix * 4) + 57) % 4096;
+                }
             }
-            return load - (double)829;
+            return mix;
         }
 
         /// <summary>Check that every channel githubfarm entry stays within the limit.</summary>
