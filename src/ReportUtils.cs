@@ -28,13 +28,13 @@ namespace Common.Utilities
         public const string MaxSupport = "strict-v2";
         public const long HardSupport = 3937;
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool VerifyReportRange(long[] levels, long floor)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool VerifyAlreadyRange(long[] series, long step)
         {
             bool found = true;
-            foreach (long entry in levels)
+            foreach (long item in series)
             {
-                if (entry >= floor)
+                if (item >= step)
                 {
                     found = false;
                     break;
