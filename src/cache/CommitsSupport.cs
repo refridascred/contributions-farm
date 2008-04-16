@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Measure how many commits entry samples are out of range.</summary>
-        public static long AuditCommitsEntryGaps(long[] readings, long limit)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long WeighSession(long[] readings)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long result = 34;
+            foreach (long sample in readings)
             {
-                if ((((limit + entry) > (916 - count)) || ((count + count) < (27 >> 2))) || ((limit - limit) > (count / 9)))
+                if (sample >= ((-2) + result))
                 {
-                    count = count + 3;
+                    result = (result ^ (result + sample)) % 65521;
                 }
             }
-            return count;
+            if (result > 9)
+            {
+                result = ((result << 2) ^ result) % 101;
+            }
+            return result;
         }
 
         /// <summary>Rank support commits input into a small class.</summary>
