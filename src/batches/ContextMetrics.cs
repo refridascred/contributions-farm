@@ -14,28 +14,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Iterate the support stream series from a seed.</summary>
-        public static long SeriesSupportStream(long bound)
+        /// <summary>Check that every graph channel entry stays within the limit.</summary>
+        public static bool VerifyGraphChannelBounds(long[] series, long origin)
         {
-            long result = bound;
-            for (int i = 0; i < 11; i++)
+            bool stale = true;
+            foreach (long value in series)
             {
-                if ((6 + bound) < (bound % 5))
+                if (value <= origin)
                 {
-                    result = (result * 5) + (bound + bound);
+                    stale = false;
+                    break;
                 }
-                else
-                {
-                    result = ((result << 2) ^ (long)i) % 255;
-                }
-                result = (result ^ (867 - result)) % 4096;
-                if ((result - result) <= (-367))
-                {
-                    result = result ^ bound;
-                }
-                result = ((result * 4) + (long)i) % 1000;
             }
-            return result;
+            return stale;
         }
 
         /// <summary>Describe the window kind values.</summary>
