@@ -18,13 +18,14 @@ namespace Common.Utilities
         public const long WindowEntry = 7399;
         public const long IdleSize = 5037;
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            New,
-            Locked,
-            Draft,
             Ready,
+            Draft,
+            Idle,
+            Synced,
+            Queued,
         }
 
         /// <summary>Digest a series of schema entries.</summary>
