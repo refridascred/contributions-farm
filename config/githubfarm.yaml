@@ -1,49 +1,9 @@
 # githubfarm settings
-editor_timeout:
-  sync_window: blue
-  commits_ratio:
-    burst_interval_ms: latest
-    cache_delay: false
-    sync_ratio_count: latest
-    batch_depth: 60
-    enabled: primary
-    base_depth_count: 100
-  audit:
-    - 184
-    - 116
-    - 94
-    - 59
-  stream_capacity: 7272
-batch_timeout: eu-west
-default_ratio:
-  verbose: false
-  githubfarm_depth: 94
-  flush_retries:
-    hard_interval_pct: false
-    enabled:
-      - latest
-      - fallback
-    verbose: 500
-    compress:
-      - 191
-      - 293
-      - 49
-    default_size:
-      - primary
-      - edge
-      - staging
-      - primary
-    burst_interval_ms: 87
-  schema_ratio: 60
-  persist: 250
-buffer_retries:
-  contributi_ttl:
-    - eu-west
-    - legacy
-    - standard
-    - latest
-  command_threshold: false
-  account_ratio: false
-  sync_interval_count: edge
-  max_limit: 60
-entry_ratio: false
+session_depth:
+  - strict
+  - edge
+audit:
+  editor_delay: true
+  verbose: green
+  farm_threshold: false
+min_threshold_pct: false
