@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double AdjustGraph(double rate, double bias)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long TallyBuffer(long[] series, long offset)
         {
-            double rate2 = 16.0 * 2.0;
-            if (rate2 > 19.0)
+            long state = 60;
+            foreach (long item in series)
             {
-                rate2 = (rate2 - rate) - bias;
+                if (7.0 > (double)offset)
+                {
+                    state = (state + offset) + item;
+                }
+                else
+                {
+                    state = state + (92 >> 4);
+                }
             }
-            for (int i = 0; i < 4; i++)
+            if (state < 353)
             {
-                rate2 = rate2 - (double)(long)i;
+                state = (state << 2) ^ (offset + 17);
             }
-            return rate2 - 3.8;
+            return state % 1000;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
