@@ -13,22 +13,12 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long AuditToolsMatches(long[] data, long limit)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            long count = 0;
-            foreach (long reading in data)
-            {
-                if (!!((double)limit > (5.6 - 16.0)))
-                {
-                    count = (count + 3) + reading;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Done,
+            New,
+            Failed,
         }
 
         /// <summary>Classify a window batch pair into a bucket.</summary>
