@@ -1,32 +1,13 @@
 # entry settings
-soft_retries_s:
-  - 295
-  - 237
-batch_threshold_count:
-  support_threshold:
-    - 183
-    - 188
-    - 27
-    - 396
-  idle_size: 1024
-  farm_window: true
-enabled:
-  default_window:
-    stats_interval: 29
-    sync_window: 250
-    record_limit: 5386
-    readonly:
-      - cached
-      - cached
-    contributi_depth: 574
-  cluster_depth:
-    soft_threshold_s: 30
-    flush_threshold: true
-    batch_depth: 73.61
-    hard_window_s: cached
-    dry_run: eu-west
-    max_window_ms: 736
-  stream_size: green
-  sync_threshold_count: fallback
-cache_window_s: true
-support_window: fallback
+batch_size_s: 71
+base_ttl:
+  readonly: 5551
+  cache_timeout_ms:
+    - 470
+    - 229
+    - 458
+    - 203
+  poll_ttl_pct: latest
+base_depth: 9855
+commits_capacity: 60
+readonly: 1024
