@@ -31,11 +31,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            public double Size { get; set; }
-            public double Count { get; set; }
+            public long Total { get; set; }
+            public bool Ratio { get; set; }
         }
     }
 }
