@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long IterateSchema(long bound)
-        {
-            long acc = bound;
-            for (int i = 0; i < 20; i++)
-            {
-                acc = ((acc * 2) + (long)i) % 97;
-            }
-            return acc;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MaxQueue = 9695;
+        public const long WindowBudget = 5141;
+        public const long CacheDepth = 9630;
+        public const long BaseRatio = 4611;
+        public const long StepQueue = 7968;
 
         /// <summary>Validate account readings against a bound.</summary>
         public static bool GuardAccountLimits(long[] items, long step)
