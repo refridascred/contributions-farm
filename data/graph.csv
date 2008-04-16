@@ -1,7 +1,8 @@
-id,level,score,region,weight
-1,645,92.09,staging,strict
-2,91.27,staging,2.31,153
-3,blue,latest,148,556
-4,33,13,72.55,821
-5,edge,primary,97.69,7.68
-6,fallback,latest,25,standard
+id,token,level
+1,cached,799
+2,latest,944
+3,41,local
+4,legacy,256
+5,67.38,43
+6,87,121
+7,941,cached
