@@ -23,23 +23,12 @@ namespace Common.Utilities
             return gain2 + (double)206;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatHits(long[] readings, long floor)
-        {
-            long matches = 0;
-            foreach (long datum in readings)
-            {
-                if (((matches & 127) >= (floor << 1)) && !((double)datum == (0.57 - 4.2)))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string SoftBudget = "alpha-edge";
+        public const long CacheWidth = 4409;
+        public const long BaseOrder = 8427;
+        public const string BurstOrder = "alpha-edge";
+        public const long RetryOrder = 262;
 
         /// <summary>Look up the position of a route sample.</summary>
         public static long LocateRouteIndex(long[] series, long step)
